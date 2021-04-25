@@ -1,0 +1,259 @@
+<template>
+  <table :class="classes.table.value" class="min-w-full text-left">
+    <caption :class="classes.caption.value">
+      <slot name="caption"></slot>
+    </caption>
+    <thead :class="classes.header.value">
+      <tr>
+        <template v-for="(h, i) in headers">
+          <th
+            v-if="headers[i].visible !== false"
+            @click="handleHeaderClick(h.key, i)"
+            :class="[
+              {
+                sortable: h.sortable && sortField != h.key,
+                'sort-asc': h.sortable && sortField == h.key && sortAsc,
+                'sort-desc': h.sortable && sortField == h.key && !sortAsc,
+                'cursor-pointer': h.sortable,
+              },
+              ...classes.headerCell.value,
+            ]"
+          >
+            {{ h.label }}
+          </th>
+        </template>
+      </tr>
+    </thead>
+    <tbody>
+      <template v-if="!items.length">
+        <tr>
+          <td :colspan="headersCount" class="text-center py-2">
+            {{ emptyText }}
+          </td>
+        </tr>
+      </template>
+      <template v-else-if="!itemsFiltered.length">
+        <tr>
+          <td :colspan="headersCount" class="text-center py-2">
+            {{ emptyFilteredText }}
+          </td>
+        </tr>
+      </template>
+      <template v-else>
+        <transition-group :name="transition">
+          <tr
+            v-for="(item, i) in itemsPagination"
+            :key="i"
+            :class="classes.row.value"
+          >
+            <template v-for="(k, i) in headers">
+              <td
+                v-if="headers[i].visible !== false"
+                :class="[
+                  headers[i].class && typeof headers[i].class === 'function'
+                    ? headers[i].class(k.key, item[k.key], item)
+                    : '',
+                  ...classes.cell.value,
+                ]"
+              >
+                <slot :name="'cell:' + k.key" :value="item[k.key]" :item="item">
+                  {{
+                    headers[i].f && typeof headers[i].f === "function"
+                      ? headers[i].f(k.key, item[k.key], item)
+                      : item[k.key]
+                  }}
+                </slot>
+              </td>
+            </template>
+          </tr>
+        </transition-group>
+      </template>
+    </tbody>
+  </table>
+</template>
+
+<script>
+import { ref, computed, watchEffect, watch, getCurrentInstance } from "vue";
+import useStyles from "../use-styles";
+import { formatCase, propCompare, removeTailwindClasses } from "../tools.js";
+
+export default {
+  props: {
+    definition: { type: Array, default: () => [] },
+    items: { type: Array, default: () => [] },
+    filter: { type: String, default: "" },
+    page: { type: Number, default: 1 },
+    itemsPerPage: { type: Number, default: 0 },
+    captionTop: { type: Boolean, default: false },
+    emptyText: { type: String, default: "Empty table" },
+    emptyFilteredText: {
+      type: String,
+      default: "No records for current filter",
+    },
+    transition: { type: String, default: "fade-slide" },
+    name: { type: String, default: "table" },
+    table: { type: String, default: "default" },
+    header: { type: String, default: "default" },
+    headerCell: { type: String, default: "default" },
+    row: { type: String, default: "default" },
+    cell: { type: String, default: "default" },
+    caption: { type: String, default: "default" },
+  },
+  setup(props, { emit }) {
+    let elements = ["table", "header", "headerCell", "row", "cell", "caption"];
+
+    let { styles } = useStyles(getCurrentInstance(), props, elements);
+
+    let classes = {
+      table: computed(() => {
+        let c = [...styles.table.value];
+        return removeTailwindClasses(c);
+      }),
+      header: computed(() => {
+        let c = [...styles.header.value];
+        return removeTailwindClasses(c);
+      }),
+      headerCell: computed(() => {
+        let c = [...styles.headerCell.value];
+        return removeTailwindClasses(c);
+      }),
+      row: computed(() => {
+        let c = [...styles.row.value];
+        return removeTailwindClasses(c);
+      }),
+      cell: computed(() => {
+        let c = [...styles.cell.value];
+        return removeTailwindClasses(c);
+      }),
+      caption: computed(() => {
+        let c = [
+          ...styles.caption.value,
+          props.captionTop ? "caption-top" : "caption-bottom",
+        ];
+        return removeTailwindClasses(c);
+      }),
+    };
+
+    let sortField = ref("");
+    let sortAsc = ref(true);
+
+    if (props.items) emit("update:itemsCount", props.items.length);
+
+    // DATA
+
+    let itemsSorted = computed(() => {
+      if (!sortField.value) return props.items;
+      let sorted = props.items.sort(propCompare(sortField.value));
+      return sortAsc.value ? sorted : sorted.reverse();
+    });
+
+    let itemsFiltered = computed(() => {
+      if (!props.filter) return itemsSorted.value;
+      let keys = headers.value.filter(
+        (k) => k.filterable !== false && k.visible !== false
+      );
+      let regexp = new RegExp(props.filter, "i");
+      return itemsSorted.value.filter((item) => {
+        for (let k of keys) {
+          if (item[k.key] && ("" + item[k.key]).search(regexp) >= 0)
+            return item;
+        }
+      });
+    });
+
+    let itemsPagination = computed(() => {
+      if (!props.itemsPerPage) return itemsFiltered.value;
+      return itemsFiltered.value.slice(
+        (props.page - 1) * props.itemsPerPage,
+        props.page * props.itemsPerPage
+      );
+    });
+
+    // DEFINITION
+
+    let headers = ref([]);
+
+    let setHeaders = () => {
+      if (!props.items || !props.items.length) return;
+      return Object.keys(props.items[0]).map((item) => {
+        return {
+          key: item,
+          label: formatCase(item),
+        };
+      });
+    };
+
+    let headersCount = computed(
+      () => headers.value.filter((i) => i.visible !== false).length
+    );
+
+    watchEffect(() => {
+      if (props.definition) {
+        headers.value = props.definition.map((item) => {
+          return {
+            ...item,
+            label: item.label || formatCase(item.key),
+          };
+        });
+      } else headers.value = setHeaders();
+    });
+
+    watch(itemsFiltered, () => {
+      emit("update:page", 1);
+      emit("update:itemsCount", itemsFiltered.value.length);
+    });
+
+    let handleHeaderClick = function(key, index) {
+      if (!headers.value[index].sortable) return;
+      sortAsc.value = sortField.value == key ? !sortAsc.value : true;
+      sortField.value = key;
+    };
+
+    return {
+      classes,
+      headers,
+      sortField,
+      sortAsc,
+      handleHeaderClick,
+      itemsFiltered,
+      itemsPagination,
+      headersCount,
+    };
+  },
+};
+</script>
+
+<style scoped>
+.sortable {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-dash' viewBox='0 0 16 16'%3E%3Cpath d='M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 3% center;
+}
+.sort-asc {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chevron-up' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 3% center;
+}
+.sort-desc {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chevron-down' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 3% center;
+}
+
+.caption-bottom {
+  caption-side: bottom;
+}
+.caption-top {
+  caption-side: top;
+}
+
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: all 0.4s;
+}
+.fade-slide-enter-from,
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+</style>

@@ -1,0 +1,533 @@
+<template>
+  <div class="sm:container mx-auto">
+    item
+    <v-tabs tab="default">
+      <v-tab name="item" class="p-2"
+        >item Options can be passed via data attributes or JavaScript. For data
+        attributes, append the option name to data-bs-, as in
+        data-bs-animation="". Make sure to change the case type of the option
+        name from camelCase to kebab-case when passing via data attributes. For
+        example: instead of using data-bs-customClass="beautifier", use
+        data-bs-custom-class="beautifier". Options can be passed via data
+        attributes or JavaScript. For data attributes, append the option name to
+        data-bs-, as in data-bs-animation="". Make sure to change the case type
+        of the option name from camelCase to kebab-case when passing via data
+        attributes. For example: instead of using
+        data-bs-customClass="beautifier", use
+        data-bs-custom-class="beautifier".</v-tab
+      >
+      <v-tab name="item2" class="p-2">
+        <v-card card="default shadow gray" class="mb-4">
+          <v-button button="primary small">table</v-button>
+          <v-button button="primary small">add</v-button>
+          <v-button button="secondary small">add</v-button>
+          <v-dropdown auto-close-menu>
+            <template #activator>
+              <v-button button="primary small">add</v-button>
+            </template>
+            <template #default="{ hide }">
+              <v-card card="default shadow" width="320px">
+                <v-dropdown-menu-item tag="button" active @click.prevent="log('click')">
+                  item
+                </v-dropdown-menu-item>
+                <v-dropdown-menu-item>
+                  item 2
+                </v-dropdown-menu-item>
+                <v-dropdown-header>
+                  items
+                </v-dropdown-header>
+                <v-dropdown-menu-item disabled>
+                  item 3
+                </v-dropdown-menu-item>
+                <v-divider></v-divider>
+                <v-dropdown-menu-item tag="button" >
+                  item 9
+                </v-dropdown-menu-item>
+              </v-card>
+            </template>
+          </v-dropdown>
+        </v-card>
+        <v-table
+          :items="data"
+          :definition="definition"
+          :filter="filter"
+          :itemsPerPage="itemsPerPage"
+          :page="page"
+          @update:itemsCount="tableItemsCount = $event"
+          @update:page="page = $event"
+          caption-top
+        >
+          <template #caption>table 4</template>
+          <template #cell:item_city="{ item }">
+            <v-button button="primary tiny noMargin">item</v-button>
+            <!-- <span v-tooltip.right.delay200="() => item.city">{{ item.id }}</span> -->
+            <!-- <v&#45;popover trigger="hover" :delay="500" transition="fade"> -->
+            <!--   <template #activator> -->
+            <!--     <v&#45;button>popover</v&#45;button> -->
+            <!--     <a href="">item</a> -->
+            <!--     <v&#45;button>popover</v&#45;button> -->
+            <!--   </template> -->
+            <!--   <template #header>Popover</template> -->
+            <!--   {{ item.id }} -->
+            <!--   <input type=""> -->
+            <!-- </v&#45;popover> -->
+          </template>
+        </v-table>
+      </v-tab>
+      <v-tab :name="tabname" class="p-2">item3</v-tab>
+      <v-tab name="item4" class="p-2">item 44</v-tab>
+      <!-- <v&#45;tab name="item5" v&#45;if="tooltipTest"></v&#45;tab> -->
+    </v-tabs>
+    <v-button @click="tabname = 'item 5'">tabname</v-button>
+
+    <input v-model="filter" type="" class="form-control w-25" />
+    <v-table
+      :definition="definition"
+      :items="data"
+      :filter="filter"
+      :itemsPerPage="itemsPerPage"
+      :page="page"
+      @update:itemsCount="tableItemsCount = $event"
+      @update:page="page = $event"
+    >
+      <template #cell:item_city="{ item }">
+        <!-- <v&#45;button small>item</v&#45;button> -->
+        <!--     <!&#45;&#45; <v&#38;#45;button>popover</v&#38;#45;button> &#45;&#45;> -->
+        <!--     <a href="">item</a> -->
+        <!--     <!&#45;&#45; <v&#38;#45;button>popover</v&#38;#45;button> &#45;&#45;> -->
+        <!--   </template> -->
+        <!--   <!&#45;&#45; <template #header>Popover</template> &#45;&#45;> -->
+        <!--   item item 2 -->
+        <!--   {{ item.id }} -->
+        <!--   <input type=""> -->
+        <!-- </v&#45;popover> -->
+      </template>
+    </v-table>
+
+    <div class="grid grid-cols-2 mt-2">
+      <v-pagination
+        v-model="page"
+        :itemsCount="tableItemsCount"
+        :itemsPerPage="itemsPerPage"
+        icons
+      ></v-pagination>
+      <input type="" />
+    </div>
+
+    <v-button @click="classadd = 'bg-blue-700 border-2'">classadd</v-button>
+    <v-button @click="definition[3].visible = !definition[3].visible"
+      >visible city col</v-button
+    >
+    <v-button @click="data = dataJSON.slice(0, 40)">table</v-button>
+    <v-button @click="definition.push({ key: 'item5' })">table push</v-button>
+    <v-button @click="data[0].item5 = 6">table add col</v-button>
+
+    <div class="my-2">
+      spinner
+      <v-spinner></v-spinner>
+    </div>
+
+    <v-badge badge="primary small">badge</v-badge>
+
+    <v-button @click="tooltipTest = true">tooltipTest</v-button>
+
+    <span
+      v-tooltip.bottom.delay500.oY5="() => 'item item 2'"
+      data-title="item item 4"
+      >tooltip</span
+    >
+
+    <br />
+
+    <span
+      v-tooltip.top-end.delay500="() => 'item item 2'"
+      data-title="item item 4"
+      >tooltip</span
+    >
+
+    <br />
+
+    {{ i }}
+    {{ formattedDate }}
+    <v-card card="default" class="p-2 mb-2" style="width: 320px">
+      <vDatePicker v-model="i" euro range adjecent-months></vDatePicker>
+    </v-card>
+    <v-card card="default" class="p-2" style="width: 320px">
+      <vDatePicker
+        v-model="i"
+        @input:formatted="formattedDate = $event"
+        euro
+        range
+      ></vDatePicker>
+    </v-card>
+    <v-card card="default" class="p-2" style="width: 320px">
+      <vDatePicker
+        v-model="i"
+        @input:formatted="formattedDate = $event"
+        euro
+      ></vDatePicker>
+    </v-card>
+
+    <v-button @click="sidepanel = !sidepanel">sidepanel</v-button>
+
+    <v-sidepanel v-model="sidepanel" close-button>
+      <template #header
+        ><h5 class="text-xl font-semibold">Sidepanel</h5></template
+      >
+      <div class="p-2">
+        sidepanel
+      </div>
+    </v-sidepanel>
+
+    {{ formattedDate }}
+    <v-dropdown transition="fade">
+      <template #activator>
+        <v-button>Dropdown</v-button>
+      </template>
+      <template #default>
+        <v-card card="default shadow">
+          item
+          <v-dropdown-menu-item v-tooltip.right.delay200="'item content'"
+            >item</v-dropdown-menu-item
+          >
+          <v-dropdown-menu-item>item</v-dropdown-menu-item>
+          <div class="p-2">
+            <vDatePicker
+              v-model="i"
+              euro
+              @input:formatted="formattedDate = $event"
+              width="320px"
+            ></vDatePicker>
+          </div>
+        </v-card>
+      </template>
+    </v-dropdown>
+
+    <v-list width="320px">
+      <v-list-item>item</v-list-item>
+      <v-list-item>item2</v-list-item>
+      <v-list-item>item3</v-list-item>
+      <v-list-item active>item</v-list-item>
+      <v-list-item>item2</v-list-item>
+      <v-list-item v-tooltip.right.delay200="'item content'">item3</v-list-item>
+      <v-list-item>item</v-list-item>
+      <v-list-item>item2</v-list-item>
+      <v-list-item>item3</v-list-item>
+      <v-list-item>item3</v-list-item>
+    </v-list>
+
+    <v-button @click="i2 = !i2">collapse</v-button>
+    <v-collapse v-model="i2">Options can be passed via data attributes or JavaScript. For
+      data attributes, append the option name to data-bs-, as in
+      data-bs-animation="". Make sure to change the case type of the option name
+      from camelCase to kebab-case when passing via data attributes. For
+      example: instead of using data-bs-customClass="beautifier", use
+      data-bs-custom-class="beautifier". Options can be passed via data
+      attributes or JavaScript. For data attributes, append the option name to
+      data-bs-, as in data-bs-animation="". Make sure to change the case type of
+      the option name from camelCase to kebab-case when passing via data
+      attributes. For example: instead of using
+      data-bs-customClass="beautifier", use data-bs-custom-class="beautifier".
+      Options can be passed via data attributes or JavaScript. For data
+      attributes, append the option name to data-bs-, as in
+      data-bs-animation="". Make sure to change the case type of the option name
+      from camelCase to kebab-case when passing via data attributes. For
+      example: instead of using data-bs-customClass="beautifier", use
+      data-bs-custom-class="beautifier". Options can be passed via data
+      attributes or JavaScript. For data attributes, append the option name to
+      data-bs-, as in data-bs-animation="". Make sure to change the case type of
+      the option name from camelCase to kebab-case when passing via data
+      attributes. For example: instead of using
+      data-bs-customClass="beautifier", use data-bs-custom-class="beautifier".</v-collapse>
+
+    <v-badge>new</v-badge>
+    <v-button @click="modal = !modal">modal</v-button>
+    <v-modal
+      v-model="modal"
+      position="center"
+      transition="fade-slide"
+      secondaryButtonClose
+      title="Modal"
+    >
+      item item Options can be passed via data attributes or JavaScript. For
+      data attributes, append the option name to data-bs-, as in
+      data-bs-animation="". Make sure to change the case type of the option name
+      from camelCase to kebab-case when passing via data attributes. For
+      example: instead of using data-bs-customClass="beautifier", use
+      data-bs-custom-class="beautifier". Options can be passed via data
+      attributes or JavaScript. For data attributes, append the option name to
+      data-bs-, as in data-bs-animation="". Make sure to change the case type of
+      the option name from camelCase to kebab-case when passing via data
+      attributes. For example: instead of using
+      data-bs-customClass="beautifier", use data-bs-custom-class="beautifier".
+      Options can be passed via data attributes or JavaScript. For data
+      attributes, append the option name to data-bs-, as in
+      data-bs-animation="". Make sure to change the case type of the option name
+      from camelCase to kebab-case when passing via data attributes. For
+      example: instead of using data-bs-customClass="beautifier", use
+      data-bs-custom-class="beautifier". Options can be passed via data
+      attributes or JavaScript. For data attributes, append the option name to
+      data-bs-, as in data-bs-animation="". Make sure to change the case type of
+      the option name from camelCase to kebab-case when passing via data
+      attributes. For example: instead of using
+      data-bs-customClass="beautifier", use data-bs-custom-class="beautifier".
+    </v-modal>
+
+    <div class="my-5">
+      <v-button shadow class-button="bg-gray-500 hover:bg-gray-600"
+        >custom button</v-button
+      >
+      <v-button shadow class-button="bg-red-500 hover:bg-red-600"
+        >custom button</v-button
+      >
+      <v-button class-button="bg-blue-500 hover:bg-blue-600"
+        >custom button</v-button
+      >
+      <!-- <v&#45;button :class&#45;button="[btn.primary, btn.small, btn.square]">custom button</v&#45;button> -->
+      <!-- <v&#45;button :class&#45;button="[btn.secondary, btn.small, 'shadow&#45;md']">custom button</v&#45;button> -->
+      <!-- <v&#45;button :class&#45;button="[btn.secondary, btn.large, 'shadow&#45;md']">custom button</v&#45;button> -->
+      <!-- <v&#45;button :class&#45;button="[btn.primary, btn.pill, 'shadow&#45;md']">custom button</v&#45;button> -->
+      <v-button button="primary small">custom button</v-button>
+      <v-button button="primary pill small">custom button</v-button>
+    </div>
+    <br />
+
+    Options can be passed via data attributes or JavaScript. For data
+    attributes, append the option name to data-bs-, as in data-bs-animation="".
+    Make sure to change the case type of the option name from camelCase to
+    kebab-case when passing via data attributes. For example: instead of using
+    data-bs-customClass="beautifier", use data-bs-custom-class="beautifier".
+    <br />
+
+    {{ popoverText }}
+    <v-popover
+      trigger="click"
+      :delay="0"
+      click-outside-close
+      v-model="popoverShow"
+    >
+      <template #activator>
+        <input
+          ref="activator"
+          type="text"
+          placeholder="focus popover click"
+          class="p-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm border-gray-300 rounded"
+        />
+      </template>
+      <template #header>Popover</template>
+      item item 2
+      {{ popoverText }}
+      <!-- <input type="" class="form&#45;control"> -->
+      <!-- <input type="" class="form&#45;control mt&#45;2" v&#45;model="popoverText"> -->
+      <input
+        ref="activator"
+        type="text"
+        placeholder="focus popover click"
+        class="p-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm border-gray-300 rounded"
+      />
+      <input
+        ref="activator"
+        type="text"
+        placeholder="focus popover click"
+        class="mt-2 p-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm border-gray-300 rounded"
+      />
+      <!-- <v&#45;button class="mt&#45;2">popover text</v&#45;button> -->
+    </v-popover>
+
+    <v-button square disabled small shadow-md @click="popoverShow = true"
+      >popover model
+    </v-button>
+    <v-button @click="popoverShow = false">popover model false</v-button>
+    <v-button square shadow @click="popoverShow = true"
+      >popover model
+    </v-button>
+
+    <v-button id="button">popover button id</v-button>
+    <a href="" id="buttonLink">popover button id </a>
+    <input type="" id="input" placeholder="input popover id " />
+
+    <v-popover
+      trigger="click"
+      :delay="50"
+      click-outside-close
+      target-id="button"
+    >
+      <template #header>Popover</template>
+      item item 2
+      <input type="" />
+    </v-popover>
+
+    <v-popover title="popover" trigger="hover" :delay="500" transition="fade">
+      <template #activator>
+        <!-- <v&#45;button>popover</v&#45;button> -->
+        <v-button>popover</v-button>
+      </template>
+      <template #header>Popover</template>
+      item item 2
+      <input type="" />
+    </v-popover>
+
+    <v-popover trigger="focus">
+      <template #activator>
+        <input ref="activator" type="text" placeholder="focus popover" />
+      </template>
+      <template #header>Popover</template>
+      item item 2
+      <input type="" />
+    </v-popover>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    input, documentation, tailwind map do for do object
+  </div>
+</template>
+
+<script>
+import { ref, onMounted } from "vue";
+import dataJSON from "./../MOCK_DATA (1).json";
+import vTabs from "./vTabs.vue"
+import vTab from "./vTab.vue"
+import vTable from './vTable.vue'
+// import {vTable} from "./index.js"
+import vDatePicker from "./vDatePicker.vue";
+import vCard from "./vCard.vue";
+import vSidepanel from "./vSidepanel.vue";
+import vButton from "./vButton.vue";
+import vPagination from "./vPagination.vue";
+import vDropdown from "./vDropdown.vue";
+import vDropdownMenuItem from "./vDropdownMenuItem.vue";
+import vDropdownHeader from "./vDropdownHeader.vue";
+import vDivider from "./vDivider.vue";
+import vList from "./vList.vue";
+import vListItem from "./vListItem.vue";
+import vCollapse from "./vCollapse.vue";
+import vModal from "./vModal.vue";
+import vBadge from "./vBadge.vue";
+import vPopover from "./vPopover.vue";
+import tooltip from "../directives/tooltip.js";
+import vSpinner from "./vSpinner.vue";
+// import {vTable} from "../dist/vuecomponent2.es"
+
+export default {
+  name: "HelloWorld",
+  components: {
+    vTabs,
+    vTab,
+    vTable,
+    vDatePicker,
+    vCard,
+    vButton,
+    vSidepanel,
+    vPagination,
+    vDropdown,
+    vDropdownMenuItem,
+    vDropdownHeader,
+    vDivider,
+    vList,
+    vListItem,
+    vCollapse,
+    vModal,
+    vBadge,
+    vPopover,
+    vSpinner,
+  },
+  props: {
+    msg: String,
+  },
+  directives: {
+    tooltip,
+  },
+  setup(props) {
+    let data = ref(dataJSON.slice(0, 60));
+    let dataEmpty = ref([]);
+    // data.value = dataEmpty.value;
+    let definition = ref([
+      {
+        key: "id",
+      },
+      {
+        key: "first_name",
+        sortable: true,
+        class: () => "bg-gray-100",
+      },
+      // {
+      //   key: "last_name",
+      // },
+      {
+        key: "email",
+        sortable: true,
+      },
+      {
+        key: "city",
+        // visible: false,
+        f: (k, v) => k + " " + v,
+      },
+      {
+        key: "country",
+      },
+      {
+        key: "item_city",
+      },
+    ]);
+    let i = ref([]);
+    let filter = ref("");
+    let sidepanel = ref(false);
+    let tableItemsCount = ref(0);
+    let itemsPerPage = ref(10);
+    let page = ref(1);
+    let i2 = ref(false);
+    let modal = ref(false);
+    let tooltipTest = ref(false);
+    let activator = ref(null);
+    let popoverText = ref("");
+    let popoverShow = ref(false);
+    let classadd = ref("");
+    let tabname = ref("item 2");
+    let formattedDate = "";
+    let log = (m) => console.log(m);
+
+    let buttonPrimary = "bg-indigo-500 hover:bg-indigo-600";
+    let buttonSmall = "py-1";
+
+    onMounted(() => {
+      setTimeout(() => {
+        tooltipTest.value = true;
+      }, 4000);
+    });
+
+    return {
+      data,
+      dataJSON,
+      definition,
+      i,
+      sidepanel,
+      filter,
+      tableItemsCount,
+      itemsPerPage,
+      page,
+      i2,
+      modal,
+      tooltipTest,
+      activator,
+      popoverText,
+      popoverShow,
+      classadd,
+      tabname,
+      buttonPrimary,
+      buttonSmall,
+      formattedDate,
+      log,
+    };
+  },
+};
+</script>
+
+<style scoped></style>

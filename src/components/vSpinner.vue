@@ -1,0 +1,50 @@
+<template>
+  <!-- <div class="spinner-border" role="status" :class="classSpinner"></div> -->
+  <svg
+    :class="classes"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+  >
+    <circle
+      class="opacity-25"
+      cx="12"
+      cy="12"
+      r="10"
+      stroke="currentColor"
+      stroke-width="4"
+    ></circle>
+    <path
+      class="opacity-75"
+      fill="currentColor"
+      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+    ></path>
+  </svg>
+</template>
+
+<script>
+import { computed, getCurrentInstance } from "vue";
+import useStyles from "../use-styles";
+
+export default {
+  props: {
+    growingSpinner: Boolean,
+    name: { type: String, default: "spinner" },
+    spinner: { type: [String, Array], default: "default" },
+  },
+  setup(props) {
+    let elements = ["spinner"];
+
+    let { styles } = useStyles(getCurrentInstance(), props, elements);
+
+    let classes = computed(() => {
+      return [...styles.spinner.value];
+    });
+    return {
+      classes,
+    };
+  },
+};
+</script>
+
+<style scoped></style>
