@@ -17,6 +17,15 @@
     </pre>
   </section>
 
+  <section>
+    <h5>Reference</h5>
+    <p></p>
+    <v-table :items="reference" :definition="referenceDefinition">
+      <template #cell:type="{ value }"><code class="text-sm bg-gray-100 rounded p-1">{{ value }}</code></template>
+      <template #cell:description="{ value }"><span v-html="value"></span></template>
+    </v-table>
+  </section>
+
   <!-- <section> -->
   <!--   <h5>Reference</h5> -->
   <!--   <p></p> -->
@@ -29,61 +38,6 @@
   <!--     </template> -->
   <!--   </v&#45;table> -->
   <!-- </section> -->
-
-  <section>
-    <h5>Items</h5>
-    <span class="fw-bold">Type</span>: <code>Array</code>
-    <p>Data to display in table. Each element of data Array is an Object. Single Object is one record (row) of data and Objects keys are fields (columns).</p>
-    <div class="example">
-      <v-table :items="dataSmall" :definition="definition"></v-table>
-    </div>
-    <pre>
-      <code>
-{{`let data = ref([
-  {
-    "id": 1,
-    "first_name": "Perry",
-    "last_name": "Boyne",
-    "email": "pboyne0@pbs.org",
-    "city": "Gornji Breg",
-    "country": "RS"
-  },
-  {
-    "id": 2,
-    "first_name": "Mellie",
-    "last_name": "Jereatt",
-    "email": "mjereatt1@imageshack.us",
-    "city": "Sudikampir",
-    "country": "ID"
-  },
-  {
-    "id": 3,
-    "first_name": "Amata",
-    "last_name": "Alexsandrev",
-    "email": "aalexsandrev2@hao123.com",
-    "city": "Gorichevo",
-    "country": "BG"
-  },
-  {
-    "id": 4,
-    "first_name": "Coreen",
-    "last_name": "Winslow",
-    "email": "cwinslow3@redcross.org",
-    "city": "Santa Clara",
-    "country": "PH"
-  },
-  {
-    "id": 5,
-    "first_name": "Pris",
-    "last_name": "Kullmann",
-    "email": "pkullmann4@state.tx.us",
-    "city": "Nyzhni Sirohozy",
-    "country": "UA"
-  }
-])`}}
-  </code>
-</pre>
-  </section>
 
   <section>
     <h5>Definition</h5>
@@ -342,13 +296,19 @@ export default {
       {
         prop: "items",
         type: "Array",
-        description: "Data to display in table.",
+        description: "Data to display in table. Each element of Array is an Object. Single Object is one record (row) of data.",
       },
       {
         prop: "definition",
         type: "Array",
         description:
-        `Table definition is an optional <code>Array</code> of <code>Objects</code> that defines look end behavior of table.`,
+        `Table definition is an <span class="fw-bold">optional</span> <code>Array</code> of <code>Objects</code> that defines look and behavior of the table.
+        Each <code>Object</code> of definition <code>Array</code> has one <code>key</code> property and defines one column of the table. Key is either existing property of data record or new property. New properties apear as additional columns and their content can be set either by use of functions or slots. Objects can have additional properties: <br>
+        <span class='fw-bold'>sortable</span>: allows sorting by this key. Default: false<br>
+        <span class='fw-bold'>filterable</span>: allows filtering by this key. Default: true<br>
+        <span class='fw-bold'>visible</span>: sets visibility of column.  Default: true<br>
+        <span class='fw-bold'>class</span>: user defined function that should return string of space separated classes to apply to cell, takes 3 arguments: key, value and item.<br>
+        <span class='fw-bold'>f</span>: value returned by this function is set as content of the cell, takes 3 arguments: key, value and item.`,
       },
       {
         prop: "filter",
@@ -364,41 +324,6 @@ export default {
         prop: "items-per-page",
         type: "Number",
         description: "Number of records (rows) on single page.",
-      },
-      {
-        prop: "striped",
-        type: "Boolean",
-        description: "Striped table.",
-      },
-      {
-        prop: "hover-row",
-        type: "Boolean",
-        description: "Table with hoverable row.",
-      },
-      {
-        prop: "bordered",
-        type: "Boolean",
-        description: "Adds borders to table.",
-      },
-      {
-        prop: "borderless",
-        type: "Boolean",
-        description: "Removes all borders from table.",
-      },
-      {
-        prop: "small",
-        type: "Boolean",
-        description: "More compact table. Reduces padding.",
-      },
-      {
-        prop: "header-dark",
-        type: "Boolean",
-        description: "Adds dark style to header.",
-      },
-      {
-        prop: "header-light",
-        type: "Boolean",
-        description: "Adds light style to header.",
       },
       {
         prop: "caption-top",

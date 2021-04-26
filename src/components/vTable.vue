@@ -3,7 +3,7 @@
     <caption :class="classes.caption.value">
       <slot name="caption"></slot>
     </caption>
-    <thead :class="classes.header.value">
+    <thead :class="classes.headerRow.value">
       <tr>
         <template v-for="(h, i) in headers">
           <th
@@ -93,14 +93,14 @@ export default {
     transition: { type: String, default: "fade-slide" },
     name: { type: String, default: "table" },
     table: { type: String, default: "default" },
-    header: { type: String, default: "default" },
+    headerRow: { type: String, default: "default" },
     headerCell: { type: String, default: "default" },
     row: { type: String, default: "default" },
     cell: { type: String, default: "default" },
     caption: { type: String, default: "default" },
   },
   setup(props, { emit }) {
-    let elements = ["table", "header", "headerCell", "row", "cell", "caption"];
+    let elements = ["table", "headerRow", "headerCell", "row", "cell", "caption"];
 
     let { styles } = useStyles(getCurrentInstance(), props, elements);
 
@@ -109,8 +109,8 @@ export default {
         let c = [...styles.table.value];
         return removeTailwindClasses(c);
       }),
-      header: computed(() => {
-        let c = [...styles.header.value];
+      headerRow: computed(() => {
+        let c = [...styles.headerRow.value];
         return removeTailwindClasses(c);
       }),
       headerCell: computed(() => {

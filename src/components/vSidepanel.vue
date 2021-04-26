@@ -2,7 +2,7 @@
   <transition :name="left ? 'fade-side-panel-left' : 'fade-side-panel'">
     <div
       v-show="isShow"
-      :class="classes.panel.value"
+      :class="classes.sidepanel.value"
       :style="{ 'min-width': width }"
     >
       <div v-if="closeButton" class="flex justify-between align-center w-full">
@@ -37,13 +37,13 @@ export default {
     left: Boolean,
     width: { type: String, default: "320px" },
     name: { type: String, default: "sidepanel" },
-    panel: { type: String, default: "default" },
+    sidepanel: { type: String, default: "default" },
   },
   components: {
     vCloseButton,
   },
   setup(props, { emit }) {
-    let elements = ["panel"];
+    let elements = ["sidepanel"];
 
     let { styles } = useStyles(getCurrentInstance(), props, elements);
 
@@ -52,10 +52,10 @@ export default {
     };
 
     let classes = {
-      panel: computed(() => {
+      sidepanel: computed(() => {
         let c = [
           ...fixedClass.panel,
-          ...styles.panel.value,
+          ...styles.sidepanel.value,
           props.left ? "left-0" : "right-0",
         ];
         return removeTailwindClasses(c);

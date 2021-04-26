@@ -25,12 +25,7 @@ let defaults = {
   offsetY: 0,
 };
 
-let template =
-  '<div class="font-semibold p-1.5 px-2"></div>';
-
-let delayRegexp = /^delay\d\d?\d?\d?$/;
-let offsetXRegexp = /^oX\d\d?\d?$/;
-let offsetYRegexp = /^oY\d\d?\d?$/;
+let template = '<div class="font-semibold p-1.5 px-3"></div>';
 
 let timer = null;
 let timerFade = null;
@@ -39,7 +34,7 @@ let timerOut = null;
 function show(ev) {
   if (ev.target._v_tooltip.active) clearTimeout(timerOut);
   if (ev.target._v_tooltip.f)
-    ev.target._v_tooltip.el.childNodes[1].innerHTML = ev.target._v_tooltip.f();
+    ev.target._v_tooltip.el.childNodes[0].innerHTML = ev.target._v_tooltip.f();
   timer = setTimeout(() => {
     document.body.appendChild(ev.target._v_tooltip.el);
     ev.target._v_tooltip.active = true;
@@ -69,7 +64,7 @@ function hide(ev) {
 }
 
 function setPopper(el, tooltip, options) {
-  el._v_popper = createPopper(el, tooltip, {
+  return createPopper(el, tooltip, {
     modifiers: [
       {
         name: "offset",
@@ -93,15 +88,21 @@ function createTooltipElement() {
 }
 
 function parseModifiers(modifiers) {
-  if (modifiers.length) {
-    let m = {}
+  let delayRegexp = /^delay\d\d?\d?\d?$/;
+  let offsetXRegexp = /^oX\d\d?\d?$/;
+  let offsetYRegexp = /^oY\d\d?\d?$/;
 
-    m.placement = modifiers.find((i) =>
-      correctPlacement.includes(i)
-    );
+  if (modifiers.length) {
+    let m = {};
+
+    m.placement = modifiers.find((i) => correctPlacement.includes(i));
+    m.placement = m.placement ? m.placement : defaults.placement;
     m.delay = modifiers.find((i) => delayRegexp.test(i));
+    m.delay = m.delay ? +m.delay.substring(5) : defaults.delay;
     m.offsetX = modifiers.find((i) => offsetXRegexp.test(i));
+    m.offsetX = m.offsetX ? +m.offsetX.substring(2) : defaults.offsetX;
     m.offsetY = modifiers.find((i) => offsetYRegexp.test(i));
+    m.offsetY = m.offsetY ? +m.offsetY.substring(2) : defaults.offsetY;
     m.transition = modifiers.findIndex((i) => i === "nofade") != -1;
 
     return m;
@@ -110,8 +111,13 @@ function parseModifiers(modifiers) {
 
 export default {
   mounted(el, binding) {
-    el._v_tooltip = {};
-    el._v_tooltip.el = createTooltipElement();
+    let m = parseModifiers(Object.keys(binding.modifiers));
+    el._v_tooltip = {
+      el: createTooltipElement(),
+      ...m,
+    };
+    if (!m.transition) el._v_tooltip.el.style.opacity = "0";
+    if (!m.transition) el._v_tooltip.el.style.transition = "opacity 0.3s ease";
 
     if (binding.value && typeof binding.value == "string")
       el._v_tooltip.el.childNodes[0].innerHTML = binding.value;
@@ -119,19 +125,9 @@ export default {
       el._v_tooltip.el.childNodes[0].innerHTML =
         el.getAttribute("data-title") || "";
 
-    el._v_tooltip = { ...el._v_tooltip, ...defaults };
-
-    let m = parseModifiers(Object.keys(binding.modifiers))
-    el._v_tooltip.placement = m.placement
-    if (m.delay) el._v_tooltip.delay = +m.delay.substring(5);
-    if (m.offsetX) el._v_tooltip.offsetX = +m.offsetX.substring(2);
-    if (m.offsetY) el._v_tooltip.offsetY = +m.offsetY.substring(2);
-    if (!m.transition) el._v_tooltip.el.style.opacity = "0";
-    if (!m.transition) el._v_tooltip.el.style.transition = "opacity 0.3s ease";
-
     el._v_tooltip.f = typeof binding.value == "function" ? binding.value : null;
 
-    setPopper(el, el._v_tooltip.el, el._v_tooltip);
+    el._v_popper = setPopper(el, el._v_tooltip.el, el._v_tooltip);
 
     el.addEventListener("mouseenter", show);
     el.addEventListener("mouseleave", hide);

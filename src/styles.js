@@ -93,13 +93,10 @@ let table = {
   table: {
     default: [
       "bg-white",
-      "border",
       "border-collapse",
-      "rounded-md",
-      shadow ? "shadow-md" : "",
     ]
   },
-  header: {
+  headerRow: {
     default: [
     ]
   },
@@ -126,7 +123,7 @@ let table = {
   cell: {
     default: [
       // "border",
-      "border-b",
+      "border-t",
       "py-1",
       "px-2",
     ]
@@ -174,7 +171,7 @@ let list = {
 // SIDEPANEL
 
 let sidepanel = {
-  panel: {
+  sidepanel: {
     default: [
       "bg-gray-100",
       "text-left",
@@ -216,11 +213,11 @@ let modal = {
 let card = {
   card: {
     default: [
-      "overflow-hidden",
       "bg-white",
       "border",
-      "border-gray-300",
+      "border-gray-200",
       "rounded",
+      "overflow-hidden",
     ],
     shadow: [
       "shadow",
@@ -291,7 +288,7 @@ let fixedDay = [
 ]
 
 let datepicker = {
-  container: {
+  datepicker: {
     default: [
       "bg-white",
       "text-center",
@@ -353,8 +350,8 @@ let spinner = {
   spinner: {
     default: [
       "animate-spin",
-      "h-5",
-      "w-5",
+      "h-10",
+      "w-10",
       "text-blue-500",
     ]
   }
@@ -426,10 +423,10 @@ let fixedPage = [
 ]
 
 let pagination = {
-  container: {
+  pagainationBar: {
     default: [
       "rounded-md",
-      shadow ? "shadow" : ""
+      // shadow ? "shadow" : ""
     ],
   },
   page: {

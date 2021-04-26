@@ -1,5 +1,5 @@
 <template>
-  <nav :class="classes.container.value">
+  <nav :class="classes.pagainationBar.value">
     <a
       href=""
       :class="[classes.prev.value, { disabled: currentPage == 1 }]"
@@ -37,19 +37,19 @@ export default {
     itemsPerPage: { type: Number, default: undefined },
     icons: { type: Boolean, default: false },
     name: { type: String, default: "pagination" },
-    container: { type: [String, Array], default: "default" },
+    pagainationBar: { type: [String, Array], default: "default" },
     page: { type: [String, Array], default: "default" },
     pageActive: { type: [String, Array], default: "default" },
     next: { type: [String, Array], default: "default" },
     prev: { type: [String, Array], default: "default" },
   },
   setup(props, { emit }) {
-    let elements = ["container", "page", "pageActive", "next", "prev"];
+    let elements = ["pagainationBar", "page", "pageActive", "next", "prev"];
 
     let { styles } = useStyles(getCurrentInstance(), props, elements);
 
     let fixedClass = {
-      container: ["relative", "z-0", "flex", "flex-row", "w-min"],
+      pagainationBar: ["relative", "z-0", "flex", "flex-row", "w-min"],
       page: ["z-10"],
       pageActive: ["z-20"],
       next: ["flex", "flex-col", "justify-center"],
@@ -59,8 +59,8 @@ export default {
     let currentPage = ref(1);
 
     let classes = {
-      container: computed(() => {
-        let c = [...fixedClass.container, ...styles.container.value];
+      pagainationBar: computed(() => {
+        let c = [...fixedClass.pagainationBar, ...styles.pagainationBar.value];
         return removeTailwindClasses(c);
       }),
       page: computed(() => {

@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes.container.value" :style="{ width: width }">
+  <div :class="classes.datepicker.value" :style="{ width: width }">
     <div class="grid grid-cols-6 grid-flow-col my-2">
       <button
         class="btn-prev-double"
@@ -98,7 +98,7 @@ export default {
     width: { type: String, default: undefined },
     adjecentMonths: { type: Boolean, default: false },
     name: { type: String, default: "datepicker" },
-    container: { type: String, default: "default" },
+    datepicker: { type: String, default: "default" },
     button: { type: String, default: "default" },
     day: { type: String, default: "default" },
     daySelected: { type: String, default: "default" },
@@ -108,7 +108,7 @@ export default {
   },
   setup(props, { emit }) {
     let elements = [
-      "container",
+      "datepicker",
       "button",
       "day",
       "daySelected",
@@ -134,8 +134,8 @@ export default {
     };
 
     let classes = {
-      container: computed(() => {
-        let c = [...styles.container.value];
+      datepicker: computed(() => {
+        let c = [...styles.datepicker.value];
         return removeTailwindClasses(c);
       }),
       button: computed(() => {
@@ -181,7 +181,7 @@ export default {
     let model = ref([]);
     let dateRegexp = /^\d\d\d\d-\d?\d-\d?\d$/;
     let isChanging = ref(false);
-    let afterLeaveTransitionCall = null;
+    let afterTransitionCall = null;
 
     let getCountDaysInMonth = (y, m) => 32 - new Date(y, m, 32).getDate();
     let totalDays = (i) => i[2] + i[1] * 31 + i[0] * 372;
@@ -283,16 +283,16 @@ export default {
 
     let handleClickNextMonth = () => {
       isChanging.value = true;
-      afterLeaveTransitionCall = nextMonth;
+      afterTransitionCall = nextMonth;
     };
 
     let handleClickPrevMonth = () => {
       isChanging.value = true;
-      afterLeaveTransitionCall = prevMonth;
+      afterTransitionCall = prevMonth;
     };
 
     let afterLeaveTransition = () => {
-      afterLeaveTransitionCall();
+      afterTransitionCall();
       isChanging.value = false;
     };
 
@@ -348,8 +348,6 @@ export default {
       year,
       today,
       todayFormatted,
-      nextMonth,
-      prevMonth,
       nextYear,
       prevYear,
       isDisabled,

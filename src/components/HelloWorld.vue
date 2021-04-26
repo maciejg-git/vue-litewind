@@ -81,28 +81,30 @@
     <v-button @click="tabname = 'item 5'">tabname</v-button>
 
     <input v-model="filter" type="" class="form-control w-25" />
-    <v-table
-      :definition="definition"
-      :items="data"
-      :filter="filter"
-      :itemsPerPage="itemsPerPage"
-      :page="page"
-      @update:itemsCount="tableItemsCount = $event"
-      @update:page="page = $event"
-    >
-      <template #cell:item_city="{ item }">
-        <!-- <v&#45;button small>item</v&#45;button> -->
-        <!--     <!&#45;&#45; <v&#38;#45;button>popover</v&#38;#45;button> &#45;&#45;> -->
-        <!--     <a href="">item</a> -->
-        <!--     <!&#45;&#45; <v&#38;#45;button>popover</v&#38;#45;button> &#45;&#45;> -->
-        <!--   </template> -->
-        <!--   <!&#45;&#45; <template #header>Popover</template> &#45;&#45;> -->
-        <!--   item item 2 -->
-        <!--   {{ item.id }} -->
-        <!--   <input type=""> -->
-        <!-- </v&#45;popover> -->
-      </template>
-    </v-table>
+    <v-card card="default shadow">
+      <v-table
+        :definition="definition"
+        :items="data"
+        :filter="filter"
+        :itemsPerPage="itemsPerPage"
+        :page="page"
+        @update:itemsCount="tableItemsCount = $event"
+        @update:page="page = $event"
+      >
+        <template #cell:item_city="{ item }">
+          <!-- <v&#45;button small>item</v&#45;button> -->
+          <!--     <!&#45;&#45; <v&#38;#45;button>popover</v&#38;#45;button> &#45;&#45;> -->
+          <!--     <a href="">item</a> -->
+          <!--     <!&#45;&#45; <v&#38;#45;button>popover</v&#38;#45;button> &#45;&#45;> -->
+          <!--   </template> -->
+          <!--   <!&#45;&#45; <template #header>Popover</template> &#45;&#45;> -->
+          <!--   item item 2 -->
+          <!--   {{ item.id }} -->
+          <!--   <input type=""> -->
+          <!-- </v&#45;popover> -->
+        </template>
+      </v-table>
+    </v-card>
 
     <div class="grid grid-cols-2 mt-2">
       <v-pagination
