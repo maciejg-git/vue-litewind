@@ -1,7 +1,13 @@
 <template>
   <div class="overflow-hidden">
-    <transition name="fade-collapse">
-      <div v-show="modelValue" >
+    <transition
+      name="fade-collapse"
+      @enter="enter"
+      @afterEnter="afterEnter"
+      @afterLeave="afterLeave"
+      @leave="leave"
+    >
+      <div v-show="isCollapsed">
         <slot name="default"></slot>
       </div>
     </transition>
@@ -9,14 +15,40 @@
 </template>
 
 <script>
-import { ref, computed, watch } from "vue";
+import { computed } from "vue";
 
 export default {
   props: {
-    modelValue: Boolean,
+    modelValue: { type: Boolean, default: false },
   },
   setup(props) {
-    return {};
+    let isCollapsed = computed(() => props.modelValue);
+
+    let afterEnter = (element) => (element.style.height = "auto");
+
+    let afterLeave = (element) => (element.style.height = "auto");
+
+    let enter = (element) => {
+      const { height } = getComputedStyle(element);
+      element.style.height = 0;
+      let l = element.scrollHeight;
+      element.style.height = height;
+    };
+
+    let leave = (element) => {
+      const { height } = getComputedStyle(element);
+      element.style.height = height;
+      let l = element.scrollHeight;
+      element.style.height = 0;
+    };
+
+    return {
+      isCollapsed,
+      afterEnter,
+      afterLeave,
+      enter,
+      leave,
+    };
   },
 };
 </script>
@@ -24,11 +56,12 @@ export default {
 <style scoped>
 .fade-collapse-enter-active,
 .fade-collapse-leave-active {
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: height 0.3s ease, opacity 0.3s ease;
+  overflow: hidden;
 }
+
 .fade-collapse-enter-from,
-.fade-collapse-leave-to {
+.fade-collapse-leave-active {
   opacity: 0;
-  transform: translateY(-40px);
 }
 </style>

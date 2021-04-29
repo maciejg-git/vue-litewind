@@ -102,8 +102,8 @@ let table = {
   },
   headerCell: {
     default: [
-      // "border",
       "border-b",
+      "border-gray-400",
       "py-1",
       "px-2",
     ],
@@ -124,6 +124,7 @@ let table = {
     default: [
       // "border",
       "border-t",
+      "border-gray-300",
       "py-1",
       "px-2",
     ]
@@ -195,10 +196,20 @@ let modal = {
     ]
   },
   header: {
-    default: []
+    default: [
+      "text-gray-900",
+      "text-lg", 
+      "leading-6", 
+      "font-medium", 
+      "px-6", 
+      "pt-5", 
+    ]
   },
   content: {
-    default: []
+    default: [
+      "px-6", 
+      "py-2",
+    ]
   },
   backdrop: {
     default: [

@@ -12,9 +12,7 @@
         @click="handleClickPrevMonth"
       ></button>
       <div class="col-span-2 text-sm font-bold">
-        <span class="align-middle">
-          {{ months[month] }} {{ year }}
-        </span>
+        <span class="align-middle"> {{ months[month] }} {{ year }} </span>
       </div>
       <button
         class="btn-next"
@@ -46,13 +44,13 @@
           </div>
         </template>
         <div
-          v-for="(day, index) in daysList.i"
+          v-for="(d, index) in daysList.i"
           class="px-1 py-1"
-          @click="handleDayClick(day, index)"
+          @click="handleDayClick(d.date, index)"
           :key="index"
         >
-          <a v-if="day" :class="getDayClass(day)">
-            {{ day }}
+          <a v-if="d" :class="getDayClass(d.date)">
+            {{ d.day }}
           </a>
         </div>
         <template v-if="adjecentMonths">
@@ -75,7 +73,7 @@
 </template>
 
 <script>
-import { ref, computed, watch, getCurrentInstance } from "vue";
+import { ref, reactive, computed, watch, getCurrentInstance } from "vue";
 import useStyles from "../use-styles";
 import { removeTailwindClasses } from "../tools.js";
 
@@ -164,30 +162,43 @@ export default {
       }),
     };
 
-    let getDayClass = (day) => {
-      if (isSelectedDay(day)) return classes.daySelected.value;
-      if (isToday(day)) return classes.today.value;
-      if (isDisabled(day)) return "text-gray-400";
+    let getDayClass = (date) => {
+      if (isSelectedDay(date)) return classes.daySelected.value;
+      if (isToday(date)) return classes.today.value;
+      if (isDisabled(date)) return "text-gray-400";
       return classes.day.value;
     };
 
-    let date = new Date();
-    let today = ref([date.getFullYear(), date.getMonth(), date.getDate()]);
-    let todayFormatted = date.toLocaleDateString(props.locale, props.format);
     let daysMonth = Array.from({ length: 31 }, (v, i) => i + 1);
-    let month = ref(today.value[1]);
-    let year = ref(today.value[0]);
+    let today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    let month = ref(today.getMonth());
+    let year = ref(today.getFullYear());
     let range = ref([]);
-    let model = ref([]);
+    let model = [];
     let dateRegexp = /^\d\d\d\d-\d?\d-\d?\d$/;
     let isChanging = ref(false);
     let afterTransitionCall = null;
 
     let getCountDaysInMonth = (y, m) => 32 - new Date(y, m, 32).getDate();
-    let totalDays = (i) => i[2] + i[1] * 31 + i[0] * 372;
-    let addLeadingZero = (d) => ("" + d).padStart(2, "0");
-    let getPrevMonth = (m) => (m - 1 < 0 ? 11 : m - 1);
-    let getNextMonth = (m) => (m + 1 > 11 ? 0 : m + 1);
+
+    let prevMonth = (m, y) =>
+      m - 1 < 0 ? { m: 11, y: y - 1 } : { m: m - 1, y };
+
+    let nextMonth = (m, y) =>
+      m + 1 > 11 ? { m: 0, y: y + 1 } : { m: m + 1, y };
+
+    let parseDate = (d) => d.split("-").map((i) => +i);
+
+    let pad = (d) => (d < 10 ? "0" + d : d);
+
+    let dateToString = (d) =>
+      [d.getFullYear(), pad(d.getMonth() + 1), pad(d.getDate())].join("-");
+
+    let todayFormatted = computed(() =>
+      today.toLocaleDateString(props.locale, props.format)
+    );
 
     let months = computed(() => {
       return Array.from({ length: 12 }, (v, i) =>
@@ -208,27 +219,21 @@ export default {
     watch(
       () => props.modelValue,
       () => {
-        if (!props.modelValue) {
-          model.value = [];
+        let m = props.modelValue;
+        if (!m) {
+          model = [];
           return;
         }
         if (props.range) {
-          if (
-            props.modelValue[0] &&
-            dateRegexp.test(props.modelValue[0]) &&
-            props.modelValue[1] &&
-            dateRegexp.test(props.modelValue[1])
-          )
-            model.value = props.modelValue.map((i) =>
-              i.split("-").map((i) => +i)
-            );
+          if (m[0] && dateRegexp.test(m[0]) && m[1] && dateRegexp.test(m[1])) {
+            model = m.map((d) => new Date(parseDate(d)));
+          }
         } else {
-          if (dateRegexp.test(props.modelValue))
-            model.value = [props.modelValue.split("-").map((i) => +i)];
+          if (dateRegexp.test(m)) model[0] = new Date(parseDate(m));
         }
-        if (model.value.length) {
-          month.value = model.value[props.range ? 1 : 0][1] - 1;
-          year.value = model.value[props.range ? 1 : 0][0];
+        if (model.length) {
+          month.value = model[props.range ? 1 : 0].getMonth();
+          year.value = model[props.range ? 1 : 0].getFullYear();
         }
       }
     );
@@ -237,11 +242,12 @@ export default {
       let start = new Date(year.value, month.value).getDay();
       if (props.euro) start = (7 + (start - 1)) % 7;
       let daysInMonth = getCountDaysInMonth(year.value, month.value);
-      let i = daysMonth.slice(0, daysInMonth);
+      let i = Array.from({ length: daysInMonth }, (v, i) => {
+        return { day: i + 1, date: new Date(year.value, month.value, i + 1) };
+      });
       if (props.adjecentMonths) {
-        let prevMonth = getPrevMonth(month.value);
-        let prevYear = prevMonth == 11 ? year.value - 1 : year.value;
-        let daysPrev = getCountDaysInMonth(prevYear, prevMonth);
+        let { m, y } = prevMonth(month.value, year.value);
+        let daysPrev = getCountDaysInMonth(y, m);
         let prevMonthDays = daysMonth.slice(daysPrev - start, daysPrev);
         let nextMonthDays = daysMonth.slice(0, 42 - daysInMonth - start);
         return { prevMonthDays, nextMonthDays, i };
@@ -249,33 +255,26 @@ export default {
       return { i: [...Array(start).fill(""), ...i] };
     });
 
-    let handleDayClick = function(day, index) {
+    let handleDayClick = function (date, index) {
       if (isDisabled(index)) return;
       if (props.range) {
-        range.value.push([year.value, month.value + 1, day]);
+        range.value.push(new Date(date.getTime()));
         if (range.value.length == 2) {
-          if (totalDays(range.value[0]) > totalDays(range.value[1]))
-            range.value.reverse();
-          let from = range.value[0].map(addLeadingZero).join("-");
-          let to = range.value[1].map(addLeadingZero).join("-");
-          let formattedRange = [
-            new Date(...range.value[0]),
-            new Date(...range.value[1]),
-          ].map((i) => i.toLocaleDateString(props.locale, props.format));
+          if (range.value[0] > range.value[1]) range.value.reverse();
+          let from = dateToString(range.value[0]);
+          let to = dateToString(range.value[1]);
+          let formattedRange = [range.value[0], range.value[1]].map((i) =>
+            i.toLocaleDateString(props.locale, props.format)
+          );
           range.value.length = 0;
           emit("update:modelValue", [from, to]);
           emit("input:formatted", formattedRange);
           emit("state:done");
         }
       } else {
-        let m = addLeadingZero(month.value + 1);
-        let d = addLeadingZero(day);
-        let formatted = new Date(
-          year.value,
-          month.value,
-          day
-        ).toLocaleDateString(props.locale, props.format);
-        emit("update:modelValue", `${year.value}-${m}-${d}`);
+        let d = new Date(date.getTime());
+        let formatted = d.toLocaleDateString(props.locale, props.format);
+        emit("update:modelValue", dateToString(d));
         emit("input:formatted", formatted);
         emit("state:done");
       }
@@ -283,12 +282,12 @@ export default {
 
     let handleClickNextMonth = () => {
       isChanging.value = true;
-      afterTransitionCall = nextMonth;
+      afterTransitionCall = setNextMonth;
     };
 
     let handleClickPrevMonth = () => {
       isChanging.value = true;
-      afterTransitionCall = prevMonth;
+      afterTransitionCall = setPrevMonth;
     };
 
     let afterLeaveTransition = () => {
@@ -296,15 +295,11 @@ export default {
       isChanging.value = false;
     };
 
-    let nextMonth = () => {
-      month.value = getNextMonth(month.value);
-      if (month.value == 0) nextYear();
-    };
+    let setNextMonth = () =>
+      ({ m: month.value, y: year.value } = nextMonth(month.value, year.value));
 
-    let prevMonth = () => {
-      month.value = getPrevMonth(month.value);
-      if (month.value == 11) prevYear();
-    };
+    let setPrevMonth = () =>
+      ({ m: month.value, y: year.value } = prevMonth(month.value, year.value));
 
     let nextYear = () => ++year.value;
 
@@ -313,32 +308,19 @@ export default {
     let isDisabled = (index) =>
       props.disabled && props.disabled.findIndex((i) => i == index % 7) != -1;
 
-    let isSelectedDay = (day) => {
+    let isSelectedDay = (date) => {
       if (!props.range) {
-        return (
-          model.value.length &&
-          model.value[0][2] == day &&
-          model.value[0][1] == month.value + 1 &&
-          model.value[0][0] == year.value
-        );
+        return model.length && model[0].getTime() == date.getTime();
       } else {
         if (range.value.length == 1) {
-          return (
-            range.value[0][2] == day &&
-            range.value[0][1] == month.value + 1 &&
-            range.value[0][0] == year.value
-          );
+          return range.value[0].getTime() == date.getTime();
         }
-        if (model.value.length != 2 || !day) return;
-        let i = day + (month.value + 1) * 31 + year.value * 372;
-        return totalDays(model.value[0]) <= i && i <= totalDays(model.value[1]);
+        if (model.length != 2 || !date) return;
+        return model[0] <= date && date <= model[1];
       }
     };
 
-    let isToday = (day) =>
-      today.value[2] == day &&
-      today.value[1] == month.value &&
-      today.value[0] == year.value;
+    let isToday = (date) => today.getTime() == date.getTime();
 
     return {
       classes,
@@ -346,15 +328,12 @@ export default {
       daysList,
       month,
       year,
-      today,
       todayFormatted,
       nextYear,
       prevYear,
       isDisabled,
       months,
       days,
-      isSelectedDay,
-      isToday,
       handleDayClick,
       handleClickNextMonth,
       handleClickPrevMonth,

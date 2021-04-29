@@ -8,10 +8,8 @@
     >
       <div :class="classes.container.value">
         <div :class="classes.modal.value">
-          <header class="flex items-center justify-between px-6 pt-5">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-              {{ title }}
-            </h3>
+          <header :class="classes.header.value">
+            {{ title }}
             <v-close-button
               v-if="!noCloseButton"
               @click="close"
@@ -99,7 +97,7 @@ export default {
         "sm:mx-auto",
         "pointer-events-none",
       ],
-      content: ["px-6", "py-2"],
+      header: ["flex", "items-center", "justify-between"],
       backdrop: ["fixed", "z-10", "inset-0", "overflow-y-auto", "min-h-screen"],
     };
 
@@ -127,8 +125,12 @@ export default {
         let c = [...fixedClass.modal, ...styles.modal.value];
         return removeTailwindClasses(c);
       }),
+      header: computed(() => {
+        let c = [...fixedClass.header, ...styles.header.value];
+        return removeTailwindClasses(c);
+      }),
       content: computed(() => {
-        let c = [...fixedClass.content, ...styles.content.value];
+        let c = [...styles.content.value];
         return removeTailwindClasses(c);
       }),
       backdrop: computed(() => {
@@ -140,12 +142,14 @@ export default {
     let allowClose = ref(true);
     let scrollbarWidth = ref(0);
 
+    let getScrollBarWidth = () =>
+      window.innerWidth - document.documentElement.clientWidth;
+
     watch(
       () => props.modelValue,
       (newValue) => {
         if (newValue) {
-          scrollbarWidth.value =
-            window.innerWidth - document.documentElement.clientWidth;
+          scrollbarWidth.value = getScrollBarWidth();
           document.body.classList.add("overflow-y-hidden");
           if (scrollbarWidth.value > 0)
             document.body.style.paddingRight = scrollbarWidth.value + "px";
@@ -158,21 +162,21 @@ export default {
       document.body.style.paddingRight = null;
     };
 
-    let close = function() {
+    let close = function () {
       emit("update:modelValue", false);
     };
 
-    let handleBackdropClick = function() {
+    let handleBackdropClick = function () {
       if (props.staticBackdrop) return;
       close();
     };
 
-    let handlePrimaryButtonClick = function() {
+    let handlePrimaryButtonClick = function () {
       emit("state:primaryButtonClick");
       if (props.primaryButtonClose) close();
     };
 
-    let handleSecondaryButtonClick = function() {
+    let handleSecondaryButtonClick = function () {
       emit("state:secondaryButtonClick");
       if (props.secondaryButtonClose) close();
     };

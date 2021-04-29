@@ -25,7 +25,12 @@ let defaults = {
   offsetY: 0,
 };
 
-let template = '<div class="font-semibold p-1.5 px-3"></div>';
+let classes = {
+  tooltip: "bg-gray-700 text-gray-100 rounded-md",
+  content: "font-semibold p-1.5 px-3",
+};
+
+let template = `<div class="${classes.content}"></div>`;
 
 let timer = null;
 let timerFade = null;
@@ -83,7 +88,7 @@ function setPopper(el, tooltip, options) {
 function createTooltipElement() {
   let el = document.createElement("div");
   el.innerHTML = template;
-  el.classList = "bg-gray-700 text-gray-100 rounded-md";
+  el.classList = classes.tooltip;
   return el;
 }
 
@@ -96,7 +101,7 @@ function parseModifiers(modifiers) {
     let m = {};
 
     m.placement = modifiers.find((i) => correctPlacement.includes(i));
-    m.placement = m.placement ? m.placement : defaults.placement;
+    m.placement = m.placement || defaults.placement;
     m.delay = modifiers.find((i) => delayRegexp.test(i));
     m.delay = m.delay ? +m.delay.substring(5) : defaults.delay;
     m.offsetX = modifiers.find((i) => offsetXRegexp.test(i));
@@ -112,12 +117,16 @@ function parseModifiers(modifiers) {
 export default {
   mounted(el, binding) {
     let m = parseModifiers(Object.keys(binding.modifiers));
+
     el._v_tooltip = {
       el: createTooltipElement(),
       ...m,
     };
-    if (!m.transition) el._v_tooltip.el.style.opacity = "0";
-    if (!m.transition) el._v_tooltip.el.style.transition = "opacity 0.3s ease";
+
+    if (!m.transition) {
+      el._v_tooltip.el.style.opacity = "0";
+      el._v_tooltip.el.style.transition = "opacity 0.3s ease";
+    }
 
     if (binding.value && typeof binding.value == "string")
       el._v_tooltip.el.childNodes[0].innerHTML = binding.value;
