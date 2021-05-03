@@ -24,6 +24,11 @@ export let propCompare = (key) => (a, b) => {
   return 0;
 };
 
+export let propCompareLocale = (key) => (a, b) => {
+  var nameA = a[key].toUpperCase();
+  var nameB = b[key].toUpperCase();
+};
+
 export let removeTailwindClasses = (classList, debug) => {
   let str = "";
 

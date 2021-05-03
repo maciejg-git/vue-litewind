@@ -111,6 +111,7 @@
         v-model="page"
         :itemsCount="tableItemsCount"
         :itemsPerPage="itemsPerPage"
+        :maxPages="8"
         icons
       ></v-pagination>
       <input type="" />
@@ -483,7 +484,7 @@ export default {
     let filter = ref("");
     let sidepanel = ref(false);
     let tableItemsCount = ref(0);
-    let itemsPerPage = ref(10);
+    let itemsPerPage = ref(4);
     let page = ref(1);
     let i2 = ref(false);
     let modal = ref(false);

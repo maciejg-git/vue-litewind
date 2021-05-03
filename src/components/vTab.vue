@@ -19,7 +19,7 @@ import {
 
 export default {
   props: {
-    name: String,
+    name: { type: String, default: undefined },
   },
   setup(props) {
     let active = ref(false);

@@ -296,6 +296,8 @@ let fixedDay = [
   "rounded",
   "text-sm",
   "py-1",
+  "mx-1",
+  "my-1",
 ]
 
 let datepicker = {
@@ -325,8 +327,8 @@ let datepicker = {
       ...fixedDay,
       "bg-indigo-400",
       "hover:bg-indigo-600",
-      "ring-indigo-200",
-      "ring",
+      // "ring-indigo-200",
+      // "ring",
       "text-white", 
     ]
   },
@@ -427,10 +429,22 @@ let fixedPage = [
   "border-gray-300",
   "text-sm",
   "font-medium",
-  "px-4",
-  "py-2",
+  "w-12",
+  "h-10",
+  "mx-0.5",
+  "font-semibold",
+  // "-ml-px",
+]
+
+let fixedSideControls = [
+  "hover:bg-gray-50",
+  "border",
+  "border-gray-300",
+  "text-sm",
+  "font-medium",
   "cursor-pointer",
-  "-ml-px",
+  "w-10",
+  "p-2",
 ]
 
 let pagination = {
@@ -452,33 +466,24 @@ let pagination = {
       "hover:bg-blue-600",
       "text-white",
       "border-blue-500",
-      "ring-blue-300",
-      "ring-2",
+      // "ring-blue-300",
+      // "ring-2",
+      "font-semibold",
     ],
   },
   next: {
     default: [
-      "hover:bg-gray-50",
-      "border",
-      "border-gray-300",
+      ...fixedSideControls,
+      "ml-0.5",
       "rounded-r-md",
-      "text-sm",
-      "font-medium",
-      "cursor-pointer",
-      "-ml-px",
-      "p-2",
+      // "-ml-px",
     ],
   },
   prev: {
     default: [
-      "hover:bg-gray-50",
-      "border",
-      "border-gray-300",
+      ...fixedSideControls,
+      "mr-0.5",
       "rounded-l-md",
-      "text-sm",
-      "font-medium",
-      "cursor-pointer",
-      "p-2",
     ],
   }
 };

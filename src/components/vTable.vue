@@ -90,6 +90,7 @@ export default {
       type: String,
       default: "No records for current filter",
     },
+    locale: { type: String, default: "en" },
     transition: { type: String, default: "fade-slide" },
     name: { type: String, default: "table" },
     table: { type: String, default: "default" },
@@ -100,7 +101,14 @@ export default {
     caption: { type: String, default: "default" },
   },
   setup(props, { emit }) {
-    let elements = ["table", "headerRow", "headerCell", "row", "cell", "caption"];
+    let elements = [
+      "table",
+      "headerRow",
+      "headerCell",
+      "row",
+      "cell",
+      "caption",
+    ];
 
     let { styles } = useStyles(getCurrentInstance(), props, elements);
 
@@ -139,11 +147,11 @@ export default {
 
     if (props.items) emit("update:itemsCount", props.items.length);
 
-    // DATA
-
     let itemsSorted = computed(() => {
       if (!sortField.value) return props.items;
-      let sorted = props.items.sort(propCompare(sortField.value));
+      let compare = new Intl.Collator(props.locale).compare;
+      let sortBy = sortField.value;
+      let sorted = props.items.sort((a, b) => compare(a[sortBy], b[sortBy]));
       return sortAsc.value ? sorted : sorted.reverse();
     });
 
@@ -168,8 +176,6 @@ export default {
         props.page * props.itemsPerPage
       );
     });
-
-    // DEFINITION
 
     let headers = ref([]);
 
@@ -203,7 +209,7 @@ export default {
       emit("update:itemsCount", itemsFiltered.value.length);
     });
 
-    let handleHeaderClick = function(key, index) {
+    let handleHeaderClick = function (key, index) {
       if (!headers.value[index].sortable) return;
       sortAsc.value = sortField.value == key ? !sortAsc.value : true;
       sortField.value = key;

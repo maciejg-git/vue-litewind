@@ -24,9 +24,10 @@ import { removeTailwindClasses } from "../tools.js";
 export default {
   props: {
     modelValue: Number,
-    fill: Boolean,
-    justified: Boolean,
-    noTransition: Boolean,
+    fill: { type: Boolean, default: false },
+    justified: { type: Boolean, default: false },
+    center: { type: Boolean, default: false },
+    noTransition: { type: Boolean, default: false },
     name: { type: String, default: "tabs" },
     tabBar: { type: [String, Array], default: "default" },
     tab: { type: [String, Array], default: "default" },
@@ -52,7 +53,11 @@ export default {
 
     let classes = {
       tabBar: computed(() => {
-        let c = [...fixedClass.tabBar, ...styles.tabBar.value];
+        let c = [
+          ...fixedClass.tabBar,
+          ...styles.tabBar.value,
+          props.center ? "justify-center" : "",
+        ];
         return removeTailwindClasses(c);
       }),
       tab: computed(() => {
@@ -74,32 +79,32 @@ export default {
     };
 
     onMounted(() => {
-      if (tabs.value.length) switchTab(0)
+      if (tabs.value.length) switchTab(0);
     });
 
-    let tabName = function(tab) {
+    let tabName = function (tab) {
       return tab.instance.slots.name
         ? tab.instance.slots.name()
         : tab.instance.ctx.name;
     };
 
-    let handleClickTab = function(index) {
+    let handleClickTab = function (index) {
       if (active.value == index) return;
       switchTab(index);
     };
 
-    let switchTab = function(index) {
+    let switchTab = function (index) {
       tabs.value[active.value].active = false;
       tabs.value[index].active = true;
       active.value = index;
       emit("state:changedTab", index);
     };
 
-    let addTab = function(tab) {
+    let addTab = function (tab) {
       tabs.value.push(tab);
     };
 
-    let removeTab = function(tab) {
+    let removeTab = function (tab) {
       let index = tabs.value.findIndex((item) => item.instance == tab);
       if (active.value == index && index > 0) switchTab(index - 1);
       tabs.value.splice(index, 1);

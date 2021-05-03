@@ -3,7 +3,7 @@
     <a
       href=""
       :class="[classes.prev.value, { disabled: currentPage == 1 }]"
-      @click.prevent="handleClickPage('previous')"
+      @click.prevent="handleClickPrev"
     >
       {{ icons ? "" : "Previous" }}
     </a>
@@ -18,7 +18,7 @@
     <a
       href=""
       :class="[classes.next.value, { disabled: currentPage == pages }]"
-      @click.prevent="handleClickPage('next')"
+      @click.prevent="handleClickNext"
     >
       {{ icons ? "" : "Next" }}
     </a>
@@ -35,6 +35,7 @@ export default {
     modelValue: Number,
     itemsCount: { type: Number, default: undefined },
     itemsPerPage: { type: Number, default: undefined },
+    maxPages: { type: Number, default: undefined },
     icons: { type: Boolean, default: false },
     name: { type: String, default: "pagination" },
     pagainationBar: { type: [String, Array], default: "default" },
@@ -50,13 +51,25 @@ export default {
 
     let fixedClass = {
       pagainationBar: ["relative", "z-0", "flex", "flex-row", "w-min"],
-      page: ["z-10"],
-      pageActive: ["z-20"],
-      next: ["flex", "flex-col", "justify-center"],
-      prev: ["flex", "flex-col", "justify-center"],
+      page: ["z-10", 
+  "cursor-pointer",
+  "flex",
+  "justify-center",
+  "items-center",
+      ],
+      pageActive: ["z-20",
+  "cursor-pointer",
+  "flex",
+  "justify-center",
+  "items-center",
+      ],
+      next: ["flex", "flex-col", "justify-center",
+  "items-center",
+      ],
+      prev: ["flex", "flex-col", "justify-center",
+  "items-center",
+      ],
     };
-
-    let currentPage = ref(1);
 
     let classes = {
       pagainationBar: computed(() => {
@@ -89,19 +102,124 @@ export default {
       }),
     };
 
+    // 1 2 3 4 5 6 7
+    // 1 2 3 4 . 7
+    // 1 . 4 5 6 7
+    // 1 2 3 4 5 6 7 8
+    // 1 2 3 4 5 . 8  7
+    // 1 . 4 5 6 7 8
+    // 1 2 3 4 . 8
+    // 1 . 5 6 7 8
+    // 1 2 3 4 5 6 7 8
+    // 1 . 4 5 6 7 8
+    // 1 2 3 4 5 . 8
+    // 1 . 4 5 6 7 8
+    // 1 2 3 4 5 6 7 8
+    // 1 2 3 4 . 8
+    // 1 . 4 5 . 8
+    // 1 . 5 6 7 8  6
+    // 1 2 3 4 5 6 7
+    // 1 2 3 4 5 6 7 8 9 10
+    // 1     4 5         10
+    // 1   3 4           10
+    // 1 2 3 4           10
+    // 1           7 8 9 10
+    // 1 2 3 4 5 6 7 8 9 10
+    // 1     4 5 6       10
+    //   2 3 4 5 6 7 8   
+    // 1   3 4 5         10
+    // 1 2 3 4 5         10
+    // 1         6 7 8 9 10
+    // 1 2 3 4 5 6 7 8 9 10
+    let currentPage = ref(1);
+    let pagesCount = computed(() => Math.ceil(props.itemsCount / props.itemsPerPage))
+
+    // let pages = computed(() => {
+    //   let max = props.maxPages > 6 ? props.maxPages : 6;
+    //   console.log(max)
+    //   let i = Math.ceil(props.itemsCount / props.itemsPerPage);
+    //   i = i <= 0 ? 1 : i;
+    //   if (i > max) {
+    //     let first = 1;
+    //     let last = i;
+    //     let fDots = currentPage.value > (max / 2)
+    //     let lDots = currentPage.value < last - Math.ceil(max/2) + 1
+    //     let j = max - 2 - (+fDots) - (+lDots)
+    //     let p = Array.from({length: j}, (v, i) => i + 2 + (fDots ? currentPage.value-Math.ceil(j/2) - 1 : 0))
+    //     if (fDots) p.unshift("...");
+    //     if (lDots) p.push("...");
+    //     return [first, ...p, last]
+    //   }
+    // });
+    // let pages = computed(() => {
+    //   let max = props.maxPages > 6 ? props.maxPages : 6;
+    //   console.log(max)
+    //   let i = Math.ceil(props.itemsCount / props.itemsPerPage);
+    //   i = i <= 0 ? 1 : i;
+    //   if (i >= max) {
+    //     let f = currentPage.value > (max / 2)
+    //     let l = currentPage.value <= i - Math.ceil(max/2) + 1
+    //     let j = max - 2 - (+f) - (+l)
+    //     // let p = Array.from({length: j}, (v, i) => i + 2 + currentPage.value-Math.ceil(j/2) - 1)
+    //     let p = []
+    //     let s = f ? currentPage.value-Math.ceil(j/2) : 2;
+    //     // s = s > max - 2 ? max - 2 : s
+    //     for (let y = s; y < j + s; y++) {
+    //       p.push(y)
+    //     }
+    //     if (f) p.unshift("...");
+    //     if (l) p.push("...");
+    //     return [1, ...p, i]
+    //   }
+    // });
     let pages = computed(() => {
-      let i = Math.ceil(props.itemsCount / props.itemsPerPage);
-      return i <= 0 ? 1 : i;
+      let max = props.maxPages > 3 ? props.maxPages : 3;
+      console.log(max)
+      let i = pagesCount.value;
+      // i = i <= 0 ? 1 : i;
+      if (i >= max) {
+        // let f = currentPage.value > (max / 2)
+        // let l = currentPage.value <= i - Math.ceil(max/2) + 1
+        // let j = max - 2 - (+f) - (+l)
+        // let p = Array.from({length: j}, (v, i) => i + 2 + currentPage.value-Math.ceil(j/2) - 1)
+        // let p = []
+        let s = currentPage.value-Math.ceil(max/2) + 1;
+        s = s < 1 ? 1 : s >= i - max + 1 ? i - max + 1 : s;
+        // s = s > max - 2 ? max - 2 : s
+        // for (let y = s; y < max + s; y++) {
+        //   p.push(y)
+        // }
+        let p = Array.from({length: max}, (v, i) => i + s)
+        if (max >= 5) {
+          if (p[0] != 1) {
+            p.splice(0, 2, 1, "...")
+            // p[0] = 1;
+            // p[1] = "..."
+          }
+          if (p[max - 1] != i) {
+            p.splice(max - 2, 2, "...", i)
+            // p[max - 1] = i;
+            // p[max - 2] = "..."
+          }
+        }
+        // if (f) p.unshift("...");
+        // if (l) p.push("...");
+        return p
+      }
     });
 
-    let handleClickPage = function(index) {
-      let i =
-        index == "next"
-          ? currentPage.value + 1
-          : index == "previous"
-          ? currentPage.value - 1
-          : index;
-      currentPage.value = i >= pages.value ? pages.value : i <= 1 ? 1 : i;
+    let handleClickNext = function() {
+      let p = currentPage.value + 1;
+      currentPage.value = p >= pagesCount.value ? pagesCount.value : p;
+    }
+
+    let handleClickPrev = function() {
+      let p = currentPage.value - 1;
+      currentPage.value = p <= 1 ? 1 : p;
+    }
+
+    let handleClickPage = function(p) {
+      currentPage.value = p;
       emit("update:modelValue", currentPage.value);
     };
 
@@ -109,6 +227,8 @@ export default {
       classes,
       currentPage,
       pages,
+      handleClickNext,
+      handleClickPrev,
       handleClickPage,
     };
   },

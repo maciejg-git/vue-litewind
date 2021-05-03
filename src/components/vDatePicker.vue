@@ -31,34 +31,26 @@
       </div>
     </div>
     <transition name="fade" @after-leave="afterLeaveTransition">
-      <div v-show="!isChanging" class="grid grid-cols-7 mb-2">
+      <div v-if="!isChanging" class="grid grid-cols-7 mb-2 relative">
         <template v-if="adjecentMonths">
-          <div
-            v-for="(day, index) in daysList.prevMonthDays"
-            class="px-1 py-1"
-            :key="index"
-          >
+          <div v-for="(day, index) in daysList.prevMonthDays" :key="index">
             <div :class="classes.adjecentMonthDay.value">
               {{ day }}
             </div>
           </div>
         </template>
-        <div
-          v-for="(d, index) in daysList.i"
-          class="px-1 py-1"
-          @click="handleDayClick(d.date, index)"
-          :key="index"
-        >
-          <a v-if="d" :class="getDayClass(d.date)">
+        <div v-for="(d, index) in daysList.i" :key="index">
+          <a
+            v-if="d"
+            @click="handleDayClick(d.date, index)"
+            @mouseenter="mouseOverRange = d.date"
+            :class="getDayClass(d.date)"
+          >
             {{ d.day }}
           </a>
         </div>
         <template v-if="adjecentMonths">
-          <div
-            v-for="(day, index) in daysList.nextMonthDays"
-            class="px-1 py-1"
-            :key="index"
-          >
+          <div v-for="(day, index) in daysList.nextMonthDays" :key="index">
             <div :class="classes.adjecentMonthDay.value">
               {{ day }}
             </div>
@@ -163,6 +155,8 @@ export default {
     };
 
     let getDayClass = (date) => {
+      if (mouseOverRange.value && isRangeSelected(date))
+        return classes.daySelected.value;
       if (isSelectedDay(date)) return classes.daySelected.value;
       if (isToday(date)) return classes.today.value;
       if (isDisabled(date)) return "text-gray-400";
@@ -180,6 +174,7 @@ export default {
     let dateRegexp = /^\d\d\d\d-\d?\d-\d?\d$/;
     let isChanging = ref(false);
     let afterTransitionCall = null;
+    let mouseOverRange = ref(null);
 
     let getCountDaysInMonth = (y, m) => 32 - new Date(y, m, 32).getDate();
 
@@ -320,11 +315,29 @@ export default {
       }
     };
 
+    let isRangeSelected = (date) => {
+      if (props.range && range.value.length == 1)
+      return mouseOverRange.value >= date && date >= range.value[0] ||
+      mouseOverRange.value <= date && date <= range.value[0]
+    }
+
+    let isFirstSelectedDay = (date) => {
+      if (model.length != 2 || !date) return;
+      return model[0].getTime() == date.getTime();
+    };
+
+    let isLastSelectedDay = (date) => {
+      if (model.length != 2 || !date) return;
+      return model[1].getTime() == date.getTime();
+    };
+
     let isToday = (date) => today.getTime() == date.getTime();
 
     return {
       classes,
       getDayClass,
+      isRangeSelected,
+      mouseOverRange,
       daysList,
       month,
       year,
@@ -364,14 +377,23 @@ export default {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.1s ease;
+  transition: opacity 0.2s ease;
 }
 .fade-enter-from {
   opacity: 0;
-  /* transform: translateX(50px); */
 }
 .fade-leave-to {
   opacity: 0;
-  /* transform: translateX(-50px); */
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: transform 0.2s ease;
+}
+.slide-enter-from {
+  transform: translateX(-100%);
+}
+.slide-leave-to {
+  transform: translateX(100%);
 }
 </style>
