@@ -28,7 +28,7 @@
 <script>
 import { ref, computed, getCurrentInstance } from "vue";
 import useStyles from "../use-styles";
-import { removeTailwindClasses } from "../tools.js";
+import { clamp, removeTailwindClasses } from "../tools.js";
 
 export default {
   props: {
@@ -132,7 +132,9 @@ export default {
     // 1         6 7 8 9 10
     // 1 2 3 4 5 6 7 8 9 10
     let currentPage = ref(1);
+
     let pagesCount = computed(() => Math.ceil(props.itemsCount / props.itemsPerPage))
+
 
     // let pages = computed(() => {
     //   let max = props.maxPages > 6 ? props.maxPages : 6;
@@ -174,48 +176,47 @@ export default {
     // });
     let pages = computed(() => {
       let max = props.maxPages > 3 ? props.maxPages : 3;
-      console.log(max)
       let i = pagesCount.value;
+      max = max > i ? i : max;
       // i = i <= 0 ? 1 : i;
-      if (i >= max) {
+      // if (i >= max) {
         // let f = currentPage.value > (max / 2)
         // let l = currentPage.value <= i - Math.ceil(max/2) + 1
         // let j = max - 2 - (+f) - (+l)
         // let p = Array.from({length: j}, (v, i) => i + 2 + currentPage.value-Math.ceil(j/2) - 1)
         // let p = []
         let s = currentPage.value-Math.ceil(max/2) + 1;
-        s = s < 1 ? 1 : s >= i - max + 1 ? i - max + 1 : s;
+        s = clamp(s, 1, i - max + 1);
+        // s = s < 1 ? 1 : s >= i - max + 1 ? i - max + 1 : s;
         // s = s > max - 2 ? max - 2 : s
         // for (let y = s; y < max + s; y++) {
         //   p.push(y)
         // }
         let p = Array.from({length: max}, (v, i) => i + s)
         if (max >= 5) {
-          if (p[0] != 1) {
-            p.splice(0, 2, 1, "...")
+          if (p[0] != 1) p.splice(0, 2, 1, "...")
             // p[0] = 1;
             // p[1] = "..."
-          }
-          if (p[max - 1] != i) {
-            p.splice(max - 2, 2, "...", i)
+          if (p[max - 1] != i) p.splice(max - 2, 2, "...", i)
             // p[max - 1] = i;
             // p[max - 2] = "..."
-          }
         }
         // if (f) p.unshift("...");
         // if (l) p.push("...");
         return p
-      }
+      // }
     });
 
     let handleClickNext = function() {
       let p = currentPage.value + 1;
       currentPage.value = p >= pagesCount.value ? pagesCount.value : p;
+      emit("update:modelValue", currentPage.value);
     }
 
     let handleClickPrev = function() {
       let p = currentPage.value - 1;
       currentPage.value = p <= 1 ? 1 : p;
+      emit("update:modelValue", currentPage.value);
     }
 
     let handleClickPage = function(p) {
@@ -226,6 +227,7 @@ export default {
     return {
       classes,
       currentPage,
+      pagesCount,
       pages,
       handleClickNext,
       handleClickPrev,

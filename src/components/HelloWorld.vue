@@ -53,7 +53,7 @@
           :filter="filter"
           :itemsPerPage="itemsPerPage"
           :page="page"
-          @update:itemsCount="tableItemsCount = $event"
+          @update:itemsFilteredCount="tableItemsCount = $event"
           @update:page="page = $event"
           caption-top
         >
@@ -88,7 +88,7 @@
         :filter="filter"
         :itemsPerPage="itemsPerPage"
         :page="page"
-        @update:itemsCount="tableItemsCount = $event"
+        @update:itemsFilteredCount="tableItemsCount = $event"
         @update:page="page = $event"
       >
         <template #cell:item_city="{ item }">
@@ -449,16 +449,28 @@ export default {
     tooltip,
   },
   setup(props) {
-    let data = ref(dataJSON.slice(0, 60));
+    // let data = ref(dataJSON.slice(0, 140));
+    let data = ref(dataJSON);
+    data.value.map(i => i.date = new Date(2021, 2, 2))
+    data.value[1].date = new Date(2021, 4, 2)
+    data.value[2].date = new Date(2021, 7, 2)
     let dataEmpty = ref([]);
     // data.value = dataEmpty.value;
     let definition = ref([
       {
         key: "id",
+        filterable: false,
       },
       {
         key: "first_name",
         sortable: true,
+        class: () => "bg-gray-100",
+      },
+      {
+        key: "date",
+        filterable: false,
+        sortable: true,
+        f: (k, v) => v.toLocaleDateString(),
         class: () => "bg-gray-100",
       },
       // {
@@ -471,7 +483,10 @@ export default {
       {
         key: "city",
         // visible: false,
-        f: (k, v) => k + " " + v,
+        sortable: true,
+        f: (k, v, i) => i.id + " " + k + " " + v,
+        // sortByFunction: true,
+        // filterByFunction: true,
       },
       {
         key: "country",
@@ -484,7 +499,7 @@ export default {
     let filter = ref("");
     let sidepanel = ref(false);
     let tableItemsCount = ref(0);
-    let itemsPerPage = ref(4);
+    let itemsPerPage = ref(10);
     let page = ref(1);
     let i2 = ref(false);
     let modal = ref(false);

@@ -12,8 +12,8 @@
             :class="[
               {
                 sortable: h.sortable && sortField != h.key,
-                'sort-asc': h.sortable && sortField == h.key && sortAsc,
-                'sort-desc': h.sortable && sortField == h.key && !sortAsc,
+                'sort-asc': h.sortable && sortField == h.key && sortAsc == 1,
+                'sort-desc': h.sortable && sortField == h.key && sortAsc == -1,
                 'cursor-pointer': h.sortable,
               },
               ...classes.headerCell.value,
@@ -46,22 +46,18 @@
             :key="i"
             :class="classes.row.value"
           >
-            <template v-for="(k, i) in headers">
+            <template v-for="k in headers">
               <td
-                v-if="headers[i].visible !== false"
+                v-if="k.visible !== false"
                 :class="[
-                  headers[i].class && typeof headers[i].class === 'function'
-                    ? headers[i].class(k.key, item[k.key], item)
+                  k.class && typeof k.class === 'function'
+                    ? k.class(k.key, item[k.key], item)
                     : '',
                   ...classes.cell.value,
                 ]"
               >
                 <slot :name="'cell:' + k.key" :value="item[k.key]" :item="item">
-                  {{
-                    headers[i].f && typeof headers[i].f === "function"
-                      ? headers[i].f(k.key, item[k.key], item)
-                      : item[k.key]
-                  }}
+                  {{ getItemValue(item, k) }}
                 </slot>
               </td>
             </template>
@@ -73,9 +69,15 @@
 </template>
 
 <script>
-import { ref, computed, watchEffect, watch, getCurrentInstance } from "vue";
+import { ref, computed, watch, onMounted, getCurrentInstance } from "vue";
 import useStyles from "../use-styles";
-import { formatCase, propCompare, removeTailwindClasses } from "../tools.js";
+import {
+  formatCase,
+  compare,
+  isDate,
+  undefNullToStr,
+  removeTailwindClasses,
+} from "../tools.js";
 
 export default {
   props: {
@@ -143,28 +145,57 @@ export default {
     };
 
     let sortField = ref("");
-    let sortAsc = ref(true);
+    let sortAsc = ref(1);
 
-    if (props.items) emit("update:itemsCount", props.items.length);
+    onMounted(() => {
+      if (props.items) emit("update:itemsFilteredCount", props.items.length);
+    });
+
+    let items = computed(() => [...props.items]);
+
+    let getItemValue = (i, k) => {
+      return typeof k.f === "function" ? k.f(k.key, i[k.key], i) : i[k.key];
+    };
+
+    let itemCompare = (a, b, h, localeCompare) => {
+      a = (h.sortByFunction && getItemValue(a, h)) || a[h.key];
+      b = (h.sortByFunction && getItemValue(b, h)) || b[h.key];
+      a = undefNullToStr(a);
+      b = undefNullToStr(b);
+      if (
+        (isDate(a) && isDate(b)) ||
+        (typeof a == "number" && typeof b == "number")
+      ) {
+        return compare(a, b) * sortAsc.value;
+      } else return localeCompare(a, b) * sortAsc.value;
+    };
 
     let itemsSorted = computed(() => {
-      if (!sortField.value) return props.items;
-      let compare = new Intl.Collator(props.locale).compare;
-      let sortBy = sortField.value;
-      let sorted = props.items.sort((a, b) => compare(a[sortBy], b[sortBy]));
-      return sortAsc.value ? sorted : sorted.reverse();
+      if (!sortField.value) return items.value;
+      let h = getHeaderKey(sortField.value);
+      let c = new Intl.Collator(props.locale).compare;
+      return items.value.sort((a, b) => itemCompare(a, b, h, c));
     });
 
     let itemsFiltered = computed(() => {
-      if (!props.filter) return itemsSorted.value;
+      let regexp = null;
+      let validFilter = true;
+      try {
+        regexp = new RegExp(props.filter, "i");
+        validFilter = true;
+      } catch (e) {
+        validFilter = false;
+      }
+      if (!props.filter || !validFilter) return itemsSorted.value;
       let keys = headers.value.filter(
         (k) => k.filterable !== false && k.visible !== false
       );
-      let regexp = new RegExp(props.filter, "i");
       return itemsSorted.value.filter((item) => {
+        let s = null;
         for (let k of keys) {
-          if (item[k.key] && ("" + item[k.key]).search(regexp) >= 0)
-            return item;
+          s = (k.filterByFunction && getItemValue(item, k)) || item[k.key];
+          s = undefNullToStr(s);
+          if (("" + s).search(regexp) != -1) return item;
         }
       });
     });
@@ -177,7 +208,7 @@ export default {
       );
     });
 
-    let headers = ref([]);
+    let getHeaderKey = (k) => headers.value.find(i => k === i.key)
 
     let setHeaders = () => {
       if (!props.items || !props.items.length) return;
@@ -193,25 +224,25 @@ export default {
       () => headers.value.filter((i) => i.visible !== false).length
     );
 
-    watchEffect(() => {
+    let headers = computed(() => {
       if (props.definition) {
-        headers.value = props.definition.map((item) => {
+        return props.definition.map((item) => {
           return {
             ...item,
             label: item.label || formatCase(item.key),
           };
         });
-      } else headers.value = setHeaders();
+      } else return setHeaders();
     });
 
     watch(itemsFiltered, () => {
       emit("update:page", 1);
-      emit("update:itemsCount", itemsFiltered.value.length);
+      emit("update:itemsFilteredCount", itemsFiltered.value.length);
     });
 
     let handleHeaderClick = function (key, index) {
       if (!headers.value[index].sortable) return;
-      sortAsc.value = sortField.value == key ? !sortAsc.value : true;
+      sortAsc.value = sortField.value == key ? -sortAsc.value : 1;
       sortField.value = key;
     };
 
@@ -220,6 +251,7 @@ export default {
       headers,
       sortField,
       sortAsc,
+      getItemValue,
       handleHeaderClick,
       itemsFiltered,
       itemsPagination,

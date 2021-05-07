@@ -1,6 +1,6 @@
 import { tailwindcss } from "./tailwindProperties.js";
 
-export let formatCase = function(str) {
+let formatCase = function (str) {
   return str
     .replace(/^[^A-Za-z0-9]*|[^A-Za-z0-9]*$/g, "")
     .replace(/([a-z])([A-Z])/g, (m, a, b) => `${a}_${b.toLowerCase()}`)
@@ -12,24 +12,20 @@ export let formatCase = function(str) {
     );
 };
 
-export let propCompare = (key) => (a, b) => {
-  var nameA = a[key].toUpperCase();
-  var nameB = b[key].toUpperCase();
-  if (nameA < nameB) {
-    return -1;
-  }
-  if (nameA > nameB) {
-    return 1;
-  }
-  return 0;
+let compare = (a, b) => {
+  if (a == null || b == null || a == undefined || b == undefined) return -1;
+  return a < b ? -1 : a > b ? 1 : 0;
 };
 
-export let propCompareLocale = (key) => (a, b) => {
-  var nameA = a[key].toUpperCase();
-  var nameB = b[key].toUpperCase();
-};
+let clamp = (v, f, t) => (v < f ? f : v >= t ? t : v);
 
-export let removeTailwindClasses = (classList, debug) => {
+let isDate = (d) => Object.prototype.toString.call(d) == "[object Date]";
+
+let pad = (d) => (d < 10 ? "0" + d : d);
+
+let undefNullToStr = (v) => (v == undefined || v == null ? "" : v);
+
+let removeTailwindClasses = (classList, debug) => {
   let str = "";
 
   let classParse = classList
@@ -133,3 +129,13 @@ let classList = test.flatMap((i) => i.split(" "));
 classList = removeTailwindClasses(classList, true);
 
 // console.log(classList);
+
+export {
+  formatCase,
+  compare,
+  clamp,
+  isDate,
+  pad,
+  undefNullToStr,
+  removeTailwindClasses,
+};

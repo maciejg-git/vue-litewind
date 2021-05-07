@@ -67,7 +67,7 @@
 <script>
 import { ref, reactive, computed, watch, getCurrentInstance } from "vue";
 import useStyles from "../use-styles";
-import { removeTailwindClasses } from "../tools.js";
+import { pad, removeTailwindClasses } from "../tools.js";
 
 export default {
   props: {
@@ -87,6 +87,7 @@ export default {
     disabled: Array,
     width: { type: String, default: undefined },
     adjecentMonths: { type: Boolean, default: false },
+    noRangeSelection: { type: Boolean, default: false },
     name: { type: String, default: "datepicker" },
     datepicker: { type: String, default: "default" },
     button: { type: String, default: "default" },
@@ -155,7 +156,11 @@ export default {
     };
 
     let getDayClass = (date) => {
-      if (mouseOverRange.value && isRangeSelected(date))
+      if (
+        !props.noRangeSelection &&
+        mouseOverRange.value &&
+        isRangeSelected(date)
+      )
         return classes.daySelected.value;
       if (isSelectedDay(date)) return classes.daySelected.value;
       if (isToday(date)) return classes.today.value;
@@ -178,15 +183,7 @@ export default {
 
     let getCountDaysInMonth = (y, m) => 32 - new Date(y, m, 32).getDate();
 
-    let prevMonth = (m, y) =>
-      m - 1 < 0 ? { m: 11, y: y - 1 } : { m: m - 1, y };
-
-    let nextMonth = (m, y) =>
-      m + 1 > 11 ? { m: 0, y: y + 1 } : { m: m + 1, y };
-
     let parseDate = (d) => d.split("-").map((i) => +i);
-
-    let pad = (d) => (d < 10 ? "0" + d : d);
 
     let dateToString = (d) =>
       [d.getFullYear(), pad(d.getMonth() + 1), pad(d.getDate())].join("-");
@@ -194,6 +191,12 @@ export default {
     let todayFormatted = computed(() =>
       today.toLocaleDateString(props.locale, props.format)
     );
+
+    let prevMonth = (m, y) =>
+      m - 1 < 0 ? { m: 11, y: y - 1 } : { m: m - 1, y };
+
+    let nextMonth = (m, y) =>
+      m + 1 > 11 ? { m: 0, y: y + 1 } : { m: m + 1, y };
 
     let months = computed(() => {
       return Array.from({ length: 12 }, (v, i) =>
@@ -317,9 +320,11 @@ export default {
 
     let isRangeSelected = (date) => {
       if (props.range && range.value.length == 1)
-      return mouseOverRange.value >= date && date >= range.value[0] ||
-      mouseOverRange.value <= date && date <= range.value[0]
-    }
+        return (
+          (mouseOverRange.value >= date && date >= range.value[0]) ||
+          (mouseOverRange.value <= date && date <= range.value[0])
+        );
+    };
 
     let isFirstSelectedDay = (date) => {
       if (model.length != 2 || !date) return;
