@@ -79,6 +79,7 @@
       <!-- <v&#45;tab name="item5" v&#45;if="tooltipTest"></v&#45;tab> -->
     </v-tabs>
     <v-button @click="tabname = 'item 5'">tabname</v-button>
+    <v-button @click="filter = /am/">filter table</v-button>
 
     <input v-model="filter" type="" class="form-control w-25" />
     <v-card card="default shadow">
@@ -88,6 +89,7 @@
         :filter="filter"
         :itemsPerPage="itemsPerPage"
         :page="page"
+        table="default fixed"
         @update:itemsFilteredCount="tableItemsCount = $event"
         @update:page="page = $event"
       >
@@ -454,24 +456,32 @@ export default {
     data.value.map(i => i.date = new Date(2021, 2, 2))
     data.value[1].date = new Date(2021, 4, 2)
     data.value[2].date = new Date(2021, 7, 2)
+    let dataTest = [2, 3, 5, 12, 20, 21, 22, 30, 31, 40, 41, 42, 43, 45, 60]
+    let dataTest2 = [7, 30, 40, 70]
+    dataTest.forEach(i => data.value[i].first_name = null)
+    dataTest.forEach(i => data.value[i].country = undefined)
+    dataTest.forEach(i => data.value[i].city = undefined)
+    dataTest2.forEach(i => data.value[i].id = NaN)
     let dataEmpty = ref([]);
     // data.value = dataEmpty.value;
     let definition = ref([
       {
         key: "id",
+        sortable: true,
         filterable: false,
+        class: () => "w-1/12",
       },
       {
         key: "first_name",
         sortable: true,
-        class: () => "bg-gray-100",
+        class: () => "w-2/12",
       },
       {
         key: "date",
         filterable: false,
         sortable: true,
         f: (k, v) => v.toLocaleDateString(),
-        class: () => "bg-gray-100",
+        class: () => "bg-gray-100 w-2/12",
       },
       // {
       //   key: "last_name",
@@ -479,6 +489,7 @@ export default {
       {
         key: "email",
         sortable: true,
+        class: () => "w-3/12",
       },
       {
         key: "city",
@@ -487,9 +498,11 @@ export default {
         f: (k, v, i) => i.id + " " + k + " " + v,
         // sortByFunction: true,
         // filterByFunction: true,
+        class: () => "w-2/12",
       },
       {
         key: "country",
+        class: () => "w-1/12",
       },
       {
         key: "item_city",

@@ -75,6 +75,7 @@ import {
   formatCase,
   compare,
   isDate,
+  isRegexp,
   undefNullToStr,
   removeTailwindClasses,
 } from "../tools.js";
@@ -83,7 +84,7 @@ export default {
   props: {
     definition: { type: Array, default: () => [] },
     items: { type: Array, default: () => [] },
-    filter: { type: String, default: "" },
+    filter: { type: [String, RegExp], default: "" },
     page: { type: Number, default: 1 },
     itemsPerPage: { type: Number, default: 0 },
     captionTop: { type: Boolean, default: false },
@@ -147,9 +148,7 @@ export default {
     let sortField = ref("");
     let sortAsc = ref(1);
 
-    onMounted(() => {
-      if (props.items) emit("update:itemsFilteredCount", props.items.length);
-    });
+    // DATA
 
     let items = computed(() => [...props.items]);
 
@@ -162,12 +161,13 @@ export default {
       b = (h.sortByFunction && getItemValue(b, h)) || b[h.key];
       a = undefNullToStr(a);
       b = undefNullToStr(b);
-      if (
-        (isDate(a) && isDate(b)) ||
-        (typeof a == "number" && typeof b == "number")
-      ) {
+      if (isDate(a) && isDate(b)) return compare(a, b) * sortAsc.value;
+      if (typeof a == "number" && typeof b == "number") {
+        if (isNaN(a) && !isNaN(b)) return -1;
+        if (!isNaN(a) && isNaN(b)) return 1;
         return compare(a, b) * sortAsc.value;
-      } else return localeCompare(a, b) * sortAsc.value;
+      }
+      return localeCompare(a, b) * sortAsc.value;
     };
 
     let itemsSorted = computed(() => {
@@ -177,23 +177,19 @@ export default {
       return items.value.sort((a, b) => itemCompare(a, b, h, c));
     });
 
+    let getFilterRegexp = () => {
+      let f = props.filter;
+      if (isRegexp(f)) return f;
+      return new RegExp(f.replace(/[.*+\-?^${}()|[\]\\]/g, "\\$&"), "i");
+    };
+
     let itemsFiltered = computed(() => {
-      let regexp = null;
-      let validFilter = true;
-      try {
-        regexp = new RegExp(props.filter, "i");
-        validFilter = true;
-      } catch (e) {
-        validFilter = false;
-      }
-      if (!props.filter || !validFilter) return itemsSorted.value;
-      let keys = headers.value.filter(
-        (k) => k.filterable !== false && k.visible !== false
-      );
+      if (!props.filter) return itemsSorted.value;
+      let regexp = getFilterRegexp();
+      let keys = getFilterableKeys();
       return itemsSorted.value.filter((item) => {
-        let s = null;
         for (let k of keys) {
-          s = (k.filterByFunction && getItemValue(item, k)) || item[k.key];
+          let s = (k.filterByFunction && getItemValue(item, k)) || item[k.key];
           s = undefNullToStr(s);
           if (("" + s).search(regexp) != -1) return item;
         }
@@ -208,7 +204,15 @@ export default {
       );
     });
 
-    let getHeaderKey = (k) => headers.value.find(i => k === i.key)
+    // HEADERS
+
+    let getHeaderKey = (k) => headers.value.find((i) => k === i.key);
+
+    let getFilterableKeys = () => {
+      return headers.value.filter(
+        (k) => k.filterable !== false && k.visible !== false
+      );
+    }
 
     let setHeaders = () => {
       if (!props.items || !props.items.length) return;
@@ -235,10 +239,18 @@ export default {
       } else return setHeaders();
     });
 
+    // EVENTS
+
+    onMounted(() => {
+      if (props.items) emit("update:itemsFilteredCount", props.items.length);
+    });
+
     watch(itemsFiltered, () => {
       emit("update:page", 1);
       emit("update:itemsFilteredCount", itemsFiltered.value.length);
     });
+
+    // HANDLE TEMPLATE EVENTS
 
     let handleHeaderClick = function (key, index) {
       if (!headers.value[index].sortable) return;

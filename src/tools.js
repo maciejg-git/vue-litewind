@@ -12,14 +12,13 @@ let formatCase = function (str) {
     );
 };
 
-let compare = (a, b) => {
-  if (a == null || b == null || a == undefined || b == undefined) return -1;
-  return a < b ? -1 : a > b ? 1 : 0;
-};
+let compare = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
 
 let clamp = (v, f, t) => (v < f ? f : v >= t ? t : v);
 
 let isDate = (d) => Object.prototype.toString.call(d) == "[object Date]";
+
+let isRegexp = (v) => Object.prototype.toString.call(v) === "[object RegExp]";
 
 let pad = (d) => (d < 10 ? "0" + d : d);
 
@@ -135,6 +134,7 @@ export {
   compare,
   clamp,
   isDate,
+  isRegexp,
   pad,
   undefNullToStr,
   removeTailwindClasses,

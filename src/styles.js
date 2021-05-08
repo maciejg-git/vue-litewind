@@ -94,6 +94,9 @@ let table = {
     default: [
       "bg-white",
       "border-collapse",
+    ], 
+    fixed: [
+      "table-fixed",
     ]
   },
   headerRow: {
@@ -104,7 +107,7 @@ let table = {
     default: [
       "border-b",
       "border-gray-400",
-      "py-1",
+      "py-2",
       "px-2",
     ],
     dark: [
@@ -125,7 +128,7 @@ let table = {
       // "border",
       "border-t",
       "border-gray-300",
-      "py-1",
+      "py-2",
       "px-2",
     ]
   },
