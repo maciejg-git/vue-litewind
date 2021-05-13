@@ -120,7 +120,7 @@ let table = {
   },
   row: {
     default: [
-      "hover:bg-gray-50",
+      // "hover:bg-gray-50",
     ]
   },
   cell: {

@@ -25,7 +25,16 @@
       </tr>
     </thead>
     <tbody>
-      <template v-if="!items.length">
+      <template v-if="busy && slots.busy">
+        <tr>
+          <td :colspan="headersCount">
+            <div class="flex justify-center">
+              <slot name="busy"></slot>
+            </div>
+          </td>
+        </tr>
+      </template>
+      <template v-else-if="!items.length">
         <tr>
           <td :colspan="headersCount" class="text-center py-2">
             {{ emptyText }}
@@ -44,7 +53,8 @@
           <tr
             v-for="(item, i) in itemsPagination"
             :key="i"
-            :class="classes.row.value"
+            @click="handleRowClick(i)"
+            :class="[...classes.row.value]"
           >
             <template v-for="k in headers">
               <td
@@ -53,6 +63,7 @@
                   k.class && typeof k.class === 'function'
                     ? k.class(k.key, item[k.key], item)
                     : '',
+                  itemsSelected[i] ? 'bg-gray-500' : '',
                   ...classes.cell.value,
                 ]"
               >
@@ -95,6 +106,8 @@ export default {
     },
     locale: { type: String, default: "en" },
     transition: { type: String, default: "fade-slide" },
+    busy: { type: Boolean, default: false },
+    selectionMode: { type: String, default: "" },
     name: { type: String, default: "table" },
     table: { type: String, default: "default" },
     headerRow: { type: String, default: "default" },
@@ -103,7 +116,7 @@ export default {
     cell: { type: String, default: "default" },
     caption: { type: String, default: "default" },
   },
-  setup(props, { emit }) {
+  setup(props, { slots, emit }) {
     let elements = [
       "table",
       "headerRow",
@@ -117,7 +130,7 @@ export default {
 
     let classes = {
       table: computed(() => {
-        let c = [...styles.table.value];
+        let c = [...styles.table.value, props.busy ? "opacity-50" : ""];
         return removeTailwindClasses(c);
       }),
       headerRow: computed(() => {
@@ -133,7 +146,7 @@ export default {
         return removeTailwindClasses(c);
       }),
       cell: computed(() => {
-        let c = [...styles.cell.value];
+        let c = [...styles.cell.value, "transition", "duration-200"];
         return removeTailwindClasses(c);
       }),
       caption: computed(() => {
@@ -196,6 +209,11 @@ export default {
       });
     });
 
+    watch(itemsFiltered, () => {
+      emit("update:page", 1);
+      emit("update:itemsFilteredCount", itemsFiltered.value.length);
+    });
+
     let itemsPagination = computed(() => {
       if (!props.itemsPerPage) return itemsFiltered.value;
       return itemsFiltered.value.slice(
@@ -212,7 +230,7 @@ export default {
       return headers.value.filter(
         (k) => k.filterable !== false && k.visible !== false
       );
-    }
+    };
 
     let setHeaders = () => {
       if (!props.items || !props.items.length) return;
@@ -239,18 +257,42 @@ export default {
       } else return setHeaders();
     });
 
+    // SELECTION
+
+    let itemsSelected = ref({});
+
+    let resetSelection = () => (itemsSelected.value = {});
+
+    let unselectRow = (i) => delete itemsSelected.value[i];
+
+    let isValidSelectionMode = () =>
+      props.selectionMode == "single" || props.selectionMode == "multiple";
+
+    let selectRow = (i) => (itemsSelected.value[i] = itemsPagination.value[i]);
+
+    watch(itemsSelected.value, () =>
+      emit("update:tableSelection", Object.values(itemsSelected.value))
+    );
+
     // EVENTS
 
     onMounted(() => {
       if (props.items) emit("update:itemsFilteredCount", props.items.length);
     });
 
-    watch(itemsFiltered, () => {
-      emit("update:page", 1);
-      emit("update:itemsFilteredCount", itemsFiltered.value.length);
-    });
-
     // HANDLE TEMPLATE EVENTS
+
+    let handleRowClick = function (i) {
+      if (!isValidSelectionMode()) return;
+      if (itemsSelected.value[i]) {
+        unselectRow(i);
+        return;
+      }
+      if (props.selectionMode == "single") {
+        if (Object.keys(itemsSelected.value).length) resetSelection();
+      }
+      selectRow(i);
+    };
 
     let handleHeaderClick = function (key, index) {
       if (!headers.value[index].sortable) return;
@@ -259,15 +301,18 @@ export default {
     };
 
     return {
+      slots,
       classes,
       headers,
       sortField,
       sortAsc,
       getItemValue,
-      handleHeaderClick,
       itemsFiltered,
       itemsPagination,
+      itemsSelected,
       headersCount,
+      handleRowClick,
+      handleHeaderClick,
     };
   },
 };

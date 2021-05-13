@@ -80,7 +80,9 @@
     </v-tabs>
     <v-button @click="tabname = 'item 5'">tabname</v-button>
     <v-button @click="filter = /am/">filter table</v-button>
+    <v-button @click="busy = !busy">busy table</v-button>
 
+    {{ tableSelection }}
     <input v-model="filter" type="" class="form-control w-25" />
     <v-card card="default shadow">
       <v-table
@@ -89,10 +91,14 @@
         :filter="filter"
         :itemsPerPage="itemsPerPage"
         :page="page"
+        :busy="busy"
         table="default fixed"
+        selection-mode="multiple"
+        @update:tableSelection="tableSelection = $event"
         @update:itemsFilteredCount="tableItemsCount = $event"
         @update:page="page = $event"
       >
+      <!-- <template #busy><v-spinner></v-spinner></template> -->
         <template #cell:item_city="{ item }">
           <!-- <v&#45;button small>item</v&#45;button> -->
           <!--     <!&#45;&#45; <v&#38;#45;button>popover</v&#38;#45;button> &#45;&#45;> -->
@@ -155,7 +161,7 @@
     {{ i }}
     {{ formattedDate }}
     <v-card card="default" class="p-2 mb-2" style="width: 320px">
-      <vDatePicker v-model="i" euro range adjecent-months></vDatePicker>
+      <vDatePicker v-model="i" euro range no-range-selection adjecent-months></vDatePicker>
     </v-card>
     <v-card card="default" class="p-2" style="width: 320px">
       <vDatePicker
@@ -214,7 +220,7 @@
       <v-list-item>item3</v-list-item>
       <v-list-item active>item</v-list-item>
       <v-list-item>item2</v-list-item>
-      <v-list-item v-tooltip.right.delay200="'item content'">item3</v-list-item>
+      <v-list-item v-tooltip.right.delay100="'item content'">item3</v-list-item>
       <v-list-item>item</v-list-item>
       <v-list-item>item2</v-list-item>
       <v-list-item>item3</v-list-item>
@@ -463,6 +469,9 @@ export default {
     dataTest.forEach(i => data.value[i].city = undefined)
     dataTest2.forEach(i => data.value[i].id = NaN)
     let dataEmpty = ref([]);
+    let busy = ref(false)
+    let tableCommand = null;
+    let tableSelection = ref([])
     // data.value = dataEmpty.value;
     let definition = ref([
       {
@@ -545,6 +554,8 @@ export default {
       itemsPerPage,
       page,
       i2,
+      tableSelection,
+      busy,
       modal,
       tooltipTest,
       activator,

@@ -33,39 +33,39 @@ let classes = {
 let template = `<div class="${classes.content}"></div>`;
 
 let timer = null;
-let timerFade = null;
 let timerOut = null;
 
 function show(ev) {
-  if (ev.target._v_tooltip.active) clearTimeout(timerOut);
-  if (ev.target._v_tooltip.f)
-    ev.target._v_tooltip.el.childNodes[0].innerHTML = ev.target._v_tooltip.f();
+  let el = ev.target;
+
+  clearTimeout(timerOut);
+  el._v_tooltip.el.removeEventListener("transitionend", onTransitionEnd);
+
+  if (el._v_tooltip.f)
+    el._v_tooltip.el.childNodes[0].innerHTML = el._v_tooltip.f();
   timer = setTimeout(() => {
-    document.body.appendChild(ev.target._v_tooltip.el);
-    ev.target._v_tooltip.active = true;
-    timerFade = setTimeout(() => {
-      ev.target._v_tooltip.el.style.opacity = 1;
-    }, 10);
-    ev.target._v_popper.update();
-  }, ev.target._v_tooltip.delay);
+    document.body.appendChild(el._v_tooltip.el);
+    requestAnimationFrame(() => {
+      el._v_tooltip.el.style.opacity = 1;
+    });
+    el._v_popper.update();
+  }, el._v_tooltip.delay);
 }
 
-function hide(ev) {
-  clearTimeout(timer);
-  clearTimeout(timerFade);
+let onTransitionEnd = (ev) => {
+  ev.target.removeEventListener("transitionend", onTransitionEnd);
+  ev.target.remove();
+};
 
+function hide(ev) {
   let el = ev.target;
-  if (el._v_tooltip.active) {
-    let removeElement = () => {
-      el._v_tooltip.el.removeEventListener("transitionend", removeElement);
-      el._v_tooltip.el.remove();
-      el._v_tooltip.active = false;
-    };
-    timerOut = setTimeout(() => {
-      ev.target._v_tooltip.el.style.opacity = 0;
-      ev.target._v_tooltip.el.addEventListener("transitionend", removeElement);
-    }, el._v_tooltip.delay);
-  }
+
+  clearTimeout(timer);
+
+  timerOut = setTimeout(() => {
+    el._v_tooltip.el.style.opacity = 0;
+    el._v_tooltip.el.addEventListener("transitionend", onTransitionEnd);
+  }, el._v_tooltip.delay);
 }
 
 function setPopper(el, tooltip, options) {
