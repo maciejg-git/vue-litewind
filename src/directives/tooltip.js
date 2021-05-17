@@ -35,14 +35,30 @@ let template = `<div class="${classes.content}"></div>`;
 let timer = null;
 let timerOut = null;
 
+let onTransitionEnd = (ev) => {
+  ev.target.removeEventListener("transitionend", onTransitionEnd);
+  ev.target.remove();
+};
+
+let removeHideTimers = (el) => {
+  clearTimeout(timerOut);
+  el._v_tooltip.el.removeEventListener("transitionend", onTransitionEnd);
+};
+
+let removeShowTimer = () => clearTimeout(timer);
+
+let getTooltipContent = (el) => {
+  if (el._v_tooltip.f)
+    el._v_tooltip.el.childNodes[0].innerHTML = el._v_tooltip.f();
+};
+
 function show(ev) {
   let el = ev.target;
 
-  clearTimeout(timerOut);
-  el._v_tooltip.el.removeEventListener("transitionend", onTransitionEnd);
+  removeHideTimers(el);
 
-  if (el._v_tooltip.f)
-    el._v_tooltip.el.childNodes[0].innerHTML = el._v_tooltip.f();
+  getTooltipContent(el);
+
   timer = setTimeout(() => {
     document.body.appendChild(el._v_tooltip.el);
     requestAnimationFrame(() => {
@@ -52,15 +68,10 @@ function show(ev) {
   }, el._v_tooltip.delay);
 }
 
-let onTransitionEnd = (ev) => {
-  ev.target.removeEventListener("transitionend", onTransitionEnd);
-  ev.target.remove();
-};
-
 function hide(ev) {
   let el = ev.target;
 
-  clearTimeout(timer);
+  removeShowTimer();
 
   timerOut = setTimeout(() => {
     el._v_tooltip.el.style.opacity = 0;
@@ -92,6 +103,13 @@ function createTooltipElement() {
   return el;
 }
 
+function addTransition(el, m) {
+  if (!m.transition) {
+    el.style.opacity = "0";
+    el.style.transition = "opacity 0.3s ease";
+  }
+}
+
 function parseModifiers(modifiers) {
   let delayRegexp = /^delay\d\d?\d?\d?$/;
   let offsetXRegexp = /^oX\d\d?\d?$/;
@@ -102,12 +120,16 @@ function parseModifiers(modifiers) {
 
     m.placement = modifiers.find((i) => correctPlacement.includes(i));
     m.placement = m.placement || defaults.placement;
+
     m.delay = modifiers.find((i) => delayRegexp.test(i));
     m.delay = m.delay ? +m.delay.substring(5) : defaults.delay;
+
     m.offsetX = modifiers.find((i) => offsetXRegexp.test(i));
     m.offsetX = m.offsetX ? +m.offsetX.substring(2) : defaults.offsetX;
+
     m.offsetY = modifiers.find((i) => offsetYRegexp.test(i));
     m.offsetY = m.offsetY ? +m.offsetY.substring(2) : defaults.offsetY;
+
     m.transition = modifiers.findIndex((i) => i === "nofade") != -1;
 
     return m;
@@ -123,16 +145,14 @@ export default {
       ...m,
     };
 
-    if (!m.transition) {
-      el._v_tooltip.el.style.opacity = "0";
-      el._v_tooltip.el.style.transition = "opacity 0.3s ease";
-    }
+    addTransition(el._v_tooltip.el, m);
 
-    if (binding.value && typeof binding.value == "string")
+    if (binding.value && typeof binding.value == "string") {
       el._v_tooltip.el.childNodes[0].innerHTML = binding.value;
-    else
+    } else {
       el._v_tooltip.el.childNodes[0].innerHTML =
         el.getAttribute("data-title") || "";
+    }
 
     el._v_tooltip.f = typeof binding.value == "function" ? binding.value : null;
 
@@ -143,7 +163,6 @@ export default {
   },
   beforeUnmount(el) {
     if (el._v_tooltip) {
-      el._v_tooltip.active = false;
       el._v_tooltip.el.remove();
     }
   },
