@@ -45,7 +45,7 @@ export default {
 
     let { styles } = useStyles(getCurrentInstance(), props, elements);
 
-    let fixedClass = {
+    let fixedClasses = {
       tabBar: ["flex", "flex-auto"],
       tab: ["block", "p-2", "px-4"],
       tabActive: ["block", "p-2", "px-4"],
@@ -54,7 +54,7 @@ export default {
     let classes = {
       tabBar: computed(() => {
         let c = [
-          ...fixedClass.tabBar,
+          ...fixedClasses.tabBar,
           ...styles.tabBar.value,
           props.center ? "justify-center" : "",
         ];
@@ -62,7 +62,7 @@ export default {
       }),
       tab: computed(() => {
         let c = [
-          ...fixedClass.tab,
+          ...fixedClasses.tab,
           ...styles.tab.value,
           props.fill ? "w-full" : "",
         ];
@@ -70,7 +70,7 @@ export default {
       }),
       tabActive: computed(() => {
         let c = [
-          ...fixedClass.tabActive,
+          ...fixedClasses.tabActive,
           ...styles.tabActive.value,
           props.fill ? "w-full" : "",
         ];

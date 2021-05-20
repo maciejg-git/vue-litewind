@@ -15,18 +15,28 @@ import vCollapse from "./vCollapse.vue"
 import vModal from "./vModal.vue"
 import vBadge from "./vBadge.vue"
 import vPopover from "./vPopover.vue"
+import vCloseButton from "./vCloseButton.vue"
+import vDivider from "./vDivider.vue"
+import vSpinner from "./vSpinner.vue"
+import tooltip from "../directives/tooltip.js"
 
-const plugin = {
-  install(app) {
+  function install(app) {
     app.component("v-table", vTable);
     app.component("v-tabs", vTabs);
     app.component("v-tab", vTab);
     app.component("v-date-picker", vDatePicker);
     app.component("v-card", vCard);
-    app.component("v-sidepanel", vSidepanel);
+    app.component("v-button", vButton);
+    app.component("v-pagination", vPagination);
+    app.component("v-dropdown", vDropdown);
+    app.component("v-dropdown-menu-item", vDropdownMenuItem);
+    app.component("v-dropdown-header", vDropdownHeader);
+    app.component("v-list", vList);
+    app.component("v-list-item", vListItem);
+    app.component("v-collapse", vCollapse);
+    app.directive("tooltip", tooltip);
   }
-}
 
-export default plugin;
+export default { install };
 
-export { vTable }
+// export { vTable }

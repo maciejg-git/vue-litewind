@@ -186,12 +186,14 @@
     <span class="fw-bold">Type</span>: <code>String</code>
     <p>Event <code>state:done</code> is emmited after selection is complete.</p>
     <div class="example">
-      <v-dropdown class="p-2">
+      <v-dropdown>
         <template #activator>
           <input type="text" v-model="date.done" class="form-control" placeholder="Pick date">
         </template>
         <template #default="{ hide }">
-          <v-date-picker v-model="date.done" width="320px" @state:done="hide"></v-date-picker>
+          <v-card class="p-2">
+            <v-date-picker v-model="date.done" width="320px" @state:done="hide"></v-date-picker>
+          </v-card>
         </template>
       </v-dropdown>
     </div>

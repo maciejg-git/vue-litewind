@@ -130,6 +130,7 @@ let table = {
       "border-gray-300",
       "py-2",
       "px-2",
+      "pr-6",
     ]
   },
   caption: {
@@ -204,14 +205,14 @@ let modal = {
       "text-lg", 
       "leading-6", 
       "font-medium", 
-      "px-6", 
-      "pt-5", 
+      "px-10", 
+      "pt-8", 
     ]
   },
   content: {
     default: [
-      "px-6", 
-      "py-2",
+      "px-10", 
+      "py-5",
     ]
   },
   backdrop: {

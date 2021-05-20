@@ -20,7 +20,7 @@
   <section>
     <h5>Reference</h5>
     <p></p>
-    <v-table :items="reference" :definition="referenceDefinition">
+    <v-table :items="reference" :definition="referenceDefinition" table="default fixed">
       <template #cell:type="{ value }"><code class="text-sm bg-gray-100 rounded p-1">{{ value }}</code></template>
       <template #cell:description="{ value }"><span v-html="value"></span></template>
     </v-table>
@@ -352,7 +352,7 @@ export default {
       {
         key: "prop",
         sortable: true,
-        class: () => 'nowrap',
+        class: () => 'whitespace-nowrap',
       },
       {
         key: "type",

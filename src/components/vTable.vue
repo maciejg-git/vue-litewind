@@ -209,10 +209,14 @@ export default {
       });
     });
 
-    watch(itemsFiltered, () => {
-      emit("update:page", 1);
-      emit("update:itemsFilteredCount", itemsFiltered.value.length);
-    });
+    watch(
+      itemsFiltered,
+      () => {
+        emit("update:page", 1);
+        emit("update:itemsFilteredCount", itemsFiltered.value.length);
+      },
+      { immediate: true }
+    );
 
     let itemsPagination = computed(() => {
       if (!props.itemsPerPage) return itemsFiltered.value;
@@ -273,12 +277,6 @@ export default {
     watch(itemsSelected.value, () =>
       emit("update:tableSelection", Object.values(itemsSelected.value))
     );
-
-    // EVENTS
-
-    onMounted(() => {
-      if (props.items) emit("update:itemsFilteredCount", props.items.length);
-    });
 
     // HANDLE TEMPLATE EVENTS
 

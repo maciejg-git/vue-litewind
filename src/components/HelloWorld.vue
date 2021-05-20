@@ -160,8 +160,9 @@
 
     {{ i }}
     {{ formattedDate }}
+    <v-button @click="i = [ '2021-05-14', '2021-05-15' ]">set d</v-button>
     <v-card card="default" class="p-2 mb-2" style="width: 320px">
-      <vDatePicker v-model="i" euro range no-range-selection adjecent-months></vDatePicker>
+      <vDatePicker v-model="i" euro range no-range-selection buttons adjecent-months></vDatePicker>
     </v-card>
     <v-card card="default" class="p-2" style="width: 320px">
       <vDatePicker
@@ -176,6 +177,7 @@
         v-model="i"
         @input:formatted="formattedDate = $event"
         euro
+        buttons
       ></vDatePicker>
     </v-card>
 
@@ -406,7 +408,7 @@ import { ref, onMounted } from "vue";
 import dataJSON from "./../MOCK_DATA (1).json";
 import vTabs from "./vTabs.vue"
 import vTab from "./vTab.vue"
-import vTable from './vTable.vue'
+// import vTable from './vTable.vue'
 // import {vTable} from "./index.js"
 import vDatePicker from "./vDatePicker.vue";
 import vCard from "./vCard.vue";
@@ -432,7 +434,7 @@ export default {
   components: {
     vTabs,
     vTab,
-    vTable,
+    // vTable,
     vDatePicker,
     vCard,
     vButton,

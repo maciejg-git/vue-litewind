@@ -61,11 +61,22 @@
     <div :class="classes.footer.value">
       {{ todayFormatted }}
     </div>
+    <div v-if="buttons" class="flex justify-between pt-2">
+      <v-button :button="secondaryButtonStyle">{{
+        secondaryButtonLabel
+      }}</v-button>
+      <v-button
+        :button="primaryButtonStyle"
+        @click="handlePrimaryButtonClick"
+        >{{ primaryButtonLabel }}</v-button
+      >
+    </div>
   </div>
 </template>
 
 <script>
-import { ref, reactive, computed, watch, getCurrentInstance } from "vue";
+import { ref, computed, watch, getCurrentInstance } from "vue";
+import vButton from "./vButton.vue";
 import useStyles from "../use-styles";
 import { pad, removeTailwindClasses } from "../tools.js";
 
@@ -88,6 +99,11 @@ export default {
     width: { type: String, default: undefined },
     adjecentMonths: { type: Boolean, default: false },
     noRangeSelection: { type: Boolean, default: false },
+    buttons: { type: Boolean, default: false },
+    secondaryButtonLabel: { type: String, default: "Cancel" },
+    primaryButtonLabel: { type: String, default: "OK" },
+    secondaryButtonStyle: { type: String, default: "default secondary small" },
+    primaryButtonStyle: { type: String, default: "default small" },
     name: { type: String, default: "datepicker" },
     datepicker: { type: String, default: "default" },
     button: { type: String, default: "default" },
@@ -96,6 +112,9 @@ export default {
     today: { type: String, default: "default" },
     adjecentMonthDay: { type: String, default: "default" },
     footer: { type: String, default: "default" },
+  },
+  components: {
+    vButton,
   },
   setup(props, { emit }) {
     let elements = [
@@ -156,12 +175,12 @@ export default {
     };
 
     let getDayClass = (date) => {
-      if (
-        !props.noRangeSelection &&
-        mouseOverRange.value &&
-        isRangeSelected(date)
-      )
-        return classes.daySelected.value;
+      // if (
+      //   !props.noRangeSelection &&
+      //   mouseOverRange.value &&
+      //   isRangeSelected(date)
+      // )
+      //   return classes.daySelected.value;
       if (isSelectedDay(date)) return classes.daySelected.value;
       if (isToday(date)) return classes.today.value;
       if (isDisabled(date)) return "text-gray-400";
@@ -175,7 +194,8 @@ export default {
     let month = ref(today.getMonth());
     let year = ref(today.getFullYear());
     let range = ref([]);
-    let model = [];
+    let single = ref("");
+    let rangeIndex = ref(0);
     let dateRegexp = /^\d\d\d\d-\d?\d-\d?\d$/;
     let isChanging = ref(false);
     let afterTransitionCall = null;
@@ -218,20 +238,20 @@ export default {
       () => props.modelValue,
       () => {
         let m = props.modelValue;
-        if (!m) {
-          model = [];
-          return;
-        }
+        if (!m) return;
         if (props.range) {
           if (m[0] && dateRegexp.test(m[0]) && m[1] && dateRegexp.test(m[1])) {
-            model = m.map((d) => new Date(parseDate(d)));
+            range.value = m.map((d) => new Date(parseDate(d)));
+            rangeIndex.value = 2;
+            month.value = range.value[1].getMonth();
+            year.value = range.value[1].getFullYear();
           }
         } else {
-          if (dateRegexp.test(m)) model[0] = new Date(parseDate(m));
-        }
-        if (model.length) {
-          month.value = model[props.range ? 1 : 0].getMonth();
-          year.value = model[props.range ? 1 : 0].getFullYear();
+          if (dateRegexp.test(m)) {
+            single.value = new Date(parseDate(m));
+            month.value = single.value.getMonth();
+            year.value = single.value.getFullYear();
+          }
         }
       }
     );
@@ -253,28 +273,42 @@ export default {
       return { i: [...Array(start).fill(""), ...i] };
     });
 
+    let emitSelection = (selected, formatted) => {
+      emit("update:modelValue", selected);
+      emit("input:formatted", formatted);
+      emit("state:done");
+    };
+
+    let emitSelectionRange = () => {
+      let from = dateToString(range.value[0]);
+      let to = dateToString(range.value[1]);
+      let formatted = [range.value[0], range.value[1]].map((i) =>
+        i.toLocaleDateString(props.locale, props.format)
+      );
+      emitSelection([from, to], formatted);
+    };
+
+    let emitSelectionSingle = () => {
+      let formatted = single.value.toLocaleDateString(
+        props.locale,
+        props.format
+      );
+      emitSelection(dateToString(single.value), formatted);
+    };
+
     let handleDayClick = function (date, index) {
       if (isDisabled(index)) return;
       if (props.range) {
-        range.value.push(new Date(date.getTime()));
-        if (range.value.length == 2) {
+        if (rangeIndex.value == 2) rangeIndex.value = 0;
+        range.value[rangeIndex.value] = new Date(date.getTime());
+        rangeIndex.value++;
+        if (rangeIndex.value == 2) {
           if (range.value[0] > range.value[1]) range.value.reverse();
-          let from = dateToString(range.value[0]);
-          let to = dateToString(range.value[1]);
-          let formattedRange = [range.value[0], range.value[1]].map((i) =>
-            i.toLocaleDateString(props.locale, props.format)
-          );
-          range.value.length = 0;
-          emit("update:modelValue", [from, to]);
-          emit("input:formatted", formattedRange);
-          emit("state:done");
+          if (!props.buttons) emitSelectionRange();
         }
       } else {
-        let d = new Date(date.getTime());
-        let formatted = d.toLocaleDateString(props.locale, props.format);
-        emit("update:modelValue", dateToString(d));
-        emit("input:formatted", formatted);
-        emit("state:done");
+        single.value = date;
+        if (!props.buttons) emitSelectionSingle();
       }
     };
 
@@ -293,6 +327,11 @@ export default {
       isChanging.value = false;
     };
 
+    let handlePrimaryButtonClick = () => {
+      if (props.range) emitSelectionRange();
+      else emitSelectionSingle();
+    };
+
     let setNextMonth = () =>
       ({ m: month.value, y: year.value } = nextMonth(month.value, year.value));
 
@@ -308,13 +347,12 @@ export default {
 
     let isSelectedDay = (date) => {
       if (!props.range) {
-        return model.length && model[0].getTime() == date.getTime();
+        return single.value && single.value.getTime() == date.getTime();
       } else {
-        if (range.value.length == 1) {
+        if (rangeIndex.value == 1) {
           return range.value[0].getTime() == date.getTime();
-        }
-        if (model.length != 2 || !date) return;
-        return model[0] <= date && date <= model[1];
+        } else if (rangeIndex.value == 2)
+          return range.value[0] <= date && date <= range.value[1];
       }
     };
 
@@ -355,6 +393,7 @@ export default {
       handleDayClick,
       handleClickNextMonth,
       handleClickPrevMonth,
+      handlePrimaryButtonClick,
       afterLeaveTransition,
       isChanging,
     };
