@@ -4,15 +4,15 @@
       <button
         class="btn-prev-double"
         :class="classes.button.value"
-        @click="prevYear"
+        @click="handleClickPrevYear"
       ></button>
       <button
         class="btn-prev"
         :class="classes.button.value"
         @click="handleClickPrevMonth"
       ></button>
-      <div class="col-span-2 text-sm font-bold">
-        <span class="align-middle"> {{ months[month] }} {{ year }} </span>
+      <div class="inline-block col-span-2 font-bold">
+          <span class="align-baseline"> {{ months[month] }} {{ year }} </span>
       </div>
       <button
         class="btn-next"
@@ -22,7 +22,7 @@
       <button
         class="btn-next-double"
         :class="classes.button.value"
-        @click="nextYear"
+        @click="handleClickNextYear"
       ></button>
     </div>
     <div class="grid grid-cols-7 mb-2">
@@ -30,7 +30,7 @@
         {{ day }}
       </div>
     </div>
-    <transition name="fade" @after-leave="afterLeaveTransition">
+    <transition :name="transition" @after-leave="afterLeaveTransition">
       <div v-if="!isChanging" class="grid grid-cols-7 mb-2 relative">
         <template v-if="adjecentMonths">
           <div v-for="(day, index) in daysList.prevMonthDays" :key="index">
@@ -62,9 +62,11 @@
       {{ todayFormatted }}
     </div>
     <div v-if="buttons" class="flex justify-between pt-2">
-      <v-button :button="secondaryButtonStyle">{{
-        secondaryButtonLabel
-      }}</v-button>
+      <v-button
+        :button="secondaryButtonStyle"
+        @click="handleSecondaryButtonClick"
+        >{{ secondaryButtonLabel }}</v-button
+      >
       <v-button
         :button="primaryButtonStyle"
         @click="handlePrimaryButtonClick"
@@ -102,9 +104,16 @@ export default {
     buttons: { type: Boolean, default: false },
     secondaryButtonLabel: { type: String, default: "Cancel" },
     primaryButtonLabel: { type: String, default: "OK" },
-    secondaryButtonStyle: { type: String, default: "default secondary small" },
-    primaryButtonStyle: { type: String, default: "default small" },
+    secondaryButtonStyle: {
+      type: String,
+      default: "default secondary small noMargin",
+    },
+    primaryButtonStyle: {
+      type: String,
+      default: "default primary small noMargin",
+    },
     name: { type: String, default: "datepicker" },
+    transition: { type: String, default: "fade" },
     datepicker: { type: String, default: "default" },
     button: { type: String, default: "default" },
     day: { type: String, default: "default" },
@@ -175,19 +184,22 @@ export default {
     };
 
     let getDayClass = (date) => {
-      // if (
-      //   !props.noRangeSelection &&
-      //   mouseOverRange.value &&
-      //   isRangeSelected(date)
-      // )
-      //   return classes.daySelected.value;
+      if (
+        !props.noRangeSelection &&
+        mouseOverRange.value &&
+        isRangeSelected(date)
+      )
+        return classes.daySelected.value;
       if (isSelectedDay(date)) return classes.daySelected.value;
       if (isToday(date)) return classes.today.value;
       if (isDisabled(date)) return "text-gray-400";
       return classes.day.value;
     };
 
-    let daysMonth = Array.from({ length: 31 }, (v, i) => i + 1);
+    let isChanging = ref(false);
+    let afterTransitionCall = null;
+    let transition = ref("");
+
     let today = new Date();
     today.setHours(0, 0, 0, 0);
 
@@ -195,10 +207,8 @@ export default {
     let year = ref(today.getFullYear());
     let range = ref([]);
     let single = ref("");
-    let rangeIndex = ref(0);
+    let rangeState = ref(0);
     let dateRegexp = /^\d\d\d\d-\d?\d-\d?\d$/;
-    let isChanging = ref(false);
-    let afterTransitionCall = null;
     let mouseOverRange = ref(null);
 
     let getCountDaysInMonth = (y, m) => 32 - new Date(y, m, 32).getDate();
@@ -217,6 +227,8 @@ export default {
 
     let nextMonth = (m, y) =>
       m + 1 > 11 ? { m: 0, y: y + 1 } : { m: m + 1, y };
+
+    let daysMonth = Array.from({ length: 31 }, (v, i) => i + 1);
 
     let months = computed(() => {
       return Array.from({ length: 12 }, (v, i) =>
@@ -242,7 +254,7 @@ export default {
         if (props.range) {
           if (m[0] && dateRegexp.test(m[0]) && m[1] && dateRegexp.test(m[1])) {
             range.value = m.map((d) => new Date(parseDate(d)));
-            rangeIndex.value = 2;
+            rangeState.value = 2;
             month.value = range.value[1].getMonth();
             year.value = range.value[1].getFullYear();
           }
@@ -296,13 +308,17 @@ export default {
       emitSelection(dateToString(single.value), formatted);
     };
 
+    let addRangeDate = (d) => {
+      if (rangeState.value == 2) rangeState.value = 0;
+      range.value[rangeState.value] = new Date(d.getTime());
+      rangeState.value++;
+    };
+
     let handleDayClick = function (date, index) {
       if (isDisabled(index)) return;
       if (props.range) {
-        if (rangeIndex.value == 2) rangeIndex.value = 0;
-        range.value[rangeIndex.value] = new Date(date.getTime());
-        rangeIndex.value++;
-        if (rangeIndex.value == 2) {
+        addRangeDate(date);
+        if (rangeState.value == 2) {
           if (range.value[0] > range.value[1]) range.value.reverse();
           if (!props.buttons) emitSelectionRange();
         }
@@ -312,14 +328,31 @@ export default {
       }
     };
 
+    let getTransition = (d) =>
+      props.transition == "slide" ? "slide-" + d : props.transition;
+
     let handleClickNextMonth = () => {
       isChanging.value = true;
+      transition.value = getTransition("next");
       afterTransitionCall = setNextMonth;
     };
 
     let handleClickPrevMonth = () => {
       isChanging.value = true;
+      transition.value = getTransition("prev");
       afterTransitionCall = setPrevMonth;
+    };
+
+    let handleClickNextYear = () => {
+      isChanging.value = true;
+      transition.value = getTransition("next");
+      afterTransitionCall = nextYear;
+    };
+
+    let handleClickPrevYear = () => {
+      isChanging.value = true;
+      transition.value = getTransition("prev");
+      afterTransitionCall = prevYear;
     };
 
     let afterLeaveTransition = () => {
@@ -328,8 +361,13 @@ export default {
     };
 
     let handlePrimaryButtonClick = () => {
-      if (props.range) emitSelectionRange();
-      else emitSelectionSingle();
+      if (props.range) {
+        if (rangeState.value == 2) emitSelectionRange();
+      } else emitSelectionSingle();
+    };
+
+    let handleSecondaryButtonClick = () => {
+      emit("state:cancel");
     };
 
     let setNextMonth = () =>
@@ -349,9 +387,9 @@ export default {
       if (!props.range) {
         return single.value && single.value.getTime() == date.getTime();
       } else {
-        if (rangeIndex.value == 1) {
+        if (rangeState.value == 1) {
           return range.value[0].getTime() == date.getTime();
-        } else if (rangeIndex.value == 2)
+        } else if (rangeState.value == 2)
           return range.value[0] <= date && date <= range.value[1];
       }
     };
@@ -365,12 +403,10 @@ export default {
     };
 
     let isFirstSelectedDay = (date) => {
-      if (model.length != 2 || !date) return;
       return model[0].getTime() == date.getTime();
     };
 
     let isLastSelectedDay = (date) => {
-      if (model.length != 2 || !date) return;
       return model[1].getTime() == date.getTime();
     };
 
@@ -393,9 +429,13 @@ export default {
       handleDayClick,
       handleClickNextMonth,
       handleClickPrevMonth,
+      handleClickNextYear,
+      handleClickPrevYear,
       handlePrimaryButtonClick,
+      handleSecondaryButtonClick,
       afterLeaveTransition,
       isChanging,
+      transition,
     };
   },
 };
@@ -421,7 +461,7 @@ export default {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.2s ease;
+  transition: opacity 0.1s ease;
 }
 .fade-enter-from {
   opacity: 0;
@@ -430,14 +470,25 @@ export default {
   opacity: 0;
 }
 
-.slide-enter-active,
-.slide-leave-active {
-  transition: transform 0.2s ease;
+.slide-prev-enter-active,
+.slide-prev-leave-active {
+  transition: transform 0.1s ease;
 }
-.slide-enter-from {
+.slide-prev-enter-from {
   transform: translateX(-100%);
 }
-.slide-leave-to {
+.slide-prev-leave-to {
   transform: translateX(100%);
+}
+
+.slide-next-enter-active,
+.slide-next-leave-active {
+  transition: transform 0.1s ease;
+}
+.slide-next-enter-from {
+  transform: translateX(100%);
+}
+.slide-next-leave-to {
+  transform: translateX(-100%);
 }
 </style>

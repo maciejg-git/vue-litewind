@@ -1,5 +1,5 @@
 <template>
-  <transition :name="left ? 'fade-side-panel-left' : 'fade-side-panel'">
+  <transition :name="left ? 'fade-slide-left' : 'fade-slide'">
     <div
       v-show="isShow"
       :class="classes.sidepanel.value"
@@ -102,21 +102,21 @@ export default {
   /* -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5); */
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
 }
-.fade-side-panel-enter-active,
-.fade-side-panel-leave-active {
+.fade-slide-enter-active,
+.fade-slide-leave-active {
   transition: all 0.3s ease;
 }
-.fade-side-panel-enter-from,
-.fade-side-panel-leave-to {
+.fade-slide-enter-from,
+.fade-slide-leave-to {
   opacity: 0;
   transform: translateX(20px);
 }
-.fade-side-panel-left-enter-active,
-.fade-side-panel-left-leave-active {
+.fade-slide-left-enter-active,
+.fade-slide-left-leave-active {
   transition: all 0.3s ease;
 }
-.fade-side-panel-left-enter-from,
-.fade-side-panel-left-leave-to {
+.fade-slide-left-enter-from,
+.fade-slide-left-leave-to {
   opacity: 0;
   transform: translateX(-20px);
 }

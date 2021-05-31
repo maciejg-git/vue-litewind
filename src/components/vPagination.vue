@@ -133,6 +133,7 @@ export default {
     };
 
     let handleClickPage = function (p) {
+      if (p == "...") return;
       currentPage.value = p;
       emit("update:modelValue", currentPage.value);
     };

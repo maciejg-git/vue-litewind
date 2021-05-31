@@ -1,6 +1,6 @@
 <template>
   <div class="inline-block">
-    <div ref="activator" class="inline-block" @click.stop="toggle">
+    <div ref="activator" class="inline-block" @mouseup="toggle">
       <slot name="activator" :toggle="toggle" :show="show" :hide="hide"></slot>
     </div>
     <transition :name="transition">
@@ -51,25 +51,25 @@ export default {
 
     let { styles } = useStyles(getCurrentInstance(), props, elements);
 
-    let fixedClass = {
+    let fixedClasses = {
       item: ["block", "px-4", "py-2"],
     };
 
     let classesItem = {
       item: computed(() => {
-        let c = [...fixedClass.item, ...styles.menuItem.value];
+        let c = [...fixedClasses.item, ...styles.menuItem.value];
         return removeTailwindClasses(c);
       }),
       itemActive: computed(() => {
-        let c = [...fixedClass.item, ...styles.menuItemActive.value];
+        let c = [...fixedClasses.item, ...styles.menuItemActive.value];
         return removeTailwindClasses(c);
       }),
       itemDisabled: computed(() => {
-        let c = [...fixedClass.item, ...styles.menuItemDisabled.value];
+        let c = [...fixedClasses.item, ...styles.menuItemDisabled.value];
         return removeTailwindClasses(c);
       }),
       itemHeader: computed(() => {
-        let c = [...fixedClass.item, ...styles.menuItemHeader.value];
+        let c = [...fixedClasses.item, ...styles.menuItemHeader.value];
         return removeTailwindClasses(c);
       }),
     };
@@ -119,14 +119,16 @@ export default {
 
     let show = function () {
       isShow.value = true;
-      document.body.addEventListener("click", clickOutside);
+      setTimeout(() => {
+        document.body.addEventListener("mouseup", clickOutside);
+      }, 0);
       popper.update();
       emit("state:opened");
     };
 
     let hide = function () {
       isShow.value = false;
-      document.body.removeEventListener("click", clickOutside);
+      document.body.removeEventListener("mouseup", clickOutside);
       emit("state:closed");
     };
 

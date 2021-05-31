@@ -208,10 +208,29 @@
             <vDatePicker
               v-model="i"
               euro
+              buttons
               @input:formatted="formattedDate = $event"
               width="320px"
             ></vDatePicker>
           </div>
+        </v-card>
+      </template>
+    </v-dropdown>
+
+    <v-dropdown transition="fade">
+      <template #activator>
+        <v-button>Dropdown</v-button>
+      </template>
+      <template #default="{ hide }">
+        <v-card card="default shadow" class="p-2">
+            <vDatePicker
+              v-model="i"
+              euro
+              buttons
+              adjecent-months
+              @input:formatted="formattedDate = $event"
+              width="320px"
+            ></vDatePicker>
         </v-card>
       </template>
     </v-dropdown>
@@ -400,6 +419,10 @@
     <br />
 
     input, documentation, tailwind map do for do object
+      <div class="">
+        <span class="align-top"> align </span>
+        <span class="align-middle"> align </span>
+      </div>
   </div>
 </template>
 

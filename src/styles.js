@@ -1,4 +1,4 @@
-let shadow = true;
+let shadow = false;
 
 // BUTTON
 
@@ -30,12 +30,16 @@ let button = {
       "bg-indigo-500",
       "hover:bg-indigo-600",
       "focus:ring-indigo-200",
+      "border-0",
+      "border-indigo-500",
     ],
     secondary: [
       ...fixedButton,
       "bg-gray-500",
       "hover:bg-gray-600",
       "focus:ring-gray-200",
+      "border-0",
+      "border-gray-500",
     ],
     small: ["py-1"],
     tiny: [
@@ -206,7 +210,7 @@ let modal = {
       "leading-6", 
       "font-medium", 
       "px-10", 
-      "pt-8", 
+      "pt-10", 
     ]
   },
   content: {
