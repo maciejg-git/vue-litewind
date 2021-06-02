@@ -3,26 +3,23 @@
   <p>Table component</p>
 
   <section>
-    <h5>Example</h5>
-    <p></p>
-    <v-table :items="dataSmall" :definition="definition"></v-table>
-    <pre>
-      <code>
-{{`<v-table 
-  :items="data" 
-  :definition="definition"
->
-</v-table>`}}
-      </code>
-    </pre>
-  </section>
-
-  <section>
     <h5>Reference</h5>
     <p></p>
-    <v-table :items="reference" :definition="referenceDefinition" table="default fixed">
-      <template #cell:type="{ value }"><code class="text-sm bg-gray-100 rounded p-1">{{ value }}</code></template>
-      <template #cell:description="{ value }"><span v-html="value"></span></template>
+    <v-table
+      :items="reference"
+      :definition="referenceDefinition"
+      table="default fixed"
+      header-cell="default bordered"
+      cell="default bordered"
+    >
+      <template #cell:type="{ value }"
+        ><code class="code-word">{{
+          value
+        }}</code></template
+      >
+      <template #cell:description="{ value }"
+        ><span v-html="value"></span
+      ></template>
     </v-table>
   </section>
 
@@ -42,12 +39,9 @@
   <section>
     <h5>Definition</h5>
     <span class="fw-bold">Type</span>: <code>Array</code>
-    <p>Table definition is an <span class="fw-bold">optional</span> <code>Array</code> of <code>Objects</code> that defines look and behavior of the table. If definition prop is not set compoment internally uses items prop to define shape of table, however more advaced features like sorting, reordering or customized labels will not be available. Each <code>Object</code> of definition <code>Array</code> has <code>key</code> property and any of optional properties to customize column. Key is either existing property of data record or new property. New properties apear as additional columns and their content can be set either by use of functions or slots. Keys may apear in any order that defines order of columns in table. Optional properties are: <br>
-        <span class='fw-bold'>sortable</span>: allows sorting by this key. Default: false<br>
-        <span class='fw-bold'>filterable</span>: allows filtering by this key. Default: true<br>
-        <span class='fw-bold'>visible</span>: sets visibility of column.  Default: true<br>
-        <span class='fw-bold'>class</span>: user defined function that should return string of space separated classes to apply to cell, takes 3 arguments: key, value and item.<br>
-        <span class='fw-bold'>f</span>: value returned by this function is set as content of the cell, takes 3 arguments: key, value and item.</p>
+    <p>
+      Table definition is an optional <code>Array</code> of <code>Objects</code> that defines look and behavior of the table. Each object represents one column.
+    </p>
     <pre>
       <code>
 {{`let definition = ref([
@@ -76,121 +70,55 @@
 ]);`}}
     </code>
   </pre>
+        <p>
+        In the above example:
+        <ul>
+          <li>
+            <span class="font-bold">key</span>: key is either existing property of data record or new property. New properties apear as additional columns and their content can be set either by use of functions or slots.
+          </li>
+        <li><span class="font-bold">label</span>: sets label for this column. If not present label is the same as key converted to Header Case (String, optional, default: undefined)</li>
+        <li><span class="font-bold">sortable</span>: enables sorting column (Boolean, optional, default: false) </li>
+        <li><span class="font-bold">filterable</span>: enables filtering content of column  (Boolean, optional, default: false))</li>
+        <li><span class="font-bold">visible</span>: toggles visiblity of columns  (Boolean, optional, default: false)</li>
+        <li><span class="font-bold">class</span>: function that should return string of space separated classes to apply to cell, takes 3 arguments: key, value and item  (Function, optional, default: undefined)</li>
+        <li><span class="font-bold">f</span>: value returned by this function is set as content of the cell, takes 3 arguments: key, value and item  (Function, optional, default: undefined)</li>
+        <li><span class="font-bold">filterByFunction</span>: if true filter content of column using function f. (Function, optional, default: undefined)</li>
+        <li><span class="font-bold">sortByFunction</span>: if true sort content of column using function f. (Function, optional, default: undefined)</li>
+        </ul>
+        </p>
   </section>
 
   <section>
-    <h5>Filter</h5>
-    <span class="fw-bold">Type</span>: <code>String</code>
-    <p></p>
-    <div class="example">
-    <input type="text" placeholder="Filter" v-model="filter.filter" class="form-control w-25" />
-      <v-table :items="data" :definition="definition" :filter="filter.filter"></v-table>
-    </div>
-    <pre>
-      <code>
-{{`<input 
-  type="text" 
-  placeholder="Filter"
-  v-model="filter"
-  class="form-control w-25"
-/>
-<v-table
-  :items="data"
-  :definition="definition" 
-  :filter="filter"
->
-</v-table>`}}
-      </code>
-    </pre>
-  </section>
-
-  <section>
-    <h5>Page, Items-per-page</h5>
+    <h5>Example</h5>
     <span class="fw-bold">Type</span>: <code>Number</code>
-    <p>Items-per-page prop control number of records displayed per page. Page prop is number of currently displayed page.</p>
+    <p>
+    </p>
     <div class="example">
-      <v-table :items="dataLong" :definition="definition" :page="pagination.page" :items-per-page="pagination.itemsPerPage" @update:itemsCount="pagination.itemsCount = $event"></v-table>
-      <v-pagination v-model="pagination.page" :items-count="pagination.itemsCount" :items-per-page="pagination.itemsPerPage" :class-wrapper="pagination.wrapper"
-        :class-page-active="pagination.active" 
-        :class-page="pagination.page"
-        :class-next="pagination.next"></v-pagination>
+      <input
+        type="text"
+        placeholder="Filter"
+        v-model="filter.filter"
+        class="form-control w-25"
+      />
+      <v-table
+        :items="dataLong"
+        :definition="definition"
+        :filter="filter.filter"
+        :page="pagination.page"
+        :items-per-page="pagination.itemsPerPage"
+        @update:filtered-count="pagination.itemsCount = $event"
+      ></v-table>
+      <v-pagination
+        v-model="pagination.page"
+        :items-count="pagination.itemsCount"
+        :items-per-page="pagination.itemsPerPage"
+        icons
+      ></v-pagination>
     </div>
     <pre>
       <code>
       </code>
     </pre>
-  </section>
-
-  <section>
-    <h5>Visual props</h5>
-    <span class="fw-bold">Type</span>: <code>Boolean</code>
-    <p>Set of visual only props based on Bootstrap table classes.</p>
-    <div class="example">
-      <div class="mb-3">
-        <div class="form-check form-check-inline">
-          <input v-model="visualProps.striped" class="form-check-input" type="checkbox" id="striped">
-          <label class="form-check-label" for="striped">
-            Striped
-          </label>
-        </div>
-        <div class="form-check form-check-inline ms-2">
-          <input v-model="visualProps.hover" class="form-check-input" type="checkbox" id="striped">
-          <label class="form-check-label" for="striped">
-            Hover
-          </label>
-        </div>
-        <div class="form-check form-check-inline ms-2">
-          <input v-model="visualProps.bordered" class="form-check-input" type="checkbox" id="striped">
-          <label class="form-check-label" for="striped">
-            Bordered
-          </label>
-        </div>
-        <div class="form-check form-check-inline ms-2">
-          <input v-model="visualProps.borderless" class="form-check-input" type="checkbox" id="striped">
-          <label class="form-check-label" for="striped">
-            Borderless
-          </label>
-        </div>
-        <div class="form-check form-check-inline ms-2">
-          <input v-model="visualProps.small" class="form-check-input" type="checkbox" id="striped">
-          <label class="form-check-label" for="striped">
-            Small
-          </label>
-        </div>
-        <div class="form-check form-check-inline ms-2">
-          <input v-model="visualProps.headerDark" class="form-check-input" type="checkbox" id="striped">
-          <label class="form-check-label" for="striped">
-            Header dark
-          </label>
-        </div>
-        <div class="form-check form-check-inline ms-2">
-          <input v-model="visualProps.headerLight" class="form-check-input" type="checkbox" id="striped">
-          <label class="form-check-label" for="striped">
-            Header light
-          </label>
-        </div>
-        <div class="form-check form-check-inline ms-2">
-          <input v-model="visualProps.captionTop" class="form-check-input" type="checkbox" id="striped">
-          <label class="form-check-label" for="striped">
-            Caption on top
-          </label>
-        </div>
-      </div>
-      <v-table 
-        :items="dataSmall" 
-        :definition="definition"
-        :striped="visualProps.striped"
-        :hover-row="visualProps.hover"
-        :bordered="visualProps.bordered"
-        :borderless="visualProps.borderless"
-        :small="visualProps.small"
-        :header-dark="visualProps.headerLight"
-        :header-light="visualProps.headerDark"
-        :caption-top="visualProps.captionTop"
-      >
-        <template #caption>Example table</template>
-      </v-table>
-    </div>
   </section>
 
   <section>
@@ -198,18 +126,44 @@
     <span class="fw-bold">Type</span>: <code>String</code>
     <p></p>
     <div class="example">
-      <input type="text" placeholder="Filter" v-model="filter.transition" class="form-control w-25" />
+      <input
+        type="text"
+        placeholder="Filter"
+        v-model="filter.transition"
+        class="form-control w-25"
+      />
       <div class="my-3">
         <div class="form-check form-check-inline">
-          <input v-model="transition" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="fade-slide">
+          <input
+            v-model="transition"
+            class="form-check-input"
+            type="radio"
+            name="inlineRadioOptions"
+            id="inlineRadio1"
+            value="fade-slide"
+          />
           <label class="form-check-label" for="inlineRadio1">fade-slide</label>
         </div>
         <div class="form-check form-check-inline">
-          <input v-model="transition" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="">
-          <label class="form-check-label" for="inlineRadio2">no transition</label>
+          <input
+            v-model="transition"
+            class="form-check-input"
+            type="radio"
+            name="inlineRadioOptions"
+            id="inlineRadio2"
+            value=""
+          />
+          <label class="form-check-label" for="inlineRadio2"
+            >no transition</label
+          >
         </div>
       </div>
-      <v-table :items="data" :definition="definition" :filter="filter.transition" :transition="transition"></v-table>
+      <v-table
+        :items="data"
+        :definition="definition"
+        :filter="filter.transition"
+        :transition="transition"
+      ></v-table>
     </div>
     <pre>
       <code>
@@ -223,8 +177,9 @@
 import { ref, reactive, onMounted } from "vue";
 import vTable from "../vTable.vue";
 
-import vPagination from "../vPagination.vue"
-import vButton from "../vButton.vue"
+import vPagination from "../vPagination.vue";
+import vButton from "../vButton.vue";
+import vBadge from "../vBadge.vue";
 
 import hljs from "highlight.js";
 import "highlight.js/styles/default.css";
@@ -235,6 +190,7 @@ export default {
     vTable,
     vPagination,
     vButton,
+    vBadge,
   },
   setup(props) {
     let dataSmall = ref(dataJSON.slice(0, 5));
@@ -246,14 +202,14 @@ export default {
       },
       {
         key: "first_name",
-        sortable: true,
+        // sortable: true,
       },
       {
         key: "last_name",
       },
       {
         key: "email",
-        sortable: true,
+        // sortable: true,
       },
       {
         key: "city",
@@ -281,39 +237,53 @@ export default {
       headerDark: false,
       headerLight: false,
       captionTop: false,
-    })
+    });
 
     let page = ref(1);
     let itemsPerPage = ref(10);
-    let transition = ref("fade-slide")
+    let transition = ref("fade-slide");
     let pagination = reactive({
       page: 1,
       itemsCount: 0,
       itemsPerPage: 10,
-    })
+    });
 
     let reference = ref([
       {
         prop: "items",
         type: "Array",
-        description: "Data to display in table. Each element of Array is an Object. Single Object is one record (row) of data.",
+        description:
+          "Data to display in table. Each element of Array is an Object. Single Object is one record (row) of data.",
       },
       {
         prop: "definition",
         type: "Array",
-        description:
-        `Table definition is an <span class="fw-bold">optional</span> <code>Array</code> of <code>Objects</code> that defines look and behavior of the table.
-        Each <code>Object</code> of definition <code>Array</code> has one <code>key</code> property and defines one column of the table. Key is either existing property of data record or new property. New properties apear as additional columns and their content can be set either by use of functions or slots. Objects can have additional properties: <br>
-        <span class='fw-bold'>sortable</span>: allows sorting by this key. Default: false<br>
-        <span class='fw-bold'>filterable</span>: allows filtering by this key. Default: true<br>
-        <span class='fw-bold'>visible</span>: sets visibility of column.  Default: true<br>
-        <span class='fw-bold'>class</span>: user defined function that should return string of space separated classes to apply to cell, takes 3 arguments: key, value and item.<br>
-        <span class='fw-bold'>f</span>: value returned by this function is set as content of the cell, takes 3 arguments: key, value and item.`,
+        description: `Table definition is an optional <code>Array</code> of <code>Objects</code> that defines look and behavior of the table.`,
       },
       {
         prop: "filter",
         type: "String",
         description: "String to filter array content.",
+      },
+      {
+        prop: "locale",
+        type: "String",
+        description: "Locale used for sorting.",
+      },
+      {
+        prop: "name",
+        type: "String",
+        description: "Used only to select non default styles defined in styles.js",
+      },
+      {
+        prop: "busy",
+        type: "Boolean",
+        description: "When true renders table in busy (faded) state.",
+      },
+      {
+        prop: "selection-mode",
+        type: "String",
+        description: "Valid values are single (allows selection single row only), multiple (allows multiple rows to be selected) or empty string (disables selection).",
       },
       {
         prop: "page",
@@ -328,7 +298,8 @@ export default {
       {
         prop: "caption-top",
         type: "Boolean",
-        description: "Display caption on top. Set caption text in caption slot.",
+        description:
+          "Display caption on top. Set caption text in caption slot.",
       },
       {
         prop: "empty-text",
@@ -352,7 +323,7 @@ export default {
       {
         key: "prop",
         sortable: true,
-        class: () => 'whitespace-nowrap',
+        class: () => "whitespace-nowrap",
       },
       {
         key: "type",
@@ -392,7 +363,12 @@ h3 {
   @apply text-3xl;
   @apply font-semibold;
 }
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin-top: 2em;
 }
 p {
@@ -403,5 +379,8 @@ p {
 }
 .example {
   margin-top: 2em;
+}
+.code-word {
+  @apply text-sm bg-indigo-200 rounded p-1;
 }
 </style>

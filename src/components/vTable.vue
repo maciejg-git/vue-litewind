@@ -80,7 +80,7 @@
 </template>
 
 <script>
-import { ref, computed, watch, onMounted, getCurrentInstance } from "vue";
+import { ref, computed, watch, getCurrentInstance } from "vue";
 import useStyles from "../use-styles";
 import {
   formatCase,
@@ -109,7 +109,7 @@ export default {
     busy: { type: Boolean, default: false },
     selectionMode: { type: String, default: "" },
     name: { type: String, default: "table" },
-    table: { type: String, default: "default" },
+    table: { type: String, default: "table" },
     headerRow: { type: String, default: "default" },
     headerCell: { type: String, default: "default" },
     row: { type: String, default: "default" },
@@ -213,7 +213,7 @@ export default {
       itemsFiltered,
       () => {
         emit("update:page", 1);
-        emit("update:itemsFilteredCount", itemsFiltered.value.length);
+        emit("update:filtered-count", itemsFiltered.value.length);
       },
       { immediate: true }
     );
@@ -265,18 +265,20 @@ export default {
 
     let itemsSelected = ref({});
 
-    let resetSelection = () => (itemsSelected.value = {});
-
     let unselectRow = (i) => delete itemsSelected.value[i];
+
+    let resetSelection = () => {
+      for (let p of Object.keys(itemsSelected.value)) unselectRow(p);
+    };
 
     let isValidSelectionMode = () =>
       props.selectionMode == "single" || props.selectionMode == "multiple";
 
     let selectRow = (i) => (itemsSelected.value[i] = itemsPagination.value[i]);
 
-    watch(itemsSelected.value, () =>
-      emit("update:tableSelection", Object.values(itemsSelected.value))
-    );
+    watch(itemsSelected.value, () => {
+      emit("input:selection", Object.values(itemsSelected.value));
+    });
 
     // HANDLE TEMPLATE EVENTS
 

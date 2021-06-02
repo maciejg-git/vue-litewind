@@ -53,7 +53,7 @@
           :filter="filter"
           :itemsPerPage="itemsPerPage"
           :page="page"
-          @update:itemsFilteredCount="tableItemsCount = $event"
+          @update:filtered-count="tableItemsCount = $event"
           @update:page="page = $event"
           caption-top
         >
@@ -93,9 +93,9 @@
         :page="page"
         :busy="busy"
         table="default fixed"
-        selection-mode="multiple"
-        @update:tableSelection="tableSelection = $event"
-        @update:itemsFilteredCount="tableItemsCount = $event"
+        selection-mode="single"
+        @input:selection="tableSelection = $event"
+        @update:filtered-count="tableItemsCount = $event"
         @update:page="page = $event"
       >
       <!-- <template #busy><v-spinner></v-spinner></template> -->

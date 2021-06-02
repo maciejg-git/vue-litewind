@@ -110,9 +110,12 @@ let table = {
   headerCell: {
     default: [
       "border-b",
-      "border-gray-400",
+      "border-gray-300",
       "py-2",
       "px-2",
+    ],
+    bordered: [
+      "border",
     ],
     dark: [
       "bg-gray-700",
@@ -130,6 +133,14 @@ let table = {
   cell: {
     default: [
       // "border",
+      "border-t",
+      "border-gray-300",
+      "py-2",
+      "px-2",
+      "pr-6",
+    ],
+    bordered: [
+      "border",
       "border-t",
       "border-gray-300",
       "py-2",
@@ -413,6 +424,15 @@ let badge = {
       "mx-2",
     ],
     primary: [
+      "bg-indigo-500",
+      "text-white",
+      "rounded-md",
+      "font-bold",
+      "p-2",
+      "px-3",
+      "mx-2",
+    ],
+    secondary: [
       "bg-indigo-500",
       "text-white",
       "rounded-md",

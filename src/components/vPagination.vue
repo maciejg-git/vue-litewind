@@ -32,7 +32,7 @@ import { clamp, removeTailwindClasses } from "../tools.js";
 
 export default {
   props: {
-    modelValue: Number,
+    modelValue: { type: Number, default: undefined},
     itemsCount: { type: Number, default: undefined },
     itemsPerPage: { type: Number, default: undefined },
     maxPages: { type: Number, default: undefined },

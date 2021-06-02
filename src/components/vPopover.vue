@@ -2,6 +2,7 @@
   <div
     v-if="slots.activator"
     ref="triggerElementBySlot"
+    class="inline-block"
     @[trigger.on]="show"
     @[trigger.off]="hide"
     @[trigger.toggle].stop="toggle($event)"
