@@ -26,16 +26,16 @@
 </template>
 
 <script>
-import { ref, computed, getCurrentInstance } from "vue";
+import { ref, computed, watch, getCurrentInstance } from "vue";
 import useStyles from "../use-styles";
 import { clamp, removeTailwindClasses } from "../tools.js";
 
 export default {
   props: {
-    modelValue: { type: Number, default: undefined},
-    itemsCount: { type: Number, default: undefined },
-    itemsPerPage: { type: Number, default: undefined },
-    maxPages: { type: Number, default: undefined },
+    modelValue: { type: Number, default: undefined },
+    itemsCount: { type: [Number, String], default: undefined },
+    itemsPerPage: { type: [Number, String], default: undefined },
+    maxPages: { type: [Number, String], default: undefined },
     icons: { type: Boolean, default: false },
     name: { type: String, default: "pagination" },
     pagainationBar: { type: [String, Array], default: "default" },
@@ -101,6 +101,14 @@ export default {
     };
 
     let currentPage = ref(1);
+
+    watch(
+      () => props.modelValue,
+      () =>
+        (currentPage.value =
+          typeof props.modelValue === "number" && props.modelValue),
+      { immediate: true }
+    );
 
     let pagesCount = computed(() =>
       Math.ceil(props.itemsCount / props.itemsPerPage)

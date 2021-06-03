@@ -150,7 +150,7 @@ let table = {
   },
   caption: {
     default: [
-      "text-gray-700",
+      "text-gray-600",
       "text-left",
     ]
   }
@@ -490,10 +490,10 @@ let pagination = {
   pageActive: {
     default: [
       ...fixedPage,
-      "bg-blue-500",
-      "hover:bg-blue-600",
+      "bg-indigo-500",
+      "hover:bg-indigo-600",
       "text-white",
-      "border-blue-500",
+      "border-indigo-500",
       // "ring-blue-300",
       // "ring-2",
       "font-semibold",

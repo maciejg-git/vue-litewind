@@ -1,6 +1,6 @@
 <template>
   <h3>Table</h3>
-  <p>Table component</p>
+  <p class="text-xl font-light">Table component</p>
 
   <section>
     <h5>Reference</h5>
@@ -13,10 +13,9 @@
       cell="default bordered"
     >
       <template #cell:type="{ value }"
-        ><code class="code-word">{{
+        ><code class="code-word mx-1">{{
           value
-        }}</code></template
-      >
+        }}</code></template>
       <template #cell:description="{ value }"
         ><span v-html="value"></span
       ></template>
@@ -38,7 +37,7 @@
 
   <section>
     <h5>Definition</h5>
-    <span class="fw-bold">Type</span>: <code>Array</code>
+    <span class="font-bold">Type</span>: <code class="code-word">Array</code>
     <p>
       Table definition is an optional <code>Array</code> of <code>Objects</code> that defines look and behavior of the table. Each object represents one column.
     </p>
@@ -80,25 +79,22 @@
         <li><span class="font-bold">sortable</span>: enables sorting column (Boolean, optional, default: false) </li>
         <li><span class="font-bold">filterable</span>: enables filtering content of column  (Boolean, optional, default: false))</li>
         <li><span class="font-bold">visible</span>: toggles visiblity of columns  (Boolean, optional, default: false)</li>
-        <li><span class="font-bold">class</span>: function that should return string of space separated classes to apply to cell, takes 3 arguments: key, value and item  (Function, optional, default: undefined)</li>
-        <li><span class="font-bold">f</span>: value returned by this function is set as content of the cell, takes 3 arguments: key, value and item  (Function, optional, default: undefined)</li>
-        <li><span class="font-bold">filterByFunction</span>: if true filter content of column using function f. (Function, optional, default: undefined)</li>
-        <li><span class="font-bold">sortByFunction</span>: if true sort content of column using function f. (Function, optional, default: undefined)</li>
+        <li><span class="font-bold">class</span>: function that should return string of space separated classes to apply to each cell in column. Takes 3 arguments: key, value and item  (Function, optional, default: undefined)</li>
+        <li><span class="font-bold">f</span>: value returned by this function is displayed in the cell. Takes 3 arguments: key, value and item  (Function, optional, default: undefined)</li>
+        <li><span class="font-bold">filterByFunction</span>: if true filter content of column using value returned from function f. If false use value from items prop (Boolean, optional, default: undefined)</li>
+        <li><span class="font-bold">sortByFunction</span>: if true sort content of column using value returned from function f. If false use value from items prop (Boolean, optional, default: undefined)</li>
         </ul>
         </p>
   </section>
 
   <section>
     <h5>Example</h5>
-    <span class="fw-bold">Type</span>: <code>Number</code>
-    <p>
-    </p>
     <div class="example">
       <input
         type="text"
         placeholder="Filter"
         v-model="filter.filter"
-        class="form-control w-25"
+        class="rounded border-gray-300 focus:border-gray-400 focus:ring focus:ring-indigo-200 my-5 py-1"
       />
       <v-table
         :items="dataLong"
@@ -107,13 +103,33 @@
         :page="pagination.page"
         :items-per-page="pagination.itemsPerPage"
         @update:filtered-count="pagination.itemsCount = $event"
-      ></v-table>
-      <v-pagination
-        v-model="pagination.page"
-        :items-count="pagination.itemsCount"
-        :items-per-page="pagination.itemsPerPage"
-        icons
-      ></v-pagination>
+        @update:page="pagination.page = $event"
+      >
+      <template #cell:edit>
+        <vButton button="default tiny noMargin">edit</vButton>
+      </template>
+      <template #caption>Example</template>
+      </v-table>
+      <div class="flex justify-between my-5">
+        <div>
+          <v-pagination
+            v-model="pagination.page"
+            :items-count="pagination.itemsCount"
+            :items-per-page="pagination.itemsPerPage"
+            max-pages="7"
+            icons
+            ></v-pagination>
+        </div>
+        <div>
+          <label for="items-per-page" class="mr-10">Items per page</label>
+          <select v-model="pagination.itemsPerPage" id="items-per-page" name="cars" class="rounded border-gray-300 focus:border-gray-400 focus:ring focus:ring-indigo-200 my-5 py-1">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+          </select>
+        </div>
+      </div>
     </div>
     <pre>
       <code>
@@ -131,7 +147,7 @@
         placeholder="Filter"
         v-model="filter.transition"
         class="form-control w-25"
-      />
+        />
       <div class="my-3">
         <div class="form-check form-check-inline">
           <input
@@ -141,7 +157,7 @@
             name="inlineRadioOptions"
             id="inlineRadio1"
             value="fade-slide"
-          />
+            />
           <label class="form-check-label" for="inlineRadio1">fade-slide</label>
         </div>
         <div class="form-check form-check-inline">
@@ -152,10 +168,10 @@
             name="inlineRadioOptions"
             id="inlineRadio2"
             value=""
-          />
+            />
           <label class="form-check-label" for="inlineRadio2"
-            >no transition</label
-          >
+                                          >no transition</label
+                                        >
         </div>
       </div>
       <v-table
@@ -163,7 +179,7 @@
         :definition="definition"
         :filter="filter.transition"
         :transition="transition"
-      ></v-table>
+        ></v-table>
     </div>
     <pre>
       <code>
@@ -195,28 +211,34 @@ export default {
   setup(props) {
     let dataSmall = ref(dataJSON.slice(0, 5));
     let data = ref(dataJSON.slice(0, 10));
-    let dataLong = ref(dataJSON.slice(0, 60));
+    let dataLong = ref(dataJSON.slice(0, 100));
     let definition = ref([
       {
         key: "id",
       },
       {
         key: "first_name",
-        // sortable: true,
+        sortable: true,
       },
       {
         key: "last_name",
+        sortable: true,
       },
       {
         key: "email",
-        // sortable: true,
+        sortable: true,
       },
       {
         key: "city",
+        sortable: true,
         // visible: false,
       },
       {
         key: "country",
+        sortable: true,
+      },
+      {
+        key: "edit",
       },
       // {
       //   key: "item_city"
@@ -315,7 +337,7 @@ export default {
         prop: "transition",
         type: "String",
         description:
-          "Animation to use for removing and adding records. Allowed values: 'fade-slide' or '' (empty string). <span class='fw-bold'>Default</span>: 'fade-slide'",
+          "Animation to use for removing and adding records. Allowed values: fade-slide or empty string for no transition. <span class='fw-bold'>Default</span>: 'fade-slide'",
       },
     ]);
 

@@ -96,8 +96,8 @@ export default {
     definition: { type: Array, default: () => [] },
     items: { type: Array, default: () => [] },
     filter: { type: [String, RegExp], default: "" },
-    page: { type: Number, default: 1 },
-    itemsPerPage: { type: Number, default: 0 },
+    page: { type: [Number, String], default: 1 },
+    itemsPerPage: { type: [Number, String], default: 0 },
     captionTop: { type: Boolean, default: false },
     emptyText: { type: String, default: "Empty table" },
     emptyFilteredText: {
@@ -130,7 +130,10 @@ export default {
 
     let classes = {
       table: computed(() => {
-        let c = [...styles.table.value, props.busy ? "opacity-50" : ""];
+        let c = [
+          ...styles.table.value,
+          props.busy ? "opacity-50 pointer-events-none" : "",
+        ];
         return removeTailwindClasses(c);
       }),
       headerRow: computed(() => {

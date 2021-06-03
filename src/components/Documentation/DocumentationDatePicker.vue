@@ -1,28 +1,26 @@
 <template>
   <h3>Date Picker</h3>
-  <p>Date Picker component</p>
+  <p class="text-xl font-light">Date Picker component</p>
 
   <section>
-    <h5>Example</h5>
+    <h5>Reference</h5>
     <p></p>
-    <div class="example">
-      <v-card style="width: 320px" class="p-2">
-        <v-date-picker v-model="date.date"></v-date-picker>
-      </v-card>
-    </div>
-    <pre>
-      <code>
-{{`<v-card 
-  style="width: 320px"
-  class="p-2"
->
-  <v-date-picker 
-    v-model="date"
-  >
-  </v-date-picker>
-</v-card>`}}
-      </code>
-    </pre>
+    <v-table
+      :items="reference"
+      :definition="referenceDefinition"
+      table="default fixed"
+      header-cell="default bordered"
+      cell="default bordered"
+    >
+      <template #cell:type="{ value }"
+        ><code v-for="c in value" class="code-word mx-1">{{
+          c
+        }}</code></template
+      >
+      <template #cell:description="{ value }"
+        ><span v-html="value"></span
+      ></template>
+    </v-table>
   </section>
 
   <!-- <section> -->
@@ -102,7 +100,7 @@
   </section>
 
   <section>
-    <h5>Range</h5>
+    <h5>Selection mode</h5>
     <span class="fw-bold">Type</span>: <code>Boolean</code>
     <p>Range prop allows selection range</p>
     <div class="example">
@@ -134,44 +132,12 @@
   </section>
 
   <section>
-    <h5>Euro</h5>
-    <span class="fw-bold">Type</span>: <code>Boolean</code>
-    <p>With euro prop set week starts on Monday.</p>
-    <div class="example">
-      <v-card style="width: 320px" class="p-2">
-        <v-date-picker v-model="date.date" euro></v-date-picker>
-      </v-card>
-    </div>
-    <pre>
-      <code>
-
-      </code>
-    </pre>
-  </section>
-
-  <section>
     <h5>Disabled</h5>
     <span class="fw-bold">Type</span>: <code>Array</code> of <code>Numbers</code>
     <p>Disables selection of specified days. Prop is an <code>Array</code> of <code>Numbers</code> where <code>Number</code> is an index of weekday starting from 0 (Sunday) or 0 (Monday) with euro prop set.</p>
     <div class="example">
       <v-card style="width: 320px" class="p-2">
         <v-date-picker v-model="date.date" :disabled="[0, 6]"></v-date-picker>
-      </v-card>
-    </div>
-    <pre>
-      <code>
-
-      </code>
-    </pre>
-  </section>
-
-  <section>
-    <h5>Mark-sat-sun</h5>
-    <span class="fw-bold">Type</span>: <code>Boolean</code>
-    <p>Adds some bold styling to Saturdays and Sundays.</p>
-    <div class="example">
-      <v-card style="width: 320px" class="p-2">
-        <v-date-picker v-model="date.date" mark-sat-sun></v-date-picker>
       </v-card>
     </div>
     <pre>
@@ -247,39 +213,74 @@ export default {
       },
       {
         prop: "locale",
-        type: "String",
+        type: ["String"],
         description:
           "",
       },
       {
         prop: "range",
-        type: "Boolean",
+        type: ["Boolean"],
         description: "Allows selection of date ranges.",
       },
       {
         prop: "euro",
-        type: "Boolean",
+        type: ["Boolean"],
         description: "Week starts on Monday.",
       },
       {
         prop: "disabled",
-        type: "Array",
+        type: ["Array"],
         description: "Disables selection of days.",
       },
       {
-        prop: "mark-sat-sun",
-        type: "Boolean",
-        description: "Adds bold style to Saturdays and Sundays.",
-      },
-      {
         prop: "width",
-        type: "String",
+        type: ["String"],
         description: "Component width.",
       },
       {
-        prop: "selection-mode-text",
-        type: "Boolean",
-        description: "",
+        prop: "adjecentMonths",
+        type: ["Boolean"],
+        description: "Component width.",
+      },
+      {
+        prop: "noRangeSelection",
+        type: ["Boolean"],
+        description: "Component width.",
+      },
+      {
+        prop: "buttons",
+        type: ["Boolean"],
+        description: "Component width.",
+      },
+      {
+        prop: "secondaryButtonLabel",
+        type: ["Boolean"],
+        description: "Component width.",
+      },
+      {
+        prop: "primaryButtonLabel",
+        type: ["Boolean"],
+        description: "Component width.",
+      },
+      {
+        prop: "secondaryButtonStyle",
+        type: ["Boolean"],
+        description: "Component width.",
+      },
+      {
+        prop: "primaryButtonStyle",
+        type: ["Boolean"],
+        description: "Component width.",
+      },
+      {
+        prop: "name",
+        type: ["Boolean"],
+        description: "Component width.",
+      },
+      {
+        prop: "transition",
+        type: ["Boolean"],
+        description: "Component width.",
       },
     ]);
 
@@ -287,6 +288,7 @@ export default {
       {
         key: "prop",
         sortable: true,
+        class: () => "whitespace-nowrap",
       },
       {
         key: "type",
@@ -333,5 +335,8 @@ p {
 }
 .example {
   margin-top: 2em;
+}
+.code-word {
+  @apply text-sm bg-indigo-200 rounded p-1;
 }
 </style>
