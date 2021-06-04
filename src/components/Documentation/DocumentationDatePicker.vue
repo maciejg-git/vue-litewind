@@ -17,6 +17,11 @@
           c
         }}</code></template
       >
+      <template #cell:default="{ value }"
+        ><code class="code-default">{{
+          value
+        }}</code></template
+      >
       <template #cell:description="{ value }"
         ><span v-html="value"></span
       ></template>
@@ -46,19 +51,34 @@
 
   <section>
     <h5>v-model</h5>
-    <span class="fw-bold">Type</span>: <code>String</code> or <code>Array</code>
-    <p><code>v-model</code> is used to return date after selection. There are two selection modes: date range (<code>range</code> prop set) or single day. In range mode <code>v-model</code> will return <code>Array</code> of two <code>String</code>. In single day mode <code>v-model</code> returns <code>String</code>. Date format is always <code>m-d-yyyy</code> (without trailing zero for single digits).</p>
+    <span class="font-bold">Type</span>: <code class="code-word">String</code><code class="code-word">Array</code>
+    <p>
+      <code>v-model</code> is used to return date after selection. v-model can
+      be Array or string depending on selection mode. In range mode
+      <code>v-model</code> returns <code>Array</code> of two
+      <code>String</code>. In single day mode <code>v-model</code> returns
+      <code>String</code>. Date is in ISO format
+      <code>YYYY-MM-DD</code>
+    </p>
     <div class="example">
-      <div class="row">
-      <div class="col-auto">
-        <v-card style="width: 320px" class="p-2">
-          <v-date-picker v-model="date.date"></v-date-picker>
-        </v-card>
-      </div>
-      <div class="col">
-        v-model: {{ date.date }}
-      </div>
-      </div>
+      Single mode
+          <div class="flex">
+            <v-card style="width: 320px" class="p-2">
+              <v-date-picker v-model="date.date" adjecent-months></v-date-picker>
+            </v-card>
+            <span class="ml-10">
+              v-model: {{ date.date }}
+            </span>
+          </div>
+          Range mode
+          <div class="flex">
+            <v-card style="width: 320px" class="p-2">
+              <v-date-picker v-model="date.date" range adjecent-months></v-date-picker>
+            </v-card>
+            <span class="ml-10">
+              v-model: {{ date.date }}
+            </span>
+          </div>
     </div>
     <pre>
       <code>
@@ -76,111 +96,34 @@
   </section>
 
   <section>
-    <h5>Locale</h5>
-    <span class="fw-bold">Type</span>: <code>String</code>
-    <p>Note: locale only affects names of months and weekdays and does not change any other properties like date format, separators, order of days etc.<br><span class='fw-bold'>Default</span>: 'en-GB'</p>
-    <div class="example">
-      <v-card style="width: 320px" class="p-2 d-inline-block me-2">
-        <v-date-picker v-model="date.date" locale="es-ES"></v-date-picker>
-      </v-card>
-      <v-card style="width: 320px" class="p-2 d-inline-block">
-        <v-date-picker v-model="date.date" locale="sv-SE"></v-date-picker>
-      </v-card>
-    </div>
-    <pre>
-      <code>
-{{`<v-card style="width: 320px" class="p-2 d-inline-block me-2">
-  <v-date-picker v-model="date" locale="es-ES"></v-date-picker>
-</v-card>
-<v-card style="width: 320px" class="p-2 d-inline-block">
-  <v-date-picker v-model="date" locale="sv-SE"></v-date-picker>
-</v-card>`}}
-      </code>
-    </pre>
-  </section>
-
-  <section>
-    <h5>Selection mode</h5>
-    <span class="fw-bold">Type</span>: <code>Boolean</code>
-    <p>Range prop allows selection range</p>
-    <div class="example">
-      <div class="row">
-      <div class="col-auto">
-        <v-card style="width: 320px" class="p-2">
-          <v-date-picker v-model="date.range" range></v-date-picker>
-        </v-card>
-      </div>
-      <div class="col">
-        v-model: {{ date.range }}
-      </div>
-      </div>
-    </div>
-    <pre>
-      <code>
-{{`<v-card 
-  style="width: 320px" 
-  class="p-2"
->
-  <v-date-picker 
-    v-model="date.range" 
-    range
-  >
-  </v-date-picker>
-</v-card>`}}
-      </code>
-    </pre>
-  </section>
-
-  <section>
-    <h5>Disabled</h5>
-    <span class="fw-bold">Type</span>: <code>Array</code> of <code>Numbers</code>
-    <p>Disables selection of specified days. Prop is an <code>Array</code> of <code>Numbers</code> where <code>Number</code> is an index of weekday starting from 0 (Sunday) or 0 (Monday) with euro prop set.</p>
-    <div class="example">
-      <v-card style="width: 320px" class="p-2">
-        <v-date-picker v-model="date.date" :disabled="[0, 6]"></v-date-picker>
-      </v-card>
-    </div>
-    <pre>
-      <code>
-
-      </code>
-    </pre>
-  </section>
-
-  <section>
-    <h5>State:done (event)</h5>
-    <span class="fw-bold">Type</span>: <code>String</code>
-    <p>Event <code>state:done</code> is emmited after selection is complete.</p>
+    <h5>Buttons</h5>
+    <span class="font-bold">Type</span>: <code class="code-word">Boolean</code>
+    <p>Use buttons for accepting selection or canceling input. If buttons props is false model is updated immedietely after click.</p>
     <div class="example">
       <v-dropdown>
         <template #activator>
-          <input type="text" v-model="date.done" class="form-control" placeholder="Pick date">
+          <input
+            type="text"
+            v-model="date.done"
+            class="form-control"
+            placeholder="Pick date"
+          />
         </template>
         <template #default="{ hide }">
           <v-card class="p-2">
-            <v-date-picker v-model="date.done" width="320px" @state:done="hide"></v-date-picker>
+            <v-date-picker
+              v-model="date.done"
+              width="320px"
+              adjecent-months
+              buttons
+              @state:done="hide"
+            ></v-date-picker>
           </v-card>
         </template>
       </v-dropdown>
     </div>
     <pre>
       <code>
-{{`<v-dropdown>
-  <template #activator>
-    <input 
-      type="text" 
-      v-model="date.done" 
-      class="form-control"
-    >
-  </template>
-  <template #default="{ hide }">
-    <v-date-picker 
-      v-model="date.done" 
-      width="320px">
-      @state:done="hide" 
-    </v-date-picker>
-  </template>
-</v-dropdown>`}}
       </code>
     </pre>
   </section>
@@ -190,9 +133,9 @@
 import { ref, reactive, onMounted } from "vue";
 import vTable from "../vTable.vue";
 
-import vDatePicker from "../vDatePicker.vue"
-import vCard from "../vCard.vue"
-import vDropdown from "../vDropdown.vue"
+import vDatePicker from "../vDatePicker.vue";
+import vCard from "../vCard.vue";
+import vDropdown from "../vDropdown.vue";
 
 import hljs from "highlight.js";
 import dataJSON from "../../MOCK_DATA (1).json";
@@ -214,73 +157,88 @@ export default {
       {
         prop: "locale",
         type: ["String"],
+        default: "en-GB",
         description:
-          "",
+          "Locale only affects names of months and weekdays and does not change any other properties like date format, separators, order of days etc.",
       },
       {
         prop: "range",
         type: ["Boolean"],
+        default: "false",
         description: "Allows selection of date ranges.",
       },
       {
         prop: "euro",
         type: ["Boolean"],
+        default: "false",
         description: "Week starts on Monday.",
       },
       {
         prop: "disabled",
         type: ["Array"],
+        default: "undefined",
         description: "Disables selection of days.",
       },
       {
         prop: "width",
         type: ["String"],
+        default: "undefined",
         description: "Component width.",
       },
       {
-        prop: "adjecentMonths",
+        prop: "adjecent-months",
         type: ["Boolean"],
-        description: "Component width.",
+        default: "false",
+        description: "Display previous and next month days.",
       },
       {
-        prop: "noRangeSelection",
+        prop: "range-hover-selection",
         type: ["Boolean"],
-        description: "Component width.",
+        default: "false",
+        description:
+          "Enables highlighing days in range when hovering over days during selection.",
       },
       {
         prop: "buttons",
         type: ["Boolean"],
-        description: "Component width.",
+        default: "false",
+        description:
+          "Use buttons for accepting selection or canceling input. If buttons props is false model is updated immedietely after click.",
       },
       {
-        prop: "secondaryButtonLabel",
-        type: ["Boolean"],
-        description: "Component width.",
+        prop: "secondary-button-label",
+        type: ["String"],
+        default: "OK",
+        description: "Secondary (cancel) button label.",
       },
       {
-        prop: "primaryButtonLabel",
-        type: ["Boolean"],
-        description: "Component width.",
+        prop: "primary-button-label",
+        type: ["String"],
+        default: "Cancel",
+        description: "Primary (accept) button label.",
       },
       {
-        prop: "secondaryButtonStyle",
-        type: ["Boolean"],
-        description: "Component width.",
+        prop: "secondary-button-style",
+        type: ["String"],
+        description: "Secondary button styles.",
       },
       {
-        prop: "primaryButtonStyle",
-        type: ["Boolean"],
-        description: "Component width.",
+        prop: "primary-button-style",
+        type: ["String"],
+        description: "Primary button styles.",
       },
       {
         prop: "name",
-        type: ["Boolean"],
-        description: "Component width.",
+        type: ["String"],
+        default: "datepicker",
+        description: "Component name. Useful for setting alternative styles.",
       },
       {
         prop: "transition",
-        type: ["Boolean"],
-        description: "Component width.",
+        type: ["String"],
+        default: "fade",
+        description:
+          "Transition when switching months or years. Valid values are 'fade', 'slide' or empty string for no transition.",
       },
     ]);
 
@@ -295,6 +253,10 @@ export default {
         sortable: true,
       },
       {
+        key: "default",
+        class: () => "whitespace-nowrap",
+      },
+      {
         key: "description",
       },
     ]);
@@ -303,7 +265,7 @@ export default {
       date: ref(""),
       range: ref(""),
       done: ref(""),
-    })
+    });
 
     onMounted(() => {
       hljs.highlightAll();
@@ -319,15 +281,28 @@ export default {
 </script>
 
 <style scoped>
-h5 {
-  @apply text-xl;
-  @apply font-semibold;
-}
 h3 {
   @apply text-3xl;
   @apply font-semibold;
 }
-h1, h2, h3, h4, h5, h6 {
+h4 {
+  @apply text-2xl;
+  @apply font-semibold;
+}
+h5 {
+  @apply text-xl;
+  @apply font-semibold;
+}
+h6 {
+  @apply text-lg;
+  @apply font-semibold;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin-top: 2em;
 }
 p {
@@ -337,6 +312,9 @@ p {
   margin-top: 2em;
 }
 .code-word {
-  @apply text-sm bg-indigo-200 rounded p-1;
+  @apply text-sm bg-indigo-200 rounded p-1 mx-1;
+}
+.code-default {
+  @apply text-sm;
 }
 </style>

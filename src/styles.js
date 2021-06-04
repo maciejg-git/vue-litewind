@@ -220,13 +220,13 @@ let modal = {
       "text-lg", 
       "leading-6", 
       "font-medium", 
-      "px-10", 
-      "pt-10", 
+      "px-6", 
+      "pt-6", 
     ]
   },
   content: {
     default: [
-      "px-10", 
+      "px-6", 
       "py-5",
     ]
   },

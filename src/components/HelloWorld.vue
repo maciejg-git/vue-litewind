@@ -192,7 +192,6 @@
       </div>
     </v-sidepanel>
 
-    {{ formattedDate }}
     <v-dropdown transition="fade">
       <template #activator>
         <v-button>Dropdown</v-button>
@@ -229,6 +228,27 @@
               buttons
               adjecent-months
               @input:formatted="formattedDate = $event"
+              width="320px"
+            ></vDatePicker>
+        </v-card>
+      </template>
+    </v-dropdown>
+
+    <v-dropdown transition="fade">
+      <template #activator>
+        <vInputDate v-model="i" class="w-80"></vInputDate>
+      </template>
+      <template #default="{ hide }">
+        <v-card card="default shadow" class="p-2">
+            <vDatePicker
+              v-model="i"
+              euro
+              buttons
+              adjecent-months
+              range
+              @input:formatted="formattedDate = $event"
+              @state:done="hide"
+              @state:cancel="hide"
               width="320px"
             ></vDatePicker>
         </v-card>
@@ -450,6 +470,7 @@ import vBadge from "./vBadge.vue";
 import vPopover from "./vPopover.vue";
 import tooltip from "../directives/tooltip.js";
 import vSpinner from "./vSpinner.vue";
+import vInputDate from "./vInputDate.vue"
 // import {vTable} from "../dist/vuecomponent2.es"
 
 export default {
@@ -474,6 +495,7 @@ export default {
     vBadge,
     vPopover,
     vSpinner,
+    vInputDate,
   },
   props: {
     msg: String,

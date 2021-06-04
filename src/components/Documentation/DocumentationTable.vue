@@ -3,7 +3,7 @@
   <p class="text-xl font-light">Table component</p>
 
   <section>
-    <h5>Reference</h5>
+    <h4>Reference</h4>
     <p></p>
     <v-table
       :items="reference"
@@ -13,9 +13,20 @@
       cell="default bordered"
     >
       <template #cell:type="{ value }"
-        ><code class="code-word mx-1">{{
-          value
-        }}</code></template>
+        ><code class="code-word mx-1">{{ value }}</code></template
+      >
+      <template #cell:description="{ value }"
+        ><span v-html="value"></span
+      ></template>
+    </v-table>
+    <h6>Styling</h6>
+    <v-table
+      :items="referenceStyles"
+      :definition="referenceStylesDefinition"
+      table="default fixed"
+      header-cell="default bordered"
+      cell="default bordered"
+    >
       <template #cell:description="{ value }"
         ><span v-html="value"></span
       ></template>
@@ -39,7 +50,10 @@
     <h5>Definition</h5>
     <span class="font-bold">Type</span>: <code class="code-word">Array</code>
     <p>
-      Table definition is an optional <code>Array</code> of <code>Objects</code> that defines look and behavior of the table. Each object represents one column.
+      Table definition is an optional <code>Array</code> of
+      <code>Objects</code> that defines look and behavior of the table. Each
+      object represents one column, has one required, unique key property and
+      number of optional properties.
     </p>
     <pre>
       <code>
@@ -69,22 +83,55 @@
 ]);`}}
     </code>
   </pre>
-        <p>
-        In the above example:
-        <ul>
-          <li>
-            <span class="font-bold">key</span>: key is either existing property of data record or new property. New properties apear as additional columns and their content can be set either by use of functions or slots.
-          </li>
-        <li><span class="font-bold">label</span>: sets label for this column. If not present label is the same as key converted to Header Case (String, optional, default: undefined)</li>
-        <li><span class="font-bold">sortable</span>: enables sorting column (Boolean, optional, default: false) </li>
-        <li><span class="font-bold">filterable</span>: enables filtering content of column  (Boolean, optional, default: false))</li>
-        <li><span class="font-bold">visible</span>: toggles visiblity of columns  (Boolean, optional, default: false)</li>
-        <li><span class="font-bold">class</span>: function that should return string of space separated classes to apply to each cell in column. Takes 3 arguments: key, value and item  (Function, optional, default: undefined)</li>
-        <li><span class="font-bold">f</span>: value returned by this function is displayed in the cell. Takes 3 arguments: key, value and item  (Function, optional, default: undefined)</li>
-        <li><span class="font-bold">filterByFunction</span>: if true filter content of column using value returned from function f. If false use value from items prop (Boolean, optional, default: undefined)</li>
-        <li><span class="font-bold">sortByFunction</span>: if true sort content of column using value returned from function f. If false use value from items prop (Boolean, optional, default: undefined)</li>
-        </ul>
-        </p>
+    <p>Required properties:</p>
+
+    <ul>
+      <li>
+        <span class="font-bold">key</span>: key is either existing property of
+        data record or new property. New properties apear as additional columns
+        and their content can be set either by use of functions or slots.
+      </li>
+    </ul>
+    <p>Optional properties:</p>
+    <ul>
+      <li>
+        <span class="font-bold">label</span>: sets label for this column. If not
+        present label is the same as key converted to Header Case (String,
+        default: undefined)
+      </li>
+      <li>
+        <span class="font-bold">sortable</span>: enables sorting column
+        (Boolean, default: false)
+      </li>
+      <li>
+        <span class="font-bold">filterable</span>: enables filtering content of
+        column (Boolean, default: false))
+      </li>
+      <li>
+        <span class="font-bold">visible</span>: toggles visiblity of columns
+        (Boolean, default: false)
+      </li>
+      <li>
+        <span class="font-bold">class</span>: function that should return string
+        of space separated classes to apply to each cell in column. Takes 3
+        arguments: key, value and item (Function, default: undefined)
+      </li>
+      <li>
+        <span class="font-bold">f</span>: value returned by this function is
+        displayed in the cell. Takes 3 arguments: key, value and item (Function,
+        default: undefined)
+      </li>
+      <li>
+        <span class="font-bold">filterByFunction</span>: if true filter content
+        of column using value returned from function f. If false use value from
+        items prop (Boolean, default: undefined)
+      </li>
+      <li>
+        <span class="font-bold">sortByFunction</span>: if true sort content of
+        column using value returned from function f. If false use value from
+        items prop (Boolean, default: undefined)
+      </li>
+    </ul>
   </section>
 
   <section>
@@ -105,10 +152,12 @@
         @update:filtered-count="pagination.itemsCount = $event"
         @update:page="pagination.page = $event"
       >
-      <template #cell:edit>
-        <vButton button="default tiny noMargin">edit</vButton>
-      </template>
-      <template #caption>Example</template>
+        <template #cell:edit="{ item }">
+          <vButton button="default tiny noMargin" @click="edit(item)"
+            >edit</vButton
+          >
+        </template>
+        <template #caption> Example </template>
       </v-table>
       <div class="flex justify-between my-5">
         <div>
@@ -118,11 +167,16 @@
             :items-per-page="pagination.itemsPerPage"
             max-pages="7"
             icons
-            ></v-pagination>
+          ></v-pagination>
         </div>
         <div>
           <label for="items-per-page" class="mr-10">Items per page</label>
-          <select v-model="pagination.itemsPerPage" id="items-per-page" name="cars" class="rounded border-gray-300 focus:border-gray-400 focus:ring focus:ring-indigo-200 my-5 py-1">
+          <select
+            v-model="pagination.itemsPerPage"
+            id="items-per-page"
+            name="cars"
+            class="rounded border-gray-300 focus:border-gray-400 focus:ring focus:ring-indigo-200 py-1"
+          >
             <option value="5">5</option>
             <option value="10">10</option>
             <option value="20">20</option>
@@ -147,7 +201,7 @@
         placeholder="Filter"
         v-model="filter.transition"
         class="form-control w-25"
-        />
+      />
       <div class="my-3">
         <div class="form-check form-check-inline">
           <input
@@ -157,7 +211,7 @@
             name="inlineRadioOptions"
             id="inlineRadio1"
             value="fade-slide"
-            />
+          />
           <label class="form-check-label" for="inlineRadio1">fade-slide</label>
         </div>
         <div class="form-check form-check-inline">
@@ -168,10 +222,10 @@
             name="inlineRadioOptions"
             id="inlineRadio2"
             value=""
-            />
+          />
           <label class="form-check-label" for="inlineRadio2"
-                                          >no transition</label
-                                        >
+            >no transition</label
+          >
         </div>
       </div>
       <v-table
@@ -179,7 +233,7 @@
         :definition="definition"
         :filter="filter.transition"
         :transition="transition"
-        ></v-table>
+      ></v-table>
     </div>
     <pre>
       <code>
@@ -187,6 +241,15 @@
       </code>
     </pre>
   </section>
+
+  <vModal
+    v-model="editModal"
+    title="Edit"
+    primaryButtonClose
+    secondaryButtonClose
+  >
+    <pre>{{ editContent }}</pre>
+  </vModal>
 </template>
 
 <script>
@@ -196,6 +259,7 @@ import vTable from "../vTable.vue";
 import vPagination from "../vPagination.vue";
 import vButton from "../vButton.vue";
 import vBadge from "../vBadge.vue";
+import vModal from "../vModal.vue";
 
 import hljs from "highlight.js";
 import "highlight.js/styles/default.css";
@@ -207,22 +271,27 @@ export default {
     vPagination,
     vButton,
     vBadge,
+    vModal,
   },
   setup(props) {
     let dataSmall = ref(dataJSON.slice(0, 5));
     let data = ref(dataJSON.slice(0, 10));
     let dataLong = ref(dataJSON.slice(0, 100));
+    let editModal = ref(false);
     let definition = ref([
       {
         key: "id",
+        visible: false,
       },
       {
         key: "first_name",
         sortable: true,
+        class: () => "bg-red-50",
       },
       {
         key: "last_name",
         sortable: true,
+        class: () => "bg-green-50",
       },
       {
         key: "email",
@@ -236,6 +305,7 @@ export default {
       {
         key: "country",
         sortable: true,
+        class: (k, v) => (v == "ID" ? "bg-red-50" : ""),
       },
       {
         key: "edit",
@@ -295,7 +365,8 @@ export default {
       {
         prop: "name",
         type: "String",
-        description: "Used only to select non default styles defined in styles.js",
+        description:
+          "Used only to select non default styles defined in styles.js",
       },
       {
         prop: "busy",
@@ -305,7 +376,8 @@ export default {
       {
         prop: "selection-mode",
         type: "String",
-        description: "Valid values are single (allows selection single row only), multiple (allows multiple rows to be selected) or empty string (disables selection).",
+        description:
+          "Valid values are single (allows selection single row only), multiple (allows multiple rows to be selected) or empty string (disables selection).",
       },
       {
         prop: "page",
@@ -356,9 +428,44 @@ export default {
       },
     ]);
 
+    let referenceStyles = ref([
+      {
+        prop: "table",
+        description: "Main table element",
+      },
+      {
+        prop: "headerRow",
+        description: "Header row",
+      },
+      {
+        prop: "row",
+        description: "Table row.",
+      },
+      {
+        prop: "cell",
+        description: "Table cell.",
+      },
+    ]);
+
+    let referenceStylesDefinition = ref([
+      {
+        key: "prop",
+      },
+      {
+        key: "description",
+      },
+    ]);
+
     onMounted(() => {
       hljs.highlightAll();
     });
+
+    let editContent = ref("");
+
+    let edit = (c) => {
+      editContent.value = c;
+      editModal.value = true;
+    };
 
     return {
       dataSmall,
@@ -367,22 +474,35 @@ export default {
       definition,
       reference,
       referenceDefinition,
+      referenceStyles,
+      referenceStylesDefinition,
       filter,
       visualProps,
       transition,
       pagination,
+      editModal,
+      edit,
+      editContent,
     };
   },
 };
 </script>
 
 <style scoped>
+h3 {
+  @apply text-3xl;
+  @apply font-semibold;
+}
+h4 {
+  @apply text-2xl;
+  @apply font-semibold;
+}
 h5 {
   @apply text-xl;
   @apply font-semibold;
 }
-h3 {
-  @apply text-3xl;
+h6 {
+  @apply text-lg;
   @apply font-semibold;
 }
 h1,
@@ -395,6 +515,7 @@ h6 {
 }
 p {
   margin-top: 1em;
+  margin-bottom: 1em;
 }
 .nowrap {
   white-space: nowrap;

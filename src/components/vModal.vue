@@ -23,6 +23,7 @@
               <v-button
                 v-if="!noSecondaryButton"
                 :button="secondaryButtonStyle"
+                @click="handlePrimaryButtonClick"
               >
                 {{ secondaryButtonLabel }}
               </v-button>
@@ -30,6 +31,7 @@
                 v-if="!noPrimaryButton"
                 :button="primaryButtonStyle"
                 class="ml-2"
+                @click="handleSecondaryButtonClick"
               >
                 {{ primaryButtonLabel }}
               </v-button>

@@ -100,7 +100,7 @@ export default {
     disabled: Array,
     width: { type: String, default: undefined },
     adjecentMonths: { type: Boolean, default: false },
-    noRangeSelection: { type: Boolean, default: false },
+    rangeHoverHighlight: { type: Boolean, default: false },
     buttons: { type: Boolean, default: false },
     secondaryButtonLabel: { type: String, default: "Cancel" },
     primaryButtonLabel: { type: String, default: "OK" },
@@ -185,7 +185,7 @@ export default {
 
     let getDayClass = (date) => {
       if (
-        !props.noRangeSelection &&
+        props.rangeHoverHighlight &&
         mouseOverRange.value &&
         isRangeSelected(date)
       )

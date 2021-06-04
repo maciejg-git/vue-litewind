@@ -283,6 +283,8 @@ export default {
       emit("input:selection", Object.values(itemsSelected.value));
     });
 
+    watch([() => props.selectionMode, itemsPagination], () => resetSelection());
+
     // HANDLE TEMPLATE EVENTS
 
     let handleRowClick = function (i) {
