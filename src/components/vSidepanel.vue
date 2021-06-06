@@ -37,7 +37,7 @@ export default {
     left: Boolean,
     width: { type: String, default: "320px" },
     name: { type: String, default: "sidepanel" },
-    sidepanel: { type: String, default: "default" },
+    styleSidepanel: { type: String, default: "default" },
   },
   components: {
     vCloseButton,

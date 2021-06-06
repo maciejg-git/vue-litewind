@@ -13,7 +13,7 @@ export default {
   props: {
     width: { type: String, default: undefined },
     name: { type: String, default: "card" },
-    card: { type: String, default: "default" },
+    styleCard: { type: String, default: "default" },
   },
   setup(props) {
     let elements = ["card"];

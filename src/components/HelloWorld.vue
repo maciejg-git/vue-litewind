@@ -1,7 +1,7 @@
 <template>
   <div class="sm:container mx-auto">
     item
-    <v-tabs tab="default">
+    <v-tabs style-tab="default">
       <v-tab name="item" class="p-2"
         >item Options can be passed via data attributes or JavaScript. For data
         attributes, append the option name to data-bs-, as in
@@ -17,16 +17,16 @@
         data-bs-custom-class="beautifier".</v-tab
       >
       <v-tab name="item2" class="p-2">
-        <v-card card="default shadow gray" class="mb-4">
-          <v-button button="primary small">table</v-button>
-          <v-button button="primary small">add</v-button>
-          <v-button button="secondary small">add</v-button>
+        <v-card style-card="default shadow gray" class="mb-4">
+          <v-button style-button="primary small">table</v-button>
+          <v-button style-button="primary small">add</v-button>
+          <v-button style-button="secondary small">add</v-button>
           <v-dropdown auto-close-menu>
             <template #activator>
-              <v-button button="primary small">add</v-button>
+              <v-button style-button="primary small">add</v-button>
             </template>
             <template #default="{ hide }">
-              <v-card card="default shadow" width="320px">
+              <v-card style-card="default shadow" width="320px">
                 <v-dropdown-menu-item tag="button" active @click.prevent="log('click')">
                   item
                 </v-dropdown-menu-item>
@@ -84,7 +84,7 @@
 
     {{ tableSelection }}
     <input v-model="filter" type="" class="form-control w-25" />
-    <v-card card="default shadow">
+    <v-card style-card="default shadow">
       <v-table
         :definition="definition"
         :items="data"
@@ -92,7 +92,7 @@
         :itemsPerPage="itemsPerPage"
         :page="page"
         :busy="busy"
-        table="default fixed"
+        style-table="default fixed"
         selection-mode="single"
         @input:selection="tableSelection = $event"
         @update:filtered-count="tableItemsCount = $event"
@@ -138,7 +138,7 @@
       <v-spinner></v-spinner>
     </div>
 
-    <v-badge badge="primary small">badge</v-badge>
+    <v-badge style-badge="primary small">badge</v-badge>
 
     <v-button @click="tooltipTest = true">tooltipTest</v-button>
 
@@ -161,10 +161,10 @@
     {{ i }}
     {{ formattedDate }}
     <v-button @click="i = [ '2021-05-14', '2021-05-15' ]">set d</v-button>
-    <v-card card="default" class="p-2 mb-2" style="width: 320px">
-      <vDatePicker v-model="i" euro range no-range-selection buttons adjecent-months></vDatePicker>
+    <v-card style-card="default" class="p-2 mb-2" style="width: 320px">
+      <vDatePicker v-model="i" euro range range-hover-highlight buttons adjecent-months></vDatePicker>
     </v-card>
-    <v-card card="default" class="p-2" style="width: 320px">
+    <v-card style-card="default" class="p-2" style="width: 320px">
       <vDatePicker
         v-model="i"
         @input:formatted="formattedDate = $event"
@@ -197,7 +197,7 @@
         <v-button>Dropdown</v-button>
       </template>
       <template #default>
-        <v-card card="default shadow">
+        <v-card style-card="default shadow">
           item
           <v-dropdown-menu-item v-tooltip.right.delay200="'item content'"
             >item</v-dropdown-menu-item
@@ -221,7 +221,7 @@
         <v-button>Dropdown</v-button>
       </template>
       <template #default="{ hide }">
-        <v-card card="default shadow" class="p-2">
+        <v-card style-card="default shadow" class="p-2">
             <vDatePicker
               v-model="i"
               euro
@@ -239,7 +239,7 @@
         <vInputDate v-model="i" class="w-80"></vInputDate>
       </template>
       <template #default="{ hide }">
-        <v-card card="default shadow" class="p-2">
+        <v-card style-card="default shadow" class="p-2">
             <vDatePicker
               v-model="i"
               euro
@@ -339,8 +339,8 @@
       <!-- <v&#45;button :class&#45;button="[btn.secondary, btn.small, 'shadow&#45;md']">custom button</v&#45;button> -->
       <!-- <v&#45;button :class&#45;button="[btn.secondary, btn.large, 'shadow&#45;md']">custom button</v&#45;button> -->
       <!-- <v&#45;button :class&#45;button="[btn.primary, btn.pill, 'shadow&#45;md']">custom button</v&#45;button> -->
-      <v-button button="primary small">custom button</v-button>
-      <v-button button="primary pill small">custom button</v-button>
+      <v-button style-button="primary small">custom button</v-button>
+      <v-button style-button="primary pill small">custom button</v-button>
     </div>
     <br />
 

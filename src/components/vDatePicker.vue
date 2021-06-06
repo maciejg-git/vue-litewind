@@ -63,12 +63,12 @@
     </div>
     <div v-if="buttons" class="flex justify-between pt-2">
       <v-button
-        :button="secondaryButtonStyle"
+        :style-button="secondaryButtonStyle"
         @click="handleSecondaryButtonClick"
         >{{ secondaryButtonLabel }}</v-button
       >
       <v-button
-        :button="primaryButtonStyle"
+        :style-button="primaryButtonStyle"
         @click="handlePrimaryButtonClick"
         >{{ primaryButtonLabel }}</v-button
       >
@@ -114,13 +114,13 @@ export default {
     },
     name: { type: String, default: "datepicker" },
     transition: { type: String, default: "fade" },
-    datepicker: { type: String, default: "default" },
-    button: { type: String, default: "default" },
-    day: { type: String, default: "default" },
-    daySelected: { type: String, default: "default" },
-    today: { type: String, default: "default" },
-    adjecentMonthDay: { type: String, default: "default" },
-    footer: { type: String, default: "default" },
+    styleDatepicker: { type: String, default: "default" },
+    styleButton: { type: String, default: "default" },
+    styleDay: { type: String, default: "default" },
+    styleDaySelected: { type: String, default: "default" },
+    styleToday: { type: String, default: "default" },
+    styleAdjecentMonthDay: { type: String, default: "default" },
+    styleFooter: { type: String, default: "default" },
   },
   components: {
     vButton,
@@ -301,6 +301,7 @@ export default {
     };
 
     let emitSelectionSingle = () => {
+      if (!single.value) return;
       let formatted = single.value.toLocaleDateString(
         props.locale,
         props.format
@@ -395,7 +396,7 @@ export default {
     };
 
     let isRangeSelected = (date) => {
-      if (props.range && range.value.length == 1)
+      if (props.range && rangeState.value == 1)
         return (
           (mouseOverRange.value >= date && date >= range.value[0]) ||
           (mouseOverRange.value <= date && date <= range.value[0])
@@ -417,15 +418,15 @@ export default {
       getDayClass,
       isRangeSelected,
       mouseOverRange,
-      daysList,
+      months,
+      days,
       month,
       year,
+      daysList,
       todayFormatted,
       nextYear,
       prevYear,
       isDisabled,
-      months,
-      days,
       handleDayClick,
       handleClickNextMonth,
       handleClickPrevMonth,
@@ -483,7 +484,7 @@ export default {
 
 .slide-next-enter-active,
 .slide-next-leave-active {
-  transition: transform 0.1s ease;
+  transition: transform 0.12s ease;
 }
 .slide-next-enter-from {
   transform: translateX(100%);

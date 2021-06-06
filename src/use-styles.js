@@ -15,7 +15,8 @@ export default function useStyles(instance, props, elements) {
   let styles = {};
 
   for (let el of elements) {
-    propsStyles[el] = computed(() => props[el].split(" "));
+    let elCapitalize = el.charAt(0).toUpperCase() + el.slice(1)
+    propsStyles[el] = computed(() => props["style" + elCapitalize].split(" "));
     styles[el] = computed(() => getStyles(propsStyles, globalStyles, el));
   }
 

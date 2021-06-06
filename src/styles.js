@@ -216,12 +216,13 @@ let modal = {
   },
   header: {
     default: [
+      "bg-gray-50",
       "text-gray-900",
       "text-lg", 
       "leading-6", 
       "font-medium", 
       "px-6", 
-      "pt-6", 
+      "py-6", 
     ]
   },
   content: {
@@ -461,12 +462,13 @@ let fixedPage = [
   "h-10",
   "mx-0.5",
   "font-semibold",
+  "rounded",
   // "-ml-px",
 ]
 
 let fixedSideControls = [
   "hover:bg-gray-50",
-  "border",
+  // "border",
   "border-gray-300",
   "text-sm",
   "font-medium",
@@ -476,7 +478,7 @@ let fixedSideControls = [
 ]
 
 let pagination = {
-  pagainationBar: {
+  paginationBar: {
     default: [
       "rounded-md",
       // shadow ? "shadow" : ""
@@ -490,12 +492,12 @@ let pagination = {
   pageActive: {
     default: [
       ...fixedPage,
+      "hover:bg-indigo-400",
+      "border-indigo-200",
       "bg-indigo-500",
-      "hover:bg-indigo-600",
+      "ring-indigo-200",
       "text-white",
-      "border-indigo-500",
-      // "ring-blue-300",
-      // "ring-2",
+      "ring-2",
       "font-semibold",
     ],
   },

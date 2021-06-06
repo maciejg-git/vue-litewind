@@ -78,8 +78,8 @@ export default {
     clickOutsideClose: { type: Boolean, default: false },
     targetId: { type: String, default: undefined },
     name: { type: String, default: "popover" },
-    popover: { type: String, default: "default" },
-    content: { type: String, default: "default" },
+    stylePopover: { type: String, default: "default" },
+    styleContent: { type: String, default: "default" },
   },
   components: {
     vCloseButton,

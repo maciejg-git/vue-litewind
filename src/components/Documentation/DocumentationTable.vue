@@ -8,43 +8,37 @@
     <v-table
       :items="reference"
       :definition="referenceDefinition"
-      table="default fixed"
-      header-cell="default bordered"
-      cell="default bordered"
+      style-table="default fixed"
+      style-header-cell="default bordered"
+      style-cell="default bordered"
     >
-      <template #cell:type="{ value }"
-        ><code class="code-word mx-1">{{ value }}</code></template
-      >
-      <template #cell:description="{ value }"
-        ><span v-html="value"></span
-      ></template>
+      <template #cell:type="{ value }">
+        <code class="code-word mx-1">
+          {{ value }}
+        </code>
+      </template>
+      <template #cell:default="{ value }">
+        <code class="text-sm">{{ value }}</code>
+      </template>
+      <template #cell:description="{ value }">
+        <span v-html="value"></span>
+      </template>
     </v-table>
-    <h6>Styling</h6>
+
+    <h6>Styling props</h6>
+    <p></p>
     <v-table
       :items="referenceStyles"
       :definition="referenceStylesDefinition"
-      table="default fixed"
-      header-cell="default bordered"
-      cell="default bordered"
+      style-table="default fixed"
+      style-header-cell="default bordered"
+      style-cell="default bordered"
     >
       <template #cell:description="{ value }"
         ><span v-html="value"></span
       ></template>
     </v-table>
   </section>
-
-  <!-- <section> -->
-  <!--   <h5>Reference</h5> -->
-  <!--   <p></p> -->
-  <!--   <v&#45;table :items="reference" :definition="referenceDefinition" small> -->
-  <!--     <template #cell:type="{ value }" -->
-  <!--       ><code>{{ value }}</code></template -->
-  <!--     > -->
-  <!--     <template #cell:description="{ value, item }"> -->
-  <!--       <span v&#45;html="value"></span> -->
-  <!--     </template> -->
-  <!--   </v&#45;table> -->
-  <!-- </section> -->
 
   <section>
     <h5>Definition</h5>
@@ -140,31 +134,33 @@
       <input
         type="text"
         placeholder="Filter"
-        v-model="filter.filter"
+        v-model="example.filter"
         class="rounded border-gray-300 focus:border-gray-400 focus:ring focus:ring-indigo-200 my-5 py-1"
       />
       <v-table
         :items="dataLong"
         :definition="definition"
-        :filter="filter.filter"
-        :page="pagination.page"
-        :items-per-page="pagination.itemsPerPage"
-        @update:filtered-count="pagination.itemsCount = $event"
-        @update:page="pagination.page = $event"
+        :filter="example.filter"
+        :page="example.page"
+        :items-per-page="example.itemsPerPage"
+        :busy="example.busy"
+        :selectionMode="example.selectionMode"
+        @update:filtered-count="example.itemsCount = $event"
+        @update:page="example.page = $event"
       >
         <template #cell:edit="{ item }">
-          <vButton button="default tiny noMargin" @click="edit(item)"
-            >edit</vButton
-          >
+          <vButton style-button="default tiny noMargin" @click.stop="edit(item)">
+            edit
+          </vButton>
         </template>
         <template #caption> Example </template>
       </v-table>
       <div class="flex justify-between my-5">
         <div>
           <v-pagination
-            v-model="pagination.page"
-            :items-count="pagination.itemsCount"
-            :items-per-page="pagination.itemsPerPage"
+            v-model="example.page"
+            :items-count="example.itemsCount"
+            :items-per-page="example.itemsPerPage"
             max-pages="7"
             icons
           ></v-pagination>
@@ -172,10 +168,8 @@
         <div>
           <label for="items-per-page" class="mr-10">Items per page</label>
           <select
-            v-model="pagination.itemsPerPage"
+            v-model="example.itemsPerPage"
             id="items-per-page"
-            name="cars"
-            class="rounded border-gray-300 focus:border-gray-400 focus:ring focus:ring-indigo-200 py-1"
           >
             <option value="5">5</option>
             <option value="10">10</option>
@@ -184,60 +178,33 @@
           </select>
         </div>
       </div>
+      <hr>
+        <div class="mt-5">
+          <div class="mb-2">
+            <label for="busy">busy: </label>
+            <select
+              id="busy"
+              v-model="example.busy"
+            >
+              <option :value="true">true</option>
+              <option :value="false">false</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label for="selection-mode">selection-mode: </label>
+            <select
+              id="selection-mode"
+              v-model="example.selectionMode"
+            >
+              <option value="single">single</option>
+              <option value="multiple">multiple</option>
+              <option value="">empty string (selection disabled)</option>
+            </select>
+          </div>
+        </div>
     </div>
     <pre>
       <code>
-      </code>
-    </pre>
-  </section>
-
-  <section>
-    <h5>Transition</h5>
-    <span class="fw-bold">Type</span>: <code>String</code>
-    <p></p>
-    <div class="example">
-      <input
-        type="text"
-        placeholder="Filter"
-        v-model="filter.transition"
-        class="form-control w-25"
-      />
-      <div class="my-3">
-        <div class="form-check form-check-inline">
-          <input
-            v-model="transition"
-            class="form-check-input"
-            type="radio"
-            name="inlineRadioOptions"
-            id="inlineRadio1"
-            value="fade-slide"
-          />
-          <label class="form-check-label" for="inlineRadio1">fade-slide</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input
-            v-model="transition"
-            class="form-check-input"
-            type="radio"
-            name="inlineRadioOptions"
-            id="inlineRadio2"
-            value=""
-          />
-          <label class="form-check-label" for="inlineRadio2"
-            >no transition</label
-          >
-        </div>
-      </div>
-      <v-table
-        :items="data"
-        :definition="definition"
-        :filter="filter.transition"
-        :transition="transition"
-      ></v-table>
-    </div>
-    <pre>
-      <code>
-{{``}}
       </code>
     </pre>
   </section>
@@ -320,16 +287,13 @@ export default {
       transition: "",
     });
 
-    let visualProps = reactive({
-      striped: false,
-      hover: false,
-      bordered: false,
-      borderless: false,
-      small: false,
-      headerDark: false,
-      headerLight: false,
-      captionTop: false,
-    });
+    let example = reactive({
+      page: 1,
+      itemsPerPage: 10,
+      filter: "",
+      busy: false,
+      selectionMode: "single",
+    })
 
     let page = ref(1);
     let itemsPerPage = ref(10);
@@ -344,70 +308,83 @@ export default {
       {
         prop: "items",
         type: "Array",
+        default: "undefined",
         description:
           "Data to display in table. Each element of Array is an Object. Single Object is one record (row) of data.",
       },
       {
         prop: "definition",
         type: "Array",
+        default: "undefined",
         description: `Table definition is an optional <code>Array</code> of <code>Objects</code> that defines look and behavior of the table.`,
       },
       {
         prop: "filter",
         type: "String",
+        default: "empty string",
         description: "String to filter array content.",
       },
       {
         prop: "locale",
         type: "String",
+        default: "en-GB",
         description: "Locale used for sorting.",
       },
       {
         prop: "name",
         type: "String",
+        default: "table",
         description:
           "Used only to select non default styles defined in styles.js",
       },
       {
         prop: "busy",
         type: "Boolean",
+        default: "false",
         description: "When true renders table in busy (faded) state.",
       },
       {
         prop: "selection-mode",
         type: "String",
+        default: "empty string",
         description:
           "Valid values are single (allows selection single row only), multiple (allows multiple rows to be selected) or empty string (disables selection).",
       },
       {
         prop: "page",
         type: "Number",
+        default: "1",
         description: "Current page number.",
       },
       {
         prop: "items-per-page",
         type: "Number",
+        default: "0",
         description: "Number of records (rows) on single page.",
       },
       {
         prop: "caption-top",
         type: "Boolean",
+        default: "false",
         description:
           "Display caption on top. Set caption text in caption slot.",
       },
       {
         prop: "empty-text",
         type: "String",
+        default: "",
         description: "Text displayed if table is empty.",
       },
       {
         prop: "empty-filtered-text",
         type: "String",
+        default: "",
         description: "Text displayed if table is empty after filtering.",
       },
       {
         prop: "transition",
         type: "String",
+        default: "fade-slide",
         description:
           "Animation to use for removing and adding records. Allowed values: fade-slide or empty string for no transition. <span class='fw-bold'>Default</span>: 'fade-slide'",
       },
@@ -424,25 +401,29 @@ export default {
         sortable: true,
       },
       {
+        key: "default",
+        class: () => "whitespace-nowrap",
+      },
+      {
         key: "description",
       },
     ]);
 
     let referenceStyles = ref([
       {
-        prop: "table",
+        prop: "style-table",
         description: "Main table element",
       },
       {
-        prop: "headerRow",
+        prop: "style-header-row",
         description: "Header row",
       },
       {
-        prop: "row",
+        prop: "style-row",
         description: "Table row.",
       },
       {
-        prop: "cell",
+        prop: "style-cell",
         description: "Table cell.",
       },
     ]);
@@ -450,6 +431,7 @@ export default {
     let referenceStylesDefinition = ref([
       {
         key: "prop",
+        class: () => "w-1 whitespace-nowrap",
       },
       {
         key: "description",
@@ -477,12 +459,12 @@ export default {
       referenceStyles,
       referenceStylesDefinition,
       filter,
-      visualProps,
       transition,
       pagination,
       editModal,
       edit,
       editContent,
+      example,
     };
   },
 };
@@ -525,5 +507,11 @@ p {
 }
 .code-word {
   @apply text-sm bg-indigo-200 rounded p-1;
+}
+label {
+  @apply mr-2;
+}
+input[type=text], select {
+  @apply rounded border-gray-300 focus:border-gray-400 focus:ring focus:ring-indigo-200 py-1
 }
 </style>

@@ -30,7 +30,7 @@ export default {
   props: {
     growingSpinner: Boolean,
     name: { type: String, default: "spinner" },
-    spinner: { type: [String, Array], default: "default" },
+    styleSpinner: { type: [String, Array], default: "default" },
   },
   setup(props) {
     let elements = ["spinner"];

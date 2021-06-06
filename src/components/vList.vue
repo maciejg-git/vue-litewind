@@ -14,9 +14,9 @@ export default {
     width: String,
     tag: { type: String, default: "div" },
     name: { type: String, default: "list" },
-    list: { type: String, default: "default" },
-    item: { type: [String, Array], default: "default" },
-    itemActive: { type: [String, Array], default: "default" },
+    styleList: { type: String, default: "default" },
+    styleItem: { type: [String, Array], default: "default" },
+    styleItemActive: { type: [String, Array], default: "default" },
   },
   setup(props) {
     let elements = ["list", "item", "itemActive"];

@@ -29,9 +29,9 @@ export default {
     center: { type: Boolean, default: false },
     noTransition: { type: Boolean, default: false },
     name: { type: String, default: "tabs" },
-    tabBar: { type: [String, Array], default: "default" },
-    tab: { type: [String, Array], default: "default" },
-    tabActive: { type: [String, Array], default: "default" },
+    styleTabBar: { type: [String, Array], default: "default" },
+    styleTab: { type: [String, Array], default: "default" },
+    styleTabActive: { type: [String, Array], default: "default" },
   },
   components: {
     VNodes: (props) => {

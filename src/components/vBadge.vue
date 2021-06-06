@@ -12,7 +12,7 @@ import { removeTailwindClasses } from "../tools.js";
 export default {
   props: {
     name: { type: String, default: "badge" },
-    badge: { type: String, default: "default" },
+    styleBadge: { type: String, default: "default" },
   },
   setup(props) {
     let elements = ["badge"];

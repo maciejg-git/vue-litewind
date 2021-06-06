@@ -22,14 +22,14 @@
             <slot name="footer">
               <v-button
                 v-if="!noSecondaryButton"
-                :button="secondaryButtonStyle"
+                :style-button="secondaryButtonStyle"
                 @click="handlePrimaryButtonClick"
               >
                 {{ secondaryButtonLabel }}
               </v-button>
               <v-button
                 v-if="!noPrimaryButton"
-                :button="primaryButtonStyle"
+                :style-button="primaryButtonStyle"
                 class="ml-2"
                 @click="handleSecondaryButtonClick"
               >
@@ -71,10 +71,10 @@ export default {
     size: { type: String, default: "md" },
     transition: { type: String, default: "fade-slide" },
     name: { type: String, default: "modal" },
-    modal: { type: String, default: "default" },
-    header: { type: String, default: "default" },
-    content: { type: String, default: "default" },
-    backdrop: { type: String, default: "default" },
+    styleModal: { type: String, default: "default" },
+    styleHeader: { type: String, default: "default" },
+    styleContent: { type: String, default: "default" },
+    styleBackdrop: { type: String, default: "default" },
   },
   components: {
     vButton,

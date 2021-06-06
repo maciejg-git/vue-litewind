@@ -109,12 +109,12 @@ export default {
     busy: { type: Boolean, default: false },
     selectionMode: { type: String, default: "" },
     name: { type: String, default: "table" },
-    table: { type: String, default: "table" },
-    headerRow: { type: String, default: "default" },
-    headerCell: { type: String, default: "default" },
-    row: { type: String, default: "default" },
-    cell: { type: String, default: "default" },
-    caption: { type: String, default: "default" },
+    styleTable: { type: String, default: "default" },
+    styleHeaderRow: { type: String, default: "default" },
+    styleHeaderCell: { type: String, default: "default" },
+    styleRow: { type: String, default: "default" },
+    styleCell: { type: String, default: "default" },
+    styleCaption: { type: String, default: "default" },
   },
   setup(props, { slots, emit }) {
     let elements = [

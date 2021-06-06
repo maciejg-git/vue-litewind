@@ -14,7 +14,7 @@ export default {
     disabled: { type: Boolean, default: false },
     tag: { type: String, default: "button" },
     name: { type: String, default: "button" },
-    button: { type: String, default: "default" },
+    styleButton: { type: String, default: "default" },
   },
   setup(props) {
     let elements = ["button"];
