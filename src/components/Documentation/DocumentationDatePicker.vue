@@ -40,10 +40,38 @@
         ><span v-html="value"></span
       ></template>
     </v-table>
+
+    <h6>Events</h6>
+    <p></p>
+    <v-table
+      :items="referenceEvents"
+      :definition="referenceEventsDefinition"
+      style-table="default fixed"
+      style-header-cell="default bordered"
+      style-cell="default bordered"
+    >
+      <template #cell:description="{ value }"
+        ><span v-html="value"></span
+      ></template>
+    </v-table>
+
+    <h6>Slots</h6>
+    <p></p>
+    <v-table
+      :items="referenceSlots"
+      :definition="referenceSlotsDefinition"
+      style-table="default fixed"
+      style-header-cell="default bordered"
+      style-cell="default bordered"
+    >
+      <template #cell:description="{ value }"
+        ><span v-html="value"></span
+      ></template>
+    </v-table>
   </section>
 
   <section>
-    <h5>v-model</h5>
+    <h4>v-model</h4>
     <span class="font-bold">Type</span>: <code class="code-word">String</code
     ><code class="code-word">Array</code>
     <p>
@@ -58,25 +86,21 @@
       <div class="flex">
         <v-card style="width: 320px" class="p-2">
           <v-date-picker
-            v-model="exampleModelSingle.date"
+            v-model="exampleModel.single"
             adjecent-months
           ></v-date-picker>
         </v-card>
-        <span class="ml-10">
-          v-model (single): {{ exampleModelSingle.date }}
-        </span>
+        <span class="ml-10"> v-model (single): {{ exampleModel.single }} </span>
       </div>
       <div class="flex">
         <v-card style="width: 320px" class="p-2 mt-2">
           <v-date-picker
-            v-model="exampleModelRange.date"
+            v-model="exampleModel.range"
             range
             adjecent-months
           ></v-date-picker>
         </v-card>
-        <span class="ml-10">
-          v-model (range): {{ exampleModelRange.date }}
-        </span>
+        <span class="ml-10"> v-model (range): {{ exampleModel.range }} </span>
       </div>
     </div>
     <pre>
@@ -95,7 +119,7 @@
   </section>
 
   <section>
-    <h5>Example</h5>
+    <h4>Example</h4>
     <p></p>
     <div class="example md:flex">
       <v-card style="width: 320px" class="self-start p-2">
@@ -111,9 +135,9 @@
           :range-hover-highlight="example.rangeHoverHighlight"
           :transition="example.transition"
           @input:formatted="example.formatted = $event"
-        ></v-date-picker>
+        />
       </v-card>
-      <div class="md:ml-10">
+      <div class="md:ml-14">
         <div class="mb-2">
           <label for="model" class="font-semibold">v-model: </label>
           <input type="text" id="model" v-model="example.date" />
@@ -187,13 +211,28 @@
       </div>
     </div>
     <pre>
-      <code>
+      <code class="language-html">
+{{`<v-card style="width: 320px" class="self-start p-2">
+  <v-date-picker
+    v-model="example.date"
+    :range="example.range"
+    :locale="example.locale"
+    :euro="example.euro"
+    :buttons="!!example.buttons"
+    :primaryButtonLabel="example.primaryButtonLabel"
+    :secondaryButtonLabel="example.secondaryButtonLabel"
+    :adjecent-months="!!example.adjecentMonths"
+    :range-hover-highlight="example.rangeHoverHighlight"
+    :transition="example.transition"
+    @input:formatted="example.formatted = $event"
+    />
+</v-card>`}}
       </code>
     </pre>
   </section>
 
   <section>
-    <h5>Datepicker in dropdown</h5>
+    <h4>Datepicker in dropdown</h4>
     <p></p>
     <div class="example flex">
       <v-dropdown>
@@ -201,7 +240,6 @@
           <input
             type="text"
             v-model="exampleDropdown.date"
-            class="rounded border-gray-300 focus:border-gray-400 focus:ring focus:ring-indigo-200 py-1"
             placeholder="Pick date"
           />
         </template>
@@ -209,7 +247,7 @@
           <v-card class="p-2">
             <v-date-picker
               v-model="exampleDropdown.date"
-              width="320px"
+              width="305px"
               :buttons="exampleDropdown.buttons"
               @state:done="hide"
             ></v-date-picker>
@@ -231,7 +269,26 @@
       </div>
     </div>
     <pre>
-      <code>
+      <code class="language-html">
+{{`<v-dropdown>
+  <template #activator>
+    <input
+      type="text"
+      v-model="exampleDropdown.date"
+      placeholder="Pick date"
+      />
+  </template>
+  <template #default="{ hide }">
+    <v-card class="p-2">
+      <v-date-picker
+        v-model="exampleDropdown.date"
+        width="305px"
+        :buttons="exampleDropdown.buttons"
+        @state:done="hide"
+        />
+    </v-card>
+  </template>
+</v-dropdown>`}}
       </code>
     </pre>
   </section>
@@ -246,7 +303,6 @@ import vCard from "../vCard.vue";
 import vDropdown from "../vDropdown.vue";
 
 import hljs from "highlight.js";
-import dataJSON from "../../MOCK_DATA (1).json";
 
 export default {
   components: {
@@ -411,22 +467,57 @@ export default {
       },
     ]);
 
-    let date = reactive({
-      date: ref(""),
-      range: ref(""),
-      done: ref(""),
-    });
+    let referenceEvents = ref([
+      {
+        event: "update:modelValue",
+        description: "Update v-model",
+      },
+      {
+        event: "input:formatted",
+        description: "Emmited after selecting date along with update:modelValue",
+      },
+      {
+        event: "state:done",
+        description:
+          "Emmited after selecting date (and clicking primary button if buttons props is set to true)",
+      },
+      {
+        event: "state:cancel",
+        description:
+          "Emmited after clicking secondary button",
+      },
+    ]);
 
-    let exampleModelSingle = reactive({
-      date: ref(""),
-      range: ref(""),
-      done: ref(""),
-    });
+    let referenceEventsDefinition = ref([
+      {
+        key: "event",
+        class: () => "w-1 whitespace-nowrap",
+      },
+      {
+        key: "description",
+      },
+    ]);
 
-    let exampleModelRange = reactive({
-      date: ref(""),
+    let referenceSlots = ref([
+      {
+        slot: "-",
+        description: "This component does not provide any slots.",
+      },
+    ]);
+
+    let referenceSlotsDefinition = ref([
+      {
+        key: "slot",
+        class: () => "w-1 whitespace-nowrap",
+      },
+      {
+        key: "description",
+      },
+    ]);
+
+    let exampleModel = reactive({
+      single: ref(""),
       range: ref(""),
-      done: ref(""),
     });
 
     let example = reactive({
@@ -459,9 +550,11 @@ export default {
       referenceDefinition,
       referenceStyles,
       referenceStylesDefinition,
-      date,
-      exampleModelSingle,
-      exampleModelRange,
+      referenceEvents,
+      referenceEventsDefinition,
+      referenceSlots,
+      referenceSlotsDefinition,
+      exampleModel,
       example,
       exampleDropdown,
     };
@@ -501,8 +594,17 @@ p {
 .example {
   margin-top: 2em;
 }
+pre {
+  @apply whitespace-normal my-5;
+}
+pre code {
+  @apply whitespace-pre;
+}
 .code-word {
   @apply text-sm bg-indigo-200 rounded p-1 mx-1;
+}
+code {
+  @apply text-sm;
 }
 input[type="checkbox"] {
   transform: scale(1.2);

@@ -1,33 +1,33 @@
 const shade = {
   _name: null,
-  "50": true,
-  "100": true,
-  "200": true,
-  "300": true,
-  "400": true,
-  "500": true,
-  "600": true,
-  "700": true,
-  "800": true,
-  "900": true,
-}
+  50: true,
+  100: true,
+  200: true,
+  300: true,
+  400: true,
+  500: true,
+  600: true,
+  700: true,
+  800: true,
+  900: true,
+};
 
 const colors = {
   _name: "color",
-  transparent: {_optional: true, _name: null},
-  white: {_optional: true, _name: null},
-  black: {_optional: true, _name: null},
-  gray:  shade,
-  red:  shade,
-  yellow:  shade,
-  green:  shade,
-  blue:  shade,
+  transparent: { _optional: true, _name: null },
+  white: { _optional: true, _name: null },
+  black: { _optional: true, _name: null },
+  gray: shade,
+  red: shade,
+  yellow: shade,
+  green: shade,
+  blue: shade,
   indigo: shade,
   purple: shade,
   pink: shade,
   green: shade,
   yellow: shade,
-}
+};
 
 const roundedSize = {
   _name: "size",
@@ -40,30 +40,30 @@ const roundedSize = {
   "2xl": true,
   "3xl": true,
   full: true,
-}
+};
 
 const roundedSide = {
   t: roundedSize,
-  r: roundedSize, 
-  b: roundedSize, 
-  l: roundedSize, 
-}
+  r: roundedSize,
+  b: roundedSize,
+  l: roundedSize,
+};
 
 const borderWidth = {
   _name: "width",
   _optional: true,
-  "0": true,
-  "2": true,
-  "4": true,
-  "8": true,
-}
+  0: true,
+  2: true,
+  4: true,
+  8: true,
+};
 
 const borderSide = {
   t: borderWidth,
   r: borderWidth,
   b: borderWidth,
   l: borderWidth,
-}
+};
 
 const weight = {
   _name: "weight",
@@ -76,7 +76,7 @@ const weight = {
   bold: true,
   extrabold: true,
   black: true,
-}
+};
 
 const overflow = {
   _name: "visibility",
@@ -84,161 +84,270 @@ const overflow = {
   hidden: true,
   visible: true,
   scroll: true,
-}
+};
 
 const opacity = {
   _name: null,
-  "0": true,
-  "5": true,
-  "10": true,
-  "20": true,
-  "25": true,
-  "30": true,
-  "40": true,
-  "50": true,
-  "60": true,
-  "75": true,
-  "80": true,
-  "90": true,
-  "95": true,
-  "100": true,
-}
+  0: true,
+  5: true,
+  10: true,
+  20: true,
+  25: true,
+  30: true,
+  40: true,
+  50: true,
+  60: true,
+  75: true,
+  80: true,
+  90: true,
+  95: true,
+  100: true,
+};
 
 const space = {
   _name: null,
-  "0": true,
-  "0.5": true,
-  "1": true,
-  "1.5": true,
-  "2": true,
-  "2.5": true,
-  "3": true,
-  "3.5": true,
-  "4": true,
-  "5": true,
-  "6": true,
-  "7": true,
-  "8": true,
-  "9": true,
-  "10": true,
-  "11": true,
-  "12": true,
-  "14": true,
-  "16": true,
-  "20": true,
-  "24": true,
-  "28": true,
-  "32": true,
-  "36": true,
-  "40": true,
-  "44": true,
-  "48": true,
-  "52": true,
-  "56": true,
-  "60": true,
-  "64": true,
-  "72": true,
-  "80": true,
-  "96": true,
-  "px": true,
-  "reverse": true,
-}
+  0: true,
+  0.5: true,
+  1: true,
+  1.5: true,
+  2: true,
+  2.5: true,
+  3: true,
+  3.5: true,
+  4: true,
+  5: true,
+  6: true,
+  7: true,
+  8: true,
+  9: true,
+  10: true,
+  11: true,
+  12: true,
+  14: true,
+  16: true,
+  20: true,
+  24: true,
+  28: true,
+  32: true,
+  36: true,
+  40: true,
+  44: true,
+  48: true,
+  52: true,
+  56: true,
+  60: true,
+  64: true,
+  72: true,
+  80: true,
+  96: true,
+  px: true,
+  reverse: true,
+};
 
 const order = {
   _name: null,
-  "0": true,
-  "1": true,
-  "3": true,
-  "4": true,
-  "5": true,
-  "6": true,
-  "7": true,
-  "8": true,
-  "9": true,
-  "10": true,
-  "11": true,
-  "12": true,
-  "first": true,
-  "last": true,
-  "none": true,
-}
+  0: true,
+  1: true,
+  3: true,
+  4: true,
+  5: true,
+  6: true,
+  7: true,
+  8: true,
+  9: true,
+  10: true,
+  11: true,
+  12: true,
+  first: true,
+  last: true,
+  none: true,
+};
 
 const sizing = {
   _name: null,
-  "0": true,
-  "0.5": true,
-  "1": true,
-  "1.5": true,
-  "2": true,
-  "2.5": true,
-  "3": true,
-  "3.5": true,
-  "4": true,
-  "5": true,
-  "6": true,
-  "7": true,
-  "8": true,
-  "9": true,
-  "10": true,
-  "11": true,
-  "12": true,
-  "14": true,
-  "16": true,
-  "20": true,
-  "24": true,
-  "28": true,
-  "32": true,
-  "36": true,
-  "40": true,
-  "44": true,
-  "48": true,
-  "52": true,
-  "56": true,
-  "60": true,
-  "64": true,
-  "72": true,
-  "80": true,
-  "96": true,
-  "px": true,
-}
+  0: true,
+  0.5: true,
+  1: true,
+  1.5: true,
+  2: true,
+  2.5: true,
+  3: true,
+  3.5: true,
+  4: true,
+  5: true,
+  6: true,
+  7: true,
+  8: true,
+  9: true,
+  10: true,
+  11: true,
+  12: true,
+  14: true,
+  16: true,
+  20: true,
+  24: true,
+  28: true,
+  32: true,
+  36: true,
+  40: true,
+  44: true,
+  48: true,
+  52: true,
+  56: true,
+  60: true,
+  64: true,
+  72: true,
+  80: true,
+  96: true,
+  px: true,
+};
+
+let gap = {
+  _name: null,
+  0: true,
+  px: true,
+  0.5: true,
+  1: true,
+  1.5: true,
+  2: true,
+  2.5: true,
+  3: true,
+  3.5: true,
+  4: true,
+  5: true,
+  6: true,
+  7: true,
+  8: true,
+  9: true,
+  10: true,
+  11: true,
+  12: true,
+  14: true,
+  16: true,
+  20: true,
+  24: true,
+  28: true,
+  32: true,
+  36: true,
+  40: true,
+  44: true,
+  48: true,
+  52: true,
+  56: true,
+  60: true,
+  64: true,
+  72: true,
+  80: true,
+  96: true,
+};
+
+let width = {
+  _name: null,
+  0: true,
+  px: true,
+  0.5: true,
+  1: true,
+  1.5: true,
+  2: true,
+  2.5: true,
+  3: true,
+  3.5: true,
+  4: true,
+  5: true,
+  6: true,
+  7: true,
+  8: true,
+  9: true,
+  10: true,
+  11: true,
+  12: true,
+  14: true,
+  16: true,
+  20: true,
+  24: true,
+  28: true,
+  32: true,
+  36: true,
+  40: true,
+  44: true,
+  48: true,
+  52: true,
+  56: true,
+  60: true,
+  64: true,
+  72: true,
+  80: true,
+  96: true,
+  auto: true,
+  "1/2": true,
+  "1/3": true,
+  "2/3": true,
+  "1/4": true,
+  "2/4": true,
+  "3/4": true,
+  "1/5": true,
+  "2/5": true,
+  "3/5": true,
+  "4/5": true,
+  "1/6": true,
+  "2/6": true,
+  "3/6": true,
+  "4/6": true,
+  "5/6": true,
+  "1/12": true,
+  "2/12": true,
+  "3/12": true,
+  "4/12": true,
+  "5/12": true,
+  "6/12": true,
+  "7/12": true,
+  "8/12": true,
+  "9/12": true,
+  "10/12": true,
+  "11/12": true,
+  full: true,
+  screen: true,
+  min: true,
+  max: true,
+};
 
 let placement = {
- _name: null,
-  "0": true,
-  "0.5": true,
-  "1": true,
-  "1.5": true,
-  "2": true,
-  "2.5": true,
-  "3": true,
-  "3.5": true,
-  "4": true,
-  "5": true,
-  "6": true,
-  "7": true,
-  "8": true,
-  "9": true,
-  "10": true,
-  "11": true,
-  "12": true,
-  "14": true,
-  "16": true,
-  "20": true,
-  "24": true,
-  "28": true,
-  "32": true,
-  "36": true,
-  "40": true,
-  "44": true,
-  "48": true,
-  "52": true,
-  "56": true,
-  "60": true,
-  "64": true,
-  "72": true,
-  "80": true,
-  "96": true,
-  "px": true, 
+  _name: null,
+  0: true,
+  0.5: true,
+  1: true,
+  1.5: true,
+  2: true,
+  2.5: true,
+  3: true,
+  3.5: true,
+  4: true,
+  5: true,
+  6: true,
+  7: true,
+  8: true,
+  9: true,
+  10: true,
+  11: true,
+  12: true,
+  14: true,
+  16: true,
+  20: true,
+  24: true,
+  28: true,
+  32: true,
+  36: true,
+  40: true,
+  44: true,
+  48: true,
+  52: true,
+  56: true,
+  60: true,
+  64: true,
+  72: true,
+  80: true,
+  96: true,
+  px: true,
   auto: true,
   "1/2": true,
   "1/3": true,
@@ -247,7 +356,7 @@ let placement = {
   "2/4": true,
   "3/4": true,
   full: true,
-}
+};
 
 const shadow = {
   _name: null,
@@ -258,7 +367,7 @@ const shadow = {
   "2xl": true,
   inner: true,
   none: true,
-}
+};
 
 let states = {
   hover: true,
@@ -273,7 +382,7 @@ let states = {
   disabled: true,
   visited: true,
   checked: true,
-}
+};
 
 export const tailwindcss = {
   states,
@@ -290,9 +399,9 @@ export const tailwindcss = {
       },
       {
         _name: "attachment",
-        fixed:true,
-        local:true,
-        scroll:true,
+        fixed: true,
+        local: true,
+        scroll: true,
       },
       {
         clip: {
@@ -301,7 +410,7 @@ export const tailwindcss = {
           padding: true,
           content: true,
           text: true,
-        }
+        },
       },
       {
         _name: "position",
@@ -326,7 +435,7 @@ export const tailwindcss = {
         auto: true,
         cover: true,
         contain: true,
-      }
+      },
     ],
   },
   float: {
@@ -336,8 +445,8 @@ export const tailwindcss = {
         right: true,
         left: true,
         none: true,
-      }
-    ]
+      },
+    ],
   },
   clear: {
     props: [
@@ -347,8 +456,8 @@ export const tailwindcss = {
         right: true,
         both: true,
         none: true,
-      }
-    ]
+      },
+    ],
   },
   visible: {
     _single: "visibility",
@@ -360,15 +469,28 @@ export const tailwindcss = {
     props: [
       {
         _name: null,
-        "0": true,
-        "10": true,
-        "20": true,
-        "30": true,
-        "40": true,
-        "50": true,
+        0: true,
+        10: true,
+        20: true,
+        30: true,
+        40: true,
+        50: true,
         auto: true,
-      }
-    ]
+      },
+    ],
+  },
+  gap: {
+    props: [
+      gap,
+      {
+        _name: "column",
+        x: gap,
+      },
+      {
+        _name: "row",
+        y: gap,
+      },
+    ],
   },
   justify: {
     props: [
@@ -399,7 +521,7 @@ export const tailwindcss = {
           stretch: true,
         },
       },
-    ]
+    ],
   },
   content: {
     _name: "aligncontent",
@@ -438,8 +560,8 @@ export const tailwindcss = {
         end: true,
         center: true,
         stretch: true,
-      }
-    ]
+      },
+    ],
   },
   place: {
     props: [
@@ -462,7 +584,7 @@ export const tailwindcss = {
           end: true,
           center: true,
           stretch: true,
-        }
+        },
       },
       {
         self: {
@@ -472,129 +594,87 @@ export const tailwindcss = {
           end: true,
           center: true,
           stretch: true,
-        }
-      }
-    ]
+        },
+      },
+    ],
   },
   p: {
-    props: [
-      sizing,
-    ]
+    props: [sizing],
   },
   px: {
-    props: [
-      sizing,
-    ]
+    props: [sizing],
   },
   py: {
-    props: [
-      sizing,
-    ]
+    props: [sizing],
   },
   pt: {
-    props: [
-      sizing,
-    ]
+    props: [sizing],
   },
   pr: {
-    props: [
-      sizing,
-    ]
+    props: [sizing],
   },
   pb: {
-    props: [
-      sizing,
-    ]
+    props: [sizing],
   },
   pl: {
-    props: [
-      sizing,
-    ]
+    props: [sizing],
   },
   m: {
-    props: [
-      sizing,
-    ]
+    props: [sizing],
   },
   mx: {
-    props: [
-      sizing,
-    ]
+    props: [sizing],
   },
   my: {
-    props: [
-      sizing,
-    ]
+    props: [sizing],
   },
   mt: {
-    props: [
-      sizing,
-    ]
+    props: [sizing],
   },
   mr: {
-    props: [
-      sizing,
-    ]
+    props: [sizing],
   },
   mb: {
-    props: [
-      sizing,
-    ]
+    props: [sizing],
   },
   ml: {
-    props: [
-      sizing,
-    ]
+    props: [sizing],
   },
   "-m": {
     _name: "m",
-    props: [
-      sizing,
-    ]
+    props: [sizing],
   },
   "-mx": {
     _name: "mx",
-    props: [
-      sizing,
-    ]
+    props: [sizing],
   },
   "-my": {
     _name: "my",
-    props: [
-      sizing,
-    ]
+    props: [sizing],
   },
   "-mt": {
     _name: "mt",
-    props: [
-      sizing,
-    ]
+    props: [sizing],
   },
   "-mr": {
     _name: "mr",
-    props: [
-      sizing,
-    ]
+    props: [sizing],
   },
   "-mb": {
     _name: "mb",
-    props: [
-      sizing,
-    ]
+    props: [sizing],
   },
   "-ml": {
     _name: "ml",
-    props: [
-      sizing,
-    ]
+    props: [sizing],
   },
   space: {
     props: [
       {
         x: space,
         y: space,
-      }
-    ]
+      },
+    ],
   },
   "-space": {
     _name: "space",
@@ -602,15 +682,20 @@ export const tailwindcss = {
       {
         x: space,
         y: space,
-      }
-    ]
+      },
+    ],
+  },
+  w: {
+    props: [
+      width,
+    ],
   },
   cursor: {
     props: [
       {
         pointer: true,
-      }
-    ]
+      },
+    ],
   },
   text: {
     _name: "text",
@@ -654,8 +739,8 @@ export const tailwindcss = {
       {
         _name: "fontstyle",
         italic: true,
-      }
-    ]
+      },
+    ],
   },
   underline: {
     _single: "textdecoration",
@@ -666,8 +751,8 @@ export const tailwindcss = {
       {
         _name: "textdecoration",
         through: true,
-      }
-    ]
+      },
+    ],
   },
   no: {
     _name: null,
@@ -675,8 +760,8 @@ export const tailwindcss = {
       {
         _name: "textdecoration",
         underline: true,
-      }
-    ]
+      },
+    ],
   },
   uppercase: {
     _single: "uppercase",
@@ -696,9 +781,9 @@ export const tailwindcss = {
           _name: null,
           top: true,
           bottom: true,
-        }
-      }
-    ]
+        },
+      },
+    ],
   },
   rounded: {
     _name: "rounded",
@@ -707,9 +792,7 @@ export const tailwindcss = {
   },
   font: {
     _name: "font",
-    props: [
-      weight,
-    ],
+    props: [weight],
   },
   tracking: {
     props: [
@@ -721,29 +804,29 @@ export const tailwindcss = {
         wide: true,
         wider: true,
         widest: true,
-      }
-    ]
+      },
+    ],
   },
   leading: {
     props: [
       {
         _name: null,
-        "3": true,
-        "4": true,
-        "5": true,
-        "6": true,
-        "7": true,
-        "8": true,
-        "9": true,
-        "10": true,
+        3: true,
+        4: true,
+        5: true,
+        6: true,
+        7: true,
+        8: true,
+        9: true,
+        10: true,
         none: true,
         tight: true,
         snug: true,
         normal: true,
         relaxed: true,
         loose: true,
-      }
-    ]
+      },
+    ],
   },
   block: {
     _single: "display",
@@ -752,9 +835,9 @@ export const tailwindcss = {
     _name: "border",
     _single: "borderwidth",
     props: [
-      borderSide, 
-      borderWidth, 
-      colors, 
+      borderSide,
+      borderWidth,
+      colors,
       {
         _name: "opacity",
         opacity,
@@ -777,32 +860,32 @@ export const tailwindcss = {
   ring: {
     _single: "ringwidth",
     props: [
-      colors, 
+      colors,
       {
         opacity,
       },
       {
         _name: "width",
-        "0": true,
-        "1": true,
-        "2": true,
-        "4": true,
-        "8": true,
-        "inset": true,
+        0: true,
+        1: true,
+        2: true,
+        4: true,
+        8: true,
+        inset: true,
       },
       {
         offset: {
           _name: null,
-          "0": true,
-          "1": true,
-          "2": true,
-          "4": true,
-          "8": true,
-        }
+          0: true,
+          1: true,
+          2: true,
+          4: true,
+          8: true,
+        },
       },
       {
         offset: colors,
-      }
+      },
     ],
   },
   opacity: {
@@ -828,8 +911,8 @@ export const tailwindcss = {
         _name: "text",
         ellipsis: true,
         clip: true,
-      }
-    ]
+      },
+    ],
   },
   static: {
     _single: "position",
@@ -847,24 +930,16 @@ export const tailwindcss = {
     _single: "position",
   },
   top: {
-    props: [
-      placement,
-    ]
+    props: [placement],
   },
   right: {
-    props: [
-      placement,
-    ]
+    props: [placement],
   },
   bottom: {
-    props: [
-      placement,
-    ]
+    props: [placement],
   },
   left: {
-    props: [
-      placement,
-    ]
+    props: [placement],
   },
   inset: {
     props: [
@@ -872,8 +947,8 @@ export const tailwindcss = {
       {
         x: placement,
         y: placement,
-      }
-    ]
+      },
+    ],
   },
   "-inset": {
     _name: "inset",
@@ -882,18 +957,18 @@ export const tailwindcss = {
       {
         x: placement,
         y: placement,
-      }
-    ]
+      },
+    ],
   },
   box: {
     _name: "box",
-    props:[
+    props: [
       {
         _name: "sizing",
         border: true,
         content: true,
-      }
-    ]
+      },
+    ],
   },
   block: {
     _single: "display",
@@ -907,8 +982,8 @@ export const tailwindcss = {
         block: true,
         flex: true,
         grid: true,
-      }
-    ]
+      },
+    ],
   },
   flex: {
     _single: "display",
@@ -936,7 +1011,7 @@ export const tailwindcss = {
       },
       {
         _name: null,
-        "1": true,
+        1: true,
         auto: true,
         initial: true,
         none: true,
@@ -945,14 +1020,14 @@ export const tailwindcss = {
         grow: {
           _name: null,
           _optional: true,
-          "0": true,
+          0: true,
         },
       },
       {
         shrink: {
           _name: null,
           _optional: true,
-          "0": true,
+          0: true,
         },
       },
     ],
@@ -967,7 +1042,7 @@ export const tailwindcss = {
         _name: "layout",
         auto: true,
         fixed: true,
-      }
+      },
     ],
   },
   grid: {
@@ -976,22 +1051,22 @@ export const tailwindcss = {
       {
         cols: {
           _name: null,
-          "1": true,
-          "2": true,
-          "3": true,
-          "4": true,
-          "5": true,
-          "6": true,
-          "7": true,
-          "8": true,
-          "9": true,
-          "10": true,
-          "11": true,
-          "12": true,
-          "none": true,
-        }
-      }
-    ]
+          1: true,
+          2: true,
+          3: true,
+          4: true,
+          5: true,
+          6: true,
+          7: true,
+          8: true,
+          9: true,
+          10: true,
+          11: true,
+          12: true,
+          none: true,
+        },
+      },
+    ],
   },
   contents: {
     _single: "display",
@@ -1013,9 +1088,9 @@ export const tailwindcss = {
         help: true,
         not: {
           allowed: true,
-        } 
-      }
-    ]
+        },
+      },
+    ],
   },
   outline: {
     props: [
@@ -1024,8 +1099,8 @@ export const tailwindcss = {
         none: true,
         white: true,
         black: true,
-      }
-    ]
+      },
+    ],
   },
   pointer: {
     props: [
@@ -1034,9 +1109,9 @@ export const tailwindcss = {
           _name: null,
           none: true,
           auto: true,
-        }
-      }
-    ]
+        },
+      },
+    ],
   },
   resize: {
     _single: "resize",
@@ -1046,10 +1121,9 @@ export const tailwindcss = {
         none: true,
         x: true,
         y: true,
-      }
-    ]
-  }
-
+      },
+    ],
+  },
 
   // table-caption
   // table-cell
@@ -1060,5 +1134,4 @@ export const tailwindcss = {
   // table-row-group
   // table-row
   // flow-root
-}
-
+};

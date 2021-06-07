@@ -123,6 +123,10 @@ let test = [
   "space-y-2 space-y space-y-4",
   "-space-x-2 -space-x -space-x-4",
   "align align-top align-text align-text-top",
+  "gap-0 gap-px gap",
+  "gap-x-0 gap-x-px gap-x",
+  "gap-y-0 gap-y-px gap-y",
+  "w w-2 w-px",
 ];
 let classList = test.flatMap((i) => i.split(" "));
 classList = removeTailwindClasses(classList, true);

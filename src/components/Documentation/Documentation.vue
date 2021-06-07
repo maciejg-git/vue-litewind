@@ -1,41 +1,42 @@
 <template>
   <div class="container">
-    <div class="grid grid-cols-12">
-      <div class="col-span-2 p-3">
+    <div class="flex">
+      <div class="flex-none sticky bg-gray-50 h-screen top-0 p-3 pl-7 pr-20">
+        <h6>Components</h6>
         <ul class="list-unstyled">
           <li>
-            <router-link to="/documentation/table">Table</router-link>
+            <router-link to="/documentation/table" class="transition-all">Table</router-link>
           </li>
           <li>
-            <router-link to="/documentation/datepicker">Date Picker</router-link>
+            <router-link to="/documentation/datepicker" class="transition-all">Date Picker</router-link>
           </li>
           <li>
-            <router-link to="/documentation/button">Button</router-link>
+            <router-link to="/documentation/button" class="transition-all">Button</router-link>
           </li>
           <li>
-            <router-link to="/documentation/pagination">Pagination</router-link>
+            <router-link to="/documentation/pagination" class="transition-all">Pagination</router-link>
           </li>
           <li>
-            <router-link to="/documentation/badge">Badge</router-link>
+            <router-link to="/documentation/badge" class="transition-all">Badge</router-link>
           </li>
           <li>
-            <router-link to="/documentation/list">List</router-link>
+            <router-link to="/documentation/list" class="transition-all">List</router-link>
           </li>
           <li>
-            <router-link to="/documentation/modal">Modal</router-link>
+            <router-link to="/documentation/modal" class="transition-all">Modal</router-link>
           </li>
           <li>
-            <router-link to="/documentation/spinner">Spinner</router-link>
+            <router-link to="/documentation/spinner" class="transition-all">Spinner</router-link>
           </li>
           <li>
-            <router-link to="/documentation/tabs">Tabs</router-link>
+            <router-link to="/documentation/tabs" class="transition-all">Tabs</router-link>
           </li>
           <li>
-            <router-link to="/documentation/dropdown">Dropdown</router-link>
+            <router-link to="/documentation/dropdown" class="transition-all">Dropdown</router-link>
           </li>
         </ul>
       </div>
-      <div class="col-span-10 p-3">
+      <div class="p-3 pl-7">
         <router-view></router-view>
       </div>
     </div>
@@ -49,3 +50,25 @@ export default {
 
 }
 </script>
+
+<style scoped>
+h3 {
+  @apply text-3xl;
+  @apply font-semibold;
+}
+h4 {
+  @apply text-2xl;
+  @apply font-semibold;
+}
+h5 {
+  @apply text-xl;
+  @apply font-semibold;
+}
+h6 {
+  @apply text-lg;
+  @apply font-semibold;
+}
+li {
+  @apply hover:bg-gray-100 py-1 pl-2;
+}
+</style>
