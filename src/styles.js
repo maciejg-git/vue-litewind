@@ -349,6 +349,7 @@ let datepicker = {
       "hover:bg-indigo-600",
       // "ring-indigo-200",
       // "ring",
+      "font-semibold",
       "text-white", 
     ]
   },

@@ -163,7 +163,7 @@
         type="text"
         placeholder="Filter"
         v-model="example.filter"
-        class="rounded border-gray-300 focus:border-gray-400 focus:ring focus:ring-indigo-200 py-1"
+        class="rounded border-gray-300 focus:border-gray-400 focus:ring focus:ring-indigo-200 py-1 mb-4"
       />
       <v-table
         :items="example.data"
@@ -176,8 +176,9 @@
         :captionTop="!!example.captionTop"
         :transition="example.transition"
         :locale="example.locale"
-        @update:filtered-count="example.itemsCount = $event"
-        @update:page="example.page = $event"
+        @update:filtered-count="example.itemsCount = $event;example.events.unshift({ev: 'update:filtered-count', data: $event})"
+        @update:page="example.page = $event;example.events.unshift({ev: 'update:page', data: $event})"
+        @input:selection="example.events.unshift({ev: 'input:selection', data: $event})"
       >
         <template #cell:edit="{ item }">
           <vButton
@@ -210,42 +211,56 @@
         </div>
       </div>
       <hr />
-      <div class="mt-5">
-        <div class="mb-2">
-          <label for="locale">locale: </label>
-          <input type="text" id="locale" v-model="example.locale" />
+      <div class="flex mt-5">
+        <div>
+          <div class="mb-2">
+            <label for="locale">locale: </label>
+            <input type="text" id="locale" v-model="example.locale" />
+          </div>
+          <div class="mb-2">
+            <label for="busy">busy: </label>
+            <select id="busy" v-model="example.busy">
+              <option :value="true">true</option>
+              <option :value="false">false</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label for="selection-mode">selection-mode: </label>
+            <select id="selection-mode" v-model="example.selectionMode">
+              <option value="single">single</option>
+              <option value="multiple">multiple</option>
+              <option value="">empty string (selection disabled)</option>
+            </select>
+          </div>
         </div>
-        <div class="mb-2">
-          <label for="busy">busy: </label>
-          <select id="busy" v-model="example.busy">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
-          </select>
-        </div>
-        <div class="mb-2">
-          <label for="selection-mode">selection-mode: </label>
-          <select id="selection-mode" v-model="example.selectionMode">
-            <option value="single">single</option>
-            <option value="multiple">multiple</option>
-            <option value="">empty string (selection disabled)</option>
-          </select>
-        </div>
-        <div class="mb-2">
-          <label for="caption-top">caption-top: </label>
-          <select id="caption-top" v-model="example.captionTop">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
-          </select>
-        </div>
-        <div class="mb-2">
-          <label for="transition">transition: </label>
-          <select id="transition" v-model="example.transition">
-            <option value="fade-slide">fade-slide</option>
-            <option value="">empty string (no transition)</option>
-          </select>
+        <div class="ml-14">
+          <div class="mb-2">
+            <label for="caption-top">caption-top: </label>
+            <select id="caption-top" v-model="example.captionTop">
+              <option :value="true">true</option>
+              <option :value="false">false</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label for="transition">transition: </label>
+            <select id="transition" v-model="example.transition">
+              <option value="fade-slide">fade-slide</option>
+              <option value="">empty string (no transition)</option>
+            </select>
+          </div>
         </div>
       </div>
     </div>
+    <v-card class="overflow-y-scroll max-h-48 mt-5">
+      <div class="font-semibold px-2 py-1">Events</div>
+      <div class="px-2 pb-2">
+        <template v-for="ev in example.events">
+          <div class="py-1">
+            <code class="code-word">{{ ev.ev }}</code> {{ ev.data }}
+          </div>
+        </template>
+      </div>
+    </v-card>
     <pre>
       <code>
       </code>
@@ -255,10 +270,29 @@
   <section>
     <h4>Sorting</h4>
     <p>
-      Table definition is an optional <code>Array</code> of
-      <code>Objects</code> that defines look and behavior of the table. Each
-      object represents one column, has one required, unique key property and
-      number of optional properties.
+      To enable sorting of table you have to set it in definition using sorable for every column. By default records are sorted as strings and using provided locale. Number and dates are sorted as numbers and dates. Null, undefined and NaN values are always first when sorting in ascending direction.
+    </p>
+    <pre class="p-0">
+      <code>
+    </code>
+  </pre>
+  </section>
+
+  <section>
+    <h4>Filtering</h4>
+    <p>
+      Similary to sorting you have to enable filtering for each column using filterable property in definition. After filtering following actions happens: event is emmited, selection is resetted.
+    </p>
+    <pre class="p-0">
+      <code>
+    </code>
+  </pre>
+  </section>
+
+  <section>
+    <h4>Row selection</h4>
+    <p>
+      Component support selecting rows when selecion-mode prop is set either to single or multiple. After new row is selected or unselected new event is emmited that conatins array of selected records. Selection is resetted after each succesfull filtering, sorting or changing selection-mode prop.
     </p>
     <pre class="p-0">
       <code>
@@ -418,11 +452,11 @@ export default {
       },
       {
         prop: "style-row",
-        description: "Table row.",
+        description: "Table row",
       },
       {
         prop: "style-cell",
-        description: "Table cell.",
+        description: "Table cell",
       },
       {
         prop: "style-caption",
@@ -451,7 +485,7 @@ export default {
       },
       {
         event: "input:selection",
-        description: "Emmited after selecting rows. Contains array of selected records",
+        description: "Emmited after selecting rows. Event data contains array of selected records",
       },
     ]);
 
@@ -534,13 +568,14 @@ export default {
     let example = reactive({
       data: dataLong,
       page: 1,
-      itemsPerPage: 10,
+      itemsPerPage: 5,
       filter: "",
       busy: false,
       selectionMode: "single",
       captionTop: false,
       transition: "fade-slide",
       locale: "en-GB",
+      events: [],
     });
 
     let editModal = ref(false);
@@ -578,57 +613,5 @@ export default {
 </script>
 
 <style scoped>
-h3 {
-  @apply text-3xl;
-  @apply font-semibold;
-}
-h4 {
-  @apply text-2xl;
-  @apply font-semibold;
-}
-h5 {
-  @apply text-xl;
-  @apply font-semibold;
-}
-h6 {
-  @apply text-lg;
-  @apply font-semibold;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-top: 2em;
-}
-p {
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-.nowrap {
-  white-space: nowrap;
-}
-.example {
-  margin-top: 2em;
-}
-pre {
-  @apply whitespace-normal my-5;
-}
-pre code {
-  @apply whitespace-pre;
-}
-.code-word {
-  @apply text-sm bg-indigo-200 rounded p-1;
-}
-code {
-  @apply text-sm;
-}
-label {
-  @apply mr-2;
-}
-input[type="text"],
-select {
-  @apply rounded border-gray-300 focus:border-gray-400 focus:ring focus:ring-indigo-200 py-1;
-}
+@import "./Documentation.css";
 </style>

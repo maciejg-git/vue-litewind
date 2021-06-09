@@ -38,6 +38,34 @@
         ><span v-html="value"></span
       ></template>
     </v-table>
+
+    <h6>Events</h6>
+    <p></p>
+    <v-table
+      :items="referenceEvents"
+      :definition="referenceEventsDefinition"
+      style-table="default fixed"
+      style-header-cell="default bordered"
+      style-cell="default bordered"
+    >
+      <template #cell:description="{ value }"
+        ><span v-html="value"></span
+      ></template>
+    </v-table>
+
+    <h6>Slots</h6>
+    <p></p>
+    <v-table
+      :items="referenceSlots"
+      :definition="referenceSlotsDefinition"
+      style-table="default fixed"
+      style-header-cell="default bordered"
+      style-cell="default bordered"
+    >
+      <template #cell:description="{ value }"
+        ><span v-html="value"></span
+      ></template>
+    </v-table>
   </section>
 
   <section>
@@ -94,13 +122,6 @@ export default {
       },
     ]);
 
-    let referenceStyles = ref([
-      {
-        prop: "style-table",
-        description: "Main table element",
-      },
-    ]);
-
     let referenceDefinition = ref([
       {
         key: "prop",
@@ -120,9 +141,51 @@ export default {
       },
     ]);
 
+    let referenceStyles = ref([
+      {
+        prop: "style-table",
+        description: "Main table element",
+      },
+    ]);
+
+
     let referenceStylesDefinition = ref([
       {
         key: "prop",
+        class: () => "w-1 whitespace-nowrap",
+      },
+      {
+        key: "description",
+      },
+    ]);
+
+    let referenceEvents = ref([
+      {
+        event: "update:modelValue",
+        description: "Update v-model",
+      },
+    ]);
+
+    let referenceEventsDefinition = ref([
+      {
+        key: "event",
+        class: () => "w-1 whitespace-nowrap",
+      },
+      {
+        key: "description",
+      },
+    ]);
+
+    let referenceSlots = ref([
+      {
+        slot: "-",
+        description: "This component does not provide any slots.",
+      },
+    ]);
+
+    let referenceSlotsDefinition = ref([
+      {
+        key: "slot",
         class: () => "w-1 whitespace-nowrap",
       },
       {
@@ -143,6 +206,10 @@ export default {
       referenceDefinition,
       referenceStyles,
       referenceStylesDefinition,
+      referenceEvents,
+      referenceEventsDefinition,
+      referenceSlots,
+      referenceSlotsDefinition,
       example,
     };
   },
@@ -150,48 +217,5 @@ export default {
 </script>
 
 <style scoped>
-h3 {
-  @apply text-3xl;
-  @apply font-semibold;
-}
-h4 {
-  @apply text-2xl;
-  @apply font-semibold;
-}
-h5 {
-  @apply text-xl;
-  @apply font-semibold;
-}
-h6 {
-  @apply text-lg;
-  @apply font-semibold;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-top: 2em;
-}
-p {
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-.nowrap {
-  white-space: nowrap;
-}
-.example {
-  margin-top: 2em;
-}
-.code-word {
-  @apply text-sm bg-indigo-200 rounded p-1;
-}
-label {
-  @apply mr-2;
-}
-input[type="text"],
-select {
-  @apply rounded border-gray-300 focus:border-gray-400 focus:ring focus:ring-indigo-200 py-1;
-}
+@import "./Documentation.css";
 </style>

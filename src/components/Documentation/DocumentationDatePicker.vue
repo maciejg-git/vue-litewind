@@ -134,8 +134,11 @@
           :adjecent-months="!!example.adjecentMonths"
           :range-hover-highlight="example.rangeHoverHighlight"
           :transition="example.transition"
-          @input:formatted="example.formatted = $event"
-        />
+          @update:modelValue="example.events.unshift({ev: 'update:modelValue', data: $event})"
+          @input:formatted="example.events.unshift({ev: 'input:formatted', data: $event})"
+          @state:done="example.events.unshift({ev: 'state:done', data: $event})"
+          @state:cancel="example.events.unshift({ev: 'state:cancel', data: $event})"
+          />
       </v-card>
       <div class="md:ml-14">
         <div class="mb-2">
@@ -210,6 +213,16 @@
         </div>
       </div>
     </div>
+    <v-card class="overflow-y-scroll max-h-48 p-2">
+      <div class="font-semibold px-2 py-1">Events</div>
+      <div class="px-2 pb-2">
+      <template v-for="ev in example.events">
+        <div class="py-1">
+          <code class="code-word">{{ ev.ev }}</code> {{ ev.data }}
+        </div>
+      </template>
+      </div>
+    </v-card>
     <pre>
       <code class="language-html">
 {{`<v-card style="width: 320px" class="self-start p-2">
@@ -224,7 +237,9 @@
     :adjecent-months="!!example.adjecentMonths"
     :range-hover-highlight="example.rangeHoverHighlight"
     :transition="example.transition"
-    @input:formatted="example.formatted = $event"
+    @input:formatted="example.events.push({ev: 'input:formatted', data: $event})"
+    @state:done="example.events.push({ev: 'state:done', data: $event})"
+    @state:cancel="example.events.push({ev: 'state:cancel', data: $event})"
     />
 </v-card>`}}
       </code>
@@ -295,7 +310,7 @@
 </template>
 
 <script>
-import { ref, reactive, onMounted } from "vue";
+import { ref, reactive, watch, onMounted } from "vue";
 import vTable from "../vTable.vue";
 
 import vDatePicker from "../vDatePicker.vue";
@@ -311,7 +326,7 @@ export default {
     vCard,
     vDropdown,
   },
-  setup(props) {
+  setup() {
     let reference = ref([
       {
         prop: "v-model",
@@ -531,10 +546,24 @@ export default {
       rangeHoverHighlight: false,
       transition: "fade",
       euro: true,
-      eventFormatted: "",
-      eventDone: "",
-      eventCancel: "",
+      formattedEmitted: false,
+      doneEmitted: false,
+      cancelEmitted: false,
+      events: [],
+      formatted: "",
+      done: false,
+      cancel: false,
     });
+
+    // watch([() => example.formatted, () => example.done, () => example.cancel],
+    //   () => {
+    //     formatted = null;
+    // })
+
+    // handleFormatted(ev) {
+    //   example.formatted = ev;
+    //   example.formattedEmitted = true;
+    // }
 
     let exampleDropdown = reactive({
       date: "",
@@ -563,60 +592,5 @@ export default {
 </script>
 
 <style scoped>
-h3 {
-  @apply text-3xl;
-  @apply font-semibold;
-}
-h4 {
-  @apply text-2xl;
-  @apply font-semibold;
-}
-h5 {
-  @apply text-xl;
-  @apply font-semibold;
-}
-h6 {
-  @apply text-lg;
-  @apply font-semibold;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-top: 2em;
-}
-p {
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-.example {
-  margin-top: 2em;
-}
-pre {
-  @apply whitespace-normal my-5;
-}
-pre code {
-  @apply whitespace-pre;
-}
-.code-word {
-  @apply text-sm bg-indigo-200 rounded p-1 mx-1;
-}
-code {
-  @apply text-sm;
-}
-input[type="checkbox"] {
-  transform: scale(1.2);
-  @apply focus:ring-2;
-  @apply focus:ring-offset-0;
-  @apply focus:ring-blue-200;
-}
-label {
-  @apply mr-2;
-}
-input[type="text"],
-select {
-  @apply rounded border-gray-300 focus:border-gray-400 focus:ring focus:ring-indigo-200 py-1;
-}
+@import "./Documentation.css";
 </style>

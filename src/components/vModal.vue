@@ -81,8 +81,8 @@ export default {
     vCloseButton,
   },
   emits: [
-    "state:primaryButtonClick",
-    "state:secondaryButtonClick",
+    "input:primaryButtonClick",
+    "input:secondaryButtonClick",
     "update:modelValue",
   ],
   setup(props, { emit }) {
@@ -174,12 +174,12 @@ export default {
     };
 
     let handlePrimaryButtonClick = function () {
-      emit("state:primaryButtonClick");
+      emit("input:primaryButtonClick");
       if (props.primaryButtonClose) close();
     };
 
     let handleSecondaryButtonClick = function () {
-      emit("state:secondaryButtonClick");
+      emit("input:secondaryButtonClick");
       if (props.secondaryButtonClose) close();
     };
 

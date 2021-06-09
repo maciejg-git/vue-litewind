@@ -57,16 +57,7 @@
             :class="[...classes.row.value]"
           >
             <template v-for="k in headers">
-              <td
-                v-if="k.visible !== false"
-                :class="[
-                  k.class && typeof k.class === 'function'
-                    ? k.class(k.key, item[k.key], item)
-                    : '',
-                  itemsSelected[i] ? 'bg-gray-500' : '',
-                  ...classes.cell.value,
-                ]"
-              >
+              <td v-if="k.visible !== false" :class="getCellClass(k, i, item)">
                 <slot :name="'cell:' + k.key" :value="item[k.key]" :item="item">
                   {{ getItemValue(item, k) }}
                 </slot>
@@ -159,6 +150,16 @@ export default {
         ];
         return removeTailwindClasses(c);
       }),
+    };
+
+    let getCellClass = (k, i, item) => {
+      if (itemsSelected.value[i]) return "bg-gray-100 py-2 px-2 pr-6 border-t";
+      return [
+        ...classes.cell.value,
+        k.class && typeof k.class === "function"
+          ? k.class(k.key, item[k.key], item)
+          : "",
+      ];
     };
 
     let sortField = ref("");
@@ -308,6 +309,7 @@ export default {
     return {
       slots,
       classes,
+      getCellClass,
       headers,
       sortField,
       sortAsc,
