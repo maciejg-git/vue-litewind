@@ -3,7 +3,7 @@
     <div
       v-if="modelValue"
       :style="{ 'padding-right': scrollbarWidth }"
-      class="flex fixed inset-0 w-full h-full z-20 overflow-y-auto"
+      class="block fixed inset-0 w-full h-full z-20 overflow-y-auto"
       @click.self="handleBackdropClick"
     >
       <div :class="classes.container.value">
@@ -91,25 +91,25 @@ export default {
     let { styles } = useStyles(getCurrentInstance(), props, elements);
 
     let fixedClass = {
-      modal: ["relative", "z-20", "overflow-auto", "pointer-events-auto"],
+      modal: ["relative", "flex-1", "overflow-auto", "pointer-events-auto"],
       modalContainer: [
         "relative",
         "mx-2",
         "py-4",
-        "sm:mx-auto",
+        "mx-auto",
         "pointer-events-none",
       ],
       header: ["flex", "items-center", "justify-between"],
-      backdrop: ["fixed", "z-10", "inset-0", "overflow-y-auto", "min-h-screen"],
+      backdrop: ["fixed", "inset-0", "overflow-y-auto", "min-h-screen"],
     };
 
     let classes = {
       container: computed(() => {
         let position =
           props.position == "top"
-            ? "my-6"
+            ? ["my-6"]
             : props.position == "center"
-            ? "my-auto"
+            ? ["flex", "items-center", "min-h-full"]
             : "";
         let size =
           props.size == "xl"
@@ -121,7 +121,7 @@ export default {
             : props.size == "md"
             ? "w-5/12"
             : "w-5/12";
-        return [...fixedClass.modalContainer, position, size];
+        return [...fixedClass.modalContainer, ...position, size];
       }),
       modal: computed(() => {
         let c = [...fixedClass.modal, ...styles.modal.value];

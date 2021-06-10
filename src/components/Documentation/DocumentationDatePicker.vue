@@ -140,8 +140,10 @@
           @state:cancel="example.events.unshift({ev: 'state:cancel', data: $event})"
           />
       </v-card>
-      <div class="md:ml-14">
-        <div class="mb-2">
+      <div class="md:ml-14 flex-grow">
+      <v-tabs name="tabsMaterial">
+        <v-tab name="Props">
+        <div class="mb-2 mt-5">
           <label for="model" class="font-semibold">v-model: </label>
           <input type="text" id="model" v-model="example.date" />
         </div>
@@ -211,18 +213,21 @@
             <option value="">empty string (no transition)</option>
           </select>
         </div>
+        </v-tab>
+    <v-tab name="Events">
+          <div class="overflow-y-scroll max-h-48 mt-5 w-full">
+        <div class="px-2 pb-2">
+        <template v-for="ev in example.events">
+          <div class="py-1">
+            <code class="code-word">{{ ev.ev }}</code> {{ ev.data }}
+          </div>
+        </template>
+        </div>
+        </div>
+    </v-tab>
+      </v-tabs>
       </div>
     </div>
-    <v-card class="overflow-y-scroll max-h-48 p-2">
-      <div class="font-semibold px-2 py-1">Events</div>
-      <div class="px-2 pb-2">
-      <template v-for="ev in example.events">
-        <div class="py-1">
-          <code class="code-word">{{ ev.ev }}</code> {{ ev.data }}
-        </div>
-      </template>
-      </div>
-    </v-card>
     <pre>
       <code class="language-html">
 {{`<v-card style="width: 320px" class="self-start p-2">
@@ -316,6 +321,8 @@ import vTable from "../vTable.vue";
 import vDatePicker from "../vDatePicker.vue";
 import vCard from "../vCard.vue";
 import vDropdown from "../vDropdown.vue";
+import vTabs from "../vTabs.vue";
+import vTab from "../vTab.vue";
 
 import hljs from "highlight.js";
 
@@ -325,6 +332,8 @@ export default {
     vDatePicker,
     vCard,
     vDropdown,
+    vTabs,
+    vTab,
   },
   setup() {
     let reference = ref([

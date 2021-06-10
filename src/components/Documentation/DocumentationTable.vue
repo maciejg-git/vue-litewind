@@ -159,12 +159,6 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <input
-        type="text"
-        placeholder="Filter"
-        v-model="example.filter"
-        class="rounded border-gray-300 focus:border-gray-400 focus:ring focus:ring-indigo-200 py-1 mb-4"
-      />
       <v-table
         :items="example.data"
         :definition="definition"
@@ -176,9 +170,17 @@
         :captionTop="!!example.captionTop"
         :transition="example.transition"
         :locale="example.locale"
-        @update:filtered-count="example.itemsCount = $event;example.events.unshift({ev: 'update:filtered-count', data: $event})"
-        @update:page="example.page = $event;example.events.unshift({ev: 'update:page', data: $event})"
-        @input:selection="example.events.unshift({ev: 'input:selection', data: $event})"
+        @update:filtered-count="
+          example.itemsCount = $event;
+          example.events.unshift({ ev: 'update:filtered-count', data: $event });
+        "
+        @update:page="
+          example.page = $event;
+          example.events.unshift({ ev: 'update:page', data: $event });
+        "
+        @input:selection="
+          example.events.unshift({ ev: 'input:selection', data: $event })
+        "
       >
         <template #cell:edit="{ item }">
           <vButton
@@ -188,7 +190,7 @@
             edit
           </vButton>
         </template>
-        <template #caption> Example </template>
+        <template #caption> Example caption </template>
       </v-table>
       <div class="flex justify-between my-5">
         <div>
@@ -210,59 +212,103 @@
           </select>
         </div>
       </div>
-      <hr />
-      <div class="flex mt-5">
-        <div>
-          <div class="mb-2">
-            <label for="locale">locale: </label>
-            <input type="text" id="locale" v-model="example.locale" />
+      <!-- <hr /> -->
+      <vTabs name="tabsMaterial" class="mt-5">
+        <vTab name="Props">
+          <div class="flex mt-5">
+            <div>
+              <div class="mb-2">
+                <label for="locale">filter: </label>
+                <input
+                  type="text"
+                  v-model="example.filter"
+                  />
+              </div>
+              <div class="mb-2">
+                <label for="locale">locale: </label>
+                <input type="text" id="locale" v-model="example.locale" />
+              </div>
+              <div class="mb-2">
+                <label for="busy">busy: </label>
+                <select id="busy" v-model="example.busy">
+                  <option :value="true">true</option>
+                  <option :value="false">false</option>
+                </select>
+              </div>
+              <div class="mb-2">
+                <label for="selection-mode">selection-mode: </label>
+                <select id="selection-mode" v-model="example.selectionMode">
+                  <option value="single">single</option>
+                  <option value="multiple">multiple</option>
+                  <option value="">empty string (selection disabled)</option>
+                </select>
+              </div>
+              <div class="mb-2">
+                <label for="caption-top">caption-top: </label>
+                <select id="caption-top" v-model="example.captionTop">
+                  <option :value="true">true</option>
+                  <option :value="false">false</option>
+                </select>
+              </div>
+              <div class="mb-2">
+                <label for="transition">transition: </label>
+                <select id="transition" v-model="example.transition">
+                  <option value="fade-slide">fade-slide</option>
+                  <option value="">empty string (no transition)</option>
+                </select>
+              </div>
+            </div>
+            <div class="ml-14"></div>
           </div>
-          <div class="mb-2">
-            <label for="busy">busy: </label>
-            <select id="busy" v-model="example.busy">
-              <option :value="true">true</option>
-              <option :value="false">false</option>
-            </select>
+        </vTab>
+        <vTab name="Events">
+          <div class="overflow-y-scroll max-h-48 mt-5">
+            <div class="px-2 pb-2">
+              <template v-for="ev in example.events">
+                <div class="py-1">
+                  <code class="code-word">{{ ev.ev }}</code> {{ ev.data }}
+                </div>
+              </template>
+            </div>
           </div>
-          <div class="mb-2">
-            <label for="selection-mode">selection-mode: </label>
-            <select id="selection-mode" v-model="example.selectionMode">
-              <option value="single">single</option>
-              <option value="multiple">multiple</option>
-              <option value="">empty string (selection disabled)</option>
-            </select>
-          </div>
-        </div>
-        <div class="ml-14">
-          <div class="mb-2">
-            <label for="caption-top">caption-top: </label>
-            <select id="caption-top" v-model="example.captionTop">
-              <option :value="true">true</option>
-              <option :value="false">false</option>
-            </select>
-          </div>
-          <div class="mb-2">
-            <label for="transition">transition: </label>
-            <select id="transition" v-model="example.transition">
-              <option value="fade-slide">fade-slide</option>
-              <option value="">empty string (no transition)</option>
-            </select>
-          </div>
-        </div>
-      </div>
+        </vTab>
+      </vTabs>
     </div>
-    <v-card class="overflow-y-scroll max-h-48 mt-5">
-      <div class="font-semibold px-2 py-1">Events</div>
-      <div class="px-2 pb-2">
-        <template v-for="ev in example.events">
-          <div class="py-1">
-            <code class="code-word">{{ ev.ev }}</code> {{ ev.data }}
-          </div>
-        </template>
-      </div>
-    </v-card>
     <pre>
       <code>
+{{`<v-table
+  :items="example.data"
+  :definition="definition"
+  :filter="example.filter"
+  :page="example.page"
+  :items-per-page="example.itemsPerPage"
+  :busy="example.busy"
+  :selectionMode="example.selectionMode"
+  :captionTop="!!example.captionTop"
+  :transition="example.transition"
+  :locale="example.locale"
+  @update:filtered-count="
+    example.itemsCount = $event;
+    example.events.unshift({ ev: 'update:filtered-count', data: $event });
+  "
+  @update:page="
+    example.page = $event;
+    example.events.unshift({ ev: 'update:page', data: $event });
+  "
+  @input:selection="
+    example.events.unshift({ ev: 'input:selection', data: $event })
+  "
+>
+  <template #cell:edit="{ item }">
+    <vButton
+      style-button="default tiny noMargin"
+      @click.stop="edit(item)"
+    >
+      edit
+    </vButton>
+  </template>
+  <template #caption> Example caption </template>
+</v-table>`}}
       </code>
     </pre>
   </section>
@@ -270,7 +316,11 @@
   <section>
     <h4>Sorting</h4>
     <p>
-      To enable sorting of table you have to set it in definition using sorable for every column. By default records are sorted as strings and using provided locale. Number and dates are sorted as numbers and dates. Null, undefined and NaN values are always first when sorting in ascending direction.
+      To enable sorting of table you have to set it in definition using sorable
+      for every column. By default records are sorted as strings and using
+      provided locale. Number and dates are sorted as numbers and dates. Null,
+      undefined and NaN values are always first when sorting in ascending
+      direction.
     </p>
     <pre class="p-0">
       <code>
@@ -281,7 +331,9 @@
   <section>
     <h4>Filtering</h4>
     <p>
-      Similary to sorting you have to enable filtering for each column using filterable property in definition. After filtering following actions happens: event is emmited, selection is resetted.
+      Similary to sorting you have to enable filtering for each column using
+      filterable property in definition. After filtering following actions
+      happens: event is emmited, selection is resetted.
     </p>
     <pre class="p-0">
       <code>
@@ -292,7 +344,10 @@
   <section>
     <h4>Row selection</h4>
     <p>
-      Component support selecting rows when selecion-mode prop is set either to single or multiple. After new row is selected or unselected new event is emmited that conatins array of selected records. Selection is resetted after each succesfull filtering, sorting or changing selection-mode prop.
+      Component support selecting rows when selecion-mode prop is set either to
+      single or multiple. After new row is selected or unselected new event is
+      emmited that conatins array of selected records. Selection is resetted
+      after each succesfull filtering, sorting or changing selection-mode prop.
     </p>
     <pre class="p-0">
       <code>
@@ -318,6 +373,8 @@ import vPagination from "../vPagination.vue";
 import vButton from "../vButton.vue";
 import vBadge from "../vBadge.vue";
 import vModal from "../vModal.vue";
+import vTabs from "../vTabs.vue";
+import vTab from "../vTab.vue";
 
 import hljs from "highlight.js";
 import "highlight.js/styles/default.css";
@@ -330,6 +387,8 @@ export default {
     vButton,
     vBadge,
     vModal,
+    vTabs,
+    vTab,
   },
   setup() {
     let reference = ref([
@@ -485,7 +544,8 @@ export default {
       },
       {
         event: "input:selection",
-        description: "Emmited after selecting rows. Event data contains array of selected records",
+        description:
+          "Emmited after selecting rows. Event data contains array of selected records",
       },
     ]);
 
@@ -502,15 +562,18 @@ export default {
     let referenceSlots = ref([
       {
         slot: "cell:key",
-        description: "Slot for customizing display of cell value. Key is one of the keys of record data for example cell:first_name or cell:city",
+        description:
+          "Slot for customizing display of cell value. Key is one of the keys of record data for example cell:first_name or cell:city",
       },
       {
         slot: "caption",
-        description: "Slot for caption text. Position caption using caption-top prop",
+        description:
+          "Slot for caption text. Position caption using caption-top prop",
       },
       {
         slot: "busy",
-        description: "Slot for display of user defined content when table is busy for example spinners",
+        description:
+          "Slot for display of user defined content when table is busy for example spinners",
       },
     ]);
 
@@ -532,12 +595,12 @@ export default {
       {
         key: "first_name",
         sortable: true,
-        class: () => "bg-red-50",
+        // class: () => "bg-red-50",
       },
       {
         key: "last_name",
         sortable: true,
-        class: () => "bg-green-50",
+        // class: () => "bg-green-50",
       },
       {
         key: "email",

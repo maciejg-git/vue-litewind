@@ -1,6 +1,6 @@
 <template>
-  <h3>Table</h3>
-  <p class="text-xl font-light">Table component</p>
+  <h3>Pagination</h3>
+  <p class="text-xl font-light">Pagination component</p>
 
   <section>
     <h4>Reference</h4>
@@ -69,57 +69,56 @@
   </section>
 
   <section>
-    <h5>Definition</h5>
-    <span class="font-bold">Type</span>: <code class="code-word">Array</code>
-    <p></p>
-    <pre>
-      <code>
-    </code>
-  </pre>
-  </section>
-
-  <section>
     <h5>Example</h5>
     <div class="example">
-      <v-tabs name="tabsMaterial">
+      <v-pagination
+        v-model="example.page"
+        :items-count="example.itemsCount"
+        :items-per-page="example.itemsPerPage"
+        :max-pages="example.maxPages"
+        :icons="example.icons"
+        @update:modelValue="
+          example.events.unshift({ ev: 'update:modelValue', data: $event })
+        "
+      ></v-pagination>
+      <v-tabs name="tabsMaterial" class="mt-5">
         <v-tab name="Props">
-        <div class="mb-2 mt-5">
-          <label for="model" class="font-semibold">v-model: </label>
-          <input type="text" id="model" v-model="example.date" />
-        </div>
-        <div class="mb-2">
-          <label for="range">range: </label>
-          <select id="range" v-model="example.range">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
-          </select>
-        </div>
+          <div class="mb-2 mt-5">
+            <label for="model" class="font-semibold">v-model: </label>
+            <input type="text" id="model" v-model="example.page" />
+          </div>
+          <div class="mb-2">
+            <label for="model">items-count: </label>
+            <input type="text" id="model" v-model="example.itemsCount" />
+          </div>
+          <div class="mb-2">
+            <label for="model">items-per-page: </label>
+            <input type="text" id="model" v-model="example.itemsPerPage" />
+          </div>
+          <div class="mb-2">
+            <label for="model">max-pages: </label>
+            <input type="text" id="model" v-model="example.maxPages" />
+          </div>
+          <div class="mb-2">
+            <label for="range">icons: </label>
+            <select id="range" v-model="example.icons">
+              <option :value="true">true</option>
+              <option :value="false">false</option>
+            </select>
+          </div>
         </v-tab>
-    <v-tab name="Events">
-      <div class="overflow-y-scroll max-h-48 mt-5 w-full">
-        <div class="px-2 pb-2">
-          <template v-for="ev in example.events">
-            <div class="py-1">
-              <code class="code-word">{{ ev.ev }}</code> {{ ev.data }}
+        <v-tab name="Events">
+          <div class="overflow-y-scroll max-h-48 mt-5 w-full">
+            <div class="px-2 pb-2">
+              <template v-for="ev in example.events">
+                <div class="py-1">
+                  <code class="code-word">{{ ev.ev }}</code> {{ ev.data }}
+                </div>
+              </template>
             </div>
-          </template>
-        </div>
-      </div>
-    </v-tab>
+          </div>
+        </v-tab>
       </v-tabs>
-      <div class="mt-5">
-        <div class="mb-2">
-          <label for="locale">locale: </label>
-          <input type="text" id="locale" v-model="example.locale" />
-        </div>
-        <div class="mb-2">
-          <label for="busy">busy: </label>
-          <select id="busy" v-model="example.busy">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
-          </select>
-        </div>
-      </div>
     </div>
     <pre>
       <code>
@@ -142,11 +141,35 @@ export default {
   setup(props) {
     let reference = ref([
       {
-        prop: "items",
-        type: "Array",
+        prop: "v-model",
+        type: "Number",
         default: "undefined",
+        description: "Current page",
+      },
+      {
+        prop: "items-per-page",
+        type: "Number",
+        default: "undefined",
+        description: "Number of items per page",
+      },
+      {
+        prop: "items-count",
+        type: "Number",
+        default: "undefined",
+        description: "Total number of items. This prop is usually provided by another component that uses pagination for navigation",
+      },
+      {
+        prop: "max-pages",
+        type: "Number",
+        default: "undefined",
+        description: "Maximum number of pages to display. Minimum value for this prop is 3",
+      },
+      {
+        prop: "icons",
+        type: "Boolean",
+        default: "true",
         description:
-          "Data to display in table. Each element of Array is an Object. Single Object is one record (row) of data.",
+          "If true use icons for next/previous buttons instead of labels",
       },
     ]);
 
@@ -171,11 +194,26 @@ export default {
 
     let referenceStyles = ref([
       {
-        prop: "style-table",
+        prop: "style-pagination-bar",
         description: "Main table element",
       },
+      {
+        prop: "style-page",
+        description: "Style of single page button",
+      },
+      {
+        prop: "style-page-active",
+        description: "Style of active page button",
+      },
+      {
+        prop: "style-next",
+        description: "Style of next page button",
+      },
+      {
+        prop: "style-prev",
+        description: "Style of previous page button",
+      },
     ]);
-
 
     let referenceStylesDefinition = ref([
       {
@@ -222,7 +260,12 @@ export default {
     ]);
 
     let example = reactive({
-
+      page: 1,
+      itemsPerPage: 5,
+      itemsCount: 100,
+      maxPages: 8,
+      icons: true,
+      events: [],
     });
 
     onMounted(() => {

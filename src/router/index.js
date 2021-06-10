@@ -6,6 +6,7 @@ import DocumentationTable from '../components/Documentation/DocumentationTable.v
 import DocumentationDatePicker from '../components/Documentation/DocumentationDatePicker.vue'
 import DocumentationList from '../components/Documentation/DocumentationList.vue'
 import DocumentationModal from '../components/Documentation/DocumentationModal.vue'
+import DocumentationPagination from '../components/Documentation/DocumentationPagination.vue'
 
 const routes = [
   {
@@ -31,6 +32,10 @@ const routes = [
       {
         path: 'modal',
         component: DocumentationModal,
+      },
+      {
+        path: 'pagination',
+        component: DocumentationPagination,
       },
     ],
   },

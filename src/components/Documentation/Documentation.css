@@ -1,0 +1,50 @@
+h3 {
+  @apply text-3xl;
+  @apply font-semibold;
+}
+h4 {
+  @apply text-2xl;
+  @apply font-semibold;
+}
+h5 {
+  @apply text-xl;
+  @apply font-semibold;
+}
+h6 {
+  @apply text-lg;
+  @apply font-semibold;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 2em;
+}
+p {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.example {
+  margin-top: 2em;
+}
+pre {
+  @apply whitespace-normal my-5;
+}
+pre code {
+  @apply whitespace-pre;
+}
+.code-word {
+  @apply text-sm bg-indigo-200 rounded p-1 mr-1;
+}
+code {
+  @apply text-sm;
+}
+label {
+  @apply mr-2;
+}
+input[type="text"],
+select {
+  @apply rounded border-gray-300 focus:border-gray-400 focus:ring focus:ring-indigo-200 py-1;
+}

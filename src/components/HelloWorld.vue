@@ -92,6 +92,7 @@
         :itemsPerPage="itemsPerPage"
         :page="page"
         :busy="busy"
+        primary-key="id"
         style-table="default fixed"
         selection-mode="single"
         @input:selection="tableSelection = $event"

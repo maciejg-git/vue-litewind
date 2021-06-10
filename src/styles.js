@@ -91,6 +91,43 @@ let tabs = {
   }
 };
 
+let fixedTabMaterial = [
+  // "border",
+  // "border-gray-300",
+  "-mb-px",
+  "-ml-px",
+  "transition-all",
+]
+
+let tabsMaterial = {
+  tab: {
+    default: [
+      ...fixedTabMaterial,
+      // "bg-gray-100",
+      "hover:bg-gray-50",
+    ],
+    small: [
+      "p-0",
+    ]
+  },
+  tabActive: {
+    default: [
+      ...fixedTabMaterial,
+      "bg-white",
+      'shadow-none',
+      "border-b-2",
+      "border-indigo-500",
+      "font-semibold",
+      // "v-border-b-transparent",
+    ],
+  },
+  tabBar: {
+    default: [
+      "border-b",
+    ],
+  }
+};
+
 // TABLE
 
 let table = {
@@ -152,6 +189,7 @@ let table = {
     default: [
       "text-gray-600",
       "text-left",
+      "py-2",
     ]
   }
 }
@@ -599,6 +637,7 @@ export let styles = {
   card,
   datepicker,
   tabs,
+  tabsMaterial,
   badge,
   pagination,
 }

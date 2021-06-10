@@ -52,7 +52,7 @@
         <transition-group :name="transition">
           <tr
             v-for="(item, i) in itemsPagination"
-            :key="i"
+            :key="item[primaryKey] || i"
             @click="handleRowClick(i)"
             :class="[...classes.row.value]"
           >
@@ -89,6 +89,7 @@ export default {
     filter: { type: [String, RegExp], default: "" },
     page: { type: [Number, String], default: 1 },
     itemsPerPage: { type: [Number, String], default: 0 },
+    primaryKey: { type: [Number, String], default: undefined },
     captionTop: { type: Boolean, default: false },
     emptyText: { type: String, default: "Empty table" },
     emptyFilteredText: {
@@ -314,6 +315,7 @@ export default {
       sortField,
       sortAsc,
       getItemValue,
+      items,
       itemsFiltered,
       itemsPagination,
       itemsSelected,
