@@ -269,6 +269,7 @@
               v-model="exampleDropdown.date"
               width="305px"
               :buttons="exampleDropdown.buttons"
+              adjecentMonths
               @state:done="hide"
             ></v-date-picker>
           </v-card>
@@ -340,20 +341,26 @@ export default {
       {
         prop: "v-model",
         type: ["Array", "String"],
-        description: "v-model is used to return date after selection",
-      },
-      {
-        prop: "locale",
-        type: ["String"],
-        default: "en-GB",
-        description:
-          "Locale only affects names of months and weekdays and does not change any other properties like date format, separators, order of days etc",
+        description: "v-model is used to return date after selection. Date is formatted as ISO",
       },
       {
         prop: "range",
         type: ["Boolean"],
         default: "false",
         description: "Allows selection of date ranges",
+      },
+      {
+        prop: "locale",
+        type: ["String"],
+        default: "en-GB",
+        description:
+          "This prop is only used to display names of months and weekdays and to format date emitted by input:formatted event. It does not modify v-model date which is always ISO",
+      },
+      {
+        prop: "format",
+        type: ["Object"],
+        default: "",
+        description: "Format of date emmited by <code>input:formatted</code> event. Read about how to use this object <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat' class='link'>here</a> (options paremeter)",
       },
       {
         prop: "euro",
@@ -377,7 +384,7 @@ export default {
         prop: "adjecent-months",
         type: ["Boolean"],
         default: "false",
-        description: "Display previous and next month days",
+        description: "Display days from previous and next month. Those days are unselectable",
       },
       {
         prop: "range-hover-selection",
@@ -419,7 +426,7 @@ export default {
         prop: "name",
         type: ["String"],
         default: "datepicker",
-        description: "Component name. Useful for setting alternative styles",
+        description: "Useful only for setting alternative styles from styles.js",
       },
       {
         prop: "transition",
@@ -498,7 +505,7 @@ export default {
       },
       {
         event: "input:formatted",
-        description: "Emmited after selecting date along with update:modelValue",
+        description: "Emmited after selecting date along with update:modelValue. Date is in formatted using locale and format prop",
       },
       {
         event: "state:done",

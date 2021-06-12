@@ -69,7 +69,7 @@
   </section>
 
   <section>
-    <h5>Example</h5>
+    <h4>Example</h4>
     <div class="example md:flex">
       <v-card class="flex flex-col w-1/2 py-10">
         <vButton
@@ -319,13 +319,13 @@ export default {
         prop: "primary-button-close",
         type: "Boolean",
         default: "false",
-        description: "If true clicking primary button emits input:secondaryButtonClick event and closes modal",
+        description: "If true clicking primary button emits <code>input:secondaryButtonClick</code> event and closes modal",
       },
       {
         prop: "secondary-button-close",
         type: "Boolean",
         default: "false",
-        description: "If true clicking primary button emits input:primaryButtonClick event and closes modal",
+        description: "If true clicking primary button emits <code>input:primaryButtonClick</code> event and closes modal",
       },
       {
         prop: "no-close-button",
@@ -344,19 +344,19 @@ export default {
         prop: "position",
         type: "String",
         default: "top",
-        description: "Modal position. Valid values are: top, center",
+        description: "Modal position. Valid values are: 'top', 'center'",
       },
       {
         prop: "size",
         type: "String",
         default: "md",
-        description: "Modal size. Valid values are: sm, md, lg, xl",
+        description: "Modal size. Valid values are: 'sm', 'md', 'lg', 'xl'",
       },
       {
         prop: "transition",
         type: "String",
         default: "fade-slide",
-        description: "Animation while showing or hiding modal. Valid values are: fade, fade-slide, fade-scale",
+        description: "Sets animation effect when showing or hiding modal. Valid values are: 'fade', 'fade-slide', 'fade-scale'",
       },
       {
         prop: "name",

@@ -62,9 +62,9 @@
       style-header-cell="default bordered"
       style-cell="default bordered"
     >
-      <template #cell:description="{ value }"
-        ><span v-html="value"></span
-      ></template>
+      <template #cell:description="{ value }">
+        <span v-html="value"></span>
+      </template>
     </v-table>
   </section>
 
@@ -79,33 +79,33 @@
   </section>
 
   <section>
-    <h5>Example</h5>
+    <h4>Example</h4>
     <div class="example">
       <v-tabs name="tabsMaterial">
         <v-tab name="Props">
-        <div class="mb-2 mt-5">
-          <label for="model" class="font-semibold">v-model: </label>
-          <input type="text" id="model" v-model="example.date" />
-        </div>
-        <div class="mb-2">
-          <label for="range">range: </label>
-          <select id="range" v-model="example.range">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
-          </select>
-        </div>
+          <div class="mb-2 mt-5">
+            <label for="model" class="font-semibold">v-model: </label>
+            <input type="text" id="model" v-model="example.date" />
+          </div>
+          <div class="mb-2">
+            <label for="range">range: </label>
+            <select id="range" v-model="example.range">
+              <option :value="true">true</option>
+              <option :value="false">false</option>
+            </select>
+          </div>
         </v-tab>
-    <v-tab name="Events">
-      <div class="overflow-y-scroll max-h-48 mt-5 w-full">
-        <div class="px-2 pb-2">
-          <template v-for="ev in example.events">
-            <div class="py-1">
-              <code class="code-word">{{ ev.ev }}</code> {{ ev.data }}
+        <v-tab name="Events">
+          <div class="overflow-y-scroll max-h-48 mt-5 w-full">
+            <div class="px-2 pb-2">
+              <template v-for="ev in example.events">
+                <div class="py-1">
+                  <code class="code-word">{{ ev.ev }}</code> {{ ev.data }}
+                </div>
+              </template>
             </div>
-          </template>
-        </div>
-      </div>
-    </v-tab>
+          </div>
+        </v-tab>
       </v-tabs>
       <div class="mt-5">
         <div class="mb-2">
@@ -175,7 +175,6 @@ export default {
         description: "Main table element",
       },
     ]);
-
 
     let referenceStylesDefinition = ref([
       {

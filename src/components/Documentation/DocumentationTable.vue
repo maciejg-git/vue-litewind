@@ -13,8 +13,8 @@
       style-cell="default bordered"
     >
       <template #cell:type="{ value }">
-        <code class="code-word mx-1">
-          {{ value }}
+        <code v-for="c in value" class="code-word mx-1">
+          {{ c }}
         </code>
       </template>
       <template #cell:default="{ value }">
@@ -168,7 +168,6 @@
         :busy="example.busy"
         :selectionMode="example.selectionMode"
         :captionTop="!!example.captionTop"
-        :transition="example.transition"
         :locale="example.locale"
         @update:filtered-count="
           example.itemsCount = $event;
@@ -250,13 +249,6 @@
                   <option :value="false">false</option>
                 </select>
               </div>
-              <div class="mb-2">
-                <label for="transition">transition: </label>
-                <select id="transition" v-model="example.transition">
-                  <option value="fade-slide">fade-slide</option>
-                  <option value="">empty string (no transition)</option>
-                </select>
-              </div>
             </div>
             <div class="ml-14"></div>
           </div>
@@ -285,7 +277,6 @@
   :busy="example.busy"
   :selectionMode="example.selectionMode"
   :captionTop="!!example.captionTop"
-  :transition="example.transition"
   :locale="example.locale"
   @update:filtered-count="
     example.itemsCount = $event;
@@ -316,16 +307,11 @@
   <section>
     <h4>Sorting</h4>
     <p>
-      To enable sorting of table you have to set it in definition using sorable
-      for every column. By default records are sorted as strings and using
-      provided locale. Number and dates are sorted as numbers and dates. Null,
-      undefined and NaN values are always first when sorting in ascending
+      To enable sorting of table you have to set it for every column in definition array using sorable property. By default records are sorted as strings and using
+      locale prop to compare values. Number and dates are sorted as numbers and dates. <code>null</code>,
+      <code>undefined</code> and <code>NaN</code> values are always first when sorting in ascending
       direction.
     </p>
-    <pre class="p-0">
-      <code>
-    </code>
-  </pre>
   </section>
 
   <section>
@@ -335,24 +321,15 @@
       filterable property in definition. After filtering following actions
       happens: event is emmited, selection is resetted.
     </p>
-    <pre class="p-0">
-      <code>
-    </code>
-  </pre>
   </section>
 
   <section>
     <h4>Row selection</h4>
     <p>
-      Component support selecting rows when selecion-mode prop is set either to
-      single or multiple. After new row is selected or unselected new event is
-      emmited that conatins array of selected records. Selection is resetted
-      after each succesfull filtering, sorting or changing selection-mode prop.
+      Component supports selecting rows when selecion-mode prop is set either to
+      'single' or 'multiple'. After new row is selected or unselected event is
+      emmited that conatins array of all selected records. Filtering, sorting, changing current page or modifying selection-mode prop resets current selection to empty array.
     </p>
-    <pre class="p-0">
-      <code>
-    </code>
-  </pre>
   </section>
 
   <vModal
@@ -394,86 +371,85 @@ export default {
     let reference = ref([
       {
         prop: "items",
-        type: "Array",
+        type: ["Array"],
         default: "undefined",
         description:
-          "Data to display in table. Each element of Array is an Object. Single Object is one record (row) of data.",
+          "Data to display in table. Each element of Array is an Object. Single Object is one record (row) of data",
       },
       {
         prop: "definition",
-        type: "Array",
+        type: ["Array"],
         default: "undefined",
         description: `Table definition is an optional <code>Array</code> of <code>Objects</code> that defines look and behavior of the table.`,
       },
       {
+        prop: "primary-key",
+        type: ["String"],
+        default: "undefined",
+        description: `Value of this props should be the key name that is unique for every record of data. It is set as value for :key attribute that Vue uses for detecting changes and updating DOM elements`,
+      },
+      {
         prop: "filter",
-        type: "String",
+        type: ["String"],
         default: "empty string",
-        description: "String to filter array content.",
+        description: "Use this String to filter items. Filtering always emits update:page with value 1 and resets any active selection",
       },
       {
         prop: "locale",
-        type: "String",
+        type: ["String"],
         default: "en-GB",
-        description: "Locale used for sorting.",
+        description: "Locale used to compare and sort strings",
       },
       {
         prop: "name",
-        type: "String",
+        type: ["String"],
         default: "table",
         description:
-          "Used only to select non default styles defined in styles.js",
+          "Useful only for setting alternative styles from styles.js",
       },
       {
         prop: "busy",
-        type: "Boolean",
+        type: ["Boolean"],
         default: "false",
-        description: "When true renders table in busy (faded) state.",
+        description: "When true renders table in busy (faded) state and disables all pointer events",
       },
       {
         prop: "selection-mode",
-        type: "String",
+        type: ["String"],
         default: "empty string",
         description:
-          "Valid values are single (allows selection single row only), multiple (allows multiple rows to be selected) or empty string (disables selection).",
+          "Enables or disables selection of rows. Valid values are single (allows selection of single row only), multiple (allows multiple rows to be selected) or empty string (disables selection). Changing this prop resets current selection",
       },
       {
         prop: "page",
-        type: "Number",
+        type: ["Number"],
         default: "1",
-        description: "Current page number.",
+        description: "Current page number",
       },
       {
         prop: "items-per-page",
-        type: "Number",
+        type: ["Number"],
         default: "0",
-        description: "Number of records (rows) on single page.",
+        description: "Number of records (rows) on single page. Setting it to 0 disables pagination and all items are displayed on single page",
       },
       {
         prop: "caption-top",
-        type: "Boolean",
+        type: ["Boolean"],
         default: "false",
         description:
-          "Display caption on top. Set caption text in caption slot.",
+          "Display caption on top",
       },
       {
         prop: "empty-text",
-        type: "String",
-        default: "",
-        description: "Text displayed if table is empty.",
+        type: ["String"],
+        default: "Empty table",
+        description: "Text displayed if table is empty",
       },
       {
         prop: "empty-filtered-text",
-        type: "String",
-        default: "",
-        description: "Text displayed if table is empty after filtering.",
-      },
-      {
-        prop: "transition",
-        type: "String",
-        default: "fade-slide",
-        description:
-          "Animation to use for removing and adding records. Allowed values: fade-slide or empty string for no transition. <span class='fw-bold'>Default</span>: 'fade-slide'",
+        type: ["String"],
+        default: "No records for current filter",
+        description: "Text displayed if table is empty after filtering out all items",
       },
     ]);
 
@@ -489,7 +465,6 @@ export default {
       },
       {
         key: "default",
-        class: () => "whitespace-nowrap",
       },
       {
         key: "description",
@@ -536,11 +511,11 @@ export default {
     let referenceEvents = ref([
       {
         event: "update:page",
-        description: "Emmited after filtering. Useful for pagination update",
+        description: "Emmited after filtering. Useful for updating pagination",
       },
       {
         event: "update:filtered-count",
-        description: "Emmited after filtering. Useful for pagination update",
+        description: "Emmited after filtering. Useful for updating pagination",
       },
       {
         event: "input:selection",
@@ -573,7 +548,7 @@ export default {
       {
         slot: "busy",
         description:
-          "Slot for display of user defined content when table is busy for example spinners",
+          "Content of this slot replaces data records if table is busy",
       },
     ]);
 
@@ -636,7 +611,6 @@ export default {
       busy: false,
       selectionMode: "single",
       captionTop: false,
-      transition: "fade-slide",
       locale: "en-GB",
       events: [],
     });

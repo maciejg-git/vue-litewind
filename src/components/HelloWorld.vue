@@ -515,7 +515,7 @@ export default {
     dataTest.forEach(i => data.value[i].first_name = null)
     dataTest.forEach(i => data.value[i].country = undefined)
     dataTest.forEach(i => data.value[i].city = undefined)
-    dataTest2.forEach(i => data.value[i].id = NaN)
+    // dataTest2.forEach(i => data.value[i].id = NaN)
     let dataEmpty = ref([]);
     let busy = ref(false)
     let tableCommand = null;

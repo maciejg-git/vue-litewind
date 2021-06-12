@@ -18,7 +18,7 @@
           <main :class="classes.content.value">
             <slot name="default"></slot>
           </main>
-          <footer class="flex justify-end px-6 py-4">
+          <footer :class="classes.footer.value">
             <slot name="footer">
               <v-button
                 v-if="!noSecondaryButton"
@@ -73,6 +73,7 @@ export default {
     name: { type: String, default: "modal" },
     styleModal: { type: String, default: "default" },
     styleHeader: { type: String, default: "default" },
+    styleFooter: { type: String, default: "default" },
     styleContent: { type: String, default: "default" },
     styleBackdrop: { type: String, default: "default" },
   },
@@ -86,7 +87,7 @@ export default {
     "update:modelValue",
   ],
   setup(props, { emit }) {
-    let elements = ["modal", "header", "content", "backdrop"];
+    let elements = ["modal", "header", "footer", "content", "backdrop"];
 
     let { styles } = useStyles(getCurrentInstance(), props, elements);
 
@@ -100,6 +101,7 @@ export default {
         "pointer-events-none",
       ],
       header: ["flex", "items-center", "justify-between"],
+      footer: ["flex", "justify-end" ],
       backdrop: ["fixed", "inset-0", "overflow-y-auto", "min-h-screen"],
     };
 
@@ -129,6 +131,10 @@ export default {
       }),
       header: computed(() => {
         let c = [...fixedClass.header, ...styles.header.value];
+        return removeTailwindClasses(c);
+      }),
+      footer: computed(() => {
+        let c = [...fixedClass.footer, ...styles.footer.value];
         return removeTailwindClasses(c);
       }),
       content: computed(() => {

@@ -34,6 +34,30 @@
           <li>
             <router-link to="/documentation/dropdown" class="transition-all">Dropdown</router-link>
           </li>
+          <li>
+            <router-link to="/documentation/card" class="transition-all">Card</router-link>
+          </li>
+          <li>
+            <router-link to="/documentation/collapse" class="transition-all">Collapse</router-link>
+          </li>
+          <li>
+            <router-link to="/documentation/spinner" class="transition-all">Spinner</router-link>
+          </li>
+          <li>
+            <router-link to="/documentation/sidepanel" class="transition-all">Sidepanel</router-link>
+          </li>
+          <li>
+            <router-link to="/documentation/closebutton" class="transition-all">Close button</router-link>
+          </li>
+          <li>
+            <router-link to="/documentation/navbar" class="transition-all">Navbar</router-link>
+          </li>
+        </ul>
+        <h6 class="mt-4">Directives</h6>
+        <ul class="list-unstyled">
+          <li>
+            <router-link to="/documentation/tooltip" class="transition-all">Tooltip</router-link>
+          </li>
         </ul>
       </div>
       <div class="p-3 pl-7">

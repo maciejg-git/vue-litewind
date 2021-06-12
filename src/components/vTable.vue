@@ -1,6 +1,6 @@
 <template>
   <table :class="classes.table.value" class="min-w-full text-left">
-    <caption :class="classes.caption.value">
+    <caption v-if="slots.caption" :class="classes.caption.value">
       <slot name="caption"></slot>
     </caption>
     <thead :class="classes.headerRow.value">
@@ -49,22 +49,20 @@
         </tr>
       </template>
       <template v-else>
-        <transition-group :name="transition">
-          <tr
-            v-for="(item, i) in itemsPagination"
-            :key="item[primaryKey] || i"
-            @click="handleRowClick(i)"
-            :class="[...classes.row.value]"
-          >
-            <template v-for="k in headers">
-              <td v-if="k.visible !== false" :class="getCellClass(k, i, item)">
-                <slot :name="'cell:' + k.key" :value="item[k.key]" :item="item">
-                  {{ getItemValue(item, k) }}
-                </slot>
-              </td>
-            </template>
-          </tr>
-        </transition-group>
+        <tr
+          v-for="(item, i) in itemsPagination"
+          :key="item[primaryKey] || i"
+          @click="handleRowClick(i)"
+          :class="[...classes.row.value]"
+        >
+          <template v-for="k in headers">
+            <td v-if="k.visible !== false" :class="getCellClass(k, i, item)">
+              <slot :name="'cell:' + k.key" :value="item[k.key]" :item="item">
+                {{ getItemValue(item, k) }}
+              </slot>
+            </td>
+          </template>
+        </tr>
       </template>
     </tbody>
   </table>
@@ -97,7 +95,6 @@ export default {
       default: "No records for current filter",
     },
     locale: { type: String, default: "en" },
-    transition: { type: String, default: "fade-slide" },
     busy: { type: Boolean, default: false },
     selectionMode: { type: String, default: "" },
     name: { type: String, default: "table" },
@@ -106,6 +103,8 @@ export default {
     styleHeaderCell: { type: String, default: "default" },
     styleRow: { type: String, default: "default" },
     styleCell: { type: String, default: "default" },
+    styleSelected: { type: String, default: "default" },
+    styleBusy: { type: String, default: "default" },
     styleCaption: { type: String, default: "default" },
   },
   setup(props, { slots, emit }) {
@@ -115,6 +114,8 @@ export default {
       "headerCell",
       "row",
       "cell",
+      "selected",
+      "busy",
       "caption",
     ];
 
@@ -124,7 +125,9 @@ export default {
       table: computed(() => {
         let c = [
           ...styles.table.value,
-          props.busy ? "opacity-50 pointer-events-none" : "",
+          ...(props.busy
+            ? [...styles.busy.value, "pointer-events-none"]
+            : [""]),
         ];
         return removeTailwindClasses(c);
       }),
@@ -141,7 +144,15 @@ export default {
         return removeTailwindClasses(c);
       }),
       cell: computed(() => {
-        let c = [...styles.cell.value, "transition", "duration-200"];
+        let c = [...styles.cell.value];
+        return removeTailwindClasses(c);
+      }),
+      selected: computed(() => {
+        let c = [...styles.selected.value];
+        return removeTailwindClasses(c);
+      }),
+      busy: computed(() => {
+        let c = [...styles.busy.value];
         return removeTailwindClasses(c);
       }),
       caption: computed(() => {
@@ -154,7 +165,7 @@ export default {
     };
 
     let getCellClass = (k, i, item) => {
-      if (itemsSelected.value[i]) return "bg-gray-100 py-2 px-2 pr-6 border-t";
+      if (itemsSelected.value[i]) return classes.selected.value;
       return [
         ...classes.cell.value,
         k.class && typeof k.class === "function"
@@ -349,15 +360,5 @@ export default {
 }
 .caption-top {
   caption-side: top;
-}
-
-.fade-slide-enter-active,
-.fade-slide-leave-active {
-  transition: all 0.4s;
-}
-.fade-slide-enter-from,
-.fade-slide-leave-to {
-  opacity: 0;
-  transform: translateY(-30px);
 }
 </style>

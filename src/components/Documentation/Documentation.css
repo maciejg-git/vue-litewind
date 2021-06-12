@@ -35,7 +35,7 @@ pre {
 pre code {
   @apply whitespace-pre;
 }
-.code-word {
+>>> .code-word {
   @apply text-sm bg-indigo-200 rounded p-1 mr-1;
 }
 code {
@@ -43,6 +43,9 @@ code {
 }
 label {
   @apply mr-2;
+}
+>>>  a.link {
+  @apply underline text-blue-400;
 }
 input[type="text"],
 select {

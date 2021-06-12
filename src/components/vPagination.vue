@@ -11,7 +11,7 @@
       href=""
       v-for="i in pages"
       :key="i"
-      :class="currentPage == i ? classes.pageActive.value : classes.page.value"
+      :class="i == '...' ? classes.dots.value : currentPage == i ? classes.pageActive.value : classes.page.value"
       @click.prevent="handleClickPage(i)"
       >{{ i }}</a
     >
@@ -41,11 +41,12 @@ export default {
     stylePaginationBar: { type: [String, Array], default: "default" },
     stylePage: { type: [String, Array], default: "default" },
     stylePageActive: { type: [String, Array], default: "default" },
+    styleDots: { type: [String, Array], default: "default" },
     styleNext: { type: [String, Array], default: "default" },
     stylePrev: { type: [String, Array], default: "default" },
   },
   setup(props, { emit }) {
-    let elements = ["paginationBar", "page", "pageActive", "next", "prev"];
+    let elements = ["paginationBar", "page", "pageActive", "dots", "next", "prev"];
 
     let { styles } = useStyles(getCurrentInstance(), props, elements);
 
@@ -80,6 +81,10 @@ export default {
       }),
       pageActive: computed(() => {
         let c = [...fixedClass.pageActive, ...styles.pageActive.value];
+        return removeTailwindClasses(c);
+      }),
+      dots: computed(() => {
+        let c = [...fixedClass.page, ...styles.dots.value];
         return removeTailwindClasses(c);
       }),
       prev: computed(() => {

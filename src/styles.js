@@ -172,6 +172,8 @@ let table = {
       // "border",
       "border-t",
       "border-gray-300",
+      "transition",
+      "duration-200",
       "py-2",
       "px-2",
       "pr-6",
@@ -184,6 +186,24 @@ let table = {
       "px-2",
       "pr-6",
     ]
+  },
+  selected: {
+    default: [
+      // "border",
+      "bg-gray-100",
+      "border-t",
+      "border-gray-300",
+      "transition",
+      "duration-200",
+      "py-2",
+      "px-2",
+      "pr-6",
+    ],
+  },
+  busy: {
+    default: [
+      "opacity-50",
+    ],
   },
   caption: {
     default: [
@@ -247,6 +267,7 @@ let modal = {
       "shadow-lg",
       "rounded-md",
       "text-gray-900",
+      "mb-6",
     ],
     square: [
       "rounded-none"
@@ -261,6 +282,12 @@ let modal = {
       "font-medium", 
       "px-6", 
       "py-6", 
+    ]
+  },
+  footer: {
+    default: [
+      "px-6",
+      "py-6",
     ]
   },
   content: {
@@ -507,13 +534,15 @@ let fixedPage = [
 
 let fixedSideControls = [
   "hover:bg-gray-50",
-  // "border",
+  "border",
   "border-gray-300",
   "text-sm",
   "font-medium",
   "cursor-pointer",
   "w-10",
   "p-2",
+  "w-12",
+  "rounded",
 ]
 
 let pagination = {
@@ -539,6 +568,12 @@ let pagination = {
       "ring-2",
       "font-semibold",
     ],
+  },
+  dots: {
+    default: [
+      ...fixedPage,
+      "tracking-wider",
+    ]
   },
   next: {
     default: [

@@ -25,7 +25,6 @@ export default {
   props: {
     modelValue: Number,
     fill: { type: Boolean, default: false },
-    justified: { type: Boolean, default: false },
     center: { type: Boolean, default: false },
     noTransition: { type: Boolean, default: false },
     name: { type: String, default: "tabs" },
@@ -40,8 +39,6 @@ export default {
   },
   setup(props, { emit }) {
     let elements = ["tabBar", "tab", "tabActive"];
-    let tabs = ref([]);
-    let active = ref(0);
 
     let { styles } = useStyles(getCurrentInstance(), props, elements);
 
@@ -78,6 +75,9 @@ export default {
       }),
     };
 
+    let tabs = ref([]);
+    let active = ref(0);
+
     onMounted(() => {
       if (tabs.value.length) switchTab(0);
     });
@@ -88,16 +88,11 @@ export default {
         : tab.instance.ctx.name;
     };
 
-    let handleClickTab = function (index) {
-      if (active.value == index) return;
-      switchTab(index);
-    };
-
     let switchTab = function (index) {
       tabs.value[active.value].active = false;
       tabs.value[index].active = true;
       active.value = index;
-      emit("state:changedTab", index);
+      emit("input:changed-tab", index);
     };
 
     let addTab = function (tab) {
@@ -108,6 +103,11 @@ export default {
       let index = tabs.value.findIndex((item) => item.instance == tab);
       if (active.value == index && index > 0) switchTab(index - 1);
       tabs.value.splice(index, 1);
+    };
+
+    let handleClickTab = function (index) {
+      if (active.value == index) return;
+      switchTab(index);
     };
 
     provide("controlTab", { addTab, removeTab });

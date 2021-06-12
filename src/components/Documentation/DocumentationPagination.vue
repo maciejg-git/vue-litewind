@@ -69,7 +69,7 @@
   </section>
 
   <section>
-    <h5>Example</h5>
+    <h4>Example</h4>
     <div class="example">
       <v-pagination
         v-model="example.page"
@@ -80,7 +80,7 @@
         @update:modelValue="
           example.events.unshift({ ev: 'update:modelValue', data: $event })
         "
-      ></v-pagination>
+      />
       <v-tabs name="tabsMaterial" class="mt-5">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
@@ -122,6 +122,16 @@
     </div>
     <pre>
       <code>
+{{`<v-pagination
+  v-model="example.page"
+  :items-count="example.itemsCount"
+  :items-per-page="example.itemsPerPage"
+  :max-pages="example.maxPages"
+  :icons="example.icons"
+  @update:modelValue="
+     example.events.unshift({ ev: 'update:modelValue', data: $event })
+     "
+  />`}}
       </code>
     </pre>
   </section>
@@ -206,6 +216,10 @@ export default {
         description: "Style of active page button",
       },
       {
+        prop: "style-dots",
+        description: "Style of dots separating pages",
+      },
+      {
         prop: "style-next",
         description: "Style of next page button",
       },
@@ -262,8 +276,8 @@ export default {
     let example = reactive({
       page: 1,
       itemsPerPage: 5,
-      itemsCount: 100,
-      maxPages: 8,
+      itemsCount: 50,
+      maxPages: 7,
       icons: true,
       events: [],
     });
