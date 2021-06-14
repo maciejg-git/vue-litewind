@@ -51,3 +51,7 @@ input[type="text"],
 select {
   @apply rounded border-gray-300 focus:border-gray-400 focus:ring focus:ring-indigo-200 py-1;
 }
+input[type="checkbox"] {
+  @apply rounded border-gray-300 focus:border-gray-400 focus:ring focus:ring-offset-0 focus:ring-indigo-200 py-1;
+  transform: scale(1.1);
+}

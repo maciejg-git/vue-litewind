@@ -11,7 +11,7 @@ import { removeTailwindClasses } from "../tools.js";
 
 export default {
   props: {
-    width: String,
+    width: { type: String, default: undefined },
     tag: { type: String, default: "div" },
     name: { type: String, default: "list" },
     styleList: { type: String, default: "default" },

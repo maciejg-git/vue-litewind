@@ -70,6 +70,7 @@
 
   <section>
     <h4>Example</h4>
+    <p>For more examples see <a href="">table component</a>.</p>
     <div class="example">
       <v-pagination
         v-model="example.page"
@@ -108,7 +109,7 @@
           </div>
         </v-tab>
         <v-tab name="Events">
-          <div class="overflow-y-scroll max-h-48 mt-5 w-full">
+          <div class="overflow-y-auto max-h-48 mt-5 w-full">
             <div class="px-2 pb-2">
               <template v-for="ev in example.events">
                 <div class="py-1">
@@ -128,9 +129,7 @@
   :items-per-page="example.itemsPerPage"
   :max-pages="example.maxPages"
   :icons="example.icons"
-  @update:modelValue="
-     example.events.unshift({ ev: 'update:modelValue', data: $event })
-     "
+  @update:modelValue="example.events.unshift({ ev: 'update:modelValue', data: $event })"
   />`}}
       </code>
     </pre>
@@ -160,19 +159,21 @@ export default {
         prop: "items-per-page",
         type: "Number",
         default: "undefined",
-        description: "Number of items per page",
+        description: "Number of items per page. Component uses this value to compute number of pages to render. It is usually provided by another component that uses pagination for navigation",
       },
       {
         prop: "items-count",
         type: "Number",
         default: "undefined",
-        description: "Total number of items. This prop is usually provided by another component that uses pagination for navigation",
+        description:
+          "Total number of items. Component uses this value to compute number of pages to render. It is usually provided by another component that uses pagination for navigation",
       },
       {
         prop: "max-pages",
         type: "Number",
         default: "undefined",
-        description: "Maximum number of pages to display. Minimum value for this prop is 3",
+        description:
+          "Maximum number of pages to display. This prop must have value of 3 or more",
       },
       {
         prop: "icons",

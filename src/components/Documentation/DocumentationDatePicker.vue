@@ -215,7 +215,7 @@
         </div>
         </v-tab>
     <v-tab name="Events">
-          <div class="overflow-y-scroll max-h-48 mt-5 w-full">
+          <div class="overflow-y-auto max-h-48 mt-5 w-full">
         <div class="px-2 pb-2">
         <template v-for="ev in example.events">
           <div class="py-1">

@@ -9,8 +9,8 @@
     </a>
     <a
       href=""
-      v-for="i in pages"
-      :key="i"
+      v-for="(i, index) in pages"
+      :key="index"
       :class="i == '...' ? classes.dots.value : currentPage == i ? classes.pageActive.value : classes.page.value"
       @click.prevent="handleClickPage(i)"
       >{{ i }}</a

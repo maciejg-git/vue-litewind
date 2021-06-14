@@ -1,6 +1,6 @@
 <template>
-  <h3>List</h3>
-  <p class="text-xl font-light">List component</p>
+  <h3>Spinner</h3>
+  <p class="text-xl font-light">Spinner component</p>
 
   <section>
     <h4>Reference</h4>
@@ -67,78 +67,32 @@
       </template>
     </v-table>
 
-    <h6>Components</h6>
-    <p></p>
-    <v-table
-      :items="referenceComponents"
-      :definition="referenceComponentsDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
-    >
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
-    </v-table>
   </section>
 
   <section>
     <h4>Example</h4>
     <div class="example">
-      <v-list width="500px" :tag="example.tag">
-        <v-list-item :active="example.active1">
-          Item 1
-          <div>
-            <input type="checkbox" v-model="example.active1" />
-            <label for="" class="ml-2">toggle active</label>
-          </div>
-        </v-list-item>
-        <v-list-item :active="example.active2">
-          Item 2
-          <div>
-            <input type="checkbox" v-model="example.active2" />
-            <label for="" class="ml-2">toggle active</label>
-          </div>
-        </v-list-item>
-        <v-list-item :active="example.active3">
-          Item 3
-          <div>
-            <input type="checkbox" v-model="example.active3" />
-            <label for="" class="ml-2">toggle active</label>
-          </div>
-        </v-list-item>
-        <v-list-item :active="example.active4">
-          Item 4
-          <div>
-            <input type="checkbox" v-model="example.active4" />
-            <label for="" class="ml-2">toggle active</label>
-          </div>
-        </v-list-item>
-        <v-list-item :active="example.active5">
-          Item 5
-          <div>
-            <input type="checkbox" v-model="example.active5" />
-            <label for="" class="ml-2">toggle active</label>
-          </div>
-        </v-list-item>
-      </v-list>
+      <v-spinner></v-spinner>
+      <v-spinner style-spinner="default blue" class="ml-2"></v-spinner>
+      <v-spinner style-spinner="default yellow" class="ml-2"></v-spinner>
+      <v-spinner style-spinner="default yellow large" class="ml-2"></v-spinner>
       <v-tabs name="tabsMaterial" class="mt-5">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
-            <label for="model">tag: </label>
-            <select id="selection-mode" v-model="example.tag">
-              <option value="div">div</option>
-              <option value="a">a</option>
-              <option value="button">button</option>
+            <label for="model" class="font-semibold">v-model: </label>
+            <input type="text" id="model" v-model="example.date" />
+          </div>
+          <div class="mb-2">
+            <label for="range">range: </label>
+            <select id="range" v-model="example.range">
+              <option :value="true">true</option>
+              <option :value="false">false</option>
             </select>
           </div>
         </v-tab>
         <v-tab name="Events">
           <div class="overflow-y-auto max-h-48 mt-5 w-full">
             <div class="px-2 pb-2">
-              <div class="py-1">
-                This component does not emit any events
-              </div>
               <template v-for="ev in example.events">
                 <div class="py-1">
                   <code class="code-word">{{ ev.ev }}</code> {{ ev.data }}
@@ -159,8 +113,7 @@
 <script>
 import { ref, reactive, onMounted } from "vue";
 import vTable from "../vTable.vue";
-import vList from "../vList.vue";
-import vListItem from "../vListItem.vue";
+import vSpinner from "../vSpinner.vue";
 
 import hljs from "highlight.js";
 import "highlight.js/styles/default.css";
@@ -168,26 +121,16 @@ import "highlight.js/styles/default.css";
 export default {
   components: {
     vTable,
+    vSpinner,
   },
   setup(props) {
     let reference = ref([
       {
-        prop: "width",
-        type: "String",
-        default: "undefined",
-        description: "Component width",
-      },
-      {
         prop: "name",
         type: "String",
-        default: "list",
-        description: "Useful for setting alternative styles from styles.js",
-      },
-      {
-        prop: "tag",
-        type: "String",
-        default: "div",
-        description: "Defines tag to use in list item child component",
+        default: "undefined",
+        description:
+          "Data to display in table. Each element of Array is an Object. Single Object is one record (row) of data.",
       },
     ]);
 
@@ -212,16 +155,8 @@ export default {
 
     let referenceStyles = ref([
       {
-        prop: "style-list",
-        description: "Main list element",
-      },
-      {
-        prop: "style-item",
-        description: "List item style",
-      },
-      {
-        prop: "style-item-active",
-        description: "Active list item style",
+        prop: "style-spinner",
+        description: "Main spinner element",
       },
     ]);
 
@@ -238,7 +173,7 @@ export default {
     let referenceEvents = ref([
       {
         event: "-",
-        description: "This component does not emit any events",
+        description: "Update v-model",
       },
     ]);
 
@@ -254,8 +189,8 @@ export default {
 
     let referenceSlots = ref([
       {
-        slot: "default",
-        description: "Slot for v-list-item components",
+        slot: "-",
+        description: "This component does not provide any slots.",
       },
     ]);
 
@@ -269,30 +204,8 @@ export default {
       },
     ]);
 
-    let referenceComponents = ref([
-      {
-        component: "v-list-item",
-        description: "List item component",
-      },
-    ]);
-
-    let referenceComponentsDefinition = ref([
-      {
-        key: "component",
-        class: () => "w-1 whitespace-nowrap",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
     let example = reactive({
-      tag: "div",
-      active1: false,
-      active2: false,
-      active3: false,
-      active4: false,
-      active5: false,
+
     });
 
     onMounted(() => {
@@ -308,8 +221,6 @@ export default {
       referenceEventsDefinition,
       referenceSlots,
       referenceSlotsDefinition,
-      referenceComponents,
-      referenceComponentsDefinition,
       example,
     };
   },

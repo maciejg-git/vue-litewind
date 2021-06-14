@@ -1,5 +1,8 @@
 <template>
-  <transition :name="noTransition ? 'no-transition' : 'fade-tab-content'">
+  <transition
+    :name="transition == '' ? 'no-transition' : transition"
+    @beforeLeave="beforeLeave"
+  >
     <div v-show="active">
       <slot v-if="false" name="name"></slot>
       <slot name="default"></slot>
@@ -21,10 +24,14 @@ export default {
   props: {
     name: { type: String, default: undefined },
   },
-  setup(props) {
+  setup() {
     let active = ref(false);
     let { addTab, removeTab } = inject("controlTab");
-    let { noTransition } = inject("sharedProps");
+    let transition = inject("transition");
+
+    let beforeLeave = (el) => {
+      el.style.display = "none";
+    };
 
     onMounted(() => {
       addTab({
@@ -39,7 +46,8 @@ export default {
 
     return {
       active,
-      noTransition,
+      transition,
+      beforeLeave,
     };
   },
 };
@@ -50,15 +58,15 @@ export default {
   position: absolute;
   display: none;
 }
-.fade-tab-content-leave-active {
+.fade-leave-active {
   position: absolute;
   display: none;
 }
-.fade-tab-content-enter-active {
+.fade-enter-active {
   transition: opacity 0.8s ease;
 }
-.fade-tab-content-enter-from,
-.fade-tab-content-leave-to {
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
 }
 </style>

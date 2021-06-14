@@ -26,9 +26,6 @@
             <router-link to="/documentation/modal" class="transition-all">Modal</router-link>
           </li>
           <li>
-            <router-link to="/documentation/spinner" class="transition-all">Spinner</router-link>
-          </li>
-          <li>
             <router-link to="/documentation/tabs" class="transition-all">Tabs</router-link>
           </li>
           <li>
@@ -49,8 +46,11 @@
           <li>
             <router-link to="/documentation/closebutton" class="transition-all">Close button</router-link>
           </li>
+          <!-- <li> -->
+          <!--   <router-link to="/documentation/navbar" class="transition-all">Navbar</router-link> -->
+          <!-- </li> -->
           <li>
-            <router-link to="/documentation/navbar" class="transition-all">Navbar</router-link>
+            <router-link to="/documentation/popover" class="transition-all">Popover</router-link>
           </li>
         </ul>
         <h6 class="mt-4">Directives</h6>

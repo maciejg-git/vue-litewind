@@ -1,5 +1,3 @@
-let shadow = false;
-
 // BUTTON
 
 let fixedButton = [
@@ -14,7 +12,6 @@ let fixedButton = [
   "px-4",
   "py-2",
   "m-1",
-  shadow ? "shadow" : "" 
 ]
 
 let button = {
@@ -92,18 +89,14 @@ let tabs = {
 };
 
 let fixedTabMaterial = [
-  // "border",
-  // "border-gray-300",
   "-mb-px",
   "-ml-px",
-  "transition-all",
 ]
 
 let tabsMaterial = {
   tab: {
     default: [
       ...fixedTabMaterial,
-      // "bg-gray-100",
       "hover:bg-gray-50",
     ],
     small: [
@@ -118,7 +111,6 @@ let tabsMaterial = {
       "border-b-2",
       "border-indigo-500",
       "font-semibold",
-      // "v-border-b-transparent",
     ],
   },
   tabBar: {
@@ -164,12 +156,10 @@ let table = {
   },
   row: {
     default: [
-      // "hover:bg-gray-50",
     ]
   },
   cell: {
     default: [
-      // "border",
       "border-t",
       "border-gray-300",
       "transition",
@@ -189,7 +179,6 @@ let table = {
   },
   selected: {
     default: [
-      // "border",
       "bg-gray-100",
       "border-t",
       "border-gray-300",
@@ -228,6 +217,7 @@ let list = {
       "divide-y",
       "divide-gray-200",
       "rounded-md",
+      "overflow-hidden",
     ],
     square: [
       "rounded-none"
@@ -236,12 +226,15 @@ let list = {
   item: {
     default: [
       ...item,
+      "hover:bg-gray-50",
     ]
   },
   itemActive: {
     default: [
       ...item,
       "bg-blue-500",
+      "hover:bg-blue-600",
+      "text-white",
     ]
   },
 }
@@ -412,8 +405,6 @@ let datepicker = {
       ...fixedDay,
       "bg-indigo-400",
       "hover:bg-indigo-600",
-      // "ring-indigo-200",
-      // "ring",
       "font-semibold",
       "text-white", 
     ]
@@ -448,11 +439,24 @@ let datepicker = {
 let spinner = {
   spinner: {
     default: [
-      "animate-spin",
-      "h-10",
-      "w-10",
+      "text-indigo-500",
+      "h-8",
+      "w-8",
+    ],
+    blue: [
       "text-blue-500",
-    ]
+    ],
+    yellow: [
+      "text-yellow-500",
+    ],
+    large: [
+      "h-20",
+      "w-20",
+    ],
+    small: [
+      "h-5",
+      "w-5",
+    ],
   }
 }
 
@@ -529,7 +533,6 @@ let fixedPage = [
   "mx-0.5",
   "font-semibold",
   "rounded",
-  // "-ml-px",
 ]
 
 let fixedSideControls = [
@@ -549,7 +552,6 @@ let pagination = {
   paginationBar: {
     default: [
       "rounded-md",
-      // shadow ? "shadow" : ""
     ],
   },
   page: {
@@ -591,74 +593,6 @@ let pagination = {
     ],
   }
 };
-
-// let fixedPage = [
-//   "border",
-//   "border-gray-200",
-//   "hover:bg-gray-50",
-//   "text-sm",
-//   "font-medium",
-//   "px-4",
-//   "py-2",
-//   "cursor-pointer",
-//   "mx-0.5",
-//   "rounded",
-//   "shadow-md",
-// ]
-//
-// let pagination = {
-//   bar: {
-//     default: [
-//     ],
-//   },
-//   page: {
-//     default: [
-//       ...fixedPage,
-//     ],
-//   },
-//   pageActive: {
-//     default: [
-//       ...fixedPage,
-//       "bg-blue-500",
-//       "hover:bg-blue-600",
-//       "text-white",
-//       "border-blue-500",
-//       "ring-blue-300",
-//       "ring-2",
-//     ],
-//   },
-//   next: {
-//     default: [
-//       "border",
-//       "border-gray-200",
-//       "hover:bg-gray-50",
-//       "rounded",
-//       "text-sm",
-//       "font-medium",
-//       "cursor-pointer",
-//       "-ml-px",
-//       "px-4",
-//       "p-2",
-//       "ml-0.5",
-//       "shadow-md",
-//     ],
-//   },
-//   prev: {
-//     default: [
-//       "border",
-//       "border-gray-200",
-//       "hover:bg-gray-50",
-//       "rounded",
-//       "text-sm",
-//       "font-medium",
-//       "cursor-pointer",
-//       "px-4",
-//       "p-2",
-//       "mr-0.5",
-//       "shadow-md",
-//     ],
-//   }
-// };
 
 export let styles = {
   button,

@@ -6,6 +6,8 @@ import DocumentationTable from '../components/Documentation/DocumentationTable.v
 import DocumentationDatePicker from '../components/Documentation/DocumentationDatePicker.vue'
 import DocumentationList from '../components/Documentation/DocumentationList.vue'
 import DocumentationModal from '../components/Documentation/DocumentationModal.vue'
+import DocumentationTabs from '../components/Documentation/DocumentationTabs.vue'
+import DocumentationSpinner from '../components/Documentation/DocumentationSpinner.vue'
 import DocumentationPagination from '../components/Documentation/DocumentationPagination.vue'
 
 const routes = [
@@ -36,6 +38,14 @@ const routes = [
       {
         path: 'pagination',
         component: DocumentationPagination,
+      },
+      {
+        path: 'tabs',
+        component: DocumentationTabs,
+      },
+      {
+        path: 'spinner',
+        component: DocumentationSpinner,
       },
     ],
   },

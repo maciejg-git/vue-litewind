@@ -5,7 +5,6 @@
         <a
           href=""
           :class="active == i ? classes.tabActive.value : classes.tab.value"
-          class=""
           @click.prevent="handleClickTab(i)"
         >
           <VNodes :vnodes="tabName(tab)" />
@@ -17,7 +16,7 @@
 </template>
 
 <script>
-import { ref, onMounted, computed, provide, h, getCurrentInstance } from "vue";
+import { ref, toRef, onMounted, computed, provide, h, getCurrentInstance } from "vue";
 import useStyles from "../use-styles";
 import { removeTailwindClasses } from "../tools.js";
 
@@ -26,7 +25,7 @@ export default {
     modelValue: Number,
     fill: { type: Boolean, default: false },
     center: { type: Boolean, default: false },
-    noTransition: { type: Boolean, default: false },
+    transition: { type: String, default: "fade" },
     name: { type: String, default: "tabs" },
     styleTabBar: { type: [String, Array], default: "default" },
     styleTab: { type: [String, Array], default: "default" },
@@ -111,7 +110,7 @@ export default {
     };
 
     provide("controlTab", { addTab, removeTab });
-    provide("sharedProps", { noTransition: props.noTransition });
+    provide("transition", toRef(props, "transition"));
 
     return {
       classes,

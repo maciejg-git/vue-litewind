@@ -214,43 +214,35 @@
       <!-- <hr /> -->
       <vTabs name="tabsMaterial" class="mt-5">
         <vTab name="Props">
-          <div class="flex mt-5">
-            <div>
-              <div class="mb-2">
-                <label for="locale">filter: </label>
-                <input
-                  type="text"
-                  v-model="example.filter"
-                  />
-              </div>
-              <div class="mb-2">
-                <label for="locale">locale: </label>
-                <input type="text" id="locale" v-model="example.locale" />
-              </div>
-              <div class="mb-2">
-                <label for="busy">busy: </label>
-                <select id="busy" v-model="example.busy">
-                  <option :value="true">true</option>
-                  <option :value="false">false</option>
-                </select>
-              </div>
-              <div class="mb-2">
-                <label for="selection-mode">selection-mode: </label>
-                <select id="selection-mode" v-model="example.selectionMode">
-                  <option value="single">single</option>
-                  <option value="multiple">multiple</option>
-                  <option value="">empty string (selection disabled)</option>
-                </select>
-              </div>
-              <div class="mb-2">
-                <label for="caption-top">caption-top: </label>
-                <select id="caption-top" v-model="example.captionTop">
-                  <option :value="true">true</option>
-                  <option :value="false">false</option>
-                </select>
-              </div>
-            </div>
-            <div class="ml-14"></div>
+          <div class="mb-2 mt-5">
+            <label for="locale">filter: </label>
+            <input type="text" v-model="example.filter" />
+          </div>
+          <div class="mb-2">
+            <label for="locale">locale: </label>
+            <input type="text" id="locale" v-model="example.locale" />
+          </div>
+          <div class="mb-2">
+            <label for="busy">busy: </label>
+            <select id="busy" v-model="example.busy">
+              <option :value="true">true</option>
+              <option :value="false">false</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label for="selection-mode">selection-mode: </label>
+            <select id="selection-mode" v-model="example.selectionMode">
+              <option value="single">single</option>
+              <option value="multiple">multiple</option>
+              <option value="">empty string (selection disabled)</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label for="caption-top">caption-top: </label>
+            <select id="caption-top" v-model="example.captionTop">
+              <option :value="true">true</option>
+              <option :value="false">false</option>
+            </select>
           </div>
         </vTab>
         <vTab name="Events">
@@ -307,9 +299,11 @@
   <section>
     <h4>Sorting</h4>
     <p>
-      To enable sorting of table you have to set it for every column in definition array using sorable property. By default records are sorted as strings and using
-      locale prop to compare values. Number and dates are sorted as numbers and dates. <code>null</code>,
-      <code>undefined</code> and <code>NaN</code> values are always first when sorting in ascending
+      To enable sorting of table you have to set it for every column in
+      definition array using sorable property. By default records are sorted as
+      strings and using locale prop to compare values. Number and dates are
+      sorted as numbers and dates. <code>null</code>, <code>undefined</code> and
+      <code>NaN</code> values are always first when sorting in ascending
       direction.
     </p>
   </section>
@@ -328,7 +322,9 @@
     <p>
       Component supports selecting rows when selecion-mode prop is set either to
       'single' or 'multiple'. After new row is selected or unselected event is
-      emmited that conatins array of all selected records. Filtering, sorting, changing current page or modifying selection-mode prop resets current selection to empty array.
+      emmited that conatins array of all selected records. Filtering, sorting,
+      changing current page or modifying selection-mode prop resets current
+      selection to empty array.
     </p>
   </section>
 
@@ -392,7 +388,8 @@ export default {
         prop: "filter",
         type: ["String"],
         default: "empty string",
-        description: "Use this String to filter items. Filtering always emits update:page with value 1 and resets any active selection",
+        description:
+          "Use this String to filter items. Filtering always emits update:page with value 1 and resets any active selection",
       },
       {
         prop: "locale",
@@ -411,7 +408,8 @@ export default {
         prop: "busy",
         type: ["Boolean"],
         default: "false",
-        description: "When true renders table in busy (faded) state and disables all pointer events",
+        description:
+          "When true renders table in busy (faded) state and disables all pointer events",
       },
       {
         prop: "selection-mode",
@@ -430,14 +428,14 @@ export default {
         prop: "items-per-page",
         type: ["Number"],
         default: "0",
-        description: "Number of records (rows) on single page. Setting it to 0 disables pagination and all items are displayed on single page",
+        description:
+          "Number of records (rows) on single page. Setting it to 0 disables pagination and all items are displayed on single page",
       },
       {
         prop: "caption-top",
         type: ["Boolean"],
         default: "false",
-        description:
-          "Display caption on top",
+        description: "Display caption on top",
       },
       {
         prop: "empty-text",
@@ -449,7 +447,8 @@ export default {
         prop: "empty-filtered-text",
         type: ["String"],
         default: "No records for current filter",
-        description: "Text displayed if table is empty after filtering out all items",
+        description:
+          "Text displayed if table is empty after filtering out all items",
       },
     ]);
 

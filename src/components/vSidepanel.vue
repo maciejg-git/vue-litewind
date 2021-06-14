@@ -1,5 +1,5 @@
 <template>
-  <transition :name="left ? 'fade-slide-left' : 'fade-slide'">
+  <transition :name="left ? 'fade-slide-left' : 'fade-slide-right'">
     <div
       v-show="isShow"
       :class="classes.sidepanel.value"
@@ -31,10 +31,10 @@ import { removeTailwindClasses } from "../tools.js";
 
 export default {
   props: {
-    modelValue: Boolean,
-    closeButton: Boolean,
-    closeButtonLight: Boolean,
-    left: Boolean,
+    modelValue: { type: Boolean, default: false },
+    closeButton: { type: Boolean, default: true },
+    closeButtonLight: { type: Boolean, default: false },
+    left:  { type: Boolean, default: false },
     width: { type: String, default: "320px" },
     name: { type: String, default: "sidepanel" },
     styleSidepanel: { type: String, default: "default" },
@@ -98,16 +98,16 @@ export default {
 
 <style scoped>
 .v-shadow-panel {
-  /* -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5); */
-  /* -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5); */
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
 }
-.fade-slide-enter-active,
-.fade-slide-leave-active {
+.fade-slide-right-enter-active,
+.fade-slide-right-leave-active {
   transition: all 0.3s ease;
 }
-.fade-slide-enter-from,
-.fade-slide-leave-to {
+.fade-slide-right-enter-from,
+.fade-slide-right-leave-to {
   opacity: 0;
   transform: translateX(20px);
 }
