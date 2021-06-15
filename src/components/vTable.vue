@@ -52,8 +52,8 @@
         <tr
           v-for="(item, i) in itemsPagination"
           :key="item[primaryKey] || i"
-          @click="handleRowClick(i)"
           :class="[...classes.row.value]"
+          @click="handleRowClick(i)"
         >
           <template v-for="k in headers">
             <td v-if="k.visible !== false" :class="getCellClass(k, i, item)">
@@ -144,11 +144,17 @@ export default {
         return removeTailwindClasses(c);
       }),
       cell: computed(() => {
-        let c = [...styles.cell.value];
+        let c = [
+          ...styles.cell.value,
+          props.selectionMode !== "" ? "cursor-pointer" : "",
+        ];
         return removeTailwindClasses(c);
       }),
       selected: computed(() => {
-        let c = [...styles.selected.value];
+        let c = [
+          ...styles.selected.value,
+          props.selectionMode !== "" ? "cursor-pointer" : "",
+        ];
         return removeTailwindClasses(c);
       }),
       busy: computed(() => {

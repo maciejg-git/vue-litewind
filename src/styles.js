@@ -207,13 +207,13 @@ let table = {
 
 let item = [
   "p-2",
+  "px-4",
 ]
 
 let list = {
   list: {
     default: [
       "border",
-      "border-gray-200",
       "divide-y",
       "divide-gray-200",
       "rounded-md",
@@ -232,6 +232,39 @@ let list = {
   itemActive: {
     default: [
       ...item,
+      "bg-blue-500",
+      "hover:bg-blue-600",
+      "text-white",
+    ]
+  },
+}
+
+let itemMaterial = [
+  "p-2",
+  "px-4",
+  "my-2",
+  // "border",
+  "shadow-md",
+]
+
+let listMaterial = {
+  list: {
+    default: [
+      // "overflow-hidden",
+    ],
+    square: [
+      "rounded-none"
+    ],
+  },
+  item: {
+    default: [
+      ...itemMaterial,
+      "hover:bg-gray-50",
+    ]
+  },
+  itemActive: {
+    default: [
+      ...itemMaterial,
       "bg-blue-500",
       "hover:bg-blue-600",
       "text-white",
@@ -449,6 +482,12 @@ let spinner = {
     yellow: [
       "text-yellow-500",
     ],
+    green: [
+      "text-green-500",
+    ],
+    gray: [
+      "text-gray-300",
+    ],
     large: [
       "h-20",
       "w-20",
@@ -483,39 +522,49 @@ let popover = {
 
 // BADGE
 
+let fixedBadge = [
+  "rounded-md",
+  "font-bold",
+  "p-2",
+  "px-3",
+  "mx-2",
+]
+
 let badge = {
   badge: {
     default: [
+      ...fixedBadge,
       "bg-indigo-500",
       "text-white",
-      "rounded-md",
-      "font-bold",
-      "p-2",
-      "px-3",
-      "mx-2",
     ],
     primary: [
+      ...fixedBadge,
       "bg-indigo-500",
       "text-white",
-      "rounded-md",
-      "font-bold",
-      "p-2",
-      "px-3",
-      "mx-2",
     ],
     secondary: [
-      "bg-indigo-500",
+      ...fixedBadge,
+      "bg-gray-500",
       "text-white",
-      "rounded-md",
-      "font-bold",
-      "p-2",
-      "px-3",
-      "mx-2",
+    ],
+    green: [
+      "bg-green-500",
+      "text-white",
+    ],
+    yellow: [
+      "bg-yellow-500",
+      "text-white",
     ],
     small: [
       "p-1",
       "px-2",
       "text-sm",
+    ],
+    tiny: [
+      "p-0.5",
+      "px-2",
+      "text-xs",
+      "font-semibold",
     ],
   }
 }
@@ -597,6 +646,7 @@ let pagination = {
 export let styles = {
   button,
   list,
+  listMaterial,
   spinner,
   popover,
   dropdown,

@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <!-- <div class="container"> -->
     <div class="flex">
       <div class="flex-none sticky bg-gray-50 h-screen top-0 p-3 pl-7 pr-20">
         <h6>Components</h6>
@@ -60,11 +60,11 @@
           </li>
         </ul>
       </div>
-      <div class="p-3 pl-7">
+      <div class="container mx-auto p-3 ml-10 pr-40 mr-60">
         <router-view></router-view>
       </div>
     </div>
-  </div>
+  <!-- </div> -->
 </template>
 
 <script>

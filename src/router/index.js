@@ -8,6 +8,8 @@ import DocumentationList from '../components/Documentation/DocumentationList.vue
 import DocumentationModal from '../components/Documentation/DocumentationModal.vue'
 import DocumentationTabs from '../components/Documentation/DocumentationTabs.vue'
 import DocumentationSpinner from '../components/Documentation/DocumentationSpinner.vue'
+import DocumentationCollapse from '../components/Documentation/DocumentationCollapse.vue'
+import DocumentationBadge from '../components/Documentation/DocumentationBadge.vue'
 import DocumentationPagination from '../components/Documentation/DocumentationPagination.vue'
 
 const routes = [
@@ -46,6 +48,14 @@ const routes = [
       {
         path: 'spinner',
         component: DocumentationSpinner,
+      },
+      {
+        path: 'collapse',
+        component: DocumentationCollapse,
+      },
+      {
+        path: 'badge',
+        component: DocumentationBadge,
       },
     ],
   },

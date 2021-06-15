@@ -1,6 +1,6 @@
 <template>
-  <h3>Spinner</h3>
-  <p class="text-xl font-light">Spinner component</p>
+  <h3>Table</h3>
+  <p class="text-xl font-light">Table component</p>
 
   <section>
     <h4>Reference</h4>
@@ -25,58 +25,61 @@
       </template>
     </v-table>
 
-    <h6>Styling props</h6>
+    <h6>Slots</h6>
     <p></p>
     <v-table
-      :items="referenceStyles"
-      :definition="referenceStylesDefinition"
+      :items="referenceSlots"
+      :definition="referenceSlotsDefinition"
       style-table="default fixed"
       style-header-cell="default bordered"
       style-cell="default bordered"
     >
-      <template #cell:description="{ value }"
-        ><span v-html="value"></span
-      ></template>
+      <template #cell:description="{ value }">
+        <span v-html="value"></span>
+      </template>
     </v-table>
+
   </section>
 
   <section>
     <h4>Example</h4>
     <div class="example">
-      <v-spinner style-spinner="default blue small"></v-spinner>
-      <v-spinner class="ml-2"></v-spinner>
-      <v-spinner style-spinner="default blue" class="ml-2"></v-spinner>
-      <v-spinner style-spinner="default yellow" class="ml-2"></v-spinner>
-      <v-spinner style-spinner="default green" class="ml-2"></v-spinner>
-      <v-spinner style-spinner="default yellow large" class="ml-2"></v-spinner>
-      <br />
-      <v-button>
-        <v-spinner style-spinner="default gray small" class="mr-2"></v-spinner>
-        Spinner in button
+      <v-button @click="example.isVisible = !example.isVisible">
+        Toggle collapse
       </v-button>
-      <v-button style-button="default secondary">
-        <v-spinner style-spinner="default green small" class="mr-2"></v-spinner>
-        Spinner in button
-      </v-button>
+      <v-collapse v-model="example.isVisible">
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem Ipsum has been the industry's standard dummy text ever
+        since the 1500s, when an unknown printer took a galley of type and
+        scrambled it to make a type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting, remaining
+        essentially unchanged. It was popularised in the 1960s with the release
+        of Letraset sheets containing Lorem Ipsum passages, and more recently
+        with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum.
+      </v-collapse>
+      <v-tabs name="tabsMaterial" class="mt-5">
+        <v-tab name="Props">
+          <div class="mb-2 mt-5">
+            <label for="model" class="font-semibold">v-model: </label>
+            <input type="text" id="model" v-model="example.isVisible" />
+          </div>
+        </v-tab>
+        <v-tab name="Events">
+          <div class="overflow-y-auto max-h-48 mt-5 w-full">
+            <div class="px-2 pb-2">
+              <template v-for="ev in example.events">
+                <div class="py-1">
+                  <code class="code-word">{{ ev.ev }}</code> {{ ev.data }}
+                </div>
+              </template>
+            </div>
+          </div>
+        </v-tab>
+      </v-tabs>
     </div>
     <pre>
       <code>
-      {{`
-<v-spinner style-spinner="default blue small"></v-spinner>
-<v-spinner class="ml-2"></v-spinner>
-<v-spinner style-spinner="default blue" class="ml-2"></v-spinner>
-<v-spinner style-spinner="default yellow" class="ml-2"></v-spinner>
-<v-spinner style-spinner="default green" class="ml-2"></v-spinner>
-<v-spinner style-spinner="default yellow large" class="ml-2"></v-spinner>
-<v-button>
-  <v-spinner style-spinner="default gray small" class="mr-2"></v-spinner>
-  Spinner in button
-</v-button>
-<v-button style-button="default secondary">
-  <v-spinner style-spinner="default green small" class="mr-2"></v-spinner>
-  Spinner in button
-</v-button>
-      `}}
       </code>
     </pre>
   </section>
@@ -85,7 +88,7 @@
 <script>
 import { ref, reactive, onMounted } from "vue";
 import vTable from "../vTable.vue";
-import vSpinner from "../vSpinner.vue";
+import vCollapse from "../vCollapse.vue";
 import vButton from "../vButton.vue";
 
 import hljs from "highlight.js";
@@ -94,17 +97,17 @@ import "highlight.js/styles/default.css";
 export default {
   components: {
     vTable,
-    vSpinner,
+    vCollapse,
     vButton,
   },
   setup(props) {
     let reference = ref([
       {
-        prop: "name",
-        type: "String",
+        prop: "v-model",
+        type: "Boolean",
         default: "undefined",
         description:
-          "Data to display in table. Each element of Array is an Object. Single Object is one record (row) of data.",
+          "Set v-model to true or false to show or hide collapsible element",
       },
     ]);
 
@@ -129,8 +132,8 @@ export default {
 
     let referenceStyles = ref([
       {
-        prop: "style-spinner",
-        description: "Main spinner element",
+        prop: "-",
+        description: "This component does not have any component to style",
       },
     ]);
 
@@ -147,7 +150,7 @@ export default {
     let referenceEvents = ref([
       {
         event: "-",
-        description: "Update v-model",
+        description: "This component does not emit any events",
       },
     ]);
 
@@ -163,8 +166,8 @@ export default {
 
     let referenceSlots = ref([
       {
-        slot: "-",
-        description: "This component does not provide any slots.",
+        slot: "default",
+        description: "Slot for content that is collapsed",
       },
     ]);
 
@@ -178,7 +181,26 @@ export default {
       },
     ]);
 
-    let example = reactive({});
+    let referenceComponents = ref([
+      {
+        component: "-",
+        description: "This component does not provide any child components.",
+      },
+    ]);
+
+    let referenceComponentsDefinition = ref([
+      {
+        key: "component",
+        class: () => "w-1 whitespace-nowrap",
+      },
+      {
+        key: "description",
+      },
+    ]);
+
+    let example = reactive({
+      isVisible: false,
+    });
 
     onMounted(() => {
       hljs.highlightAll();
@@ -193,6 +215,8 @@ export default {
       referenceEventsDefinition,
       referenceSlots,
       referenceSlotsDefinition,
+      referenceComponents,
+      referenceComponentsDefinition,
       example,
     };
   },

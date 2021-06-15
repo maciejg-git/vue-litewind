@@ -111,7 +111,7 @@
       <li>
         <span class="font-bold">key</span>: key is either existing property of
         data record or new property. New properties apear as additional columns
-        and their content can be set either by use of functions or slots.
+        and their content can be set using slot or function f.
       </li>
     </ul>
     <p>Optional properties:</p>
@@ -122,7 +122,7 @@
         default: undefined)
       </li>
       <li>
-        <span class="font-bold">sortable</span>: enables sorting column
+        <span class="font-bold">sortable</span>: enables sorting content of column
         (Boolean, default: false)
       </li>
       <li>
@@ -139,19 +139,15 @@
         arguments: key, value and item (Function, default: undefined)
       </li>
       <li>
-        <span class="font-bold">f</span>: value returned by this function is
-        displayed in the cell. Takes 3 arguments: key, value and item (Function,
-        default: undefined)
+        <span class="font-bold">f</span>: if defined this function is called for every cell in this column and the return value is set as content of the cell. Takes 3 arguments: key, value and item (Function, default: undefined)
       </li>
       <li>
         <span class="font-bold">filterByFunction</span>: if true filter content
-        of column using value returned from function f. If false use value from
-        items prop (Boolean, default: undefined)
+        of column using value from function f. If false then filter will skip function f and use value from items prop (Boolean, default: undefined)
       </li>
       <li>
         <span class="font-bold">sortByFunction</span>: if true sort content of
-        column using value returned from function f. If false use value from
-        items prop (Boolean, default: undefined)
+        column using value returned from function f. If false then sorter will skip function f and use value from items prop (Boolean, default: undefined)
       </li>
     </ul>
   </section>
@@ -600,7 +596,7 @@ export default {
 
     let dataSmall = dataJSON.slice(0, 5);
     let data = dataJSON.slice(0, 10);
-    let dataLong = dataJSON.slice(0, 100);
+    let dataLong = dataJSON.slice(0, 60);
 
     let example = reactive({
       data: dataLong,

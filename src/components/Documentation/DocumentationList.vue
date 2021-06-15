@@ -39,20 +39,6 @@
       ></template>
     </v-table>
 
-    <h6>Events</h6>
-    <p></p>
-    <v-table
-      :items="referenceEvents"
-      :definition="referenceEventsDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
-    >
-      <template #cell:description="{ value }"
-        ><span v-html="value"></span
-      ></template>
-    </v-table>
-
     <h6>Slots</h6>
     <p></p>
     <v-table
@@ -85,43 +71,75 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <v-list width="500px" :tag="example.tag">
+      <v-list width="500px" :tag="example.tag" :name="example.name">
         <v-list-item :active="example.active1">
-          Item 1
+          <div class="font-semibold">
+            {{ dataJSON[0].first_name }} {{ dataJSON[0].last_name }}
+          </div>
+          <div class="text-gray-400">
+            {{ dataJSON[0].email }}
+          </div>
           <div>
             <input type="checkbox" v-model="example.active1" />
             <label for="" class="ml-2">toggle active</label>
           </div>
         </v-list-item>
         <v-list-item :active="example.active2">
-          Item 2
+          <div class="font-semibold">
+            {{ dataJSON[1].first_name }} {{ dataJSON[1].last_name }}
+          </div>
+          <div class="text-gray-400">
+            {{ dataJSON[1].email }}
+          </div>
           <div>
             <input type="checkbox" v-model="example.active2" />
             <label for="" class="ml-2">toggle active</label>
           </div>
         </v-list-item>
         <v-list-item :active="example.active3">
-          Item 3
+          <div class="font-semibold">
+            {{ dataJSON[2].first_name }} {{ dataJSON[2].last_name }}
+          </div>
+          <div class="text-gray-400">
+            {{ dataJSON[2].email }}
+          </div>
           <div>
             <input type="checkbox" v-model="example.active3" />
             <label for="" class="ml-2">toggle active</label>
           </div>
         </v-list-item>
         <v-list-item :active="example.active4">
-          Item 4
+          <div class="font-semibold">
+            {{ dataJSON[3].first_name }} {{ dataJSON[3].last_name }}
+          </div>
+          <div class="text-gray-400">
+            {{ dataJSON[3].email }}
+          </div>
           <div>
             <input type="checkbox" v-model="example.active4" />
             <label for="" class="ml-2">toggle active</label>
           </div>
         </v-list-item>
         <v-list-item :active="example.active5">
-          Item 5
+          <div class="font-semibold">
+            {{ dataJSON[4].first_name }} {{ dataJSON[4].last_name }}
+          </div>
+          <div class="text-gray-400">
+            {{ dataJSON[4].email }}
+          </div>
           <div>
             <input type="checkbox" v-model="example.active5" />
             <label for="" class="ml-2">toggle active</label>
           </div>
         </v-list-item>
       </v-list>
+      <div class="mt-5">
+        <label for="">List style: </label>
+        <select id="range" v-model="example.name">
+          <option value="list">bootstrap</option>
+          <option value="listMaterial">material</option>
+        </select>
+      </div>
       <v-tabs name="tabsMaterial" class="mt-5">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
@@ -136,9 +154,7 @@
         <v-tab name="Events">
           <div class="overflow-y-auto max-h-48 mt-5 w-full">
             <div class="px-2 pb-2">
-              <div class="py-1">
-                This component does not emit any events
-              </div>
+              <div class="py-1">This component does not emit any events</div>
               <template v-for="ev in example.events">
                 <div class="py-1">
                   <code class="code-word">{{ ev.ev }}</code> {{ ev.data }}
@@ -164,6 +180,7 @@ import vListItem from "../vListItem.vue";
 
 import hljs from "highlight.js";
 import "highlight.js/styles/default.css";
+import dataJSON from "../../MOCK_DATA (1).json";
 
 export default {
   components: {
@@ -293,6 +310,7 @@ export default {
       active3: false,
       active4: false,
       active5: false,
+      name: "list",
     });
 
     onMounted(() => {
@@ -311,6 +329,7 @@ export default {
       referenceComponents,
       referenceComponentsDefinition,
       example,
+      dataJSON,
     };
   },
 };

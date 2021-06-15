@@ -52,20 +52,6 @@
         ><span v-html="value"></span
       ></template>
     </v-table>
-
-    <h6>Slots</h6>
-    <p></p>
-    <v-table
-      :items="referenceSlots"
-      :definition="referenceSlotsDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
-    >
-      <template #cell:description="{ value }"
-        ><span v-html="value"></span
-      ></template>
-    </v-table>
   </section>
 
   <section>

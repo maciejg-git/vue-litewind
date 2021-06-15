@@ -340,6 +340,7 @@
       <!-- <v&#45;button :class&#45;button="[btn.secondary, btn.small, 'shadow&#45;md']">custom button</v&#45;button> -->
       <!-- <v&#45;button :class&#45;button="[btn.secondary, btn.large, 'shadow&#45;md']">custom button</v&#45;button> -->
       <!-- <v&#45;button :class&#45;button="[btn.primary, btn.pill, 'shadow&#45;md']">custom button</v&#45;button> -->
+      <v-button>custom button</v-button>
       <v-button style-button="primary small">custom button</v-button>
       <v-button style-button="primary pill small">custom button</v-button>
     </div>

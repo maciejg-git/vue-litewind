@@ -1,6 +1,6 @@
 <template>
-  <h3>Spinner</h3>
-  <p class="text-xl font-light">Spinner component</p>
+  <h3>Badge</h3>
+  <p class="text-xl font-light">Badge component</p>
 
   <section>
     <h4>Reference</h4>
@@ -38,45 +38,48 @@
         ><span v-html="value"></span
       ></template>
     </v-table>
+
+    <h6>Slots</h6>
+    <p></p>
+    <v-table
+      :items="referenceSlots"
+      :definition="referenceSlotsDefinition"
+      style-table="default fixed"
+      style-header-cell="default bordered"
+      style-cell="default bordered"
+    >
+      <template #cell:description="{ value }">
+        <span v-html="value"></span>
+      </template>
+    </v-table>
   </section>
 
   <section>
     <h4>Example</h4>
     <div class="example">
-      <v-spinner style-spinner="default blue small"></v-spinner>
-      <v-spinner class="ml-2"></v-spinner>
-      <v-spinner style-spinner="default blue" class="ml-2"></v-spinner>
-      <v-spinner style-spinner="default yellow" class="ml-2"></v-spinner>
-      <v-spinner style-spinner="default green" class="ml-2"></v-spinner>
-      <v-spinner style-spinner="default yellow large" class="ml-2"></v-spinner>
-      <br />
-      <v-button>
-        <v-spinner style-spinner="default gray small" class="mr-2"></v-spinner>
-        Spinner in button
-      </v-button>
-      <v-button style-button="default secondary">
-        <v-spinner style-spinner="default green small" class="mr-2"></v-spinner>
-        Spinner in button
-      </v-button>
+      <v-badge style-badge="default tiny">New</v-badge>
+      <v-badge style-badge="default tiny yellow">New</v-badge>
+      <v-badge style-badge="default small">New</v-badge>
+      <v-badge style-badge="default small green">New</v-badge>
+      <v-badge style-badge="default small yellow">New</v-badge>
+      <v-badge>New</v-badge>
+      <v-badge style-badge="secondary">
+        New
+        <v-badge style-badge="default tiny green">7</v-badge>
+      </v-badge>
     </div>
     <pre>
       <code>
-      {{`
-<v-spinner style-spinner="default blue small"></v-spinner>
-<v-spinner class="ml-2"></v-spinner>
-<v-spinner style-spinner="default blue" class="ml-2"></v-spinner>
-<v-spinner style-spinner="default yellow" class="ml-2"></v-spinner>
-<v-spinner style-spinner="default green" class="ml-2"></v-spinner>
-<v-spinner style-spinner="default yellow large" class="ml-2"></v-spinner>
-<v-button>
-  <v-spinner style-spinner="default gray small" class="mr-2"></v-spinner>
-  Spinner in button
-</v-button>
-<v-button style-button="default secondary">
-  <v-spinner style-spinner="default green small" class="mr-2"></v-spinner>
-  Spinner in button
-</v-button>
-      `}}
+{{`<v-badge style-badge="default tiny">New</v-badge>
+<v-badge style-badge="default tiny yellow">New</v-badge>
+<v-badge style-badge="default small">New</v-badge>
+<v-badge style-badge="default small green">New</v-badge>
+<v-badge style-badge="default small yellow">New</v-badge>
+<v-badge>New</v-badge>
+<v-badge style-badge="secondary">
+  New
+  <v-badge style-badge="default tiny green">7</v-badge>
+</v-badge>`}}
       </code>
     </pre>
   </section>
@@ -85,8 +88,7 @@
 <script>
 import { ref, reactive, onMounted } from "vue";
 import vTable from "../vTable.vue";
-import vSpinner from "../vSpinner.vue";
-import vButton from "../vButton.vue";
+import vBadge from "../vBadge.vue"
 
 import hljs from "highlight.js";
 import "highlight.js/styles/default.css";
@@ -94,15 +96,14 @@ import "highlight.js/styles/default.css";
 export default {
   components: {
     vTable,
-    vSpinner,
-    vButton,
+    vBadge,
   },
   setup(props) {
     let reference = ref([
       {
         prop: "name",
         type: "String",
-        default: "undefined",
+        default: "badge",
         description:
           "Data to display in table. Each element of Array is an Object. Single Object is one record (row) of data.",
       },
@@ -129,8 +130,8 @@ export default {
 
     let referenceStyles = ref([
       {
-        prop: "style-spinner",
-        description: "Main spinner element",
+        prop: "style-badge",
+        description: "Main badge element",
       },
     ]);
 
@@ -146,7 +147,7 @@ export default {
 
     let referenceEvents = ref([
       {
-        event: "-",
+        event: "update:modelValue",
         description: "Update v-model",
       },
     ]);
@@ -163,8 +164,8 @@ export default {
 
     let referenceSlots = ref([
       {
-        slot: "-",
-        description: "This component does not provide any slots.",
+        slot: "default",
+        description: "Badge content",
       },
     ]);
 
@@ -178,7 +179,26 @@ export default {
       },
     ]);
 
-    let example = reactive({});
+    let referenceComponents = ref([
+      {
+        component: "-",
+        description: "This component does not provide any child components.",
+      },
+    ]);
+
+    let referenceComponentsDefinition = ref([
+      {
+        key: "component",
+        class: () => "w-1 whitespace-nowrap",
+      },
+      {
+        key: "description",
+      },
+    ]);
+
+    let example = reactive({
+
+    });
 
     onMounted(() => {
       hljs.highlightAll();
@@ -193,6 +213,8 @@ export default {
       referenceEventsDefinition,
       referenceSlots,
       referenceSlotsDefinition,
+      referenceComponents,
+      referenceComponentsDefinition,
       example,
     };
   },
