@@ -16,7 +16,15 @@
 </template>
 
 <script>
-import { ref, toRef, onMounted, computed, provide, h, getCurrentInstance } from "vue";
+import {
+  ref,
+  toRef,
+  onMounted,
+  computed,
+  provide,
+  h,
+  getCurrentInstance,
+} from "vue";
 import useStyles from "../use-styles";
 import { removeTailwindClasses } from "../tools.js";
 
@@ -25,6 +33,7 @@ export default {
     modelValue: Number,
     fill: { type: Boolean, default: false },
     center: { type: Boolean, default: false },
+    right: { type: Boolean, default: false },
     transition: { type: String, default: "fade" },
     name: { type: String, default: "tabs" },
     styleTabBar: { type: [String, Array], default: "default" },
@@ -52,7 +61,7 @@ export default {
         let c = [
           ...fixedClasses.tabBar,
           ...styles.tabBar.value,
-          props.center ? "justify-center" : "",
+          props.center ? "justify-center" : props.right ? "justify-end" : "",
         ];
         return removeTailwindClasses(c);
       }),

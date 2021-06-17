@@ -10,6 +10,7 @@ import DocumentationTabs from '../components/Documentation/DocumentationTabs.vue
 import DocumentationSpinner from '../components/Documentation/DocumentationSpinner.vue'
 import DocumentationCollapse from '../components/Documentation/DocumentationCollapse.vue'
 import DocumentationBadge from '../components/Documentation/DocumentationBadge.vue'
+import DocumentationDropdown from '../components/Documentation/DocumentationDropdown.vue'
 import DocumentationPagination from '../components/Documentation/DocumentationPagination.vue'
 
 const routes = [
@@ -56,6 +57,10 @@ const routes = [
       {
         path: 'badge',
         component: DocumentationBadge,
+      },
+      {
+        path: 'dropdown',
+        component: DocumentationDropdown,
       },
     ],
   },

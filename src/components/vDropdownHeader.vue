@@ -1,7 +1,7 @@
 <template>
-  <h6 :class="classes.itemHeader.value">
+  <div :class="classes.itemHeader.value">
     <slot name="default"></slot>
-  </h6>
+  </div>
 </template>
 
 <script>

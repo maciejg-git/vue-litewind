@@ -1,6 +1,6 @@
 <template>
-  <h3>Table</h3>
-  <p class="text-xl font-light">Table component</p>
+  <h3>Dropdown</h3>
+  <p class="text-xl font-light">Dropdown component</p>
 
   <section>
     <h4>Reference</h4>
@@ -83,29 +83,85 @@
   </section>
 
   <section>
-    <h5>Definition</h5>
-    <span class="font-bold">Type</span>: <code class="code-word">Array</code>
-    <p></p>
-    <pre>
-      <code>
-    </code>
-  </pre>
-  </section>
-
-  <section>
     <h4>Example</h4>
     <div class="example">
+      <v-dropdown
+        :placement="example.placement"
+        :offset-x="+example.offsetX"
+        :offset-y="+example.offsetY"
+        :no-flip="example.noFlip"
+        :auto-close-menu="example.autoCloseMenu"
+        :transition="example.transition"
+      >
+        <template #activator>
+          <v-button>Dropdown</v-button>
+        </template>
+        <v-card width="320px">
+          <v-dropdown-menu-item tag="button"> Menu item </v-dropdown-menu-item>
+          <v-dropdown-menu-item tag="button">
+            Menu item 2
+          </v-dropdown-menu-item>
+          <v-dropdown-header> Menu header </v-dropdown-header>
+          <v-dropdown-menu-item tag="button">
+            Menu item 3
+          </v-dropdown-menu-item>
+          <v-dropdown-menu-item tag="button">
+            Menu item 4
+          </v-dropdown-menu-item>
+          <v-dropdown-menu-item tag="button">
+            Menu item 5
+          </v-dropdown-menu-item>
+        </v-card>
+      </v-dropdown>
       <v-tabs name="tabsMaterial" class="mt-5">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
-            <label for="model" class="font-semibold">v-model: </label>
-            <input type="text" id="model" v-model="example.date" />
+            <label for="range">placement: </label>
+            <select id="range" v-model="example.placement">
+              <option value="auto">auto</option>
+              <option value="auto-start">auto-start</option>
+              <option value="auto-end">auto-end</option>
+              <option value="top">top</option>
+              <option value="top-start">top-start</option>
+              <option value="top-end">top-end</option>
+              <option value="bottom">bottom</option>
+              <option value="bottom-start">bottom-start</option>
+              <option value="bottom-end">bottom-end</option>
+              <option value="right">right</option>
+              <option value="right-start">right-start</option>
+              <option value="right-end">right-end</option>
+              <option value="left">left</option>
+              <option value="left-start">left-start</option>
+              <option value="left-end">left-end</option>
+            </select>
           </div>
           <div class="mb-2">
-            <label for="range">range: </label>
-            <select id="range" v-model="example.range">
+            <label for="model">offsetX: </label>
+            <input type="text" id="model" v-model="example.offsetX" />
+          </div>
+          <div class="mb-2">
+            <label for="model">offsetY: </label>
+            <input type="text" id="model" v-model="example.offsetY" />
+          </div>
+          <div class="mb-2">
+            <label for="range">no-flip: </label>
+            <select id="range" v-model="example.noFlip">
               <option :value="true">true</option>
               <option :value="false">false</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label for="range">auto-close-menu: </label>
+            <select id="range" v-model="example.autoCloseMenu">
+              <option :value="true">true</option>
+              <option :value="false">false</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label for="range">transition: </label>
+            <select id="range" v-model="example.transition">
+              <option value="fade">fade</option>
+              <option value="">empty string</option>
             </select>
           </div>
         </v-tab>
@@ -124,6 +180,26 @@
     </div>
     <pre>
       <code>
+{{`<v-dropdown
+  :placement="example.placement"
+  :offset-x="+example.offsetX"
+  :offset-y="+example.offsetY"
+  :no-flip="example.noFlip"
+  :auto-close-menu="example.autoCloseMenu"
+  :transition="example.transition"
+>
+  <template #activator>
+    <v-button>Dropdown</v-button>
+  </template>
+  <v-card width="320px">
+    <v-dropdown-menu-item tag="button"> Menu item </v-dropdown-menu-item>
+    <v-dropdown-menu-item tag="button"> Menu item 2 </v-dropdown-menu-item>
+    <v-dropdown-header> Menu header </v-dropdown-header>
+    <v-dropdown-menu-item tag="button"> Menu item 3 </v-dropdown-menu-item>
+    <v-dropdown-menu-item tag="button"> Menu item 4 </v-dropdown-menu-item>
+    <v-dropdown-menu-item tag="button"> Menu item 5 </v-dropdown-menu-item>
+  </v-card>
+</v-dropdown>`}}
       </code>
     </pre>
   </section>
@@ -132,6 +208,11 @@
 <script>
 import { ref, reactive, onMounted } from "vue";
 import vTable from "../vTable.vue";
+import vDropdown from "../vDropdown.vue";
+import vDropdownMenuItem from "../vDropdownMenuItem.vue";
+import vDropdownHeader from "../vDropdownHeader.vue";
+import vButton from "../vButton.vue";
+import vCard from "../vCard.vue";
 
 import hljs from "highlight.js";
 import "highlight.js/styles/default.css";
@@ -139,15 +220,60 @@ import "highlight.js/styles/default.css";
 export default {
   components: {
     vTable,
+    vDropdown,
+    vDropdownMenuItem,
+    vDropdownHeader,
+    vButton,
+    vCard,
   },
   setup(props) {
     let reference = ref([
       {
-        prop: "items",
-        type: "Array",
-        default: "undefined",
+        prop: "placement",
+        type: "String",
+        default: "bottom-start",
         description:
-          "Data to display in table. Each element of Array is an Object. Single Object is one record (row) of data.",
+          "Initial placement of dropdown content. Valid values are the same as for Popperjs",
+      },
+      {
+        prop: "offsetX",
+        type: "Number",
+        default: "0",
+        description:
+          "Horizontal offset in pixels relative to content of activator slot",
+      },
+      {
+        prop: "offsetY",
+        type: "Number",
+        default: "0",
+        description:
+          "Vertical offset in pixels relative to content of activator slot",
+      },
+      {
+        prop: "no-flip",
+        type: "Boolean",
+        default: "false",
+        description:
+          "Allows fliping to another placement if dropdown content is outside of screen bounds",
+      },
+      {
+        prop: "auto-close-menu",
+        type: "Boolean",
+        default: "false",
+        description:
+          "If true clicking any menu item automatically closes dropdown",
+      },
+      {
+        prop: "name",
+        type: "String",
+        default: "dropdown",
+        description: "Useful for setting alternative styles from styles.js",
+      },
+      {
+        prop: "transition",
+        type: "String",
+        default: "fade",
+        description: "Valid values are 'fade' or empty string (no animation)",
       },
     ]);
 
@@ -172,8 +298,20 @@ export default {
 
     let referenceStyles = ref([
       {
-        prop: "style-table",
-        description: "Main table element",
+        prop: "style-menu-item",
+        description: "Style of menu item",
+      },
+      {
+        prop: "style-menu-item-active",
+        description: "Style of active menu item",
+      },
+      {
+        prop: "style-menu-item-disabled",
+        description: "Style of disabled menu item",
+      },
+      {
+        prop: "style-menu-item-header",
+        description: "Style of menu header",
       },
     ]);
 
@@ -189,8 +327,12 @@ export default {
 
     let referenceEvents = ref([
       {
-        event: "update:modelValue",
-        description: "Update v-model",
+        event: "state:opened",
+        description: "Emitted after dropdown is opened",
+      },
+      {
+        event: "state:closed",
+        description: "Emitted after dropdown is closed",
       },
     ]);
 
@@ -206,8 +348,12 @@ export default {
 
     let referenceSlots = ref([
       {
-        slot: "-",
-        description: "This component does not provide any slots.",
+        slot: "activator",
+        description: "Slot for button or link that shows dropdown content",
+      },
+      {
+        slot: "default",
+        description: "Slot for dropdown content",
       },
     ]);
 
@@ -239,7 +385,12 @@ export default {
     ]);
 
     let example = reactive({
-
+      placement: "bottom-start",
+      offsetX: "0",
+      offsetY: "0",
+      noFlip: false,
+      autoCloseMenu: false,
+      transition: "fade",
     });
 
     onMounted(() => {

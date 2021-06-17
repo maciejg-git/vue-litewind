@@ -88,6 +88,7 @@
       <v-tabs
         :fill="example.fill"
         :center="example.center"
+        :right="example.right"
         :transition="example.transition"
         :name="example.name"
       >
@@ -157,6 +158,13 @@
           <div class="mb-2">
             <label for="range">center: </label>
             <select id="range" v-model="example.center">
+              <option :value="true">true</option>
+              <option :value="false">false</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label for="range">right: </label>
+            <select id="range" v-model="example.right">
               <option :value="true">true</option>
               <option :value="false">false</option>
             </select>
@@ -270,6 +278,12 @@ export default {
         type: "Boolean",
         default: "false",
         description: "Centers tabs",
+      },
+      {
+        prop: "right",
+        type: "Boolean",
+        default: "false",
+        description: "Puts tabs on the right",
       },
       {
         prop: "transition",
@@ -393,6 +407,7 @@ export default {
     let example = reactive({
       fill: false,
       center: false,
+      right: false,
       transition: "fade",
       events: [],
       name: "tabs",

@@ -73,9 +73,9 @@
     <span class="font-bold">Type</span>: <code class="code-word">Array</code>
     <p>
       Table definition is an optional <code>Array</code> of
-      <code>Objects</code> that defines look and behavior of the table. Each
+      <code>Objects</code> that defines columns of the table. Each
       object represents one column, has one required, unique key property and
-      number of optional properties.
+      number of optional properties. If definition is not provided component makes one using first record of data. This may be enough for simple tables however to use features like sorting, filtering etc you need to create definition array.
     </p>
     <pre>
       <code>
@@ -109,9 +109,7 @@
 
     <ul>
       <li>
-        <span class="font-bold">key</span>: key is either existing property of
-        data record or new property. New properties apear as additional columns
-        and their content can be set using slot or function f.
+        <span class="font-bold">key</span>: key can be property name of objects from items prop or new entry. New entries apear as additional columns and their content can be set using slot or function f.
       </li>
     </ul>
     <p>Optional properties:</p>
@@ -139,7 +137,7 @@
         arguments: key, value and item (Function, default: undefined)
       </li>
       <li>
-        <span class="font-bold">f</span>: if defined this function is called for every cell in this column and the return value is set as content of the cell. Takes 3 arguments: key, value and item (Function, default: undefined)
+        <span class="font-bold">f</span>: if defined this function is called for every cell in this column and the return value is set as content of the cell. Takes 3 arguments: key, value and item. If you need more control over value use slot cell:key (Function, default: undefined)
       </li>
       <li>
         <span class="font-bold">filterByFunction</span>: if true filter content
@@ -378,7 +376,7 @@ export default {
         prop: "primary-key",
         type: ["String"],
         default: "undefined",
-        description: `Value of this props should be the key name that is unique for every record of data. It is set as value for :key attribute that Vue uses for detecting changes and updating DOM elements`,
+        description: `This props should be name of the property that is unique in your data. It is set as value for :key attribute that Vue uses for detecting changes and updating DOM elements`,
       },
       {
         prop: "filter",
@@ -533,7 +531,7 @@ export default {
       {
         slot: "cell:key",
         description:
-          "Slot for customizing display of cell value. Key is one of the keys of record data for example cell:first_name or cell:city",
+          "Slot for cell content. Useful for adding some html formatting, transforming value etc. Key is one of the keys of data record or additional key from definition array",
       },
       {
         slot: "caption",
