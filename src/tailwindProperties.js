@@ -446,6 +446,31 @@ export const tailwindcss = {
   container: {
     _single: "container",
   },
+  box: {
+    _name: "box",
+    props: [
+      {
+        _name: "sizing",
+        border: true,
+        content: true,
+      },
+    ],
+  },
+  block: {
+    _single: "display",
+  },
+  inline: {
+    _single: "display",
+    _name: "display",
+    props: [
+      {
+        _name: null,
+        block: true,
+        flex: true,
+        grid: true,
+      },
+    ],
+  },
   bg: {
     _name: "bg",
     props: [
@@ -890,9 +915,6 @@ export const tailwindcss = {
       },
     ],
   },
-  block: {
-    _single: "display",
-  },
   border: {
     _name: "border",
     _single: "borderwidth",
@@ -976,6 +998,30 @@ export const tailwindcss = {
       },
     ],
   },
+  overscroll: {
+    props: [
+      {
+        _name: null,
+        auto: true,
+        contain: true,
+        none: true,
+      },
+      {
+        y: {
+          _name: null,
+          auto: true,
+          contain: true,
+          none: true,
+        },
+        x: {
+          _name: null,
+          auto: true,
+          contain: true,
+          none: true,
+        },
+      }
+    ]
+  },
   static: {
     _single: "position",
   },
@@ -1019,31 +1065,6 @@ export const tailwindcss = {
       {
         x: placement,
         y: placement,
-      },
-    ],
-  },
-  box: {
-    _name: "box",
-    props: [
-      {
-        _name: "sizing",
-        border: true,
-        content: true,
-      },
-    ],
-  },
-  block: {
-    _single: "display",
-  },
-  inline: {
-    _single: "display",
-    _name: "display",
-    props: [
-      {
-        _name: null,
-        block: true,
-        flex: true,
-        grid: true,
       },
     ],
   },

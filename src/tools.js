@@ -1,4 +1,5 @@
 import { tailwindcss } from "./tailwindProperties.js";
+import { tailwindcss2 } from "./tailwindclasslist.js";
 
 let formatCase = function (str) {
   return str
@@ -91,6 +92,31 @@ let removeTailwindClasses = (classList, debug) => {
   return Object.values(classParse).map((i) => classList[i]);
 };
 
+let removeTailwind = (classList, debug) => {
+  let classParse = classList
+    .map((i) => {
+      let c = tailwindcss2[i];
+      return c || "user-class";
+    })
+    .reduce((acc, i, index) => {
+      if (i == "user-class") {
+        acc["user-class" + index] = index;
+      } else acc[i] = index;
+      return acc;
+    }, {});
+
+  if (debug) {
+    for (let i = 0; i < classParse.length; i++)
+      console.log(classList[i], "\t", classParse[i]);
+  }
+
+  return Object.values(classParse).map((i) => classList[i]);
+};
+
+// s/:.*;/,/
+// s/\(^.\{-}\)\s/"\1":\ /
+// s/\(^.\{-}\)\s\(.*\),/"\1": "\2",\ /
+
 let test = [
   "block p-2 px-4 bg-white border-l border-r border-transparent",
   // "border border-b-0 rounded-t-md border-gray-200 rounded rounded-sm flex flex-row flex-row-reverse font pf pasd pf-pgg bg-blue-500-user border-4 rounded-t rounded-t-sm border-t-2 border-t-8 overflow-auto overflow-hidden overflow-p overflow-x-auto overflow-x-hidden overflow-x-p overflow-y-auto overflow-y-hidden flex-row flex-row-reverse flex-col flex-wrap flex-wrap-reverse flex-nowrap inline-block inline-flex inline-flex-p inline-p inline table table-column-group table-caption table-cell table-column table-footer table-footer-group table-footer-p table-footer-group-p bg-blue inline inline-block inline-p-block inline-block-p flex-wrap flex-wrap-reverse flex-nowrap flex-1 flex-auto flex-initial flex-1-p border-opacity border-opacity-50",
@@ -127,11 +153,13 @@ let test = [
   "gap-x-0 gap-x-px gap-x",
   "gap-y-0 gap-y-px gap-y",
   "w w-2 w-px",
+  "overscroll-auto overscroll overscroll-x overscroll-x-auto"
 ];
 let classList = test.flatMap((i) => i.split(" "));
-classList = removeTailwindClasses(classList, true);
+// classList = removeTailwindClasses(classList, true);
+classList = removeTailwind(classList, true);
 
-// console.log(classList);
+console.log(classList);
 
 export {
   formatCase,
