@@ -92,7 +92,7 @@ h6 {
   @apply text-lg;
   @apply font-semibold;
 }
-li {
-  @apply hover:bg-gray-100 py-1 pl-2;
+a {
+  @apply inline-block hover:bg-gray-100 py-1 pl-2 pr-4;
 }
 </style>

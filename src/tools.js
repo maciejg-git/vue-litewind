@@ -1,5 +1,4 @@
-import { tailwindcss } from "./tailwindProperties.js";
-import { tailwindcss2 } from "./tailwindclasslist.js";
+import { tailwindClassList } from "./tailwindclasslist.js";
 
 let formatCase = function (str) {
   return str
@@ -26,56 +25,9 @@ let pad = (d) => (d < 10 ? "0" + d : d);
 let undefNullToStr = (v) => (v == undefined || v == null ? "" : v);
 
 let removeTailwindClasses = (classList, debug) => {
-  let str = "";
-
-  let classParse = classList
+  let reduced = classList
     .map((i) => {
-      let c = i.split(":");
-      c = c[1] ? c[0].concat(c[1].split("-")) : c[0].split("-");
-
-      let p = tailwindcss;
-      let name = "";
-
-      if (p.states[c[0]]) {
-        name = c[0] + ":";
-        c.shift();
-      }
-
-      if (c[0] === "") {
-        c[1] = "-" + c[1];
-        c.shift();
-      }
-
-      if (p[c[0]]) {
-        p = p[c[0]];
-        if (c.length == 1) {
-          if (p._single) return name + p._single;
-          else return "user-class";
-        }
-        if (p._name !== null) name += p._name || c[0];
-      } else return "user-class";
-
-      for (p of p.props) {
-        str = name;
-        for (let i = 1; i < c.length; i++) {
-          if (p[c[i]]) {
-            if (p._name !== null) str += p._name || c[i];
-            p = p[c[i]];
-          } else {
-            str = "user-class";
-            break;
-          }
-        }
-        if (str == "user-class") continue;
-        if (p != true) {
-          if (p._optional === true) {
-            return p._name ? str + p._name : str;
-          }
-          return "user-class";
-        }
-        return str;
-      }
-      return str;
+      return tailwindClassList[i] || "user-class";
     })
     .reduce((acc, i, index) => {
       if (i == "user-class") {
@@ -86,36 +38,11 @@ let removeTailwindClasses = (classList, debug) => {
 
   // if (debug) {
   //   for (let i = 0; i < classParse.length; i++)
-  //     console.log(classList[i], "\t", classParse[i]);
+  //     console.log(classList[i], "\t", reduced[i]);
   // }
 
-  return Object.values(classParse).map((i) => classList[i]);
+  return Object.values(reduced).map((i) => classList[i]);
 };
-
-let removeTailwind = (classList, debug) => {
-  let classParse = classList
-    .map((i) => {
-      let c = tailwindcss2[i];
-      return c || "user-class";
-    })
-    .reduce((acc, i, index) => {
-      if (i == "user-class") {
-        acc["user-class" + index] = index;
-      } else acc[i] = index;
-      return acc;
-    }, {});
-
-  if (debug) {
-    for (let i = 0; i < classParse.length; i++)
-      console.log(classList[i], "\t", classParse[i]);
-  }
-
-  return Object.values(classParse).map((i) => classList[i]);
-};
-
-// s/:.*;/,/
-// s/\(^.\{-}\)\s/"\1":\ /
-// s/\(^.\{-}\)\s\(.*\),/"\1": "\2",\ /
 
 let test = [
   "block p-2 px-4 bg-white border-l border-r border-transparent",
@@ -153,11 +80,10 @@ let test = [
   "gap-x-0 gap-x-px gap-x",
   "gap-y-0 gap-y-px gap-y",
   "w w-2 w-px",
-  "overscroll-auto overscroll overscroll-x overscroll-x-auto"
+  "overscroll-auto overscroll overscroll-x overscroll-x-auto",
 ];
 let classList = test.flatMap((i) => i.split(" "));
-// classList = removeTailwindClasses(classList, true);
-classList = removeTailwind(classList, true);
+classList = removeTailwindClasses(classList, true);
 
 console.log(classList);
 
