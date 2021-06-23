@@ -3,12 +3,12 @@
 let fixedButton = [
   "rounded",
   "text-base",
+  "sm:text-sm",
   "font-medium",
   "text-white",
   "focus:outline-none",
   "focus:ring-4",
   "sm:w-auto" ,
-  "sm:text-sm",
   "px-4",
   "py-2",
   "m-1",
@@ -240,11 +240,11 @@ let list = {
 }
 
 let itemMaterial = [
+  // "border",
+  "shadow-md",
   "p-2",
   "px-4",
   "my-2",
-  // "border",
-  "shadow-md",
 ]
 
 let listMaterial = {
@@ -556,15 +556,15 @@ let badge = {
       "text-white",
     ],
     small: [
+      "text-sm",
       "p-1",
       "px-2",
-      "text-sm",
     ],
     tiny: [
-      "p-0.5",
-      "px-2",
       "text-xs",
       "font-semibold",
+      "p-0.5",
+      "px-2",
     ],
   }
 }
@@ -577,11 +577,11 @@ let fixedPage = [
   "border-gray-300",
   "text-sm",
   "font-medium",
+  "font-semibold",
+  "rounded",
   "w-12",
   "h-10",
   "mx-0.5",
-  "font-semibold",
-  "rounded",
 ]
 
 let fixedSideControls = [
@@ -591,10 +591,9 @@ let fixedSideControls = [
   "text-sm",
   "font-medium",
   "cursor-pointer",
-  "w-10",
-  "p-2",
-  "w-12",
   "rounded",
+  "w-12",
+  "p-2",
 ]
 
 let pagination = {
@@ -629,16 +628,16 @@ let pagination = {
   next: {
     default: [
       ...fixedSideControls,
-      "ml-0.5",
       "rounded-r-md",
+      "ml-0.5",
       // "-ml-px",
     ],
   },
   prev: {
     default: [
       ...fixedSideControls,
-      "mr-0.5",
       "rounded-l-md",
+      "mr-0.5",
     ],
   }
 };

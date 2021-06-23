@@ -133,6 +133,7 @@
     <v-button @click="data = dataJSON.slice(0, 40)">table</v-button>
     <v-button @click="definition.push({ key: 'item5' })">table push</v-button>
     <v-button @click="data[0].item5 = 6">table add col</v-button>
+    <v-button style-button="bg-indigo-500 text-white p-4">class</v-button>
 
     <div class="my-2">
       spinner
@@ -163,7 +164,7 @@
     {{ formattedDate }}
     <v-button @click="i = [ '2021-05-14', '2021-05-15' ]">set d</v-button>
     <v-card style-card="default" class="p-2 mb-2" style="width: 320px">
-      <vDatePicker v-model="i" euro range range-hover-highlight buttons adjecent-months></vDatePicker>
+      <vDatePicker v-model="i" euro range range-hover-highlight buttons adjecent-months style-day="default font-semibold"></vDatePicker>
     </v-card>
     <v-card style-card="default" class="p-2" style="width: 320px">
       <vDatePicker

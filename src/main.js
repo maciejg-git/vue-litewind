@@ -4,6 +4,9 @@ import router from './router'
 import i from "./components/index.js"
 import "tailwindcss/tailwind.css"
 import { styles } from "./styles"
+import { testTailwindRemoveClasses } from './testTailwindRemoveClasses.js'
+
+testTailwindRemoveClasses()
 
 let app = createApp(App)
 

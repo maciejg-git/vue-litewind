@@ -3,8 +3,9 @@ import { computed } from "vue";
 export default function useStyles(instance, props, elements) {
   let getStyles = (styles, globalStyles, el) => {
     return styles[el].value.reduce((acc, i) => {
-      if (globalStyles[el][i]) acc = [...acc, ...globalStyles[el][i]];
-      return acc;
+      return globalStyles[el][i]
+        ? [...acc, ...globalStyles[el][i]]
+        : [...acc, i];
     }, []);
   };
 

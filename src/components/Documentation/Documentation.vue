@@ -2,8 +2,16 @@
   <!-- <div class="container"> -->
     <div class="flex">
       <div class="flex-none sticky bg-gray-50 h-screen top-0 p-3 pl-7 pr-20">
+        <ul class="list-unstyled ml-2">
+          <li>
+            <router-link to="/documentation/installation" class="transition-all">Installation</router-link>
+          </li>
+          <li>
+            <router-link to="/documentation/styling" class="transition-all">Styling</router-link>
+          </li>
+        </ul>
         <h6>Components</h6>
-        <ul class="list-unstyled">
+        <ul class="list-unstyled ml-2">
           <li>
             <router-link to="/documentation/table" class="transition-all">Table</router-link>
           </li>
@@ -92,7 +100,18 @@ h6 {
   @apply text-lg;
   @apply font-semibold;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 2em;
+}
+a.active {
+  @apply inline-block font-semibold hover:bg-gray-100 py-1 pr-4 pl-4;
+}
 a {
-  @apply inline-block hover:bg-gray-100 py-1 pl-2 pr-4;
+  @apply inline-block hover:bg-gray-100 py-1 pr-4 pl-2;
 }
 </style>
