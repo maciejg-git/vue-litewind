@@ -12,6 +12,7 @@ import DocumentationCollapse from '../components/Documentation/DocumentationColl
 import DocumentationBadge from '../components/Documentation/DocumentationBadge.vue'
 import DocumentationDropdown from '../components/Documentation/DocumentationDropdown.vue'
 import DocumentationPagination from '../components/Documentation/DocumentationPagination.vue'
+import DocumentationTooltip from '../components/Documentation/DocumentationTooltip.vue'
 
 const routes = [
   {
@@ -61,6 +62,13 @@ const routes = [
       {
         path: 'dropdown',
         component: DocumentationDropdown,
+      },
+
+      // directives
+
+      {
+        path: 'tooltip',
+        component: DocumentationTooltip,
       },
     ],
   },

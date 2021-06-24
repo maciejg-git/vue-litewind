@@ -272,6 +272,33 @@ let listMaterial = {
   },
 }
 
+let progress = {
+  progress: {
+    default: [
+      "bg-gray-100",
+      "h-4",
+    ]
+  },
+  progressBar: {
+    default: [
+      "bg-indigo-500",
+    ],
+    gradient: [
+      "bg-gradient-to-r",
+      "from-yellow-400", 
+      "via-red-500", 
+      "to-pink-500",
+    ]
+  },
+  label: {
+    default: [
+      "text-xs",
+      "text-white",
+      "font-semibold",
+    ]
+  }
+}
+
 // SIDEPANEL
 
 let sidepanel = {
@@ -649,6 +676,7 @@ export let styles = {
   spinner,
   popover,
   dropdown,
+  progress,
   sidepanel,
   table,
   modal,

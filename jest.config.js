@@ -5,6 +5,7 @@ module.exports = {
     'vue'
   ],
   transform: {
+    '^.+\\.js$': 'babel-jest',
     '^.+\\.vue$': 'vue-jest'
   }
 }

@@ -32,53 +32,6 @@ let classes = {
 
 let template = `<div class="${classes.content}"></div>`;
 
-let timer = null;
-let timerOut = null;
-
-let onTransitionEnd = (ev) => {
-  ev.target.removeEventListener("transitionend", onTransitionEnd);
-  ev.target.remove();
-};
-
-let removeHideTimers = (el) => {
-  clearTimeout(timerOut);
-  el._v_tooltip.el.removeEventListener("transitionend", onTransitionEnd);
-};
-
-let removeShowTimer = () => clearTimeout(timer);
-
-let getTooltipContent = (el) => {
-  if (el._v_tooltip.f)
-    el._v_tooltip.el.childNodes[0].innerHTML = el._v_tooltip.f();
-};
-
-function show(ev) {
-  let el = ev.target;
-
-  removeHideTimers(el);
-
-  getTooltipContent(el);
-
-  timer = setTimeout(() => {
-    document.body.appendChild(el._v_tooltip.el);
-    requestAnimationFrame(() => {
-      el._v_tooltip.el.style.opacity = 1;
-    });
-    el._v_popper.update();
-  }, el._v_tooltip.delay);
-}
-
-function hide(ev) {
-  let el = ev.target;
-
-  removeShowTimer();
-
-  timerOut = setTimeout(() => {
-    el._v_tooltip.el.style.opacity = 0;
-    el._v_tooltip.el.addEventListener("transitionend", onTransitionEnd);
-  }, el._v_tooltip.delay);
-}
-
 function setPopper(el, tooltip, options) {
   return createPopper(el, tooltip, {
     modifiers: [
@@ -136,6 +89,16 @@ function parseModifiers(modifiers) {
   }
 }
 
+let getTooltipContent = (el) => {
+  if (el._v_tooltip.f)
+    el._v_tooltip.el.childNodes[0].innerHTML = el._v_tooltip.f();
+};
+
+let onTransitionEnd = (ev) => {
+  ev.target.removeEventListener("transitionend", onTransitionEnd);
+  ev.target.remove();
+};
+
 export default {
   mounted(el, binding) {
     let m = parseModifiers(Object.keys(binding.modifiers));
@@ -160,6 +123,43 @@ export default {
 
     el.addEventListener("mouseenter", show);
     el.addEventListener("mouseleave", hide);
+
+    let timer = null;
+    let timerOut = null;
+
+    let removeHideTimers = (el) => {
+      clearTimeout(timerOut);
+      el._v_tooltip.el.removeEventListener("transitionend", onTransitionEnd);
+    };
+
+    let removeShowTimer = () => clearTimeout(timer);
+
+    function show(ev) {
+      let el = ev.target;
+
+      removeHideTimers(el);
+
+      getTooltipContent(el);
+
+      timer = setTimeout(() => {
+        document.body.appendChild(el._v_tooltip.el);
+        requestAnimationFrame(() => {
+          el._v_tooltip.el.style.opacity = 1;
+        });
+        el._v_popper.update();
+      }, el._v_tooltip.delay);
+    }
+
+    function hide(ev) {
+      let el = ev.target;
+
+      removeShowTimer();
+
+      timerOut = setTimeout(() => {
+        el._v_tooltip.el.style.opacity = 0;
+        el._v_tooltip.el.addEventListener("transitionend", onTransitionEnd);
+      }, el._v_tooltip.delay);
+    }
   },
   beforeUnmount(el) {
     if (el._v_tooltip) {

@@ -82,6 +82,11 @@
     <v-button @click="filter = /am/">filter table</v-button>
     <v-button @click="busy = !busy">busy table</v-button>
 
+    <v-button @click="progress += 10">progress</v-button>
+    <v-progress :value="progress" :max="100" style-progress-bar="default gradient">
+      <template #default="{ value, max }">{{ value }}</template>
+    </v-progress>
+
     {{ tableSelection }}
     <input v-model="filter" type="" class="form-control w-25" />
     <v-card style-card="default shadow">
@@ -133,7 +138,7 @@
     <v-button @click="data = dataJSON.slice(0, 40)">table</v-button>
     <v-button @click="definition.push({ key: 'item5' })">table push</v-button>
     <v-button @click="data[0].item5 = 6">table add col</v-button>
-    <v-button style-button="bg-indigo-500 text-white p-4">class</v-button>
+    <!-- <v-button style-button="bg-indigo-500 text-white p-4">class</v-button> -->
 
     <div class="my-2">
       spinner
@@ -474,6 +479,7 @@ import vPopover from "./vPopover.vue";
 import tooltip from "../directives/tooltip.js";
 import vSpinner from "./vSpinner.vue";
 import vInputDate from "./vInputDate.vue"
+import vProgress from "./vProgress.vue"
 // import {vTable} from "../dist/vuecomponent2.es"
 
 export default {
@@ -499,6 +505,7 @@ export default {
     vPopover,
     vSpinner,
     vInputDate,
+    vProgress,
   },
   props: {
     msg: String,
@@ -522,6 +529,7 @@ export default {
     let busy = ref(false)
     let tableCommand = null;
     let tableSelection = ref([])
+    let progress = ref(10);
     // data.value = dataEmpty.value;
     let definition = ref([
       {
@@ -607,6 +615,7 @@ export default {
       tableSelection,
       busy,
       modal,
+      progress,
       tooltipTest,
       activator,
       popoverText,

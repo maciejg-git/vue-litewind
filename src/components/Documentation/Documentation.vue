@@ -49,6 +49,9 @@
             <router-link to="/documentation/spinner" class="transition-all">Spinner</router-link>
           </li>
           <li>
+            <router-link to="/documentation/progress" class="transition-all">Progress</router-link>
+          </li>
+          <li>
             <router-link to="/documentation/sidepanel" class="transition-all">Sidepanel</router-link>
           </li>
           <li>

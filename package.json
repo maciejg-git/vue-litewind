@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "test": "jest src",
+    "test": "jest src/test",
     "build": "vite build",
     "serve": "vite preview"
   },
