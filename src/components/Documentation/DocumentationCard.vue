@@ -1,6 +1,6 @@
 <template>
-  <h3>Badge</h3>
-  <p>Badge component</p>
+  <h3>Card</h3>
+  <p>Card component</p>
 
   <section>
     <h4>Reference</h4>
@@ -57,38 +57,39 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <v-badge style-badge="default tiny">New</v-badge>
-      <v-badge style-badge="default tiny yellow">New</v-badge>
-      <v-badge style-badge="default small">New</v-badge>
-      <v-badge style-badge="default small green">New</v-badge>
-      <v-badge style-badge="default small yellow">New</v-badge>
-      <v-badge>New</v-badge>
-      <v-badge style-badge="secondary">
-        New
-        <v-badge style-badge="default tiny green">7</v-badge>
-      </v-badge>
+      <v-card class="p-2 mb-2" width="320px">Example card</v-card>
+      <v-card width="320px">
+        <img src="https://picsum.photos/320/200" alt="">
+        <div class="p-2">
+          <span class="font-semibold">
+            Example card
+          </span>
+        </div>
+      </v-card>
     </div>
     <pre>
       <code>
-{{`<v-badge style-badge="default tiny">New</v-badge>
-<v-badge style-badge="default tiny yellow">New</v-badge>
-<v-badge style-badge="default small">New</v-badge>
-<v-badge style-badge="default small green">New</v-badge>
-<v-badge style-badge="default small yellow">New</v-badge>
-<v-badge>New</v-badge>
-<v-badge style-badge="secondary">
-  New
-  <v-badge style-badge="default tiny green">7</v-badge>
-</v-badge>`}}
+{{`<v-card class="p-2 mb-2" width="320px">Example card</v-card>
+<v-card width="320px">
+  <img src="https://picsum.photos/320/200" alt="">
+  <div class="p-2">
+    <span class="font-semibold">
+      Example card
+    </span>
+  </div>
+</v-card>`}}
       </code>
     </pre>
+    <h6>Card as container</h6>
+    <p>See this examlple that uses card component as container for datepicker. Or this for example of card as container for dropdown menu.</p>
   </section>
 </template>
 
 <script>
 import { ref, reactive, onMounted } from "vue";
 import vTable from "../vTable.vue";
-import vBadge from "../vBadge.vue"
+import vCard from "../vCard.vue"
+import vButton from "../vButton.vue"
 
 import hljs from "highlight.js";
 import "highlight.js/styles/default.css";
@@ -96,16 +97,24 @@ import "highlight.js/styles/default.css";
 export default {
   components: {
     vTable,
-    vBadge,
+    vCard,
+    vButton,
   },
   setup(props) {
     let reference = ref([
       {
+        prop: "width",
+        type: "String",
+        default: "undefined",
+        description:
+          "Width of the card",
+      },
+      {
         prop: "name",
         type: "String",
-        default: "badge",
+        default: "card",
         description:
-          "Data to display in table. Each element of Array is an Object. Single Object is one record (row) of data.",
+          "Useful for setting alternative styles from style.js",
       },
     ]);
 
@@ -130,8 +139,8 @@ export default {
 
     let referenceStyles = ref([
       {
-        prop: "style-badge",
-        description: "Main badge element",
+        prop: "style-card",
+        description: "Main card element",
       },
     ]);
 
@@ -165,7 +174,7 @@ export default {
     let referenceSlots = ref([
       {
         slot: "default",
-        description: "Badge content",
+        description: "Default slot for card content",
       },
     ]);
 

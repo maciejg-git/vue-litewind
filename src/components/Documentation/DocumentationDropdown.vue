@@ -1,6 +1,6 @@
 <template>
   <h3>Dropdown</h3>
-  <p class="text-xl font-light">Dropdown component</p>
+  <p>Dropdown component</p>
 
   <section>
     <h4>Reference</h4>

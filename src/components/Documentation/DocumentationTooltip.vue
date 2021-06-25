@@ -1,6 +1,16 @@
 <template>
   <h3>Tooltip</h3>
-  <p class="text-xl font-light">Tooltip component</p>
+  <p>Tooltip directive</p>
+
+  <section>
+    <h4>Usage</h4>
+    <p>To use the tooltip for any html element use the following directive:</p>
+    <p class="font-semibold ml-4">
+      v-tooltip.modifier1.modifier2="'Tooltip text' or function that returns tooltip
+      text"
+    </p>
+    <p>Modifiers can be in any order.</p>
+  </section>
 
   <section>
     <h4>Reference</h4>
@@ -41,13 +51,83 @@
 
   <section>
     <h4>Example</h4>
-    <div class="example">
-      <v-button v-tooltip.bottom.delay100.oY5="'This is tooltip.'">Hover me</v-button>
-      <br>
-      <v-button v-tooltip.right.delay100.oY5="'This is tooltip on the right.'">Hover me (tooltip on right)</v-button>
+    <div class="example flex">
+      <div class="mx-auto">
+        <div class="mb-10">
+          <v-button v-tooltip.bottom.delay100.oY5="'This is tooltip'">
+            Hover me
+          </v-button>
+        </div>
+        <div class="mb-10">
+          <v-button v-tooltip.top.delay100.oY5="'This is tooltip on the top'">
+            Hover me (tooltip on top)
+          </v-button>
+          <v-button v-tooltip.right.delay100.oY5="'This is tooltip on the right'">
+            Hover me (tooltip on right)
+          </v-button>
+        </div>
+        <div class="mb-10">
+          <v-button v-tooltip.bottom.delay500.oY5="'This is delayed tooltip'">
+            Hover me (long delay)
+          </v-button>
+          <v-button v-tooltip.bottom.delay0.oY5="'This tooltip apears instantaneously'">
+            Hover me (no delay)
+          </v-button>
+        </div>
+        <div class="mb-10">
+          <v-button v-tooltip.bottom.delay100.oY5="() => 'Dynamic content ' + (Math.random() * 100).toFixed(0)">
+            Hover me (dynamic content)
+          </v-button>
+          <v-button
+            v-tooltip.bottom.delay100.oY5
+            data-title="This tooltip has content from data-attribute"
+          >
+            Hover me (data title attribute)
+          </v-button>
+        </div>
+        <div>
+          <v-button v-tooltip.bottom.delay100.oY5.nofade="'This is nofade tooltip'">
+            Hover me (no animation tooltip)
+          </v-button>
+        </div>
+      </div>
     </div>
     <pre>
       <code>
+{{`<v-button v-tooltip.bottom.delay100.oY5="'This is tooltip'">
+  Hover me
+</v-button>
+
+<v-button v-tooltip.top.delay100.oY5="'This is tooltip on the top'">
+  Hover me (tooltip on top)
+</v-button>
+
+<v-button v-tooltip.right.delay100.oY5="'This is tooltip on the right'">
+  Hover me (tooltip on right)
+</v-button>
+
+<v-button v-tooltip.bottom.delay500.oY5="'This is delayed tooltip'">
+  Hover me (long delay)
+</v-button>
+
+<v-button v-tooltip.bottom.delay0.oY5="'This tooltip apears instantaneously'">
+  Hover me (no delay)
+</v-button>
+
+<v-button v-tooltip.bottom.delay100.oY5="() => 'Dynamic content ' + (Math.random() * 100).toFixed(0)">
+  Hover me (dynamic content)
+</v-button>
+
+<v-button
+  v-tooltip.bottom.delay100.oY5
+  data-title="This tooltip has content from data-attribute"
+  >
+  Hover me (data title attribute)
+</v-button>
+
+<v-button v-tooltip.bottom.delay100.oY5.nofade="'This is nofade tooltip'">
+  Hover me (no animation tooltip)
+</v-button>`}}
       </code>
     </pre>
   </section>
@@ -57,7 +137,7 @@
 import { ref, reactive, onMounted } from "vue";
 import vTable from "../vTable.vue";
 import vButton from "../vButton.vue";
-import tooltip from "../../directives/tooltip.js"
+import tooltip from "../../directives/tooltip.js";
 
 import hljs from "highlight.js";
 import "highlight.js/styles/default.css";
@@ -79,22 +159,27 @@ export default {
           "Position of the tooltip. Valid values are the same as placement values in Popperjs",
       },
       {
-        modifier: "delay",
-        default: "d50",
-        description:
-          "Delay to wait before showing and hiding tooltip",
+        modifier: "d[miliseconds]",
+        default: "50",
+        description: "Delay before showing and hiding tooltip",
       },
       {
-        modifier: "vertical offset",
-        default: "oX0",
+        modifier: "oX[pixels]",
+        default: "0",
         description:
           "Vertical offset of tooltip element relative to bound element",
       },
       {
-        modifier: "horizontal offset",
-        default: "oY0",
+        modifier: "oY[pixels]",
+        default: "0",
         description:
           "Horizontal offset of tooltip element relative to bound element",
+      },
+      {
+        modifier: "nofade",
+        default: "",
+        description:
+          "Disables fade animation when showing or hiding tooltip",
       },
     ]);
 
@@ -116,13 +201,15 @@ export default {
     let referenceValue = ref([
       {
         value: "tooltip content",
-        description: "Tooltip content can be a html string of a function. Altenatively you can set content in data-tooltip attribute of bound element. If both are present content of tooltip is set by directive value",
+        description:
+          "Tooltip content can be a string or a function. Altenatively you can set content using data-tooltip attribute of bound element",
       },
     ]);
 
     let referenceValueDefinition = ref([
       {
         key: "value",
+        label: "Directive value",
         class: () => "w-1 whitespace-nowrap",
       },
       {
@@ -130,9 +217,7 @@ export default {
       },
     ]);
 
-    let example = reactive({
-
-    });
+    let example = reactive({});
 
     onMounted(() => {
       hljs.highlightAll();

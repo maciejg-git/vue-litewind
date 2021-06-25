@@ -1,6 +1,6 @@
 <template>
   <h3>Table</h3>
-  <p class="text-xl font-light">Table component</p>
+  <p>Table component</p>
 
   <section>
     <h4>Reference</h4>

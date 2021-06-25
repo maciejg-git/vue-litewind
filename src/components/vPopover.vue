@@ -47,24 +47,7 @@ import {
 import vCloseButton from "./vCloseButton.vue";
 import useStyles from "../use-styles";
 import { removeTailwindClasses } from "../tools.js";
-
-const correctPlacement = [
-  "auto",
-  "auto-start",
-  "auto-end",
-  "top",
-  "top-start",
-  "top-end",
-  "bottom",
-  "bottom-start",
-  "bottom-end",
-  "right",
-  "right-start",
-  "right-end",
-  "left",
-  "left-start",
-  "left-end",
-];
+import { correctPlacement } from "../const.js"
 
 export default {
   props: {

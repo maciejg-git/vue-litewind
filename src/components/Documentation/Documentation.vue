@@ -1,7 +1,7 @@
 <template>
   <!-- <div class="container"> -->
     <div class="flex">
-      <div class="flex-none sticky bg-gray-50 h-screen top-0 p-3 pl-7 pr-20">
+      <div class="hidden md:block flex-none sticky bg-gray-50 h-screen top-0 p-3 pl-7 pr-20">
         <ul class="list-unstyled ml-2">
           <li>
             <router-link to="/documentation/installation" class="transition-all">Installation</router-link>
@@ -65,7 +65,7 @@
           </li>
         </ul>
         <h6 class="mt-4">Directives</h6>
-        <ul class="list-unstyled">
+        <ul class="list-unstyled ml-2">
           <li>
             <router-link to="/documentation/tooltip" class="transition-all">Tooltip</router-link>
           </li>

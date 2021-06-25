@@ -1,6 +1,6 @@
 <template>
   <h3>Pagination</h3>
-  <p class="text-xl font-light">Pagination component</p>
+  <p>Pagination component</p>
 
   <section>
     <h4>Reference</h4>

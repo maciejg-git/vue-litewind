@@ -1,6 +1,6 @@
 <template>
   <h3>Modal</h3>
-  <p class="text-xl font-light">
+  <p>
     Modal dialog component. Has two standard buttons for most applications or
     provide own in footer slow.
   </p>

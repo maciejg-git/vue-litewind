@@ -1,6 +1,6 @@
 <template>
   <h3>Tabs</h3>
-  <p class="text-xl font-light">Tabs component</p>
+  <p>Tabs component</p>
 
   <section>
     <h4>Reference</h4>

@@ -1,6 +1,6 @@
 <template>
   <h3>Date Picker</h3>
-  <p class="text-xl font-light">Date Picker component</p>
+  <p>Date Picker component</p>
 
   <section>
     <h5>Reference</h5>

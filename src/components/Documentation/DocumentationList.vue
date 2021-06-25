@@ -1,6 +1,6 @@
 <template>
   <h3>List</h3>
-  <p class="text-xl font-light">List component</p>
+  <p>List component</p>
 
   <section>
     <h4>Reference</h4>

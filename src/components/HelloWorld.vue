@@ -86,6 +86,9 @@
     <v-progress :value="progress" :max="100" style-progress-bar="default gradient">
       <template #default="{ value, max }">{{ value }}</template>
     </v-progress>
+    <br>
+    <v-progress :value="progress" :max="100" :label="false" style-progress="default tiny" style-progress-bar="default gradient">
+    </v-progress>
 
     {{ tableSelection }}
     <input v-model="filter" type="" class="form-control w-25" />
@@ -330,7 +333,9 @@
       the option name from camelCase to kebab-case when passing via data
       attributes. For example: instead of using
       data-bs-customClass="beautifier", use data-bs-custom-class="beautifier".
+      <v-button v-tooltip.right.delay500.oY5="() => 'item item 2'">button</v-button>
     </v-modal>
+      <v-button v-tooltip="() => 'item item 2'">button</v-button>
 
     <div class="my-5">
       <v-button shadow class-button="bg-gray-500 hover:bg-gray-600"

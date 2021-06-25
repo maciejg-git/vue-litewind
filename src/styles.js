@@ -276,8 +276,13 @@ let progress = {
   progress: {
     default: [
       "bg-gray-100",
+      "rounded",
+      "overflow-hidden",
       "h-4",
-    ]
+    ],
+    tiny: [
+      "h-1",
+    ],
   },
   progressBar: {
     default: [
@@ -288,7 +293,7 @@ let progress = {
       "from-yellow-400", 
       "via-red-500", 
       "to-pink-500",
-    ]
+    ],
   },
   label: {
     default: [

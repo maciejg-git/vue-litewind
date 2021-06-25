@@ -1,22 +1,5 @@
 import { createPopper } from "@popperjs/core";
-
-const correctPlacement = [
-  "auto",
-  "auto-start",
-  "auto-end",
-  "top",
-  "top-start",
-  "top-end",
-  "bottom",
-  "bottom-start",
-  "bottom-end",
-  "right",
-  "right-start",
-  "right-end",
-  "left",
-  "left-start",
-  "left-end",
-];
+import { correctPlacement } from "../const.js";
 
 let defaults = {
   placement: "bottom-start",
@@ -26,11 +9,59 @@ let defaults = {
 };
 
 let classes = {
-  tooltip: "bg-gray-700 text-gray-100 rounded-md",
-  content: "font-semibold p-1.5 px-3",
+  tooltip: "bg-gray-700 text-gray-100 rounded-md z-30",
+  content: "font-semibold p-1 px-3",
 };
 
 let template = `<div class="${classes.content}"></div>`;
+
+let delayRegexp = /^delay\d\d?\d?\d?$/;
+let offsetXRegexp = /^oX\d\d?\d?$/;
+let offsetYRegexp = /^oY\d\d?\d?$/;
+
+let onTransitionEnd = (ev) => {
+  ev.target.removeEventListener("transitionend", onTransitionEnd);
+  ev.target.remove();
+};
+
+let removeHideTimers = (el) => {
+  clearTimeout(el._v_tooltip.timerOut);
+  el._v_tooltip.el.removeEventListener("transitionend", onTransitionEnd);
+};
+
+let removeShowTimer = (el) => clearTimeout(el._v_tooltip.timer);
+
+function show(ev) {
+  let el = ev.target;
+
+  removeHideTimers(el);
+
+  getTooltipContent(el);
+
+  el._v_tooltip.timer = setTimeout(() => {
+    document.body.appendChild(el._v_tooltip.el);
+    requestAnimationFrame(() => {
+      el._v_tooltip.el.style.opacity = 1;
+    });
+    el._v_popper.update();
+  }, el._v_tooltip.delay);
+}
+
+function hide(ev) {
+  let el = ev.target;
+
+  removeShowTimer(el);
+
+  el._v_tooltip.timerOut = setTimeout(() => {
+    el._v_tooltip.el.style.opacity = 0;
+    el._v_tooltip.el.addEventListener("transitionend", onTransitionEnd);
+  }, el._v_tooltip.delay);
+}
+
+let getTooltipContent = (el) => {
+  if (el._v_tooltip.f)
+    el._v_tooltip.el.childNodes[0].innerHTML = el._v_tooltip.f();
+};
 
 function setPopper(el, tooltip, options) {
   return createPopper(el, tooltip, {
@@ -64,40 +95,24 @@ function addTransition(el, m) {
 }
 
 function parseModifiers(modifiers) {
-  let delayRegexp = /^delay\d\d?\d?\d?$/;
-  let offsetXRegexp = /^oX\d\d?\d?$/;
-  let offsetYRegexp = /^oY\d\d?\d?$/;
+  let m = {};
 
-  if (modifiers.length) {
-    let m = {};
+  m.placement = modifiers.find((i) => correctPlacement.includes(i));
+  m.placement = m.placement || defaults.placement;
 
-    m.placement = modifiers.find((i) => correctPlacement.includes(i));
-    m.placement = m.placement || defaults.placement;
+  m.delay = modifiers.find((i) => delayRegexp.test(i));
+  m.delay = m.delay ? +m.delay.substring(5) : defaults.delay;
 
-    m.delay = modifiers.find((i) => delayRegexp.test(i));
-    m.delay = m.delay ? +m.delay.substring(5) : defaults.delay;
+  m.offsetX = modifiers.find((i) => offsetXRegexp.test(i));
+  m.offsetX = m.offsetX ? +m.offsetX.substring(2) : defaults.offsetX;
 
-    m.offsetX = modifiers.find((i) => offsetXRegexp.test(i));
-    m.offsetX = m.offsetX ? +m.offsetX.substring(2) : defaults.offsetX;
+  m.offsetY = modifiers.find((i) => offsetYRegexp.test(i));
+  m.offsetY = m.offsetY ? +m.offsetY.substring(2) : defaults.offsetY;
 
-    m.offsetY = modifiers.find((i) => offsetYRegexp.test(i));
-    m.offsetY = m.offsetY ? +m.offsetY.substring(2) : defaults.offsetY;
+  m.transition = modifiers.findIndex((i) => i === "nofade") != -1;
 
-    m.transition = modifiers.findIndex((i) => i === "nofade") != -1;
-
-    return m;
-  }
+  return m;
 }
-
-let getTooltipContent = (el) => {
-  if (el._v_tooltip.f)
-    el._v_tooltip.el.childNodes[0].innerHTML = el._v_tooltip.f();
-};
-
-let onTransitionEnd = (ev) => {
-  ev.target.removeEventListener("transitionend", onTransitionEnd);
-  ev.target.remove();
-};
 
 export default {
   mounted(el, binding) {
@@ -105,15 +120,17 @@ export default {
 
     el._v_tooltip = {
       el: createTooltipElement(),
+      timer: null,
+      timerOut: null,
       ...m,
     };
 
     addTransition(el._v_tooltip.el, m);
 
     if (binding.value && typeof binding.value == "string") {
-      el._v_tooltip.el.childNodes[0].innerHTML = binding.value;
+      el._v_tooltip.el.childNodes[0].innerText = binding.value;
     } else {
-      el._v_tooltip.el.childNodes[0].innerHTML =
+      el._v_tooltip.el.childNodes[0].innerText =
         el.getAttribute("data-title") || "";
     }
 
@@ -123,43 +140,6 @@ export default {
 
     el.addEventListener("mouseenter", show);
     el.addEventListener("mouseleave", hide);
-
-    let timer = null;
-    let timerOut = null;
-
-    let removeHideTimers = (el) => {
-      clearTimeout(timerOut);
-      el._v_tooltip.el.removeEventListener("transitionend", onTransitionEnd);
-    };
-
-    let removeShowTimer = () => clearTimeout(timer);
-
-    function show(ev) {
-      let el = ev.target;
-
-      removeHideTimers(el);
-
-      getTooltipContent(el);
-
-      timer = setTimeout(() => {
-        document.body.appendChild(el._v_tooltip.el);
-        requestAnimationFrame(() => {
-          el._v_tooltip.el.style.opacity = 1;
-        });
-        el._v_popper.update();
-      }, el._v_tooltip.delay);
-    }
-
-    function hide(ev) {
-      let el = ev.target;
-
-      removeShowTimer();
-
-      timerOut = setTimeout(() => {
-        el._v_tooltip.el.style.opacity = 0;
-        el._v_tooltip.el.addEventListener("transitionend", onTransitionEnd);
-      }, el._v_tooltip.delay);
-    }
   },
   beforeUnmount(el) {
     if (el._v_tooltip) {
