@@ -82,7 +82,7 @@
     </v-table>
   </section>
 
-  <section>
+  <section id="example">
     <h4>Example</h4>
     <div class="example">
       <v-dropdown
@@ -94,7 +94,7 @@
         :transition="example.transition"
       >
         <template #activator>
-          <v-button>Dropdown</v-button>
+          <v-button>Dropdown menu</v-button>
         </template>
         <v-card width="320px">
           <v-dropdown-menu-item tag="button"> Menu item </v-dropdown-menu-item>
@@ -113,11 +113,32 @@
           </v-dropdown-menu-item>
         </v-card>
       </v-dropdown>
+      <v-dropdown
+        :placement="example.placement"
+        :offset-x="+example.offsetX"
+        :offset-y="+example.offsetY"
+        :no-flip="example.noFlip"
+        :auto-close-menu="example.autoCloseMenu"
+        :transition="example.transition"
+      >
+        <template #activator>
+          <v-button>Dropdown datepicker</v-button>
+        </template>
+        <template #default="{ hide }">
+          <v-card width="320px" class="p-2">
+            <v-date-picker
+              v-model="example.date"
+              adjecent-months
+              @state:done="hide"
+            ></v-date-picker>
+          </v-card>
+        </template>
+      </v-dropdown>
       <v-tabs name="tabsMaterial" class="mt-5">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
-            <label for="range">placement: </label>
-            <select id="range" v-model="example.placement">
+            <label for="placement">placement: </label>
+            <select id="placement" v-model="example.placement">
               <option value="auto">auto</option>
               <option value="auto-start">auto-start</option>
               <option value="auto-end">auto-end</option>
@@ -136,30 +157,30 @@
             </select>
           </div>
           <div class="mb-2">
-            <label for="model">offsetX: </label>
-            <input type="text" id="model" v-model="example.offsetX" />
+            <label for="offsetX">offsetX: </label>
+            <input type="text" id="offsetX" v-model="example.offsetX" />
           </div>
           <div class="mb-2">
-            <label for="model">offsetY: </label>
-            <input type="text" id="model" v-model="example.offsetY" />
+            <label for="offsetY">offsetY: </label>
+            <input type="text" id="offsetY" v-model="example.offsetY" />
           </div>
           <div class="mb-2">
-            <label for="range">no-flip: </label>
-            <select id="range" v-model="example.noFlip">
+            <label for="no-flip">no-flip: </label>
+            <select id="no-flip" v-model="example.noFlip">
               <option :value="true">true</option>
               <option :value="false">false</option>
             </select>
           </div>
           <div class="mb-2">
-            <label for="range">auto-close-menu: </label>
-            <select id="range" v-model="example.autoCloseMenu">
+            <label for="auto-close-menu">auto-close-menu: </label>
+            <select id="auto-close-menu" v-model="example.autoCloseMenu">
               <option :value="true">true</option>
               <option :value="false">false</option>
             </select>
           </div>
           <div class="mb-2">
-            <label for="range">transition: </label>
-            <select id="range" v-model="example.transition">
+            <label for="transition">transition: </label>
+            <select id="transition" v-model="example.transition">
               <option value="fade">fade</option>
               <option value="">empty string</option>
             </select>
@@ -213,6 +234,7 @@ import vDropdownMenuItem from "../vDropdownMenuItem.vue";
 import vDropdownHeader from "../vDropdownHeader.vue";
 import vButton from "../vButton.vue";
 import vCard from "../vCard.vue";
+import vDatePicker from "../vDatePicker.vue";
 
 import hljs from "highlight.js";
 import "highlight.js/styles/default.css";
@@ -225,6 +247,7 @@ export default {
     vDropdownHeader,
     vButton,
     vCard,
+    vDatePicker,
   },
   setup(props) {
     let reference = ref([
@@ -391,6 +414,7 @@ export default {
       noFlip: false,
       autoCloseMenu: false,
       transition: "fade",
+      date: "",
     });
 
     onMounted(() => {

@@ -167,13 +167,13 @@ export default {
         modifier: "oX[pixels]",
         default: "0",
         description:
-          "Vertical offset of tooltip element relative to bound element",
+          "Offset of tooltip element relative to bound element. See how to use this offset <a href='https://popper.js.org/docs/v2/modifiers/offset/' class='link'>here</a>",
       },
       {
         modifier: "oY[pixels]",
         default: "0",
         description:
-          "Horizontal offset of tooltip element relative to bound element",
+          "Offset of tooltip element relative to bound element. See how to use this offset <a href='https://popper.js.org/docs/v2/modifiers/offset/' class='link'>here</a>",
       },
       {
         modifier: "nofade",

@@ -134,8 +134,8 @@
         </v-list-item>
       </v-list>
       <div class="mt-5">
-        <label for="">List style: </label>
-        <select id="range" v-model="example.name">
+        <label for="style">List style: </label>
+        <select id="style" v-model="example.name">
           <option value="list">bootstrap</option>
           <option value="listMaterial">material</option>
         </select>
@@ -143,8 +143,8 @@
       <v-tabs name="tabsMaterial" class="mt-5">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
-            <label for="model">tag: </label>
-            <select id="selection-mode" v-model="example.tag">
+            <label for="tag">tag: </label>
+            <select id="tag" v-model="example.tag">
               <option value="div">div</option>
               <option value="a">a</option>
               <option value="button">button</option>

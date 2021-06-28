@@ -75,20 +75,20 @@
             <input type="text" id="model" v-model="example.page" />
           </div>
           <div class="mb-2">
-            <label for="model">items-count: </label>
-            <input type="text" id="model" v-model="example.itemsCount" />
+            <label for="items-count">items-count: </label>
+            <input type="text" id="items-count" v-model="example.itemsCount" />
           </div>
           <div class="mb-2">
-            <label for="model">items-per-page: </label>
-            <input type="text" id="model" v-model="example.itemsPerPage" />
+            <label for="items-per-page">items-per-page: </label>
+            <input type="text" id="items-per-page" v-model="example.itemsPerPage" />
           </div>
           <div class="mb-2">
-            <label for="model">max-pages: </label>
-            <input type="text" id="model" v-model="example.maxPages" />
+            <label for="max-pages">max-pages: </label>
+            <input type="text" id="max-pages" v-model="example.maxPages" />
           </div>
           <div class="mb-2">
-            <label for="range">icons: </label>
-            <select id="range" v-model="example.icons">
+            <label for="icons">icons: </label>
+            <select id="icons" v-model="example.icons">
               <option :value="true">true</option>
               <option :value="false">false</option>
             </select>

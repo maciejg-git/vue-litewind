@@ -13,6 +13,7 @@ export default {
   props: {
     disabled: { type: Boolean, default: false },
     tag: { type: String, default: "button" },
+    bar: { type: Boolean, default: false },
     name: { type: String, default: "button" },
     styleButton: { type: String, default: "default" },
   },
@@ -22,7 +23,7 @@ export default {
     let { styles } = useStyles(getCurrentInstance(), props, elements);
 
     let fixedClass = {
-      button: ["w-full", "inline-flex", "justify-center"],
+      button: ["w-full", "sm:w-auto", "inline-flex", "justify-center"],
     };
 
     let classes = {
@@ -31,6 +32,7 @@ export default {
           ...fixedClass.button,
           ...styles.button.value,
           props.disabled ? "opacity-50 pointer-events-none" : "",
+          props.bar ? "sm:w-full" : "",
         ].flatMap((i) => i.split(" "));
         return removeTailwindClasses(c);
       }),

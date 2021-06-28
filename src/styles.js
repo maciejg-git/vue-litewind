@@ -8,7 +8,6 @@ let fixedButton = [
   "text-white",
   "focus:outline-none",
   "focus:ring-4",
-  "sm:w-auto" ,
   "px-4",
   "py-2",
   "m-1",
@@ -21,6 +20,8 @@ let button = {
       "bg-indigo-500",
       "hover:bg-indigo-600",
       "focus:ring-indigo-200",
+      "border-0",
+      "border-indigo-500",
     ],
     primary: [
       ...fixedButton,
@@ -59,6 +60,8 @@ let fixedTab = [
   "border-gray-300",
   "-mb-px",
   "-ml-px",
+  "whitespace-nowrap",
+  "overflow-ellipsis"
 ]
 
 let tabs = {
@@ -110,7 +113,6 @@ let tabsMaterial = {
       'shadow-none',
       "border-b-2",
       "border-indigo-500",
-      "font-semibold",
     ],
   },
   tabBar: {
@@ -240,7 +242,6 @@ let list = {
 }
 
 let itemMaterial = [
-  // "border",
   "shadow-md",
   "p-2",
   "px-4",
@@ -250,7 +251,6 @@ let itemMaterial = [
 let listMaterial = {
   list: {
     default: [
-      // "overflow-hidden",
     ],
     square: [
       "rounded-none"

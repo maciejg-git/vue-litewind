@@ -1,6 +1,9 @@
 <template>
-  <h3>Table</h3>
-  <p>Table component</p>
+  <h3>Collapse</h3>
+  <p>
+    Collapse component can be used to hide or expand parts of page or text.
+    Popular example of that are accordions.
+  </p>
 
   <section>
     <h4>Reference</h4>
@@ -38,48 +41,106 @@
         <span v-html="value"></span>
       </template>
     </v-table>
-
   </section>
 
   <section>
     <h4>Example</h4>
     <div class="example">
-      <v-button @click="example.isVisible = !example.isVisible">
-        Toggle collapse
-      </v-button>
-      <v-collapse v-model="example.isVisible">
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book. It has survived not only five
-        centuries, but also the leap into electronic typesetting, remaining
-        essentially unchanged. It was popularised in the 1960s with the release
-        of Letraset sheets containing Lorem Ipsum passages, and more recently
-        with desktop publishing software like Aldus PageMaker including versions
-        of Lorem Ipsum.
-      </v-collapse>
-      <v-tabs name="tabsMaterial" class="mt-5">
-        <v-tab name="Props">
-          <div class="mb-2 mt-5">
-            <label for="model" class="font-semibold">v-model: </label>
-            <input type="text" id="model" v-model="example.isVisible" />
+      <v-card class="p-1">
+        <v-button
+          style-button="default noMargin"
+          bar
+          @click="example.isVisible = !example.isVisible"
+        >
+          Toggle collapse
+        </v-button>
+        <v-collapse v-model="example.isVisible">
+          <div class="p-4">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book. It has survived not
+            only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s
+            with the release of Letraset sheets containing Lorem Ipsum passages,
+            and more recently with desktop publishing software like Aldus
+            PageMaker including versions of Lorem Ipsum.
           </div>
-        </v-tab>
-        <v-tab name="Events">
-          <div class="overflow-y-auto max-h-48 mt-5 w-full">
-            <div class="px-2 pb-2">
-              <template v-for="ev in example.events">
-                <div class="py-1">
-                  <code class="code-word">{{ ev.ev }}</code> {{ ev.data }}
-                </div>
-              </template>
-            </div>
+        </v-collapse>
+      </v-card>
+      <v-card class="p-1 mt-1">
+        <v-button
+          bar
+          style-button="default noMargin"
+          @click="example.isVisible2 = !example.isVisible2"
+        >
+          Toggle collapse 2
+        </v-button>
+        <v-collapse v-model="example.isVisible2">
+          <div class="p-4">
+            It is a long established fact that a reader will be distracted by
+            the readable content of a page when looking at its layout. The point
+            of using Lorem Ipsum is that it has a more-or-less normal
+            distribution of letters, as opposed to using 'Content here, content
+            here', making it look like readable English. Many desktop publishing
+            packages and web page editors now use Lorem Ipsum as their default
+            model text, and a search for 'lorem ipsum' will uncover many web
+            sites still in their infancy. Various versions have evolved over the
+            years, sometimes by accident, sometimes on purpose (injected humour
+            and the like).
           </div>
-        </v-tab>
-      </v-tabs>
+        </v-collapse>
+      </v-card>
+      <v-card class="p-1 mt-1">
+        <v-button
+          bar
+          style-button="default noMargin"
+          @click="example.isVisible3 = !example.isVisible3"
+        >
+          Toggle collapse 3
+        </v-button>
+        <v-collapse v-model="example.isVisible3">
+          <div class="p-4">
+            Contrary to popular belief, Lorem Ipsum is not simply random text.
+            It has roots in a piece of classical Latin literature from 45 BC,
+            making it over 2000 years old. Richard McClintock, a Latin professor
+            at Hampden-Sydney College in Virginia, looked up one of the more
+            obscure Latin words, consectetur, from a Lorem Ipsum passage, and
+            going through the cites of the word in classical literature,
+            discovered the undoubtable source. Lorem Ipsum comes from sections
+            1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes
+            of Good and Evil) by Cicero, written in 45 BC. This book is a
+            treatise on the theory of ethics, very popular during the
+            Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit
+            amet..", comes from a line in section 1.10.32.
+            <br />
+
+            The standard chunk of Lorem Ipsum used since the 1500s is reproduced
+            below for those interested. Sections 1.10.32 and 1.10.33 from "de
+            Finibus Bonorum et Malorum" by Cicero are also reproduced in their
+            exact original form, accompanied by English versions from the 1914
+            translation by H. Rackham.
+          </div>
+        </v-collapse>
+      </v-card>
     </div>
     <pre>
       <code>
+{{`<v-card class="p-1">
+  <v-button
+    style-button="default noMargin"
+    bar
+    @click="example.isVisible = !example.isVisible"
+  >
+    Toggle collapse
+  </v-button>
+
+  <v-collapse v-model="example.isVisible">
+    <div class="p-4">
+      ...
+    </div>
+  </v-collapse>
+</v-card>`}}
       </code>
     </pre>
   </section>
@@ -200,6 +261,8 @@ export default {
 
     let example = reactive({
       isVisible: false,
+      isVisible2: false,
+      isVisible3: false,
     });
 
     onMounted(() => {

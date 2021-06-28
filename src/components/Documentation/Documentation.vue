@@ -71,7 +71,7 @@
           </li>
         </ul>
       </div>
-      <div class="container mx-auto p-3 ml-10 pr-40 mr-60">
+      <div class="container mx-auto p-3 md:ml-10 w-full md:w-8/12">
         <router-view></router-view>
       </div>
     </div>

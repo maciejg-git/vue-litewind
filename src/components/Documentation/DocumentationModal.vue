@@ -88,15 +88,15 @@
       </v-card>
       <div class="md:ml-14">
         <div class="mb-2">
-          <label for="busy">position: </label>
-          <select id="busy" v-model="example.position">
+          <label for="position">position: </label>
+          <select id="position" v-model="example.position">
             <option value="top">top</option>
             <option value="center">center</option>
           </select>
         </div>
         <div class="mb-2">
-          <label for="busy">size: </label>
-          <select id="busy" v-model="example.size">
+          <label for="size">size: </label>
+          <select id="size" v-model="example.size">
             <option value="sm">sm</option>
             <option value="md">md</option>
             <option value="lg">lg</option>
@@ -104,8 +104,8 @@
           </select>
         </div>
         <div class="mb-2">
-          <label for="busy">transition: </label>
-          <select id="busy" v-model="example.transition">
+          <label for="transition">transition: </label>
+          <select id="transition" v-model="example.transition">
             <option value="fade">fade</option>
             <option value="fade-slide">fade-slide</option>
             <option value="fade-scale">fade-scale</option>
@@ -130,73 +130,77 @@
     >
       <div>
         <div class="mb-2">
-          <label for="locale">title: </label>
-          <input type="text" id="locale" v-model="example.title" />
+          <label for="title">title: </label>
+          <input type="text" id="title" v-model="example.title" />
         </div>
         <div class="mb-2">
-          <label for="busy">no-primary-button: </label>
-          <select id="busy" v-model="example.noPrimaryButton">
+          <label for="no-primary-button">no-primary-button: </label>
+          <select id="no-primary-button" v-model="example.noPrimaryButton">
             <option :value="true">true</option>
             <option :value="false">false</option>
           </select>
         </div>
         <div class="mb-2">
-          <label for="busy">no-secondary-button: </label>
-          <select id="busy" v-model="example.noSecondaryButton">
+          <label for="no-secondary-button">no-secondary-button: </label>
+          <select id="no-secondary-button" v-model="example.noSecondaryButton">
             <option :value="true">true</option>
             <option :value="false">false</option>
           </select>
         </div>
         <div class="mb-2">
-          <label for="busy">primary-button-label: </label>
-          <input type="text" id="locale" v-model="example.primaryButtonLabel" />
-        </div>
-        <div class="mb-2">
-          <label for="busy">secondary-button-label: </label>
+          <label for="primary-button-label">primary-button-label: </label>
           <input
             type="text"
-            id="locale"
+            id="primary-button-label"
+            v-model="example.primaryButtonLabel"
+          />
+        </div>
+        <div class="mb-2">
+          <label for="secondary-button-label">secondary-button-label: </label>
+          <input
+            type="text"
+            id="secondary-button-label"
             v-model="example.secondaryButtonLabel"
           />
         </div>
         <div class="mb-2">
-          <label for="busy">primary-button-close: </label>
-          <select id="busy" v-model="example.primaryButtonClose">
+          <label for="primary-button-close">primary-button-close: </label>
+          <select id="primary-button-close" v-model="example.primaryButtonClose">
             <option :value="true">true</option>
             <option :value="false">false</option>
           </select>
         </div>
         <div class="mb-2">
-          <label for="busy">secondary-button-close: </label>
-          <select id="busy" v-model="example.secondaryButtonClose">
+          <label for="secondary-button-close">secondary-button-close: </label>
+          <select id="secondary-button-close" v-model="example.secondaryButtonClose">
             <option :value="true">true</option>
             <option :value="false">false</option>
           </select>
         </div>
         <div class="mb-2">
-          <label for="busy">no-close-button: </label>
-          <select id="busy" v-model="example.noCloseButton">
+          <label for="no-close-button">no-close-button: </label>
+          <select id="no-close-button" v-model="example.noCloseButton">
             <option :value="true">true</option>
             <option :value="false">false</option>
           </select>
         </div>
         <div class="mb-2">
-          <label for="busy">static-backdrop: </label>
-          <select id="busy" v-model="example.staticBackdrop">
+          <label for="static-backdrop">static-backdrop: </label>
+          <select id="static-backdrop" v-model="example.staticBackdrop">
             <option :value="true">true</option>
             <option :value="false">false</option>
           </select>
         </div>
         <div class="mb-2">
-          <label for="busy">position: </label>
-          <select id="busy" v-model="example.position">
+          <label for="position-modal">position: </label>
+          <select id="position-modal" v-model="example.position">
             <option value="top">top</option>
             <option value="center">center</option>
           </select>
         </div>
         <div class="mb-2">
-          <label for="busy">size: </label>
-          <select id="busy" v-model="example.size">
+          <label for="size-modal">size: </label>
+          <select id="size-modal" v-model="example.size">
             <option value="sm">sm</option>
             <option value="md">md</option>
             <option value="lg">lg</option>
@@ -204,8 +208,8 @@
           </select>
         </div>
         <div class="mb-2">
-          <label for="busy">transition: </label>
-          <select id="busy" v-model="example.transition">
+          <label for="transition-modal">transition: </label>
+          <select id="transition-modal" v-model="example.transition">
             <option value="fade">fade</option>
             <option value="fade-slide">fade-slide</option>
             <option value="fade-scale">fade-scale</option>
@@ -464,7 +468,8 @@ export default {
       },
       {
         prop: "style-backdrop",
-        description: "Style of backdrop. Useful mainly for setting tint and opactity for modal background",
+        description:
+          "Style of backdrop. Useful mainly for setting tint and opactity for modal background",
       },
     ]);
 

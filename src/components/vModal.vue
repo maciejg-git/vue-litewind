@@ -95,13 +95,15 @@ export default {
       modal: ["relative", "flex-1", "overflow-auto", "pointer-events-auto"],
       modalContainer: [
         "relative",
-        "mx-2",
-        "py-4",
+        "w-full",
         "mx-auto",
+        "py-4",
+        "px-4",
+        "md:px-0",
         "pointer-events-none",
       ],
       header: ["flex", "items-center", "justify-between"],
-      footer: ["flex", "justify-end" ],
+      footer: ["flex", "justify-end"],
       backdrop: ["fixed", "inset-0", "overflow-y-auto", "min-h-screen"],
     };
 
@@ -115,15 +117,15 @@ export default {
             : "";
         let size =
           props.size == "xl"
-            ? "w-10/12"
+            ? ["md:w-10/12"]
             : props.size == "lg"
-            ? "w-8/12"
+            ? ["md:w-8/12"]
             : props.size == "sm"
-            ? "w-3/12"
+            ? ["md:w-4/12"]
             : props.size == "md"
-            ? "w-5/12"
-            : "w-5/12";
-        return [...fixedClass.modalContainer, ...position, size];
+            ? ["md:w-6/12"]
+            : ["md:w-6/12"];
+        return [...fixedClass.modalContainer, ...position, ...size];
       }),
       modal: computed(() => {
         let c = [...fixedClass.modal, ...styles.modal.value];

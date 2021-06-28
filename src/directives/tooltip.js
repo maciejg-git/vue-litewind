@@ -60,7 +60,7 @@ function hide(ev) {
 
 let getTooltipContent = (el) => {
   if (el._v_tooltip.f)
-    el._v_tooltip.el.childNodes[0].innerHTML = el._v_tooltip.f();
+    el._v_tooltip.el.childNodes[0].innerText = el._v_tooltip.f();
 };
 
 function setPopper(el, tooltip, options) {

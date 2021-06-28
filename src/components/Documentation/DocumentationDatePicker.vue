@@ -238,7 +238,7 @@
   </section>
 
   <section>
-    <h4>Datepicker in dropdown</h4>
+    <h4 id="dropdown">Datepicker in dropdown</h4>
     <p></p>
     <div class="example flex">
       <v-dropdown>

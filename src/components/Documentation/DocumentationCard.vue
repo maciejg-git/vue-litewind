@@ -1,6 +1,6 @@
 <template>
   <h3>Card</h3>
-  <p>Card component</p>
+  <p>Card is an universal component that can be used in many ways.</p>
 
   <section>
     <h4>Reference</h4>
@@ -57,13 +57,19 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <v-card class="p-2 mb-2" width="320px">Example card</v-card>
-      <v-card width="320px">
-        <img src="https://picsum.photos/320/200" alt="">
+      <v-card width="320px" style-card="default shadow">
+        <img :src="randomPhoto()" alt="">
         <div class="p-2">
           <span class="font-semibold">
             Example card
           </span>
+        </div>
+        <div class="p-2">
+        Card text
+        </div>
+        <hr>
+        <div class="text-sm p-2">
+        Card footer
         </div>
       </v-card>
     </div>
@@ -81,7 +87,7 @@
       </code>
     </pre>
     <h6>Card as container</h6>
-    <p>See this examlple that uses card component as container for datepicker. Or this for example of card as container for dropdown menu.</p>
+    <p>See <a href="datepicker#dropdown" class="link">this example</a> that uses card component as container for datepicker. Or <a href="dropdown#example" class="link">this</a> for example of card as container for dropdown menu.</p>
   </section>
 </template>
 
@@ -205,6 +211,10 @@ export default {
       },
     ]);
 
+    let id = [1015, 1016, 1040, 1043, 1067, 155, 158, 179, 184, 191]
+
+    let randomPhoto = () => `https://picsum.photos/id/${id[(Math.random() * 10).toFixed(0)]}/320/200`
+
     let example = reactive({
 
     });
@@ -225,6 +235,8 @@ export default {
       referenceComponents,
       referenceComponentsDefinition,
       example,
+      id,
+      randomPhoto,
     };
   },
 };
