@@ -1,6 +1,6 @@
 <template>
   <h3>Date Picker</h3>
-  <p>Date Picker component</p>
+  <p>Simple data picker component. It uses v-model to get or set dates, allows single and range selection modes, supports localization and customization. Can be used as standalone component or in dropdown or popover.</p>
 
   <section>
     <h5>Reference</h5>

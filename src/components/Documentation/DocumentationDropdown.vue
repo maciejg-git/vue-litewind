@@ -1,6 +1,6 @@
 <template>
   <h3>Dropdown</h3>
-  <p>Dropdown component</p>
+  <p>Dropdown component can be used to create overlay menus but is not limited to them as any content can be placed inside for example short forms, text, datepickers etc.</p>
 
   <section>
     <h4>Reference</h4>
@@ -256,21 +256,21 @@ export default {
         type: "String",
         default: "bottom-start",
         description:
-          "Initial placement of dropdown content. Valid values are the same as for Popperjs",
+          "Initial placement of dropdown content. Valid values are the same as for <a href='https://popper.js.org/docs/v2/' class='link'>Popperjs</a>",
       },
       {
         prop: "offsetX",
         type: "Number",
         default: "0",
         description:
-          "Horizontal offset in pixels relative to content of activator slot",
+          "Offset of dropdown relative to activator element. See how to use this offset <a href='https://popper.js.org/docs/v2/modifiers/offset/' class='link'>here</a>",
       },
       {
         prop: "offsetY",
         type: "Number",
         default: "0",
         description:
-          "Vertical offset in pixels relative to content of activator slot",
+          "Offset of dropdown relative to activator element. See how to use this offset <a href='https://popper.js.org/docs/v2/modifiers/offset/' class='link'>here</a>",
       },
       {
         prop: "no-flip",
@@ -284,7 +284,7 @@ export default {
         type: "Boolean",
         default: "false",
         description:
-          "If true clicking any menu item automatically closes dropdown",
+          "If true clicking any dropdown menu item automatically closes dropdown. This props does only work for clicking on v-dropdown-item",
       },
       {
         prop: "name",
@@ -392,8 +392,8 @@ export default {
 
     let referenceComponents = ref([
       {
-        component: "-",
-        description: "This component does not provide any child components.",
+        component: "v-dropdown-menu-item",
+        description: "Single menu item",
       },
     ]);
 
