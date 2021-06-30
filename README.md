@@ -1,1 +1,1 @@
-# mini-vue-trailwind
+# mini-vue-tailwind
