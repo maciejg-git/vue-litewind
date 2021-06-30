@@ -2,6 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HelloWorld from '../components/HelloWorld.vue'
 
 import Documentation from '../components/Documentation/Documentation.vue'
+
+import DocumentationComponents from '../components/Documentation/DocumentationComponents.vue'
+
 import DocumentationTable from '../components/Documentation/DocumentationTable.vue'
 import DocumentationDatePicker from '../components/Documentation/DocumentationDatePicker.vue'
 import DocumentationList from '../components/Documentation/DocumentationList.vue'
@@ -78,10 +81,13 @@ const routes = [
         path: 'tooltip',
         component: DocumentationTooltip,
       },
-
       {
         path: 'styling',
         component: DocumentationStyling,
+      },
+      {
+        path: 'components',
+        component: DocumentationComponents,
       },
     ],
   },

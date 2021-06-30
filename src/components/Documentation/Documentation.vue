@@ -1,7 +1,7 @@
 <template>
-  <!-- <div class="container"> -->
+  <div class="container mx-auto">
     <div class="flex">
-      <div class="hidden md:block flex-none sticky bg-gray-50 h-screen top-0 p-3 pl-7 pr-20">
+      <div class="hidden md:block flex-none sticky h-screen top-0 p-3 pl-7 pr-20">
         <ul class="list-unstyled ml-2">
           <li>
             <router-link to="/documentation/installation" class="transition-all">Installation</router-link>
@@ -10,7 +10,9 @@
             <router-link to="/documentation/styling" class="transition-all">Styling</router-link>
           </li>
         </ul>
-        <h6>Components</h6>
+        <h6>
+          <router-link to="/documentation/components" class="transition-all">Components</router-link>
+        </h6>
         <ul class="list-unstyled ml-2">
           <li>
             <router-link to="/documentation/table" class="transition-all">Table</router-link>
@@ -75,7 +77,7 @@
         <router-view></router-view>
       </div>
     </div>
-  <!-- </div> -->
+  </div>
 </template>
 
 <script>

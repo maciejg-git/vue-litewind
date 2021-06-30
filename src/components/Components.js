@@ -1,0 +1,18 @@
+export let components = [
+  "table",
+  "date Picker",
+  "button",
+  "pagination",
+  "badge",
+  "list",
+  "modal",
+  "tabs",
+  "dropdown",
+  "card",
+  "collapse",
+  "spinner",
+  "progress",
+  "sidepanel",
+  "close Button",
+  "popover",
+]
