@@ -45,8 +45,8 @@ import {
   getCurrentInstance,
 } from "vue";
 import vCloseButton from "./vCloseButton.vue";
-import useStyles from "../use-styles";
-import { removeTailwindClasses } from "../tools.js";
+import useStyles from "./composition/use-styles";
+import { removeTailwindClasses } from "../tools/tools.js";
 import { correctPlacement } from "../const.js"
 
 export default {

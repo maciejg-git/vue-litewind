@@ -109,7 +109,7 @@
 
     <ul>
       <li>
-        <span class="font-bold">key</span>: key can be property name of objects from items prop or new entry. New entries apear as additional columns and their content can be set using slot or function f.
+        <span class="font-bold">key</span>: key is one of the properties of data from items prop or a new key. New keys apear as additional columns and their content can be set using slot or function f.
       </li>
     </ul>
     <p>Optional properties:</p>
@@ -120,15 +120,15 @@
         default: undefined)
       </li>
       <li>
-        <span class="font-bold">sortable</span>: enables sorting content of column
+        <span class="font-bold">sortable</span>: enables sorting of the column
         (Boolean, default: false)
       </li>
       <li>
-        <span class="font-bold">filterable</span>: enables filtering content of
+        <span class="font-bold">filterable</span>: enables filtering of the
         column (Boolean, default: false))
       </li>
       <li>
-        <span class="font-bold">visible</span>: toggles visiblity of columns
+        <span class="font-bold">visible</span>: toggles visiblity of the column
         (Boolean, default: false)
       </li>
       <li>
@@ -137,7 +137,7 @@
         arguments: key, value and item (Function, default: undefined)
       </li>
       <li>
-        <span class="font-bold">f</span>: if defined this function is called for every cell in this column and the return value is set as content of the cell. Takes 3 arguments: key, value and item. If you need more control over value use slot cell:key (Function, default: undefined)
+        <span class="font-bold">f</span>: if defined this function is called for every cell in this column and the return value is set as content of the cell. Takes 3 arguments: key, value and item. This function cannot be used to add html to cell content (Function, default: undefined)
       </li>
       <li>
         <span class="font-bold">filterByFunction</span>: if true filter content
@@ -345,7 +345,7 @@ import vTab from "../vTab.vue";
 
 import hljs from "highlight.js";
 import "highlight.js/styles/default.css";
-import dataJSON from "../../MOCK_DATA (1).json";
+import dataJSON from "../../data.json";
 
 export default {
   components: {

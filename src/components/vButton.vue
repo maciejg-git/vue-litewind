@@ -6,8 +6,8 @@
 
 <script>
 import { computed, getCurrentInstance } from "vue";
-import useStyles from "../use-styles";
-import { removeTailwindClasses } from "../tools.js";
+import useStyles from "./composition/use-styles";
+import { removeTailwindClasses } from "../tools/tools.js";
 
 export default {
   props: {
@@ -32,7 +32,7 @@ export default {
           ...fixedClass.button,
           ...styles.button.value,
           props.disabled ? "opacity-50 pointer-events-none" : "",
-          props.bar ? "sm:w-full" : "",
+          props.bar ? "w-full" : "",
         ].flatMap((i) => i.split(" "));
         return removeTailwindClasses(c);
       }),

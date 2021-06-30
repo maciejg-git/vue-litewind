@@ -1,13 +1,13 @@
 <template>
   <div class="container mx-auto">
     <div class="flex">
-      <div class="hidden md:block flex-none sticky h-screen top-0 p-3 pl-7 pr-20">
+      <div class="hidden md:block flex-none sticky h-screen top-0 pt-10 p-3">
         <ul class="list-unstyled ml-2">
           <li>
-            <router-link to="/documentation/installation" class="transition-all">Installation</router-link>
+            <router-link to="/documentation/installation" active-class="active" class="transition-all">Installation</router-link>
           </li>
           <li>
-            <router-link to="/documentation/styling" class="transition-all">Styling</router-link>
+            <router-link to="/documentation/styling" active-class="active" class="transition-all">Styling</router-link>
           </li>
         </ul>
         <h6>
@@ -15,65 +15,65 @@
         </h6>
         <ul class="list-unstyled ml-2">
           <li>
-            <router-link to="/documentation/table" class="transition-all">Table</router-link>
+            <router-link to="/documentation/table" active-class="active" class="transition-all">Table</router-link>
           </li>
           <li>
-            <router-link to="/documentation/datepicker" class="transition-all">Date Picker</router-link>
+            <router-link to="/documentation/datepicker" active-class="active" class="transition-all">Date Picker</router-link>
           </li>
           <li>
-            <router-link to="/documentation/button" class="transition-all">Button</router-link>
+            <router-link to="/documentation/button" active-class="active" class="transition-all">Button</router-link>
           </li>
           <li>
-            <router-link to="/documentation/pagination" class="transition-all">Pagination</router-link>
+            <router-link to="/documentation/pagination" active-class="active" class="transition-all">Pagination</router-link>
           </li>
           <li>
-            <router-link to="/documentation/badge" class="transition-all">Badge</router-link>
+            <router-link to="/documentation/badge" active-class="active" class="transition-all">Badge</router-link>
           </li>
           <li>
-            <router-link to="/documentation/list" class="transition-all">List</router-link>
+            <router-link to="/documentation/list" active-class="active" class="transition-all">List</router-link>
           </li>
           <li>
-            <router-link to="/documentation/modal" class="transition-all">Modal</router-link>
+            <router-link to="/documentation/modal" active-class="active" class="transition-all">Modal</router-link>
           </li>
           <li>
-            <router-link to="/documentation/tabs" class="transition-all">Tabs</router-link>
+            <router-link to="/documentation/tabs" active-class="active" class="transition-all">Tabs</router-link>
           </li>
           <li>
-            <router-link to="/documentation/dropdown" class="transition-all">Dropdown</router-link>
+            <router-link to="/documentation/dropdown" active-class="active" class="transition-all">Dropdown</router-link>
           </li>
           <li>
-            <router-link to="/documentation/card" class="transition-all">Card</router-link>
+            <router-link to="/documentation/card" active-class="active" class="transition-all">Card</router-link>
           </li>
           <li>
-            <router-link to="/documentation/collapse" class="transition-all">Collapse</router-link>
+            <router-link to="/documentation/collapse" active-class="active" class="transition-all">Collapse</router-link>
           </li>
           <li>
-            <router-link to="/documentation/spinner" class="transition-all">Spinner</router-link>
+            <router-link to="/documentation/spinner" active-class="active" class="transition-all">Spinner</router-link>
           </li>
           <li>
-            <router-link to="/documentation/progress" class="transition-all">Progress</router-link>
+            <router-link to="/documentation/progress" active-class="active" class="transition-all">Progress</router-link>
           </li>
           <li>
-            <router-link to="/documentation/sidepanel" class="transition-all">Sidepanel</router-link>
+            <router-link to="/documentation/sidepanel" active-class="active" class="transition-all">Sidepanel</router-link>
           </li>
           <li>
-            <router-link to="/documentation/closebutton" class="transition-all">Close button</router-link>
+            <router-link to="/documentation/closebutton" active-class="active" class="transition-all">Close button</router-link>
           </li>
           <!-- <li> -->
           <!--   <router-link to="/documentation/navbar" class="transition-all">Navbar</router-link> -->
           <!-- </li> -->
           <li>
-            <router-link to="/documentation/popover" class="transition-all">Popover</router-link>
+            <router-link to="/documentation/popover" active-class="active" class="transition-all">Popover</router-link>
           </li>
         </ul>
         <h6 class="mt-4">Directives</h6>
         <ul class="list-unstyled ml-2">
           <li>
-            <router-link to="/documentation/tooltip" class="transition-all">Tooltip</router-link>
+            <router-link to="/documentation/tooltip" active-class="active" class="transition-all">Tooltip</router-link>
           </li>
         </ul>
       </div>
-      <div class="container mx-auto p-3 md:ml-10 w-full md:w-8/12">
+      <div class="container mx-auto p-3 md:ml-10 w-full md:px-10">
         <router-view></router-view>
       </div>
     </div>

@@ -220,6 +220,28 @@
     <v-dropdown-menu-item tag="button"> Menu item 4 </v-dropdown-menu-item>
     <v-dropdown-menu-item tag="button"> Menu item 5 </v-dropdown-menu-item>
   </v-card>
+</v-dropdown>
+
+<v-dropdown
+  :placement="example.placement"
+  :offset-x="+example.offsetX"
+  :offset-y="+example.offsetY"
+  :no-flip="example.noFlip"
+  :auto-close-menu="example.autoCloseMenu"
+  :transition="example.transition"
+>
+  <template #activator>
+    <v-button>Dropdown datepicker</v-button>
+  </template>
+  <template #default="{ hide }">
+    <v-card width="320px" class="p-2">
+      <v-date-picker
+        v-model="example.date"
+        adjecent-months
+        @state:done="hide"
+      ></v-date-picker>
+    </v-card>
+  </template>
 </v-dropdown>`}}
       </code>
     </pre>

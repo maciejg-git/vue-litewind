@@ -12,8 +12,8 @@
 
 <script>
 import { computed, getCurrentInstance } from "vue";
-import useStyles from "../use-styles";
-import { clamp, removeTailwindClasses } from "../tools.js";
+import useStyles from "./composition/use-styles";
+import { clamp, removeTailwindClasses } from "../tools/tools.js";
 
 export default {
   props: {

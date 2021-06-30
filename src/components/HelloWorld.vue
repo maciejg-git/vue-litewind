@@ -461,7 +461,7 @@
 
 <script>
 import { ref, onMounted } from "vue";
-import dataJSON from "./../MOCK_DATA (1).json";
+import dataJSON from "./../data.json";
 import vTabs from "./vTabs.vue"
 import vTab from "./vTab.vue"
 // import vTable from './vTable.vue'

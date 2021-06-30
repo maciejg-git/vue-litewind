@@ -1,4 +1,4 @@
-import { removeTailwindClasses } from "./tools";
+import { removeTailwindClasses } from "./tools/tools.js";
 
 let test = [
   "block p-2 px-4 bg-white border-l border-r border-transparent",

@@ -1,6 +1,10 @@
 <template>
   <h3>Date Picker</h3>
-  <p>Simple data picker component. It uses v-model to get or set dates, allows single and range selection modes, supports localization and customization. Can be used as standalone component or in dropdown or popover.</p>
+  <p>
+    Data picker component uses v-model to get or set dates, allows single and
+    range selection modes, supports localization and customization. Can be used
+    as standalone component or in dropdown or popover.
+  </p>
 
   <section>
     <h5>Reference</h5>
@@ -120,98 +124,114 @@
           :adjecent-months="!!example.adjecentMonths"
           :range-hover-highlight="example.rangeHoverHighlight"
           :transition="example.transition"
-          @update:modelValue="example.events.unshift({ev: 'update:modelValue', data: $event})"
-          @input:formatted="example.events.unshift({ev: 'input:formatted', data: $event})"
-          @state:done="example.events.unshift({ev: 'state:done', data: $event})"
-          @state:cancel="example.events.unshift({ev: 'state:cancel', data: $event})"
-          />
+          @update:modelValue="
+            example.events.unshift({ ev: 'update:modelValue', data: $event })
+          "
+          @input:formatted="
+            example.events.unshift({ ev: 'input:formatted', data: $event })
+          "
+          @state:done="
+            example.events.unshift({ ev: 'state:done', data: $event })
+          "
+          @state:cancel="
+            example.events.unshift({ ev: 'state:cancel', data: $event })
+          "
+        />
       </v-card>
       <div class="flex-grow mt-4 lg:ml-14 lg:mt-0">
-      <v-tabs name="tabsMaterial">
-        <v-tab name="Props">
-        <div class="mb-2 mt-5">
-          <label for="model" class="font-semibold">v-model: </label>
-          <input type="text" id="model" v-model="example.date" />
-        </div>
-        <div class="mb-2">
-          <label for="range">range: </label>
-          <select id="range" v-model="example.range">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
-          </select>
-        </div>
-        <div class="mb-2">
-          <label for="locale">locale: </label>
-          <input type="text" id="locale" v-model="example.locale" />
-        </div>
-        <div class="mb-2">
-          <label for="euro">euro: </label>
-          <select id="euro" v-model="example.euro">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
-          </select>
-        </div>
-        <div class="mb-2">
-          <label for="buttons">buttons: </label>
-          <select id="buttons" v-model="example.buttons">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
-          </select>
-        </div>
-        <div class="mb-2">
-          <label for="primary-button-label">primary-button-label: </label>
-          <input
-            type="text"
-            id="primary-button-label"
-            v-model="example.primaryButtonLabel"
-          />
-        </div>
-        <div class="mb-2">
-          <label for="secondary-button-label">secondary-button-label: </label>
-          <input
-            type="text"
-            id="secondary-button-label"
-            v-model="example.secondaryButtonLabel"
-          />
-        </div>
-        <div class="mb-2">
-          <label for="adjacent-months">adjacent-months: </label>
-          <select id="adjacent-months" v-model="example.adjecentMonths">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
-          </select>
-        </div>
-        <div class="mb-2">
-          <label for="range-hover-highlight">range-hover-highlight: </label>
-          <select
-            id="range-hover-highlight"
-            v-model="example.rangeHoverHighlight"
-          >
-            <option :value="true">true</option>
-            <option :value="false">false</option>
-          </select>
-        </div>
-        <div class="mb-5">
-          <label for="transition">transition: </label>
-          <select id="transition" v-model="example.transition">
-            <option value="fade">fade</option>
-            <option value="slide">slide</option>
-            <option value="">empty string (no transition)</option>
-          </select>
-        </div>
-        </v-tab>
-    <v-tab name="Events">
-          <div class="overflow-y-auto max-h-48 mt-5 w-full">
-        <div class="px-2 pb-2">
-        <template v-for="ev in example.events">
-          <div class="py-1">
-            <code class="code-word">{{ ev.ev }}</code> {{ ev.data }}
-          </div>
-        </template>
-        </div>
-        </div>
-    </v-tab>
-      </v-tabs>
+        <v-tabs name="tabsMaterial">
+          <v-tab name="Props">
+            <div class="mb-2 mt-5">
+              <label for="model" class="font-semibold">v-model: </label>
+              <input type="text" id="model" v-model="example.date" />
+            </div>
+            <div class="mb-2">
+              <label for="range">range: </label>
+              <select id="range" v-model="example.range">
+                <option :value="true">true</option>
+                <option :value="false">false</option>
+              </select>
+            </div>
+            <div class="mb-2">
+              <label for="locale">locale: </label>
+              <input type="text" id="locale" v-model="example.locale" />
+            </div>
+            <div class="mb-2">
+              <label for="euro">euro: </label>
+              <select id="euro" v-model="example.euro">
+                <option :value="true">true</option>
+                <option :value="false">false</option>
+              </select>
+            </div>
+            <div class="mb-2">
+              <label for="buttons">buttons: </label>
+              <select id="buttons" v-model="example.buttons">
+                <option :value="true">true</option>
+                <option :value="false">false</option>
+              </select>
+            </div>
+            <div class="mb-2">
+              <label for="primary-button-label">primary-button-label: </label>
+              <input
+                type="text"
+                id="primary-button-label"
+                v-model="example.primaryButtonLabel"
+              />
+            </div>
+            <div class="mb-2">
+              <label for="secondary-button-label"
+                >secondary-button-label:
+              </label>
+              <input
+                type="text"
+                id="secondary-button-label"
+                v-model="example.secondaryButtonLabel"
+              />
+            </div>
+            <div class="mb-2">
+              <label for="adjacent-months">adjacent-months: </label>
+              <select id="adjacent-months" v-model="example.adjecentMonths">
+                <option :value="true">true</option>
+                <option :value="false">false</option>
+              </select>
+            </div>
+            <div class="mb-2">
+              <label for="range-hover-highlight">range-hover-highlight: </label>
+              <select
+                id="range-hover-highlight"
+                v-model="example.rangeHoverHighlight"
+              >
+                <option :value="true">true</option>
+                <option :value="false">false</option>
+              </select>
+            </div>
+            <div class="mb-5">
+              <label for="transition">transition: </label>
+              <select id="transition" v-model="example.transition">
+                <option value="fade">fade</option>
+                <option value="slide">slide</option>
+                <option value="">empty string (no transition)</option>
+              </select>
+            </div>
+          </v-tab>
+          <v-tab>
+            <template #name>
+              Events
+              <v-badge style-badge="secondary tiny">
+                {{ example.events.length }}
+              </v-badge>
+            </template>
+            <div class="overflow-y-auto max-h-48 mt-5 w-full">
+              <div class="px-2 pb-2">
+                <template v-for="ev in example.events">
+                  <div class="py-1">
+                    <code class="code-word">{{ ev.ev }}</code> {{ ev.data }}
+                  </div>
+                </template>
+              </div>
+            </div>
+          </v-tab>
+        </v-tabs>
       </div>
     </div>
     <pre>
@@ -310,6 +330,7 @@ import vCard from "../vCard.vue";
 import vDropdown from "../vDropdown.vue";
 import vTabs from "../vTabs.vue";
 import vTab from "../vTab.vue";
+import vBadge from "../vBadge.vue";
 
 import hljs from "highlight.js";
 
@@ -321,13 +342,15 @@ export default {
     vDropdown,
     vTabs,
     vTab,
+    vBadge,
   },
   setup() {
     let reference = ref([
       {
         prop: "v-model",
         type: ["Array", "String"],
-        description: "v-model is used to return date after selection. Date is formatted as ISO",
+        description:
+          "v-model is used to return date after selection. Date is formatted as ISO",
       },
       {
         prop: "range",
@@ -346,7 +369,8 @@ export default {
         prop: "format",
         type: ["Object"],
         default: "",
-        description: "Format of date emmited by <code>input:formatted</code> event. Read about how to use this object <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat' class='link'>here</a> (options paremeter)",
+        description:
+          "Format of date emmited by <code>input:formatted</code> event. Read about how to use this object <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat' class='link'>here</a> (options paremeter)",
       },
       {
         prop: "euro",
@@ -370,7 +394,8 @@ export default {
         prop: "adjecent-months",
         type: ["Boolean"],
         default: "false",
-        description: "Display days from previous and next month. Those days are unselectable",
+        description:
+          "Display days from previous and next month. Those days are unselectable",
       },
       {
         prop: "range-hover-selection",
@@ -412,7 +437,8 @@ export default {
         prop: "name",
         type: ["String"],
         default: "datepicker",
-        description: "Useful only for setting alternative styles from styles.js",
+        description:
+          "Useful only for setting alternative styles from styles.js",
       },
       {
         prop: "transition",
@@ -491,7 +517,8 @@ export default {
       },
       {
         event: "input:formatted",
-        description: "Emmited after selecting date along with update:modelValue. Date is in formatted using locale and format prop",
+        description:
+          "Emmited after selecting date along with update:modelValue. Date is in formatted using locale and format prop",
       },
       {
         event: "state:done",
@@ -500,8 +527,7 @@ export default {
       },
       {
         event: "state:cancel",
-        description:
-          "Emmited after clicking secondary button",
+        description: "Emmited after clicking secondary button",
       },
     ]);
 

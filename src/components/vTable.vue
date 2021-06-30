@@ -70,7 +70,7 @@
 
 <script>
 import { ref, computed, watch, getCurrentInstance } from "vue";
-import useStyles from "../use-styles";
+import useStyles from "./composition/use-styles";
 import {
   formatCase,
   compare,
@@ -78,7 +78,7 @@ import {
   isRegexp,
   undefNullToStr,
   removeTailwindClasses,
-} from "../tools.js";
+} from "../tools/tools.js";
 
 export default {
   props: {

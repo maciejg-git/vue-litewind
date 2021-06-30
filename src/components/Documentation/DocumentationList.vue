@@ -180,7 +180,7 @@ import vListItem from "../vListItem.vue";
 
 import hljs from "highlight.js";
 import "highlight.js/styles/default.css";
-import dataJSON from "../../MOCK_DATA (1).json";
+import dataJSON from "../../data.json";
 
 export default {
   components: {

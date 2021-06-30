@@ -79,8 +79,8 @@
 <script>
 import { ref, computed, watch, getCurrentInstance } from "vue";
 import vButton from "./vButton.vue";
-import useStyles from "../use-styles";
-import { pad, removeTailwindClasses } from "../tools.js";
+import useStyles from "./composition/use-styles";
+import { pad, removeTailwindClasses } from "../tools/tools.js";
 
 export default {
   props: {

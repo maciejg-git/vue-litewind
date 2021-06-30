@@ -1,4 +1,4 @@
-import { tailwindClassList } from "./tailwindclasslist.js";
+import { tailwindClassList } from "../tailwindClassList.js";
 
 let formatCase = function (str) {
   return str
