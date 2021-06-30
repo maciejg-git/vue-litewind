@@ -107,7 +107,7 @@
   <section>
     <h4>Example</h4>
     <p></p>
-    <div class="example md:flex">
+    <div class="example lg:flex">
       <v-card style="width: 320px" class="self-start p-2">
         <v-date-picker
           v-model="example.date"
@@ -126,7 +126,7 @@
           @state:cancel="example.events.unshift({ev: 'state:cancel', data: $event})"
           />
       </v-card>
-      <div class="md:ml-14 flex-grow">
+      <div class="flex-grow mt-4 lg:ml-14 lg:mt-0">
       <v-tabs name="tabsMaterial">
         <v-tab name="Props">
         <div class="mb-2 mt-5">
@@ -240,7 +240,7 @@
   <section>
     <h4 id="dropdown">Datepicker in dropdown</h4>
     <p></p>
-    <div class="example flex">
+    <div class="example md:flex">
       <v-dropdown>
         <template #activator>
           <input
@@ -261,7 +261,7 @@
           </v-card>
         </template>
       </v-dropdown>
-      <div class="ml-10">
+      <div class="mt-4 lg:ml-10 lg:mt-0">
         <div class="mb-2">
           <label for="dropdown-buttons">buttons: </label>
           <select

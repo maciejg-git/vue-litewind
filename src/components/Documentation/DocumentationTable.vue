@@ -185,7 +185,7 @@
         </template>
         <template #caption> Example caption </template>
       </v-table>
-      <div class="flex justify-between my-5">
+      <div class="lg:flex justify-between my-5">
         <div>
           <v-pagination
             v-model="example.page"
@@ -195,7 +195,7 @@
             icons
           ></v-pagination>
         </div>
-        <div>
+        <div class="mt-4 lg:mt-0">
           <label for="items-per-page" class="mr-10">Items per page</label>
           <select v-model="example.itemsPerPage" id="items-per-page">
             <option value="5">5</option>
@@ -205,7 +205,7 @@
           </select>
         </div>
       </div>
-      <!-- <hr /> -->
+
       <vTabs name="tabsMaterial" class="mt-5">
         <vTab name="Props">
           <div class="mb-2 mt-5">

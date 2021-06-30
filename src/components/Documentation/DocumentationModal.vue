@@ -74,7 +74,7 @@
   <section>
     <h4>Example</h4>
     <div class="example md:flex">
-      <v-card class="flex flex-col w-1/2 py-10">
+      <v-card class="flex flex-col w-full md:w-1/2 py-10">
         <vButton
           @click="example.isVisible = !example.isVisible"
           class="mx-auto self-center"
@@ -86,7 +86,7 @@
           >Show long scrollable modal</vButton
         >
       </v-card>
-      <div class="md:ml-14">
+      <div class="mt-4 md:ml-14 md:mt-0">
         <div class="mb-2">
           <label for="position">position: </label>
           <select id="position" v-model="example.position">

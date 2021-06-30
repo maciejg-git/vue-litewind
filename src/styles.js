@@ -2,8 +2,8 @@
 
 let fixedButton = [
   "rounded",
-  "text-base",
-  "sm:text-sm",
+  "text-sm",
+  "sm:text-base",
   "font-medium",
   "text-white",
   "focus:outline-none",
@@ -39,16 +39,27 @@ let button = {
       "border-0",
       "border-gray-500",
     ],
-    small: ["py-1"],
-    tiny: [
-      "py-0.5",
-      "text-sm",
+    small: [
+      "py-1"
     ],
-    large: ["py-2.5"],
-    square: ["rounded-none"],
-    pill: ["rounded-full"],
-    uppercase: ["uppercase"],
-    noMargin: ["m-0"],
+    tiny: [
+      "py-0.5", "text-sm"
+    ],
+    large: [
+      "py-2.5"
+    ],
+    square: [
+      "rounded-none"
+    ],
+    pill: [
+      "rounded-full"
+    ],
+    uppercase: [
+      "uppercase"
+    ],
+    noMargin: [
+      "m-0"
+    ],
   }
 };
 

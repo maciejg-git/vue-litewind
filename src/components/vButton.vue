@@ -23,7 +23,7 @@ export default {
     let { styles } = useStyles(getCurrentInstance(), props, elements);
 
     let fixedClass = {
-      button: ["w-full", "sm:w-auto", "inline-flex", "justify-center"],
+      button: ["w-auto", "inline-flex", "justify-center"],
     };
 
     let classes = {
