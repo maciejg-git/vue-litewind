@@ -11,7 +11,6 @@
           </li>
         </ul>
         <h6>
-
           <router-link to="/documentation/components" class="transition-all">Components</router-link>
         </h6>
         <ul class="list-unstyled ml-2">
