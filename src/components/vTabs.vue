@@ -52,8 +52,8 @@ export default {
 
     let fixedClasses = {
       tabBar: ["flex", "flex-auto"],
-      tab: ["block", "p-2", "px-4"],
-      tabActive: ["block", "p-2", "px-4"],
+      tab: ["block"],
+      tabActive: ["block"],
     };
 
     let classes = {

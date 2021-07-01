@@ -1,6 +1,8 @@
 <template>
   <h3>Table</h3>
-  <p>Table component</p>
+  <p>
+    This component displays array of objects in form of a table and supports functions like sorting, filtering, row selection, customizing cell content etc.
+  </p>
 
   <section>
     <h4>Reference</h4>
@@ -34,9 +36,9 @@
       style-header-cell="default bordered"
       style-cell="default bordered"
     >
-      <template #cell:description="{ value }"
-        ><span v-html="value"></span
-      ></template>
+      <template #cell:description="{ value }">
+        <span v-html="value"></span>
+      </template>
     </v-table>
 
     <h6>Events</h6>
@@ -48,9 +50,9 @@
       style-header-cell="default bordered"
       style-cell="default bordered"
     >
-      <template #cell:description="{ value }"
-        ><span v-html="value"></span
-      ></template>
+      <template #cell:description="{ value }">
+        <span v-html="value"></span>
+      </template>
     </v-table>
 
     <h6>Slots</h6>
@@ -62,23 +64,27 @@
       style-header-cell="default bordered"
       style-cell="default bordered"
     >
-      <template #cell:description="{ value }"
-        ><span v-html="value"></span
-      ></template>
+      <template #cell:description="{ value }">
+        <span v-html="value"></span>
+      </template>
     </v-table>
   </section>
 
   <section>
     <h4>Definition</h4>
-    <span class="font-bold">Type</span>: <code class="code-word">Array</code>
+    <span class="font-bold">Type</span>
+    :
+    <code class="code-word">Array</code>
     <p>
-      Table definition is an optional <code>Array</code> of
-      <code>Objects</code> that defines columns of the table. Each object
-      represents one column, has one required, unique key property and number of
-      optional properties. If definition is not provided component makes one
-      using first record of data. This may be enough for simple tables however
-      to use features like sorting, filtering etc you need to create definition
-      array.
+      Table definition is an optional
+      <code>Array</code>
+      of
+      <code>Objects</code>
+      that defines columns of the table. Each object represents one column, has
+      one required, unique key property and number of optional properties. If
+      definition is not provided component makes one using first record of data.
+      This may be enough for simple tables however to use features like sorting,
+      filtering etc you need to create definition array.
     </p>
     <pre>
       <code>
@@ -112,51 +118,55 @@
 
     <ul>
       <li>
-        <span class="font-bold">key</span>: key is one of the properties of data
-        from items prop or a new key. New keys apear as additional columns and
-        their content can be set using slot or function f.
+        <span class="font-bold">key</span>
+        : key is one of the properties of data from items prop or a new key. New
+        keys apear as additional columns and their content can be set using slot
+        or function f.
       </li>
     </ul>
     <p>Optional properties:</p>
     <ul>
       <li>
-        <span class="font-bold">label</span>: sets label for this column. If not
-        present label is the same as key converted to Header Case (String,
+        <span class="font-bold">label</span>
+        : sets label for this column. If not present label is the same as key
+        converted to Header Case (String, default: undefined)
+      </li>
+      <li>
+        <span class="font-bold">sortable</span>
+        : enables sorting of the column (Boolean, default: false)
+      </li>
+      <li>
+        <span class="font-bold">filterable</span>
+        : enables filtering of the column (Boolean, default: false))
+      </li>
+      <li>
+        <span class="font-bold">visible</span>
+        : toggles visiblity of the column (Boolean, default: false)
+      </li>
+      <li>
+        <span class="font-bold">class</span>
+        : function that should return string of space separated classes to apply
+        to each cell in column. Takes 3 arguments: key, value and item
+        (Function, default: undefined)
+      </li>
+      <li>
+        <span class="font-bold">f</span>
+        : if defined this function is called for every cell in this column and
+        the return value is set as content of the cell. Takes 3 arguments: key,
+        value and item. This function cannot be used to add html to cell content
+        (Function, default: undefined)
+      </li>
+      <li>
+        <span class="font-bold">filterByFunction</span>
+        : if true filter content of column using value from function f. If false
+        then filter will skip function f and use value from items prop (Boolean,
         default: undefined)
       </li>
       <li>
-        <span class="font-bold">sortable</span>: enables sorting of the column
-        (Boolean, default: false)
-      </li>
-      <li>
-        <span class="font-bold">filterable</span>: enables filtering of the
-        column (Boolean, default: false))
-      </li>
-      <li>
-        <span class="font-bold">visible</span>: toggles visiblity of the column
-        (Boolean, default: false)
-      </li>
-      <li>
-        <span class="font-bold">class</span>: function that should return string
-        of space separated classes to apply to each cell in column. Takes 3
-        arguments: key, value and item (Function, default: undefined)
-      </li>
-      <li>
-        <span class="font-bold">f</span>: if defined this function is called for
-        every cell in this column and the return value is set as content of the
-        cell. Takes 3 arguments: key, value and item. This function cannot be
-        used to add html to cell content (Function, default: undefined)
-      </li>
-      <li>
-        <span class="font-bold">filterByFunction</span>: if true filter content
-        of column using value from function f. If false then filter will skip
-        function f and use value from items prop (Boolean, default: undefined)
-      </li>
-      <li>
-        <span class="font-bold">sortByFunction</span>: if true sort content of
-        column using value returned from function f. If false then sorter will
-        skip function f and use value from items prop (Boolean, default:
-        undefined)
+        <span class="font-bold">sortByFunction</span>
+        : if true sort content of column using value returned from function f.
+        If false then sorter will skip function f and use value from items prop
+        (Boolean, default: undefined)
       </li>
     </ul>
   </section>
@@ -194,7 +204,7 @@
             edit
           </v-button>
         </template>
-        <template #caption> Example caption </template>
+        <template #caption>Example caption</template>
       </v-table>
       <div class="lg:flex justify-between my-5">
         <div>
@@ -220,22 +230,22 @@
       <v-tabs name="tabsMaterial" class="mt-5">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
-            <label for="locale">filter: </label>
+            <label for="locale">filter:</label>
             <input type="text" v-model="example.filter" />
           </div>
           <div class="mb-2">
-            <label for="locale">locale: </label>
+            <label for="locale">locale:</label>
             <input type="text" id="locale" v-model="example.locale" />
           </div>
           <div class="mb-2">
-            <label for="busy">busy: </label>
+            <label for="busy">busy:</label>
             <select id="busy" v-model="example.busy">
               <option :value="true">true</option>
               <option :value="false">false</option>
             </select>
           </div>
           <div class="mb-2">
-            <label for="selection-mode">selection-mode: </label>
+            <label for="selection-mode">selection-mode:</label>
             <select id="selection-mode" v-model="example.selectionMode">
               <option value="single">single</option>
               <option value="multiple">multiple</option>
@@ -243,7 +253,7 @@
             </select>
           </div>
           <div class="mb-2">
-            <label for="caption-top">caption-top: </label>
+            <label for="caption-top">caption-top:</label>
             <select id="caption-top" v-model="example.captionTop">
               <option :value="true">true</option>
               <option :value="false">false</option>
@@ -261,7 +271,8 @@
             <div class="px-2 pb-2">
               <template v-for="ev in example.events">
                 <div class="py-1">
-                  <code class="code-word">{{ ev.ev }}</code> {{ ev.data }}
+                  <code class="code-word">{{ ev.ev }}</code>
+                  {{ ev.data }}
                 </div>
               </template>
             </div>
@@ -313,9 +324,13 @@
       To enable sorting of table you have to set it for every column in
       definition array using sorable property. By default records are sorted as
       strings and using locale prop to compare values. Number and dates are
-      sorted as numbers and dates. <code>null</code>, <code>undefined</code> and
-      <code>NaN</code> values are always first when sorting in ascending
-      direction.
+      sorted as numbers and dates.
+      <code>null</code>
+      ,
+      <code>undefined</code>
+      and
+      <code>NaN</code>
+      values are always first when sorting in ascending direction.
     </p>
   </section>
 

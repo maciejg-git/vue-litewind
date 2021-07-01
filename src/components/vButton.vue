@@ -13,7 +13,7 @@ export default {
   props: {
     disabled: { type: Boolean, default: false },
     tag: { type: String, default: "button" },
-    bar: { type: Boolean, default: false },
+    block: { type: Boolean, default: false },
     name: { type: String, default: "button" },
     styleButton: { type: String, default: "default" },
   },
@@ -32,7 +32,7 @@ export default {
           ...fixedClass.button,
           ...styles.button.value,
           props.disabled ? "opacity-50 pointer-events-none" : "",
-          props.bar ? "w-full" : "",
+          props.block ? "w-full" : "",
         ].flatMap((i) => i.split(" "));
         return removeTailwindClasses(c);
       }),

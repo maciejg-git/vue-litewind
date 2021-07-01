@@ -1,7 +1,7 @@
 <template>
   <h3>Collapse</h3>
   <p>
-    Collapse component can be used to hide or expand parts of page. To toggle visibility of content component uses v-model. If inital value for v-model if true component starts expanded, and if false it starts collapsed. Content can only be collapsed vertically.
+    Collapse component can be used to hide or expand parts of page. Toggle visibility of content via v-model. If inital v-model value if true component starts expanded, and if false it starts collapsed. Content can only be collapsed vertically.
   </p>
 
   <section>
@@ -48,7 +48,7 @@
       <v-card class="p-1">
         <v-button
           style-button="default noMargin"
-          bar
+          block
           @click="example.isVisible = !example.isVisible"
         >
           Toggle collapse
@@ -69,7 +69,7 @@
       </v-card>
       <v-card class="p-1 mt-1">
         <v-button
-          bar
+          block
           style-button="default noMargin"
           @click="example.isVisible2 = !example.isVisible2"
         >
@@ -92,7 +92,7 @@
       </v-card>
       <v-card class="p-1 mt-1">
         <v-button
-          bar
+          block
           style-button="default noMargin"
           @click="example.isVisible3 = !example.isVisible3"
         >

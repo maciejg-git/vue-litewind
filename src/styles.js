@@ -39,6 +39,16 @@ let button = {
       "border-0",
       "border-gray-500",
     ],
+    yellow: [
+      "bg-yellow-500",
+      "hover:bg-yellow-600",
+      "focus:ring-yellow-200",
+    ],
+    green: [
+      "bg-green-500",
+      "hover:bg-green-600",
+      "focus:ring-green-200",
+    ],
     small: [
       "py-1"
     ],
@@ -71,6 +81,8 @@ let fixedTab = [
   "border-gray-300",
   "-mb-px",
   "-ml-px",
+  "p-2",
+  "px-4",
   "whitespace-nowrap",
   "overflow-ellipsis"
 ]
@@ -105,6 +117,8 @@ let tabs = {
 let fixedTabMaterial = [
   "-mb-px",
   "-ml-px",
+  "p-2",
+  "px-4",
 ]
 
 let tabsMaterial = {

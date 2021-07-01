@@ -1,6 +1,6 @@
 <template>
   <h3>Pagination</h3>
-  <p>Pagination component</p>
+  <p>This component can be used to help navigate long content like tables etc.</p>
 
   <section>
     <h4>Reference</h4>

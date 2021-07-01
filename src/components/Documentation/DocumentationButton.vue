@@ -1,10 +1,6 @@
 <template>
-  <h3>Card</h3>
-  <p>
-    Card is just an universal component with minimal fixed styling that can be used as container for content. See the examples of  
-    <a href="datepicker#dropdown" class="link">datepicker</a> or 
-    <a href="dropdown#example" class="link">dropdown menu</a> that use card component as container.
-  </p>
+  <h3>Button</h3>
+  <p>Button component.</p>
 
   <section>
     <h4>Reference</h4>
@@ -61,37 +57,46 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <v-card width="320px" style-card="default shadow-md">
-        <img :src="randomPhoto()" alt="" />
-        <div class="p-3">
-          <span class="font-semibold">Example card</span>
-        </div>
-        <div class="p-3">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book.
-        </div>
-        <hr />
-        <div class="text-sm px-3 py-2">Card footer</div>
-      </v-card>
+      <div>
+        <v-button>Button</v-button>
+        <v-button tag="a">Button (link)</v-button>
+      </div>
+      <div class="mt-4">
+        <v-button style-button="primary large">Large button</v-button>
+        <v-button style-button="primary">Normal button</v-button>
+        <v-button style-button="primary small">Small button</v-button>
+        <v-button style-button="primary tiny">Tiny button</v-button>
+      </div>
+      <div class="mt-4">
+        <v-button style-button="secondary">Secondary button</v-button>
+        <v-button style-button="default yellow">Yellow button</v-button>
+        <v-button style-button="default green">Green button</v-button>
+      </div>
+      <div class="mt-4">
+        <v-button style-button="primary square">Square button</v-button>
+        <v-button style-button="primary pill">Pill button</v-button>
+        <v-button style-button="primary uppercase">Uppercase button</v-button>
+      </div>
+      <div class="mt-4">
+        <v-button block>Block button</v-button>
+        <v-button disabled>Button (disabled)</v-button>
+      </div>
     </div>
     <pre>
       <code>
-{{`<v-card width="320px" style-card="default shadow-md">
-  <img :src="randomPhoto()" alt="" />
-  <div class="p-3">
-    <span class="font-semibold">Example card</span>
-  </div>
-  <div class="p-3">
-    Lorem Ipsum is simply dummy text of the printing and typesetting
-    industry. Lorem Ipsum has been the industry's standard dummy text ever
-    since the 1500s, when an unknown printer took a galley of type and
-    scrambled it to make a type specimen book.
-  </div>
-  <hr />
-  <div class="text-sm px-3 py-2">Card footer</div>
-</v-card>`}}
+{{`<v-button>Button</v-button>
+<v-button tag="a">Button (link)</v-button>
+
+<v-button style-button="secondary">Button</v-button>
+<v-button style-button="primary small">Small button</v-button>
+<v-button style-button="primary tiny">Tiny button</v-button>
+
+<v-button style-button="secondary square">Square button</v-button>
+<v-button style-button="primary pill">Pill button</v-button>
+<v-button style-button="primary uppercase">Uppercase button</v-button>
+
+<v-button block>Block button</v-button>
+<v-button disabled>Button (disabled)</v-button>`}}
       </code>
     </pre>
   </section>
@@ -105,16 +110,32 @@ export default {
   setup(props) {
     let reference = ref([
       {
-        prop: "width",
+        prop: "tag",
         type: "String",
-        default: "undefined",
-        description: "Width of the card",
+        default: "button",
+        description:
+          "Tag of button element. Valid values are: 'button', 'a'",
+      },
+      {
+        prop: "disabled",
+        type: "Boolean",
+        default: "false",
+        description:
+          "Displays button in disabled state",
+      },
+      {
+        prop: "block",
+        type: "Boolean",
+        default: "false",
+        description:
+          "Displays button as full width block",
       },
       {
         prop: "name",
         type: "String",
-        default: "card",
-        description: "Useful for setting alternative styles from style.js",
+        default: "false",
+        description:
+          "Useful for setting alternative style from styles.js",
       },
     ]);
 
@@ -139,8 +160,8 @@ export default {
 
     let referenceStyles = ref([
       {
-        prop: "style-card",
-        description: "Main card element",
+        prop: "style-butto",
+        description: "Main button element",
       },
     ]);
 
@@ -174,7 +195,7 @@ export default {
     let referenceSlots = ref([
       {
         slot: "default",
-        description: "Default slot for card content",
+        description: "Button content",
       },
     ]);
 
@@ -205,11 +226,6 @@ export default {
       },
     ]);
 
-    let id = [1015, 1016, 1040, 1043, 1067, 155, 158, 179, 184, 191];
-
-    let randomPhoto = () =>
-      `https://picsum.photos/id/${id[(Math.random() * 10).toFixed(0)]}/320/200`;
-
     let example = reactive({});
 
     onMounted(() => {
@@ -228,8 +244,6 @@ export default {
       referenceComponents,
       referenceComponentsDefinition,
       example,
-      id,
-      randomPhoto,
     };
   },
 };

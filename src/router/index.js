@@ -16,6 +16,7 @@ import DocumentationBadge from '../components/Documentation/DocumentationBadge.v
 import DocumentationDropdown from '../components/Documentation/DocumentationDropdown.vue'
 import DocumentationPagination from '../components/Documentation/DocumentationPagination.vue'
 import DocumentationCard from '../components/Documentation/DocumentationCard.vue'
+import DocumentationButton from '../components/Documentation/DocumentationButton.vue'
 
 import DocumentationTooltip from '../components/Documentation/DocumentationTooltip.vue'
 
@@ -84,6 +85,10 @@ const routes = [
       {
         path: 'card',
         component: DocumentationCard,
+      },
+      {
+        path: 'button',
+        component: DocumentationButton,
       },
 
       // directives

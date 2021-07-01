@@ -1,8 +1,7 @@
 <template>
   <h3>Modal</h3>
   <p>
-    Modal dialog component. Has two standard buttons for most applications or
-    provide own in footer slow.
+    Modal component for dialogs and other content that need focus. By default it offers customizable header and two buttons that should be enough for most applications. Can be extended by use of slots to provide more functions.
   </p>
 
   <section>

@@ -38,9 +38,9 @@
       style-header-cell="default bordered"
       style-cell="default bordered"
     >
-      <template #cell:description="{ value }"
-        ><span v-html="value"></span
-      ></template>
+      <template #cell:description="{ value }">
+        <span v-html="value"></span>
+      </template>
     </v-table>
 
     <h6>Events</h6>
@@ -52,9 +52,9 @@
       style-header-cell="default bordered"
       style-cell="default bordered"
     >
-      <template #cell:description="{ value }"
-        ><span v-html="value"></span
-      ></template>
+      <template #cell:description="{ value }">
+        <span v-html="value"></span>
+      </template>
     </v-table>
 
     <h6>Slots</h6>
@@ -96,25 +96,23 @@
         :no-flip="example.noFlip"
         :auto-close-menu="example.autoCloseMenu"
         :transition="example.transition"
+        @state:opened="
+          example.events.unshift({ ev: 'state:opened', data: $event })
+        "
+        @state:closed="
+          example.events.unshift({ ev: 'state:closed', data: $event })
+        "
       >
         <template #activator>
           <v-button>Dropdown menu</v-button>
         </template>
         <v-card width="320px">
-          <v-dropdown-menu-item tag="button"> Menu item </v-dropdown-menu-item>
-          <v-dropdown-menu-item tag="button">
-            Menu item 2
-          </v-dropdown-menu-item>
-          <v-dropdown-header> Menu header </v-dropdown-header>
-          <v-dropdown-menu-item tag="button">
-            Menu item 3
-          </v-dropdown-menu-item>
-          <v-dropdown-menu-item tag="button">
-            Menu item 4
-          </v-dropdown-menu-item>
-          <v-dropdown-menu-item tag="button">
-            Menu item 5
-          </v-dropdown-menu-item>
+          <v-dropdown-menu-item tag="button">Menu item</v-dropdown-menu-item>
+          <v-dropdown-menu-item tag="button">Menu item 2</v-dropdown-menu-item>
+          <v-dropdown-header>Menu header</v-dropdown-header>
+          <v-dropdown-menu-item tag="button">Menu item 3</v-dropdown-menu-item>
+          <v-dropdown-menu-item tag="button">Menu item 4</v-dropdown-menu-item>
+          <v-dropdown-menu-item tag="button">Menu item 5</v-dropdown-menu-item>
         </v-card>
       </v-dropdown>
       <v-dropdown
@@ -124,6 +122,12 @@
         :no-flip="example.noFlip"
         :auto-close-menu="example.autoCloseMenu"
         :transition="example.transition"
+        @state:opened="
+          example.events.unshift({ ev: 'state:opened', data: $event })
+        "
+        @state:closed="
+          example.events.unshift({ ev: 'state:closed', data: $event })
+        "
       >
         <template #activator>
           <v-button>Dropdown datepicker</v-button>
@@ -141,7 +145,7 @@
       <v-tabs name="tabsMaterial" class="mt-5">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
-            <label for="placement">placement: </label>
+            <label for="placement">placement:</label>
             <select id="placement" v-model="example.placement">
               <option value="auto">auto</option>
               <option value="auto-start">auto-start</option>
@@ -161,29 +165,29 @@
             </select>
           </div>
           <div class="mb-2">
-            <label for="offsetX">offsetX: </label>
+            <label for="offsetX">offsetX:</label>
             <input type="text" id="offsetX" v-model="example.offsetX" />
           </div>
           <div class="mb-2">
-            <label for="offsetY">offsetY: </label>
+            <label for="offsetY">offsetY:</label>
             <input type="text" id="offsetY" v-model="example.offsetY" />
           </div>
           <div class="mb-2">
-            <label for="no-flip">no-flip: </label>
+            <label for="no-flip">no-flip:</label>
             <select id="no-flip" v-model="example.noFlip">
               <option :value="true">true</option>
               <option :value="false">false</option>
             </select>
           </div>
           <div class="mb-2">
-            <label for="auto-close-menu">auto-close-menu: </label>
+            <label for="auto-close-menu">auto-close-menu:</label>
             <select id="auto-close-menu" v-model="example.autoCloseMenu">
               <option :value="true">true</option>
               <option :value="false">false</option>
             </select>
           </div>
           <div class="mb-2">
-            <label for="transition">transition: </label>
+            <label for="transition">transition:</label>
             <select id="transition" v-model="example.transition">
               <option value="fade">fade</option>
               <option value="">empty string</option>
@@ -201,7 +205,8 @@
             <div class="px-2 pb-2">
               <template v-for="ev in example.events">
                 <div class="py-1">
-                  <code class="code-word">{{ ev.ev }}</code> {{ ev.data }}
+                  <code class="code-word">{{ ev.ev }}</code>
+                  {{ ev.data }}
                 </div>
               </template>
             </div>
@@ -218,17 +223,23 @@
   :no-flip="example.noFlip"
   :auto-close-menu="example.autoCloseMenu"
   :transition="example.transition"
+  @state:opened="
+    example.events.unshift({ ev: 'state:opened', data: $event })
+  "
+  @state:closed="
+    example.events.unshift({ ev: 'state:closed', data: $event })
+  "
 >
   <template #activator>
-    <v-button>Dropdown</v-button>
+    <v-button>Dropdown menu</v-button>
   </template>
   <v-card width="320px">
-    <v-dropdown-menu-item tag="button"> Menu item </v-dropdown-menu-item>
-    <v-dropdown-menu-item tag="button"> Menu item 2 </v-dropdown-menu-item>
-    <v-dropdown-header> Menu header </v-dropdown-header>
-    <v-dropdown-menu-item tag="button"> Menu item 3 </v-dropdown-menu-item>
-    <v-dropdown-menu-item tag="button"> Menu item 4 </v-dropdown-menu-item>
-    <v-dropdown-menu-item tag="button"> Menu item 5 </v-dropdown-menu-item>
+    <v-dropdown-menu-item tag="button">Menu item</v-dropdown-menu-item>
+    <v-dropdown-menu-item tag="button">Menu item 2</v-dropdown-menu-item>
+    <v-dropdown-header>Menu header</v-dropdown-header>
+    <v-dropdown-menu-item tag="button">Menu item 3</v-dropdown-menu-item>
+    <v-dropdown-menu-item tag="button">Menu item 4</v-dropdown-menu-item>
+    <v-dropdown-menu-item tag="button">Menu item 5</v-dropdown-menu-item>
   </v-card>
 </v-dropdown>
 
@@ -239,6 +250,12 @@
   :no-flip="example.noFlip"
   :auto-close-menu="example.autoCloseMenu"
   :transition="example.transition"
+  @state:opened="
+    example.events.unshift({ ev: 'state:opened', data: $event })
+  "
+  @state:closed="
+    example.events.unshift({ ev: 'state:closed', data: $event })
+  "
 >
   <template #activator>
     <v-button>Dropdown datepicker</v-button>
