@@ -1,6 +1,8 @@
 <template>
   <h3>Card</h3>
-  <p>Card is an universal component that can be used in many ways.</p>
+  <p>Card component
+    See <a href="datepicker#dropdown" class="link">this example</a> that uses card component as container for datepicker. Or <a href="dropdown#example" class="link">this</a> for example of card as container for dropdown menu.
+  </p>
 
   <section>
     <h4>Reference</h4>
@@ -57,7 +59,7 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <v-card width="320px" style-card="default shadow">
+      <v-card width="320px" style-card="default shadow-md">
         <img :src="randomPhoto()" alt="">
         <div class="p-2">
           <span class="font-semibold">
@@ -75,8 +77,7 @@
     </div>
     <pre>
       <code>
-{{`<v-card class="p-2 mb-2" width="320px">Example card</v-card>
-<v-card width="320px">
+{{`<v-card width="320px">
   <img src="https://picsum.photos/320/200" alt="">
   <div class="p-2">
     <span class="font-semibold">
@@ -86,8 +87,6 @@
 </v-card>`}}
       </code>
     </pre>
-    <h6>Card as container</h6>
-    <p>See <a href="datepicker#dropdown" class="link">this example</a> that uses card component as container for datepicker. Or <a href="dropdown#example" class="link">this</a> for example of card as container for dropdown menu.</p>
   </section>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <h3>Collapse</h3>
   <p>
-    Collapse component can be used to hide or expand parts of page or text put in default slot of component. To toggle visibility of content component uses v-model. If inital value for v-model if true component starts expanded, and if false it starts collapsed. Content can only be collapsed vertically.
+    Collapse component can be used to hide or expand parts of page. To toggle visibility of content component uses v-model. If inital value for v-model if true component starts expanded, and if false it starts collapsed. Content can only be collapsed vertically.
   </p>
 
   <section>

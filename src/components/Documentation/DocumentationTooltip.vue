@@ -4,7 +4,7 @@
 
   <section>
     <h4>Usage</h4>
-    <p>To use the tooltip for any html element use the following directive:</p>
+    <p>To show tooltip when hovering over html element use the following directive:</p>
     <p class="font-semibold ml-4">
       v-tooltip.modifier1.modifier2="'Tooltip text' or function that returns tooltip
       text"
