@@ -87,17 +87,9 @@
 
 <script>
 import { ref, reactive, onMounted } from "vue";
-import vTable from "../vTable.vue";
-import vBadge from "../vBadge.vue"
-
 import hljs from "highlight.js";
-import "highlight.js/styles/default.css";
 
 export default {
-  components: {
-    vTable,
-    vBadge,
-  },
   setup(props) {
     let reference = ref([
       {

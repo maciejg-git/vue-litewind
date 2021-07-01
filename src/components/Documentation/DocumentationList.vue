@@ -174,18 +174,10 @@
 
 <script>
 import { ref, reactive, onMounted } from "vue";
-import vTable from "../vTable.vue";
-import vList from "../vList.vue";
-import vListItem from "../vListItem.vue";
-
 import hljs from "highlight.js";
-import "highlight.js/styles/default.css";
 import dataJSON from "../../data.json";
 
 export default {
-  components: {
-    vTable,
-  },
   setup(props) {
     let reference = ref([
       {

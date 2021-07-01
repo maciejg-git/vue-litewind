@@ -61,8 +61,7 @@
     </div>
     <pre>
       <code>
-      {{`
-<v-spinner style-spinner="default blue small"></v-spinner>
+{{`<v-spinner style-spinner="default blue small"></v-spinner>
 <v-spinner class="ml-2"></v-spinner>
 <v-spinner style-spinner="default blue" class="ml-2"></v-spinner>
 <v-spinner style-spinner="default yellow" class="ml-2"></v-spinner>
@@ -75,8 +74,7 @@
 <v-button style-button="default secondary">
   <v-spinner style-spinner="default green small" class="mr-2"></v-spinner>
   Spinner in button
-</v-button>
-      `}}
+</v-button>`}}
       </code>
     </pre>
   </section>
@@ -84,19 +82,9 @@
 
 <script>
 import { ref, reactive, onMounted } from "vue";
-import vTable from "../vTable.vue";
-import vSpinner from "../vSpinner.vue";
-import vButton from "../vButton.vue";
-
 import hljs from "highlight.js";
-import "highlight.js/styles/default.css";
 
 export default {
-  components: {
-    vTable,
-    vSpinner,
-    vButton,
-  },
   setup(props) {
     let reference = ref([
       {

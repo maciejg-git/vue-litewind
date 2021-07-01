@@ -73,9 +73,12 @@
     <span class="font-bold">Type</span>: <code class="code-word">Array</code>
     <p>
       Table definition is an optional <code>Array</code> of
-      <code>Objects</code> that defines columns of the table. Each
-      object represents one column, has one required, unique key property and
-      number of optional properties. If definition is not provided component makes one using first record of data. This may be enough for simple tables however to use features like sorting, filtering etc you need to create definition array.
+      <code>Objects</code> that defines columns of the table. Each object
+      represents one column, has one required, unique key property and number of
+      optional properties. If definition is not provided component makes one
+      using first record of data. This may be enough for simple tables however
+      to use features like sorting, filtering etc you need to create definition
+      array.
     </p>
     <pre>
       <code>
@@ -109,7 +112,9 @@
 
     <ul>
       <li>
-        <span class="font-bold">key</span>: key is one of the properties of data from items prop or a new key. New keys apear as additional columns and their content can be set using slot or function f.
+        <span class="font-bold">key</span>: key is one of the properties of data
+        from items prop or a new key. New keys apear as additional columns and
+        their content can be set using slot or function f.
       </li>
     </ul>
     <p>Optional properties:</p>
@@ -137,15 +142,21 @@
         arguments: key, value and item (Function, default: undefined)
       </li>
       <li>
-        <span class="font-bold">f</span>: if defined this function is called for every cell in this column and the return value is set as content of the cell. Takes 3 arguments: key, value and item. This function cannot be used to add html to cell content (Function, default: undefined)
+        <span class="font-bold">f</span>: if defined this function is called for
+        every cell in this column and the return value is set as content of the
+        cell. Takes 3 arguments: key, value and item. This function cannot be
+        used to add html to cell content (Function, default: undefined)
       </li>
       <li>
         <span class="font-bold">filterByFunction</span>: if true filter content
-        of column using value from function f. If false then filter will skip function f and use value from items prop (Boolean, default: undefined)
+        of column using value from function f. If false then filter will skip
+        function f and use value from items prop (Boolean, default: undefined)
       </li>
       <li>
         <span class="font-bold">sortByFunction</span>: if true sort content of
-        column using value returned from function f. If false then sorter will skip function f and use value from items prop (Boolean, default: undefined)
+        column using value returned from function f. If false then sorter will
+        skip function f and use value from items prop (Boolean, default:
+        undefined)
       </li>
     </ul>
   </section>
@@ -176,12 +187,12 @@
         "
       >
         <template #cell:edit="{ item }">
-          <vButton
+          <v-button
             style-button="default tiny noMargin"
             @click.stop="edit(item)"
           >
             edit
-          </vButton>
+          </v-button>
         </template>
         <template #caption> Example caption </template>
       </v-table>
@@ -206,8 +217,8 @@
         </div>
       </div>
 
-      <vTabs name="tabsMaterial" class="mt-5">
-        <vTab name="Props">
+      <v-tabs name="tabsMaterial" class="mt-5">
+        <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="locale">filter: </label>
             <input type="text" v-model="example.filter" />
@@ -238,8 +249,14 @@
               <option :value="false">false</option>
             </select>
           </div>
-        </vTab>
-        <vTab name="Events">
+        </v-tab>
+        <v-tab>
+          <template #name>
+            Events
+            <v-badge style-badge="secondary tiny">
+              {{ example.events.length }}
+            </v-badge>
+          </template>
           <div class="overflow-y-scroll max-h-48 mt-5">
             <div class="px-2 pb-2">
               <template v-for="ev in example.events">
@@ -249,8 +266,8 @@
               </template>
             </div>
           </div>
-        </vTab>
-      </vTabs>
+        </v-tab>
+      </v-tabs>
     </div>
     <pre>
       <code>
@@ -277,12 +294,12 @@
   "
 >
   <template #cell:edit="{ item }">
-    <vButton
+    <v-button
       style-button="default tiny noMargin"
       @click.stop="edit(item)"
     >
       edit
-    </vButton>
+    </v-button>
   </template>
   <template #caption> Example caption </template>
 </v-table>`}}
@@ -322,41 +339,22 @@
     </p>
   </section>
 
-  <vModal
+  <v-modal
     v-model="editModal"
     title="Edit"
     primaryButtonClose
     secondaryButtonClose
   >
     <pre>{{ editContent }}</pre>
-  </vModal>
+  </v-modal>
 </template>
 
 <script>
 import { ref, reactive, onMounted } from "vue";
-import vTable from "../vTable.vue";
-
-import vPagination from "../vPagination.vue";
-import vButton from "../vButton.vue";
-import vBadge from "../vBadge.vue";
-import vModal from "../vModal.vue";
-import vTabs from "../vTabs.vue";
-import vTab from "../vTab.vue";
-
 import hljs from "highlight.js";
-import "highlight.js/styles/default.css";
 import dataJSON from "../../data.json";
 
 export default {
-  components: {
-    vTable,
-    vPagination,
-    vButton,
-    vBadge,
-    vModal,
-    vTabs,
-    vTab,
-  },
   setup() {
     let reference = ref([
       {

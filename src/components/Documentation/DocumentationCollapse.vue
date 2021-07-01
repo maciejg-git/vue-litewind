@@ -147,19 +147,9 @@
 
 <script>
 import { ref, reactive, onMounted } from "vue";
-import vTable from "../vTable.vue";
-import vCollapse from "../vCollapse.vue";
-import vButton from "../vButton.vue";
-
 import hljs from "highlight.js";
-import "highlight.js/styles/default.css";
 
 export default {
-  components: {
-    vTable,
-    vCollapse,
-    vButton,
-  },
   setup(props) {
     let reference = ref([
       {

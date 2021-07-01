@@ -80,7 +80,11 @@
           </div>
           <div class="mb-2">
             <label for="items-per-page">items-per-page: </label>
-            <input type="text" id="items-per-page" v-model="example.itemsPerPage" />
+            <input
+              type="text"
+              id="items-per-page"
+              v-model="example.itemsPerPage"
+            />
           </div>
           <div class="mb-2">
             <label for="max-pages">max-pages: </label>
@@ -95,6 +99,12 @@
           </div>
         </v-tab>
         <v-tab name="Events">
+          <template #name>
+            Events
+            <v-badge style-badge="secondary tiny">
+              {{ example.events.length }}
+            </v-badge>
+          </template>
           <div class="overflow-y-auto max-h-48 mt-5 w-full">
             <div class="px-2 pb-2">
               <template v-for="ev in example.events">
@@ -124,15 +134,9 @@
 
 <script>
 import { ref, reactive, onMounted } from "vue";
-import vTable from "../vTable.vue";
-
 import hljs from "highlight.js";
-import "highlight.js/styles/default.css";
 
 export default {
-  components: {
-    vTable,
-  },
   setup(props) {
     let reference = ref([
       {
@@ -145,7 +149,8 @@ export default {
         prop: "items-per-page",
         type: "Number",
         default: "undefined",
-        description: "Number of items per page. Component uses this value to compute number of pages to render. It is usually provided by another component that uses pagination for navigation",
+        description:
+          "Number of items per page. Component uses this value to compute number of pages to render. It is usually provided by another component that uses pagination for navigation",
       },
       {
         prop: "items-count",

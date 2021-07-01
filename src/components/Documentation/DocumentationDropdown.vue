@@ -1,6 +1,10 @@
 <template>
   <h3>Dropdown</h3>
-  <p>Dropdown component can be used to create overlay menus but is not limited to them as any content can be placed inside for example short forms, text, datepickers etc.</p>
+  <p>
+    Dropdown component can be used to create overlay menus but is not limited to
+    them as any content can be placed inside for example short forms, text,
+    datepickers etc.
+  </p>
 
   <section>
     <h4>Reference</h4>
@@ -187,6 +191,12 @@
           </div>
         </v-tab>
         <v-tab name="Events">
+          <template #name>
+            Events
+            <v-badge style-badge="secondary tiny">
+              {{ example.events.length }}
+            </v-badge>
+          </template>
           <div class="overflow-y-auto max-h-48 mt-5 w-full">
             <div class="px-2 pb-2">
               <template v-for="ev in example.events">
@@ -250,27 +260,9 @@
 
 <script>
 import { ref, reactive, onMounted } from "vue";
-import vTable from "../vTable.vue";
-import vDropdown from "../vDropdown.vue";
-import vDropdownMenuItem from "../vDropdownMenuItem.vue";
-import vDropdownHeader from "../vDropdownHeader.vue";
-import vButton from "../vButton.vue";
-import vCard from "../vCard.vue";
-import vDatePicker from "../vDatePicker.vue";
-
 import hljs from "highlight.js";
-import "highlight.js/styles/default.css";
 
 export default {
-  components: {
-    vTable,
-    vDropdown,
-    vDropdownMenuItem,
-    vDropdownHeader,
-    vButton,
-    vCard,
-    vDatePicker,
-  },
   setup(props) {
     let reference = ref([
       {
@@ -437,6 +429,7 @@ export default {
       autoCloseMenu: false,
       transition: "fade",
       date: "",
+      events: [],
     });
 
     onMounted(() => {

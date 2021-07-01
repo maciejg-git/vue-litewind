@@ -323,27 +323,9 @@
 
 <script>
 import { ref, reactive, watch, onMounted } from "vue";
-import vTable from "../vTable.vue";
-
-import vDatePicker from "../vDatePicker.vue";
-import vCard from "../vCard.vue";
-import vDropdown from "../vDropdown.vue";
-import vTabs from "../vTabs.vue";
-import vTab from "../vTab.vue";
-import vBadge from "../vBadge.vue";
-
 import hljs from "highlight.js";
 
 export default {
-  components: {
-    vTable,
-    vDatePicker,
-    vCard,
-    vDropdown,
-    vTabs,
-    vTab,
-    vBadge,
-  },
   setup() {
     let reference = ref([
       {

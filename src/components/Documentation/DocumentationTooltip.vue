@@ -135,18 +135,10 @@
 
 <script>
 import { ref, reactive, onMounted } from "vue";
-import vTable from "../vTable.vue";
-import vButton from "../vButton.vue";
 import tooltip from "../../directives/tooltip.js";
-
 import hljs from "highlight.js";
-import "highlight.js/styles/default.css";
 
 export default {
-  components: {
-    vTable,
-    vButton,
-  },
   directives: {
     tooltip,
   },

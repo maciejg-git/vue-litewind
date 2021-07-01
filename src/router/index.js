@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HelloWorld from '../components/HelloWorld.vue'
+import Test from '../components/Test.vue'
 
 import Documentation from '../components/Documentation/Documentation.vue'
 
@@ -24,12 +24,23 @@ import DocumentationStyling from '../components/Documentation/DocumentationStyli
 const routes = [
   {
     path: '/',
-    component: HelloWorld,
+    component: Test,
   },
   {
     path: '/documentation',
     component: Documentation,
     children: [
+      {
+        path: 'styling',
+        component: DocumentationStyling,
+      },
+      {
+        path: 'components',
+        component: DocumentationComponents,
+      },
+
+      // components
+
       {
         path: 'table',
         component: DocumentationTable,
@@ -80,14 +91,6 @@ const routes = [
       {
         path: 'tooltip',
         component: DocumentationTooltip,
-      },
-      {
-        path: 'styling',
-        component: DocumentationStyling,
-      },
-      {
-        path: 'components',
-        component: DocumentationComponents,
       },
     ],
   },

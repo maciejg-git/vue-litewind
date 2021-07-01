@@ -75,15 +75,15 @@
     <h4>Example</h4>
     <div class="example md:flex">
       <v-card class="flex flex-col w-full md:w-1/2 py-10">
-        <vButton
+        <v-button
           @click="example.isVisible = !example.isVisible"
           class="mx-auto self-center"
-          >Show modal</vButton
+          >Show modal</v-button
         >
-        <vButton
+        <v-button
           @click="example.isVisibleLong = !example.isVisibleLong"
           class="mx-auto self-center"
-          >Show long scrollable modal</vButton
+          >Show long scrollable modal</v-button
         >
       </v-card>
       <div class="mt-4 md:ml-14 md:mt-0">
@@ -113,7 +113,7 @@
         </div>
       </div>
     </div>
-    <vModal
+    <v-modal
       v-model="example.isVisible"
       :title="example.title"
       :no-primary-button="!!example.noPrimaryButton"
@@ -216,8 +216,8 @@
           </select>
         </div>
       </div>
-    </vModal>
-    <vModal
+    </v-modal>
+    <v-modal
       v-model="example.isVisibleLong"
       :title="example.title"
       :no-primary-button="!!example.noPrimaryButton"
@@ -309,7 +309,7 @@
       marmot, flanked by white partridges and heather-cocks, was turning on a
       long spit before the fire; on the stove, two huge carps from Lake Lauzet
       and a trout from Lake Alloz were cooking.
-    </vModal>
+    </v-modal>
     <pre>
       <code>
       </code>
@@ -319,17 +319,9 @@
 
 <script>
 import { ref, reactive, onMounted } from "vue";
-import vModal from "../vModal.vue";
-import vButton from "../vButton.vue";
-
 import hljs from "highlight.js";
-import "highlight.js/styles/default.css";
 
 export default {
-  components: {
-    vModal,
-    vButton,
-  },
   setup(props) {
     let reference = ref([
       {

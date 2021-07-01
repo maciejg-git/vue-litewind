@@ -3,8 +3,8 @@
 
   <ul class="mt-5">
     <li v-for="c in components">
-      <router-link :to="'/documentation/' + c" class="transition-all">
-        {{ c.charAt(0).toUpperCase() + c.slice(1) }}
+      <router-link :to="'/documentation/' + c.name" class="transition-all">
+        {{ c.title }}
       </router-link>
     </li>
   </ul>
@@ -12,7 +12,7 @@
 
 <script>
 import { ref, reactive, onMounted } from "vue";
-import { components } from "../Components";
+import { components } from "./Components";
 
 export default {
   setup(props) {

@@ -177,7 +177,13 @@
             </select>
           </div>
         </v-tab>
-        <v-tab name="Events">
+        <v-tab>
+          <template #name>
+            Events
+            <v-badge style-badge="secondary tiny">
+              {{ example.events.length }}
+            </v-badge>
+          </template>
           <div class="overflow-y-auto max-h-48 mt-5 w-full">
             <div class="px-2 pb-2">
               <template v-for="ev in example.events">
@@ -214,17 +220,9 @@
 
 <script>
 import { ref, reactive, onMounted } from "vue";
-import vTable from "../vTable.vue";
-import vTabs from "../vTabs.vue";
-import vTab from "../vTab.vue";
-
 import hljs from "highlight.js";
-import "highlight.js/styles/default.css";
 
 export default {
-  components: {
-    vTable,
-  },
   setup(props) {
     let reference = ref([
       {
