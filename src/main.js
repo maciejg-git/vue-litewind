@@ -1,17 +1,21 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
-import plugin from "./components/index.js"
-import "tailwindcss/tailwind.css"
-import { styles } from "./styles"
-import { testTailwindRemoveClasses } from './testTailwindRemoveClasses.js'
+import { createApp } from "vue";
+import App from "./App.vue";
+import router from "./router";
+import plugin from "./components/index.js";
+import "tailwindcss/tailwind.css";
+import { styles } from "./styles";
+import { stylesMaterial } from "./styles-material";
+import { testTailwindRemoveClasses } from "./testTailwindRemoveClasses.js";
 
-testTailwindRemoveClasses()
+testTailwindRemoveClasses();
 
-let app = createApp(App)
+let app = createApp(App);
 
-app.config.globalProperties.styles = styles;
+app.config.globalProperties.styles = {
+  default: styles,
+  material: stylesMaterial,
+};
 
-app.use(router)
-app.use(plugin)
-app.mount('#app')
+app.use(router);
+app.use(plugin);
+app.mount("#app");

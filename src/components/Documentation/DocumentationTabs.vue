@@ -95,7 +95,7 @@
           example.events.unshift({ ev: 'input:changed-tab', data: $event })
         "
       >
-        <v-tab name="Tab" class="py-4 px-2">
+        <v-tab name="Tab" class="p-4">
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever
           since the 1500s, when an unknown printer took a galley of type and
@@ -106,7 +106,7 @@
           more recently with desktop publishing software like Aldus PageMaker
           including versions of Lorem Ipsum.
         </v-tab>
-        <v-tab name="Tab 2" class="py-4 px-2">
+        <v-tab name="Tab 2" class="p-4">
           It is a long established fact that a reader will be distracted by the
           readable content of a page when looking at its layout. The point of
           using Lorem Ipsum is that it has a more-or-less normal distribution of
@@ -117,7 +117,7 @@
           infancy. Various versions have evolved over the years, sometimes by
           accident, sometimes on purpose (injected humour and the like).
         </v-tab>
-        <v-tab name="Another tab" class="py-4 px-2">
+        <v-tab name="Another tab" class="p-4">
           Contrary to popular belief, Lorem Ipsum is not simply random text. It
           has roots in a piece of classical Latin literature from 45 BC, making
           it over 2000 years old. Richard McClintock, a Latin professor at
@@ -138,7 +138,7 @@
           exact original form, accompanied by English versions from the 1914
           translation by H. Rackham.
         </v-tab>
-        <v-tab name="Another tab" class="py-4 px-2">
+        <v-tab name="Another tab" class="p-4">
           <template #name>
             Tab with custom content
             <v-badge style-badge="secondary tiny">4</v-badge>

@@ -63,9 +63,9 @@
     <div class="example">
       <v-card width="320px" style-card="default shadow-md">
         <img :src="randomPhoto()" alt="" />
-        <div class="p-3">
+        <header class="p-3">
           <span class="font-semibold">Example card</span>
-        </div>
+        </header>
         <div class="p-3">
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever
@@ -74,6 +74,23 @@
         </div>
         <hr />
         <div class="text-sm px-3 py-2">Card footer</div>
+      </v-card>
+
+      <v-card width="720px" style-card="default shadow-md" style="height: 320px" class="flex my-10">
+        <img :src="randomPhotoHorizontal()" alt="" />
+        <div class="flex flex-col">
+          <header class="p-4">
+            <span class="font-semibold">Horizontal card</span>
+          </header>
+          <div class="p-4">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text ever
+            since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book.
+          </div>
+          <hr class="w-10/12 mx-auto">
+          <v-button style-button="default small" class="ml-auto mt-auto m-4">Details</v-button>
+        </div>
       </v-card>
     </div>
     <pre>
@@ -210,6 +227,9 @@ export default {
     let randomPhoto = () =>
       `https://picsum.photos/id/${id[(Math.random() * 10).toFixed(0)]}/320/200`;
 
+    let randomPhotoHorizontal = () =>
+      `https://picsum.photos/id/${id[(Math.random() * 10).toFixed(0)]}/320/300`;
+
     let example = reactive({});
 
     onMounted(() => {
@@ -230,6 +250,7 @@ export default {
       example,
       id,
       randomPhoto,
+      randomPhotoHorizontal,
     };
   },
 };
