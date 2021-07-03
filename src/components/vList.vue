@@ -14,6 +14,7 @@ export default {
     width: { type: String, default: undefined },
     tag: { type: String, default: "div" },
     name: { type: String, default: "list" },
+    theme: { type: String, default: "default" },
     styleList: { type: String, default: "default" },
     styleItem: { type: [String, Array], default: "default" },
     styleItemActive: { type: [String, Array], default: "default" },

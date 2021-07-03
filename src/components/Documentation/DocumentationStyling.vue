@@ -11,10 +11,6 @@ let component = {
       class,
       class2,
     ],
-    preset: [
-      class,
-      class2,
-    ],
     variant: [
       class,
       class2,
@@ -26,10 +22,6 @@ let component = {
   },
   element2: {
     default: [
-      class,
-      class2,
-    ],
-    preset: [
       class,
       class2,
     ],
@@ -46,7 +38,33 @@ let component = {
     </code>
   </pre>
   <p>
-    In the above example "element" is just an html element in component template but can also be state of component. Default is the default set of classes added to element if style-element prop is not set. Preset is optional and can be used as alternative set of classes to replace default set. Variant is also optional and is used with default or presets to add small variants to them. is flexible you can use only complete presets and no variants or only default with many variants. To style component using those classes use style-element prop on component that supports it. Every style-element props accepts space separated Strings of defaults, presets and variants.
+    In the above example "element" is just an html element in component template (can also be state of component). 
+    <ul class="my-4 ml-4">
+      <li>
+    <span class="font-semibold">default</span> is the default set of classes always added to element if style-element is not set. 
+      </li>
+      <li>
+    <span class="font-semibold">variant</span> is optional and can be complete set of classes used as alternative to default or small set to add variants to default.
+      </li>
+    </ul>
+    To style elements of component use style-element prop. Below is the example for single element button:
+    <pre>
+      <code>
+{{`<v-button style-button="primary large">Large button</v-button>
+<v-button style-button="primary">Normal button</v-button>
+<v-button style-button="primary small">Small button</v-button>
+<v-button style-button="primary tiny">Tiny button</v-button>
+
+<v-button style-button="secondary">Secondary button</v-button>
+
+<v-button style-button="default yellow">Yellow button</v-button>
+<v-button style-button="default green">Green button</v-button>
+
+<v-button style-button="primary square">Square button</v-button>
+<v-button style-button="primary pill">Pill button</v-button>
+<v-button style-button="primary uppercase">Uppercase button</v-button>`}}
+      </code>
+    </pre>
   </p>
 </template>
 

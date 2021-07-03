@@ -114,39 +114,6 @@ let tabs = {
   }
 };
 
-let fixedTabMaterial = [
-  "-mb-px",
-  "-ml-px",
-  "p-2",
-  "px-4",
-]
-
-let tabsMaterial = {
-  tab: {
-    default: [
-      ...fixedTabMaterial,
-      "hover:bg-gray-50",
-    ],
-    small: [
-      "p-0",
-    ]
-  },
-  tabActive: {
-    default: [
-      ...fixedTabMaterial,
-      "bg-white",
-      'shadow-none',
-      "border-b-2",
-      "border-indigo-500",
-    ],
-  },
-  tabBar: {
-    default: [
-      "border-b",
-    ],
-  }
-};
-
 // TABLE
 
 let table = {
@@ -259,37 +226,6 @@ let list = {
   itemActive: {
     default: [
       ...item,
-      "bg-blue-500",
-      "hover:bg-blue-600",
-      "text-white",
-    ]
-  },
-}
-
-let itemMaterial = [
-  "shadow-md",
-  "p-2",
-  "px-4",
-  "my-2",
-]
-
-let listMaterial = {
-  list: {
-    default: [
-    ],
-    square: [
-      "rounded-none"
-    ],
-  },
-  item: {
-    default: [
-      ...itemMaterial,
-      "hover:bg-gray-50",
-    ]
-  },
-  itemActive: {
-    default: [
-      ...itemMaterial,
       "bg-blue-500",
       "hover:bg-blue-600",
       "text-white",
@@ -702,7 +638,6 @@ let pagination = {
 export let styles = {
   button,
   list,
-  listMaterial,
   spinner,
   popover,
   dropdown,
@@ -713,7 +648,6 @@ export let styles = {
   card,
   datepicker,
   tabs,
-  tabsMaterial,
   badge,
   pagination,
 }

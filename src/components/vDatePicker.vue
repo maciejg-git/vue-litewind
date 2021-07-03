@@ -113,6 +113,7 @@ export default {
       default: "default primary small noMargin",
     },
     name: { type: String, default: "datepicker" },
+    theme: { type: String, default: "default" },
     transition: { type: String, default: "fade" },
     styleDatepicker: { type: String, default: "default" },
     styleButton: { type: String, default: "default" },

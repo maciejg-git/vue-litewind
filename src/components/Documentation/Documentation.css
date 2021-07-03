@@ -38,7 +38,7 @@ pre code {
 >>> .code-word {
   @apply text-sm bg-indigo-200 rounded p-1 mr-1;
 }
-code {
+>>> code {
   @apply text-sm;
 }
 label {

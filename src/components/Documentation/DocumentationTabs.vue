@@ -90,7 +90,7 @@
         :center="example.center"
         :right="example.right"
         :transition="example.transition"
-        :name="example.name"
+        :theme="example.theme"
         @input:changed-tab="
           example.events.unshift({ ev: 'input:changed-tab', data: $event })
         "
@@ -166,12 +166,12 @@
       </v-tabs>
       <div class="mt-5">
         <label for="style">Tabs style:</label>
-        <select id="style" v-model="example.name">
-          <option value="tabs">browser</option>
-          <option value="tabsMaterial">material</option>
+        <select id="style" v-model="example.theme">
+          <option value="default">browser</option>
+          <option value="material">material</option>
         </select>
       </div>
-      <v-tabs name="tabsMaterial" class="mt-5">
+      <v-tabs theme="material" class="mt-5">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="fill">fill:</label>
@@ -262,12 +262,12 @@ import hljs from "highlight.js";
 export default {
   setup(props) {
     let reference = ref([
-      {
-        prop: "v-model",
-        type: "Array",
-        default: "undefined",
-        description: "",
-      },
+      // {
+      //   prop: "v-model",
+      //   type: "Array",
+      //   default: "undefined",
+      //   description: "",
+      // },
       {
         prop: "fill",
         type: "Boolean",
@@ -411,7 +411,7 @@ export default {
       right: false,
       transition: "fade",
       events: [],
-      name: "tabs",
+      theme: "default",
     });
 
     onMounted(() => {

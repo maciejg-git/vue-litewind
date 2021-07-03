@@ -55,7 +55,7 @@ import { removeTailwindClasses } from "../tools/tools.js";
 
 export default {
   props: {
-    modelValue: Boolean,
+    modelValue: { type: Boolean, default: undefined },
     title: { type: String, default: undefined },
     noPrimaryButton: { type: Boolean, default: false },
     noSecondaryButton: { type: Boolean, default: false },
@@ -71,6 +71,7 @@ export default {
     size: { type: String, default: "md" },
     transition: { type: String, default: "fade-slide" },
     name: { type: String, default: "modal" },
+    theme: { type: String, default: "default" },
     styleModal: { type: String, default: "default" },
     styleHeader: { type: String, default: "default" },
     styleFooter: { type: String, default: "default" },

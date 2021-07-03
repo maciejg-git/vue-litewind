@@ -1,7 +1,7 @@
 <template>
   <h3>Modal</h3>
   <p>
-    Modal component for dialogs and other content that need focus. By default it offers customizable header and two buttons that should be enough for most applications. Can be extended by use of slots to provide more functions.
+    Modal component for dialogs and other content. By default it offers customizable header and two buttons that should be enough for most use cases. Optional footer slot can be used to provide customized buttons.
   </p>
 
   <section>
@@ -311,6 +311,23 @@
     </v-modal>
     <pre>
       <code>
+{{`<v-modal
+  v-model="example.isVisible"
+  :title="example.title"
+  :no-primary-button="!!example.noPrimaryButton"
+  :no-secondary-button="!!example.noSecondaryButton"
+  :primary-button-label="example.primaryButtonLabel"
+  :secondary-button-label="example.secondaryButtonLabel"
+  :primary-button-close="!!example.primaryButtonClose"
+  :secondary-button-close="!!example.secondaryButtonClose"
+  :no-close-button="!!example.noCloseButton"
+  :static-backdrop="!!example.staticBackdrop"
+  :position="example.position"
+  :size="example.size"
+  :transition="example.transition"
+>
+  ...
+</v-modal>`}}
       </code>
     </pre>
   </section>

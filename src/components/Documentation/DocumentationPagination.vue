@@ -68,7 +68,7 @@
           example.events.unshift({ ev: 'update:modelValue', data: $event })
         "
       />
-      <v-tabs name="tabsMaterial" class="mt-5">
+      <v-tabs theme="material" class="mt-5">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="model" class="font-semibold">v-model: </label>

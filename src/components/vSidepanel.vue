@@ -37,6 +37,7 @@ export default {
     left:  { type: Boolean, default: false },
     width: { type: String, default: "320px" },
     name: { type: String, default: "sidepanel" },
+    theme: { type: String, default: "default" },
     styleSidepanel: { type: String, default: "default" },
   },
   components: {

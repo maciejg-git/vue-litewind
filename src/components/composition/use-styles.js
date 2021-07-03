@@ -10,9 +10,11 @@ export default function useStyles(instance, props, elements) {
   };
 
   let globalStyles = computed(() => {
-    return instance.appContext.config.globalProperties.styles.default[props.name];
+    let styles =
+      instance.appContext.config.globalProperties.styles[props.theme] ||
+      instance.appContext.config.globalProperties.styles.default;
+    return styles[props.name];
   });
-  console.log(instance.appContext.config.globalProperties)
 
   let propsStyles = {};
   let styles = {};

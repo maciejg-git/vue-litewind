@@ -71,7 +71,7 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <v-list width="500px" :tag="example.tag" :name="example.name">
+      <v-list width="500px" :tag="example.tag" :theme="example.theme">
         <v-list-item :active="example.active1">
           <div class="font-semibold">
             {{ dataJSON[0].first_name }} {{ dataJSON[0].last_name }}
@@ -135,12 +135,12 @@
       </v-list>
       <div class="mt-5">
         <label for="style">List style: </label>
-        <select id="style" v-model="example.name">
-          <option value="list">bootstrap</option>
-          <option value="listMaterial">material</option>
+        <select id="style" v-model="example.theme">
+          <option value="default">bootstrap</option>
+          <option value="material">material</option>
         </select>
       </div>
-      <v-tabs name="tabsMaterial" class="mt-5">
+      <v-tabs theme="material" class="mt-5">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="tag">tag: </label>
@@ -302,7 +302,7 @@ export default {
       active3: false,
       active4: false,
       active5: false,
-      name: "list",
+      theme: "default",
     });
 
     onMounted(() => {

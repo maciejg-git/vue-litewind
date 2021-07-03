@@ -142,7 +142,7 @@
           </v-card>
         </template>
       </v-dropdown>
-      <v-tabs name="tabsMaterial" class="mt-5">
+      <v-tabs theme="material" class="mt-5">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="placement">placement:</label>
@@ -403,11 +403,11 @@ export default {
     let referenceSlots = ref([
       {
         slot: "activator",
-        description: "Slot for button or link that shows dropdown content",
+        description: "Slot for button or link that activates dropdown",
       },
       {
         slot: "default",
-        description: "Slot for dropdown content",
+        description: "Slot for dropdown content. <p class='mt-4'>Functions available inside slot: <code>hide()</code></p>",
       },
     ]);
 

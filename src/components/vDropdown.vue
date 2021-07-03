@@ -35,6 +35,7 @@ export default {
     autoCloseMenu: { type: Boolean, default: false },
     transition: { type: String, default: "fade" },
     name: { type: String, default: "dropdown" },
+    theme: { type: String, default: "default" },
     styleMenuItem: { type: String, default: "default" },
     styleMenuItemActive: { type: String, default: "default" },
     styleMenuItemDisabled: { type: String, default: "default" },

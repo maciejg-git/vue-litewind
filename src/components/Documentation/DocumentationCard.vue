@@ -225,10 +225,10 @@ export default {
     let id = [1015, 1016, 1040, 1043, 1067, 155, 158, 179, 184, 191];
 
     let randomPhoto = () =>
-      `https://picsum.photos/id/${id[(Math.random() * 10).toFixed(0)]}/320/200`;
+      `https://picsum.photos/id/${id[(Math.random() * 9).toFixed(0)]}/320/200`;
 
     let randomPhotoHorizontal = () =>
-      `https://picsum.photos/id/${id[(Math.random() * 10).toFixed(0)]}/320/300`;
+      `https://picsum.photos/id/${id[(Math.random() * 9).toFixed(0)]}/320/300`;
 
     let example = reactive({});
 

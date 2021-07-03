@@ -10,6 +10,7 @@ import { removeTailwindClasses } from "../tools/tools.js";
 export default {
   props: {
     name: { type: String, default: "spinner" },
+    theme: { type: String, default: "default" },
     styleSpinner: { type: String, default: "default" },
   },
   setup(props) {
