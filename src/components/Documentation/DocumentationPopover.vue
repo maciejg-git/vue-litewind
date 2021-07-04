@@ -1,6 +1,6 @@
 <template>
   <h3>Popover</h3>
-  <p>Popover component is somewhere between dropdowns and tooltips. Controlled via v-model.</p>
+  <p>Popover component is somewhere between dropdowns and tooltips.</p>
 
   <section>
     <h4>Reference</h4>
