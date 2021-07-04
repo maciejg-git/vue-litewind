@@ -8,30 +8,30 @@
 let component = {
   element: {
     default: [
-      class,
-      class2,
+      "class",
+      "class2",
     ],
     variant: [
-      class,
-      class2,
+      "class",
+      "class2",
     ],
     variant2: [
-      class,
-      class2,
+      "class",
+      "class2",
     ]
   },
   element2: {
     default: [
-      class,
-      class2,
+      "class",
+      "class2",
     ],
     variant: [
-      class,
-      class2,
+      "class",
+      "class2",
     ],
     variant2: [
-      class,
-      class2,
+      "class",
+      "class2",
     ]
   },
 }
@@ -47,7 +47,8 @@ let component = {
     <span class="font-semibold">variant</span> is optional and can be complete set of classes used as alternative to default or small set to add variants to default.
       </li>
     </ul>
-    To style elements of component use style-element prop. Below is the example for single element button:
+    To style elements of component use style-element. Value for those props should be space separated String and contain 'default', variants or classes. If any name is not recognized as part of styles.js it is included simply as class. Order is important because if there are two tailwind classes that belong to same type (for example bg-green-500 and bg-indigo-200) former class is removed. User defined, non tailwind classes are never removed. Below is the example for single element button:
+
     <pre>
       <code>
 {{`<v-button style-button="primary large">Large button</v-button>
@@ -62,7 +63,11 @@ let component = {
 
 <v-button style-button="primary square">Square button</v-button>
 <v-button style-button="primary pill">Pill button</v-button>
-<v-button style-button="primary uppercase">Uppercase button</v-button>`}}
+<v-button style-button="primary uppercase">Uppercase button</v-button>
+
+<v-button style-button="bg-green-500 text-white rounded">Class button</v-button>
+`}}
+
       </code>
     </pre>
   </p>
@@ -75,6 +80,7 @@ import hljs from "highlight.js";
 export default {
   setup(props) {
     onMounted(() => {
+      hljs.configure({languages: ["js"]})
       hljs.highlightAll();
     });
 

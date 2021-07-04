@@ -367,6 +367,9 @@ let dropdown = {
       "focus:bg-blue-500",
       "focus:text-white",
     ],
+    green: [
+      "bg-green-500"
+    ]
   },
   menuItemActive: {
     default: [
@@ -623,7 +626,6 @@ let pagination = {
       ...fixedSideControls,
       "rounded-r-md",
       "ml-0.5",
-      // "-ml-px",
     ],
   },
   prev: {

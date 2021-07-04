@@ -42,12 +42,13 @@ import {
   computed,
   onMounted,
   watch,
+  watchEffect,
   getCurrentInstance,
 } from "vue";
 import vCloseButton from "./vCloseButton.vue";
 import useStyles from "./composition/use-styles";
 import { removeTailwindClasses } from "../tools/tools.js";
-import { correctPlacement } from "../const.js"
+import { correctPlacement } from "../const.js";
 
 export default {
   props: {
@@ -99,38 +100,25 @@ export default {
     let timerIn = null;
     let timerOut = null;
 
-    if (props.trigger == "click") {
-      trigger.on = null;
-      trigger.off = null;
-      trigger.toggle = "click";
-    } else if (props.trigger == "hover") {
-      trigger.on = "mouseenter";
-      trigger.off = "mouseleave";
-      trigger.toggle = null;
-    } else if (props.trigger == "focus") {
-      trigger.on = "focusin";
-      trigger.off = "focusout";
-      trigger.toggle = null;
-    }
+    watchEffect(() => {
+      if (props.trigger == "click") {
+        trigger.on = null;
+        trigger.off = null;
+        trigger.toggle = "click";
+      } else if (props.trigger == "hover") {
+        trigger.on = "mouseenter";
+        trigger.off = "mouseleave";
+        trigger.toggle = null;
+      } else if (props.trigger == "focus") {
+        trigger.on = "focusin";
+        trigger.off = "focusout";
+        trigger.toggle = null;
+      }
+    });
 
     let placement = computed(() => {
       return correctPlacement.find((i) => i === props.placement) || "auto";
     });
-
-    let popperOptions = {
-      modifiers: [
-        {
-          name: "offset",
-          options: {
-            offset: [0, 10],
-          },
-        },
-        {
-          name: "flip",
-        },
-      ],
-      placement: placement.value,
-    };
 
     onMounted(() => {
       if (props.targetId) {
@@ -170,7 +158,20 @@ export default {
     );
 
     function setPopper() {
-      return createPopper(triggerElement, popoverElement.value, popperOptions);
+      return createPopper(triggerElement, popoverElement.value, {
+        modifiers: [
+          {
+            name: "offset",
+            options: {
+              offset: [0, 10],
+            },
+          },
+          {
+            name: "flip",
+          },
+        ],
+        placement: placement.value,
+      });
     }
 
     let clickOutside = function (ev) {

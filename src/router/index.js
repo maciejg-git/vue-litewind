@@ -17,6 +17,7 @@ import DocumentationDropdown from '../components/Documentation/DocumentationDrop
 import DocumentationPagination from '../components/Documentation/DocumentationPagination.vue'
 import DocumentationCard from '../components/Documentation/DocumentationCard.vue'
 import DocumentationButton from '../components/Documentation/DocumentationButton.vue'
+import DocumentationPopover from '../components/Documentation/DocumentationPopover.vue'
 
 import DocumentationTooltip from '../components/Documentation/DocumentationTooltip.vue'
 
@@ -89,6 +90,10 @@ const routes = [
       {
         path: 'button',
         component: DocumentationButton,
+      },
+      {
+        path: 'popover',
+        component: DocumentationPopover,
       },
 
       // directives
