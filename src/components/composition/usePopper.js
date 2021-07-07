@@ -1,44 +1,58 @@
-import { ref, computed, watch } from "vue";
+import { ref, watch, nextTick } from "vue";
 import { createPopper } from "@popperjs/core";
 
-export default function usePopper({ placement, offsetX, offsetY, clickOutside }) {
+export default function usePopper({
+  placement,
+  offsetX,
+  offsetY,
+  clickOutside,
+}) {
   let isOpen = ref(false);
   let instance = null;
   let activator = ref(null);
   let popper = ref(null);
 
-  let show = function () {
-    console.log("show");
+  let show = async function () {
     isOpen.value = true;
-    setTimeout(() => {
-      document.body.addEventListener("mouseup", clickOutside);
-    }, 0);
+    if (clickOutside) {
+      setTimeout(() => {
+        document.body.addEventListener("click", clickOutside);
+      }, 0);
+    }
+    // for v-if
+    await nextTick();
+    // for v-show
     instance.update();
   };
 
   let hide = function () {
-    console.log("hide");
     isOpen.value = false;
-    document.body.removeEventListener("mouseup", clickOutside);
+    if (clickOutside) {
+      document.body.removeEventListener("click", clickOutside);
+    }
   };
 
   let toggle = function () {
-    console.log("toggle");
     isOpen.value ? hide() : show();
   };
 
-  watch(
-    [placement, offsetX, offsetY],
-    () => {
-      console.log('watch')
+  watch([placement, offsetX, offsetY], () => {
+    if (popper.value) {
       setPopper();
       instance.update();
     }
+  });
+
+  watch(
+    popper,
+    () => {
+      if (popper.value) setPopper();
+    },
+    { flush: "post" }
   );
 
   let setPopper = () => {
-    console.log('set popper')
-    instance = createPopper(activator.value, popper.value, {
+    let options = {
       modifiers: [
         {
           name: "offset",
@@ -51,7 +65,8 @@ export default function usePopper({ placement, offsetX, offsetY, clickOutside })
         },
       ],
       placement: placement.value,
-    });
+    }
+    instance = createPopper(activator.value, popper.value, options);
   };
 
   return {

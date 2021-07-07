@@ -1,10 +1,10 @@
 <template>
-  <div ref="dropdownContainer" class="inline-block">
+  <div ref="dropdown" class="inline-block">
     <div ref="activator" class="inline-block" @click="toggle">
       <slot name="activator" :toggle="toggle" :show="show" :hide="hide"></slot>
     </div>
     <transition :name="transition">
-    <!-- v-bind="$attrs"  -->
+      <!-- v-bind="$attrs"  -->
       <div v-show="isOpen" ref="popper" class="absolute">
         <slot name="default" :hide="hide"></slot>
       </div>
@@ -13,19 +13,9 @@
 </template>
 
 <script>
-import { createPopper } from "@popperjs/core";
-import {
-  ref,
-  computed,
-  onMounted,
-  watch,
-  provide,
-  toRef,
-  toRefs,
-  getCurrentInstance,
-} from "vue";
+import { ref, computed, provide, toRef, toRefs, getCurrentInstance } from "vue";
 import useStyles from "./composition/use-styles";
-import usePopper from "./composition/usePopper.js"
+import usePopper from "./composition/usePopper.js";
 import { removeTailwindClasses } from "../tools/tools.js";
 
 export default {
@@ -78,27 +68,11 @@ export default {
       }),
     };
 
-    let isShow = ref(false);
-    let dropdownContainer = ref(null);
-    // let activator = ref(null);
-    // let dropdown = ref(null);
-    // let popper = null;
-
-    // onMounted(() => {
-    //   popper = setPopper();
-    // });
-
-    // watch(
-    //   () => [props.placement, props.offsetX, props.offsetY, props.noFlip],
-    //   () => {
-    //     popper = setPopper();
-    //     popper.update();
-    //   }
-    // );
+    let dropdown = ref(null);
 
     let clickOutside = function (ev) {
       if (
-        !(dropdownContainer.value === ev.target || dropdownContainer.value.contains(ev.target))
+        !(dropdown.value === ev.target || dropdown.value.contains(ev.target))
       ) {
         hide();
       }
@@ -106,20 +80,12 @@ export default {
 
     const { offsetX, offsetY, placement } = toRefs(props);
 
-    const {
-      isOpen,
-      activator,
-      popper,
-      show,
-      hide,
-      toggle,
-      setPopper,
-    } = usePopper({ placement, offsetX, offsetY, clickOutside })
-
-    onMounted(() => {
-      console.log('mounted')
-      setPopper()
-    })
+    const { isOpen, activator, popper, show, hide, toggle } = usePopper({
+      placement,
+      offsetX,
+      offsetY,
+      clickOutside,
+    });
 
     provide("classes", classesItem);
     provide("autoCloseMenu", toRef(props, "autoCloseMenu"));
@@ -127,7 +93,7 @@ export default {
 
     return {
       placement,
-      dropdownContainer,
+      dropdown,
       activator,
       popper,
       show,

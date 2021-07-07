@@ -1,30 +1,28 @@
 <template>
   <div
     v-if="slots.activator"
-    ref="triggerElementBySlot"
+    ref="activator"
     class="inline-block"
-    @[trigger.on]="show"
-    @[trigger.off]="hide"
-    @[trigger.toggle].stop="toggle($event)"
+    @[trigger.on]="showPopover"
+    @[trigger.off]="hidePopover"
+    @[trigger.toggle]="togglePopover"
   >
     <slot name="activator"></slot>
   </div>
   <teleport to="body">
     <transition :name="transition">
       <div
-        v-if="isShow"
-        ref="popoverElement"
+        v-if="isOpen"
+        ref="popper"
         v-bind="$attrs"
         :class="classes.popover.value"
-        @mouseenter="lock"
-        @mouseleave="unlock"
       >
         <header
           v-if="!noHeader"
           class="flex bg-gray-100 border-b font-semibold px-3 py-2"
         >
           {{ title }}
-          <v-close-button class="ml-auto" @click="hide" />
+          <v-close-button class="ml-auto" @click="hidePopover" />
         </header>
         <div :class="classes.content.value">
           <slot name="default"></slot>
@@ -35,9 +33,8 @@
 </template>
 
 <script>
-import { createPopper } from "@popperjs/core";
 import {
-  ref,
+  toRefs,
   reactive,
   computed,
   onMounted,
@@ -45,8 +42,8 @@ import {
   watchEffect,
   getCurrentInstance,
 } from "vue";
-import vCloseButton from "./vCloseButton.vue";
 import useStyles from "./composition/use-styles";
+import usePopper from "./composition/usePopper.js";
 import { removeTailwindClasses } from "../tools/tools.js";
 import { correctPlacement } from "../const.js";
 
@@ -60,14 +57,13 @@ export default {
     title: { type: String, default: undefined },
     transition: { type: String, default: "fade" },
     clickOutsideClose: { type: Boolean, default: false },
+    offsetX: { type: Number, default: 0 },
+    offsetY: { type: Number, default: 5 },
     targetId: { type: String, default: undefined },
     name: { type: String, default: "popover" },
     theme: { type: String, default: "default" },
     stylePopover: { type: String, default: "default" },
     styleContent: { type: String, default: "default" },
-  },
-  components: {
-    vCloseButton,
   },
   setup(props, { slots, emit }) {
     let elements = ["popover", "content"];
@@ -85,20 +81,13 @@ export default {
       }),
     };
 
-    let isShow = ref(false);
-    let popoverElement = ref(null);
-    let popoverArrow = ref(null);
+    let activatorId = null;
+
     let trigger = reactive({
       on: null,
       off: null,
       toggle: null,
     });
-    let triggerElementBySlot = ref(null);
-    let triggerElementById = null;
-    let triggerElement = null;
-    let popper = null;
-    let timerIn = null;
-    let timerOut = null;
 
     watchEffect(() => {
       if (props.trigger == "click") {
@@ -116,35 +105,36 @@ export default {
       }
     });
 
-    let placement = computed(() => {
-      return correctPlacement.find((i) => i === props.placement) || "auto";
-    });
-
     onMounted(() => {
       if (props.targetId) {
-        triggerElementById = document.getElementById(props.targetId);
-        if (triggerElementById) {
-          if (trigger.on) triggerElementById.addEventListener(trigger.on, show);
-          if (trigger.off)
-            triggerElementById.addEventListener(trigger.off, hide);
-          if (trigger.toggle)
-            triggerElementById.addEventListener(trigger.toggle, toggle);
+        activatorId = document.getElementById(props.targetId);
+        if (activatorId) {
+          if (trigger.on) {
+            activatorId.addEventListener(trigger.on, show);
+          }
+          if (trigger.off) {
+            activatorId.addEventListener(trigger.off, hide);
+          }
+          if (trigger.toggle) {
+            activatorId.addEventListener(trigger.toggle, toggle);
+          }
         }
       }
-      triggerElement = triggerElementBySlot.value || triggerElementById;
     });
 
-    watch(
-      popoverElement,
-      () => {
-        if (popoverElement.value) {
-          if (props.trigger == "click" && props.clickOutsideClose)
-            document.body.addEventListener("click", clickOutside);
-          popper = setPopper();
-        }
-      },
-      { flush: "post" }
-    );
+    let showPopover = () => {
+      show();
+      emit("update:modelValue", true);
+    };
+
+    let hidePopover = () => {
+      hide();
+      emit("update:modelValue", false);
+    };
+
+    let togglePopover = () => {
+      isOpen.value ? hidePopover() : showPopover();
+    }
 
     watch(
       () => props.modelValue,
@@ -152,90 +142,36 @@ export default {
         if (props.modelValue) {
           show();
         } else {
-          hide(null, true);
+          hide();
         }
       }
     );
 
-    function setPopper() {
-      return createPopper(triggerElement, popoverElement.value, {
-        modifiers: [
-          {
-            name: "offset",
-            options: {
-              offset: [0, 10],
-            },
-          },
-          {
-            name: "flip",
-          },
-        ],
-        placement: placement.value,
-      });
-    }
-
     let clickOutside = function (ev) {
-      if (
-        !(
-          popoverElement.value === ev.target ||
-          popoverElement.value.contains(ev.target)
-        )
-      ) {
-        hide(null, true);
+      if (!(popper.value === ev.target || popper.value.contains(ev.target))) {
+        hide();
       }
     };
 
-    function show() {
-      if (isShow.value) clearTimeout(timerOut);
+    const { offsetX, offsetY, placement } = toRefs(props);
 
-      timerIn = setTimeout(() => {
-        isShow.value = true;
-        emit("update:modelValue", true);
-      }, props.delay);
-    }
-
-    function hide(ev, immediate) {
-      clearTimeout(timerIn);
-
-      if (props.trigger == "click" && props.clickOutsideClose)
-        document.body.removeEventListener("click", clickOutside);
-
-      timerOut = setTimeout(
-        () => {
-          isShow.value = false;
-          emit("update:modelValue", false);
-        },
-        immediate ? 0 : props.delay
-      );
-    }
-
-    function toggle(ev) {
-      ev.preventDefault();
-      isShow.value ? hide() : show();
-    }
-
-    let lock = function () {
-      if (props.trigger != "hover") return;
-      clearTimeout(timerOut);
-    };
-
-    let unlock = function () {
-      if (props.trigger != "hover") return;
-      hide();
-    };
+    const { isOpen, activator, popper, show, hide, toggle } = usePopper({
+      placement,
+      offsetX,
+      offsetY,
+      clickOutside,
+    });
 
     return {
       classes,
-      triggerElementBySlot,
-      popoverElement,
-      popoverArrow,
-      isShow,
       trigger,
-      show,
-      hide,
-      toggle,
-      lock,
-      unlock,
+      activator,
+      popper,
+      isOpen,
+      trigger,
+      showPopover,
+      hidePopover,
+      togglePopover,
       slots,
     };
   },

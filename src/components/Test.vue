@@ -419,7 +419,7 @@
         <input
           ref="activator"
           type="text"
-          placeholder="focus popover click"
+          placeholder="focus popover"
           class="p-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm border-gray-300 rounded"
         />
       </template>
@@ -461,6 +461,7 @@
       click-outside-close
       target-id="button"
     >
+    <template #activator><v-button>popover click</v-button></template>
       <template #header>Popover</template>
       item item 2
       <input type="" />
@@ -469,7 +470,7 @@
     <v-popover title="popover" trigger="hover" :delay="500" transition="fade">
       <template #activator>
         <!-- <v&#45;button>popover</v&#45;button> -->
-        <v-button>popover</v-button>
+        <v-button>popover hover</v-button>
       </template>
       <template #header>Popover</template>
       item item 2
