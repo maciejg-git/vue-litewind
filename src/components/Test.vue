@@ -2,8 +2,8 @@
   <div class="sm:container mx-auto">
     item
     <v-tabs style-tab="default">
-      <v-tab name="item" class="p-2"
-        >item Options can be passed via data attributes or JavaScript. For data
+      <v-tab name="item" class="p-2">
+        item Options can be passed via data attributes or JavaScript. For data
         attributes, append the option name to data-bs-, as in
         data-bs-animation="". Make sure to change the case type of the option
         name from camelCase to kebab-case when passing via data attributes. For
@@ -14,7 +14,51 @@
         of the option name from camelCase to kebab-case when passing via data
         attributes. For example: instead of using
         data-bs-customClass="beautifier", use
-        data-bs-custom-class="beautifier".</v-tab
+        data-bs-custom-class="beautifier".
+        item Options can be passed via data attributes or JavaScript. For data
+        attributes, append the option name to data-bs-, as in
+        data-bs-animation="". Make sure to change the case type of the option
+        name from camelCase to kebab-case when passing via data attributes. For
+        example: instead of using data-bs-customClass="beautifier", use
+        data-bs-custom-class="beautifier". Options can be passed via data
+        attributes or JavaScript. For data attributes, append the option name to
+        data-bs-, as in data-bs-animation="". Make sure to change the case type
+        of the option name from camelCase to kebab-case when passing via data
+        attributes. For example: instead of using
+        data-bs-customClass="beautifier", use
+        data-bs-custom-class="beautifier".
+        <v-button @click="dropdownplacement = 'bottom'">placement</v-button>
+        <v-card style-card="default shadow gray" class="mb-4">
+          <v-button style-button="primary small">table</v-button>
+          <v-button style-button="primary small">add</v-button>
+          <v-button style-button="secondary small">add</v-button>
+          <v-dropdown auto-close-menu :placement="dropdownplacement">
+            <template #activator>
+              <v-button style-button="primary small">add</v-button>
+            </template>
+            <template #default="{ hide }">
+              <v-card style-card="default shadow" width="320px">
+                <v-dropdown-menu-item tag="button" active @click.prevent="log('click')">
+                  item
+                </v-dropdown-menu-item>
+                <v-dropdown-menu-item>
+                  item 2
+                </v-dropdown-menu-item>
+                <v-dropdown-header>
+                  items
+                </v-dropdown-header>
+                <v-dropdown-menu-item disabled>
+                  item 3
+                </v-dropdown-menu-item>
+                <v-divider></v-divider>
+                <v-dropdown-menu-item tag="button" >
+                  item 9
+                </v-dropdown-menu-item>
+              </v-card>
+            </template>
+          </v-dropdown>
+        </v-card>
+      </v-tab
       >
       <v-tab name="item2" class="p-2">
         <v-card style-card="default shadow gray" class="mb-4">
@@ -202,68 +246,68 @@
       </div>
     </v-sidepanel>
 
-    <v-dropdown transition="fade">
-      <template #activator>
-        <v-button>Dropdown</v-button>
-      </template>
-      <template #default>
-        <v-card style-card="default shadow">
-          item
-          <v-dropdown-menu-item v-tooltip.right.delay200="'item content'"
-            >item</v-dropdown-menu-item
-          >
-          <v-dropdown-menu-item>item</v-dropdown-menu-item>
-          <div class="p-2">
-            <vDatePicker
-              v-model="i"
-              euro
-              buttons
-              @input:formatted="formattedDate = $event"
-              width="320px"
-            ></vDatePicker>
-          </div>
-        </v-card>
-      </template>
-    </v-dropdown>
+    <!-- <v-dropdown transition="fade"> -->
+    <!--   <template #activator> -->
+    <!--     <v-button>Dropdown</v-button> -->
+    <!--   </template> -->
+    <!--   <template #default> -->
+    <!--     <v-card style-card="default shadow"> -->
+    <!--       item -->
+    <!--       <v-dropdown-menu-item v-tooltip.right.delay200="'item content'" -->
+    <!--         >item</v-dropdown-menu-item -->
+    <!--       > -->
+    <!--       <v-dropdown-menu-item>item</v-dropdown-menu-item> -->
+    <!--       <div class="p-2"> -->
+    <!--         <vDatePicker -->
+    <!--           v-model="i" -->
+    <!--           euro -->
+    <!--           buttons -->
+    <!--           @input:formatted="formattedDate = $event" -->
+    <!--           width="320px" -->
+    <!--         ></vDatePicker> -->
+    <!--       </div> -->
+    <!--     </v-card> -->
+    <!--   </template> -->
+    <!-- </v-dropdown> -->
 
-    <v-dropdown transition="fade">
-      <template #activator>
-        <v-button>Dropdown</v-button>
-      </template>
-      <template #default="{ hide }">
-        <v-card style-card="default shadow" class="p-2">
-            <vDatePicker
-              v-model="i"
-              euro
-              buttons
-              adjecent-months
-              @input:formatted="formattedDate = $event"
-              width="320px"
-            ></vDatePicker>
-        </v-card>
-      </template>
-    </v-dropdown>
+    <!-- <v-dropdown transition="fade"> -->
+    <!--   <template #activator> -->
+    <!--     <v-button>Dropdown</v-button> -->
+    <!--   </template> -->
+    <!--   <template #default="{ hide }"> -->
+    <!--     <v-card style-card="default shadow" class="p-2"> -->
+    <!--         <vDatePicker -->
+    <!--           v-model="i" -->
+    <!--           euro -->
+    <!--           buttons -->
+    <!--           adjecent-months -->
+    <!--           @input:formatted="formattedDate = $event" -->
+    <!--           width="320px" -->
+    <!--         ></vDatePicker> -->
+    <!--     </v-card> -->
+    <!--   </template> -->
+    <!-- </v-dropdown> -->
 
-    <v-dropdown transition="fade">
-      <template #activator>
-        <vInputDate v-model="i" class="w-80"></vInputDate>
-      </template>
-      <template #default="{ hide }">
-        <v-card style-card="default shadow" class="p-2">
-            <vDatePicker
-              v-model="i"
-              euro
-              buttons
-              adjecent-months
-              range
-              @input:formatted="formattedDate = $event"
-              @state:done="hide"
-              @state:cancel="hide"
-              width="320px"
-            ></vDatePicker>
-        </v-card>
-      </template>
-    </v-dropdown>
+    <!-- <v-dropdown transition="fade"> -->
+    <!--   <template #activator> -->
+    <!--     <vInputDate v-model="i" class="w-80"></vInputDate> -->
+    <!--   </template> -->
+    <!--   <template #default="{ hide }"> -->
+    <!--     <v-card style-card="default shadow" class="p-2"> -->
+    <!--         <vDatePicker -->
+    <!--           v-model="i" -->
+    <!--           euro -->
+    <!--           buttons -->
+    <!--           adjecent-months -->
+    <!--           range -->
+    <!--           @input:formatted="formattedDate = $event" -->
+    <!--           @state:done="hide" -->
+    <!--           @state:cancel="hide" -->
+    <!--           width="320px" -->
+    <!--         ></vDatePicker> -->
+    <!--     </v-card> -->
+    <!--   </template> -->
+    <!-- </v-dropdown> -->
 
     <v-list width="320px">
       <v-list-item>item</v-list-item>
@@ -530,6 +574,7 @@ export default {
     dataTest.forEach(i => data.value[i].country = undefined)
     dataTest.forEach(i => data.value[i].city = undefined)
     // dataTest2.forEach(i => data.value[i].id = NaN)
+    let dropdownplacement = ref("bottom-start");
     let dataEmpty = ref([]);
     let busy = ref(false)
     let tableCommand = null;
@@ -627,6 +672,7 @@ export default {
       popoverShow,
       classadd,
       tabname,
+      dropdownplacement,
       buttonPrimary,
       buttonSmall,
       formattedDate,

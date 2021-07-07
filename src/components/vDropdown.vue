@@ -1,10 +1,11 @@
 <template>
-  <div class="inline-block">
-    <div ref="activator" class="inline-block" @mouseup="toggle">
+  <div ref="dropdownContainer" class="inline-block">
+    <div ref="activator" class="inline-block" @click="toggle">
       <slot name="activator" :toggle="toggle" :show="show" :hide="hide"></slot>
     </div>
     <transition :name="transition">
-      <div v-show="isShow" ref="dropdown" v-bind="$attrs" class="absolute">
+    <!-- v-bind="$attrs"  -->
+      <div v-show="isOpen" ref="popper" class="absolute">
         <slot name="default" :hide="hide"></slot>
       </div>
     </transition>
@@ -20,9 +21,11 @@ import {
   watch,
   provide,
   toRef,
+  toRefs,
   getCurrentInstance,
 } from "vue";
 import useStyles from "./composition/use-styles";
+import usePopper from "./composition/usePopper.js"
 import { removeTailwindClasses } from "../tools/tools.js";
 
 export default {
@@ -76,78 +79,61 @@ export default {
     };
 
     let isShow = ref(false);
-    let activator = ref(null);
-    let dropdown = ref(null);
-    let popper = null;
+    let dropdownContainer = ref(null);
+    // let activator = ref(null);
+    // let dropdown = ref(null);
+    // let popper = null;
 
-    onMounted(() => {
-      popper = setPopper();
-    });
+    // onMounted(() => {
+    //   popper = setPopper();
+    // });
 
-    watch(
-      () => [props.placement, props.offsetX, props.offsetY, props.noFlip],
-      () => {
-        popper = setPopper();
-        popper.update();
-      }
-    );
-
-    function setPopper() {
-      return createPopper(activator.value, dropdown.value, {
-        modifiers: [
-          {
-            name: "offset",
-            options: {
-              offset: [props.offsetX, props.offsetY],
-            },
-          },
-          {
-            name: "flip",
-            enabled: !props.noFlip,
-          },
-        ],
-        placement: props.placement,
-      });
-    }
+    // watch(
+    //   () => [props.placement, props.offsetX, props.offsetY, props.noFlip],
+    //   () => {
+    //     popper = setPopper();
+    //     popper.update();
+    //   }
+    // );
 
     let clickOutside = function (ev) {
       if (
-        !(dropdown.value === ev.target || dropdown.value.contains(ev.target))
+        !(dropdownContainer.value === ev.target || dropdownContainer.value.contains(ev.target))
       ) {
         hide();
       }
     };
 
-    let show = function () {
-      isShow.value = true;
-      setTimeout(() => {
-        document.body.addEventListener("mouseup", clickOutside);
-      }, 0);
-      popper.update();
-      emit("state:opened");
-    };
+    const { offsetX, offsetY, placement } = toRefs(props);
 
-    let hide = function () {
-      isShow.value = false;
-      document.body.removeEventListener("mouseup", clickOutside);
-      emit("state:closed");
-    };
+    const {
+      isOpen,
+      activator,
+      popper,
+      show,
+      hide,
+      toggle,
+      setPopper,
+    } = usePopper({ placement, offsetX, offsetY, clickOutside })
 
-    let toggle = function () {
-      isShow.value ? hide() : show();
-    };
+    onMounted(() => {
+      console.log('mounted')
+      setPopper()
+    })
 
     provide("classes", classesItem);
     provide("autoCloseMenu", toRef(props, "autoCloseMenu"));
     provide("hide", hide);
 
     return {
+      placement,
+      dropdownContainer,
       activator,
-      dropdown,
+      popper,
       show,
       hide,
       toggle,
-      isShow,
+      isOpen,
     };
   },
 };
