@@ -13,8 +13,7 @@
         data-bs-, as in data-bs-animation="". Make sure to change the case type
         of the option name from camelCase to kebab-case when passing via data
         attributes. For example: instead of using
-        data-bs-customClass="beautifier", use
-        data-bs-custom-class="beautifier".
+        data-bs-customClass="beautifier", use data-bs-custom-class="beautifier".
         item Options can be passed via data attributes or JavaScript. For data
         attributes, append the option name to data-bs-, as in
         data-bs-animation="". Make sure to change the case type of the option
@@ -25,8 +24,7 @@
         data-bs-, as in data-bs-animation="". Make sure to change the case type
         of the option name from camelCase to kebab-case when passing via data
         attributes. For example: instead of using
-        data-bs-customClass="beautifier", use
-        data-bs-custom-class="beautifier".
+        data-bs-customClass="beautifier", use data-bs-custom-class="beautifier".
         <v-button @click="dropdownplacement = 'bottom'">placement</v-button>
         <v-card style-card="default shadow gray" class="mb-4">
           <v-button style-button="primary small">table</v-button>
@@ -38,28 +36,23 @@
             </template>
             <template #default="{ hide }">
               <v-card style-card="default shadow" width="320px">
-                <v-dropdown-menu-item tag="button" active @click.prevent="log('click')">
+                <v-dropdown-menu-item
+                  tag="button"
+                  active
+                  @click.prevent="log('click')"
+                >
                   item
                 </v-dropdown-menu-item>
-                <v-dropdown-menu-item>
-                  item 2
-                </v-dropdown-menu-item>
-                <v-dropdown-header>
-                  items
-                </v-dropdown-header>
-                <v-dropdown-menu-item disabled>
-                  item 3
-                </v-dropdown-menu-item>
+                <v-dropdown-menu-item>item 2</v-dropdown-menu-item>
+                <v-dropdown-header>items</v-dropdown-header>
+                <v-dropdown-menu-item disabled>item 3</v-dropdown-menu-item>
                 <v-divider></v-divider>
-                <v-dropdown-menu-item tag="button" >
-                  item 9
-                </v-dropdown-menu-item>
+                <v-dropdown-menu-item tag="button">item 9</v-dropdown-menu-item>
               </v-card>
             </template>
           </v-dropdown>
         </v-card>
-      </v-tab
-      >
+      </v-tab>
       <v-tab name="item2" class="p-2">
         <v-card style-card="default shadow gray" class="mb-4">
           <v-button style-button="primary small">table</v-button>
@@ -71,22 +64,18 @@
             </template>
             <template #default="{ hide }">
               <v-card style-card="default shadow" width="320px">
-                <v-dropdown-menu-item tag="button" active @click.prevent="log('click')">
+                <v-dropdown-menu-item
+                  tag="button"
+                  active
+                  @click.prevent="log('click')"
+                >
                   item
                 </v-dropdown-menu-item>
-                <v-dropdown-menu-item>
-                  item 2
-                </v-dropdown-menu-item>
-                <v-dropdown-header>
-                  items
-                </v-dropdown-header>
-                <v-dropdown-menu-item disabled>
-                  item 3
-                </v-dropdown-menu-item>
+                <v-dropdown-menu-item>item 2</v-dropdown-menu-item>
+                <v-dropdown-header>items</v-dropdown-header>
+                <v-dropdown-menu-item disabled>item 3</v-dropdown-menu-item>
                 <v-divider></v-divider>
-                <v-dropdown-menu-item tag="button" >
-                  item 9
-                </v-dropdown-menu-item>
+                <v-dropdown-menu-item tag="button">item 9</v-dropdown-menu-item>
               </v-card>
             </template>
           </v-dropdown>
@@ -127,12 +116,21 @@
     <v-button @click="busy = !busy">busy table</v-button>
 
     <v-button @click="progress += 10">progress</v-button>
-    <v-progress :value="progress" :max="100" style-progress-bar="default gradient">
+    <v-progress
+      :value="progress"
+      :max="100"
+      style-progress-bar="default gradient"
+    >
       <template #default="{ value, max }">{{ value }}</template>
     </v-progress>
-    <br>
-    <v-progress :value="progress" :max="100" :label="false" style-progress="default tiny" style-progress-bar="default gradient">
-    </v-progress>
+    <br />
+    <v-progress
+      :value="progress"
+      :max="100"
+      :label="false"
+      style-progress="default tiny"
+      style-progress-bar="default gradient"
+    ></v-progress>
 
     {{ tableSelection }}
     <input v-model="filter" type="" class="form-control w-25" />
@@ -151,7 +149,7 @@
         @update:filtered-count="tableItemsCount = $event"
         @update:page="page = $event"
       >
-      <!-- <template #busy><v-spinner></v-spinner></template> -->
+        <!-- <template #busy><v-spinner></v-spinner></template> -->
         <template #cell:item_city="{ item }">
           <!-- <v&#45;button small>item</v&#45;button> -->
           <!--     <!&#45;&#45; <v&#38;#45;button>popover</v&#38;#45;button> &#45;&#45;> -->
@@ -179,9 +177,9 @@
     </div>
 
     <v-button @click="classadd = 'bg-blue-700 border-2'">classadd</v-button>
-    <v-button @click="definition[3].visible = !definition[3].visible"
-      >visible city col</v-button
-    >
+    <v-button @click="definition[3].visible = !definition[3].visible">
+      visible city col
+    </v-button>
     <v-button @click="data = dataJSON.slice(0, 40)">table</v-button>
     <v-button @click="definition.push({ key: 'item5' })">table push</v-button>
     <v-button @click="data[0].item5 = 6">table add col</v-button>
@@ -199,24 +197,34 @@
     <span
       v-tooltip.bottom.delay500.oY5="() => 'item item 2'"
       data-title="item item 4"
-      >tooltip</span
     >
+      tooltip
+    </span>
 
     <br />
 
     <span
       v-tooltip.top-end.delay500="() => 'item item 2'"
       data-title="item item 4"
-      >tooltip</span
     >
+      tooltip
+    </span>
 
     <br />
 
     {{ i }}
     {{ formattedDate }}
-    <v-button @click="i = [ '2021-05-14', '2021-05-15' ]">set d</v-button>
+    <v-button @click="i = ['2021-05-14', '2021-05-15']">set d</v-button>
     <v-card style-card="default" class="p-2 mb-2" style="width: 320px">
-      <vDatePicker v-model="i" euro range range-hover-highlight buttons adjecent-months style-day="default font-semibold"></vDatePicker>
+      <vDatePicker
+        v-model="i"
+        euro
+        range
+        range-hover-highlight
+        buttons
+        adjecent-months
+        style-day="default font-semibold"
+      ></vDatePicker>
     </v-card>
     <v-card style-card="default" class="p-2" style="width: 320px">
       <vDatePicker
@@ -238,12 +246,10 @@
     <v-button @click="sidepanel = !sidepanel">sidepanel</v-button>
 
     <v-sidepanel v-model="sidepanel" close-button>
-      <template #header
-        ><h5 class="text-xl font-semibold">Sidepanel</h5></template
-      >
-      <div class="p-2">
-        sidepanel
-      </div>
+      <template #header>
+        <h5 class="text-xl font-semibold">Sidepanel</h5>
+      </template>
+      <div class="p-2">sidepanel</div>
     </v-sidepanel>
 
     <!-- <v-dropdown transition="fade"> -->
@@ -323,8 +329,9 @@
     </v-list>
 
     <v-button @click="i2 = !i2">collapse</v-button>
-    <v-collapse v-model="i2">Options can be passed via data attributes or JavaScript. For
-      data attributes, append the option name to data-bs-, as in
+    <v-collapse v-model="i2">
+      Options can be passed via data attributes or JavaScript. For data
+      attributes, append the option name to data-bs-, as in
       data-bs-animation="". Make sure to change the case type of the option name
       from camelCase to kebab-case when passing via data attributes. For
       example: instead of using data-bs-customClass="beautifier", use
@@ -344,7 +351,8 @@
       data-bs-, as in data-bs-animation="". Make sure to change the case type of
       the option name from camelCase to kebab-case when passing via data
       attributes. For example: instead of using
-      data-bs-customClass="beautifier", use data-bs-custom-class="beautifier".</v-collapse>
+      data-bs-customClass="beautifier", use data-bs-custom-class="beautifier".
+    </v-collapse>
 
     <v-badge>new</v-badge>
     <v-button @click="modal = !modal">modal</v-button>
@@ -377,20 +385,22 @@
       the option name from camelCase to kebab-case when passing via data
       attributes. For example: instead of using
       data-bs-customClass="beautifier", use data-bs-custom-class="beautifier".
-      <v-button v-tooltip.right.delay500.oY5="() => 'item item 2'">button</v-button>
+      <v-button v-tooltip.right.delay500.oY5="() => 'item item 2'">
+        button
+      </v-button>
     </v-modal>
-      <v-button v-tooltip="() => 'item item 2'">button</v-button>
+    <v-button v-tooltip="() => 'item item 2'">button</v-button>
 
     <div class="my-5">
-      <v-button shadow class-button="bg-gray-500 hover:bg-gray-600"
-        >custom button</v-button
-      >
-      <v-button shadow class-button="bg-red-500 hover:bg-red-600"
-        >custom button</v-button
-      >
-      <v-button class-button="bg-blue-500 hover:bg-blue-600"
-        >custom button</v-button
-      >
+      <v-button shadow class-button="bg-gray-500 hover:bg-gray-600">
+        custom button
+      </v-button>
+      <v-button shadow class-button="bg-red-500 hover:bg-red-600">
+        custom button
+      </v-button>
+      <v-button class-button="bg-blue-500 hover:bg-blue-600">
+        custom button
+      </v-button>
       <!-- <v&#45;button :class&#45;button="[btn.primary, btn.small, btn.square]">custom button</v&#45;button> -->
       <!-- <v&#45;button :class&#45;button="[btn.secondary, btn.small, 'shadow&#45;md']">custom button</v&#45;button> -->
       <!-- <v&#45;button :class&#45;button="[btn.secondary, btn.large, 'shadow&#45;md']">custom button</v&#45;button> -->
@@ -401,16 +411,70 @@
     </div>
     <br />
 
-    Options can be passed via data attributes or JavaScript. For data
-    attributes, append the option name to data-bs-, as in data-bs-animation="".
-    Make sure to change the case type of the option name from camelCase to
-    kebab-case when passing via data attributes. For example: instead of using
-    data-bs-customClass="beautifier", use data-bs-custom-class="beautifier".
-    <br />
-
-    {{ popoverText }}
     <v-popover
       trigger="click"
+      :delay="0"
+      click-outside-close
+    >
+      <template #activator>
+        <input
+          ref="activator"
+          type="text"
+          placeholder="click popover"
+          class="
+            p-1
+            focus:ring-blue-500 focus:border-blue-500
+            block
+            w-full
+            shadow-sm
+            border-gray-300
+            rounded
+          "
+        />
+      </template>
+      <template #header>Popover</template>
+      item item 2
+      <input type="text" />
+      <input type="text" />
+    </v-popover>
+
+    <br>
+
+    <v-popover
+      trigger="focus"
+      :delay="0"
+      click-outside-close
+    >
+      <template #activator>
+        <input
+          ref="activator"
+          type="text"
+          placeholder="focus popover"
+          class="
+            p-1
+            focus:ring-blue-500 focus:border-blue-500
+            block
+            w-full
+            shadow-sm
+            border-gray-300
+            rounded
+          "
+        />
+      </template>
+      <template #header>Popover</template>
+      item item 2
+      <input type="text" />
+      <input type="text" />
+    </v-popover>
+
+    <br>
+
+    <v-button square small shadow-md @click="popoverShow = true">
+      popover model true
+    </v-button>
+    <v-button @click="popoverShow = false">popover model false</v-button>
+    <v-popover
+      trigger="focus"
       :delay="0"
       click-outside-close
       v-model="popoverShow"
@@ -420,52 +484,41 @@
           ref="activator"
           type="text"
           placeholder="focus popover"
-          class="p-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm border-gray-300 rounded"
+          class="
+            p-1
+            focus:ring-blue-500 focus:border-blue-500
+            block
+            w-full
+            shadow-sm
+            border-gray-300
+            rounded
+          "
         />
       </template>
       <template #header>Popover</template>
       item item 2
-      {{ popoverText }}
-      <!-- <input type="" class="form&#45;control"> -->
-      <!-- <input type="" class="form&#45;control mt&#45;2" v&#45;model="popoverText"> -->
-      <input
-        ref="activator"
-        type="text"
-        placeholder="focus popover click"
-        class="p-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm border-gray-300 rounded"
-      />
-      <input
-        ref="activator"
-        type="text"
-        placeholder="focus popover click"
-        class="mt-2 p-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm border-gray-300 rounded"
-      />
-      <!-- <v&#45;button class="mt&#45;2">popover text</v&#45;button> -->
+      <input type="text" />
+      <input type="text" />
     </v-popover>
 
-    <v-button square disabled small shadow-md @click="popoverShow = true"
-      >popover model
-    </v-button>
-    <v-button @click="popoverShow = false">popover model false</v-button>
-    <v-button square shadow @click="popoverShow = true"
-      >popover model
-    </v-button>
+    <br>
 
+        <v-button @click="dropdownplacement = 'bottom'">placement bottom</v-button>
     <v-button id="button">popover button id</v-button>
-    <a href="" id="buttonLink">popover button id </a>
-    <input type="" id="input" placeholder="input popover id " />
-
     <v-popover
       trigger="click"
       :delay="50"
       click-outside-close
       target-id="button"
+      :placement="dropdownplacement"
     >
-    <template #activator><v-button>popover click</v-button></template>
+      <!-- <template #activator><v-button>popover click</v-button></template> -->
       <template #header>Popover</template>
       item item 2
       <input type="" />
     </v-popover>
+
+    <br>
 
     <v-popover title="popover" trigger="hover" :delay="500" transition="fade">
       <template #activator>
@@ -486,29 +539,14 @@
       <input type="" />
     </v-popover>
 
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-
-    input, documentation, tailwind map do for do object
-      <div class="">
-        <span class="align-top"> align </span>
-        <span class="align-middle"> align </span>
-      </div>
   </div>
 </template>
 
 <script>
 import { ref, onMounted } from "vue";
 import dataJSON from "./../data.json";
-import vTabs from "./vTabs.vue"
-import vTab from "./vTab.vue"
+import vTabs from "./vTabs.vue";
+import vTab from "./vTab.vue";
 // import vTable from './vTable.vue'
 // import {vTable} from "./index.js"
 import vDatePicker from "./vDatePicker.vue";
@@ -528,8 +566,8 @@ import vBadge from "./vBadge.vue";
 import vPopover from "./vPopover.vue";
 import tooltip from "../directives/tooltip.js";
 import vSpinner from "./vSpinner.vue";
-import vInputDate from "./vInputDate.vue"
-import vProgress from "./vProgress.vue"
+import vInputDate from "./vInputDate.vue";
+import vProgress from "./vProgress.vue";
 // import {vTable} from "../dist/vuecomponent2.es"
 
 export default {
@@ -566,20 +604,20 @@ export default {
   setup(props) {
     // let data = ref(dataJSON.slice(0, 140));
     let data = ref(dataJSON);
-    data.value.map(i => i.date = new Date(2021, 2, 2))
-    data.value[1].date = new Date(2021, 4, 2)
-    data.value[2].date = new Date(2021, 7, 2)
-    let dataTest = [2, 3, 5, 12, 20, 21, 22, 30, 31, 40, 41, 42, 43, 45, 60]
-    let dataTest2 = [7, 30, 40, 70]
-    dataTest.forEach(i => data.value[i].first_name = null)
-    dataTest.forEach(i => data.value[i].country = undefined)
-    dataTest.forEach(i => data.value[i].city = undefined)
+    data.value.map((i) => (i.date = new Date(2021, 2, 2)));
+    data.value[1].date = new Date(2021, 4, 2);
+    data.value[2].date = new Date(2021, 7, 2);
+    let dataTest = [2, 3, 5, 12, 20, 21, 22, 30, 31, 40, 41, 42, 43, 45, 60];
+    let dataTest2 = [7, 30, 40, 70];
+    dataTest.forEach((i) => (data.value[i].first_name = null));
+    dataTest.forEach((i) => (data.value[i].country = undefined));
+    dataTest.forEach((i) => (data.value[i].city = undefined));
     // dataTest2.forEach(i => data.value[i].id = NaN)
     let dropdownplacement = ref("bottom-start");
     let dataEmpty = ref([]);
-    let busy = ref(false)
+    let busy = ref(false);
     let tableCommand = null;
-    let tableSelection = ref([])
+    let tableSelection = ref([]);
     let progress = ref(10);
     // data.value = dataEmpty.value;
     let definition = ref([

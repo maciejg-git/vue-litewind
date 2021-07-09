@@ -17,11 +17,18 @@ import { ref, computed, provide, toRef, toRefs, getCurrentInstance } from "vue";
 import useStyles from "./composition/use-styles";
 import usePopper from "./composition/usePopper.js";
 import { removeTailwindClasses } from "../tools/tools.js";
+import { correctPlacement } from "../const.js";
 
 export default {
   inheritAttrs: false,
   props: {
-    placement: { type: String, default: "bottom-start" },
+    placement: {
+      type: String,
+      default: "bottom-start",
+      validator: function (v) {
+        return correctPlacement.includes(v);
+      },
+    },
     offsetX: { type: Number, default: 0 },
     offsetY: { type: Number, default: 0 },
     noFlip: { type: Boolean, default: false },
@@ -35,7 +42,7 @@ export default {
     styleMenuItemHeader: { type: String, default: "default" },
   },
   emits: ["state:opened", "state:closed"],
-  setup(props, { emit }) {
+  setup(props) {
     let elements = [
       "menuItem",
       "menuItemActive",
@@ -78,12 +85,13 @@ export default {
       }
     };
 
-    const { offsetX, offsetY, placement } = toRefs(props);
+    const { offsetX, offsetY, noFlip, placement } = toRefs(props);
 
     const { isOpen, activator, popper, show, hide, toggle } = usePopper({
       placement,
       offsetX,
       offsetY,
+      noFlip,
       clickOutside,
     });
 

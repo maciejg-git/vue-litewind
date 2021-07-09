@@ -58,7 +58,6 @@
     <h4>Example</h4>
     <div class="example">
       <v-popover
-        v-model="example.isVisible"
         :placement="example.placement"
         :trigger="example.trigger"
         :delay="+example.delay"
@@ -74,7 +73,6 @@
         This is popover.
       </v-popover>
       <v-popover
-        v-model="example.isVisible2"
         :placement="example.placement"
         :trigger="example.trigger"
         :delay="+example.delay"
@@ -95,10 +93,6 @@
       <v-tabs theme="material" class="mt-5">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
-            <label for="model" class="font-semibold">v-model:</label>
-            <input type="text" id="model" v-model="example.isVisible" />
-          </div>
-          <div class="mb-2">
             <label for="placement">placement:</label>
             <select id="placement" v-model="example.placement">
               <option value="auto">auto</option>
@@ -193,12 +187,6 @@ export default {
   setup(props) {
     let reference = ref([
       {
-        prop: "v-model",
-        type: "Boolean",
-        default: "undefined",
-        description: "Set to true to show popover. False hides it",
-      },
-      {
         prop: "placement",
         type: "String",
         default: "auto",
@@ -211,12 +199,6 @@ export default {
         default: "click",
         description:
           "Type of trigger that show or hides popover. Valid triggers are 'click', 'hover' and 'focus'",
-      },
-      {
-        prop: "delay",
-        type: "Number",
-        default: "50",
-        description: "Delay before showing and hiding poporver",
       },
       {
         prop: "no-header",
@@ -324,8 +306,6 @@ export default {
     ]);
 
     let example = reactive({
-      isVisible: false,
-      isVisible2: false,
       placement: "auto",
       trigger: "click",
       delay: 50,

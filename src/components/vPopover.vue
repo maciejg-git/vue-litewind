@@ -1,44 +1,39 @@
 <template>
-  <div
-    v-if="slots.activator"
-    ref="activator"
-    class="inline-block"
-    @[trigger.on]="showPopover"
-    @[trigger.off]="hidePopover"
-    @[trigger.toggle]="togglePopover"
-  >
-    <slot name="activator"></slot>
-  </div>
-  <teleport to="body">
+  <div ref="popover">
+    <div
+      v-if="slots.activator"
+      ref="activator"
+      class="inline-block"
+      @[trigger.on]="show"
+      @[trigger.off]="hide"
+      @[trigger.toggle]="toggle"
+    >
+      <slot name="activator"></slot>
+    </div>
     <transition :name="transition">
-      <div
-        v-if="isOpen"
-        ref="popper"
-        v-bind="$attrs"
-        :class="classes.popover.value"
-      >
+      <div v-if="isOpen" ref="popper" :class="classes.popover.value">
         <header
           v-if="!noHeader"
           class="flex bg-gray-100 border-b font-semibold px-3 py-2"
         >
           {{ title }}
-          <v-close-button class="ml-auto" @click="hidePopover" />
+          <v-close-button class="ml-auto" @click="hide" />
         </header>
         <div :class="classes.content.value">
           <slot name="default"></slot>
         </div>
       </div>
     </transition>
-  </teleport>
+  </div>
 </template>
 
 <script>
 import {
+  ref,
   toRefs,
   reactive,
   computed,
   onMounted,
-  watch,
   watchEffect,
   getCurrentInstance,
 } from "vue";
@@ -49,8 +44,13 @@ import { correctPlacement } from "../const.js";
 
 export default {
   props: {
-    modelValue: { type: Boolean, default: false },
-    placement: { type: String, default: "auto" },
+    placement: {
+      type: String,
+      default: "auto",
+      validator: function (v) {
+        return correctPlacement.includes(v);
+      }
+    },
     trigger: { type: String, default: "click" },
     delay: { type: Number, default: 50 },
     noHeader: { type: Boolean, default: false },
@@ -59,6 +59,7 @@ export default {
     clickOutsideClose: { type: Boolean, default: false },
     offsetX: { type: Number, default: 0 },
     offsetY: { type: Number, default: 5 },
+    noFlip: { type: Boolean, default: false },
     targetId: { type: String, default: undefined },
     name: { type: String, default: "popover" },
     theme: { type: String, default: "default" },
@@ -81,6 +82,7 @@ export default {
       }),
     };
 
+    let popover = ref(null);
     let activatorId = null;
 
     let trigger = reactive({
@@ -118,60 +120,38 @@ export default {
           if (trigger.toggle) {
             activatorId.addEventListener(trigger.toggle, toggle);
           }
+          activator.value = activatorId;
         }
       }
     });
 
-    let showPopover = () => {
-      show();
-      emit("update:modelValue", true);
-    };
-
-    let hidePopover = () => {
-      hide();
-      emit("update:modelValue", false);
-    };
-
-    let togglePopover = () => {
-      isOpen.value ? hidePopover() : showPopover();
-    }
-
-    watch(
-      () => props.modelValue,
-      () => {
-        if (props.modelValue) {
-          show();
-        } else {
-          hide();
-        }
-      }
-    );
-
     let clickOutside = function (ev) {
-      if (!(popper.value === ev.target || popper.value.contains(ev.target))) {
+      if (!(popover.value === ev.target || popover.value.contains(ev.target))) {
         hide();
       }
     };
 
-    const { offsetX, offsetY, placement } = toRefs(props);
+    const { offsetX, offsetY, noFlip, placement } = toRefs(props);
 
     const { isOpen, activator, popper, show, hide, toggle } = usePopper({
       placement,
       offsetX,
       offsetY,
+      noFlip,
       clickOutside,
     });
 
     return {
       classes,
       trigger,
+      popover,
       activator,
       popper,
       isOpen,
       trigger,
-      showPopover,
-      hidePopover,
-      togglePopover,
+      show,
+      hide,
+      toggle,
       slots,
     };
   },

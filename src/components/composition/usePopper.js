@@ -5,6 +5,7 @@ export default function usePopper({
   placement,
   offsetX,
   offsetY,
+  noFlip,
   clickOutside,
 }) {
   let isOpen = ref(false);
@@ -43,16 +44,12 @@ export default function usePopper({
     }
   });
 
-  watch(
-    popper,
-    () => {
-      if (popper.value) setPopper();
-    },
-    { flush: "post" }
-  );
+  watch(popper, () => {
+    if (popper.value) setPopper();
+  });
 
   let setPopper = () => {
-    let options = {
+    instance = createPopper(activator.value, popper.value, {
       modifiers: [
         {
           name: "offset",
@@ -62,11 +59,11 @@ export default function usePopper({
         },
         {
           name: "flip",
+          enabled: !noFlip.value,
         },
       ],
       placement: placement.value,
-    }
-    instance = createPopper(activator.value, popper.value, options);
+    });
   };
 
   return {
