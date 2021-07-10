@@ -26,9 +26,9 @@
           {{ value }}
         </code>
       </template>
-      <template #cell:description="{ value }"
-        ><span v-html="value"></span
-      ></template>
+      <template #cell:description="{ value }">
+        <span v-html="value"></span>
+      </template>
     </v-table>
 
     <h6>Styling props</h6>
@@ -40,9 +40,9 @@
       style-header-cell="default bordered"
       style-cell="default bordered"
     >
-      <template #cell:description="{ value }"
-        ><span v-html="value"></span
-      ></template>
+      <template #cell:description="{ value }">
+        <span v-html="value"></span>
+      </template>
     </v-table>
 
     <h6>Events</h6>
@@ -54,22 +54,32 @@
       style-header-cell="default bordered"
       style-cell="default bordered"
     >
-      <template #cell:description="{ value }"
-        ><span v-html="value"></span
-      ></template>
+      <template #cell:description="{ value }">
+        <span v-html="value"></span>
+      </template>
     </v-table>
   </section>
 
   <section>
     <h4>v-model</h4>
-    <span class="font-bold">Type</span>: <code class="code-word">String</code
-    ><code class="code-word">Array</code>
+    <span class="font-bold">Type</span>
+    :
+    <code class="code-word">String</code>
+    <code class="code-word">Array</code>
     <p>
-      <code>v-model</code> is used to return date after selection. v-model can
-      be Array or string depending on selection mode. In range mode
-      <code>v-model</code> returns <code>Array</code> of two
-      <code>String</code>. In single mode <code>v-model</code> returns
-      <code>String</code>. Date is in ISO format
+      <code>v-model</code>
+      is used to return date after selection. v-model can be Array or string
+      depending on selection mode. In range mode
+      <code>v-model</code>
+      returns
+      <code>Array</code>
+      of two
+      <code>String</code>
+      . In single mode
+      <code>v-model</code>
+      returns
+      <code>String</code>
+      . Date is in ISO format
       <code>YYYY-MM-DD</code>
     </p>
     <div class="example">
@@ -80,7 +90,7 @@
             adjecent-months
           ></v-date-picker>
         </v-card>
-        <span class="ml-10"> v-model (single): {{ exampleModel.single }} </span>
+        <span class="ml-10">v-model (single): {{ exampleModel.single }}</span>
       </div>
       <div class="flex">
         <v-card style="width: 320px" class="p-2 mt-2">
@@ -90,7 +100,7 @@
             adjecent-months
           ></v-date-picker>
         </v-card>
-        <span class="ml-10"> v-model (range): {{ exampleModel.range }} </span>
+        <span class="ml-10">v-model (range): {{ exampleModel.range }}</span>
       </div>
     </div>
     <pre>
@@ -142,36 +152,36 @@
         <v-tabs theme="material">
           <v-tab name="Props">
             <div class="mb-2 mt-5">
-              <label for="model" class="font-semibold">v-model: </label>
+              <label for="model" class="font-semibold">v-model:</label>
               <input type="text" id="model" v-model="example.date" />
             </div>
             <div class="mb-2">
-              <label for="range">range: </label>
+              <label for="range">range:</label>
               <select id="range" v-model="example.range">
                 <option :value="true">true</option>
                 <option :value="false">false</option>
               </select>
             </div>
             <div class="mb-2">
-              <label for="locale">locale: </label>
+              <label for="locale">locale:</label>
               <input type="text" id="locale" v-model="example.locale" />
             </div>
             <div class="mb-2">
-              <label for="euro">euro: </label>
+              <label for="euro">euro:</label>
               <select id="euro" v-model="example.euro">
                 <option :value="true">true</option>
                 <option :value="false">false</option>
               </select>
             </div>
             <div class="mb-2">
-              <label for="buttons">buttons: </label>
+              <label for="buttons">buttons:</label>
               <select id="buttons" v-model="example.buttons">
                 <option :value="true">true</option>
                 <option :value="false">false</option>
               </select>
             </div>
             <div class="mb-2">
-              <label for="primary-button-label">primary-button-label: </label>
+              <label for="primary-button-label">primary-button-label:</label>
               <input
                 type="text"
                 id="primary-button-label"
@@ -179,8 +189,8 @@
               />
             </div>
             <div class="mb-2">
-              <label for="secondary-button-label"
-                >secondary-button-label:
+              <label for="secondary-button-label">
+                secondary-button-label:
               </label>
               <input
                 type="text"
@@ -189,14 +199,14 @@
               />
             </div>
             <div class="mb-2">
-              <label for="adjacent-months">adjacent-months: </label>
+              <label for="adjacent-months">adjacent-months:</label>
               <select id="adjacent-months" v-model="example.adjecentMonths">
                 <option :value="true">true</option>
                 <option :value="false">false</option>
               </select>
             </div>
             <div class="mb-2">
-              <label for="range-hover-highlight">range-hover-highlight: </label>
+              <label for="range-hover-highlight">range-hover-highlight:</label>
               <select
                 id="range-hover-highlight"
                 v-model="example.rangeHoverHighlight"
@@ -206,7 +216,7 @@
               </select>
             </div>
             <div class="mb-5">
-              <label for="transition">transition: </label>
+              <label for="transition">transition:</label>
               <select id="transition" v-model="example.transition">
                 <option value="fade">fade</option>
                 <option value="slide">slide</option>
@@ -225,7 +235,8 @@
               <div class="px-2 pb-2">
                 <template v-for="ev in example.events">
                   <div class="py-1">
-                    <code class="code-word">{{ ev.ev }}</code> {{ ev.data }}
+                    <code class="code-word">{{ ev.ev }}</code>
+                    {{ ev.data }}
                   </div>
                 </template>
               </div>
@@ -283,11 +294,16 @@
       </v-dropdown>
       <div class="mt-4 lg:ml-10 lg:mt-0">
         <div class="mb-2">
-          <label for="dropdown-buttons">buttons: </label>
+          <label for="dropdown-buttons">buttons:</label>
           <select
             id="dropdown-buttons"
             v-model="exampleDropdown.buttons"
-            class="rounded border-gray-300 focus:border-gray-400 focus:ring focus:ring-indigo-200 py-1"
+            class="
+              rounded
+              border-gray-300
+              focus:border-gray-400 focus:ring focus:ring-indigo-200
+              py-1
+            "
           >
             <option :value="true">true</option>
             <option :value="false">false</option>

@@ -148,7 +148,6 @@ export default {
       activator,
       popper,
       isOpen,
-      trigger,
       show,
       hide,
       toggle,
