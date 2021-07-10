@@ -177,6 +177,7 @@ export default {
       }
     );
 
+    let a = 0;
 
     let close = function () {
       emit("update:modelValue", false);
