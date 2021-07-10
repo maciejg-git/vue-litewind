@@ -286,7 +286,6 @@ let modal = {
       "shadow-lg",
       "rounded-md",
       "text-gray-900",
-      "mb-6",
     ],
     square: [
       "rounded-none"

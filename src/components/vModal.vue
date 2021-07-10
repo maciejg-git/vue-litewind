@@ -1,9 +1,9 @@
 <template>
-  <transition :name="transition" @after-leave="resetStyles">
+  <transition :name="transition" @after-leave="resetScrollbar">
     <div
       v-if="modelValue"
       :style="{ 'padding-right': scrollbarWidth }"
-      class="block fixed inset-0 w-full h-full z-20 overflow-y-auto"
+      class="fixed inset-0 z-20 overflow-y-auto"
       @click.self="handleBackdropClick"
     >
       <div :class="classes.container.value">
@@ -94,11 +94,13 @@ export default {
 
     let fixedClass = {
       container: [
+        "flex",
         "relative",
         "w-full",
+        "min-h-full",
         "mx-auto",
-        "py-4",
-        "px-4",
+        "py-6",
+        "px-6",
         "md:px-0",
         "pointer-events-none",
       ],
@@ -112,19 +114,19 @@ export default {
       container: computed(() => {
         let position =
           props.position == "top"
-            ? ["my-6"]
+            ? ["items-start"]
             : props.position == "center"
-            ? ["flex", "items-center", "min-h-full"]
-            : "";
+            ? ["items-center"]
+            : ["items-start"];
         let size =
           props.size == "xl"
             ? "md:w-10/12"
             : props.size == "lg"
             ? "md:w-8/12"
-            : props.size == "sm"
-            ? "md:w-4/12"
             : props.size == "md"
             ? "md:w-6/12"
+            : props.size == "sm"
+            ? "md:w-4/12"
             : "md:w-6/12";
         return [...fixedClass.container, ...position, size];
       }),
@@ -155,22 +157,26 @@ export default {
     let getScrollBarWidth = () =>
       window.innerWidth - document.documentElement.clientWidth;
 
-    watch(
-      () => props.modelValue,
-      (newValue) => {
-        if (newValue) {
-          scrollbarWidth.value = getScrollBarWidth();
-          document.body.classList.add("overflow-y-hidden");
-          if (scrollbarWidth.value > 0)
-            document.body.style.paddingRight = scrollbarWidth.value + "px";
-        }
+    let removeScrollbar = () => {
+      scrollbarWidth.value = getScrollBarWidth();
+      if (scrollbarWidth.value > 0) {
+        document.body.classList.add("overflow-y-hidden");
+        document.body.style.paddingRight = scrollbarWidth.value + "px";
       }
-    );
+    };
 
-    let resetStyles = () => {
+    let resetScrollbar = () => {
       document.body.classList.remove("overflow-y-hidden");
       document.body.style.paddingRight = null;
     };
+
+    watch(
+      () => props.modelValue,
+      (v) => {
+        if (v) removeScrollbar()
+      }
+    );
+
 
     let close = function () {
       emit("update:modelValue", false);
@@ -194,7 +200,7 @@ export default {
     return {
       classes,
       scrollbarWidth,
-      resetStyles,
+      resetScrollbar,
       close,
       handleBackdropClick,
       handlePrimaryButtonClick,

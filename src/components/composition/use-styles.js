@@ -14,6 +14,7 @@ export default function useStyles(instance, props, elements) {
       instance.appContext.config.globalProperties.styles[props.theme] ||
       instance.appContext.config.globalProperties.styles.default;
     return styles[props.name];
+    // object style for component
   });
 
   let propsStyles = {};
@@ -22,7 +23,9 @@ export default function useStyles(instance, props, elements) {
   for (let el of elements) {
     let elCapitalize = el.charAt(0).toUpperCase() + el.slice(1);
     propsStyles[el] = computed(() => props["style" + elCapitalize].split(" "));
+    // ["default", "style2"]
     styles[el] = computed(() => getStyles(propsStyles, globalStyles.value, el));
+    // ["class class2", "class class2"]
   }
 
   return {

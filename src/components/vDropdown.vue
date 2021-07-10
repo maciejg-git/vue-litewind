@@ -4,7 +4,6 @@
       <slot name="activator" :toggle="toggle" :show="show" :hide="hide"></slot>
     </div>
     <transition :name="transition">
-      <!-- v-bind="$attrs"  -->
       <div v-show="isOpen" ref="popper" class="absolute">
         <slot name="default" :hide="hide"></slot>
       </div>

@@ -37,7 +37,7 @@ export default function usePopper({
     isOpen.value ? hide() : show();
   };
 
-  watch([placement, offsetX, offsetY], () => {
+  watch([placement, offsetX, offsetY, noFlip], () => {
     if (popper.value) {
       setPopper();
       instance.update();
@@ -61,6 +61,9 @@ export default function usePopper({
           name: "flip",
           enabled: !noFlip.value,
         },
+        {
+          name: "arrow",
+        }
       ],
       placement: placement.value,
     });

@@ -56,11 +56,9 @@ export default {
 <style scoped>
 .no-transtition-leave-active {
   position: absolute;
-  display: none;
 }
 .fade-leave-active {
   position: absolute;
-  display: none;
 }
 .fade-enter-active {
   transition: opacity 0.8s ease;

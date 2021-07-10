@@ -35,7 +35,7 @@ export default {
 <style scoped>
 .spinner-border {
   display: inline-block;
-  border: 0.25em solid;
+  border: 0.15em solid;
   border-right-color: transparent;
   border-radius: 50%;
   animation: 0.75s linear infinite spinner-border;
