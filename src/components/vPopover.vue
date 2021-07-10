@@ -38,7 +38,7 @@ import {
   getCurrentInstance,
 } from "vue";
 import useStyles from "./composition/use-styles";
-import usePopper from "./composition/usePopper.js";
+import usePopper from "./composition/use-popper.js";
 import { removeTailwindClasses } from "../tools/tools.js";
 import { correctPlacement } from "../const.js";
 
