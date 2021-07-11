@@ -1,0 +1,323 @@
+<template>
+  <h3>Progress</h3>
+  <p>Progress component.</p>
+
+  <section>
+    <h4>Reference</h4>
+    <p></p>
+    <v-table
+      :items="reference"
+      :definition="referenceDefinition"
+      style-table="default fixed"
+      style-header-cell="default bordered"
+      style-cell="default bordered"
+    >
+      <template #cell:type="{ value }">
+        <code class="code-word mx-1">
+          {{ value }}
+        </code>
+      </template>
+      <template #cell:default="{ value }">
+        <code class="text-sm">{{ value }}</code>
+      </template>
+      <template #cell:description="{ value }">
+        <span v-html="value"></span>
+      </template>
+    </v-table>
+
+    <h6>Styling props</h6>
+    <p></p>
+    <v-table
+      :items="referenceStyles"
+      :definition="referenceStylesDefinition"
+      style-table="default fixed"
+      style-header-cell="default bordered"
+      style-cell="default bordered"
+    >
+      <template #cell:description="{ value }">
+        <span v-html="value"></span>
+      </template>
+    </v-table>
+
+    <h6>Slots</h6>
+    <p></p>
+    <v-table
+      :items="referenceSlots"
+      :definition="referenceSlotsDefinition"
+      style-table="default fixed"
+      style-header-cell="default bordered"
+      style-cell="default bordered"
+    >
+      <template #cell:description="{ value }">
+        <span v-html="value"></span>
+      </template>
+    </v-table>
+  </section>
+
+  <section>
+    <h4>Example</h4>
+    <div class="example">
+      <v-progress
+        :value="+example.value"
+        :max="+example.max"
+        :label="example.label"
+        :precision="+example.precision"
+        :transition="example.transition"
+      ></v-progress>
+      <v-progress
+        :value="+example.value"
+        :max="+example.max"
+        :label="example.label"
+        :precision="+example.precision"
+        :transition="example.transition"
+        class="mt-4"
+      >
+        <template #label="{ value }">{{ value }}</template>
+      </v-progress>
+      <v-progress
+        :value="+example.value"
+        :max="+example.max"
+        :label="example.label"
+        :precision="+example.precision"
+        :transition="example.transition"
+        style-progress="default tiny"
+        style-progress-bar="default gradient"
+        class="mt-4"
+      ></v-progress>
+      <v-tabs theme="material" class="mt-5">
+        <v-tab name="Props">
+          <div class="mb-2 mt-5">
+            <label for="value">value:</label>
+            <input type="text" id="value" v-model="example.value" />
+          </div>
+          <div class="mb-2">
+            <label for="max">max:</label>
+            <input type="text" id="max" v-model="example.max" />
+          </div>
+          <div class="mb-2">
+            <label for="precision">precision:</label>
+            <input type="text" id="precision" v-model="example.precision" />
+          </div>
+          <div class="mb-2">
+            <label for="label">label:</label>
+            <select id="label" v-model="example.label">
+              <option :value="true">true</option>
+              <option :value="false">false</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label for="transition">transition:</label>
+            <select id="transition" v-model="example.transition">
+              <option :value="true">true</option>
+              <option :value="false">false</option>
+            </select>
+          </div>
+        </v-tab>
+        <v-tab>
+          <template #name>
+            Events
+            <v-badge style-badge="secondary tiny">
+              {{ example.events.length }}
+            </v-badge>
+          </template>
+          <div class="overflow-y-auto max-h-48 mt-5 w-full">
+            <div class="px-2 pb-2">
+              <template v-for="ev in example.events">
+                <div class="py-1">
+                  <code class="code-word">{{ ev.ev }}</code>
+                  {{ ev.data }}
+                </div>
+              </template>
+            </div>
+          </div>
+        </v-tab>
+      </v-tabs>
+    </div>
+    <pre>
+      <code>
+      </code>
+    </pre>
+  </section>
+</template>
+
+<script>
+import { ref, reactive, onMounted } from "vue";
+import hljs from "highlight.js";
+
+export default {
+  setup() {
+    let reference = ref([
+      {
+        prop: "value",
+        type: "Number",
+        default: "undefined",
+        description: "Current progress",
+      },
+      {
+        prop: "max",
+        type: "Number",
+        default: "undefined",
+        description: "Maximum value of progress",
+      },
+      {
+        prop: "label",
+        type: "Boolean",
+        default: "false",
+        description:
+          "Display value on progress bar if true. Label can be customized via label slot",
+      },
+      {
+        prop: "precision",
+        type: "Number",
+        default: "2",
+        description:
+          "Number of digits after dot in progress value, minimum = 0, maximum = 100",
+      },
+      {
+        prop: "transition",
+        type: "String",
+        default: "true",
+        description: "If true changes in value animates smoothly",
+      },
+      {
+        prop: "name",
+        type: "String",
+        default: "progress",
+        description: "Useful for setting alternative styles",
+      },
+      {
+        prop: "theme",
+        type: "String",
+        default: "default",
+        description: "Theme to use",
+      },
+    ]);
+
+    let referenceDefinition = ref([
+      {
+        key: "prop",
+        sortable: true,
+        class: () => "whitespace-nowrap",
+      },
+      {
+        key: "type",
+        sortable: true,
+      },
+      {
+        key: "default",
+        class: () => "whitespace-nowrap",
+      },
+      {
+        key: "description",
+      },
+    ]);
+
+    let referenceStyles = ref([
+      {
+        prop: "style-progress",
+        description: "Main progress element",
+      },
+      {
+        prop: "style-progress-bar",
+        description: "Progress bar element",
+      },
+      {
+        prop: "style-label",
+        description: "Label on progress bar",
+      },
+    ]);
+
+    let referenceStylesDefinition = ref([
+      {
+        key: "prop",
+        class: () => "w-1 whitespace-nowrap",
+      },
+      {
+        key: "description",
+      },
+    ]);
+
+    let referenceEvents = ref([
+      {
+        event: "update:modelValue",
+        description: "Update v-model",
+      },
+    ]);
+
+    let referenceEventsDefinition = ref([
+      {
+        key: "event",
+        class: () => "w-1 whitespace-nowrap",
+      },
+      {
+        key: "description",
+      },
+    ]);
+
+    let referenceSlots = ref([
+      {
+        slot: "default",
+        description: "Slot for custom label",
+      },
+    ]);
+
+    let referenceSlotsDefinition = ref([
+      {
+        key: "slot",
+        class: () => "w-1 whitespace-nowrap",
+      },
+      {
+        key: "description",
+      },
+    ]);
+
+    let referenceComponents = ref([
+      {
+        component: "-",
+        description: "This component does not provide any child components.",
+      },
+    ]);
+
+    let referenceComponentsDefinition = ref([
+      {
+        key: "component",
+        class: () => "w-1 whitespace-nowrap",
+      },
+      {
+        key: "description",
+      },
+    ]);
+
+    let example = reactive({
+      value: 20,
+      max: 100,
+      label: false,
+      precision: 2,
+      transition: true,
+      events: [],
+    });
+
+    onMounted(() => {
+      hljs.highlightAll();
+    });
+
+    return {
+      reference,
+      referenceDefinition,
+      referenceStyles,
+      referenceStylesDefinition,
+      referenceEvents,
+      referenceEventsDefinition,
+      referenceSlots,
+      referenceSlotsDefinition,
+      referenceComponents,
+      referenceComponentsDefinition,
+      example,
+    };
+  },
+};
+</script>
+
+<style scoped>
+@import "./Documentation.css";
+</style>

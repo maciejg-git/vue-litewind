@@ -30,7 +30,6 @@ import { removeTailwindClasses } from "../tools/tools.js";
 
 export default {
   props: {
-    modelValue: Number,
     fill: { type: Boolean, default: false },
     center: { type: Boolean, default: false },
     right: { type: Boolean, default: false },

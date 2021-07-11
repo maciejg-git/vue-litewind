@@ -57,11 +57,15 @@ export default {
       }),
     };
 
+
     let value = computed(() =>
       clamp((props.value / props.max) * 100, 0, props.max)
     );
+
+    let precision = computed(() => clamp(props.precision, 0, 100));
+
     let label = computed(
-      () => props.label && value.value.toFixed(props.precision) + " %"
+      () => props.label && value.value.toFixed(precision.value) + " %"
     );
 
     return {

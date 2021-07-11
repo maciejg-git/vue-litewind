@@ -62,7 +62,7 @@ export default function usePopper({
           enabled: !noFlip.value,
         },
         {
-          name: "arrow",
+          name: "preventOverflow",
         }
       ],
       placement: placement.value,

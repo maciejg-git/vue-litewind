@@ -18,6 +18,7 @@ import vPopover from "./vPopover.vue"
 import vCloseButton from "./vCloseButton.vue"
 import vDivider from "./vDivider.vue"
 import vSpinner from "./vSpinner.vue"
+import vProgress from "./vProgress.vue"
 import tooltip from "../directives/tooltip.js"
 
   function install(app) {
@@ -39,6 +40,7 @@ import tooltip from "../directives/tooltip.js"
     app.component("v-popover", vPopover);
     app.component("v-spinner", vSpinner);
     app.component("v-sidepanel", vSidepanel);
+    app.component("v-progress", vProgress);
     app.component("v-close-button", vCloseButton);
     app.directive("tooltip", tooltip);
   }

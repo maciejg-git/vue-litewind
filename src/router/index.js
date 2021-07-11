@@ -18,6 +18,7 @@ import DocumentationPagination from '../components/Documentation/DocumentationPa
 import DocumentationCard from '../components/Documentation/DocumentationCard.vue'
 import DocumentationButton from '../components/Documentation/DocumentationButton.vue'
 import DocumentationPopover from '../components/Documentation/DocumentationPopover.vue'
+import DocumentationProgress from '../components/Documentation/DocumentationProgress.vue'
 
 import DocumentationTooltip from '../components/Documentation/DocumentationTooltip.vue'
 
@@ -94,6 +95,10 @@ const routes = [
       {
         path: 'popover',
         component: DocumentationPopover,
+      },
+      {
+        path: 'progress',
+        component: DocumentationProgress,
       },
 
       // directives

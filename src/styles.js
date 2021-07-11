@@ -334,7 +334,7 @@ let card = {
       "overflow-hidden",
     ],
     shadow: [
-      "shadow",
+      "shadow-md",
     ],
     square: [
       "rounded-none",
@@ -505,12 +505,12 @@ let popover = {
       "rounded-md", 
       "overflow-hidden",
       "max-w-xs",
-      "shadow",
+      "shadow-lg",
     ]
   },
   content: {
     default: [
-      "p-3",
+      "p-5",
     ]
   }
 }

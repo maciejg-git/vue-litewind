@@ -1,5 +1,5 @@
 <template>
-  <div ref="popover">
+  <div ref="popover" class="inline-block">
     <div
       v-if="slots.activator"
       ref="activator"
@@ -66,7 +66,7 @@ export default {
     stylePopover: { type: String, default: "default" },
     styleContent: { type: String, default: "default" },
   },
-  setup(props, { slots, emit }) {
+  setup(props, { slots }) {
     let elements = ["popover", "content"];
 
     let { styles } = useStyles(getCurrentInstance(), props, elements);

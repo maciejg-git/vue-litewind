@@ -281,7 +281,7 @@
           />
         </template>
         <template #default="{ hide }">
-          <v-card class="p-2">
+          <v-card style-card="default shadow" class="p-2">
             <v-date-picker
               v-model="exampleDropdown.date"
               width="305px"

@@ -57,39 +57,47 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <v-popover
-        :placement="example.placement"
-        :trigger="example.trigger"
-        :delay="+example.delay"
-        :no-header="example.noHeader"
-        :title="example.title"
-        :transition="example.transition"
-        :click-outside-close="example.clickOutsideClose"
-        @update:modelValue="
-          example.events.unshift({ ev: 'update:modelValue', data: $event })
-        "
-      >
-        <template #activator><v-button>Show popover</v-button></template>
-        This is popover.
-      </v-popover>
-      <v-popover
-        :placement="example.placement"
-        :trigger="example.trigger"
-        :delay="+example.delay"
-        :no-header="example.noHeader"
-        :title="example.title"
-        :transition="example.transition"
-        :click-outside-close="example.clickOutsideClose"
-        @update:modelValue="
-          example.events.unshift({ ev: 'update:modelValue', data: $event })
-        "
-      >
-        <template #activator><v-button>Show popover</v-button></template>
-        <label for="">Login</label>
-        <input type="text" />
-        <label for="">Password</label>
-        <input type="text" />
-      </v-popover>
+      <div class="flex">
+        <div class="mx-auto">
+          <div>
+            <v-popover
+              :placement="example.placement"
+              :trigger="example.trigger"
+              :no-header="example.noHeader"
+              :title="example.title"
+              :transition="example.transition"
+              :click-outside-close="example.clickOutsideClose"
+              @update:modelValue="
+                example.events.unshift({ ev: 'update:modelValue', data: $event })
+              "
+            >
+              <template #activator><v-button>Show popover</v-button></template>
+              This is popover.
+            </v-popover>
+          </div>
+          <div class="mt-4">
+            <v-popover
+              :placement="example.placement"
+              :trigger="example.trigger"
+              :no-header="example.noHeader"
+              title="Login"
+              :transition="example.transition"
+              :click-outside-close="example.clickOutsideClose"
+              @update:modelValue="
+                example.events.unshift({ ev: 'update:modelValue', data: $event })
+              "
+            >
+              <template #activator><v-button>Show popover</v-button></template>
+              <div class="grid grid-cols-3 gap-2 my-2">
+                <label for="">Login</label>
+                <input type="text" class="col-span-2" />
+                <label for="">Password</label>
+                <input type="text" class="col-span-2" />
+              </div>
+            </v-popover>
+          </div>
+        </div>
+      </div>
       <v-tabs theme="material" class="mt-5">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
@@ -119,10 +127,6 @@
               <option value="focus">focus</option>
               <option value="hover">hover</option>
             </select>
-          </div>
-          <div class="mb-2">
-            <label for="delay">delay</label>
-            <input type="text" id="delay" v-model="example.delay" />
           </div>
           <div class="mb-2">
             <label for="no-header">no-header:</label>
@@ -173,7 +177,41 @@
       </v-tabs>
     </div>
     <pre>
-      <code>
+      <code class="html">
+&lt;v-popover
+  :placement=&quot;example.placement&quot;
+  :trigger=&quot;example.trigger&quot;
+  :no-header=&quot;example.noHeader&quot;
+  :title=&quot;example.title&quot;
+  :transition=&quot;example.transition&quot;
+  :click-outside-close=&quot;example.clickOutsideClose&quot;
+  @update:modelValue=&quot;
+    example.events.unshift({ ev: 'update:modelValue', data: $event })
+  &quot;
+&gt;
+  &lt;template #activator&gt;&lt;v-button&gt;Show popover&lt;/v-button&gt;&lt;/template&gt;
+  This is popover.
+&lt;/v-popover&gt;
+
+&lt;v-popover
+  :placement=&quot;example.placement&quot;
+  :trigger=&quot;example.trigger&quot;
+  :no-header=&quot;example.noHeader&quot;
+  title=&quot;Login&quot;
+  :transition=&quot;example.transition&quot;
+  :click-outside-close=&quot;example.clickOutsideClose&quot;
+  @update:modelValue=&quot;
+    example.events.unshift({ ev: 'update:modelValue', data: $event })
+  &quot;
+&gt;
+  &lt;template #activator&gt;&lt;v-button&gt;Show popover&lt;/v-button&gt;&lt;/template&gt;
+  &lt;div class=&quot;grid grid-cols-3 gap-2 my-4&quot;&gt;
+    &lt;label for=&quot;&quot;&gt;Login&lt;/label&gt;
+    &lt;input type=&quot;text&quot; class=&quot;col-span-2&quot; /&gt;
+    &lt;label for=&quot;&quot;&gt;Password&lt;/label&gt;
+    &lt;input type=&quot;text&quot; class=&quot;col-span-2&quot; /&gt;
+  &lt;/div&gt;
+&lt;/v-popover&gt;
       </code>
     </pre>
   </section>
@@ -306,9 +344,8 @@ export default {
     ]);
 
     let example = reactive({
-      placement: "auto",
+      placement: "right",
       trigger: "click",
-      delay: 50,
       noHeader: false,
       title: "Popover title",
       transition: "fade",
