@@ -422,7 +422,7 @@ export default {
       {
         slot: "default",
         description:
-          "Slot for dropdown content. <p class='mt-4'>Functions available inside slot: <code>hide()</code></p>",
+          "Slot for dropdown content. <p class='mt-4'>Slot props: <code>hide()</code></p>",
       },
     ]);
 

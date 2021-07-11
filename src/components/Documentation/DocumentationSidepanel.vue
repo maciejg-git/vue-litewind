@@ -1,10 +1,6 @@
 <template>
-  <h3>Card</h3>
-  <p>
-    Card is just an universal component with minimal fixed styling that can be used as container for content. See the examples of  
-    <a href="datepicker#dropdown" class="link">datepicker</a> or 
-    <a href="dropdown#example" class="link">dropdown menu</a> that use card component as container.
-  </p>
+  <h3>Table</h3>
+  <p>Table component</p>
 
   <section>
     <h4>Reference</h4>
@@ -61,71 +57,80 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <v-card width="320px" style-card="default shadow-md">
-        <img :src="randomPhoto()" alt="" />
-        <header class="p-3">
-          <span class="font-semibold">Example card</span>
-        </header>
-        <div class="p-3">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book.
-        </div>
-        <hr />
-        <div class="text-sm px-3 py-2">Card footer</div>
-      </v-card>
-
-      <v-card width="720px" style-card="default shadow-md hoverable" style="height: 320px" class="flex my-10">
-        <img :src="randomPhotoHorizontal()" alt="" />
-        <div class="flex flex-col">
-          <header class="p-4">
-            <span class="font-semibold">Horizontal card</span>
-          </header>
-          <div class="p-4">
+      <div class="flex flex-col items-center">
+        <v-button @click="example.isOpen = !example.isOpen">
+          Toggle sidepanel
+        </v-button>
+        <v-sidepanel
+          v-model="example.isOpen"
+          :closeButton="example.closeButton"
+          :closeButtonLight="example.closeButtonLight"
+          :sidebar-left="example.sidebarLeft"
+          :width="example.width"
+        >
+          <template #header>
+            <span class="text-xl font-bold">Sidepanel</span>
+          </template>
+          <div class="p-5">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text ever
             since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book.
+            scrambled it to make a type specimen book. It has survived not only
+            five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s with
+            the release of Letraset sheets containing Lorem Ipsum passages, and
+            more recently with desktop publishing software like Aldus PageMaker
+            including versions of Lorem Ipsum.
           </div>
-          <hr class="w-10/12 mx-auto">
-          <v-button style-button="default small" class="ml-auto mt-auto m-4">Details</v-button>
-        </div>
-      </v-card>
+        </v-sidepanel>
+      </div>
+      <v-tabs theme="material" class="mt-5">
+        <v-tab name="Props">
+          <div class="mb-2 mt-5">
+            <label for="model" class="font-semibold">v-model:</label>
+            <input type="text" id="model" v-model="example.isOpen" />
+          </div>
+          <div class="mb-2">
+            <label for="close-button">close-button:</label>
+            <select id="close-button" v-model="example.closeButton">
+              <option :value="true">true</option>
+              <option :value="false">false</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label for="sidebar-left">sidebar-left:</label>
+            <select id="sidebar-left" v-model="example.sidebarLeft">
+              <option :value="true">true</option>
+              <option :value="false">false</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label for="width">width:</label>
+            <input type="text" id="width" v-model="example.width" />
+          </div>
+        </v-tab>
+        <v-tab>
+          <template #name>
+            Events
+            <v-badge style-badge="secondary tiny">
+              {{ example.events.length }}
+            </v-badge>
+          </template>
+          <div class="overflow-y-auto max-h-48 mt-5 w-full">
+            <div class="px-2 pb-2">
+              <template v-for="ev in example.events">
+                <div class="py-1">
+                  <code class="code-word">{{ ev.ev }}</code>
+                  {{ ev.data }}
+                </div>
+              </template>
+            </div>
+          </div>
+        </v-tab>
+      </v-tabs>
     </div>
     <pre>
       <code>
-{{`<v-card width="320px" style-card="default shadow-md">
-  <img :src="randomPhoto()" alt="" />
-  <header class="p-3">
-    <span class="font-semibold">Example card</span>
-  </header>
-  <div class="p-3">
-    Lorem Ipsum is simply dummy text of the printing and typesetting
-    industry. Lorem Ipsum has been the industry's standard dummy text ever
-    since the 1500s, when an unknown printer took a galley of type and
-    scrambled it to make a type specimen book.
-  </div>
-  <hr />
-  <div class="text-sm px-3 py-2">Card footer</div>
-</v-card>
-
-<v-card width="720px" style-card="default shadow-md" style="height: 320px" class="flex my-10">
-  <img :src="randomPhotoHorizontal()" alt="" />
-  <div class="flex flex-col">
-    <header class="p-4">
-      <span class="font-semibold">Horizontal card</span>
-    </header>
-    <div class="p-4">
-      Lorem Ipsum is simply dummy text of the printing and typesetting
-      industry. Lorem Ipsum has been the industry's standard dummy text ever
-      since the 1500s, when an unknown printer took a galley of type and
-      scrambled it to make a type specimen book.
-    </div>
-    <hr class="w-10/12 mx-auto">
-    <v-button style-button="default small" class="ml-auto mt-auto m-4">Details</v-button>
-  </div>
-</v-card>`}}
       </code>
     </pre>
   </section>
@@ -139,16 +144,40 @@ export default {
   setup(props) {
     let reference = ref([
       {
+        prop: "v-model",
+        type: "Boolean",
+        default: "false",
+        description: "",
+      },
+      {
+        prop: "close-button",
+        type: "Boolean",
+        default: "true",
+        description: "",
+      },
+      {
+        prop: "sidebar-left",
+        type: "Boolean",
+        default: "false",
+        description: "",
+      },
+      {
         prop: "width",
         type: "String",
-        default: "undefined",
-        description: "Width of the card",
+        default: "320px",
+        description: "",
       },
       {
         prop: "name",
         type: "String",
-        default: "card",
-        description: "Useful for setting alternative styles from style.js",
+        default: "sidepanel",
+        description: "",
+      },
+      {
+        prop: "theme",
+        type: "String",
+        default: "default",
+        description: "",
       },
     ]);
 
@@ -173,8 +202,8 @@ export default {
 
     let referenceStyles = ref([
       {
-        prop: "style-card",
-        description: "Main card element",
+        prop: "style-sidepanel",
+        description: "Main sidepanel element",
       },
     ]);
 
@@ -207,8 +236,12 @@ export default {
 
     let referenceSlots = ref([
       {
+        slot: "header",
+        description: "Slot for header content",
+      },
+      {
         slot: "default",
-        description: "Default slot for card content",
+        description: "Slot for sidepanel content",
       },
     ]);
 
@@ -239,15 +272,13 @@ export default {
       },
     ]);
 
-    let id = [1015, 1016, 1040, 1043, 1067, 155, 158, 179, 184, 191];
-
-    let randomPhoto = () =>
-      `https://picsum.photos/id/${id[(Math.random() * 9).toFixed(0)]}/320/200`;
-
-    let randomPhotoHorizontal = () =>
-      `https://picsum.photos/id/${id[(Math.random() * 9).toFixed(0)]}/320/300`;
-
-    let example = reactive({});
+    let example = reactive({
+      isOpen: false,
+      closeButton: true,
+      sidebarLeft: false,
+      width: "320px",
+      events: [],
+    });
 
     onMounted(() => {
       hljs.highlightAll();
@@ -265,9 +296,6 @@ export default {
       referenceComponents,
       referenceComponentsDefinition,
       example,
-      id,
-      randomPhoto,
-      randomPhotoHorizontal,
     };
   },
 };

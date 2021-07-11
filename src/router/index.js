@@ -19,6 +19,7 @@ import DocumentationCard from '../components/Documentation/DocumentationCard.vue
 import DocumentationButton from '../components/Documentation/DocumentationButton.vue'
 import DocumentationPopover from '../components/Documentation/DocumentationPopover.vue'
 import DocumentationProgress from '../components/Documentation/DocumentationProgress.vue'
+import DocumentationSidepanel from '../components/Documentation/DocumentationSidepanel.vue'
 
 import DocumentationTooltip from '../components/Documentation/DocumentationTooltip.vue'
 
@@ -99,6 +100,10 @@ const routes = [
       {
         path: 'progress',
         component: DocumentationProgress,
+      },
+      {
+        path: 'sidepanel',
+        component: DocumentationSidepanel,
       },
 
       // directives

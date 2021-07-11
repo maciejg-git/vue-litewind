@@ -1,22 +1,21 @@
 <template>
-  <transition :name="left ? 'fade-slide-left' : 'fade-slide-right'">
+  <transition :name="sidebarLeft ? 'fade-slide-left' : 'fade-slide-right'">
     <div
       v-show="isShow"
       :class="classes.sidepanel.value"
-      :style="{ 'min-width': width }"
+      :style="{ 'width': width }"
     >
-      <div v-if="closeButton" class="flex justify-between align-center w-full">
-        <div class="my-3 ml-3">
+      <div class="flex justify-between align-center w-full">
+        <div class="my-3 ml-5">
           <slot name="header"></slot>
         </div>
         <v-close-button
+          v-if="closeButton"
           type="button"
           aria-label="Close"
           class="m-4"
-          :color-light="closeButtonLight"
           @click="handleClose"
-        >
-        </v-close-button>
+        />
       </div>
       <slot name="default" :close="close"></slot>
     </div>
@@ -33,8 +32,7 @@ export default {
   props: {
     modelValue: { type: Boolean, default: false },
     closeButton: { type: Boolean, default: true },
-    closeButtonLight: { type: Boolean, default: false },
-    left:  { type: Boolean, default: false },
+    sidebarLeft: { type: Boolean, default: false },
     width: { type: String, default: "320px" },
     name: { type: String, default: "sidepanel" },
     theme: { type: String, default: "default" },
@@ -57,7 +55,7 @@ export default {
         let c = [
           ...fixedClass.panel,
           ...styles.sidepanel.value,
-          props.left ? "left-0" : "right-0",
+          props.sidebarLeft ? "left-0" : "right-0",
         ];
         return removeTailwindClasses(c);
       }),
@@ -82,7 +80,7 @@ export default {
       emit("update:modelValue", false);
     }
 
-    let handleClose = function() {
+    let handleClose = function () {
       close();
     };
 
@@ -99,26 +97,26 @@ export default {
 
 <style scoped>
 .v-shadow-panel {
-  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.4);
 }
 .fade-slide-right-enter-active,
 .fade-slide-right-leave-active {
-  transition: all 0.3s ease;
+  transition: opacity 0.2s ease, transform 0.3s ease;
 }
 .fade-slide-right-enter-from,
 .fade-slide-right-leave-to {
   opacity: 0;
-  transform: translateX(20px);
+  transform: translateX(200px);
 }
 .fade-slide-left-enter-active,
 .fade-slide-left-leave-active {
-  transition: all 0.3s ease;
+  transition: opacity 0.2s ease, transform 0.3s ease;
 }
 .fade-slide-left-enter-from,
 .fade-slide-left-leave-to {
   opacity: 0;
-  transform: translateX(-20px);
+  transform: translateX(-200px);
 }
 </style>

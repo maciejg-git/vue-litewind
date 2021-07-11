@@ -1,6 +1,6 @@
 <template>
   <h3>Tooltip</h3>
-  <p>Tooltip directive</p>
+  <p>Tooltips are only available as directive and support setting content via attributes, directive value or functions.</p>
 
   <section>
     <h4>Usage</h4>
@@ -194,7 +194,7 @@ export default {
       {
         value: "tooltip content",
         description:
-          "Tooltip content can be a string or a function. Altenatively you can set content using data-tooltip attribute of bound element",
+          "Tooltip content can be a string or a function. Altenatively you can set content using data-tooltip attribute of directive element",
       },
     ]);
 

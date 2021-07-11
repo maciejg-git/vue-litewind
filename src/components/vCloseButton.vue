@@ -18,15 +18,23 @@
 </template>
 
 <script>
-import { computed } from "vue";
+import { computed, getCurrentInstance } from "vue";
+import useStyles from "./composition/use-styles";
+import { removeTailwindClasses } from "../tools/tools.js";
 
 export default {
   props: {
-    color: { type: String, default: "text-gray-600" },
+    name: { type: String, default: "closebutton" },
+    styleCloseButton: { type: String, default: "default" },
   },
   setup(props) {
+    let elements = ["closeButton"]
+
+    let { styles } = useStyles(getCurrentInstance(), props, elements);
+
     let classes = computed(() => {
-      return ["w-6", "h-6", props.color];
+      let c = [...styles.closeButton.value];
+      return removeTailwindClasses(c);
     });
 
     return {

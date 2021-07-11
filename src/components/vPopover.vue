@@ -49,7 +49,7 @@ export default {
       default: "auto",
       validator: function (v) {
         return correctPlacement.includes(v);
-      }
+      },
     },
     trigger: { type: String, default: "click" },
     delay: { type: Number, default: 50 },
@@ -126,6 +126,7 @@ export default {
     });
 
     let clickOutside = function (ev) {
+      if (!props.clickOutsideClose) return;
       if (!(popover.value === ev.target || popover.value.contains(ev.target))) {
         hide();
       }

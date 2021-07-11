@@ -20,24 +20,18 @@ let button = {
       "bg-indigo-500",
       "hover:bg-indigo-600",
       "focus:ring-indigo-200",
-      "border-0",
-      "border-indigo-500",
     ],
     primary: [
       ...fixedButton,
       "bg-indigo-500",
       "hover:bg-indigo-600",
       "focus:ring-indigo-200",
-      "border-0",
-      "border-indigo-500",
     ],
     secondary: [
       ...fixedButton,
       "bg-gray-500",
       "hover:bg-gray-600",
       "focus:ring-gray-200",
-      "border-0",
-      "border-gray-500",
     ],
     yellow: [
       "bg-yellow-500",
@@ -216,6 +210,9 @@ let list = {
     square: [
       "rounded-none"
     ],
+    borderless: [
+      "border-0",
+    ]
   },
   item: {
     default: [
@@ -261,6 +258,19 @@ let progress = {
       "text-xs",
       "text-white",
       "font-semibold",
+    ]
+  }
+}
+
+// CLOSEBUTTON
+
+let closebutton = {
+  closeButton: {
+    default: [
+      "text-gray-600",
+      "opacity-60",
+      "w-6",
+      "h-6",
     ]
   }
 }
@@ -344,6 +354,10 @@ let card = {
     ],
     gray: [
       "bg-gray-100",
+    ],
+    hoverable: [
+      "hover:shadow-lg",
+      "transition-all",
     ]
   },
 }
@@ -643,6 +657,7 @@ export let styles = {
   popover,
   dropdown,
   progress,
+  closebutton,
   sidepanel,
   table,
   modal,

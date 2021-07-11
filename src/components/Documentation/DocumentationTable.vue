@@ -544,7 +544,7 @@ export default {
       {
         slot: "cell:key",
         description:
-          "Slot for cell content. Useful for adding some html formatting, transforming value etc. Key is one of the keys of data record or additional key from definition array",
+        "Slot for cell content. Useful for adding some html formatting, transforming value etc. Key is one of the keys of data record or additional key from definition array<p class='mt-4'>Slot props: <code>value</code>, <code>item</code></p>",
       },
       {
         slot: "caption",

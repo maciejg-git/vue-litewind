@@ -43,21 +43,26 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <v-spinner style-spinner="default blue small"></v-spinner>
-      <v-spinner class="ml-2"></v-spinner>
-      <v-spinner style-spinner="default blue" class="ml-2"></v-spinner>
-      <v-spinner style-spinner="default yellow" class="ml-2"></v-spinner>
-      <v-spinner style-spinner="default green" class="ml-2"></v-spinner>
-      <v-spinner style-spinner="default yellow large" class="ml-2"></v-spinner>
-      <br />
-      <v-button>
-        <v-spinner style-spinner="default gray small" class="mr-2"></v-spinner>
-        Spinner in button
-      </v-button>
-      <v-button style-button="default secondary">
-        <v-spinner style-spinner="default green small" class="mr-2"></v-spinner>
-        Spinner in button
-      </v-button>
+      <div class="flex flex-col items-center">
+        <div>
+          <v-spinner style-spinner="default blue small"></v-spinner>
+          <v-spinner class="ml-2"></v-spinner>
+          <v-spinner style-spinner="default blue" class="ml-2"></v-spinner>
+          <v-spinner style-spinner="default yellow" class="ml-2"></v-spinner>
+          <v-spinner style-spinner="default green" class="ml-2"></v-spinner>
+          <v-spinner style-spinner="default yellow large" class="ml-2"></v-spinner>
+        </div>
+        <div class="mt-4">
+          <v-button>
+            <v-spinner style-spinner="default gray small" class="mr-2"></v-spinner>
+            Spinner in button
+          </v-button>
+          <v-button style-button="default secondary">
+            <v-spinner style-spinner="default green small" class="mr-2"></v-spinner>
+            Spinner in button
+          </v-button>
+        </div>
+      </div>
     </div>
     <pre>
       <code>

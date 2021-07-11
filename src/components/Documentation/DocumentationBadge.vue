@@ -57,16 +57,16 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <v-badge style-badge="default tiny">New</v-badge>
-      <v-badge style-badge="default tiny yellow">New</v-badge>
-      <v-badge style-badge="default small">New</v-badge>
-      <v-badge style-badge="default small green">New</v-badge>
-      <v-badge style-badge="default small yellow">New</v-badge>
-      <v-badge>New</v-badge>
       <v-badge style-badge="secondary">
         New
         <v-badge style-badge="default tiny green">7</v-badge>
       </v-badge>
+      <v-badge>New</v-badge>
+      <v-badge style-badge="default small yellow">New</v-badge>
+      <v-badge style-badge="default small green">New</v-badge>
+      <v-badge style-badge="default small">New</v-badge>
+      <v-badge style-badge="default tiny yellow">New</v-badge>
+      <v-badge style-badge="default tiny">New</v-badge>
     </div>
     <pre>
       <code>
