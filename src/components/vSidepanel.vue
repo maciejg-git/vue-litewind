@@ -13,6 +13,7 @@
           v-if="closeButton"
           type="button"
           aria-label="Close"
+          :style-close-button="styleCloseButton"
           class="m-4"
           @click="handleClose"
         />
@@ -37,12 +38,13 @@ export default {
     name: { type: String, default: "sidepanel" },
     theme: { type: String, default: "default" },
     styleSidepanel: { type: String, default: "default" },
+    styleCloseButton: { type: String, default: "default" },
   },
   components: {
     vCloseButton,
   },
   setup(props, { emit }) {
-    let elements = ["sidepanel"];
+    let elements = ["sidepanel", "closeButton"];
 
     let { styles } = useStyles(getCurrentInstance(), props, elements);
 

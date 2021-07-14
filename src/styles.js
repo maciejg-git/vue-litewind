@@ -262,6 +262,17 @@ let progress = {
   }
 }
 
+// NAVBAR
+
+let navbar = {
+  navbar: {
+    default: [
+      "bg-gray-100",
+      "shadow-md",
+    ]
+  }
+}
+
 // CLOSEBUTTON
 
 let closebutton = {
@@ -377,7 +388,7 @@ let dropdown = {
       ...menuItem,
       "text-black",
       "hover:bg-gray-50",
-      "focus:bg-blue-500",
+      "focus:bg-indigo-500",
       "focus:text-white",
     ],
     green: [
@@ -388,8 +399,8 @@ let dropdown = {
     default: [
       ...menuItem,
       "text-white",
-      "bg-blue-500",
-      "hover:bg-blue-600",
+      "bg-indigo-500",
+      "hover:bg-indigo-600",
     ],
   },
   menuItemDisabled: {
@@ -657,6 +668,7 @@ export let styles = {
   popover,
   dropdown,
   progress,
+  navbar,
   closebutton,
   sidepanel,
   table,

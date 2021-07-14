@@ -54,12 +54,12 @@
         </div>
         <div class="mt-4">
           <v-button>
-            <v-spinner style-spinner="default gray small" class="mr-2"></v-spinner>
-            Spinner in button
+            <v-spinner style-spinner="default gray small"></v-spinner>
+            <span class="ml-2">Button</span>
           </v-button>
           <v-button style-button="default secondary">
-            <v-spinner style-spinner="default green small" class="mr-2"></v-spinner>
-            Spinner in button
+            <v-spinner style-spinner="default green small"></v-spinner>
+            <span class="ml-2">Button</span>
           </v-button>
         </div>
       </div>

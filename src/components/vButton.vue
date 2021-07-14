@@ -24,7 +24,7 @@ export default {
     let { styles } = useStyles(getCurrentInstance(), props, elements);
 
     let fixedClass = {
-      button: ["w-auto", "inline-flex", "justify-center"],
+      button: ["w-auto", "inline-flex", "justify-center", "items-center"],
     };
 
     let classes = {

@@ -93,7 +93,7 @@ export default {
     let tabName = function (tab) {
       return tab.instance.slots.name
         ? tab.instance.slots.name()
-        : tab.instance.ctx.name;
+        : tab.instance.props.name;
     };
 
     let switchTab = function (index) {

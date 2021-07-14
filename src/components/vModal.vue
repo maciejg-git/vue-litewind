@@ -152,6 +152,8 @@ export default {
       }),
     };
 
+    // remove scrollbar and add some padding to avoid shifting modal window
+
     let scrollbarWidth = ref(0);
 
     let getScrollBarWidth = () =>
@@ -187,13 +189,13 @@ export default {
     };
 
     let handlePrimaryButtonClick = function () {
-      emit("input:primaryButtonClick");
       if (props.primaryButtonClose) close();
+      emit("input:primaryButtonClick");
     };
 
     let handleSecondaryButtonClick = function () {
-      emit("input:secondaryButtonClick");
       if (props.secondaryButtonClose) close();
+      emit("input:secondaryButtonClick");
     };
 
     return {

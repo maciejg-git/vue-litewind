@@ -1,6 +1,6 @@
 <template>
-  <h3>Table</h3>
-  <p>Table component</p>
+  <h3>Sidepanel</h3>
+  <p>Sidepanel component</p>
 
   <section>
     <h4>Reference</h4>
@@ -64,7 +64,6 @@
         <v-sidepanel
           v-model="example.isOpen"
           :closeButton="example.closeButton"
-          :closeButtonLight="example.closeButtonLight"
           :sidebar-left="example.sidebarLeft"
           :width="example.width"
         >
@@ -147,37 +146,37 @@ export default {
         prop: "v-model",
         type: "Boolean",
         default: "false",
-        description: "",
+        description: "Controls the state of sidepanel. If true, sidepanel is open",
       },
       {
         prop: "close-button",
         type: "Boolean",
         default: "true",
-        description: "",
+        description: "If true shows a close button in top right corner",
       },
       {
         prop: "sidebar-left",
         type: "Boolean",
         default: "false",
-        description: "",
+        description: "If true displays sidepanel on the left",
       },
       {
         prop: "width",
         type: "String",
         default: "320px",
-        description: "",
+        description: "Width of sidepanel",
       },
       {
         prop: "name",
         type: "String",
         default: "sidepanel",
-        description: "",
+        description: "Useful for setting alternative styles",
       },
       {
         prop: "theme",
         type: "String",
         default: "default",
-        description: "",
+        description: "Theme to use",
       },
     ]);
 

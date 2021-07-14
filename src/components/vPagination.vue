@@ -11,10 +11,11 @@
       href=""
       v-for="(i, index) in pages"
       :key="index"
-      :class="i == '...' ? classes.dots.value : currentPage == i ? classes.pageActive.value : classes.page.value"
+      :class="getPageClass(i)"
       @click.prevent="handleClickPage(i)"
-      >{{ i }}</a
     >
+      {{ i }}
+    </a>
     <a
       href=""
       :class="[classes.next.value, { disabled: currentPage == pages }]"
@@ -47,7 +48,14 @@ export default {
     stylePrev: { type: [String, Array], default: "default" },
   },
   setup(props, { emit }) {
-    let elements = ["paginationBar", "page", "pageActive", "dots", "next", "prev"];
+    let elements = [
+      "paginationBar",
+      "page",
+      "pageActive",
+      "dots",
+      "next",
+      "prev",
+    ];
 
     let { styles } = useStyles(getCurrentInstance(), props, elements);
 
@@ -106,6 +114,12 @@ export default {
       }),
     };
 
+    let getPageClass = (p) => {
+      if (p == "...") return classes.dots.value
+      if (currentPage.value == p) return classes.pageActive.value
+      return classes.page.value;
+    };
+
     let currentPage = ref(1);
 
     watch(
@@ -154,6 +168,7 @@ export default {
 
     return {
       classes,
+      getPageClass,
       currentPage,
       pagesCount,
       pages,

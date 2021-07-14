@@ -61,7 +61,7 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <v-card width="320px" style-card="default shadow-md">
+      <v-card width="320px" style-card="default shadow-md hoverable">
         <img :src="randomPhoto()" alt="" />
         <header class="p-3">
           <span class="font-semibold">Example card</span>
