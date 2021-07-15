@@ -18,15 +18,15 @@
               Installation
             </router-link>
           </li>
-          <li>
-            <router-link
-              to="/documentation/styling"
-              active-class="active"
-              class="transition-all"
-            >
-              Styling
-            </router-link>
-          </li>
+          <!-- <li> -->
+          <!--   <router-link -->
+          <!--     to="/documentation/styling" -->
+          <!--     active-class="active" -->
+          <!--     class="transition-all" -->
+          <!--   > -->
+          <!--     Styling -->
+          <!--   </router-link> -->
+          <!-- </li> -->
         </ul>
 
         <!-- components -->
@@ -48,11 +48,29 @@
           </li>
           <li>
             <router-link
+              to="/documentation/input"
+              active-class="active"
+              class="transition-all"
+            >
+              Input
+            </router-link>
+          </li>
+          <li>
+            <router-link
               to="/documentation/datepicker"
               active-class="active"
               class="transition-all"
             >
               Date Picker
+            </router-link>
+          </li>
+          <li>
+            <router-link
+              to="/documentation/alert"
+              active-class="active"
+              class="transition-all"
+            >
+              Alert
             </router-link>
           </li>
           <li>

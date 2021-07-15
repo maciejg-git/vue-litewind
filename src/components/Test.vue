@@ -132,6 +132,20 @@
       style-progress-bar="default gradient"
     ></v-progress>
 
+    {{ textModel }}
+    <v-input type="text" v-model="textModel"></v-input>
+    <v-input type="password" v-model="textModel"></v-input>
+    <v-input type="password" v-model="textModel" state="valid"></v-input>
+    <v-input type="password" v-model="textModel" state="invalid"></v-input>
+    <v-input type="text" v-model="textModel" placeholder="input text"></v-input>
+
+    <v-button @click="alertShow = true">show alert</v-button>
+    <v-alert v-model="alertShow" :dismissDelay="2000" class="my-2">item</v-alert>
+    <v-alert v-model="alertShow" :dismissDelay="2000" style-alert="default info" class="my-2">item</v-alert>
+    <v-alert v-model="alertShow" :dismissDelay="2000" style-alert="default danger" class="my-2">item</v-alert>
+    <v-alert v-model="alertShow" :dismissDelay="2000" style-alert="default success" class="my-2">item</v-alert>
+    <v-alert v-model="alertShow" :dismissDelay="2000" style-alert="default light" class="my-2">item</v-alert>
+
     {{ tableSelection }}
     <input v-model="filter" type="" class="form-control w-25" />
     <v-card style-card="default shadow">
@@ -566,7 +580,9 @@ import vBadge from "./vBadge.vue";
 import vPopover from "./vPopover.vue";
 import tooltip from "../directives/tooltip.js";
 import vSpinner from "./vSpinner.vue";
+import vAlert from "./vAlert.vue";
 import vInputDate from "./vInputDate.vue";
+import vInput from "./vInput.vue";
 import vProgress from "./vProgress.vue";
 // import {vTable} from "../dist/vuecomponent2.es"
 
@@ -594,6 +610,8 @@ export default {
     vSpinner,
     vInputDate,
     vProgress,
+    vAlert,
+    vInput,
   },
   props: {
     msg: String,
@@ -614,11 +632,13 @@ export default {
     dataTest.forEach((i) => (data.value[i].city = undefined));
     // dataTest2.forEach(i => data.value[i].id = NaN)
     let dropdownplacement = ref("bottom-start");
+    let alertShow = ref(false)
     let dataEmpty = ref([]);
     let busy = ref(false);
     let tableCommand = null;
     let tableSelection = ref([]);
     let progress = ref(10);
+    let textModel = ref("text")
     // data.value = dataEmpty.value;
     let definition = ref([
       {
@@ -711,10 +731,12 @@ export default {
       popoverShow,
       classadd,
       tabname,
+      textModel,
       dropdownplacement,
       buttonPrimary,
       buttonSmall,
       formattedDate,
+      alertShow,
       log,
     };
   },

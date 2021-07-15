@@ -118,7 +118,10 @@ let table = {
     ], 
     fixed: [
       "table-fixed",
-    ]
+    ],
+    // busy: [
+    //   "opacity-50",
+    // ],
   },
   headerRow: {
     default: [
@@ -259,6 +262,76 @@ let progress = {
       "text-white",
       "font-semibold",
     ]
+  }
+}
+
+// INPUT
+
+let input = {
+  input: {
+    default: [
+      "rounded",
+      "border",
+      "bg-white",
+      "border-gray-300",
+      "focus:outline-none",
+      "focus:ring",
+      "focus:ring-indigo-200",
+      "focus:border-gray-400",
+      "outline-none",
+      "py-1",
+      "px-3",
+    ]
+  },
+  helper: {
+    default: [
+      "text-sm",
+      "text-gray-600",
+    ]
+  },
+  valid: {
+    default: [
+      "border-green-300",
+      "focus:ring-green-200",
+    ]
+  },
+  invalid: {
+    default: [
+      "border-red-300",
+      "focus:ring-red-200",
+    ]
+  },
+}
+
+// ALERT
+
+let alert = {
+  alert: {
+    default: [
+      "bg-blue-100",
+      "border",
+      "border-blue-200",
+      "border-l-4",
+      "rounded",
+      "font-semibold",
+      "p-4",
+    ],
+    info: [
+      "bg-yellow-100",
+      "border-yellow-200",
+    ],
+    danger: [
+      "bg-red-100",
+      "border-red-200",
+    ],
+    success: [
+      "bg-green-100",
+      "border-green-200",
+    ],
+    light: [
+      "bg-gray-100",
+      "border-gray-200",
+    ],
   }
 }
 
@@ -664,10 +737,12 @@ let pagination = {
 export let styles = {
   button,
   list,
+  input,
   spinner,
   popover,
   dropdown,
   progress,
+  alert,
   navbar,
   closebutton,
   sidepanel,

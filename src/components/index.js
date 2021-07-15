@@ -20,6 +20,8 @@ import vDivider from "./vDivider.vue"
 import vSpinner from "./vSpinner.vue"
 import vProgress from "./vProgress.vue"
 import vNavbar from "./vNavbar.vue"
+import vAlert from "./vAlert.vue"
+import vInput from "./vInput.vue"
 import tooltip from "../directives/tooltip.js"
 
   function install(app) {
@@ -43,6 +45,8 @@ import tooltip from "../directives/tooltip.js"
     app.component("v-sidepanel", vSidepanel);
     app.component("v-progress", vProgress);
     app.component("v-navbar", vNavbar);
+    app.component("v-alert", vAlert);
+    app.component("v-input", vInput);
     app.component("v-close-button", vCloseButton);
     app.directive("tooltip", tooltip);
   }

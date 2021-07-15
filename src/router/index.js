@@ -20,6 +20,8 @@ import DocumentationButton from '../components/Documentation/DocumentationButton
 import DocumentationPopover from '../components/Documentation/DocumentationPopover.vue'
 import DocumentationProgress from '../components/Documentation/DocumentationProgress.vue'
 import DocumentationSidepanel from '../components/Documentation/DocumentationSidepanel.vue'
+import DocumentationAlert from '../components/Documentation/DocumentationAlert.vue'
+import DocumentationInput from '../components/Documentation/DocumentationInput.vue'
 
 import DocumentationTooltip from '../components/Documentation/DocumentationTooltip.vue'
 
@@ -104,6 +106,14 @@ const routes = [
       {
         path: 'sidepanel',
         component: DocumentationSidepanel,
+      },
+      {
+        path: 'alert',
+        component: DocumentationAlert,
+      },
+      {
+        path: 'input',
+        component: DocumentationInput,
       },
 
       // directives

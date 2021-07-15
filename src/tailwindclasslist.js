@@ -2835,9 +2835,20 @@ export let tailwindClassList = {
   "ring-offset-pink-800": "ring-offset-color",
   "ring-offset-pink-900": "ring-offset-color",
 
-  "truncate": "text-overflow", 
-  "overflow-ellipsis": "text-overflow", 
-  "overflow-clip": "text-overflow", 
+  truncate: "text-overflow",
+  "overflow-ellipsis": "text-overflow",
+  "overflow-clip": "text-overflow",
+
+  "divide-x-0": "divide-x",
+  "divide-x-2": "divide-x",
+  "divide-x-4": "divide-x",
+  "divide-x-8": "divide-x",
+  "divide-x": "divide-x",
+  "divide-y-0": "divide-y",
+  "divide-y-2": "divide-y",
+  "divide-y-4": "divide-y",
+  "divide-y-8": "divide-y",
+  "divide-y": "divide-y",
 };
 
 // top right
@@ -2853,14 +2864,17 @@ export let tailwindClassList = {
 // ring offset width
 // ring offset color
 // text overflow
+// divide width
 
 // divide color
 
 // space between
-// font smoothing
 // placeholder color
-// word break
 // gradient color stops
-// divide width
 
 // transition property
+
+// not needed
+
+// font smoothing
+// word break
