@@ -1,6 +1,6 @@
 <template>
   <h3>Spinner</h3>
-  <p>Spinner component</p>
+  <p></p>
 
   <section>
     <h4>Reference</h4>

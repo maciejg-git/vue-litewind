@@ -1,6 +1,6 @@
 <template>
   <h3>Progress</h3>
-  <p>Progress component.</p>
+  <p></p>
 
   <section>
     <h4>Reference</h4>

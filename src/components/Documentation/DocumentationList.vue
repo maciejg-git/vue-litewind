@@ -1,6 +1,6 @@
 <template>
   <h3>List</h3>
-  <p>List component</p>
+  <p></p>
 
   <section>
     <h4>Reference</h4>

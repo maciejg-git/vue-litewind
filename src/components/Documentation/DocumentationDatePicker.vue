@@ -1,10 +1,6 @@
 <template>
   <h3>Date Picker</h3>
-  <p>
-    Data picker component uses v-model to get or set dates, allows single and
-    range selection modes, supports localization and customization. Can be used
-    as standalone component or in dropdown or popover.
-  </p>
+  <p></p>
 
   <section>
     <h5>Reference</h5>

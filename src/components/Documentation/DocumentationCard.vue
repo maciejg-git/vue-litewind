@@ -1,10 +1,6 @@
 <template>
   <h3>Card</h3>
-  <p>
-    Card is just an universal component with minimal fixed styling that can be used as container for content. See the examples of  
-    <a href="datepicker#dropdown" class="link">datepicker</a> or 
-    <a href="dropdown#example" class="link">dropdown menu</a> that use card component as container.
-  </p>
+  <p></p>
 
   <section>
     <h4>Reference</h4>

@@ -1,6 +1,6 @@
 <template>
   <h3>Badge</h3>
-  <p>Badge component</p>
+  <p></p>
 
   <section>
     <h4>Reference</h4>

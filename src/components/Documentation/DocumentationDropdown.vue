@@ -1,10 +1,6 @@
 <template>
   <h3>Dropdown</h3>
-  <p>
-    Dropdown component can be used to create overlay menus but is not limited to
-    them as any content can be placed inside for example short forms, text,
-    datepickers etc.
-  </p>
+  <p></p>
 
   <section>
     <h4>Reference</h4>

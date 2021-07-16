@@ -1,8 +1,6 @@
 <template>
   <h3>Modal</h3>
-  <p>
-    Modal component for dialogs and other content. By default it offers customizable header and two buttons that should be enough for most use cases. Optional footer slot can be used to provide customized buttons.
-  </p>
+  <p></p>
 
   <section>
     <h4>Reference</h4>

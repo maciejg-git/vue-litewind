@@ -1,6 +1,6 @@
 <template>
   <h3>Tooltip</h3>
-  <p>Tooltips are only available as directive and support setting content via attributes, directive value or functions.</p>
+  <p></p>
 
   <section>
     <h4>Usage</h4>

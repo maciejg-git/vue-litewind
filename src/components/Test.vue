@@ -138,6 +138,14 @@
     <v-input type="password" v-model="textModel" state="valid"></v-input>
     <v-input type="password" v-model="textModel" state="invalid"></v-input>
     <v-input type="text" v-model="textModel" placeholder="input text"></v-input>
+    <v-input type="password" v-model="textModel">
+      <template #helper>input name</template>
+      <template #invalid>wrong name</template>
+    </v-input>
+    <v-input type="password" v-model="textModel" state="invalid">
+      <template #helper>input name</template>
+      <template #invalid>wrong name</template>
+    </v-input>
 
     <v-button @click="alertShow = true">show alert</v-button>
     <v-alert v-model="alertShow" :dismissDelay="2000" class="my-2">item</v-alert>

@@ -1,6 +1,6 @@
 <template>
   <h3>Sidepanel</h3>
-  <p>Sidepanel component</p>
+  <p></p>
 
   <section>
     <h4>Reference</h4>

@@ -1,6 +1,6 @@
 <template>
   <h3>Popover</h3>
-  <p>Popover component is somewhere between dropdowns and tooltips.</p>
+  <p></p>
 
   <section>
     <h4>Reference</h4>

@@ -1,6 +1,6 @@
 <template>
   <h3>Button</h3>
-  <p>Button component.</p>
+  <p></p>
 
   <section>
     <h4>Reference</h4>

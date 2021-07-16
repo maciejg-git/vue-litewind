@@ -1,8 +1,6 @@
 <template>
   <h3>Table</h3>
-  <p>
-    This component displays array of objects in form of a table and supports functions like sorting, filtering, row selection, customizing cell content etc.
-  </p>
+  <p></p>
 
   <section>
     <h4>Reference</h4>

@@ -265,6 +265,33 @@ let progress = {
   }
 }
 
+// SELECT
+
+let select = {
+  select: {
+    default: [
+      "rounded",
+      "border",
+      "bg-white",
+      "border-gray-300",
+      "focus:outline-none",
+      "focus:ring",
+      "focus:ring-indigo-200",
+      "focus:border-gray-400",
+      "outline-none",
+      "py-1",
+      "px-3",
+    ]
+  },
+  textHelper: {
+    default: [
+      "text-sm",
+      "text-gray-600",
+      "mt-1",
+    ]
+  },
+}
+
 // INPUT
 
 let input = {
@@ -283,10 +310,18 @@ let input = {
       "px-3",
     ]
   },
-  helper: {
+  textHelper: {
     default: [
       "text-sm",
       "text-gray-600",
+      "mt-1",
+    ]
+  },
+  textInvalid: {
+    default: [
+      "text-sm",
+      "text-red-600",
+      "mt-1",
     ]
   },
   valid: {
@@ -737,6 +772,7 @@ let pagination = {
 export let styles = {
   button,
   list,
+  select,
   input,
   spinner,
   popover,

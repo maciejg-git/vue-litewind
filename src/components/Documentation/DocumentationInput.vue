@@ -75,7 +75,10 @@
         v-model="example.model"
         :type="example.type"
         :state="example.state"
-      ></v-input>
+      >
+      <template #invalid>Input invalid.</template>
+      <template #helper>Input helper text.</template>
+      </v-input>
       <v-tabs theme="material" class="mt-5">
         <v-tab name="Props">
           <div class="mb-2 mt-5">

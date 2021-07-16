@@ -1,6 +1,6 @@
 <template>
-  <h3>Table</h3>
-  <p>Table component</p>
+  <h3>Alert</h3>
+  <p></p>
 
   <section>
     <h4>Reference</h4>
