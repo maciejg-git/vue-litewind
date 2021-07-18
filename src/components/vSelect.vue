@@ -1,10 +1,9 @@
 <template>
   <select
     v-bind="$attrs"
-    :type="type"
     :value="modelValue"
     @input="emit('update:modelValue', $event.target.value)"
-    :class="classes.input.value"
+    :class="classes.select.value"
   >
     <option v-for="o in options" :value="o.value">
       {{ o.label }}
@@ -31,13 +30,13 @@ export default {
     styleTextHelper: { type: [String, Array], default: "default" },
   },
   setup(props, { emit }) {
-    let elements = ["input", "valid", "invalid", "textHelper", "textInvalid"];
+    let elements = ["select", "textHelper"];
 
     let { styles } = useStyles(getCurrentInstance(), props, elements);
 
     let classes = {
-      input: computed(() => {
-        let c = [...styles.input.value];
+      select: computed(() => {
+        let c = [...styles.select.value];
         return removeTailwindClasses(c);
       }),
       textHelper: computed(() => {
@@ -45,6 +44,7 @@ export default {
         return removeTailwindClasses(c);
       }),
     };
+    console.log(props.options)
 
     return {
       classes,

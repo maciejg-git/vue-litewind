@@ -280,7 +280,6 @@ let select = {
       "focus:border-gray-400",
       "outline-none",
       "py-1",
-      "px-3",
     ]
   },
   textHelper: {

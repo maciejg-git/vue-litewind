@@ -22,6 +22,7 @@ import DocumentationProgress from '../components/Documentation/DocumentationProg
 import DocumentationSidepanel from '../components/Documentation/DocumentationSidepanel.vue'
 import DocumentationAlert from '../components/Documentation/DocumentationAlert.vue'
 import DocumentationInput from '../components/Documentation/DocumentationInput.vue'
+import DocumentationSelect from '../components/Documentation/DocumentationSelect.vue'
 
 import DocumentationTooltip from '../components/Documentation/DocumentationTooltip.vue'
 
@@ -114,6 +115,10 @@ const routes = [
       {
         path: 'input',
         component: DocumentationInput,
+      },
+      {
+        path: 'select',
+        component: DocumentationSelect,
       },
 
       // directives

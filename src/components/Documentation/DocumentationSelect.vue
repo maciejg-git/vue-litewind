@@ -1,6 +1,6 @@
 <template>
-  <h3>Table</h3>
-  <p>Table component</p>
+  <h3>Select</h3>
+  <p></p>
 
   <section>
     <h4>Reference</h4>
@@ -71,14 +71,14 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <v-input
+      <v-select
         v-model="example.model"
         :type="example.type"
         :state="example.state"
+        :options="example.options"
       >
-      <template #invalid>Input invalid.</template>
-      <template #helper>Input helper text.</template>
-      </v-input>
+      <template #helper>Select helper text.</template>
+      </v-select>
       <v-tabs theme="material" class="mt-5">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
@@ -142,15 +142,9 @@ export default {
         description: "",
       },
       {
-        prop: "type",
-        type: "String",
+        prop: "options",
+        type: "Array",
         default: "text",
-        description: "",
-      },
-      {
-        prop: "state",
-        type: "String",
-        default: "empty string",
         description: "",
       },
       {
@@ -188,7 +182,7 @@ export default {
 
     let referenceStyles = ref([
       {
-        prop: "style-input",
+        prop: "style-select",
         description: "Main input element",
       },
     ]);
@@ -256,8 +250,20 @@ export default {
 
     let example = reactive({
       model: "",
-      type: "text",
-      state: "",
+      options: [
+        {
+          value: "option",
+          label: "option",
+        },
+        {
+          value: "option 2",
+          label: "option 2",
+        },
+        {
+          value: "option 3",
+          label: "option 3",
+        },
+      ],
       events: [],
     });
 

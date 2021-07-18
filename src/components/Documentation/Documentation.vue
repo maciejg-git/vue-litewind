@@ -57,6 +57,15 @@
           </li>
           <li>
             <router-link
+              to="/documentation/select"
+              active-class="active"
+              class="transition-all"
+            >
+              Select
+            </router-link>
+          </li>
+          <li>
+            <router-link
               to="/documentation/datepicker"
               active-class="active"
               class="transition-all"

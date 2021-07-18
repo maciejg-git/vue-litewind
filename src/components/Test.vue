@@ -147,6 +147,11 @@
       <template #invalid>wrong name</template>
     </v-input>
 
+    {{ selectModel }}
+    <v-select v-model="selectModel" :options="selectOptions">
+      <template #helper>select name</template>
+    </v-select>
+
     <v-button @click="alertShow = true">show alert</v-button>
     <v-alert v-model="alertShow" :dismissDelay="2000" class="my-2">item</v-alert>
     <v-alert v-model="alertShow" :dismissDelay="2000" style-alert="default info" class="my-2">item</v-alert>
@@ -591,6 +596,7 @@ import vSpinner from "./vSpinner.vue";
 import vAlert from "./vAlert.vue";
 import vInputDate from "./vInputDate.vue";
 import vInput from "./vInput.vue";
+import vSelect from "./vSelect.vue";
 import vProgress from "./vProgress.vue";
 // import {vTable} from "../dist/vuecomponent2.es"
 
@@ -620,6 +626,7 @@ export default {
     vProgress,
     vAlert,
     vInput,
+    vSelect,
   },
   props: {
     msg: String,
@@ -647,6 +654,21 @@ export default {
     let tableSelection = ref([]);
     let progress = ref(10);
     let textModel = ref("text")
+    let selectModel = ref("option")
+    let selectOptions = ref([
+    {
+      value: "option",
+      label: "option",
+    },
+    {
+      value: "option2",
+      label: "option2",
+    },
+    {
+      value: "option3",
+      label: "option4",
+    },
+    ])
     // data.value = dataEmpty.value;
     let definition = ref([
       {
@@ -740,6 +762,8 @@ export default {
       classadd,
       tabname,
       textModel,
+      selectModel,
+      selectOptions,
       dropdownplacement,
       buttonPrimary,
       buttonSmall,
