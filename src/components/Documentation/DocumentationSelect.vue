@@ -71,14 +71,29 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <v-select
-        v-model="example.model"
-        :type="example.type"
-        :state="example.state"
-        :options="example.options"
-      >
-      <template #helper>Select helper text.</template>
-      </v-select>
+      <div>
+        <v-select
+          v-model="example.model"
+          :type="example.type"
+          :state="example.state"
+          :options="example.options"
+          class="w-40"
+        >
+        <template #helper>Select helper text.</template>
+        </v-select>
+      </div>
+      <div class="mt-4">
+        <v-select
+          v-model="example.modelMultiple"
+          :type="example.type"
+          :state="example.state"
+          :options="example.options"
+          :multiple="true"
+          class="w-40"
+        >
+        <template #helper>Multiple select helper text.</template>
+        </v-select>
+      </div>
       <v-tabs theme="material" class="mt-5">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
@@ -86,19 +101,8 @@
             <input type="text" id="model" v-model="example.model" />
           </div>
           <div class="mb-2">
-            <label for="type">type:</label>
-            <select id="type" v-model="example.type">
-              <option value="text">text</option>
-              <option value="password">password</option>
-            </select>
-          </div>
-          <div class="mb-2">
-            <label for="state">state:</label>
-            <select id="state" v-model="example.state">
-              <option value="">normal (empty string)</option>
-              <option value="valid">valid</option>
-              <option value="invalid">invalid</option>
-            </select>
+            <label for="model" class="font-semibold">v-model:</label>
+            <input type="text" id="model" v-model="example.modelMultiple" />
           </div>
         </v-tab>
         <v-tab>
@@ -139,13 +143,13 @@ export default {
         prop: "v-model",
         type: "String",
         default: "undefined",
-        description: "",
+        description: "select v-model",
       },
       {
         prop: "options",
         type: "Array",
         default: "text",
-        description: "",
+        description: "Array of options in select element. Each option is <code>Object</code> with <code>value</code> and <code>label</code> properties",
       },
       {
         prop: "name",
@@ -250,6 +254,7 @@ export default {
 
     let example = reactive({
       model: "",
+      modelMultiple: [],
       options: [
         {
           value: "option",

@@ -1,9 +1,8 @@
 <template>
   <input
     v-bind="$attrs"
+    v-model="modelValue"
     :type="type"
-    :value="modelValue"
-    @input="emit('update:modelValue', $event.target.value)"
     :class="classes.input.value"
   />
   <div v-if="state == 'invalid'" :class="classes.textInvalid.value">

@@ -1,6 +1,6 @@
 <template>
-  <h3>Table</h3>
-  <p>Table component</p>
+  <h3>Input</h3>
+  <p></p>
 
   <section>
     <h4>Reference</h4>
@@ -139,19 +139,19 @@ export default {
         prop: "v-model",
         type: "String",
         default: "undefined",
-        description: "",
+        description: "input v-model",
       },
       {
         prop: "type",
         type: "String",
         default: "text",
-        description: "",
+        description: "Type of input element eg. text, password",
       },
       {
         prop: "state",
         type: "String",
         default: "empty string",
-        description: "",
+        description: "State of input. Valid values are 'valid', 'invalid' or 'empty string' for default state",
       },
       {
         prop: "name",
@@ -163,7 +163,7 @@ export default {
         prop: "theme",
         type: "String",
         default: "default",
-        description: "",
+        description: "Theme to use",
       },
     ]);
 
@@ -190,6 +190,14 @@ export default {
       {
         prop: "style-input",
         description: "Main input element",
+      },
+      {
+        prop: "style-text-invalid",
+        description: "Text below input element if state is invalid",
+      },
+      {
+        prop: "style-text-helper",
+        description: "Helper text below input element",
       },
     ]);
 
@@ -223,7 +231,11 @@ export default {
     let referenceSlots = ref([
       {
         slot: "helper",
-        description: "This component does not provide any slots.",
+        description: "Slot for helper text displayed below input element",
+      },
+      {
+        slot: "invalid",
+        description: "Slot for message if state is 'invalid'",
       },
     ]);
 

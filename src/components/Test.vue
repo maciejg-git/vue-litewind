@@ -146,6 +146,7 @@
       <template #helper>input name</template>
       <template #invalid>wrong name</template>
     </v-input>
+    <input type="range">
 
     {{ selectModel }}
     <v-select v-model="selectModel" :options="selectOptions">

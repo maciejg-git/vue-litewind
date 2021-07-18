@@ -37,178 +37,13 @@
           </router-link>
         </h6>
         <ul class="list-unstyled ml-2">
-          <li>
+          <li v-for="(c, i) in components" :key="i">
             <router-link
-              to="/documentation/table"
+              :to="'/documentation/' + c.name"
               active-class="active"
               class="transition-all"
             >
-              Table
-            </router-link>
-          </li>
-          <li>
-            <router-link
-              to="/documentation/input"
-              active-class="active"
-              class="transition-all"
-            >
-              Input
-            </router-link>
-          </li>
-          <li>
-            <router-link
-              to="/documentation/select"
-              active-class="active"
-              class="transition-all"
-            >
-              Select
-            </router-link>
-          </li>
-          <li>
-            <router-link
-              to="/documentation/datepicker"
-              active-class="active"
-              class="transition-all"
-            >
-              Date Picker
-            </router-link>
-          </li>
-          <li>
-            <router-link
-              to="/documentation/alert"
-              active-class="active"
-              class="transition-all"
-            >
-              Alert
-            </router-link>
-          </li>
-          <li>
-            <router-link
-              to="/documentation/button"
-              active-class="active"
-              class="transition-all"
-            >
-              Button
-            </router-link>
-          </li>
-          <li>
-            <router-link
-              to="/documentation/pagination"
-              active-class="active"
-              class="transition-all"
-            >
-              Pagination
-            </router-link>
-          </li>
-          <li>
-            <router-link
-              to="/documentation/badge"
-              active-class="active"
-              class="transition-all"
-            >
-              Badge
-            </router-link>
-          </li>
-          <li>
-            <router-link
-              to="/documentation/list"
-              active-class="active"
-              class="transition-all"
-            >
-              List
-            </router-link>
-          </li>
-          <li>
-            <router-link
-              to="/documentation/modal"
-              active-class="active"
-              class="transition-all"
-            >
-              Modal
-            </router-link>
-          </li>
-          <li>
-            <router-link
-              to="/documentation/tabs"
-              active-class="active"
-              class="transition-all"
-            >
-              Tabs
-            </router-link>
-          </li>
-          <li>
-            <router-link
-              to="/documentation/dropdown"
-              active-class="active"
-              class="transition-all"
-            >
-              Dropdown
-            </router-link>
-          </li>
-          <li>
-            <router-link
-              to="/documentation/card"
-              active-class="active"
-              class="transition-all"
-            >
-              Card
-            </router-link>
-          </li>
-          <li>
-            <router-link
-              to="/documentation/collapse"
-              active-class="active"
-              class="transition-all"
-            >
-              Collapse
-            </router-link>
-          </li>
-          <li>
-            <router-link
-              to="/documentation/spinner"
-              active-class="active"
-              class="transition-all"
-            >
-              Spinner
-            </router-link>
-          </li>
-          <li>
-            <router-link
-              to="/documentation/progress"
-              active-class="active"
-              class="transition-all"
-            >
-              Progress
-            </router-link>
-          </li>
-          <li>
-            <router-link
-              to="/documentation/sidepanel"
-              active-class="active"
-              class="transition-all"
-            >
-              Sidepanel
-            </router-link>
-          </li>
-          <li>
-            <router-link
-              to="/documentation/closebutton"
-              active-class="active"
-              class="transition-all"
-            >
-              Close button
-            </router-link>
-          </li>
-          <!-- <li> -->
-          <!--   <router-link to="/documentation/navbar" class="transition-all">Navbar</router-link> -->
-          <!-- </li> -->
-          <li>
-            <router-link
-              to="/documentation/popover"
-              active-class="active"
-              class="transition-all"
-            >
-              Popover
+            {{ c.label }}
             </router-link>
           </li>
         </ul>
@@ -237,8 +72,15 @@
 
 <script>
 import "highlight.js/styles/default.css";
+import { components } from "./Components"
 
-export default {};
+export default {
+  setup() {
+    return {
+      components
+    }
+  }
+};
 </script>
 
 <style scoped>

@@ -1,66 +1,78 @@
 export let components = [
   {
-    title: "Table",
-    name: "table",
+    label: "Alert",
+    name: "alert",
   },
   {
-    title: "Date Picker",
-    name: "date picker",
-  },
-  {
-    title: "Button",
+    label: "Button",
     name: "button",
   },
   {
-    title: "Pagination",
-    name: "pagination",
+    label: "Input",
+    name: "input",
   },
   {
-    title: "Badge",
+    label: "Select",
+    name: "select",
+  },
+  {
+    label: "Date Picker",
+    name: "datepicker",
+  },
+  {
+    label: "Badge",
     name: "badge",
   },
   {
-    title: "List",
-    name: "list",
-  },
-  {
-    title: "Modal",
-    name: "modal",
-  },
-  {
-    title: "Tabs",
-    name: "tabs",
-  },
-  {
-    title: "Dropdown",
-    name: "dropdown",
-  },
-  {
-    title: "Card",
+    label: "Card",
     name: "card",
   },
   {
-    title: "Collapse",
+    label: "List",
+    name: "list",
+  },
+  {
+    label: "Modal",
+    name: "modal",
+  },
+  {
+    label: "Tabs",
+    name: "tabs",
+  },
+  {
+    label: "Pagination",
+    name: "pagination",
+  },
+  {
+    label: "Dropdown",
+    name: "dropdown",
+  },
+  {
+    label: "Collapse",
     name: "collapse",
   },
   {
-    title: "Spinner",
+    label: "Spinner",
     name: "spinner",
   },
   {
-    title: "Progress",
+    label: "Progress",
     name: "progress",
   },
   {
-    title: "Sidepanel",
+    label: "Sidepanel",
     name: "sidepanel",
   },
   {
-    title: "Close button",
+    label: "Close button",
     name: "close button",
   },
   {
-    title: "Popover",
+    label: "Popover",
     name: "popover",
+  },
+  {
+    label: "Table",
+    name: "table",
   },
 ]

@@ -121,13 +121,13 @@ export default {
         prop: "v-model",
         type: "Boolean",
         default: "false",
-        description: "",
+        description: "If true alert is displayed",
       },
       {
         prop: "dismiss-delay",
         type: "Number",
         default: "0",
-        description: "",
+        description: "Delay after which alert is closed (<code class='code-word'>update:modelValue</code> is emited with <code>false</code> value)",
       },
       {
         prop: "name",

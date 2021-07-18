@@ -1,11 +1,10 @@
 <template>
   <select
     v-bind="$attrs"
-    :value="modelValue"
-    @input="emit('update:modelValue', $event.target.value)"
+    v-model="modelValue"
     :class="classes.select.value"
   >
-    <option v-for="o in options" :value="o.value">
+    <option v-for="(o, i) in options" :key="i" :value="o.value">
       {{ o.label }}
     </option>
     <slot name="default"></slot>
@@ -16,13 +15,13 @@
 </template>
 
 <script>
-import { ref, computed, getCurrentInstance } from "vue";
+import { computed, getCurrentInstance } from "vue";
 import useStyles from "./composition/use-styles";
 import { removeTailwindClasses } from "../tools/tools.js";
 
 export default {
   props: {
-    modelValue: { type: String, default: undefined },
+    modelValue: { type: [String, Array], default: undefined },
     options: { type: Array, default: undefined },
     name: { type: String, default: "select" },
     theme: { type: String, default: "default" },
@@ -44,7 +43,6 @@ export default {
         return removeTailwindClasses(c);
       }),
     };
-    console.log(props.options)
 
     return {
       classes,
