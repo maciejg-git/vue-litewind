@@ -101,7 +101,7 @@
             <input type="text" id="model" v-model="example.model" />
           </div>
           <div class="mb-2">
-            <label for="model" class="font-semibold">v-model:</label>
+            <label for="model" class="font-semibold">v-model (multiple):</label>
             <input type="text" id="model" v-model="example.modelMultiple" />
           </div>
         </v-tab>

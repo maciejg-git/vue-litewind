@@ -148,8 +148,9 @@
     </v-input>
     <input type="range">
 
+    <v-button @click="selectModel = []">reset select</v-button>
     {{ selectModel }}
-    <v-select v-model="selectModel" :options="selectOptions">
+    <v-select v-model="selectModel" :options="selectOptions" multiple>
       <template #helper>select name</template>
     </v-select>
 
@@ -664,10 +665,12 @@ export default {
     {
       value: "option2",
       label: "option2",
+      disabled: true,
     },
     {
       value: "option3",
       label: "option4",
+      disabled: null,
     },
     ])
     // data.value = dataEmpty.value;

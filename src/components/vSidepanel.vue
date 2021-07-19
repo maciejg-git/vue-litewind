@@ -99,9 +99,9 @@ export default {
 
 <style scoped>
 .v-shadow-panel {
-  -webkit-box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.4);
-  -moz-box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.4);
-  box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.35);
+  box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.35);
 }
 .fade-slide-right-enter-active,
 .fade-slide-right-leave-active {

@@ -1,7 +1,7 @@
 <template>
   <input
     v-bind="$attrs"
-    v-model="modelValue"
+    v-model="localModel"
     :type="type"
     :class="classes.input.value"
   />
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { ref, computed, getCurrentInstance } from "vue";
+import { ref, computed, watch, getCurrentInstance } from "vue";
 import useStyles from "./composition/use-styles";
 import { removeTailwindClasses } from "../tools/tools.js";
 
@@ -58,9 +58,18 @@ export default {
       }),
     };
 
+    let localModel = computed({
+      get() {
+        return props.modelValue;
+      },
+      set(value) {
+        emit("update:modelValue", value);
+      },
+    }); 
+
     return {
       classes,
-      emit,
+      localModel
     };
   },
 };

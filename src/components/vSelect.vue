@@ -1,10 +1,11 @@
 <template>
-  <select
-    v-bind="$attrs"
-    v-model="modelValue"
-    :class="classes.select.value"
-  >
-    <option v-for="(o, i) in options" :key="i" :value="o.value">
+  <select v-bind="$attrs" v-model="localModel" :class="classes.select.value">
+    <option
+      v-for="(o, i) in options"
+      :key="i"
+      :value="o.value"
+      :disabled="isOptionDisabled(o)"
+    >
       {{ o.label }}
     </option>
     <slot name="default"></slot>
@@ -15,7 +16,7 @@
 </template>
 
 <script>
-import { computed, getCurrentInstance } from "vue";
+import { ref, computed, watch, getCurrentInstance } from "vue";
 import useStyles from "./composition/use-styles";
 import { removeTailwindClasses } from "../tools/tools.js";
 
@@ -44,9 +45,23 @@ export default {
       }),
     };
 
+    let isOptionDisabled = (o) => {
+      return o.disabled == undefined || o.disabled == null ? false : o.disabled;
+    };
+
+    let localModel = computed({
+      get() {
+        return props.modelValue;
+      },
+      set(value) {
+        emit("update:modelValue", value);
+      },
+    }); 
+
     return {
       classes,
-      emit,
+      isOptionDisabled,
+      localModel,
     };
   },
 };
