@@ -279,6 +279,7 @@ let select = {
       "focus:ring-indigo-200",
       "focus:border-gray-400",
       "outline-none",
+      "overflow-y-auto",
       "py-1",
     ]
   },
@@ -289,6 +290,55 @@ let select = {
       "mt-1",
     ]
   },
+}
+
+// RANGE NOT WORKING
+
+let range = {
+  range: {
+    default: [
+      "bg-white",
+      "border-gray-300",
+      "focus:outline-none",
+      "focus:ring",
+      "focus:ring-indigo-200",
+      "focus:border-gray-400",
+      "outline-none",
+      "py-1",
+      "px-3",
+    ]
+  },
+  textHelper: {
+    default: [
+      "text-sm",
+      "text-gray-600",
+      "mt-1",
+    ]
+  },
+  textInvalid: {
+    default: [
+      "text-sm",
+      "text-red-600",
+      "mt-1",
+    ]
+  },
+  valid: {
+    default: [
+      "border-green-300",
+      "focus:ring-green-200",
+    ]
+  },
+  invalid: {
+    default: [
+      "border-red-300",
+      "focus:ring-red-200",
+    ]
+  },
+  disabled: {
+    default: [
+      "opacity-50",
+    ]
+  }
 }
 
 // INPUT
@@ -335,6 +385,11 @@ let input = {
       "focus:ring-red-200",
     ]
   },
+  disabled: {
+    default: [
+      "opacity-50",
+    ]
+  }
 }
 
 // ALERT
@@ -652,9 +707,8 @@ let popover = {
 let fixedBadge = [
   "rounded-md",
   "font-bold",
-  "p-2",
+  "p-1",
   "px-3",
-  "mx-2",
 ]
 
 let badge = {
@@ -680,6 +734,10 @@ let badge = {
     ],
     yellow: [
       "bg-yellow-500",
+      "text-white",
+    ],
+    red: [
+      "bg-red-500",
       "text-white",
     ],
     small: [
@@ -773,6 +831,7 @@ export let styles = {
   list,
   select,
   input,
+  range,
   spinner,
   popover,
   dropdown,

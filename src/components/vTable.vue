@@ -128,7 +128,7 @@ export default {
           ...styles.table.value,
           ...(props.busy
             ? [...styles.busy.value, "pointer-events-none"]
-            : [""]),
+            : ""),
         ];
         return removeTailwindClasses(c);
       }),

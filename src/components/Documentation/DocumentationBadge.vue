@@ -34,9 +34,9 @@
       style-header-cell="default bordered"
       style-cell="default bordered"
     >
-      <template #cell:description="{ value }"
-        ><span v-html="value"></span
-      ></template>
+      <template #cell:description="{ value }">
+        <span v-html="value"></span>
+      </template>
     </v-table>
 
     <h6>Slots</h6>
@@ -57,16 +57,36 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <v-badge style-badge="secondary">
-        New
-        <v-badge style-badge="default tiny green">7</v-badge>
-      </v-badge>
-      <v-badge>New</v-badge>
-      <v-badge style-badge="default small yellow">New</v-badge>
-      <v-badge style-badge="default small green">New</v-badge>
-      <v-badge style-badge="default small">New</v-badge>
-      <v-badge style-badge="default tiny yellow">New</v-badge>
-      <v-badge style-badge="default tiny">New</v-badge>
+      <div>
+        <v-badge style-badge="secondary" class="mr-4">
+          New
+          <v-badge style-badge="default tiny green" class="ml-2">7</v-badge>
+        </v-badge>
+        <v-badge class="mr-4">New</v-badge>
+        <v-badge style-badge="default small yellow" class="mr-4">New</v-badge>
+        <v-badge style-badge="default small green" class="mr-4">New</v-badge>
+        <v-badge style-badge="default small" class="mr-4">New</v-badge>
+        <v-badge style-badge="default tiny yellow" class="mr-4">New</v-badge>
+        <v-badge style-badge="default tiny" class="mr-4">New</v-badge>
+      </div>
+      <div>
+        <v-button style-button="default noMargin" class="relative mt-4">
+          badge button
+          <v-badge
+            style-badge="primary tiny red"
+            class="
+              absolute
+              top-0
+              right-0
+              transform
+              -translate-y-1/2
+              translate-x-1/2
+            "
+          >
+            2
+          </v-badge>
+        </v-button>
+      </div>
     </div>
     <pre>
       <code>
@@ -188,9 +208,7 @@ export default {
       },
     ]);
 
-    let example = reactive({
-
-    });
+    let example = reactive({});
 
     onMounted(() => {
       hljs.highlightAll();

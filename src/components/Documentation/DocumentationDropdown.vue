@@ -152,7 +152,7 @@
           </v-dropdown>
         </div>
       </div>
-      <v-tabs theme="material" class="mt-5">
+      <v-tabs theme="material" class="mt-10">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="placement">placement:</label>
@@ -418,7 +418,7 @@ export default {
       {
         slot: "default",
         description:
-          "Slot for dropdown content. <p class='mt-4'>Slot props: <code>hide()</code></p>",
+          "Slot for dropdown content. <p class='mt-4'>Slot props: <code class='code-word'>hide()</code></p>",
       },
     ]);
 

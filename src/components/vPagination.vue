@@ -1,10 +1,6 @@
 <template>
   <nav :class="classes.paginationBar.value">
-    <a
-      href=""
-      :class="[classes.prev.value, { disabled: currentPage == 1 }]"
-      @click.prevent="handleClickPrev"
-    >
+    <a href="" :class="getPrevButtonClass()" @click.prevent="handleClickPrev">
       {{ icons ? "" : "Previous" }}
     </a>
     <a
@@ -16,11 +12,7 @@
     >
       {{ i }}
     </a>
-    <a
-      href=""
-      :class="[classes.next.value, { disabled: currentPage == pages }]"
-      @click.prevent="handleClickNext"
-    >
+    <a href="" :class="getNextButtonClass()" @click.prevent="handleClickNext">
       {{ icons ? "" : "Next" }}
     </a>
   </nav>
@@ -115,9 +107,23 @@ export default {
     };
 
     let getPageClass = (p) => {
-      if (p == "...") return classes.dots.value
-      if (currentPage.value == p) return classes.pageActive.value
+      if (p == "...") return classes.dots.value;
+      if (currentPage.value == p) return classes.pageActive.value;
       return classes.page.value;
+    };
+
+    let getPrevButtonClass = () => {
+      if (currentPage.value == 1) {
+        return [...classes.prev.value, "pointer-events-none", "opacity-50"];
+      }
+      return classes.prev.value;
+    };
+
+    let getNextButtonClass = () => {
+      if (currentPage.value == pagesCount.value) {
+        return [...classes.next.value, "pointer-events-none", "opacity-50"];
+      }
+      return classes.next.value;
     };
 
     let currentPage = ref(1);
@@ -169,6 +175,8 @@ export default {
     return {
       classes,
       getPageClass,
+      getPrevButtonClass,
+      getNextButtonClass,
       currentPage,
       pagesCount,
       pages,

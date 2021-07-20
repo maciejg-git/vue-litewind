@@ -138,7 +138,7 @@
     <v-input type="password" v-model="textModel" state="valid"></v-input>
     <v-input type="password" v-model="textModel" state="invalid"></v-input>
     <v-input type="text" v-model="textModel" placeholder="input text"></v-input>
-    <v-input type="password" v-model="textModel">
+    <v-input type="password" v-model="textModel" disabled>
       <template #helper>input name</template>
       <template #invalid>wrong name</template>
     </v-input>
@@ -146,7 +146,10 @@
       <template #helper>input name</template>
       <template #invalid>wrong name</template>
     </v-input>
-    <input type="range">
+    <v-input type="range">
+    </v-input>
+    <v-range v-model="textModel">
+    </v-range>
 
     <v-button @click="selectModel = []">reset select</v-button>
     {{ selectModel }}
@@ -219,7 +222,9 @@
       <v-spinner></v-spinner>
     </div>
 
-    <v-badge style-badge="primary small">badge</v-badge>
+    <v-button @click="data[0].item5 = 6" class="relative">badge button
+      <v-badge style-badge="primary tiny red" class="absolute top-0 right-0 transform -translate-y-1/2 translate-x-1/2">2</v-badge>
+    </v-button>
 
     <v-button @click="tooltipTest = true">tooltipTest</v-button>
 
@@ -600,6 +605,7 @@ import vInputDate from "./vInputDate.vue";
 import vInput from "./vInput.vue";
 import vSelect from "./vSelect.vue";
 import vProgress from "./vProgress.vue";
+import vRange from "./vRange.vue";
 // import {vTable} from "../dist/vuecomponent2.es"
 
 export default {
@@ -629,6 +635,7 @@ export default {
     vAlert,
     vInput,
     vSelect,
+    vRange,
   },
   props: {
     msg: String,

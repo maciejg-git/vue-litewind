@@ -22,7 +22,7 @@ export default {
 
     let classes = {
       badge: computed(() => {
-        let c = ["inline-flex items-center", ...styles.badge.value];
+        let c = ["inline-flex", "items-center", ...styles.badge.value];
         return removeTailwindClasses(c);
       }),
     };

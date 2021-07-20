@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { ref, computed, watch, getCurrentInstance } from "vue";
+import { computed, getCurrentInstance } from "vue";
 import useStyles from "./composition/use-styles";
 import { removeTailwindClasses } from "../tools/tools.js";
 
@@ -30,21 +30,33 @@ export default {
     styleInvalid: { type: [String, Array], default: "default" },
     styleTextHelper: { type: [String, Array], default: "default" },
     styleTextInvalid: { type: [String, Array], default: "default" },
+    styleDisabled: { type: [String, Array], default: "default" },
   },
-  setup(props, { emit }) {
-    let elements = ["input", "valid", "invalid", "textHelper", "textInvalid"];
+  setup(props, { attrs, emit }) {
+    let elements = [
+      "input",
+      "valid",
+      "invalid",
+      "textHelper",
+      "textInvalid",
+      "disabled",
+    ];
 
     let { styles } = useStyles(getCurrentInstance(), props, elements);
 
     let classes = {
       input: computed(() => {
         let c = [
+          "appearance-none",
           ...styles.input.value,
           ...(props.state == "valid"
-            ? [...styles.valid.value]
+            ? styles.valid.value
             : props.state == "invalid"
-            ? [...styles.invalid.value]
-            : [""]),
+            ? styles.invalid.value
+            : ""),
+          ...(attrs.disabled === "" || attrs.disabled === true
+            ? styles.disabled.value
+            : ""),
         ];
         return removeTailwindClasses(c);
       }),
@@ -65,11 +77,11 @@ export default {
       set(value) {
         emit("update:modelValue", value);
       },
-    }); 
+    });
 
     return {
       classes,
-      localModel
+      localModel,
     };
   },
 };

@@ -225,7 +225,7 @@
         </div>
       </div>
 
-      <v-tabs theme="material" class="mt-5">
+      <v-tabs theme="material" class="mt-10">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="locale">filter:</label>
@@ -542,7 +542,7 @@ export default {
       {
         slot: "cell:key",
         description:
-        "Slot for cell content. Useful for adding some html formatting, transforming value etc. Key is one of the keys of data record or additional key from definition array<p class='mt-4'>Slot props: <code>value</code>, <code>item</code></p>",
+        "Slot for cell content. Useful for adding some html formatting, transforming value etc. Key is one of the keys of data record or additional key from definition array<p class='mt-4'>Slot props: <code class='code-word'>value</code>, <code class='code-word'>item</code></p>",
       },
       {
         slot: "caption",
