@@ -27,6 +27,7 @@ export default {
     styleTextInvalid: { type: [String, Array], default: "default" },
     styleDisabled: { type: [String, Array], default: "default" },
   },
+  emits: ["update:modelValue"],
   setup(props, { attrs, emit }) {
     let elements = [
       "range",

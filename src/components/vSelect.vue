@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { ref, computed, watch, getCurrentInstance } from "vue";
+import { computed, getCurrentInstance } from "vue";
 import useStyles from "./composition/use-styles";
 import { removeTailwindClasses } from "../tools/tools.js";
 
@@ -29,6 +29,7 @@ export default {
     styleSelect: { type: [String, Array], default: "default" },
     styleTextHelper: { type: [String, Array], default: "default" },
   },
+  emits: ["update:modelValue"],
   setup(props, { emit }) {
     let elements = ["select", "textHelper"];
 
@@ -36,7 +37,7 @@ export default {
 
     let classes = {
       select: computed(() => {
-        let c = [...styles.select.value];
+        let c = ["appearance-none", ...styles.select.value];
         return removeTailwindClasses(c);
       }),
       textHelper: computed(() => {
@@ -56,7 +57,7 @@ export default {
       set(value) {
         emit("update:modelValue", value);
       },
-    }); 
+    });
 
     return {
       classes,

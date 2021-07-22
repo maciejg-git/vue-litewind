@@ -116,8 +116,13 @@ export default {
         prop: "name",
         type: "String",
         default: "badge",
-        description:
-          "Data to display in table. Each element of Array is an Object. Single Object is one record (row) of data.",
+        description: "",
+      },
+      {
+        prop: "theme",
+        type: "String",
+        default: "default",
+        description: "",
       },
     ]);
 

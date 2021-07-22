@@ -148,7 +148,7 @@
     </v-input>
     <v-input type="range">
     </v-input>
-    <v-range v-model="textModel">
+    <v-range v-model="textModel" min="0" max="50">
     </v-range>
 
     <v-button @click="selectModel = []">reset select</v-button>
