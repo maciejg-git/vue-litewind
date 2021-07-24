@@ -29,9 +29,7 @@ export default {
     let { addTab, removeTab } = inject("controlTab");
     let transition = inject("transition");
 
-    let beforeLeave = (el) => {
-      el.style.display = "none";
-    };
+    let beforeLeave = (el) => (el.style.display = "none");
 
     onMounted(() => {
       addTab({
