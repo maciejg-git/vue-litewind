@@ -1,5 +1,5 @@
 <template>
-  <h3>Select</h3>
+  <h3>Input</h3>
   <p></p>
 
   <section>
@@ -71,29 +71,15 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <div>
-        <v-select
-          v-model="example.model"
-          :type="example.type"
-          :state="example.state"
-          :options="example.options"
-          class="w-40"
-        >
-        <template #helper>Select helper text.</template>
-        </v-select>
-      </div>
-      <div class="mt-4">
-        <v-select
-          v-model="example.modelMultiple"
-          :type="example.type"
-          :state="example.state"
-          :options="example.options"
-          :multiple="true"
-          class="w-40"
-        >
-        <template #helper>Multiple select helper text.</template>
-        </v-select>
-      </div>
+      <v-textarea
+        v-model="example.model"
+        :state="example.state"
+        cols="40"
+        rows="10"
+      >
+      <template #invalid>Textarea invalid.</template>
+      <template #helper>Textarea helper text.</template>
+      </v-textarea>
       <v-tabs theme="material" class="mt-10">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
@@ -101,8 +87,12 @@
             <input type="text" id="model" v-model="example.model" />
           </div>
           <div class="mb-2">
-            <label for="model" class="font-semibold">v-model (multiple):</label>
-            <input type="text" id="model" v-model="example.modelMultiple" />
+            <label for="state">state:</label>
+            <select id="state" v-model="example.state">
+              <option value="">normal (empty string)</option>
+              <option value="valid">valid</option>
+              <option value="invalid">invalid</option>
+            </select>
           </div>
         </v-tab>
         <v-tab>
@@ -143,13 +133,13 @@ export default {
         prop: "v-model",
         type: "String",
         default: "undefined",
-        description: "select v-model",
+        description: "Textarea v-model",
       },
       {
-        prop: "options",
-        type: "Array",
-        default: "text",
-        description: "Array of options to display in select element. Each option is <code class='code-word'>Object</code> with <code class='code-word'>value</code> and <code class='code-word'>label</code> properties",
+        prop: "state",
+        type: "String",
+        default: "empty string",
+        description: "State of textarea validity. Supported values are 'valid', 'invalid' or 'empty string' for default state",
       },
       {
         prop: "name",
@@ -161,7 +151,7 @@ export default {
         prop: "theme",
         type: "String",
         default: "default",
-        description: "",
+        description: "Theme to use",
       },
     ]);
 
@@ -186,8 +176,16 @@ export default {
 
     let referenceStyles = ref([
       {
-        prop: "style-select",
+        prop: "style-input",
         description: "Main input element",
+      },
+      {
+        prop: "style-text-invalid",
+        description: "Text below input element if state is invalid",
+      },
+      {
+        prop: "style-text-helper",
+        description: "Helper text below input element",
       },
     ]);
 
@@ -221,7 +219,11 @@ export default {
     let referenceSlots = ref([
       {
         slot: "helper",
-        description: "This component does not provide any slots.",
+        description: "Slot for helper text displayed below input element",
+      },
+      {
+        slot: "invalid",
+        description: "Slot for message if state is 'invalid'",
       },
     ]);
 
@@ -254,21 +256,7 @@ export default {
 
     let example = reactive({
       model: "",
-      modelMultiple: [],
-      options: [
-        {
-          value: "option",
-          label: "option",
-        },
-        {
-          value: "option 2",
-          label: "option 2",
-        },
-        {
-          value: "option 3",
-          label: "option 3",
-        },
-      ],
+      state: "",
       events: [],
     });
 

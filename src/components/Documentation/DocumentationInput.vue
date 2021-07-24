@@ -151,7 +151,7 @@ export default {
         prop: "state",
         type: "String",
         default: "empty string",
-        description: "State of input. Valid values are 'valid', 'invalid' or 'empty string' for default state",
+        description: "State of input validity. Supported values are 'valid', 'invalid' or 'empty string' for default state",
       },
       {
         prop: "name",

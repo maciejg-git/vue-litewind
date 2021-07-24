@@ -59,8 +59,11 @@
     <div class="example">
       <v-card width="320px" style-card="default shadow-md hoverable">
         <img :src="randomPhoto()" alt="" />
-        <header class="p-3">
+        <header class="pt-3 px-3">
           <span class="font-semibold">Example card</span>
+        </header>
+        <header class="py-1 px-3">
+          <span class="text-gray-500 text-sm">Subtitle</span>
         </header>
         <div class="p-3">
           Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -75,9 +78,12 @@
       <v-card width="720px" style-card="default shadow-md hoverable" style="height: 320px" class="flex my-10">
         <img :src="randomPhotoHorizontal()" alt="" />
         <div class="flex flex-col">
-          <header class="p-4">
-            <span class="font-semibold">Horizontal card</span>
-          </header>
+        <header class="pt-4 px-3">
+          <span class="font-semibold">Example card</span>
+        </header>
+        <header class="py-1 px-3">
+          <span class="text-gray-500 text-sm">Subtitle</span>
+        </header>
           <div class="p-4">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text ever

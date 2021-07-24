@@ -1,4 +1,5 @@
 <template>
+  <v-navbar>Vue</v-navbar>
   <div class="sm:container mx-auto">
     item
     <v-tabs style-tab="default">
@@ -156,6 +157,8 @@
     <v-select v-model="selectModel" :options="selectOptions" multiple>
       <template #helper>select name</template>
     </v-select>
+    <v-textarea v-model="textModel" rows="20" cols="40">
+    </v-textarea>
 
     <v-button @click="alertShow = true">show alert</v-button>
     <v-alert v-model="alertShow" :dismissDelay="2000" class="my-2">item</v-alert>
@@ -606,6 +609,8 @@ import vInput from "./vInput.vue";
 import vSelect from "./vSelect.vue";
 import vProgress from "./vProgress.vue";
 import vRange from "./vRange.vue";
+import vTextarea from "./vTextarea.vue";
+import vNavbar from "./vNavbar.vue";
 // import {vTable} from "../dist/vuecomponent2.es"
 
 export default {
@@ -636,6 +641,8 @@ export default {
     vInput,
     vSelect,
     vRange,
+    vNavbar,
+    vTextarea,
   },
   props: {
     msg: String,

@@ -22,6 +22,7 @@ import vProgress from "./vProgress.vue"
 import vNavbar from "./vNavbar.vue"
 import vAlert from "./vAlert.vue"
 import vInput from "./vInput.vue"
+import vTextarea from "./vTextarea.vue"
 import vSelect from "./vSelect.vue"
 import tooltip from "../directives/tooltip.js"
 
@@ -48,6 +49,7 @@ import tooltip from "../directives/tooltip.js"
     app.component("v-navbar", vNavbar);
     app.component("v-alert", vAlert);
     app.component("v-input", vInput);
+    app.component("v-textarea", vTextarea);
     app.component("v-select", vSelect);
     app.component("v-close-button", vCloseButton);
     app.directive("tooltip", tooltip);

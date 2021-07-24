@@ -16,6 +16,10 @@ export let components = [
     name: "select",
   },
   {
+    label: "Textarea",
+    name: "textarea",
+  },
+  {
     label: "Date Picker",
     name: "datepicker",
   },

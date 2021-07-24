@@ -21,7 +21,7 @@ export default {
     let { styles } = useStyles(getCurrentInstance(), props, elements);
 
     let fixedClass = {
-      navbar: ["sticky", "top-0", "left-0", "w-full"],
+      navbar: ["sticky", "top-0", "left-0"],
     };
 
     let classes = {

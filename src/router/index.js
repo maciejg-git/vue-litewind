@@ -23,6 +23,7 @@ import DocumentationSidepanel from '../components/Documentation/DocumentationSid
 import DocumentationAlert from '../components/Documentation/DocumentationAlert.vue'
 import DocumentationInput from '../components/Documentation/DocumentationInput.vue'
 import DocumentationSelect from '../components/Documentation/DocumentationSelect.vue'
+import DocumentationTextarea from '../components/Documentation/DocumentationTextarea.vue'
 
 import DocumentationTooltip from '../components/Documentation/DocumentationTooltip.vue'
 
@@ -119,6 +120,10 @@ const routes = [
       {
         path: 'select',
         component: DocumentationSelect,
+      },
+      {
+        path: 'textarea',
+        component: DocumentationTextarea,
       },
 
       // directives

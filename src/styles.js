@@ -392,6 +392,58 @@ let input = {
   }
 }
 
+
+// TEXTAREA
+
+let textarea = {
+  textarea: {
+    default: [
+      "rounded",
+      "border",
+      "bg-white",
+      "border-gray-300",
+      "focus:outline-none",
+      "focus:ring",
+      "focus:ring-indigo-200",
+      "focus:border-gray-400",
+      "outline-none",
+      "py-1",
+      "px-3",
+    ]
+  },
+  textHelper: {
+    default: [
+      "text-sm",
+      "text-gray-600",
+      "mt-1",
+    ]
+  },
+  textInvalid: {
+    default: [
+      "text-sm",
+      "text-red-600",
+      "mt-1",
+    ]
+  },
+  valid: {
+    default: [
+      "border-green-300",
+      "focus:ring-green-200",
+    ]
+  },
+  invalid: {
+    default: [
+      "border-red-300",
+      "focus:ring-red-200",
+    ]
+  },
+  disabled: {
+    default: [
+      "opacity-50",
+    ]
+  }
+}
+
 // ALERT
 
 let alert = {
@@ -527,6 +579,9 @@ let card = {
     ],
     gray: [
       "bg-gray-100",
+    ],
+    borderless: [
+      "border-0",
     ],
     hoverable: [
       "hover:shadow-lg",
@@ -831,6 +886,7 @@ export let styles = {
   list,
   select,
   input,
+  textarea,
   range,
   spinner,
   popover,
