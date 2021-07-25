@@ -281,6 +281,7 @@ let select = {
       "outline-none",
       "overflow-y-auto",
       "py-1",
+      "px-2",
     ]
   },
   textHelper: {
@@ -306,6 +307,57 @@ let range = {
       "outline-none",
       "py-1",
       "px-3",
+    ]
+  },
+  textHelper: {
+    default: [
+      "text-sm",
+      "text-gray-600",
+      "mt-1",
+    ]
+  },
+  textInvalid: {
+    default: [
+      "text-sm",
+      "text-red-600",
+      "mt-1",
+    ]
+  },
+  valid: {
+    default: [
+      "border-green-300",
+      "focus:ring-green-200",
+    ]
+  },
+  invalid: {
+    default: [
+      "border-red-300",
+      "focus:ring-red-200",
+    ]
+  },
+  disabled: {
+    default: [
+      "opacity-50",
+    ]
+  }
+}
+
+// CHECKBOX
+
+let checkbox = {
+  checkbox: {
+    default: [
+      // "rounded",
+      // "border",
+      // "bg-white",
+      // "text-indigo-500",
+      // "border-green-300",
+      // "focus:outline-none",
+      // "focus:ring",
+      // "focus:ring-indigo-200",
+      // "focus:border-gray-400",
+      // "focus:ring-offset-0",
+      // "outline-none",
     ]
   },
   textHelper: {
@@ -391,7 +443,6 @@ let input = {
     ]
   }
 }
-
 
 // TEXTAREA
 
@@ -885,6 +936,7 @@ export let styles = {
   button,
   list,
   select,
+  checkbox,
   input,
   textarea,
   range,

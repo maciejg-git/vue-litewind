@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { ref, computed, getCurrentInstance } from "vue";
+import { computed, getCurrentInstance } from "vue";
 import useStyles from "./composition/use-styles";
 import { removeTailwindClasses } from "../tools/tools.js";
 

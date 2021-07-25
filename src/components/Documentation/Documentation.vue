@@ -7,7 +7,7 @@
   </v-navbar>
   <div class="container mx-auto lg:max-w-screen-xl">
     <div class="flex">
-      <div class="sidebar hidden md:block flex-none sticky text-gray-700 top-20 p-3">
+      <div class="sidebar hidden md:block flex-none sticky text-gray-700 overflow-auto top-20 p-3 pr-20">
         <ul class="list-unstyled ml-2">
           <li>
             <router-link

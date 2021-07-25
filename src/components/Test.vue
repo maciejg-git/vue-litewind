@@ -149,6 +149,16 @@
     </v-input>
     <v-input type="range">
     </v-input>
+
+    <v-checkbox v-model="textModel">
+      <template #helper>input name</template>
+      <template #invalid>wrong name</template>
+    </v-checkbox>
+    <v-checkbox v-model="textModel" state="invalid">
+      <template #helper>input name</template>
+      <template #invalid>wrong name</template>
+    </v-checkbox>
+
     <v-range v-model="textModel" min="0" max="50">
     </v-range>
 
@@ -610,6 +620,7 @@ import vSelect from "./vSelect.vue";
 import vProgress from "./vProgress.vue";
 import vRange from "./vRange.vue";
 import vTextarea from "./vTextarea.vue";
+import vCheckbox from "./vCheckbox.vue";
 import vNavbar from "./vNavbar.vue";
 // import {vTable} from "../dist/vuecomponent2.es"
 
@@ -642,6 +653,7 @@ export default {
     vSelect,
     vRange,
     vNavbar,
+    vCheckbox,
     vTextarea,
   },
   props: {
