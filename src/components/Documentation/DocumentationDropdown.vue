@@ -156,7 +156,7 @@
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="placement">placement:</label>
-            <select id="placement" v-model="example.placement">
+            <v-select id="placement" v-model="example.placement">
               <option value="auto">auto</option>
               <option value="auto-start">auto-start</option>
               <option value="auto-end">auto-end</option>
@@ -172,42 +172,44 @@
               <option value="left">left</option>
               <option value="left-start">left-start</option>
               <option value="left-end">left-end</option>
-            </select>
+            </v-select>
           </div>
           <div class="mb-2">
             <label for="offsetX">offsetX:</label>
-            <input type="text" id="offsetX" v-model="example.offsetX" />
+            <v-input type="text" id="offsetX" v-model="example.offsetX">
+            </v-input>
           </div>
           <div class="mb-2">
             <label for="offsetY">offsetY:</label>
-            <input type="text" id="offsetY" v-model="example.offsetY" />
+            <v-input type="text" id="offsetY" v-model="example.offsetY">
+            </v-input>
           </div>
           <div class="mb-2">
             <label for="no-flip">no-flip:</label>
-            <select id="no-flip" v-model="example.noFlip">
+            <v-select id="no-flip" v-model="example.noFlip">
               <option :value="true">true</option>
               <option :value="false">false</option>
-            </select>
+            </v-select>
           </div>
           <div class="mb-2">
             <label for="auto-close-menu">auto-close-menu:</label>
-            <select id="auto-close-menu" v-model="example.autoCloseMenu">
+            <v-select id="auto-close-menu" v-model="example.autoCloseMenu">
               <option :value="true">true</option>
               <option :value="false">false</option>
-            </select>
+            </v-select>
           </div>
           <div class="mb-2">
             <label for="transition">transition:</label>
-            <select id="transition" v-model="example.transition">
+            <v-select id="transition" v-model="example.transition">
               <option value="fade">fade</option>
               <option value="">empty string</option>
-            </select>
+            </v-select>
           </div>
         </v-tab>
         <v-tab name="Events">
           <template #name>
             Events
-            <v-badge style-badge="secondary tiny">
+            <v-badge style-badge="secondary tiny" class="ml-2">
               {{ example.events.length }}
             </v-badge>
           </template>

@@ -149,81 +149,85 @@
           <v-tab name="Props">
             <div class="mb-2 mt-5">
               <label for="model" class="font-semibold">v-model:</label>
-              <input type="text" id="model" v-model="example.date" />
+              <v-input type="text" id="model" v-model="example.date">
+              </v-input>
             </div>
             <div class="mb-2">
               <label for="range">range:</label>
-              <select id="range" v-model="example.range">
+              <v-select id="range" v-model="example.range">
                 <option :value="true">true</option>
                 <option :value="false">false</option>
-              </select>
+              </v-select>
             </div>
             <div class="mb-2">
               <label for="locale">locale:</label>
-              <input type="text" id="locale" v-model="example.locale" />
+              <v-input type="text" id="locale" v-model="example.locale">
+              </v-input>
             </div>
             <div class="mb-2">
               <label for="euro">euro:</label>
-              <select id="euro" v-model="example.euro">
+              <v-select id="euro" v-model="example.euro">
                 <option :value="true">true</option>
                 <option :value="false">false</option>
-              </select>
+              </v-select>
             </div>
             <div class="mb-2">
               <label for="buttons">buttons:</label>
-              <select id="buttons" v-model="example.buttons">
+              <v-select id="buttons" v-model="example.buttons">
                 <option :value="true">true</option>
                 <option :value="false">false</option>
-              </select>
+              </v-select>
             </div>
             <div class="mb-2">
               <label for="primary-button-label">primary-button-label:</label>
-              <input
+              <v-input
                 type="text"
                 id="primary-button-label"
                 v-model="example.primaryButtonLabel"
-              />
+              >
+              </v-input>
             </div>
             <div class="mb-2">
               <label for="secondary-button-label">
                 secondary-button-label:
               </label>
-              <input
+              <v-input
                 type="text"
                 id="secondary-button-label"
                 v-model="example.secondaryButtonLabel"
-              />
+              >
+              </v-input>
             </div>
             <div class="mb-2">
               <label for="adjacent-months">adjacent-months:</label>
-              <select id="adjacent-months" v-model="example.adjecentMonths">
+              <v-select id="adjacent-months" v-model="example.adjecentMonths">
                 <option :value="true">true</option>
                 <option :value="false">false</option>
-              </select>
+              </v-select>
             </div>
             <div class="mb-2">
               <label for="range-hover-highlight">range-hover-highlight:</label>
-              <select
+              <v-select
                 id="range-hover-highlight"
                 v-model="example.rangeHoverHighlight"
               >
                 <option :value="true">true</option>
                 <option :value="false">false</option>
-              </select>
+              </v-select>
             </div>
             <div class="mb-5">
               <label for="transition">transition:</label>
-              <select id="transition" v-model="example.transition">
+              <v-select id="transition" v-model="example.transition">
                 <option value="fade">fade</option>
                 <option value="slide">slide</option>
                 <option value="">empty string (no transition)</option>
-              </select>
+              </v-select>
             </div>
           </v-tab>
           <v-tab>
             <template #name>
               Events
-              <v-badge style-badge="secondary tiny">
+              <v-badge style-badge="secondary tiny" class="ml-2">
                 {{ example.events.length }}
               </v-badge>
             </template>

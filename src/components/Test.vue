@@ -150,17 +150,17 @@
     <v-input type="range">
     </v-input>
 
-    <v-checkbox v-model="textModel">
-      <template #helper>input name</template>
-      <template #invalid>wrong name</template>
-    </v-checkbox>
-    <v-checkbox v-model="textModel" state="invalid">
-      <template #helper>input name</template>
-      <template #invalid>wrong name</template>
-    </v-checkbox>
+    <!-- <v-checkbox v-model="textModel"> -->
+    <!--   <template #helper>input name</template> -->
+    <!--   <template #invalid>wrong name</template> -->
+    <!-- </v-checkbox> -->
+    <!-- <v-checkbox v-model="textModel" state="invalid"> -->
+    <!--   <template #helper>input name</template> -->
+    <!--   <template #invalid>wrong name</template> -->
+    <!-- </v-checkbox> -->
 
-    <v-range v-model="textModel" min="0" max="50">
-    </v-range>
+    <!-- <v-range v-model="textModel" min="0" max="50"> -->
+    <!-- </v-range> -->
 
     <v-button @click="selectModel = []">reset select</v-button>
     {{ selectModel }}

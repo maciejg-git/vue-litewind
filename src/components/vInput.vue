@@ -20,7 +20,7 @@ import { removeTailwindClasses } from "../tools/tools.js";
 
 export default {
   props: {
-    modelValue: { type: String, default: undefined },
+    modelValue: { type: [String, Number, Boolean], default: undefined },
     type: { type: String, default: "text" },
     state: { type: String, default: "" },
     name: { type: String, default: "input" },
@@ -48,7 +48,6 @@ export default {
     let classes = {
       input: computed(() => {
         let c = [
-          "appearance-none",
           ...styles.input.value,
           ...(props.state == "valid"
             ? styles.valid.value

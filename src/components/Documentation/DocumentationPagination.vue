@@ -72,36 +72,40 @@
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="model" class="font-semibold">v-model: </label>
-            <input type="text" id="model" v-model="example.page" />
+            <v-input type="text" id="model" v-model="example.page">
+            </v-input>
           </div>
           <div class="mb-2">
             <label for="items-count">items-count: </label>
-            <input type="text" id="items-count" v-model="example.itemsCount" />
+            <v-input type="text" id="items-count" v-model="example.itemsCount">
+            </v-input>
           </div>
           <div class="mb-2">
             <label for="items-per-page">items-per-page: </label>
-            <input
+            <v-input
               type="text"
               id="items-per-page"
               v-model="example.itemsPerPage"
-            />
+            >
+            </v-input>
           </div>
           <div class="mb-2">
             <label for="max-pages">max-pages: </label>
-            <input type="text" id="max-pages" v-model="example.maxPages" />
+            <v-input type="text" id="max-pages" v-model="example.maxPages">
+            </v-input>
           </div>
           <div class="mb-2">
             <label for="icons">icons: </label>
-            <select id="icons" v-model="example.icons">
+            <v-select id="icons" v-model="example.icons">
               <option :value="true">true</option>
               <option :value="false">false</option>
-            </select>
+            </v-select>
           </div>
         </v-tab>
         <v-tab name="Events">
           <template #name>
             Events
-            <v-badge style-badge="secondary tiny">
+            <v-badge style-badge="secondary tiny" class="ml-2">
               {{ example.events.length }}
             </v-badge>
           </template>

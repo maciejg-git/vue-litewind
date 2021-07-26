@@ -86,27 +86,27 @@
       <div class="mt-4 md:ml-14 md:mt-0">
         <div class="mb-2">
           <label for="position">position: </label>
-          <select id="position" v-model="example.position">
+          <v-select id="position" v-model="example.position">
             <option value="top">top</option>
             <option value="center">center</option>
-          </select>
+          </v-select>
         </div>
         <div class="mb-2">
           <label for="size">size: </label>
-          <select id="size" v-model="example.size">
+          <v-select id="size" v-model="example.size">
             <option value="sm">sm</option>
             <option value="md">md</option>
             <option value="lg">lg</option>
             <option value="xl">xl</option>
-          </select>
+          </v-select>
         </div>
         <div class="mb-2">
           <label for="transition">transition: </label>
-          <select id="transition" v-model="example.transition">
+          <v-select id="transition" v-model="example.transition">
             <option value="fade">fade</option>
             <option value="fade-slide">fade-slide</option>
             <option value="fade-scale">fade-scale</option>
-          </select>
+          </v-select>
         </div>
       </div>
     </div>
@@ -128,89 +128,92 @@
       <div>
         <div class="mb-2">
           <label for="title">title: </label>
-          <input type="text" id="title" v-model="example.title" />
+          <v-input type="text" id="title" v-model="example.title">
+          </v-input>
         </div>
         <div class="mb-2">
           <label for="no-primary-button">no-primary-button: </label>
-          <select id="no-primary-button" v-model="example.noPrimaryButton">
+          <v-select id="no-primary-button" v-model="example.noPrimaryButton">
             <option :value="true">true</option>
             <option :value="false">false</option>
-          </select>
+          </v-select>
         </div>
         <div class="mb-2">
           <label for="no-secondary-button">no-secondary-button: </label>
-          <select id="no-secondary-button" v-model="example.noSecondaryButton">
+          <v-select id="no-secondary-button" v-model="example.noSecondaryButton">
             <option :value="true">true</option>
             <option :value="false">false</option>
-          </select>
+          </v-select>
         </div>
         <div class="mb-2">
           <label for="primary-button-label">primary-button-label: </label>
-          <input
+          <v-input
             type="text"
             id="primary-button-label"
             v-model="example.primaryButtonLabel"
-          />
+          >
+          </v-input>
         </div>
         <div class="mb-2">
           <label for="secondary-button-label">secondary-button-label: </label>
-          <input
+          <v-input
             type="text"
             id="secondary-button-label"
             v-model="example.secondaryButtonLabel"
-          />
+          >
+          </v-input>
         </div>
         <div class="mb-2">
           <label for="primary-button-close">primary-button-close: </label>
-          <select id="primary-button-close" v-model="example.primaryButtonClose">
+          <v-select id="primary-button-close" v-model="example.primaryButtonClose">
             <option :value="true">true</option>
             <option :value="false">false</option>
-          </select>
+          </v-select>
         </div>
         <div class="mb-2">
           <label for="secondary-button-close">secondary-button-close: </label>
-          <select id="secondary-button-close" v-model="example.secondaryButtonClose">
+          <v-select id="secondary-button-close" v-model="example.secondaryButtonClose">
             <option :value="true">true</option>
             <option :value="false">false</option>
-          </select>
+          </v-select>
         </div>
         <div class="mb-2">
           <label for="no-close-button">no-close-button: </label>
-          <select id="no-close-button" v-model="example.noCloseButton">
+          <v-select id="no-close-button" v-model="example.noCloseButton">
             <option :value="true">true</option>
             <option :value="false">false</option>
-          </select>
+          </v-select>
         </div>
         <div class="mb-2">
           <label for="static-backdrop">static-backdrop: </label>
-          <select id="static-backdrop" v-model="example.staticBackdrop">
+          <v-select id="static-backdrop" v-model="example.staticBackdrop">
             <option :value="true">true</option>
             <option :value="false">false</option>
-          </select>
+          </v-select>
         </div>
         <div class="mb-2">
           <label for="position-modal">position: </label>
-          <select id="position-modal" v-model="example.position">
+          <v-select id="position-modal" v-model="example.position">
             <option value="top">top</option>
             <option value="center">center</option>
-          </select>
+          </v-select>
         </div>
         <div class="mb-2">
           <label for="size-modal">size: </label>
-          <select id="size-modal" v-model="example.size">
+          <v-select id="size-modal" v-model="example.size">
             <option value="sm">sm</option>
             <option value="md">md</option>
             <option value="lg">lg</option>
             <option value="xl">xl</option>
-          </select>
+          </v-select>
         </div>
         <div class="mb-2">
           <label for="transition-modal">transition: </label>
-          <select id="transition-modal" v-model="example.transition">
+          <v-select id="transition-modal" v-model="example.transition">
             <option value="fade">fade</option>
             <option value="fade-slide">fade-slide</option>
             <option value="fade-scale">fade-scale</option>
-          </select>
+          </v-select>
         </div>
       </div>
     </v-modal>

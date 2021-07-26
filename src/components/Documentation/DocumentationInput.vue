@@ -76,35 +76,35 @@
         :type="example.type"
         :state="example.state"
       >
-      <template #invalid>Input invalid.</template>
-      <template #helper>Input helper text.</template>
+        <template #invalid>Input invalid.</template>
+        <template #helper>Input helper text.</template>
       </v-input>
       <v-tabs theme="material" class="mt-10">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="model" class="font-semibold">v-model:</label>
-            <input type="text" id="model" v-model="example.model" />
+            <v-input type="text" id="model" v-model="example.model"></v-input>
           </div>
           <div class="mb-2">
             <label for="type">type:</label>
-            <select id="type" v-model="example.type">
+            <v-select id="type" v-model="example.type">
               <option value="text">text</option>
               <option value="password">password</option>
-            </select>
+            </v-select>
           </div>
           <div class="mb-2">
             <label for="state">state:</label>
-            <select id="state" v-model="example.state">
+            <v-select id="state" v-model="example.state">
               <option value="">normal (empty string)</option>
               <option value="valid">valid</option>
               <option value="invalid">invalid</option>
-            </select>
+            </v-select>
           </div>
         </v-tab>
         <v-tab>
           <template #name>
             Events
-            <v-badge style-badge="secondary tiny">
+            <v-badge style-badge="secondary tiny" class="ml-2">
               {{ example.events.length }}
             </v-badge>
           </template>
@@ -151,7 +151,8 @@ export default {
         prop: "state",
         type: "String",
         default: "empty string",
-        description: "State of input validity. Supported values are 'valid', 'invalid' or 'empty string' for default state",
+        description:
+          "State of input validity. Supported values are 'valid', 'invalid' or 'empty string' for default state",
       },
       {
         prop: "name",

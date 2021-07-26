@@ -68,16 +68,16 @@
           Alert
         </v-alert>
       </div>
-      <div class="flex justify-between">
+      <div class="flex justify-between items-center">
         <div class="mt-5">
           <label for="style">Alert variant:</label>
-          <select id="style" v-model="example.style">
+          <v-select id="style" v-model="example.style">
             <option value="default">default</option>
             <option value="default info">info</option>
             <option value="default danger">danger</option>
             <option value="default success">success</option>
             <option value="default light">light</option>
-          </select>
+          </v-select>
         </div>
         <v-button :disabled="example.isOpen" @click="example.isOpen = true">
           Show alert
@@ -87,18 +87,22 @@
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="model" class="font-semibold">v-model:</label>
-            <input type="text" id="model" v-model="example.isOpen" />
+            <v-input type="text" id="model" v-model="example.isOpen"></v-input>
           </div>
           <div class="mb-2">
             <label for="dismissable">dismissable:</label>
-            <select id="dismissable" v-model="example.dismissable">
+            <v-select id="dismissable" v-model="example.dismissable">
               <option :value="true">true</option>
               <option :value="false">false</option>
-            </select>
+            </v-select>
           </div>
           <div class="mb-2">
             <label for="model">auto-dismiss-delay:</label>
-            <input type="text" id="model" v-model="example.autoDismissDelay" />
+            <v-input
+              type="text"
+              id="model"
+              v-model="example.autoDismissDelay"
+            ></v-input>
           </div>
         </v-tab>
       </v-tabs>
@@ -127,7 +131,8 @@ export default {
         prop: "dismiss-delay",
         type: "Number",
         default: "0",
-        description: "Delay after which alert is closed (<code class='code-word'>update:modelValue</code> is emited with <code>false</code> value)",
+        description:
+          "Delay after which alert is closed (<code class='code-word'>update:modelValue</code> is emited with <code>false</code> value)",
       },
       {
         prop: "name",

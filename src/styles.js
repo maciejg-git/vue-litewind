@@ -280,8 +280,6 @@ let select = {
       "focus:border-gray-400",
       "outline-none",
       "overflow-y-auto",
-      "py-1",
-      "px-2",
     ]
   },
   textHelper: {
@@ -347,17 +345,19 @@ let range = {
 let checkbox = {
   checkbox: {
     default: [
-      // "rounded",
-      // "border",
-      // "bg-white",
-      // "text-indigo-500",
-      // "border-green-300",
-      // "focus:outline-none",
-      // "focus:ring",
-      // "focus:ring-indigo-200",
-      // "focus:border-gray-400",
-      // "focus:ring-offset-0",
-      // "outline-none",
+      "rounded",
+      "border",
+      "bg-white",
+      "border-gray-300",
+      "text-indigo-500",
+      "focus:border-gray-400",
+      "focus:ring",
+      "focus:ring-indigo-200",
+      "focus:ring-offset-0",
+      "focus:outline-none",
+      "transform",
+      "scale-110",
+      "outline-none",
     ]
   },
   textHelper: {
@@ -376,12 +376,14 @@ let checkbox = {
   },
   valid: {
     default: [
+      "text-green-500",
       "border-green-300",
       "focus:ring-green-200",
     ]
   },
   invalid: {
     default: [
+      "text-red-500",
       "border-red-300",
       "focus:ring-red-200",
     ]
@@ -407,8 +409,6 @@ let input = {
       "focus:ring-indigo-200",
       "focus:border-gray-400",
       "outline-none",
-      "py-1",
-      "px-3",
     ]
   },
   textHelper: {

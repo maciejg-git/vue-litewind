@@ -79,21 +79,21 @@
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="model" class="font-semibold">v-model:</label>
-            <input type="text" id="model" v-model="example.model" />
+            <v-input type="text" id="model" v-model="example.model"></v-input>
           </div>
           <div class="mb-2">
             <label for="state">state:</label>
-            <select id="state" v-model="example.state">
+            <v-select id="state" v-model="example.state">
               <option value="">normal (empty string)</option>
               <option value="valid">valid</option>
               <option value="invalid">invalid</option>
-            </select>
+            </v-select>
           </div>
         </v-tab>
         <v-tab>
           <template #name>
             Events
-            <v-badge style-badge="secondary tiny">
+            <v-badge style-badge="secondary tiny" class="ml-2">
               {{ example.events.length }}
             </v-badge>
           </template>
@@ -117,13 +117,21 @@
   </section>
 
   <section>
-    <h4>Example</h4>
+    <h4>Checkbox group</h4>
     <div class="example">
       <div v-for="l in languages" class="flex items-center my-2">
-        <v-checkbox v-model="l.value" :state="example.state" :id="'language-' + l.name"></v-checkbox>
+        <v-checkbox
+          v-model="l.value"
+          :state="example.state"
+          :id="'language-' + l.name"
+        ></v-checkbox>
         <label :for="'language-' + l.name" class="ml-3">
           {{ l.name }}
         </label>
+      </div>
+      <div class="mt-5">
+        <span class="font-semibold">Languages:</span>
+        {{ Object.values(languages).filter((i) => i.value) }}
       </div>
     </div>
     <pre>
@@ -267,7 +275,7 @@ export default {
     ]);
 
     let example = reactive({
-      model: "",
+      model: true,
       state: "",
       events: [],
     });

@@ -87,31 +87,33 @@
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="model" class="font-semibold">v-model:</label>
-            <input type="text" id="model" v-model="example.isOpen" />
+            <v-input type="text" id="model" v-model="example.isOpen">
+            </v-input>
           </div>
           <div class="mb-2">
             <label for="close-button">close-button:</label>
-            <select id="close-button" v-model="example.closeButton">
+            <v-select id="close-button" v-model="example.closeButton">
               <option :value="true">true</option>
               <option :value="false">false</option>
-            </select>
+            </v-select>
           </div>
           <div class="mb-2">
             <label for="sidebar-left">sidebar-left:</label>
-            <select id="sidebar-left" v-model="example.sidebarLeft">
+            <v-select id="sidebar-left" v-model="example.sidebarLeft">
               <option :value="true">true</option>
               <option :value="false">false</option>
-            </select>
+            </v-select>
           </div>
           <div class="mb-2">
             <label for="width">width:</label>
-            <input type="text" id="width" v-model="example.width" />
+            <v-input type="text" id="width" v-model="example.width">
+            </v-input>
           </div>
         </v-tab>
         <v-tab>
           <template #name>
             Events
-            <v-badge style-badge="secondary tiny">
+            <v-badge style-badge="secondary tiny" class="ml-2">
               {{ example.events.length }}
             </v-badge>
           </template>

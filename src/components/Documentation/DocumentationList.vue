@@ -135,20 +135,20 @@
       </v-list>
       <div class="mt-5">
         <label for="style">List style: </label>
-        <select id="style" v-model="example.theme">
+        <v-select id="style" v-model="example.theme">
           <option value="default">bootstrap</option>
           <option value="material">material</option>
-        </select>
+        </v-select>
       </div>
       <v-tabs theme="material" class="mt-10">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="tag">tag: </label>
-            <select id="tag" v-model="example.tag">
+            <v-select id="tag" v-model="example.tag">
               <option value="div">div</option>
               <option value="a">a</option>
               <option value="button">button</option>
-            </select>
+            </v-select>
           </div>
         </v-tab>
         <v-tab name="Events">

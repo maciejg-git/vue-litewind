@@ -90,9 +90,11 @@
               <template #activator><v-button>Show popover</v-button></template>
               <div class="grid grid-cols-3 gap-2 my-2">
                 <label for="">Login</label>
-                <input type="text" class="col-span-2" />
+                <v-input type="text" class="col-span-2">
+                </v-input>
                 <label for="">Password</label>
-                <input type="text" class="col-span-2" />
+                <v-input type="text" class="col-span-2">
+                </v-input>
               </div>
             </v-popover>
           </div>
@@ -102,7 +104,7 @@
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="placement">placement:</label>
-            <select id="placement" v-model="example.placement">
+            <v-select id="placement" v-model="example.placement">
               <option value="auto">auto</option>
               <option value="auto-start">auto-start</option>
               <option value="auto-end">auto-end</option>
@@ -118,48 +120,49 @@
               <option value="left">left</option>
               <option value="left-start">left-start</option>
               <option value="left-end">left-end</option>
-            </select>
+            </v-select>
           </div>
           <div class="mb-2">
             <label for="trigger">trigger:</label>
-            <select id="trigger" v-model="example.trigger">
+            <v-select id="trigger" v-model="example.trigger">
               <option value="click">click</option>
               <option value="focus">focus</option>
               <option value="hover">hover</option>
-            </select>
+            </v-select>
           </div>
           <div class="mb-2">
             <label for="no-header">no-header:</label>
-            <select id="no-header" v-model="example.noHeader">
+            <v-select id="no-header" v-model="example.noHeader">
               <option :value="true">true</option>
               <option :value="false">false</option>
-            </select>
+            </v-select>
           </div>
           <div class="mb-2">
             <label for="title">title</label>
-            <input type="text" id="title" v-model="example.title" />
+            <v-input type="text" id="title" v-model="example.title">
+            </v-input>
           </div>
           <div class="mb-2">
             <label for="transition">transition:</label>
-            <select id="transition" v-model="example.transition">
+            <v-select id="transition" v-model="example.transition">
               <option value="fade">fade</option>
-            </select>
+            </v-select>
           </div>
           <div class="mb-2">
             <label for="click-outside-close">click-outside-close:</label>
-            <select
+            <v-select
               id="click-outside-close"
               v-model="example.clickOutsideClose"
             >
               <option :value="true">true</option>
               <option :value="false">false</option>
-            </select>
+            </v-select>
           </div>
         </v-tab>
         <v-tab>
           <template #name>
             Events
-            <v-badge style-badge="secondary tiny">
+            <v-badge style-badge="secondary tiny" class="ml-2">
               {{ example.events.length }}
             </v-badge>
           </template>

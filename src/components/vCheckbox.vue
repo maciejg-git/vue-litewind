@@ -48,7 +48,6 @@ export default {
     let classes = {
       checkbox: computed(() => {
         let c = [
-          "appearance-none", "w-4", "h-4",
           ...styles.checkbox.value,
           ...(props.state == "valid"
             ? styles.valid.value

@@ -5,7 +5,7 @@
       <a href="">Docs</a>
     </div>
   </v-navbar>
-  <div class="container mx-auto lg:max-w-screen-xl">
+  <div>
     <div class="flex">
       <div class="sidebar hidden md:block flex-none sticky text-gray-700 overflow-auto top-20 p-3 pr-20">
         <ul class="list-unstyled ml-2">
@@ -63,7 +63,7 @@
           </li>
         </ul>
       </div>
-      <div class="container mx-auto p-3 md:ml-10 w-full md:px-10">
+      <div class="container mx-auto p-3 w-full lg:max-w-screen-xl px-2 md:px-12">
         <router-view></router-view>
       </div>
     </div>

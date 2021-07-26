@@ -88,35 +88,38 @@
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="value">value:</label>
-            <input type="text" id="value" v-model="example.value" />
+            <v-input type="text" id="value" v-model="example.value">
+            </v-input>
           </div>
           <div class="mb-2">
             <label for="max">max:</label>
-            <input type="text" id="max" v-model="example.max" />
+            <v-input type="text" id="max" v-model="example.max">
+            </v-input>
           </div>
           <div class="mb-2">
             <label for="precision">precision:</label>
-            <input type="text" id="precision" v-model="example.precision" />
+            <v-input type="text" id="precision" v-model="example.precision">
+            </v-input>
           </div>
           <div class="mb-2">
             <label for="label">label:</label>
-            <select id="label" v-model="example.label">
+            <v-select id="label" v-model="example.label">
               <option :value="true">true</option>
               <option :value="false">false</option>
-            </select>
+            </v-select>
           </div>
           <div class="mb-2">
             <label for="transition">transition:</label>
-            <select id="transition" v-model="example.transition">
+            <v-select id="transition" v-model="example.transition">
               <option :value="true">true</option>
               <option :value="false">false</option>
-            </select>
+            </v-select>
           </div>
         </v-tab>
         <v-tab>
           <template #name>
             Events
-            <v-badge style-badge="secondary tiny">
+            <v-badge style-badge="secondary tiny" class="ml-2">
               {{ example.events.length }}
             </v-badge>
           </template>

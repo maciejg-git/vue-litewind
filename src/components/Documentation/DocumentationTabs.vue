@@ -166,46 +166,46 @@
       </v-tabs>
       <div class="mt-5">
         <label for="style">Tabs style:</label>
-        <select id="style" v-model="example.theme">
+        <v-select id="style" v-model="example.theme">
           <option value="default">browser</option>
           <option value="material">material</option>
-        </select>
+        </v-select>
       </div>
       <v-tabs theme="material" class="mt-10">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="fill">fill:</label>
-            <select id="fill" v-model="example.fill">
+            <v-select id="fill" v-model="example.fill">
               <option :value="true">true</option>
               <option :value="false">false</option>
-            </select>
+            </v-select>
           </div>
           <div class="mb-2">
             <label for="center">center:</label>
-            <select id="center" v-model="example.center">
+            <v-select id="center" v-model="example.center">
               <option :value="true">true</option>
               <option :value="false">false</option>
-            </select>
+            </v-select>
           </div>
           <div class="mb-2">
             <label for="right">right:</label>
-            <select id="right" v-model="example.right">
+            <v-select id="right" v-model="example.right">
               <option :value="true">true</option>
               <option :value="false">false</option>
-            </select>
+            </v-select>
           </div>
           <div class="mb-2">
             <label for="transition">transition:</label>
-            <select id="transition" v-model="example.transition">
+            <v-select id="transition" v-model="example.transition">
               <option value="fade">fade</option>
               <option value="">empty string (no transition)</option>
-            </select>
+            </v-select>
           </div>
         </v-tab>
         <v-tab>
           <template #name>
             Events
-            <v-badge style-badge="secondary tiny">
+            <v-badge style-badge="secondary tiny" class="ml-2">
               {{ example.events.length }}
             </v-badge>
           </template>

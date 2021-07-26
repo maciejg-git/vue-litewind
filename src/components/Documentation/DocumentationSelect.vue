@@ -79,7 +79,7 @@
           :options="example.options"
           class="w-40"
         >
-        <template #helper>Select helper text.</template>
+          <template #helper>Select helper text.</template>
         </v-select>
       </div>
       <div class="mt-4">
@@ -91,24 +91,28 @@
           :multiple="true"
           class="w-40"
         >
-        <template #helper>Multiple select helper text.</template>
+          <template #helper>Multiple select helper text.</template>
         </v-select>
       </div>
       <v-tabs theme="material" class="mt-10">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="model" class="font-semibold">v-model:</label>
-            <input type="text" id="model" v-model="example.model" />
+            <v-input type="text" id="model" v-model="example.model"></v-input>
           </div>
           <div class="mb-2">
             <label for="model" class="font-semibold">v-model (multiple):</label>
-            <input type="text" id="model" v-model="example.modelMultiple" />
+            <v-input
+              type="text"
+              id="model"
+              v-model="example.modelMultiple"
+            ></v-input>
           </div>
         </v-tab>
         <v-tab>
           <template #name>
             Events
-            <v-badge style-badge="secondary tiny">
+            <v-badge style-badge="secondary tiny" class="ml-2">
               {{ example.events.length }}
             </v-badge>
           </template>
@@ -149,7 +153,8 @@ export default {
         prop: "options",
         type: "Array",
         default: "text",
-        description: "Array of options to display in select element. Each option is <code class='code-word'>Object</code> with <code class='code-word'>value</code> and <code class='code-word'>label</code> properties",
+        description:
+          "Array of options to display in select element. Each option is <code class='code-word'>Object</code> with <code class='code-word'>value</code> and <code class='code-word'>label</code> properties",
       },
       {
         prop: "name",

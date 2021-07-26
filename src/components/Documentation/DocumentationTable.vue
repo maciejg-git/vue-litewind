@@ -216,12 +216,12 @@
         </div>
         <div class="mt-4 lg:mt-0">
           <label for="items-per-page" class="mr-10">Items per page</label>
-          <select v-model="example.itemsPerPage" id="items-per-page">
+          <v-select v-model="example.itemsPerPage" id="items-per-page">
             <option value="5">5</option>
             <option value="10">10</option>
             <option value="20">20</option>
             <option value="50">50</option>
-          </select>
+          </v-select>
         </div>
       </div>
 
@@ -229,39 +229,41 @@
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="locale">filter:</label>
-            <input type="text" v-model="example.filter" />
+            <v-input type="text" v-model="example.filter">
+            </v-input>
           </div>
           <div class="mb-2">
             <label for="locale">locale:</label>
-            <input type="text" id="locale" v-model="example.locale" />
+            <v-input type="text" id="locale" v-model="example.locale">
+              </v-input>
           </div>
           <div class="mb-2">
             <label for="busy">busy:</label>
-            <select id="busy" v-model="example.busy">
+            <v-select id="busy" v-model="example.busy">
               <option :value="true">true</option>
               <option :value="false">false</option>
-            </select>
+            </v-select>
           </div>
           <div class="mb-2">
             <label for="selection-mode">selection-mode:</label>
-            <select id="selection-mode" v-model="example.selectionMode">
+            <v-select id="selection-mode" v-model="example.selectionMode">
               <option value="single">single</option>
               <option value="multiple">multiple</option>
               <option value="">empty string (selection disabled)</option>
-            </select>
+            </v-select>
           </div>
           <div class="mb-2">
             <label for="caption-top">caption-top:</label>
-            <select id="caption-top" v-model="example.captionTop">
+            <v-select id="caption-top" v-model="example.captionTop">
               <option :value="true">true</option>
               <option :value="false">false</option>
-            </select>
+            </v-select>
           </div>
         </v-tab>
         <v-tab>
           <template #name>
             Events
-            <v-badge style-badge="secondary tiny">
+            <v-badge style-badge="secondary tiny" class="ml-2">
               {{ example.events.length }}
             </v-badge>
           </template>
