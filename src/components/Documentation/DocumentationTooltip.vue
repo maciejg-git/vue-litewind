@@ -52,7 +52,7 @@
   <section>
     <h4>Example</h4>
     <div class="example flex">
-      <div class="mx-auto">
+      <div>
         <div class="mb-10">
           <v-button v-tooltip.bottom.delay100.oY5="'This is tooltip'">
             Hover me
