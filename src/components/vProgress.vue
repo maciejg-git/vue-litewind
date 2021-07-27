@@ -21,6 +21,7 @@ export default {
     max: { type: Number, default: 100 },
     label: { type: Boolean, default: true },
     precision: { type: Number, default: 2 },
+    // indeterminate: { type: Boolean, default: true },
     transition: { type: Boolean, default: true },
     name: { type: String, default: "progress" },
     theme: { type: String, default: "default" },
@@ -56,7 +57,6 @@ export default {
         return removeTailwindClasses(c);
       }),
     };
-
 
     let value = computed(() =>
       clamp((props.value / props.max) * 100, 0, props.max)

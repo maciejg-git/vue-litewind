@@ -121,17 +121,18 @@
     <div class="example">
       <div v-for="l in languages" class="flex items-center my-2">
         <v-checkbox
-          v-model="l.value"
+          v-model="languagesModel"
+          :value="l"
           :state="example.state"
-          :id="'language-' + l.name"
+          :id="'language-' + l"
         ></v-checkbox>
-        <label :for="'language-' + l.name" class="ml-3">
-          {{ l.name }}
+        <label :for="'language-' + l" class="ml-3">
+          {{ l }}
         </label>
       </div>
       <div class="mt-5">
         <span class="font-semibold">Languages:</span>
-        {{ Object.values(languages).filter((i) => i.value) }}
+        {{ languagesModel }}
       </div>
     </div>
     <pre>
@@ -281,31 +282,15 @@ export default {
     });
 
     let languages = ref([
-      {
-        name: "english",
-        value: false,
-      },
-      {
-        name: "swedish",
-        value: false,
-      },
-      {
-        name: "korean",
-        value: false,
-      },
-      {
-        name: "german",
-        value: false,
-      },
-      {
-        name: "icelandic",
-        value: false,
-      },
-      {
-        name: "japanese",
-        value: false,
-      },
+      "english",
+      "swedish",
+      "korean",
+      "german",
+      "icelandic",
+      "japanese",
     ]);
+
+    let languagesModel = ref([]);
 
     onMounted(() => {
       hljs.highlightAll();
@@ -324,6 +309,7 @@ export default {
       referenceComponentsDefinition,
       example,
       languages,
+      languagesModel,
     };
   },
 };

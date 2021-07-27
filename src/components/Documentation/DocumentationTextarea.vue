@@ -76,6 +76,7 @@
         :state="example.state"
         cols="40"
         rows="10"
+        placeholder="Textarea example"
       >
       <template #invalid>Textarea invalid.</template>
       <template #helper>Textarea helper text.</template>

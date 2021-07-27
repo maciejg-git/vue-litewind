@@ -75,6 +75,7 @@
         v-model="example.model"
         :type="example.type"
         :state="example.state"
+        placeholder="Input example"
       >
         <template #invalid>Input invalid.</template>
         <template #helper>Input helper text.</template>

@@ -11,9 +11,6 @@
     </option>
     <slot name="default"></slot>
   </select>
-  <div :class="classes.textHelper.value">
-    <slot name="helper"></slot>
-  </div>
 </template>
 
 <script>
@@ -28,21 +25,16 @@ export default {
     name: { type: String, default: "select" },
     theme: { type: String, default: "default" },
     styleSelect: { type: [String, Array], default: "default" },
-    styleTextHelper: { type: [String, Array], default: "default" },
   },
   emits: ["update:modelValue"],
   setup(props, { emit }) {
-    let elements = ["select", "textHelper"];
+    let elements = ["select"];
 
     let { styles } = useStyles(getCurrentInstance(), props, elements);
 
     let classes = {
       select: computed(() => {
         let c = [...styles.select.value];
-        return removeTailwindClasses(c);
-      }),
-      textHelper: computed(() => {
-        let c = [...styles.textHelper.value];
         return removeTailwindClasses(c);
       }),
     };

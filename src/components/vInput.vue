@@ -5,22 +5,17 @@
     :type="type"
     :class="classes.input.value"
   />
-  <div v-if="state == 'invalid'" :class="classes.textInvalid.value">
-    <slot name="invalid"></slot>
-  </div>
-  <div :class="classes.textHelper.value">
-    <slot name="helper"></slot>
-  </div>
 </template>
 
 <script>
 import { computed, getCurrentInstance } from "vue";
 import useStyles from "./composition/use-styles";
+import useLocalModel from "./composition/use-local-model";
 import { removeTailwindClasses } from "../tools/tools.js";
 
 export default {
   props: {
-    modelValue: { type: [String, Number, Boolean], default: undefined },
+    modelValue: { type: [String, Number, Boolean, Array], default: undefined },
     type: { type: String, default: "text" },
     state: { type: String, default: "" },
     name: { type: String, default: "input" },
@@ -28,8 +23,6 @@ export default {
     styleInput: { type: [String, Array], default: "default" },
     styleValid: { type: [String, Array], default: "default" },
     styleInvalid: { type: [String, Array], default: "default" },
-    styleTextHelper: { type: [String, Array], default: "default" },
-    styleTextInvalid: { type: [String, Array], default: "default" },
     styleDisabled: { type: [String, Array], default: "default" },
   },
   emits: ["update:modelValue"],
@@ -38,8 +31,6 @@ export default {
       "input",
       "valid",
       "invalid",
-      "textHelper",
-      "textInvalid",
       "disabled",
     ];
 
@@ -58,14 +49,6 @@ export default {
             ? styles.disabled.value
             : ""),
         ];
-        return removeTailwindClasses(c);
-      }),
-      textHelper: computed(() => {
-        let c = [...styles.textHelper.value];
-        return removeTailwindClasses(c);
-      }),
-      textInvalid: computed(() => {
-        let c = [...styles.textInvalid.value];
         return removeTailwindClasses(c);
       }),
     };

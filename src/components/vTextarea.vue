@@ -5,12 +5,6 @@
     :class="classes.textarea.value"
   >
   </textarea>
-  <div v-if="state == 'invalid'" :class="classes.textInvalid.value">
-    <slot name="invalid"></slot>
-  </div>
-  <div :class="classes.textHelper.value">
-    <slot name="helper"></slot>
-  </div>
 </template>
 
 <script>
@@ -28,8 +22,6 @@ export default {
     styleTextarea: { type: [String, Array], default: "default" },
     styleValid: { type: [String, Array], default: "default" },
     styleInvalid: { type: [String, Array], default: "default" },
-    styleTextHelper: { type: [String, Array], default: "default" },
-    styleTextInvalid: { type: [String, Array], default: "default" },
     styleDisabled: { type: [String, Array], default: "default" },
   },
   emits: ["update:modelValue"],
@@ -38,8 +30,6 @@ export default {
       "textarea",
       "valid",
       "invalid",
-      "textHelper",
-      "textInvalid",
       "disabled",
     ];
 
