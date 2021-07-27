@@ -53,19 +53,19 @@
       </template>
     </v-table>
 
-    <h6>Slots</h6>
-    <p></p>
-    <v-table
-      :items="referenceSlots"
-      :definition="referenceSlotsDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
-    >
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
-    </v-table>
+    <!-- <h6>Slots</h6> -->
+    <!-- <p></p> -->
+    <!-- <v-table -->
+    <!--   :items="referenceSlots" -->
+    <!--   :definition="referenceSlotsDefinition" -->
+    <!--   style-table="default fixed" -->
+    <!--   style-header-cell="default bordered" -->
+    <!--   style-cell="default bordered" -->
+    <!-- > -->
+    <!--   <template #cell:description="{ value }"> -->
+    <!--     <span v-html="value"></span> -->
+    <!--   </template> -->
+    <!-- </v-table> -->
   </section>
 
   <section>
@@ -77,8 +77,6 @@
         :state="example.state"
         placeholder="Input example"
       >
-        <template #invalid>Input invalid.</template>
-        <template #helper>Input helper text.</template>
       </v-input>
       <v-tabs theme="material" class="mt-10">
         <v-tab name="Props">
@@ -192,14 +190,6 @@ export default {
       {
         prop: "style-input",
         description: "Main input element",
-      },
-      {
-        prop: "style-text-invalid",
-        description: "Text below input element if state is invalid",
-      },
-      {
-        prop: "style-text-helper",
-        description: "Helper text below input element",
       },
     ]);
 

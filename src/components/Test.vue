@@ -124,6 +124,7 @@
     >
       <template #default="{ value, max }">{{ value }}</template>
     </v-progress>
+
     <br />
     <v-progress
       :value="progress"
@@ -132,6 +133,19 @@
       style-progress="default tiny"
       style-progress-bar="default gradient"
     ></v-progress>
+
+    <br>
+    
+    <v-progress
+      :value="progress"
+      :max="100"
+      style-progress="default tiny"
+      style-progress-bar="default gradient"
+      indeterminate
+      :indeterminate-width="75"
+    >
+      <template #default="{ value, max }">{{ value }}</template>
+    </v-progress>
 
     {{ textModel }}
     <v-input type="text" v-model="textModel"></v-input>

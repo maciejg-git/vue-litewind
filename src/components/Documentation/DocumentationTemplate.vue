@@ -99,14 +99,15 @@
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="model" class="font-semibold">v-model: </label>
-            <input type="text" id="model" v-model="example.date" />
+            <v-input type="text" id="model" v-model="example.date">
+            </v-input>
           </div>
           <div class="mb-2">
             <label for="range">range: </label>
-            <select id="range" v-model="example.range">
+            <v-select id="range" v-model="example.range">
               <option :value="true">true</option>
               <option :value="false">false</option>
-            </select>
+            </v-select>
           </div>
         </v-tab>
         <v-tab>

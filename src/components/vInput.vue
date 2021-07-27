@@ -10,7 +10,6 @@
 <script>
 import { computed, getCurrentInstance } from "vue";
 import useStyles from "./composition/use-styles";
-import useLocalModel from "./composition/use-local-model";
 import { removeTailwindClasses } from "../tools/tools.js";
 
 export default {

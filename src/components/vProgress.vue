@@ -1,12 +1,21 @@
 <template>
-  <div :class="classes.progress.value">
-    <div :class="classes.progressBar.value" :style="{ width: value + '%' }">
+  <div :class="classes.progress.value" class="relative">
+    <div
+      v-if="!indeterminate"
+      :class="classes.progressBar.value"
+      :style="{ width: value + '%' }"
+    >
       <span v-if="label" :class="classes.label.value">
         <slot name="default" :value="value" :max="max">
           {{ label }}
         </slot>
       </span>
     </div>
+    <div
+      v-else
+      :class="classes.progressBar.value"
+      :style="{ width: indeterminateWidth + '%' }"
+    ></div>
   </div>
 </template>
 
@@ -21,7 +30,9 @@ export default {
     max: { type: Number, default: 100 },
     label: { type: Boolean, default: true },
     precision: { type: Number, default: 2 },
-    // indeterminate: { type: Boolean, default: true },
+    indeterminate: { type: Boolean, default: false },
+    indeterminateWidth: { type: [String, Number], default: 75 },
+    indeterminateSpeed: { type: String, default: "normal" },
     transition: { type: Boolean, default: true },
     name: { type: String, default: "progress" },
     theme: { type: String, default: "default" },
@@ -36,7 +47,7 @@ export default {
 
     let fixedClasses = {
       progress: ["flex"],
-      progressBar: ["flex", "justify-center", "items-center"],
+      progressBar: ["flex", "justify-center", "items-center", "h-full"],
     };
 
     let classes = {
@@ -48,7 +59,8 @@ export default {
         let c = [
           ...fixedClasses.progressBar,
           ...styles.progressBar.value,
-          props.transition ? "transition-all" : "",
+          props.indeterminate ? getIndeterminateSpeed() : "",
+          props.transition && !props.indeterminate ? "transition-all" : "",
         ];
         return removeTailwindClasses(c);
       }),
@@ -68,13 +80,61 @@ export default {
       () => props.label && value.value.toFixed(precision.value) + " %"
     );
 
+    let getIndeterminateSpeed = () => {
+      return props.indeterminateSpeed == "normal"
+        ? "indeterminate indeterminate-normal"
+        : props.indeterminateSpeed == "fast"
+        ? "indeterminate indeterminate-fast"
+        : props.indeterminateSpeed == "slow"
+        ? "indeterminate indeterminate-slow"
+        : "indeterminate indeterminate-normal";
+    };
+
     return {
       classes,
       value,
       label,
+      getIndeterminateSpeed,
     };
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.indeterminate {
+  position: absolute;
+  transform-origin: left;
+  animation-name: slide;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.indeterminate-normal {
+  animation-duration: 2s;
+}
+
+.indeterminate-fast {
+  animation-duration: 1.5s;
+}
+
+.indeterminate-slow {
+  animation-duration: 2.5s;
+}
+
+@keyframes slide {
+  from {
+    left: 0%;
+    transform: scaleX(0);
+  }
+
+  50% {
+    left: 0%;
+    transform: scaleX(1);
+  }
+
+  to {
+    left: 100%;
+    transform: scaleX(1);
+  }
+}
+</style>

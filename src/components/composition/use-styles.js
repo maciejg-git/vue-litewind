@@ -3,9 +3,11 @@ import { computed } from "vue";
 export default function useStyles(instance, props, elements) {
   let getStyles = (styles, globalStyles, el) => {
     return styles[el].value.reduce((acc, i) => {
-      return globalStyles[el][i]
-        ? [...acc, ...globalStyles[el][i]]
-        : [...acc, i];
+      if (!globalStyles[el][i]) {
+        return [...acc, i];
+      } else if (Array.isArray(globalStyles[el][i])) {
+        return [...acc, ...globalStyles[el][i]];
+      } else return [...acc, ...globalStyles[el][i].split(" ")];
     }, []);
   };
 
@@ -25,7 +27,7 @@ export default function useStyles(instance, props, elements) {
     propsStyles[el] = computed(() => props["style" + elCapitalize].split(" "));
     // ["default", "style2"]
     styles[el] = computed(() => getStyles(propsStyles, globalStyles.value, el));
-    // ["class class2", "class class2"]
+    // ["class", "class2", "el class", "el class2"]
   }
 
   return {

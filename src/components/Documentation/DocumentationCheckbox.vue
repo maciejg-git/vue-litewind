@@ -53,19 +53,19 @@
       </template>
     </v-table>
 
-    <h6>Slots</h6>
-    <p></p>
-    <v-table
-      :items="referenceSlots"
-      :definition="referenceSlotsDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
-    >
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
-    </v-table>
+    <!-- <h6>Slots</h6> -->
+    <!-- <p></p> -->
+    <!-- <v-table -->
+    <!--   :items="referenceSlots" -->
+    <!--   :definition="referenceSlotsDefinition" -->
+    <!--   style-table="default fixed" -->
+    <!--   style-header-cell="default bordered" -->
+    <!--   style-cell="default bordered" -->
+    <!-- > -->
+    <!--   <template #cell:description="{ value }"> -->
+    <!--     <span v-html="value"></span> -->
+    <!--   </template> -->
+    <!-- </v-table> -->
   </section>
 
   <section>
@@ -199,14 +199,6 @@ export default {
       {
         prop: "style-input",
         description: "Main input element",
-      },
-      {
-        prop: "style-text-invalid",
-        description: "Text below input element if state is invalid",
-      },
-      {
-        prop: "style-text-helper",
-        description: "Helper text below input element",
       },
     ]);
 

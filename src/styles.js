@@ -282,13 +282,6 @@ let select = {
       "overflow-y-auto",
     ]
   },
-  textHelper: {
-    default: [
-      "text-sm",
-      "text-gray-600",
-      "mt-1",
-    ]
-  },
 }
 
 // RANGE NOT WORKING
@@ -305,20 +298,6 @@ let range = {
       "outline-none",
       "py-1",
       "px-3",
-    ]
-  },
-  textHelper: {
-    default: [
-      "text-sm",
-      "text-gray-600",
-      "mt-1",
-    ]
-  },
-  textInvalid: {
-    default: [
-      "text-sm",
-      "text-red-600",
-      "mt-1",
     ]
   },
   valid: {
@@ -360,20 +339,6 @@ let checkbox = {
       "outline-none",
     ]
   },
-  textHelper: {
-    default: [
-      "text-sm",
-      "text-gray-600",
-      "mt-1",
-    ]
-  },
-  textInvalid: {
-    default: [
-      "text-sm",
-      "text-red-600",
-      "mt-1",
-    ]
-  },
   valid: {
     default: [
       "text-green-500",
@@ -397,6 +362,10 @@ let checkbox = {
 
 // INPUT
 
+// "text-sm",
+// "text-gray-600",
+// "mt-1",
+
 let input = {
   input: {
     default: [
@@ -409,13 +378,6 @@ let input = {
       "focus:ring-indigo-200",
       "focus:border-gray-400",
       "outline-none",
-    ]
-  },
-  textHelper: {
-    default: [
-      "text-sm",
-      "text-gray-600",
-      "mt-1",
     ]
   },
   textInvalid: {
@@ -460,20 +422,6 @@ let textarea = {
       "outline-none",
       "py-1",
       "px-3",
-    ]
-  },
-  textHelper: {
-    default: [
-      "text-sm",
-      "text-gray-600",
-      "mt-1",
-    ]
-  },
-  textInvalid: {
-    default: [
-      "text-sm",
-      "text-red-600",
-      "mt-1",
     ]
   },
   valid: {

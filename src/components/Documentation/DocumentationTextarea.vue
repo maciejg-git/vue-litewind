@@ -53,19 +53,19 @@
       </template>
     </v-table>
 
-    <h6>Slots</h6>
-    <p></p>
-    <v-table
-      :items="referenceSlots"
-      :definition="referenceSlotsDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
-    >
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
-    </v-table>
+    <!-- <h6>Slots</h6> -->
+    <!-- <p></p> -->
+    <!-- <v-table -->
+    <!--   :items="referenceSlots" -->
+    <!--   :definition="referenceSlotsDefinition" -->
+    <!--   style-table="default fixed" -->
+    <!--   style-header-cell="default bordered" -->
+    <!--   style-cell="default bordered" -->
+    <!-- > -->
+    <!--   <template #cell:description="{ value }"> -->
+    <!--     <span v-html="value"></span> -->
+    <!--   </template> -->
+    <!-- </v-table> -->
   </section>
 
   <section>
@@ -78,8 +78,6 @@
         rows="10"
         placeholder="Textarea example"
       >
-      <template #invalid>Textarea invalid.</template>
-      <template #helper>Textarea helper text.</template>
       </v-textarea>
       <v-tabs theme="material" class="mt-10">
         <v-tab name="Props">
@@ -178,16 +176,8 @@ export default {
 
     let referenceStyles = ref([
       {
-        prop: "style-input",
-        description: "Main input element",
-      },
-      {
-        prop: "style-text-invalid",
-        description: "Text below input element if state is invalid",
-      },
-      {
-        prop: "style-text-helper",
-        description: "Helper text below input element",
+        prop: "style-textarea",
+        description: "Main textarea element",
       },
     ]);
 

@@ -274,11 +274,12 @@
     <div class="example md:flex">
       <v-dropdown>
         <template #activator>
-          <input
+          <v-input
             type="text"
             v-model="exampleDropdown.date"
             placeholder="Pick date"
-          />
+          >
+          </v-input>
         </template>
         <template #default="{ hide }">
           <v-card style-card="default shadow" class="p-2">

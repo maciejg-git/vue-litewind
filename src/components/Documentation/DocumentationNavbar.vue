@@ -1,5 +1,5 @@
 <template>
-  <h3>Select</h3>
+  <h3>Navbar</h3>
   <p></p>
 
   <section>
@@ -34,16 +34,16 @@
       style-header-cell="default bordered"
       style-cell="default bordered"
     >
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
+      <template #cell:description="{ value }"
+        ><span v-html="value"></span
+      ></template>
     </v-table>
 
-    <h6>Events</h6>
+    <h6>Slots</h6>
     <p></p>
     <v-table
-      :items="referenceEvents"
-      :definition="referenceEventsDefinition"
+      :items="referenceSlots"
+      :definition="referenceSlotsDefinition"
       style-table="default fixed"
       style-header-cell="default bordered"
       style-cell="default bordered"
@@ -52,77 +52,27 @@
         <span v-html="value"></span>
       </template>
     </v-table>
-
-    <!-- <h6>Slots</h6> -->
-    <!-- <p></p> -->
-    <!-- <v-table -->
-    <!--   :items="referenceSlots" -->
-    <!--   :definition="referenceSlotsDefinition" -->
-    <!--   style-table="default fixed" -->
-    <!--   style-header-cell="default bordered" -->
-    <!--   style-cell="default bordered" -->
-    <!-- > -->
-    <!--   <template #cell:description="{ value }"> -->
-    <!--     <span v-html="value"></span> -->
-    <!--   </template> -->
-    <!-- </v-table> -->
   </section>
 
   <section>
     <h4>Example</h4>
-    <div class="example">
-      <div>
-        <v-select
-          v-model="example.model"
-          :type="example.type"
-          :state="example.state"
-          :options="example.options"
-          class="w-40"
-        >
-        </v-select>
-      </div>
-      <div class="mt-4">
-        <v-select
-          v-model="example.modelMultiple"
-          :type="example.type"
-          :state="example.state"
-          :options="example.options"
-          :multiple="true"
-          class="w-40"
-        >
-        </v-select>
-      </div>
-      <v-tabs theme="material" class="mt-10">
+    <div class="example relative">
+      <v-card style="height: 300px">
+        <v-navbar class="py-4 px-4"><span class="font-bold text-lg">Brand</span></v-navbar>
+      </v-card>
+      <v-tabs theme="material" class="mt-5">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
-            <label for="model" class="font-semibold">v-model:</label>
-            <v-input type="text" id="model" v-model="example.model"></v-input>
+            <label for="model" class="font-semibold">v-model: </label>
+            <v-input type="text" id="model" v-model="example.date">
+            </v-input>
           </div>
           <div class="mb-2">
-            <label for="model" class="font-semibold">v-model (multiple):</label>
-            <v-input
-              type="text"
-              id="model"
-              v-model="example.modelMultiple"
-            ></v-input>
-          </div>
-        </v-tab>
-        <v-tab>
-          <template #name>
-            Events
-            <v-badge style-badge="secondary tiny" class="ml-2">
-              {{ example.events.length }}
-            </v-badge>
-          </template>
-          <div class="overflow-y-auto max-h-48 mt-5 w-full">
-            <div class="px-2 pb-2">
-              <template v-for="ev in example.events">
-                <div class="py-1">
-                  <code class="code-word">{{ ev.ev }}</code>
-                  {{ ev.data }}
-                </div>
-              </template>
-            </div>
+            <label for="range">range: </label>
+            <v-select id="range" v-model="example.range">
+              <option :value="true">true</option>
+              <option :value="false">false</option>
+            </v-select>
           </div>
         </v-tab>
       </v-tabs>
@@ -142,22 +92,23 @@ export default {
   setup(props) {
     let reference = ref([
       {
-        prop: "v-model",
-        type: "String",
-        default: "undefined",
-        description: "select v-model",
+        prop: "fixed",
+        type: "Boolean",
+        default: "false",
+        description:
+          "",
       },
       {
-        prop: "options",
-        type: "Array",
-        default: "text",
+        prop: "sticky",
+        type: "Boolean",
+        default: "false",
         description:
-          "Array of options to display in select element. Each option is <code class='code-word'>Object</code> with <code class='code-word'>value</code> and <code class='code-word'>label</code> properties",
+          "",
       },
       {
         prop: "name",
         type: "String",
-        default: "input",
+        default: "navbar",
         description: "",
       },
       {
@@ -189,8 +140,8 @@ export default {
 
     let referenceStyles = ref([
       {
-        prop: "style-select",
-        description: "Main select element",
+        prop: "style-navbar",
+        description: "Main navbar element",
       },
     ]);
 
@@ -223,8 +174,8 @@ export default {
 
     let referenceSlots = ref([
       {
-        slot: "helper",
-        description: "This component does not provide any slots.",
+        slot: "default",
+        description: "Slot for navbar content",
       },
     ]);
 
@@ -255,25 +206,7 @@ export default {
       },
     ]);
 
-    let example = reactive({
-      model: "",
-      modelMultiple: [],
-      options: [
-        {
-          value: "option",
-          label: "option",
-        },
-        {
-          value: "option 2",
-          label: "option 2",
-        },
-        {
-          value: "option 3",
-          label: "option 3",
-        },
-      ],
-      events: [],
-    });
+    let example = reactive({});
 
     onMounted(() => {
       hljs.highlightAll();

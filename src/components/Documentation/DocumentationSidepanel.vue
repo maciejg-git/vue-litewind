@@ -57,38 +57,35 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <div class="flex flex-col items-center">
-        <v-button @click="example.isOpen = !example.isOpen">
-          Toggle sidepanel
-        </v-button>
-        <v-sidepanel
-          v-model="example.isOpen"
-          :closeButton="example.closeButton"
-          :sidebar-left="example.sidebarLeft"
-          :width="example.width"
-        >
-          <template #header>
-            <span class="text-xl font-bold">Sidepanel</span>
-          </template>
-          <div class="p-5">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text ever
-            since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book. It has survived not only
-            five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s with
-            the release of Letraset sheets containing Lorem Ipsum passages, and
-            more recently with desktop publishing software like Aldus PageMaker
-            including versions of Lorem Ipsum.
-          </div>
-        </v-sidepanel>
-      </div>
+      <v-button @click="example.isOpen = !example.isOpen">
+        Toggle sidepanel
+      </v-button>
+      <v-sidepanel
+        v-model="example.isOpen"
+        :closeButton="example.closeButton"
+        :sidebar-left="example.sidebarLeft"
+        :width="example.width"
+      >
+        <template #header>
+          <span class="text-xl font-bold">Sidepanel</span>
+        </template>
+        <div class="p-5">
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s, when an unknown printer took a galley of type and
+          scrambled it to make a type specimen book. It has survived not only
+          five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged. It was popularised in the 1960s with
+          the release of Letraset sheets containing Lorem Ipsum passages, and
+          more recently with desktop publishing software like Aldus PageMaker
+          including versions of Lorem Ipsum.
+        </div>
+      </v-sidepanel>
       <v-tabs theme="material" class="mt-10">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="model" class="font-semibold">v-model:</label>
-            <v-input type="text" id="model" v-model="example.isOpen">
-            </v-input>
+            <v-input type="text" id="model" v-model="example.isOpen"></v-input>
           </div>
           <div class="mb-2">
             <label for="close-button">close-button:</label>
@@ -106,8 +103,7 @@
           </div>
           <div class="mb-2">
             <label for="width">width:</label>
-            <v-input type="text" id="width" v-model="example.width">
-            </v-input>
+            <v-input type="text" id="width" v-model="example.width"></v-input>
           </div>
         </v-tab>
         <v-tab>
@@ -148,7 +144,8 @@ export default {
         prop: "v-model",
         type: "Boolean",
         default: "false",
-        description: "Controls the state of sidepanel. If true, sidepanel is open",
+        description:
+          "Controls the state of sidepanel. If true, sidepanel is open",
       },
       {
         prop: "close-button",

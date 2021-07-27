@@ -72,7 +72,7 @@
         :transition="example.transition"
         class="mt-4"
       >
-        <template #label="{ value }">{{ value }}</template>
+      <template #label="{ value, max }">{{ value }} / {{ max }}</template>
       </v-progress>
       <v-progress
         :value="+example.value"
@@ -88,18 +88,19 @@
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="value">value:</label>
-            <v-input type="text" id="value" v-model="example.value">
-            </v-input>
+            <v-input type="text" id="value" v-model="example.value"></v-input>
           </div>
           <div class="mb-2">
             <label for="max">max:</label>
-            <v-input type="text" id="max" v-model="example.max">
-            </v-input>
+            <v-input type="text" id="max" v-model="example.max"></v-input>
           </div>
           <div class="mb-2">
             <label for="precision">precision:</label>
-            <v-input type="text" id="precision" v-model="example.precision">
-            </v-input>
+            <v-input
+              type="text"
+              id="precision"
+              v-model="example.precision"
+            ></v-input>
           </div>
           <div class="mb-2">
             <label for="label">label:</label>
@@ -135,6 +136,24 @@
           </div>
         </v-tab>
       </v-tabs>
+    </div>
+    <pre>
+      <code>
+      </code>
+    </pre>
+  </section>
+
+  <section>
+    <h4>Example indeterminate</h4>
+    <div class="example">
+      <v-progress
+        style-progress="default tiny"
+        style-progress-bar="default gradient"
+        indeterminate
+        :indeterminate-width="75"
+        class="mt-4"
+      >
+      </v-progress>
     </div>
     <pre>
       <code>
@@ -181,6 +200,18 @@ export default {
         type: "String",
         default: "true",
         description: "If true changes in value animates smoothly",
+      },
+      {
+        prop: "indeterminate",
+        type: "Boolean",
+        default: "false",
+        description: "Renders indeterminate progress bar. Note: value, max, label, precision and transition props are ignored if indeterminate is true",
+      },
+      {
+        prop: "indeterminate-width",
+        type: "Number",
+        default: "75",
+        description: "Width of indeterminate bar in %",
       },
       {
         prop: "name",

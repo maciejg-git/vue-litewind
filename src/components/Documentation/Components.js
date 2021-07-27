@@ -68,6 +68,10 @@ export let components = [
     name: "progress",
   },
   {
+    label: "Navbar",
+    name: "navbar",
+  },
+  {
     label: "Sidepanel",
     name: "sidepanel",
   },

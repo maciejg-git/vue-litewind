@@ -25,6 +25,7 @@ import DocumentationInput from '../components/Documentation/DocumentationInput.v
 import DocumentationSelect from '../components/Documentation/DocumentationSelect.vue'
 import DocumentationTextarea from '../components/Documentation/DocumentationTextarea.vue'
 import DocumentationCheckbox from '../components/Documentation/DocumentationCheckbox.vue'
+import DocumentationNavbar from '../components/Documentation/DocumentationNavbar.vue'
 
 import DocumentationTooltip from '../components/Documentation/DocumentationTooltip.vue'
 
@@ -129,6 +130,10 @@ const routes = [
       {
         path: 'checkbox',
         component: DocumentationCheckbox,
+      },
+      {
+        path: 'navbar',
+        component: DocumentationNavbar,
       },
 
       // directives

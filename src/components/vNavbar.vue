@@ -11,6 +11,8 @@ import { removeTailwindClasses } from "../tools/tools.js";
 
 export default {
   props: {
+    fixed:  { type: Boolean, default: false },
+    sticky:  { type: Boolean, default: true },
     name: { type: String, default: "navbar" },
     theme: { type: String, default: "default" },
     styleNavbar: { type: String, default: "default" },
