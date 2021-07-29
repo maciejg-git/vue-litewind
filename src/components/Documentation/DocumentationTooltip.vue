@@ -80,7 +80,7 @@
           </v-button>
           <v-button
             v-tooltip.bottom.delay100.oY5
-            data-title="This tooltip has content from data-attribute"
+            data-title="This tooltip has content from data-title attribute"
           >
             Hover me (data title attribute)
           </v-button>

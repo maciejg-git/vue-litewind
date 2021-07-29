@@ -265,6 +265,18 @@ let progress = {
   }
 }
 
+// FORM TEXT
+
+let formText = {
+  formText: {
+    default: [
+      "text-sm",
+      "text-gray-600",
+      "mt-1",
+    ],
+  },
+}
+
 // SELECT
 
 let select = {
@@ -319,6 +331,46 @@ let range = {
   }
 }
 
+// RADIO
+
+let radio = {
+  radio: {
+    default: [
+      "border",
+      "bg-white",
+      "border-gray-300",
+      "text-indigo-500",
+      "focus:border-gray-400",
+      "focus:ring",
+      "focus:ring-indigo-200",
+      "focus:ring-offset-0",
+      "focus:outline-none",
+      "transform",
+      "scale-110",
+      "outline-none",
+    ]
+  },
+  valid: {
+    default: [
+      "text-green-500",
+      "border-green-300",
+      "focus:ring-green-200",
+    ]
+  },
+  invalid: {
+    default: [
+      "text-red-500",
+      "border-red-300",
+      "focus:ring-red-200",
+    ]
+  },
+  disabled: {
+    default: [
+      "opacity-50",
+    ]
+  }
+}
+
 // CHECKBOX
 
 let checkbox = {
@@ -361,10 +413,6 @@ let checkbox = {
 }
 
 // INPUT
-
-// "text-sm",
-// "text-gray-600",
-// "mt-1",
 
 let input = {
   input: {
@@ -884,9 +932,11 @@ export let styles = {
   button,
   list,
   select,
+  radio,
   checkbox,
   input,
   textarea,
+  formText,
   range,
   spinner,
   popover,

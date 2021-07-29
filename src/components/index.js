@@ -24,6 +24,7 @@ import vAlert from "./vAlert.vue"
 import vInput from "./vInput.vue"
 import vTextarea from "./vTextarea.vue"
 import vSelect from "./vSelect.vue"
+import vRadio from "./vRadio.vue"
 import vCheckbox from "./vCheckbox.vue"
 import tooltip from "../directives/tooltip.js"
 
@@ -51,6 +52,7 @@ import tooltip from "../directives/tooltip.js"
     app.component("v-alert", vAlert);
     app.component("v-input", vInput);
     app.component("v-textarea", vTextarea);
+    app.component("v-radio", vRadio);
     app.component("v-checkbox", vCheckbox);
     app.component("v-select", vSelect);
     app.component("v-close-button", vCloseButton);

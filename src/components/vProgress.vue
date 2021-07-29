@@ -14,13 +14,17 @@
     <div
       v-else
       :class="classes.progressBar.value"
-      :style="{ width: indeterminateWidth + '%' }"
+      :style="{
+        width: indeterminateWidth + '%',
+        '--progress-bar-width': -progressBarWidth + 'px',
+      }"
+      ref="progressBar"
     ></div>
   </div>
 </template>
 
 <script>
-import { computed, getCurrentInstance } from "vue";
+import { ref, computed, onMounted, getCurrentInstance } from "vue";
 import useStyles from "./composition/use-styles";
 import { clamp, removeTailwindClasses } from "../tools/tools.js";
 
@@ -70,6 +74,20 @@ export default {
       }),
     };
 
+    let progressBar = ref(null);
+    let progressBarWidth = ref(0);
+
+    onMounted(() => {
+      if (props.indeterminate) {
+        setProgressBarWidth();
+        addEventListener("resize", setProgressBarWidth);
+      }
+    });
+
+    let setProgressBarWidth = () => {
+      progressBarWidth.value = progressBar.value.clientWidth;
+    };
+
     let value = computed(() =>
       clamp((props.value / props.max) * 100, 0, props.max)
     );
@@ -95,6 +113,8 @@ export default {
       value,
       label,
       getIndeterminateSpeed,
+      progressBar,
+      progressBarWidth,
     };
   },
 };
@@ -123,18 +143,11 @@ export default {
 
 @keyframes slide {
   from {
-    left: 0%;
-    transform: scaleX(0);
-  }
-
-  50% {
-    left: 0%;
-    transform: scaleX(1);
+    left: var(--progress-bar-width);
   }
 
   to {
     left: 100%;
-    transform: scaleX(1);
   }
 }
 </style>

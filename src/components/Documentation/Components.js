@@ -8,6 +8,10 @@ export let components = [
     name: "button",
   },
   {
+    label: "Radio",
+    name: "radio",
+  },
+  {
     label: "Checkbox",
     name: "checkbox",
   },

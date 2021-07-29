@@ -85,73 +85,59 @@
   <section id="example">
     <h4>Example</h4>
     <div class="example">
-      <div class="flex">
-        <div class="mx-auto">
-          <v-dropdown
-            :placement="example.placement"
-            :offset-x="+example.offsetX"
-            :offset-y="+example.offsetY"
-            :no-flip="example.noFlip"
-            :auto-close-menu="example.autoCloseMenu"
-            :transition="example.transition"
-            @state:opened="
-              example.events.unshift({ ev: 'state:opened', data: $event })
-            "
-            @state:closed="
-              example.events.unshift({ ev: 'state:closed', data: $event })
-            "
-          >
-            <template #activator>
-              <v-button>Dropdown menu</v-button>
-            </template>
-            <v-card width="320px" style-card="default shadow">
-              <v-dropdown-menu-item tag="button">
-                Menu item
-              </v-dropdown-menu-item>
-              <v-dropdown-menu-item tag="button">
-                Menu item 2
-              </v-dropdown-menu-item>
-              <v-dropdown-header>Menu header</v-dropdown-header>
-              <v-dropdown-menu-item tag="button">
-                Menu item 3
-              </v-dropdown-menu-item>
-              <v-dropdown-menu-item tag="button">
-                Menu item 4
-              </v-dropdown-menu-item>
-              <v-dropdown-menu-item tag="button">
-                Menu item 5
-              </v-dropdown-menu-item>
-            </v-card>
-          </v-dropdown>
-          <v-dropdown
-            :placement="example.placement"
-            :offset-x="+example.offsetX"
-            :offset-y="+example.offsetY"
-            :no-flip="example.noFlip"
-            :auto-close-menu="example.autoCloseMenu"
-            :transition="example.transition"
-            @state:opened="
-              example.events.unshift({ ev: 'state:opened', data: $event })
-            "
-            @state:closed="
-              example.events.unshift({ ev: 'state:closed', data: $event })
-            "
-          >
-            <template #activator>
-              <v-button>Dropdown datepicker</v-button>
-            </template>
-            <template #default="{ hide }">
-              <v-card width="320px" style-card="default shadow" class="p-2">
-                <v-date-picker
-                  v-model="example.date"
-                  adjecent-months
-                  @state:done="hide"
-                ></v-date-picker>
-              </v-card>
-            </template>
-          </v-dropdown>
-        </div>
-      </div>
+      <v-dropdown
+        :placement="example.placement"
+        :offset-x="+example.offsetX"
+        :offset-y="+example.offsetY"
+        :no-flip="example.noFlip"
+        :auto-close-menu="example.autoCloseMenu"
+        :transition="example.transition"
+        @state:opened="
+          example.events.unshift({ ev: 'state:opened', data: $event })
+        "
+        @state:closed="
+          example.events.unshift({ ev: 'state:closed', data: $event })
+        "
+      >
+        <template #activator>
+          <v-button>Dropdown menu</v-button>
+        </template>
+        <v-card width="320px" style-card="default shadow">
+          <v-dropdown-menu-item tag="button">Menu item</v-dropdown-menu-item>
+          <v-dropdown-menu-item tag="button">Menu item 2</v-dropdown-menu-item>
+          <v-dropdown-header>Menu header</v-dropdown-header>
+          <v-dropdown-menu-item tag="button">Menu item 3</v-dropdown-menu-item>
+          <v-dropdown-menu-item tag="button">Menu item 4</v-dropdown-menu-item>
+          <v-dropdown-menu-item tag="button">Menu item 5</v-dropdown-menu-item>
+        </v-card>
+      </v-dropdown>
+      <v-dropdown
+        :placement="example.placement"
+        :offset-x="+example.offsetX"
+        :offset-y="+example.offsetY"
+        :no-flip="example.noFlip"
+        :auto-close-menu="example.autoCloseMenu"
+        :transition="example.transition"
+        @state:opened="
+          example.events.unshift({ ev: 'state:opened', data: $event })
+        "
+        @state:closed="
+          example.events.unshift({ ev: 'state:closed', data: $event })
+        "
+      >
+        <template #activator>
+          <v-button>Dropdown datepicker</v-button>
+        </template>
+        <template #default="{ hide }">
+          <v-card width="320px" style-card="default shadow" class="p-2">
+            <v-date-picker
+              v-model="example.date"
+              adjecent-months
+              @state:done="hide"
+            ></v-date-picker>
+          </v-card>
+        </template>
+      </v-dropdown>
       <v-tabs theme="material" class="mt-10">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
@@ -176,13 +162,19 @@
           </div>
           <div class="mb-2">
             <label for="offsetX">offsetX:</label>
-            <v-input type="text" id="offsetX" v-model="example.offsetX">
-            </v-input>
+            <v-input
+              type="text"
+              id="offsetX"
+              v-model="example.offsetX"
+            ></v-input>
           </div>
           <div class="mb-2">
             <label for="offsetY">offsetY:</label>
-            <v-input type="text" id="offsetY" v-model="example.offsetY">
-            </v-input>
+            <v-input
+              type="text"
+              id="offsetY"
+              v-model="example.offsetY"
+            ></v-input>
           </div>
           <div class="mb-2">
             <label for="no-flip">no-flip:</label>

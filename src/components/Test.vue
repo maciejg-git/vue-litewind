@@ -142,7 +142,7 @@
       style-progress="default tiny"
       style-progress-bar="default gradient"
       indeterminate
-      :indeterminate-width="75"
+      :indeterminate-width="50"
     >
       <template #default="{ value, max }">{{ value }}</template>
     </v-progress>
@@ -163,6 +163,9 @@
     </v-input>
     <v-input type="range">
     </v-input>
+    <v-radio v-model="textModel" value="option"></v-radio>
+    <v-radio v-model="textModel" value="option 2"></v-radio>
+    <v-radio v-model="textModel" value="option 3"></v-radio>
 
     <!-- <v-checkbox v-model="textModel"> -->
     <!--   <template #helper>input name</template> -->
@@ -636,6 +639,7 @@ import vRange from "./vRange.vue";
 import vTextarea from "./vTextarea.vue";
 import vCheckbox from "./vCheckbox.vue";
 import vNavbar from "./vNavbar.vue";
+import vRadio from "./vRadio.vue";
 // import {vTable} from "../dist/vuecomponent2.es"
 
 export default {
@@ -669,6 +673,7 @@ export default {
     vNavbar,
     vCheckbox,
     vTextarea,
+    vRadio,
   },
   props: {
     msg: String,

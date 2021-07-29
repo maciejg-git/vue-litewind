@@ -105,7 +105,7 @@ export default {
 }
 .fade-slide-right-enter-active,
 .fade-slide-right-leave-active {
-  transition: opacity 0.2s ease, transform 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.4s ease;
 }
 .fade-slide-right-enter-from,
 .fade-slide-right-leave-to {
@@ -114,7 +114,7 @@ export default {
 }
 .fade-slide-left-enter-active,
 .fade-slide-left-leave-active {
-  transition: opacity 0.2s ease, transform 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.4s ease;
 }
 .fade-slide-left-enter-from,
 .fade-slide-left-leave-to {

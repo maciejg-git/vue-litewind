@@ -57,48 +57,42 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <div class="flex">
-        <div class="mx-auto">
-          <div>
-            <v-popover
-              :placement="example.placement"
-              :trigger="example.trigger"
-              :no-header="example.noHeader"
-              :title="example.title"
-              :transition="example.transition"
-              :click-outside-close="example.clickOutsideClose"
-              @update:modelValue="
-                example.events.unshift({ ev: 'update:modelValue', data: $event })
-              "
-            >
-              <template #activator><v-button>Show popover</v-button></template>
-              This is popover.
-            </v-popover>
+      <div>
+        <v-popover
+          :placement="example.placement"
+          :trigger="example.trigger"
+          :no-header="example.noHeader"
+          :title="example.title"
+          :transition="example.transition"
+          :click-outside-close="example.clickOutsideClose"
+          @update:modelValue="
+            example.events.unshift({ ev: 'update:modelValue', data: $event })
+          "
+        >
+          <template #activator><v-button>Show popover</v-button></template>
+          This is popover.
+        </v-popover>
+      </div>
+      <div class="mt-4">
+        <v-popover
+          :placement="example.placement"
+          :trigger="example.trigger"
+          :no-header="example.noHeader"
+          title="Login"
+          :transition="example.transition"
+          :click-outside-close="example.clickOutsideClose"
+          @update:modelValue="
+            example.events.unshift({ ev: 'update:modelValue', data: $event })
+          "
+        >
+          <template #activator><v-button>Show popover</v-button></template>
+          <div class="grid grid-cols-3 gap-2 my-2">
+            <label for="">Login</label>
+            <v-input type="text" class="col-span-2"></v-input>
+            <label for="">Password</label>
+            <v-input type="text" class="col-span-2"></v-input>
           </div>
-          <div class="mt-4">
-            <v-popover
-              :placement="example.placement"
-              :trigger="example.trigger"
-              :no-header="example.noHeader"
-              title="Login"
-              :transition="example.transition"
-              :click-outside-close="example.clickOutsideClose"
-              @update:modelValue="
-                example.events.unshift({ ev: 'update:modelValue', data: $event })
-              "
-            >
-              <template #activator><v-button>Show popover</v-button></template>
-              <div class="grid grid-cols-3 gap-2 my-2">
-                <label for="">Login</label>
-                <v-input type="text" class="col-span-2">
-                </v-input>
-                <label for="">Password</label>
-                <v-input type="text" class="col-span-2">
-                </v-input>
-              </div>
-            </v-popover>
-          </div>
-        </div>
+        </v-popover>
       </div>
       <v-tabs theme="material" class="mt-10">
         <v-tab name="Props">
@@ -139,8 +133,7 @@
           </div>
           <div class="mb-2">
             <label for="title">title</label>
-            <v-input type="text" id="title" v-model="example.title">
-            </v-input>
+            <v-input type="text" id="title" v-model="example.title"></v-input>
           </div>
           <div class="mb-2">
             <label for="transition">transition:</label>

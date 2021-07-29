@@ -24,6 +24,7 @@ import DocumentationAlert from '../components/Documentation/DocumentationAlert.v
 import DocumentationInput from '../components/Documentation/DocumentationInput.vue'
 import DocumentationSelect from '../components/Documentation/DocumentationSelect.vue'
 import DocumentationTextarea from '../components/Documentation/DocumentationTextarea.vue'
+import DocumentationRadio from '../components/Documentation/DocumentationRadio.vue'
 import DocumentationCheckbox from '../components/Documentation/DocumentationCheckbox.vue'
 import DocumentationNavbar from '../components/Documentation/DocumentationNavbar.vue'
 
@@ -126,6 +127,10 @@ const routes = [
       {
         path: 'textarea',
         component: DocumentationTextarea,
+      },
+      {
+        path: 'radio',
+        component: DocumentationRadio,
       },
       {
         path: 'checkbox',
