@@ -107,7 +107,7 @@ export default {
       modal: ["relative", "flex-1", "overflow-auto", "pointer-events-auto"],
       header: ["flex", "items-center", "justify-between"],
       footer: ["flex", "justify-end"],
-      backdrop: ["fixed", "inset-0", "overflow-y-auto", "min-h-screen"],
+      backdrop: ["fixed", "inset-0", "overflow-y-auto", "min-h-screen", "z-10"],
     };
 
     let classes = {

@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes.progress.value" class="relative">
+  <div ref="progress" :class="classes.progress.value" class="relative">
     <div
       v-if="!indeterminate"
       :class="classes.progressBar.value"
@@ -17,6 +17,7 @@
       :style="{
         width: indeterminateWidth + '%',
         '--progress-bar-width': -progressBarWidth + 'px',
+        '--progress-bar-timer': (progressWidth/400 - ((progressWidth - 400) / 900)) +'s',
       }"
       ref="progressBar"
     ></div>
@@ -24,7 +25,7 @@
 </template>
 
 <script>
-import { ref, computed, onMounted, getCurrentInstance } from "vue";
+import { ref, computed, onMounted, onUnmounted, getCurrentInstance } from "vue";
 import useStyles from "./composition/use-styles";
 import { clamp, removeTailwindClasses } from "../tools/tools.js";
 
@@ -35,8 +36,7 @@ export default {
     label: { type: Boolean, default: true },
     precision: { type: Number, default: 2 },
     indeterminate: { type: Boolean, default: false },
-    indeterminateWidth: { type: [String, Number], default: 75 },
-    indeterminateSpeed: { type: String, default: "normal" },
+    indeterminateWidth: { type: [String, Number], default: 50 },
     transition: { type: Boolean, default: true },
     name: { type: String, default: "progress" },
     theme: { type: String, default: "default" },
@@ -63,7 +63,7 @@ export default {
         let c = [
           ...fixedClasses.progressBar,
           ...styles.progressBar.value,
-          props.indeterminate ? getIndeterminateSpeed() : "",
+          props.indeterminate ? "indeterminate indeterminate-normal" : "",
           props.transition && !props.indeterminate ? "transition-all" : "",
         ];
         return removeTailwindClasses(c);
@@ -72,20 +72,6 @@ export default {
         let c = [...styles.label.value];
         return removeTailwindClasses(c);
       }),
-    };
-
-    let progressBar = ref(null);
-    let progressBarWidth = ref(0);
-
-    onMounted(() => {
-      if (props.indeterminate) {
-        setProgressBarWidth();
-        addEventListener("resize", setProgressBarWidth);
-      }
-    });
-
-    let setProgressBarWidth = () => {
-      progressBarWidth.value = progressBar.value.clientWidth;
     };
 
     let value = computed(() =>
@@ -98,23 +84,39 @@ export default {
       () => props.label && value.value.toFixed(precision.value) + " %"
     );
 
-    let getIndeterminateSpeed = () => {
-      return props.indeterminateSpeed == "normal"
-        ? "indeterminate indeterminate-normal"
-        : props.indeterminateSpeed == "fast"
-        ? "indeterminate indeterminate-fast"
-        : props.indeterminateSpeed == "slow"
-        ? "indeterminate indeterminate-slow"
-        : "indeterminate indeterminate-normal";
+    // indeterminate
+
+    let progressBar = ref(null);
+    let progress = ref(null);
+    let progressBarWidth = ref(0);
+    let progressWidth = ref(0);
+
+    onMounted(() => {
+      if (props.indeterminate) {
+        getProgressBarWidth();
+        addEventListener("resize", getProgressBarWidth);
+      }
+    });
+
+    onUnmounted(() => {
+      if (props.indeterminate) {
+        removeEventListener("resize", getProgressBarWidth);
+      }
+    });
+
+    let getProgressBarWidth = () => {
+      progressBarWidth.value = progressBar.value.clientWidth;
+      progressWidth.value = progress.value.clientWidth;
     };
 
     return {
       classes,
       value,
       label,
-      getIndeterminateSpeed,
+      progress,
       progressBar,
       progressBarWidth,
+      progressWidth,
     };
   },
 };
@@ -130,16 +132,30 @@ export default {
 }
 
 .indeterminate-normal {
-  animation-duration: 2s;
+  animation-duration: var(--progress-bar-timer);
 }
 
-.indeterminate-fast {
-  animation-duration: 1.5s;
-}
-
-.indeterminate-slow {
-  animation-duration: 2.5s;
-}
+/* .indeterminate-normal { */
+/*   animation-duration: 1.2s; */
+/* } */
+/*  */
+/* @media (min-width: 640px) { */
+/*   .indeterminate-normal { */
+/*     animation-duration: 1.2s; */
+/*   } */
+/* } */
+/*  */
+/* @media (min-width: 1024px) { */
+/*   .indeterminate-normal { */
+/*     animation-duration: 1.5s; */
+/*   } */
+/* } */
+/*  */
+/* @media (min-width: 1280px) { */
+/*   .indeterminate-normal { */
+/*     animation-duration: 2s; */
+/*   } */
+/* } */
 
 @keyframes slide {
   from {

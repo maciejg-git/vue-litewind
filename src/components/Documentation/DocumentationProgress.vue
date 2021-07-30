@@ -72,7 +72,7 @@
         :transition="example.transition"
         class="mt-4"
       >
-      <template #label="{ value, max }">{{ value }} / {{ max }}</template>
+        <template #label="{ value, max }">{{ value }} / {{ max }}</template>
       </v-progress>
       <v-progress
         :value="+example.value"
@@ -150,10 +150,25 @@
         style-progress="default tiny"
         style-progress-bar="default gradient"
         indeterminate
-        :indeterminate-width="75"
+        :indeterminate-width="50"
         class="mt-4"
-      >
-      </v-progress>
+      ></v-progress>
+      <br />
+
+      <v-card width="400px">
+        <v-progress
+          style-progress="default tiny"
+          style-progress-bar="default gradient"
+          indeterminate
+          :indeterminate-width="50"
+        ></v-progress>
+        <div class="p-4">
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s, when an unknown printer took a galley of type and
+          scrambled it to make a type specimen book.
+        </div>
+      </v-card>
     </div>
     <pre>
       <code>
@@ -205,7 +220,8 @@ export default {
         prop: "indeterminate",
         type: "Boolean",
         default: "false",
-        description: "Renders indeterminate progress bar. Note: value, max, label, precision and transition props are ignored if indeterminate is true",
+        description:
+          "Renders indeterminate progress bar. Note: value, max, label, precision and transition props are ignored if indeterminate is true",
       },
       {
         prop: "indeterminate-width",

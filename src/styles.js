@@ -260,7 +260,7 @@ let progress = {
     default: [
       "text-xs",
       "text-white",
-      "font-semibold",
+      "font-bold",
     ]
   }
 }
