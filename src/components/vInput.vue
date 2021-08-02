@@ -33,7 +33,16 @@ export default {
       "disabled",
     ];
 
-    let { styles } = useStyles(getCurrentInstance(), props, elements);
+    // test
+    let states = [
+      "valid",
+      "invalid",
+      "disabled",
+    ]
+
+    // states.input.valid.value
+
+    let { styles } = useStyles(getCurrentInstance(), props, elements, states);
 
     let classes = {
       input: computed(() => {
@@ -47,6 +56,11 @@ export default {
           ...(attrs.disabled === "" || attrs.disabled === true
             ? styles.disabled.value
             : ""),
+
+          // states.input.valid.value
+
+          // styles.input.normal.value
+          // styles.input.valid.value
         ];
         return removeTailwindClasses(c);
       }),

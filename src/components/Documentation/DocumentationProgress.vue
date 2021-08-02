@@ -72,7 +72,7 @@
         :transition="example.transition"
         class="mt-4"
       >
-        <template #label="{ value, max }">{{ value }} / {{ max }}</template>
+        <template #default="{ value, max }">{{ value }} / {{ max }}</template>
       </v-progress>
       <v-progress
         :value="+example.value"
@@ -155,19 +155,17 @@
       ></v-progress>
       <br />
 
-      <v-card width="400px">
+      <v-card style-card="default shadow" width="400px">
+        <div class="flex justify-center p-4">
+          Checking for updates...
+        </div>
         <v-progress
           style-progress="default tiny"
           style-progress-bar="default gradient"
           indeterminate
           :indeterminate-width="50"
+          class="m-2"
         ></v-progress>
-        <div class="p-4">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book.
-        </div>
       </v-card>
     </div>
     <pre>

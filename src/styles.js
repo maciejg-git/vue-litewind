@@ -13,6 +13,60 @@ let fixedButton = [
   "m-1",
 ]
 
+let buttonTest = {
+  button: {
+    default: [
+      ...fixedButton,
+      "bg-indigo-500",
+      "hover:bg-indigo-600",
+      "focus:ring-indigo-200",
+    ],
+    primary: [
+      ...fixedButton,
+      "bg-indigo-500",
+      "hover:bg-indigo-600",
+      "focus:ring-indigo-200",
+    ],
+    secondary: [
+      ...fixedButton,
+      "bg-gray-500",
+      "hover:bg-gray-600",
+      "focus:ring-gray-200",
+    ],
+    yellow: [
+      "bg-yellow-500",
+      "hover:bg-yellow-600",
+      "focus:ring-yellow-200",
+    ],
+    green: [
+      "bg-green-500",
+      "hover:bg-green-600",
+      "focus:ring-green-200",
+    ],
+    small: [
+      "py-1"
+    ],
+    tiny: [
+      "py-0.5", "text-sm"
+    ],
+    large: [
+      "py-2.5"
+    ],
+    square: [
+      "rounded-none"
+    ],
+    pill: [
+      "rounded-full"
+    ],
+    uppercase: [
+      "uppercase"
+    ],
+    noMargin: [
+      "m-0"
+    ],
+  }
+};
+
 let button = {
   button: {
     default: [
@@ -241,6 +295,9 @@ let progress = {
       "overflow-hidden",
       "h-4",
     ],
+    transparent: [
+      "bg-transparent",
+    ],
     tiny: [
       "h-1",
     ],
@@ -426,13 +483,18 @@ let input = {
       "focus:ring-indigo-200",
       "focus:border-gray-400",
       "outline-none",
-    ]
-  },
-  textInvalid: {
-    default: [
-      "text-sm",
-      "text-red-600",
-      "mt-1",
+    ],
+    // test
+    valid: [
+      "border-green-300",
+      "focus:ring-green-200",
+    ],
+    invalid: [
+      "border-red-300",
+      "focus:ring-red-200",
+    ],
+    disabled: [
+      "opacity-50",
     ]
   },
   valid: {

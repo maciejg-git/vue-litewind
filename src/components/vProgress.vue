@@ -17,7 +17,7 @@
       :style="{
         width: indeterminateWidth + '%',
         '--progress-bar-width': -progressBarWidth + 'px',
-        '--progress-bar-timer': (progressWidth/400 - ((progressWidth - 400) / 900)) +'s',
+        '--progress-bar-timer': getProgressTimer(),
       }"
       ref="progressBar"
     ></div>
@@ -86,25 +86,27 @@ export default {
 
     // indeterminate
 
-    let progressBar = ref(null);
     let progress = ref(null);
-    let progressBarWidth = ref(0);
+    let progressBar = ref(null);
     let progressWidth = ref(0);
+    let progressBarWidth = ref(0);
 
     onMounted(() => {
       if (props.indeterminate) {
-        getProgressBarWidth();
-        addEventListener("resize", getProgressBarWidth);
+        getProgressWidth();
+        addEventListener("resize", getProgressWidth);
       }
     });
 
     onUnmounted(() => {
       if (props.indeterminate) {
-        removeEventListener("resize", getProgressBarWidth);
+        removeEventListener("resize", getProgressWidth);
       }
     });
 
-    let getProgressBarWidth = () => {
+    let getProgressTimer = () => Math.sqrt(progressWidth.value) / 17 + "s";
+
+    let getProgressWidth = () => {
       progressBarWidth.value = progressBar.value.clientWidth;
       progressWidth.value = progress.value.clientWidth;
     };
@@ -116,7 +118,7 @@ export default {
       progress,
       progressBar,
       progressBarWidth,
-      progressWidth,
+      getProgressTimer,
     };
   },
 };
