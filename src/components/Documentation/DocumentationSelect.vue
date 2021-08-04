@@ -106,6 +106,14 @@
               v-model="example.modelMultiple"
             ></v-input>
           </div>
+          <div class="mb-2">
+            <label for="state">state:</label>
+            <v-select id="state" v-model="example.state">
+              <option value="">normal (empty string)</option>
+              <option value="valid">valid</option>
+              <option value="invalid">invalid</option>
+            </v-select>
+          </div>
         </v-tab>
         <v-tab>
           <template #name>
@@ -153,6 +161,13 @@ export default {
         default: "text",
         description:
           "Array of options to display in select element. Each option is <code class='code-word'>Object</code> with <code class='code-word'>value</code> and <code class='code-word'>label</code> properties",
+      },
+      {
+        prop: "state",
+        type: "String",
+        default: "empty string",
+        description:
+          "State of select validity. Supported values are 'valid', 'invalid' or 'empty string' for default state",
       },
       {
         prop: "name",
@@ -258,6 +273,7 @@ export default {
     let example = reactive({
       model: "",
       modelMultiple: [],
+      state: "",
       options: [
         {
           value: "option",

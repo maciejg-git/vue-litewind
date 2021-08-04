@@ -181,7 +181,7 @@
 
     <v-button @click="selectModel = []">reset select</v-button>
     {{ selectModel }}
-    <v-select v-model="selectModel" :options="selectOptions" multiple>
+    <v-select v-model="selectModel" :options="selectOptions" multiple class="w-full">
       <template #helper>select name</template>
     </v-select>
     <v-textarea v-model="textModel" rows="20" cols="40">

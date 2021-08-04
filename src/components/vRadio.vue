@@ -19,32 +19,31 @@ export default {
     name: { type: String, default: "radio" },
     theme: { type: String, default: "default" },
     styleRadio: { type: [String, Array], default: "default" },
-    styleValid: { type: [String, Array], default: "default" },
-    styleInvalid: { type: [String, Array], default: "default" },
-    styleDisabled: { type: [String, Array], default: "default" },
   },
   emits: ["update:modelValue"],
   setup(props, { attrs, emit }) {
-    let elements = [
-      "radio",
-      "valid",
-      "invalid",
-      "disabled",
-    ];
+    let elements = ["radio"];
 
-    let { styles } = useStyles(getCurrentInstance(), props, elements);
+    let s = ["valid", "invalid", "disabled"];
+
+    let { styles, states } = useStyles(
+      getCurrentInstance(),
+      props,
+      elements,
+      s
+    );
 
     let classes = {
       radio: computed(() => {
         let c = [
           ...styles.radio.value,
           ...(props.state == "valid"
-            ? styles.valid.value
+            ? states.radio.valid
             : props.state == "invalid"
-            ? styles.invalid.value
+            ? states.radio.invalid
             : ""),
           ...(attrs.disabled === "" || attrs.disabled === true
-            ? styles.disabled.value
+            ? states.radio.disabled
             : ""),
         ];
         return removeTailwindClasses(c);

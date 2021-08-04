@@ -3,8 +3,7 @@
     v-bind="$attrs"
     v-model="localModel"
     :class="classes.textarea.value"
-  >
-  </textarea>
+  ></textarea>
 </template>
 
 <script>
@@ -20,43 +19,33 @@ export default {
     name: { type: String, default: "textarea" },
     theme: { type: String, default: "default" },
     styleTextarea: { type: [String, Array], default: "default" },
-    styleValid: { type: [String, Array], default: "default" },
-    styleInvalid: { type: [String, Array], default: "default" },
-    styleDisabled: { type: [String, Array], default: "default" },
   },
   emits: ["update:modelValue"],
   setup(props, { attrs, emit }) {
-    let elements = [
-      "textarea",
-      "valid",
-      "invalid",
-      "disabled",
-    ];
+    let elements = ["textarea"];
 
-    let { styles } = useStyles(getCurrentInstance(), props, elements);
+    let s = ["valid", "invalid", "disabled"];
+
+    let { styles, states } = useStyles(
+      getCurrentInstance(),
+      props,
+      elements,
+      s
+    );
 
     let classes = {
       textarea: computed(() => {
         let c = [
-          "appearance-none",
           ...styles.textarea.value,
           ...(props.state == "valid"
-            ? styles.valid.value
+            ? states.textarea.valid
             : props.state == "invalid"
-            ? styles.invalid.value
+            ? states.textarea.invalid
             : ""),
           ...(attrs.disabled === "" || attrs.disabled === true
-            ? styles.disabled.value
+            ? states.textarea.disabled
             : ""),
         ];
-        return removeTailwindClasses(c);
-      }),
-      textHelper: computed(() => {
-        let c = [...styles.textHelper.value];
-        return removeTailwindClasses(c);
-      }),
-      textInvalid: computed(() => {
-        let c = [...styles.textInvalid.value];
         return removeTailwindClasses(c);
       }),
     };

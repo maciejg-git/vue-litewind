@@ -1,5 +1,35 @@
 // BUTTON
 
+let fixedFormStates = {
+  valid: [
+    "border-green-300",
+    "focus:ring-green-200",
+  ],
+  invalid: [
+    "border-red-300",
+    "focus:ring-red-200",
+  ],
+  disabled: [
+    "opacity-50",
+  ]
+}
+
+let fixedCheckboxFormStates = {
+  valid: [
+    "text-green-500",
+    "border-green-300",
+    "focus:ring-green-200",
+  ],
+  invalid: [
+    "text-red-500",
+    "border-red-300",
+    "focus:ring-red-200",
+  ],
+  disabled: [
+    "opacity-50",
+  ]
+}
+
 let fixedButton = [
   "rounded",
   "text-sm",
@@ -12,60 +42,6 @@ let fixedButton = [
   "py-2",
   "m-1",
 ]
-
-let buttonTest = {
-  button: {
-    default: [
-      ...fixedButton,
-      "bg-indigo-500",
-      "hover:bg-indigo-600",
-      "focus:ring-indigo-200",
-    ],
-    primary: [
-      ...fixedButton,
-      "bg-indigo-500",
-      "hover:bg-indigo-600",
-      "focus:ring-indigo-200",
-    ],
-    secondary: [
-      ...fixedButton,
-      "bg-gray-500",
-      "hover:bg-gray-600",
-      "focus:ring-gray-200",
-    ],
-    yellow: [
-      "bg-yellow-500",
-      "hover:bg-yellow-600",
-      "focus:ring-yellow-200",
-    ],
-    green: [
-      "bg-green-500",
-      "hover:bg-green-600",
-      "focus:ring-green-200",
-    ],
-    small: [
-      "py-1"
-    ],
-    tiny: [
-      "py-0.5", "text-sm"
-    ],
-    large: [
-      "py-2.5"
-    ],
-    square: [
-      "rounded-none"
-    ],
-    pill: [
-      "rounded-full"
-    ],
-    uppercase: [
-      "uppercase"
-    ],
-    noMargin: [
-      "m-0"
-    ],
-  }
-};
 
 let button = {
   button: {
@@ -349,7 +325,8 @@ let select = {
       "focus:border-gray-400",
       "outline-none",
       "overflow-y-auto",
-    ]
+    ],
+    ...fixedFormStates,
   },
 }
 
@@ -405,27 +382,9 @@ let radio = {
       "transform",
       "scale-110",
       "outline-none",
-    ]
+    ],
+    ...fixedCheckboxFormStates,
   },
-  valid: {
-    default: [
-      "text-green-500",
-      "border-green-300",
-      "focus:ring-green-200",
-    ]
-  },
-  invalid: {
-    default: [
-      "text-red-500",
-      "border-red-300",
-      "focus:ring-red-200",
-    ]
-  },
-  disabled: {
-    default: [
-      "opacity-50",
-    ]
-  }
 }
 
 // CHECKBOX
@@ -446,27 +405,10 @@ let checkbox = {
       "transform",
       "scale-110",
       "outline-none",
-    ]
+    ],
+    ...fixedCheckboxFormStates,
   },
-  valid: {
-    default: [
-      "text-green-500",
-      "border-green-300",
-      "focus:ring-green-200",
-    ]
-  },
-  invalid: {
-    default: [
-      "text-red-500",
-      "border-red-300",
-      "focus:ring-red-200",
-    ]
-  },
-  disabled: {
-    default: [
-      "opacity-50",
-    ]
-  }
+  
 }
 
 // INPUT
@@ -484,36 +426,9 @@ let input = {
       "focus:border-gray-400",
       "outline-none",
     ],
+    ...fixedFormStates,
     // test
-    valid: [
-      "border-green-300",
-      "focus:ring-green-200",
-    ],
-    invalid: [
-      "border-red-300",
-      "focus:ring-red-200",
-    ],
-    disabled: [
-      "opacity-50",
-    ]
   },
-  valid: {
-    default: [
-      "border-green-300",
-      "focus:ring-green-200",
-    ]
-  },
-  invalid: {
-    default: [
-      "border-red-300",
-      "focus:ring-red-200",
-    ]
-  },
-  disabled: {
-    default: [
-      "opacity-50",
-    ]
-  }
 }
 
 // TEXTAREA
@@ -532,25 +447,9 @@ let textarea = {
       "outline-none",
       "py-1",
       "px-3",
-    ]
+    ],
+    ...fixedFormStates,
   },
-  valid: {
-    default: [
-      "border-green-300",
-      "focus:ring-green-200",
-    ]
-  },
-  invalid: {
-    default: [
-      "border-red-300",
-      "focus:ring-red-200",
-    ]
-  },
-  disabled: {
-    default: [
-      "opacity-50",
-    ]
-  }
 }
 
 // ALERT

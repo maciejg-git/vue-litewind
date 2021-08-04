@@ -19,32 +19,31 @@ export default {
     name: { type: String, default: "checkbox" },
     theme: { type: String, default: "default" },
     styleCheckbox: { type: [String, Array], default: "default" },
-    styleValid: { type: [String, Array], default: "default" },
-    styleInvalid: { type: [String, Array], default: "default" },
-    styleDisabled: { type: [String, Array], default: "default" },
   },
   emits: ["update:modelValue"],
   setup(props, { attrs, emit }) {
-    let elements = [
-      "checkbox",
-      "valid",
-      "invalid",
-      "disabled",
-    ];
+    let elements = ["checkbox"];
 
-    let { styles } = useStyles(getCurrentInstance(), props, elements);
+    let s = ["valid", "invalid", "disabled"];
+
+    let { styles, states } = useStyles(
+      getCurrentInstance(),
+      props,
+      elements,
+      s
+    );
 
     let classes = {
       checkbox: computed(() => {
         let c = [
           ...styles.checkbox.value,
           ...(props.state == "valid"
-            ? styles.valid.value
+            ? states.checkbox.valid
             : props.state == "invalid"
-            ? styles.invalid.value
+            ? states.checkbox.invalid
             : ""),
           ...(attrs.disabled === "" || attrs.disabled === true
-            ? styles.disabled.value
+            ? states.checkbox.disabled
             : ""),
         ];
         return removeTailwindClasses(c);

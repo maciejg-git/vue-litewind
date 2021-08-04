@@ -20,47 +20,32 @@ export default {
     name: { type: String, default: "input" },
     theme: { type: String, default: "default" },
     styleInput: { type: [String, Array], default: "default" },
-    styleValid: { type: [String, Array], default: "default" },
-    styleInvalid: { type: [String, Array], default: "default" },
-    styleDisabled: { type: [String, Array], default: "default" },
   },
   emits: ["update:modelValue"],
   setup(props, { attrs, emit }) {
-    let elements = [
-      "input",
-      "valid",
-      "invalid",
-      "disabled",
-    ];
+    let elements = ["input"];
 
-    // test
-    let states = [
-      "valid",
-      "invalid",
-      "disabled",
-    ]
+    let s = ["valid", "invalid", "disabled"];
 
-    // states.input.valid.value
-
-    let { styles } = useStyles(getCurrentInstance(), props, elements, states);
+    let { styles, states } = useStyles(
+      getCurrentInstance(),
+      props,
+      elements,
+      s
+    );
 
     let classes = {
       input: computed(() => {
         let c = [
           ...styles.input.value,
           ...(props.state == "valid"
-            ? styles.valid.value
+            ? states.input.valid
             : props.state == "invalid"
-            ? styles.invalid.value
+            ? states.input.invalid
             : ""),
           ...(attrs.disabled === "" || attrs.disabled === true
-            ? styles.disabled.value
+            ? states.input.disabled
             : ""),
-
-          // states.input.valid.value
-
-          // styles.input.normal.value
-          // styles.input.valid.value
         ];
         return removeTailwindClasses(c);
       }),
