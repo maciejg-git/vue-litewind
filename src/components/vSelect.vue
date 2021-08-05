@@ -39,10 +39,14 @@ export default {
       select: computed(() => {
         let c = [
           ...styles.select.value,
-          ...(props.state == "valid"
+          ...(props.state == "valid" || props.state === true
             ? states.select.valid
-            : props.state == "invalid"
+            : props.state == "invalid" || props.state === false
             ? states.select.invalid
+            : props.state == "normal" ||
+              props.state === null ||
+              props.state === undefined
+            ? ""
             : ""),
           ...(attrs.disabled === "" || attrs.disabled === true
             ? states.select.disabled

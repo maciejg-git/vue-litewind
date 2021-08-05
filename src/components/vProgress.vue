@@ -18,6 +18,7 @@
         width: indeterminateWidth + '%',
         '--progress-bar-width': -progressBarWidth + 'px',
         '--progress-bar-timer': getProgressTimer(),
+        '--progress-bar-timing': indeterminateTiming,
       }"
       ref="progressBar"
     ></div>
@@ -25,7 +26,7 @@
 </template>
 
 <script>
-import { ref, computed, onMounted, onUnmounted, getCurrentInstance } from "vue";
+import { ref, computed, onMounted, onUnmounted, watchEffect, getCurrentInstance } from "vue";
 import useStyles from "./composition/use-styles";
 import { clamp, removeTailwindClasses } from "../tools/tools.js";
 
@@ -37,6 +38,7 @@ export default {
     precision: { type: Number, default: 2 },
     indeterminate: { type: Boolean, default: false },
     indeterminateWidth: { type: [String, Number], default: 50 },
+    indeterminateTiming: { type: String, default: "linear" },
     transition: { type: Boolean, default: true },
     name: { type: String, default: "progress" },
     theme: { type: String, default: "default" },
@@ -63,7 +65,7 @@ export default {
         let c = [
           ...fixedClasses.progressBar,
           ...styles.progressBar.value,
-          props.indeterminate ? "indeterminate indeterminate-normal" : "",
+          props.indeterminate ? "indeterminate" : "",
           props.transition && !props.indeterminate ? "transition-all" : "",
         ];
         return removeTailwindClasses(c);
@@ -104,7 +106,8 @@ export default {
       }
     });
 
-    let getProgressTimer = () => Math.sqrt(progressWidth.value) / 17 + "s";
+    let getProgressTimer = () =>
+      Math.sqrt(progressWidth.value + 300) / 17 + "s";
 
     let getProgressWidth = () => {
       progressBarWidth.value = progressBar.value.clientWidth;
@@ -130,34 +133,9 @@ export default {
   transform-origin: left;
   animation-name: slide;
   animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
-
-.indeterminate-normal {
+  animation-timing-function: var(--progress-bar-timing);
   animation-duration: var(--progress-bar-timer);
 }
-
-/* .indeterminate-normal { */
-/*   animation-duration: 1.2s; */
-/* } */
-/*  */
-/* @media (min-width: 640px) { */
-/*   .indeterminate-normal { */
-/*     animation-duration: 1.2s; */
-/*   } */
-/* } */
-/*  */
-/* @media (min-width: 1024px) { */
-/*   .indeterminate-normal { */
-/*     animation-duration: 1.5s; */
-/*   } */
-/* } */
-/*  */
-/* @media (min-width: 1280px) { */
-/*   .indeterminate-normal { */
-/*     animation-duration: 2s; */
-/*   } */
-/* } */
 
 @keyframes slide {
   from {

@@ -148,8 +148,8 @@
     </v-progress>
 
     {{ textModel }}
-    <v-input type="text" v-model="textModel"></v-input>
-    <v-input type="password" v-model="textModel"></v-input>
+    <v-input type="text" v-model="textModel" readonly></v-input>
+    <v-input type="password" v-model="textModel" :state="false"></v-input>
     <v-input type="password" v-model="textModel" state="valid"></v-input>
     <v-input type="password" v-model="textModel" state="invalid"></v-input>
     <v-input type="text" v-model="textModel" placeholder="input text"></v-input>

@@ -23,7 +23,7 @@ export default {
     let { styles } = useStyles(getCurrentInstance(), props, elements);
 
     let fixedClass = {
-      navbar: ["sticky", "top-0", "left-0", "z-10"],
+      navbar: ["sticky", "top-0", "left-0", "z-20"],
     };
 
     let classes = {

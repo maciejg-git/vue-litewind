@@ -38,10 +38,14 @@ export default {
       input: computed(() => {
         let c = [
           ...styles.input.value,
-          ...(props.state == "valid"
+          ...(props.state == "valid" || props.state === true
             ? states.input.valid
-            : props.state == "invalid"
+            : props.state == "invalid" || props.state === false
             ? states.input.invalid
+            : props.state == "normal" ||
+              props.state === null ||
+              props.state === undefined
+            ? ""
             : ""),
           ...(attrs.disabled === "" || attrs.disabled === true
             ? states.input.disabled

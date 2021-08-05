@@ -3,7 +3,7 @@
     <div
       v-if="modelValue"
       :style="{ 'padding-right': scrollbarWidth }"
-      class="fixed inset-0 z-20 overflow-y-auto"
+      class="fixed inset-0 modal-z-31 overflow-y-auto"
       @click.self="handleBackdropClick"
     >
       <div :class="classes.container.value">
@@ -107,7 +107,7 @@ export default {
       modal: ["relative", "flex-1", "overflow-auto", "pointer-events-auto"],
       header: ["flex", "items-center", "justify-between"],
       footer: ["flex", "justify-end"],
-      backdrop: ["fixed", "inset-0", "overflow-y-auto", "min-h-screen", "z-10"],
+      backdrop: ["fixed", "inset-0", "overflow-y-auto", "min-h-screen", "z-30"],
     };
 
     let classes = {
@@ -212,6 +212,10 @@ export default {
 </script>
 
 <style scoped>
+.modal-z-31 {
+  z-index: 31;
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.2s ease;

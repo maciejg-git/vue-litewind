@@ -1,7 +1,11 @@
 <template>
   <div>
     <ul :class="classes.tabBar.value">
-      <li v-for="(tab, i) in tabs" :class="{ 'flex flex-auto': fill }">
+      <li
+        v-for="(tab, i) in tabs"
+        :key="i"
+        :class="fill ? fixedClasses.tabWrapper: ''"
+      >
         <a
           href=""
           :class="active == i ? classes.tabActive.value : classes.tab.value"
@@ -54,6 +58,7 @@ export default {
       tabBar: ["flex", "flex-auto"],
       tab: ["block"],
       tabActive: ["block"],
+      tabWrapper: ["flex flex-auto"],
     };
 
     let classes = {
@@ -122,6 +127,7 @@ export default {
     provide("transition", toRef(props, "transition"));
 
     return {
+      fixedClasses,
       classes,
       tabs,
       tabName,

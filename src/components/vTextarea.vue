@@ -37,10 +37,14 @@ export default {
       textarea: computed(() => {
         let c = [
           ...styles.textarea.value,
-          ...(props.state == "valid"
+          ...(props.state == "valid" || props.state === true
             ? states.textarea.valid
-            : props.state == "invalid"
+            : props.state == "invalid" || props.state === false
             ? states.textarea.invalid
+            : props.state == "normal" ||
+              props.state === null ||
+              props.state === undefined
+            ? ""
             : ""),
           ...(attrs.disabled === "" || attrs.disabled === true
             ? states.textarea.disabled

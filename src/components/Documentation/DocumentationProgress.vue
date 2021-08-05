@@ -151,22 +151,29 @@
         style-progress-bar="default gradient"
         indeterminate
         :indeterminate-width="50"
+        :indeterminate-timing="example.timing"
         class="mt-4"
       ></v-progress>
       <br />
 
       <v-card style-card="default shadow" width="400px">
-        <div class="flex justify-center p-4">
-          Checking for updates...
-        </div>
+        <div class="flex justify-center p-4">Checking for updates...</div>
         <v-progress
           style-progress="default tiny"
           style-progress-bar="default gradient"
           indeterminate
           :indeterminate-width="50"
+          :indeterminate-timing="example.timing"
           class="m-2"
         ></v-progress>
       </v-card>
+      <div class="mb-2 mt-10">
+        <label for="label">indeterminate-timing:</label>
+        <v-select id="label" v-model="example.timing">
+          <option value="linear">linear</option>
+          <option value="ease">ease</option>
+        </v-select>
+      </div>
     </div>
     <pre>
       <code>
@@ -342,6 +349,8 @@ export default {
       label: false,
       precision: 2,
       transition: true,
+      timing: "linear",
+      width: "50",
       events: [],
     });
 

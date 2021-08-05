@@ -37,10 +37,14 @@ export default {
       radio: computed(() => {
         let c = [
           ...styles.radio.value,
-          ...(props.state == "valid"
+          ...(props.state == "valid" || props.state === true
             ? states.radio.valid
-            : props.state == "invalid"
+            : props.state == "invalid" || props.state === false
             ? states.radio.invalid
+            : props.state == "normal" ||
+              props.state === null ||
+              props.state === undefined
+            ? ""
             : ""),
           ...(attrs.disabled === "" || attrs.disabled === true
             ? states.radio.disabled

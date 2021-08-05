@@ -49,7 +49,7 @@ export default {
     let { styles } = useStyles(getCurrentInstance(), props, elements);
 
     let fixedClass = {
-      panel: ["fixed", "h-full", "top-0"],
+      panel: ["fixed", "h-full", "top-0", "z-20"],
     };
 
     let classes = {

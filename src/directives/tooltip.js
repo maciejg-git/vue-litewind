@@ -9,7 +9,7 @@ let defaults = {
 };
 
 let classes = {
-  tooltip: "bg-gray-700 text-gray-100 rounded-md z-30",
+  tooltip: "bg-gray-700 text-gray-100 rounded-md z-50",
   content: "font-semibold p-1 px-3",
 };
 
