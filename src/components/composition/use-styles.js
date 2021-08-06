@@ -1,17 +1,16 @@
 import { computed } from "vue";
 
+let getStyles = (styles, globalStyles, el) => {
+  return styles[el].value.reduce((acc, i) => {
+    let s = globalStyles[el][i];
+    return s ? [...acc, ...s] : [...acc, i];
+  }, []);
+};
+
 export default function useStyles(instance, props, elements, state) {
   let propsStyles = {};
   let styles = {};
   let states = {};
-
-  let getStyles = (styles, globalStyles, el) => {
-    return styles[el].value.reduce((acc, i) => {
-      let s = globalStyles[el][i];
-      if (!s) return [...acc, i];
-      else return [...acc, ...s];
-    }, []);
-  };
 
   let globalStyles = computed(() => {
     let styles =
@@ -21,8 +20,8 @@ export default function useStyles(instance, props, elements, state) {
   });
 
   for (let el of elements) {
-    let elCapitalize = el.charAt(0).toUpperCase() + el.slice(1);
-    propsStyles[el] = computed(() => props["style" + elCapitalize].split(" "));
+    let p = "style" + el.charAt(0).toUpperCase() + el.slice(1);
+    propsStyles[el] = computed(() => props[p].split(" "));
     styles[el] = computed(() => getStyles(propsStyles, globalStyles.value, el));
 
     if (state) {

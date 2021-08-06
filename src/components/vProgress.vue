@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { ref, computed, onMounted, onUnmounted, watchEffect, getCurrentInstance } from "vue";
+import { ref, computed, onMounted, onUnmounted, getCurrentInstance } from "vue";
 import useStyles from "./composition/use-styles";
 import { clamp, removeTailwindClasses } from "../tools/tools.js";
 
@@ -39,6 +39,7 @@ export default {
     indeterminate: { type: Boolean, default: false },
     indeterminateWidth: { type: [String, Number], default: 50 },
     indeterminateTiming: { type: String, default: "linear" },
+    indeterminateSpeed: { type: Number, default: 7 },
     transition: { type: Boolean, default: true },
     name: { type: String, default: "progress" },
     theme: { type: String, default: "default" },
@@ -106,8 +107,10 @@ export default {
       }
     });
 
-    let getProgressTimer = () =>
-      Math.sqrt(progressWidth.value + 300) / 17 + "s";
+    let getProgressTimer = () => {
+      let speed = clamp(props.indeterminateSpeed, 1, 20) + 10;
+      return Math.sqrt(progressWidth.value + 300) / speed + "s";
+    };
 
     let getProgressWidth = () => {
       progressBarWidth.value = progressBar.value.clientWidth;

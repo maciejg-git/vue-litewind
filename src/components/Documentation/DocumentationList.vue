@@ -187,16 +187,22 @@ export default {
         description: "Component width",
       },
       {
+        prop: "tag",
+        type: "String",
+        default: "div",
+        description: "Defines tag to use in list item child component",
+      },
+      {
         prop: "name",
         type: "String",
         default: "list",
         description: "Useful for setting alternative styles from styles.js",
       },
       {
-        prop: "tag",
+        prop: "theme",
         type: "String",
-        default: "div",
-        description: "Defines tag to use in list item child component",
+        default: "default",
+        description: "Theme of the component",
       },
     ]);
 

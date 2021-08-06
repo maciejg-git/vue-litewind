@@ -152,6 +152,12 @@ export default {
         default: "card",
         description: "Useful for setting alternative styles from style.js",
       },
+      {
+        prop: "theme",
+        type: "String",
+        default: "default",
+        description: "Theme of the component",
+      },
     ]);
 
     let referenceDefinition = ref([

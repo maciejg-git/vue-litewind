@@ -52,20 +52,6 @@
         <span v-html="value"></span>
       </template>
     </v-table>
-
-    <!-- <h6>Slots</h6> -->
-    <!-- <p></p> -->
-    <!-- <v-table -->
-    <!--   :items="referenceSlots" -->
-    <!--   :definition="referenceSlotsDefinition" -->
-    <!--   style-table="default fixed" -->
-    <!--   style-header-cell="default bordered" -->
-    <!--   style-cell="default bordered" -->
-    <!-- > -->
-    <!--   <template #cell:description="{ value }"> -->
-    <!--     <span v-html="value"></span> -->
-    <!--   </template> -->
-    <!-- </v-table> -->
   </section>
 
   <section>
@@ -123,13 +109,26 @@
         <v-checkbox
           v-model="languagesModel"
           :value="l"
-          :state="example.state"
+          :state="
+            languagesValidated
+              ? languagesModel.length >= 3
+                ? true
+                : false
+              : null
+          "
           :id="'language-' + l"
         ></v-checkbox>
         <label :for="'language-' + l" class="ml-3">
           {{ l }}
         </label>
       </div>
+      <v-button
+        @click="validate()"
+        style-button="default noMargin"
+        class="mt-5"
+      >
+        Send
+      </v-button>
       <div class="mt-5">
         <span class="font-semibold">Languages:</span>
         {{ languagesModel }}
@@ -165,14 +164,14 @@ export default {
       {
         prop: "name",
         type: "String",
-        default: "input",
-        description: "",
+        default: "checkbox",
+        description: "Name of the component",
       },
       {
         prop: "theme",
         type: "String",
         default: "default",
-        description: "Theme to use",
+        description: "Theme of the component",
       },
     ]);
 
@@ -197,7 +196,7 @@ export default {
 
     let referenceStyles = ref([
       {
-        prop: "style-input",
+        prop: "style-checkbox",
         description: "Main input element",
       },
     ]);
@@ -283,6 +282,11 @@ export default {
     ]);
 
     let languagesModel = ref([]);
+    let languagesValidated = ref(false);
+
+    let validate = () => {
+      languagesValidated.value = true;
+    };
 
     onMounted(() => {
       hljs.highlightAll();
@@ -301,7 +305,9 @@ export default {
       referenceComponentsDefinition,
       example,
       languages,
+      validate,
       languagesModel,
+      languagesValidated,
     };
   },
 };

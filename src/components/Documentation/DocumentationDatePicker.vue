@@ -433,6 +433,13 @@ export default {
         description: "Primary button styles",
       },
       {
+        prop: "transition",
+        type: ["String"],
+        default: "fade",
+        description:
+          "Transition when switching months or years. Valid values are 'fade', 'slide' or empty string for no transition",
+      },
+      {
         prop: "name",
         type: ["String"],
         default: "datepicker",
@@ -440,11 +447,10 @@ export default {
           "Useful only for setting alternative styles from styles.js",
       },
       {
-        prop: "transition",
+        prop: "theme",
         type: ["String"],
-        default: "fade",
-        description:
-          "Transition when switching months or years. Valid values are 'fade', 'slide' or empty string for no transition",
+        default: "default",
+        description: "Theme of the component",
       },
     ]);
 

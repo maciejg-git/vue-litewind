@@ -16,6 +16,10 @@ export let components = [
     name: "checkbox",
   },
   {
+    label: "Range",
+    name: "range",
+  },
+  {
     label: "Input",
     name: "input",
   },

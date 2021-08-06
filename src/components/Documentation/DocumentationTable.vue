@@ -405,13 +405,6 @@ export default {
         description: "Locale used to compare and sort strings",
       },
       {
-        prop: "name",
-        type: ["String"],
-        default: "table",
-        description:
-          "Useful only for setting alternative styles from styles.js",
-      },
-      {
         prop: "busy",
         type: ["Boolean"],
         default: "false",
@@ -456,6 +449,19 @@ export default {
         default: "No records for current filter",
         description:
           "Text displayed if table is empty after filtering out all items",
+      },
+      {
+        prop: "name",
+        type: ["String"],
+        default: "table",
+        description:
+          "Useful only for setting alternative styles from styles.js",
+      },
+      {
+        prop: "theme",
+        type: ["String"],
+        default: "default",
+        description: "Theme of the component",
       },
     ]);
 

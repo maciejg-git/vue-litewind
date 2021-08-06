@@ -299,6 +299,12 @@ export default {
         default: "tabs",
         description: "Useful for setting alternative styles from styles.js",
       },
+      {
+        prop: "theme",
+        type: "String",
+        default: "default",
+        description: "Theme of the component",
+      },
     ]);
 
     let referenceDefinition = ref([

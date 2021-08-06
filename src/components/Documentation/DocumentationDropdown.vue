@@ -322,16 +322,22 @@ export default {
           "If true clicking any dropdown menu item automatically closes dropdown. This props does only work for clicking on v-dropdown-item",
       },
       {
+        prop: "transition",
+        type: "String",
+        default: "fade",
+        description: "Valid values are 'fade' or empty string (no animation)",
+      },
+      {
         prop: "name",
         type: "String",
         default: "dropdown",
         description: "Useful for setting alternative styles from styles.js",
       },
       {
-        prop: "transition",
+        prop: "theme",
         type: "String",
-        default: "fade",
-        description: "Valid values are 'fade' or empty string (no animation)",
+        default: "default",
+        description: "Theme of the component",
       },
     ]);
 

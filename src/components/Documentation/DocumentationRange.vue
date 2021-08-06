@@ -1,5 +1,5 @@
 <template>
-  <h3>Button</h3>
+  <h3>Range</h3>
   <p></p>
 
   <section>
@@ -13,9 +13,11 @@
       style-cell="default bordered"
     >
       <template #cell:type="{ value }">
-        <code class="code-word mx-1">
-          {{ value }}
-        </code>
+        <div class="space-y-1">
+          <code v-for="v in value" class="block code-word">
+            {{ v }}
+          </code>
+        </div>
       </template>
       <template #cell:default="{ value }">
         <code class="text-sm">{{ value }}</code>
@@ -34,70 +36,67 @@
       style-header-cell="default bordered"
       style-cell="default bordered"
     >
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
+      <template #cell:description="{ value }"
+        ><span v-html="value"></span
+      ></template>
     </v-table>
 
-    <h6>Slots</h6>
+    <h6>Events</h6>
     <p></p>
     <v-table
-      :items="referenceSlots"
-      :definition="referenceSlotsDefinition"
+      :items="referenceEvents"
+      :definition="referenceEventsDefinition"
       style-table="default fixed"
       style-header-cell="default bordered"
       style-cell="default bordered"
     >
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
+      <template #cell:description="{ value }"
+        ><span v-html="value"></span
+      ></template>
     </v-table>
   </section>
 
   <section>
     <h4>Example</h4>
     <div class="example">
-      <div>
-        <v-button>Button</v-button>
-        <v-button tag="a">Button (link)</v-button>
-      </div>
-      <div class="mt-4">
-        <v-button style-button="primary large">Large button</v-button>
-        <v-button style-button="primary">Normal button</v-button>
-        <v-button style-button="primary small">Small button</v-button>
-        <v-button style-button="primary tiny">Tiny button</v-button>
-      </div>
-      <div class="mt-4">
-        <v-button style-button="secondary">Secondary button</v-button>
-        <v-button style-button="default yellow">Yellow button</v-button>
-        <v-button style-button="default green">Green button</v-button>
-        <v-button style-button="default red">Red button</v-button>
-      </div>
-      <div class="mt-4">
-        <v-button style-button="primary square">Square button</v-button>
-        <v-button style-button="primary pill">Pill button</v-button>
-        <v-button style-button="primary uppercase">Uppercase button</v-button>
-      </div>
-      <div class="mt-4">
-        <v-button block>Block button</v-button>
-        <v-button disabled>Button (disabled)</v-button>
-      </div>
+      <v-range v-model="example.model" :state="example.state" min="0" max="100" class="w-full"></v-range>
+      <v-tabs theme="material" class="mt-5">
+        <v-tab name="Props">
+          <div class="mb-2 mt-5">
+            <label for="model" class="font-semibold">v-model: </label>
+            <v-input type="text" id="model" v-model="example.model">
+            </v-input>
+          </div>
+          <div class="mb-2">
+            <label for="state">state:</label>
+            <v-select id="state" v-model="example.state">
+              <option value="">normal (empty string)</option>
+              <option value="valid">valid</option>
+              <option value="invalid">invalid</option>
+            </v-select>
+          </div>
+        </v-tab>
+        <v-tab>
+          <template #name>
+            Events
+            <v-badge style-badge="secondary tiny" class="ml-2">
+              {{ example.events.length }}
+            </v-badge>
+          </template>
+          <div class="overflow-y-auto max-h-48 mt-5 w-full">
+            <div class="px-2 pb-2">
+              <template v-for="ev in example.events">
+                <div class="py-1">
+                  <code class="code-word">{{ ev.ev }}</code> {{ ev.data }}
+                </div>
+              </template>
+            </div>
+          </div>
+        </v-tab>
+      </v-tabs>
     </div>
     <pre>
       <code>
-{{`<v-button>Button</v-button>
-<v-button tag="a">Button (link)</v-button>
-
-<v-button style-button="secondary">Button</v-button>
-<v-button style-button="primary small">Small button</v-button>
-<v-button style-button="primary tiny">Tiny button</v-button>
-
-<v-button style-button="secondary square">Square button</v-button>
-<v-button style-button="primary pill">Pill button</v-button>
-<v-button style-button="primary uppercase">Uppercase button</v-button>
-
-<v-button block>Block button</v-button>
-<v-button disabled>Button (disabled)</v-button>`}}
       </code>
     </pre>
   </section>
@@ -111,36 +110,28 @@ export default {
   setup(props) {
     let reference = ref([
       {
-        prop: "tag",
-        type: "String",
-        default: "button",
+        prop: "v-model",
+        type: ["Number", "String"],
+        default: "undefined",
         description:
-          "Tag of button element. Valid values are: 'button', 'a'",
+          "Data to display in table. Each element of Array is an Object. Single Object is one record (row) of data.",
       },
       {
-        prop: "disabled",
-        type: "Boolean",
-        default: "false",
+        prop: "state",
+        type: ["String"],
+        default: "empty string",
         description:
-          "Displays button in disabled state",
-      },
-      {
-        prop: "block",
-        type: "Boolean",
-        default: "false",
-        description:
-          "Displays button as full width block",
+          "State of input validity. Supported values are 'valid', 'invalid' or 'empty string' for default state",
       },
       {
         prop: "name",
-        type: "String",
-        default: "button",
-        description:
-          "Useful for setting alternative style from styles.js",
+        type: ["String"],
+        default: "range",
+        description: "Name of the component",
       },
       {
         prop: "theme",
-        type: "String",
+        type: ["String"],
         default: "default",
         description: "Theme of the component",
       },
@@ -167,8 +158,8 @@ export default {
 
     let referenceStyles = ref([
       {
-        prop: "style-butto",
-        description: "Main button element",
+        prop: "style-range",
+        description: "Main input element",
       },
     ]);
 
@@ -201,8 +192,8 @@ export default {
 
     let referenceSlots = ref([
       {
-        slot: "default",
-        description: "Button content",
+        slot: "-",
+        description: "This component does not provide any slots.",
       },
     ]);
 
@@ -233,7 +224,11 @@ export default {
       },
     ]);
 
-    let example = reactive({});
+    let example = reactive({
+      model: 0,
+      state: "",
+      events: [],
+    });
 
     onMounted(() => {
       hljs.highlightAll();

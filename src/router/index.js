@@ -27,6 +27,7 @@ import DocumentationTextarea from '../components/Documentation/DocumentationText
 import DocumentationRadio from '../components/Documentation/DocumentationRadio.vue'
 import DocumentationCheckbox from '../components/Documentation/DocumentationCheckbox.vue'
 import DocumentationNavbar from '../components/Documentation/DocumentationNavbar.vue'
+import DocumentationRange from '../components/Documentation/DocumentationRange.vue'
 
 import DocumentationTooltip from '../components/Documentation/DocumentationTooltip.vue'
 
@@ -139,6 +140,10 @@ const routes = [
       {
         path: 'navbar',
         component: DocumentationNavbar,
+      },
+      {
+        path: 'range',
+        component: DocumentationRange,
       },
 
       // directives

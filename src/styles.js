@@ -335,11 +335,12 @@ let select = {
   },
 }
 
-// RANGE NOT WORKING
+// RANGE
 
 let range = {
   range: {
     default: [
+      "rounded",
       "bg-white",
       "border-gray-300",
       "focus:outline-none",
@@ -347,27 +348,9 @@ let range = {
       "focus:ring-indigo-200",
       "focus:border-gray-400",
       "outline-none",
-      "py-1",
-      "px-3",
-    ]
+    ],
+    ...fixedFormStates,
   },
-  valid: {
-    default: [
-      "border-green-300",
-      "focus:ring-green-200",
-    ]
-  },
-  invalid: {
-    default: [
-      "border-red-300",
-      "focus:ring-red-200",
-    ]
-  },
-  disabled: {
-    default: [
-      "opacity-50",
-    ]
-  }
 }
 
 // RADIO

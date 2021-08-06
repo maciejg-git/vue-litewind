@@ -441,6 +441,12 @@ export default {
         default: "modal",
         description: "Name of modal. Useful for setting alternative style",
       },
+      {
+        prop: "theme",
+        type: "String",
+        default: "default",
+        description: "Theme of the component",
+      },
     ]);
 
     let referenceDefinition = ref([

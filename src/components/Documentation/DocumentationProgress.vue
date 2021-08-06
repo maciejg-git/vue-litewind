@@ -152,6 +152,7 @@
         indeterminate
         :indeterminate-width="50"
         :indeterminate-timing="example.timing"
+        :indeterminate-speed="+example.speed"
         class="mt-4"
       ></v-progress>
       <br />
@@ -164,15 +165,24 @@
           indeterminate
           :indeterminate-width="50"
           :indeterminate-timing="example.timing"
+          :indeterminate-speed="+example.speed"
           class="m-2"
         ></v-progress>
       </v-card>
       <div class="mb-2 mt-10">
-        <label for="label">indeterminate-timing:</label>
-        <v-select id="label" v-model="example.timing">
+        <label for="timing">indeterminate-timing:</label>
+        <v-select id="timing" v-model="example.timing">
           <option value="linear">linear</option>
           <option value="ease">ease</option>
         </v-select>
+      </div>
+      <div class="mb-2">
+        <label for="speed">indeterminate-speed:</label>
+        <v-input
+          type="text"
+          id="speed"
+          v-model="example.speed"
+        ></v-input>
       </div>
     </div>
     <pre>
@@ -351,6 +361,7 @@ export default {
       transition: true,
       timing: "linear",
       width: "50",
+      speed: 7,
       events: [],
     });
 

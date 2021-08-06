@@ -177,6 +177,18 @@ export default {
         description:
           "If true use icons for next/previous buttons instead of labels",
       },
+      {
+        prop: "name",
+        type: "String",
+        default: "pagination",
+        description: "Name of the component",
+      },
+      {
+        prop: "theme",
+        type: "String",
+        default: "default",
+        description: "Theme of the component",
+      },
     ]);
 
     let referenceDefinition = ref([

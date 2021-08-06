@@ -166,6 +166,7 @@
     <v-radio v-model="textModel" value="option"></v-radio>
     <v-radio v-model="textModel" value="option 2"></v-radio>
     <v-radio v-model="textModel" value="option 3"></v-radio>
+    <v-breadcrumb :path="linkItems"></v-breadcrumb>
 
     <!-- <v-checkbox v-model="textModel"> -->
     <!--   <template #helper>input name</template> -->
@@ -640,6 +641,7 @@ import vTextarea from "./vTextarea.vue";
 import vCheckbox from "./vCheckbox.vue";
 import vNavbar from "./vNavbar.vue";
 import vRadio from "./vRadio.vue";
+import vBreadcrumb from "./vBreadcrumb.vue";
 // import {vTable} from "../dist/vuecomponent2.es"
 
 export default {
@@ -674,6 +676,7 @@ export default {
     vCheckbox,
     vTextarea,
     vRadio,
+    vBreadcrumb,
   },
   props: {
     msg: String,
@@ -701,6 +704,20 @@ export default {
     let tableSelection = ref([]);
     let progress = ref(10);
     let textModel = ref("text")
+    let linkItems = ref([
+      {
+        label: "home",
+        href: "",
+      },
+      {
+        label: "documentations",
+        href: "",
+      },
+      {
+        label: "component",
+        href: "",
+      },
+    ])
     let selectModel = ref("option")
     let selectOptions = ref([
     {
@@ -818,6 +835,7 @@ export default {
       buttonSmall,
       formattedDate,
       alertShow,
+      linkItems,
       log,
     };
   },

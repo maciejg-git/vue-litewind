@@ -1,12 +1,10 @@
 <template>
-  <input v-bind="$attrs" v-model="localModel" type="range" class="form-range" />
-  <!-- :class="classes.range.value" -->
-  <div v-if="state == 'invalid'" :class="classes.textInvalid.value">
-    <slot name="invalid"></slot>
-  </div>
-  <div :class="classes.textHelper.value">
-    <slot name="helper"></slot>
-  </div>
+  <input
+    v-bind="$attrs"
+    v-model="localModel"
+    type="range"
+    :class="classes.range.value"
+  />
 </template>
 
 <script>
@@ -16,52 +14,42 @@ import { removeTailwindClasses } from "../tools/tools.js";
 
 export default {
   props: {
-    modelValue: { type: String, default: undefined },
+    modelValue: { type: [String, Number], default: undefined },
     state: { type: String, default: "" },
     name: { type: String, default: "range" },
     theme: { type: String, default: "default" },
     styleRange: { type: [String, Array], default: "default" },
-    styleValid: { type: [String, Array], default: "default" },
-    styleInvalid: { type: [String, Array], default: "default" },
-    styleTextHelper: { type: [String, Array], default: "default" },
-    styleTextInvalid: { type: [String, Array], default: "default" },
-    styleDisabled: { type: [String, Array], default: "default" },
   },
   emits: ["update:modelValue"],
   setup(props, { attrs, emit }) {
-    let elements = [
-      "range",
-      "valid",
-      "invalid",
-      "textHelper",
-      "textInvalid",
-      "disabled",
-    ];
+    let elements = ["range"];
 
-    let { styles } = useStyles(getCurrentInstance(), props, elements);
+    let s = ["valid", "invalid", "disabled"];
+
+    let { styles, states } = useStyles(
+      getCurrentInstance(),
+      props,
+      elements,
+      s
+    );
 
     let classes = {
       range: computed(() => {
         let c = [
-          "appearance-none",
           ...styles.range.value,
-          ...(props.state == "valid"
-            ? styles.valid.value
-            : props.state == "invalid"
-            ? styles.invalid.value
+          ...(props.state == "valid" || props.state === true
+            ? states.range.valid
+            : props.state == "invalid" || props.state === false
+            ? states.range.invalid
+            : props.state == "normal" ||
+              props.state === null ||
+              props.state === undefined
+            ? ""
             : ""),
           ...(attrs.disabled === "" || attrs.disabled === true
-            ? styles.disabled.value
+            ? states.range.disabled
             : ""),
         ];
-        return removeTailwindClasses(c);
-      }),
-      textHelper: computed(() => {
-        let c = [...styles.textHelper.value];
-        return removeTailwindClasses(c);
-      }),
-      textInvalid: computed(() => {
-        let c = [...styles.textInvalid.value];
         return removeTailwindClasses(c);
       }),
     };

@@ -34,9 +34,9 @@
       style-header-cell="default bordered"
       style-cell="default bordered"
     >
-      <template #cell:description="{ value }"
-        ><span v-html="value"></span
-      ></template>
+      <template #cell:description="{ value }">
+        <span v-html="value"></span>
+      </template>
     </v-table>
   </section>
 
@@ -50,7 +50,10 @@
           <v-spinner style-spinner="default blue" class="ml-2"></v-spinner>
           <v-spinner style-spinner="default yellow" class="ml-2"></v-spinner>
           <v-spinner style-spinner="default green" class="ml-2"></v-spinner>
-          <v-spinner style-spinner="default yellow large" class="ml-2"></v-spinner>
+          <v-spinner
+            style-spinner="default yellow large"
+            class="ml-2"
+          ></v-spinner>
         </div>
         <div class="mt-4">
           <v-button>
@@ -95,9 +98,14 @@ export default {
       {
         prop: "name",
         type: "String",
-        default: "undefined",
-        description:
-          "Data to display in table. Each element of Array is an Object. Single Object is one record (row) of data.",
+        default: "spinner",
+        description: "Name of the component",
+      },
+      {
+        prop: "theme",
+        type: "String",
+        default: "default",
+        description: "Theme of the component",
       },
     ]);
 
