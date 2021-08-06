@@ -20,7 +20,7 @@ import { removeTailwindClasses } from "../tools/tools.js";
 
 export default {
   props: {
-    modelValue: { type: [String, Array, Boolean], default: undefined },
+    modelValue: { type: [String, Number, Array, Boolean], default: undefined },
     options: { type: Array, default: undefined },
     state: { type: String, default: "" },
     name: { type: String, default: "select" },

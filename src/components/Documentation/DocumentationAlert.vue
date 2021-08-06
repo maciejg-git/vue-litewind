@@ -97,10 +97,10 @@
             </v-select>
           </div>
           <div class="mb-2">
-            <label for="model">auto-dismiss-delay:</label>
+            <label for="auto-dismiss-delay">auto-dismiss-delay:</label>
             <v-input
               type="text"
-              id="model"
+              id="auto-dismiss-delay"
               v-model="example.autoDismissDelay"
             ></v-input>
           </div>

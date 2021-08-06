@@ -99,10 +99,10 @@
             <v-input type="text" id="model" v-model="example.model"></v-input>
           </div>
           <div class="mb-2">
-            <label for="model" class="font-semibold">v-model (multiple):</label>
+            <label for="model-multiple" class="font-semibold">v-model (multiple):</label>
             <v-input
               type="text"
-              id="model"
+              id="model-multiple"
               v-model="example.modelMultiple"
             ></v-input>
           </div>

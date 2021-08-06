@@ -73,6 +73,11 @@ let button = {
       "hover:bg-green-600",
       "focus:ring-green-200",
     ],
+    red: [
+      "bg-red-500",
+      "hover:bg-red-600",
+      "focus:ring-red-200",
+    ],
     small: [
       "py-1"
     ],

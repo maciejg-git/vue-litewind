@@ -72,15 +72,27 @@
     <h4>Example</h4>
     <div class="example">
       <div class="flex items-center">
-        <v-radio v-model="example.model" :state="example.state" value="option"></v-radio>
+        <v-radio
+          v-model="example.model"
+          :state="example.state"
+          value="option"
+        ></v-radio>
         <label for="" class="ml-3">option</label>
       </div>
       <div class="flex items-center">
-        <v-radio v-model="example.model" :state="example.state" value="option 2"></v-radio>
+        <v-radio
+          v-model="example.model"
+          :state="example.state"
+          value="option 2"
+        ></v-radio>
         <label for="" class="ml-3">option 2</label>
       </div>
       <div class="flex items-center">
-        <v-radio v-model="example.model" :state="example.state" value="option 3"></v-radio>
+        <v-radio
+          v-model="example.model"
+          :state="example.state"
+          value="option 3"
+        ></v-radio>
         <label for="" class="ml-3">option 3</label>
       </div>
       <v-tabs theme="material" class="mt-10">

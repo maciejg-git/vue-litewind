@@ -71,6 +71,7 @@
         <v-button style-button="secondary">Secondary button</v-button>
         <v-button style-button="default yellow">Yellow button</v-button>
         <v-button style-button="default green">Green button</v-button>
+        <v-button style-button="default red">Red button</v-button>
       </div>
       <div class="mt-4">
         <v-button style-button="primary square">Square button</v-button>
