@@ -14,8 +14,8 @@ import { removeTailwindClasses } from "../tools/tools.js";
 
 export default {
   props: {
-    modelValue: { type: [Array, Boolean], default: undefined },
-    state: { type: String, default: "" },
+    modelValue: { type: [Array, Boolean, String], default: undefined },
+    state: { type: [String, Boolean], default: "" },
     name: { type: String, default: "radio" },
     theme: { type: String, default: "default" },
     styleRadio: { type: [String, Array], default: "default" },

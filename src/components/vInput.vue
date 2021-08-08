@@ -16,7 +16,7 @@ export default {
   props: {
     modelValue: { type: [String, Number, Boolean, Array], default: undefined },
     type: { type: String, default: "text" },
-    state: { type: String, default: "" },
+    state: { type: [String, Boolean], default: "" },
     name: { type: String, default: "input" },
     theme: { type: String, default: "default" },
     styleInput: { type: [String, Array], default: "default" },

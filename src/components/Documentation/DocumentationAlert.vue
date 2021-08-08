@@ -13,9 +13,11 @@
       style-cell="default bordered"
     >
       <template #cell:type="{ value }">
-        <code class="code-word mx-1">
-          {{ value }}
-        </code>
+        <div class="space-y-1">
+          <code v-for="v in value" class="code-word">
+            {{ v }}
+          </code>
+        </div>
       </template>
       <template #cell:default="{ value }">
         <code class="text-sm">{{ value }}</code>
@@ -123,26 +125,26 @@ export default {
     let reference = ref([
       {
         prop: "v-model",
-        type: "Boolean",
+        type: ["Boolean"],
         default: "false",
         description: "If true alert is displayed",
       },
       {
         prop: "dismiss-delay",
-        type: "Number",
+        type: ["Number"],
         default: "0",
         description:
           "Delay after which alert is closed (<code class='code-word'>update:modelValue</code> is emited with <code>false</code> value)",
       },
       {
         prop: "name",
-        type: "Array",
+        type: ["Array"],
         default: "undefined",
         description: "",
       },
       {
         prop: "theme",
-        type: "Array",
+        type: ["Array"],
         default: "undefined",
         description: "",
       },

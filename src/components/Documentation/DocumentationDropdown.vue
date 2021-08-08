@@ -13,9 +13,11 @@
       style-cell="default bordered"
     >
       <template #cell:type="{ value }">
-        <code class="code-word mx-1">
-          {{ value }}
-        </code>
+        <div class="space-y-1">
+          <code v-for="v in value" class="code-word">
+            {{ v }}
+          </code>
+        </div>
       </template>
       <template #cell:default="{ value }">
         <code class="text-sm">{{ value }}</code>
@@ -288,54 +290,54 @@ export default {
     let reference = ref([
       {
         prop: "placement",
-        type: "String",
+        type: ["String"],
         default: "bottom-start",
         description:
           "Initial placement of dropdown content. Valid values are the same as for <a href='https://popper.js.org/docs/v2/' class='link'>Popperjs</a>",
       },
       {
         prop: "offsetX",
-        type: "Number",
+        type: ["Number"],
         default: "0",
         description:
           "Offset of dropdown relative to activator element. See how to use this offset <a href='https://popper.js.org/docs/v2/modifiers/offset/' class='link'>here</a>",
       },
       {
         prop: "offsetY",
-        type: "Number",
+        type: ["Number"],
         default: "0",
         description:
           "Offset of dropdown relative to activator element. See how to use this offset <a href='https://popper.js.org/docs/v2/modifiers/offset/' class='link'>here</a>",
       },
       {
         prop: "no-flip",
-        type: "Boolean",
+        type: ["Boolean"],
         default: "false",
         description:
           "Allows fliping to another placement if dropdown content is outside of screen bounds",
       },
       {
         prop: "auto-close-menu",
-        type: "Boolean",
+        type: ["Boolean"],
         default: "false",
         description:
           "If true clicking any dropdown menu item automatically closes dropdown. This props does only work for clicking on v-dropdown-item",
       },
       {
         prop: "transition",
-        type: "String",
+        type: ["String"],
         default: "fade",
         description: "Valid values are 'fade' or empty string (no animation)",
       },
       {
         prop: "name",
-        type: "String",
+        type: ["String"],
         default: "dropdown",
         description: "Useful for setting alternative styles from styles.js",
       },
       {
         prop: "theme",
-        type: "String",
+        type: ["String"],
         default: "default",
         description: "Theme of the component",
       },

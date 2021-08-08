@@ -1,5 +1,5 @@
 <template>
-  <h3>Button</h3>
+  <h3>Close button</h3>
   <p></p>
 
   <section>
@@ -36,70 +36,19 @@
       style-header-cell="default bordered"
       style-cell="default bordered"
     >
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
-    </v-table>
-
-    <h6>Slots</h6>
-    <p></p>
-    <v-table
-      :items="referenceSlots"
-      :definition="referenceSlotsDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
-    >
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
+      <template #cell:description="{ value }"
+        ><span v-html="value"></span
+      ></template>
     </v-table>
   </section>
 
   <section>
     <h4>Example</h4>
     <div class="example">
-      <div>
-        <v-button>Button</v-button>
-        <v-button tag="a">Button (link)</v-button>
-      </div>
-      <div class="mt-4">
-        <v-button style-button="primary large">Large button</v-button>
-        <v-button style-button="primary">Normal button</v-button>
-        <v-button style-button="primary small">Small button</v-button>
-        <v-button style-button="primary tiny">Tiny button</v-button>
-      </div>
-      <div class="mt-4">
-        <v-button style-button="secondary">Secondary button</v-button>
-        <v-button style-button="default yellow">Yellow button</v-button>
-        <v-button style-button="default green">Green button</v-button>
-        <v-button style-button="default red">Red button</v-button>
-      </div>
-      <div class="mt-4">
-        <v-button style-button="primary square">Square button</v-button>
-        <v-button style-button="primary pill">Pill button</v-button>
-        <v-button style-button="primary uppercase">Uppercase button</v-button>
-      </div>
-      <div class="mt-4">
-        <v-button block>Block button</v-button>
-        <v-button disabled>Button (disabled)</v-button>
-      </div>
+      <v-close-button></v-close-button>
     </div>
     <pre>
       <code>
-{{`<v-button>Button</v-button>
-<v-button tag="a">Button (link)</v-button>
-
-<v-button style-button="secondary">Button</v-button>
-<v-button style-button="primary small">Small button</v-button>
-<v-button style-button="primary tiny">Tiny button</v-button>
-
-<v-button style-button="secondary square">Square button</v-button>
-<v-button style-button="primary pill">Pill button</v-button>
-<v-button style-button="primary uppercase">Uppercase button</v-button>
-
-<v-button block>Block button</v-button>
-<v-button disabled>Button (disabled)</v-button>`}}
       </code>
     </pre>
   </section>
@@ -113,38 +62,10 @@ export default {
   setup(props) {
     let reference = ref([
       {
-        prop: "tag",
-        type: ["String"],
-        default: "button",
-        description:
-          "Tag of button element. Valid values are: 'button', 'a'",
-      },
-      {
-        prop: "disabled",
-        type: ["Boolean"],
-        default: "false",
-        description:
-          "Displays button in disabled state",
-      },
-      {
-        prop: "block",
-        type: ["Boolean"],
-        default: "false",
-        description:
-          "Displays button as full width block",
-      },
-      {
         prop: "name",
         type: ["String"],
-        default: "button",
-        description:
-          "Useful for setting alternative style from styles.js",
-      },
-      {
-        prop: "theme",
-        type: ["String"],
-        default: "default",
-        description: "Theme of the component",
+        default: "closebutton",
+        description: "Name of the component",
       },
     ]);
 
@@ -169,8 +90,8 @@ export default {
 
     let referenceStyles = ref([
       {
-        prop: "style-butto",
-        description: "Main button element",
+        prop: "style-close-button",
+        description: "Button element",
       },
     ]);
 
@@ -203,8 +124,8 @@ export default {
 
     let referenceSlots = ref([
       {
-        slot: "default",
-        description: "Button content",
+        slot: "-",
+        description: "This component does not provide any slots.",
       },
     ]);
 

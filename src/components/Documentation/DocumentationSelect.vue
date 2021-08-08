@@ -13,9 +13,11 @@
       style-cell="default bordered"
     >
       <template #cell:type="{ value }">
-        <code class="code-word mx-1">
-          {{ value }}
-        </code>
+        <div class="space-y-1">
+          <code v-for="v in value" class="code-word">
+            {{ v }}
+          </code>
+        </div>
       </template>
       <template #cell:default="{ value }">
         <code class="text-sm">{{ value }}</code>
@@ -137,33 +139,33 @@ export default {
     let reference = ref([
       {
         prop: "v-model",
-        type: "String",
+        type: ["String"],
         default: "undefined",
         description: "select v-model",
       },
       {
         prop: "options",
-        type: "Array",
+        type: ["Array"],
         default: "text",
         description:
           "Array of options to display in select element. Each option is <code class='code-word'>Object</code> with <code class='code-word'>value</code> and <code class='code-word'>label</code> properties",
       },
       {
         prop: "state",
-        type: "String",
+        type: ["String"],
         default: "empty string",
         description:
           "State of select validity. Supported values are 'valid', 'invalid' or 'empty string' for default state",
       },
       {
         prop: "name",
-        type: "String",
+        type: ["String"],
         default: "select",
         description: "",
       },
       {
         prop: "theme",
-        type: "String",
+        type: ["String"],
         default: "default",
         description: "",
       },

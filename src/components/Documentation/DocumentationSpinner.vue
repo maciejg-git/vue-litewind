@@ -13,9 +13,11 @@
       style-cell="default bordered"
     >
       <template #cell:type="{ value }">
-        <code class="code-word mx-1">
-          {{ value }}
-        </code>
+        <div class="space-y-1">
+          <code v-for="v in value" class="code-word">
+            {{ v }}
+          </code>
+        </div>
       </template>
       <template #cell:default="{ value }">
         <code class="text-sm">{{ value }}</code>
@@ -43,28 +45,26 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <div class="flex flex-col items-center">
-        <div>
-          <v-spinner style-spinner="default blue small"></v-spinner>
-          <v-spinner class="ml-2"></v-spinner>
-          <v-spinner style-spinner="default blue" class="ml-2"></v-spinner>
-          <v-spinner style-spinner="default yellow" class="ml-2"></v-spinner>
-          <v-spinner style-spinner="default green" class="ml-2"></v-spinner>
-          <v-spinner
-            style-spinner="default yellow large"
-            class="ml-2"
-          ></v-spinner>
-        </div>
-        <div class="mt-4">
-          <v-button>
-            <v-spinner style-spinner="default gray small"></v-spinner>
-            <span class="ml-2">Button</span>
-          </v-button>
-          <v-button style-button="default secondary">
-            <v-spinner style-spinner="default green small"></v-spinner>
-            <span class="ml-2">Button</span>
-          </v-button>
-        </div>
+      <div>
+        <v-spinner style-spinner="default blue small"></v-spinner>
+        <v-spinner class="ml-2"></v-spinner>
+        <v-spinner style-spinner="default blue" class="ml-2"></v-spinner>
+        <v-spinner style-spinner="default yellow" class="ml-2"></v-spinner>
+        <v-spinner style-spinner="default green" class="ml-2"></v-spinner>
+        <v-spinner
+          style-spinner="default yellow large"
+          class="ml-2"
+        ></v-spinner>
+      </div>
+      <div class="mt-4">
+        <v-button style-button="default no-margin" class="mr-2">
+          <v-spinner style-spinner="default gray small"></v-spinner>
+          <span class="ml-2">Button</span>
+        </v-button>
+        <v-button style-button="default secondary no-margin">
+          <v-spinner style-spinner="default green small"></v-spinner>
+          <span class="ml-2">Button</span>
+        </v-button>
       </div>
     </div>
     <pre>
@@ -97,13 +97,13 @@ export default {
     let reference = ref([
       {
         prop: "name",
-        type: "String",
+        type: ["String"],
         default: "spinner",
         description: "Name of the component",
       },
       {
         prop: "theme",
-        type: "String",
+        type: ["String"],
         default: "default",
         description: "Theme of the component",
       },

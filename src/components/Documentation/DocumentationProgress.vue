@@ -13,9 +13,11 @@
       style-cell="default bordered"
     >
       <template #cell:type="{ value }">
-        <code class="code-word mx-1">
-          {{ value }}
-        </code>
+        <div class="space-y-1">
+          <code v-for="v in value" class="code-word">
+            {{ v }}
+          </code>
+        </div>
       </template>
       <template #cell:default="{ value }">
         <code class="text-sm">{{ value }}</code>
@@ -174,6 +176,9 @@
         <v-select id="timing" v-model="example.timing">
           <option value="linear">linear</option>
           <option value="ease">ease</option>
+          <option value="ease-in">ease-in</option>
+          <option value="ease-out">ease-out</option>
+          <option value="ease-in-out">ease-in-out</option>
         </v-select>
       </div>
       <div class="mb-2">
@@ -201,58 +206,70 @@ export default {
     let reference = ref([
       {
         prop: "value",
-        type: "Number",
+        type: ["Number"],
         default: "undefined",
         description: "Current progress",
       },
       {
         prop: "max",
-        type: "Number",
+        type: ["Number"],
         default: "undefined",
         description: "Maximum value of progress",
       },
       {
         prop: "label",
-        type: "Boolean",
+        type: ["Boolean"],
         default: "false",
         description:
           "Display value on progress bar if true. Label can be customized via label slot",
       },
       {
         prop: "precision",
-        type: "Number",
+        type: ["Number"],
         default: "2",
         description:
           "Number of digits after dot in progress value, minimum = 0, maximum = 100",
       },
       {
         prop: "transition",
-        type: "String",
+        type: ["String"],
         default: "true",
         description: "If true changes in value animates smoothly",
       },
       {
         prop: "indeterminate",
-        type: "Boolean",
+        type: ["Boolean"],
         default: "false",
         description:
           "Renders indeterminate progress bar. Note: value, max, label, precision and transition props are ignored if indeterminate is true",
       },
       {
         prop: "indeterminate-width",
-        type: "Number",
-        default: "75",
+        type: ["Number"],
+        default: "50",
         description: "Width of indeterminate bar in %",
       },
       {
+        prop: "indeterminate-timing",
+        type: ["String"],
+        default: "linear",
+        description: "Value of animation-timing-function. Valid values are: 'linear', 'ease', 'ease-in', 'ease-out', 'ease-in-out'",
+      },
+      {
+        prop: "indeterminate-speed",
+        type: ["Number"],
+        default: "7",
+        description: "Speed of indeterminate bar. Valid values are from 1 to 20",
+      },
+      {
         prop: "name",
-        type: "String",
+        type: ["String"],
         default: "progress",
         description: "Useful for setting alternative styles",
       },
       {
         prop: "theme",
-        type: "String",
+        type: ["String"],
         default: "default",
         description: "Theme to use",
       },

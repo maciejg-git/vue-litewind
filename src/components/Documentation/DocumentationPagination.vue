@@ -13,9 +13,11 @@
       style-cell="default bordered"
     >
       <template #cell:type="{ value }">
-        <code class="code-word mx-1">
-          {{ value }}
-        </code>
+        <div class="space-y-1">
+          <code v-for="v in value" class="code-word">
+            {{ v }}
+          </code>
+        </div>
       </template>
       <template #cell:default="{ value }">
         <code class="text-sm">{{ value }}</code>
@@ -145,47 +147,47 @@ export default {
     let reference = ref([
       {
         prop: "v-model",
-        type: "Number",
+        type: ["Number"],
         default: "undefined",
         description: "Current page",
       },
       {
         prop: "items-per-page",
-        type: "Number",
+        type: ["Number"],
         default: "undefined",
         description:
           "Number of items per page. Component uses this value to compute number of pages to render. It is usually provided by another component that uses pagination for navigation",
       },
       {
         prop: "items-count",
-        type: "Number",
+        type: ["Number"],
         default: "undefined",
         description:
           "Total number of items. Component uses this value to compute number of pages to render. It is usually provided by another component that uses pagination for navigation",
       },
       {
         prop: "max-pages",
-        type: "Number",
+        type: ["Number"],
         default: "undefined",
         description:
           "Maximum number of pages to display. This prop must have value of 3 or more",
       },
       {
         prop: "icons",
-        type: "Boolean",
+        type: ["Boolean"],
         default: "true",
         description:
           "If true use icons for next/previous buttons instead of labels",
       },
       {
         prop: "name",
-        type: "String",
+        type: ["String"],
         default: "pagination",
         description: "Name of the component",
       },
       {
         prop: "theme",
-        type: "String",
+        type: ["String"],
         default: "default",
         description: "Theme of the component",
       },

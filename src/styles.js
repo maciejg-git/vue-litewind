@@ -96,7 +96,7 @@ let button = {
     uppercase: [
       "uppercase"
     ],
-    noMargin: [
+    "no-margin": [
       "m-0"
     ],
   }

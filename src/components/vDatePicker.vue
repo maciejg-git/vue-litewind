@@ -106,11 +106,11 @@ export default {
     primaryButtonLabel: { type: String, default: "OK" },
     secondaryButtonStyle: {
       type: String,
-      default: "default secondary small noMargin",
+      default: "default secondary small no-margin",
     },
     primaryButtonStyle: {
       type: String,
-      default: "default primary small noMargin",
+      default: "default primary small no-margin",
     },
     name: { type: String, default: "datepicker" },
     theme: { type: String, default: "default" },

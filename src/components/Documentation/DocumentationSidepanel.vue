@@ -13,9 +13,11 @@
       style-cell="default bordered"
     >
       <template #cell:type="{ value }">
-        <code class="code-word mx-1">
-          {{ value }}
-        </code>
+        <div class="space-y-1">
+          <code v-for="v in value" class="code-word">
+            {{ v }}
+          </code>
+        </div>
       </template>
       <template #cell:default="{ value }">
         <code class="text-sm">{{ value }}</code>
@@ -142,38 +144,38 @@ export default {
     let reference = ref([
       {
         prop: "v-model",
-        type: "Boolean",
+        type: ["Boolean"],
         default: "false",
         description:
           "Controls the state of sidepanel. If true, sidepanel is open",
       },
       {
         prop: "close-button",
-        type: "Boolean",
+        type: ["Boolean"],
         default: "true",
         description: "If true shows a close button in top right corner",
       },
       {
         prop: "sidebar-left",
-        type: "Boolean",
+        type: ["Boolean"],
         default: "false",
         description: "If true displays sidepanel on the left",
       },
       {
         prop: "width",
-        type: "String",
+        type: ["String"],
         default: "320px",
         description: "Width of sidepanel",
       },
       {
         prop: "name",
-        type: "String",
+        type: ["String"],
         default: "sidepanel",
         description: "Useful for setting alternative styles",
       },
       {
         prop: "theme",
-        type: "String",
+        type: ["String"],
         default: "default",
         description: "Theme to use",
       },

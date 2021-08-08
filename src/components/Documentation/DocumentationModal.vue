@@ -13,9 +13,11 @@
       style-cell="default bordered"
     >
       <template #cell:type="{ value }">
-        <code class="code-word mx-1">
-          {{ value }}
-        </code>
+        <div class="space-y-1">
+          <code v-for="v in value" class="code-word">
+            {{ v }}
+          </code>
+        </div>
       </template>
       <template #cell:default="{ value }">
         <code class="text-sm">{{ value }}</code>
@@ -343,107 +345,107 @@ export default {
     let reference = ref([
       {
         prop: "v-model",
-        type: "Boolean",
+        type: ["Boolean"],
         default: "false",
         description: "Set v-model to true to show modal or false to hide it",
       },
       {
         prop: "title",
-        type: "String",
+        type: ["String"],
         default: "false",
         description: "Title displayed in modal header",
       },
       {
         prop: "no-primary-button",
-        type: "Boolean",
+        type: ["Boolean"],
         default: "false",
         description: "Disables primary (OK) button",
       },
       {
         prop: "no-secondary-button",
-        type: "Boolean",
+        type: ["Boolean"],
         default: "false",
         description: "Disables secondary (Cancel) button",
       },
       {
         prop: "primary-button-style",
-        type: "String",
+        type: ["String"],
         default: "primary noMargin",
         description: "Style of primary button",
       },
       {
         prop: "secondary-button-style",
-        type: "String",
+        type: ["String"],
         default: "secondary noMargin",
         description: "Style of secondary button",
       },
       {
         prop: "primary-button-label",
-        type: "String",
+        type: ["String"],
         default: "OK",
         description: "Label of primary button",
       },
       {
         prop: "secondary-button-label",
-        type: "String",
+        type: ["String"],
         default: "Cancel",
         description: "Label of secondary button",
       },
       {
         prop: "primary-button-close",
-        type: "Boolean",
+        type: ["Boolean"],
         default: "false",
         description:
           "If true clicking primary button emits <code>input:secondaryButtonClick</code> event and closes modal. If false modal is not closed after emitting event",
       },
       {
         prop: "secondary-button-close",
-        type: "Boolean",
+        type: ["Boolean"],
         default: "false",
         description:
           "If true clicking primary button emits <code>input:primaryButtonClick</code> event and closes modal. If false modal is not closed after emitting event",
       },
       {
         prop: "no-close-button",
-        type: "Boolean",
+        type: ["Boolean"],
         default: "false",
         description: "Disables 'X' button in modal header",
       },
       {
         prop: "static-backdrop",
-        type: "Boolean",
+        type: ["Boolean"],
         default: "false",
         description:
           "If true modal dialog cannot be closed by clicking outside of it",
       },
       {
         prop: "position",
-        type: "String",
+        type: ["String"],
         default: "top",
         description: "Modal position. Valid values are: 'top', 'center'",
       },
       {
         prop: "size",
-        type: "String",
+        type: ["String"],
         default: "md",
         description: "Modal size. Valid values are: 'sm', 'md', 'lg', 'xl'",
       },
       {
         prop: "transition",
-        type: "String",
+        type: ["String"],
         default: "fade-slide",
         description:
           "Sets animation effect when showing or hiding modal. Valid values are: 'fade', 'fade-slide', 'fade-scale'",
       },
       {
         prop: "name",
-        type: "String",
+        type: ["String"],
         default: "modal",
         description: "Name of modal. Useful for setting alternative style",
       },
       {
         prop: "theme",
-        type: "String",
+        type: ["String"],
         default: "default",
         description: "Theme of the component",
       },

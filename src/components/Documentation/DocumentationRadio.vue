@@ -13,9 +13,11 @@
       style-cell="default bordered"
     >
       <template #cell:type="{ value }">
-        <code class="code-word mx-1">
-          {{ value }}
-        </code>
+        <div class="space-y-1">
+          <code v-for="v in value" class="code-word">
+            {{ v }}
+          </code>
+        </div>
       </template>
       <template #cell:default="{ value }">
         <code class="text-sm">{{ value }}</code>
@@ -62,24 +64,27 @@
           v-model="example.model"
           :state="example.state"
           value="option"
+          id="option"
         ></v-radio>
-        <label for="" class="ml-3">option</label>
+        <label for="option" class="ml-3">option</label>
       </div>
       <div class="flex items-center">
         <v-radio
           v-model="example.model"
           :state="example.state"
           value="option 2"
+          id="option2"
         ></v-radio>
-        <label for="" class="ml-3">option 2</label>
+        <label for="option2" class="ml-3">option 2</label>
       </div>
       <div class="flex items-center">
         <v-radio
           v-model="example.model"
           :state="example.state"
           value="option 3"
+          id="option3"
         ></v-radio>
-        <label for="" class="ml-3">option 3</label>
+        <label for="option3" class="ml-3">option 3</label>
       </div>
       <v-tabs theme="material" class="mt-10">
         <v-tab name="Props">
@@ -121,6 +126,44 @@
       </code>
     </pre>
   </section>
+
+  <section>
+    <h4>Radio group</h4>
+    <div class="example">
+      <div v-for="l in languages" class="flex items-center my-2">
+        <v-radio
+          v-model="languagesModel"
+          :value="l"
+          :state="
+            languagesValidated
+              ? languagesModel
+                ? true
+                : false
+              : null
+          "
+          :id="'language-' + l"
+        ></v-radio>
+        <label :for="'language-' + l" class="ml-3">
+          {{ l }}
+        </label>
+      </div>
+      <v-button
+        @click="validate()"
+        style-button="default noMargin"
+        class="mt-5"
+      >
+        Send
+      </v-button>
+      <div class="mt-5">
+        <span class="font-semibold">Language:</span>
+        {{ languagesModel }}
+      </div>
+    </div>
+    <pre>
+      <code>
+      </code>
+    </pre>
+  </section>
 </template>
 
 <script>
@@ -132,26 +175,26 @@ export default {
     let reference = ref([
       {
         prop: "v-model",
-        type: "String",
+        type: ["String"],
         default: "undefined",
         description: "input v-model",
       },
       {
         prop: "state",
-        type: "String",
+        type: ["String"],
         default: "empty string",
         description:
           "State of input validity. Supported values are 'valid', 'invalid' or 'empty string' for default state",
       },
       {
         prop: "name",
-        type: "String",
+        type: ["String"],
         default: "radio",
         description: "Name of the component",
       },
       {
         prop: "theme",
-        type: "String",
+        type: ["String"],
         default: "default",
         description: "Theme of the component",
       },
@@ -263,7 +306,12 @@ export default {
       "japanese",
     ]);
 
-    let languagesModel = ref([]);
+    let languagesModel = ref("");
+    let languagesValidated = ref(false);
+
+    let validate = () => {
+      languagesValidated.value = true;
+    };
 
     onMounted(() => {
       hljs.highlightAll();
@@ -282,7 +330,9 @@ export default {
       referenceComponentsDefinition,
       example,
       languages,
+      validate,
       languagesModel,
+      languagesValidated,
     };
   },
 };

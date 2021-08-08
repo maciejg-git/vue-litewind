@@ -28,6 +28,7 @@ import DocumentationRadio from '../components/Documentation/DocumentationRadio.v
 import DocumentationCheckbox from '../components/Documentation/DocumentationCheckbox.vue'
 import DocumentationNavbar from '../components/Documentation/DocumentationNavbar.vue'
 import DocumentationRange from '../components/Documentation/DocumentationRange.vue'
+import DocumentationClosebutton from '../components/Documentation/DocumentationClosebutton.vue'
 
 import DocumentationTooltip from '../components/Documentation/DocumentationTooltip.vue'
 
@@ -144,6 +145,10 @@ const routes = [
       {
         path: 'range',
         component: DocumentationRange,
+      },
+      {
+        path: 'closebutton',
+        component: DocumentationClosebutton,
       },
 
       // directives

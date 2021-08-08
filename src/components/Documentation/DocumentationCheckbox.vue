@@ -13,9 +13,11 @@
       style-cell="default bordered"
     >
       <template #cell:type="{ value }">
-        <code class="code-word mx-1">
-          {{ value }}
-        </code>
+        <div class="space-y-1">
+          <code v-for="v in value" class="code-word">
+            {{ v }}
+          </code>
+        </div>
       </template>
       <template #cell:default="{ value }">
         <code class="text-sm">{{ value }}</code>
@@ -58,8 +60,8 @@
     <h4>Example</h4>
     <div class="example">
       <div class="flex items-center">
-        <v-checkbox v-model="example.model" :state="example.state"></v-checkbox>
-        <label for="" class="ml-3">Example checkbox</label>
+        <v-checkbox v-model="example.model" :state="example.state" id="example"></v-checkbox>
+        <label for="example" class="ml-3">Example checkbox</label>
       </div>
       <v-tabs theme="material" class="mt-10">
         <v-tab name="Props">
@@ -150,26 +152,26 @@ export default {
     let reference = ref([
       {
         prop: "v-model",
-        type: "String",
+        type: ["String"],
         default: "undefined",
         description: "input v-model",
       },
       {
         prop: "state",
-        type: "String",
+        type: ["String"],
         default: "empty string",
         description:
           "State of input validity. Supported values are 'valid', 'invalid' or 'empty string' for default state",
       },
       {
         prop: "name",
-        type: "String",
+        type: ["String"],
         default: "checkbox",
         description: "Name of the component",
       },
       {
         prop: "theme",
-        type: "String",
+        type: ["String"],
         default: "default",
         description: "Theme of the component",
       },

@@ -15,9 +15,11 @@
       style-cell="default bordered"
     >
       <template #cell:type="{ value }">
-        <code class="code-word mx-1">
-          {{ value }}
-        </code>
+        <div class="space-y-1">
+          <code v-for="v in value" class="code-word">
+            {{ v }}
+          </code>
+        </div>
       </template>
       <template #cell:default="{ value }">
         <code class="text-sm">{{ value }}</code>
@@ -154,7 +156,7 @@ export default {
     let reference = ref([
       {
         prop: "v-model",
-        type: "Boolean",
+        type: ["Boolean"],
         default: "undefined",
         description:
           "Set v-model to true or false to show or hide collapsible element",

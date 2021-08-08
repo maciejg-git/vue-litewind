@@ -13,9 +13,11 @@
       style-cell="default bordered"
     >
       <template #cell:type="{ value }">
-        <code class="code-word mx-1">
-          {{ value }}
-        </code>
+        <div class="space-y-1">
+          <code v-for="v in value" class="code-word">
+            {{ v }}
+          </code>
+        </div>
       </template>
       <template #cell:default="{ value }">
         <code class="text-sm">{{ value }}</code>
@@ -117,25 +119,25 @@ export default {
     let reference = ref([
       {
         prop: "v-model",
-        type: "String",
+        type: ["String"],
         default: "undefined",
         description: "Textarea v-model",
       },
       {
         prop: "state",
-        type: "String",
+        type: ["String"],
         default: "empty string",
         description: "State of textarea validity. Supported values are 'valid', 'invalid' or 'empty string' for default state",
       },
       {
         prop: "name",
-        type: "String",
+        type: ["String"],
         default: "textarea",
         description: "",
       },
       {
         prop: "theme",
-        type: "String",
+        type: ["String"],
         default: "default",
         description: "Theme to use",
       },

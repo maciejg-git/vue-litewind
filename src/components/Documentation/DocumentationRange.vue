@@ -14,7 +14,7 @@
     >
       <template #cell:type="{ value }">
         <div class="space-y-1">
-          <code v-for="v in value" class="block code-word">
+          <code v-for="v in value" class="code-word">
             {{ v }}
           </code>
         </div>

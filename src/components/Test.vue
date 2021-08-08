@@ -93,7 +93,7 @@
         >
           <template #caption>table 4</template>
           <template #cell:item_city="{ item }">
-            <v-button button="primary tiny noMargin">item</v-button>
+            <v-button button="primary tiny no-margin">item</v-button>
             <!-- <span v-tooltip.right.delay200="() => item.city">{{ item.id }}</span> -->
             <!-- <v&#45;popover trigger="hover" :delay="500" transition="fade"> -->
             <!--   <template #activator> -->

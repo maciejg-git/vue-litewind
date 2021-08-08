@@ -15,7 +15,7 @@ export default {
   props: {
     modelValue: { type: String, default: undefined },
     type: { type: String, default: "text" },
-    state: { type: String, default: "" },
+    state: { type: [String, Boolean], default: "" },
     name: { type: String, default: "textarea" },
     theme: { type: String, default: "default" },
     styleTextarea: { type: [String, Array], default: "default" },

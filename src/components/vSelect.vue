@@ -22,7 +22,7 @@ export default {
   props: {
     modelValue: { type: [String, Number, Array, Boolean], default: undefined },
     options: { type: Array, default: undefined },
-    state: { type: String, default: "" },
+    state: { type: [String, Boolean], default: "" },
     name: { type: String, default: "select" },
     theme: { type: String, default: "default" },
     styleSelect: { type: [String, Array], default: "default" },

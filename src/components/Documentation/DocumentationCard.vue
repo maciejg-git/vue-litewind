@@ -13,9 +13,11 @@
       style-cell="default bordered"
     >
       <template #cell:type="{ value }">
-        <code class="code-word mx-1">
-          {{ value }}
-        </code>
+        <div class="space-y-1">
+          <code v-for="v in value" class="code-word">
+            {{ v }}
+          </code>
+        </div>
       </template>
       <template #cell:default="{ value }">
         <code class="text-sm">{{ value }}</code>
@@ -142,19 +144,19 @@ export default {
     let reference = ref([
       {
         prop: "width",
-        type: "String",
+        type: ["String"],
         default: "undefined",
         description: "Width of the card",
       },
       {
         prop: "name",
-        type: "String",
+        type: ["String"],
         default: "card",
         description: "Useful for setting alternative styles from style.js",
       },
       {
         prop: "theme",
-        type: "String",
+        type: ["String"],
         default: "default",
         description: "Theme of the component",
       },

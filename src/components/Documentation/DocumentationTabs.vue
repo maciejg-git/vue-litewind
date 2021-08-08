@@ -13,9 +13,11 @@
       style-cell="default bordered"
     >
       <template #cell:type="{ value }">
-        <code class="code-word mx-1">
-          {{ value }}
-        </code>
+        <div class="space-y-1">
+          <code v-for="v in value" class="code-word">
+            {{ v }}
+          </code>
+        </div>
       </template>
       <template #cell:default="{ value }">
         <code class="text-sm">{{ value }}</code>
@@ -262,46 +264,40 @@ import hljs from "highlight.js";
 export default {
   setup(props) {
     let reference = ref([
-      // {
-      //   prop: "v-model",
-      //   type: "Array",
-      //   default: "undefined",
-      //   description: "",
-      // },
       {
         prop: "fill",
-        type: "Boolean",
+        type: ["Boolean"],
         default: "false",
         description: "Makes tabs fill tab bar",
       },
       {
         prop: "center",
-        type: "Boolean",
+        type: ["Boolean"],
         default: "false",
         description: "Centers tabs",
       },
       {
         prop: "right",
-        type: "Boolean",
+        type: ["Boolean"],
         default: "false",
         description: "Puts tabs on the right",
       },
       {
         prop: "transition",
-        type: "Boolean",
+        type: ["Boolean"],
         default: "false",
         description:
           "Transition animation to use when swtiching tab content. Valid values are 'fade' or empty string (no transition)",
       },
       {
         prop: "name",
-        type: "String",
+        type: ["String"],
         default: "tabs",
         description: "Useful for setting alternative styles from styles.js",
       },
       {
         prop: "theme",
-        type: "String",
+        type: ["String"],
         default: "default",
         description: "Theme of the component",
       },

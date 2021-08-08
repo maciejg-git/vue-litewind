@@ -13,9 +13,11 @@
       style-cell="default bordered"
     >
       <template #cell:type="{ value }">
-        <code class="code-word mx-1">
-          {{ value }}
-        </code>
+        <div class="space-y-1">
+          <code v-for="v in value" class="code-word">
+            {{ v }}
+          </code>
+        </div>
       </template>
       <template #cell:default="{ value }">
         <code class="text-sm">{{ value }}</code>
@@ -222,57 +224,57 @@ export default {
     let reference = ref([
       {
         prop: "placement",
-        type: "String",
+        type: ["String"],
         default: "auto",
         description:
           "Initial placement of popover. Valid values are same as for Popperjs",
       },
       {
         prop: "trigger",
-        type: "String",
+        type: ["String"],
         default: "click",
         description:
           "Type of trigger that show or hides popover. Valid triggers are 'click', 'hover' and 'focus'",
       },
       {
         prop: "no-header",
-        type: "Boolean",
+        type: ["Boolean"],
         default: "false",
         description: "Disabled popover header",
       },
       {
         prop: "title",
-        type: "String",
+        type: ["String"],
         default: "undefined",
         description: "Title displayed in popover header",
       },
       {
         prop: "transition",
-        type: "String",
+        type: ["String"],
         default: "fade",
         description: "Animation when showing or hiding popover",
       },
       {
         prop: "click-outside-close",
-        type: "Boolean",
+        type: ["Boolean"],
         default: "false",
         description: "If true clicking outside of popover closes it",
       },
       {
         prop: "target-id",
-        type: "String",
+        type: ["String"],
         default: "undefined",
         description: "Id of element that controls popover",
       },
       {
         prop: "name",
-        type: "String",
+        type: ["String"],
         default: "popover",
         description: "",
       },
       {
         prop: "theme",
-        type: "String",
+        type: ["String"],
         default: "default",
         description: "Theme of popover",
       },

@@ -4,20 +4,32 @@ export let components = [
     name: "alert",
   },
   {
+    label: "Badge",
+    name: "badge",
+  },
+  {
     label: "Button",
     name: "button",
   },
   {
-    label: "Radio",
-    name: "radio",
+    label: "Card",
+    name: "card",
   },
   {
-    label: "Checkbox",
-    name: "checkbox",
+    label: "Close button",
+    name: "closebutton",
   },
   {
-    label: "Range",
-    name: "range",
+    label: "Collapse",
+    name: "collapse",
+  },
+  {
+    label: "Dropdown",
+    name: "dropdown",
+  },
+  {
+    label: "Date Picker",
+    name: "datepicker",
   },
   {
     label: "Input",
@@ -28,20 +40,20 @@ export let components = [
     name: "select",
   },
   {
+    label: "Checkbox",
+    name: "checkbox",
+  },
+  {
+    label: "Radio",
+    name: "radio",
+  },
+  {
     label: "Textarea",
     name: "textarea",
   },
   {
-    label: "Date Picker",
-    name: "datepicker",
-  },
-  {
-    label: "Badge",
-    name: "badge",
-  },
-  {
-    label: "Card",
-    name: "card",
+    label: "Range",
+    name: "range",
   },
   {
     label: "List",
@@ -52,44 +64,32 @@ export let components = [
     name: "modal",
   },
   {
-    label: "Tabs",
-    name: "tabs",
+    label: "Navbar",
+    name: "navbar",
   },
   {
     label: "Pagination",
     name: "pagination",
   },
   {
-    label: "Dropdown",
-    name: "dropdown",
-  },
-  {
-    label: "Collapse",
-    name: "collapse",
-  },
-  {
-    label: "Spinner",
-    name: "spinner",
+    label: "Popover",
+    name: "popover",
   },
   {
     label: "Progress",
     name: "progress",
   },
   {
-    label: "Navbar",
-    name: "navbar",
+    label: "Spinner",
+    name: "spinner",
   },
   {
     label: "Sidepanel",
     name: "sidepanel",
   },
   {
-    label: "Close button",
-    name: "close button",
-  },
-  {
-    label: "Popover",
-    name: "popover",
+    label: "Tabs",
+    name: "tabs",
   },
   {
     label: "Table",
