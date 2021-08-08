@@ -168,6 +168,12 @@ export default {
         description: "Width of sidepanel",
       },
       {
+        prop: "no-header",
+        type: ["Boolean"],
+        default: "false",
+        description: "When true the header slot content and close button is not rendered",
+      },
+      {
         prop: "name",
         type: ["String"],
         default: "sidepanel",

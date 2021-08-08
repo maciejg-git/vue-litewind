@@ -5,7 +5,7 @@
       :class="classes.sidepanel.value"
       :style="{ 'width': width }"
     >
-      <div class="flex justify-between align-center w-full">
+      <div v-if="!noHeader" class="flex justify-between align-center w-full">
         <div class="my-3 ml-5">
           <slot name="header"></slot>
         </div>
@@ -35,6 +35,7 @@ export default {
     closeButton: { type: Boolean, default: true },
     sidebarLeft: { type: Boolean, default: false },
     width: { type: String, default: "320px" },
+    noHeader: { type: Boolean, default: false },
     name: { type: String, default: "sidepanel" },
     theme: { type: String, default: "default" },
     styleSidepanel: { type: String, default: "default" },

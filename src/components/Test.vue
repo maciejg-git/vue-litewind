@@ -310,11 +310,11 @@
 
     <v-button @click="sidepanel = !sidepanel">sidepanel</v-button>
 
-    <v-sidepanel v-model="sidepanel" close-button>
+    <v-sidepanel v-model="sidepanel" :no-header="sidepanelHeader" close-button>
       <template #header>
         <h5 class="text-xl font-semibold">Sidepanel</h5>
       </template>
-      <div class="p-2">sidepanel</div>
+      <div class="p-2">sidepanel <button @click="sidepanelHeader = !sidepanelHeader">sidepanel</button></div>
     </v-sidepanel>
 
     <!-- <v-dropdown transition="fade"> -->
@@ -702,6 +702,7 @@ export default {
     let busy = ref(false);
     let tableCommand = null;
     let tableSelection = ref([]);
+    let sidepanelHeader = ref(true)
     let progress = ref(10);
     let textModel = ref("text")
     let linkItems = ref([
@@ -834,6 +835,7 @@ export default {
       buttonPrimary,
       buttonSmall,
       formattedDate,
+      sidepanelHeader,
       alertShow,
       linkItems,
       log,
