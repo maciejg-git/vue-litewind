@@ -133,7 +133,7 @@ export default {
         prop: "theme",
         type: ["String"],
         default: "default",
-        description: "Theme of the component",
+        description: "Theme to use",
       },
     ]);
 

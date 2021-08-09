@@ -161,13 +161,13 @@ export default {
         prop: "name",
         type: ["String"],
         default: "select",
-        description: "",
+        description: "Name of the component",
       },
       {
         prop: "theme",
         type: ["String"],
         default: "default",
-        description: "",
+        description: "Theme to use",
       },
     ]);
 

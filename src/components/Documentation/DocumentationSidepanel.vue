@@ -177,7 +177,7 @@ export default {
         prop: "name",
         type: ["String"],
         default: "sidepanel",
-        description: "Useful for setting alternative styles",
+        description: "Name of the component",
       },
       {
         prop: "theme",

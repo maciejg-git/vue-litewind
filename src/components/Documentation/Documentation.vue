@@ -1,5 +1,5 @@
 <template>
-  <v-navbar class="px-4 py-3">
+  <v-navbar sticky class="px-4 py-3">
     <span class="text-lg font-bold">VueTailwind</span>
     <div class="inline-block ml-5">
       <a href="">Docs</a>

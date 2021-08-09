@@ -265,7 +265,7 @@ export default {
         prop: "name",
         type: ["String"],
         default: "progress",
-        description: "Useful for setting alternative styles",
+        description: "Name of the component",
       },
       {
         prop: "theme",

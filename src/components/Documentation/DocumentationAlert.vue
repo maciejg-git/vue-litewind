@@ -127,26 +127,26 @@ export default {
         prop: "v-model",
         type: ["Boolean"],
         default: "false",
-        description: "If true alert is displayed",
+        description: "If true alert is visible, set to false to hide it",
       },
       {
         prop: "dismiss-delay",
         type: ["Number"],
         default: "0",
         description:
-          "Delay after which alert is closed (<code class='code-word'>update:modelValue</code> is emited with <code>false</code> value)",
+          "Delay after which alert is closed (<code class='code-word'>v-model</code> is set to <code>false</code> value)",
       },
       {
         prop: "name",
         type: ["Array"],
         default: "undefined",
-        description: "",
+        description: "Name of the component",
       },
       {
         prop: "theme",
         type: ["Array"],
         default: "undefined",
-        description: "",
+        description: "Theme to use",
       },
     ]);
 

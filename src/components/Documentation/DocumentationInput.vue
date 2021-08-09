@@ -145,7 +145,7 @@ export default {
         prop: "name",
         type: ["String"],
         default: "input",
-        description: "",
+        description: "Name of the component",
       },
       {
         prop: "theme",

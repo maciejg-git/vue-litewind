@@ -333,13 +333,13 @@ export default {
         prop: "name",
         type: ["String"],
         default: "dropdown",
-        description: "Useful for setting alternative styles from styles.js",
+        description: "Name of the component",
       },
       {
         prop: "theme",
         type: ["String"],
         default: "default",
-        description: "Theme of the component",
+        description: "Theme to use",
       },
     ]);
 

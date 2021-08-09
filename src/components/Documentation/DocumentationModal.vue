@@ -441,13 +441,13 @@ export default {
         prop: "name",
         type: ["String"],
         default: "modal",
-        description: "Name of modal. Useful for setting alternative style",
+        description: "Name of the component",
       },
       {
         prop: "theme",
         type: ["String"],
         default: "default",
-        description: "Theme of the component",
+        description: "Theme to use",
       },
     ]);
 

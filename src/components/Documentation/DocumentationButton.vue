@@ -116,35 +116,31 @@ export default {
         prop: "tag",
         type: ["String"],
         default: "button",
-        description:
-          "Tag of button element. Valid values are: 'button', 'a'",
+        description: "Tag of button element. Valid values are: 'button', 'a'",
       },
       {
         prop: "disabled",
         type: ["Boolean"],
         default: "false",
-        description:
-          "Displays button in disabled state",
+        description: "Displays button in disabled state",
       },
       {
         prop: "block",
         type: ["Boolean"],
         default: "false",
-        description:
-          "Displays button as full width block",
+        description: "Displays button as full width block",
       },
       {
         prop: "name",
         type: ["String"],
         default: "button",
-        description:
-          "Useful for setting alternative style from styles.js",
+        description: "Name of the component",
       },
       {
         prop: "theme",
         type: ["String"],
         default: "default",
-        description: "Theme of the component",
+        description: "Theme to use",
       },
     ]);
 
@@ -169,7 +165,7 @@ export default {
 
     let referenceStyles = ref([
       {
-        prop: "style-butto",
+        prop: "style-button",
         description: "Main button element",
       },
     ]);

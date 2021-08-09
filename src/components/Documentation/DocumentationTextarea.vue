@@ -133,7 +133,7 @@ export default {
         prop: "name",
         type: ["String"],
         default: "textarea",
-        description: "",
+        description: "Name of the component",
       },
       {
         prop: "theme",

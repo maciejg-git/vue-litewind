@@ -270,13 +270,13 @@ export default {
         prop: "name",
         type: ["String"],
         default: "popover",
-        description: "",
+        description: "Name of the component",
       },
       {
         prop: "theme",
         type: ["String"],
         default: "default",
-        description: "Theme of popover",
+        description: "Theme to use",
       },
     ]);
 

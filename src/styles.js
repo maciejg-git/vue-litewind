@@ -477,6 +477,7 @@ let alert = {
 let navbar = {
   navbar: {
     default: [
+      "w-full",
       "bg-gray-100",
       "shadow-md",
     ]

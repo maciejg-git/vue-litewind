@@ -34,9 +34,9 @@
       style-header-cell="default bordered"
       style-cell="default bordered"
     >
-      <template #cell:description="{ value }"
-        ><span v-html="value"></span
-      ></template>
+      <template #cell:description="{ value }">
+        <span v-html="value"></span>
+      </template>
     </v-table>
 
     <h6>Slots</h6>
@@ -58,17 +58,25 @@
     <h4>Example</h4>
     <div class="example relative">
       <v-card style="height: 300px">
-        <v-navbar class="py-4 px-4"><span class="font-bold text-lg">Brand</span></v-navbar>
+        <v-navbar class="py-2 px-4">
+          <div class="flex items-center">
+            <span class="font-bold text-lg">Brand</span>
+            <ul class="flex flex-row gap-x-4 ml-7">
+              <li>Home</li>
+              <li>About</li>
+            </ul>
+            <v-input class="ml-auto"></v-input>
+          </div>
+        </v-navbar>
       </v-card>
       <v-tabs theme="material" class="mt-5">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
-            <label for="model" class="font-semibold">v-model: </label>
-            <v-input type="text" id="model" v-model="example.date">
-            </v-input>
+            <label for="model" class="font-semibold">v-model:</label>
+            <v-input type="text" id="model" v-model="example.date"></v-input>
           </div>
           <div class="mb-2">
-            <label for="range">range: </label>
+            <label for="range">range:</label>
             <v-select id="range" v-model="example.range">
               <option :value="true">true</option>
               <option :value="false">false</option>
@@ -95,27 +103,25 @@ export default {
         prop: "fixed",
         type: "Boolean",
         default: "false",
-        description:
-          "",
+        description: "If true navbar position is set to fixed",
       },
       {
         prop: "sticky",
         type: "Boolean",
         default: "false",
-        description:
-          "",
+        description: "If true navbar position is set to sticky. If both <code>fixed</code> and <code>sticky</code> are false then navbar is positioned as relative",
       },
       {
         prop: "name",
         type: "String",
         default: "navbar",
-        description: "",
+        description: "Name of the component",
       },
       {
         prop: "theme",
         type: "String",
         default: "default",
-        description: "",
+        description: "Theme to use",
       },
     ]);
 
