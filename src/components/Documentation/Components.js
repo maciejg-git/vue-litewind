@@ -8,6 +8,10 @@ export let components = [
     name: "badge",
   },
   {
+    label: "Breadcrumb",
+    name: "breadcrumb",
+  },
+  {
     label: "Button",
     name: "button",
   },

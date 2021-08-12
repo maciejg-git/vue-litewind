@@ -1,169 +1,174 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import Test from '../components/Test.vue'
+import { createRouter, createWebHistory } from "vue-router";
+import Test from "../components/Test.vue";
 
-import Documentation from '../components/Documentation/Documentation.vue'
+import Documentation from "../components/Documentation/Documentation.vue";
 
-import DocumentationComponents from '../components/Documentation/DocumentationComponents.vue'
+import DocumentationComponents from "../components/Documentation/DocumentationComponents.vue";
 
-import DocumentationTable from '../components/Documentation/DocumentationTable.vue'
-import DocumentationDatePicker from '../components/Documentation/DocumentationDatePicker.vue'
-import DocumentationList from '../components/Documentation/DocumentationList.vue'
-import DocumentationModal from '../components/Documentation/DocumentationModal.vue'
-import DocumentationTabs from '../components/Documentation/DocumentationTabs.vue'
-import DocumentationSpinner from '../components/Documentation/DocumentationSpinner.vue'
-import DocumentationCollapse from '../components/Documentation/DocumentationCollapse.vue'
-import DocumentationBadge from '../components/Documentation/DocumentationBadge.vue'
-import DocumentationDropdown from '../components/Documentation/DocumentationDropdown.vue'
-import DocumentationPagination from '../components/Documentation/DocumentationPagination.vue'
-import DocumentationCard from '../components/Documentation/DocumentationCard.vue'
-import DocumentationButton from '../components/Documentation/DocumentationButton.vue'
-import DocumentationPopover from '../components/Documentation/DocumentationPopover.vue'
-import DocumentationProgress from '../components/Documentation/DocumentationProgress.vue'
-import DocumentationSidepanel from '../components/Documentation/DocumentationSidepanel.vue'
-import DocumentationAlert from '../components/Documentation/DocumentationAlert.vue'
-import DocumentationInput from '../components/Documentation/DocumentationInput.vue'
-import DocumentationSelect from '../components/Documentation/DocumentationSelect.vue'
-import DocumentationTextarea from '../components/Documentation/DocumentationTextarea.vue'
-import DocumentationRadio from '../components/Documentation/DocumentationRadio.vue'
-import DocumentationCheckbox from '../components/Documentation/DocumentationCheckbox.vue'
-import DocumentationNavbar from '../components/Documentation/DocumentationNavbar.vue'
-import DocumentationRange from '../components/Documentation/DocumentationRange.vue'
-import DocumentationClosebutton from '../components/Documentation/DocumentationClosebutton.vue'
+import DocumentationTable from "../components/Documentation/DocumentationTable.vue";
+import DocumentationDatePicker from "../components/Documentation/DocumentationDatePicker.vue";
+import DocumentationList from "../components/Documentation/DocumentationList.vue";
+import DocumentationModal from "../components/Documentation/DocumentationModal.vue";
+import DocumentationTabs from "../components/Documentation/DocumentationTabs.vue";
+import DocumentationSpinner from "../components/Documentation/DocumentationSpinner.vue";
+import DocumentationCollapse from "../components/Documentation/DocumentationCollapse.vue";
+import DocumentationBadge from "../components/Documentation/DocumentationBadge.vue";
+import DocumentationDropdown from "../components/Documentation/DocumentationDropdown.vue";
+import DocumentationPagination from "../components/Documentation/DocumentationPagination.vue";
+import DocumentationCard from "../components/Documentation/DocumentationCard.vue";
+import DocumentationButton from "../components/Documentation/DocumentationButton.vue";
+import DocumentationPopover from "../components/Documentation/DocumentationPopover.vue";
+import DocumentationProgress from "../components/Documentation/DocumentationProgress.vue";
+import DocumentationSidepanel from "../components/Documentation/DocumentationSidepanel.vue";
+import DocumentationAlert from "../components/Documentation/DocumentationAlert.vue";
+import DocumentationInput from "../components/Documentation/DocumentationInput.vue";
+import DocumentationSelect from "../components/Documentation/DocumentationSelect.vue";
+import DocumentationTextarea from "../components/Documentation/DocumentationTextarea.vue";
+import DocumentationRadio from "../components/Documentation/DocumentationRadio.vue";
+import DocumentationCheckbox from "../components/Documentation/DocumentationCheckbox.vue";
+import DocumentationNavbar from "../components/Documentation/DocumentationNavbar.vue";
+import DocumentationRange from "../components/Documentation/DocumentationRange.vue";
+import DocumentationBreadcrumb from "../components/Documentation/DocumentationBreadcrumb.vue";
+import DocumentationClosebutton from "../components/Documentation/DocumentationClosebutton.vue";
 
-import DocumentationTooltip from '../components/Documentation/DocumentationTooltip.vue'
+import DocumentationTooltip from "../components/Documentation/DocumentationTooltip.vue";
 
-import DocumentationStyling from '../components/Documentation/DocumentationStyling.vue'
+import DocumentationStyling from "../components/Documentation/DocumentationStyling.vue";
 
 const routes = [
   {
-    path: '/',
+    path: "/",
     component: Test,
   },
   {
-    path: '/documentation',
+    path: "/documentation",
     component: Documentation,
     children: [
       {
-        path: 'styling',
+        path: "styling",
         component: DocumentationStyling,
       },
       {
-        path: 'components',
+        path: "components",
         component: DocumentationComponents,
       },
 
       // components
 
       {
-        path: 'table',
+        path: "table",
         component: DocumentationTable,
       },
       {
-        path: 'datepicker',
+        path: "datepicker",
         component: DocumentationDatePicker,
       },
       {
-        path: 'list',
+        path: "list",
         component: DocumentationList,
       },
       {
-        path: 'modal',
+        path: "modal",
         component: DocumentationModal,
       },
       {
-        path: 'pagination',
+        path: "pagination",
         component: DocumentationPagination,
       },
       {
-        path: 'tabs',
+        path: "tabs",
         component: DocumentationTabs,
       },
       {
-        path: 'spinner',
+        path: "spinner",
         component: DocumentationSpinner,
       },
       {
-        path: 'collapse',
+        path: "collapse",
         component: DocumentationCollapse,
       },
       {
-        path: 'badge',
+        path: "badge",
         component: DocumentationBadge,
       },
       {
-        path: 'dropdown',
+        path: "dropdown",
         component: DocumentationDropdown,
       },
       {
-        path: 'card',
+        path: "card",
         component: DocumentationCard,
       },
       {
-        path: 'button',
+        path: "button",
         component: DocumentationButton,
       },
       {
-        path: 'popover',
+        path: "popover",
         component: DocumentationPopover,
       },
       {
-        path: 'progress',
+        path: "progress",
         component: DocumentationProgress,
       },
       {
-        path: 'sidepanel',
+        path: "sidepanel",
         component: DocumentationSidepanel,
       },
       {
-        path: 'alert',
+        path: "alert",
         component: DocumentationAlert,
       },
       {
-        path: 'input',
+        path: "input",
         component: DocumentationInput,
       },
       {
-        path: 'select',
+        path: "select",
         component: DocumentationSelect,
       },
       {
-        path: 'textarea',
+        path: "textarea",
         component: DocumentationTextarea,
       },
       {
-        path: 'radio',
+        path: "radio",
         component: DocumentationRadio,
       },
       {
-        path: 'checkbox',
+        path: "checkbox",
         component: DocumentationCheckbox,
       },
       {
-        path: 'navbar',
+        path: "navbar",
         component: DocumentationNavbar,
       },
       {
-        path: 'range',
+        path: "range",
         component: DocumentationRange,
       },
       {
-        path: 'closebutton',
+        path: "closebutton",
         component: DocumentationClosebutton,
+      },
+      {
+        path: "breadcrumb",
+        component: DocumentationBreadcrumb,
       },
 
       // directives
 
       {
-        path: 'tooltip',
+        path: "tooltip",
         component: DocumentationTooltip,
       },
     ],
   },
-]
+];
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

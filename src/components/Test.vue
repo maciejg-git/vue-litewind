@@ -708,15 +708,15 @@ export default {
     let linkItems = ref([
       {
         label: "home",
-        href: "",
+        // href: "http://google.com",
+        to: "/",
       },
       {
         label: "documentations",
-        href: "",
+        to: "documentation",
       },
       {
         label: "component",
-        href: "",
       },
     ])
     let selectModel = ref("option")
@@ -844,4 +844,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style>
+a {
+  @apply text-blue-500 underline;
+}
+</style>

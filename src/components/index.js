@@ -27,6 +27,7 @@ import vSelect from "./vSelect.vue"
 import vRadio from "./vRadio.vue"
 import vCheckbox from "./vCheckbox.vue"
 import vRange from "./vRange.vue"
+import vBreadcrumb from "./vBreadcrumb.vue"
 import tooltip from "../directives/tooltip.js"
 
   function install(app) {
@@ -57,6 +58,7 @@ import tooltip from "../directives/tooltip.js"
     app.component("v-checkbox", vCheckbox);
     app.component("v-range", vRange);
     app.component("v-select", vSelect);
+    app.component("v-breadcrumb", vBreadcrumb);
     app.component("v-close-button", vCloseButton);
     app.directive("tooltip", tooltip);
   }

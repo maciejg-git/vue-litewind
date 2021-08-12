@@ -113,7 +113,8 @@ let fixedTab = [
   "p-2",
   "px-4",
   "whitespace-nowrap",
-  "overflow-ellipsis"
+  "overflow-ellipsis",
+  "no-underline",
 ]
 
 let tabs = {
@@ -301,6 +302,21 @@ let progress = {
       "font-bold",
     ]
   }
+}
+
+// BREADCRUMB
+
+let breadcrumb = {
+  breadcrumb: {
+    default: [
+      "text-blue-500",
+      "underline",
+    ],
+  },
+  separator: {
+    default: [
+    ],
+  },
 }
 
 // FORM TEXT
@@ -902,5 +918,6 @@ export let styles = {
   datepicker,
   tabs,
   badge,
+  breadcrumb,
   pagination,
 }
