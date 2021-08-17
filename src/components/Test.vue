@@ -148,15 +148,19 @@
     </v-progress>
 
     {{ textModel }}
-    <v-input type="text" v-model="textModel" readonly></v-input>
-    <v-input type="password" v-model="textModel" :state="false"></v-input>
-    <v-input type="password" v-model="textModel" state="valid"></v-input>
-    <v-input type="password" v-model="textModel" state="invalid"></v-input>
-    <v-input type="text" v-model="textModel" placeholder="input text"></v-input>
-    <v-input type="password" v-model="textModel" disabled>
-      <template #helper>input name</template>
-      <template #invalid>wrong name</template>
-    </v-input>
+    <v-form-group :state="stateFormGroup">
+      group
+      <v-input type="text" v-model="textModel" readonly></v-input>
+      <v-input type="password" v-model="textModel" :state="false"></v-input>
+      <v-input type="password" v-model="textModel" state="valid"></v-input>
+      <v-input type="password" v-model="textModel" state="invalid"></v-input>
+      <v-input type="text" v-model="textModel" placeholder="input text"></v-input>
+      <v-input type="password" v-model="textModel" disabled>
+        <template #helper>input name</template>
+        <template #invalid>wrong name</template>
+      </v-input>
+      group
+    </v-form-group>
     <v-input type="password" v-model="textModel" state="invalid">
       <template #helper>input name</template>
       <template #invalid>wrong name</template>
@@ -703,6 +707,7 @@ export default {
     let tableCommand = null;
     let tableSelection = ref([]);
     let sidepanelHeader = ref(true)
+    let stateFormGroup = ref("")
     let progress = ref(10);
     let textModel = ref("text")
     let linkItems = ref([
@@ -838,6 +843,7 @@ export default {
       sidepanelHeader,
       alertShow,
       linkItems,
+      stateFormGroup,
       log,
     };
   },

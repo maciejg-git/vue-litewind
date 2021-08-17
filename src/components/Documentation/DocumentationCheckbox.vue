@@ -1,5 +1,5 @@
 <template>
-  <h3>Input</h3>
+  <h3>Checkbox</h3>
   <p></p>
 
   <section>

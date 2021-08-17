@@ -13,9 +13,11 @@
       style-cell="default bordered"
     >
       <template #cell:type="{ value }">
-        <code class="code-word mx-1">
-          {{ value }}
-        </code>
+        <div class="space-y-1">
+          <code v-for="v in value" class="code-word">
+            {{ v }}
+          </code>
+        </div>
       </template>
       <template #cell:default="{ value }">
         <code class="text-sm">{{ value }}</code>
@@ -41,6 +43,29 @@
   </section>
 
   <section>
+    <h5>Path</h5>
+    <span class="font-bold">Type</span>: <code class="code-word">Array</code>
+    <p>Path is an Array of Objects where each object should have <code>label</code> property and <code>to</code> property that is used to generate router-link.</p>
+    <pre>
+      <code>
+let path = [
+  {
+    label: "Home",
+    to: "/",
+  },
+  {
+    label: "Documentation",
+    to: "/",
+  },
+  {
+    label: "Breadcrumb",
+  },
+],
+    </code>
+  </pre>
+  </section>
+
+  <section>
     <h4>Example</h4>
     <div class="example">
       <v-breadcrumb :path="example.path"></v-breadcrumb>
@@ -61,15 +86,27 @@ export default {
     let reference = ref([
       {
         prop: "path",
-        type: "Array",
+        type: ["Array"],
         default: "undefined",
         description: "Path of links to render",
       },
       {
         prop: "separator",
-        type: "String",
+        type: ["String"],
         default: "/",
         description: "Character or string that seperates links",
+      },
+      {
+        prop: "name",
+        type: ["String"],
+        default: "breadcrumb",
+        description: "Name of the component",
+      },
+      {
+        prop: "theme",
+        type: ["String"],
+        default: "default",
+        description: "Theme to use",
       },
     ]);
 
