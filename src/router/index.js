@@ -3,6 +3,8 @@ import Test from "../components/Test.vue";
 
 import Documentation from "../components/Documentation/Documentation.vue";
 
+import DocumentationInstall from "../components/Documentation/DocumentationInstall.vue";
+
 import DocumentationComponents from "../components/Documentation/DocumentationComponents.vue";
 
 import DocumentationTable from "../components/Documentation/DocumentationTable.vue";
@@ -44,6 +46,10 @@ const routes = [
     path: "/documentation",
     component: Documentation,
     children: [
+      {
+        path: "installation",
+        component: DocumentationInstall,
+      },
       {
         path: "styling",
         component: DocumentationStyling,

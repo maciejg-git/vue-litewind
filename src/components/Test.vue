@@ -148,8 +148,6 @@
     </v-progress>
 
     {{ textModel }}
-    <v-form-group :state="stateFormGroup">
-      group
       <v-input type="text" v-model="textModel" readonly></v-input>
       <v-input type="password" v-model="textModel" :state="false"></v-input>
       <v-input type="password" v-model="textModel" state="valid"></v-input>
@@ -159,8 +157,6 @@
         <template #helper>input name</template>
         <template #invalid>wrong name</template>
       </v-input>
-      group
-    </v-form-group>
     <v-input type="password" v-model="textModel" state="invalid">
       <template #helper>input name</template>
       <template #invalid>wrong name</template>

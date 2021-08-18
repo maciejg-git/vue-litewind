@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { ref, computed, watch, getCurrentInstance } from "vue";
+import { computed, watch, getCurrentInstance } from "vue";
 import vCloseButton from "./vCloseButton.vue";
 import useStyles from "./composition/use-styles";
 import { removeTailwindClasses } from "../tools/tools.js";

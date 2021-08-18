@@ -7,7 +7,7 @@
   </v-navbar>
   <div>
     <div class="flex">
-      <div class="sidebar hidden md:block flex-none sticky text-gray-700 overflow-auto top-20 p-3 pr-20">
+      <div class="sidebar hidden md:block flex-none sticky text-gray-700 overflow-auto p-3 pr-20">
         <ul class="list-unstyled ml-2">
           <li>
             <router-link
