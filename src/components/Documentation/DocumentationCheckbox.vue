@@ -60,7 +60,11 @@
     <h4>Example</h4>
     <div class="example">
       <div class="flex items-center">
-        <v-checkbox v-model="example.model" :state="example.state" id="example"></v-checkbox>
+        <v-checkbox
+          v-model="example.model"
+          :state="example.state"
+          id="example"
+        ></v-checkbox>
         <label for="example" class="ml-3">Example checkbox</label>
       </div>
       <v-tabs theme="material" class="mt-10">
@@ -123,6 +127,12 @@
         <label :for="'language-' + l" class="ml-3">
           {{ l }}
         </label>
+      </div>
+      <div
+        v-if="languagesValidated && languagesModel.length < 3 ? true : false"
+        class="text-red-500 mt-4"
+      >
+        Please select at least 3 languages.
       </div>
       <v-button
         @click="validate()"

@@ -65,25 +65,11 @@
               <li>Home</li>
               <li>About</li>
             </ul>
-            <v-input class="ml-auto"></v-input>
+            <v-input class="ml-auto mr-4"></v-input>
+            <v-button style-button="default outline">Search</v-button>
           </div>
         </v-navbar>
       </v-card>
-      <v-tabs theme="material" class="mt-5">
-        <v-tab name="Props">
-          <div class="mb-2 mt-5">
-            <label for="model" class="font-semibold">v-model:</label>
-            <v-input type="text" id="model" v-model="example.date"></v-input>
-          </div>
-          <div class="mb-2">
-            <label for="range">range:</label>
-            <v-select id="range" v-model="example.range">
-              <option :value="true">true</option>
-              <option :value="false">false</option>
-            </v-select>
-          </div>
-        </v-tab>
-      </v-tabs>
     </div>
     <pre>
       <code>

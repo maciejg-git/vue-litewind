@@ -379,12 +379,12 @@ export default {
         default: "false",
         description: "Week starts on Monday",
       },
-      {
-        prop: "disabled",
-        type: ["Array"],
-        default: "undefined",
-        description: "Disables selection of days",
-      },
+      // {
+      //   prop: "disabled",
+      //   type: ["Array"],
+      //   default: "undefined",
+      //   description: "Disables selection of days",
+      // },
       {
         prop: "width",
         type: ["String"],
@@ -410,7 +410,7 @@ export default {
         type: ["Boolean"],
         default: "false",
         description:
-          "Use buttons for accepting selection or canceling input. If buttons props is false model is updated immedietely after click",
+          "Adds 'accept' and 'cancel' buttons. If this prop is false then model is updated immedietely after clicking on the day. If it is true then model is updated after clicking 'accept' button",
       },
       {
         prop: "secondary-button-label",

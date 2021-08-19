@@ -147,6 +147,12 @@
           {{ l }}
         </label>
       </div>
+      <div
+        v-if="languagesValidated && !languagesModel ? true : false"
+        class="text-red-500 mt-4"
+      >
+        Please select the language.
+      </div>
       <v-button
         @click="validate()"
         style-button="default noMargin"

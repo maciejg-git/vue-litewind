@@ -30,6 +30,8 @@ import vRange from "./vRange.vue"
 import vBreadcrumb from "./vBreadcrumb.vue"
 import tooltip from "../directives/tooltip.js"
 
+export {vButton, vTable}
+
   function install(app) {
     app.component("v-table", vTable);
     app.component("v-tabs", vTabs);

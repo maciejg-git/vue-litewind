@@ -183,11 +183,7 @@
       </div>
       <div class="mb-2">
         <label for="speed">indeterminate-speed:</label>
-        <v-input
-          type="text"
-          id="speed"
-          v-model="example.speed"
-        ></v-input>
+        <v-input type="text" id="speed" v-model="example.speed"></v-input>
       </div>
     </div>
     <pre>
@@ -234,7 +230,7 @@ export default {
         prop: "transition",
         type: ["String"],
         default: "true",
-        description: "If true changes in value animates smoothly",
+        description: "Add smooth animation when value change",
       },
       {
         prop: "indeterminate",
@@ -253,13 +249,15 @@ export default {
         prop: "indeterminate-timing",
         type: ["String"],
         default: "linear",
-        description: "Value of animation-timing-function. Valid values are: 'linear', 'ease', 'ease-in', 'ease-out', 'ease-in-out'",
+        description:
+          "Value of animation-timing-function property. Valid values are: 'linear', 'ease', 'ease-in', 'ease-out', 'ease-in-out'",
       },
       {
         prop: "indeterminate-speed",
         type: ["Number"],
         default: "7",
-        description: "Speed of indeterminate bar. Valid values are from 1 to 20",
+        description:
+          "Speed of indeterminate bar animation (1 - 20)",
       },
       {
         prop: "name",

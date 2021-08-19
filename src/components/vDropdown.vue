@@ -41,7 +41,7 @@ export default {
     styleMenuItemHeader: { type: String, default: "default" },
   },
   emits: ["state:opened", "state:closed"],
-  setup(props) {
+  setup(props, { slots }) {
     let elements = [
       "menuItem",
       "menuItemActive",
@@ -76,6 +76,7 @@ export default {
 
     let dropdown = ref(null);
 
+    // console.log(slots.default())
     let clickOutside = function (ev) {
       if (
         !(dropdown.value === ev.target || dropdown.value.contains(ev.target))

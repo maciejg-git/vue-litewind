@@ -617,7 +617,8 @@ import vTab from "./vTab.vue";
 import vDatePicker from "./vDatePicker.vue";
 import vCard from "./vCard.vue";
 import vSidepanel from "./vSidepanel.vue";
-import vButton from "./vButton.vue";
+// import vButton from "./vButton.vue";
+import {vButton, vTable} from "../vue-component-tailwind.es.js"
 import vPagination from "./vPagination.vue";
 import vDropdown from "./vDropdown.vue";
 import vDropdownMenuItem from "./vDropdownMenuItem.vue";
@@ -649,7 +650,7 @@ export default {
   components: {
     vTabs,
     vTab,
-    // vTable,
+    vTable,
     vDatePicker,
     vCard,
     vButton,

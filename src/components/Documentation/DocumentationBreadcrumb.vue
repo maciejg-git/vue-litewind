@@ -45,7 +45,7 @@
   <section>
     <h5>Path</h5>
     <span class="font-bold">Type</span>: <code class="code-word">Array</code>
-    <p>Path is an Array of Objects where each object should have <code>label</code> property and <code>to</code> property that is used to generate router-link.</p>
+    <p>Path is an Array of Objects where each object should have <code>label</code> property and <code>to</code> property that is used as <code>to</code> prop for router-link.</p>
     <pre>
       <code>
 let path = [

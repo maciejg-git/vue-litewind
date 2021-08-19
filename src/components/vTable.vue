@@ -97,6 +97,7 @@ export default {
     locale: { type: String, default: "en" },
     busy: { type: Boolean, default: false },
     selectionMode: { type: String, default: "" },
+    state: { type: String, default: "" },
     name: { type: String, default: "table" },
     theme: { type: String, default: "default" },
     styleTable: { type: String, default: "default" },
@@ -105,7 +106,6 @@ export default {
     styleRow: { type: String, default: "default" },
     styleCell: { type: String, default: "default" },
     styleSelected: { type: String, default: "default" },
-    styleBusy: { type: String, default: "default" },
     styleCaption: { type: String, default: "default" },
   },
   setup(props, { slots, emit }) {
@@ -116,19 +116,23 @@ export default {
       "row",
       "cell",
       "selected",
-      "busy",
       "caption",
     ];
 
-    let { styles } = useStyles(getCurrentInstance(), props, elements);
+    let s = ["busy"];
+
+    let { styles, states } = useStyles(
+      getCurrentInstance(),
+      props,
+      elements,
+      s
+    );
 
     let classes = {
       table: computed(() => {
         let c = [
           ...styles.table.value,
-          ...(props.busy
-            ? [...styles.busy.value, "pointer-events-none"]
-            : ""),
+          ...(props.state == "busy" ? states.table.busy : ""),
         ];
         return removeTailwindClasses(c);
       }),

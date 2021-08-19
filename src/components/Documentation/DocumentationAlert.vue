@@ -127,14 +127,14 @@ export default {
         prop: "v-model",
         type: ["Boolean"],
         default: "false",
-        description: "If true alert is visible, set to false to hide it",
+        description: "If true alert is visible",
       },
       {
         prop: "dismiss-delay",
         type: ["Number"],
         default: "0",
         description:
-          "Delay after which alert is closed (<code class='code-word'>v-model</code> is set to <code>false</code> value)",
+          "Delay after which alert is closed (<code class='code-word'>v-model</code> is set to <code>false</code>)",
       },
       {
         prop: "name",

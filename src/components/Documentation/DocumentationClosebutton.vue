@@ -67,6 +67,12 @@ export default {
         default: "closebutton",
         description: "Name of the component",
       },
+      {
+        prop: "theme",
+        type: ["String"],
+        default: "default",
+        description: "Theme to use",
+      },
     ]);
 
     let referenceDefinition = ref([

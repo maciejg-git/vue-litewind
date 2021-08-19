@@ -7,7 +7,7 @@
   </v-navbar>
   <div>
     <div class="flex">
-      <div class="sidebar hidden md:block flex-none sticky text-gray-700 overflow-auto p-3 pr-20">
+      <div class="sidebar hidden md:block flex-none sticky text-gray-700 overflow-auto top-20 p-3 pr-20">
         <ul class="list-unstyled ml-2">
           <li>
             <router-link
@@ -63,7 +63,7 @@
           </li>
         </ul>
       </div>
-      <div class="container mx-auto p-3 w-full lg:max-w-screen-xl px-2 md:px-12">
+      <div class="container mx-auto p-3 w-full lg:max-w-screen-xl px-2 lg:px-24">
         <router-view></router-view>
       </div>
     </div>

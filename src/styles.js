@@ -1,5 +1,3 @@
-// BUTTON
-
 let fixedFormStates = {
   valid: [
     "border-green-300",
@@ -29,6 +27,8 @@ let fixedCheckboxFormStates = {
     "opacity-50",
   ]
 }
+
+// BUTTON
 
 let fixedButton = [
   "rounded",
@@ -77,6 +77,13 @@ let button = {
       "bg-red-500",
       "hover:bg-red-600",
       "focus:ring-red-200",
+    ],
+    outline: [
+      "border",
+      "border-blue-500",
+      "bg-transparent",
+      "hover:bg-transparent",
+      "text-blue-500",
     ],
     small: [
       "py-1"
@@ -155,9 +162,9 @@ let table = {
     fixed: [
       "table-fixed",
     ],
-    // busy: [
-    //   "opacity-50",
-    // ],
+    busy: [
+      "opacity-50",
+    ],
   },
   headerRow: {
     default: [
@@ -214,11 +221,6 @@ let table = {
       "py-2",
       "px-2",
       "pr-6",
-    ],
-  },
-  busy: {
-    default: [
-      "opacity-50",
     ],
   },
   caption: {

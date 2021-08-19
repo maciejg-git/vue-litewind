@@ -180,7 +180,7 @@
         :filter="example.filter"
         :page="example.page"
         :items-per-page="example.itemsPerPage"
-        :busy="example.busy"
+        :state="example.state"
         :selectionMode="example.selectionMode"
         :captionTop="!!example.captionTop"
         :locale="example.locale"
@@ -240,10 +240,10 @@
               </v-input>
           </div>
           <div class="mb-2">
-            <label for="busy">busy:</label>
-            <v-select id="busy" v-model="example.busy">
-              <option :value="true">true</option>
-              <option :value="false">false</option>
+            <label for="busy">state:</label>
+            <v-select id="busy" v-model="example.state">
+              <option value="">empty string (normal state)</option>
+              <option value="busy">busy</option>
             </v-select>
           </div>
           <div class="mb-2">
@@ -626,6 +626,7 @@ export default {
       selectionMode: "single",
       captionTop: false,
       locale: "en-GB",
+      state: "",
       events: [],
     });
 

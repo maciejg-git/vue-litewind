@@ -321,13 +321,13 @@ export default {
         type: ["Boolean"],
         default: "false",
         description:
-          "If true clicking any dropdown menu item automatically closes dropdown. This props does only work for clicking on v-dropdown-item",
+          "If true clicking any dropdown menu item automatically closes dropdown",
       },
       {
         prop: "transition",
         type: ["String"],
         default: "fade",
-        description: "Valid values are 'fade' or empty string (no animation)",
+        description: "By default showing or hiding dropdown uses fading animation. Set this prop to empty string to disable animation",
       },
       {
         prop: "name",
