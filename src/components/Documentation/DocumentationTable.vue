@@ -145,7 +145,7 @@
       </li>
       <li>
         <span class="font-bold">class</span>
-        : function that should return string of space separated classes to apply
+        : function that should return string of classes to apply
         to each cell in column. Takes 3 arguments: key, value and item
         (Function, default: undefined)
       </li>
@@ -158,14 +158,12 @@
       </li>
       <li>
         <span class="font-bold">filterByFunction</span>
-        : if true filter content of column using value from function f. If false
-        then filter will skip function f and use value from items prop (Boolean,
+        : if true filter content of column using value from function f (Boolean,
         default: undefined)
       </li>
       <li>
         <span class="font-bold">sortByFunction</span>
-        : if true sort content of column using value returned from function f.
-        If false then sorter will skip function f and use value from items prop
+        : if true sort content of column using value returned from function f
         (Boolean, default: undefined)
       </li>
     </ul>

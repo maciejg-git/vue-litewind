@@ -65,20 +65,19 @@
     <code class="code-word">String</code>
     <code class="code-word">Array</code>
     <p>
-      <code>v-model</code>
-      is used to return date after selection. v-model can be Array or string
-      depending on selection mode. In range mode
-      <code>v-model</code>
-      returns
+      v-model is used to return date after selection. v-model can be
+      <code>Array</code>
+      or
+      <code>String</code>
+      depending on selection mode. In range mode v-model returns
       <code>Array</code>
       of two
       <code>String</code>
-      . In single mode
-      <code>v-model</code>
-      returns
+      . In single mode v-model returns
       <code>String</code>
-      . Date is in ISO format
+      . Date is in
       <code>YYYY-MM-DD</code>
+      format.
     </p>
     <div class="example">
       <div class="flex">
@@ -151,8 +150,7 @@
           <v-tab name="Props">
             <div class="mb-2 mt-5">
               <label for="model" class="font-semibold">v-model:</label>
-              <v-input type="text" id="model" v-model="example.date">
-              </v-input>
+              <v-input type="text" id="model" v-model="example.date"></v-input>
             </div>
             <div class="mb-2">
               <label for="range">range:</label>
@@ -163,8 +161,11 @@
             </div>
             <div class="mb-2">
               <label for="locale">locale:</label>
-              <v-input type="text" id="locale" v-model="example.locale">
-              </v-input>
+              <v-input
+                type="text"
+                id="locale"
+                v-model="example.locale"
+              ></v-input>
             </div>
             <div class="mb-2">
               <label for="euro">euro:</label>
@@ -186,8 +187,7 @@
                 type="text"
                 id="primary-button-label"
                 v-model="example.primaryButtonLabel"
-              >
-              </v-input>
+              ></v-input>
             </div>
             <div class="mb-2">
               <label for="secondary-button-label">
@@ -197,8 +197,7 @@
                 type="text"
                 id="secondary-button-label"
                 v-model="example.secondaryButtonLabel"
-              >
-              </v-input>
+              ></v-input>
             </div>
             <div class="mb-2">
               <label for="adjacent-months">adjacent-months:</label>
@@ -280,8 +279,7 @@
             type="text"
             v-model="exampleDropdown.date"
             placeholder="Pick date"
-          >
-          </v-input>
+          ></v-input>
         </template>
         <template #default="{ hide }">
           <v-card style-card="default shadow" class="p-2">
@@ -445,8 +443,7 @@ export default {
         prop: "name",
         type: ["String"],
         default: "datepicker",
-        description:
-          "Name of the component",
+        description: "Name of the component",
       },
       {
         prop: "theme",

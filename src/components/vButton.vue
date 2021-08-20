@@ -1,5 +1,10 @@
 <template>
-  <component :is="tag" :href="tagHref" type="button" :class="classes.button.value">
+  <component
+    :is="tag"
+    :href="tagHref"
+    type="button"
+    :class="classes.button.value"
+  >
     <slot name="default"></slot>
   </component>
 </template>
@@ -32,9 +37,9 @@ export default {
         let c = [
           ...fixedClass.button,
           ...styles.button.value,
-          props.disabled ? "opacity-50 pointer-events-none" : "",
+          ...(props.disabled ? ["opacity-50", "pointer-events-none"] : ""),
           props.block ? "w-full" : "",
-        ].flatMap((i) => i.split(" "));
+        ];
         return removeTailwindClasses(c);
       }),
     };

@@ -7,7 +7,33 @@
     <p></p>
     <pre>
       <code>
-      npm -i vue-tailwind
+npm -i vue-tailwind
+    </code>
+  </pre>
+    <p>Register all components in app entry file eg main.js</p>
+    <pre>
+      <code class="language-js">
+// main.js
+
+import plugin from "vue-tailwind";
+
+let app = createApp(App);
+
+app.use(plugin);
+    </code>
+  </pre>
+    <p>or register only selected components</p>
+    <pre>
+      <code class="language-js">
+// main.js
+
+import { buttonPlugin, selectPlugin, spinnerPlugin } from "vue-tailwind";
+
+let app = createApp(App);
+
+app.use(buttonPlugin);
+app.use(selectPlugin);
+app.use(spinnerPlugin);
     </code>
   </pre>
   </section>
@@ -15,10 +41,14 @@
   <section>
     <h5>Setting up</h5>
     <p>
-    By default does not come with any styling, only the necessary classes are added internally to properly display components. Those classes does not set or change any color, typoghraphy, border, rounding etc. In order to add those copy style.js to the src directory of your project and import it in main.js. See styling for more details about this file.
+      By default does not come with any styling, only the necessary classes are
+      added internally to properly display components. Those classes does not
+      set or change any color, typoghraphy, border, rounding etc. In order to
+      add those copy style.js to the src directory of your project and import it
+      in main.js. See styling for more details about this file.
     </p>
     <pre>
-      <code>
+      <code class="language-js">
 // main.js
 
 import { styles } from "./styles";
@@ -34,8 +64,7 @@ app.config.globalProperties.styles = {
 
   <section>
     <h5>Styling</h5>
-    <p>
-    </p>
+    <p></p>
     <pre>
       <code>
 // style.js
@@ -81,8 +110,7 @@ export default {
       hljs.highlightAll();
     });
 
-    return {
-    };
+    return {};
   },
 };
 </script>

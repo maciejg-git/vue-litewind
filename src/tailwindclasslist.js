@@ -1,4 +1,4 @@
-export let tailwindClassList = {
+let tailwindClassList = {
   "decoration-slice": 63,
   "decoration-clone": 63,
 
@@ -3103,6 +3103,22 @@ export let tailwindClassList = {
   "to-pink-800": 23,
   "to-pink-900": 23,
 };
+
+let shade = ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"]
+let col = ["blue", "indigo", "red", "yellow", "pink", "green", "gray"]
+let prop = ["bg3", "text4"]
+let i = 1000
+
+for (let p of prop) {
+  for (let c of col) {
+    for (let s of shade) {
+      tailwindClassList[p + "-" + c + "-" + s] = i;
+    }
+  }
+  i++;
+}
+
+export { tailwindClassList };
 
 // top right
 // padding

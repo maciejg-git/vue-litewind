@@ -67,6 +67,7 @@
         :closeButton="example.closeButton"
         :sidebar-left="example.sidebarLeft"
         :width="example.width"
+        :no-header="example.noHeader"
       >
         <template #header>
           <span class="text-xl font-bold">Sidepanel</span>
@@ -106,6 +107,13 @@
           <div class="mb-2">
             <label for="width">width:</label>
             <v-input type="text" id="width" v-model="example.width"></v-input>
+          </div>
+          <div class="mb-2">
+            <label for="no-header">no-header:</label>
+            <v-select id="no-header" v-model="example.noHeader">
+              <option :value="true">true</option>
+              <option :value="false">false</option>
+            </v-select>
           </div>
         </v-tab>
         <v-tab>
@@ -283,6 +291,7 @@ export default {
       closeButton: true,
       sidebarLeft: false,
       width: "320px",
+      noHeader: false,
       events: [],
     });
 

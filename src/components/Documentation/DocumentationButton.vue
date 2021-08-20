@@ -82,6 +82,8 @@
       </div>
       <div class="mt-4">
         <v-button block>Block button</v-button>
+      </div>
+      <div class="mt-4">
         <v-button disabled>Button (disabled)</v-button>
       </div>
     </div>
