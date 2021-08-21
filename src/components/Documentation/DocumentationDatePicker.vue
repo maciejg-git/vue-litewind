@@ -274,7 +274,6 @@
     &quot;
   /&gt;
 &lt;/v-card&gt;
-
       </code>
     </pre>
   </section>

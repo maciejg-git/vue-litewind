@@ -98,7 +98,7 @@
       </v-card>
     </div>
     <pre>
-      <code>
+      <code class="language-html">
 &lt;v-card width=&quot;320px&quot; style-card=&quot;default shadow-md hoverable&quot;&gt;
   &lt;img :src=&quot;randomPhoto()&quot; alt=&quot;&quot; /&gt;
   &lt;header class=&quot;pt-3 px-3&quot;&gt;

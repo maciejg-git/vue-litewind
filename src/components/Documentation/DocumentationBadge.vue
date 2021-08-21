@@ -91,7 +91,7 @@
       </div>
     </div>
     <pre>
-      <code>
+      <code class="language-html">
 &lt;v-badge style-badge=&quot;secondary&quot; class=&quot;mr-4&quot;&gt;
   New
   &lt;v-badge style-badge=&quot;default tiny green&quot; class=&quot;ml-2&quot;&gt;7&lt;/v-badge&gt;

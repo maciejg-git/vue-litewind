@@ -126,7 +126,7 @@
       </v-card>
     </div>
     <pre>
-      <code>
+      <code class="language-html">
 &lt;v-card class=&quot;p-1&quot;&gt;
   &lt;v-button
     style-button=&quot;default noMargin&quot;

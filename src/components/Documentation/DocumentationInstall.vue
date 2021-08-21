@@ -43,9 +43,8 @@ app.use(spinnerPlugin);
     <p>
       By default does not come with any styling, only the necessary classes are
       added internally to properly display components. Those classes does not
-      set or change any color, typoghraphy, border, rounding etc. In order to
-      add those copy style.js to the src directory of your project and import it
-      in main.js. See styling for more details about this file.
+      include color, typoghraphy, border, rounding etc. In order to
+      add those copy style.js to the src directory of your project, import it in your application entry file and then add as global property. See styling for more details about this file.
     </p>
     <pre>
       <code class="language-js">

@@ -88,7 +88,7 @@
       </div>
     </div>
     <pre>
-      <code>
+      <code class="language-html">
   &lt;v-button style-button=&quot;primary large&quot;&gt;Large button&lt;/v-button&gt;
   &lt;v-button style-button=&quot;primary&quot;&gt;Normal button&lt;/v-button&gt;
   &lt;v-button style-button=&quot;primary small&quot;&gt;Small button&lt;/v-button&gt;

@@ -48,7 +48,7 @@
       <v-close-button></v-close-button>
     </div>
     <pre>
-      <code>
+      <code class="language-html">
 &lt;v-close-button&gt;&lt;/v-close-button&gt;
       </code>
     </pre>

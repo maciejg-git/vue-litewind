@@ -110,7 +110,7 @@
       </v-tabs>
     </div>
     <pre>
-      <code>
+      <code class="language-html">
 &lt;v-alert
   v-model=&quot;example.isVisible&quot;
   :dismissable=&quot;example.dismissable&quot;
@@ -124,15 +124,6 @@
 &lt;v-button :disabled=&quot;example.isVisible&quot; @click=&quot;example.isVisible = true&quot;&gt;
   Show alert
 &lt;/v-button&gt;
-
-// js
-
-let example = reactive({
-  isVisible: true,
-  dismissable: true,
-  autoDismissDelay: 0,
-  style: "default",
-});
       </code>
     </pre>
   </section>
