@@ -127,21 +127,50 @@
     </div>
     <pre>
       <code>
-{{`<v-card class="p-1">
-  <v-button
-    style-button="default noMargin"
-    bar
-    @click="example.isVisible = !example.isVisible"
-  >
+&lt;v-card class=&quot;p-1&quot;&gt;
+  &lt;v-button
+    style-button=&quot;default noMargin&quot;
+    block
+    @click=&quot;example.isVisible = !example.isVisible&quot;
+  &gt;
     Toggle collapse
-  </v-button>
-
-  <v-collapse v-model="example.isVisible">
-    <div class="p-4">
+  &lt;/v-button&gt;
+  &lt;v-collapse v-model=&quot;example.isVisible&quot;&gt;
+    &lt;div class=&quot;p-4&quot;&gt;
       ...
-    </div>
-  </v-collapse>
-</v-card>`}}
+    &lt;/div&gt;
+  &lt;/v-collapse&gt;
+&lt;/v-card&gt;
+
+&lt;v-card class=&quot;p-1 mt-1&quot;&gt;
+  &lt;v-button
+    block
+    style-button=&quot;default noMargin&quot;
+    @click=&quot;example.isVisible2 = !example.isVisible2&quot;
+  &gt;
+    Toggle collapse 2
+  &lt;/v-button&gt;
+  &lt;v-collapse v-model=&quot;example.isVisible2&quot;&gt;
+    &lt;div class=&quot;p-4&quot;&gt;
+      ...
+    &lt;/div&gt;
+  &lt;/v-collapse&gt;
+&lt;/v-card&gt;
+
+&lt;v-card class=&quot;p-1 mt-1&quot;&gt;
+  &lt;v-button
+    block
+    style-button=&quot;default noMargin&quot;
+    @click=&quot;example.isVisible3 = !example.isVisible3&quot;
+  &gt;
+    Toggle collapse 3
+  &lt;/v-button&gt;
+  &lt;v-collapse v-model=&quot;example.isVisible3&quot;&gt;
+    &lt;div class=&quot;p-4&quot;&gt;
+      ...
+    &lt;/div&gt;
+  &lt;/v-collapse&gt;
+&lt;/v-card&gt;
       </code>
     </pre>
   </section>

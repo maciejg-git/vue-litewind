@@ -2,7 +2,7 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import plugin from "./components/index.js";
-import {buttonPlugin, tablePlugin} from "./components/index.js";
+// import {buttonPlugin, tablePlugin} from "./components/index.js";
 import "tailwindcss/tailwind.css";
 import { styles } from "./styles";
 import { stylesMaterial } from "./styles-material";
@@ -19,6 +19,6 @@ app.config.globalProperties.styles = {
 
 app.use(router);
 app.use(plugin);
-app.use(buttonPlugin);
+// app.use(buttonPlugin);
 // app.use(tablePlugin);
 app.mount("#app");

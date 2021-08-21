@@ -389,7 +389,7 @@ export default {
         prop: "primary-key",
         type: ["String"],
         default: "undefined",
-        description: `This props should be name of the property that is unique in your data. It is set as value for :key attribute that Vue uses for detecting changes and updating DOM elements`,
+        description: `This props should be name of the property that is unique for every record. It is used as value for :key attribute`,
       },
       {
         prop: "filter",
@@ -416,26 +416,26 @@ export default {
         type: ["String"],
         default: "empty string",
         description:
-          "Enables or disables selection of rows. Valid values are single (allows selection of single row only), multiple (allows multiple rows to be selected) or empty string (disables selection). Changing this prop resets current selection",
+          "Enables or disables selection of rows. Valid values are 'single' (allows selection of single row only), 'multiple' (allows multiple rows to be selected) or empty string (disables selection). Changing this prop resets current selection",
       },
       {
         prop: "page",
         type: ["Number"],
         default: "1",
-        description: "Current page number",
+        description: "Current page number. Changing page resets current selection",
       },
       {
         prop: "items-per-page",
         type: ["Number"],
         default: "0",
         description:
-          "Number of records (rows) on single page. Setting it to 0 disables pagination and all items are displayed on single page",
+          "Number of records (rows) on single page. Setting it to 0 disables pagination",
       },
       {
         prop: "caption-top",
         type: ["Boolean"],
         default: "false",
-        description: "Display caption on top",
+        description: "If true display caption on top",
       },
       {
         prop: "empty-text",

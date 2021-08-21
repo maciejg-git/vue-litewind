@@ -92,16 +92,27 @@
     </div>
     <pre>
       <code>
-{{`<v-badge style-badge="default tiny">New</v-badge>
-<v-badge style-badge="default tiny yellow">New</v-badge>
-<v-badge style-badge="default small">New</v-badge>
-<v-badge style-badge="default small green">New</v-badge>
-<v-badge style-badge="default small yellow">New</v-badge>
-<v-badge>New</v-badge>
-<v-badge style-badge="secondary">
+&lt;v-badge style-badge=&quot;secondary&quot; class=&quot;mr-4&quot;&gt;
   New
-  <v-badge style-badge="default tiny green">7</v-badge>
-</v-badge>`}}
+  &lt;v-badge style-badge=&quot;default tiny green&quot; class=&quot;ml-2&quot;&gt;7&lt;/v-badge&gt;
+&lt;/v-badge&gt;
+
+&lt;v-badge class=&quot;mr-4&quot;&gt;New&lt;/v-badge&gt;
+&lt;v-badge style-badge=&quot;default small yellow&quot; class=&quot;mr-4&quot;&gt;New&lt;/v-badge&gt;
+&lt;v-badge style-badge=&quot;default small green&quot; class=&quot;mr-4&quot;&gt;New&lt;/v-badge&gt;
+&lt;v-badge style-badge=&quot;default small&quot; class=&quot;mr-4&quot;&gt;New&lt;/v-badge&gt;
+&lt;v-badge style-badge=&quot;default tiny yellow&quot; class=&quot;mr-4&quot;&gt;New&lt;/v-badge&gt;
+&lt;v-badge style-badge=&quot;default tiny&quot; class=&quot;mr-4&quot;&gt;New&lt;/v-badge&gt;
+
+&lt;v-button style-button=&quot;default noMargin&quot; class=&quot;relative mt-4&quot;&gt;
+  badge button
+  &lt;v-badge
+    style-badge=&quot;primary tiny red&quot;
+    class=&quot;absolute top-0 right-0 transform -translate-y-1/2 translate-x-1/2&quot;
+  &gt;
+    2
+  &lt;/v-badge&gt;
+&lt;/v-button&gt;
       </code>
     </pre>
   </section>

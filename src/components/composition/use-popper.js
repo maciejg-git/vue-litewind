@@ -7,6 +7,7 @@ export default function usePopper({
   offsetY,
   noFlip,
   clickOutside,
+  emit,
 }) {
   let isOpen = ref(false);
   let instance = null;
@@ -24,6 +25,7 @@ export default function usePopper({
     await nextTick();
     // for v-show
     instance.update();
+    emit("state:opened")
   };
 
   let hide = function () {
@@ -31,6 +33,7 @@ export default function usePopper({
     if (clickOutside) {
       document.body.removeEventListener("click", clickOutside);
     }
+    emit("state:closed")
   };
 
   let toggle = function () {

@@ -248,23 +248,33 @@
     </div>
     <pre>
       <code class="language-html">
-{{`<v-card style="width: 320px" class="self-start p-2">
-  <v-date-picker
-    v-model="example.date"
-    :range="example.range"
-    :locale="example.locale"
-    :euro="example.euro"
-    :buttons="!!example.buttons"
-    :primaryButtonLabel="example.primaryButtonLabel"
-    :secondaryButtonLabel="example.secondaryButtonLabel"
-    :adjecent-months="!!example.adjecentMonths"
-    :range-hover-highlight="example.rangeHoverHighlight"
-    :transition="example.transition"
-    @input:formatted="example.events.push({ev: 'input:formatted', data: $event})"
-    @state:done="example.events.push({ev: 'state:done', data: $event})"
-    @state:cancel="example.events.push({ev: 'state:cancel', data: $event})"
-    />
-</v-card>`}}
+&lt;v-card style=&quot;width: 320px&quot; class=&quot;self-start p-2&quot;&gt;
+  &lt;v-date-picker
+    v-model=&quot;example.date&quot;
+    :range=&quot;example.range&quot;
+    :locale=&quot;example.locale&quot;
+    :euro=&quot;example.euro&quot;
+    :buttons=&quot;!!example.buttons&quot;
+    :primaryButtonLabel=&quot;example.primaryButtonLabel&quot;
+    :secondaryButtonLabel=&quot;example.secondaryButtonLabel&quot;
+    :adjecent-months=&quot;!!example.adjecentMonths&quot;
+    :range-hover-highlight=&quot;example.rangeHoverHighlight&quot;
+    :transition=&quot;example.transition&quot;
+    @update:modelValue=&quot;
+      example.events.unshift({ ev: 'update:modelValue', data: $event })
+    &quot;
+    @input:formatted=&quot;
+      example.events.unshift({ ev: 'input:formatted', data: $event })
+    &quot;
+    @state:done=&quot;
+      example.events.unshift({ ev: 'state:done', data: $event })
+    &quot;
+    @state:cancel=&quot;
+      example.events.unshift({ ev: 'state:cancel', data: $event })
+    &quot;
+  /&gt;
+&lt;/v-card&gt;
+
       </code>
     </pre>
   </section>
@@ -314,25 +324,26 @@
     </div>
     <pre>
       <code class="language-html">
-{{`<v-dropdown>
-  <template #activator>
-    <input
-      type="text"
-      v-model="exampleDropdown.date"
-      placeholder="Pick date"
-      />
-  </template>
-  <template #default="{ hide }">
-    <v-card class="p-2">
-      <v-date-picker
-        v-model="exampleDropdown.date"
-        width="305px"
-        :buttons="exampleDropdown.buttons"
-        @state:done="hide"
-        />
-    </v-card>
-  </template>
-</v-dropdown>`}}
+&lt;v-dropdown&gt;
+  &lt;template #activator&gt;
+    &lt;v-input
+      type=&quot;text&quot;
+      v-model=&quot;exampleDropdown.date&quot;
+      placeholder=&quot;Pick date&quot;
+    &gt;&lt;/v-input&gt;
+  &lt;/template&gt;
+  &lt;template #default=&quot;{ hide }&quot;&gt;
+    &lt;v-card style-card=&quot;default shadow&quot; class=&quot;p-2&quot;&gt;
+      &lt;v-date-picker
+        v-model=&quot;exampleDropdown.date&quot;
+        width=&quot;305px&quot;
+        :buttons=&quot;exampleDropdown.buttons&quot;
+        adjecentMonths
+        @state:done=&quot;hide&quot;
+      &gt;&lt;/v-date-picker&gt;
+    &lt;/v-card&gt;
+  &lt;/template&gt;
+&lt;/v-dropdown&gt;
       </code>
     </pre>
   </section>
@@ -362,7 +373,7 @@ export default {
         type: ["String"],
         default: "en-GB",
         description:
-          "This prop is only used to display names of months and weekdays and to format date emitted by input:formatted event. It does not modify v-model date which is always ISO",
+          "This prop is only used to display names of months and weekdays and to format date emitted by input:formatted event. It does not modify format of v-model date which is always YYYY-MM-DD",
       },
       {
         prop: "format",

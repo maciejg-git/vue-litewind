@@ -10,7 +10,7 @@
 npm -i vue-tailwind
     </code>
   </pre>
-    <p>Register all components in app entry file eg main.js</p>
+    <p>Register all components in application entry file (for example main.js)</p>
     <pre>
       <code class="language-js">
 // main.js

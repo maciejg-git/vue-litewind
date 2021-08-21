@@ -41,7 +41,7 @@ export default {
     styleMenuItemHeader: { type: String, default: "default" },
   },
   emits: ["state:opened", "state:closed"],
-  setup(props, { slots }) {
+  setup(props, { slots, emit }) {
     let elements = [
       "menuItem",
       "menuItemActive",
@@ -93,6 +93,7 @@ export default {
       offsetY,
       noFlip,
       clickOutside,
+      emit,
     });
 
     provide("classes", classesItem);

@@ -41,6 +41,7 @@ const routes = [
   {
     path: "/",
     component: Test,
+    // redirect: "/documentation/installation",
   },
   {
     path: "/documentation",

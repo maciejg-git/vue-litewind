@@ -221,61 +221,62 @@
       </v-tabs>
     </div>
     <pre>
-      <code>
-{{`<v-dropdown
-  :placement="example.placement"
-  :offset-x="+example.offsetX"
-  :offset-y="+example.offsetY"
-  :no-flip="example.noFlip"
-  :auto-close-menu="example.autoCloseMenu"
-  :transition="example.transition"
-  @state:opened="
+      <code class="language-html">
+&lt;v-dropdown
+  :placement=&quot;example.placement&quot;
+  :offset-x=&quot;+example.offsetX&quot;
+  :offset-y=&quot;+example.offsetY&quot;
+  :no-flip=&quot;example.noFlip&quot;
+  :auto-close-menu=&quot;example.autoCloseMenu&quot;
+  :transition=&quot;example.transition&quot;
+  @state:opened=&quot;
     example.events.unshift({ ev: 'state:opened', data: $event })
-  "
-  @state:closed="
+  &quot;
+  @state:closed=&quot;
     example.events.unshift({ ev: 'state:closed', data: $event })
-  "
->
-  <template #activator>
-    <v-button>Dropdown menu</v-button>
-  </template>
-  <v-card width="320px">
-    <v-dropdown-menu-item tag="button">Menu item</v-dropdown-menu-item>
-    <v-dropdown-menu-item tag="button">Menu item 2</v-dropdown-menu-item>
-    <v-dropdown-header>Menu header</v-dropdown-header>
-    <v-dropdown-menu-item tag="button">Menu item 3</v-dropdown-menu-item>
-    <v-dropdown-menu-item tag="button">Menu item 4</v-dropdown-menu-item>
-    <v-dropdown-menu-item tag="button">Menu item 5</v-dropdown-menu-item>
-  </v-card>
-</v-dropdown>
+  &quot;
+&gt;
+  &lt;template #activator&gt;
+    &lt;v-button&gt;Dropdown menu&lt;/v-button&gt;
+  &lt;/template&gt;
+  &lt;v-card width=&quot;320px&quot; style-card=&quot;default shadow&quot;&gt;
+    &lt;v-dropdown-menu-item tag=&quot;button&quot;&gt;Menu item&lt;/v-dropdown-menu-item&gt;
+    &lt;v-dropdown-menu-item tag=&quot;button&quot;&gt;Menu item 2&lt;/v-dropdown-menu-item&gt;
+    &lt;v-dropdown-header&gt;Menu header&lt;/v-dropdown-header&gt;
+    &lt;v-dropdown-menu-item tag=&quot;button&quot;&gt;Menu item 3&lt;/v-dropdown-menu-item&gt;
+    &lt;v-dropdown-menu-item tag=&quot;button&quot;&gt;Menu item 4&lt;/v-dropdown-menu-item&gt;
+    &lt;v-dropdown-menu-item tag=&quot;button&quot;&gt;Menu item 5&lt;/v-dropdown-menu-item&gt;
+  &lt;/v-card&gt;
+&lt;/v-dropdown&gt;
 
-<v-dropdown
-  :placement="example.placement"
-  :offset-x="+example.offsetX"
-  :offset-y="+example.offsetY"
-  :no-flip="example.noFlip"
-  :auto-close-menu="example.autoCloseMenu"
-  :transition="example.transition"
-  @state:opened="
+&lt;v-dropdown
+  :placement=&quot;example.placement&quot;
+  :offset-x=&quot;+example.offsetX&quot;
+  :offset-y=&quot;+example.offsetY&quot;
+  :no-flip=&quot;example.noFlip&quot;
+  :auto-close-menu=&quot;example.autoCloseMenu&quot;
+  :transition=&quot;example.transition&quot;
+  @state:opened=&quot;
     example.events.unshift({ ev: 'state:opened', data: $event })
-  "
-  @state:closed="
+  &quot;
+  @state:closed=&quot;
     example.events.unshift({ ev: 'state:closed', data: $event })
-  "
->
-  <template #activator>
-    <v-button>Dropdown datepicker</v-button>
-  </template>
-  <template #default="{ hide }">
-    <v-card width="320px" class="p-2">
-      <v-date-picker
-        v-model="example.date"
+  &quot;
+&gt;
+  &lt;template #activator&gt;
+    &lt;v-button&gt;Dropdown datepicker&lt;/v-button&gt;
+  &lt;/template&gt;
+  &lt;template #default=&quot;{ hide }&quot;&gt;
+    &lt;v-card width=&quot;320px&quot; style-card=&quot;default shadow&quot; class=&quot;p-2&quot;&gt;
+      &lt;v-date-picker
+        v-model=&quot;example.date&quot;
         adjecent-months
-        @state:done="hide"
-      ></v-date-picker>
-    </v-card>
-  </template>
-</v-dropdown>`}}
+        @state:done=&quot;hide&quot;
+      &gt;&lt;/v-date-picker&gt;
+    &lt;/v-card&gt;
+  &lt;/template&gt;
+&lt;/v-dropdown&gt;
+
       </code>
     </pre>
   </section>

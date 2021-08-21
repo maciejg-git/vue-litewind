@@ -5,81 +5,92 @@
       <a href="">Docs</a>
     </div>
   </v-navbar>
-  <div>
-    <div class="flex">
-      <div class="sidebar hidden md:block flex-none sticky text-gray-700 overflow-auto top-20 p-3 pr-20">
-        <ul class="list-unstyled ml-2">
-          <li>
-            <router-link
-              to="/documentation/installation"
-              active-class="active"
-              class="transition-all"
-            >
-              Installation
-            </router-link>
-          </li>
-          <!-- <li> -->
-          <!--   <router-link -->
-          <!--     to="/documentation/styling" -->
-          <!--     active-class="active" -->
-          <!--     class="transition-all" -->
-          <!--   > -->
-          <!--     Styling -->
-          <!--   </router-link> -->
-          <!-- </li> -->
-        </ul>
-
-        <!-- components -->
-
-        <h6>
-          <router-link to="/documentation/components" class="transition-all">
-            Components
+  <div class="flex">
+    <div
+      class="
+        sidebar
+        hidden
+        lg:block
+        flex-none
+        sticky
+        text-gray-700
+        overflow-auto
+        top-20
+        p-3
+        pr-20
+      "
+    >
+      <ul class="list-unstyled ml-2">
+        <li>
+          <router-link
+            to="/documentation/installation"
+            active-class="active"
+            class="transition-all"
+          >
+            Installation
           </router-link>
-        </h6>
-        <ul class="list-unstyled ml-2">
-          <li v-for="(c, i) in components" :key="i">
-            <router-link
-              :to="'/documentation/' + c.name"
-              active-class="active"
-              class="transition-all"
-            >
+        </li>
+        <!-- <li> -->
+        <!--   <router-link -->
+        <!--     to="/documentation/styling" -->
+        <!--     active-class="active" -->
+        <!--     class="transition-all" -->
+        <!--   > -->
+        <!--     Styling -->
+        <!--   </router-link> -->
+        <!-- </li> -->
+      </ul>
+
+      <!-- components -->
+
+      <h6>
+        <router-link to="/documentation/components" class="transition-all">
+          Components
+        </router-link>
+      </h6>
+      <ul class="list-unstyled ml-2">
+        <li v-for="(c, i) in components" :key="i">
+          <router-link
+            :to="'/documentation/' + c.name"
+            active-class="active"
+            class="transition-all"
+          >
             {{ c.label }}
-            </router-link>
-          </li>
-        </ul>
+          </router-link>
+        </li>
+      </ul>
 
-        <!-- directives -->
+      <!-- directives -->
 
-        <h6 class="mt-4">Directives</h6>
-        <ul class="list-unstyled ml-2">
-          <li>
-            <router-link
-              to="/documentation/tooltip"
-              active-class="active"
-              class="transition-all"
-            >
-              Tooltip
-            </router-link>
-          </li>
-        </ul>
-      </div>
-      <div class="container mx-auto p-3 w-full lg:max-w-screen-xl px-2 lg:px-24">
-        <router-view></router-view>
-      </div>
+      <h6 class="mt-4">Directives</h6>
+      <ul class="list-unstyled ml-2">
+        <li>
+          <router-link
+            to="/documentation/tooltip"
+            active-class="active"
+            class="transition-all"
+          >
+            Tooltip
+          </router-link>
+        </li>
+      </ul>
+    </div>
+    <div class="container mx-auto p-3 w-full lg:max-w-screen-xl px-2 lg:px-24">
+      <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
 import "highlight.js/styles/default.css";
-import { components } from "./Components"
+import { components } from "./Components";
 
 export default {
   setup() {
     return {
-      components
-    }
-  }
+      components,
+    };
+  },
 };
 </script>
 

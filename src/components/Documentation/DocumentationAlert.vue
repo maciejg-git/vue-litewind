@@ -61,7 +61,7 @@
     <div class="example">
       <div class="relative">
         <v-alert
-          v-model="example.isOpen"
+          v-model="example.isVisible"
           :dismissable="example.dismissable"
           :auto-dismiss-delay="example.autoDismissDelay"
           :style-alert="example.style"
@@ -81,7 +81,7 @@
             <option value="default light">light</option>
           </v-select>
         </div>
-        <v-button :disabled="example.isOpen" @click="example.isOpen = true">
+        <v-button :disabled="example.isVisible" @click="example.isVisible = true">
           Show alert
         </v-button>
       </div>
@@ -89,7 +89,7 @@
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="model" class="font-semibold">v-model:</label>
-            <v-input type="text" id="model" v-model="example.isOpen"></v-input>
+            <v-input type="text" id="model" v-model="example.isVisible"></v-input>
           </div>
           <div class="mb-2">
             <label for="dismissable">dismissable:</label>
@@ -111,6 +111,28 @@
     </div>
     <pre>
       <code>
+&lt;v-alert
+  v-model=&quot;example.isVisible&quot;
+  :dismissable=&quot;example.dismissable&quot;
+  :auto-dismiss-delay=&quot;example.autoDismissDelay&quot;
+  :style-alert=&quot;example.style&quot;
+  class=&quot;my-2&quot;
+&gt;
+  Alert
+&lt;/v-alert&gt;
+
+&lt;v-button :disabled=&quot;example.isVisible&quot; @click=&quot;example.isVisible = true&quot;&gt;
+  Show alert
+&lt;/v-button&gt;
+
+// js
+
+let example = reactive({
+  isVisible: true,
+  dismissable: true,
+  autoDismissDelay: 0,
+  style: "default",
+});
       </code>
     </pre>
   </section>
@@ -238,7 +260,7 @@ export default {
     ]);
 
     let example = reactive({
-      isOpen: true,
+      isVisible: true,
       dismissable: true,
       autoDismissDelay: 0,
       style: "default",

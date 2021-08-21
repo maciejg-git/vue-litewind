@@ -61,9 +61,34 @@
         <v-navbar class="py-2 px-4">
           <div class="flex items-center">
             <span class="font-bold text-lg">Brand</span>
-            <ul class="flex flex-row gap-x-4 ml-7">
+            <ul class="flex flex-row gap-x-7 ml-7">
               <li>Home</li>
               <li>About</li>
+              <li>
+                <v-dropdown :offset-y="10">
+                  <template #activator>
+                    <v-button style-button="link">Dropdown</v-button>
+                  </template>
+                  <v-card width="320px" style-card="default shadow">
+                    <v-dropdown-menu-item tag="button">
+                      Menu item
+                    </v-dropdown-menu-item>
+                    <v-dropdown-menu-item tag="button">
+                      Menu item 2
+                    </v-dropdown-menu-item>
+                    <v-dropdown-header>Menu header</v-dropdown-header>
+                    <v-dropdown-menu-item tag="button">
+                      Menu item 3
+                    </v-dropdown-menu-item>
+                    <v-dropdown-menu-item tag="button">
+                      Menu item 4
+                    </v-dropdown-menu-item>
+                    <v-dropdown-menu-item tag="button">
+                      Menu item 5
+                    </v-dropdown-menu-item>
+                  </v-card>
+                </v-dropdown>
+              </li>
             </ul>
             <v-input class="ml-auto mr-4"></v-input>
             <v-button style-button="default outline">Search</v-button>
@@ -95,7 +120,8 @@ export default {
         prop: "sticky",
         type: "Boolean",
         default: "false",
-        description: "If true navbar position is set to sticky. If both <code>fixed</code> and <code>sticky</code> are false then navbar is positioned as relative",
+        description:
+          "If true navbar position is set to sticky. If both <code>fixed</code> and <code>sticky</code> are false then navbar is positioned as relative",
       },
       {
         prop: "name",

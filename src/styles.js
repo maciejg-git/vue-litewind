@@ -63,6 +63,9 @@ let button = {
       "hover:bg-gray-600",
       "focus:ring-gray-200",
     ],
+    link: [
+      "focus:outline-none",
+    ],
     yellow: [
       "bg-yellow-500",
       "hover:bg-yellow-600",

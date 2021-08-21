@@ -89,19 +89,23 @@
     </div>
     <pre>
       <code>
-{{`<v-button>Button</v-button>
-<v-button tag="a">Button (link)</v-button>
+  &lt;v-button style-button=&quot;primary large&quot;&gt;Large button&lt;/v-button&gt;
+  &lt;v-button style-button=&quot;primary&quot;&gt;Normal button&lt;/v-button&gt;
+  &lt;v-button style-button=&quot;primary small&quot;&gt;Small button&lt;/v-button&gt;
+  &lt;v-button style-button=&quot;primary tiny&quot;&gt;Tiny button&lt;/v-button&gt;
 
-<v-button style-button="secondary">Button</v-button>
-<v-button style-button="primary small">Small button</v-button>
-<v-button style-button="primary tiny">Tiny button</v-button>
+  &lt;v-button style-button=&quot;secondary&quot;&gt;Secondary button&lt;/v-button&gt;
+  &lt;v-button style-button=&quot;default yellow&quot;&gt;Yellow button&lt;/v-button&gt;
+  &lt;v-button style-button=&quot;default green&quot;&gt;Green button&lt;/v-button&gt;
+  &lt;v-button style-button=&quot;default red&quot;&gt;Red button&lt;/v-button&gt;
 
-<v-button style-button="secondary square">Square button</v-button>
-<v-button style-button="primary pill">Pill button</v-button>
-<v-button style-button="primary uppercase">Uppercase button</v-button>
+  &lt;v-button style-button=&quot;primary square&quot;&gt;Square button&lt;/v-button&gt;
+  &lt;v-button style-button=&quot;primary pill&quot;&gt;Pill button&lt;/v-button&gt;
+  &lt;v-button style-button=&quot;primary uppercase&quot;&gt;Uppercase button&lt;/v-button&gt;
 
-<v-button block>Block button</v-button>
-<v-button disabled>Button (disabled)</v-button>`}}
+  &lt;v-button block&gt;Block button&lt;/v-button&gt;
+
+  &lt;v-button disabled&gt;Button (disabled)&lt;/v-button&gt;
       </code>
     </pre>
   </section>

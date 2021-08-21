@@ -1,5 +1,6 @@
 import { tailwindClassList } from "../tailwindClassList.js";
 
+console.log(tailwindClassList)
 let formatCase = function (str) {
   return str
     .replace(/^[^A-Za-z0-9]*|[^A-Za-z0-9]*$/g, "")

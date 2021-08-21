@@ -49,6 +49,7 @@
     </div>
     <pre>
       <code>
+&lt;v-close-button&gt;&lt;/v-close-button&gt;
       </code>
     </pre>
   </section>

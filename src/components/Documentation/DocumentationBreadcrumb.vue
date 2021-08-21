@@ -71,7 +71,27 @@ let path = [
       <v-breadcrumb :path="example.path"></v-breadcrumb>
     </div>
     <pre>
-      <code>
+      <code class="language-html">
+&lt;v-breadcrumb :path=&quot;example.path&quot;&gt;&lt;/v-breadcrumb&gt;
+      </code>
+    </pre>
+    <pre>
+      <code class="language-js">
+let example = reactive({
+  path: [
+    {
+      label: "Home",
+      to: "/",
+    },
+    {
+      label: "Documentation",
+      to: "/",
+    },
+    {
+      label: "Breadcrumb",
+    },
+  ],
+});
       </code>
     </pre>
   </section>
