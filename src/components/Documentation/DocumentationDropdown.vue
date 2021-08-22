@@ -276,7 +276,6 @@
     &lt;/v-card&gt;
   &lt;/template&gt;
 &lt;/v-dropdown&gt;
-
       </code>
     </pre>
   </section>

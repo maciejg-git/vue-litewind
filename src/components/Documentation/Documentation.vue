@@ -2,7 +2,7 @@
   <v-navbar sticky class="px-4 py-3">
     <span class="text-lg font-bold">VueTailwind</span>
     <div class="inline-block ml-5">
-      <a href="">Docs</a>
+      <a href="/documentation/installation">Docs</a>
     </div>
   </v-navbar>
   <div class="flex">
@@ -17,7 +17,7 @@
         overflow-auto
         top-20
         p-3
-        pr-20
+        w-64
       "
     >
       <ul class="list-unstyled ml-2">

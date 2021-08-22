@@ -44,7 +44,7 @@ app.use(spinnerPlugin);
       By default does not come with any styling, only the necessary classes are
       added internally to properly display components. Those classes does not
       include color, typoghraphy, border, rounding etc. In order to
-      add those copy style.js to the src directory of your project, import it in your application entry file and then add as global property. See styling for more details about this file.
+      add those copy style.js to the src directory of your project, import it in your application entry file and provide them to components. See styling for more details about this file.
     </p>
     <pre>
       <code class="language-js">
@@ -54,9 +54,9 @@ import { styles } from "./styles";
 
 let app = createApp(App);
 
-app.config.globalProperties.styles = {
+app.provide("styles", {
   default: styles,
-};
+})
     </code>
   </pre>
   </section>
@@ -65,7 +65,7 @@ app.config.globalProperties.styles = {
     <h5>Styling</h5>
     <p></p>
     <pre>
-      <code>
+      <code class="language-js">
 // style.js
 
 let component = {

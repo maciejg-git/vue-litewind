@@ -12,7 +12,7 @@
         @click="handleClickPrevMonth"
       ></button>
       <div class="inline-block col-span-2 font-bold">
-          <span class="align-baseline"> {{ months[month] }} {{ year }} </span>
+        <span class="align-baseline">{{ monthNames[month] }} {{ year }}</span>
       </div>
       <button
         class="btn-next"
@@ -26,12 +26,12 @@
       ></button>
     </div>
     <div class="grid grid-cols-7 mb-2">
-      <div v-for="day in days" class="text-sm font-bold p-0">
+      <div v-for="day in dayNames" class="text-sm font-bold p-0">
         {{ day }}
       </div>
     </div>
     <transition :name="transition" @after-leave="afterLeaveTransition">
-      <div v-if="!isChanging" class="grid grid-cols-7 mb-2 relative">
+      <div v-if="!isTransitioning" class="grid grid-cols-7 mb-2 relative">
         <template v-if="adjecentMonths">
           <div v-for="(day, index) in daysList.prevMonthDays" :key="index">
             <div :class="classes.adjecentMonthDay.value">
@@ -65,19 +65,21 @@
       <v-button
         :style-button="secondaryButtonStyle"
         @click="handleSecondaryButtonClick"
-        >{{ secondaryButtonLabel }}</v-button
       >
+        {{ secondaryButtonLabel }}
+      </v-button>
       <v-button
         :style-button="primaryButtonStyle"
         @click="handlePrimaryButtonClick"
-        >{{ primaryButtonLabel }}</v-button
       >
+        {{ primaryButtonLabel }}
+      </v-button>
     </div>
   </div>
 </template>
 
 <script>
-import { ref, computed, watch, getCurrentInstance } from "vue";
+import { ref, computed, watch, inject } from "vue";
 import vButton from "./vButton.vue";
 import useStyles from "./composition/use-styles";
 import { pad, removeTailwindClasses } from "../tools/tools.js";
@@ -86,7 +88,7 @@ export default {
   props: {
     modelValue: [String, Array],
     locale: { type: String, default: "en-GB" },
-    euro: { type: Boolean, default: false },
+    mondayFirstWeekday: { type: Boolean, default: false },
     range: { type: Boolean, default: false },
     format: {
       type: Object,
@@ -127,6 +129,8 @@ export default {
     vButton,
   },
   setup(props, { emit }) {
+    let s = inject("styles")
+
     let elements = [
       "datepicker",
       "button",
@@ -137,7 +141,7 @@ export default {
       "adjecentMonthDay",
     ];
 
-    let { styles } = useStyles(getCurrentInstance(), props, elements);
+    let { styles } = useStyles(s, props, elements);
 
     let fixedClass = {
       button: [
@@ -197,7 +201,9 @@ export default {
       return classes.day.value;
     };
 
-    let isChanging = ref(false);
+    let dateRegexp = /^\d\d\d\d-\d?\d-\d?\d$/;
+
+    let isTransitioning = ref(false);
     let afterTransitionCall = null;
     let transition = ref("");
 
@@ -209,8 +215,10 @@ export default {
     let range = ref([]);
     let single = ref("");
     let rangeState = ref(0);
-    let dateRegexp = /^\d\d\d\d-\d?\d-\d?\d$/;
+
     let mouseOverRange = ref(null);
+
+    // date utils
 
     let getCountDaysInMonth = (y, m) => 32 - new Date(y, m, 32).getDate();
 
@@ -223,15 +231,17 @@ export default {
       today.toLocaleDateString(props.locale, props.format)
     );
 
-    let prevMonth = (m, y) =>
-      m - 1 < 0 ? { m: 11, y: y - 1 } : { m: m - 1, y };
+    let prevMonth = (m, y) => {
+      return m - 1 < 0 ? { m: 11, y: y - 1 } : { m: m - 1, y };
+    };
 
-    let nextMonth = (m, y) =>
-      m + 1 > 11 ? { m: 0, y: y + 1 } : { m: m + 1, y };
+    let nextMonth = (m, y) => {
+      return m + 1 > 11 ? { m: 0, y: y + 1 } : { m: m + 1, y };
+    };
 
-    let daysMonth = Array.from({ length: 31 }, (v, i) => i + 1);
+    // locale month and day names
 
-    let months = computed(() => {
+    let monthNames = computed(() => {
       return Array.from({ length: 12 }, (v, i) =>
         new Date(0, i, 1).toLocaleString(props.locale, {
           month: "short",
@@ -239,11 +249,14 @@ export default {
       );
     });
 
-    let days = computed(() =>
+    let dayNames = computed(() =>
       Array.from({ length: 7 }, (v, i) =>
-        new Date(2021, 1, props.euro ? i + 1 : i).toLocaleString(props.locale, {
-          weekday: "short",
-        })
+        new Date(2021, 1, props.mondayFirstWeekday ? i + 1 : i).toLocaleString(
+          props.locale,
+          {
+            weekday: "short",
+          }
+        )
       )
     );
 
@@ -271,16 +284,17 @@ export default {
 
     let daysList = computed(() => {
       let start = new Date(year.value, month.value).getDay();
-      if (props.euro) start = (7 + (start - 1)) % 7;
+      if (props.mondayFirstWeekday) start = (7 + (start - 1)) % 7;
       let daysInMonth = getCountDaysInMonth(year.value, month.value);
       let i = Array.from({ length: daysInMonth }, (v, i) => {
         return { day: i + 1, date: new Date(year.value, month.value, i + 1) };
       });
       if (props.adjecentMonths) {
+        let dayNumbers = Array.from({ length: 31 }, (v, i) => i + 1);
         let { m, y } = prevMonth(month.value, year.value);
         let daysPrev = getCountDaysInMonth(y, m);
-        let prevMonthDays = daysMonth.slice(daysPrev - start, daysPrev);
-        let nextMonthDays = daysMonth.slice(0, 42 - daysInMonth - start);
+        let prevMonthDays = dayNumbers.slice(daysPrev - start, daysPrev);
+        let nextMonthDays = dayNumbers.slice(0, 42 - daysInMonth - start);
         return { prevMonthDays, nextMonthDays, i };
       }
       return { i: [...Array(start).fill(""), ...i] };
@@ -330,36 +344,37 @@ export default {
       }
     };
 
-    let getTransition = (d) =>
-      props.transition == "slide" ? "slide-" + d : props.transition;
+    let getTransition = (d) => {
+      return props.transition == "slide" ? "slide-" + d : props.transition;
+    };
 
     let handleClickNextMonth = () => {
-      isChanging.value = true;
+      isTransitioning.value = true;
       transition.value = getTransition("next");
       afterTransitionCall = setNextMonth;
     };
 
     let handleClickPrevMonth = () => {
-      isChanging.value = true;
+      isTransitioning.value = true;
       transition.value = getTransition("prev");
       afterTransitionCall = setPrevMonth;
     };
 
     let handleClickNextYear = () => {
-      isChanging.value = true;
+      isTransitioning.value = true;
       transition.value = getTransition("next");
-      afterTransitionCall = nextYear;
+      afterTransitionCall = setNextYear;
     };
 
     let handleClickPrevYear = () => {
-      isChanging.value = true;
+      isTransitioning.value = true;
       transition.value = getTransition("prev");
-      afterTransitionCall = prevYear;
+      afterTransitionCall = setPrevYear;
     };
 
     let afterLeaveTransition = () => {
       afterTransitionCall();
-      isChanging.value = false;
+      isTransitioning.value = false;
     };
 
     let handlePrimaryButtonClick = () => {
@@ -378,9 +393,9 @@ export default {
     let setPrevMonth = () =>
       ({ m: month.value, y: year.value } = prevMonth(month.value, year.value));
 
-    let nextYear = () => ++year.value;
+    let setNextYear = () => ++year.value;
 
-    let prevYear = () => --year.value;
+    let setPrevYear = () => --year.value;
 
     let isDisabled = (index) =>
       props.disabled && props.disabled.findIndex((i) => i == index % 7) != -1;
@@ -419,14 +434,14 @@ export default {
       getDayClass,
       isRangeSelected,
       mouseOverRange,
-      months,
-      days,
+      monthNames,
+      dayNames,
       month,
       year,
       daysList,
       todayFormatted,
-      nextYear,
-      prevYear,
+      setNextYear,
+      setPrevYear,
       isDisabled,
       handleDayClick,
       handleClickNextMonth,
@@ -436,7 +451,7 @@ export default {
       handlePrimaryButtonClick,
       handleSecondaryButtonClick,
       afterLeaveTransition,
-      isChanging,
+      isTransitioning,
       transition,
     };
   },

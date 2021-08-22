@@ -98,6 +98,6 @@ function install(app) {
   app.directive("tooltip", tooltip);
 }
 
-export default install;
+export { install as plugin };
 
 // export { vTable }

@@ -97,7 +97,43 @@
       </v-card>
     </div>
     <pre>
-      <code>
+      <code class="language-html">
+&lt;v-navbar class=&quot;py-2 px-4&quot;&gt;
+  &lt;div class=&quot;flex items-center&quot;&gt;
+    &lt;span class=&quot;font-bold text-lg&quot;&gt;Brand&lt;/span&gt;
+    &lt;ul class=&quot;flex flex-row gap-x-7 ml-7&quot;&gt;
+      &lt;li&gt;Home&lt;/li&gt;
+      &lt;li&gt;About&lt;/li&gt;
+      &lt;li&gt;
+        &lt;v-dropdown :offset-y=&quot;10&quot;&gt;
+          &lt;template #activator&gt;
+            &lt;v-button style-button=&quot;link&quot;&gt;Dropdown&lt;/v-button&gt;
+          &lt;/template&gt;
+          &lt;v-card width=&quot;320px&quot; style-card=&quot;default shadow&quot;&gt;
+            &lt;v-dropdown-menu-item tag=&quot;button&quot;&gt;
+              Menu item
+            &lt;/v-dropdown-menu-item&gt;
+            &lt;v-dropdown-menu-item tag=&quot;button&quot;&gt;
+              Menu item 2
+            &lt;/v-dropdown-menu-item&gt;
+            &lt;v-dropdown-header&gt;Menu header&lt;/v-dropdown-header&gt;
+            &lt;v-dropdown-menu-item tag=&quot;button&quot;&gt;
+              Menu item 3
+            &lt;/v-dropdown-menu-item&gt;
+            &lt;v-dropdown-menu-item tag=&quot;button&quot;&gt;
+              Menu item 4
+            &lt;/v-dropdown-menu-item&gt;
+            &lt;v-dropdown-menu-item tag=&quot;button&quot;&gt;
+              Menu item 5
+            &lt;/v-dropdown-menu-item&gt;
+          &lt;/v-card&gt;
+        &lt;/v-dropdown&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;v-input class=&quot;ml-auto mr-4&quot;&gt;&lt;/v-input&gt;
+    &lt;v-button style-button=&quot;default outline&quot;&gt;Search&lt;/v-button&gt;
+  &lt;/div&gt;
+&lt;/v-navbar&gt;
       </code>
     </pre>
   </section>

@@ -313,24 +313,24 @@
       and a trout from Lake Alloz were cooking.
     </v-modal>
     <pre>
-      <code>
-{{`<v-modal
-  v-model="example.isVisible"
-  :title="example.title"
-  :no-primary-button="!!example.noPrimaryButton"
-  :no-secondary-button="!!example.noSecondaryButton"
-  :primary-button-label="example.primaryButtonLabel"
-  :secondary-button-label="example.secondaryButtonLabel"
-  :primary-button-close="!!example.primaryButtonClose"
-  :secondary-button-close="!!example.secondaryButtonClose"
-  :no-close-button="!!example.noCloseButton"
-  :static-backdrop="!!example.staticBackdrop"
-  :position="example.position"
-  :size="example.size"
-  :transition="example.transition"
->
+      <code class="language-html">
+&lt;v-modal
+  v-model=&quot;example.isVisibleLong&quot;
+  :title=&quot;example.title&quot;
+  :no-primary-button=&quot;!!example.noPrimaryButton&quot;
+  :no-secondary-button=&quot;!!example.noSecondaryButton&quot;
+  :primary-button-label=&quot;example.primaryButtonLabel&quot;
+  :secondary-button-label=&quot;example.secondaryButtonLabel&quot;
+  :primary-button-close=&quot;!!example.primaryButtonClose&quot;
+  :secondary-button-close=&quot;!!example.secondaryButtonClose&quot;
+  :no-close-button=&quot;!!example.noCloseButton&quot;
+  :static-backdrop=&quot;!!example.staticBackdrop&quot;
+  :position=&quot;example.position&quot;
+  :size=&quot;example.size&quot;
+  :transition=&quot;example.transition&quot;
+&gt;
   ...
-</v-modal>`}}
+&lt;/v-modal&gt;
       </code>
     </pre>
   </section>

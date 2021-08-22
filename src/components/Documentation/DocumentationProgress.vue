@@ -140,7 +140,36 @@
       </v-tabs>
     </div>
     <pre>
-      <code>
+      <code class="language-html">
+&lt;v-progress
+  :value=&quot;+example.value&quot;
+  :max=&quot;+example.max&quot;
+  :label=&quot;example.label&quot;
+  :precision=&quot;+example.precision&quot;
+  :transition=&quot;example.transition&quot;
+&gt;&lt;/v-progress&gt;
+
+&lt;v-progress
+  :value=&quot;+example.value&quot;
+  :max=&quot;+example.max&quot;
+  :label=&quot;example.label&quot;
+  :precision=&quot;+example.precision&quot;
+  :transition=&quot;example.transition&quot;
+  class=&quot;mt-4&quot;
+&gt;
+  &lt;template #default=&quot;{ value, max }&quot;&gt;&#123;&#123; value &#125;&#125; / &#123;&#123; max &#125;&#125;&lt;/template&gt;
+&lt;/v-progress&gt;
+
+&lt;v-progress
+  :value=&quot;+example.value&quot;
+  :max=&quot;+example.max&quot;
+  :label=&quot;example.label&quot;
+  :precision=&quot;+example.precision&quot;
+  :transition=&quot;example.transition&quot;
+  style-progress=&quot;default tiny&quot;
+  style-progress-bar=&quot;default gradient&quot;
+  class=&quot;mt-4&quot;
+&gt;&lt;/v-progress&gt;
       </code>
     </pre>
   </section>
@@ -187,7 +216,29 @@
       </div>
     </div>
     <pre>
-      <code>
+      <code class="language-html">
+&lt;v-progress
+  style-progress=&quot;default tiny&quot;
+  style-progress-bar=&quot;default gradient&quot;
+  indeterminate
+  :indeterminate-width=&quot;50&quot;
+  :indeterminate-timing=&quot;example.timing&quot;
+  :indeterminate-speed=&quot;+example.speed&quot;
+  class=&quot;mt-4&quot;
+&gt;&lt;/v-progress&gt;
+
+&lt;v-card style-card=&quot;default shadow&quot; width=&quot;400px&quot;&gt;
+  &lt;div class=&quot;flex justify-center p-4&quot;&gt;Checking for updates...&lt;/div&gt;
+  &lt;v-progress
+    style-progress=&quot;default tiny&quot;
+    style-progress-bar=&quot;default gradient&quot;
+    indeterminate
+    :indeterminate-width=&quot;50&quot;
+    :indeterminate-timing=&quot;example.timing&quot;
+    :indeterminate-speed=&quot;+example.speed&quot;
+    class=&quot;m-2&quot;
+  &gt;&lt;/v-progress&gt;
+&lt;/v-card&gt;
       </code>
     </pre>
   </section>

@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import { ref, computed, watch, getCurrentInstance } from "vue";
+import { ref, computed, watch, inject } from "vue";
 import vButton from "./vButton.vue";
 import vCloseButton from "./vCloseButton.vue";
 import useStyles from "./composition/use-styles";
@@ -88,9 +88,11 @@ export default {
     "update:modelValue",
   ],
   setup(props, { emit }) {
+    let s = inject("styles")
+
     let elements = ["modal", "header", "footer", "content", "backdrop"];
 
-    let { styles } = useStyles(getCurrentInstance(), props, elements);
+    let { styles } = useStyles(s, props, elements);
 
     let fixedClass = {
       container: [

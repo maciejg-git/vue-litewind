@@ -124,10 +124,10 @@
           v-model="example.date"
           :range="example.range"
           :locale="example.locale"
-          :euro="example.euro"
+          :monday-first-weekday="example.mondayFirstWeekday"
           :buttons="!!example.buttons"
-          :primaryButtonLabel="example.primaryButtonLabel"
-          :secondaryButtonLabel="example.secondaryButtonLabel"
+          :primary-button-label="example.primaryButtonLabel"
+          :secondary-button-label="example.secondaryButtonLabel"
           :adjecent-months="!!example.adjecentMonths"
           :range-hover-highlight="example.rangeHoverHighlight"
           :transition="example.transition"
@@ -168,8 +168,8 @@
               ></v-input>
             </div>
             <div class="mb-2">
-              <label for="euro">euro:</label>
-              <v-select id="euro" v-model="example.euro">
+              <label for="monday-first-weekday">monday-first-weekday:</label>
+              <v-select id="monday-first-weekday" v-model="example.mondayFirstWeekday">
                 <option :value="true">true</option>
                 <option :value="false">false</option>
               </v-select>
@@ -253,10 +253,10 @@
     v-model=&quot;example.date&quot;
     :range=&quot;example.range&quot;
     :locale=&quot;example.locale&quot;
-    :euro=&quot;example.euro&quot;
+    :monday-first-weekday=&quot;example.mondayFirstWeekday&quot;
     :buttons=&quot;!!example.buttons&quot;
-    :primaryButtonLabel=&quot;example.primaryButtonLabel&quot;
-    :secondaryButtonLabel=&quot;example.secondaryButtonLabel&quot;
+    :primary-button-label=&quot;example.primaryButtonLabel&quot;
+    :secondary-button-label=&quot;example.secondaryButtonLabel&quot;
     :adjecent-months=&quot;!!example.adjecentMonths&quot;
     :range-hover-highlight=&quot;example.rangeHoverHighlight&quot;
     :transition=&quot;example.transition&quot;
@@ -296,7 +296,7 @@
               v-model="exampleDropdown.date"
               width="305px"
               :buttons="exampleDropdown.buttons"
-              adjecentMonths
+              adjecent-months
               @state:done="hide"
             ></v-date-picker>
           </v-card>
@@ -305,19 +305,13 @@
       <div class="mt-4 lg:ml-10 lg:mt-0">
         <div class="mb-2">
           <label for="dropdown-buttons">buttons:</label>
-          <select
+          <v-select
             id="dropdown-buttons"
             v-model="exampleDropdown.buttons"
-            class="
-              rounded
-              border-gray-300
-              focus:border-gray-400 focus:ring focus:ring-indigo-200
-              py-1
-            "
           >
             <option :value="true">true</option>
             <option :value="false">false</option>
-          </select>
+          </v-select>
         </div>
       </div>
     </div>
@@ -337,7 +331,7 @@
         v-model=&quot;exampleDropdown.date&quot;
         width=&quot;305px&quot;
         :buttons=&quot;exampleDropdown.buttons&quot;
-        adjecentMonths
+        adjecent-months
         @state:done=&quot;hide&quot;
       &gt;&lt;/v-date-picker&gt;
     &lt;/v-card&gt;
@@ -382,7 +376,7 @@ export default {
           "Format of date emmited by <code>input:formatted</code> event. Read about how to use this object <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat' class='link'>here</a> (options paremeter)",
       },
       {
-        prop: "euro",
+        prop: "monday-first-weekday",
         type: ["Boolean"],
         default: "false",
         description: "Week starts on Monday",
@@ -418,7 +412,7 @@ export default {
         type: ["Boolean"],
         default: "false",
         description:
-          "Adds 'accept' and 'cancel' buttons. If this prop is false then model is updated immedietely after clicking on the day. If it is true then model is updated after clicking 'accept' button",
+          "Adds 'accept' and 'cancel' buttons. If this prop is false then v-model is updated immedietely after clicking on the day. If it is true then v-model is updated after clicking 'accept' button",
       },
       {
         prop: "secondary-button-label",
@@ -587,7 +581,7 @@ export default {
       primaryButtonLabel: "OK",
       rangeHoverHighlight: false,
       transition: "fade",
-      euro: true,
+      mondayFirstWeekday: true,
       formattedEmitted: false,
       doneEmitted: false,
       cancelEmitted: false,

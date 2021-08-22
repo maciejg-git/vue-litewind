@@ -124,15 +124,17 @@
       </v-tabs>
     </div>
     <pre>
-      <code>
-{{`<v-pagination
-  v-model="example.page"
-  :items-count="example.itemsCount"
-  :items-per-page="example.itemsPerPage"
-  :max-pages="example.maxPages"
-  :icons="example.icons"
-  @update:modelValue="example.events.unshift({ ev: 'update:modelValue', data: $event })"
-  />`}}
+      <code class="language-html">
+&lt;v-pagination
+  v-model=&quot;example.page&quot;
+  :items-count=&quot;example.itemsCount&quot;
+  :items-per-page=&quot;example.itemsPerPage&quot;
+  :max-pages=&quot;example.maxPages&quot;
+  :icons=&quot;example.icons&quot;
+  @update:modelValue=&quot;
+    example.events.unshift({ ev: 'update:modelValue', data: $event })
+  &quot;
+/&gt;
       </code>
     </pre>
   </section>

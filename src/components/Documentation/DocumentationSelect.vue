@@ -64,7 +64,7 @@
           v-model="example.model"
           :type="example.type"
           :state="example.state"
-          :options="example.options"
+          :options="options"
           class="w-40"
         >
         </v-select>
@@ -74,7 +74,7 @@
           v-model="example.modelMultiple"
           :type="example.type"
           :state="example.state"
-          :options="example.options"
+          :options="options"
           :multiple="true"
           class="w-40"
         >
@@ -124,7 +124,43 @@
       </v-tabs>
     </div>
     <pre>
-      <code>
+      <code class="language-html">
+&lt;v-select
+  v-model=&quot;example.model&quot;
+  :type=&quot;example.type&quot;
+  :state=&quot;example.state&quot;
+  :options=&quot;options&quot;
+  class=&quot;w-40&quot;
+&gt;
+&lt;/v-select&gt;
+
+&lt;v-select
+  v-model=&quot;example.modelMultiple&quot;
+  :type=&quot;example.type&quot;
+  :state=&quot;example.state&quot;
+  :options=&quot;options&quot;
+  :multiple=&quot;true&quot;
+  class=&quot;w-40&quot;
+&gt;
+&lt;/v-select&gt;
+      </code>
+    </pre>
+    <pre>
+      <code class="language-js">
+let options = ref([
+  {
+    value: "option",
+    label: "option",
+  },
+  {
+    value: "option 2",
+    label: "option 2",
+  },
+  {
+    value: "option 3",
+    label: "option 3",
+  },
+])
       </code>
     </pre>
   </section>
@@ -262,22 +298,23 @@ export default {
       model: "",
       modelMultiple: [],
       state: "",
-      options: [
-        {
-          value: "option",
-          label: "option",
-        },
-        {
-          value: "option 2",
-          label: "option 2",
-        },
-        {
-          value: "option 3",
-          label: "option 3",
-        },
-      ],
       events: [],
     });
+
+    let options = ref([
+      {
+        value: "option",
+        label: "option",
+      },
+      {
+        value: "option 2",
+        label: "option 2",
+      },
+      {
+        value: "option 3",
+        label: "option 3",
+      },
+    ])
 
     onMounted(() => {
       hljs.highlightAll();
@@ -295,6 +332,7 @@ export default {
       referenceComponents,
       referenceComponentsDefinition,
       example,
+      options,
     };
   },
 };

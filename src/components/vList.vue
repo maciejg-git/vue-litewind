@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { computed, provide, toRef, getCurrentInstance } from "vue";
+import { computed, provide, toRef, inject } from "vue";
 import useStyles from "./composition/use-styles";
 import { removeTailwindClasses } from "../tools/tools.js";
 
@@ -20,13 +20,15 @@ export default {
     styleItemActive: { type: [String, Array], default: "default" },
   },
   setup(props) {
+    let s = inject("styles")
+
     let elements = ["list", "item", "itemActive"];
 
     let fixedClass = {
       list: ["flex", "flex-col"],
     };
 
-    let { styles } = useStyles(getCurrentInstance(), props, elements);
+    let { styles } = useStyles(s, props, elements);
 
     let classes = {
       list: computed(() => {

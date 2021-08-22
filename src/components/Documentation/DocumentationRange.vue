@@ -36,9 +36,9 @@
       style-header-cell="default bordered"
       style-cell="default bordered"
     >
-      <template #cell:description="{ value }"
-        ><span v-html="value"></span
-      ></template>
+      <template #cell:description="{ value }">
+        <span v-html="value"></span>
+      </template>
     </v-table>
 
     <h6>Events</h6>
@@ -50,22 +50,27 @@
       style-header-cell="default bordered"
       style-cell="default bordered"
     >
-      <template #cell:description="{ value }"
-        ><span v-html="value"></span
-      ></template>
+      <template #cell:description="{ value }">
+        <span v-html="value"></span>
+      </template>
     </v-table>
   </section>
 
   <section>
     <h4>Example</h4>
     <div class="example">
-      <v-range v-model="example.model" :state="example.state" min="0" max="100" class="w-full"></v-range>
+      <v-range
+        v-model="example.model"
+        :state="example.state"
+        min="0"
+        max="100"
+        class="w-full"
+      ></v-range>
       <v-tabs theme="material" class="mt-5">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
-            <label for="model" class="font-semibold">v-model: </label>
-            <v-input type="text" id="model" v-model="example.model">
-            </v-input>
+            <label for="model" class="font-semibold">v-model:</label>
+            <v-input type="text" id="model" v-model="example.model"></v-input>
           </div>
           <div class="mb-2">
             <label for="state">state:</label>
@@ -87,7 +92,8 @@
             <div class="px-2 pb-2">
               <template v-for="ev in example.events">
                 <div class="py-1">
-                  <code class="code-word">{{ ev.ev }}</code> {{ ev.data }}
+                  <code class="code-word">{{ ev.ev }}</code>
+                  {{ ev.data }}
                 </div>
               </template>
             </div>
@@ -96,7 +102,14 @@
       </v-tabs>
     </div>
     <pre>
-      <code>
+      <code class="language-html">
+&lt;v-range
+  v-model=&quot;example.model&quot;
+  :state=&quot;example.state&quot;
+  min=&quot;0&quot;
+  max=&quot;100&quot;
+  class=&quot;w-full&quot;
+&gt;&lt;/v-range&gt;
       </code>
     </pre>
   </section>

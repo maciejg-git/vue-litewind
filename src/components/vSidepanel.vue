@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { ref, computed, watch, getCurrentInstance } from "vue";
+import { ref, computed, watch, inject } from "vue";
 import vCloseButton from "./vCloseButton.vue";
 import useStyles from "./composition/use-styles";
 import { removeTailwindClasses } from "../tools/tools.js";
@@ -45,9 +45,11 @@ export default {
     vCloseButton,
   },
   setup(props, { emit }) {
+    let s = inject("styles")
+
     let elements = ["sidepanel", "closeButton"];
 
-    let { styles } = useStyles(getCurrentInstance(), props, elements);
+    let { styles } = useStyles(s, props, elements);
 
     let fixedClass = {
       panel: ["fixed", "h-full", "top-0", "z-20"],

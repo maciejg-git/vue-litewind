@@ -225,33 +225,34 @@
       </v-tabs>
     </div>
     <pre>
-      <code>
-{{`<v-tabs
-  :fill="example.fill"
-  :center="example.center"
-  :right="example.right"
-  :transition="example.transition"
-  :name="example.name"
-  @input:changed-tab="
+      <code class="language-html">
+&lt;v-tabs
+  :fill=&quot;example.fill&quot;
+  :center=&quot;example.center&quot;
+  :right=&quot;example.right&quot;
+  :transition=&quot;example.transition&quot;
+  :theme=&quot;example.theme&quot;
+  @input:changed-tab=&quot;
     example.events.unshift({ ev: 'input:changed-tab', data: $event })
-  "
->
-  <v-tab name="Tab" class="py-4 px-2">
+  &quot;
+&gt;
+  &lt;v-tab name=&quot;Tab&quot; class=&quot;p-4&quot;&gt;
     ...
-  </v-tab>
-  <v-tab name="Tab 2" class="py-4 px-2">
+  &lt;/v-tab&gt;
+  &lt;v-tab name=&quot;Tab 2&quot; class=&quot;p-4&quot;&gt;
     ...
-  </v-tab>
-  <v-tab name="Another tab" class="py-4 px-2">
+  &lt;/v-tab&gt;
+  &lt;v-tab name=&quot;Another tab&quot; class=&quot;p-4&quot;&gt;
     ...
-  </v-tab>
-  <v-tab name="Another tab" class="py-4 px-2">
-    <template #name>
+  &lt;/v-tab&gt;
+  &lt;v-tab name=&quot;Another tab&quot; class=&quot;p-4&quot;&gt;
+    &lt;template #name&gt;
       Tab with custom content
-      <v-badge style-badge="secondary tiny">4</v-badge>
-    </template>
-  </v-tab>
-</v-tabs>`}}
+      &lt;v-badge style-badge=&quot;secondary tiny&quot;&gt;4&lt;/v-badge&gt;
+    &lt;/template&gt;
+    ...
+  &lt;/v-tab&gt;
+&lt;/v-tabs&gt;
       </code>
     </pre>
   </section>

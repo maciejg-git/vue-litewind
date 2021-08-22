@@ -612,13 +612,13 @@ import { ref, onMounted } from "vue";
 import dataJSON from "./../data.json";
 import vTabs from "./vTabs.vue";
 import vTab from "./vTab.vue";
-// import vTable from './vTable.vue'
+import vTable from './vTable.vue'
 // import {vTable} from "./index.js"
 import vDatePicker from "./vDatePicker.vue";
 import vCard from "./vCard.vue";
 import vSidepanel from "./vSidepanel.vue";
-// import vButton from "./vButton.vue";
-import {vButton, vTable} from "../vue-component-tailwind.es.js"
+import vButton from "./vButton.vue";
+// import {vButton, vTable} from "../vue-component-tailwind.es.js"
 import vPagination from "./vPagination.vue";
 import vDropdown from "./vDropdown.vue";
 import vDropdownMenuItem from "./vDropdownMenuItem.vue";

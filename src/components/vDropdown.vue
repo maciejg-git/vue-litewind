@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { ref, computed, provide, toRef, toRefs, getCurrentInstance } from "vue";
+import { ref, computed, provide, toRef, toRefs, inject } from "vue";
 import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
 import { removeTailwindClasses } from "../tools/tools.js";
@@ -42,6 +42,8 @@ export default {
   },
   emits: ["state:opened", "state:closed"],
   setup(props, { slots, emit }) {
+    let s = inject("styles")
+
     let elements = [
       "menuItem",
       "menuItemActive",
@@ -49,7 +51,7 @@ export default {
       "menuItemHeader",
     ];
 
-    let { styles } = useStyles(getCurrentInstance(), props, elements);
+    let { styles } = useStyles(s, props, elements);
 
     let fixedClasses = {
       item: ["block", "px-4", "py-2"],

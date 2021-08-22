@@ -281,39 +281,76 @@
       </v-tabs>
     </div>
     <pre>
-      <code>
-{{`<v-table
-  :items="example.data"
-  :definition="definition"
-  :filter="example.filter"
-  :page="example.page"
-  :items-per-page="example.itemsPerPage"
-  :busy="example.busy"
-  :selectionMode="example.selectionMode"
-  :captionTop="!!example.captionTop"
-  :locale="example.locale"
-  @update:filtered-count="
+      <code class="language-html">
+&lt;v-table
+  :items=&quot;example.data&quot;
+  :definition=&quot;definition&quot;
+  :filter=&quot;example.filter&quot;
+  :page=&quot;example.page&quot;
+  :items-per-page=&quot;example.itemsPerPage&quot;
+  :state=&quot;example.state&quot;
+  :selectionMode=&quot;example.selectionMode&quot;
+  :captionTop=&quot;!!example.captionTop&quot;
+  :locale=&quot;example.locale&quot;
+  @update:filtered-count=&quot;
     example.itemsCount = $event;
     example.events.unshift({ ev: 'update:filtered-count', data: $event });
-  "
-  @update:page="
+  &quot;
+  @update:page=&quot;
     example.page = $event;
     example.events.unshift({ ev: 'update:page', data: $event });
-  "
-  @input:selection="
+  &quot;
+  @input:selection=&quot;
     example.events.unshift({ ev: 'input:selection', data: $event })
-  "
->
-  <template #cell:edit="{ item }">
-    <v-button
-      style-button="default tiny noMargin"
-      @click.stop="edit(item)"
-    >
+  &quot;
+&gt;
+  &lt;template #cell:edit=&quot;{ item }&quot;&gt;
+    &lt;v-button
+      style-button=&quot;default tiny noMargin&quot;
+      @click.stop=&quot;edit(item)&quot;
+    &gt;
       edit
-    </v-button>
-  </template>
-  <template #caption> Example caption </template>
-</v-table>`}}
+    &lt;/v-button&gt;
+  &lt;/template&gt;
+  &lt;template #caption&gt;Example caption&lt;/template&gt;
+&lt;/v-table&gt;
+      </code>
+    </pre>
+    <pre>
+      <code class="language-js">
+let definition = ref([
+  {
+    key: "id",
+    visible: false,
+  },
+  {
+    key: "first_name",
+    sortable: true,
+    // class: () => "bg-red-50",
+  },
+  {
+    key: "last_name",
+    sortable: true,
+    // class: () => "bg-green-50",
+  },
+  {
+    key: "email",
+    sortable: true,
+  },
+  {
+    key: "city",
+    sortable: true,
+    // visible: false,
+  },
+  {
+    key: "country",
+    sortable: true,
+    class: (k, v) => (v == "ID" ? "bg-red-50" : ""),
+  },
+  {
+    key: "edit",
+  },
+]);
       </code>
     </pre>
   </section>

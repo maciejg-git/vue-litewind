@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { computed, watch, getCurrentInstance } from "vue";
+import { computed, watch, inject } from "vue";
 import vCloseButton from "./vCloseButton.vue";
 import useStyles from "./composition/use-styles";
 import { removeTailwindClasses } from "../tools/tools.js";
@@ -28,9 +28,11 @@ export default {
     vCloseButton,
   },
   setup(props, { emit }) {
+    let s = inject("styles")
+
     let elements = ["alert"];
 
-    let { styles } = useStyles(getCurrentInstance(), props, elements);
+    let { styles } = useStyles(s, props, elements);
 
     let fixedClass = {
       alert: ["relative"],

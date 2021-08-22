@@ -1,6 +1,6 @@
 {
   "name": "vue-component-tailwind",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "dist/vue-component-tailwind.umd.js",
   "module": "dist/vue-component-tailwind.es.js",
   "files": [

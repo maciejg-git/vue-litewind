@@ -4,7 +4,7 @@
       <li
         v-for="(tab, i) in tabs"
         :key="i"
-        :class="fill ? fixedClasses.tabWrapper: ''"
+        :class="fill ? fixedClasses.tabWrapper : ''"
       >
         <a
           href=""
@@ -20,15 +20,7 @@
 </template>
 
 <script>
-import {
-  ref,
-  toRef,
-  onMounted,
-  computed,
-  provide,
-  h,
-  getCurrentInstance,
-} from "vue";
+import { ref, toRef, onMounted, computed, provide, h, inject } from "vue";
 import useStyles from "./composition/use-styles";
 import { removeTailwindClasses } from "../tools/tools.js";
 
@@ -50,9 +42,11 @@ export default {
     },
   },
   setup(props, { emit }) {
+    let s = inject("styles")
+
     let elements = ["tabBar", "tab", "tabActive"];
 
-    let { styles } = useStyles(getCurrentInstance(), props, elements);
+    let { styles } = useStyles(s, props, elements);
 
     let fixedClasses = {
       tabBar: ["flex", "flex-auto"],

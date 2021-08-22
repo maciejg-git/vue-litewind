@@ -68,21 +68,26 @@
       </div>
     </div>
     <pre>
-      <code>
-{{`<v-spinner style-spinner="default blue small"></v-spinner>
-<v-spinner class="ml-2"></v-spinner>
-<v-spinner style-spinner="default blue" class="ml-2"></v-spinner>
-<v-spinner style-spinner="default yellow" class="ml-2"></v-spinner>
-<v-spinner style-spinner="default green" class="ml-2"></v-spinner>
-<v-spinner style-spinner="default yellow large" class="ml-2"></v-spinner>
-<v-button>
-  <v-spinner style-spinner="default gray small" class="mr-2"></v-spinner>
-  Spinner in button
-</v-button>
-<v-button style-button="default secondary">
-  <v-spinner style-spinner="default green small" class="mr-2"></v-spinner>
-  Spinner in button
-</v-button>`}}
+      <code class="language-html">
+&lt;v-spinner style-spinner=&quot;default blue small&quot;&gt;&lt;/v-spinner&gt;
+&lt;v-spinner class=&quot;ml-2&quot;&gt;&lt;/v-spinner&gt;
+&lt;v-spinner style-spinner=&quot;default blue&quot; class=&quot;ml-2&quot;&gt;&lt;/v-spinner&gt;
+&lt;v-spinner style-spinner=&quot;default yellow&quot; class=&quot;ml-2&quot;&gt;&lt;/v-spinner&gt;
+&lt;v-spinner style-spinner=&quot;default green&quot; class=&quot;ml-2&quot;&gt;&lt;/v-spinner&gt;
+&lt;v-spinner
+  style-spinner=&quot;default yellow large&quot;
+  class=&quot;ml-2&quot;
+&gt;&lt;/v-spinner&gt;
+
+&lt;v-button style-button=&quot;default no-margin&quot; class=&quot;mr-2&quot;&gt;
+  &lt;v-spinner style-spinner=&quot;default gray small&quot;&gt;&lt;/v-spinner&gt;
+  &lt;span class=&quot;ml-2&quot;&gt;Button&lt;/span&gt;
+&lt;/v-button&gt;
+
+&lt;v-button style-button=&quot;default secondary no-margin&quot;&gt;
+  &lt;v-spinner style-spinner=&quot;default green small&quot;&gt;&lt;/v-spinner&gt;
+  &lt;span class=&quot;ml-2&quot;&gt;Button&lt;/span&gt;
+&lt;/v-button&gt;
       </code>
     </pre>
   </section>

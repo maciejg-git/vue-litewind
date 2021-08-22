@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { computed, getCurrentInstance } from "vue";
+import { computed, inject } from "vue";
 import useStyles from "./composition/use-styles";
 import { removeTailwindClasses } from "../tools/tools.js";
 
@@ -28,9 +28,11 @@ export default {
     styleCloseButton: { type: String, default: "default" },
   },
   setup(props) {
+    let s = inject("styles")
+
     let elements = ["closeButton"]
 
-    let { styles } = useStyles(getCurrentInstance(), props, elements);
+    let { styles } = useStyles(s, props, elements);
 
     let classes = computed(() => {
       let c = [...styles.closeButton.value];

@@ -69,7 +69,7 @@
 </template>
 
 <script>
-import { ref, computed, watch, getCurrentInstance } from "vue";
+import { ref, computed, watch, inject } from "vue";
 import useStyles from "./composition/use-styles";
 import {
   formatCase,
@@ -109,6 +109,8 @@ export default {
     styleCaption: { type: String, default: "default" },
   },
   setup(props, { slots, emit }) {
+    let style = inject("styles")
+
     let elements = [
       "table",
       "headerRow",
@@ -122,7 +124,7 @@ export default {
     let s = ["busy"];
 
     let { styles, states } = useStyles(
-      getCurrentInstance(),
+      style,
       props,
       elements,
       s

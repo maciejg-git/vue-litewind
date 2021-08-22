@@ -71,7 +71,9 @@
             example.events.unshift({ ev: 'update:modelValue', data: $event })
           "
         >
-          <template #activator><v-button>Show popover</v-button></template>
+          <template #activator>
+            <v-button>Show popover</v-button>
+          </template>
           This is popover.
         </v-popover>
       </div>
@@ -87,7 +89,9 @@
             example.events.unshift({ ev: 'update:modelValue', data: $event })
           "
         >
-          <template #activator><v-button>Show popover</v-button></template>
+          <template #activator>
+            <v-button>Show popover</v-button>
+          </template>
           <div class="grid grid-cols-3 gap-2 my-2">
             <label for="">Login</label>
             <v-input type="text" class="col-span-2"></v-input>
@@ -175,7 +179,7 @@
       </v-tabs>
     </div>
     <pre>
-      <code class="html">
+      <code class="language-html">
 &lt;v-popover
   :placement=&quot;example.placement&quot;
   :trigger=&quot;example.trigger&quot;
@@ -187,7 +191,9 @@
     example.events.unshift({ ev: 'update:modelValue', data: $event })
   &quot;
 &gt;
-  &lt;template #activator&gt;&lt;v-button&gt;Show popover&lt;/v-button&gt;&lt;/template&gt;
+  &lt;template #activator&gt;
+    &lt;v-button&gt;Show popover&lt;/v-button&gt;
+  &lt;/template&gt;
   This is popover.
 &lt;/v-popover&gt;
 
@@ -202,12 +208,14 @@
     example.events.unshift({ ev: 'update:modelValue', data: $event })
   &quot;
 &gt;
-  &lt;template #activator&gt;&lt;v-button&gt;Show popover&lt;/v-button&gt;&lt;/template&gt;
-  &lt;div class=&quot;grid grid-cols-3 gap-2 my-4&quot;&gt;
+  &lt;template #activator&gt;
+    &lt;v-button&gt;Show popover&lt;/v-button&gt;
+  &lt;/template&gt;
+  &lt;div class=&quot;grid grid-cols-3 gap-2 my-2&quot;&gt;
     &lt;label for=&quot;&quot;&gt;Login&lt;/label&gt;
-    &lt;input type=&quot;text&quot; class=&quot;col-span-2&quot; /&gt;
+    &lt;v-input type=&quot;text&quot; class=&quot;col-span-2&quot;&gt;&lt;/v-input&gt;
     &lt;label for=&quot;&quot;&gt;Password&lt;/label&gt;
-    &lt;input type=&quot;text&quot; class=&quot;col-span-2&quot; /&gt;
+    &lt;v-input type=&quot;text&quot; class=&quot;col-span-2&quot;&gt;&lt;/v-input&gt;
   &lt;/div&gt;
 &lt;/v-popover&gt;
       </code>

@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { ref, computed, onMounted, onUnmounted, getCurrentInstance } from "vue";
+import { ref, computed, onMounted, onUnmounted, inject } from "vue";
 import useStyles from "./composition/use-styles";
 import { clamp, removeTailwindClasses } from "../tools/tools.js";
 
@@ -48,9 +48,11 @@ export default {
     styleLabel: { type: [String, Array], default: "default" },
   },
   setup(props) {
+    let s = inject("styles")
+
     let elements = ["progress", "progressBar", "label"];
 
-    let { styles } = useStyles(getCurrentInstance(), props, elements);
+    let { styles } = useStyles(s, props, elements);
 
     let fixedClasses = {
       progress: ["flex"],

@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { computed, getCurrentInstance } from "vue";
+import { computed, inject } from "vue";
 import useStyles from "./composition/use-styles";
 import { removeTailwindClasses } from "../tools/tools.js";
 
@@ -22,12 +22,14 @@ export default {
   },
   emits: ["update:modelValue"],
   setup(props, { attrs, emit }) {
+    let style = inject("styles")
+
     let elements = ["range"];
 
     let s = ["valid", "invalid", "disabled"];
 
     let { styles, states } = useStyles(
-      getCurrentInstance(),
+      style,
       props,
       elements,
       s

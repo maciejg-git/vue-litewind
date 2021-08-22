@@ -725,8 +725,6 @@ let tailwindClassList = {
   "to-white": 206,
 };
 
-// COLORS
-
 // prettier-ignore
 let shades = [
   "50", "100", "200", "300", "400", "500", "600", "700", "800", "900",
@@ -738,16 +736,12 @@ let colorProps = [
 ];
 let colorIndex = 200;
 
-// OPACITY
-
 let opacity = [0, 5, 10, 20, 25, 30, 40, 50, 60, 70, 75, 80, 90, 95, 100];
 // prettier-ignore
 let opacityProps = [
   "opacity", "ring-opacity", "divide-opacity", "border-opacity",  "placeholder-opacity", "text-opacity", "bg-opacity",
 ];
 let opacityIndex = 300;
-
-// BLEND
 
 // prettier-ignore
 let blend = [
@@ -756,8 +750,6 @@ let blend = [
 let blendProps = ["mix-blend", "bg-blend"];
 let blendIndex = 44;
 
-// PADDING
-
 // prettier-ignore
 let padding = [
   0, "px", "0.5", 1, "1.5", 2, "2.5", 3, "3.5", 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96,
@@ -765,24 +757,15 @@ let padding = [
 let paddingProps = ["p", "px", "py", "pt", "pr", "pb", "pl"];
 let paddingIndex = 46;
 
-// MARGIN
-
 // prettier-ignore
 let margin = [
   0, "px", "0.5", 1, "1.5", 2, "2.5", 3, "3.5", 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96, "auto",
 ];
+// prettier-ignore
 let marginProps = [
-  ["m", "-m"],
-  ["mx", "-mx"],
-  ["my", "-my"],
-  ["mt", "-mt"],
-  ["mr", "-mr"],
-  ["mb", "-mb"],
-  ["ml", "-ml"],
+  ["m", "-m"], ["mx", "-mx"], ["my", "-my"], ["mt", "-mt"], ["mr", "-mr"],  ["mb", "-mb"], ["ml", "-ml"],
 ];
 let marginIndex = 54;
-
-// WIDTH
 
 // prettier-ignore
 let width = [
@@ -790,24 +773,18 @@ let width = [
 ]
 let widthIndex = 10;
 
-// POSITION
-
 // prettier-ignore
 let position = [
   0, "px", "0.5", 1, "1.5", 2, "2.5", 3, "3.5", 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96, "auto", "1/2", "1/3", "2/3", "1/4", "2/4", "3/4", "full"
 ]
-let inset = ["", "x", "y"];
-let insetProps = [["inset", "-inset"]];
+// prettier-ignore
+let insetProps = [["inset", "-inset"], ["inset-x", "-inset-x"], ["inset-y", "-inset-y"]];
+// prettier-ignore
 let positionProps = [
-  ["top", "-top"],
-  ["right", "-right"],
-  ["bottom", "-bottom"],
-  ["left", "-left"],
+  ["top", "-top"], ["right", "-right"], ["bottom", "-bottom"], ["left", "-left"],
 ];
 let insetIndex = 400;
 let positionIndex = 410;
-
-// ROUNDED
 
 let rounded = ["", "none", "sm", "md", "lg", "xl", "2xl", "3xl", "full"];
 // prettier-ignore
@@ -816,16 +793,12 @@ let roundedProps = [
 ]
 let roundedIndex = 500;
 
-// GAP
-
 // prettier-ignore
 let gap = [
   0, "px", "0.5", 1, "1.5", 2, "2.5", 3, "3.5", 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96,
 ]
 let gapProps = ["aagap", "aagap-x", "aagap-y"];
 let gapIndex = 600;
-
-// COLORS
 
 for (let prop of colorProps) {
   for (let c of colors) {
@@ -836,16 +809,12 @@ for (let prop of colorProps) {
   colorIndex++;
 }
 
-// OPACITY
-
 for (let prop of opacityProps) {
   for (let o of opacity) {
     tailwindClassList[prop + "-" + o] = opacityIndex;
   }
   opacityIndex++;
 }
-
-// BLEND
 
 for (let prop of blendProps) {
   for (let b of blend) {
@@ -854,16 +823,12 @@ for (let prop of blendProps) {
   blendIndex++;
 }
 
-// PADDING
-
 for (let prop of paddingProps) {
   for (let p of padding) {
     tailwindClassList[prop + "-" + p] = paddingIndex;
   }
   paddingIndex++;
 }
-
-// MARGIN
 
 for (let prop of marginProps) {
   for (let m of margin) {
@@ -873,23 +838,17 @@ for (let prop of marginProps) {
   marginIndex++;
 }
 
-// WIDTH
-
 for (let w of width) {
   tailwindClassList["w-" + w] = widthIndex;
 }
 widthIndex++;
 
-// POSITION
-
 for (let prop of insetProps) {
-  for (let i of inset) {
-    for (let p of position) {
-      tailwindClassList[prop[0] + (i ? "-" + i : "") + "-" + p] = insetIndex;
-      tailwindClassList[prop[1] + (i ? "-" + i : "") + "-" + p] = insetIndex;
-    }
-    insetIndex++;
+  for (let p of position) {
+    tailwindClassList[prop[0] + "-" + p] = insetIndex;
+    tailwindClassList[prop[1] + "-" + p] = insetIndex;
   }
+  insetIndex++;
 }
 
 for (let prop of positionProps) {
@@ -900,16 +859,12 @@ for (let prop of positionProps) {
   positionIndex++;
 }
 
-// ROUNDED
-
 for (let prop of roundedProps) {
   for (let r of rounded) {
     tailwindClassList[prop + (r ? "-" + r : "")] = roundedIndex;
   }
   roundedIndex++;
 }
-
-// GAP
 
 for (let prop of gapProps) {
   for (let p of gap) {

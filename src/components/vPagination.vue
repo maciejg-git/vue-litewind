@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { ref, computed, watch, getCurrentInstance } from "vue";
+import { ref, computed, watch, inject } from "vue";
 import useStyles from "./composition/use-styles";
 import { clamp, removeTailwindClasses } from "../tools/tools.js";
 
@@ -40,6 +40,8 @@ export default {
     stylePrev: { type: [String, Array], default: "default" },
   },
   setup(props, { emit }) {
+    let s = inject("styles")
+
     let elements = [
       "paginationBar",
       "page",
@@ -49,7 +51,7 @@ export default {
       "prev",
     ];
 
-    let { styles } = useStyles(getCurrentInstance(), props, elements);
+    let { styles } = useStyles(s, props, elements);
 
     let fixedClass = {
       paginationBar: ["relative", "z-0", "flex", "flex-row", "w-min"],

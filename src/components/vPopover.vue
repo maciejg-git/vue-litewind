@@ -35,7 +35,7 @@ import {
   computed,
   onMounted,
   watchEffect,
-  getCurrentInstance,
+  inject,
 } from "vue";
 import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
@@ -67,9 +67,11 @@ export default {
     styleContent: { type: String, default: "default" },
   },
   setup(props, { slots }) {
+    let s = inject("styles")
+
     let elements = ["popover", "content"];
 
-    let { styles } = useStyles(getCurrentInstance(), props, elements);
+    let { styles } = useStyles(s, props, elements);
 
     let classes = {
       popover: computed(() => {
