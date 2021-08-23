@@ -320,60 +320,6 @@ let tailwindClassList = {
   "max-w-screen-xl": 12,
   "max-w-screen-2xl": 12,
 
-  "h-0": 13,
-  "h-px": 13,
-  "h-0.5": 13,
-  "h-1": 13,
-  "h-1.5": 13,
-  "h-2": 13,
-  "h-2.5": 13,
-  "h-3": 13,
-  "h-3.5": 13,
-  "h-4": 13,
-  "h-5": 13,
-  "h-6": 13,
-  "h-7": 13,
-  "h-8": 13,
-  "h-9": 13,
-  "h-10": 13,
-  "h-11": 13,
-  "h-12": 13,
-  "h-14": 13,
-  "h-16": 13,
-  "h-20": 13,
-  "h-24": 13,
-  "h-28": 13,
-  "h-32": 13,
-  "h-36": 13,
-  "h-40": 13,
-  "h-44": 13,
-  "h-48": 13,
-  "h-52": 13,
-  "h-56": 13,
-  "h-60": 13,
-  "h-64": 13,
-  "h-72": 13,
-  "h-80": 13,
-  "h-96": 13,
-  "h-auto": 13,
-  "h-1/2": 13,
-  "h-1/3": 13,
-  "h-2/3": 13,
-  "h-1/4": 13,
-  "h-2/4": 13,
-  "h-3/4": 13,
-  "h-1/5": 13,
-  "h-2/5": 13,
-  "h-3/5": 13,
-  "h-4/5": 13,
-  "h-1/6": 13,
-  "h-2/6": 13,
-  "h-3/6": 13,
-  "h-4/6": 13,
-  "h-5/6": 13,
-  "h-full": 13,
-  "h-screen": 13,
-
   "min-h-0": 14,
   "min-h-full": 14,
   "min-h-screen": 14,
@@ -543,32 +489,6 @@ let tailwindClassList = {
   "bg-gradient-to-l": 90,
   "bg-gradient-to-tl": 90,
 
-  "border-0": "border-w",
-  "border-2": "border-w",
-  "border-4": "border-w",
-  "border-8": "border-w",
-  border: "border-w",
-  "border-t-0": "border-t-w",
-  "border-t-2": "border-t-w",
-  "border-t-4": "border-t-w",
-  "border-t-8": "border-t-w",
-  "border-t": "border-t-w",
-  "border-r-0": "border-r-w",
-  "border-r-2": "border-r-w",
-  "border-r-4": "border-r-w",
-  "border-r-8": "border-r-w",
-  "border-r": "border-r-w",
-  "border-b-0": "border-b-w",
-  "border-b-2": "border-b-w",
-  "border-b-4": "border-b-w",
-  "border-b-8": "border-b-w",
-  "border-b": "border-b-w",
-  "border-l-0": "border-l-w",
-  "border-l-2": "border-l-w",
-  "border-l-4": "border-l-w",
-  "border-l-8": "border-l-w",
-  "border-l": "border-l-w",
-
   "border-solid": 40,
   "border-dashed": 40,
   "border-dotted": 40,
@@ -683,46 +603,6 @@ let tailwindClassList = {
   "divide-y-4": "divide-y",
   "divide-y-8": "divide-y",
   "divide-y": "divide-y",
-
-  "text-transparent": 201,
-  "text-current": 201,
-  "text-black": 201,
-  "text-white": 201,
-
-  "border-transparent": 204,
-  "border-current": 204,
-  "border-black": 204,
-  "border-white": 204,
-
-  "ring-transparent": 202,
-  "ring-current": 202,
-  "ring-black": 202,
-  "ring-white": 202,
-
-  "bg-transparent": 200,
-  "bg-current": 200,
-  "bg-black": 200,
-  "bg-white": 200,
-
-  "ring-offset-transparent": 203,
-  "ring-offset-current": 203,
-  "ring-offset-black": 203,
-  "ring-offset-white": 203,
-
-  "from-transparent": 205,
-  "from-current": 205,
-  "from-black": 205,
-  "from-white": 205,
-
-  "via-transparent": 207,
-  "via-current": 207,
-  "via-black": 207,
-  "via-white": 207,
-
-  "to-transparent": 206,
-  "to-current": 206,
-  "to-black": 206,
-  "to-white": 206,
 };
 
 // prettier-ignore
@@ -730,6 +610,7 @@ let shades = [
   "50", "100", "200", "300", "400", "500", "600", "700", "800", "900",
 ];
 let colors = ["blue", "indigo", "red", "yellow", "pink", "green", "gray"];
+let shadeless = ["transparent", "current", "black", "white"];
 // prettier-ignore
 let colorProps = [
   "bg", "text", "ring", "ring-offset", "border", "from", "to", "via",
@@ -789,7 +670,7 @@ let positionIndex = 410;
 let rounded = ["", "none", "sm", "md", "lg", "xl", "2xl", "3xl", "full"];
 // prettier-ignore
 let roundedProps = [
-  "aarounded", "aarounded-t", "aarounded-r", "aarounded-b", "aarounded-l", "aarounded-tl", "aarounded-tr", "aarounded-br", "aarounded-bl", 
+  "rounded", "rounded-t", "rounded-r", "rounded-b", "rounded-l", "rounded-tl", "rounded-tr", "rounded-br", "rounded-bl", 
 ]
 let roundedIndex = 500;
 
@@ -797,14 +678,26 @@ let roundedIndex = 500;
 let gap = [
   0, "px", "0.5", 1, "1.5", 2, "2.5", 3, "3.5", 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96,
 ]
-let gapProps = ["aagap", "aagap-x", "aagap-y"];
+let gapProps = ["gap", "gap-x", "gap-y"];
 let gapIndex = 600;
+
+let borderProps = ["border", "border-t", "border-r", "border-b", "border-l"]
+let border = ["", 0, 2, 4, 8];
+let borderIndex = 700;
+
+let height = [
+  0, "px", "0.5", 1, "1.5", 2, "2.5", 3, "3.5", 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96, "auto", "1/2", "1/3", "2/3", "1/4", "2/4", "3/4", "1/5", "2/5", "3/5", "4/5", "1/6", "2/6", "3/6", "4/6", "5/6", "full", "screen"
+]
+let heightIndex = 800;
 
 for (let prop of colorProps) {
   for (let c of colors) {
     for (let s of shades) {
       tailwindClassList[prop + "-" + c + "-" + s] = colorIndex;
     }
+  }
+  for (let c of shadeless) {
+    tailwindClassList[prop + "-" + c] = colorIndex;
   }
   colorIndex++;
 }
@@ -871,6 +764,17 @@ for (let prop of gapProps) {
     tailwindClassList[prop + "-" + p] = gapIndex;
   }
   gapIndex++;
+}
+
+for (let prop of borderProps) {
+  for (let b of border) {
+    tailwindClassList[prop + (b ? "-" + b : "")] = borderIndex;
+  }
+  borderIndex++;
+}
+
+for (let h of height) {
+  tailwindClassList["h" + "-" + h] = heightIndex;
 }
 
 export { tailwindClassList };

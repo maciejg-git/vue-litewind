@@ -196,7 +196,7 @@
       >
         <template #cell:edit="{ item }">
           <v-button
-            style-button="default tiny noMargin"
+            style-button="default tiny no-margin"
             @click.stop="edit(item)"
           >
             edit
@@ -306,7 +306,7 @@
 &gt;
   &lt;template #cell:edit=&quot;{ item }&quot;&gt;
     &lt;v-button
-      style-button=&quot;default tiny noMargin&quot;
+      style-button=&quot;default tiny no-margin&quot;
       @click.stop=&quot;edit(item)&quot;
     &gt;
       edit
@@ -326,12 +326,10 @@ let definition = ref([
   {
     key: "first_name",
     sortable: true,
-    // class: () => "bg-red-50",
   },
   {
     key: "last_name",
     sortable: true,
-    // class: () => "bg-green-50",
   },
   {
     key: "email",

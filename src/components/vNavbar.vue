@@ -13,6 +13,7 @@ export default {
   props: {
     fixed: { type: Boolean, default: false },
     sticky: { type: Boolean, default: false },
+    bottom: { type: Boolean, default: false },
     name: { type: String, default: "navbar" },
     theme: { type: String, default: "default" },
     styleNavbar: { type: String, default: "default" },
@@ -25,7 +26,7 @@ export default {
     let { styles } = useStyles(s, props, elements);
 
     let fixedClass = {
-      navbar: ["top-0", "left-0", "z-20"],
+      navbar: ["left-0", "z-20"],
     };
 
     let classes = {
@@ -33,6 +34,7 @@ export default {
         let c = [
           props.fixed ? "fixed" : props.sticky ? "sticky" : "relative",
           ...fixedClass.navbar,
+          ...(props.bottom ? ["bottom-0"] : ["top-0"]),
           ...styles.navbar.value,
         ];
         return removeTailwindClasses(c);

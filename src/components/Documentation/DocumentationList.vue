@@ -168,7 +168,7 @@
       </v-tabs>
     </div>
     <pre>
-      <code class="language-html">
+      <code v-pre class="language-html">
 &lt;v-list width=&quot;500px&quot; :tag=&quot;example.tag&quot; :theme=&quot;example.theme&quot;&gt;
   &lt;v-list-item :active=&quot;example.active1&quot;&gt;
     &lt;div class=&quot;font-semibold&quot;&gt;

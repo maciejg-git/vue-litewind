@@ -10,19 +10,34 @@
 npm -i vue-tailwind
     </code>
   </pre>
-    <p>Register all components in application entry file (for example main.js)</p>
+    <p>
+      Vue-tailwind uses Tailwindcss as CSS framework. To install Tailwindcss
+      follow
+      <a class="link" href="https://tailwindcss.com/docs/installation">
+        instruction
+      </a>
+      in their offical documentation.
+    </p>
+    <p>
+      <span class="font-semibold">[Option 1]</span>
+      Register all components in application entry file (for example main.js)
+    </p>
     <pre>
       <code class="language-js">
 // main.js
 
-import plugin from "vue-tailwind";
+import { install } from "vue-tailwind";
 
 let app = createApp(App);
 
-app.use(plugin);
+app.use(install);
     </code>
   </pre>
-    <p>or register only selected components</p>
+    <p>
+      <span class="font-semibold">[Option 2]</span>
+      or register components seperately if you plan to use only selected few or
+      single component. This should make your build smaller.
+    </p>
     <pre>
       <code class="language-js">
 // main.js
@@ -42,9 +57,11 @@ app.use(spinnerPlugin);
     <h5>Setting up</h5>
     <p>
       By default does not come with any styling, only the necessary classes are
-      added internally to properly display components. Those classes does not
-      include color, typoghraphy, border, rounding etc. In order to
-      add those copy style.js to the src directory of your project, import it in your application entry file and provide them to components. See styling for more details about this file.
+      added internally to properly display components. Classes that provide
+      colors, border, rounding and similar are added seperately in style.js
+      file. Copy style.js to the src directory of your project, import it in
+      your application entry file and use provide function to make them
+      available to components. See styling for more details about this file.
     </p>
     <pre>
       <code class="language-js">

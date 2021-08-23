@@ -150,7 +150,7 @@ export default {
         prop: "fixed",
         type: "Boolean",
         default: "false",
-        description: "If true navbar position is set to fixed",
+        description: "If true navbar position is set to fixed. If both <code>fixed</code> and <code>sticky</code> are false then navbar is positioned as relative",
       },
       {
         prop: "sticky",
@@ -158,6 +158,13 @@ export default {
         default: "false",
         description:
           "If true navbar position is set to sticky. If both <code>fixed</code> and <code>sticky</code> are false then navbar is positioned as relative",
+      },
+      {
+        prop: "bottom",
+        type: "Boolean",
+        default: "false",
+        description:
+          "Places navbar on the bottom. Note: fixed must be also set to true",
       },
       {
         prop: "name",

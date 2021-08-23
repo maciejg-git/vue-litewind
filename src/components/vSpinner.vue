@@ -1,5 +1,12 @@
 <template>
-  <div :class="classes.spinner.value" role="status"></div>
+  <div
+    :class="classes.spinner.value"
+    role="status"
+    :style="{
+      '--spinner-thickness': thickness + 'em',
+      '--spinner-speed': speed + 's',
+    }"
+  ></div>
 </template>
 
 <script>
@@ -9,12 +16,14 @@ import { removeTailwindClasses } from "../tools/tools.js";
 
 export default {
   props: {
+    thickness: { type: String, default: "0.15" },
+    speed: { type: String, default: "0.75" },
     name: { type: String, default: "spinner" },
     theme: { type: String, default: "default" },
     styleSpinner: { type: String, default: "default" },
   },
   setup(props) {
-    let s = inject("styles")
+    let s = inject("styles");
 
     let elements = ["spinner"];
 
@@ -37,10 +46,10 @@ export default {
 <style scoped>
 .spinner-border {
   display: inline-block;
-  border: 0.15em solid;
+  border: var(--spinner-thickness) solid;
   border-right-color: transparent;
   border-radius: 50%;
-  animation: 0.75s linear infinite spinner-border;
+  animation: var(--spinner-speed) linear infinite spinner-border;
 }
 @keyframes spinner-border {
   to {

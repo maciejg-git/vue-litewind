@@ -1,5 +1,9 @@
 <template>
-  <v-navbar>Vue</v-navbar>
+  <v-navbar fixed style-navbar="default">
+    <!-- <div class="p-3"> -->
+      Vue
+    <!-- </div> -->
+  </v-navbar>
   <div class="sm:container mx-auto">
     item
     <v-tabs style-tab="default">
@@ -167,6 +171,14 @@
     <v-radio v-model="textModel" value="option 2"></v-radio>
     <v-radio v-model="textModel" value="option 3"></v-radio>
     <v-breadcrumb :path="linkItems"></v-breadcrumb>
+        <v-button style-button="default noMargin" class="relative mt-4 mr-4">
+          badge button
+          <v-badge
+              position="top-right"
+            style-badge="primary red circle"
+          >
+          </v-badge>
+        </v-button>
 
     <!-- <v-checkbox v-model="textModel"> -->
     <!--   <template #helper>input name</template> -->

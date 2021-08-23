@@ -501,6 +501,9 @@ let navbar = {
       "w-full",
       "bg-gray-100",
       "shadow-md",
+    ],
+    bottom: [
+      "border-t",
     ]
   }
 }
@@ -647,6 +650,7 @@ let dropdown = {
   },
   menuItemHeader: {
     default: [
+      "text-left",
       "font-semibold",
       "text-sm",
       "px-4",
@@ -800,6 +804,15 @@ let badge = {
       ...fixedBadge,
       "bg-gray-500",
       "text-white",
+    ],
+    circle: [
+      "rounded-full",
+      "border",
+      "border-white",
+      "w-4",
+      "h-4",
+      "px-0",
+      "py-0",
     ],
     green: [
       "bg-green-500",

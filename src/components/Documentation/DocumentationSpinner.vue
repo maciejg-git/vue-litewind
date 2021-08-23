@@ -46,17 +46,24 @@
     <h4>Example</h4>
     <div class="example">
       <div>
-        <v-spinner style-spinner="default blue small"></v-spinner>
-        <v-spinner class="ml-2"></v-spinner>
-        <v-spinner style-spinner="default blue" class="ml-2"></v-spinner>
-        <v-spinner style-spinner="default yellow" class="ml-2"></v-spinner>
-        <v-spinner style-spinner="default green" class="ml-2"></v-spinner>
+        <v-spinner style-spinner="default blue small" class="mr-10"></v-spinner>
+        <v-spinner style-spinner="default green" class="mr-10"></v-spinner>
         <v-spinner
           style-spinner="default yellow large"
-          class="ml-2"
+          class="mr-4"
         ></v-spinner>
       </div>
-      <div class="mt-4">
+        <div class="mt-10">
+        <v-spinner thickness="0.07" style-spinner="default" class="mr-4"></v-spinner>
+        <v-spinner thickness="0.2" style-spinner="default yellow" class="mr-4"></v-spinner>
+        <v-spinner thickness="0.35" style-spinner="default green" class="mr-4"></v-spinner>
+        </div>
+        <div class="mt-10">
+        <v-spinner speed="0.6" style-spinner="default blue" class="mr-4"></v-spinner>
+        <v-spinner speed="1.0" style-spinner="default green" class="mr-4"></v-spinner>
+        <v-spinner speed="1.5" style-spinner="default yellow" class="mr-4"></v-spinner>
+        </div>
+      <div class="mt-10">
         <v-button style-button="default no-margin" class="mr-2">
           <v-spinner style-spinner="default gray small"></v-spinner>
           <span class="ml-2">Button</span>
@@ -69,21 +76,25 @@
     </div>
     <pre>
       <code class="language-html">
-&lt;v-spinner style-spinner=&quot;default blue small&quot;&gt;&lt;/v-spinner&gt;
-&lt;v-spinner class=&quot;ml-2&quot;&gt;&lt;/v-spinner&gt;
-&lt;v-spinner style-spinner=&quot;default blue&quot; class=&quot;ml-2&quot;&gt;&lt;/v-spinner&gt;
-&lt;v-spinner style-spinner=&quot;default yellow&quot; class=&quot;ml-2&quot;&gt;&lt;/v-spinner&gt;
-&lt;v-spinner style-spinner=&quot;default green&quot; class=&quot;ml-2&quot;&gt;&lt;/v-spinner&gt;
+&lt;v-spinner style-spinner=&quot;default blue small&quot; class=&quot;mr-10&quot;&gt;&lt;/v-spinner&gt;
+&lt;v-spinner style-spinner=&quot;default green&quot; class=&quot;mr-10&quot;&gt;&lt;/v-spinner&gt;
 &lt;v-spinner
   style-spinner=&quot;default yellow large&quot;
-  class=&quot;ml-2&quot;
+  class=&quot;mr-4&quot;
 &gt;&lt;/v-spinner&gt;
+
+&lt;v-spinner thickness=&quot;0.1&quot; style-spinner=&quot;default&quot; class=&quot;mr-4&quot;&gt;&lt;/v-spinner&gt;
+&lt;v-spinner thickness=&quot;0.2&quot; style-spinner=&quot;default yellow&quot; class=&quot;mr-4&quot;&gt;&lt;/v-spinner&gt;
+&lt;v-spinner thickness=&quot;0.3&quot; style-spinner=&quot;default green&quot; class=&quot;mr-4&quot;&gt;&lt;/v-spinner&gt;
+
+&lt;v-spinner speed=&quot;0.6&quot; style-spinner=&quot;default blue&quot; class=&quot;mr-4&quot;&gt;&lt;/v-spinner&gt;
+&lt;v-spinner speed=&quot;1.0&quot; style-spinner=&quot;default green&quot; class=&quot;mr-4&quot;&gt;&lt;/v-spinner&gt;
+&lt;v-spinner speed=&quot;1.5&quot; style-spinner=&quot;default yellow&quot; class=&quot;mr-4&quot;&gt;&lt;/v-spinner&gt;
 
 &lt;v-button style-button=&quot;default no-margin&quot; class=&quot;mr-2&quot;&gt;
   &lt;v-spinner style-spinner=&quot;default gray small&quot;&gt;&lt;/v-spinner&gt;
   &lt;span class=&quot;ml-2&quot;&gt;Button&lt;/span&gt;
 &lt;/v-button&gt;
-
 &lt;v-button style-button=&quot;default secondary no-margin&quot;&gt;
   &lt;v-spinner style-spinner=&quot;default green small&quot;&gt;&lt;/v-spinner&gt;
   &lt;span class=&quot;ml-2&quot;&gt;Button&lt;/span&gt;
@@ -100,6 +111,18 @@ import hljs from "highlight.js";
 export default {
   setup(props) {
     let reference = ref([
+      {
+        prop: "thickness",
+        type: ["String"],
+        default: "0.15",
+        description: "Thickness of spinner in em units",
+      },
+      {
+        prop: "speed",
+        type: ["String"],
+        default: "0.75",
+        description: "Speed of spinner in seconds",
+      },
       {
         prop: "name",
         type: ["String"],

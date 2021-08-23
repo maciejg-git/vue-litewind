@@ -109,7 +109,7 @@ export default {
     styleCaption: { type: String, default: "default" },
   },
   setup(props, { slots, emit }) {
-    let style = inject("styles")
+    let style = inject("styles");
 
     let elements = [
       "table",
@@ -123,18 +123,15 @@ export default {
 
     let s = ["busy"];
 
-    let { styles, states } = useStyles(
-      style,
-      props,
-      elements,
-      s
-    );
+    let { styles, states } = useStyles(style, props, elements, s);
 
     let classes = {
       table: computed(() => {
         let c = [
           ...styles.table.value,
-          ...(props.state == "busy" ? states.table.busy : ""),
+          ...(props.state == "busy"
+            ? ["pointer-events-none", ...states.table.busy]
+            : ""),
         ];
         return removeTailwindClasses(c);
       }),
@@ -162,10 +159,6 @@ export default {
           ...styles.selected.value,
           props.selectionMode !== "" ? "cursor-pointer" : "",
         ];
-        return removeTailwindClasses(c);
-      }),
-      busy: computed(() => {
-        let c = [...styles.busy.value];
         return removeTailwindClasses(c);
       }),
       caption: computed(() => {
