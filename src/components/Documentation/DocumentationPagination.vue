@@ -158,14 +158,14 @@ export default {
         type: ["Number"],
         default: "undefined",
         description:
-          "Number of items per page. Component uses this value to compute number of pages to render. It is usually provided by another component that uses pagination for navigation",
+          "Number of items per page. Pagination uses this value to compute number of pages to render. It is usually provided by another component that uses pagination for navigation",
       },
       {
         prop: "items-count",
         type: ["Number"],
         default: "undefined",
         description:
-          "Total number of items. Component uses this value to compute number of pages to render. It is usually provided by another component that uses pagination for navigation",
+          "Total number of items. Pagination uses this value to compute number of pages to render. It is usually provided by another component that uses pagination for navigation",
       },
       {
         prop: "max-pages",
@@ -191,7 +191,7 @@ export default {
         prop: "theme",
         type: ["String"],
         default: "default",
-        description: "Theme to use",
+        description: "Name of the theme to apply to component",
       },
     ]);
 

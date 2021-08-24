@@ -35,7 +35,7 @@ export default {
     styleSeparator: { type: [String, Array], default: "default" },
   },
   setup(props) {
-    let s = inject("styles")
+    let s = inject("styles");
 
     let elements = ["breadcrumb", "separator"];
 

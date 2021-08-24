@@ -126,8 +126,7 @@ export default {
         prop: "v-model",
         type: ["Number", "String"],
         default: "undefined",
-        description:
-          "Data to display in table. Each element of Array is an Object. Single Object is one record (row) of data.",
+        description: "Range v-model",
       },
       {
         prop: "state",
@@ -146,7 +145,7 @@ export default {
         prop: "theme",
         type: ["String"],
         default: "default",
-        description: "Theme to use",
+        description: "Name of the theme to apply to component",
       },
     ]);
 

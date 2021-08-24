@@ -66,7 +66,7 @@ export default {
     stylePopover: { type: String, default: "default" },
     styleContent: { type: String, default: "default" },
   },
-  setup(props, { slots }) {
+  setup(props, { slots, emit }) {
     let s = inject("styles")
 
     let elements = ["popover", "content"];
@@ -142,6 +142,7 @@ export default {
       offsetY,
       noFlip,
       clickOutside,
+      emit,
     });
 
     return {

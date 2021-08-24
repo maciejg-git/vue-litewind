@@ -20,7 +20,7 @@
         w-64
       "
     >
-      <ul class="list-unstyled ml-2">
+      <ul class="list-unstyled ml-2 mt-4">
         <li>
           <router-link
             to="/documentation/installation"
@@ -117,7 +117,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin-top: 2em;
+  margin-top: 1em;
 }
 a.active {
   @apply inline-block font-semibold hover:bg-gray-100 py-1 pr-4 pl-4;

@@ -147,7 +147,7 @@ export default {
         prop: "theme",
         type: ["String"],
         default: "default",
-        description: "Theme to use",
+        description: "Name of the theme to apply to component",
       },
     ]);
 

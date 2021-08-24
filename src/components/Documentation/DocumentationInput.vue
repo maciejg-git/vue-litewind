@@ -133,13 +133,13 @@ export default {
         prop: "v-model",
         type: ["String"],
         default: "undefined",
-        description: "input v-model",
+        description: "Input v-model",
       },
       {
         prop: "type",
         type: ["String"],
         default: "text",
-        description: "Type of input element eg. text, password",
+        description: "Type of input element eg. text, password, search etc",
       },
       {
         prop: "state",
@@ -158,7 +158,7 @@ export default {
         prop: "theme",
         type: ["String"],
         default: "default",
-        description: "Theme to use",
+        description: "Name of the theme to apply to component",
       },
     ]);
 

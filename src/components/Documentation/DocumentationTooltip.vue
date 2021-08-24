@@ -149,7 +149,7 @@ export default {
   directives: {
     tooltip,
   },
-  setup(props) {
+  setup() {
     let reference = ref([
       {
         modifier: "position",

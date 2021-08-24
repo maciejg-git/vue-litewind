@@ -117,11 +117,11 @@ let component = {
 </template>
 
 <script>
-import { ref, reactive, onMounted } from "vue";
+import { onMounted } from "vue";
 import hljs from "highlight.js";
 
 export default {
-  setup(props) {
+  setup() {
     onMounted(() => {
       hljs.highlightAll();
     });

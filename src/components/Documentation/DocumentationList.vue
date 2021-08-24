@@ -206,7 +206,7 @@ export default {
         prop: "tag",
         type: ["String"],
         default: "div",
-        description: "Defines tag to use in list item child component",
+        description: "Defines tag to use in list item child component (for example 'div', 'a' or 'button')",
       },
       {
         prop: "name",
@@ -218,7 +218,7 @@ export default {
         prop: "theme",
         type: ["String"],
         default: "default",
-        description: "Theme to use",
+        description: "Name of the theme to apply to component",
       },
     ]);
 

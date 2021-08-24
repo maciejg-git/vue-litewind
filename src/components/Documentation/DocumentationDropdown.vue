@@ -293,7 +293,7 @@ export default {
         type: ["String"],
         default: "bottom-start",
         description:
-          "Initial placement of dropdown content. Valid values are the same as for <a href='https://popper.js.org/docs/v2/' class='link'>Popperjs</a>",
+          "Initial placement of dropdown content. See valid values in <a href='https://popper.js.org/docs/v2/constructors/' class='link'>Popperjs documentation</a>",
       },
       {
         prop: "offsetX",
@@ -314,7 +314,7 @@ export default {
         type: ["Boolean"],
         default: "false",
         description:
-          "Allows fliping to another placement if dropdown content is outside of screen bounds",
+          "Allows fliping dropdown to opposite placement if outside of current view",
       },
       {
         prop: "auto-close-menu",
@@ -339,7 +339,7 @@ export default {
         prop: "theme",
         type: ["String"],
         default: "default",
-        description: "Theme to use",
+        description: "Name of the theme to apply to component",
       },
     ]);
 

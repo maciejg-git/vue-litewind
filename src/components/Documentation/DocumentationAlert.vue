@@ -140,7 +140,7 @@ export default {
         prop: "v-model",
         type: ["Boolean"],
         default: "false",
-        description: "If true alert is visible",
+        description: "Visiblity state of alert",
       },
       {
         prop: "dismiss-delay",
@@ -159,7 +159,7 @@ export default {
         prop: "theme",
         type: ["Array"],
         default: "undefined",
-        description: "Theme to use",
+        description: "Name of theme to apply to component",
       },
     ]);
 

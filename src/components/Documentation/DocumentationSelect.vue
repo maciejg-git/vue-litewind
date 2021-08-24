@@ -56,6 +56,20 @@
     </v-table>
   </section>
 
+  <h6>Slots</h6>
+  <p></p>
+  <v-table
+    :items="referenceSlots"
+    :definition="referenceSlotsDefinition"
+    style-table="default fixed"
+    style-header-cell="default bordered"
+    style-cell="default bordered"
+  >
+    <template #cell:description="{ value }">
+      <span v-html="value"></span>
+    </template>
+  </v-table>
+
   <section>
     <h4>Example</h4>
     <div class="example">
@@ -65,8 +79,12 @@
           :type="example.type"
           :state="example.state"
           :options="options"
-          class="w-40"
+          class="w-52"
         >
+        <template #options-prepend>
+          <option value="option (prepend slot)">option (prepend slot)</option>
+        </template>
+        <option value="option (default slot)">option (default slot)</option>
         </v-select>
       </div>
       <div class="mt-4">
@@ -76,9 +94,8 @@
           :state="example.state"
           :options="options"
           :multiple="true"
-          class="w-40"
-        >
-        </v-select>
+          class="w-52"
+        ></v-select>
       </div>
       <v-tabs theme="material" class="mt-10">
         <v-tab name="Props">
@@ -87,7 +104,9 @@
             <v-input type="text" id="model" v-model="example.model"></v-input>
           </div>
           <div class="mb-2">
-            <label for="model-multiple" class="font-semibold">v-model (multiple):</label>
+            <label for="model-multiple" class="font-semibold">
+              v-model (multiple):
+            </label>
             <v-input
               type="text"
               id="model-multiple"
@@ -132,6 +151,10 @@
   :options=&quot;options&quot;
   class=&quot;w-40&quot;
 &gt;
+  &lt;template #options-prepend&gt;
+    &lt;option value=&quot;option (prepend slot)&quot;&gt;option (prepend slot)&lt;/option&gt;
+  &lt;/template&gt;
+  &lt;option value=&quot;option (default slot)&quot;&gt;option (default slot)&lt;/option&gt;
 &lt;/v-select&gt;
 
 &lt;v-select
@@ -177,14 +200,14 @@ export default {
         prop: "v-model",
         type: ["String"],
         default: "undefined",
-        description: "select v-model",
+        description: "Select v-model",
       },
       {
         prop: "options",
         type: ["Array"],
-        default: "text",
+        default: "undefined",
         description:
-          "Array of options to display in select element. Each option is <code class='code-word'>Object</code> with <code class='code-word'>value</code> and <code class='code-word'>label</code> properties",
+          "Array of options to display in select element. Each option is <code class='code-word'>Object</code> with <code class='code-word'>value</code> and <code class='code-word'>label</code> properties. This prop is optional, you can use default slot to add options instead",
       },
       {
         prop: "state",
@@ -203,7 +226,7 @@ export default {
         prop: "theme",
         type: ["String"],
         default: "default",
-        description: "Theme to use",
+        description: "Name of the theme to apply to component",
       },
     ]);
 
@@ -262,8 +285,12 @@ export default {
 
     let referenceSlots = ref([
       {
-        slot: "helper",
-        description: "This component does not provide any slots.",
+        slot: "options-prepend",
+        description: "Slot for additional options (added before options from options prop)",
+      },
+      {
+        slot: "default",
+        description: "Slot for additional options (added after options from options prop)",
       },
     ]);
 
@@ -314,7 +341,7 @@ export default {
         value: "option 3",
         label: "option 3",
       },
-    ])
+    ]);
 
     onMounted(() => {
       hljs.highlightAll();

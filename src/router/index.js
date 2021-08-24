@@ -40,8 +40,8 @@ import DocumentationStyling from "../components/Documentation/DocumentationStyli
 const routes = [
   {
     path: "/",
-    component: Test,
-    // redirect: "/documentation/installation",
+    // component: Test,
+    redirect: "/documentation/installation",
   },
   {
     path: "/documentation",

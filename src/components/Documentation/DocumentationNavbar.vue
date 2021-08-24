@@ -164,7 +164,7 @@ export default {
         type: "Boolean",
         default: "false",
         description:
-          "Places navbar on the bottom. Note: fixed must be also set to true",
+          "Places navbar on the bottom. <span class='font-semibold'>Note</span>: fixed must be also set to true",
       },
       {
         prop: "name",
@@ -176,7 +176,7 @@ export default {
         prop: "theme",
         type: "String",
         default: "default",
-        description: "Theme to use",
+        description: "Name of the theme to apply to component",
       },
     ]);
 

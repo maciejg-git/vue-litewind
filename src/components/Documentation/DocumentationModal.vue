@@ -422,20 +422,20 @@ export default {
         prop: "position",
         type: ["String"],
         default: "top",
-        description: "Modal position. Valid values are: 'top', 'center'",
+        description: "Modal position. Valid values are: 'top' or 'center'",
       },
       {
         prop: "size",
         type: ["String"],
         default: "md",
-        description: "Modal size. Valid values are: 'sm', 'md', 'lg', 'xl'",
+        description: "Modal size. Valid values are: 'sm', 'md', 'lg' or 'xl'",
       },
       {
         prop: "transition",
         type: ["String"],
         default: "fade-slide",
         description:
-          "Sets animation effect when showing or hiding modal. Valid values are: 'fade', 'fade-slide', 'fade-scale'",
+          "Sets animation effect when showing or hiding modal. Valid values are: 'fade', 'fade-slide' or 'fade-scale'",
       },
       {
         prop: "name",
@@ -447,7 +447,7 @@ export default {
         prop: "theme",
         type: ["String"],
         default: "default",
-        description: "Theme to use",
+        description: "Name of the theme to apply to component",
       },
     ]);
 

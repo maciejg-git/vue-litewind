@@ -188,7 +188,7 @@ export default {
         type: ["Boolean"],
         default: "undefined",
         description:
-          "Set v-model to true or false to show or hide collapsible element",
+          "Setting v-model to <code>true</code> shows collapsible element, <code>false </code>value hides it",
       },
     ]);
 

@@ -235,7 +235,7 @@ export default {
         type: ["String"],
         default: "auto",
         description:
-          "Initial placement of popover. Valid values are same as for Popperjs",
+          "Initial placement of popover. Valid values are same as for <a href='https://popper.js.org/docs/v2/constructors/' class='link'>Popperjs</a>",
       },
       {
         prop: "trigger",
@@ -284,7 +284,7 @@ export default {
         prop: "theme",
         type: ["String"],
         default: "default",
-        description: "Theme to use",
+        description: "Name of the theme to apply to component",
       },
     ]);
 

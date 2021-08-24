@@ -269,7 +269,7 @@ export default {
         prop: "fill",
         type: ["Boolean"],
         default: "false",
-        description: "Makes tabs fill tab bar",
+        description: "Tabs fill full width of tab bar",
       },
       {
         prop: "center",
@@ -300,7 +300,7 @@ export default {
         prop: "theme",
         type: ["String"],
         default: "default",
-        description: "Theme to use",
+        description: "Name of the theme to apply to component",
       },
     ]);
 
@@ -326,7 +326,7 @@ export default {
     let referenceStyles = ref([
       {
         prop: "style-tab-bar",
-        description: "Tab bar styles",
+        description: "Tab bar style",
       },
       {
         prop: "style-tab",

@@ -613,30 +613,27 @@ let colors = ["blue", "indigo", "red", "yellow", "pink", "green", "gray"];
 let shadeless = ["transparent", "current", "black", "white"];
 // prettier-ignore
 let colorProps = [
-  "bg", "text", "ring", "ring-offset", "border", "from", "to", "via",
+  "bg", "text", "ring", "ring-offset", "border", "from", "to", "via", "divide"
 ];
-let colorIndex = 200;
+let index = 200;
 
 let opacity = [0, 5, 10, 20, 25, 30, 40, 50, 60, 70, 75, 80, 90, 95, 100];
 // prettier-ignore
 let opacityProps = [
   "opacity", "ring-opacity", "divide-opacity", "border-opacity",  "placeholder-opacity", "text-opacity", "bg-opacity",
 ];
-let opacityIndex = 300;
 
 // prettier-ignore
 let blend = [
   "normal", "multiply", "screen", "overlay", "darken", "lighten", "color-dodge", "color-burn", "hard-light", "soft-light", "difference", "exclusion", "hue",  "saturation", "color", "luminosity",
 ];
 let blendProps = ["mix-blend", "bg-blend"];
-let blendIndex = 44;
 
 // prettier-ignore
 let padding = [
   0, "px", "0.5", 1, "1.5", 2, "2.5", 3, "3.5", 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96,
 ];
 let paddingProps = ["p", "px", "py", "pt", "pr", "pb", "pl"];
-let paddingIndex = 46;
 
 // prettier-ignore
 let margin = [
@@ -646,13 +643,11 @@ let margin = [
 let marginProps = [
   ["m", "-m"], ["mx", "-mx"], ["my", "-my"], ["mt", "-mt"], ["mr", "-mr"],  ["mb", "-mb"], ["ml", "-ml"],
 ];
-let marginIndex = 54;
 
 // prettier-ignore
 let width = [
   0, "px", "0.5", 1, "1.5", 2, "2.5", 3, "3.5", 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96, "auto", "1/2", "1/3", "2/3", "1/4", "2/4", "3/4", "1/5", "2/5", "3/5", "4/5", "1/6", "2/6", "3/6", "4/6", "5/6", "1/12", "2/12", "3/12", "4/12", "5/12", "6/12", "7/12", "8/12", "9/12", "10/12", "11/12", "full", "screen", "min", "max"
 ]
-let widthIndex = 10;
 
 // prettier-ignore
 let position = [
@@ -664,117 +659,111 @@ let insetProps = [["inset", "-inset"], ["inset-x", "-inset-x"], ["inset-y", "-in
 let positionProps = [
   ["top", "-top"], ["right", "-right"], ["bottom", "-bottom"], ["left", "-left"],
 ];
-let insetIndex = 400;
-let positionIndex = 410;
 
 let rounded = ["", "none", "sm", "md", "lg", "xl", "2xl", "3xl", "full"];
 // prettier-ignore
 let roundedProps = [
   "rounded", "rounded-t", "rounded-r", "rounded-b", "rounded-l", "rounded-tl", "rounded-tr", "rounded-br", "rounded-bl", 
 ]
-let roundedIndex = 500;
 
 // prettier-ignore
 let gap = [
   0, "px", "0.5", 1, "1.5", 2, "2.5", 3, "3.5", 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96,
 ]
 let gapProps = ["gap", "gap-x", "gap-y"];
-let gapIndex = 600;
 
 let borderProps = ["border", "border-t", "border-r", "border-b", "border-l"]
 let border = ["", 0, 2, 4, 8];
-let borderIndex = 700;
 
 let height = [
   0, "px", "0.5", 1, "1.5", 2, "2.5", 3, "3.5", 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96, "auto", "1/2", "1/3", "2/3", "1/4", "2/4", "3/4", "1/5", "2/5", "3/5", "4/5", "1/6", "2/6", "3/6", "4/6", "5/6", "full", "screen"
 ]
-let heightIndex = 800;
 
 for (let prop of colorProps) {
   for (let c of colors) {
     for (let s of shades) {
-      tailwindClassList[prop + "-" + c + "-" + s] = colorIndex;
+      tailwindClassList[prop + "-" + c + "-" + s] = index;
     }
   }
   for (let c of shadeless) {
-    tailwindClassList[prop + "-" + c] = colorIndex;
+    tailwindClassList[prop + "-" + c] = index;
   }
-  colorIndex++;
+  index++;
 }
 
 for (let prop of opacityProps) {
   for (let o of opacity) {
-    tailwindClassList[prop + "-" + o] = opacityIndex;
+    tailwindClassList[prop + "-" + o] = index;
   }
-  opacityIndex++;
+  index++;
 }
 
 for (let prop of blendProps) {
   for (let b of blend) {
-    tailwindClassList[prop + "-" + b] = blendIndex;
+    tailwindClassList[prop + "-" + b] = index;
   }
-  blendIndex++;
+  index++;
 }
 
 for (let prop of paddingProps) {
   for (let p of padding) {
-    tailwindClassList[prop + "-" + p] = paddingIndex;
+    tailwindClassList[prop + "-" + p] = index;
   }
-  paddingIndex++;
+  index++;
 }
 
 for (let prop of marginProps) {
   for (let m of margin) {
-    tailwindClassList[prop[0] + "-" + m] = marginIndex;
-    tailwindClassList[prop[1] + "-" + m] = marginIndex;
+    tailwindClassList[prop[0] + "-" + m] = index;
+    tailwindClassList[prop[1] + "-" + m] = index;
   }
-  marginIndex++;
+  index++;
 }
 
 for (let w of width) {
-  tailwindClassList["w-" + w] = widthIndex;
+  tailwindClassList["w-" + w] = index;
 }
-widthIndex++;
+index++;
 
 for (let prop of insetProps) {
   for (let p of position) {
-    tailwindClassList[prop[0] + "-" + p] = insetIndex;
-    tailwindClassList[prop[1] + "-" + p] = insetIndex;
+    tailwindClassList[prop[0] + "-" + p] = index;
+    tailwindClassList[prop[1] + "-" + p] = index;
   }
-  insetIndex++;
+  index++;
 }
 
 for (let prop of positionProps) {
   for (let p of position) {
-    tailwindClassList[prop[0] + "-" + p] = positionIndex;
-    tailwindClassList[prop[1] + "-" + p] = positionIndex;
+    tailwindClassList[prop[0] + "-" + p] = index;
+    tailwindClassList[prop[1] + "-" + p] = index;
   }
-  positionIndex++;
+  index++;
 }
 
 for (let prop of roundedProps) {
   for (let r of rounded) {
-    tailwindClassList[prop + (r ? "-" + r : "")] = roundedIndex;
+    tailwindClassList[prop + (r ? "-" + r : "")] = index;
   }
-  roundedIndex++;
+  index++;
 }
 
 for (let prop of gapProps) {
   for (let p of gap) {
-    tailwindClassList[prop + "-" + p] = gapIndex;
+    tailwindClassList[prop + "-" + p] = index;
   }
-  gapIndex++;
+  index++;
 }
 
 for (let prop of borderProps) {
   for (let b of border) {
-    tailwindClassList[prop + (b ? "-" + b : "")] = borderIndex;
+    tailwindClassList[prop + (b ? "-" + b : "")] = index;
   }
-  borderIndex++;
+  index++;
 }
 
 for (let h of height) {
-  tailwindClassList["h" + "-" + h] = heightIndex;
+  tailwindClassList["h" + "-" + h] = index;
 }
 
 export { tailwindClassList };
@@ -794,7 +783,6 @@ export { tailwindClassList };
 // text overflow
 // divide width
 // gradient color stops
-
 // divide color
 
 // space between

@@ -122,7 +122,7 @@ export default {
         prop: "tag",
         type: ["String"],
         default: "button",
-        description: "Tag of button element. Valid values are: 'button', 'a'",
+        description: "Tag of button element. Valid values are: 'button' or 'a'",
       },
       {
         prop: "disabled",
@@ -146,7 +146,7 @@ export default {
         prop: "theme",
         type: ["String"],
         default: "default",
-        description: "Theme to use",
+        description: "Name of the theme to apply to component",
       },
     ]);
 

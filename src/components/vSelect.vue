@@ -1,6 +1,6 @@
 <template>
   <select v-bind="$attrs" v-model="localModel" :class="classes.select.value">
-    <slot name="option-prepend"></slot>
+    <slot name="options-prepend"></slot>
     <option
       v-for="(o, i) in options"
       :key="i"
@@ -29,7 +29,7 @@ export default {
   },
   emits: ["update:modelValue"],
   setup(props, { attrs, emit }) {
-    let style = inject("styles")
+    let style = inject("styles");
 
     let elements = ["select"];
 

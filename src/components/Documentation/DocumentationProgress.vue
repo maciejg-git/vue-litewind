@@ -288,7 +288,7 @@ export default {
         type: ["Boolean"],
         default: "false",
         description:
-          "Renders indeterminate progress bar. Note: value, max, label, precision and transition props are ignored if indeterminate is true",
+          "Renders indeterminate progress bar. <span class='font-semibold'>Note</span>: value, max, label, precision and transition props are ignored if indeterminate is true",
       },
       {
         prop: "indeterminate-width",
@@ -301,7 +301,7 @@ export default {
         type: ["String"],
         default: "linear",
         description:
-          "Value of animation-timing-function property. Valid values are: 'linear', 'ease', 'ease-in', 'ease-out', 'ease-in-out'",
+          "Value of animation-timing-function property. Valid values are: 'linear', 'ease', 'ease-in', 'ease-out' or 'ease-in-out'",
       },
       {
         prop: "indeterminate-speed",
@@ -320,7 +320,7 @@ export default {
         prop: "theme",
         type: ["String"],
         default: "default",
-        description: "Theme to use",
+        description: "Name of the theme to apply to component",
       },
     ]);
 
