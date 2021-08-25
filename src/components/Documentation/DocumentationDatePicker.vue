@@ -353,7 +353,7 @@ export default {
         prop: "v-model",
         type: ["Array", "String"],
         description:
-          "v-model is used to return date after selection. Date is formatted as ISO",
+          "v-model is used to return date after selection. Date is in YYYY-MM-DD format",
       },
       {
         prop: "range",
