@@ -58,7 +58,7 @@
 
   <section>
     <h4>Example</h4>
-    <p>For more examples see <a href="">table component</a>.</p>
+    <p>For more examples see <a class="link" href="/documentation/table">table component</a>.</p>
     <div class="example">
       <v-pagination
         v-model="example.page"

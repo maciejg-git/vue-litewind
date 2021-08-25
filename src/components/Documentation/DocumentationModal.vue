@@ -528,12 +528,12 @@ export default {
     let referenceSlots = ref([
       {
         slot: "default",
-        description: "Modal content",
+        description: "Slot for modal content",
       },
       {
         slot: "footer",
         description:
-          "Modal footer content. Use this slot to place non standard buttons",
+          "Modal footer content",
       },
     ]);
 

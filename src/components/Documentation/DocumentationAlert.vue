@@ -219,7 +219,7 @@ export default {
     let referenceSlots = ref([
       {
         slot: "default",
-        description: "Default slot for alert content",
+        description: "Slot for alert content",
       },
     ]);
 

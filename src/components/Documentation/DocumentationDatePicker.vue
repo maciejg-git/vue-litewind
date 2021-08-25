@@ -500,7 +500,7 @@ export default {
       {
         prop: "style-adjecent-month-day",
         description:
-          "Days from adjacent months (enable widh adjacent-months prop)",
+          "Days from adjacent months",
       },
       {
         prop: "style-footer",

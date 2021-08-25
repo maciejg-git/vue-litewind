@@ -224,7 +224,7 @@ export default {
     let referenceSlots = ref([
       {
         slot: "default",
-        description: "Default slot for card content",
+        description: "Slot for card content",
       },
     ]);
 

@@ -76,6 +76,22 @@ app.provide("styles", {
 })
     </code>
   </pre>
+  <p><span class="font-semibold">[Option]</span> You can import additional styles</p>
+    <pre>
+      <code class="language-js">
+// main.js
+
+import { styles } from "./styles";
+import { stylesMaterial } from "./styles";
+
+let app = createApp(App);
+
+app.provide("styles", {
+  default: styles,
+  material: stylesMaterial,
+})
+    </code>
+  </pre>
   </section>
 
   <section>
@@ -113,6 +129,52 @@ let component = {
 }
     </code>
   </pre>
+  <p>In order to apply those styles to components use following props:
+  <ul>
+    <li class="my-4">theme - sets active theme from themes defined in main.js. Every component by default uses 'default' theme if this prop is not set</li>
+    <pre>
+      <code class="language-js">
+app.provide("styles", {
+  default: styles,
+  material: stylesMaterial, // &lt;-- theme
+})
+    </code>
+  </pre>
+    <pre>
+      <code class="language-html">
+{{`<v-card theme="material"></v-card>`}}
+    </code>
+  </pre>
+    <li class="my-4">name - name of the component used to get styles from theme. Default name is component name (for example 'button' for v-button). You can set any name that is defined in styles file. This can be useful if you do not want to modify default styles, experiment, using the same component for different purposes etc </li>
+    <li class="my-4">style-[element] - this prop is a list of variants to apply to [element] of component. Variant is a collection of Tailwind classes. By default if not set then element uses only 'default' variant. If variant is not found then it is added as class. This can be useful for adding minor variants or prototyping.</li>
+    <pre>
+      <code class="language-js">
+let productCard = { // &lt;-- name
+  card: { // &lt;-- element
+    default: [ // &lt;-- variant
+      "bg-white",
+      "border",
+      "border-gray-200",
+      "rounded",
+      "overflow-hidden",
+    ],
+    shadow: [ // &lt;-- variant
+      "shadow-md",
+    ],
+    square: [ // &lt;-- variant
+      "rounded-none",
+    ],
+  }
+}
+    </code>
+  </pre>
+    <pre>
+      <code class="language-html">
+{{`<v-card name="productCard" style-card="default shadow square"></v-card>`}}
+    </code>
+  </pre>
+  </ul>
+  </p>
   </section>
 </template>
 

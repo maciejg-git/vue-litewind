@@ -226,7 +226,7 @@ export default {
     let referenceSlots = ref([
       {
         slot: "default",
-        description: "Badge content",
+        description: "Slot for badge content",
       },
     ]);
 

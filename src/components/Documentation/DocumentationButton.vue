@@ -206,7 +206,7 @@ export default {
     let referenceSlots = ref([
       {
         slot: "default",
-        description: "Button content",
+        description: "Slot for button content",
       },
     ]);
 
