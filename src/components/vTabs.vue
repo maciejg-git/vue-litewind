@@ -8,7 +8,7 @@
       >
         <a
           href=""
-          :class="active == i ? classes.tabActive.value : classes.tab.value"
+          :class="[classes.tab.value, active == i ? states.tab.active : '']"
           @click.prevent="handleClickTab(i)"
         >
           <VNodes :vnodes="tabName(tab)" />
@@ -41,20 +41,23 @@ export default {
     },
   },
   setup(props, { emit }) {
-    let { classes } = useStyles(props, {
+    let { classes, states } = useStyles(props, {
       tabBar: {
         fixed: "fixed-tab-bar",
-        prop: computed(() => props.center ? "justify-center" : props.right ? "justify-end" : "")
+        prop: computed(() =>
+          props.center ? "justify-center" : props.right ? "justify-end" : ""
+        ),
       },
       tab: {
         fixed: "fixed-tab",
-        prop: computed(() => props.fill ? "w-full" : "")
+        states: ["active"],
+        prop: computed(() => (props.fill ? "w-full" : "")),
       },
       tabActive: {
         fixed: "fixed-tab-active",
-        prop: computed(() => props.fill ? "w-full" : "")
+        prop: computed(() => (props.fill ? "w-full" : "")),
       },
-    })
+    });
 
     let tabs = ref([]);
     let active = ref(0);
@@ -96,6 +99,7 @@ export default {
 
     return {
       classes,
+      states,
       tabs,
       tabName,
       active,
@@ -107,15 +111,15 @@ export default {
 
 <style scoped>
 .fixed-tab-bar {
-  @apply flex flex-auto
+  @apply flex flex-auto;
 }
 .fixed-tab {
-  @apply block
+  @apply block;
 }
 .fixed-tab-active {
-  @apply block
+  @apply block;
 }
 .fixed-tab-wrapper {
-  @apply flex flex-auto
+  @apply flex flex-auto;
 }
 </style>

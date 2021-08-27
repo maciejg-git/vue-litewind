@@ -3,14 +3,19 @@
     v-bind="$attrs"
     v-model="localModel"
     :type="type"
-    :class="classes.input.value"
+    :class="[
+      classes.input.value,
+      states.input[state],
+      attrs.disabled === '' || attrs.disabled === true
+        ? states.input.disabled
+        : '',
+    ]"
   />
 </template>
 
 <script>
-import { computed, inject } from "vue";
-import useStyles from "./composition/use-styles";
-import { removeTailwindClasses } from "../tools/tools.js";
+import { computed } from "vue";
+import useStyles from "./composition/use-styles 2";
 
 export default {
   props: {
@@ -23,39 +28,11 @@ export default {
   },
   emits: ["update:modelValue"],
   setup(props, { attrs, emit }) {
-    let style = inject("styles")
-
-    let elements = ["input"];
-
-    let s = ["valid", "invalid", "disabled"];
-
-    let { styles, states } = useStyles(
-      style,
-      props,
-      elements,
-      s
-    );
-
-    let classes = {
-      input: computed(() => {
-        let c = [
-          ...styles.input.value,
-          ...(props.state == "valid" || props.state === true
-            ? states.input.valid
-            : props.state == "invalid" || props.state === false
-            ? states.input.invalid
-            : props.state == "normal" ||
-              props.state === null ||
-              props.state === undefined
-            ? ""
-            : ""),
-          ...(attrs.disabled === "" || attrs.disabled === true
-            ? states.input.disabled
-            : ""),
-        ];
-        return removeTailwindClasses(c);
-      }),
-    };
+    let { classes, states } = useStyles(props, {
+      input: {
+        states: ["valid", "invalid", "disabled"],
+      },
+    });
 
     let localModel = computed({
       get() {
@@ -68,7 +45,9 @@ export default {
 
     return {
       classes,
+      states,
       localModel,
+      attrs,
     };
   },
 };

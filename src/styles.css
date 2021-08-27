@@ -19,7 +19,6 @@
     hover:bg-indigo-600
     focus:ring-indigo-200
 }
-
 .button-primary {
   @apply
     button-fixed;
@@ -28,7 +27,6 @@
     hover:bg-indigo-600
     focus:ring-indigo-200
 }
-
 .button-secondary {
   @apply
     button-fixed;
@@ -37,72 +35,61 @@
     hover:bg-gray-600
     focus:ring-gray-200
 }
-
-.button-link {
-  @apply 
-    focus:outline-none
-}
-
-.button-yellow {
-  @apply
-    bg-yellow-500
-    hover:bg-yellow-600
-    focus:ring-yellow-200
-}
-
-.button-green {
-  @apply
-    bg-green-500
-    hover:bg-green-600
-    focus:ring-green-200
-}
-
-.button-red {
-  @apply
-    bg-red-500
-    hover:bg-red-600
-    focus:ring-red-200
-}
-
-.button-outline {
-  @apply
-    border
-    border-blue-500
-    bg-transparent
-    hover:bg-transparent
-    text-blue-500
-}
-
-.button-small {
-  @apply
-    py-1
-}
-
-.button-tiny {
-  @apply
-    py-0.5
-    text-sm
-}
-
-.button-large {
-  @apply
-    py-2.5
-}
-
-.button-square {
-  @apply
-    rounded-none
-}
-
-.button-pill {
-  @apply
-    rounded-full
-}
-
-.button-uppercase {
-  @apply
-    uppercase
-}
+    .button-link {
+      @apply 
+        focus:outline-none
+    }
+    .button-yellow {
+      @apply
+        bg-yellow-500
+        hover:bg-yellow-600
+        focus:ring-yellow-200
+    }
+    .button-green {
+      @apply
+        bg-green-500
+        hover:bg-green-600
+        focus:ring-green-200
+    }
+    .button-red {
+      @apply
+        bg-red-500
+        hover:bg-red-600
+        focus:ring-red-200
+    }
+    .button-outline {
+      @apply
+        border
+        border-blue-500
+        bg-transparent
+        hover:bg-transparent
+        text-blue-500
+    }
+    .button-small {
+      @apply
+        py-1
+    }
+    .button-tiny {
+      @apply
+        py-0.5
+        text-sm
+    }
+    .button-large {
+      @apply
+        py-2.5
+    }
+    .button-square {
+      @apply
+        rounded-none
+    }
+    .button-pill {
+      @apply
+        rounded-full
+    }
+    .button-uppercase {
+      @apply
+        uppercase
+    }
 
 .tabs-tab-fixed {
   @apply
@@ -125,11 +112,17 @@
     bg-gray-100
     hover:bg-gray-50
 }
-
-.tabs-tab-small {
-  @apply
-    p-0
-}
+    .tabs-tab-small {
+      @apply
+        p-0
+    }
+    .tabs-tab-active-state {
+      @apply
+        bg-white
+        hover:bg-white
+        shadow-none;
+      border-bottom-color: transparent;
+    }
 
 .tabs-tabActive-default {
   @apply
@@ -139,6 +132,10 @@
     shadow-none;
   border-bottom-color: transparent;
 }
+    .tabs-tabActive-small {
+      @apply
+        p-0
+    }
 
 .tabs-tabBar-default {
   @apply
@@ -173,22 +170,19 @@
     py-2
     px-2
 }
-
-.table-headerCell-bordered {
-  @apply
-    border
-}
-
-.table-headerCell-dark {
-  @apply
-    bg-gray-700
-    text-white
-}
-
-.table-headerCell-light {
-  @apply
-    bg-gray-100
-}
+    .table-headerCell-bordered {
+      @apply
+        border
+    }
+    .table-headerCell-dark {
+      @apply
+        bg-gray-700
+        text-white
+    }
+    .table-headerCell-light {
+      @apply
+        bg-gray-100
+    }
 
 .table-row {
 
@@ -204,7 +198,6 @@
     px-2
     pr-6
 }
-
 .table-cell-bordered {
   @apply
     border
@@ -401,6 +394,20 @@
     focus:border-gray-400
     outline-none
 }
+    .input-valid-state {
+      @apply
+        border-green-300
+        focus:ring-green-200
+    }
+    .input-invalid-state {
+      @apply
+        border-red-300
+        focus:ring-red-200
+    }
+    .input-disabled-state {
+      @apply
+        opacity-50
+    }
 
 .textarea-default {
   @apply

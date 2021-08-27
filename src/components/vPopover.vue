@@ -28,18 +28,9 @@
 </template>
 
 <script>
-import {
-  ref,
-  toRefs,
-  reactive,
-  computed,
-  onMounted,
-  watchEffect,
-  inject,
-} from "vue";
-import useStyles from "./composition/use-styles";
+import { ref, toRefs, reactive, onMounted, watchEffect } from "vue";
+import useStyles from "./composition/use-styles 2";
 import usePopper from "./composition/use-popper.js";
-import { removeTailwindClasses } from "../tools/tools.js";
 import { correctPlacement } from "../const.js";
 
 export default {
@@ -67,22 +58,10 @@ export default {
     styleContent: { type: String, default: "default" },
   },
   setup(props, { slots, emit }) {
-    let s = inject("styles")
-
-    let elements = ["popover", "content"];
-
-    let { styles } = useStyles(s, props, elements);
-
-    let classes = {
-      popover: computed(() => {
-        let c = [...styles.popover.value];
-        return removeTailwindClasses(c);
-      }),
-      content: computed(() => {
-        let c = [...styles.content.value];
-        return removeTailwindClasses(c);
-      }),
-    };
+    let { classes } = useStyles(props, {
+      popover: null,
+      content: null,
+    });
 
     let popover = ref(null);
     let activatorId = null;
