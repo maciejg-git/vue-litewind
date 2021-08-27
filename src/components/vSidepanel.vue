@@ -24,10 +24,9 @@
 </template>
 
 <script>
-import { ref, computed, watch, inject } from "vue";
+import { ref, computed, watch } from "vue";
 import vCloseButton from "./vCloseButton.vue";
-import useStyles from "./composition/use-styles";
-import { removeTailwindClasses } from "../tools/tools.js";
+import useStyles from "./composition/use-styles 2";
 
 export default {
   props: {
@@ -45,26 +44,13 @@ export default {
     vCloseButton,
   },
   setup(props, { emit }) {
-    let s = inject("styles")
-
-    let elements = ["sidepanel", "closeButton"];
-
-    let { styles } = useStyles(s, props, elements);
-
-    let fixedClass = {
-      panel: ["fixed", "h-full", "top-0", "z-20"],
-    };
-
-    let classes = {
-      sidepanel: computed(() => {
-        let c = [
-          ...fixedClass.panel,
-          ...styles.sidepanel.value,
-          props.sidebarLeft ? "left-0" : "right-0",
-        ];
-        return removeTailwindClasses(c);
-      }),
-    };
+    let { classes } = useStyles(props, {
+      sidepanel: {
+        fixed: "fixed-sidepanel",
+        prop: computed(() => props.sidebarLeft ? "left-0" : "right-0")
+      },
+      closeButton: null,
+    })
 
     let isShow = ref(false);
 
@@ -91,7 +77,6 @@ export default {
 
     return {
       classes,
-      styles,
       isShow,
       close,
       handleClose,
@@ -101,10 +86,8 @@ export default {
 </script>
 
 <style scoped>
-.v-shadow-panel {
-  -webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.35);
-  -moz-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.35);
-  box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.35);
+.fixed-sidepanel {
+  @apply fixed h-full top-0 z-20
 }
 .fade-slide-right-enter-active,
 .fade-slide-right-leave-active {

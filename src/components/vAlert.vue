@@ -38,6 +38,9 @@ export default {
       alert: ["relative"],
     };
 
+    // TODO: absolute alerts
+    // TODO: state alerts invalid
+
     let classes = {
       alert: computed(() => {
         let c = [...fixedClass.alert, ...styles.alert.value];

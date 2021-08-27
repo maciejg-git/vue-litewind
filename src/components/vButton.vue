@@ -10,9 +10,8 @@
 </template>
 
 <script>
-import { computed, inject } from "vue";
-import useStyles from "./composition/use-styles";
-import { removeTailwindClasses } from "../tools/tools.js";
+import { computed } from "vue";
+import useStyles from "./composition/use-styles 2";
 
 export default {
   props: {
@@ -24,27 +23,11 @@ export default {
     styleButton: { type: String, default: "default" },
   },
   setup(props) {
-    let s = inject("styles")
-
-    let elements = ["button"];
-
-    let { styles } = useStyles(s, props, elements);
-
-    let fixedClass = {
-      button: ["w-auto", "inline-flex", "justify-center", "items-center"],
-    };
-
-    let classes = {
-      button: computed(() => {
-        let c = [
-          ...fixedClass.button,
-          ...styles.button.value,
-          ...(props.disabled ? ["opacity-50", "pointer-events-none"] : ""),
-          props.block ? "w-full" : "",
-        ];
-        return removeTailwindClasses(c);
-      }),
-    };
+    let { classes } = useStyles(props, {
+      button: {
+        fixed: "fixed-button"
+      }
+    })
 
     let tagHref = computed(() => (props.tag == "a" ? "#" : null));
 
@@ -56,4 +39,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.fixed-button {
+  @apply w-auto inline-flex justify-center items-center
+}
+</style>

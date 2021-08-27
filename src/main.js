@@ -6,6 +6,7 @@ import { buttonPlugin, tablePlugin } from "./components/index.js";
 import "tailwindcss/tailwind.css";
 import { styles } from "./styles";
 import { stylesMaterial } from "./styles-material";
+import "./styles.css"
 // import { testTailwindRemoveClasses } from "./testTailwindRemoveClasses.js";
 
 // testTailwindRemoveClasses();
@@ -16,6 +17,8 @@ app.provide("styles", {
   default: styles,
   material: stylesMaterial,
 });
+
+// TODO: global config
 
 app.use(router);
 app.use(plugin);

@@ -1,0 +1,883 @@
+.button-fixed {
+  @apply
+    rounded
+    text-sm
+    sm:text-base
+    font-medium
+    text-white
+    focus:outline-none
+    focus:ring-4
+    px-4
+    py-2
+}
+
+.button-default {
+  @apply
+    button-fixed;
+  @apply
+    bg-indigo-500
+    hover:bg-indigo-600
+    focus:ring-indigo-200
+}
+
+.button-primary {
+  @apply
+    button-fixed;
+  @apply
+    bg-indigo-500
+    hover:bg-indigo-600
+    focus:ring-indigo-200
+}
+
+.button-secondary {
+  @apply
+    button-fixed;
+  @apply
+    bg-gray-500
+    hover:bg-gray-600
+    focus:ring-gray-200
+}
+
+.button-link {
+  @apply 
+    focus:outline-none
+}
+
+.button-yellow {
+  @apply
+    bg-yellow-500
+    hover:bg-yellow-600
+    focus:ring-yellow-200
+}
+
+.button-green {
+  @apply
+    bg-green-500
+    hover:bg-green-600
+    focus:ring-green-200
+}
+
+.button-red {
+  @apply
+    bg-red-500
+    hover:bg-red-600
+    focus:ring-red-200
+}
+
+.button-outline {
+  @apply
+    border
+    border-blue-500
+    bg-transparent
+    hover:bg-transparent
+    text-blue-500
+}
+
+.button-small {
+  @apply
+    py-1
+}
+
+.button-tiny {
+  @apply
+    py-0.5
+    text-sm
+}
+
+.button-large {
+  @apply
+    py-2.5
+}
+
+.button-square {
+  @apply
+    rounded-none
+}
+
+.button-pill {
+  @apply
+    rounded-full
+}
+
+.button-uppercase {
+  @apply
+    uppercase
+}
+
+.tabs-tab-fixed {
+  @apply
+    border
+    rounded-t-md
+    border-gray-300
+    -mb-px
+    -ml-px
+    p-2
+    px-4
+    whitespace-nowrap
+    overflow-ellipsis
+    no-underline
+}
+
+.tabs-tab-default {
+  @apply
+    tabs-tab-fixed;
+  @apply
+    bg-gray-100
+    hover:bg-gray-50
+}
+
+.tabs-tab-small {
+  @apply
+    p-0
+}
+
+.tabs-tabActive-default {
+  @apply
+    tabs-tab-fixed;
+  @apply
+    bg-white
+    shadow-none;
+  border-bottom-color: transparent;
+}
+
+.tabs-tabBar-default {
+  @apply
+    border-b
+    pl-2
+}
+
+.table-default {
+  @apply
+    bg-white
+    border-collapse
+}
+
+/* .table-fixed { */
+/*   @apply */
+/*     table-fixed */
+/* } */
+
+.table-busy {
+  @apply
+    opacity-50
+}
+
+.table-headerRow {
+
+}
+
+.table-headerCell-default {
+  @apply
+    border-b
+    border-gray-300
+    py-2
+    px-2
+}
+
+.table-headerCell-bordered {
+  @apply
+    border
+}
+
+.table-headerCell-dark {
+  @apply
+    bg-gray-700
+    text-white
+}
+
+.table-headerCell-light {
+  @apply
+    bg-gray-100
+}
+
+.table-row {
+
+}
+
+.table-cell-default {
+  @apply
+    border-t
+    border-gray-300
+    transition
+    duration-200
+    py-2
+    px-2
+    pr-6
+}
+
+.table-cell-bordered {
+  @apply
+    border
+    border-t
+    border-gray-300
+    py-2
+    px-2
+    pr-6
+}
+
+.table-selected-default {
+  @apply
+    bg-gray-100
+    border-t
+    border-gray-300
+    transition
+    duration-200
+    py-2
+    px-2
+    pr-6
+}
+
+.table-caption-default {
+  @apply
+    text-gray-600
+    text-left
+    py-2
+}
+
+.list-item-fixed {
+  @apply
+    p-2
+    px-4
+}
+
+.list-default {
+  @apply
+    border
+    divide-y
+    divide-gray-200
+    rounded-md
+    overflow-hidden
+}
+
+.list-square {
+  @apply
+    rounded-none
+}
+
+.list-borderless {
+  @apply
+    border-0
+}
+
+.list-item-default {
+  @apply
+    list-item-fixed;
+  @apply
+    hover:bg-gray-50
+}
+
+.list-item-active-default {
+  @apply
+    list-item-fixed;
+  @apply
+    bg-blue-500
+    hover:bg-blue-600
+    text-white
+}
+
+.progress-default {
+  @apply
+    bg-gray-100
+    rounded
+    overflow-hidden
+    h-4
+}
+
+.progress-transparent {
+  @apply
+    bg-transparent
+}
+
+.progress-tiny {
+  @apply
+    h-1
+}
+
+.progress-progress-bar-default {
+  @apply
+    bg-indigo-500
+}
+
+.progress-progress-bar-gradient {
+  @apply
+    bg-gradient-to-r
+    from-yellow-400
+    via-red-500
+    to-pink-500
+}
+
+.progress-label-default {
+  @apply
+    text-xs
+    text-white
+    font-bold
+}
+
+.breadcrumb-default {
+  @apply
+    text-blue-500
+    underline
+}
+
+.breadcrumb-separator-default {
+
+}
+
+.form-text-default {
+  @apply
+    text-sm
+    text-gray-600
+    mt-1
+}
+
+.select-default {
+  @apply
+    rounded
+    border
+    bg-white
+    border-gray-300
+    focus:outline-none
+    focus:ring
+    focus:ring-indigo-200
+    focus:border-gray-400
+    outline-none
+    overflow-y-auto
+}
+
+.range-default {
+  @apply
+    rounded
+    bg-white
+    border-gray-300
+    focus:outline-none
+    focus:ring
+    focus:ring-indigo-200
+    focus:border-gray-400
+    outline-none
+}
+
+.radio-default {
+  @apply
+    border
+    bg-white
+    border-gray-300
+    text-indigo-500
+    focus:border-gray-400
+    focus:ring
+    focus:ring-indigo-200
+    focus:ring-offset-0
+    focus:outline-none
+    transform
+    scale-110
+    outline-none
+}
+
+.checkbox-default {
+  @apply
+    rounded
+    border
+    bg-white
+    border-gray-300
+    text-indigo-500
+    focus:border-gray-400
+    focus:ring
+    focus:ring-indigo-200
+    focus:ring-offset-0
+    focus:outline-none
+    transform
+    scale-110
+    outline-none
+}
+
+.input-default {
+  @apply
+    rounded
+    border
+    bg-white
+    border-gray-300
+    focus:outline-none
+    focus:ring
+    focus:ring-indigo-200
+    focus:border-gray-400
+    outline-none
+}
+
+.textarea-default {
+  @apply
+    rounded
+    border
+    bg-white
+    border-gray-300
+    focus:outline-none
+    focus:ring
+    focus:ring-indigo-200
+    focus:border-gray-400
+    outline-none
+    py-1
+    px-3
+}
+
+.alert-default {
+  @apply
+    bg-blue-100
+    border
+    border-blue-200
+    border-l-4
+    rounded
+    font-semibold
+    p-4
+}
+
+.alert-info {
+  @apply
+    bg-yellow-100
+    border-yellow-200
+}
+
+.alert-danger {
+  @apply
+    bg-red-100
+    border-red-200
+}
+
+.alert-success {
+  @apply
+    bg-green-100
+    border-green-200
+}
+
+.alert-light {
+  @apply
+    bg-gray-100
+    border-gray-200
+}
+
+.navbar-default {
+  @apply
+    w-full
+    bg-gray-100
+    shadow-md
+}
+
+.navbar-bottom {
+  @apply
+    border-t
+}
+
+.closebutton-default {
+  @apply
+    text-gray-600
+    opacity-60
+    w-6
+    h-6
+}
+
+.sidepanel-default {
+  @apply
+    bg-gray-100
+    text-left;
+  -webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.35);
+  box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.35);
+}
+
+.modal-default {
+  @apply
+    bg-white
+    shadow-lg
+    rounded-md
+    text-gray-900
+}
+
+.modal-square {
+  @apply
+    rounded-none
+}
+
+.modal-header-default {
+  @apply
+    bg-gray-50
+    text-gray-900
+    text-lg
+    leading-6
+    font-medium
+    px-6
+    py-6
+}
+
+.modal-footer-default {
+  @apply
+    px-6
+    py-6
+}
+
+.modal-content-default {
+  @apply
+    px-6
+    py-5
+}
+
+.modal-content-relaxed {
+  @apply
+    px-9
+    py-8
+}
+
+.modal-content-edge-to-edge {
+  @apply
+    px-2
+    py-5
+}
+
+.modal-backdrop-default {
+  @apply
+    bg-black
+    opacity-50
+}
+
+.card-default {
+  @apply
+    bg-white
+    border
+    border-gray-200
+    rounded
+    overflow-hidden
+}
+
+.card-shadow {
+  @apply
+    shadow-md
+}
+
+.card-square {
+  @apply
+    rounded-none
+}
+
+.card-borderless {
+  @apply
+    border-0
+}
+
+.card-hoverable {
+  @apply
+    hover:shadow-lg
+    transition-all
+}
+
+.dropdown-menu-item-fixed {
+  @apply
+    text-left
+    w-full
+    focus:outline-none
+    pr-4
+}
+
+.dropdown-menu-item-default {
+  @apply
+    dropdown-menu-item-fixed;
+  @apply
+    text-black
+    hover:bg-gray-50
+    focus:bg-indigo-500
+    focus:text-white
+}
+
+.dropdown-menu-item-green {
+  @apply
+    bg-green-500
+}
+
+.dropdown-menu-item-active-default {
+  @apply
+    dropdown-menu-item-fixed;
+  @apply
+    text-white
+    bg-indigo-500
+    hover:bg-indigo-600
+}
+
+.dropdown-menu-item-disabled-default {
+  @apply
+    dropdown-menu-item-fixed;
+  @apply
+    text-gray-200
+    pointer-events-none
+}
+
+.dropdown-menu-item-header-default {
+  @apply
+    text-left
+    font-semibold
+    text-sm
+    px-4
+    py-2
+}
+
+.datepicker-day-fixed {
+  @apply
+    cursor-pointer
+    rounded
+    text-sm
+    py-1
+    mx-1
+    my-1
+}
+
+.datepicker-default {
+  @apply
+    bg-white
+    text-center
+}
+
+.datepicker-button-default {
+  @apply
+    rounded
+    focus:ring-2
+    focus:ring-indigo-200
+    py-1
+    px-2
+}
+
+.datepicker-day-default {
+  @apply
+    datepicker-day-fixed;
+  @apply
+    hover:bg-gray-50
+}
+
+.datepicker-day-selected-default {
+  @apply
+    datepicker-day-fixed;
+  @apply
+    bg-indigo-400
+    hover:bg-indigo-600
+    font-semibold
+    text-white
+}
+
+.datepicker-today-default {
+  @apply
+    datepicker-day-fixed;
+  @apply  
+    hover:bg-gray-50
+    font-bold
+}
+
+.datepicker-adjacent-month-day-default {
+  @apply
+    datepicker-day-fixed;
+  @apply  
+    text-gray-200
+    pointer-events-none
+}
+
+.datepicker-footer-default {
+  @apply
+    bg-gray-100
+    text-sm
+    font-semibold
+    py-1
+}
+
+.spinner-default {
+  @apply
+    text-indigo-500
+    h-8
+    w-8
+}
+
+.spinner-blue {
+  @apply
+    text-blue-500
+}
+
+.spinner-yellow {
+  @apply
+    text-yellow-500
+}
+
+.spinner-green {
+  @apply
+    text-green-500
+}
+
+.spinner-gray {
+  @apply
+    text-gray-300
+}
+
+.spinner-large {
+  @apply
+    h-20
+    w-20
+}
+
+.spinner-small {
+  @apply
+    h-5
+    w-5
+}
+
+.popover-default {
+  @apply
+    bg-white
+    border
+    border-gray-300
+    rounded-md
+    overflow-hidden
+    max-w-xs
+    shadow-lg
+}
+
+.popover-content-default {
+  @apply
+    p-5
+}
+
+.badge-fixed {
+  @apply
+    rounded-md
+    font-bold
+    p-1
+    px-3
+}
+
+.badge-default {
+  @apply
+    bg-indigo-500
+    text-white
+}
+
+.badge-primary {
+  @apply
+    badge-fixed;
+  @apply  
+    bg-indigo-500
+    text-white
+}
+
+.badge-secondary {
+  @apply
+    badge-fixed;
+  @apply  
+    bg-gray-500
+    text-white
+}
+
+.badge-circle {
+  @apply
+    rounded-full
+    border
+    border-white
+    w-4
+    h-4
+    px-0
+    py-0
+}
+
+.badge-green {
+  @apply
+    bg-green-500
+    text-white
+}
+
+.badge-yellow {
+  @apply
+    bg-yellow-500
+    text-white
+}
+
+.badge-red {
+  @apply
+    bg-red-500
+    text-white
+}
+
+.badge-small {
+  @apply
+    text-sm
+    p-1
+    px-2
+}
+
+.badge-tiny {
+  @apply
+    text-xs
+    font-semibold
+    p-0.5
+    px-2
+}
+
+.pagination-page-fixed {
+  @apply
+    hover:bg-gray-50
+    border
+    border-gray-300
+    text-sm
+    font-medium
+    font-semibold
+    rounded
+    w-12
+    h-10
+    mx-0.5
+}
+
+.pagination-side-controls-fixed {
+  @apply
+    hover:bg-gray-50
+    border
+    border-gray-300
+    text-sm
+    font-medium
+    cursor-pointer
+    rounded
+    w-12
+    p-2
+}
+
+.pagination-pagination-bar-default {
+  @apply
+    rounded-md
+}
+
+.pagination-page-default {
+  @apply
+    pagination-page-fixed
+}
+
+.pagination-page-active-default {
+  @apply
+    pagination-page-fixed;
+  @apply  
+    hover:bg-indigo-400
+    border-indigo-200
+    bg-indigo-500
+    ring-indigo-200
+    text-white
+    ring-2
+    font-semibold
+}
+
+.pagination-dots-default {
+  @apply
+    pagination-page-fixed;
+  @apply
+    tracking-wider
+}
+
+.pagination-next-default {
+  @apply
+    pagination-side-controls-fixed;
+  @apply  
+    rounded-r-md
+    ml-0.5
+}
+
+.pagination-prev-default {
+  @apply
+    pagination-side-controls-fixed;
+  @apply  
+    rounded-l-md
+    mr-0.5
+}

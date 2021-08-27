@@ -55,19 +55,6 @@ let tailwindClassList = {
   "object-right-top": 25,
   "object-top": 25,
 
-  "overflow-auto": 65,
-  "overflow-hidden": 65,
-  "overflow-visible": 65,
-  "overflow-scroll": 65,
-  "overflow-x-auto": 91,
-  "overflow-x-hidden": 91,
-  "overflow-x-visible": 91,
-  "overflow-x-scroll": 91,
-  "overflow-y-auto": 92,
-  "overflow-y-hidden": 92,
-  "overflow-y-visible": 92,
-  "overflow-y-scroll": 92,
-
   "overscroll-auto": 66,
   "overscroll-contain": 66,
   "overscroll-none": 66,
@@ -297,70 +284,9 @@ let tailwindClassList = {
   "min-w-min": 11,
   "min-w-max": 11,
 
-  "max-w-0": 12,
-  "max-w-none": 12,
-  "max-w-xs": 12,
-  "max-w-sm": 12,
-  "max-w-md": 12,
-  "max-w-lg": 12,
-  "max-w-xl": 12,
-  "max-w-2xl": 12,
-  "max-w-3xl": 12,
-  "max-w-4xl": 12,
-  "max-w-5xl": 12,
-  "max-w-6xl": 12,
-  "max-w-7xl": 12,
-  "max-w-full": 12,
-  "max-w-min": 12,
-  "max-w-max": 12,
-  "max-w-prose": 12,
-  "max-w-screen-sm": 12,
-  "max-w-screen-md": 12,
-  "max-w-screen-lg": 12,
-  "max-w-screen-xl": 12,
-  "max-w-screen-2xl": 12,
-
   "min-h-0": 14,
   "min-h-full": 14,
   "min-h-screen": 14,
-
-  "max-h-0": 15,
-  "max-h-px": 15,
-  "max-h-0.5": 15,
-  "max-h-1": 15,
-  "max-h-1.5": 15,
-  "max-h-2": 15,
-  "max-h-2.5": 15,
-  "max-h-3": 15,
-  "max-h-3.5": 15,
-  "max-h-4": 15,
-  "max-h-5": 15,
-  "max-h-6": 15,
-  "max-h-7": 15,
-  "max-h-8": 15,
-  "max-h-9": 15,
-  "max-h-10": 15,
-  "max-h-11": 15,
-  "max-h-12": 15,
-  "max-h-14": 15,
-  "max-h-16": 15,
-  "max-h-20": 15,
-  "max-h-24": 15,
-  "max-h-28": 15,
-  "max-h-32": 15,
-  "max-h-36": 15,
-  "max-h-40": 15,
-  "max-h-44": 15,
-  "max-h-48": 15,
-  "max-h-52": 15,
-  "max-h-56": 15,
-  "max-h-60": 15,
-  "max-h-64": 15,
-  "max-h-72": 15,
-  "max-h-80": 15,
-  "max-h-96": 15,
-  "max-h-full": 15,
-  "max-h-screen": 15,
 
   "font-sans": 95,
   "font-serif": 95,
@@ -675,8 +601,18 @@ let gapProps = ["gap", "gap-x", "gap-y"];
 let borderProps = ["border", "border-t", "border-r", "border-b", "border-l"]
 let border = ["", 0, 2, 4, 8];
 
+// prettier-ignore
 let height = [
   0, "px", "0.5", 1, "1.5", 2, "2.5", 3, "3.5", 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96, "auto", "1/2", "1/3", "2/3", "1/4", "2/4", "3/4", "1/5", "2/5", "3/5", "4/5", "1/6", "2/6", "3/6", "4/6", "5/6", "full", "screen"
+]
+
+let overflowProps = ["overflow", "overflow-x", "overflow-y"]
+let overflow = ["auto", "hidden", "visible", "scroll",]
+
+let maxw = [0, "none", "xs", "sm", "md", "lg", "xl", "2xl", "3xl", "4xl", "5xl", "6xl", "7xl", "full", "min", "max", "prose", "screen-sm", "screen-md", "screen-lg", "screen-xl", "screen-2xl",]
+
+let maxh = [
+  0, "px", "0.5", 1, "1.5", 2, "2.5", 3, "3.5", 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96, "full", "screen",
 ]
 
 for (let prop of colorProps) {
@@ -765,8 +701,28 @@ for (let prop of borderProps) {
 for (let h of height) {
   tailwindClassList["h" + "-" + h] = index;
 }
+index++;
+
+for (let prop of overflowProps) {
+  for (let o of overflow) {
+    tailwindClassList[prop + "-" + o] = index;
+  }
+  index++;
+}
+
+for (let w of maxw) {
+  tailwindClassList["max-w" + "-" + w] = index;
+}
+index++;
+
+for (let h of maxh) {
+  tailwindClassList["max-h" + "-" + h] = index;
+}
+index++;
 
 export { tailwindClassList };
+
+// TODO: more classes
 
 // top right
 // padding

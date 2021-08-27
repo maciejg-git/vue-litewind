@@ -10,9 +10,7 @@
 </template>
 
 <script>
-import { computed, inject } from "vue";
-import useStyles from "./composition/use-styles";
-import { removeTailwindClasses } from "../tools/tools.js";
+import useStyles from "./composition/use-styles 2";
 
 export default {
   props: {
@@ -23,18 +21,11 @@ export default {
     styleSpinner: { type: String, default: "default" },
   },
   setup(props) {
-    let s = inject("styles");
-
-    let elements = ["spinner"];
-
-    let { styles } = useStyles(s, props, elements);
-
-    let classes = {
-      spinner: computed(() => {
-        let c = ["spinner-border", ...styles.spinner.value];
-        return removeTailwindClasses(c);
-      }),
-    };
+    let { classes } = useStyles(props, {
+      spinner: {
+        fixed: "spinner-border"
+      }
+    })
 
     return {
       classes,

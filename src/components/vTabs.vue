@@ -4,7 +4,7 @@
       <li
         v-for="(tab, i) in tabs"
         :key="i"
-        :class="fill ? fixedClasses.tabWrapper : ''"
+        :class="fill ? 'fixed-tab-wrapper' : ''"
       >
         <a
           href=""
@@ -20,9 +20,8 @@
 </template>
 
 <script>
-import { ref, toRef, onMounted, computed, provide, h, inject } from "vue";
-import useStyles from "./composition/use-styles";
-import { removeTailwindClasses } from "../tools/tools.js";
+import { ref, toRef, onMounted, computed, provide, h } from "vue";
+import useStyles from "./composition/use-styles 2";
 
 export default {
   props: {
@@ -42,45 +41,20 @@ export default {
     },
   },
   setup(props, { emit }) {
-    let s = inject("styles")
-
-    let elements = ["tabBar", "tab", "tabActive"];
-
-    let { styles } = useStyles(s, props, elements);
-
-    let fixedClasses = {
-      tabBar: ["flex", "flex-auto"],
-      tab: ["block"],
-      tabActive: ["block"],
-      tabWrapper: ["flex flex-auto"],
-    };
-
-    let classes = {
-      tabBar: computed(() => {
-        let c = [
-          ...fixedClasses.tabBar,
-          ...styles.tabBar.value,
-          props.center ? "justify-center" : props.right ? "justify-end" : "",
-        ];
-        return removeTailwindClasses(c);
-      }),
-      tab: computed(() => {
-        let c = [
-          ...fixedClasses.tab,
-          ...styles.tab.value,
-          props.fill ? "w-full" : "",
-        ];
-        return removeTailwindClasses(c);
-      }),
-      tabActive: computed(() => {
-        let c = [
-          ...fixedClasses.tabActive,
-          ...styles.tabActive.value,
-          props.fill ? "w-full" : "",
-        ];
-        return removeTailwindClasses(c);
-      }),
-    };
+    let { classes } = useStyles(props, {
+      tabBar: {
+        fixed: "fixed-tab-bar",
+        prop: computed(() => props.center ? "justify-center" : props.right ? "justify-end" : "")
+      },
+      tab: {
+        fixed: "fixed-tab",
+        prop: computed(() => props.fill ? "w-full" : "")
+      },
+      tabActive: {
+        fixed: "fixed-tab-active",
+        prop: computed(() => props.fill ? "w-full" : "")
+      },
+    })
 
     let tabs = ref([]);
     let active = ref(0);
@@ -121,7 +95,6 @@ export default {
     provide("transition", toRef(props, "transition"));
 
     return {
-      fixedClasses,
       classes,
       tabs,
       tabName,
@@ -133,7 +106,16 @@ export default {
 </script>
 
 <style scoped>
-.v-border-b-transparent {
-  border-bottom-color: transparent;
+.fixed-tab-bar {
+  @apply flex flex-auto
+}
+.fixed-tab {
+  @apply block
+}
+.fixed-tab-active {
+  @apply block
+}
+.fixed-tab-wrapper {
+  @apply flex flex-auto
 }
 </style>

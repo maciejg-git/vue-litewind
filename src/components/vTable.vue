@@ -70,7 +70,8 @@
 
 <script>
 import { ref, computed, watch, inject } from "vue";
-import useStyles from "./composition/use-styles";
+// import useStyles from "./composition/use-styles";
+import useStyles from "./composition/use-styles 2";
 import {
   formatCase,
   compare,
@@ -109,66 +110,31 @@ export default {
     styleCaption: { type: String, default: "default" },
   },
   setup(props, { slots, emit }) {
-    let style = inject("styles");
-
-    let elements = [
-      "table",
-      "headerRow",
-      "headerCell",
-      "row",
-      "cell",
-      "selected",
-      "caption",
-    ];
-
-    let s = ["busy"];
-
-    let { styles, states } = useStyles(style, props, elements, s);
-
-    let classes = {
-      table: computed(() => {
-        let c = [
-          ...styles.table.value,
-          ...(props.state == "busy"
-            ? ["pointer-events-none", ...states.table.busy]
-            : ""),
-        ];
-        return removeTailwindClasses(c);
-      }),
-      headerRow: computed(() => {
-        let c = [...styles.headerRow.value];
-        return removeTailwindClasses(c);
-      }),
-      headerCell: computed(() => {
-        let c = [...styles.headerCell.value];
-        return removeTailwindClasses(c);
-      }),
-      row: computed(() => {
-        let c = [...styles.row.value];
-        return removeTailwindClasses(c);
-      }),
-      cell: computed(() => {
-        let c = [
-          ...styles.cell.value,
-          props.selectionMode !== "" ? "cursor-pointer" : "",
-        ];
-        return removeTailwindClasses(c);
-      }),
-      selected: computed(() => {
-        let c = [
-          ...styles.selected.value,
-          props.selectionMode !== "" ? "cursor-pointer" : "",
-        ];
-        return removeTailwindClasses(c);
-      }),
-      caption: computed(() => {
-        let c = [
-          ...styles.caption.value,
-          props.captionTop ? "caption-top" : "caption-bottom",
-        ];
-        return removeTailwindClasses(c);
-      }),
-    };
+    let { classes } = useStyles(props, {
+      table: {
+        prop: computed(() =>
+          props.state == "busy" ? "pointer-events-none table-busy" : ""
+        ),
+      },
+      headerRow: null,
+      headerCell: null,
+      row: null,
+      cell: {
+        prop: computed(() =>
+          props.selectionMode !== "" ? "cursor-pointer" : ""
+        ),
+      },
+      selected: {
+        prop: computed(() =>
+          props.selectionMode !== "" ? "cursor-pointer" : ""
+        ),
+      },
+      caption: {
+        prop: computed(() =>
+          props.captionTop ? "caption-top" : "caption-bottom"
+        ),
+      },
+    });
 
     let getCellClass = (k, i, item) => {
       if (itemsSelected.value[i]) return classes.selected.value;

@@ -209,6 +209,12 @@
 
     {{ tableSelection }}
     <input v-model="filter" type="" class="form-control w-25" />
+<br>
+
+   <v-button style-button="primary small">button css</v-button> 
+   <v-button style-button="primary tiny">button css</v-button> 
+   <v-button style-button="primary large">button css</v-button> 
+
     <v-card style-card="default shadow">
       <v-table
         :definition="definition"
@@ -436,6 +442,8 @@
     <v-modal
       v-model="modal"
       position="center"
+      style-modal="default rounded"
+      style-content="default edge-to-edge"
       transition="fade-slide"
       secondaryButtonClose
       title="Modal"

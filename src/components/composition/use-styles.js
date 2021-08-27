@@ -1,5 +1,7 @@
 import { computed } from "vue";
 
+// FIX:
+
 let getStyles = (styles, componentStyles, el) => {
   return styles.value.reduce((acc, i) => {
     let s = componentStyles[el][i];
