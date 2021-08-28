@@ -1,5 +1,5 @@
 <template>
-  <select v-bind="$attrs" v-model="localModel" :class="classes.select.value">
+  <select v-bind="$attrs" v-model="localModel" :class="[classes.select.value, states.select[state], attrs.disabled === '' || attrs.disabled === true ? states.select.disabled : '']">
     <slot name="options-prepend"></slot>
     <option
       v-for="(o, i) in options"
@@ -14,9 +14,8 @@
 </template>
 
 <script>
-import { computed, inject } from "vue";
-import useStyles from "./composition/use-styles";
-import { removeTailwindClasses } from "../tools/tools.js";
+import { computed } from "vue";
+import useStyles from "./composition/use-styles 2";
 
 export default {
   props: {
@@ -29,34 +28,11 @@ export default {
   },
   emits: ["update:modelValue"],
   setup(props, { attrs, emit }) {
-    let style = inject("styles");
-
-    let elements = ["select"];
-
-    let s = ["valid", "invalid", "disabled"];
-
-    let { styles, states } = useStyles(style, props, elements, s);
-
-    let classes = {
-      select: computed(() => {
-        let c = [
-          ...styles.select.value,
-          ...(props.state == "valid" || props.state === true
-            ? states.select.valid
-            : props.state == "invalid" || props.state === false
-            ? states.select.invalid
-            : props.state == "normal" ||
-              props.state === null ||
-              props.state === undefined
-            ? ""
-            : ""),
-          ...(attrs.disabled === "" || attrs.disabled === true
-            ? states.select.disabled
-            : ""),
-        ];
-        return removeTailwindClasses(c);
-      }),
-    };
+    let { classes, states } = useStyles(props, {
+      select: {
+        states: ["valid", "invalid", "disabled"]
+      }
+    })
 
     let isOptionDisabled = (o) => {
       return o.disabled == undefined || o.disabled == null ? false : o.disabled;
@@ -73,6 +49,8 @@ export default {
 
     return {
       classes,
+      states,
+      attrs,
       isOptionDisabled,
       localModel,
     };

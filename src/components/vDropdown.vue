@@ -12,14 +12,13 @@
 </template>
 
 <script>
-import { ref, computed, provide, toRef, toRefs, inject } from "vue";
-import useStyles from "./composition/use-styles";
+import { ref, provide, toRef, toRefs } from "vue";
+import useStyles from "./composition/use-styles 2";
 import usePopper from "./composition/use-popper.js";
-import { removeTailwindClasses } from "../tools/tools.js";
 import { correctPlacement } from "../const.js";
 
 export default {
-  inheritAttrs: false,
+  inheritAttrs: true,
   props: {
     placement: {
       type: String,
@@ -41,44 +40,24 @@ export default {
     styleMenuItemHeader: { type: String, default: "default" },
   },
   emits: ["state:opened", "state:closed"],
-  setup(props, { slots, emit }) {
-    let s = inject("styles")
-
-    let elements = [
-      "menuItem",
-      "menuItemActive",
-      "menuItemDisabled",
-      "menuItemHeader",
-    ];
-
-    let { styles } = useStyles(s, props, elements);
-
-    let fixedClasses = {
-      item: ["block", "px-4", "py-2"],
-    };
-
-    let classesItem = {
-      item: computed(() => {
-        let c = [...fixedClasses.item, ...styles.menuItem.value];
-        return removeTailwindClasses(c);
-      }),
-      itemActive: computed(() => {
-        let c = [...fixedClasses.item, ...styles.menuItemActive.value];
-        return removeTailwindClasses(c);
-      }),
-      itemDisabled: computed(() => {
-        let c = [...fixedClasses.item, ...styles.menuItemDisabled.value];
-        return removeTailwindClasses(c);
-      }),
-      itemHeader: computed(() => {
-        let c = [...fixedClasses.item, ...styles.menuItemHeader.value];
-        return removeTailwindClasses(c);
-      }),
-    };
+  setup(props, { emit }) {
+    let { classes } = useStyles(props, {
+      menuItem: {
+        fixed: "fixed-item"
+      },
+      menuItemActive: {
+        fixed: "fixed-item"
+      },
+      menuItemDisabled: {
+        fixed: "fixed-item"
+      },
+      menuItemHeader: {
+        fixed: "fixed-item"
+      },
+    })
 
     let dropdown = ref(null);
 
-    // console.log(slots.default())
     let clickOutside = function (ev) {
       if (
         !(dropdown.value === ev.target || dropdown.value.contains(ev.target))
@@ -98,7 +77,7 @@ export default {
       emit,
     });
 
-    provide("classes", classesItem);
+    provide("classes", classes);
     provide("autoCloseMenu", toRef(props, "autoCloseMenu"));
     provide("hide", hide);
 
@@ -117,6 +96,9 @@ export default {
 </script>
 
 <style scoped>
+::v-deep .fixed-item {
+  @apply block px-4 py-2
+}
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.2s ease;

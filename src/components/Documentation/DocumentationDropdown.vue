@@ -126,6 +126,7 @@
         @state:closed="
           example.events.unshift({ ev: 'state:closed', data: $event })
         "
+        class="ml-2"
       >
         <template #activator>
           <v-button>Dropdown datepicker</v-button>

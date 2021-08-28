@@ -59,31 +59,31 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <div>
+      <div class="flex gap-4">
         <v-button>Button</v-button>
         <v-button tag="a">Button (link)</v-button>
       </div>
-      <div class="mt-4">
+      <div class="flex items-center gap-4 mt-4">
         <v-button style-button="primary large">Large button</v-button>
         <v-button style-button="primary">Normal button</v-button>
         <v-button style-button="primary small">Small button</v-button>
         <v-button style-button="primary tiny">Tiny button</v-button>
       </div>
-      <div class="mt-4">
+      <div class="flex items-center gap-4 mt-4">
         <v-button style-button="secondary">Secondary button</v-button>
         <v-button style-button="default yellow">Yellow button</v-button>
         <v-button style-button="default green">Green button</v-button>
         <v-button style-button="default red">Red button</v-button>
       </div>
-      <div class="mt-4">
+      <div class="flex items-center gap-4 mt-4">
         <v-button style-button="primary square">Square button</v-button>
         <v-button style-button="primary pill">Pill button</v-button>
         <v-button style-button="primary uppercase">Uppercase button</v-button>
       </div>
-      <div class="mt-4">
+      <div class="flex items-center gap-4 mt-4">
         <v-button block>Block button</v-button>
       </div>
-      <div class="mt-4">
+      <div class="flex items-center gap-4 mt-4">
         <v-button disabled>Button (disabled)</v-button>
       </div>
     </div>

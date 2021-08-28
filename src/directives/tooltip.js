@@ -8,12 +8,7 @@ let defaults = {
   offsetY: 0,
 };
 
-let classes = {
-  tooltip: "bg-gray-700 text-gray-100 rounded-md z-50",
-  content: "font-semibold p-1 px-3",
-};
-
-let template = `<div class="${classes.content}"></div>`;
+let template = "<div class='tooltip-content-default'></div>";
 
 let delayRegexp = /^delay\d\d?\d?\d?$/;
 let offsetXRegexp = /^oX\d\d?\d?$/;
@@ -83,7 +78,7 @@ function setPopper(el, tooltip, options) {
 function createTooltipElement() {
   let el = document.createElement("div");
   el.innerHTML = template;
-  el.classList = classes.tooltip;
+  el.classList = "tooltip-default";
   return el;
 }
 

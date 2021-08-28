@@ -286,12 +286,12 @@
     h-1
 }
 
-.progress-progress-bar-default {
+.progress-progressBar-default {
   @apply
     bg-indigo-500
 }
 
-.progress-progress-bar-gradient {
+.progress-progressBar-gradient {
   @apply
     bg-gradient-to-r
     from-yellow-400
@@ -336,6 +336,20 @@
     outline-none
     overflow-y-auto
 }
+    .select-valid-state {
+      @apply
+        border-green-300
+        focus:ring-green-200
+    }
+    .select-invalid-state {
+      @apply
+        border-red-300
+        focus:ring-red-200
+    }
+    .select-disabled-state {
+      @apply
+        opacity-50
+    }
 
 .range-default {
   @apply
@@ -471,7 +485,7 @@
     border-t
 }
 
-.closebutton-default {
+.closeButton-default {
   @apply
     text-gray-600
     opacity-60
@@ -572,7 +586,7 @@
     transition-all
 }
 
-.dropdown-menu-item-fixed {
+.dropdown-menuItem-fixed {
   @apply
     text-left
     w-full
@@ -580,9 +594,9 @@
     pr-4
 }
 
-.dropdown-menu-item-default {
+.dropdown-menuItem-default {
   @apply
-    dropdown-menu-item-fixed;
+    dropdown-menuItem-fixed;
   @apply
     text-black
     hover:bg-gray-50
@@ -590,29 +604,29 @@
     focus:text-white
 }
 
-.dropdown-menu-item-green {
+.dropdown-menuItem-green {
   @apply
     bg-green-500
 }
 
-.dropdown-menu-item-active-default {
+.dropdown-menuItem-active-default {
   @apply
-    dropdown-menu-item-fixed;
+    dropdown-menuItem-fixed;
   @apply
     text-white
     bg-indigo-500
     hover:bg-indigo-600
 }
 
-.dropdown-menu-item-disabled-default {
+.dropdown-menuItem-disabled-default {
   @apply
-    dropdown-menu-item-fixed;
+    dropdown-menuItem-fixed;
   @apply
     text-gray-200
     pointer-events-none
 }
 
-.dropdown-menu-item-header-default {
+.dropdown-menuItem-header-default {
   @apply
     text-left
     font-semibold
@@ -887,4 +901,19 @@
   @apply  
     rounded-l-md
     mr-0.5
+}
+
+.tooltip-default {
+  @apply
+    bg-gray-700
+    text-gray-100
+    rounded-md
+    z-50
+}
+
+.tooltip-content-default {
+  @apply
+    font-semibold
+    p-1
+    px-3
 }

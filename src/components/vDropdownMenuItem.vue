@@ -4,10 +4,10 @@
     :href="tagHref"
     :class="[
       active
-        ? classes.itemActive.value
+        ? classes.menuItemActive.value
         : disabled
-        ? classes.itemDisabled.value
-        : classes.item.value,
+        ? classes.menuItemDisabled.value
+        : classes.menuItem.value,
     ]"
     @click="autoCloseMenu && hide()"
   >

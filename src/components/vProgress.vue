@@ -26,9 +26,9 @@
 </template>
 
 <script>
-import { ref, computed, onMounted, onUnmounted, inject } from "vue";
-import useStyles from "./composition/use-styles";
-import { clamp, removeTailwindClasses } from "../tools/tools.js";
+import { ref, computed, onMounted, onUnmounted } from "vue";
+import useStyles from "./composition/use-styles 2";
+import { clamp } from "../tools/tools";
 
 export default {
   props: {
@@ -48,36 +48,22 @@ export default {
     styleLabel: { type: [String, Array], default: "default" },
   },
   setup(props) {
-    let s = inject("styles")
-
-    let elements = ["progress", "progressBar", "label"];
-
-    let { styles } = useStyles(s, props, elements);
-
-    let fixedClasses = {
-      progress: ["flex"],
-      progressBar: ["flex", "justify-center", "items-center", "h-full"],
-    };
-
-    let classes = {
-      progress: computed(() => {
-        let c = [...fixedClasses.progress, ...styles.progress.value];
-        return removeTailwindClasses(c);
-      }),
-      progressBar: computed(() => {
-        let c = [
-          ...fixedClasses.progressBar,
-          ...styles.progressBar.value,
-          props.indeterminate ? "indeterminate" : "",
-          props.transition && !props.indeterminate ? "transition-all" : "",
-        ];
-        return removeTailwindClasses(c);
-      }),
-      label: computed(() => {
-        let c = [...styles.label.value];
-        return removeTailwindClasses(c);
-      }),
-    };
+    let { classes } = useStyles(props, {
+      progress: {
+        fixed: "fixed-button",
+      },
+      progressBar: {
+        fixed: "fixed-progress-bar",
+        prop: computed(() => {
+          return props.indeterminate
+            ? "indeterminate"
+            : props.transition
+            ? "transition-all"
+            : "";
+        }),
+      },
+      label: null,
+    });
 
     let value = computed(() =>
       clamp((props.value / props.max) * 100, 0, props.max)
@@ -133,6 +119,12 @@ export default {
 </script>
 
 <style scoped>
+.fixed-progress {
+  @apply flex;
+}
+.fixed-progress-bar {
+  @apply flex justify-center items-center h-full;
+}
 .indeterminate {
   position: absolute;
   transform-origin: left;

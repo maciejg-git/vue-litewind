@@ -2,7 +2,7 @@
   <button class="focus:outline-none">
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      :class="classes"
+      :class="classes.closeButton.value"
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
@@ -19,25 +19,19 @@
 
 <script>
 import { computed, inject } from "vue";
-import useStyles from "./composition/use-styles";
+import useStyles from "./composition/use-styles 2";
 import { removeTailwindClasses } from "../tools/tools.js";
 
 export default {
   props: {
-    name: { type: String, default: "closebutton" },
+    name: { type: String, default: "closeButton" },
     styleCloseButton: { type: String, default: "default" },
   },
   setup(props) {
-    let s = inject("styles")
-
-    let elements = ["closeButton"]
-
-    let { styles } = useStyles(s, props, elements);
-
-    let classes = computed(() => {
-      let c = [...styles.closeButton.value];
-      return removeTailwindClasses(c);
-    });
+    let { classes } = useStyles(props, {
+      closeButton: null,
+    })
+    console.log(classes)
 
     return {
       classes,
