@@ -722,8 +722,6 @@ index++;
 
 export { tailwindClassList };
 
-// TODO: more classes
-
 // top right
 // padding
 // margin
