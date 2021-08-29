@@ -3,14 +3,20 @@
     v-bind="$attrs"
     v-model="localModel"
     type="radio"
-    :class="classes.radio.value"
+    :class="[
+      classes.radio.value,
+      states.radio[getFormState()],
+      attrs.disabled === '' || attrs.disabled === true
+        ? states.radio.disabled
+        : '',
+    ]"
   />
 </template>
 
 <script>
-import { computed, inject } from "vue";
-import useStyles from "./composition/use-styles";
-import { removeTailwindClasses } from "../tools/tools.js";
+import { computed } from "vue";
+import useStyles from "./composition/use-styles 2";
+import useStates from "./composition/use-states";
 
 export default {
   props: {
@@ -22,39 +28,13 @@ export default {
   },
   emits: ["update:modelValue"],
   setup(props, { attrs, emit }) {
-    let style = inject("styles")
+    let { classes, states } = useStyles(props, {
+      radio: {
+        states: ["valid", "invalid", "disabled"],
+      },
+    });
 
-    let elements = ["radio"];
-
-    let s = ["valid", "invalid", "disabled"];
-
-    let { styles, states } = useStyles(
-      style,
-      props,
-      elements,
-      s
-    );
-
-    let classes = {
-      radio: computed(() => {
-        let c = [
-          ...styles.radio.value,
-          ...(props.state == "valid" || props.state === true
-            ? states.radio.valid
-            : props.state == "invalid" || props.state === false
-            ? states.radio.invalid
-            : props.state == "normal" ||
-              props.state === null ||
-              props.state === undefined
-            ? ""
-            : ""),
-          ...(attrs.disabled === "" || attrs.disabled === true
-            ? states.radio.disabled
-            : ""),
-        ];
-        return removeTailwindClasses(c);
-      }),
-    };
+    let { getFormState } = useStates(props);
 
     let localModel = computed({
       get() {
@@ -67,7 +47,10 @@ export default {
 
     return {
       classes,
+      states,
+      getFormState,
       localModel,
+      attrs,
     };
   },
 };

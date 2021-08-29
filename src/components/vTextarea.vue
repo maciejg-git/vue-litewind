@@ -2,14 +2,19 @@
   <textarea
     v-bind="$attrs"
     v-model="localModel"
-    :class="classes.textarea.value"
+    :class="[
+      classes.textarea.value,
+      states.textarea[state],
+      attrs.disabled === '' || attrs.disabled === true
+        ? states.textarea.disabled
+        : '',
+    ]"
   ></textarea>
 </template>
 
 <script>
-import { computed, inject } from "vue";
-import useStyles from "./composition/use-styles";
-import { removeTailwindClasses } from "../tools/tools.js";
+import { computed } from "vue";
+import useStyles from "./composition/use-styles 2";
 
 export default {
   props: {
@@ -22,39 +27,11 @@ export default {
   },
   emits: ["update:modelValue"],
   setup(props, { attrs, emit }) {
-    let style = inject("styles")
-
-    let elements = ["textarea"];
-
-    let s = ["valid", "invalid", "disabled"];
-
-    let { styles, states } = useStyles(
-      style,
-      props,
-      elements,
-      s
-    );
-
-    let classes = {
-      textarea: computed(() => {
-        let c = [
-          ...styles.textarea.value,
-          ...(props.state == "valid" || props.state === true
-            ? states.textarea.valid
-            : props.state == "invalid" || props.state === false
-            ? states.textarea.invalid
-            : props.state == "normal" ||
-              props.state === null ||
-              props.state === undefined
-            ? ""
-            : ""),
-          ...(attrs.disabled === "" || attrs.disabled === true
-            ? states.textarea.disabled
-            : ""),
-        ];
-        return removeTailwindClasses(c);
-      }),
-    };
+    let { classes, states } = useStyles(props, {
+      textarea: {
+        states: ["valid", "invalid", "disabled"],
+      },
+    });
 
     let localModel = computed({
       get() {
@@ -67,7 +44,9 @@ export default {
 
     return {
       classes,
+      states,
       localModel,
+      attrs,
     };
   },
 };

@@ -3,14 +3,20 @@
     v-bind="$attrs"
     v-model="localModel"
     type="checkbox"
-    :class="classes.checkbox.value"
+    :class="[
+      classes.checkbox.value,
+      states.checkbox[getFormState()],
+      attrs.disabled === '' || attrs.disabled === true
+        ? states.checkbox.disabled
+        : '',
+    ]"
   />
 </template>
 
 <script>
-import { computed, inject } from "vue";
-import useStyles from "./composition/use-styles";
-import { removeTailwindClasses } from "../tools/tools.js";
+import { computed } from "vue";
+import useStyles from "./composition/use-styles 2";
+import useStates from "./composition/use-states";
 
 export default {
   props: {
@@ -22,39 +28,12 @@ export default {
   },
   emits: ["update:modelValue"],
   setup(props, { attrs, emit }) {
-    let style = inject("styles")
-
-    let elements = ["checkbox"];
-
-    let s = ["valid", "invalid", "disabled"];
-
-    let { styles, states } = useStyles(
-      style,
-      props,
-      elements,
-      s
-    );
-
-    let classes = {
-      checkbox: computed(() => {
-        let c = [
-          ...styles.checkbox.value,
-          ...(props.state == "valid" || props.state === true
-            ? states.checkbox.valid
-            : props.state == "invalid" || props.state === false
-            ? states.checkbox.invalid
-            : props.state == "normal" ||
-              props.state === null ||
-              props.state === undefined
-            ? ""
-            : ""),
-          ...(attrs.disabled === "" || attrs.disabled === true
-            ? states.checkbox.disabled
-            : ""),
-        ];
-        return removeTailwindClasses(c);
-      }),
-    };
+    let { classes, states } = useStyles(props, {
+      checkbox: {
+        states: ["valid", "invalid", "disabled"],
+      },
+    });
+    let { getFormState } = useStates(props);
 
     let localModel = computed({
       get() {
@@ -67,7 +46,10 @@ export default {
 
     return {
       classes,
+      states,
+      getFormState,
       localModel,
+      attrs,
     };
   },
 };

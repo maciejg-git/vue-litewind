@@ -21,9 +21,7 @@
 </template>
 
 <script>
-import { computed, inject } from "vue";
-import useStyles from "./composition/use-styles";
-import { removeTailwindClasses } from "../tools/tools.js";
+import useStyles from "./composition/use-styles 2";
 
 export default {
   props: {
@@ -35,18 +33,10 @@ export default {
     styleSeparator: { type: [String, Array], default: "default" },
   },
   setup(props) {
-    let s = inject("styles");
-
-    let elements = ["breadcrumb", "separator"];
-
-    let { styles } = useStyles(s, props, elements);
-
-    let classes = {
-      breadcrumb: computed(() => {
-        let c = [...styles.breadcrumb.value];
-        return removeTailwindClasses(c);
-      }),
-    };
+    let { classes } = useStyles(props, {
+      breadcrumb: null,
+      separator: null,
+    })
 
     return {
       classes,

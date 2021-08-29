@@ -10,10 +10,9 @@
 </template>
 
 <script>
-import { computed, watch, inject } from "vue";
+import { watch } from "vue";
 import vCloseButton from "./vCloseButton.vue";
-import useStyles from "./composition/use-styles";
-import { removeTailwindClasses } from "../tools/tools.js";
+import useStyles from "./composition/use-styles 2";
 
 export default {
   props: {
@@ -28,25 +27,14 @@ export default {
     vCloseButton,
   },
   setup(props, { emit }) {
-    let s = inject("styles")
-
-    let elements = ["alert"];
-
-    let { styles } = useStyles(s, props, elements);
-
-    let fixedClass = {
-      alert: ["relative"],
-    };
-
     // TODO: absolute alerts
     // TODO: state alerts invalid
 
-    let classes = {
-      alert: computed(() => {
-        let c = [...fixedClass.alert, ...styles.alert.value];
-        return removeTailwindClasses(c);
-      }),
-    };
+    let { classes } = useStyles(props, {
+      alert: {
+        fixed: "fixed-alert"
+      }
+    })
 
     let closeAlert = () => {
       emit("update:modelValue", false);
@@ -76,6 +64,9 @@ export default {
 </script>
 
 <style scoped>
+.fixed-alert {
+  @apply relative
+}
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.2s ease;
