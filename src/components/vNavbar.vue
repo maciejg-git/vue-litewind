@@ -5,9 +5,8 @@
 </template>
 
 <script>
-import { computed, inject } from "vue";
-import useStyles from "./composition/use-styles";
-import { removeTailwindClasses } from "../tools/tools.js";
+import { computed } from "vue";
+import useStyles from "./composition/use-styles 2";
 
 export default {
   props: {
@@ -19,27 +18,16 @@ export default {
     styleNavbar: { type: String, default: "default" },
   },
   setup(props) {
-    let s = inject("styles")
-
-    let elements = ["navbar"];
-
-    let { styles } = useStyles(s, props, elements);
-
-    let fixedClass = {
-      navbar: ["left-0", "z-20"],
-    };
-
-    let classes = {
-      navbar: computed(() => {
-        let c = [
-          props.fixed ? "fixed" : props.sticky ? "sticky" : "relative",
-          ...fixedClass.navbar,
-          ...(props.bottom ? ["bottom-0"] : ["top-0"]),
-          ...styles.navbar.value,
-        ];
-        return removeTailwindClasses(c);
-      }),
-    };
+    let { classes } = useStyles(props, {
+      navbar: {
+        fixed: "fixed-navbar",
+        prop: computed(() => {
+          let f = props.fixed ? "fixed" : props.sticky ? "sticky" : "relative";
+          let p = props.bottom ? "bottom-0" : "top-0";
+          return [f, p];
+        }),
+      },
+    });
 
     return {
       classes,
@@ -48,4 +36,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.fixed-navbar {
+  @apply left-0 z-20;
+}
+</style>

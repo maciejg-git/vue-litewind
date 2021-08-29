@@ -5,7 +5,7 @@
     type="radio"
     :class="[
       classes.radio.value,
-      states.radio[getFormState()],
+      states.radio[state],
       attrs.disabled === '' || attrs.disabled === true
         ? states.radio.disabled
         : '',
@@ -16,7 +16,6 @@
 <script>
 import { computed } from "vue";
 import useStyles from "./composition/use-styles 2";
-import useStates from "./composition/use-states";
 
 export default {
   props: {
@@ -34,7 +33,15 @@ export default {
       },
     });
 
-    let { getFormState } = useStates(props);
+    let state = computed(() =>
+      props.state === true
+        ? "valid"
+        : props.state === false
+        ? "invalid"
+        : props.state === null
+        ? ""
+        : props.state
+    );
 
     let localModel = computed({
       get() {
@@ -48,7 +55,7 @@ export default {
     return {
       classes,
       states,
-      getFormState,
+      state,
       localModel,
       attrs,
     };

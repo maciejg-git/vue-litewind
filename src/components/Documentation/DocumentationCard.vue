@@ -59,7 +59,7 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <v-card width="320px" style-card="default shadow-md hoverable">
+      <v-card width="320px" style-card="default shadow hoverable">
         <img :src="randomPhoto()" alt="" />
         <header class="pt-3 px-3">
           <span class="font-semibold">Example card</span>
@@ -77,7 +77,7 @@
         <div class="text-sm px-3 py-2">Card footer</div>
       </v-card>
 
-      <v-card width="720px" style-card="default shadow-md hoverable" style="height: 320px" class="flex my-10">
+      <v-card width="720px" style-card="default shadow hoverable" style="height: 320px" class="flex my-10">
         <img :src="randomPhotoHorizontal()" alt="" />
         <div class="flex flex-col">
         <header class="pt-4 px-3">

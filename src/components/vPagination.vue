@@ -20,8 +20,8 @@
 
 <script>
 import { ref, computed, watch, inject } from "vue";
-import useStyles from "./composition/use-styles";
-import { clamp, removeTailwindClasses } from "../tools/tools.js";
+import useStyles from "./composition/use-styles 2";
+import { clamp } from "../tools/tools.js";
 
 export default {
   props: {
@@ -40,73 +40,28 @@ export default {
     stylePrev: { type: [String, Array], default: "default" },
   },
   setup(props, { emit }) {
-    let s = inject("styles")
-
-    let elements = [
-      "paginationBar",
-      "page",
-      "pageActive",
-      "dots",
-      "next",
-      "prev",
-    ];
-
-    let { styles } = useStyles(s, props, elements);
-
-    let fixedClass = {
-      paginationBar: ["relative", "z-0", "flex", "flex-row", "w-min"],
-      page: [
-        "z-10",
-        "cursor-pointer",
-        "flex",
-        "justify-center",
-        "items-center",
-      ],
-      pageActive: [
-        "z-20",
-        "cursor-pointer",
-        "flex",
-        "justify-center",
-        "items-center",
-      ],
-      next: ["flex", "flex-col", "justify-center", "items-center"],
-      prev: ["flex", "flex-col", "justify-center", "items-center"],
-    };
-
-    let classes = {
-      paginationBar: computed(() => {
-        let c = [...fixedClass.paginationBar, ...styles.paginationBar.value];
-        return removeTailwindClasses(c);
-      }),
-      page: computed(() => {
-        let c = [...fixedClass.page, ...styles.page.value];
-        return removeTailwindClasses(c);
-      }),
-      pageActive: computed(() => {
-        let c = [...fixedClass.pageActive, ...styles.pageActive.value];
-        return removeTailwindClasses(c);
-      }),
-      dots: computed(() => {
-        let c = [...fixedClass.page, ...styles.dots.value];
-        return removeTailwindClasses(c);
-      }),
-      prev: computed(() => {
-        let c = [
-          ...fixedClass.prev,
-          ...styles.prev.value,
-          props.icons ? "btn-prev" : "",
-        ];
-        return removeTailwindClasses(c);
-      }),
-      next: computed(() => {
-        let c = [
-          ...fixedClass.next,
-          ...styles.next.value,
-          props.icons ? "btn-next" : "",
-        ];
-        return removeTailwindClasses(c);
-      }),
-    };
+    let { classes } = useStyles(props, {
+      paginationBar: {
+        fixed: "fixed-pagination-bar"
+      },
+      page: {
+        fixed: "fixed-page"
+      },
+      pageActive: {
+        fixed: "fixed-page-active"
+      },
+      dots: {
+        fixed: "fixed-page"
+      },
+      next: {
+        fixed: "fixed-control",
+        prop: computed(() => props.icons ? "btn-next" : "")
+      },
+      prev: {
+        fixed: "fixed-control",
+        prop: computed(() => props.icons ? "btn-prev" : "")
+      },
+    })
 
     let getPageClass = (p) => {
       if (p == "...") return classes.dots.value;
@@ -191,6 +146,18 @@ export default {
 </script>
 
 <style scoped>
+.fixed-pagination-bar {
+  @apply relative z-0 flex flex-row w-min
+}
+.fixed-page {
+  @apply z-10 cursor-pointer flex justify-center items-center
+}
+.fixed-page-active {
+  @apply z-20 cursor-pointer flex justify-center items-center
+}
+.fixed-control {
+  @apply flex flex-col justify-center items-center
+}
 .btn-next:before {
   content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chevron-right' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
   max-height: 16px;

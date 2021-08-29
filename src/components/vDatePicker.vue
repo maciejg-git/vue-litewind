@@ -32,9 +32,9 @@
     </div>
     <transition :name="transition" @after-leave="afterLeaveTransition">
       <div v-if="!isTransitioning" class="grid grid-cols-7 mb-2 relative">
-        <template v-if="adjecentMonths">
+        <template v-if="adjacentMonths">
           <div v-for="(day, index) in daysList.prevMonthDays" :key="index">
-            <div :class="classes.adjecentMonthDay.value">
+            <div :class="classes.adjacentMonthDay.value">
               {{ day }}
             </div>
           </div>
@@ -49,9 +49,9 @@
             {{ d.day }}
           </a>
         </div>
-        <template v-if="adjecentMonths">
+        <template v-if="adjacentMonths">
           <div v-for="(day, index) in daysList.nextMonthDays" :key="index">
-            <div :class="classes.adjecentMonthDay.value">
+            <div :class="classes.adjacentMonthDay.value">
               {{ day }}
             </div>
           </div>
@@ -79,10 +79,10 @@
 </template>
 
 <script>
-import { ref, computed, watch, inject } from "vue";
+import { ref, computed, watch } from "vue";
 import vButton from "./vButton.vue";
-import useStyles from "./composition/use-styles";
-import { pad, removeTailwindClasses } from "../tools/tools.js";
+import useStyles from "./composition/use-styles 2";
+import { pad } from "../tools/tools.js";
 
 export default {
   props: {
@@ -101,18 +101,18 @@ export default {
     },
     disabled: Array,
     width: { type: String, default: undefined },
-    adjecentMonths: { type: Boolean, default: false },
+    adjacentMonths: { type: Boolean, default: false },
     rangeHoverHighlight: { type: Boolean, default: false },
     buttons: { type: Boolean, default: false },
     secondaryButtonLabel: { type: String, default: "Cancel" },
     primaryButtonLabel: { type: String, default: "OK" },
     secondaryButtonStyle: {
       type: String,
-      default: "default secondary small no-margin",
+      default: "default secondary small",
     },
     primaryButtonStyle: {
       type: String,
-      default: "default primary small no-margin",
+      default: "default primary small",
     },
     name: { type: String, default: "datepicker" },
     theme: { type: String, default: "default" },
@@ -122,71 +122,30 @@ export default {
     styleDay: { type: String, default: "default" },
     styleDaySelected: { type: String, default: "default" },
     styleToday: { type: String, default: "default" },
-    styleAdjecentMonthDay: { type: String, default: "default" },
+    styleAdjacentMonthDay: { type: String, default: "default" },
     styleFooter: { type: String, default: "default" },
   },
   components: {
     vButton,
   },
   setup(props, { emit }) {
-    let s = inject("styles")
-
-    let elements = [
-      "datepicker",
-      "button",
-      "day",
-      "daySelected",
-      "today",
-      "footer",
-      "adjecentMonthDay",
-    ];
-
-    let { styles } = useStyles(s, props, elements);
-
-    let fixedClass = {
-      button: [
-        "flex",
-        "flex-col",
-        "justify-center",
-        "leading-none",
-        "focus:outline-none",
-        "mx-auto",
-      ],
-      day: ["block"],
-      daySelected: ["block"],
-      today: ["block"],
-    };
-
-    let classes = {
-      datepicker: computed(() => {
-        let c = [...styles.datepicker.value];
-        return removeTailwindClasses(c);
-      }),
-      button: computed(() => {
-        let c = [...fixedClass.button, ...styles.button.value];
-        return removeTailwindClasses(c);
-      }),
-      day: computed(() => {
-        let c = [...fixedClass.day, ...styles.day.value];
-        return removeTailwindClasses(c);
-      }),
-      daySelected: computed(() => {
-        let c = [...fixedClass.daySelected, ...styles.daySelected.value];
-        return removeTailwindClasses(c);
-      }),
-      today: computed(() => {
-        let c = [...fixedClass.today, ...styles.today.value];
-        return removeTailwindClasses(c);
-      }),
-      adjecentMonthDay: computed(() => {
-        let c = [...styles.adjecentMonthDay.value];
-        return removeTailwindClasses(c);
-      }),
-      footer: computed(() => {
-        let c = [...styles.footer.value];
-        return removeTailwindClasses(c);
-      }),
-    };
+    let { classes } = useStyles(props, {
+      datepicker: {
+        fixed: "fixed-button",
+      },
+      button: null,
+      day: {
+        fixed: "fixed-day",
+      },
+      daySelected: {
+        fixed: "fixed-day",
+      },
+      today: {
+        fixed: "fixed-day",
+      },
+      adjacentMonthDay: null,
+      footer: null,
+    });
 
     let getDayClass = (date) => {
       if (
@@ -239,7 +198,7 @@ export default {
       return m + 1 > 11 ? { m: 0, y: y + 1 } : { m: m + 1, y };
     };
 
-    // locale month and day names
+    // localized month and day names
 
     let monthNames = computed(() => {
       return Array.from({ length: 12 }, (v, i) =>
@@ -289,7 +248,7 @@ export default {
       let i = Array.from({ length: daysInMonth }, (v, i) => {
         return { day: i + 1, date: new Date(year.value, month.value, i + 1) };
       });
-      if (props.adjecentMonths) {
+      if (props.adjacentMonths) {
         let dayNumbers = Array.from({ length: 31 }, (v, i) => i + 1);
         let { m, y } = prevMonth(month.value, year.value);
         let daysPrev = getCountDaysInMonth(y, m);
@@ -459,6 +418,12 @@ export default {
 </script>
 
 <style scoped>
+.fixed-datapicker-button {
+  @apply flex flex-col justify-center leading-none focus:outline-none mx-auto;
+}
+.fixed-day {
+  @apply block;
+}
 .btn-prev-double:before {
   content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chevron-double-left' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3E%3Cpath fill-rule='evenodd' d='M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3E%3C/svg%3E");
   max-height: 16px;

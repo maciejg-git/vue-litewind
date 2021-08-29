@@ -3,14 +3,19 @@
     v-bind="$attrs"
     v-model="localModel"
     type="range"
-    :class="classes.range.value"
+    :class="[
+      classes.range.value,
+      states.range[state],
+      attrs.disabled === '' || attrs.disabled === true
+        ? states.range.disabled
+        : '',
+    ]"
   />
 </template>
 
 <script>
-import { computed, inject } from "vue";
-import useStyles from "./composition/use-styles";
-import { removeTailwindClasses } from "../tools/tools.js";
+import { computed } from "vue";
+import useStyles from "./composition/use-styles 2";
 
 export default {
   props: {
@@ -22,39 +27,21 @@ export default {
   },
   emits: ["update:modelValue"],
   setup(props, { attrs, emit }) {
-    let style = inject("styles")
+    let { classes, states } = useStyles(props, {
+      range: {
+        states: ["valid", "invalid", "disabled"],
+      },
+    });
 
-    let elements = ["range"];
-
-    let s = ["valid", "invalid", "disabled"];
-
-    let { styles, states } = useStyles(
-      style,
-      props,
-      elements,
-      s
+    let state = computed(() =>
+      props.state === true
+        ? "valid"
+        : props.state === false
+        ? "invalid"
+        : props.state === null
+        ? ""
+        : props.state
     );
-
-    let classes = {
-      range: computed(() => {
-        let c = [
-          ...styles.range.value,
-          ...(props.state == "valid" || props.state === true
-            ? states.range.valid
-            : props.state == "invalid" || props.state === false
-            ? states.range.invalid
-            : props.state == "normal" ||
-              props.state === null ||
-              props.state === undefined
-            ? ""
-            : ""),
-          ...(attrs.disabled === "" || attrs.disabled === true
-            ? states.range.disabled
-            : ""),
-        ];
-        return removeTailwindClasses(c);
-      }),
-    };
 
     let localModel = computed({
       get() {
@@ -67,7 +54,10 @@ export default {
 
     return {
       classes,
+      states,
+      state,
       localModel,
+      attrs,
     };
   },
 };

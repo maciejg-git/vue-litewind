@@ -5,7 +5,7 @@
     type="checkbox"
     :class="[
       classes.checkbox.value,
-      states.checkbox[getFormState()],
+      states.checkbox[state],
       attrs.disabled === '' || attrs.disabled === true
         ? states.checkbox.disabled
         : '',
@@ -16,7 +16,6 @@
 <script>
 import { computed } from "vue";
 import useStyles from "./composition/use-styles 2";
-import useStates from "./composition/use-states";
 
 export default {
   props: {
@@ -33,7 +32,16 @@ export default {
         states: ["valid", "invalid", "disabled"],
       },
     });
-    let { getFormState } = useStates(props);
+
+    let state = computed(() =>
+      props.state === true
+        ? "valid"
+        : props.state === false
+        ? "invalid"
+        : props.state === null
+        ? ""
+        : props.state
+    );
 
     let localModel = computed({
       get() {
@@ -47,7 +55,7 @@ export default {
     return {
       classes,
       states,
-      getFormState,
+      state,
       localModel,
       attrs,
     };

@@ -362,6 +362,20 @@
     focus:border-gray-400
     outline-none
 }
+    .range-valid-state {
+      @apply
+        border-green-300
+        focus:ring-green-200
+    }
+    .range-invalid-state {
+      @apply
+        border-red-300
+        focus:ring-red-200
+    }
+    .range-disabled-state {
+      @apply
+        opacity-50
+    }
 
 .radio-default {
   @apply
@@ -484,6 +498,8 @@
         opacity-50
     }
 
+/* ALERT */
+
 .alert-default {
   @apply
     bg-blue-100
@@ -494,30 +510,28 @@
     font-semibold
     p-4
 }
+    .alert-info {
+      @apply
+        bg-yellow-100
+        border-yellow-200
+    }
+    .alert-danger {
+      @apply
+        bg-red-100
+        border-red-200
+    }
+    .alert-success {
+      @apply
+        bg-green-100
+        border-green-200
+    }
+    .alert-light {
+      @apply
+        bg-gray-100
+        border-gray-200
+    }
 
-.alert-info {
-  @apply
-    bg-yellow-100
-    border-yellow-200
-}
-
-.alert-danger {
-  @apply
-    bg-red-100
-    border-red-200
-}
-
-.alert-success {
-  @apply
-    bg-green-100
-    border-green-200
-}
-
-.alert-light {
-  @apply
-    bg-gray-100
-    border-gray-200
-}
+/* NAVBAR */
 
 .navbar-default {
   @apply
@@ -525,11 +539,12 @@
     bg-gray-100
     shadow-md
 }
+    .navbar-bottom {
+      @apply
+        border-t
+    }
 
-.navbar-bottom {
-  @apply
-    border-t
-}
+/* CLOSEBUTTON */
 
 .closeButton-default {
   @apply
@@ -538,6 +553,8 @@
     w-6
     h-6
 }
+
+/* SIDEPANEL */
 
 .sidepanel-default {
   @apply
@@ -548,6 +565,8 @@
   box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.35);
 }
 
+/* MODAL */
+
 .modal-default {
   @apply
     bg-white
@@ -555,11 +574,10 @@
     rounded-md
     text-gray-900
 }
-
-.modal-square {
-  @apply
-    rounded-none
-}
+    .modal-square {
+      @apply
+        rounded-none
+    }
 
 .modal-header-default {
   @apply
@@ -583,24 +601,24 @@
     px-6
     py-5
 }
-
-.modal-content-relaxed {
-  @apply
-    px-9
-    py-8
-}
-
-.modal-content-edge-to-edge {
-  @apply
-    px-2
-    py-5
-}
+    .modal-content-relaxed {
+      @apply
+        px-9
+        py-8
+    }
+    .modal-content-edge-to-edge {
+      @apply
+        px-2
+        py-5
+    }
 
 .modal-backdrop-default {
   @apply
     bg-black
     opacity-50
 }
+
+/* CARD */
 
 .card-default {
   @apply
@@ -610,27 +628,25 @@
     rounded
     overflow-hidden
 }
+    .card-shadow {
+      @apply
+        shadow-md
+    }
+    .card-square {
+      @apply
+        rounded-none
+    }
+    .card-borderless {
+      @apply
+        border-0
+    }
+    .card-hoverable {
+      @apply
+        hover:shadow-lg
+        transition-all
+    }
 
-.card-shadow {
-  @apply
-    shadow-md
-}
-
-.card-square {
-  @apply
-    rounded-none
-}
-
-.card-borderless {
-  @apply
-    border-0
-}
-
-.card-hoverable {
-  @apply
-    hover:shadow-lg
-    transition-all
-}
+/* DROPDOWN */
 
 .dropdown-menuItem-fixed {
   @apply
@@ -649,11 +665,10 @@
     focus:bg-indigo-500
     focus:text-white
 }
-
-.dropdown-menuItem-green {
-  @apply
-    bg-green-500
-}
+    .dropdown-menuItem-green {
+      @apply
+        bg-green-500
+    }
 
 .dropdown-menuItem-active-default {
   @apply
@@ -680,6 +695,8 @@
     px-4
     py-2
 }
+
+/* DATEPICKER */
 
 .datepicker-day-fixed {
   @apply
@@ -713,7 +730,7 @@
     hover:bg-gray-50
 }
 
-.datepicker-day-selected-default {
+.datepicker-daySelected-default {
   @apply
     datepicker-day-fixed;
   @apply
@@ -728,10 +745,11 @@
     datepicker-day-fixed;
   @apply  
     hover:bg-gray-50
+    text-indigo-500
     font-bold
 }
 
-.datepicker-adjacent-month-day-default {
+.datepicker-adjacentMonthDay-default {
   @apply
     datepicker-day-fixed;
   @apply  
@@ -747,44 +765,42 @@
     py-1
 }
 
+/* SPINNER */
+
 .spinner-default {
   @apply
     text-indigo-500
     h-8
     w-8
 }
+    .spinner-blue {
+      @apply
+        text-blue-500
+    }
+    .spinner-yellow {
+      @apply
+        text-yellow-500
+    }
+    .spinner-green {
+      @apply
+        text-green-500
+    }
+    .spinner-gray {
+      @apply
+        text-gray-300
+    }
+    .spinner-large {
+      @apply
+        h-20
+        w-20
+    }
+    .spinner-small {
+      @apply
+        h-5
+        w-5
+    }
 
-.spinner-blue {
-  @apply
-    text-blue-500
-}
-
-.spinner-yellow {
-  @apply
-    text-yellow-500
-}
-
-.spinner-green {
-  @apply
-    text-green-500
-}
-
-.spinner-gray {
-  @apply
-    text-gray-300
-}
-
-.spinner-large {
-  @apply
-    h-20
-    w-20
-}
-
-.spinner-small {
-  @apply
-    h-5
-    w-5
-}
+/* POPOVER */
 
 .popover-default {
   @apply
@@ -802,6 +818,8 @@
     p-5
 }
 
+/* BADGE */
+
 .badge-fixed {
   @apply
     rounded-md
@@ -815,7 +833,6 @@
     bg-indigo-500
     text-white
 }
-
 .badge-primary {
   @apply
     badge-fixed;
@@ -823,7 +840,6 @@
     bg-indigo-500
     text-white
 }
-
 .badge-secondary {
   @apply
     badge-fixed;
@@ -831,6 +847,34 @@
     bg-gray-500
     text-white
 }
+    .badge-green {
+      @apply
+        bg-green-500
+        text-white
+    }
+    .badge-yellow {
+      @apply
+        bg-yellow-500
+        text-white
+    }
+    .badge-red {
+      @apply
+        bg-red-500
+        text-white
+    }
+    .badge-small {
+      @apply
+        text-sm
+        p-1
+        px-2
+    }
+    .badge-tiny {
+      @apply
+        text-xs
+        font-semibold
+        p-0.5
+        px-2
+    }
 
 .badge-circle {
   @apply
@@ -843,38 +887,7 @@
     py-0
 }
 
-.badge-green {
-  @apply
-    bg-green-500
-    text-white
-}
-
-.badge-yellow {
-  @apply
-    bg-yellow-500
-    text-white
-}
-
-.badge-red {
-  @apply
-    bg-red-500
-    text-white
-}
-
-.badge-small {
-  @apply
-    text-sm
-    p-1
-    px-2
-}
-
-.badge-tiny {
-  @apply
-    text-xs
-    font-semibold
-    p-0.5
-    px-2
-}
+/* PAGINATION */
 
 .pagination-page-fixed {
   @apply
@@ -903,7 +916,7 @@
     p-2
 }
 
-.pagination-pagination-bar-default {
+.pagination-paginationBar-default {
   @apply
     rounded-md
 }
@@ -913,7 +926,7 @@
     pagination-page-fixed
 }
 
-.pagination-page-active-default {
+.pagination-pageActive-default {
   @apply
     pagination-page-fixed;
   @apply  
@@ -948,6 +961,8 @@
     rounded-l-md
     mr-0.5
 }
+
+/* TOOLTIP */
 
 .tooltip-default {
   @apply

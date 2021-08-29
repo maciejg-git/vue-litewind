@@ -33,6 +33,16 @@ export default {
       },
     });
 
+    let state = computed(() =>
+      props.state === true
+        ? "valid"
+        : props.state === false
+        ? "invalid"
+        : props.state === null
+        ? ""
+        : props.state
+    );
+
     let localModel = computed({
       get() {
         return props.modelValue;
@@ -44,6 +54,7 @@ export default {
 
     return {
       classes,
+      state,
       states,
       localModel,
       attrs,

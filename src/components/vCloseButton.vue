@@ -18,9 +18,7 @@
 </template>
 
 <script>
-import { computed, inject } from "vue";
 import useStyles from "./composition/use-styles 2";
-import { removeTailwindClasses } from "../tools/tools.js";
 
 export default {
   props: {
@@ -31,7 +29,6 @@ export default {
     let { classes } = useStyles(props, {
       closeButton: null,
     })
-    console.log(classes)
 
     return {
       classes,

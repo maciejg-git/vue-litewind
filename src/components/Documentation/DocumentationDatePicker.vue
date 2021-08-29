@@ -84,7 +84,7 @@
         <v-card style="width: 320px" class="p-2">
           <v-date-picker
             v-model="exampleModel.single"
-            adjecent-months
+            adjacent-months
           ></v-date-picker>
         </v-card>
         <span class="ml-10">v-model (single): {{ exampleModel.single }}</span>
@@ -94,7 +94,7 @@
           <v-date-picker
             v-model="exampleModel.range"
             range
-            adjecent-months
+            adjacent-months
           ></v-date-picker>
         </v-card>
         <span class="ml-10">v-model (range): {{ exampleModel.range }}</span>
@@ -128,7 +128,7 @@
           :buttons="!!example.buttons"
           :primary-button-label="example.primaryButtonLabel"
           :secondary-button-label="example.secondaryButtonLabel"
-          :adjecent-months="!!example.adjecentMonths"
+          :adjacent-months="!!example.adjacentMonths"
           :range-hover-highlight="example.rangeHoverHighlight"
           :transition="example.transition"
           @update:modelValue="
@@ -201,7 +201,7 @@
             </div>
             <div class="mb-2">
               <label for="adjacent-months">adjacent-months:</label>
-              <v-select id="adjacent-months" v-model="example.adjecentMonths">
+              <v-select id="adjacent-months" v-model="example.adjacentMonths">
                 <option :value="true">true</option>
                 <option :value="false">false</option>
               </v-select>
@@ -257,7 +257,7 @@
     :buttons=&quot;!!example.buttons&quot;
     :primary-button-label=&quot;example.primaryButtonLabel&quot;
     :secondary-button-label=&quot;example.secondaryButtonLabel&quot;
-    :adjecent-months=&quot;!!example.adjecentMonths&quot;
+    :adjacent-months=&quot;!!example.adjacentMonths&quot;
     :range-hover-highlight=&quot;example.rangeHoverHighlight&quot;
     :transition=&quot;example.transition&quot;
     @update:modelValue=&quot;
@@ -296,7 +296,7 @@
               v-model="exampleDropdown.date"
               width="305px"
               :buttons="exampleDropdown.buttons"
-              adjecent-months
+              adjacent-months
               @state:done="hide"
             ></v-date-picker>
           </v-card>
@@ -331,7 +331,7 @@
         v-model=&quot;exampleDropdown.date&quot;
         width=&quot;305px&quot;
         :buttons=&quot;exampleDropdown.buttons&quot;
-        adjecent-months
+        adjacent-months
         @state:done=&quot;hide&quot;
       &gt;&lt;/v-date-picker&gt;
     &lt;/v-card&gt;
@@ -394,7 +394,7 @@ export default {
         description: "Component width",
       },
       {
-        prop: "adjecent-months",
+        prop: "adjacent-months",
         type: ["Boolean"],
         default: "false",
         description:
@@ -498,7 +498,7 @@ export default {
         description: "Today",
       },
       {
-        prop: "style-adjecent-month-day",
+        prop: "style-adjacent-month-day",
         description:
           "Days from adjacent months",
       },
@@ -576,7 +576,7 @@ export default {
       range: false,
       locale: "en-GB",
       buttons: true,
-      adjecentMonths: true,
+      adjacentMonths: true,
       secondaryButtonLabel: "Cancel",
       primaryButtonLabel: "OK",
       rangeHoverHighlight: false,

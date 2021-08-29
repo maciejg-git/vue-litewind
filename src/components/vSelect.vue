@@ -34,6 +34,16 @@ export default {
       }
     })
 
+    let state = computed(() =>
+      props.state === true
+        ? "valid"
+        : props.state === false
+        ? "invalid"
+        : props.state === null
+        ? ""
+        : props.state
+    );
+
     let isOptionDisabled = (o) => {
       return o.disabled == undefined || o.disabled == null ? false : o.disabled;
     };
@@ -50,9 +60,10 @@ export default {
     return {
       classes,
       states,
-      attrs,
+      state,
       isOptionDisabled,
       localModel,
+      attrs,
     };
   },
 };
