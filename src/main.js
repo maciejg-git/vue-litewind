@@ -5,6 +5,7 @@ import { plugin } from "./components/index.js";
 import { buttonPlugin, tablePlugin } from "./components/index.js";
 import "tailwindcss/tailwind.css";
 import "./styles.css"
+import "./styles-material.css"
 
 let app = createApp(App);
 
