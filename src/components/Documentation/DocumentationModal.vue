@@ -81,7 +81,7 @@
         >
         <v-button
           @click="example.isVisibleLong = !example.isVisibleLong"
-          class="mx-auto self-center"
+          class="mx-auto self-center mt-4"
           >Show long scrollable modal</v-button
         >
       </v-card>
