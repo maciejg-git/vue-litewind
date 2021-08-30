@@ -22,7 +22,6 @@ export default {
     modelValue: { type: [Array, Boolean, String], default: undefined },
     state: { type: [String, Boolean], default: "" },
     name: { type: String, default: "radio" },
-    theme: { type: String, default: "default" },
     styleRadio: { type: [String, Array], default: "default" },
   },
   emits: ["update:modelValue"],

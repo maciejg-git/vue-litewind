@@ -98,7 +98,6 @@ export default {
     selectionMode: { type: String, default: "" },
     state: { type: String, default: "" },
     name: { type: String, default: "table" },
-    theme: { type: String, default: "default" },
     styleTable: { type: String, default: "default" },
     styleHeaderRow: { type: String, default: "default" },
     styleHeaderCell: { type: String, default: "default" },

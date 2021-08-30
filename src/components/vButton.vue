@@ -19,7 +19,6 @@ export default {
     tag: { type: String, default: "button" },
     block: { type: Boolean, default: false },
     name: { type: String, default: "button" },
-    theme: { type: String, default: "default" },
     styleButton: { type: String, default: "default" },
   },
   setup(props) {

@@ -23,7 +23,6 @@ export default {
     type: { type: String, default: "text" },
     state: { type: [String, Boolean], default: "" },
     name: { type: String, default: "input" },
-    theme: { type: String, default: "default" },
     styleInput: { type: [String, Array], default: "default" },
   },
   emits: ["update:modelValue"],

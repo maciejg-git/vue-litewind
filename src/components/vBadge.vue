@@ -12,7 +12,6 @@ export default {
   props: {
     position: { type: String, default: "" },
     name: { type: String, default: "badge" },
-    theme: { type: String, default: "default" },
     styleBadge: { type: String, default: "default" },
   },
   setup(props) {

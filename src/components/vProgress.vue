@@ -42,7 +42,6 @@ export default {
     indeterminateSpeed: { type: Number, default: 7 },
     transition: { type: Boolean, default: true },
     name: { type: String, default: "progress" },
-    theme: { type: String, default: "default" },
     styleProgress: { type: [String, Array], default: "default" },
     styleProgressBar: { type: [String, Array], default: "default" },
     styleLabel: { type: [String, Array], default: "default" },

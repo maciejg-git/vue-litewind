@@ -36,7 +36,6 @@ export default {
     width: { type: String, default: "320px" },
     noHeader: { type: Boolean, default: false },
     name: { type: String, default: "sidepanel" },
-    theme: { type: String, default: "default" },
     styleSidepanel: { type: String, default: "default" },
     styleCloseButton: { type: String, default: "default" },
   },

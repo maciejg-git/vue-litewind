@@ -22,7 +22,6 @@ export default {
     modelValue: { type: [Array, Boolean], default: undefined },
     state: { type: [String, Boolean], default: "" },
     name: { type: String, default: "checkbox" },
-    theme: { type: String, default: "default" },
     styleCheckbox: { type: [String, Array], default: "default" },
   },
   emits: ["update:modelValue"],

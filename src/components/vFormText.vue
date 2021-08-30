@@ -13,7 +13,6 @@ export default {
     type: { type: String, default: "text" },
     state: { type: String, default: "" },
     name: { type: String, default: "input" },
-    theme: { type: String, default: "default" },
     styleFormText: { type: [String, Array], default: "default" },
   },
   setup(props) {

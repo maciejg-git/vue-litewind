@@ -28,7 +28,6 @@ export default {
     path: { type: Array, default: [] },
     separator: { type: String, default: "/" },
     name: { type: String, default: "breadcrumb" },
-    theme: { type: String, default: "default" },
     styleBreadcrumb: { type: [String, Array], default: "default" },
     styleSeparator: { type: [String, Array], default: "default" },
   },

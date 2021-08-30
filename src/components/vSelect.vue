@@ -33,7 +33,6 @@ export default {
     options: { type: Array, default: undefined },
     state: { type: [String, Boolean], default: "" },
     name: { type: String, default: "select" },
-    theme: { type: String, default: "default" },
     styleSelect: { type: [String, Array], default: "default" },
   },
   emits: ["update:modelValue"],

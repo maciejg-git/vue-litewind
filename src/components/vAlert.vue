@@ -20,7 +20,6 @@ export default {
     dismissable: { type: Boolean, default: true },
     autoDismissDelay: { type: Number, default: 0 },
     name: { type: String, default: "alert" },
-    theme: { type: String, default: "default" },
     styleAlert: { type: [String, Array], default: "default" },
   },
   components: {

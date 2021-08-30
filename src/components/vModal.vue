@@ -70,7 +70,6 @@ export default {
     size: { type: String, default: "md" },
     transition: { type: String, default: "fade-slide" },
     name: { type: String, default: "modal" },
-    theme: { type: String, default: "default" },
     styleModal: { type: String, default: "default" },
     styleHeader: { type: String, default: "default" },
     styleFooter: { type: String, default: "default" },

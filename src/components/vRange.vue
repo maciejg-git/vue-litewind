@@ -22,7 +22,6 @@ export default {
     modelValue: { type: [String, Number], default: undefined },
     state: { type: String, default: "" },
     name: { type: String, default: "range" },
-    theme: { type: String, default: "default" },
     styleRange: { type: [String, Array], default: "default" },
   },
   emits: ["update:modelValue"],

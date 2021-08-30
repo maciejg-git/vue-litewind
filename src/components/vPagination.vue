@@ -31,7 +31,6 @@ export default {
     maxPages: { type: [Number, String], default: undefined },
     icons: { type: Boolean, default: false },
     name: { type: String, default: "pagination" },
-    theme: { type: String, default: "default" },
     stylePaginationBar: { type: [String, Array], default: "default" },
     stylePage: { type: [String, Array], default: "default" },
     stylePageActive: { type: [String, Array], default: "default" },

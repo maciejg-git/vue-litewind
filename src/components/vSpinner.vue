@@ -17,7 +17,6 @@ export default {
     thickness: { type: String, default: "0.15" },
     speed: { type: String, default: "0.75" },
     name: { type: String, default: "spinner" },
-    theme: { type: String, default: "default" },
     styleSpinner: { type: String, default: "default" },
   },
   setup(props) {
