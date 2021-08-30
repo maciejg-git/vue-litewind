@@ -501,7 +501,7 @@
     font-semibold
     p-4
 }
-    .alert-info {
+    .alert-blue {
       @apply
         bg-yellow-100
         border-yellow-200
