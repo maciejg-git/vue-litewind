@@ -1,3 +1,5 @@
+/* BUTTON */
+
 .button-fixed {
   @apply
     rounded
@@ -10,7 +12,6 @@
     px-4
     py-2
 }
-
 .button-default {
   @apply
     button-fixed;
@@ -91,6 +92,8 @@
         uppercase
     }
 
+/* TABS */
+
 .tabs-tab-fixed {
   @apply
     border
@@ -148,16 +151,15 @@
     bg-white
     border-collapse
 }
+    .table-busy {
+      @apply
+        opacity-50
+    }
 
 /* .table-fixed { */
 /*   @apply */
 /*     table-fixed */
 /* } */
-
-.table-busy {
-  @apply
-    opacity-50
-}
 
 .table-headerRow {
 
@@ -198,15 +200,15 @@
     px-2
     pr-6
 }
-.table-cell-bordered {
-  @apply
-    border
-    border-t
-    border-gray-300
-    py-2
-    px-2
-    pr-6
-}
+    .table-cell-bordered {
+      @apply
+        border
+        border-t
+        border-gray-300
+        py-2
+        px-2
+        pr-6
+    }
 
 .table-selected-default {
   @apply
@@ -227,6 +229,8 @@
     py-2
 }
 
+/* LIST */
+
 .list-item-fixed {
   @apply
     p-2
@@ -241,16 +245,14 @@
     rounded-md
     overflow-hidden
 }
-
-.list-square {
-  @apply
-    rounded-none
-}
-
-.list-borderless {
-  @apply
-    border-0
-}
+    .list-square {
+      @apply
+        rounded-none
+    }
+    .list-borderless {
+      @apply
+        border-0
+    }
 
 .list-item-default {
   @apply
@@ -259,7 +261,7 @@
     hover:bg-gray-50
 }
 
-.list-item-active-default {
+.list-itemActive-default {
   @apply
     list-item-fixed;
   @apply
@@ -268,6 +270,8 @@
     text-white
 }
 
+/* PROGRESS */
+
 .progress-default {
   @apply
     bg-gray-100
@@ -275,29 +279,26 @@
     overflow-hidden
     h-4
 }
-
-.progress-transparent {
-  @apply
-    bg-transparent
-}
-
-.progress-tiny {
-  @apply
-    h-1
-}
+    .progress-transparent {
+      @apply
+      bg-transparent
+    }
+    .progress-tiny {
+      @apply
+        h-1
+    }
 
 .progress-progressBar-default {
   @apply
     bg-indigo-500
 }
-
-.progress-progressBar-gradient {
-  @apply
-    bg-gradient-to-r
-    from-yellow-400
-    via-red-500
-    to-pink-500
-}
+    .progress-progressBar-gradient {
+      @apply
+        bg-gradient-to-r
+        from-yellow-400
+        via-red-500
+        to-pink-500
+    }
 
 .progress-label-default {
   @apply
@@ -305,6 +306,8 @@
     text-white
     font-bold
 }
+
+/* BREADCRUMB */
 
 .breadcrumb-default {
   @apply
@@ -316,12 +319,16 @@
 
 }
 
+/* FORMTEXT */
+
 .form-text-default {
   @apply
     text-sm
     text-gray-600
     mt-1
 }
+
+/* SELECT */
 
 .select-default {
   @apply
@@ -351,6 +358,8 @@
         opacity-50
     }
 
+/* RANGE */
+
 .range-default {
   @apply
     rounded
@@ -376,6 +385,8 @@
       @apply
         opacity-50
     }
+
+/* RADIO */
 
 .radio-default {
   @apply
@@ -408,6 +419,8 @@
       @apply
         opacity-50
     }
+
+/* CHECKBOX */
 
 .checkbox-default {
   @apply
@@ -442,6 +455,8 @@
         opacity-50
     }
 
+/* INPUT */
+
 .input-default {
   @apply
     rounded
@@ -468,6 +483,8 @@
       @apply
         opacity-50
     }
+
+/* TEXTAREA */
 
 .textarea-default {
   @apply
