@@ -21,9 +21,10 @@ export default {
       navbar: {
         fixed: "fixed-navbar",
         prop: computed(() => {
-          let f = props.fixed ? "fixed" : props.sticky ? "sticky" : "relative";
-          let p = props.bottom ? "bottom-0" : "top-0";
-          return [f, p];
+          return [
+            props.fixed ? "fixed" : props.sticky ? "sticky" : "relative",
+            props.bottom ? "bottom-0" : "top-0",
+          ];
         }),
       },
     });
