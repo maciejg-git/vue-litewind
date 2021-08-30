@@ -41,7 +41,6 @@ export default {
         ? ""
         : props.state
     );
-    console.log(states)
 
     let localModel = computed({
       get() {
