@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { ref, computed, watch, inject } from "vue";
+import { ref, computed, watch } from "vue";
 import useStyles from "./composition/use-styles";
 import { clamp } from "../tools/tools.js";
 
@@ -33,38 +33,37 @@ export default {
     name: { type: String, default: "pagination" },
     stylePaginationBar: { type: [String, Array], default: "default" },
     stylePage: { type: [String, Array], default: "default" },
-    stylePageActive: { type: [String, Array], default: "default" },
     styleDots: { type: [String, Array], default: "default" },
     styleNext: { type: [String, Array], default: "default" },
     stylePrev: { type: [String, Array], default: "default" },
   },
   setup(props, { emit }) {
-    let { classes } = useStyles(props, {
+    let { classes, states } = useStyles(props, {
       paginationBar: {
-        fixed: "fixed-pagination-bar"
+        fixed: "fixed-pagination-bar",
       },
       page: {
-        fixed: "fixed-page"
-      },
-      pageActive: {
-        fixed: "fixed-page-active"
+        fixed: "fixed-page",
+        states: ["active"],
       },
       dots: {
-        fixed: "fixed-page"
+        fixed: "fixed-page",
       },
       next: {
         fixed: "fixed-control",
-        prop: computed(() => props.icons ? "btn-next" : "")
+        prop: computed(() => (props.icons ? "btn-next" : "")),
       },
       prev: {
         fixed: "fixed-control",
-        prop: computed(() => props.icons ? "btn-prev" : "")
+        prop: computed(() => (props.icons ? "btn-prev" : "")),
       },
-    })
+    });
 
     let getPageClass = (p) => {
       if (p == "...") return classes.dots.value;
-      if (currentPage.value == p) return classes.pageActive.value;
+      if (currentPage.value == p) {
+        return ["z-20", classes.page.value, states.page.active.value];
+      }
       return classes.page.value;
     };
 
@@ -146,16 +145,13 @@ export default {
 
 <style scoped>
 .fixed-pagination-bar {
-  @apply relative z-0 flex flex-row w-min
+  @apply relative z-0 flex flex-row w-min;
 }
 .fixed-page {
-  @apply z-10 cursor-pointer flex justify-center items-center
-}
-.fixed-page-active {
-  @apply z-20 cursor-pointer flex justify-center items-center
+  @apply z-10 cursor-pointer flex justify-center items-center;
 }
 .fixed-control {
-  @apply flex flex-col justify-center items-center
+  @apply flex flex-col justify-center items-center;
 }
 .btn-next:before {
   content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chevron-right' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");

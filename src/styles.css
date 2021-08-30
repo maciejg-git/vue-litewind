@@ -933,19 +933,16 @@
   @apply
     pagination-page-fixed
 }
-
-.pagination-pageActive-default {
-  @apply
-    pagination-page-fixed;
-  @apply  
-    hover:bg-indigo-400
-    border-indigo-200
-    bg-indigo-500
-    ring-indigo-200
-    text-white
-    ring-2
-    font-semibold
-}
+    .pagination-page-active-state {
+      @apply  
+        hover:bg-indigo-400
+        border-indigo-200
+        bg-indigo-500
+        ring-indigo-200
+        text-white
+        ring-2
+        font-semibold
+    }
 
 .pagination-dots-default {
   @apply
