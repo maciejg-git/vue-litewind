@@ -24,7 +24,8 @@ export default {
   setup(props) {
     let { classes } = useStyles(props, {
       button: {
-        fixed: "fixed-button"
+        fixed: "fixed-button",
+        prop: computed(() => props.block ? "w-full" : "")
       }
     })
 
@@ -40,6 +41,6 @@ export default {
 
 <style scoped lang="postcss">
 .fixed-button {
-  @apply w-auto inline-flex justify-center items-center
+  @apply inline-flex justify-center items-center
 }
 </style>
