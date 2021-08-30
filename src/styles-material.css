@@ -1,0 +1,28 @@
+/* TABS MATERIAL */
+
+.tabsMaterial-tab-fixed {
+  @apply
+    -mb-px
+    -ml-px
+    p-2
+    px-4
+}
+
+.tabsMaterial-tab-default {
+  @apply
+    tabsMaterial-tab-fixed;
+  @apply
+    hover:bg-gray-50
+}
+    .tabsMaterial-tab-active-state {
+      @apply
+        bg-white
+        shadow-none
+        border-b-2
+        border-indigo-500
+    }
+
+.tabsMaterial-tabBar-default {
+  @apply
+    border-b
+}
