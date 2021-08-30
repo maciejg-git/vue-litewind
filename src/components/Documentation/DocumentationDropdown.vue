@@ -108,8 +108,8 @@
           <v-dropdown-menu-item tag="button">Menu item</v-dropdown-menu-item>
           <v-dropdown-menu-item tag="button">Menu item 2</v-dropdown-menu-item>
           <v-dropdown-header>Menu header</v-dropdown-header>
-          <v-dropdown-menu-item tag="button">Menu item 3</v-dropdown-menu-item>
-          <v-dropdown-menu-item tag="button">Menu item 4</v-dropdown-menu-item>
+          <v-dropdown-menu-item active tag="button">Menu item 3</v-dropdown-menu-item>
+          <v-dropdown-menu-item disabled tag="button">Menu item 4</v-dropdown-menu-item>
           <v-dropdown-menu-item tag="button">Menu item 5</v-dropdown-menu-item>
         </v-card>
       </v-dropdown>
