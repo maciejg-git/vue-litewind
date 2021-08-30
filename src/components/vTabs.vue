@@ -21,7 +21,7 @@
 
 <script>
 import { ref, toRef, onMounted, computed, provide, h } from "vue";
-import useStyles from "./composition/use-styles 2";
+import useStyles from "./composition/use-styles";
 
 export default {
   props: {
@@ -109,7 +109,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="postcss">
 .fixed-tab-bar {
   @apply flex flex-auto;
 }

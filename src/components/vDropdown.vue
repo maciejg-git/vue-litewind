@@ -13,7 +13,7 @@
 
 <script>
 import { ref, provide, toRef, toRefs } from "vue";
-import useStyles from "./composition/use-styles 2";
+import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
 import { correctPlacement } from "../const.js";
 
@@ -95,7 +95,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="postcss">
 ::v-deep .fixed-item {
   @apply block px-4 py-2
 }

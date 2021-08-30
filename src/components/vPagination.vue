@@ -20,7 +20,7 @@
 
 <script>
 import { ref, computed, watch, inject } from "vue";
-import useStyles from "./composition/use-styles 2";
+import useStyles from "./composition/use-styles";
 import { clamp } from "../tools/tools.js";
 
 export default {

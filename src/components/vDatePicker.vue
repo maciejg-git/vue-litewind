@@ -81,7 +81,7 @@
 <script>
 import { ref, computed, watch } from "vue";
 import vButton from "./vButton.vue";
-import useStyles from "./composition/use-styles 2";
+import useStyles from "./composition/use-styles";
 import { pad } from "../tools/tools.js";
 
 export default {
@@ -417,7 +417,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="postcss">
 .fixed-datapicker-button {
   @apply flex flex-col justify-center leading-none focus:outline-none mx-auto;
 }

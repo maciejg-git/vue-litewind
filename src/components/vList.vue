@@ -5,9 +5,8 @@
 </template>
 
 <script>
-import { computed, provide, toRef, inject } from "vue";
+import { provide, toRef } from "vue";
 import useStyles from "./composition/use-styles";
-import { removeTailwindClasses } from "../tools/tools.js";
 
 export default {
   props: {
@@ -20,35 +19,15 @@ export default {
     styleItemActive: { type: [String, Array], default: "default" },
   },
   setup(props) {
-    let s = inject("styles")
+    let { classes } = useStyles(props, {
+      list: {
+        fixed: "fixed-list"
+      },
+      item: null,
+      itemActive: null,
+    })
 
-    let elements = ["list", "item", "itemActive"];
-
-    let fixedClass = {
-      list: ["flex", "flex-col"],
-    };
-
-    let { styles } = useStyles(s, props, elements);
-
-    let classes = {
-      list: computed(() => {
-        let c = [...fixedClass.list, ...styles.list.value];
-        return removeTailwindClasses(c);
-      }),
-    };
-
-    let classesItem = {
-      item: computed(() => {
-        let c = [...styles.item.value];
-        return removeTailwindClasses(c);
-      }),
-      itemActive: computed(() => {
-        let c = [...styles.itemActive.value];
-        return removeTailwindClasses(c);
-      }),
-    };
-
-    provide("classes", classesItem);
+    provide("classes", classes);
     provide("tag", toRef(props, "tag"));
 
     return {
@@ -58,4 +37,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped lang="postcss">
+.fixed-list {
+  @apply flex flex-col
+}
+</style>

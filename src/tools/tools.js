@@ -1,7 +1,3 @@
-import { tailwindClassList } from "../tailwindClassList.js";
-
-console.log(tailwindClassList)
-
 let formatCase = function (str) {
   return str
     .replace(/^[^A-Za-z0-9]*|[^A-Za-z0-9]*$/g, "")
@@ -26,26 +22,6 @@ let pad = (d) => (d < 10 ? "0" + d : d);
 
 let undefNullToStr = (v) => (v == undefined || v == null ? "" : v);
 
-let removeTailwindClasses = (classList, debug) => {
-  let reduced = classList
-    .map((i) => {
-      let c = i.split(":");
-      let p = tailwindClassList[c[c.length - 1]] 
-      if (!p) return "user-class";
-      if (c.length == 1) return p
-      c[c.length - 1] = p;
-      return c.join(":");
-    })
-    .reduce((acc, i, index) => {
-      if (i == "user-class") {
-        acc["user-class" + index] = index;
-      } else acc[i] = index;
-      return acc;
-    }, {});
-
-  return Object.values(reduced).map((i) => classList[i]);
-};
-
 export {
   formatCase,
   compare,
@@ -54,5 +30,4 @@ export {
   isRegexp,
   pad,
   undefNullToStr,
-  removeTailwindClasses,
 };

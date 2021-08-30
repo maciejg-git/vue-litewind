@@ -11,7 +11,7 @@
 
 <script>
 import { computed } from "vue";
-import useStyles from "./composition/use-styles 2";
+import useStyles from "./composition/use-styles";
 
 export default {
   props: {
@@ -39,7 +39,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="postcss">
 .fixed-button {
   @apply w-auto inline-flex justify-center items-center
 }

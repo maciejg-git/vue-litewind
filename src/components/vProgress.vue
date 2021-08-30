@@ -27,7 +27,7 @@
 
 <script>
 import { ref, computed, onMounted, onUnmounted } from "vue";
-import useStyles from "./composition/use-styles 2";
+import useStyles from "./composition/use-styles";
 import { clamp } from "../tools/tools";
 
 export default {
@@ -118,7 +118,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="postcss">
 .fixed-progress {
   @apply flex;
 }

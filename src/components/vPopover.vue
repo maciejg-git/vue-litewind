@@ -29,7 +29,7 @@
 
 <script>
 import { ref, toRefs, reactive, onMounted, watchEffect } from "vue";
-import useStyles from "./composition/use-styles 2";
+import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
 import { correctPlacement } from "../const.js";
 

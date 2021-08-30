@@ -5,9 +5,8 @@
 </template>
 
 <script>
-import { computed, inject } from "vue";
+import { computed } from "vue";
 import useStyles from "./composition/use-styles";
-import { removeTailwindClasses } from "../tools/tools.js";
 
 export default {
   props: {
@@ -17,67 +16,22 @@ export default {
     styleBadge: { type: String, default: "default" },
   },
   setup(props) {
-    let s = inject("styles");
-
-    let elements = ["badge"];
-
-    let { styles } = useStyles(s, props, elements);
-
-    let fixedAbsoluteTr = [
-      "absolute",
-      "transform",
-      "top-0",
-      "right-0",
-      "-translate-y-1/2",
-      "translate-x-1/2",
-    ];
-
-    let fixedAbsoluteTl = [
-      "absolute",
-      "transform",
-      "top-0",
-      "left-0",
-      "-translate-y-1/2",
-      "-translate-x-1/2",
-    ];
-
-    let fixedAbsoluteBr = [
-      "absolute",
-      "transform",
-      "bottom-0",
-      "right-0",
-      "translate-y-1/2",
-      "translate-x-1/2",
-    ];
-
-    let fixedAbsoluteBl = [
-      "absolute",
-      "transform",
-      "bottom-0",
-      "left-0",
-      "translate-y-1/2",
-      "-translate-x-1/2",
-    ];
-
-    let classes = {
-      badge: computed(() => {
-        let c = [
-          "inline-flex",
-          "items-center",
-          ...(props.position == "top-right"
-            ? fixedAbsoluteTr
+    let { classes } = useStyles(props, {
+      badge: {
+        fixed: "fixed-badge",
+        prop: computed(() => {
+          return props.position == "top-right"
+            ? "fixed-absolute-tr"
             : props.position == "top-left"
-            ? fixedAbsoluteTl
+            ? "fixed-absolute-tl"
             : props.position == "bottom-right"
-            ? fixedAbsoluteBr
+            ? "fixed-absolute-br"
             : props.position == "bottom-left"
-            ? fixedAbsoluteBl
-            : ""),
-          ...styles.badge.value,
-        ];
-        return removeTailwindClasses(c);
-      }),
-    };
+            ? "fixed-absolute-bl"
+            : "";
+        }),
+      },
+    });
 
     return {
       classes,
@@ -86,4 +40,20 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped lang="postcss">
+.fixed-badge {
+  @apply inline-flex items-center;
+}
+.fixed-absolute-tr {
+  @apply absolute transform top-0 right-0 -translate-y-1/2 translate-x-1/2;
+}
+.fixed-absolute-tl {
+  @apply absolute transform top-0 left-0 -translate-y-1/2 -translate-x-1/2;
+}
+.fixed-absolute-br {
+  @apply absolute transform bottom-0 right-0 translate-y-1/2 translate-x-1/2;
+}
+.fixed-absolute-bl {
+  @apply absolute transform bottom-0 left-0 translate-y-1/2 -translate-x-1/2;
+}
+</style>

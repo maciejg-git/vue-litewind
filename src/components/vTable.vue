@@ -69,16 +69,14 @@
 </template>
 
 <script>
-import { ref, computed, watch, inject } from "vue";
-// import useStyles from "./composition/use-styles";
-import useStyles from "./composition/use-styles 2";
+import { ref, computed, watch } from "vue";
+import useStyles from "./composition/use-styles";
 import {
   formatCase,
   compare,
   isDate,
   isRegexp,
   undefNullToStr,
-  removeTailwindClasses,
 } from "../tools/tools.js";
 
 export default {

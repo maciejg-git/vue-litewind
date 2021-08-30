@@ -57,59 +57,34 @@ function directive(directive, ...args) {
 }
 
 const buttonPlugin = plugin(["v-button", vButton]);
-
 const tablePlugin = plugin(["v-table", vTable]);
-
 const inputPlugin = plugin(["v-input", vInput]);
-
 const selectPlugin = plugin(["v-select", vSelect]);
-
 const textareaPlugin = plugin(["v-textarea", vTextarea]);
-
 const checkboxPlugin = plugin(["v-checkbox", vCheckbox]);
-
 const spinnerPlugin = plugin(["v-spinner", vSpinner]);
-
 const sidepanelPlugin = plugin(["v-sidepanel", vSidepanel]);
-
 const breadcrumbPlugin = plugin(["v-breadcrumb", vBreadcrumb]);
-
 const radioPlugin = plugin(["v-radio", vRadio]);
-
 const datepickerPlugin = plugin(["v-datepicker", vDatePicker]);
-
 const rangePlugin = plugin(["v-range", vRange]);
-
 const badgePlugin = plugin(["v-badge", vBadge]);
-
 const cardPlugin = plugin(["v-card", vCard]);
-
 const tabsPlugin = plugin(["v-tabs", vTabs], ["v-tab", vTab]);
-
 const modalPlugin = plugin(["v-modal", vModal]);
-
 const paginationPlugin = plugin(["v-pagination", vPagination]);
-
 const listPlugin = plugin(["v-list", vList], ["v-list-item", vListItem]);
-
 const alertPlugin = plugin(["v-alert", vAlert]);
-
 const navbarPlugin = plugin(["v-navbar", vNavbar]);
-
 const progressPlugin = plugin(["v-progress", vProgress]);
-
 const dropdownPlugin = plugin(
   ["v-dropdown", vDropdown],
   ["v-dropdown-menu-item", vDropdownMenuItem],
   ["v-dropdown-header", vDropdownHeader]
 );
-
 const collapsePlugin = plugin(["v-collapse", vCollapse]);
-
 const popoverPlugin = plugin(["v-popover", vPopover]);
-
 const closebuttonPlugin = plugin(["v-close-button", vCloseButton]);
-
 const tooltipPlugin = directive("tooltip", tooltip);
 
 export {

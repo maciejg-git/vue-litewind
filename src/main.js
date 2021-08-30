@@ -4,19 +4,9 @@ import router from "./router";
 import { plugin } from "./components/index.js";
 import { buttonPlugin, tablePlugin } from "./components/index.js";
 import "tailwindcss/tailwind.css";
-import { styles } from "./styles";
-import { stylesMaterial } from "./styles-material";
 import "./styles.css"
-// import { testTailwindRemoveClasses } from "./testTailwindRemoveClasses.js";
-
-// testTailwindRemoveClasses();
 
 let app = createApp(App);
-
-app.provide("styles", {
-  default: styles,
-  material: stylesMaterial,
-});
 
 // TODO: global config
 

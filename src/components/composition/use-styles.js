@@ -1,41 +1,33 @@
 import { computed } from "vue";
 
-let getStyles = (styles, componentStyles, el) => {
-  return styles.value.reduce((acc, i) => {
-    let s = componentStyles[el][i];
-    return s ? [...acc, ...s] : [...acc, i];
-  }, []);
-};
-
-export default function useStyles(s, props, elements, state) {
-  let propsStyles = {};
-  let styles = {};
+export default function useStyles(props, elements) {
+  let classes = {};
   let states = {};
 
-  let componentStyles = computed(() => {
-    let styles = s[props.theme] || s.default;
-    return styles[props.name];
-  });
-
-  for (let el of elements) {
+  for (let el of Object.keys(elements)) {
     let p = "style" + el.charAt(0).toUpperCase() + el.slice(1);
-    propsStyles[el] = computed(() => props[p].split(" "));
-    styles[el] = computed(() =>
-      getStyles(propsStyles[el], componentStyles.value, el)
-    );
+    classes[el] = computed(() => {
+      let c = props[p]
+        .split(" ")
+        .map((i) => props.name + (props.name != el ? "-" + el : "") + "-" + i);
+      let fixed = elements[el] && elements[el].fixed;
+      let prop =
+        elements[el] && elements[el].prop && elements[el].prop.value;
+      return [fixed, ...c, prop];
+    });
 
-    if (state) {
+    let state = elements[el] && elements[el].states;
+    if (state && state.length) {
       states[el] = {};
       for (let s of state) {
-        if (componentStyles.value[el][s]) {
-          states[el][s] = componentStyles.value[el][s];
-        }
+      states[el][s] =
+        props.name + (props.name != el ? "-" + el : "") + "-" + s + "-state";
       }
     }
   }
 
   return {
-    styles,
+    classes,
     states,
   };
 }

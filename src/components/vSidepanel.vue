@@ -26,7 +26,7 @@
 <script>
 import { ref, computed, watch } from "vue";
 import vCloseButton from "./vCloseButton.vue";
-import useStyles from "./composition/use-styles 2";
+import useStyles from "./composition/use-styles";
 
 export default {
   props: {
@@ -85,7 +85,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="postcss">
 .fixed-sidepanel {
   @apply fixed h-full top-0 z-20
 }

@@ -12,7 +12,7 @@
 <script>
 import { watch } from "vue";
 import vCloseButton from "./vCloseButton.vue";
-import useStyles from "./composition/use-styles 2";
+import useStyles from "./composition/use-styles";
 
 export default {
   props: {

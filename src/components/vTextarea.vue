@@ -14,7 +14,7 @@
 
 <script>
 import { computed } from "vue";
-import useStyles from "./composition/use-styles 2";
+import useStyles from "./composition/use-styles";
 
 export default {
   props: {

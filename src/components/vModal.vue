@@ -50,7 +50,7 @@
 import { ref, computed, watch } from "vue";
 import vButton from "./vButton.vue";
 import vCloseButton from "./vCloseButton.vue";
-import useStyles from "./composition/use-styles 2";
+import useStyles from "./composition/use-styles";
 
 export default {
   props: {
@@ -176,7 +176,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="postcss">
 .fixed-container {
   @apply flex relative min-h-full mx-auto py-6 px-6 md:px-0 pointer-events-none;
 }

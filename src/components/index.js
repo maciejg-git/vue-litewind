@@ -63,7 +63,34 @@ export {
   tooltip,
 };
 
-export { buttonPlugin, tablePlugin, tabsPlugin } from "./plugin"
+export { 
+  buttonPlugin, 
+  tablePlugin, 
+  inputPlugin,
+  selectPlugin,
+  textareaPlugin,
+  checkboxPlugin,
+  spinnerPlugin,
+  sidepanelPlugin,
+  breadcrumbPlugin,
+  radioPlugin,
+  datepickerPlugin,
+  rangePlugin,
+  badgePlugin,
+  cardPlugin,
+  tabsPlugin,
+  modalPlugin,
+  paginationPlugin,
+  listPlugin,
+  alertPlugin,
+  navbarPlugin,
+  progressPlugin,
+  dropdownPlugin,
+  collapsePlugin,
+  popoverPlugin,
+  closebuttonPlugin,
+  tooltipPlugin,
+} from "./plugin"
 
 function install(app) {
   app.component("v-table", vTable);
