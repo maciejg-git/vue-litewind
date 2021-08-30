@@ -8,7 +8,7 @@
       >
         <a
           href=""
-          :class="[classes.tab.value, active == i ? states.tab.active : '']"
+          :class="[classes.tab.value, active == i ? states.tab.active.value : '']"
           @click.prevent="handleClickTab(i)"
         >
           <VNodes :vnodes="tabName(tab)" />
@@ -30,7 +30,6 @@ export default {
     right: { type: Boolean, default: false },
     transition: { type: String, default: "fade" },
     name: { type: String, default: "tabs" },
-    theme: { type: String, default: "default" },
     styleTabBar: { type: [String, Array], default: "default" },
     styleTab: { type: [String, Array], default: "default" },
     styleTabActive: { type: [String, Array], default: "default" },

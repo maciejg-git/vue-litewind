@@ -4,7 +4,7 @@
     v-model="localModel"
     :class="[
       classes.textarea.value,
-      states.textarea[state],
+      states.textarea[state] && states.textarea[state].value,
       attrs.disabled === '' || attrs.disabled === true
         ? states.textarea.disabled
         : '',
@@ -22,7 +22,6 @@ export default {
     type: { type: String, default: "text" },
     state: { type: [String, Boolean], default: "" },
     name: { type: String, default: "textarea" },
-    theme: { type: String, default: "default" },
     styleTextarea: { type: [String, Array], default: "default" },
   },
   emits: ["update:modelValue"],

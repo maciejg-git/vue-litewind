@@ -5,7 +5,7 @@
     type="checkbox"
     :class="[
       classes.checkbox.value,
-      states.checkbox[state],
+      states.checkbox[state] && states.checkbox[state].value,
       attrs.disabled === '' || attrs.disabled === true
         ? states.checkbox.disabled
         : '',
@@ -42,6 +42,7 @@ export default {
         ? ""
         : props.state
     );
+    console.log(states)
 
     let localModel = computed({
       get() {

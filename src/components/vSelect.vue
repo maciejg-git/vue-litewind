@@ -1,5 +1,15 @@
 <template>
-  <select v-bind="$attrs" v-model="localModel" :class="[classes.select.value, states.select[state], attrs.disabled === '' || attrs.disabled === true ? states.select.disabled : '']">
+  <select
+    v-bind="$attrs"
+    v-model="localModel"
+    :class="[
+      classes.select.value,
+      states.select[state] && states.select[state].value,
+      attrs.disabled === '' || attrs.disabled === true
+        ? states.select.disabled
+        : '',
+    ]"
+  >
     <slot name="options-prepend"></slot>
     <option
       v-for="(o, i) in options"
@@ -30,9 +40,9 @@ export default {
   setup(props, { attrs, emit }) {
     let { classes, states } = useStyles(props, {
       select: {
-        states: ["valid", "invalid", "disabled"]
-      }
-    })
+        states: ["valid", "invalid", "disabled"],
+      },
+    });
 
     let state = computed(() =>
       props.state === true
