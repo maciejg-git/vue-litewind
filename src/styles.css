@@ -127,24 +127,42 @@
       border-bottom-color: transparent;
     }
 
-.tabs-tabActive-default {
-  @apply
-    tabs-tab-fixed;
-  @apply
-    bg-white
-    shadow-none;
-  border-bottom-color: transparent;
-}
-    .tabs-tabActive-small {
-      @apply
-        p-0
-    }
-
 .tabs-tabBar-default {
   @apply
     border-b
     pl-2
 }
+
+/* TABS MATERIAL */
+
+.tabsMaterial-tab-fixed {
+  @apply
+    -mb-px
+    -ml-px
+    p-2
+    px-4
+}
+
+.tabsMaterial-tab-default {
+  @apply
+    tabsMaterial-tab-fixed;
+  @apply
+    hover:bg-gray-50
+}
+    .tabsMaterial-tab-active-state {
+      @apply
+        bg-white
+        shadow-none
+        border-b-2
+        border-indigo-500
+    }
+
+.tabsMaterial-tabBar-default {
+  @apply
+    border-b
+}
+
+/* TABLE */
 
 .table-default {
   @apply
