@@ -59,7 +59,7 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <div class="flex gap-4">
+      <div class="flex items-center gap-4">
         <v-button>Button</v-button>
         <v-button tag="a">Button (link)</v-button>
       </div>
