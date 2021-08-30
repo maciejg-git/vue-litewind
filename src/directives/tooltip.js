@@ -29,7 +29,7 @@ function show(ev) {
 
   removeHideTimers(el);
 
-  getTooltipContent(el);
+  getTooltipFnContent(el);
 
   el._v_tooltip.timer = setTimeout(() => {
     document.body.appendChild(el._v_tooltip.el);
@@ -51,9 +51,10 @@ function hide(ev) {
   }, el._v_tooltip.delay);
 }
 
-let getTooltipContent = (el) => {
-  if (el._v_tooltip.f)
+let getTooltipFnContent = (el) => {
+  if (el._v_tooltip.f) {
     el._v_tooltip.el.childNodes[0].innerText = el._v_tooltip.f();
+  }
 };
 
 function setPopper(el, tooltip, options) {
