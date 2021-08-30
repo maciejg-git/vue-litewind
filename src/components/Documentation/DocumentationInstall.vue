@@ -79,16 +79,16 @@ import "styles-material.css";
     The final classes applied to element are the result of merging:
     <ul>
     <li class="my-4">
-      <span class="font-semibold">fixed classes hardcoded into components</span>, those are to properly display and interact with components
+      🔨 <span class="font-semibold">fixed classes hardcoded into components</span>, those are to properly display and interact with components
     </li>
     <li class="my-4">
-      <span class="font-semibold">classes from styles.css</span> those ideally should be only 'visual theme' classes like colors, typography, paddings, focus and hover, rounding, text decorations, borders, transitions etc
+      🎨 <span class="font-semibold">classes from styles.css</span> those ideally should be only 'visual theme' classes like colors, typography, paddings, focus and hover, rounding, text decorations, borders, transitions etc
     </li>
     <li class="my-4">
-      <span class="font-semibold">classes added as a result of using certain props.</span> Those props add classes in secure, reactive way to proper elements of components for example block prop on button, fixed on navbar, fill on tabs, position and size on modal etc
+      🔧 <span class="font-semibold">classes added as a result of using certain props.</span> Those props add classes in secure, reactive way to proper elements of components for example block prop on button, fill on tabs, position and size on modal, state prop etc
     </li>
     <li class="my-4">
-      <span class="font-semibold">classes defined with class attribute on components</span> those should be avoided as there is no way to tell to which element they apply. Most often it is wrapper element. Should only be used to position component and set margins.
+      🚀 <span class="font-semibold">classes defined with class attribute on components</span> those should be avoided as there is no way to tell to which element they apply. Most often it is wrapper element. Should only be used to position component and set margins.
     </li>
     </ul>
   </p>
