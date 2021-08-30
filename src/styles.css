@@ -94,7 +94,7 @@
 
 /* TABS */
 
-.tabs-tab-fixed {
+.tabs-tab-default {
   @apply
     border
     rounded-t-md
@@ -106,12 +106,6 @@
     whitespace-nowrap
     overflow-ellipsis
     no-underline
-}
-
-.tabs-tab-default {
-  @apply
-    tabs-tab-fixed;
-  @apply
     bg-gray-100
     hover:bg-gray-50
 }
@@ -645,46 +639,34 @@
 
 /* DROPDOWN */
 
-.dropdown-menuItem-fixed {
+.dropdown-item-default {
   @apply
     text-left
     w-full
     focus:outline-none
     pr-4
-}
-
-.dropdown-menuItem-default {
-  @apply
-    dropdown-menuItem-fixed;
-  @apply
     text-black
     hover:bg-gray-50
     focus:bg-indigo-500
     focus:text-white
 }
-    .dropdown-menuItem-green {
+    .dropdown-item-green {
       @apply
         bg-green-500
     }
+    .dropdown-item-active-state {
+      @apply
+        text-white
+        bg-indigo-500
+        hover:bg-indigo-600
+    }
+    .dropdown-item-disabled-state {
+      @apply
+        opacity-50
+        pointer-events-none
+    }
 
-.dropdown-menuItem-active-default {
-  @apply
-    dropdown-menuItem-fixed;
-  @apply
-    text-white
-    bg-indigo-500
-    hover:bg-indigo-600
-}
-
-.dropdown-menuItem-disabled-default {
-  @apply
-    dropdown-menuItem-fixed;
-  @apply
-    text-gray-200
-    pointer-events-none
-}
-
-.dropdown-menuItem-header-default {
+.dropdown-header-default {
   @apply
     text-left
     font-semibold
