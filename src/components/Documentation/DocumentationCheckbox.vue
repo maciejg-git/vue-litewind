@@ -144,7 +144,7 @@
       </div>
       <v-button
         @click="validate()"
-        style-button="default noMargin"
+        style-button="default"
         class="mt-5"
       >
         Send
@@ -183,7 +183,7 @@
 
 &lt;v-button
   @click=&quot;validate()&quot;
-  style-button=&quot;default noMargin&quot;
+  style-button=&quot;default&quot;
   class=&quot;mt-5&quot;
 &gt;
   Send

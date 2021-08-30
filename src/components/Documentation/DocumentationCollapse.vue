@@ -49,7 +49,7 @@
     <div class="example">
       <v-card class="p-1">
         <v-button
-          style-button="default noMargin"
+          style-button="default"
           block
           @click="example.isVisible = !example.isVisible"
         >
@@ -72,7 +72,7 @@
       <v-card class="p-1 mt-1">
         <v-button
           block
-          style-button="default noMargin"
+          style-button="default"
           @click="example.isVisible2 = !example.isVisible2"
         >
           Toggle collapse 2
@@ -95,7 +95,7 @@
       <v-card class="p-1 mt-1">
         <v-button
           block
-          style-button="default noMargin"
+          style-button="default"
           @click="example.isVisible3 = !example.isVisible3"
         >
           Toggle collapse 3
@@ -129,7 +129,7 @@
       <code class="language-html">
 &lt;v-card class=&quot;p-1&quot;&gt;
   &lt;v-button
-    style-button=&quot;default noMargin&quot;
+    style-button=&quot;default&quot;
     block
     @click=&quot;example.isVisible = !example.isVisible&quot;
   &gt;
@@ -145,7 +145,7 @@
 &lt;v-card class=&quot;p-1 mt-1&quot;&gt;
   &lt;v-button
     block
-    style-button=&quot;default noMargin&quot;
+    style-button=&quot;default&quot;
     @click=&quot;example.isVisible2 = !example.isVisible2&quot;
   &gt;
     Toggle collapse 2
@@ -160,7 +160,7 @@
 &lt;v-card class=&quot;p-1 mt-1&quot;&gt;
   &lt;v-button
     block
-    style-button=&quot;default noMargin&quot;
+    style-button=&quot;default&quot;
     @click=&quot;example.isVisible3 = !example.isVisible3&quot;
   &gt;
     Toggle collapse 3

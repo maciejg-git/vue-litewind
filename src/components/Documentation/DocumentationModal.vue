@@ -370,13 +370,13 @@ export default {
       {
         prop: "primary-button-style",
         type: ["String"],
-        default: "primary noMargin",
+        default: "primary",
         description: "Style of primary button",
       },
       {
         prop: "secondary-button-style",
         type: ["String"],
-        default: "secondary noMargin",
+        default: "secondary",
         description: "Style of secondary button",
       },
       {
@@ -547,8 +547,8 @@ export default {
       title: "Example modal",
       noPrimaryButton: false,
       noSecondaryButton: false,
-      primaryButtonStyle: "primary noMargin",
-      secondaryButtonStyle: "secondary noMargin",
+      primaryButtonStyle: "primary",
+      secondaryButtonStyle: "secondary",
       primaryButtonLabel: "OK",
       secondaryButtonLabel: "Cancel",
       primaryButtonClose: false,
