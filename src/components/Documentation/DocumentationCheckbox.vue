@@ -155,7 +155,7 @@
       </div>
     </div>
     <pre>
-      <code class="language-html">
+      <code v-pre class="language-html">
 &lt;div v-for=&quot;l in languages&quot; class=&quot;flex items-center my-2&quot;&gt;
   &lt;v-checkbox
     v-model=&quot;languagesModel&quot;
@@ -170,7 +170,7 @@
     :id=&quot;'language-' + l&quot;
   &gt;&lt;/v-checkbox&gt;
   &lt;label :for=&quot;'language-' + l&quot; class=&quot;ml-3&quot;&gt;
-    &#123;&#123; l &#125;&#125;
+    {{ l }}
   &lt;/label&gt;
 &lt;/div&gt;
 
