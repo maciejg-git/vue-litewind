@@ -11,8 +11,7 @@ export default function useStyles(props, elements) {
         .split(" ")
         .map((i) => props.name + (props.name != el ? "-" + el : "") + "-" + i);
       let fixed = elements[el] && elements[el].fixed;
-      let prop =
-        elements[el] && elements[el].prop && elements[el].prop.value;
+      let prop = elements[el] && elements[el].prop && elements[el].prop.value;
       return [fixed, ...c, prop];
     });
 
@@ -20,8 +19,11 @@ export default function useStyles(props, elements) {
     if (state && state.length) {
       states[el] = {};
       for (let s of state) {
-      states[el][s] =
-        props.name + (props.name != el ? "-" + el : "") + "-" + s + "-state";
+        states[el][s] = computed(() => {
+          return (
+            props.name + (props.name != el ? "-" + el : "") + "-" + s + "-state"
+          );
+        });
       }
     }
   }
