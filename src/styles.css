@@ -94,6 +94,12 @@
 
 /* TABS */
 
+.tabs-tabBar-default {
+  @apply
+    border-b
+    pl-2
+}
+
 .tabs-tab-default {
   @apply
     border
@@ -120,12 +126,6 @@
         shadow-none;
       border-bottom-color: transparent;
     }
-
-.tabs-tabBar-default {
-  @apply
-    border-b
-    pl-2
-}
 
 /* TABLE */
 
