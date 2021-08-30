@@ -18,15 +18,18 @@ export default {
     styleItemActive: { type: [String, Array], default: "default" },
   },
   setup(props) {
-    let { classes } = useStyles(props, {
+    let { classes, states } = useStyles(props, {
       list: {
         fixed: "fixed-list"
       },
-      item: null,
+      item: {
+        states: ["active"],
+      },
       itemActive: null,
     })
 
     provide("classes", classes);
+    provide("states", states);
     provide("tag", toRef(props, "tag"));
 
     return {

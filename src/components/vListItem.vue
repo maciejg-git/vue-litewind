@@ -9,15 +9,17 @@ import { computed, inject } from "vue";
 
 export default {
   props: {
-    active: { type:Boolean, default: false },
+    active: { type: Boolean, default: false },
   },
   setup(props) {
     let classes = inject("classes");
+    let states = inject("states");
     let tag = inject("tag");
+
     let tagHref = computed(() => (tag == "a" ? "#" : null));
 
     let itemClass = computed(() => {
-      if (props.active) return classes.itemActive.value;
+      if (props.active) return [classes.item.value, states.item.active.value];
       else return classes.item.value;
     });
 
@@ -30,5 +32,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

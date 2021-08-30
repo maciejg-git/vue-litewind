@@ -220,12 +220,6 @@
 
 /* LIST */
 
-.list-item-fixed {
-  @apply
-    p-2
-    px-4
-}
-
 .list-default {
   @apply
     border
@@ -245,19 +239,16 @@
 
 .list-item-default {
   @apply
-    list-item-fixed;
-  @apply
+    p-2
+    px-4
     hover:bg-gray-50
 }
-
-.list-itemActive-default {
-  @apply
-    list-item-fixed;
-  @apply
-    bg-blue-500
-    hover:bg-blue-600
-    text-white
-}
+    .list-item-active-state {
+      @apply
+        bg-blue-500
+        hover:bg-blue-600
+        text-white
+    }
 
 /* PROGRESS */
 
