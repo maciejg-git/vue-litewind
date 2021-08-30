@@ -92,7 +92,7 @@
         :center="example.center"
         :right="example.right"
         :transition="example.transition"
-        :theme="example.theme"
+        :name="example.name"
         @input:changed-tab="
           example.events.unshift({ ev: 'input:changed-tab', data: $event })
         "
@@ -168,12 +168,12 @@
       </v-tabs>
       <div class="mt-5">
         <label for="style">Tabs style:</label>
-        <v-select id="style" v-model="example.theme">
-          <option value="default">browser</option>
-          <option value="material">material</option>
+        <v-select id="style" v-model="example.name">
+          <option value="tabs">browser</option>
+          <option value="tabsMaterial">material</option>
         </v-select>
       </div>
-      <v-tabs theme="material" class="mt-10">
+      <v-tabs name="tabsMaterial" class="mt-10">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="fill">fill:</label>
@@ -231,7 +231,7 @@
   :center=&quot;example.center&quot;
   :right=&quot;example.right&quot;
   :transition=&quot;example.transition&quot;
-  :theme=&quot;example.theme&quot;
+  :name=&quot;example.name&quot;
   @input:changed-tab=&quot;
     example.events.unshift({ ev: 'input:changed-tab', data: $event })
   &quot;
@@ -414,7 +414,7 @@ export default {
       right: false,
       transition: "fade",
       events: [],
-      theme: "default",
+      name: "tabs",
     });
 
     onMounted(() => {

@@ -100,7 +100,7 @@
           </div>
         </v-popover>
       </div>
-      <v-tabs theme="material" class="mt-10">
+      <v-tabs name="tabsMaterial" class="mt-10">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="placement">placement:</label>

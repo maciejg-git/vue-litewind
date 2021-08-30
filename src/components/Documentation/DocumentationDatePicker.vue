@@ -146,7 +146,7 @@
         />
       </v-card>
       <div class="flex-grow mt-4 lg:ml-14 lg:mt-0">
-        <v-tabs theme="material">
+        <v-tabs name="tabsMaterial">
           <v-tab name="Props">
             <div class="mb-2 mt-5">
               <label for="model" class="font-semibold">v-model:</label>
