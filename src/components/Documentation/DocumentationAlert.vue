@@ -155,12 +155,6 @@ export default {
         default: "undefined",
         description: "Name of the component",
       },
-      {
-        prop: "theme",
-        type: ["Array"],
-        default: "undefined",
-        description: "Name of theme to apply to component",
-      },
     ]);
 
     let referenceDefinition = ref([

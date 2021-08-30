@@ -73,7 +73,7 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <v-list width="500px" :tag="example.tag" :theme="example.theme">
+      <v-list width="500px" :tag="example.tag" :name="example.name">
         <v-list-item :active="example.active1">
           <div class="font-semibold">
             {{ dataJSON[0].first_name }} {{ dataJSON[0].last_name }}
@@ -137,9 +137,9 @@
       </v-list>
       <div class="mt-5">
         <label for="style">List style: </label>
-        <v-select id="style" v-model="example.theme">
-          <option value="default">bootstrap</option>
-          <option value="material">material</option>
+        <v-select id="style" v-model="example.name">
+          <option value="list">bootstrap</option>
+          <option value="listMaterial">material</option>
         </v-select>
       </div>
       <v-tabs name="tabsMaterial" class="mt-10">
@@ -169,7 +169,7 @@
     </div>
     <pre>
       <code v-pre class="language-html">
-&lt;v-list width=&quot;500px&quot; :tag=&quot;example.tag&quot; :theme=&quot;example.theme&quot;&gt;
+&lt;v-list width=&quot;500px&quot; :tag=&quot;example.tag&quot; :name=&quot;example.name&quot;&gt;
   &lt;v-list-item :active=&quot;example.active1&quot;&gt;
     &lt;div class=&quot;font-semibold&quot;&gt;
       &#123;&#123; dataJSON[0].first_name  &#125;&#125; &#123;&#123; dataJSON[0].last_name &#125;&#125; 
@@ -213,12 +213,6 @@ export default {
         type: ["String"],
         default: "list",
         description: "Name of the component",
-      },
-      {
-        prop: "theme",
-        type: ["String"],
-        default: "default",
-        description: "Name of the theme to apply to component",
       },
     ]);
 
@@ -324,7 +318,7 @@ export default {
       active3: false,
       active4: false,
       active5: false,
-      theme: "default",
+      name: "list",
     });
 
     onMounted(() => {

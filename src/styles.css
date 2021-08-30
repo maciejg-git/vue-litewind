@@ -865,6 +865,8 @@
 
 .badge-default {
   @apply
+    badge-fixed;
+  @apply
     bg-indigo-500
     text-white
 }

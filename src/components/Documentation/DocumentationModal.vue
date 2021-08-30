@@ -443,12 +443,6 @@ export default {
         default: "modal",
         description: "Name of the component",
       },
-      {
-        prop: "theme",
-        type: ["String"],
-        default: "default",
-        description: "Name of the theme to apply to component",
-      },
     ]);
 
     let referenceDefinition = ref([
