@@ -2,12 +2,12 @@
   <component
     :is="tag"
     :href="tagHref"
-    :class="[
+    :class="['fixed-item',
       active
-        ? classes.menuItemActive.value
+        ? [classes.item.value, states.item.active.value]
         : disabled
-        ? classes.menuItemDisabled.value
-        : classes.menuItem.value,
+        ? [classes.item.value, states.item.disabled.value]
+        : classes.item.value,
     ]"
     @click="autoCloseMenu && hide()"
   >
@@ -26,6 +26,8 @@ export default {
   },
   setup(props) {
     let classes = inject("classes");
+    let states = inject("states");
+
     let autoCloseMenu = inject("autoCloseMenu");
     let hide = inject("hide");
 
@@ -33,6 +35,7 @@ export default {
 
     return {
       classes,
+      states,
       tagHref,
       autoCloseMenu,
       hide,

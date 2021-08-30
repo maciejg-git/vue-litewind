@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes.menuItemHeader.value">
+  <div :class="classes.header.value">
     <slot name="default"></slot>
   </div>
 </template>

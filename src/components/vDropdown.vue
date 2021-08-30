@@ -33,24 +33,19 @@ export default {
     autoCloseMenu: { type: Boolean, default: false },
     transition: { type: String, default: "fade" },
     name: { type: String, default: "dropdown" },
-    styleMenuItem: { type: String, default: "default" },
-    styleMenuItemActive: { type: String, default: "default" },
-    styleMenuItemDisabled: { type: String, default: "default" },
-    styleMenuItemHeader: { type: String, default: "default" },
+    styleItem: { type: String, default: "default" },
+    styleItemActive: { type: String, default: "default" },
+    styleItemDisabled: { type: String, default: "default" },
+    styleHeader: { type: String, default: "default" },
   },
   emits: ["state:opened", "state:closed"],
   setup(props, { emit }) {
-    let { classes } = useStyles(props, {
-      menuItem: {
-        fixed: "fixed-item"
+    let { classes, states } = useStyles(props, {
+      item: {
+        fixed: "fixed-item",
+        states: ["active", "disabled"],
       },
-      menuItemActive: {
-        fixed: "fixed-item"
-      },
-      menuItemDisabled: {
-        fixed: "fixed-item"
-      },
-      menuItemHeader: {
+      header: {
         fixed: "fixed-item"
       },
     })
@@ -77,6 +72,7 @@ export default {
     });
 
     provide("classes", classes);
+    provide("states", states);
     provide("autoCloseMenu", toRef(props, "autoCloseMenu"));
     provide("hide", hide);
 
