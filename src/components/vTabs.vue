@@ -52,10 +52,6 @@ export default {
         states: ["active"],
         prop: computed(() => (props.fill ? "w-full" : "")),
       },
-      tabActive: {
-        fixed: "fixed-tab-active",
-        prop: computed(() => (props.fill ? "w-full" : "")),
-      },
     });
 
     let tabs = ref([]);
@@ -113,9 +109,6 @@ export default {
   @apply flex flex-auto;
 }
 .fixed-tab {
-  @apply block;
-}
-.fixed-tab-active {
   @apply block;
 }
 .fixed-tab-wrapper {
