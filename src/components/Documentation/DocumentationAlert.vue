@@ -8,9 +8,9 @@
     <v-table
       :items="reference"
       :definition="referenceDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
     >
       <template #cell:type="{ value }">
         <div class="space-y-1">
@@ -32,9 +32,9 @@
     <v-table
       :items="referenceStyles"
       :definition="referenceStylesDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
     >
       <template #cell:description="{ value }">
         <span v-html="value"></span>
@@ -46,9 +46,9 @@
     <v-table
       :items="referenceSlots"
       :definition="referenceSlotsDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
     >
       <template #cell:description="{ value }">
         <span v-html="value"></span>
@@ -75,17 +75,17 @@
           <label for="style">Alert variant:</label>
           <v-select id="style" v-model="example.style">
             <option value="default">default</option>
-            <option value="default info">info</option>
-            <option value="default danger">danger</option>
-            <option value="default success">success</option>
-            <option value="default light">light</option>
+            <option value="info">info</option>
+            <option value="danger">danger</option>
+            <option value="success">success</option>
+            <option value="light">light</option>
           </v-select>
         </div>
         <v-button :disabled="example.isVisible" @click="example.isVisible = true">
           Show alert
         </v-button>
       </div>
-      <v-tabs name="tabsMaterial" class="mt-5">
+      <v-tabs name="tabs-material" class="mt-5">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="model" class="font-semibold">v-model:</label>

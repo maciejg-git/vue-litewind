@@ -53,8 +53,8 @@ export default {
     noFlip: { type: Boolean, default: false },
     targetId: { type: String, default: undefined },
     name: { type: String, default: "popover" },
-    stylePopover: { type: String, default: "default" },
-    styleContent: { type: String, default: "default" },
+    stylePopover: { type: String, default: "" },
+    styleContent: { type: String, default: "" },
   },
   setup(props, { slots, emit }) {
     let { classes } = useStyles(props, {

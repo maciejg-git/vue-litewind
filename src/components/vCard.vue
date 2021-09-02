@@ -11,7 +11,7 @@ export default {
   props: {
     width: { type: String, default: undefined },
     name: { type: String, default: "card" },
-    styleCard: { type: String, default: "default" },
+    styleCard: { type: String, default: "" },
   },
   setup(props) {
     let { classes } = useStyles(props, {

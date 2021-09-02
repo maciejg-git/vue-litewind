@@ -8,9 +8,9 @@
     <v-table
       :items="reference"
       :definition="referenceDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
     >
       <template #cell:type="{ value }">
         <div class="space-y-1">
@@ -32,9 +32,9 @@
     <v-table
       :items="referenceStyles"
       :definition="referenceStylesDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
     >
       <template #cell:description="{ value }">
         <span v-html="value"></span>
@@ -46,9 +46,9 @@
     <v-table
       :items="referenceSlots"
       :definition="referenceSlotsDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
     >
       <template #cell:description="{ value }">
         <span v-html="value"></span>
@@ -82,11 +82,11 @@
         :label="example.label"
         :precision="+example.precision"
         :transition="example.transition"
-        style-progress="default tiny"
-        style-progress-bar="default gradient"
+        style-progress="tiny"
+        style-progress-bar="gradient"
         class="mt-4"
       ></v-progress>
-      <v-tabs name="tabsMaterial" class="mt-10">
+      <v-tabs name="tabs-material" class="mt-10">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="value">value:</label>
@@ -178,8 +178,8 @@
     <h4>Example indeterminate</h4>
     <div class="example">
       <v-progress
-        style-progress="default tiny"
-        style-progress-bar="default gradient"
+        style-progress="tiny"
+        style-progress-bar="gradient"
         indeterminate
         :indeterminate-width="50"
         :indeterminate-timing="example.timing"
@@ -188,11 +188,11 @@
       ></v-progress>
       <br />
 
-      <v-card style-card="default shadow" width="400px">
+      <v-card style-card="shadow" width="400px">
         <div class="flex justify-center p-4">Checking for updates...</div>
         <v-progress
-          style-progress="default tiny"
-          style-progress-bar="default gradient"
+          style-progress="tiny"
+          style-progress-bar="gradient"
           indeterminate
           :indeterminate-width="50"
           :indeterminate-timing="example.timing"

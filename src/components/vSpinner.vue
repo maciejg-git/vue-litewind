@@ -17,7 +17,7 @@ export default {
     thickness: { type: String, default: "0.15" },
     speed: { type: String, default: "0.75" },
     name: { type: String, default: "spinner" },
-    styleSpinner: { type: String, default: "default" },
+    styleSpinner: { type: String, default: "" },
   },
   setup(props) {
     let { classes } = useStyles(props, {

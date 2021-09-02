@@ -13,9 +13,9 @@ export default {
     width: { type: String, default: undefined },
     tag: { type: String, default: "div" },
     name: { type: String, default: "list" },
-    styleList: { type: String, default: "default" },
-    styleItem: { type: [String, Array], default: "default" },
-    styleItemActive: { type: [String, Array], default: "default" },
+    styleList: { type: String, default: "" },
+    styleItem: { type: [String, Array], default: "" },
+    styleItemActive: { type: [String, Array], default: "" },
   },
   setup(props) {
     let { classes, states } = useStyles(props, {

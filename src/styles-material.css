@@ -1,6 +1,6 @@
 /* TABS MATERIAL */
 
-.tabsMaterial-tab-fixed {
+.tabs-material-tab-fixed {
   @apply
     -mb-px
     -ml-px
@@ -8,13 +8,13 @@
     px-4
 }
 
-.tabsMaterial-tab-default {
+.tabs-material-tab {
   @apply
-    tabsMaterial-tab-fixed;
+    tabs-material-tab-fixed;
   @apply
     hover:bg-gray-50
 }
-    .tabsMaterial-tab-active-state {
+    .tabs-material-tab-active-state {
       @apply
         bg-white
         shadow-none
@@ -22,7 +22,7 @@
         border-indigo-500
     }
 
-.tabsMaterial-tabBar-default {
+.tabs-material-tab-bar {
   @apply
     border-b
 }

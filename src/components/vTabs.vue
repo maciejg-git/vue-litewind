@@ -30,9 +30,8 @@ export default {
     right: { type: Boolean, default: false },
     transition: { type: String, default: "fade" },
     name: { type: String, default: "tabs" },
-    styleTabBar: { type: [String, Array], default: "default" },
-    styleTab: { type: [String, Array], default: "default" },
-    styleTabActive: { type: [String, Array], default: "default" },
+    styleTabBar: { type: [String, Array], default: "" },
+    styleTab: { type: [String, Array], default: "" },
   },
   components: {
     VNodes: (props) => {
@@ -42,6 +41,7 @@ export default {
   setup(props, { emit }) {
     let { classes, states } = useStyles(props, {
       tabBar: {
+        name: "tab-bar",
         fixed: "fixed-tab-bar",
         prop: computed(() =>
           props.center ? "justify-center" : props.right ? "justify-end" : ""

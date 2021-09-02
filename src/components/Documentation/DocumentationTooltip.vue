@@ -18,9 +18,9 @@
     <v-table
       :items="reference"
       :definition="referenceDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
     >
       <template #cell:type="{ value }">
         <code class="code-word mx-1">
@@ -39,9 +39,9 @@
     <v-table
       :items="referenceValue"
       :definition="referenceValueDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
     >
       <template #cell:description="{ value }"
         ><span v-html="value"></span

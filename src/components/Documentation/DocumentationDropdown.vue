@@ -8,9 +8,9 @@
     <v-table
       :items="reference"
       :definition="referenceDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
     >
       <template #cell:type="{ value }">
         <div class="space-y-1">
@@ -32,9 +32,9 @@
     <v-table
       :items="referenceStyles"
       :definition="referenceStylesDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
     >
       <template #cell:description="{ value }">
         <span v-html="value"></span>
@@ -46,9 +46,9 @@
     <v-table
       :items="referenceEvents"
       :definition="referenceEventsDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
     >
       <template #cell:description="{ value }">
         <span v-html="value"></span>
@@ -60,9 +60,9 @@
     <v-table
       :items="referenceSlots"
       :definition="referenceSlotsDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
     >
       <template #cell:description="{ value }">
         <span v-html="value"></span>
@@ -74,9 +74,9 @@
     <v-table
       :items="referenceComponents"
       :definition="referenceComponentsDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
     >
       <template #cell:description="{ value }">
         <span v-html="value"></span>
@@ -104,7 +104,7 @@
         <template #activator>
           <v-button>Dropdown menu</v-button>
         </template>
-        <v-card width="320px" style-card="default shadow">
+        <v-card width="320px" style-card="shadow">
           <v-dropdown-menu-item tag="button">Menu item</v-dropdown-menu-item>
           <v-dropdown-menu-item tag="button">Menu item 2</v-dropdown-menu-item>
           <v-dropdown-header>Menu header</v-dropdown-header>
@@ -132,16 +132,16 @@
           <v-button>Dropdown datepicker</v-button>
         </template>
         <template #default="{ hide }">
-          <v-card width="320px" style-card="default shadow" class="p-2">
+          <v-card width="320px" style-card="shadow" class="p-2">
             <v-date-picker
               v-model="example.date"
-              adjecent-months
+              adjacent-months
               @state:done="hide"
             ></v-date-picker>
           </v-card>
         </template>
       </v-dropdown>
-      <v-tabs name="tabsMaterial" class="mt-10">
+      <v-tabs name="tabs-material" class="mt-10">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="placement">placement:</label>

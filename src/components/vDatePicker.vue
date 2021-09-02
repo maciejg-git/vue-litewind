@@ -116,31 +116,24 @@ export default {
     },
     name: { type: String, default: "datepicker" },
     transition: { type: String, default: "fade" },
-    styleDatepicker: { type: String, default: "default" },
-    styleButton: { type: String, default: "default" },
-    styleDay: { type: String, default: "default" },
-    styleDaySelected: { type: String, default: "default" },
-    styleToday: { type: String, default: "default" },
-    styleAdjacentMonthDay: { type: String, default: "default" },
-    styleFooter: { type: String, default: "default" },
+    styleDatepicker: { type: String, default: "" },
+    styleButton: { type: String, default: "" },
+    styleDay: { type: String, default: "" },
+    styleAdjacentMonthDay: { type: String, default: "" },
+    styleFooter: { type: String, default: "" },
   },
   components: {
     vButton,
   },
   setup(props, { emit }) {
-    let { classes } = useStyles(props, {
+    let { classes, states } = useStyles(props, {
       datepicker: {
         fixed: "fixed-button",
       },
       button: null,
       day: {
         fixed: "fixed-day",
-      },
-      daySelected: {
-        fixed: "fixed-day",
-      },
-      today: {
-        fixed: "fixed-day",
+        states: ["selected", "today"],
       },
       adjacentMonthDay: null,
       footer: null,
@@ -151,10 +144,13 @@ export default {
         props.rangeHoverHighlight &&
         mouseOverRange.value &&
         isRangeSelected(date)
-      )
+      ) {
         return classes.daySelected.value;
-      if (isSelectedDay(date)) return classes.daySelected.value;
-      if (isToday(date)) return classes.today.value;
+      }
+      if (isSelectedDay(date)) {
+        return [classes.day.value, states.day.selected.value];
+      }
+      if (isToday(date)) return [classes.day.value, states.day.today.value];
       if (isDisabled(date)) return "text-gray-400";
       return classes.day.value;
     };

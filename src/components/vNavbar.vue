@@ -14,7 +14,7 @@ export default {
     sticky: { type: Boolean, default: false },
     bottom: { type: Boolean, default: false },
     name: { type: String, default: "navbar" },
-    styleNavbar: { type: String, default: "default" },
+    styleNavbar: { type: String, default: "" },
   },
   setup(props) {
     let { classes } = useStyles(props, {

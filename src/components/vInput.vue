@@ -23,7 +23,7 @@ export default {
     type: { type: String, default: "text" },
     state: { type: [String, Boolean], default: "" },
     name: { type: String, default: "input" },
-    styleInput: { type: [String, Array], default: "default" },
+    styleInput: { type: [String, Array], default: "" },
   },
   emits: ["update:modelValue"],
   setup(props, { attrs, emit }) {

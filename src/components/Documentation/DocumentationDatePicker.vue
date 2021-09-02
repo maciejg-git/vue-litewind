@@ -8,9 +8,9 @@
     <v-table
       :items="reference"
       :definition="referenceDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
     >
       <template #cell:type="{ value }">
         <div class="space-y-1">
@@ -34,9 +34,9 @@
     <v-table
       :items="referenceStyles"
       :definition="referenceStylesDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
     >
       <template #cell:description="{ value }">
         <span v-html="value"></span>
@@ -48,9 +48,9 @@
     <v-table
       :items="referenceEvents"
       :definition="referenceEventsDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
     >
       <template #cell:description="{ value }">
         <span v-html="value"></span>
@@ -146,7 +146,7 @@
         />
       </v-card>
       <div class="flex-grow mt-4 lg:ml-14 lg:mt-0">
-        <v-tabs name="tabsMaterial">
+        <v-tabs name="tabs-material">
           <v-tab name="Props">
             <div class="mb-2 mt-5">
               <label for="model" class="font-semibold">v-model:</label>
@@ -291,7 +291,7 @@
           ></v-input>
         </template>
         <template #default="{ hide }">
-          <v-card style-card="default shadow" class="p-2">
+          <v-card style-card="shadow" class="p-2">
             <v-date-picker
               v-model="exampleDropdown.date"
               width="305px"

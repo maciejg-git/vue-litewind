@@ -11,8 +11,10 @@
           {{ i.label }}
         </router-link>
         <!-- active -->
-        <span v-if="index == path.length - 1">{{ i.label }}</span>
-        <span v-if="index < path.length - 1" class="text-gray-500 mx-3">
+        <span v-if="index == path.length - 1" :class="classes.active.value">
+          {{ i.label }}
+        </span>
+        <span v-if="index < path.length - 1" :class="classes.separator.value">
           {{ separator }}
         </span>
       </li>
@@ -28,14 +30,16 @@ export default {
     path: { type: Array, default: [] },
     separator: { type: String, default: "/" },
     name: { type: String, default: "breadcrumb" },
-    styleBreadcrumb: { type: [String, Array], default: "default" },
-    styleSeparator: { type: [String, Array], default: "default" },
+    styleBreadcrumb: { type: [String, Array], default: "" },
+    styleSeparator: { type: [String, Array], default: "" },
+    styleActive: { type: [String, Array], default: "" },
   },
   setup(props) {
     let { classes } = useStyles(props, {
       breadcrumb: null,
       separator: null,
-    })
+      active: null,
+    });
 
     return {
       classes,

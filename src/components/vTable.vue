@@ -1,5 +1,5 @@
 <template>
-  <table :class="classes.table.value" class="min-w-full text-left">
+  <table :class="classes.table.value" class="min-w-full">
     <caption v-if="slots.caption" :class="classes.caption.value">
       <slot name="caption"></slot>
     </caption>
@@ -98,13 +98,13 @@ export default {
     selectionMode: { type: String, default: "" },
     state: { type: String, default: "" },
     name: { type: String, default: "table" },
-    styleTable: { type: String, default: "default" },
-    styleHeaderRow: { type: String, default: "default" },
-    styleHeaderCell: { type: String, default: "default" },
-    styleRow: { type: String, default: "default" },
-    styleCell: { type: String, default: "default" },
-    styleSelected: { type: String, default: "default" },
-    styleCaption: { type: String, default: "default" },
+    styleTable: { type: String, default: "" },
+    styleHeaderRow: { type: String, default: "" },
+    styleHeaderCell: { type: String, default: "" },
+    styleRow: { type: String, default: "" },
+    styleCell: { type: String, default: "" },
+    styleSelected: { type: String, default: "" },
+    styleCaption: { type: String, default: "" },
   },
   setup(props, { slots, emit }) {
     let { classes } = useStyles(props, {
@@ -113,8 +113,12 @@ export default {
           props.state == "busy" ? "pointer-events-none table-busy" : ""
         ),
       },
-      headerRow: null,
-      headerCell: null,
+      headerRow: {
+        name: "header-row"
+      },
+      headerCell: {
+        name: "header-cell"
+      },
       row: null,
       cell: {
         prop: computed(() =>

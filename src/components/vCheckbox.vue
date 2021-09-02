@@ -22,7 +22,7 @@ export default {
     modelValue: { type: [Array, Boolean], default: undefined },
     state: { type: [String, Boolean], default: "" },
     name: { type: String, default: "checkbox" },
-    styleCheckbox: { type: [String, Array], default: "default" },
+    styleCheckbox: { type: [String, Array], default: "" },
   },
   emits: ["update:modelValue"],
   setup(props, { attrs, emit }) {

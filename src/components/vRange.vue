@@ -22,7 +22,7 @@ export default {
     modelValue: { type: [String, Number], default: undefined },
     state: { type: String, default: "" },
     name: { type: String, default: "range" },
-    styleRange: { type: [String, Array], default: "default" },
+    styleRange: { type: [String, Array], default: "" },
   },
   emits: ["update:modelValue"],
   setup(props, { attrs, emit }) {

@@ -8,9 +8,9 @@
     <v-table
       :items="reference"
       :definition="referenceDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
     >
       <template #cell:type="{ value }">
         <div class="space-y-1">
@@ -32,9 +32,9 @@
     <v-table
       :items="referenceStyles"
       :definition="referenceStylesDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
     >
       <template #cell:description="{ value }">
         <span v-html="value"></span>
@@ -46,9 +46,9 @@
     <v-table
       :items="referenceEvents"
       :definition="referenceEventsDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
     >
       <template #cell:description="{ value }">
         <span v-html="value"></span>
@@ -86,7 +86,7 @@
         ></v-radio>
         <label for="option3" class="ml-3">option 3</label>
       </div>
-      <v-tabs name="tabsMaterial" class="mt-10">
+      <v-tabs name="tabs-material" class="mt-10">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="model" class="font-semibold">v-model:</label>

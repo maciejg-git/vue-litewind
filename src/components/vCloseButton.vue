@@ -22,12 +22,14 @@ import useStyles from "./composition/use-styles";
 
 export default {
   props: {
-    name: { type: String, default: "closeButton" },
-    styleCloseButton: { type: String, default: "default" },
+    name: { type: String, default: "close-button" },
+    styleCloseButton: { type: String, default: "" },
   },
   setup(props) {
     let { classes } = useStyles(props, {
-      closeButton: null,
+      closeButton: {
+        name: "close-button"
+      },
     })
 
     return {

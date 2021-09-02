@@ -22,7 +22,7 @@ export default {
     type: { type: String, default: "text" },
     state: { type: [String, Boolean], default: "" },
     name: { type: String, default: "textarea" },
-    styleTextarea: { type: [String, Array], default: "default" },
+    styleTextarea: { type: [String, Array], default: "" },
   },
   emits: ["update:modelValue"],
   setup(props, { attrs, emit }) {

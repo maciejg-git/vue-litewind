@@ -8,9 +8,9 @@
     <v-table
       :items="reference"
       :definition="referenceDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
     >
       <template #cell:type="{ value }">
         <div class="space-y-1">
@@ -32,9 +32,9 @@
     <v-table
       :items="referenceStyles"
       :definition="referenceStylesDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
     >
       <template #cell:description="{ value }">
         <span v-html="value"></span>
@@ -46,9 +46,9 @@
     <v-table
       :items="referenceSlots"
       :definition="referenceSlotsDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
     >
       <template #cell:description="{ value }">
         <span v-html="value"></span>
@@ -59,7 +59,7 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <v-card width="320px" style-card="default shadow hoverable">
+      <v-card width="320px" style-card="shadow hoverable">
         <img :src="randomPhoto()" alt="" />
         <header class="pt-3 px-3">
           <span class="font-semibold">Example card</span>
@@ -77,7 +77,7 @@
         <div class="text-sm px-3 py-2">Card footer</div>
       </v-card>
 
-      <v-card width="720px" style-card="default shadow hoverable" style="height: 320px" class="flex my-10">
+      <v-card width="720px" style-card="shadow hoverable" style="height: 320px" class="flex my-10">
         <img :src="randomPhotoHorizontal()" alt="" />
         <div class="flex flex-col">
         <header class="pt-4 px-3">
@@ -93,7 +93,7 @@
             scrambled it to make a type specimen book.
           </div>
           <hr class="w-10/12 mx-auto">
-          <v-button style-button="default small" class="ml-auto mt-auto m-4">Details</v-button>
+          <v-button style-button="small" class="ml-auto mt-auto m-4">Details</v-button>
         </div>
       </v-card>
     </div>

@@ -32,14 +32,15 @@ export default {
     icons: { type: Boolean, default: false },
     name: { type: String, default: "pagination" },
     stylePaginationBar: { type: [String, Array], default: "default" },
-    stylePage: { type: [String, Array], default: "default" },
-    styleDots: { type: [String, Array], default: "default" },
-    styleNext: { type: [String, Array], default: "default" },
-    stylePrev: { type: [String, Array], default: "default" },
+    stylePage: { type: [String, Array], default: "" },
+    styleDots: { type: [String, Array], default: "" },
+    styleNext: { type: [String, Array], default: "" },
+    stylePrev: { type: [String, Array], default: "" },
   },
   setup(props, { emit }) {
     let { classes, states } = useStyles(props, {
       paginationBar: {
+        name: "pagination-bar",
         fixed: "fixed-pagination-bar",
       },
       page: {

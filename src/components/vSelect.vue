@@ -33,7 +33,7 @@ export default {
     options: { type: Array, default: undefined },
     state: { type: [String, Boolean], default: "" },
     name: { type: String, default: "select" },
-    styleSelect: { type: [String, Array], default: "default" },
+    styleSelect: { type: [String, Array], default: "" },
   },
   emits: ["update:modelValue"],
   setup(props, { attrs, emit }) {

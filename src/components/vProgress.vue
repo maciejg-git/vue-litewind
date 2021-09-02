@@ -42,9 +42,9 @@ export default {
     indeterminateSpeed: { type: Number, default: 7 },
     transition: { type: Boolean, default: true },
     name: { type: String, default: "progress" },
-    styleProgress: { type: [String, Array], default: "default" },
-    styleProgressBar: { type: [String, Array], default: "default" },
-    styleLabel: { type: [String, Array], default: "default" },
+    styleProgress: { type: [String, Array], default: "" },
+    styleProgressBar: { type: [String, Array], default: "" },
+    styleLabel: { type: [String, Array], default: "" },
   },
   setup(props) {
     let { classes } = useStyles(props, {
@@ -52,6 +52,7 @@ export default {
         fixed: "fixed-button",
       },
       progressBar: {
+        name: "progress-bar",
         fixed: "fixed-progress-bar",
         prop: computed(() => {
           return props.indeterminate

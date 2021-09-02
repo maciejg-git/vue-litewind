@@ -3,7 +3,10 @@
     :is="tag"
     :href="tagHref"
     type="button"
-    :class="classes.button.value"
+    :class="[
+      classes.button.value,
+      disabled ? states.button.disabled.value : '',
+    ]"
   >
     <slot name="default"></slot>
   </component>
@@ -19,18 +22,16 @@ export default {
     tag: { type: String, default: "button" },
     block: { type: Boolean, default: false },
     name: { type: String, default: "button" },
-    styleButton: { type: String, default: "default" },
+    styleButton: { type: String, default: "" },
   },
   setup(props) {
-    let { classes } = useStyles(props, {
+    let { classes, states } = useStyles(props, {
       button: {
         fixed: "fixed-button",
         prop: computed(() => {
-          return [
-            props.block ? "w-full" : "",
-            props.disabled ? ["opacity-50", "pointer-events-none"] : "",
-          ];
+          return [props.block ? "w-full" : ""];
         }),
+        states: ["disabled"],
       },
     });
 
@@ -38,6 +39,7 @@ export default {
 
     return {
       classes,
+      states,
       tagHref,
     };
   },

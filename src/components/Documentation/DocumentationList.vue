@@ -8,9 +8,9 @@
     <v-table
       :items="reference"
       :definition="referenceDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
     >
       <template #cell:type="{ value }">
         <div class="space-y-1">
@@ -32,9 +32,9 @@
     <v-table
       :items="referenceStyles"
       :definition="referenceStylesDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
     >
       <template #cell:description="{ value }"
         ><span v-html="value"></span
@@ -46,9 +46,9 @@
     <v-table
       :items="referenceSlots"
       :definition="referenceSlotsDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
     >
       <template #cell:description="{ value }">
         <span v-html="value"></span>
@@ -60,9 +60,9 @@
     <v-table
       :items="referenceComponents"
       :definition="referenceComponentsDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
     >
       <template #cell:description="{ value }">
         <span v-html="value"></span>
@@ -142,7 +142,7 @@
           <option value="listMaterial">material</option>
         </v-select>
       </div>
-      <v-tabs name="tabsMaterial" class="mt-10">
+      <v-tabs name="tabs-material" class="mt-10">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="tag">tag: </label>

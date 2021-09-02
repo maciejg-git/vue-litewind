@@ -8,9 +8,9 @@
     <v-table
       :items="reference"
       :definition="referenceDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
     >
       <template #cell:type="{ value }">
         <code class="code-word mx-1">
@@ -30,9 +30,9 @@
     <v-table
       :items="referenceStyles"
       :definition="referenceStylesDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
     >
       <template #cell:description="{ value }">
         <span v-html="value"></span>
@@ -44,9 +44,9 @@
     <v-table
       :items="referenceSlots"
       :definition="referenceSlotsDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
     >
       <template #cell:description="{ value }">
         <span v-html="value"></span>
@@ -67,9 +67,9 @@
               <li>
                 <v-dropdown :offset-y="10">
                   <template #activator>
-                    <v-button style-button="link">Dropdown</v-button>
+                    <v-button name="button-link">Dropdown</v-button>
                   </template>
-                  <v-card width="320px" style-card="default shadow">
+                  <v-card width="320px" style-card="shadow">
                     <v-dropdown-menu-item tag="button">
                       Menu item
                     </v-dropdown-menu-item>
@@ -91,7 +91,7 @@
               </li>
             </ul>
             <v-input class="ml-auto mr-4"></v-input>
-            <v-button style-button="default outline">Search</v-button>
+            <v-button style-button="outline">Search</v-button>
           </div>
         </v-navbar>
       </v-card>

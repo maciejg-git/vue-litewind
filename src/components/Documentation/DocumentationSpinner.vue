@@ -8,9 +8,9 @@
     <v-table
       :items="reference"
       :definition="referenceDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
     >
       <template #cell:type="{ value }">
         <div class="space-y-1">
@@ -32,9 +32,9 @@
     <v-table
       :items="referenceStyles"
       :definition="referenceStylesDefinition"
-      style-table="default fixed"
-      style-header-cell="default bordered"
-      style-cell="default bordered"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
     >
       <template #cell:description="{ value }">
         <span v-html="value"></span>
@@ -46,30 +46,30 @@
     <h4>Example</h4>
     <div class="example">
       <div>
-        <v-spinner style-spinner="default blue small" class="mr-10"></v-spinner>
-        <v-spinner style-spinner="default green" class="mr-10"></v-spinner>
+        <v-spinner style-spinner="blue small" class="mr-10"></v-spinner>
+        <v-spinner style-spinner="green" class="mr-10"></v-spinner>
         <v-spinner
-          style-spinner="default yellow large"
+          style-spinner="yellow large"
           class="mr-4"
         ></v-spinner>
       </div>
         <div class="mt-10">
         <v-spinner thickness="0.07" style-spinner="default" class="mr-4"></v-spinner>
-        <v-spinner thickness="0.2" style-spinner="default yellow" class="mr-4"></v-spinner>
-        <v-spinner thickness="0.35" style-spinner="default green" class="mr-4"></v-spinner>
+        <v-spinner thickness="0.2" style-spinner="yellow" class="mr-4"></v-spinner>
+        <v-spinner thickness="0.35" style-spinner="green" class="mr-4"></v-spinner>
         </div>
         <div class="mt-10">
-        <v-spinner speed="0.6" style-spinner="default blue" class="mr-4"></v-spinner>
-        <v-spinner speed="1.0" style-spinner="default green" class="mr-4"></v-spinner>
-        <v-spinner speed="1.5" style-spinner="default yellow" class="mr-4"></v-spinner>
+        <v-spinner speed="0.6" style-spinner="blue" class="mr-4"></v-spinner>
+        <v-spinner speed="1.0" style-spinner="green" class="mr-4"></v-spinner>
+        <v-spinner speed="1.5" style-spinner="yellow" class="mr-4"></v-spinner>
         </div>
       <div class="mt-10">
-        <v-button style-button="default no-margin" class="mr-2">
-          <v-spinner style-spinner="default gray small"></v-spinner>
+        <v-button class="mr-2">
+          <v-spinner style-spinner="gray small"></v-spinner>
           <span class="ml-2">Button</span>
         </v-button>
-        <v-button style-button="default secondary no-margin">
-          <v-spinner style-spinner="default green small"></v-spinner>
+        <v-button style-button="secondary">
+          <v-spinner style-spinner="green small"></v-spinner>
           <span class="ml-2">Button</span>
         </v-button>
       </div>

@@ -12,7 +12,7 @@ export default {
   props: {
     position: { type: String, default: "" },
     name: { type: String, default: "badge" },
-    styleBadge: { type: String, default: "default" },
+    styleBadge: { type: String, default: "" },
   },
   setup(props) {
     let { classes } = useStyles(props, {

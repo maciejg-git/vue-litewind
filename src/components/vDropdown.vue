@@ -33,10 +33,8 @@ export default {
     autoCloseMenu: { type: Boolean, default: false },
     transition: { type: String, default: "fade" },
     name: { type: String, default: "dropdown" },
-    styleItem: { type: String, default: "default" },
-    styleItemActive: { type: String, default: "default" },
-    styleItemDisabled: { type: String, default: "default" },
-    styleHeader: { type: String, default: "default" },
+    styleItem: { type: String, default: "" },
+    styleHeader: { type: String, default: "" },
   },
   emits: ["state:opened", "state:closed"],
   setup(props, { emit }) {
