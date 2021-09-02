@@ -26,7 +26,7 @@
       ></button>
     </div>
     <div class="grid grid-cols-7 mb-2">
-      <div v-for="day in dayNames" class="text-sm font-bold p-0">
+      <div v-for="day in dayNames" class="text-sm font-semibold p-0">
         {{ day }}
       </div>
     </div>
