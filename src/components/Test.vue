@@ -215,6 +215,9 @@
    <v-button style-button="primary tiny">button css</v-button> 
    <v-button style-button="primary large">button css</v-button> 
 
+   <v-button :control="controlModel">test button</v-button>
+   <v-button @click="controlModel = 'small'">add small</v-button>
+
     <v-card style-card="default shadow">
       <v-table
         :definition="definition"
@@ -628,7 +631,7 @@
 </template>
 
 <script>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, nextTick } from "vue";
 import dataJSON from "./../data.json";
 import vTabs from "./vTabs.vue";
 import vTab from "./vTab.vue";
@@ -725,6 +728,7 @@ export default {
     let tableSelection = ref([]);
     let sidepanelHeader = ref(true)
     let stateFormGroup = ref("")
+    let controlModel = ref("")
     let progress = ref(10);
     let textModel = ref("text")
     let linkItems = ref([
@@ -820,13 +824,19 @@ export default {
     let formattedDate = "";
     let log = (m) => console.log(m);
 
+
     let buttonPrimary = "bg-indigo-500 hover:bg-indigo-600";
     let buttonSmall = "py-1";
 
-    onMounted(() => {
+    onMounted(async () => {
       setTimeout(() => {
         tooltipTest.value = true;
       }, 4000);
+    controlModel.value = "small"
+      await nextTick()
+    controlModel.value = "tiny"
+      await nextTick()
+    controlModel.value = "control model"
     });
 
     return {
@@ -861,6 +871,7 @@ export default {
       alertShow,
       linkItems,
       stateFormGroup,
+      controlModel,
       log,
     };
   },
