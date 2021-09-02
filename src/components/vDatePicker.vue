@@ -127,8 +127,9 @@ export default {
   },
   setup(props, { emit }) {
     let { classes, states } = useStyles(props, {
-      datepicker: {
-        fixed: "fixed-button",
+      datepicker: null,
+      button: {
+        fixed: "fixed-datepicker-button",
       },
       button: null,
       day: {
