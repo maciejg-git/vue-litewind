@@ -20,6 +20,12 @@
     hover:bg-indigo-600
     focus:ring-indigo-200
 }
+    .button-secondary {
+      @apply
+        bg-gray-500
+        hover:bg-gray-600
+        focus:ring-gray-200
+    }
     .button-yellow {
       @apply
         bg-yellow-500
@@ -707,40 +713,27 @@
   @apply
     hover:bg-gray-50
 }
-.datepicker-day-selected-state {
-  @apply
-    bg-indigo-400
-    hover:bg-indigo-600
-    font-semibold
-    text-white
-}
-.datepicker-day-today-state {
-  @apply  
-    hover:bg-gray-50
-    text-indigo-500
-    font-bold
-}
+    .datepicker-day-partially-selected-state {
+      @apply
+        bg-gray-300
+        font-semibold
+        text-white
+    }
+    .datepicker-day-selected-state {
+      @apply
+        bg-indigo-400
+        hover:bg-indigo-600
+        font-semibold
+        text-white
+    }
+    .datepicker-day-today-state {
+      @apply  
+        hover:bg-gray-50
+        text-indigo-500
+        font-extrabold
+    }
 
-.datepicker-daySelected {
-  @apply
-    datepicker-day-fixed;
-  @apply
-    bg-indigo-400
-    hover:bg-indigo-600
-    font-semibold
-    text-white
-}
-
-.datepicker-today {
-  @apply
-    datepicker-day-fixed;
-  @apply  
-    hover:bg-gray-50
-    text-indigo-500
-    font-bold
-}
-
-.datepicker-adjacentMonthDay {
+.datepicker-adjacent-month-day {
   @apply
     datepicker-day-fixed;
   @apply  
