@@ -15,7 +15,6 @@ export default {
     name: { type: String, default: "list" },
     styleList: { type: String, default: "" },
     styleItem: { type: [String, Array], default: "" },
-    styleItemActive: { type: [String, Array], default: "" },
   },
   setup(props) {
     let { classes, states } = useStyles(props, {
@@ -25,7 +24,6 @@ export default {
       item: {
         states: ["active"],
       },
-      itemActive: null,
     })
 
     provide("classes", classes);
