@@ -131,12 +131,13 @@ export default {
       button: {
         fixed: "fixed-datepicker-button",
       },
-      button: null,
       day: {
         fixed: "fixed-day",
         states: ["selected", "partially-selected", "today"],
       },
-      adjacentMonthDay: null,
+      adjacentMonthDay: {
+        name: "adjacent-month-day",
+      },
       footer: null,
     });
 
