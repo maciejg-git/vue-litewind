@@ -20,14 +20,13 @@ export default {
     dismissable: { type: Boolean, default: true },
     autoDismissDelay: { type: Number, default: 0 },
     name: { type: String, default: "alert" },
-    styleAlert: { type: [String, Array], default: "default" },
+    styleAlert: { type: [String, Array], default: "" },
   },
   components: {
     vCloseButton,
   },
   setup(props, { emit }) {
     // TODO: absolute alerts
-    // TODO: state alerts invalid
 
     let { classes } = useStyles(props, {
       alert: {
