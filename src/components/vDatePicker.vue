@@ -414,7 +414,7 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-.fixed-datapicker-button {
+.fixed-datepicker-button {
   @apply flex flex-col justify-center leading-none focus:outline-none mx-auto;
 }
 .fixed-day {
