@@ -107,17 +107,17 @@ export default {
     styleCaption: { type: String, default: "" },
   },
   setup(props, { slots, emit }) {
-    let { classes } = useStyles(props, {
+    let { classes } = useStyles("table", props, {
       table: {
         prop: computed(() =>
           props.state == "busy" ? "pointer-events-none table-busy" : ""
         ),
       },
       headerRow: {
-        name: "header-row"
+        name: "header-row",
       },
       headerCell: {
-        name: "header-cell"
+        name: "header-cell",
       },
       row: null,
       cell: {
@@ -140,7 +140,7 @@ export default {
     let getCellClass = (k, i, item) => {
       if (itemsSelected.value[i]) return classes.selected.value;
       return [
-        ...classes.cell.value,
+        classes.cell.value,
         k.class && typeof k.class === "function"
           ? k.class(k.key, item[k.key], item)
           : "",
@@ -217,6 +217,14 @@ export default {
 
     // HEADERS
 
+    let defaultHeaders = {
+      sortable: false,
+      filterable: true,
+      visible: true,
+      filterByFunction: true,
+      sortByFunction: true,
+    };
+
     let getHeaderKey = (k) => headers.value.find((i) => k === i.key);
 
     let getFilterableKeys = () => {
@@ -231,6 +239,7 @@ export default {
         return {
           key: item,
           label: formatCase(item),
+          ...defaultHeaders,
         };
       });
     };
@@ -243,8 +252,30 @@ export default {
       if (props.definition) {
         return props.definition.map((item) => {
           return {
-            ...item,
+            key: item.key,
             label: item.label || formatCase(item.key),
+            sortable:
+              item.sortable === undefined
+                ? defaultHeaders.sortable
+                : item.sortable,
+            filterable:
+              item.filterable === undefined
+                ? defaultHeaders.filterable
+                : item.filterable,
+            visible:
+              item.visible === undefined
+                ? defaultHeaders.visible
+                : item.visible,
+            class: item.class,
+            f: item.f,
+            filterByFunction:
+              item.filterByFunction === undefined
+                ? defaultHeaders.filterByFunction
+                : item.filterByFunction,
+            sortByFunction:
+              item.sortByFunction === undefined
+                ? defaultHeaders.sortByFunction
+                : item.sortByFunction,
           };
         });
       } else return setHeaders();

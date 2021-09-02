@@ -26,7 +26,7 @@ export default {
   },
   emits: ["update:modelValue"],
   setup(props, { attrs, emit }) {
-    let { classes, states } = useStyles(props, {
+    let { classes, states } = useStyles("radio", props, {
       radio: {
         states: ["valid", "invalid", "disabled"],
       },

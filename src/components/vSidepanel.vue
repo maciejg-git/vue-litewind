@@ -43,7 +43,7 @@ export default {
     vCloseButton,
   },
   setup(props, { emit }) {
-    let { classes } = useStyles(props, {
+    let { classes } = useStyles("sidepanel", props, {
       sidepanel: {
         fixed: "fixed-sidepanel",
         prop: computed(() => props.sidebarLeft ? "left-0" : "right-0")

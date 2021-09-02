@@ -1,6 +1,6 @@
 import { computed } from "vue";
 
-export default function useStyles(props, elements) {
+export default function useStyles(name, props, elements) {
   let classes = {};
   let states = {};
   let variants = {};
@@ -9,7 +9,7 @@ export default function useStyles(props, elements) {
     let p = "style" + el.charAt(0).toUpperCase() + el.slice(1);
     classes[el] = computed(() => {
       let e = elements[el] && elements[el].name ? elements[el].name : el;
-      e = e != props.name ? e : null;
+      e = e != name ? e : null;
       let c = [];
       if (props[p]) {
         c = props[p].split(" ").map((i) => {

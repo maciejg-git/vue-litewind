@@ -39,7 +39,7 @@ export default {
     },
   },
   setup(props, { emit }) {
-    let { classes, states } = useStyles(props, {
+    let { classes, states } = useStyles("tabs", props, {
       tabBar: {
         name: "tab-bar",
         fixed: "fixed-tab-bar",

@@ -26,7 +26,7 @@ export default {
     styleCloseButton: { type: String, default: "" },
   },
   setup(props) {
-    let { classes } = useStyles(props, {
+    let { classes } = useStyles("close-button", props, {
       closeButton: {
         name: "close-button"
       },

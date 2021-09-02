@@ -38,7 +38,7 @@ export default {
     stylePrev: { type: [String, Array], default: "" },
   },
   setup(props, { emit }) {
-    let { classes, states } = useStyles(props, {
+    let { classes, states } = useStyles("pagination", props, {
       paginationBar: {
         name: "pagination-bar",
         fixed: "fixed-pagination-bar",

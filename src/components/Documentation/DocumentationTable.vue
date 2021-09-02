@@ -114,59 +114,27 @@
 ]);`}}
     </code>
   </pre>
-    <p>Required properties:</p>
-
-    <ul>
-      <li>
-        <span class="font-bold">key</span>
-        : key is one of the properties of data from items prop or a new key. New
-        keys apear as additional columns and their content can be set using slot
-        or function f.
-      </li>
-    </ul>
-    <p>Optional properties:</p>
-    <ul>
-      <li>
-        <span class="font-bold">label</span>
-        : sets label for this column. If not present label is the same as key
-        converted to Header Case (String, default: undefined)
-      </li>
-      <li>
-        <span class="font-bold">sortable</span>
-        : enables sorting of the column (Boolean, default: false)
-      </li>
-      <li>
-        <span class="font-bold">filterable</span>
-        : enables filtering of the column (Boolean, default: false))
-      </li>
-      <li>
-        <span class="font-bold">visible</span>
-        : toggles visiblity of the column (Boolean, default: false)
-      </li>
-      <li>
-        <span class="font-bold">class</span>
-        : function that should return string of classes to apply
-        to each cell in column. Takes 3 arguments: key, value and item
-        (Function, default: undefined)
-      </li>
-      <li>
-        <span class="font-bold">f</span>
-        : if defined this function is called for every cell in this column and
-        the return value is set as content of the cell. Takes 3 arguments: key,
-        value and item. This function cannot be used to add html to cell content
-        (Function, default: undefined)
-      </li>
-      <li>
-        <span class="font-bold">filterByFunction</span>
-        : if true filter content of column using value from function f (Boolean,
-        default: undefined)
-      </li>
-      <li>
-        <span class="font-bold">sortByFunction</span>
-        : if true sort content of column using value returned from function f
-        (Boolean, default: undefined)
-      </li>
-    </ul>
+    <v-table
+      :items="referenceProp"
+      :definition="referencePropDefinition"
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
+    >
+      <template #cell:type="{ value }">
+        <div class="space-y-1">
+          <code v-for="v in value" class="code-word">
+            {{ v }}
+          </code>
+        </div>
+      </template>
+      <template #cell:default="{ value }">
+        <code class="text-sm">{{ value }}</code>
+      </template>
+      <template #cell:description="{ value }">
+        <span v-html="value"></span>
+      </template>
+    </v-table>
   </section>
 
   <section>
@@ -608,6 +576,91 @@ export default {
       },
     ]);
 
+    let referenceProp = ref([
+      {
+        prop: "key",
+        type: ["String"],
+        default: "undefined",
+        description:
+          "<span class='font-semibold'>(required)</span> key is one of the properties of data from items prop or a new key. New keys apear as additional columns and their content can be set using slot or function f",
+      },
+      {
+        prop: "label",
+        type: ["String"],
+        default: "undefined",
+        description:
+          "Sets label for this column. If not present label is the same as key converted to Header Case",
+      },
+      {
+        prop: "sortable",
+        type: ["Boolean"],
+        default: "false",
+        description:
+          "enables sorting of the column",
+      },
+      {
+        prop: "filterable",
+        type: ["Boolean"],
+        default: "true",
+        description:
+          "enables filtering of the column",
+      },
+      {
+        prop: "visible",
+        type: ["Boolean"],
+        default: "true",
+        description:
+          "toggles visiblity of the column",
+      },
+      {
+        prop: "class",
+        type: ["Function"],
+        default: "undefined",
+        description:
+          "function that should return string of classes to apply to each cell in column. Takes 3 arguments: key, value and item",
+      },
+      {
+        prop: "f",
+        type: ["Function"],
+        default: "undefined",
+        description:
+          "if defined this function is called for every cell in this column and the return value is set as content of the cell. Takes 3 arguments: key, value and item. This function cannot be used to add html to cell content",
+      },
+      {
+        prop: "filterByFunction",
+        type: ["Boolean"],
+        default: "true",
+        description:
+          "if true filter content of column using value from function f",
+      },
+      {
+        prop: "sortByFunction",
+        type: ["Boolean"],
+        default: "true",
+        description:
+          "if true sort content of column using value returned from function f",
+      },
+    ]);
+
+    let referencePropDefinition = ref([
+      {
+        key: "prop",
+        label: "Definition property",
+        sortable: true,
+        class: () => "whitespace-nowrap",
+      },
+      {
+        key: "type",
+        sortable: true,
+      },
+      {
+        key: "default",
+      },
+      {
+        key: "description",
+      },
+    ]);
+
     let definition = ref([
       {
         key: "id",
@@ -687,6 +740,8 @@ export default {
       referenceEventsDefinition,
       referenceSlots,
       referenceSlotsDefinition,
+      referenceProp,
+      referencePropDefinition,
       editModal,
       edit,
       editContent,

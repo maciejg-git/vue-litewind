@@ -57,7 +57,7 @@ export default {
     styleContent: { type: String, default: "" },
   },
   setup(props, { slots, emit }) {
-    let { classes } = useStyles(props, {
+    let { classes } = useStyles("popover", props, {
       popover: null,
       content: null,
     });

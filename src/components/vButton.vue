@@ -25,7 +25,7 @@ export default {
     styleButton: { type: String, default: "" },
   },
   setup(props) {
-    let { classes, states } = useStyles(props, {
+    let { classes, states } = useStyles("button", props, {
       button: {
         fixed: "fixed-button",
         prop: computed(() => {

@@ -126,7 +126,7 @@ export default {
     vButton,
   },
   setup(props, { emit }) {
-    let { classes, states } = useStyles(props, {
+    let { classes, states } = useStyles("datepicker", props, {
       datepicker: null,
       button: {
         fixed: "fixed-datepicker-button",

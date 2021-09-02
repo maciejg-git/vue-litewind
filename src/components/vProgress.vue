@@ -47,7 +47,7 @@ export default {
     styleLabel: { type: [String, Array], default: "" },
   },
   setup(props) {
-    let { classes } = useStyles(props, {
+    let { classes } = useStyles("progress", props, {
       progress: {
         fixed: "fixed-button",
       },

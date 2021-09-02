@@ -75,6 +75,8 @@ import "styles.css";
 import "styles-material.css";
     </code>
   </pre>
+  <p>Each class begin with default component name. If you want to use another classes for component set different name for component using name prop. This can be useful if you do not want to modify default classes, experiment, use multiple themes or use same component for different purposes.</p>
+  <p class="font-semibold">Classes that define state (with -state ending) must always be below variant classes to work properly</p>
   <p>
     The final classes applied to element are the result of merging:
     <ul>

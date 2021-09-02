@@ -15,7 +15,7 @@ export default {
     styleBadge: { type: String, default: "" },
   },
   setup(props) {
-    let { classes } = useStyles(props, {
+    let { classes } = useStyles("badge", props, {
       badge: {
         fixed: "fixed-badge",
         prop: computed(() => {

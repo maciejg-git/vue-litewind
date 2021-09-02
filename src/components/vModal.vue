@@ -86,7 +86,7 @@ export default {
     "update:modelValue",
   ],
   setup(props, { emit }) {
-    let { classes } = useStyles(props, {
+    let { classes } = useStyles("modal", props, {
       modal: {
         fixed: "fixed-modal",
       },

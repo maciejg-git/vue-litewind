@@ -1,16 +1,6 @@
 /* BUTTON */
 
-.button-link {
-  @apply 
-    focus:outline-none
-}
-
-.button-link-padding {
-  @apply
-    p-4
-}
-
-.button {
+.button-fixed {
   @apply
     rounded
     text-sm
@@ -21,15 +11,34 @@
     focus:ring-4
     px-4
     py-2
+}
+.button-default {
+  @apply
+    button-fixed;
+  @apply
     bg-indigo-500
     hover:bg-indigo-600
     focus:ring-indigo-200
 }
-    .button-secondary {
-      @apply
-        bg-gray-500
-        hover:bg-gray-600
-        focus:ring-gray-200
+.button-primary {
+  @apply
+    button-fixed;
+  @apply
+    bg-indigo-500
+    hover:bg-indigo-600
+    focus:ring-indigo-200
+}
+.button-secondary {
+  @apply
+    button-fixed;
+  @apply
+    bg-gray-500
+    hover:bg-gray-600
+    focus:ring-gray-200
+}
+    .button-link {
+      @apply 
+        focus:outline-none
     }
     .button-yellow {
       @apply
@@ -82,21 +91,16 @@
       @apply
         uppercase
     }
-    .button-disabled-state {
-      @apply
-        opacity-50
-        pointer-events-none
-    }
 
 /* TABS */
 
-.tabs-tab-bar {
+.tabBar-tabs-default {
   @apply
     border-b
     pl-2
 }
 
-.tabs-tab {
+.tab-tabs-default {
   @apply
     border
     rounded-t-md
@@ -111,11 +115,11 @@
     bg-gray-100
     hover:bg-gray-50
 }
-    .tabs-tab-small {
+    .tab-tabs-small {
       @apply
         p-0
     }
-    .tabs-tab-active-state {
+    .tab-tabs-active-state {
       @apply
         bg-white
         hover:bg-white
@@ -125,52 +129,51 @@
 
 /* TABLE */
 
-.table {
+.table-default {
   @apply
     bg-white
     border-collapse
-    text-left
 }
     .table-busy {
       @apply
         opacity-50
     }
 
-.table-fixed-layout {
-  @apply
-    table-fixed
+/* .table-fixed { */
+/*   @apply */
+/*     table-fixed */
+/* } */
+
+.headerRow-table {
+
 }
 
-.table-header-row {
-
-}
-
-.table-header-cell {
+.header-cell-table-default {
   @apply
     border-b
     border-gray-300
     py-2
     px-2
 }
-    .table-header-cell-bordered {
+    .header-cell-table-bordered {
       @apply
         border
     }
-    .table-header-cell-dark {
+    .headerCell-table-dark {
       @apply
         bg-gray-700
         text-white
     }
-    .table-header-cell-light {
+    .headerCell-table-light {
       @apply
         bg-gray-100
     }
 
-.table-row {
+.row-table {
 
 }
 
-.table-cell {
+.cell-table-default {
   @apply
     border-t
     border-gray-300
@@ -180,7 +183,7 @@
     px-2
     pr-6
 }
-    .table-cell-bordered {
+    .cell-table-bordered {
       @apply
         border
         border-t
@@ -190,7 +193,7 @@
         pr-6
     }
 
-.table-selected {
+.selected-default_table {
   @apply
     bg-gray-100
     border-t
@@ -202,7 +205,7 @@
     pr-6
 }
 
-.table-caption {
+.caption-table-default {
   @apply
     text-gray-600
     text-left
@@ -211,7 +214,7 @@
 
 /* LIST */
 
-.list {
+.list-default {
   @apply
     border
     divide-y
@@ -228,13 +231,13 @@
         border-0
     }
 
-.list-item {
+.item-list-default {
   @apply
     p-2
     px-4
     hover:bg-gray-50
 }
-    .list-item-active-state {
+    .item-list-active-state {
       @apply
         bg-blue-500
         hover:bg-blue-600
@@ -243,7 +246,7 @@
 
 /* PROGRESS */
 
-.progress {
+.progress-default {
   @apply
     bg-gray-100
     rounded
@@ -259,11 +262,11 @@
         h-1
     }
 
-.progress-progress-bar {
+.progressBar-progress-default {
   @apply
     bg-indigo-500
 }
-    .progress-progress-bar-gradient {
+    .progressBar-progress-gradient {
       @apply
         bg-gradient-to-r
         from-yellow-400
@@ -271,7 +274,7 @@
         to-pink-500
     }
 
-.progress-label {
+.label-progress-default {
   @apply
     text-xs
     text-white
@@ -280,26 +283,19 @@
 
 /* BREADCRUMB */
 
-.breadcrumb {
+.breadcrumb-default {
   @apply
     text-blue-500
     underline
 }
 
-.breadcrumb-separator {
-  @apply
-    text-gray-500 
-    mx-3
-}
+.breadcrumb-separator-default {
 
-.breadcrumb-active {
-  @apply
-    text-gray-700 
 }
 
 /* FORMTEXT */
 
-.form-text {
+.form-text-default {
   @apply
     text-sm
     text-gray-600
@@ -308,7 +304,7 @@
 
 /* SELECT */
 
-.select {
+.select-default {
   @apply
     rounded
     border
@@ -338,7 +334,7 @@
 
 /* RANGE */
 
-.range {
+.range-default {
   @apply
     rounded
     bg-white
@@ -366,7 +362,7 @@
 
 /* RADIO */
 
-.radio {
+.radio-default {
   @apply
     border
     bg-white
@@ -400,7 +396,7 @@
 
 /* CHECKBOX */
 
-.checkbox {
+.checkbox-default {
   @apply
     rounded
     border
@@ -435,7 +431,7 @@
 
 /* INPUT */
 
-.input {
+.input-default {
   @apply
     rounded
     border
@@ -464,7 +460,7 @@
 
 /* TEXTAREA */
 
-.textarea {
+.textarea-default {
   @apply
     rounded
     border
@@ -495,10 +491,9 @@
 
 /* ALERT */
 
-.alert {
+.alert-default {
   @apply
     bg-blue-100
-    text-gray-700
     border
     border-blue-200
     border-l-4
@@ -526,15 +521,10 @@
         bg-gray-100
         border-gray-200
     }
-    .alert-warn {
-      @apply
-        bg-yellow-100
-        border-gray-200
-    }
 
 /* NAVBAR */
 
-.navbar {
+.navbar-default {
   @apply
     w-full
     bg-gray-100
@@ -547,7 +537,7 @@
 
 /* CLOSEBUTTON */
 
-.close-button {
+.closeButton-default {
   @apply
     text-gray-600
     opacity-60
@@ -557,7 +547,7 @@
 
 /* SIDEPANEL */
 
-.sidepanel {
+.sidepanel-default {
   @apply
     bg-gray-100
     text-left;
@@ -568,7 +558,7 @@
 
 /* MODAL */
 
-.modal {
+.modal-default {
   @apply
     bg-white
     shadow-lg
@@ -580,7 +570,7 @@
         rounded-none
     }
 
-.modal-header {
+.header-modal-default {
   @apply
     bg-gray-50
     text-gray-900
@@ -591,29 +581,29 @@
     py-6
 }
 
-.modal-footer {
+.footer-modal-default {
   @apply
     px-6
     py-6
 }
 
-.modal-content {
+.content-modal-default {
   @apply
     px-6
     py-5
 }
-    .modal-content-relaxed {
+    .content-modal-relaxed {
       @apply
         px-9
         py-8
     }
-    .modal-content-edge-to-edge {
+    .content-modal-edge-to-edge {
       @apply
         px-2
         py-5
     }
 
-.modal-backdrop {
+.backdrop-modal-default {
   @apply
     bg-black
     opacity-50
@@ -621,7 +611,7 @@
 
 /* CARD */
 
-.card {
+.card-default {
   @apply
     bg-white
     border
@@ -649,7 +639,7 @@
 
 /* DROPDOWN */
 
-.dropdown-item {
+.item-dropdown-default {
   @apply
     text-left
     w-full
@@ -660,23 +650,23 @@
     focus:bg-indigo-500
     focus:text-white
 }
-    .dropdown-item-green {
+    .item-dropdown-green {
       @apply
         bg-green-500
     }
-    .dropdown-item-active-state {
+    .item-dropdown-active-state {
       @apply
         text-white
         bg-indigo-500
         hover:bg-indigo-600
     }
-    .dropdown-item-disabled-state {
+    .item-dropdown-disabled-state {
       @apply
         opacity-50
         pointer-events-none
     }
 
-.dropdown-header {
+.header-dropdown-default {
   @apply
     text-left
     font-semibold
@@ -687,7 +677,7 @@
 
 /* DATEPICKER */
 
-.datepicker-day-fixed {
+.day-datepicker-fixed {
   @apply
     cursor-pointer
     rounded
@@ -697,13 +687,13 @@
     my-1
 }
 
-.datepicker {
+.datepicker-default {
   @apply
     bg-white
     text-center
 }
 
-.datepicker-button {
+.button-datepicker-default {
   @apply
     rounded
     focus:ring-2
@@ -712,33 +702,33 @@
     px-2
 }
 
-.datepicker-day {
+.day-datepicker-default {
   @apply
     datepicker-day-fixed;
   @apply
-    hover:bg-gray-100
+    hover:bg-gray-50
 }
-    .datepicker-day-partially-selected-state {
-      @apply
-        bg-gray-300
-        font-semibold
-        text-gray-500
-    }
-    .datepicker-day-selected-state {
-      @apply
-        bg-indigo-400
-        hover:bg-indigo-600
-        font-semibold
-        text-white
-    }
-    .datepicker-day-today-state {
-      @apply  
-        hover:bg-gray-50
-        text-indigo-500
-        font-extrabold
-    }
 
-.datepicker-adjacent-month-day {
+.daySelected-datepicker-default {
+  @apply
+    datepicker-day-fixed;
+  @apply
+    bg-indigo-400
+    hover:bg-indigo-600
+    font-semibold
+    text-white
+}
+
+.today-datepicker-default {
+  @apply
+    datepicker-day-fixed;
+  @apply  
+    hover:bg-gray-50
+    text-indigo-500
+    font-bold
+}
+
+.adjacentMonthDay-datepicker-default {
   @apply
     datepicker-day-fixed;
   @apply  
@@ -746,7 +736,7 @@
     pointer-events-none
 }
 
-.datepicker-footer {
+.footer-datepicker-default {
   @apply
     bg-gray-100
     text-sm
@@ -756,7 +746,7 @@
 
 /* SPINNER */
 
-.spinner {
+.spinner-default {
   @apply
     text-indigo-500
     h-8
@@ -791,7 +781,7 @@
 
 /* POPOVER */
 
-.popover {
+.popover-default {
   @apply
     bg-white
     border
@@ -802,27 +792,42 @@
     shadow-lg
 }
 
-.popover-content {
+.content-popover-default {
   @apply
     p-5
 }
 
 /* BADGE */
 
-.badge {
+.badge-fixed {
   @apply
     rounded-md
     font-bold
     p-1
     px-3
+}
+
+.badge-default {
+  @apply
+    badge-fixed;
+  @apply
     bg-indigo-500
     text-white
 }
-    .badge-secondary {
-      @apply
-        bg-gray-500
-        text-white
-    }
+.badge-primary {
+  @apply
+    badge-fixed;
+  @apply  
+    bg-indigo-500
+    text-white
+}
+.badge-secondary {
+  @apply
+    badge-fixed;
+  @apply  
+    bg-gray-500
+    text-white
+}
     .badge-green {
       @apply
         bg-green-500
@@ -892,35 +897,34 @@
       p-2
   }
 
-  .pagination-pagination-bar {
+  .pagination-pagination-bar-default {
     @apply
       rounded-md
   }
 
-  .pagination-page {
+  .pagination-page-default {
     @apply
       pagination-page-fixed
   }
-
-  .pagination-page-active-state {
-    @apply  
-      hover:bg-indigo-400
-      border-indigo-200
-      bg-indigo-500
-      ring-indigo-200
-      text-white
-      ring-2
-      font-semibold
-  }
-
-  .pagination-dots {
+    .pagination-page-active-state {
+      @apply  
+        hover:bg-indigo-400
+        border-indigo-200
+        bg-indigo-500
+        ring-indigo-200
+        text-white
+        ring-2
+        font-semibold
+    }
+  
+  .pagination-dots-default {
     @apply
       pagination-page-fixed;
     @apply
       tracking-wider
   }
 
-  .pagination-next {
+  .pagination-next-default {
     @apply
       pagination-side-controls-fixed;
     @apply  
@@ -928,7 +932,7 @@
       ml-0.5
   }
 
-  .pagination-prev {
+  .pagination-prev-default {
     @apply
       pagination-side-controls-fixed;
     @apply  
@@ -938,7 +942,7 @@
 
 /* TOOLTIP */
 
-.tooltip {
+.tooltip-default {
   @apply
     bg-gray-700
     text-gray-100
@@ -946,7 +950,7 @@
     z-50
 }
 
-.tooltip-content {
+.content-tooltip-default {
   @apply
     font-semibold
     p-1

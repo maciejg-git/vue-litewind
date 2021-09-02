@@ -35,7 +35,7 @@ export default {
     styleActive: { type: [String, Array], default: "" },
   },
   setup(props) {
-    let { classes } = useStyles(props, {
+    let { classes } = useStyles("breadcrumb", props, {
       breadcrumb: null,
       separator: null,
       active: null,

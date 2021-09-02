@@ -20,7 +20,7 @@ export default {
     styleSpinner: { type: String, default: "" },
   },
   setup(props) {
-    let { classes } = useStyles(props, {
+    let { classes } = useStyles("spinner", props, {
       spinner: {
         fixed: "spinner-border"
       }

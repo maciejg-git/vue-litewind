@@ -38,7 +38,7 @@ export default {
   },
   emits: ["state:opened", "state:closed"],
   setup(props, { emit }) {
-    let { classes, states } = useStyles(props, {
+    let { classes, states } = useStyles("dropdown", props, {
       item: {
         fixed: "fixed-item",
         states: ["active", "disabled"],

@@ -28,7 +28,7 @@ export default {
   setup(props, { emit }) {
     // TODO: absolute alerts
 
-    let { classes } = useStyles(props, {
+    let { classes } = useStyles("alert", props, {
       alert: {
         fixed: "fixed-alert"
       }

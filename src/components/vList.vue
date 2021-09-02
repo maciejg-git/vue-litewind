@@ -17,7 +17,7 @@ export default {
     styleItem: { type: [String, Array], default: "" },
   },
   setup(props) {
-    let { classes, states } = useStyles(props, {
+    let { classes, states } = useStyles("list", props, {
       list: {
         fixed: "fixed-list"
       },

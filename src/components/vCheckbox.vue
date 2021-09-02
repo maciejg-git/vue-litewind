@@ -26,7 +26,7 @@ export default {
   },
   emits: ["update:modelValue"],
   setup(props, { attrs, emit }) {
-    let { classes, states } = useStyles(props, {
+    let { classes, states } = useStyles("checkbox", props, {
       checkbox: {
         states: ["valid", "invalid", "disabled"],
       },

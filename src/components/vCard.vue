@@ -14,7 +14,7 @@ export default {
     styleCard: { type: String, default: "" },
   },
   setup(props) {
-    let { classes } = useStyles(props, {
+    let { classes } = useStyles("card", props, {
       card: null,
     })
 

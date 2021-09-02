@@ -215,6 +215,8 @@
    <v-button style-button="primary tiny">button css</v-button> 
    <v-button style-button="primary large">button css</v-button> 
 
+   <v-button name="button-link" style-button="padding">button padding</v-button> 
+
    <v-button :control="controlModel">test button</v-button>
    <v-button @click="controlModel = 'small'">add small</v-button>
 

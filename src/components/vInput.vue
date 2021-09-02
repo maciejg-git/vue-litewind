@@ -27,7 +27,7 @@ export default {
   },
   emits: ["update:modelValue"],
   setup(props, { attrs, emit }) {
-    let { classes, states } = useStyles(props, {
+    let { classes, states } = useStyles("input", props, {
       input: {
         states: ["valid", "invalid", "disabled"],
       },

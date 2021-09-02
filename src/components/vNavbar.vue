@@ -17,7 +17,7 @@ export default {
     styleNavbar: { type: String, default: "" },
   },
   setup(props) {
-    let { classes } = useStyles(props, {
+    let { classes } = useStyles("navbar", props, {
       navbar: {
         fixed: "fixed-navbar",
         prop: computed(() => {
