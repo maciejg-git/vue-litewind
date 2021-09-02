@@ -134,7 +134,7 @@ export default {
       button: null,
       day: {
         fixed: "fixed-day",
-        states: ["selected", "today"],
+        states: ["selected", "partially-selected", "today"],
       },
       adjacentMonthDay: null,
       footer: null,
@@ -146,7 +146,7 @@ export default {
         mouseOverRange.value &&
         isRangeSelected(date)
       ) {
-        return classes.daySelected.value;
+        return [classes.day.value, states.day["partially-selected"].value];
       }
       if (isSelectedDay(date)) {
         return [classes.day.value, states.day.selected.value];
