@@ -76,8 +76,8 @@ function setPopper(el, tooltip, options) {
 
 function createTooltipElement() {
   let el = document.createElement("div");
-  el.innerHTML = "<div class='tooltip-content-default'></div>";
-  el.classList = "tooltip-default";
+  el.innerHTML = "<div class='tooltip-content'></div>";
+  el.classList = "tooltip";
   return el;
 }
 
