@@ -363,14 +363,6 @@ export default {
         description: "Style of menu item",
       },
       {
-        prop: "style-menu-item-active",
-        description: "Style of active menu item",
-      },
-      {
-        prop: "style-menu-item-disabled",
-        description: "Style of disabled menu item",
-      },
-      {
         prop: "style-menu-item-header",
         description: "Style of menu header",
       },

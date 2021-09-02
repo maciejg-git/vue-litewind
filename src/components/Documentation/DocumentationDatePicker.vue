@@ -484,14 +484,6 @@ export default {
         description: "Single day",
       },
       {
-        prop: "style-day-selected",
-        description: "Single day selected",
-      },
-      {
-        prop: "style-today",
-        description: "Today",
-      },
-      {
         prop: "style-adjacent-month-day",
         description:
           "Days from adjacent months",

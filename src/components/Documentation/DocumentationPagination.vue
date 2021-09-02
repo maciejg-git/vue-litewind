@@ -218,10 +218,6 @@ export default {
         description: "Style of single page button",
       },
       {
-        prop: "style-page-active",
-        description: "Style of active page button",
-      },
-      {
         prop: "style-dots",
         description: "Style of dots separating pages",
       },

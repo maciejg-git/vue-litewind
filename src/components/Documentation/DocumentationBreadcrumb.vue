@@ -152,6 +152,10 @@ export default {
         prop: "style-separator",
         description: "Breadcrumb separator",
       },
+      {
+        prop: "style-active",
+        description: "Active link in path",
+      },
     ]);
 
     let referenceStylesDefinition = ref([

@@ -244,10 +244,6 @@ export default {
         prop: "style-item",
         description: "List item style",
       },
-      {
-        prop: "style-item-active",
-        description: "Active list item style",
-      },
     ]);
 
     let referenceStylesDefinition = ref([

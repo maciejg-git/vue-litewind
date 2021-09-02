@@ -535,6 +535,10 @@ export default {
         description: "Table cell",
       },
       {
+        prop: "style-selected",
+        description: "Selected table cell",
+      },
+      {
         prop: "style-caption",
         description: "Table caption.",
       },

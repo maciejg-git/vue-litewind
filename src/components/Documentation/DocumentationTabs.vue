@@ -326,10 +326,6 @@ export default {
         prop: "style-tab",
         description: "Single tab style",
       },
-      {
-        prop: "style-tab-active",
-        description: "Single active tab style",
-      },
     ]);
 
     let referenceStylesDefinition = ref([
