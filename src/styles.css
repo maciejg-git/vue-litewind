@@ -25,6 +25,12 @@
     hover:bg-indigo-600
     focus:ring-indigo-200
 }
+    .button-primary {
+      @apply
+        bg-indigo-500
+        hover:bg-indigo-600
+        focus:ring-indigo-200
+    }
     .button-secondary {
       @apply
         bg-gray-500
@@ -57,6 +63,10 @@
         hover:bg-transparent
         text-blue-500
     }
+    .button-large {
+      @apply
+        py-2.5
+    }
     .button-small {
       @apply
         py-1
@@ -65,10 +75,6 @@
       @apply
         py-0.5
         text-sm
-    }
-    .button-large {
-      @apply
-        py-2.5
     }
     .button-square {
       @apply
@@ -113,7 +119,8 @@
 }
     .tabs-tab-small {
       @apply
-        p-0
+        py-1
+        px-2
     }
     .tabs-tab-active-state {
       @apply
@@ -506,29 +513,29 @@
     font-semibold
     p-4
 }
-    .alert-blue {
+    .alert-warn {
       @apply
         bg-yellow-100
-        border-yellow-200
-    }
-    .alert-danger {
-      @apply
-        bg-red-100
-        border-red-200
+        border-gray-200
     }
     .alert-success {
       @apply
         bg-green-100
         border-green-200
     }
-    .alert-light {
+    .alert-danger {
+      @apply
+        bg-red-100
+        border-red-200
+    }
+    .alert-info {
       @apply
         bg-gray-100
         border-gray-200
     }
-    .alert-warn {
+    .alert-light {
       @apply
-        bg-yellow-100
+        bg-gray-100
         border-gray-200
     }
 
@@ -578,6 +585,10 @@
     .modal-square {
       @apply
         rounded-none
+    }
+    .modal-no-shadow {
+      @apply
+        shadow-none
     }
 
 .modal-header {
@@ -660,10 +671,6 @@
     focus:bg-indigo-500
     focus:text-white
 }
-    .dropdown-item-green {
-      @apply
-        bg-green-500
-    }
     .dropdown-item-active-state {
       @apply
         text-white
@@ -818,6 +825,22 @@
     bg-indigo-500
     text-white
 }
+.badge-circle {
+  @apply
+    rounded-full
+    border
+    border-white
+    bg-transparent
+    w-4
+    h-4
+    px-0
+    py-0
+}
+    .badge-primary {
+      @apply
+        bg-indigo-500
+        text-white
+    }
     .badge-secondary {
       @apply
         bg-gray-500
@@ -852,16 +875,6 @@
         px-2
     }
 
-.badge-circle {
-  @apply
-    rounded-full
-    border
-    border-white
-    w-4
-    h-4
-    px-0
-    py-0
-}
 
 /* PAGINATION */
 
@@ -901,17 +914,16 @@
     @apply
       pagination-page-fixed
   }
-
-  .pagination-page-active-state {
-    @apply  
-      hover:bg-indigo-400
-      border-indigo-200
-      bg-indigo-500
-      ring-indigo-200
-      text-white
-      ring-2
-      font-semibold
-  }
+      .pagination-page-active-state {
+        @apply  
+          hover:bg-indigo-400
+          border-indigo-200
+          bg-indigo-500
+          ring-indigo-200
+          text-white
+          ring-2
+          font-semibold
+      }
 
   .pagination-dots {
     @apply
