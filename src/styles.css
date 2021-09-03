@@ -546,6 +546,15 @@
       @apply
         shadow-md
     }
+    .alert-borderless {
+      @apply
+        border-0
+    }
+    .alert-dense {
+      @apply
+        px-4
+        py-1
+    }
 
 /* NAVBAR */
 
