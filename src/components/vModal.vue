@@ -117,7 +117,6 @@ export default {
     });
 
     // remove scrollbar and add some padding to avoid shifting modal window
-
     let scrollbarWidth = ref(0);
 
     let getScrollBarWidth = () =>

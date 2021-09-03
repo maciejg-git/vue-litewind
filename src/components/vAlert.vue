@@ -38,6 +38,7 @@ export default {
       emit("update:modelValue", false);
     };
 
+    // set auto dismiss timer if alarm is visible
     watch(
       () => props.modelValue,
       (v) => {

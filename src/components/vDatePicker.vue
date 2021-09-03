@@ -157,6 +157,7 @@ export default {
       return classes.day.value;
     };
 
+    // regexp for validating date from model
     let dateRegexp = /^\d\d\d\d-\d?\d-\d?\d$/;
 
     let isTransitioning = ref(false);
@@ -166,16 +167,21 @@ export default {
     let today = new Date();
     today.setHours(0, 0, 0, 0);
 
+    // current month and year
     let month = ref(today.getMonth());
     let year = ref(today.getFullYear());
+
+    // range and single local models
     let range = ref([]);
     let single = ref("");
+
+    // current state of range selection 
+    // (not selected, partially selected, both selected)
     let rangeState = ref(0);
 
     let mouseOverRange = ref(null);
 
     // date utils
-
     let getCountDaysInMonth = (y, m) => 32 - new Date(y, m, 32).getDate();
 
     let parseDate = (d) => d.split("-").map((i) => +i);
@@ -196,7 +202,6 @@ export default {
     };
 
     // localized month and day names
-
     let monthNames = computed(() => {
       return Array.from({ length: 12 }, (v, i) =>
         new Date(0, i, 1).toLocaleString(props.locale, {
@@ -216,6 +221,7 @@ export default {
       )
     );
 
+    // update and validate local model if modelValue changes
     watch(
       () => props.modelValue,
       () => {
@@ -238,13 +244,16 @@ export default {
       }
     );
 
+    // month days to display in datepicker
     let daysList = computed(() => {
       let start = new Date(year.value, month.value).getDay();
+      // handle monday as first weekday
       if (props.mondayFirstWeekday) start = (7 + (start - 1)) % 7;
       let daysInMonth = getCountDaysInMonth(year.value, month.value);
       let i = Array.from({ length: daysInMonth }, (v, i) => {
         return { day: i + 1, date: new Date(year.value, month.value, i + 1) };
       });
+      // generate days from previous and next month
       if (props.adjacentMonths) {
         let dayNumbers = Array.from({ length: 31 }, (v, i) => i + 1);
         let { m, y } = prevMonth(month.value, year.value);
@@ -253,6 +262,7 @@ export default {
         let nextMonthDays = dayNumbers.slice(0, 42 - daysInMonth - start);
         return { prevMonthDays, nextMonthDays, i };
       }
+      // if not generating adjacent month days shift day array by adding "" days
       return { i: [...Array(start).fill(""), ...i] };
     });
 
@@ -280,6 +290,7 @@ export default {
       emitSelection(dateToString(single.value), formatted);
     };
 
+    // add date in range mode and update state
     let addRangeDate = (d) => {
       if (rangeState.value == 2) rangeState.value = 0;
       range.value[rangeState.value] = new Date(d.getTime());
@@ -343,6 +354,7 @@ export default {
       emit("state:cancel");
     };
 
+    // update current month and year
     let setNextMonth = () =>
       ({ m: month.value, y: year.value } = nextMonth(month.value, year.value));
 
@@ -353,6 +365,7 @@ export default {
 
     let setPrevYear = () => --year.value;
 
+    // is functions to check state of the day and select proper classes
     let isDisabled = (index) =>
       props.disabled && props.disabled.findIndex((i) => i == index % 7) != -1;
 

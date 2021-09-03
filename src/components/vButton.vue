@@ -35,6 +35,7 @@ export default {
       },
     });
 
+    // do not include href is element is button
     let tagHref = computed(() => (props.tag == "a" ? "#" : null));
 
     return {

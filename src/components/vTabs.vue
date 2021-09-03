@@ -34,6 +34,7 @@ export default {
     styleTab: { type: [String, Array], default: "" },
   },
   components: {
+    // minimal component to render content of child v-tab name slot
     VNodes: (props) => {
       return h("span", props.vnodes);
     },
@@ -61,6 +62,7 @@ export default {
       if (tabs.value.length) switchTab(0);
     });
 
+    // tab name can be set in name slot of child v-tab 
     let tabName = function (tab) {
       return tab.instance.slots.name
         ? tab.instance.slots.name()
@@ -74,10 +76,12 @@ export default {
       emit("input:changed-tab", index);
     };
 
+    // this is called by v-tab child after mounting
     let addTab = function (tab) {
       tabs.value.push(tab);
     };
 
+    // this is called by v-tab child after unmounting
     let removeTab = function (tab) {
       let index = tabs.value.findIndex((item) => item.instance == tab);
       if (active.value == index && index > 0) switchTab(index - 1);

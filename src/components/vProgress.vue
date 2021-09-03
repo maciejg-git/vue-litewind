@@ -82,6 +82,7 @@ export default {
     let progressWidth = ref(0);
     let progressBarWidth = ref(0);
 
+    // handle resize window event to update width of progress bar
     onMounted(() => {
       if (props.indeterminate) {
         getProgressWidth();
@@ -95,6 +96,7 @@ export default {
       }
     });
 
+    // speed should be similar for wide and narrow progress bars
     let getProgressTimer = () => {
       let speed = clamp(props.indeterminateSpeed, 1, 20) + 10;
       return Math.sqrt(progressWidth.value + 300) / speed + "s";

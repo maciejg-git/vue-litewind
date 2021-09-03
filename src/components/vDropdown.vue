@@ -58,6 +58,7 @@ export default {
       }
     };
 
+    // options for popper.js
     const { offsetX, offsetY, noFlip, placement } = toRefs(props);
 
     const { isOpen, activator, popper, show, hide, toggle } = usePopper({
@@ -71,6 +72,7 @@ export default {
 
     provide("classes", classes);
     provide("states", states);
+    // provide hide function to menuitem to allow closing after click
     provide("autoCloseMenu", toRef(props, "autoCloseMenu"));
     provide("hide", hide);
 

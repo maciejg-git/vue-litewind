@@ -71,6 +71,7 @@ export default {
       toggle: null,
     });
 
+    // watch trigger props and update events
     watchEffect(() => {
       if (props.trigger == "click") {
         trigger.on = null;
@@ -112,6 +113,7 @@ export default {
       }
     };
 
+    // options for popper.js
     const { offsetX, offsetY, noFlip, placement } = toRefs(props);
 
     const { isOpen, activator, popper, show, hide, toggle } = usePopper({

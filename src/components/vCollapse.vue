@@ -31,6 +31,7 @@ export default {
     let enter = (element) => {
       const { height } = getComputedStyle(element);
       element.style.height = 0;
+      // trigger reflow
       let l = element.scrollHeight;
       element.style.height = height;
     };
@@ -38,6 +39,7 @@ export default {
     let leave = (element) => {
       const { height } = getComputedStyle(element);
       element.style.height = height;
+      // trigger reflow
       let l = element.scrollHeight;
       element.style.height = 0;
     };

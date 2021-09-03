@@ -152,6 +152,7 @@ export default {
 
     // DATA
 
+    // clone data to avoid modifing data
     let items = computed(() => [...props.items]);
 
     let getItemValue = (i, k) => {
@@ -172,6 +173,7 @@ export default {
       return localeCompare(a, b) * sortAsc.value;
     };
 
+    // return sorted items, if no sorting is active return local items
     let itemsSorted = computed(() => {
       if (!sortField.value) return items.value;
       let h = getHeaderKey(sortField.value);
@@ -185,6 +187,7 @@ export default {
       return new RegExp(f.replace(/[.*+\-?^${}()|[\]\\]/g, "\\$&"), "i");
     };
 
+    // return filtered items, if no filter is active return sorted items
     let itemsFiltered = computed(() => {
       if (!props.filter) return itemsSorted.value;
       let regexp = getFilterRegexp();
@@ -198,6 +201,8 @@ export default {
       });
     });
 
+    // after each filtering return new item count so external pagination 
+    // can update and reset current page to 1
     watch(
       itemsFiltered,
       () => {
@@ -207,6 +212,7 @@ export default {
       { immediate: true }
     );
 
+    // return paginated items, if no pagination is used return filtered items
     let itemsPagination = computed(() => {
       if (!props.itemsPerPage) return itemsFiltered.value;
       return itemsFiltered.value.slice(
@@ -233,6 +239,7 @@ export default {
       );
     };
 
+    // no definition is provided, use first row to generate local definition
     let setHeaders = () => {
       if (!props.items || !props.items.length) return;
       return Object.keys(props.items[0]).map((item) => {
@@ -248,6 +255,8 @@ export default {
       () => headers.value.filter((i) => i.visible !== false).length
     );
 
+    // definition is provided, generate local definition and mix it 
+    // with defaults
     let headers = computed(() => {
       if (props.definition) {
         return props.definition.map((item) => {
@@ -296,14 +305,17 @@ export default {
 
     let selectRow = (i) => (itemsSelected.value[i] = itemsPagination.value[i]);
 
+    // emit new selection
     watch(itemsSelected.value, () => {
       emit("input:selection", Object.values(itemsSelected.value));
     });
 
+    // clear selection if selection mode or page changes
     watch([() => props.selectionMode, itemsPagination], () => resetSelection());
 
     // HANDLE TEMPLATE EVENTS
 
+    // handle selection
     let handleRowClick = function (i) {
       if (!isValidSelectionMode()) return;
       if (itemsSelected.value[i]) {
@@ -316,6 +328,7 @@ export default {
       selectRow(i);
     };
 
+    // handle sorting
     let handleHeaderClick = function (key, index) {
       if (!headers.value[index].sortable) return;
       sortAsc.value = sortField.value == key ? -sortAsc.value : 1;

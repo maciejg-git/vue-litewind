@@ -84,11 +84,13 @@ export default {
 
     let currentPage = ref(1);
 
+    // watch for model changes and update current page
     watch(
       () => props.modelValue,
-      () =>
-        (currentPage.value =
-          typeof props.modelValue === "number" && props.modelValue),
+      () => {
+        return (currentPage.value =
+          typeof props.modelValue === "number" && props.modelValue);
+      },
       { immediate: true }
     );
 
@@ -97,11 +99,15 @@ export default {
     );
 
     let pages = computed(() => {
+      // there always must be more than 3 pages
       let max = props.maxPages > 3 ? props.maxPages : 3;
+      // but no more than max set by user
       max = max > pagesCount.value ? pagesCount.value : max;
-      let s = currentPage.value - Math.ceil(max / 2) + 1;
-      s = clamp(s, 1, pagesCount.value - max + 1);
-      let p = Array.from({ length: max }, (v, i) => i + s);
+      // calculate first page and generate following pages
+      let first = currentPage.value - Math.ceil(max / 2) + 1;
+      first = clamp(first, 1, pagesCount.value - max + 1);
+      let p = Array.from({ length: max }, (v, i) => i + first);
+      // add dots if needed
       if (max >= 5) {
         if (p[0] != 1) p.splice(0, 2, 1, "...");
         if (p[max - 1] != pagesCount.value)
