@@ -13,7 +13,9 @@
     "build": "vite build",
     "serve": "vite preview"
   },
-  "dependencies": {},
+  "dependencies": {
+    "postcss-import": "^14.0.2"
+  },
   "devDependencies": {
     "@popperjs/core": "^2.9.2",
     "@tailwindcss/forms": "^0.3.3",
