@@ -208,7 +208,7 @@
     :id=&quot;'language-' + l&quot;
   &gt;&lt;/v-radio&gt;
   &lt;label :for=&quot;'language-' + l&quot; class=&quot;ml-3&quot;&gt;
-    &#123;&#123; l &#125;&#125;
+    {{ l }}
   &lt;/label&gt;
 &lt;/div&gt;
 
@@ -229,7 +229,7 @@
 
 &lt;div class=&quot;mt-5&quot;&gt;
   &lt;span class=&quot;font-semibold&quot;&gt;Language:&lt;/span&gt;
-  &#123;&#123; languagesModel &#125;&#125;
+  {{ languagesModel }}
 &lt;/div&gt;
       </code>
     </pre>

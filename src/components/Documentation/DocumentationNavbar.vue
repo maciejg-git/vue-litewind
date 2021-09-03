@@ -107,9 +107,9 @@
       &lt;li&gt;
         &lt;v-dropdown :offset-y=&quot;10&quot;&gt;
           &lt;template #activator&gt;
-            &lt;v-button style-button=&quot;link&quot;&gt;Dropdown&lt;/v-button&gt;
+            &lt;v-button name=&quot;button-link&quot;&gt;Dropdown&lt;/v-button&gt;
           &lt;/template&gt;
-          &lt;v-card width=&quot;320px&quot; style-card=&quot;default shadow&quot;&gt;
+          &lt;v-card width=&quot;320px&quot; style-card=&quot;shadow&quot;&gt;
             &lt;v-dropdown-menu-item tag=&quot;button&quot;&gt;
               Menu item
             &lt;/v-dropdown-menu-item&gt;
@@ -131,7 +131,7 @@
       &lt;/li&gt;
     &lt;/ul&gt;
     &lt;v-input class=&quot;ml-auto mr-4&quot;&gt;&lt;/v-input&gt;
-    &lt;v-button style-button=&quot;default outline&quot;&gt;Search&lt;/v-button&gt;
+    &lt;v-button style-button=&quot;outline&quot;&gt;Search&lt;/v-button&gt;
   &lt;/div&gt;
 &lt;/v-navbar&gt;
       </code>

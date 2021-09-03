@@ -157,7 +157,7 @@
   :transition=&quot;example.transition&quot;
   class=&quot;mt-4&quot;
 &gt;
-  &lt;template #default=&quot;{ value, max }&quot;&gt;&#123;&#123; value &#125;&#125; / &#123;&#123; max &#125;&#125;&lt;/template&gt;
+  &lt;template #default=&quot;{ value, max }&quot;&gt;{{ value }} / {{ max }}&lt;/template&gt;
 &lt;/v-progress&gt;
 
 &lt;v-progress
@@ -166,8 +166,8 @@
   :label=&quot;example.label&quot;
   :precision=&quot;+example.precision&quot;
   :transition=&quot;example.transition&quot;
-  style-progress=&quot;default tiny&quot;
-  style-progress-bar=&quot;default gradient&quot;
+  style-progress=&quot;tiny&quot;
+  style-progress-bar=&quot;gradient&quot;
   class=&quot;mt-4&quot;
 &gt;&lt;/v-progress&gt;
       </code>
@@ -218,8 +218,8 @@
     <pre>
       <code class="language-html">
 &lt;v-progress
-  style-progress=&quot;default tiny&quot;
-  style-progress-bar=&quot;default gradient&quot;
+  style-progress=&quot;tiny&quot;
+  style-progress-bar=&quot;gradient&quot;
   indeterminate
   :indeterminate-width=&quot;50&quot;
   :indeterminate-timing=&quot;example.timing&quot;
@@ -227,11 +227,11 @@
   class=&quot;mt-4&quot;
 &gt;&lt;/v-progress&gt;
 
-&lt;v-card style-card=&quot;default shadow&quot; width=&quot;400px&quot;&gt;
+&lt;v-card style-card=&quot;shadow&quot; width=&quot;400px&quot;&gt;
   &lt;div class=&quot;flex justify-center p-4&quot;&gt;Checking for updates...&lt;/div&gt;
   &lt;v-progress
-    style-progress=&quot;default tiny&quot;
-    style-progress-bar=&quot;default gradient&quot;
+    style-progress=&quot;tiny&quot;
+    style-progress-bar=&quot;gradient&quot;
     indeterminate
     :indeterminate-width=&quot;50&quot;
     :indeterminate-timing=&quot;example.timing&quot;

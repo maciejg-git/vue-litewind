@@ -191,7 +191,7 @@
 
 &lt;div class=&quot;mt-5&quot;&gt;
   &lt;span class=&quot;font-semibold&quot;&gt;Languages:&lt;/span&gt;
-  &#123;&#123; languagesModel &#125;&#125;
+  {{ languagesModel }}
 &lt;/div&gt;
       </code>
     </pre>

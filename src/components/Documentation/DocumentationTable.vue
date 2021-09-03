@@ -274,7 +274,7 @@
 &gt;
   &lt;template #cell:edit=&quot;{ item }&quot;&gt;
     &lt;v-button
-      style-button=&quot;default tiny no-margin&quot;
+      style-button=&quot;tiny&quot;
       @click.stop=&quot;edit(item)&quot;
     &gt;
       edit

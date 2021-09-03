@@ -99,7 +99,7 @@
     </div>
     <pre>
       <code class="language-html">
-&lt;v-card width=&quot;320px&quot; style-card=&quot;default shadow-md hoverable&quot;&gt;
+&lt;v-card width=&quot;320px&quot; style-card=&quot;shadow hoverable&quot;&gt;
   &lt;img :src=&quot;randomPhoto()&quot; alt=&quot;&quot; /&gt;
   &lt;header class=&quot;pt-3 px-3&quot;&gt;
     &lt;span class=&quot;font-semibold&quot;&gt;Example card&lt;/span&gt;
@@ -117,15 +117,15 @@
   &lt;div class=&quot;text-sm px-3 py-2&quot;&gt;Card footer&lt;/div&gt;
 &lt;/v-card&gt;
 
-&lt;v-card width=&quot;720px&quot; style-card=&quot;default shadow-md hoverable&quot; style=&quot;height: 320px&quot; class=&quot;flex my-10&quot;&gt;
+&lt;v-card width=&quot;720px&quot; style-card=&quot;shadow hoverable&quot; style=&quot;height: 320px&quot; class=&quot;flex my-10&quot;&gt;
   &lt;img :src=&quot;randomPhotoHorizontal()&quot; alt=&quot;&quot; /&gt;
   &lt;div class=&quot;flex flex-col&quot;&gt;
-    &lt;header class=&quot;pt-4 px-3&quot;&gt;
-      &lt;span class=&quot;font-semibold&quot;&gt;Example card&lt;/span&gt;
-    &lt;/header&gt;
-    &lt;header class=&quot;py-1 px-3&quot;&gt;
-      &lt;span class=&quot;text-gray-500 text-sm&quot;&gt;Subtitle&lt;/span&gt;
-    &lt;/header&gt;
+  &lt;header class=&quot;pt-4 px-3&quot;&gt;
+    &lt;span class=&quot;font-semibold&quot;&gt;Example card&lt;/span&gt;
+  &lt;/header&gt;
+  &lt;header class=&quot;py-1 px-3&quot;&gt;
+    &lt;span class=&quot;text-gray-500 text-sm&quot;&gt;Subtitle&lt;/span&gt;
+  &lt;/header&gt;
     &lt;div class=&quot;p-4&quot;&gt;
       Lorem Ipsum is simply dummy text of the printing and typesetting
       industry. Lorem Ipsum has been the industry's standard dummy text ever
@@ -133,7 +133,7 @@
       scrambled it to make a type specimen book.
     &lt;/div&gt;
     &lt;hr class=&quot;w-10/12 mx-auto&quot;&gt;
-    &lt;v-button style-button=&quot;default small&quot; class=&quot;ml-auto mt-auto m-4&quot;&gt;Details&lt;/v-button&gt;
+    &lt;v-button style-button=&quot;small&quot; class=&quot;ml-auto mt-auto m-4&quot;&gt;Details&lt;/v-button&gt;
   &lt;/div&gt;
 &lt;/v-card&gt;
       </code>

@@ -240,12 +240,12 @@
   &lt;template #activator&gt;
     &lt;v-button&gt;Dropdown menu&lt;/v-button&gt;
   &lt;/template&gt;
-  &lt;v-card width=&quot;320px&quot; style-card=&quot;default shadow&quot;&gt;
+  &lt;v-card width=&quot;320px&quot; style-card=&quot;shadow&quot;&gt;
     &lt;v-dropdown-menu-item tag=&quot;button&quot;&gt;Menu item&lt;/v-dropdown-menu-item&gt;
     &lt;v-dropdown-menu-item tag=&quot;button&quot;&gt;Menu item 2&lt;/v-dropdown-menu-item&gt;
     &lt;v-dropdown-header&gt;Menu header&lt;/v-dropdown-header&gt;
-    &lt;v-dropdown-menu-item tag=&quot;button&quot;&gt;Menu item 3&lt;/v-dropdown-menu-item&gt;
-    &lt;v-dropdown-menu-item tag=&quot;button&quot;&gt;Menu item 4&lt;/v-dropdown-menu-item&gt;
+    &lt;v-dropdown-menu-item active tag=&quot;button&quot;&gt;Menu item 3&lt;/v-dropdown-menu-item&gt;
+    &lt;v-dropdown-menu-item disabled tag=&quot;button&quot;&gt;Menu item 4&lt;/v-dropdown-menu-item&gt;
     &lt;v-dropdown-menu-item tag=&quot;button&quot;&gt;Menu item 5&lt;/v-dropdown-menu-item&gt;
   &lt;/v-card&gt;
 &lt;/v-dropdown&gt;
@@ -263,15 +263,16 @@
   @state:closed=&quot;
     example.events.unshift({ ev: 'state:closed', data: $event })
   &quot;
+  class=&quot;ml-2&quot;
 &gt;
   &lt;template #activator&gt;
     &lt;v-button&gt;Dropdown datepicker&lt;/v-button&gt;
   &lt;/template&gt;
   &lt;template #default=&quot;{ hide }&quot;&gt;
-    &lt;v-card width=&quot;320px&quot; style-card=&quot;default shadow&quot; class=&quot;p-2&quot;&gt;
+    &lt;v-card width=&quot;320px&quot; style-card=&quot;shadow&quot; class=&quot;p-2&quot;&gt;
       &lt;v-date-picker
         v-model=&quot;example.date&quot;
-        adjecent-months
+        adjacent-months
         @state:done=&quot;hide&quot;
       &gt;&lt;/v-date-picker&gt;
     &lt;/v-card&gt;

@@ -326,7 +326,7 @@
     &gt;&lt;/v-input&gt;
   &lt;/template&gt;
   &lt;template #default=&quot;{ hide }&quot;&gt;
-    &lt;v-card style-card=&quot;default shadow&quot; class=&quot;p-2&quot;&gt;
+    &lt;v-card style-card=&quot;shadow&quot; class=&quot;p-2&quot;&gt;
       &lt;v-date-picker
         v-model=&quot;exampleDropdown.date&quot;
         width=&quot;305px&quot;
