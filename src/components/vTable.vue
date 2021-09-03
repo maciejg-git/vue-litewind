@@ -181,6 +181,8 @@ export default {
       return items.value.sort((a, b) => itemCompare(a, b, h, c));
     });
 
+    // if filter prop is regexp return it, if it is string 
+    // return new regexp from string
     let getFilterRegexp = () => {
       let f = props.filter;
       if (isRegexp(f)) return f;
