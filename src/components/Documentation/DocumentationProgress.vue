@@ -200,6 +200,29 @@
           class="m-2"
         ></v-progress>
       </v-card>
+
+      <v-card style-card="shadow" width="400px" class="mt-6">
+        <div class="flex justify-center p-4">
+          <span v-if="example.indeterminate">
+            Checking for updates...
+          </span>
+          <span v-if="!example.indeterminate">
+            Updating...
+          </span>
+        </div>
+        <v-progress
+          style-progress="tiny"
+          style-progress-bar="gradient"
+          :value="example.indeterminateValue"
+          :label="false"
+          :indeterminate="example.indeterminate"
+          :indeterminate-width="50"
+          :indeterminate-timing="example.timing"
+          :indeterminate-speed="+example.speed"
+          class="m-2"
+        ></v-progress>
+      </v-card>
+
       <div class="mb-2 mt-10">
         <label for="timing">indeterminate-timing:</label>
         <v-select id="timing" v-model="example.timing">
@@ -233,6 +256,28 @@
     style-progress=&quot;tiny&quot;
     style-progress-bar=&quot;gradient&quot;
     indeterminate
+    :indeterminate-width=&quot;50&quot;
+    :indeterminate-timing=&quot;example.timing&quot;
+    :indeterminate-speed=&quot;+example.speed&quot;
+    class=&quot;m-2&quot;
+  &gt;&lt;/v-progress&gt;
+&lt;/v-card&gt;
+
+&lt;v-card style-card=&quot;shadow&quot; width=&quot;400px&quot; class=&quot;mt-6&quot;&gt;
+  &lt;div class=&quot;flex justify-center p-4&quot;&gt;
+    &lt;span v-if=&quot;example.indeterminate&quot;&gt;
+      Checking for updates...
+    &lt;/span&gt;
+    &lt;span v-if=&quot;!example.indeterminate&quot;&gt;
+      Updating...
+    &lt;/span&gt;
+  &lt;/div&gt;
+  &lt;v-progress
+    style-progress=&quot;tiny&quot;
+    style-progress-bar=&quot;gradient&quot;
+    :value=&quot;example.indeterminateValue&quot;
+    :label=&quot;false&quot;
+    :indeterminate=&quot;example.indeterminate&quot;
     :indeterminate-width=&quot;50&quot;
     :indeterminate-timing=&quot;example.timing&quot;
     :indeterminate-speed=&quot;+example.speed&quot;
@@ -422,11 +467,30 @@ export default {
       timing: "linear",
       width: "50",
       speed: 7,
+      indeterminate: true,
+      indeterminateValue: 0,
       events: [],
     });
 
     onMounted(() => {
       hljs.highlightAll();
+
+      setInterval(() => {
+        example.indeterminate = !example.indeterminate;
+        example.indeterminateValue = 0;
+        setTimeout(() => {
+          example.indeterminateValue = 25;
+        }, 1000)
+        setTimeout(() => {
+          example.indeterminateValue = 50;
+        }, 2000)
+        setTimeout(() => {
+          example.indeterminateValue = 75;
+        }, 3000)
+        setTimeout(() => {
+          example.indeterminateValue = 100;
+        }, 4000)
+      }, 6000)
     });
 
     return {

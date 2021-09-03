@@ -84,7 +84,7 @@
       one required, unique key property and number of optional properties. If
       definition is not provided component makes one using first record of data.
       This may be enough for simple tables however to use features like sorting,
-      filtering etc you need to create definition array.
+      filtering etc you need to provide definition array.
     </p>
     <pre>
       <code>
