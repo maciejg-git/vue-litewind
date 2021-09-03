@@ -28,7 +28,7 @@ export default function useStyles(name, props, elements) {
       for (let s of state) {
         states[el][s] = computed(() => {
           return (
-            props.name + (props.name != el ? "-" + el : "") + "-" + s + "-state"
+            props.name + (name != el ? "-" + el : "") + "-" + s + "-state"
           );
         });
       }
