@@ -82,7 +82,9 @@
 </template>
 
 <script>
-import "highlight.js/styles/default.css";
+// import "highlight.js/styles/atom-one-light.css";
+// import "highlight.js/styles/foundation.css";
+import "highlight.js/styles/github.css";
 import { components } from "./Components";
 
 export default {
