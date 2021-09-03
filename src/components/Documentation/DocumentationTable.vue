@@ -320,44 +320,6 @@ let definition = ref([
       </code>
     </pre>
   </section>
-
-  <!-- FIX: -->
-  <section>
-    <h4>Sorting</h4>
-    <p>
-      To enable sorting of table you have to set it for every column in
-      definition array using sorable property. By default records are sorted as
-      strings and using locale prop to compare values. Number and dates are
-      sorted as numbers and dates.
-      <code>null</code>
-      ,
-      <code>undefined</code>
-      and
-      <code>NaN</code>
-      values are always first when sorting in ascending direction.
-    </p>
-  </section>
-
-  <section>
-    <h4>Filtering</h4>
-    <p>
-      Similary to sorting you have to enable filtering for each column using
-      filterable property in definition. After filtering following actions
-      happens: event is emmited, selection is resetted.
-    </p>
-  </section>
-
-  <section>
-    <h4>Row selection</h4>
-    <p>
-      Component supports selecting rows when selecion-mode prop is set either to
-      'single' or 'multiple'. After new row is selected or unselected event is
-      emmited that conatins array of all selected records. Filtering, sorting,
-      changing current page or modifying selection-mode prop resets current
-      selection to empty array.
-    </p>
-  </section>
-
   <v-modal
     v-model="editModal"
     title="Edit"
@@ -400,7 +362,7 @@ export default {
         type: ["String"],
         default: "empty string",
         description:
-          "Use this String to filter items. Filtering always emits update:page with value 1 and resets any active selection",
+          "Use this String to filter items. Filtering always emits <span class='code-word'>update:page</span> with value 1 and resets any active selection",
       },
       {
         prop: "locale",
@@ -420,7 +382,7 @@ export default {
         type: ["String"],
         default: "empty string",
         description:
-          "Enables or disables selection of rows. Valid values are 'single' (allows selection of single row only), 'multiple' (allows multiple rows to be selected) or empty string (disables selection). Changing this prop resets current selection",
+          "Enables or disables selection of rows. Valid values are 'single' (allows selection of single row only), 'multiple' (allows multiple rows to be selected) or empty string (disables selection). After new row is selected or unselected event <span class='code-word'>input:selection</span> is emmited that conatins array of all selected records. <span class='font-semibold'>Filtering</span>, <span class='font-semibold'>sorting</span>, <span class='font-semibold'>changing current page</span> or <span class='font-semibold'>modifying selection-mode prop</span> resets current selection by emmiting empty array",
       },
       {
         prop: "page",
@@ -596,14 +558,14 @@ export default {
         type: ["Boolean"],
         default: "false",
         description:
-          "enables sorting of the column",
+          "enables sorting of the column. By default records are sorted as strings and using locale prop to compare values. Number and dates are sorted as numbers and dates. <code>null</code>,<code>undefined</code> and <code>NaN</code> values are always first when sorting in ascending direction",
       },
       {
         prop: "filterable",
         type: ["Boolean"],
         default: "true",
         description:
-          "enables filtering of the column",
+          "enables filtering of the column. After filtering following actions happens: event <span class='code-word'>update:filtered-count</span> is emmited, event <span class='code-word'>update:page</span> is emmited with value 1 and current selection is cleared by emmiting <span class='code-word'>input:selection</span> event with empty array",
       },
       {
         prop: "visible",
@@ -617,14 +579,14 @@ export default {
         type: ["Function"],
         default: "undefined",
         description:
-          "function that should return string of classes to apply to each cell in column. Takes 3 arguments: key, value and item",
+          "function that should return string of classes to apply to each cell in column. Takes 3 arguments: <code>key</code>, <code>value</code> and <code>item</code>",
       },
       {
         prop: "f",
         type: ["Function"],
         default: "undefined",
         description:
-          "if defined this function is called for every cell in this column and the return value is set as content of the cell. Takes 3 arguments: key, value and item. This function cannot be used to add html to cell content",
+          "if defined this function is called for every cell in this column and the return value is set as content of the cell. Takes 3 arguments: <code>key</code>, <code>value</code> and <code>item</code>. This function cannot be used to add html to cell content",
       },
       {
         prop: "filterByFunction",

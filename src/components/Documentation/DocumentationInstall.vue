@@ -76,7 +76,17 @@ import "styles-material.css";
     </code>
   </pre>
   <p>Each class begin with default component name. If you want to use another classes for component set different name for component using name prop. This can be useful if you do not want to modify default classes, experiment, use multiple themes or use same component for different purposes.</p>
-  <p class="font-semibold">Classes that define state (with -state ending) must always be below variant classes to work properly</p>
+  <p><span class="font-semibold">style-[element]</span> components props are used to modify elements of component using css variants. You can list any number of variants. Use <span class="font-semibold">only variant name</span>, do not include component name or element name.</p>
+    <pre>
+      <code class="language-html">
+&lt;v-button&gt;Default button&lt;/v-button&gt;
+&lt;v-button style-button=&quot;large&quot;&gt;Large button&lt;/v-button&gt;
+&lt;v-button style-button=&quot;primary&quot;&gt;Normal button&lt;/v-button&gt;
+&lt;v-button style-button=&quot;primary small outline &quot;&gt;Small outline button&lt;/v-button&gt;
+&lt;v-button style-button=&quot;secondary tiny&quot;&gt;Tiny button&lt;/v-button&gt;
+    </code>
+  </pre>
+  <p class="font-semibold">Classes that define state (with -state ending) must always be below variant classes in css to work properly</p>
   <p>
     The final classes applied to element are the result of merging:
     <ul>
