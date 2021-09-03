@@ -58,7 +58,7 @@ export default {
           return props.indeterminate
             ? "indeterminate"
             : props.transition
-            ? "transition-all"
+            ? "transition-all duration-200"
             : "";
         }),
       },
