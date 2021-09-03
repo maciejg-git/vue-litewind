@@ -538,6 +538,14 @@
         bg-gray-100
         border-gray-200
     }
+    .alert-outline {
+      @apply
+        bg-transparent
+    }
+    .alert-shadowed {
+      @apply
+        shadow-md
+    }
 
 /* NAVBAR */
 
