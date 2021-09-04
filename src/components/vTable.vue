@@ -1,5 +1,11 @@
 <template>
-  <table :class="classes.table.value" class="min-w-full">
+  <table
+    :class="[
+      classes.table.value,
+      state == 'busy' ? [states.table.busy.value, 'pointer-events-none'] : '',
+    ]"
+    class="min-w-full"
+  >
     <caption v-if="slots.caption" :class="classes.caption.value">
       <slot name="caption"></slot>
     </caption>
@@ -107,11 +113,9 @@ export default {
     styleCaption: { type: String, default: "" },
   },
   setup(props, { slots, emit }) {
-    let { classes } = useStyles("table", props, {
+    let { classes, states } = useStyles("table", props, {
       table: {
-        prop: computed(() =>
-          props.state == "busy" ? "pointer-events-none table-busy" : ""
-        ),
+        states: ["busy"],
       },
       headerRow: {
         name: "header-row",
@@ -181,7 +185,7 @@ export default {
       return items.value.sort((a, b) => itemCompare(a, b, h, c));
     });
 
-    // if filter prop is regexp return it, if it is string 
+    // if filter prop is regexp return it, if it is string
     // return new regexp from string
     let getFilterRegexp = () => {
       let f = props.filter;
@@ -203,7 +207,7 @@ export default {
       });
     });
 
-    // after each filtering return new item count so external pagination 
+    // after each filtering return new item count so external pagination
     // can update and reset current page to 1
     watch(
       itemsFiltered,
@@ -225,7 +229,7 @@ export default {
 
     // HEADERS
 
-    let defaultHeaders = {
+    let d = {
       sortable: false,
       filterable: true,
       visible: true,
@@ -248,7 +252,7 @@ export default {
         return {
           key: item,
           label: formatCase(item),
-          ...defaultHeaders,
+          ...d,
         };
       });
     };
@@ -257,36 +261,15 @@ export default {
       () => headers.value.filter((i) => i.visible !== false).length
     );
 
-    // definition is provided, generate local definition and mix it 
+    // definition is provided, generate local definition and mix it
     // with defaults
     let headers = computed(() => {
       if (props.definition) {
-        return props.definition.map((item) => {
+        return props.definition.map((i) => {
           return {
-            key: item.key,
-            label: item.label || formatCase(item.key),
-            sortable:
-              item.sortable === undefined
-                ? defaultHeaders.sortable
-                : item.sortable,
-            filterable:
-              item.filterable === undefined
-                ? defaultHeaders.filterable
-                : item.filterable,
-            visible:
-              item.visible === undefined
-                ? defaultHeaders.visible
-                : item.visible,
-            class: item.class,
-            f: item.f,
-            filterByFunction:
-              item.filterByFunction === undefined
-                ? defaultHeaders.filterByFunction
-                : item.filterByFunction,
-            sortByFunction:
-              item.sortByFunction === undefined
-                ? defaultHeaders.sortByFunction
-                : item.sortByFunction,
+            ...d,
+            ...i,
+            label: i.label || formatCase(i.key),
           };
         });
       } else return setHeaders();
@@ -340,6 +323,7 @@ export default {
     return {
       slots,
       classes,
+      states,
       getCellClass,
       headers,
       sortField,
