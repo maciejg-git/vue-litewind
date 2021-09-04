@@ -8,13 +8,13 @@
     px-4
 }
 
-.tabs-material-tab {
+.tabs-material--tab {
   @apply
     tabs-material-tab-fixed;
   @apply
     hover:bg-gray-50
 }
-    .tabs-material-tab-active-state {
+    .tabs-material--tab--active-state {
       @apply
         bg-white
         shadow-none
@@ -22,7 +22,7 @@
         border-indigo-500
     }
 
-.tabs-material-tab-bar {
+.tabs-material--tab-bar {
   @apply
     border-b
 }

@@ -1,14 +1,16 @@
-/* BUTTON */
+/* BUTTON LINK */
 
 .button-link {
   @apply 
     focus:outline-none
 }
 
-.button-link-padding {
+.button-link--padding {
   @apply
     p-4
 }
+
+/* BUTTON */
 
 .button {
   @apply
@@ -25,37 +27,37 @@
     hover:bg-indigo-600
     focus:ring-indigo-200
 }
-    .button-primary {
+    .button--primary {
       @apply
         bg-indigo-500
         hover:bg-indigo-600
         focus:ring-indigo-200
     }
-    .button-secondary {
+    .button--secondary {
       @apply
         bg-gray-500
         hover:bg-gray-600
         focus:ring-gray-200
     }
-    .button-yellow {
+    .button--yellow {
       @apply
         bg-yellow-500
         hover:bg-yellow-600
         focus:ring-yellow-200
     }
-    .button-green {
+    .button--green {
       @apply
         bg-green-500
         hover:bg-green-600
         focus:ring-green-200
     }
-    .button-red {
+    .button--red {
       @apply
         bg-red-500
         hover:bg-red-600
         focus:ring-red-200
     }
-    .button-outline {
+    .button--outline {
       @apply
         border
         border-blue-500
@@ -63,32 +65,32 @@
         hover:bg-transparent
         text-blue-500
     }
-    .button-large {
+    .button--large {
       @apply
         py-2.5
     }
-    .button-small {
+    .button--small {
       @apply
         py-1
     }
-    .button-tiny {
+    .button--tiny {
       @apply
         py-0.5
         text-sm
     }
-    .button-square {
+    .button--square {
       @apply
         rounded-none
     }
-    .button-pill {
+    .button--pill {
       @apply
         rounded-full
     }
-    .button-uppercase {
+    .button--uppercase {
       @apply
         uppercase
     }
-    .button-disabled-state {
+    .button--disabled-state {
       @apply
         opacity-50
         pointer-events-none
@@ -96,13 +98,13 @@
 
 /* TABS */
 
-.tabs-tab-bar {
+.tabs--tab-bar {
   @apply
     border-b
     pl-2
 }
 
-.tabs-tab {
+.tabs--tab {
   @apply
     border
     rounded-t-md
@@ -117,12 +119,12 @@
     bg-gray-100
     hover:bg-gray-50
 }
-    .tabs-tab-small {
+    .tabs--tab--small {
       @apply
         py-1
         px-2
     }
-    .tabs-tab-active-state {
+    .tabs--tab--active-state {
       @apply
         bg-white
         hover:bg-white
@@ -138,46 +140,46 @@
     border-collapse
     text-left
 }
-    .table-busy {
+    .table--busy-state {
       @apply
         opacity-50
     }
 
-.table-fixed-layout {
+.table--fixed-layout {
   @apply
     table-fixed
 }
 
-.table-header-row {
+.table--header-row {
 
 }
 
-.table-header-cell {
+.table--header-cell {
   @apply
     border-b
     border-gray-300
     py-2
     px-2
 }
-    .table-header-cell-bordered {
+    .table--header-cell--bordered {
       @apply
         border
     }
-    .table-header-cell-dark {
+    .table--header-cell--dark {
       @apply
         bg-gray-700
         text-white
     }
-    .table-header-cell-light {
+    .table--header-cell--light {
       @apply
         bg-gray-100
     }
 
-.table-row {
+.table--row {
 
 }
 
-.table-cell {
+.table--cell {
   @apply
     border-t
     border-gray-300
@@ -187,7 +189,7 @@
     px-2
     pr-6
 }
-    .table-cell-bordered {
+    .table--cell--bordered {
       @apply
         border
         border-t
@@ -197,7 +199,7 @@
         pr-6
     }
 
-.table-selected {
+.table--selected {
   @apply
     bg-gray-100
     border-t
@@ -209,7 +211,7 @@
     pr-6
 }
 
-.table-caption {
+.table--caption {
   @apply
     text-gray-600
     text-left
@@ -226,22 +228,22 @@
     rounded-md
     overflow-hidden
 }
-    .list-square {
+    .list--square {
       @apply
         rounded-none
     }
-    .list-borderless {
+    .list--borderless {
       @apply
         border-0
     }
 
-.list-item {
+.list--item {
   @apply
     p-2
     px-4
     hover:bg-gray-50
 }
-    .list-item-active-state {
+    .list--item--active-state {
       @apply
         bg-blue-500
         hover:bg-blue-600
@@ -257,20 +259,20 @@
     overflow-hidden
     h-4
 }
-    .progress-transparent {
+    .progress--transparent {
       @apply
       bg-transparent
     }
-    .progress-tiny {
+    .progress--tiny {
       @apply
         h-1
     }
 
-.progress-progress-bar {
+.progress--progress-bar {
   @apply
     bg-indigo-500
 }
-    .progress-progress-bar-gradient {
+    .progress--progress-bar--gradient {
       @apply
         bg-gradient-to-r
         from-yellow-400
@@ -278,7 +280,7 @@
         to-pink-500
     }
 
-.progress-label {
+.progress--label {
   @apply
     text-xs
     text-white
@@ -293,13 +295,13 @@
     underline
 }
 
-.breadcrumb-separator {
+.breadcrumb--separator {
   @apply
     text-gray-500 
     mx-3
 }
 
-.breadcrumb-active {
+.breadcrumb--active {
   @apply
     text-gray-700 
 }
@@ -328,17 +330,17 @@
     outline-none
     overflow-y-auto
 }
-    .select-valid-state {
+    .select--valid-state {
       @apply
         border-green-300
         focus:ring-green-200
     }
-    .select-invalid-state {
+    .select--invalid-state {
       @apply
         border-red-300
         focus:ring-red-200
     }
-    .select-disabled-state {
+    .select--disabled-state {
       @apply
         opacity-50
     }
@@ -356,17 +358,17 @@
     focus:border-gray-400
     outline-none
 }
-    .range-valid-state {
+    .range--valid-state {
       @apply
         border-green-300
         focus:ring-green-200
     }
-    .range-invalid-state {
+    .range--invalid-state {
       @apply
         border-red-300
         focus:ring-red-200
     }
-    .range-disabled-state {
+    .range--disabled-state {
       @apply
         opacity-50
     }
@@ -390,19 +392,19 @@
     transition-all
     duration-150
 }
-    .radio-valid-state {
+    .radio--valid-state {
       @apply
         text-green-500
         border-green-300
         focus:ring-green-200
     }
-    .radio-invalid-state {
+    .radio--invalid-state {
       @apply
         text-red-500
         border-red-300
         focus:ring-red-200
     }
-    .radio-disabled-state {
+    .radio--disabled-state {
       @apply
         opacity-50
     }
@@ -427,19 +429,19 @@
     transition-all
     duration-150
 }
-    .checkbox-valid-state {
+    .checkbox--valid-state {
       @apply
         text-green-500
         border-green-300
         focus:ring-green-200
     }
-    .checkbox-invalid-state {
+    .checkbox--invalid-state {
       @apply
         text-red-500
         border-red-300
         focus:ring-red-200
     }
-    .checkbox-disabled-state {
+    .checkbox--disabled-state {
       @apply
         opacity-50
     }
@@ -458,17 +460,17 @@
     focus:border-gray-400
     outline-none
 }
-    .input-valid-state {
+    .input--valid-state {
       @apply
         border-green-300
         focus:ring-green-200
     }
-    .input-invalid-state {
+    .input--invalid-state {
       @apply
         border-red-300
         focus:ring-red-200
     }
-    .input-disabled-state {
+    .input--disabled-state {
       @apply
         opacity-50
     }
@@ -489,17 +491,17 @@
     py-1
     px-3
 }
-    .textarea-valid-state {
+    .textarea--valid-state {
       @apply
         border-green-300
         focus:ring-green-200
     }
-    .textarea-invalid-state {
+    .textarea--invalid-state {
       @apply
         border-red-300
         focus:ring-red-200
     }
-    .textarea-disabled-state {
+    .textarea--disabled-state {
       @apply
         opacity-50
     }
@@ -517,44 +519,44 @@
     font-semibold
     p-4
 }
-    .alert-warn {
+    .alert--warn {
       @apply
         bg-yellow-100
         border-gray-200
     }
-    .alert-success {
+    .alert--success {
       @apply
         bg-green-100
         border-green-200
     }
-    .alert-danger {
+    .alert--danger {
       @apply
         bg-red-100
         border-red-200
     }
-    .alert-info {
+    .alert--info {
       @apply
         bg-gray-100
         border-gray-200
     }
-    .alert-light {
+    .alert--light {
       @apply
         bg-gray-100
         border-gray-200
     }
-    .alert-outline {
+    .alert--outline {
       @apply
         bg-transparent
     }
-    .alert-shadowed {
+    .alert--shadowed {
       @apply
         shadow-md
     }
-    .alert-borderless {
+    .alert--borderless {
       @apply
         border-0
     }
-    .alert-dense {
+    .alert--dense {
       @apply
         px-4
         py-1
@@ -568,7 +570,7 @@
     bg-gray-100
     shadow-md
 }
-    .navbar-bottom {
+    .navbar--bottom {
       @apply
         border-t
     }
@@ -603,16 +605,16 @@
     rounded-md
     text-gray-900
 }
-    .modal-square {
+    .modal--square {
       @apply
         rounded-none
     }
-    .modal-no-shadow {
+    .modal--no-shadow {
       @apply
         shadow-none
     }
 
-.modal-header {
+.modal--header {
   @apply
     bg-gray-50
     text-gray-900
@@ -623,29 +625,29 @@
     py-6
 }
 
-.modal-footer {
+.modal--footer {
   @apply
     px-6
     py-6
 }
 
-.modal-content {
+.modal--content {
   @apply
     px-6
     py-5
 }
-    .modal-content-relaxed {
+    .modal--content-relaxed {
       @apply
         px-9
         py-8
     }
-    .modal-content-edge-to-edge {
+    .modal--content-edge-to-edge {
       @apply
         px-2
         py-5
     }
 
-.modal-backdrop {
+.modal--backdrop {
   @apply
     bg-black
     opacity-50
@@ -661,19 +663,19 @@
     rounded
     overflow-hidden
 }
-    .card-shadow {
+    .card--shadow {
       @apply
         shadow-md
     }
-    .card-square {
+    .card--square {
       @apply
         rounded-none
     }
-    .card-borderless {
+    .card--borderless {
       @apply
         border-0
     }
-    .card-hoverable {
+    .card--hoverable {
       @apply
         hover:shadow-lg
         transition-all
@@ -683,38 +685,38 @@
 
 .card-flat {
   @apply
-    bg-gray-100
-    shadow-sm
+    bg-gray-200
+    shadow
 }
 
 /* DROPDOWN */
 
-.dropdown-item {
+.dropdown--item {
   @apply
     text-left
     w-full
     focus:outline-none
     pr-4
-    text-black
+    text-gray-700
     px-4 
     py-2
     hover:bg-gray-50
     focus:bg-indigo-500
     focus:text-white
 }
-    .dropdown-item-active-state {
+    .dropdown--item--active-state {
       @apply
         text-white
         bg-indigo-500
         hover:bg-indigo-600
     }
-    .dropdown-item-disabled-state {
+    .dropdown--item--disabled-state {
       @apply
         opacity-50
         pointer-events-none
     }
 
-.dropdown-header {
+.dropdown--header {
   @apply
     text-left
     font-semibold
@@ -723,7 +725,9 @@
     py-2
 }
 
-.dropdown-flat-item {
+/* DROPDOWN FLAT */
+
+.dropdown-flat--item {
   @apply
     text-left
     w-full
@@ -731,12 +735,12 @@
     px-5
     py-3
     text-gray-700
-    hover:bg-gray-50
-    focus:bg-indigo-500
+    hover:bg-gray-100
+    focus:bg-indigo-400
     focus:text-white
 }
 
-.dropdown-flat-header {
+.dropdown-flat--header {
   @apply
     text-left
     font-semibold
@@ -763,7 +767,7 @@
     text-center
 }
 
-.datepicker-button {
+.datepicker--button {
   @apply
     rounded
     focus:ring-2
@@ -772,33 +776,33 @@
     px-2
 }
 
-.datepicker-day {
+.datepicker--day {
   @apply
     datepicker-day-fixed;
   @apply
     hover:bg-gray-100
 }
-    .datepicker-day-partially-selected-state {
+    .datepicker--day--partially-selected-state {
       @apply
         bg-gray-300
         font-semibold
         text-gray-500
     }
-    .datepicker-day-selected-state {
+    .datepicker--day--selected-state {
       @apply
         bg-indigo-400
         hover:bg-indigo-600
         font-semibold
         text-white
     }
-    .datepicker-day-today-state {
+    .datepicker--day--today-state {
       @apply  
         hover:bg-gray-50
         text-indigo-500
         font-extrabold
     }
 
-.datepicker-adjacent-month-day {
+.datepicker--adjacent-month-day {
   @apply
     datepicker-day-fixed;
   @apply  
@@ -806,7 +810,7 @@
     pointer-events-none
 }
 
-.datepicker-footer {
+.datepicker--footer {
   @apply
     bg-gray-100
     text-sm
@@ -822,28 +826,28 @@
     h-8
     w-8
 }
-    .spinner-blue {
+    .spinner--blue {
       @apply
         text-blue-500
     }
-    .spinner-yellow {
+    .spinner--yellow {
       @apply
         text-yellow-500
     }
-    .spinner-green {
+    .spinner--green {
       @apply
         text-green-500
     }
-    .spinner-gray {
+    .spinner--gray {
       @apply
         text-gray-300
     }
-    .spinner-large {
+    .spinner--large {
       @apply
         h-20
         w-20
     }
-    .spinner-small {
+    .spinner--small {
       @apply
         h-5
         w-5
@@ -862,7 +866,7 @@
     shadow-lg
 }
 
-.popover-content {
+.popover--content {
   @apply
     p-5
 }
@@ -877,7 +881,7 @@
     shadow-sm
 }
 
-.popover-plain-content {
+.popover-plain--content {
   @apply
     p-7
 }
@@ -893,7 +897,7 @@
     bg-indigo-500
     text-white
 }
-.badge-circle {
+.badge--circle {
   @apply
     rounded-full
     border
@@ -904,38 +908,38 @@
     px-0
     py-0
 }
-    .badge-primary {
+    .badge--primary {
       @apply
         bg-indigo-500
         text-white
     }
-    .badge-secondary {
+    .badge--secondary {
       @apply
         bg-gray-500
         text-white
     }
-    .badge-green {
+    .badge--green {
       @apply
         bg-green-500
         text-white
     }
-    .badge-yellow {
+    .badge--yellow {
       @apply
         bg-yellow-500
         text-white
     }
-    .badge-red {
+    .badge--red {
       @apply
         bg-red-500
         text-white
     }
-    .badge-small {
+    .badge--small {
       @apply
         text-sm
         p-1
         px-2
     }
-    .badge-tiny {
+    .badge--tiny {
       @apply
         text-xs
         font-semibold
@@ -973,16 +977,16 @@
       p-2
   }
 
-  .pagination-pagination-bar {
+  .pagination--pagination-bar {
     @apply
       rounded-md
   }
 
-  .pagination-page {
+  .pagination--page {
     @apply
       pagination-page-fixed
   }
-      .pagination-page-active-state {
+      .pagination--page--active-state {
         @apply  
           hover:bg-indigo-400
           border-indigo-200
@@ -993,14 +997,14 @@
           font-semibold
       }
 
-  .pagination-dots {
+  .pagination--dots {
     @apply
       pagination-page-fixed;
     @apply
       tracking-wider
   }
 
-  .pagination-next {
+  .pagination--next {
     @apply
       pagination-side-controls-fixed;
     @apply  
@@ -1008,7 +1012,7 @@
       ml-0.5
   }
 
-  .pagination-prev {
+  .pagination--prev {
     @apply
       pagination-side-controls-fixed;
     @apply  
@@ -1026,7 +1030,7 @@
     z-50
 }
 
-.tooltip-content {
+.tooltip--content {
   @apply
     font-semibold
     p-1
