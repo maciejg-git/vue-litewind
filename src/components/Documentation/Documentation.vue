@@ -79,6 +79,7 @@
       <router-view></router-view>
     </div>
   </div>
+  <div class="bg-gray-300">github</div>
 </template>
 
 <script>
