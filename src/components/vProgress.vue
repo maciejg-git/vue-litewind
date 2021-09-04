@@ -58,16 +58,16 @@ export default {
           return props.indeterminate
             ? "indeterminate"
             : props.transition
-            ? "transition-all duration-200"
+            ? "transition-all duration-100"
             : "";
         }),
       },
       label: null,
     });
 
-    let value = computed(() =>
-      clamp((props.value / props.max) * 100, 0, props.max)
-    );
+    let value = computed(() => {
+      return clamp((props.value / props.max) * 100, 0, props.max);
+    });
 
     let precision = computed(() => clamp(props.precision, 0, 100));
 

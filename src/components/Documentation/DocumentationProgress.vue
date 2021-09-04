@@ -140,7 +140,7 @@
       </v-tabs>
     </div>
     <pre>
-      <code class="language-html">
+      <code v-pre class="language-html">
 &lt;v-progress
   :value=&quot;+example.value&quot;
   :max=&quot;+example.max&quot;
@@ -222,6 +222,10 @@
           class="m-2"
         ></v-progress>
       </v-card>
+      <div class="my-4">
+        Combined indeterminate and deteminate example
+      </div>
+
 
       <div class="mb-2 mt-10">
         <label for="timing">indeterminate-timing:</label>
@@ -333,7 +337,7 @@ export default {
         type: ["Boolean"],
         default: "false",
         description:
-          "Renders indeterminate progress bar. <span class='font-semibold'>Note</span>: value, max, label, precision and transition props are ignored if indeterminate is true",
+          "Renders indeterminate progress bar. <span class='font-semibold'>Note</span>: value, max, label, precision and transition props are ignored if indeterminate is true. You can switch between indeterminate or determinate by flicking this prop on and off",
       },
       {
         prop: "indeterminate-width",
@@ -478,18 +482,12 @@ export default {
       setInterval(() => {
         example.indeterminate = !example.indeterminate;
         example.indeterminateValue = 0;
-        setTimeout(() => {
-          example.indeterminateValue = 25;
-        }, 1000)
-        setTimeout(() => {
-          example.indeterminateValue = 50;
-        }, 2000)
-        setTimeout(() => {
-          example.indeterminateValue = 75;
-        }, 3000)
-        setTimeout(() => {
-          example.indeterminateValue = 100;
-        }, 4000)
+        let i = setInterval(() => {
+          example.indeterminateValue += 5/100;
+          if (example.indeterminateValue >= 100) {
+            clearInterval(i)
+          }
+        }, 2)
       }, 6000)
     });
 

@@ -59,17 +59,24 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <div class="relative">
-        <v-alert
-          v-model="example.isVisible"
-          :dismissable="example.dismissable"
-          :auto-dismiss-delay="example.autoDismissDelay"
-          :style-alert="example.style"
-          class="my-2"
-        >
-          Alert
-        </v-alert>
-      </div>
+      <v-alert
+        v-model="example.isVisible"
+        :dismissable="example.dismissable"
+        :auto-dismiss-delay="example.autoDismissDelay"
+        :style-alert="example.style"
+        class="my-2"
+      >
+        Alert
+      </v-alert>
+      <v-alert
+        v-model="example.isVisibleAbsolute"
+        :dismissable="example.dismissable"
+        :auto-dismiss-delay="example.autoDismissDelay"
+        :style-alert="example.style"
+        class="fixed top-20 left-1/2 w-3/4 transform -translate-x-1/2 shadow"
+      >
+        Alert
+      </v-alert>
       <div class="flex justify-between items-center">
         <div class="mt-5">
           <label for="style">Alert variant:</label>
@@ -81,15 +88,30 @@
             <option value="light">light</option>
           </v-select>
         </div>
-        <v-button :disabled="example.isVisible" @click="example.isVisible = true">
-          Show alert
-        </v-button>
+        <div class="flex gap-4">
+          <v-button
+            :disabled="example.isVisible"
+            @click="example.isVisible = true"
+          >
+            Show alert
+          </v-button>
+          <v-button
+            :disabled="example.isVisibleAbsolute"
+            @click="example.isVisibleAbsolute = true"
+          >
+            Show absolute alert
+          </v-button>
+        </div>
       </div>
       <v-tabs name="tabs-material" class="mt-5">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="model" class="font-semibold">v-model:</label>
-            <v-input type="text" id="model" v-model="example.isVisible"></v-input>
+            <v-input
+              type="text"
+              id="model"
+              v-model="example.isVisible"
+            ></v-input>
           </div>
           <div class="mb-2">
             <label for="dismissable">dismissable:</label>
@@ -246,6 +268,7 @@ export default {
 
     let example = reactive({
       isVisible: true,
+      isVisibleAbsolute: false,
       dismissable: true,
       autoDismissDelay: 0,
       style: "default",

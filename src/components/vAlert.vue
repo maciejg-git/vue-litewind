@@ -29,9 +29,7 @@ export default {
     // TODO: absolute alerts
 
     let { classes } = useStyles("alert", props, {
-      alert: {
-        fixed: "fixed-alert"
-      }
+      alert: null,
     })
 
     let closeAlert = () => {
@@ -63,9 +61,6 @@ export default {
 </script>
 
 <style scoped>
-.fixed-alert {
-  @apply relative
-}
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.2s ease;

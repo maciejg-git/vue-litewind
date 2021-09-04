@@ -1,16 +1,6 @@
 /* BUTTON */
 
-.button-link {
-  @apply 
-    focus:outline-none
-}
-
-.button-link-padding {
-  @apply
-    p-4
-}
-
-.button {
+.button-fixed {
   @apply
     rounded
     text-sm
@@ -21,21 +11,34 @@
     focus:ring-4
     px-4
     py-2
+}
+.button {
+  @apply
+    button-fixed;
+  @apply
     bg-indigo-500
     hover:bg-indigo-600
     focus:ring-indigo-200
 }
-    .button-primary {
-      @apply
-        bg-indigo-500
-        hover:bg-indigo-600
-        focus:ring-indigo-200
-    }
-    .button-secondary {
-      @apply
-        bg-gray-500
-        hover:bg-gray-600
-        focus:ring-gray-200
+.button-primary {
+  @apply
+    button-fixed;
+  @apply
+    bg-indigo-500
+    hover:bg-indigo-600
+    focus:ring-indigo-200
+}
+.button-secondary {
+  @apply
+    button-fixed;
+  @apply
+    bg-gray-500
+    hover:bg-gray-600
+    focus:ring-gray-200
+}
+    .button-link {
+      @apply 
+        focus:outline-none
     }
     .button-yellow {
       @apply
@@ -63,10 +66,6 @@
         hover:bg-transparent
         text-blue-500
     }
-    .button-large {
-      @apply
-        py-2.5
-    }
     .button-small {
       @apply
         py-1
@@ -75,6 +74,10 @@
       @apply
         py-0.5
         text-sm
+    }
+    .button-large {
+      @apply
+        py-2.5
     }
     .button-square {
       @apply
@@ -88,21 +91,16 @@
       @apply
         uppercase
     }
-    .button-disabled-state {
-      @apply
-        opacity-50
-        pointer-events-none
-    }
 
 /* TABS */
 
-.tabs-tab-bar {
+.tabs-tabBar-default {
   @apply
     border-b
     pl-2
 }
 
-.tabs-tab {
+.tabs-tab-default {
   @apply
     border
     rounded-t-md
@@ -119,8 +117,7 @@
 }
     .tabs-tab-small {
       @apply
-        py-1
-        px-2
+        p-0
     }
     .tabs-tab-active-state {
       @apply
@@ -132,43 +129,42 @@
 
 /* TABLE */
 
-.table {
+.table-default {
   @apply
     bg-white
     border-collapse
-    text-left
 }
     .table-busy {
       @apply
         opacity-50
     }
 
-.table-fixed-layout {
-  @apply
-    table-fixed
+/* .table-fixed { */
+/*   @apply */
+/*     table-fixed */
+/* } */
+
+.table-headerRow {
+
 }
 
-.table-header-row {
-
-}
-
-.table-header-cell {
+.table-cell-header-default {
   @apply
     border-b
     border-gray-300
     py-2
     px-2
 }
-    .table-header-cell-bordered {
+    .table-cell-header-bordered {
       @apply
         border
     }
-    .table-header-cell-dark {
+    .table-cell-header-dark {
       @apply
         bg-gray-700
         text-white
     }
-    .table-header-cell-light {
+    .table-cell-header-light {
       @apply
         bg-gray-100
     }
@@ -177,7 +173,7 @@
 
 }
 
-.table-cell {
+.table-cell-default {
   @apply
     border-t
     border-gray-300
@@ -197,7 +193,7 @@
         pr-6
     }
 
-.table-selected {
+.table-selected-default {
   @apply
     bg-gray-100
     border-t
@@ -209,7 +205,7 @@
     pr-6
 }
 
-.table-caption {
+.table-caption-default {
   @apply
     text-gray-600
     text-left
@@ -218,7 +214,7 @@
 
 /* LIST */
 
-.list {
+.list-default {
   @apply
     border
     divide-y
@@ -235,7 +231,7 @@
         border-0
     }
 
-.list-item {
+.list-item-default {
   @apply
     p-2
     px-4
@@ -250,7 +246,7 @@
 
 /* PROGRESS */
 
-.progress {
+.progress-default {
   @apply
     bg-gray-100
     rounded
@@ -266,11 +262,11 @@
         h-1
     }
 
-.progress-progress-bar {
+.progress-progressBar-default {
   @apply
     bg-indigo-500
 }
-    .progress-progress-bar-gradient {
+    .progress-progressBar-gradient {
       @apply
         bg-gradient-to-r
         from-yellow-400
@@ -278,7 +274,7 @@
         to-pink-500
     }
 
-.progress-label {
+.progress-label-default {
   @apply
     text-xs
     text-white
@@ -287,26 +283,19 @@
 
 /* BREADCRUMB */
 
-.breadcrumb {
+.breadcrumb-default {
   @apply
     text-blue-500
     underline
 }
 
-.breadcrumb-separator {
-  @apply
-    text-gray-500 
-    mx-3
-}
+.breadcrumb-separator-default {
 
-.breadcrumb-active {
-  @apply
-    text-gray-700 
 }
 
 /* FORMTEXT */
 
-.form-text {
+.form-text-default {
   @apply
     text-sm
     text-gray-600
@@ -315,7 +304,7 @@
 
 /* SELECT */
 
-.select {
+.select-default {
   @apply
     rounded
     border
@@ -345,7 +334,7 @@
 
 /* RANGE */
 
-.range {
+.range-default {
   @apply
     rounded
     bg-white
@@ -373,7 +362,7 @@
 
 /* RADIO */
 
-.radio {
+.radio-default {
   @apply
     border
     bg-white
@@ -387,8 +376,6 @@
     transform
     scale-110
     outline-none
-    transition-all
-    duration-150
 }
     .radio-valid-state {
       @apply
@@ -409,7 +396,7 @@
 
 /* CHECKBOX */
 
-.checkbox {
+.checkbox-default {
   @apply
     rounded
     border
@@ -424,8 +411,6 @@
     transform
     scale-110
     outline-none
-    transition-all
-    duration-150
 }
     .checkbox-valid-state {
       @apply
@@ -446,7 +431,7 @@
 
 /* INPUT */
 
-.input {
+.input-default {
   @apply
     rounded
     border
@@ -475,7 +460,7 @@
 
 /* TEXTAREA */
 
-.textarea {
+.textarea-default {
   @apply
     rounded
     border
@@ -506,10 +491,9 @@
 
 /* ALERT */
 
-.alert {
+.alert-default {
   @apply
     bg-blue-100
-    text-gray-700
     border
     border-blue-200
     border-l-4
@@ -517,52 +501,30 @@
     font-semibold
     p-4
 }
-    .alert-warn {
+    .alert-blue {
       @apply
         bg-yellow-100
-        border-gray-200
-    }
-    .alert-success {
-      @apply
-        bg-green-100
-        border-green-200
+        border-yellow-200
     }
     .alert-danger {
       @apply
         bg-red-100
         border-red-200
     }
-    .alert-info {
+    .alert-success {
       @apply
-        bg-gray-100
-        border-gray-200
+        bg-green-100
+        border-green-200
     }
     .alert-light {
       @apply
         bg-gray-100
         border-gray-200
     }
-    .alert-outline {
-      @apply
-        bg-transparent
-    }
-    .alert-shadowed {
-      @apply
-        shadow-md
-    }
-    .alert-borderless {
-      @apply
-        border-0
-    }
-    .alert-dense {
-      @apply
-        px-4
-        py-1
-    }
 
 /* NAVBAR */
 
-.navbar {
+.navbar-default {
   @apply
     w-full
     bg-gray-100
@@ -575,7 +537,7 @@
 
 /* CLOSEBUTTON */
 
-.close-button {
+.closeButton-default {
   @apply
     text-gray-600
     opacity-60
@@ -585,7 +547,7 @@
 
 /* SIDEPANEL */
 
-.sidepanel {
+.sidepanel-default {
   @apply
     bg-gray-100
     text-left;
@@ -596,7 +558,7 @@
 
 /* MODAL */
 
-.modal {
+.modal-default {
   @apply
     bg-white
     shadow-lg
@@ -607,12 +569,8 @@
       @apply
         rounded-none
     }
-    .modal-no-shadow {
-      @apply
-        shadow-none
-    }
 
-.modal-header {
+.modal-header-default {
   @apply
     bg-gray-50
     text-gray-900
@@ -623,13 +581,13 @@
     py-6
 }
 
-.modal-footer {
+.modal-footer-default {
   @apply
     px-6
     py-6
 }
 
-.modal-content {
+.modal-content-default {
   @apply
     px-6
     py-5
@@ -645,7 +603,7 @@
         py-5
     }
 
-.modal-backdrop {
+.modal-backdrop-default {
   @apply
     bg-black
     opacity-50
@@ -653,7 +611,7 @@
 
 /* CARD */
 
-.card {
+.card-default {
   @apply
     bg-white
     border
@@ -679,29 +637,23 @@
         transition-all
     }
 
-/* CARD FLAT */
-
-.card-flat {
-  @apply
-    bg-gray-100
-    shadow-sm
-}
-
 /* DROPDOWN */
 
-.dropdown-item {
+.dropdown-item-default {
   @apply
     text-left
     w-full
     focus:outline-none
     pr-4
     text-black
-    px-4 
-    py-2
     hover:bg-gray-50
     focus:bg-indigo-500
     focus:text-white
 }
+    .dropdown-item-green {
+      @apply
+        bg-green-500
+    }
     .dropdown-item-active-state {
       @apply
         text-white
@@ -714,35 +666,13 @@
         pointer-events-none
     }
 
-.dropdown-header {
+.dropdown-header-default {
   @apply
     text-left
     font-semibold
     text-sm
     px-4
     py-2
-}
-
-.dropdown-flat-item {
-  @apply
-    text-left
-    w-full
-    focus:outline-none
-    px-5
-    py-3
-    text-gray-700
-    hover:bg-gray-50
-    focus:bg-indigo-500
-    focus:text-white
-}
-
-.dropdown-flat-header {
-  @apply
-    text-left
-    font-semibold
-    text-gray-600
-    px-5
-    py-4
 }
 
 /* DATEPICKER */
@@ -757,13 +687,13 @@
     my-1
 }
 
-.datepicker {
+.datepicker-default {
   @apply
     bg-white
     text-center
 }
 
-.datepicker-button {
+.datepicker-button-default {
   @apply
     rounded
     focus:ring-2
@@ -772,33 +702,48 @@
     px-2
 }
 
-.datepicker-day {
+.datepicker-day-default {
   @apply
     datepicker-day-fixed;
   @apply
-    hover:bg-gray-100
+    hover:bg-gray-50
 }
-    .datepicker-day-partially-selected-state {
-      @apply
-        bg-gray-300
-        font-semibold
-        text-gray-500
-    }
-    .datepicker-day-selected-state {
-      @apply
-        bg-indigo-400
-        hover:bg-indigo-600
-        font-semibold
-        text-white
-    }
-    .datepicker-day-today-state {
-      @apply  
-        hover:bg-gray-50
-        text-indigo-500
-        font-extrabold
-    }
+.datepicker-selected-default {
+  @apply
+    datepicker-day-fixed;
+  @apply
+    bg-indigo-400
+    hover:bg-indigo-600
+    font-semibold
+    text-white
+}
+.datepicker-today-default {
+  @apply  
+    hover:bg-gray-50
+    text-indigo-500
+    font-bold
+}
 
-.datepicker-adjacent-month-day {
+.datepicker-daySelected-default {
+  @apply
+    datepicker-day-fixed;
+  @apply
+    bg-indigo-400
+    hover:bg-indigo-600
+    font-semibold
+    text-white
+}
+
+.datepicker-today-default {
+  @apply
+    datepicker-day-fixed;
+  @apply  
+    hover:bg-gray-50
+    text-indigo-500
+    font-bold
+}
+
+.datepicker-adjacentMonthDay-default {
   @apply
     datepicker-day-fixed;
   @apply  
@@ -806,7 +751,7 @@
     pointer-events-none
 }
 
-.datepicker-footer {
+.datepicker-footer-default {
   @apply
     bg-gray-100
     text-sm
@@ -816,7 +761,7 @@
 
 /* SPINNER */
 
-.spinner {
+.spinner-default {
   @apply
     text-indigo-500
     h-8
@@ -851,7 +796,7 @@
 
 /* POPOVER */
 
-.popover {
+.popover-default {
   @apply
     bg-white
     border
@@ -862,58 +807,42 @@
     shadow-lg
 }
 
-.popover-content {
+.popover-content-default {
   @apply
     p-5
 }
 
-/* POPOVER PLAIN */
-
-.popover-plain {
-  @apply
-    bg-gray-100
-    overflow-hidden
-    max-w-xs
-    shadow-sm
-}
-
-.popover-plain-content {
-  @apply
-    p-7
-}
-
 /* BADGE */
 
-.badge {
+.badge-fixed {
   @apply
     rounded-md
     font-bold
     p-1
     px-3
+}
+
+.badge-default {
+  @apply
+    badge-fixed;
+  @apply
     bg-indigo-500
     text-white
 }
-.badge-circle {
+.badge-primary {
   @apply
-    rounded-full
-    border
-    border-white
-    bg-transparent
-    w-4
-    h-4
-    px-0
-    py-0
+    badge-fixed;
+  @apply  
+    bg-indigo-500
+    text-white
 }
-    .badge-primary {
-      @apply
-        bg-indigo-500
-        text-white
-    }
-    .badge-secondary {
-      @apply
-        bg-gray-500
-        text-white
-    }
+.badge-secondary {
+  @apply
+    badge-fixed;
+  @apply  
+    bg-gray-500
+    text-white
+}
     .badge-green {
       @apply
         bg-green-500
@@ -943,6 +872,16 @@
         px-2
     }
 
+.badge-circle {
+  @apply
+    rounded-full
+    border
+    border-white
+    w-4
+    h-4
+    px-0
+    py-0
+}
 
 /* PAGINATION */
 
@@ -973,34 +912,35 @@
       p-2
   }
 
-  .pagination-pagination-bar {
+  .pagination-pagination-bar-default {
     @apply
       rounded-md
   }
 
-  .pagination-page {
+  .pagination-page-default {
     @apply
       pagination-page-fixed
   }
-      .pagination-page-active-state {
-        @apply  
-          hover:bg-indigo-400
-          border-indigo-200
-          bg-indigo-500
-          ring-indigo-200
-          text-white
-          ring-2
-          font-semibold
-      }
 
-  .pagination-dots {
+  .pagination-page-active-state {
+    @apply  
+      hover:bg-indigo-400
+      border-indigo-200
+      bg-indigo-500
+      ring-indigo-200
+      text-white
+      ring-2
+      font-semibold
+  }
+
+  .pagination-dots-default {
     @apply
       pagination-page-fixed;
     @apply
       tracking-wider
   }
 
-  .pagination-next {
+  .pagination-next-default {
     @apply
       pagination-side-controls-fixed;
     @apply  
@@ -1008,7 +948,7 @@
       ml-0.5
   }
 
-  .pagination-prev {
+  .pagination-prev-default {
     @apply
       pagination-side-controls-fixed;
     @apply  
@@ -1018,7 +958,7 @@
 
 /* TOOLTIP */
 
-.tooltip {
+.tooltip-default {
   @apply
     bg-gray-700
     text-gray-100
@@ -1026,7 +966,7 @@
     z-50
 }
 
-.tooltip-content {
+.tooltip-content-default {
   @apply
     font-semibold
     p-1

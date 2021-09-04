@@ -92,7 +92,7 @@ export default {
 
 <style scoped lang="postcss">
 ::v-deep .fixed-item {
-  @apply block px-4 py-2
+  @apply block
 }
 .fade-enter-active,
 .fade-leave-active {

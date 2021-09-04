@@ -1,6 +1,6 @@
 {
   "name": "vue-component-tailwind",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "main": "dist/vue-component-tailwind.umd.js",
   "module": "dist/vue-component-tailwind.es.js",
   "files": [
@@ -13,9 +13,7 @@
     "build": "vite build",
     "serve": "vite preview"
   },
-  "dependencies": {
-    "postcss-import": "^14.0.2"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@popperjs/core": "^2.9.2",
     "@tailwindcss/forms": "^0.3.3",
