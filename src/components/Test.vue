@@ -211,6 +211,8 @@
     <input v-model="filter" type="" class="form-control w-25" />
 <br>
 
+  <v-chevron></v-chevron>
+
    <v-button style-button="primary small">button css</v-button> 
    <v-button style-button="primary tiny">button css</v-button> 
    <v-button style-button="primary large">button css</v-button> 
@@ -667,6 +669,7 @@ import vTextarea from "./vTextarea.vue";
 import vCheckbox from "./vCheckbox.vue";
 import vNavbar from "./vNavbar.vue";
 import vRadio from "./vRadio.vue";
+import vChevron from "./vChevron.vue"
 import vBreadcrumb from "./vBreadcrumb.vue";
 // import {vTable} from "../dist/vuecomponent2.es"
 
@@ -702,6 +705,7 @@ export default {
     vCheckbox,
     vTextarea,
     vRadio,
+    vChevron,
     vBreadcrumb,
   },
   props: {

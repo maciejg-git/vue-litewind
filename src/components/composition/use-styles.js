@@ -13,10 +13,10 @@ export default function useStyles(name, props, elements) {
       let c = [];
       if (props[p]) {
         c = props[p].split(" ").map((i) => {
-          return [props.name, e, i].filter(Boolean).join("-");
+          return [props.name, e, i].filter(Boolean).join("--");
         });
       }
-      c.push([props.name, e].filter(Boolean).join("-"));
+      c.push([props.name, e].filter(Boolean).join("--"));
       let fixed = elements[el] && elements[el].fixed;
       let prop = elements[el] && elements[el].prop && elements[el].prop.value;
       return [fixed, ...c, prop];
@@ -28,7 +28,7 @@ export default function useStyles(name, props, elements) {
       for (let s of state) {
         states[el][s] = computed(() => {
           return (
-            props.name + (name != el ? "-" + el : "") + "-" + s + "-state"
+            props.name + (name != el ? "--" + el : "") + "--" + s + "-state"
           );
         });
       }
