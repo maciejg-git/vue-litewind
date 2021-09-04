@@ -79,7 +79,7 @@
       <v-progress
         :value="+example.value"
         :max="+example.max"
-        :label="example.label"
+        :label="false"
         :precision="+example.precision"
         :transition="example.transition"
         style-progress="tiny"

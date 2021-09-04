@@ -57,7 +57,7 @@
   <section>
     <h4>Example</h4>
     <div class="example relative">
-      <v-card style="height: 300px">
+      <v-card style="height: 600px">
         <v-navbar class="py-2 px-4">
           <div class="flex items-center">
             <span class="font-bold text-lg">Brand</span>
@@ -65,26 +65,44 @@
               <li>Home</li>
               <li>About</li>
               <li>
-                <v-dropdown :offset-y="10">
+                <v-dropdown :offset-y="10" name="dropdown-flat">
                   <template #activator>
                     <v-button name="button-link">Dropdown</v-button>
                   </template>
-                  <v-card width="320px" style-card="shadow">
+                  <v-card width="420px" name="card-flat">
                     <v-dropdown-menu-item tag="button">
-                      Menu item
+                      <header class="font-semibold">Get started</header>
+                      <span class="text-sm">
+                        Lorem Ipsum is simply dummy text of the printing and
+                        typesetting industry. Lorem Ipsum has been the
+                        industry's standard dummy text ever since the 1500s,
+                        when an unknown printer took a galley of type and
+                        scrambled it to make a type specimen book
+                      </span>
                     </v-dropdown-menu-item>
                     <v-dropdown-menu-item tag="button">
-                      Menu item 2
-                    </v-dropdown-menu-item>
-                    <v-dropdown-header>Menu header</v-dropdown-header>
-                    <v-dropdown-menu-item tag="button">
-                      Menu item 3
-                    </v-dropdown-menu-item>
-                    <v-dropdown-menu-item tag="button">
-                      Menu item 4
+                      <header class="font-semibold">Documenation</header>
+                      <span class="text-sm">
+                        It is a long established fact that a reader will be
+                        distracted by the readable content of a page when
+                        looking at its layout
+                      </span>
                     </v-dropdown-menu-item>
                     <v-dropdown-menu-item tag="button">
-                      Menu item 5
+                      <header class="font-semibold">Team</header>
+                      <span class="text-sm">
+                        Contrary to popular belief, Lorem Ipsum is not simply
+                        random text. It has roots in a piece of classical Latin
+                        literature from 45 BC, making it over 2000 years old
+                      </span>
+                    </v-dropdown-menu-item>
+                    <v-dropdown-menu-item tag="button">
+                      <header class="font-semibold">About</header>
+                      <span class="text-sm">
+                        It is a long established fact that a reader will be
+                        distracted by the readable content of a page when
+                        looking at its layout
+                      </span>
                     </v-dropdown-menu-item>
                   </v-card>
                 </v-dropdown>
@@ -150,7 +168,8 @@ export default {
         prop: "fixed",
         type: "Boolean",
         default: "false",
-        description: "If true navbar position is set to fixed. If both <code>fixed</code> and <code>sticky</code> are false then navbar is positioned as relative",
+        description:
+          "If true navbar position is set to fixed. If both <code>fixed</code> and <code>sticky</code> are false then navbar is positioned as relative",
       },
       {
         prop: "sticky",

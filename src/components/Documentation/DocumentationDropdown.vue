@@ -142,33 +142,6 @@
         </template>
       </v-dropdown>
 
-      <v-dropdown
-        :placement="example.placement"
-        :offset-x="+example.offsetX"
-        :offset-y="+example.offsetY"
-        :no-flip="example.noFlip"
-        :auto-close-menu="example.autoCloseMenu"
-        :transition="example.transition"
-        name="dropdown-flat"
-        @state:opened="
-          example.events.unshift({ ev: 'state:opened', data: $event })
-        "
-        @state:closed="
-          example.events.unshift({ ev: 'state:closed', data: $event })
-        "
-      >
-        <template #activator>
-          <v-button>Dropdown menu</v-button>
-        </template>
-        <v-card width="320px" name="card-flat">
-          <v-dropdown-menu-item tag="button">Menu item</v-dropdown-menu-item>
-          <v-dropdown-menu-item tag="button">Menu item 2</v-dropdown-menu-item>
-          <v-dropdown-header>Menu header</v-dropdown-header>
-          <v-dropdown-menu-item active tag="button">Menu item 3</v-dropdown-menu-item>
-          <v-dropdown-menu-item disabled tag="button">Menu item 4</v-dropdown-menu-item>
-          <v-dropdown-menu-item tag="button">Menu item 5</v-dropdown-menu-item>
-        </v-card>
-      </v-dropdown>
       <v-tabs name="tabs-material" class="mt-10">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
