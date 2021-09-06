@@ -51,17 +51,18 @@ app.use(selectPlugin);
 app.use(spinnerPlugin);
     </code>
   </pre>
-
-    <h5>Styling</h5>
-
     <p>
-      Copy style.css to the src directory of your project, import it and modify to your liking.
+    Copy styles.css to src directory of your project and import it. You can edit this file to customize look of components.
     </p>
     <pre>
       <code class="language-js">
 // main.js
 
-import "styles.css";
+// copy styles.css to src directory of your project and modify to your liking
+import "./styles.css";
+
+// import fixed styles, order of importing is important
+import "vue-wind/dist/style.css"
     </code>
   </pre>
     <p>
@@ -71,10 +72,11 @@ import "styles.css";
       <code class="language-js">
 // main.js
 
-import "styles.css";
-import "styles-material.css";
+import "./styles.css";
+import "./styles-material.css";
     </code>
   </pre>
+    <h5>Styling</h5>
   <p>Each class begin with default component name. If you want to use another classes for component set different name for component using name prop. This can be useful if you do not want to modify default classes, experiment, use multiple themes or use same component for different purposes.</p>
   <p><span class="font-semibold">style-[element]</span> components props are used to modify elements of component using css variants. You can list any number of variants. Use <span class="font-semibold">only variant name</span>, do not include component name or element name.</p>
     <pre>

@@ -14,7 +14,7 @@
       <div v-if="isOpen" ref="popper" :class="classes.popover.value">
         <header
           v-if="!noHeader"
-          class="flex bg-gray-100 border-b font-semibold px-3 py-2"
+          class="flex font-semibold px-3 py-2"
         >
           {{ title }}
           <v-close-button class="ml-auto" @click="hide" />

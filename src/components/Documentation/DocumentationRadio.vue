@@ -161,30 +161,19 @@
         <v-radio
           v-model="languagesModel"
           :value="l"
-          :state="
-            languagesValidated
-              ? languagesModel
-                ? true
-                : false
-              : null
-          "
+          :state="languagesValidated ? (languagesModel ? true : false) : null"
           :id="'language-' + l"
         ></v-radio>
         <label :for="'language-' + l" class="ml-3">
           {{ l }}
         </label>
       </div>
-      <div
-        v-if="languagesValidated && !languagesModel ? true : false"
-        class="text-red-500 mt-4"
+      <v-form-text
+        :state="languagesValidated ? (languagesModel ? true : false) : null"
       >
         Please select the language.
-      </div>
-      <v-button
-        @click="validate()"
-        style-button="default"
-        class="mt-5"
-      >
+      </v-form-text>
+      <v-button @click="validate()" style-button="default" class="mt-5">
         Send
       </v-button>
       <div class="mt-5">
@@ -193,7 +182,7 @@
       </div>
     </div>
     <pre>
-      <code class="language-html">
+      <code v-pre class="language-html">
 &lt;div v-for=&quot;l in languages&quot; class=&quot;flex items-center my-2&quot;&gt;
   &lt;v-radio
     v-model=&quot;languagesModel&quot;

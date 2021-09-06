@@ -1,8 +1,11 @@
 <template>
-  <div :class="[
+  <div
+    v-if="showDefaultState || state != ''"
+    :class="[
       classes.formText.value,
       states.formText[state] && states.formText[state].value,
-    ]">
+    ]"
+  >
     <slot name="default"></slot>
   </div>
 </template>
@@ -13,8 +16,9 @@ import useStyles from "./composition/use-styles";
 
 export default {
   props: {
-    state: { type: String, default: "" },
+    state: { type: [String, Boolean], default: "" },
     inline: { type: Boolean, default: false },
+    showDefaultState: { type: Boolean, default: false },
     name: { type: String, default: "form-text" },
     styleFormText: { type: [String, Array], default: "" },
   },
@@ -24,7 +28,7 @@ export default {
         name: "form-text",
         states: ["valid", "invalid", "disabled"],
       },
-    })
+    });
 
     let state = computed(() =>
       props.state === true || props.state === "valid"

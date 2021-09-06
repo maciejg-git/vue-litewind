@@ -136,17 +136,18 @@
           {{ l }}
         </label>
       </div>
-      <div
-        v-if="languagesValidated && languagesModel.length < 3 ? true : false"
-        class="text-red-500 mt-4"
+      <v-form-text
+        :state="
+          languagesValidated
+            ? languagesModel.length >= 3
+              ? true
+              : false
+            : null
+        "
       >
         Please select at least 3 languages.
-      </div>
-      <v-button
-        @click="validate()"
-        style-button="default"
-        class="mt-5"
-      >
+      </v-form-text>
+      <v-button @click="validate()" style-button="default" class="mt-5">
         Send
       </v-button>
       <div class="mt-5">

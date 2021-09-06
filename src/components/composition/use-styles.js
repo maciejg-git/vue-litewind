@@ -11,7 +11,6 @@ export default function useStyles(name, props, elements) {
     let e = elements[el] && elements[el].name ? elements[el].name : el;
     e = e != name ? e : null;
     classes[el] = computed(() => {
-      console.log('comp')
       let c = [];
       if (props[p]) {
         c = props[p].split(" ").map((i) => {
@@ -32,7 +31,6 @@ export default function useStyles(name, props, elements) {
           return [props.name, e, s + "-state"].filter(Boolean).join("--");
           // change
           // props.name + (name != el ? "--" + el : "") + "--" + s + "-state"
-          
         });
       }
     }

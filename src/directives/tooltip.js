@@ -19,7 +19,7 @@ let removeHideTimers = (el) => {
 
 let removeShowTimer = (el) => {
   clearTimeout(el._v_tooltip.timer);
-}
+};
 
 function show(ev) {
   let el = ev.target;
@@ -29,9 +29,10 @@ function show(ev) {
   getTooltipFnContent(el);
 
   el._v_tooltip.timer = setTimeout(() => {
-    document.body.appendChild(el._v_tooltip.el);
+    document.body.appendChild(el._v_tooltip.wrapper);
     requestAnimationFrame(() => {
-      el._v_tooltip.el.style.opacity = 1;
+      el._v_tooltip.tooltip.style.opacity = 1;
+    el._v_tooltip.tooltip.style.transform = "translateY(0px)";
     });
     el._v_popper.update();
   }, el._v_tooltip.delay);
@@ -43,16 +44,17 @@ function hide(ev) {
   removeShowTimer(el);
 
   el._v_tooltip.timerOut = setTimeout(() => {
-    el._v_tooltip.el.style.opacity = 0;
+    el._v_tooltip.tooltip.style.opacity = 0;
+    el._v_tooltip.tooltip.style.transform = "translateY(6px)";
     el._v_tooltip.timerRemove = setTimeout(() => {
-      el._v_tooltip.el.remove();
-    }, 300)
+      el._v_tooltip.wrapper.remove();
+    }, 300);
   }, el._v_tooltip.delay);
 }
 
 let getTooltipFnContent = (el) => {
   if (el._v_tooltip.f) {
-    el._v_tooltip.el.childNodes[0].innerText = el._v_tooltip.f();
+    el._v_tooltip.tooltip.firstChild.innerText = el._v_tooltip.f();
   }
 };
 
@@ -75,15 +77,16 @@ function setPopper(el, tooltip, options) {
 
 function createTooltipElement() {
   let el = document.createElement("div");
-  el.innerHTML = "<div class='tooltip--content'></div>";
-  el.classList = "tooltip";
+  el.innerHTML =
+    "<div class='tooltip'><div class='tooltip--content'></div></div>";
   return el;
 }
 
 function addTransition(el, m) {
   if (!m.transition) {
     el.style.opacity = "0";
-    el.style.transition = "opacity 0.3s ease";
+    el.style.transform = "translateY(6px)";
+    el.style.transition = "opacity 0.3s ease, transform 0.3s";
   }
 }
 
@@ -112,25 +115,27 @@ export default {
     let m = parseModifiers(Object.keys(binding.modifiers));
 
     el._v_tooltip = {
-      el: createTooltipElement(),
+      wrapper: createTooltipElement(),
       timer: null,
       timerOut: null,
       timerRemove: null,
       ...m,
     };
 
-    addTransition(el._v_tooltip.el, m);
+    el._v_tooltip.tooltip = el._v_tooltip.wrapper.firstChild;
+
+    addTransition(el._v_tooltip.tooltip, m);
 
     if (binding.value && typeof binding.value == "string") {
-      el._v_tooltip.el.childNodes[0].innerText = binding.value;
+      el._v_tooltip.tooltip.firstChild.innerText = binding.value;
     } else {
-      el._v_tooltip.el.childNodes[0].innerText =
+      el._v_tooltip.tooltip.firstChild.innerText =
         el.getAttribute("data-title") || "";
     }
 
     el._v_tooltip.f = typeof binding.value == "function" ? binding.value : null;
 
-    el._v_popper = setPopper(el, el._v_tooltip.el, el._v_tooltip);
+    el._v_popper = setPopper(el, el._v_tooltip.wrapper, el._v_tooltip);
 
     el.addEventListener("mouseenter", show);
     el.addEventListener("mouseleave", hide);
