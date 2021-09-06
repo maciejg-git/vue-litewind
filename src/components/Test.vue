@@ -212,6 +212,11 @@
 <br>
 
   <v-chevron></v-chevron>
+   <v-button style-button="primary large">button css
+     <v-chevron style-chevron="right" :dir="'d'" :switch="false">
+     </v-chevron>
+
+   </v-button> 
 
    <v-button style-button="primary small">button css</v-button> 
    <v-button style-button="primary tiny">button css</v-button> 

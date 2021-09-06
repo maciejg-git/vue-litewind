@@ -1,27 +1,29 @@
 <template>
-  <div ref="progress" :class="classes.progress.value" class="relative">
-    <div
-      v-if="!indeterminate"
-      :class="classes.progressBar.value"
-      :style="{ width: value + '%' }"
-    >
-      <span v-if="label" :class="classes.label.value">
-        <slot name="default" :value="value" :max="max">
-          {{ label }}
-        </slot>
-      </span>
+  <div>
+    <div ref="progress" :class="classes.progress.value" class="relative">
+      <div
+        v-if="!indeterminate"
+        :class="classes.progressBar.value"
+        :style="{ width: value + '%' }"
+      >
+        <span v-if="label" :class="classes.label.value">
+          <slot name="default" :value="value" :max="max">
+            {{ label }}
+          </slot>
+        </span>
+      </div>
+      <div
+        v-else
+        :class="classes.progressBar.value"
+        :style="{
+          width: indeterminateWidth + '%',
+          '--progress-bar-width': -progressBarWidth + 'px',
+          '--progress-bar-timer': getProgressTimer(),
+          '--progress-bar-timing': indeterminateTiming,
+        }"
+        ref="progressBar"
+      ></div>
     </div>
-    <div
-      v-else
-      :class="classes.progressBar.value"
-      :style="{
-        width: indeterminateWidth + '%',
-        '--progress-bar-width': -progressBarWidth + 'px',
-        '--progress-bar-timer': getProgressTimer(),
-        '--progress-bar-timing': indeterminateTiming,
-      }"
-      ref="progressBar"
-    ></div>
   </div>
 </template>
 

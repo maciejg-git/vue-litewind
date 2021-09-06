@@ -16,6 +16,7 @@ import vModal from "./vModal.vue";
 import vBadge from "./vBadge.vue";
 import vPopover from "./vPopover.vue";
 import vCloseButton from "./vCloseButton.vue";
+import vChevron from "./vChevron.vue";
 import vDivider from "./vDivider.vue";
 import vSpinner from "./vSpinner.vue";
 import vProgress from "./vProgress.vue";
@@ -49,6 +50,7 @@ export {
   vBadge,
   vPopover,
   vCloseButton,
+  vChevron,
   vSpinner,
   vProgress,
   vNavbar,
@@ -90,6 +92,7 @@ export {
   popoverPlugin,
   closebuttonPlugin,
   tooltipPlugin,
+  // chevron
 } from "./plugin"
 
 function install(app) {
@@ -122,6 +125,7 @@ function install(app) {
   app.component("v-select", vSelect);
   app.component("v-breadcrumb", vBreadcrumb);
   app.component("v-close-button", vCloseButton);
+  app.component("v-chevron", vChevron);
   app.directive("tooltip", tooltip);
 }
 

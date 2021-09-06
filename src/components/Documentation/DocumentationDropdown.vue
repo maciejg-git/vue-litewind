@@ -102,14 +102,21 @@
         "
       >
         <template #activator>
-          <v-button>Dropdown menu</v-button>
+          <v-button>
+            Dropdown menu
+            <v-chevron style-chevron="right" />
+          </v-button>
         </template>
         <v-card width="320px" style-card="shadow">
           <v-dropdown-menu-item tag="button">Menu item</v-dropdown-menu-item>
           <v-dropdown-menu-item tag="button">Menu item 2</v-dropdown-menu-item>
           <v-dropdown-header>Menu header</v-dropdown-header>
-          <v-dropdown-menu-item active tag="button">Menu item 3</v-dropdown-menu-item>
-          <v-dropdown-menu-item disabled tag="button">Menu item 4</v-dropdown-menu-item>
+          <v-dropdown-menu-item active tag="button">
+            Menu item 3
+          </v-dropdown-menu-item>
+          <v-dropdown-menu-item disabled tag="button">
+            Menu item 4
+          </v-dropdown-menu-item>
           <v-dropdown-menu-item tag="button">Menu item 5</v-dropdown-menu-item>
         </v-card>
       </v-dropdown>
@@ -129,7 +136,10 @@
         class="ml-2"
       >
         <template #activator>
-          <v-button>Dropdown datepicker</v-button>
+          <v-button>
+            Dropdown datepicker
+            <v-chevron style-chevron="right" />
+          </v-button>
         </template>
         <template #default="{ hide }">
           <v-card width="320px" style-card="shadow" class="p-2">
@@ -330,7 +340,8 @@ export default {
         prop: "transition",
         type: ["String"],
         default: "fade",
-        description: "By default showing or hiding dropdown uses fading animation. Set this prop to empty string to disable animation",
+        description:
+          "By default showing or hiding dropdown uses fading animation. Set this prop to empty string to disable animation",
       },
       {
         prop: "name",

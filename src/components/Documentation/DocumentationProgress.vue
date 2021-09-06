@@ -72,9 +72,11 @@
         :label="example.label"
         :precision="+example.precision"
         :transition="example.transition"
+        style-progress="rounded"
+        style-progress-bar="red rounded"
         class="mt-4"
       >
-        <template #default="{ value, max }">{{ value }} / {{ max }}</template>
+        <template #default="{ value, max }">{{ value.toFixed() }} / {{ max }}</template>
       </v-progress>
       <v-progress
         :value="+example.value"
@@ -86,11 +88,34 @@
         style-progress-bar="gradient"
         class="mt-4"
       ></v-progress>
+
+      <v-progress
+        style-progress="tiny"
+        style-progress-bar="gradient"
+        :value="example.value"
+        :label="false"
+        class="fixed top-0 left-0 w-full z-50"
+      ></v-progress>
+
       <v-tabs name="tabs-material" class="mt-10">
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="value">value:</label>
             <v-input type="text" id="value" v-model="example.value"></v-input>
+            <v-button
+              style-button="small"
+              @click="example.value += 10"
+              class="ml-2"
+            >
+              +10
+            </v-button>
+            <v-button
+              style-button="small"
+              @click="example.value -= 10"
+              class="ml-2"
+            >
+              -10
+            </v-button>
           </div>
           <div class="mb-2">
             <label for="max">max:</label>
@@ -203,12 +228,8 @@
 
       <v-card style-card="shadow" width="400px" class="mt-6">
         <div class="flex justify-center p-4">
-          <span v-if="example.indeterminate">
-            Checking for updates...
-          </span>
-          <span v-if="!example.indeterminate">
-            Updating...
-          </span>
+          <span v-if="example.indeterminate">Checking for updates...</span>
+          <span v-if="!example.indeterminate">Updating...</span>
         </div>
         <v-progress
           style-progress="tiny"
@@ -222,10 +243,7 @@
           class="m-2"
         ></v-progress>
       </v-card>
-      <div class="my-4">
-        Combined indeterminate and deteminate example
-      </div>
-
+      <div class="my-4">Combined indeterminate and deteminate example</div>
 
       <div class="mb-2 mt-10">
         <label for="timing">indeterminate-timing:</label>
@@ -356,8 +374,7 @@ export default {
         prop: "indeterminate-speed",
         type: ["Number"],
         default: "7",
-        description:
-          "Speed of indeterminate bar animation (1 - 20)",
+        description: "Speed of indeterminate bar animation (1 - 20)",
       },
       {
         prop: "name",
@@ -483,12 +500,12 @@ export default {
         example.indeterminate = !example.indeterminate;
         example.indeterminateValue = 0;
         let i = setInterval(() => {
-          example.indeterminateValue += 5/100;
+          example.indeterminateValue += 0.05;
           if (example.indeterminateValue >= 100) {
-            clearInterval(i)
+            clearInterval(i);
           }
-        }, 2)
-      }, 6000)
+        }, 2);
+      }, 6000);
     });
 
     return {

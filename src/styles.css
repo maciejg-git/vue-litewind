@@ -18,7 +18,7 @@
     text-sm
     sm:text-base
     font-medium
-    text-white
+    text-gray-200
     focus:outline-none
     focus:ring-4
     px-4
@@ -259,6 +259,10 @@
     overflow-hidden
     h-4
 }
+    .progress--rounded {
+      @apply
+        rounded-full
+    }
     .progress--transparent {
       @apply
       bg-transparent
@@ -272,6 +276,18 @@
   @apply
     bg-indigo-500
 }
+    .progress--progress-bar--rounded {
+      @apply
+        rounded-full
+    }
+    .progress--progress-bar--red {
+      @apply
+        bg-red-500
+    }
+    .progress--progress-bar--shadowed {
+      @apply
+        shadow-lg
+    }
     .progress--progress-bar--gradient {
       @apply
         bg-gradient-to-r
@@ -314,6 +330,14 @@
     text-gray-600
     mt-1
 }
+    .form-text--valid-state {
+      @apply
+        text-green-600
+    }
+    .form-text--invalid-state {
+      @apply
+        text-red-600
+    }
 
 /* SELECT */
 
@@ -584,6 +608,18 @@
     w-6
     h-6
 }
+
+/* CHEVRON */
+
+.chevron {
+  @apply
+    w-5
+    h-5
+}
+  .chevron--right {
+    @apply
+      ml-2
+  }
 
 /* SIDEPANEL */
 
