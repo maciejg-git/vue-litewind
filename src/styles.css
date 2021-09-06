@@ -608,6 +608,13 @@
     w-6
     h-6
 }
+.close-button--red {
+  @apply
+    text-red-600
+    opacity-60
+    w-6
+    h-6
+}
 
 /* CHEVRON */
 

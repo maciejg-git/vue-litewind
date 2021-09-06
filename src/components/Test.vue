@@ -218,6 +218,8 @@
 
    </v-button> 
 
+   <v-form-text state="invalid">text form</v-form-text>
+
    <v-button style-button="primary small">button css</v-button> 
    <v-button style-button="primary tiny">button css</v-button> 
    <v-button style-button="primary large">button css</v-button> 

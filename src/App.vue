@@ -14,24 +14,28 @@
 @keyframes fadeIn {
   from {
     opacity: 0;
-    top: 20px;
+    /* transform: scale(0); */
+    /* top: 20px; */
   }
 
   to {
     opacity: 1;
-    top: 0px;
+    /* transform: scale(1); */
+    /* top: 0px; */
   }
 }
 
 @keyframes fadeOut {
   from {
     opacity: 1;
-    top: 0px;
+    /* transform: scale(1); */
+    /* top: 0px; */
   }
 
   to {
     opacity: 0;
-    top: 20px;
+    /* transform: scale(0); */
+    /* top: 20px; */
   }
 }
 </style>

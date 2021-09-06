@@ -1,27 +1,45 @@
 <template>
-  <div>
-    <slot name="default" :class="classes.value.text"></slot>
+  <div :class="[
+      classes.formText.value,
+      states.formText[state] && states.formText[state].value,
+    ]">
+    <slot name="default"></slot>
   </div>
 </template>
 
 <script>
+import { computed } from "vue";
 import useStyles from "./composition/use-styles";
 
 export default {
   props: {
-    modelValue: { type: [String, Number, Boolean, Array], default: undefined },
-    type: { type: String, default: "text" },
     state: { type: String, default: "" },
-    name: { type: String, default: "input" },
-    styleFormText: { type: [String, Array], default: "default" },
+    inline: { type: Boolean, default: false },
+    name: { type: String, default: "form-text" },
+    styleFormText: { type: [String, Array], default: "" },
   },
   setup(props) {
-    let { classes } = useStyles(props, {
-      formText: null,
+    let { classes, states } = useStyles("form-text", props, {
+      formText: {
+        name: "form-text",
+        states: ["valid", "invalid", "disabled"],
+      },
     })
+
+    let state = computed(() =>
+      props.state === true || props.state === "valid"
+        ? "valid"
+        : props.state === false || props.state === "invalid"
+        ? "invalid"
+        : props.state === null || props.state === ""
+        ? ""
+        : props.state
+    );
 
     return {
       classes,
+      states,
+      state,
     };
   },
 };

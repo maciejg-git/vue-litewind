@@ -12,31 +12,9 @@ let delayRegexp = /^delay\d\d?\d?\d?$/;
 let offsetXRegexp = /^oX\d\d?\d?$/;
 let offsetYRegexp = /^oY\d\d?\d?$/;
 
-let transitionEnd = (ev) => {
-  // console.log(ev)
-  // console.log('transend')
-  if (ev.animationName == "fadeOut") {
-    // console.log('fade out')
-    ev.target.remove()
-    ev.target._v_tooltip.isMounted = false;
-    ev.target._v_tooltip.isVisible = false;
-    ev.target._v_tooltip.animating = false;
-  }
-  if (ev.animationName == "fadeIn") {
-    // console.log('fade in')
-    ev.target._v_tooltip.isVisible = true;
-    ev.target._v_tooltip.animating = false;
-  }
-    console.log(ev.target._v_tooltip.animating)
-}
-let transitionStart = (ev) => {
-  // console.log('transtart')
-    ev.target._v_tooltip.animating = true;
-}
- 
 let removeHideTimers = (el) => {
   clearTimeout(el._v_tooltip.timerOut);
-  // clearTimeout(el._v_tooltip.timerRemove);
+  clearTimeout(el._v_tooltip.timerRemove);
 };
 
 let removeShowTimer = (el) => {
@@ -48,19 +26,13 @@ function show(ev) {
 
   removeHideTimers(el);
 
-  // el._v_tooltip.el._v_tooltip.state = "in"
-  if (el._v_tooltip.el._v_tooltip.isVisible && !el._v_tooltip.el._v_tooltip.animating) return
-  // if (el._v_tooltip.el._v_tooltip.isMounted) return
-
   getTooltipFnContent(el);
 
-  // console.log(el._v_tooltip.el.style.animation)
   el._v_tooltip.timer = setTimeout(() => {
-    el._v_tooltip.el.style.animation="fadeIn 0.3s"
     document.body.appendChild(el._v_tooltip.el);
-    // requestAnimationFrame(() => {
-    //   el._v_tooltip.el.style.opacity = 1;
-    // });
+    requestAnimationFrame(() => {
+      el._v_tooltip.el.style.opacity = 1;
+    });
     el._v_popper.update();
   }, el._v_tooltip.delay);
 }
@@ -70,15 +42,11 @@ function hide(ev) {
 
   removeShowTimer(el);
 
-  // el._v_tooltip.el._v_tooltip.state = "out"
-  // if (el._v_tooltip.el._v_tooltip.animating) return
-
   el._v_tooltip.timerOut = setTimeout(() => {
-    el._v_tooltip.el.style.animation="fadeOut 0.3s"
-    // el._v_tooltip.el.style.opacity = 0;
-    // el._v_tooltip.timerRemove = setTimeout(() => {
-    //   el._v_tooltip.el.remove();
-    // }, 300)
+    el._v_tooltip.el.style.opacity = 0;
+    el._v_tooltip.timerRemove = setTimeout(() => {
+      el._v_tooltip.el.remove();
+    }, 300)
   }, el._v_tooltip.delay);
 }
 
@@ -114,9 +82,8 @@ function createTooltipElement() {
 
 function addTransition(el, m) {
   if (!m.transition) {
-    // el.style.opacity = "0";
-    // el.style.margin = "2em";
-    // el.style.transition = "opacity 0.3s ease, margin 0.3s";
+    el.style.opacity = "0";
+    el.style.transition = "opacity 0.3s ease";
   }
 }
 
@@ -149,16 +116,8 @@ export default {
       timer: null,
       timerOut: null,
       timerRemove: null,
-      state: null,
       ...m,
     };
-
-    el._v_tooltip.el._v_tooltip = {
-      state: null,
-      isVisible: false,
-      animating: false,
-      isMounted: false,
-    }
 
     addTransition(el._v_tooltip.el, m);
 
@@ -175,8 +134,6 @@ export default {
 
     el.addEventListener("mouseenter", show);
     el.addEventListener("mouseleave", hide);
-    el._v_tooltip.el.addEventListener("animationend", transitionEnd);
-    el._v_tooltip.el.addEventListener("animationstart", transitionStart);
   },
   beforeUnmount(el) {
     if (el._v_tooltip) {

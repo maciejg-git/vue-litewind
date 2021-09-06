@@ -29,6 +29,7 @@ import vRadio from "./vRadio.vue";
 import vCheckbox from "./vCheckbox.vue";
 import vRange from "./vRange.vue";
 import vBreadcrumb from "./vBreadcrumb.vue";
+import vFormText from "./vFormText.vue";
 import tooltip from "../directives/tooltip.js";
 
 export {
@@ -62,6 +63,7 @@ export {
   vCheckbox,
   vRange,
   vBreadcrumb,
+  vFormText,
   tooltip,
 };
 
@@ -126,6 +128,7 @@ function install(app) {
   app.component("v-breadcrumb", vBreadcrumb);
   app.component("v-close-button", vCloseButton);
   app.component("v-chevron", vChevron);
+  app.component("v-form-text", vFormText);
   app.directive("tooltip", tooltip);
 }
 
