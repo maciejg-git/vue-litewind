@@ -24,6 +24,10 @@ export let components = [
     name: "closebutton",
   },
   {
+    label: "Chevron",
+    name: "chevron",
+  },
+  {
     label: "Collapse",
     name: "collapse",
   },
@@ -58,6 +62,10 @@ export let components = [
   {
     label: "Range",
     name: "range",
+  },
+  {
+    label: "Form text",
+    name: "formtext",
   },
   {
     label: "List",
