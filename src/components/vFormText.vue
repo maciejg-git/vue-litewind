@@ -1,13 +1,13 @@
 <template>
   <transition name="fade">
     <div
-      v-if="alwaysVisible || state != ''"
+      v-if="visible"
       :class="[
         classes.formText.value,
         states.formText[state] && states.formText[state].value,
       ]"
     >
-      <slot name="default"></slot>
+      <slot name="default" :state="state"></slot>
     </div>
   </transition>
 </template>
@@ -20,7 +20,7 @@ export default {
   props: {
     state: { type: [String, Boolean], default: "" },
     inline: { type: Boolean, default: false },
-    alwaysVisible: { type: Boolean, default: false },
+    visible: { type: String, default: "default,valid,invalid" },
     name: { type: String, default: "form-text" },
     styleFormText: { type: [String, Array], default: "" },
   },
@@ -29,7 +29,7 @@ export default {
       formText: {
         name: "form-text",
         states: ["valid", "invalid", "disabled"],
-        prop: computed(() => props.inline ? "inline-block" : "block"),
+        prop: computed(() => (props.inline ? "inline-block" : "block")),
       },
     });
 
@@ -43,10 +43,17 @@ export default {
         : props.state
     );
 
+    let visible = computed(() => {
+      return props.visible
+        .split(",")
+        .includes(state.value === "" ? "default" : state.value);
+    });
+
     return {
       classes,
       states,
       state,
+      visible,
     };
   },
 };
