@@ -151,7 +151,7 @@ export default {
   },
   beforeUnmount(el) {
     if (el._v_tooltip) {
-      el._v_tooltip.el.remove();
+      el._v_tooltip.wrapper.remove();
     }
   },
 };
