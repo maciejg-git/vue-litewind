@@ -123,6 +123,12 @@ export default {
         description: "Initial direction of chevron/triangle. Valid values are: d,l,r,u",
       },
       {
+        prop: "opposite",
+        type: "Boolean",
+        default: "false",
+        description: "Rotates chevron 180 degrees. Default is 90 degree",
+      },
+      {
         prop: "triangle",
         type: "Boolean",
         default: "false",
