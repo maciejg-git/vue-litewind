@@ -11,16 +11,19 @@
       <slot name="activator"></slot>
     </div>
     <transition :name="transition">
-      <div v-if="isOpen" ref="popper" :class="classes.popover.value">
-        <header
-          v-if="!noHeader"
-          class="flex font-semibold px-3 py-2"
-        >
-          {{ title }}
-          <v-close-button class="ml-auto" @click="hide" />
-        </header>
-        <div :class="classes.content.value">
-          <slot name="default"></slot>
+    <div v-if="isOpen" ref="popper">
+        <div :class="classes.popover.value">
+          <header v-if="!noHeader" class="flex font-semibold px-3 py-2">
+            {{ title }}
+            <v-close-button
+              style-close-button="small"
+              class="ml-auto"
+              @click="hide"
+            />
+          </header>
+          <div :class="classes.content.value">
+            <slot name="default"></slot>
+          </div>
         </div>
       </div>
     </transition>
