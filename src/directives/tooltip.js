@@ -6,7 +6,10 @@ let defaults = {
   delay: 50,
   offsetX: 0,
   offsetY: 0,
+  transition: "fade",
 };
+
+let transitions = ["fade", "scale-fade", "scale", "noanim"];
 
 let delayRegexp = /^delay\d\d?\d?\d?$/;
 let offsetXRegexp = /^oX\d\d?\d?$/;
@@ -31,8 +34,7 @@ function show(ev) {
   el._v_tooltip.timer = setTimeout(() => {
     document.body.appendChild(el._v_tooltip.wrapper);
     requestAnimationFrame(() => {
-      el._v_tooltip.tooltip.style.opacity = 1;
-    el._v_tooltip.tooltip.style.transform = "translateY(0px)";
+      addTransition(el._v_tooltip, false);
     });
     el._v_popper.update();
   }, el._v_tooltip.delay);
@@ -44,8 +46,7 @@ function hide(ev) {
   removeShowTimer(el);
 
   el._v_tooltip.timerOut = setTimeout(() => {
-    el._v_tooltip.tooltip.style.opacity = 0;
-    el._v_tooltip.tooltip.style.transform = "translateY(6px)";
+    addTransition(el._v_tooltip, true);
     el._v_tooltip.timerRemove = setTimeout(() => {
       el._v_tooltip.wrapper.remove();
     }, 300);
@@ -82,12 +83,18 @@ function createTooltipElement() {
   return el;
 }
 
-function addTransition(el, m) {
-  if (!m.transition) {
-    el.style.opacity = "0";
-    el.style.transform = "translateY(6px)";
-    el.style.transition = "opacity 0.3s ease, transform 0.3s";
+function addTransition(m, v) {
+  if (m.transition == "noanim") return;
+  if (m.transition == "fade" || m.transition == "scale-fade") {
+    m.tooltip.style.opacity = v ? 0 : 1;
   }
+  if (m.transition == "scale-fade") {
+    m.tooltip.style.transform = v ? "scale(0.9)" : "scale(1)";
+  }
+}
+
+function addFixedTransition(m) {
+  m.tooltip.style.transition = "opacity 0.3s ease, transform 0.3s";
 }
 
 function parseModifiers(modifiers) {
@@ -105,7 +112,8 @@ function parseModifiers(modifiers) {
   m.offsetY = modifiers.find((i) => offsetYRegexp.test(i));
   m.offsetY = m.offsetY ? +m.offsetY.substring(2) : defaults.offsetY;
 
-  m.transition = modifiers.findIndex((i) => i === "nofade") != -1;
+  m.transition = modifiers.find((i) => transitions.includes(i));
+  m.transition = m.transition || defaults.transition;
 
   return m;
 }
@@ -124,7 +132,8 @@ export default {
 
     el._v_tooltip.tooltip = el._v_tooltip.wrapper.firstChild;
 
-    addTransition(el._v_tooltip.tooltip, m);
+    addFixedTransition(el._v_tooltip, true);
+    addTransition(el._v_tooltip, true);
 
     if (binding.value && typeof binding.value == "string") {
       el._v_tooltip.tooltip.firstChild.innerText = binding.value;
