@@ -7,7 +7,7 @@
     <p></p>
     <pre>
       <code>
-npm -i vue-wind
+npm i vue-wind
     </code>
   </pre>
     <p>
@@ -18,6 +18,18 @@ npm -i vue-wind
       </a>
       in their offical documentation.
     </p>
+    <p>
+      <span class="font-semibold">[Option if using form components]</span> Install 
+      <a class="link" href="https://github.com/tailwindlabs/tailwindcss-forms">
+        @tailwindcss/forms
+      </a> 
+      plugin that provides a basic reset for form styles that makes form elements easy to override with utilities.
+    </p>
+    <pre>
+      <code>
+npm i @tailwindcss/forms
+    </code>
+  </pre>
     <p>
       <span class="font-semibold">[Option 1]</span>
       Register all components in application entry file (for example main.js)
@@ -52,7 +64,7 @@ app.use(spinnerPlugin);
     </code>
   </pre>
     <p>
-    Copy styles.css from 'vue-wind/dist/' to the src directory of your project and import it. You can edit this file to customize look of components.
+    Copy styles.css from 'node_modules/vue-wind/dist/' to the src directory of your project and import it. You can edit this file to customize look of components.
     </p>
     <pre>
       <code class="language-js">
@@ -63,17 +75,6 @@ import "./styles.css";
 
 // import fixed styles, order of importing is important
 import "vue-wind/dist/style.css"
-    </code>
-  </pre>
-    <p>
-      <span class="font-semibold">[Option]</span> Import more styles if you want to add new classes in different file.
-    </p>
-    <pre>
-      <code class="language-js">
-// main.js
-
-import "./styles.css";
-import "./styles-material.css";
     </code>
   </pre>
     <h5>Styling</h5>
