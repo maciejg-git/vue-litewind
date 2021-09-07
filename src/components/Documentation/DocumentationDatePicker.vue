@@ -565,7 +565,7 @@ export default {
       adjacentMonths: true,
       secondaryButtonLabel: "Cancel",
       primaryButtonLabel: "OK",
-      rangeHoverHighlight: false,
+      rangeHoverHighlight: true,
       transition: "fade",
       mondayFirstWeekday: true,
       formattedEmitted: false,
