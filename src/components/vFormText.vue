@@ -1,13 +1,15 @@
 <template>
-  <div
-    v-if="alwaysVisible || state != ''"
-    :class="[
-      classes.formText.value,
-      states.formText[state] && states.formText[state].value,
-    ]"
-  >
-    <slot name="default"></slot>
-  </div>
+  <transition name="fade">
+    <div
+      v-if="alwaysVisible || state != ''"
+      :class="[
+        classes.formText.value,
+        states.formText[state] && states.formText[state].value,
+      ]"
+    >
+      <slot name="default"></slot>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -50,4 +52,13 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
