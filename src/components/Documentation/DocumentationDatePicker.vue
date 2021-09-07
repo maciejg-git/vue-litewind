@@ -577,16 +577,6 @@ export default {
       cancel: false,
     });
 
-    // watch([() => example.formatted, () => example.done, () => example.cancel],
-    //   () => {
-    //     formatted = null;
-    // })
-
-    // handleFormatted(ev) {
-    //   example.formatted = ev;
-    //   example.formattedEmitted = true;
-    // }
-
     let exampleDropdown = reactive({
       date: "",
       buttons: false,
