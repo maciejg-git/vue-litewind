@@ -1069,6 +1069,7 @@
     text-gray-100
     rounded-md
     z-50
+    max-w-sm
 }
 
 .tooltip--content {
