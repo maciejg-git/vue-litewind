@@ -213,7 +213,7 @@
 
   <v-chevron></v-chevron>
    <v-button style-button="primary large">button css
-     <v-chevron style-chevron="right" :dir="'d'" :switch="false">
+     <v-chevron triangle style-chevron="right" :dir="'d'" :switch="false">
      </v-chevron>
 
    </v-button> 
@@ -225,6 +225,7 @@
    <v-button style-button="primary large">button css</v-button> 
 
    <v-button>button padding <div class="arrow-down"></div></v-button> 
+   <v-close-button style-close-button="red"></v-close-button>
 
    <v-button :control="controlModel">test button</v-button>
    <v-button @click="controlModel = 'small'">add small</v-button>
