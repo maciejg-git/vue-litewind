@@ -31,6 +31,8 @@ import DocumentationCheckbox from "../components/Documentation/DocumentationChec
 import DocumentationNavbar from "../components/Documentation/DocumentationNavbar.vue";
 import DocumentationRange from "../components/Documentation/DocumentationRange.vue";
 import DocumentationBreadcrumb from "../components/Documentation/DocumentationBreadcrumb.vue";
+import DocumentationChevron from "../components/Documentation/DocumentationChevron.vue";
+import DocumentationFormText from "../components/Documentation/DocumentationFormText.vue";
 import DocumentationClosebutton from "../components/Documentation/DocumentationClosebutton.vue";
 
 import DocumentationTooltip from "../components/Documentation/DocumentationTooltip.vue";
@@ -161,6 +163,14 @@ const routes = [
       {
         path: "breadcrumb",
         component: DocumentationBreadcrumb,
+      },
+      {
+        path: "chevron",
+        component: DocumentationChevron,
+      },
+      {
+        path: "formtext",
+        component: DocumentationFormText,
       },
 
       // directives

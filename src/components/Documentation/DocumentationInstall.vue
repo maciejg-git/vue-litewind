@@ -7,11 +7,11 @@
     <p></p>
     <pre>
       <code>
-npm -i vue-tailwind
+npm -i vue-wind
     </code>
   </pre>
     <p>
-      Vue-tailwind uses Tailwindcss as CSS framework. To install Tailwindcss
+      Vue-wind uses Tailwindcss as CSS framework. To install Tailwindcss
       follow
       <a class="link" href="https://tailwindcss.com/docs/installation">
         instruction
@@ -26,7 +26,7 @@ npm -i vue-tailwind
       <code class="language-js">
 // main.js
 
-import { install } from "vue-tailwind";
+import { install } from "vue-wind";
 
 let app = createApp(App);
 
@@ -42,7 +42,7 @@ app.use(install);
       <code class="language-js">
 // main.js
 
-import { buttonPlugin, selectPlugin, spinnerPlugin } from "vue-tailwind";
+import { buttonPlugin, selectPlugin, spinnerPlugin } from "vue-wind";
 
 let app = createApp(App);
 
@@ -52,7 +52,7 @@ app.use(spinnerPlugin);
     </code>
   </pre>
     <p>
-    Copy styles.css to src directory of your project and import it. You can edit this file to customize look of components.
+    Copy styles.css from 'vue-wind/dist/' to the src directory of your project and import it. You can edit this file to customize look of components.
     </p>
     <pre>
       <code class="language-js">
@@ -66,7 +66,7 @@ import "vue-wind/dist/style.css"
     </code>
   </pre>
     <p>
-      <span class="font-semibold">[Option]</span> Import more styles if you want to change them on the fly using name prop.
+      <span class="font-semibold">[Option]</span> Import more styles if you want to add new classes in different file.
     </p>
     <pre>
       <code class="language-js">

@@ -147,7 +147,7 @@
       >
         Please select at least 3 languages.
       </v-form-text>
-      <v-button @click="validate()" style-button="default" class="mt-5">
+      <v-button @click="validate()" class="mt-5">
         Send
       </v-button>
       <div class="mt-5">
