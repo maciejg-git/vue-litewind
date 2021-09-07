@@ -46,7 +46,8 @@
       <v-button>
         Button
         <v-chevron
-          :dir="example.dir"
+          :initial="example.initial"
+            :opposite="example.opposite"
           :triangle="example.triangle"
           :counter-clockwise="example.counterClockwise"
           :switch="example.switch"
@@ -58,12 +59,19 @@
         <v-tab name="Props">
           <div class="mt-5">
             <div class="mb-2">
-              <label for="dir">dir:</label>
-              <v-select id="dir" v-model="example.dir">
+              <label for="initial">initial:</label>
+              <v-select id="initial" v-model="example.initial">
                 <option value="d">down</option>
                 <option value="l">left</option>
                 <option value="r">right</option>
                 <option value="u">up</option>
+              </v-select>
+            </div>
+            <div class="mb-2">
+              <label for="opposite">opposite:</label>
+              <v-select id="opposite" v-model="example.opposite">
+                <option :value="true">true</option>
+                <option :value="false">false</option>
               </v-select>
             </div>
             <div class="mb-2">
@@ -109,7 +117,7 @@ export default {
   setup(props) {
     let reference = ref([
       {
-        prop: "dir",
+        prop: "initial",
         type: "String",
         default: "d",
         description: "Initial direction of chevron/triangle. Valid values are: d,l,r,u",
@@ -229,7 +237,8 @@ export default {
     ]);
 
     let example = reactive({
-      dir: "d",
+      initial: "d",
+      opposite: false,
       triangle: false,
       counterClockwise: false,
       switch: false,

@@ -77,6 +77,13 @@
             <v-select id="type" v-model="example.type">
               <option value="text">text</option>
               <option value="password">password</option>
+              <option value="email">email</option>
+              <option value="number">number</option>
+              <option value="search">search</option>
+              <option value="time">time</option>
+              <option value="url">url</option>
+              <option value="color">color</option>
+              <option value="date">date</option>
             </v-select>
           </div>
           <div class="mb-2">

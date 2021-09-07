@@ -1,5 +1,5 @@
 <template>
-  <v-navbar sticky class="px-4 py-3">
+  <v-navbar sticky class="px-4 py-3 mh-20">
     <span class="text-lg font-bold">VueTailwind</span>
     <div class="inline-block ml-5">
       <a href="/documentation/installation">Docs</a>
@@ -79,7 +79,11 @@
       <router-view></router-view>
     </div>
   </div>
-  <div class="bg-gray-300">github</div>
+  <footer class="flex bg-gray-200 border-gray-300 border-t py-4 shadow">
+    <span class="ml-auto">
+      github
+    </span>
+  </footer>
 </template>
 
 <script>

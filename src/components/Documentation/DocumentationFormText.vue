@@ -66,9 +66,9 @@
         <v-form-text
           :state="nameValidated ? (name.length > 0 ? true : false) : null"
           :inline="example.inline"
-          :always-visible="example.alwaysVisible"
+          :visible="example.visible"
         >
-          This field cannot be empty.
+          <template #default="{ state }">This field cannot be empty.</template>
         </v-form-text>
 
         <div v-for="l in languages" class="flex items-center my-2">
@@ -96,7 +96,7 @@
                 : false
               : null
           "
-          :always-visible="example.alwaysVisible"
+            :visible="example.visible"
         >
           Please select at least 3 languages.
         </v-form-text>
@@ -130,10 +130,12 @@
               </v-select>
             </div>
             <div class="mb-2">
-              <label for="always-visible">always-visible:</label>
-              <v-select id="always-visible" v-model="example.alwaysVisible">
-                <option :value="true">true</option>
-                <option :value="false">false</option>
+              <label for="visible">visible:</label>
+              <v-select id="visible" v-model="example.visible">
+                <option value="default,invalid,valid">default,invalid,valid</option>
+                <option value="invalid,valid">invalid,valid</option>
+                <option value="invalid">invalid</option>
+                <option value="default">default</option>
               </v-select>
             </div>
           </div>
@@ -168,11 +170,11 @@ export default {
         description: "Inline version of form text. Default is block.",
       },
       {
-        prop: "always-visible",
-        type: "Boolean",
-        default: "false",
+        prop: "visible",
+        type: "String",
+        default: "default,invalid,valid",
         description:
-          "Makes form text always visible even if it is in default/normal state",
+          "List of coma seperated states. If state is one of those states then form text is visible",
       },
       {
         prop: "name",
@@ -238,7 +240,7 @@ export default {
     let referenceSlots = ref([
       {
         slot: "default",
-        description: "Slot for text",
+        description: "Slot for text. Slot props: <code class='code-word'>state</code>",
       },
     ]);
 
@@ -271,7 +273,7 @@ export default {
 
     let example = reactive({
       inline: false,
-      alwaysVisible: false,
+      visible: "default,invalid,valid",
     });
 
     let languages = ref([
