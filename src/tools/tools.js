@@ -22,12 +22,13 @@ let pad = (d) => (d < 10 ? "0" + d : d);
 
 let undefNullToStr = (v) => (v == undefined || v == null ? "" : v);
 
-export {
-  formatCase,
-  compare,
-  clamp,
-  isDate,
-  isRegexp,
-  pad,
-  undefNullToStr,
+function timeout(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+let schedule = async (fn, ms, ...args) => {
+  await timeout(ms);
+  return fn(...args);
 };
+
+export { formatCase, compare, clamp, isDate, isRegexp, pad, undefNullToStr, schedule };
