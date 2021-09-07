@@ -55,12 +55,12 @@ import useStyles from "./composition/use-styles";
 
 export default {
   props: {
-    name: { type: String, default: "chevron" },
-    styleChevron: { type: String, default: "" },
     dir: { type: String, default: "d" },
     triangle: { type: Boolean, default: false },
     counterClockwise: { type: Boolean, default: false },
     switch: { type: Boolean, default: false },
+    name: { type: String, default: "chevron" },
+    styleChevron: { type: String, default: "" },
   },
   setup(props) {
     let { classes } = useStyles("chevron", props, {
