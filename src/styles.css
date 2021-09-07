@@ -605,23 +605,21 @@
   @apply
     text-gray-600
     opacity-60
-    w-6
-    h-6
+    w-5
+    h-5
 }
-.close-button--red {
-  @apply
-    text-red-600
-    opacity-60
-    w-6
-    h-6
-}
+    .close-button--small {
+      @apply
+        w-4
+        h-4
+    }
 
 /* CHEVRON */
 
 .chevron {
   @apply
-    w-5
-    h-5
+    w-4
+    h-4
 }
   .chevron--right {
     @apply
@@ -921,7 +919,7 @@
     bg-gray-100
     overflow-hidden
     max-w-xs
-    shadow-sm
+    shadow-md
 }
 
 .popover-plain--content {
