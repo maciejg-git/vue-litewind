@@ -102,7 +102,7 @@ export default {
     disabled: Array,
     width: { type: String, default: undefined },
     adjacentMonths: { type: Boolean, default: false },
-    rangeHoverHighlight: { type: Boolean, default: false },
+    rangeHoverHighlight: { type: Boolean, default: true },
     buttons: { type: Boolean, default: false },
     secondaryButtonLabel: { type: String, default: "Cancel" },
     primaryButtonLabel: { type: String, default: "OK" },
