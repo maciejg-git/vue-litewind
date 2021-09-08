@@ -47,7 +47,7 @@
         Button
         <v-chevron
           :initial="example.initial"
-            :opposite="example.opposite"
+          :rotate180="example.rotate180"
           :triangle="example.triangle"
           :counter-clockwise="example.counterClockwise"
           :switch="example.switch"
@@ -68,8 +68,8 @@
               </v-select>
             </div>
             <div class="mb-2">
-              <label for="opposite">opposite:</label>
-              <v-select id="opposite" v-model="example.opposite">
+              <label for="rotate180">rotate180:</label>
+              <v-select id="rotate180" v-model="example.rotate180">
                 <option :value="true">true</option>
                 <option :value="false">false</option>
               </v-select>
@@ -123,10 +123,10 @@ export default {
         description: "Initial direction of chevron/triangle. Valid values are: d,l,r,u",
       },
       {
-        prop: "opposite",
+        prop: "rotate180",
         type: "Boolean",
         default: "false",
-        description: "Rotates chevron 180 degrees. Default is 90 degree",
+        description: "If true rotates chevron 180 degrees. Default is 90 degree",
       },
       {
         prop: "triangle",
@@ -244,7 +244,7 @@ export default {
 
     let example = reactive({
       initial: "d",
-      opposite: false,
+      rotate180: false,
       triangle: false,
       counterClockwise: false,
       switch: false,

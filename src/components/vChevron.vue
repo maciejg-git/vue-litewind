@@ -56,7 +56,7 @@ import useStyles from "./composition/use-styles";
 export default {
   props: {
     initial: { type: String, default: "d" },
-    opposite: { type: Boolean, default: false },
+    rotate180: { type: Boolean, default: false },
     triangle: { type: Boolean, default: false },
     counterClockwise: { type: Boolean, default: false },
     switch: { type: Boolean, default: false },
@@ -71,8 +71,8 @@ export default {
     let getRotation = () => {
       if (props.switch) {
         return !props.counterClockwise ?
-          (props.opposite ? "rotate-180" : "rotate-90") :
-          (props.opposite ? "-rotate-180" : "-rotate-90")
+          (props.rotate180 ? "rotate-180" : "rotate-90") :
+          (props.rotate180 ? "-rotate-180" : "-rotate-90")
       }
     };
 
