@@ -1,10 +1,10 @@
 <template>
   <div ref="dropdown" class="inline-block">
-    <div ref="activator" class="inline-block" @click="toggle">
+    <div ref="activator" @click="toggle">
       <slot name="activator" :toggle="toggle" :show="show" :hide="hide"></slot>
     </div>
     <transition :name="transition">
-      <div v-show="isOpen" ref="popper" class="absolute">
+      <div v-show="isOpen" ref="popper" class="absolute z-50">
         <slot name="default" :hide="hide"></slot>
       </div>
     </transition>
@@ -50,8 +50,11 @@ export default {
 
     let dropdown = ref(null);
 
+    // TODO: recursive dropdown, overflow hidden, add ref to parent and teleport to it to prevent closing if clicking parent
+
     let clickOutside = function (ev) {
       if (
+        // popper.value
         !(dropdown.value === ev.target || dropdown.value.contains(ev.target))
       ) {
         hide();
@@ -92,7 +95,7 @@ export default {
 
 <style scoped lang="postcss">
 ::v-deep .fixed-item {
-  @apply block
+  @apply w-full inline-flex items-center
 }
 .fade-enter-active,
 .fade-leave-active {
