@@ -20,7 +20,7 @@ export default {
   props: {
     state: { type: [String, Boolean], default: "" },
     inline: { type: Boolean, default: false },
-    visible: { type: String, default: "default,valid,invalid" },
+    visibleStates: { type: String, default: "default,valid,invalid" },
     name: { type: String, default: "form-text" },
     styleFormText: { type: [String, Array], default: "" },
   },
@@ -44,7 +44,7 @@ export default {
     );
 
     let visible = computed(() => {
-      return props.visible
+      return props.visibleStates
         .split(",")
         .includes(state.value === "" ? "default" : state.value);
     });
