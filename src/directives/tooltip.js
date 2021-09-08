@@ -102,16 +102,12 @@ function parseModifiers(modifiers) {
 
   m.placement = modifiers.find((i) => correctPlacement.includes(i));
   m.placement = m.placement || defaults.placement;
-
   m.delay = modifiers.find((i) => delayRegexp.test(i));
   m.delay = m.delay ? +m.delay.substring(5) : defaults.delay;
-
   m.offsetX = modifiers.find((i) => offsetXRegexp.test(i));
   m.offsetX = m.offsetX ? +m.offsetX.substring(2) : defaults.offsetX;
-
   m.offsetY = modifiers.find((i) => offsetYRegexp.test(i));
   m.offsetY = m.offsetY ? +m.offsetY.substring(2) : defaults.offsetY;
-
   m.transition = modifiers.find((i) => transitions.includes(i));
   m.transition = m.transition || defaults.transition;
 
@@ -124,16 +120,17 @@ export default {
 
     el._v_tooltip = {
       wrapper: createTooltipElement(),
+      tooltip: null,
       timer: null,
       timerOut: null,
       timerRemove: null,
+      f: null,
       ...m,
     };
 
     el._v_tooltip.tooltip = el._v_tooltip.wrapper.firstChild;
-
-    addFixedTransition(el._v_tooltip, true);
-    addTransition(el._v_tooltip, true);
+    el._v_tooltip.f = typeof binding.value == "function" ? binding.value : null;
+    el._v_popper = setPopper(el, el._v_tooltip.wrapper, el._v_tooltip);
 
     if (binding.value && typeof binding.value == "string") {
       el._v_tooltip.tooltip.firstChild.innerText = binding.value;
@@ -142,9 +139,8 @@ export default {
         el.getAttribute("data-title") || "";
     }
 
-    el._v_tooltip.f = typeof binding.value == "function" ? binding.value : null;
-
-    el._v_popper = setPopper(el, el._v_tooltip.wrapper, el._v_tooltip);
+    addFixedTransition(el._v_tooltip, true);
+    addTransition(el._v_tooltip, true);
 
     el.addEventListener("mouseenter", show);
     el.addEventListener("mouseleave", hide);
