@@ -66,7 +66,7 @@
         <v-form-text
           :state="nameValidated ? (name.length > 0 ? true : false) : null"
           :inline="example.inline"
-          :visible="example.visible"
+          :visible-states="example.visibleStates"
         >
           <template #default="{ state }">This field cannot be empty.</template>
         </v-form-text>
@@ -96,7 +96,7 @@
                 : false
               : null
           "
-            :visible="example.visible"
+            :visible-states="example.visibleStates"
         >
           Please select at least 3 languages.
         </v-form-text>
@@ -130,8 +130,8 @@
               </v-select>
             </div>
             <div class="mb-2">
-              <label for="visible">visible:</label>
-              <v-select id="visible" v-model="example.visible">
+              <label for="visible-states">visible-states:</label>
+              <v-select id="visible-states" v-model="example.visibleStates">
                 <option value="default,invalid,valid">default,invalid,valid</option>
                 <option value="invalid,valid">invalid,valid</option>
                 <option value="invalid">invalid</option>
@@ -170,7 +170,7 @@ export default {
         description: "Inline version of form text. Default is block.",
       },
       {
-        prop: "visible",
+        prop: "visible-states",
         type: "String",
         default: "default,invalid,valid",
         description:
@@ -273,7 +273,7 @@ export default {
 
     let example = reactive({
       inline: false,
-      visible: "default,invalid,valid",
+      visibleStates: "default,invalid,valid",
     });
 
     let languages = ref([

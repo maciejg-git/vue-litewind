@@ -108,7 +108,9 @@
           </v-button>
         </template>
         <v-card width="320px" style-card="shadow">
-          <v-dropdown-menu-item tag="button">Menu item</v-dropdown-menu-item>
+          <v-dropdown-menu-item tag="button">
+            Menu item
+          </v-dropdown-menu-item>
           <v-dropdown-menu-item tag="button">Menu item 2</v-dropdown-menu-item>
           <v-dropdown-header>Menu header</v-dropdown-header>
           <v-dropdown-menu-item active tag="button">
