@@ -35,7 +35,7 @@
           <v-button style-button="primary small">table</v-button>
           <v-button style-button="primary small">add</v-button>
           <v-button style-button="secondary small">add</v-button>
-          <v-dropdown auto-close-menu :placement="dropdownplacement">
+          <v-dropdown :placement="dropdownplacement">
             <template #activator>
               <v-button style-button="primary small">add</v-button>
             </template>
@@ -48,7 +48,30 @@
                 >
                   item
                 </v-dropdown-menu-item>
+
+          <v-dropdown placement="right-start" class="w-full">
+            <template #activator>
                 <v-dropdown-menu-item>item 2</v-dropdown-menu-item>
+            </template>
+            <template #default="{ hide }">
+              <v-card>
+                <v-dropdown-menu-item
+                  tag="button"
+                  active
+                  @click.prevent="log('click')"
+                >
+                  item
+                </v-dropdown-menu-item>
+                <v-dropdown-menu-item>item 2</v-dropdown-menu-item>
+                <v-dropdown-header>items</v-dropdown-header>
+                <v-dropdown-menu-item disabled>item 3</v-dropdown-menu-item>
+                <v-divider></v-divider>
+                <v-dropdown-menu-item tag="button">item 9</v-dropdown-menu-item>
+              </v-card>
+            </template>
+          </v-dropdown>
+
+
                 <v-dropdown-header>items</v-dropdown-header>
                 <v-dropdown-menu-item disabled>item 3</v-dropdown-menu-item>
                 <v-divider></v-divider>
@@ -224,6 +247,10 @@
    <v-button style-button="primary tiny">button css</v-button> 
    <v-button style-button="primary large">button css</v-button> 
 
+<icon class="h-6 w-6"></icon>
+
+
+<i-keyboard></i-keyboard>
    <v-button>button padding <div class="arrow-down"></div></v-button> 
    <v-close-button style-close-button="red"></v-close-button>
 
@@ -678,6 +705,7 @@ import vCheckbox from "./vCheckbox.vue";
 import vNavbar from "./vNavbar.vue";
 import vRadio from "./vRadio.vue";
 import vChevron from "./vChevron.vue"
+import icon from "./icon-align-center"
 import vBreadcrumb from "./vBreadcrumb.vue";
 // import {vTable} from "../dist/vuecomponent2.es"
 
@@ -715,6 +743,7 @@ export default {
     vRadio,
     vChevron,
     vBreadcrumb,
+    icon,
   },
   props: {
     msg: String,
