@@ -66,6 +66,10 @@ export default function usePopper({
         },
         {
           name: "preventOverflow",
+          options: {
+            // overflow hidden on cards
+            // mainAxis: false,
+          },
         }
       ],
       placement: placement.value,
