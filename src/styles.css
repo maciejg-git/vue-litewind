@@ -916,10 +916,10 @@
 
 .popover-plain {
   @apply
-    bg-gray-100
+    bg-gray-50
     overflow-hidden
     max-w-xs
-    shadow-md
+    shadow-lg
 }
 
 .popover-plain--content {
@@ -1077,4 +1077,11 @@
     font-semibold
     p-1
     px-3
+}
+
+.b-icon {
+  @apply
+    h-6
+    w-6
+    inline-block
 }
