@@ -61,11 +61,11 @@
     <div class="example">
       <v-card width="320px" style-card="shadow hoverable">
         <img :src="randomPhoto()" alt="" />
-        <header class="pt-3 px-3">
-          <span class="font-semibold">Example card</span>
+        <header class="font-semibold pt-3 px-3">
+          Example card
         </header>
-        <header class="py-1 px-3">
-          <span class="text-gray-500 text-sm">Subtitle</span>
+        <header class="text-gray-500 text-sm py-1 px-3">
+          Subtitle
         </header>
         <div class="p-3">
           Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -77,23 +77,30 @@
         <div class="text-sm px-3 py-2">Card footer</div>
       </v-card>
 
-      <v-card width="720px" style-card="shadow hoverable" style="height: 320px" class="flex my-10">
+      <v-card
+        width="720px"
+        style-card="shadow hoverable"
+        style="height: 320px"
+        class="flex flex-row my-10"
+      >
         <img :src="randomPhotoHorizontal()" alt="" />
         <div class="flex flex-col">
-        <header class="pt-4 px-3">
-          <span class="font-semibold">Example card</span>
-        </header>
-        <header class="py-1 px-3">
-          <span class="text-gray-500 text-sm">Subtitle</span>
-        </header>
+          <header class="font-semibold pt-4 px-3">
+            Example card
+          </header>
+          <header class="text-gray-500 text-sm py-1 px-3">
+            Subtitle
+          </header>
           <div class="p-4">
             Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text ever
-            since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book.
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book.
           </div>
-          <hr class="w-10/12 mx-auto">
-          <v-button style-button="small" class="ml-auto mt-auto m-4">Details</v-button>
+          <hr class="w-11/12 mx-auto" />
+          <v-button style-button="small" class="ml-auto my-auto m-4">
+            Details
+          </v-button>
         </div>
       </v-card>
     </div>

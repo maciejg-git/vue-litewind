@@ -170,7 +170,7 @@
       </div>
       <v-form-text
         :state="languagesValidated ? (languagesModel ? true : false) : null"
-        visible="invalid"
+        visible-states="invalid"
       >
         Please select the language.
       </v-form-text>

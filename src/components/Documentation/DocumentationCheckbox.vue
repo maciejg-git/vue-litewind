@@ -154,7 +154,7 @@
               : false
             : null
         "
-        visible="invalid"
+        visible-states="invalid"
       >
         Please select at least 3 languages.
       </v-form-text>

@@ -107,21 +107,68 @@
             <v-chevron style-chevron="right" />
           </v-button>
         </template>
-        <v-card width="320px" style-card="shadow">
+        <v-card width="320px" style-card="shadow" class="flex flex-col">
           <v-dropdown-menu-item tag="button">
             Menu item
           </v-dropdown-menu-item>
-          <v-dropdown-menu-item tag="button">Menu item 2</v-dropdown-menu-item>
+          <v-dropdown-menu-item tag="button">Second menu item</v-dropdown-menu-item>
           <v-dropdown-header>Menu header</v-dropdown-header>
           <v-dropdown-menu-item active tag="button">
-            Menu item 3
+            Active menu item
           </v-dropdown-menu-item>
+          <v-dropdown-menu-item tag="button">
+            Another menu item
+          </v-dropdown-menu-item>
+          <v-divider></v-divider>
           <v-dropdown-menu-item disabled tag="button">
-            Menu item 4
+            Disabled menu item
           </v-dropdown-menu-item>
-          <v-dropdown-menu-item tag="button">Menu item 5</v-dropdown-menu-item>
+          <v-dropdown-menu-item tag="button">Menu item</v-dropdown-menu-item>
         </v-card>
       </v-dropdown>
+
+      <v-dropdown
+        :placement="example.placement"
+        :offset-x="+example.offsetX"
+        :offset-y="+example.offsetY"
+        :no-flip="example.noFlip"
+        :auto-close-menu="example.autoCloseMenu"
+        :transition="example.transition"
+        name="dropdown-relaxed"
+        @state:opened="
+          example.events.unshift({ ev: 'state:opened', data: $event })
+        "
+        @state:closed="
+          example.events.unshift({ ev: 'state:closed', data: $event })
+        "
+        class="ml-2"
+      >
+        <template #activator>
+          <v-button>
+            Dropdown menu (alternate style)
+            <v-chevron style-chevron="right" />
+          </v-button>
+        </template>
+        <v-card width="320px" style-card="shadow" class="flex flex-col py-1">
+          <v-dropdown-menu-item tag="button">
+            Menu item
+          </v-dropdown-menu-item>
+          <v-dropdown-menu-item tag="button">Second menu item</v-dropdown-menu-item>
+          <v-dropdown-header>Menu header</v-dropdown-header>
+          <v-dropdown-menu-item active tag="button">
+            Active menu item
+          </v-dropdown-menu-item>
+          <v-dropdown-menu-item tag="button">
+            Another menu item
+          </v-dropdown-menu-item>
+          <v-divider class="w-11/12 mx-auto"></v-divider>
+          <v-dropdown-menu-item disabled tag="button">
+            Disabled menu item
+          </v-dropdown-menu-item>
+          <v-dropdown-menu-item tag="button">Menu item</v-dropdown-menu-item>
+        </v-card>
+      </v-dropdown>
+
       <v-dropdown
         :placement="example.placement"
         :offset-x="+example.offsetX"
@@ -456,7 +503,7 @@ export default {
     let example = reactive({
       placement: "bottom-start",
       offsetX: "0",
-      offsetY: "0",
+      offsetY: "5",
       noFlip: false,
       autoCloseMenu: false,
       transition: "fade",
