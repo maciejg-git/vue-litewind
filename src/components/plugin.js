@@ -85,6 +85,7 @@ const dropdownPlugin = plugin(
 const collapsePlugin = plugin(["v-collapse", vCollapse]);
 const popoverPlugin = plugin(["v-popover", vPopover]);
 const closebuttonPlugin = plugin(["v-close-button", vCloseButton]);
+const dividerPlugin = plugin(["v-divider", vDivider]);
 const tooltipPlugin = directive("tooltip", tooltip);
 
 export {
@@ -113,5 +114,6 @@ export {
   collapsePlugin,
   popoverPlugin,
   closebuttonPlugin,
+  dividerPlugin,
   tooltipPlugin,
 };

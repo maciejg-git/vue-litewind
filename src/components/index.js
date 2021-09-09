@@ -64,6 +64,7 @@ export {
   vRange,
   vBreadcrumb,
   vFormText,
+  vDivider,
   tooltip,
 };
 
@@ -93,6 +94,7 @@ export {
   collapsePlugin,
   popoverPlugin,
   closebuttonPlugin,
+  dividerPlugin,
   tooltipPlugin,
   // chevron
 } from "./plugin"
@@ -129,6 +131,7 @@ function install(app) {
   app.component("v-close-button", vCloseButton);
   app.component("v-chevron", vChevron);
   app.component("v-form-text", vFormText);
+  app.component("v-divider", vDivider);
   app.directive("tooltip", tooltip);
 }
 
