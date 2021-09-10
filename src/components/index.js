@@ -30,6 +30,8 @@ import vCheckbox from "./vCheckbox.vue";
 import vRange from "./vRange.vue";
 import vBreadcrumb from "./vBreadcrumb.vue";
 import vFormText from "./vFormText.vue";
+import vAccordion from "./vAccordion.vue"
+import vIcon from "./vIcon.vue"
 import tooltip from "../directives/tooltip.js";
 
 export {
@@ -65,6 +67,8 @@ export {
   vBreadcrumb,
   vFormText,
   vDivider,
+  vAccordion,
+  vIcon,
   tooltip,
 };
 
@@ -97,6 +101,8 @@ export {
   dividerPlugin,
   tooltipPlugin,
   // chevron
+  // accordion
+  // icon
 } from "./plugin"
 
 function install(app) {
@@ -132,9 +138,17 @@ function install(app) {
   app.component("v-chevron", vChevron);
   app.component("v-form-text", vFormText);
   app.component("v-divider", vDivider);
+  app.component("v-accordion", vAccordion);
+  app.component("v-icon", vIcon);
   app.directive("tooltip", tooltip);
 }
 
 export { install as plugin };
+
+export function registerIcon(app, icons) {
+  icons.forEach(i => {
+    app.component(i.name, i)
+  })
+}
 
 // export { vTable }
