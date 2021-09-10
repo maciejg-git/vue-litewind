@@ -6,15 +6,16 @@ import { buttonPlugin, tablePlugin } from "./components/index.js";
 import "tailwindcss/tailwind.css";
 import "./styles.css"
 import "./styles-material.css"
+import { registerIcon } from "./components/index"
 import {
-  iKeyboard,
+  keyboardIcon,
 } from "./components/icons/index"
 
 let app = createApp(App);
 
 // TODO: global config
 
-app.component('iKeyboard', iKeyboard)
+registerIcon(app, [keyboardIcon])
 
 app.use(router);
 app.use(plugin);
