@@ -61,10 +61,10 @@
             <div class="mb-2">
               <label for="initial">initial:</label>
               <v-select id="initial" v-model="example.initial">
-                <option value="d">down</option>
-                <option value="l">left</option>
-                <option value="r">right</option>
-                <option value="u">up</option>
+                <option value="down">down</option>
+                <option value="left">left</option>
+                <option value="right">right</option>
+                <option value="up">up</option>
               </v-select>
             </div>
             <div class="mb-2">
@@ -120,7 +120,7 @@ export default {
         prop: "initial",
         type: "String",
         default: "d",
-        description: "Initial direction of chevron/triangle. Valid values are: d,l,r,u",
+        description: "Initial direction of chevron/triangle. Valid values are: 'down', 'left' ,'right' and 'up'",
       },
       {
         prop: "rotate180",
@@ -243,7 +243,7 @@ export default {
     ]);
 
     let example = reactive({
-      initial: "d",
+      initial: "down",
       rotate180: false,
       triangle: false,
       counterClockwise: false,
