@@ -247,10 +247,13 @@
    <v-button style-button="primary tiny">button css</v-button> 
    <v-button style-button="primary large">button css</v-button> 
 
-<icon class="h-6 w-6"></icon>
+   <v-button style-button="secondary">button css</v-button> 
 
+<!-- <icon class="h-6 w-6"></icon> -->
+<v-icon icon="keyboard"></v-icon>
+<keyboard-icon></keyboard-icon>
 
-<i-keyboard></i-keyboard>
+<!-- <i-keyboard></i-keyboard> -->
    <v-button>button padding <div class="arrow-down"></div></v-button> 
    <v-close-button style-close-button="red"></v-close-button>
 
