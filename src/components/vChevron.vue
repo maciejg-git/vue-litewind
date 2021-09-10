@@ -9,40 +9,40 @@
   >
     <template v-if="triangle">
       <path
-        v-if="initial == 'd'"
+        v-if="initial == 'down'"
         d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"
       />
       <path
-        v-if="initial == 'l'"
+        v-if="initial == 'left'"
         d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"
       />
       <path
-        v-if="initial == 'r'"
+        v-if="initial == 'right'"
         d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"
       />
       <path
-        v-if="initial == 'u'"
+        v-if="initial == 'up'"
         d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"
       />
     </template>
     <template v-else>
       <path
-        v-if="initial == 'd'"
+        v-if="initial == 'down'"
         fill-rule="evenodd"
         d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
       />
       <path
-        v-if="initial == 'l'"
+        v-if="initial == 'left'"
         fill-rule="evenodd"
         d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
       />
       <path
-        v-if="initial == 'r'"
+        v-if="initial == 'right'"
         fill-rule="evenodd"
         d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
       />
       <path
-        v-if="initial == 'u'"
+        v-if="initial == 'up'"
         fill-rule="evenodd"
         d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"
       />
@@ -51,11 +51,12 @@
 </template>
 
 <script>
+import { computed } from "vue";
 import useStyles from "./composition/use-styles";
 
 export default {
   props: {
-    initial: { type: String, default: "d" },
+    initial: { type: String, default: "down" },
     rotate180: { type: Boolean, default: false },
     triangle: { type: Boolean, default: false },
     counterClockwise: { type: Boolean, default: false },
@@ -68,16 +69,30 @@ export default {
       chevron: null,
     });
 
+    let initial = computed(() => {
+      return props.initial == "down" ||
+        props.initial == "left" ||
+        props.initial == "right" ||
+        props.initial == "up"
+        ? props.initial
+        : "down";
+    });
+
     let getRotation = () => {
       if (props.switch) {
-        return !props.counterClockwise ?
-          (props.rotate180 ? "rotate-180" : "rotate-90") :
-          (props.rotate180 ? "-rotate-180" : "-rotate-90")
+        return !props.counterClockwise
+          ? props.rotate180
+            ? "rotate-180"
+            : "rotate-90"
+          : props.rotate180
+          ? "-rotate-180"
+          : "-rotate-90";
       }
     };
 
     return {
       classes,
+      initial,
       getRotation,
     };
   },
