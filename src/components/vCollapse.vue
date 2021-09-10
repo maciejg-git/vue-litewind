@@ -15,14 +15,34 @@
 </template>
 
 <script>
-import { computed } from "vue";
+import { computed, watch, onMounted, inject } from "vue";
+import useUid from "./composition/use-uid";
 
 export default {
   props: {
     modelValue: { type: Boolean, default: false },
   },
-  setup(props) {
+  setup(props, { emit }) {
     let isCollapsed = computed(() => props.modelValue);
+    let { uid } = useUid();
+
+    let accordion = inject("accordion", null);
+
+    onMounted(() => {
+      if (accordion) {
+        watch(
+          () => props.modelValue,
+          () => {
+            if (props.modelValue == true) accordion.updateActive(uid);
+          }
+        );
+        watch(accordion.active, () => {
+          if (accordion.active.value != uid && props.modelValue == true) {
+            emit("update:modelValue", false);
+          }
+        });
+      }
+    });
 
     let afterEnter = (element) => (element.style.height = "auto");
 
