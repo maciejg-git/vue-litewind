@@ -753,7 +753,7 @@
     text-gray-700
     px-4 
     py-2
-    hover:bg-gray-50
+    hover:bg-gray-100
     focus:bg-indigo-500
     focus:text-white
 }
@@ -792,7 +792,7 @@
     text-gray-700
     px-4 
     py-2
-    hover:bg-gray-50
+    hover:bg-gray-100
     focus:bg-indigo-500
     focus:text-white
 }
@@ -812,7 +812,6 @@
   @apply
     text-left
     font-semibold
-    text-gray-500
     text-sm
     w-11/12
     mx-auto
