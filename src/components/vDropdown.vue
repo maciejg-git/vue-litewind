@@ -95,7 +95,7 @@ export default {
 
 <style scoped lang="postcss">
 ::v-deep .fixed-item {
-  @apply w-full inline-flex items-center
+  @apply inline-flex items-center
 }
 .fade-enter-active,
 .fade-leave-active {
