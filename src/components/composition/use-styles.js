@@ -7,7 +7,6 @@ export default function useStyles(name, props, elements) {
 
   for (let el of Object.keys(elements)) {
     let p = "style" + el.charAt(0).toUpperCase() + el.slice(1);
-    // change
     let e = elements[el] && elements[el].name ? elements[el].name : el;
     e = e != name ? e : null;
     classes[el] = computed(() => {
@@ -29,8 +28,6 @@ export default function useStyles(name, props, elements) {
       for (let s of state) {
         states[el][s] = computed(() => {
           return [props.name, e, s + "-state"].filter(Boolean).join("--");
-          // change
-          // props.name + (name != el ? "--" + el : "") + "--" + s + "-state"
         });
       }
     }
