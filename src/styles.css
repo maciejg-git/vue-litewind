@@ -778,6 +778,11 @@
     py-2
 }
 
+.dropdown--icon {
+  @apply
+    pr-2
+}
+
 /* DROPDOWN RELAXED */
 
 .dropdown-relaxed--item {
@@ -909,6 +914,75 @@
 .datepicker--footer {
   @apply
     bg-gray-100
+    text-sm
+    font-semibold
+    py-1
+}
+
+/* DATEPICKER */
+
+.datepicker-flat--day-fixed {
+  @apply
+    cursor-pointer
+    rounded-lg
+    text-sm
+    py-2
+    px-2
+    mx-1
+    my-1
+}
+
+.datepicker-flat {
+  @apply
+    bg-white
+    text-center
+}
+
+.datepicker-flat--button {
+  @apply
+    rounded
+    focus:ring-2
+    focus:ring-indigo-200
+    py-1
+    px-2
+}
+
+.datepicker-flat--day {
+  @apply
+    datepicker-flat--day-fixed;
+  @apply
+    hover:bg-gray-100
+}
+    .datepicker-flat--day--partially-selected-state {
+      @apply
+        bg-gray-300
+        font-semibold
+        text-gray-500
+    }
+    .datepicker-flat--day--selected-state {
+      @apply
+        bg-indigo-400
+        hover:bg-indigo-600
+        font-semibold
+        text-white
+    }
+    .datepicker-flat--day--today-state {
+      @apply  
+        hover:bg-gray-50
+        text-indigo-500
+        font-extrabold
+    }
+
+.datepicker-flat--adjacent-month-day {
+  @apply
+    datepicker-day-fixed;
+  @apply  
+    text-gray-200
+    pointer-events-none
+}
+
+.datepicker-flat--footer {
+  @apply
     text-sm
     font-semibold
     py-1
