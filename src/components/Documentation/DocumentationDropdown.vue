@@ -94,6 +94,7 @@
         :no-flip="example.noFlip"
         :auto-close-menu="example.autoCloseMenu"
         :transition="example.transition"
+          trigger="hover"
         @state:opened="
           example.events.unshift({ ev: 'state:opened', data: $event })
         "
@@ -111,16 +112,21 @@
           <v-dropdown-menu-item tag="button">
             Menu item
           </v-dropdown-menu-item>
-          <v-dropdown-menu-item tag="button">Second menu item</v-dropdown-menu-item>
+          <v-dropdown-menu-item tag="button">
+            <template #icon><icon icon="keyboard"></icon></template>
+            Second menu item
+          </v-dropdown-menu-item>
           <v-dropdown-header>Menu header</v-dropdown-header>
           <v-dropdown-menu-item active tag="button">
             Active menu item
           </v-dropdown-menu-item>
           <v-dropdown-menu-item tag="button">
+            <template #icon><icon icon="keyboard"></icon></template>
             Another menu item
           </v-dropdown-menu-item>
           <v-divider></v-divider>
           <v-dropdown-menu-item disabled tag="button">
+            <template #icon><icon icon="keyboard"></icon></template>
             Disabled menu item
           </v-dropdown-menu-item>
           <v-dropdown-menu-item tag="button">Menu item</v-dropdown-menu-item>

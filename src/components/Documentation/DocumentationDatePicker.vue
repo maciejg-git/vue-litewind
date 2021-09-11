@@ -114,7 +114,6 @@
       </code>
     </pre>
   </section>
-
   <section>
     <h4>Example</h4>
     <p></p>
