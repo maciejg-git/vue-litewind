@@ -26,8 +26,6 @@ export default {
     vCloseButton,
   },
   setup(props, { emit }) {
-    // TODO: absolute alerts
-
     let { classes } = useStyles("alert", props, {
       alert: null,
     })
