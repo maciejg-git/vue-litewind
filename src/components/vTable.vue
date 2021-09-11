@@ -6,7 +6,6 @@
     ]"
     class="min-w-full"
   >
-    {{ page }}
     <caption v-if="slots.caption" :class="classes.caption.value">
       <slot name="caption"></slot>
     </caption>
