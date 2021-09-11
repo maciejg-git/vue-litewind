@@ -6,6 +6,7 @@
     ]"
     class="min-w-full"
   >
+    {{ page }}
     <caption v-if="slots.caption" :class="classes.caption.value">
       <slot name="caption"></slot>
     </caption>
@@ -75,7 +76,7 @@
 </template>
 
 <script>
-import { ref, computed, watch } from "vue";
+import { ref, computed, watch, nextTick } from "vue";
 import useStyles from "./composition/use-styles";
 import {
   formatCase,
@@ -226,6 +227,19 @@ export default {
         props.page * props.itemsPerPage
       );
     });
+
+    // after changing itemsPerPage reset current page to current max page count
+    watch(
+      () => props.itemsPerPage,
+      () => {
+        nextTick(() => {
+          let pageCount = Math.ceil(
+            itemsFiltered.value.length / props.itemsPerPage
+          );
+          if (pageCount < props.page) emit("update:page", pageCount);
+        });
+      }
+    );
 
     // HEADERS
 
