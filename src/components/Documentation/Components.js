@@ -24,6 +24,10 @@ export let components = [
     name: "closebutton",
   },
   {
+    label: "Divider",
+    name: "divider",
+  },
+  {
     label: "Chevron",
     name: "chevron",
   },
