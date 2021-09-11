@@ -1,6 +1,10 @@
 <template>
   <div ref="dropdown" class="inline-block">
-    <div ref="activator" @click="toggle">
+    <div ref="activator" 
+      @[trigger.on]="show"
+      @[trigger.off]="hide"
+      @[trigger.toggle]="toggle"
+      >
       <slot name="activator" :toggle="toggle" :show="show" :hide="hide"></slot>
     </div>
     <transition :name="transition">
@@ -12,7 +16,7 @@
 </template>
 
 <script>
-import { ref, provide, toRef, toRefs } from "vue";
+import { ref, reactive, watchEffect, provide, toRef, toRefs } from "vue";
 import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
 import { correctPlacement } from "../const.js";
@@ -31,10 +35,12 @@ export default {
     offsetY: { type: Number, default: 0 },
     noFlip: { type: Boolean, default: false },
     autoCloseMenu: { type: Boolean, default: false },
+    trigger: { type: String, default: "click" },
     transition: { type: String, default: "fade" },
     name: { type: String, default: "dropdown" },
     styleItem: { type: String, default: "" },
     styleHeader: { type: String, default: "" },
+    styleIcon: { type: String, default: "" },
   },
   emits: ["state:opened", "state:closed"],
   setup(props, { emit }) {
@@ -46,11 +52,35 @@ export default {
       header: {
         fixed: "fixed-item"
       },
+      icon: null,
     })
 
     let dropdown = ref(null);
 
     // TODO: recursive dropdown, overflow hidden, add ref to parent and teleport to it to prevent closing if clicking parent
+
+    let trigger = reactive({
+      on: null,
+      off: null,
+      toggle: null,
+    });
+
+    // watch trigger props and update events
+    watchEffect(() => {
+      if (props.trigger == "click") {
+        trigger.on = null;
+        trigger.off = null;
+        trigger.toggle = "click";
+      } else if (props.trigger == "hover") {
+        trigger.on = "mouseenter";
+        trigger.off = null;
+        trigger.toggle = null;
+      } else if (props.trigger == "focus") {
+        trigger.on = "focusin";
+        trigger.off = "focusout";
+        trigger.toggle = null;
+      }
+    });
 
     let clickOutside = function (ev) {
       if (
@@ -88,6 +118,7 @@ export default {
       hide,
       toggle,
       isOpen,
+      trigger,
     };
   },
 };

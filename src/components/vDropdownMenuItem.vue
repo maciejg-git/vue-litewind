@@ -2,7 +2,8 @@
   <component
     :is="tag"
     :href="tagHref"
-    :class="['fixed-item',
+    :class="[
+      'fixed-item',
       active
         ? [classes.item.value, states.item.active.value]
         : disabled
@@ -11,6 +12,9 @@
     ]"
     @click="autoCloseMenu && hide()"
   >
+    <span :class="classes.icon.value">
+      <slot name="icon"></slot>
+    </span>
     <slot name="default"></slot>
   </component>
 </template>
