@@ -250,8 +250,27 @@
    <v-button style-button="secondary">button css</v-button> 
 
 <!-- <icon class="h-6 w-6"></icon> -->
-<v-icon icon="keyboard"></v-icon>
+<icon icon="keyboard"></icon>
 <keyboard-icon></keyboard-icon>
+
+<div class="relative h-40 w-40">
+  rel
+<div class="absolute top-5 left-5">
+  abs
+  <div class="relative">
+    <div>
+      rel
+    </div>
+    <div>
+      rel
+    </div>
+    <div>
+      rel
+    </div>
+  </div>
+
+</div>
+</div>
 
 <!-- <i-keyboard></i-keyboard> -->
    <v-button>button padding <div class="arrow-down"></div></v-button> 
@@ -708,7 +727,6 @@ import vCheckbox from "./vCheckbox.vue";
 import vNavbar from "./vNavbar.vue";
 import vRadio from "./vRadio.vue";
 import vChevron from "./vChevron.vue"
-import icon from "./icon-align-center"
 import vBreadcrumb from "./vBreadcrumb.vue";
 // import {vTable} from "../dist/vuecomponent2.es"
 
@@ -746,7 +764,6 @@ export default {
     vRadio,
     vChevron,
     vBreadcrumb,
-    icon,
   },
   props: {
     msg: String,
