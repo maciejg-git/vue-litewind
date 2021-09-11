@@ -6,7 +6,8 @@ import { buttonPlugin, tablePlugin } from "./components/index.js";
 import "tailwindcss/tailwind.css";
 import "./styles.css"
 import "./styles-material.css"
-import { registerIcon } from "./components/index"
+import Icon from "./components/icons/vue/Icon.vue"
+import registerIcon from "./components/icons/index"
 import {
   keyboardIcon,
 } from "./components/icons/index"
@@ -15,7 +16,10 @@ let app = createApp(App);
 
 // TODO: global config
 
-registerIcon(app, [keyboardIcon])
+registerIcon(app, [
+  keyboardIcon
+])
+app.component("icon", Icon)
 
 app.use(router);
 app.use(plugin);
