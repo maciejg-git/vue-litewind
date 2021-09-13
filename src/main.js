@@ -15,7 +15,12 @@ import {
 let app = createApp(App);
 
 // TODO: global config
+const modules = import.meta.globEager('./assets/icons/*.js')
 
+Object.entries(modules).forEach(([path, definition]) => {
+  const icon = path.split('/').pop().replace(/\.\w+$/, '')
+  app.component(icon, definition.default)
+})
 registerIcon(app, [
   keyboardIcon
 ])
