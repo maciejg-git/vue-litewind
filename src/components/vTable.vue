@@ -242,7 +242,7 @@ export default {
 
     // HEADERS
 
-    let d = {
+    let defaults = {
       sortable: false,
       filterable: true,
       visible: true,
@@ -265,7 +265,7 @@ export default {
         return {
           key: item,
           label: formatCase(item),
-          ...d,
+          ...defaults,
         };
       });
     };
@@ -280,7 +280,7 @@ export default {
       if (props.definition) {
         return props.definition.map((i) => {
           return {
-            ...d,
+            ...defaults,
             ...i,
             label: i.label || formatCase(i.key),
           };
