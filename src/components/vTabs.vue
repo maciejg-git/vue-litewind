@@ -11,7 +11,7 @@
           :class="[classes.tab.value, active == i ? states.tab.active.value : '']"
           @click.prevent="handleClickTab(i)"
         >
-          <VNodes :vnodes="tabName(tab)" />
+          <render-vnode :vnodes="tabName(tab)" />
         </a>
       </li>
     </ul>
@@ -35,7 +35,7 @@ export default {
   },
   components: {
     // minimal component to render content of child v-tab name slot
-    VNodes: (props) => {
+    renderVnode: (props) => {
       return h("span", props.vnodes);
     },
   },
@@ -63,13 +63,13 @@ export default {
     });
 
     // tab name can be set in name slot of child v-tab 
-    let tabName = function (tab) {
-      return tab.instance.slots.name
-        ? tab.instance.slots.name()
-        : tab.instance.props.name;
+    let tabName = (tab) => {
+      return tab.slots.name
+        ? tab.slots.name()
+        : tab.name;
     };
 
-    let switchTab = function (index) {
+    let switchTab = (index) => {
       tabs.value[active.value].active = false;
       tabs.value[index].active = true;
       active.value = index;
@@ -77,18 +77,18 @@ export default {
     };
 
     // this is called by v-tab child after mounting
-    let addTab = function (tab) {
+    let addTab = (tab) => {
       tabs.value.push(tab);
     };
 
     // this is called by v-tab child after unmounting
-    let removeTab = function (tab) {
-      let index = tabs.value.findIndex((item) => item.instance == tab);
+    let removeTab = (uid) => {
+      let index = tabs.value.findIndex((tab) => tab.uid == uid);
       if (active.value == index && index > 0) switchTab(index - 1);
       tabs.value.splice(index, 1);
     };
 
-    let handleClickTab = function (index) {
+    let handleClickTab = (index) => {
       if (active.value == index) return;
       switchTab(index);
     };

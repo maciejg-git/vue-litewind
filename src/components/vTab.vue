@@ -11,20 +11,16 @@
 </template>
 
 <script>
-import {
-  ref,
-  onMounted,
-  onUnmounted,
-  inject,
-  getCurrentInstance,
-  markRaw,
-} from "vue";
+import { ref, onMounted, onUnmounted, inject } from "vue";
+import useUid from "./composition/use-uid";
 
 export default {
   props: {
     name: { type: String, default: undefined },
   },
-  setup() {
+  setup(props, { slots }) {
+    let { uid } = useUid();
+
     let active = ref(false);
     let { addTab, removeTab } = inject("controlTab");
     let transition = inject("transition");
@@ -34,12 +30,14 @@ export default {
     onMounted(() => {
       addTab({
         active,
-        instance: markRaw(getCurrentInstance()),
+        uid,
+        name: props.name,
+        slots,
       });
     });
 
     onUnmounted(() => {
-      removeTab(getCurrentInstance());
+      removeTab(uid);
     });
 
     return {
