@@ -1,9 +1,16 @@
 <template>
   <transition name="fade">
     <div v-if="modelValue" :class="classes.alert.value">
-      <div class="flex justify-between">
+      <div class="flex">
+        <slot name="icon">
+          <v-icon state="state"></v-icon>
+        </slot>
         <slot name="default"></slot>
-        <v-close-button v-if="dismissable" @click="handleCloseButtonClick" />
+        <v-close-button
+          v-if="dismissable"
+          @click="handleCloseButtonClick"
+          class="ml-auto"
+        />
       </div>
     </div>
   </transition>
@@ -28,7 +35,7 @@ export default {
   setup(props, { emit }) {
     let { classes } = useStyles("alert", props, {
       alert: null,
-    })
+    });
 
     let closeAlert = () => {
       emit("update:modelValue", false);
