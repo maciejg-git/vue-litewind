@@ -6,7 +6,6 @@ export default function usePopper({
   offsetX,
   offsetY,
   noFlip,
-  clickOutside,
   emit,
 }) {
   let isOpen = ref(false);
@@ -15,25 +14,19 @@ export default function usePopper({
   let popper = ref(null);
 
   let show = async function () {
+    if (isOpen.value) return;
     isOpen.value = true;
-    if (clickOutside) {
-      setTimeout(() => {
-        document.body.addEventListener("click", clickOutside);
-      }, 0);
-    }
     // for v-if
     await nextTick();
     // for v-show
     instance.update();
-    emit("state:opened")
+    emit("state:opened");
   };
 
   let hide = function () {
+    if (!isOpen.value) return;
     isOpen.value = false;
-    if (clickOutside) {
-      document.body.removeEventListener("click", clickOutside);
-    }
-    emit("state:closed")
+    emit("state:closed");
   };
 
   let toggle = function () {
@@ -70,7 +63,7 @@ export default function usePopper({
             // overflow hidden on cards
             // mainAxis: false,
           },
-        }
+        },
       ],
       placement: placement.value,
     });

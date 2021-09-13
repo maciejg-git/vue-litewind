@@ -22,8 +22,9 @@ Current components:
 * Button
 * Card
 * Close button
+* Divider
 * Chevron
-* Collapse
+* Collapse (accordion)
 * Dropdown
 * Date Picker
 * Input
