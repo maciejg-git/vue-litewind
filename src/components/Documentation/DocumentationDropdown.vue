@@ -94,7 +94,7 @@
         :no-flip="example.noFlip"
         :auto-close-menu="example.autoCloseMenu"
         :transition="example.transition"
-          trigger="hover"
+        :trigger="example.trigger"
         @state:opened="
           example.events.unshift({ ev: 'state:opened', data: $event })
         "
@@ -113,7 +113,6 @@
             Menu item
           </v-dropdown-menu-item>
           <v-dropdown-menu-item tag="button">
-            <template #icon><icon icon="keyboard"></icon></template>
             Second menu item
           </v-dropdown-menu-item>
           <v-dropdown-header>Menu header</v-dropdown-header>
@@ -121,12 +120,10 @@
             Active menu item
           </v-dropdown-menu-item>
           <v-dropdown-menu-item tag="button">
-            <template #icon><icon icon="keyboard"></icon></template>
             Another menu item
           </v-dropdown-menu-item>
           <v-divider></v-divider>
           <v-dropdown-menu-item disabled tag="button">
-            <template #icon><icon icon="keyboard"></icon></template>
             Disabled menu item
           </v-dropdown-menu-item>
           <v-dropdown-menu-item tag="button">Menu item</v-dropdown-menu-item>
@@ -140,6 +137,7 @@
         :no-flip="example.noFlip"
         :auto-close-menu="example.autoCloseMenu"
         :transition="example.transition"
+        :trigger="example.trigger"
         name="dropdown-relaxed"
         @state:opened="
           example.events.unshift({ ev: 'state:opened', data: $event })
@@ -182,6 +180,7 @@
         :no-flip="example.noFlip"
         :auto-close-menu="example.autoCloseMenu"
         :transition="example.transition"
+        :trigger="example.trigger"
         @state:opened="
           example.events.unshift({ ev: 'state:opened', data: $event })
         "
@@ -227,6 +226,14 @@
               <option value="left">left</option>
               <option value="left-start">left-start</option>
               <option value="left-end">left-end</option>
+            </v-select>
+          </div>
+          <div class="mb-2">
+            <label for="trigger">trigger:</label>
+            <v-select id="trigger" v-model="example.trigger">
+              <option value="click">click</option>
+              <option value="hover">hover</option>
+              <option value="focus">focus</option>
             </v-select>
           </div>
           <div class="mb-2">
@@ -513,6 +520,7 @@ export default {
       noFlip: false,
       autoCloseMenu: false,
       transition: "fade",
+      trigger: "click",
       date: "",
       events: [],
     });

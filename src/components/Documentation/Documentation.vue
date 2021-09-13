@@ -91,9 +91,15 @@
 // import "highlight.js/styles/foundation.css";
 import "highlight.js/styles/github.css";
 import { components } from "./Components";
+import { provide } from "vue"
 
 export default {
   setup() {
+provide("stateIcons", {
+      info: "info-circle",
+      warn: "exclamation-triangle",
+    }
+  )
     return {
       components,
     };
