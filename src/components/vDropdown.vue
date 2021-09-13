@@ -1,24 +1,42 @@
 <template>
-  <div ref="dropdown" class="inline-block">
-    <div ref="activator" 
-      @[trigger.on]="show"
-      @[trigger.off]="hide"
+    <div
+      ref="activator"
+      @[trigger.on]="showMenu"
+      @[trigger.off]="hideMenu"
       @[trigger.toggle]="toggle"
-      >
+      class="inline-block"
+      v-bind="$attrs"
+    >
       <slot name="activator" :toggle="toggle" :show="show" :hide="hide"></slot>
     </div>
-    <transition :name="transition">
-      <div v-show="isOpen" ref="popper" class="absolute z-50">
-        <slot name="default" :hide="hide"></slot>
-      </div>
-    </transition>
-  </div>
+    <teleport to="body">
+      <transition :name="transition" :duration="300">
+        <div
+          v-if="isOpen"
+          ref="popper"
+          @mouseenter="showMenu"
+          @mouseleave="hideMenu"
+          class="absolute z-50"
+        >
+          <slot name="default" :hide="hide"></slot>
+        </div>
+      </transition>
+    </teleport>
 </template>
 
 <script>
-import { ref, reactive, watchEffect, provide, toRef, toRefs } from "vue";
+import {
+  ref,
+  reactive,
+  watchEffect,
+  provide,
+  toRef,
+  toRefs,
+  nextTick,
+} from "vue";
 import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
+import useClickOutside from "./composition/use-click-outside"
 import { correctPlacement } from "../const.js";
 
 export default {
@@ -50,14 +68,16 @@ export default {
         states: ["active", "disabled"],
       },
       header: {
-        fixed: "fixed-item"
+        fixed: "fixed-item",
       },
       icon: null,
-    })
+    });
 
     let dropdown = ref(null);
 
     // TODO: recursive dropdown, overflow hidden, add ref to parent and teleport to it to prevent closing if clicking parent
+
+    let hideTimeout = null;
 
     let trigger = reactive({
       on: null,
@@ -73,7 +93,7 @@ export default {
         trigger.toggle = "click";
       } else if (props.trigger == "hover") {
         trigger.on = "mouseenter";
-        trigger.off = null;
+        trigger.off = "mouseleave";
         trigger.toggle = null;
       } else if (props.trigger == "focus") {
         trigger.on = "focusin";
@@ -81,15 +101,6 @@ export default {
         trigger.toggle = null;
       }
     });
-
-    let clickOutside = function (ev) {
-      if (
-        // popper.value
-        !(dropdown.value === ev.target || dropdown.value.contains(ev.target))
-      ) {
-        hide();
-      }
-    };
 
     // options for popper.js
     const { offsetX, offsetY, noFlip, placement } = toRefs(props);
@@ -99,9 +110,29 @@ export default {
       offsetX,
       offsetY,
       noFlip,
-      clickOutside,
       emit,
     });
+
+    let { onClickOutside } = useClickOutside()
+
+    onClickOutside([popper, activator], hide)
+
+    let showMenu = () => {
+      if (props.trigger != "hover") return
+      clearTimeout(hideTimeout);
+      show();
+    };
+
+    let hideMenu = () => {
+      if (props.trigger != "hover") return
+      scheduleHide();
+    };
+
+    let scheduleHide = () => {
+      hideTimeout = setTimeout(() => {
+        hide();
+      }, 100);
+    };
 
     provide("classes", classes);
     provide("states", states);
@@ -119,6 +150,9 @@ export default {
       toggle,
       isOpen,
       trigger,
+      scheduleHide,
+      showMenu,
+      hideMenu,
     };
   },
 };
@@ -126,11 +160,11 @@ export default {
 
 <style scoped lang="postcss">
 ::v-deep .fixed-item {
-  @apply inline-flex items-center
+  @apply block;
 }
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.2s ease;
+  transition: opacity 0.3s ease;
 }
 .fade-enter-from,
 .fade-leave-to {

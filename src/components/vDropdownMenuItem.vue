@@ -12,7 +12,7 @@
     ]"
     @click="autoCloseMenu && hide()"
   >
-    <span :class="classes.icon.value">
+    <span v-if="slots.icon" :class="classes.icon.value">
       <slot name="icon"></slot>
     </span>
     <slot name="default"></slot>
@@ -28,7 +28,7 @@ export default {
     disabled: { type: Boolean, default: false },
     active: { type: Boolean, default: false },
   },
-  setup(props) {
+  setup(props, { slots }) {
     let classes = inject("classes");
     let states = inject("states");
 
@@ -43,6 +43,7 @@ export default {
       tagHref,
       autoCloseMenu,
       hide,
+      slots,
     };
   },
 };
