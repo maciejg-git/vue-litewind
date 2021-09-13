@@ -738,7 +738,7 @@
 
 .card-flat {
   @apply
-    bg-gray-200
+    bg-white
     shadow
 }
 
@@ -1214,3 +1214,16 @@
     w-6
     inline-block
 }
+  .b-icon--small {
+    @apply
+      h-4
+      w-4
+  }
+  .b-icon--info-state {
+    @apply
+      text-blue-400
+  }
+  .b-icon--warn-state {
+    @apply
+      text-yellow-400
+  }
