@@ -8,22 +8,22 @@ import { computed, inject } from "vue";
 export default {
   props: {
     icon: { type: String, default: "" },
-    state: { type: String, default: "" },
-    stateIcons: { type: Object, default: () => {} },
+    iconType: { type: String, default: "" },
+    iconTypes: { type: Object, default: () => {} },
   },
   setup(props) {
-    let stateIcons = inject("stateIcons");
+    let iconTypes = inject("iconTypes", {});
 
     let icon = computed(() => {
-      if (props.state) {
-        return stateIcons[props.state];
+      if (props.iconType) {
+        return iconTypes[props.iconType];
       } else {
         return props.icon;
       }
     });
 
     let classes = computed(() => {
-      return props.state ? "b-icon--" + props.state + "-state" : "";
+      return props.state ? "b-icon--" + props.iconType + "-type" : "";
     });
 
     return {
