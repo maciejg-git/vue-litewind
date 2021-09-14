@@ -119,7 +119,7 @@ export default {
       {
         prop: "initial",
         type: "String",
-        default: "d",
+        default: "down",
         description: "Initial direction of chevron/triangle. Valid values are: 'down', 'left' ,'right' and 'up'",
       },
       {

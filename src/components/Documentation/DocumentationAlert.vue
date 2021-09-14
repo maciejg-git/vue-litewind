@@ -66,6 +66,9 @@
         :style-alert="example.style"
         class="my-2"
       >
+      <template #icon>
+        <v-icon icon-type="invalid" class="mr-2"></v-icon>
+      </template>
         Alert
       </v-alert>
       <v-alert
