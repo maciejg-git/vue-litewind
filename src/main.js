@@ -24,6 +24,10 @@ Object.entries(modules).forEach(([path, definition]) => {
 registerIcon(app, [
   keyboardIcon
 ])
+app.provide("iconTypes", {
+  valid: "check",
+  invalid: "exclamation-triangle",
+})
 app.component("icon", Icon)
 
 app.use(router);
