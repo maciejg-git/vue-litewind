@@ -8,10 +8,13 @@
       >
         <a
           href=""
-          :class="[classes.tab.value, active == i ? states.tab.active.value : '']"
+          :class="[
+            classes.tab.value,
+            active == i ? states.tab.active.value : '',
+          ]"
           @click.prevent="handleClickTab(i)"
         >
-          <render-vnode :vnodes="tabName(tab)" />
+          <render-vnode :vnodes="getTabName(tab)" />
         </a>
       </li>
     </ul>
@@ -34,7 +37,7 @@ export default {
     styleTab: { type: [String, Array], default: "" },
   },
   components: {
-    // minimal component to render content of child v-tab name slot
+    // component to render content of child v-tab name slot
     renderVnode: (props) => {
       return h("span", props.vnodes);
     },
@@ -56,23 +59,30 @@ export default {
     });
 
     let tabs = ref([]);
-    let active = ref(0);
+    let active = ref(null);
+    let lastActive = ref(null)
 
     onMounted(() => {
-      if (tabs.value.length) switchTab(0);
+      if (tabs.value.length) activateTab(0);
     });
 
-    // tab name can be set in name slot of child v-tab 
-    let tabName = (tab) => {
-      return tab.slots.name
-        ? tab.slots.name()
-        : tab.name;
+    // tab name can be set in name slot of child v-tab
+    let getTabName = (tab) => {
+      return tab.slots.name ? tab.slots.name() : tab.name;
     };
 
-    let switchTab = (index) => {
-      tabs.value[active.value].active = false;
-      tabs.value[index].active = true;
+    let activateTab = (index) => {
+      if (tabs.value.length < index || active.value == index) return;
+
+      let currentTab = tabs.value[active.value]
+      let newTab = tabs.value[index]
+
+      newTab.active = true;
+      if (currentTab) currentTab.active = false;
+
+      lastActive.value = active.value;
       active.value = index;
+
       emit("input:changed-tab", index);
     };
 
@@ -84,13 +94,16 @@ export default {
     // this is called by v-tab child after unmounting
     let removeTab = (uid) => {
       let index = tabs.value.findIndex((tab) => tab.uid == uid);
-      if (active.value == index && index > 0) switchTab(index - 1);
+      if (index === -1) return;
+
       tabs.value.splice(index, 1);
+
+      if (active.value == index) activateTab(index - 1);
+      else activateTab(index)
     };
 
     let handleClickTab = (index) => {
-      if (active.value == index) return;
-      switchTab(index);
+      activateTab(index);
     };
 
     provide("controlTab", { addTab, removeTab });
@@ -100,7 +113,7 @@ export default {
       classes,
       states,
       tabs,
-      tabName,
+      getTabName,
       active,
       handleClickTab,
     };
