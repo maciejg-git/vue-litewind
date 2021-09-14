@@ -1,7 +1,10 @@
 <template>
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    :class="[classes.chevron.value, ['transform duration-150', getRotation()]]"
+    :class="[
+      classes.chevron.value,
+      ['transform', rotate180 ? 'duration-300' : 'duration-150', getRotation()],
+    ]"
     width="16"
     height="16"
     fill="currentColor"
