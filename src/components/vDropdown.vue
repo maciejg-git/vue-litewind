@@ -1,42 +1,35 @@
 <template>
-    <div
-      ref="activator"
-      @[trigger.on]="showMenu"
-      @[trigger.off]="hideMenu"
-      @[trigger.toggle]="toggle"
-      class="inline-block"
-      v-bind="$attrs"
-    >
-      <slot name="activator" :toggle="toggle" :show="show" :hide="hide"></slot>
-    </div>
-    <teleport to="body">
-      <transition :name="transition" :duration="300">
-        <div
-          v-if="isOpen"
-          ref="popper"
-          @mouseenter="showMenu"
-          @mouseleave="hideMenu"
-          class="absolute z-50"
-        >
-          <slot name="default" :hide="hide"></slot>
-        </div>
-      </transition>
-    </teleport>
+  <div
+    ref="activator"
+    @[trigger.on]="show"
+    @[trigger.off]="hide"
+    @[trigger.toggle]="togglePopper"
+    class="inline-block"
+    v-bind="$attrs"
+  >
+    <slot name="activator"></slot>
+  </div>
+  <teleport to="body">
+    <transition :name="transition" :duration="300">
+      <div
+        v-if="isPopperOpen"
+        ref="popper"
+        @mouseenter="lock"
+        @mouseleave="unlock"
+        class="fixed-dropdown"
+      >
+        <slot name="default" :hide="hidePopper"></slot>
+      </div>
+    </transition>
+  </teleport>
 </template>
 
 <script>
-import {
-  ref,
-  reactive,
-  watchEffect,
-  provide,
-  toRef,
-  toRefs,
-  nextTick,
-} from "vue";
+import { ref, reactive, watchEffect, provide, toRef, toRefs } from "vue";
 import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
-import useClickOutside from "./composition/use-click-outside"
+import useClickOutside from "./composition/use-click-outside";
+import useTrigger from "./composition/use-trigger"
 import { correctPlacement } from "../const.js";
 
 export default {
@@ -74,38 +67,21 @@ export default {
     });
 
     let dropdown = ref(null);
-
-    // TODO: recursive dropdown, overflow hidden, add ref to parent and teleport to it to prevent closing if clicking parent
-
     let hideTimeout = null;
 
-    let trigger = reactive({
-      on: null,
-      off: null,
-      toggle: null,
-    });
+    let t = toRef(props, "trigger")
+    let trigger = useTrigger(t)
 
-    // watch trigger props and update events
-    watchEffect(() => {
-      if (props.trigger == "click") {
-        trigger.on = null;
-        trigger.off = null;
-        trigger.toggle = "click";
-      } else if (props.trigger == "hover") {
-        trigger.on = "mouseenter";
-        trigger.off = "mouseleave";
-        trigger.toggle = null;
-      } else if (props.trigger == "focus") {
-        trigger.on = "focusin";
-        trigger.off = "focusout";
-        trigger.toggle = null;
-      }
-    });
-
-    // options for popper.js
     const { offsetX, offsetY, noFlip, placement } = toRefs(props);
 
-    const { isOpen, activator, popper, show, hide, toggle } = usePopper({
+    const {
+      isPopperOpen,
+      activator,
+      popper,
+      showPopper,
+      hidePopper,
+      togglePopper,
+    } = usePopper({
       placement,
       offsetX,
       offsetY,
@@ -113,24 +89,36 @@ export default {
       emit,
     });
 
-    let { onClickOutside } = useClickOutside()
+    let { onClickOutside } = useClickOutside();
+    onClickOutside([popper, activator], hidePopper);
 
-    onClickOutside([popper, activator], hide)
-
-    let showMenu = () => {
-      if (props.trigger != "hover") return
-      clearTimeout(hideTimeout);
-      show();
+    // prevent closing menu if using hover trigger
+    let lock = () => {
+      if (props.trigger == "hover") clearTimeout(hideTimeout);
     };
 
-    let hideMenu = () => {
-      if (props.trigger != "hover") return
-      scheduleHide();
+    let unlock = () => {
+      if (props.trigger == "hover") scheduleHide();
     };
 
+    let show = () => {
+      if (props.trigger == "hover") {
+        clearTimeout(hideTimeout);
+        showPopper();
+        return;
+      }
+      showPopper();
+    };
+
+    let hide = () => {
+      if (props.trigger == "hover") scheduleHide();
+      else hidePopper();
+    };
+
+    // if using hover trigger delay hiding of menu to allow to move cursor to it
     let scheduleHide = () => {
       hideTimeout = setTimeout(() => {
-        hide();
+        hidePopper();
       }, 100);
     };
 
@@ -145,20 +133,25 @@ export default {
       dropdown,
       activator,
       popper,
-      show,
-      hide,
-      toggle,
-      isOpen,
+      showPopper,
+      hidePopper,
+      togglePopper,
+      isPopperOpen,
       trigger,
       scheduleHide,
-      showMenu,
-      hideMenu,
+      show,
+      hide,
+      lock,
+      unlock,
     };
   },
 };
 </script>
 
 <style scoped lang="postcss">
+.fixed-dropdown {
+  @apply absolute z-50;
+}
 ::v-deep .fixed-item {
   @apply block;
 }
