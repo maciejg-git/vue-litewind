@@ -60,7 +60,7 @@ export default {
 
     let tabs = ref([]);
     let active = ref(null);
-    let lastActive = ref(null)
+    let lastActive = ref(null);
 
     onMounted(() => {
       if (tabs.value.length) activateTab(0);
@@ -72,10 +72,12 @@ export default {
     };
 
     let activateTab = (index) => {
-      if (tabs.value.length < index || active.value == index) return;
+      if (index < 0 || tabs.value.length < index || active.value == index) {
+        return;
+      }
 
-      let currentTab = tabs.value[active.value]
-      let newTab = tabs.value[index]
+      let currentTab = tabs.value[active.value];
+      let newTab = tabs.value[index];
 
       newTab.active = true;
       if (currentTab) currentTab.active = false;
@@ -99,7 +101,7 @@ export default {
       tabs.value.splice(index, 1);
 
       if (active.value == index) activateTab(index - 1);
-      else activateTab(index)
+      else activateTab(index);
     };
 
     let handleClickTab = (index) => {
