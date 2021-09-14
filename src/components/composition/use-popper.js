@@ -8,14 +8,14 @@ export default function usePopper({
   noFlip,
   emit,
 }) {
-  let isOpen = ref(false);
+  let isPopperOpen = ref(false);
   let instance = null;
   let activator = ref(null);
   let popper = ref(null);
 
-  let show = async function () {
-    if (isOpen.value) return;
-    isOpen.value = true;
+  let showPopper = async function () {
+    if (isPopperOpen.value) return;
+    isPopperOpen.value = true;
     // for v-if
     await nextTick();
     // for v-show
@@ -23,14 +23,14 @@ export default function usePopper({
     emit("state:opened");
   };
 
-  let hide = function () {
-    if (!isOpen.value) return;
-    isOpen.value = false;
+  let hidePopper = function () {
+    if (!isPopperOpen.value) return;
+    isPopperOpen.value = false;
     emit("state:closed");
   };
 
-  let toggle = function () {
-    isOpen.value ? hide() : show();
+  let togglePopper = function () {
+    isPopperOpen.value ? hidePopper() : showPopper();
   };
 
   watch([placement, offsetX, offsetY, noFlip], () => {
@@ -70,12 +70,12 @@ export default function usePopper({
   };
 
   return {
-    isOpen,
+    isPopperOpen,
     activator,
     popper,
-    show,
-    hide,
-    toggle,
+    showPopper,
+    hidePopper,
+    togglePopper,
     setPopper,
   };
 }
