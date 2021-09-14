@@ -3,7 +3,7 @@
     <div v-if="modelValue" :class="classes.alert.value">
       <div class="flex">
         <slot name="icon">
-          <v-icon state="state"></v-icon>
+          <v-icon v-if="icon" icon-type="state"></v-icon>
         </slot>
         <slot name="default"></slot>
         <v-close-button
@@ -26,6 +26,7 @@ export default {
     modelValue: { type: Boolean, default: false },
     dismissable: { type: Boolean, default: true },
     autoDismissDelay: { type: Number, default: 0 },
+    icon: { type: Boolean, default: false },
     name: { type: String, default: "alert" },
     styleAlert: { type: [String, Array], default: "" },
   },
@@ -44,8 +45,8 @@ export default {
     // set auto dismiss timer if alarm is visible
     watch(
       () => props.modelValue,
-      (v) => {
-        if (v && props.autoDismissDelay) {
+      (visible) => {
+        if (visible && props.autoDismissDelay) {
           setTimeout(() => {
             closeAlert();
           }, props.autoDismissDelay);
