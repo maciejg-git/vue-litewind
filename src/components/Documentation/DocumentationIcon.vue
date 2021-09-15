@@ -28,26 +28,9 @@
 
   <section>
     <h4>Example</h4>
-    <p>
+    <div class="example">
       <v-icon icon="star" />
       <v-icon icon="check" />
-    </p>
-    <div class="example">
-      <v-tabs name="tabs-material" class="mt-5">
-        <v-tab name="Props">
-          <div class="mb-2 mt-5">
-            <label for="model" class="font-semibold">v-model:</label>
-            <v-input type="text" id="model" v-model="example.date"></v-input>
-          </div>
-          <div class="mb-2">
-            <label for="range">range:</label>
-            <v-select id="range" v-model="example.range">
-              <option :value="true">true</option>
-              <option :value="false">false</option>
-            </v-select>
-          </div>
-        </v-tab>
-      </v-tabs>
     </div>
     <pre>
       <code>

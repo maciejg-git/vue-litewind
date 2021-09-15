@@ -18,23 +18,19 @@ let app = createApp(App);
 const modules = import.meta.globEager('./assets/icons/*.js')
 
 Object.entries(modules).forEach(([path, definition]) => {
-  const icon = path.split('/').pop().replace(/\.\w+$/, '')
-  app.component(definition.default.name + "Icon", definition.default)
-  console.log(definition.default.name)
+  let icon = definition.default.name + "Icon"
+  app.component(icon, definition.default)
 })
 
 registerIcon(app, [
   KeyboardIcon
 ], {
-  vendorPrefix: true,
-  iconSufix: false,
+  vendorPrefix: false,
+  iconSufix: true,
 })
 
 app.provide("iconTypes", {
-  valid: {
-    icon: "check",
-    class: "",
-  },
+  valid: "check",
   invalid: "exclamation-triangle",
 })
 

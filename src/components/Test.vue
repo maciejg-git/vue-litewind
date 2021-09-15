@@ -251,8 +251,8 @@
 
 <!-- <icon class="h-6 w-6"></icon> -->
 <icon icon="keyboard"></icon>
-<keyboard-icon></keyboard-icon>
-<KeyboardIcon></KeyboardIcon>
+<b-keyboard></b-keyboard>
+<BKeyboard></BKeyboard>
 <keyboardIcon></keyboardIcon>
 <!-- <account-multiple-outline-icon></account-multiple-outline-icon> -->
 
