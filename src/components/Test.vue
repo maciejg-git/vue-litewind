@@ -252,6 +252,15 @@
 <!-- <icon class="h-6 w-6"></icon> -->
 <icon icon="keyboard"></icon>
 <keyboard-icon></keyboard-icon>
+<KeyboardIcon></KeyboardIcon>
+<keyboardIcon></keyboardIcon>
+<!-- <account-multiple-outline-icon></account-multiple-outline-icon> -->
+
+<!-- <icon icon="mdi-keyboard"></icon> -->
+<!-- <icon icon="fa-keyboard"></icon> -->
+<!-- <b-keyboard-icon></keyboard-icon> -->
+<!-- <BKeyboardIcon></KeyboardIcon> -->
+<!-- <keyboardIcon></keyboardIcon> -->
 
 <div class="relative h-40 w-40">
   rel

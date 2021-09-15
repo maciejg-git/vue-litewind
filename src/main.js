@@ -7,10 +7,10 @@ import "tailwindcss/tailwind.css";
 import "./styles.css"
 import "./styles-material.css"
 import Icon from "./components/icons/vue/Icon.vue"
-import registerIcon from "./components/icons/index"
+import registerIcon from "./components/icons"
 import {
-  keyboardIcon,
-} from "./components/icons/index"
+  KeyboardIcon,
+} from "./components/icons"
 
 let app = createApp(App);
 
@@ -19,15 +19,25 @@ const modules = import.meta.globEager('./assets/icons/*.js')
 
 Object.entries(modules).forEach(([path, definition]) => {
   const icon = path.split('/').pop().replace(/\.\w+$/, '')
-  app.component(icon, definition.default)
+  app.component(definition.default.name + "Icon", definition.default)
+  console.log(definition.default.name)
 })
+
 registerIcon(app, [
-  keyboardIcon
-])
+  KeyboardIcon
+], {
+  vendorPrefix: true,
+  iconSufix: false,
+})
+
 app.provide("iconTypes", {
-  valid: "check",
+  valid: {
+    icon: "check",
+    class: "",
+  },
   invalid: "exclamation-triangle",
 })
+
 app.component("icon", Icon)
 
 app.use(router);

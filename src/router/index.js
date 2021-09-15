@@ -34,6 +34,7 @@ import DocumentationBreadcrumb from "../components/Documentation/DocumentationBr
 import DocumentationChevron from "../components/Documentation/DocumentationChevron.vue";
 import DocumentationFormText from "../components/Documentation/DocumentationFormText.vue";
 import DocumentationClosebutton from "../components/Documentation/DocumentationClosebutton.vue";
+import DocumentationIcon from "../components/Documentation/DocumentationIcon.vue";
 import DocumentationDivider from "../components/Documentation/DocumentationDivider.vue";
 
 import DocumentationTooltip from "../components/Documentation/DocumentationTooltip.vue";
@@ -176,6 +177,10 @@ const routes = [
       {
         path: "divider",
         component: DocumentationDivider,
+      },
+      {
+        path: "icon",
+        component: DocumentationIcon,
       },
 
       // directives

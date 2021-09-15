@@ -1219,11 +1219,19 @@
       h-4
       w-4
   }
-  .b-icon--info-state {
+  .b-icon--info-type {
     @apply
       text-blue-400
   }
-  .b-icon--warn-state {
+  .b-icon--warn-type {
     @apply
       text-yellow-400
+  }
+  .b-icon--valid-type {
+    @apply
+      text-green-400
+  }
+  .b-icon--invalid-type {
+    @apply
+      text-red-400
   }
