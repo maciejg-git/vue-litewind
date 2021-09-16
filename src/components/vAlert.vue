@@ -1,6 +1,12 @@
 <template>
   <transition name="fade">
-    <div v-if="modelValue" :class="classes.alert.value">
+    <div
+      v-if="modelValue"
+      :class="[
+        classes.alert.value,
+        states.alert[state] && states.alert[state].value,
+      ]"
+    >
       <div class="flex">
         <slot name="icon">
           <v-icon v-if="icon" icon-type="state"></v-icon>
@@ -9,6 +15,7 @@
         <v-close-button
           v-if="dismissable"
           @click="handleCloseButtonClick"
+          style-close-button="small"
           class="ml-auto"
         />
       </div>
@@ -27,6 +34,7 @@ export default {
     dismissable: { type: Boolean, default: true },
     autoDismissDelay: { type: Number, default: 0 },
     icon: { type: Boolean, default: false },
+    state: { type: String, default: "info" },
     name: { type: String, default: "alert" },
     styleAlert: { type: [String, Array], default: "" },
   },
@@ -34,8 +42,19 @@ export default {
     vCloseButton,
   },
   setup(props, { emit }) {
-    let { classes } = useStyles("alert", props, {
-      alert: null,
+    let { classes, states } = useStyles("alert", props, {
+      alert: {
+        states: [
+          "valid",
+          "invalid",
+          "default",
+          "info",
+          "danger",
+          "warn",
+          "success",
+          "light",
+        ],
+      },
     });
 
     let closeAlert = () => {
@@ -60,6 +79,7 @@ export default {
 
     return {
       classes,
+      states,
       handleCloseButtonClick,
     };
   },
