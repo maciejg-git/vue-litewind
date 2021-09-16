@@ -243,7 +243,7 @@ export default {
     ]);
 
     let example = reactive({
-      initial: "down",
+      initial: "right",
       rotate180: false,
       triangle: false,
       counterClockwise: false,

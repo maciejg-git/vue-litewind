@@ -27,6 +27,24 @@
   </section>
 
   <section>
+    <h5>Icon types</h5>
+    <p>Provide icon types via provide function in application entry file (typically main.js) or anywhere in top level component. Icon type is Object that maps icon name to any name. It can be useful in many ways for example define easy to remember aliases for frequently used icons, easier use of fonts from different vendors, define icons for various states and bind with states of other components for automatic updating icon etc.</p>
+    <pre>
+    <code class="language-js">
+app.provide("iconTypes", {
+  valid: "check",
+  invalid: "exclamation-triangle",
+  success: "check",
+  info: "info-circle",
+  light: "info-circle",
+  danger: "exclamation-triangle",
+  warn: "exclamation-triangle",
+})
+    </code>
+    </pre>
+  </section>
+
+  <section>
     <h4>Example</h4>
     <div class="example">
       <v-icon icon="star" />
@@ -56,7 +74,7 @@ export default {
         prop: "icon-type",
         type: "String",
         default: "undefined",
-        description: "Icon name provided in iconTypes",
+        description: "Icon type provided via iconTypes",
       },
     ]);
 

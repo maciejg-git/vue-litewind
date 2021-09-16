@@ -63,11 +63,11 @@
         v-model="example.isVisible"
         :dismissable="example.dismissable"
         :auto-dismiss-delay="example.autoDismissDelay"
-        :style-alert="example.style"
+        :state="example.state"
         class="my-2"
       >
       <template #icon>
-        <v-icon icon-type="invalid" class="mr-2"></v-icon>
+        <v-icon :icon-type="example.state" class="mr-2"></v-icon>
       </template>
         Alert
       </v-alert>
@@ -75,20 +75,22 @@
         v-model="example.isVisibleAbsolute"
         :dismissable="example.dismissable"
         :auto-dismiss-delay="example.autoDismissDelay"
-        :style-alert="example.style"
+        :state="example.state"
         class="fixed top-20 left-1/2 w-3/4 transform -translate-x-1/2 shadow"
       >
         Alert
       </v-alert>
       <div class="flex justify-between items-center">
         <div class="mt-5">
-          <label for="style">Alert variant:</label>
-          <v-select id="style" v-model="example.style">
-            <option value="default">default</option>
+          <label for="style">Alert state:</label>
+          <v-select id="style" v-model="example.state">
             <option value="info">info</option>
             <option value="danger">danger</option>
+            <option value="warn">warn</option>
             <option value="success">success</option>
             <option value="light">light</option>
+            <option value="valid">valid</option>
+            <option value="invalid">invalid</option>
           </v-select>
         </div>
         <div class="flex gap-4">
@@ -274,7 +276,8 @@ export default {
       isVisibleAbsolute: false,
       dismissable: true,
       autoDismissDelay: 0,
-      style: "default",
+      style: "",
+      state: "info",
     });
 
     onMounted(() => {

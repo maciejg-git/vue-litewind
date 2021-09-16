@@ -72,7 +72,7 @@
           "
         >
           <template #activator>
-            <v-button>Show popover</v-button>
+            <v-button>Show simple popover</v-button>
           </template>
           This is popover.
         </v-popover>
@@ -90,7 +90,7 @@
           "
         >
           <template #activator>
-            <v-button>Show popover</v-button>
+            <v-button>Show form popover</v-button>
           </template>
           <div class="grid grid-cols-3 gap-2 my-2">
             <label for="">Login</label>
@@ -114,7 +114,7 @@
           "
         >
           <template #activator>
-            <v-button>Show popover (tooltip)</v-button>
+            <v-button>Show tooltip popover</v-button>
           </template>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever

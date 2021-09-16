@@ -65,7 +65,7 @@
               <li>Home</li>
               <li>About</li>
               <li>
-                <v-dropdown :offset-y="10" name="dropdown-flat">
+                <v-dropdown trigger="hover" :offset-y="10" name="dropdown-flat">
                   <template #activator>
                     <v-button name="button-link">Dropdown</v-button>
                   </template>
@@ -109,7 +109,7 @@
               </li>
             </ul>
             <v-input class="ml-auto mr-4"></v-input>
-            <v-button style-button="outline">Search</v-button>
+            <v-button>Search</v-button>
           </div>
         </v-navbar>
       </v-card>
