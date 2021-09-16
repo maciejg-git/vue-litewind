@@ -12,7 +12,7 @@
   <teleport to="body">
     <transition :name="transition" :duration="300">
       <div
-        v-if="isPopperOpen"
+        v-if="isPopperVisible"
         ref="popper"
         @mouseenter="lock"
         @mouseleave="unlock"
@@ -29,7 +29,7 @@ import { ref, reactive, watchEffect, provide, toRef, toRefs } from "vue";
 import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
 import useClickOutside from "./composition/use-click-outside";
-import useTrigger from "./composition/use-trigger"
+import useTrigger from "./composition/use-trigger";
 import { correctPlacement } from "../const.js";
 
 export default {
@@ -69,30 +69,23 @@ export default {
     let dropdown = ref(null);
     let hideTimeout = null;
 
-    let t = toRef(props, "trigger")
-    let trigger = useTrigger(t)
+    let trigerRef = toRef(props, "trigger");
+    let trigger = useTrigger(trigerRef);
 
     const { offsetX, offsetY, noFlip, placement } = toRefs(props);
-
     const {
-      isPopperOpen,
+      isPopperVisible,
       activator,
       popper,
       showPopper,
       hidePopper,
       togglePopper,
-    } = usePopper({
-      placement,
-      offsetX,
-      offsetY,
-      noFlip,
-      emit,
-    });
+    } = usePopper({ placement, offsetX, offsetY, noFlip, emit });
 
     let { onClickOutside } = useClickOutside();
     onClickOutside([popper, activator], hidePopper);
 
-    // prevent closing menu if using hover trigger
+    // prevent closing menu if pointer is over menu and using hover trigger
     let lock = () => {
       if (props.trigger == "hover") clearTimeout(hideTimeout);
     };
@@ -115,7 +108,7 @@ export default {
       else hidePopper();
     };
 
-    // if using hover trigger delay hiding of menu to allow to move cursor to it
+    // if using hover trigger delay hiding of menu
     let scheduleHide = () => {
       hideTimeout = setTimeout(() => {
         hidePopper();
@@ -136,7 +129,7 @@ export default {
       showPopper,
       hidePopper,
       togglePopper,
-      isPopperOpen,
+      isPopperVisible,
       trigger,
       scheduleHide,
       show,
