@@ -15,13 +15,13 @@ export default function useClickOutside() {
       callback();
     };
 
-    document.body.addEventListener("mousedown", clickOutside);
-
     let stop = () => {
-      removeEventListener("mousedown", clickOutside)
+      document.body.removeEventListener("mousedown", clickOutside)
     }
 
-    onUnmounted(stop)
+    document.body.addEventListener("mousedown", clickOutside);
+
+    return stop;
   }
   return {
     onClickOutside,
