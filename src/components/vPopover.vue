@@ -1,39 +1,40 @@
 <template>
-  <div ref="popover" class="inline-block">
-    <div
-      v-if="slots.activator"
-      ref="activator"
-      class="inline-block"
-      @[trigger.on]="show"
-      @[trigger.off]="hide"
-      @[trigger.toggle]="toggle"
-    >
-      <slot name="activator"></slot>
-    </div>
-    <transition :name="transition">
-    <div v-if="isOpen" ref="popper">
-        <div :class="classes.popover.value">
-          <header v-if="!noHeader" class="flex font-semibold px-3 py-2">
-            {{ title }}
-            <v-close-button
-              style-close-button="small"
-              class="ml-auto"
-              @click="hide"
-            />
-          </header>
-          <div :class="classes.content.value">
-            <slot name="default"></slot>
-          </div>
+  <div
+    v-if="slots.activator"
+    ref="activator"
+    @[trigger.on]="showPopper"
+    @[trigger.off]="hidePopper"
+    @[trigger.toggle]="togglePopper"
+    class="inline-block"
+    v-bind="$attrs"
+  >
+    <slot name="activator"></slot>
+  </div>
+  <transition :name="transition">
+    <div v-if="isPopperVisible" ref="popper">
+      <div :class="classes.popover.value">
+        <header v-if="!noHeader" class="flex font-semibold px-3 py-2">
+          {{ title }}
+          <v-close-button
+            style-close-button="small"
+            class="ml-auto"
+            @click="hidePopper"
+          />
+        </header>
+        <div :class="classes.content.value">
+          <slot name="default"></slot>
         </div>
       </div>
-    </transition>
-  </div>
+    </div>
+  </transition>
 </template>
 
 <script>
-import { ref, toRefs, reactive, onMounted, watchEffect } from "vue";
+import { toRef, toRefs, onMounted, watch } from "vue";
 import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
+import useClickOutside from "./composition/use-click-outside";
+import useTrigger from "./composition/use-trigger";
 import { correctPlacement } from "../const.js";
 
 export default {
@@ -65,78 +66,70 @@ export default {
       content: null,
     });
 
-    let popover = ref(null);
+    // trigger
+
+    let trigerRef = toRef(props, "trigger");
+    let trigger = useTrigger(trigerRef);
+
+    // activate by id
+
     let activatorId = null;
-
-    let trigger = reactive({
-      on: null,
-      off: null,
-      toggle: null,
-    });
-
-    // watch trigger props and update events
-    watchEffect(() => {
-      if (props.trigger == "click") {
-        trigger.on = null;
-        trigger.off = null;
-        trigger.toggle = "click";
-      } else if (props.trigger == "hover") {
-        trigger.on = "mouseenter";
-        trigger.off = "mouseleave";
-        trigger.toggle = null;
-      } else if (props.trigger == "focus") {
-        trigger.on = "focusin";
-        trigger.off = "focusout";
-        trigger.toggle = null;
-      }
-    });
 
     onMounted(() => {
       if (props.targetId) {
         activatorId = document.getElementById(props.targetId);
         if (activatorId) {
           if (trigger.on) {
-            activatorId.addEventListener(trigger.on, show);
+            activatorId.addEventListener(trigger.on, showPopper);
           }
           if (trigger.off) {
-            activatorId.addEventListener(trigger.off, hide);
+            activatorId.addEventListener(trigger.off, hidePopper);
           }
           if (trigger.toggle) {
-            activatorId.addEventListener(trigger.toggle, toggle);
+            activatorId.addEventListener(trigger.toggle, togglePopper);
           }
           activator.value = activatorId;
         }
       }
     });
 
-    let clickOutside = function (ev) {
-      if (!props.clickOutsideClose) return;
-      if (!(popover.value === ev.target || popover.value.contains(ev.target))) {
-        hide();
-      }
-    };
+    // popper
 
     const { offsetX, offsetY, noFlip, placement } = toRefs(props);
+    const {
+      isPopperVisible,
+      activator,
+      popper,
+      showPopper,
+      hidePopper,
+      togglePopper,
+    } = usePopper({ placement, offsetX, offsetY, noFlip, emit });
 
-    const { isOpen, activator, popper, show, hide, toggle } = usePopper({
-      placement,
-      offsetX,
-      offsetY,
-      noFlip,
-      clickOutside,
-      emit,
-    });
+    // click oustide
+
+    let { onClickOutside } = useClickOutside();
+    let stopClickOutside = null;
+    watch(
+      () => props.clickOutsideClose,
+      (clickOutsideClose) => {
+        if (clickOutsideClose) {
+          stopClickOutside = onClickOutside([popper, activator], hidePopper);
+        } else {
+          if (stopClickOutside) stopClickOutside();
+        }
+      },
+      { immediate: true }
+    );
 
     return {
       classes,
       trigger,
-      popover,
       activator,
       popper,
-      isOpen,
-      show,
-      hide,
-      toggle,
+      isPopperVisible,
+      showPopper,
+      hidePopper,
+      togglePopper,
       slots,
     };
   },
