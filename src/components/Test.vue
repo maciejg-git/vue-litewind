@@ -250,10 +250,10 @@
    <v-button style-button="secondary">button css</v-button> 
 
 <!-- <icon class="h-6 w-6"></icon> -->
-<icon icon="keyboard"></icon>
-<b-keyboard></b-keyboard>
-<BKeyboard></BKeyboard>
-<keyboardIcon></keyboardIcon>
+<!-- <icon icon="keyboard"></icon> -->
+<!-- <b-keyboard></b-keyboard> -->
+<!-- <BKeyboard></BKeyboard> -->
+<!-- <keyboardIcon></keyboardIcon> -->
 <!-- <account-multiple-outline-icon></account-multiple-outline-icon> -->
 
 <!-- <icon icon="mdi-keyboard"></icon> -->
@@ -261,6 +261,8 @@
 <!-- <b-keyboard-icon></keyboard-icon> -->
 <!-- <BKeyboardIcon></KeyboardIcon> -->
 <!-- <keyboardIcon></keyboardIcon> -->
+
+<v-icon icon-type="info"></v-icon>
 
 <div class="relative h-40 w-40">
   rel
