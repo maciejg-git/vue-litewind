@@ -806,14 +806,14 @@ export default {
     let controlModel = ref("")
     let header = ref([
       [
-        "id", ["first_name", "last_name", {as: "name"}], ["email", {as: "em"}], "city"
+        "id", ["first_name", "last_name", {as: "name"}], "date", ["email", {as: "em"}], "city", "country", "item_city"
       ]
     ])
-    //   [
-    //     "id" rowspan = 2, "name", "name", "em", "city"
-    //   ]
     // [
-    //     "first_name", "last_name", "email", "city"
+    //     "id", "first_name", "last_name", "email", "city"
+    //   ]
+    //   [
+    //     "id", "name" col = 2, "em", "city"
     //   ]
     
     let progress = ref(10);
@@ -859,6 +859,11 @@ export default {
       },
       {
         key: "first_name",
+        sortable: true,
+        class: () => "w-2/12",
+      },
+      {
+        key: "last_name",
         sortable: true,
         class: () => "w-2/12",
       },
