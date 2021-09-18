@@ -9,33 +9,36 @@
       <slot name="caption"></slot>
     </caption>
     <thead :class="classes.headerRow.value">
-      <!-- <tr v-if="headerRows.length"> -->
-      <!--   <template v-for="(h, i) in headerRows"> -->
-      <!--     <th -->
-      <!--       :colspan="h.colSpan" -->
-      <!--       :rowspan="h.rowSpan" -->
-      <!--       :class="classes.headerCell.value" -->
-      <!--     > -->
-      <!--       {{ h.name }} -->
-      <!--     </th> -->
-      <!--   </template> -->
-      <!-- </tr> -->
       <tr>
         <template v-for="(h, i) in headers">
           <th
             v-if="headers[i].visible !== false"
             @click="handleHeaderClick(h.key, i)"
-            :class="[
-              {
-                sortable: h.sortable && sortField != h.key,
-                'sort-asc': h.sortable && sortField == h.key && sortAsc == 1,
-                'sort-desc': h.sortable && sortField == h.key && sortAsc == -1,
-                'cursor-pointer': h.sortable,
-              },
-              ...classes.headerCell.value,
-            ]"
+            :class="classes.headerCell.value"
           >
-            {{ h.label }}
+            <div
+              class="flex items-center"
+              :class="{ 'cursor-pointer': h.sortable }"
+            >
+              {{ h.label }}
+              <template v-if="h.sortable">
+                <v-icon
+                  v-if="sortField != h.key"
+                  name="sort"
+                  class="sort-icon"
+                ></v-icon>
+                <v-icon
+                  v-else-if="sortField == h.key && sortAsc == 1"
+                  name="caret-up"
+                  class="sort-icon-active"
+                ></v-icon>
+                <v-icon
+                  v-else-if="sortField == h.key && sortAsc == -1"
+                  name="caret-down"
+                  class="sort-icon-active"
+                ></v-icon>
+              </template>
+            </div>
           </th>
         </template>
       </tr>
@@ -302,34 +305,6 @@ export default {
       });
     });
 
-    // HEADER ROWS
-
-    // let headerRows = computed(() => {
-    //   if (props.headerRows) {
-    //     let headers = [];
-    //     for (let row of props.headerRows) {
-    //       for (let i of row) {
-    //         if (Array.isArray(i)) {
-    //           for (let c of i) {
-    //             let rowSpan = 1;
-    //             if (c.as)
-    //               headers.push({
-    //                 colSpan: i.length - 1,
-    //                 rowSpan: rowSpan,
-    //                 name: c.as,
-    //               });
-    //           }
-    //         } else {
-    //           let rowSpan = 1;
-    //           if (i === getHeaderKey(i).key) rowSpan = 2;
-    //           headers.push({ colSpan: 1, rowSpan, name: i });
-    //         }
-    //       }
-    //     }
-    //     return headers;
-    //   }
-    // });
-
     // SELECTION
 
     let itemsSelected = ref({});
@@ -397,20 +372,11 @@ export default {
 </script>
 
 <style scoped>
-.sortable {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-dash' viewBox='0 0 16 16'%3E%3Cpath d='M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 3% center;
+.sort-icon {
+  @apply ml-3 opacity-30;
 }
-.sort-asc {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chevron-up' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 3% center;
-}
-.sort-desc {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chevron-down' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 3% center;
+.sort-icon-active {
+  @apply ml-3 opacity-70;
 }
 
 .caption-bottom {
