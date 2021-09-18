@@ -9,6 +9,8 @@ import { isObject, isString } from "../tools/tools";
 export default {
   props: {
     icon: { type: String, default: "" },
+    i: { type: String, default: "" },
+    name: { type: String, default: "" },
     iconType: { type: String, default: "" },
   },
   setup(props) {
@@ -16,6 +18,8 @@ export default {
 
     let icon = computed(() => {
       if (props.icon) return props.icon + "-icon";
+      if (props.i) return props.i + "-icon";
+      if (props.name) return props.name + "-icon";
 
       let type = iconTypes[props.iconType];
       if (!type) return;
@@ -31,7 +35,7 @@ export default {
     });
 
     let classes = computed(() => {
-      return props.iconType ? "b-icon--" + props.iconType + "-type" : "";
+      return props.iconType ? "icon--" + props.iconType + "-type" : "";
     });
 
     return {
