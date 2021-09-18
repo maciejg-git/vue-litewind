@@ -37,7 +37,7 @@
           </v-form-text>
         </div>
 
-        <div class="my-5">
+        <div class="mt-5">
           <div v-for="l in languages" class="flex items-center my-2">
             <v-checkbox
               v-model="languagesModel"
@@ -52,10 +52,10 @@
         </div>
         <v-form-text
           :state="languagesState()"
-            :visible-states="example.visibleStates"
+          :visible-states="example.visibleStates"
         >
-          <v-icon :icon-type="languagesState()"></v-icon>
-          Please select at least 3 languages.
+            <v-icon :icon-type="languagesState()" class="mr-2"></v-icon>
+            Please select at least 3 languages.
         </v-form-text>
         <v-button @click="validate()" style-button="" class="mt-5">
           Send
@@ -89,7 +89,9 @@
             <div class="mb-2">
               <label for="visible-states">visible-states:</label>
               <v-select id="visible-states" v-model="example.visibleStates">
-                <option value="default,invalid,valid">default,invalid,valid</option>
+                <option value="default,invalid,valid">
+                  default,invalid,valid
+                </option>
                 <option value="invalid,valid">invalid,valid</option>
                 <option value="invalid">invalid</option>
                 <option value="default">default</option>
@@ -124,7 +126,7 @@ export default {
         prop: "inline",
         type: ["Boolean"],
         default: "false",
-        description: "Inline version of form text. Default is block.",
+        description: "Inline-flex version of form text. Default is flex.",
       },
       {
         prop: "visible-states",
@@ -151,7 +153,8 @@ export default {
     let slots = ref([
       {
         prop: "default",
-        description: "Slot for text. Slot props: <code class='code-word'>state</code>",
+        description:
+          "Slot for text. Slot props: <code class='code-word'>state</code>",
       },
     ]);
 
@@ -180,12 +183,12 @@ export default {
     };
 
     let languagesState = () => {
-             return languagesValidated.value
-                ? languagesModel.value.length >= 3
-                  ? "valid"
-                  : "invalid"
-                : ""
-    }
+      return languagesValidated.value
+        ? languagesModel.value.length >= 3
+          ? "valid"
+          : "invalid"
+        : "";
+    };
 
     let reset = () => {
       languagesValidated.value = false;

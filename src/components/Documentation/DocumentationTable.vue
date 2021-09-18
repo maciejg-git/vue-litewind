@@ -517,7 +517,6 @@ export default {
       },
       {
         key: "type",
-        sortable: true,
       },
       {
         key: "default",
