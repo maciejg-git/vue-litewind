@@ -34,11 +34,13 @@ registerIcon(app, [
 app.provide("iconTypes", {
   valid: "check",
   invalid: "exclamation-triangle",
-  success: "check",
+  success: "check-lg",
   info: "info-circle",
-  light: "info-circle",
-  danger: "exclamation-triangle",
+  danger: "exclamation-octagon-fill",
   warn: "exclamation-triangle",
+  light: "info-circle",
+  menu: "three-dots",
+  question: "question-circle",
 })
 
 app.component("icon", Icon)
