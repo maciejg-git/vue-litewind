@@ -28,8 +28,9 @@ export default {
     let { classes, states } = useStyles("form-text", props, {
       formText: {
         name: "form-text",
+        fixed: "fixed-form-text",
         states: ["valid", "invalid", "disabled"],
-        prop: computed(() => (props.inline ? "inline-block" : "block")),
+        prop: computed(() => (props.inline ? "inline-flex" : "flex")),
       },
     });
 
@@ -59,7 +60,11 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="postcss">
+.fixed-form-text {
+  @apply items-center
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.2s ease;
