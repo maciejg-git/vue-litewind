@@ -5,7 +5,7 @@
       :class="classes.sidepanel.value"
       :style="{ 'width': width }"
     >
-      <div v-if="!noHeader" class="flex justify-between align-center w-full">
+      <div v-if="!noHeader" class="fixed-header">
         <div class="my-3 ml-5">
           <slot name="header"></slot>
         </div>
@@ -88,6 +88,10 @@ export default {
 .fixed-sidepanel {
   @apply fixed h-full top-0 z-20
 }
+.fixed-header {
+  @apply flex justify-between w-full
+}
+
 .fade-slide-right-enter-active,
 .fade-slide-right-leave-active {
   transition: opacity 0.3s ease, transform 0.4s ease;

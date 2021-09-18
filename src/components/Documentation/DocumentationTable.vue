@@ -5,69 +5,19 @@
   <section>
     <h4>Reference</h4>
     <p></p>
-    <v-table
-      :items="reference"
-      :definition="referenceDefinition"
-      style-table="fixed"
-      style-header-cell="bordered"
-      style-cell="bordered"
-    >
-      <template #cell:type="{ value }">
-        <div class="space-y-1">
-          <code v-for="v in value" class="code-word">
-            {{ v }}
-          </code>
-        </div>
-      </template>
-      <template #cell:default="{ value }">
-        <code class="text-sm">{{ value }}</code>
-      </template>
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
-    </v-table>
+    <table-reference :items="reference"></table-reference>
 
     <h6>Styling props</h6>
     <p></p>
-    <v-table
-      :items="referenceStyles"
-      :definition="referenceStylesDefinition"
-      style-table="fixed"
-      style-header-cell="bordered"
-      style-cell="bordered"
-    >
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
-    </v-table>
+    <table-reference-basic :items="styles"></table-reference-basic>
 
     <h6>Events</h6>
     <p></p>
-    <v-table
-      :items="referenceEvents"
-      :definition="referenceEventsDefinition"
-      style-table="fixed"
-      style-header-cell="bordered"
-      style-cell="bordered"
-    >
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
-    </v-table>
+    <table-reference-basic :items="events"></table-reference-basic>
 
     <h6>Slots</h6>
     <p></p>
-    <v-table
-      :items="referenceSlots"
-      :definition="referenceSlotsDefinition"
-      style-table="fixed"
-      style-header-cell="bordered"
-      style-cell="bordered"
-    >
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
-    </v-table>
+    <table-reference-basic :items="slots"></table-reference-basic>
   </section>
 
   <section>
@@ -142,9 +92,9 @@
     <div class="example">
       <v-table
         :items="example.data"
-        :definition="definition"
+        :definition="example.definition"
         :filter="example.filter"
-        :page="example.page"
+        v-model:page="example.page"
         :items-per-page="example.itemsPerPage"
         :state="example.state"
         :selectionMode="example.selectionMode"
@@ -155,20 +105,15 @@
           example.events.unshift({ ev: 'update:filtered-count', data: $event });
         "
         @update:page="
-          example.page = $event;
-          example.events.unshift({ ev: 'update:page', data: $event });
+          example.events.unshift({ ev: 'update:page', data: $event })
         "
         @input:selection="
           example.events.unshift({ ev: 'input:selection', data: $event })
         "
+        class="min-w-full"
       >
         <template #cell:edit="{ item }">
-          <v-button
-            style-button="tiny"
-            @click.stop="edit(item)"
-          >
-            edit
-          </v-button>
+          <v-button style-button="tiny" @click.stop="edit(item)">edit</v-button>
         </template>
         <template #caption>Example caption</template>
       </v-table>
@@ -197,13 +142,11 @@
         <v-tab name="Props">
           <div class="mb-2 mt-5">
             <label for="locale">filter:</label>
-            <v-input type="text" v-model="example.filter">
-            </v-input>
+            <v-input type="text" v-model="example.filter"></v-input>
           </div>
           <div class="mb-2">
             <label for="locale">locale:</label>
-            <v-input type="text" id="locale" v-model="example.locale">
-              </v-input>
+            <v-input type="text" id="locale" v-model="example.locale"></v-input>
           </div>
           <div class="mb-2">
             <label for="busy">state:</label>
@@ -386,9 +329,10 @@ export default {
       },
       {
         prop: "page",
-        type: ["Number"],
+        type: ["v-model", "Number"],
         default: "1",
-        description: "Current page number. Changing page resets current selection",
+        description:
+          "Current page number. Changing page resets current selection",
       },
       {
         prop: "items-per-page",
@@ -420,30 +364,11 @@ export default {
         prop: "name",
         type: ["String"],
         default: "table",
-        description:
-          "Name of the component",
+        description: "Name of the component",
       },
     ]);
 
-    let referenceDefinition = ref([
-      {
-        key: "prop",
-        sortable: true,
-        class: () => "whitespace-nowrap",
-      },
-      {
-        key: "type",
-        sortable: true,
-      },
-      {
-        key: "default",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
-    let referenceStyles = ref([
+    let styles = ref([
       {
         prop: "style-table",
         description: "Main table element",
@@ -474,67 +399,47 @@ export default {
       },
     ]);
 
-    let referenceStylesDefinition = ref([
+    let events = ref([
       {
-        key: "prop",
-        class: () => "w-1 whitespace-nowrap",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
-    let referenceEvents = ref([
-      {
-        event: "update:page",
+        prop: "update:page",
         description: "Emmited after filtering. Useful for updating pagination",
       },
       {
-        event: "update:filtered-count",
+        prop: "update:filtered-count",
         description: "Emmited after filtering. Useful for updating pagination",
       },
       {
-        event: "input:selection",
+        prop: "input:selection",
         description:
           "Emmited after selecting rows. Event data contains array of selected records",
       },
     ]);
 
-    let referenceEventsDefinition = ref([
+    let slots = ref([
       {
-        key: "event",
-        class: () => "w-1 whitespace-nowrap",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
-    let referenceSlots = ref([
-      {
-        slot: "cell:key",
+        prop: "cell:key",
         description:
-        "Slot for cell content. Useful for adding some html formatting, transforming value etc. Key is one of the keys of data record or additional key from definition array<p class='mt-4'>Slot props: <code class='code-word'>value</code>, <code class='code-word'>item</code></p>",
+          "Slot for cell content. Useful for adding some html formatting, transforming value etc. Key is one of the keys of data record or additional key from definition array<p class='mt-4'>Slot props: <code class='code-word'>value</code>, <code class='code-word'>item</code></p>",
       },
       {
-        slot: "caption",
+        prop: "caption",
         description:
           "Slot for caption text. Position caption using caption-top prop",
       },
       {
-        slot: "busy",
+        prop: "busy",
         description:
           "Content of this slot replaces data records if table is busy",
       },
-    ]);
-
-    let referenceSlotsDefinition = ref([
       {
-        key: "slot",
-        class: () => "w-1 whitespace-nowrap",
+        prop: "empty-table-message",
+        description:
+          "Slot for custom empty table message when item prop is empty table",
       },
       {
-        key: "description",
+        prop: "empty-filtered-table-message",
+        description:
+          "Slot for custom empty filtered table message when table is empty after filtering",
       },
     ]);
 
@@ -571,8 +476,7 @@ export default {
         prop: "visible",
         type: ["Boolean"],
         default: "true",
-        description:
-          "toggles visiblity of the column",
+        description: "toggles visiblity of the column",
       },
       {
         prop: "class",
@@ -623,43 +527,6 @@ export default {
       },
     ]);
 
-    let definition = ref([
-      {
-        key: "id",
-        visible: false,
-      },
-      {
-        key: "first_name",
-        sortable: true,
-        // class: () => "bg-red-50",
-      },
-      {
-        key: "last_name",
-        sortable: true,
-        // class: () => "bg-green-50",
-      },
-      {
-        key: "email",
-        sortable: true,
-      },
-      {
-        key: "city",
-        sortable: true,
-        // visible: false,
-      },
-      {
-        key: "country",
-        sortable: true,
-        class: (k, v) => (v == "ID" ? "bg-red-50" : ""),
-      },
-      {
-        key: "edit",
-      },
-      // {
-      //   key: "item_city"
-      // },
-    ]);
-
     let dataSmall = dataJSON.slice(0, 5);
     let data = dataJSON.slice(0, 10);
     let dataLong = dataJSON.slice(0, 60);
@@ -675,6 +542,42 @@ export default {
       locale: "en-GB",
       state: "",
       events: [],
+      definition: [
+        {
+          key: "id",
+          visible: false,
+        },
+        {
+          key: "first_name",
+          sortable: true,
+          // class: () => "bg-red-50",
+        },
+        {
+          key: "last_name",
+          sortable: true,
+          // class: () => "bg-green-50",
+        },
+        {
+          key: "email",
+          sortable: true,
+        },
+        {
+          key: "city",
+          sortable: true,
+          // visible: false,
+        },
+        {
+          key: "country",
+          sortable: true,
+          class: (k, v) => (v == "ID" ? "bg-red-50" : ""),
+        },
+        {
+          key: "edit",
+        },
+        // {
+        //   key: "item_city"
+        // },
+      ],
     });
 
     let editModal = ref(false);
@@ -693,15 +596,10 @@ export default {
       dataSmall,
       data,
       dataLong,
-      definition,
       reference,
-      referenceDefinition,
-      referenceStyles,
-      referenceStylesDefinition,
-      referenceEvents,
-      referenceEventsDefinition,
-      referenceSlots,
-      referenceSlotsDefinition,
+      styles,
+      events,
+      slots,
       referenceProp,
       referencePropDefinition,
       editModal,

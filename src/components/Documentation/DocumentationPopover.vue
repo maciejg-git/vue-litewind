@@ -5,55 +5,15 @@
   <section>
     <h4>Reference</h4>
     <p></p>
-    <v-table
-      :items="reference"
-      :definition="referenceDefinition"
-      style-table="fixed"
-      style-header-cell="bordered"
-      style-cell="bordered"
-    >
-      <template #cell:type="{ value }">
-        <div class="space-y-1">
-          <code v-for="v in value" class="code-word">
-            {{ v }}
-          </code>
-        </div>
-      </template>
-      <template #cell:default="{ value }">
-        <code class="text-sm">{{ value }}</code>
-      </template>
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
-    </v-table>
+    <table-reference :items="reference"></table-reference>
 
     <h6>Styling props</h6>
     <p></p>
-    <v-table
-      :items="referenceStyles"
-      :definition="referenceStylesDefinition"
-      style-table="fixed"
-      style-header-cell="bordered"
-      style-cell="bordered"
-    >
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
-    </v-table>
+    <table-reference-basic :items="styles"></table-reference-basic>
 
     <h6>Slots</h6>
     <p></p>
-    <v-table
-      :items="referenceSlots"
-      :definition="referenceSlotsDefinition"
-      style-table="fixed"
-      style-header-cell="bordered"
-      style-cell="bordered"
-    >
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
-    </v-table>
+    <table-reference-basic :items="slots"></table-reference-basic>
   </section>
 
   <section>
@@ -309,26 +269,7 @@ export default {
       },
     ]);
 
-    let referenceDefinition = ref([
-      {
-        key: "prop",
-        sortable: true,
-        class: () => "whitespace-nowrap",
-      },
-      {
-        key: "type",
-        sortable: true,
-      },
-      {
-        key: "default",
-        class: () => "whitespace-nowrap",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
-    let referenceStyles = ref([
+    let styles = ref([
       {
         prop: "style-popover",
         description: "Main popover element",
@@ -339,34 +280,14 @@ export default {
       },
     ]);
 
-    let referenceStylesDefinition = ref([
+    let slots = ref([
       {
-        key: "prop",
-        class: () => "w-1 whitespace-nowrap",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
-    let referenceSlots = ref([
-      {
-        slot: "activator",
+        prop: "activator",
         description: "Slot for element that activates popover",
       },
       {
-        slot: "default",
+        prop: "default",
         description: "Slot for popover content",
-      },
-    ]);
-
-    let referenceSlotsDefinition = ref([
-      {
-        key: "slot",
-        class: () => "w-1 whitespace-nowrap",
-      },
-      {
-        key: "description",
       },
     ]);
 
@@ -386,11 +307,8 @@ export default {
 
     return {
       reference,
-      referenceDefinition,
-      referenceStyles,
-      referenceStylesDefinition,
-      referenceSlots,
-      referenceSlotsDefinition,
+      styles,
+      slots,
       example,
     };
   },

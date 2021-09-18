@@ -94,8 +94,10 @@ export default {
       { immediate: true }
     );
 
-    let pagesCount = computed(() =>
-      Math.ceil(props.itemsCount / props.itemsPerPage)
+    let pagesCount = computed(() => {
+      let p = Math.ceil(props.itemsCount / props.itemsPerPage)
+      return p > 1 ? p : 1;
+    }
     );
 
     let pages = computed(() => {

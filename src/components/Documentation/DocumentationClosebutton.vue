@@ -5,41 +5,11 @@
   <section>
     <h4>Reference</h4>
     <p></p>
-    <v-table
-      :items="reference"
-      :definition="referenceDefinition"
-      style-table="fixed"
-      style-header-cell="bordered"
-      style-cell="bordered"
-    >
-      <template #cell:type="{ value }">
-        <div class="space-y-1">
-          <code v-for="v in value" class="code-word">
-            {{ v }}
-          </code>
-        </div>
-      </template>
-      <template #cell:default="{ value }">
-        <code class="text-sm">{{ value }}</code>
-      </template>
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
-    </v-table>
+    <table-reference :items="reference"></table-reference>
 
     <h6>Styling props</h6>
     <p></p>
-    <v-table
-      :items="referenceStyles"
-      :definition="referenceStylesDefinition"
-      style-table="fixed"
-      style-header-cell="bordered"
-      style-cell="bordered"
-    >
-      <template #cell:description="{ value }"
-        ><span v-html="value"></span
-      ></template>
-    </v-table>
+    <table-reference-basic :items="styles"></table-reference-basic>
   </section>
 
   <section>
@@ -70,90 +40,10 @@ export default {
       },
     ]);
 
-    let referenceDefinition = ref([
-      {
-        key: "prop",
-        sortable: true,
-        class: () => "whitespace-nowrap",
-      },
-      {
-        key: "type",
-        sortable: true,
-      },
-      {
-        key: "default",
-        class: () => "whitespace-nowrap",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
-    let referenceStyles = ref([
+    let styles = ref([
       {
         prop: "style-close-button",
         description: "Button element",
-      },
-    ]);
-
-    let referenceStylesDefinition = ref([
-      {
-        key: "prop",
-        class: () => "w-1 whitespace-nowrap",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
-    let referenceEvents = ref([
-      {
-        event: "update:modelValue",
-        description: "Update v-model",
-      },
-    ]);
-
-    let referenceEventsDefinition = ref([
-      {
-        key: "event",
-        class: () => "w-1 whitespace-nowrap",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
-    let referenceSlots = ref([
-      {
-        slot: "-",
-        description: "This component does not provide any slots.",
-      },
-    ]);
-
-    let referenceSlotsDefinition = ref([
-      {
-        key: "slot",
-        class: () => "w-1 whitespace-nowrap",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
-    let referenceComponents = ref([
-      {
-        component: "-",
-        description: "This component does not provide any child components.",
-      },
-    ]);
-
-    let referenceComponentsDefinition = ref([
-      {
-        key: "component",
-        class: () => "w-1 whitespace-nowrap",
-      },
-      {
-        key: "description",
       },
     ]);
 
@@ -165,15 +55,7 @@ export default {
 
     return {
       reference,
-      referenceDefinition,
-      referenceStyles,
-      referenceStylesDefinition,
-      referenceEvents,
-      referenceEventsDefinition,
-      referenceSlots,
-      referenceSlotsDefinition,
-      referenceComponents,
-      referenceComponentsDefinition,
+      styles,
       example,
     };
   },

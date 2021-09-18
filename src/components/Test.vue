@@ -298,6 +298,7 @@
         :itemsPerPage="itemsPerPage"
         :page="page"
         :busy="busy"
+          :headerRows="header"
         primary-key="id"
         style-table="default fixed"
         selection-mode="single"
@@ -803,6 +804,18 @@ export default {
     let sidepanelHeader = ref(true)
     let stateFormGroup = ref("")
     let controlModel = ref("")
+    let header = ref([
+      [
+        "id", ["first_name", "last_name", {as: "name"}], ["email", {as: "em"}], "city"
+      ]
+    ])
+    //   [
+    //     "id" rowspan = 2, "name", "name", "em", "city"
+    //   ]
+    // [
+    //     "first_name", "last_name", "email", "city"
+    //   ]
+    
     let progress = ref(10);
     let textModel = ref("text")
     let linkItems = ref([
@@ -946,6 +959,7 @@ export default {
       linkItems,
       stateFormGroup,
       controlModel,
+      header,
       log,
     };
   },

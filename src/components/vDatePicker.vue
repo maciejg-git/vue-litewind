@@ -25,8 +25,8 @@
         @click="handleClickNextYear"
       ></button>
     </div>
-    <div class="grid grid-cols-7 mb-2">
-      <div v-for="day in dayNames" class="text-sm font-semibold p-0">
+    <div :class="classes.weekdayBar.value">
+      <div v-for="day in dayNames" :class="classes.weekday.value">
         {{ day }}
       </div>
     </div>
@@ -117,6 +117,8 @@ export default {
     name: { type: String, default: "datepicker" },
     transition: { type: String, default: "fade" },
     styleDatepicker: { type: String, default: "" },
+    styleWeekdayBar: { type: String, default: "" },
+    styleWeekday: { type: String, default: "" },
     styleButton: { type: String, default: "" },
     styleDay: { type: String, default: "" },
     styleAdjacentMonthDay: { type: String, default: "" },
@@ -128,6 +130,11 @@ export default {
   setup(props, { emit }) {
     let { classes, states } = useStyles("datepicker", props, {
       datepicker: null,
+      weekdayBar: {
+        name: "weekday-bar",
+        fixed: "fixed-weekday-bar",
+      },
+      weekday: null,
       button: {
         fixed: "fixed-datepicker-button",
       },
@@ -430,6 +437,9 @@ export default {
 <style scoped lang="postcss">
 .fixed-datepicker-button {
   @apply flex flex-col justify-center leading-none focus:outline-none mx-auto;
+}
+.fixed-weekday-bar {
+  @apply grid grid-cols-7
 }
 .fixed-day {
   @apply block;

@@ -5,57 +5,15 @@
   <section>
     <h5>Reference</h5>
     <p></p>
-    <v-table
-      :items="reference"
-      :definition="referenceDefinition"
-      style-table="fixed"
-      style-header-cell="bordered"
-      style-cell="bordered"
-    >
-      <template #cell:type="{ value }">
-        <div class="space-y-1">
-          <code v-for="v in value" class="code-word">
-            {{ v }}
-          </code>
-        </div>
-      </template>
-      <template #cell:default="{ value }">
-        <code class="text-sm">
-          {{ value }}
-        </code>
-      </template>
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
-    </v-table>
+    <table-reference :items="reference"></table-reference>
 
     <h6>Styling props</h6>
     <p></p>
-    <v-table
-      :items="referenceStyles"
-      :definition="referenceStylesDefinition"
-      style-table="fixed"
-      style-header-cell="bordered"
-      style-cell="bordered"
-    >
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
-    </v-table>
+    <table-reference-basic :items="styles"></table-reference-basic>
 
     <h6>Events</h6>
     <p></p>
-    <v-table
-      :items="referenceEvents"
-      :definition="referenceEventsDefinition"
-      style-table="fixed"
-      style-header-cell="bordered"
-      style-cell="bordered"
-    >
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
-    </v-table>
+    <table-reference-basic :items="events"></table-reference-basic>
   </section>
 
   <section>
@@ -450,26 +408,7 @@ export default {
       },
     ]);
 
-    let referenceDefinition = ref([
-      {
-        key: "prop",
-        sortable: true,
-        class: () => "whitespace-nowrap",
-      },
-      {
-        key: "type",
-        sortable: true,
-      },
-      {
-        key: "default",
-        class: () => "whitespace-nowrap",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
-    let referenceStyles = ref([
+    let styles = ref([
       {
         prop: "style-datepicker",
         description: "Main component wrapper",
@@ -493,61 +432,24 @@ export default {
       },
     ]);
 
-    let referenceStylesDefinition = ref([
+    let events = ref([
       {
-        key: "prop",
-        class: () => "w-1 whitespace-nowrap",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
-    let referenceEvents = ref([
-      {
-        event: "update:modelValue",
+        prop: "update:modelValue",
         description: "Update v-model",
       },
       {
-        event: "input:formatted",
+        prop: "input:formatted",
         description:
           "Emmited after selecting date along with update:modelValue. Date is in formatted using locale and format prop",
       },
       {
-        event: "state:done",
+        prop: "state:done",
         description:
           "Emmited after selecting date (and clicking primary button if buttons props is set to true)",
       },
       {
-        event: "state:cancel",
+        prop: "state:cancel",
         description: "Emmited after clicking secondary button",
-      },
-    ]);
-
-    let referenceEventsDefinition = ref([
-      {
-        key: "event",
-        class: () => "w-1 whitespace-nowrap",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
-    let referenceSlots = ref([
-      {
-        slot: "-",
-        description: "This component does not provide any slots.",
-      },
-    ]);
-
-    let referenceSlotsDefinition = ref([
-      {
-        key: "slot",
-        class: () => "w-1 whitespace-nowrap",
-      },
-      {
-        key: "description",
       },
     ]);
 
@@ -587,13 +489,8 @@ export default {
 
     return {
       reference,
-      referenceDefinition,
-      referenceStyles,
-      referenceStylesDefinition,
-      referenceEvents,
-      referenceEventsDefinition,
-      referenceSlots,
-      referenceSlotsDefinition,
+      styles,
+      events,
       exampleModel,
       example,
       exampleDropdown,

@@ -902,6 +902,17 @@
     px-2
 }
 
+.datepicker--weekday-bar {
+  @apply
+     mb-2
+}
+
+.datepicker--weekday {
+  @apply
+    text-sm 
+    font-semibold 
+}
+
 .datepicker--day {
   @apply
     datepicker-day-fixed;

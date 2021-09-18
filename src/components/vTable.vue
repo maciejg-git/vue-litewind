@@ -4,12 +4,22 @@
       classes.table.value,
       state == 'busy' ? [states.table.busy.value, 'pointer-events-none'] : '',
     ]"
-    class="min-w-full"
   >
     <caption v-if="slots.caption" :class="classes.caption.value">
       <slot name="caption"></slot>
     </caption>
     <thead :class="classes.headerRow.value">
+      <!-- <tr v-if="headerRows.length"> -->
+      <!--   <template v-for="(h, i) in headerRows"> -->
+      <!--     <th -->
+      <!--       :colspan="h.colSpan" -->
+      <!--       :rowspan="h.rowSpan" -->
+      <!--       :class="classes.headerCell.value" -->
+      <!--     > -->
+      <!--       {{ h.name }} -->
+      <!--     </th> -->
+      <!--   </template> -->
+      <!-- </tr> -->
       <tr>
         <template v-for="(h, i) in headers">
           <th
@@ -42,15 +52,19 @@
       </template>
       <template v-else-if="!items.length">
         <tr>
-          <td :colspan="headersCount" class="text-center py-2">
-            {{ emptyText }}
+          <td :colspan="headersCount" class="text-center py-4">
+            <slot name="empty-table-message">
+              {{ emptyText }}
+            </slot>
           </td>
         </tr>
       </template>
       <template v-else-if="!itemsFiltered.length">
         <tr>
-          <td :colspan="headersCount" class="text-center py-2">
-            {{ emptyFilteredText }}
+          <td :colspan="headersCount" class="text-center py-4">
+            <slot name="empty-filtered-table-message">
+              {{ emptyFilteredText }}
+            </slot>
           </td>
         </tr>
       </template>
@@ -103,6 +117,7 @@ export default {
     busy: { type: Boolean, default: false },
     selectionMode: { type: String, default: "" },
     state: { type: String, default: "" },
+    headerRows: { type: Array, default: [] },
     name: { type: String, default: "table" },
     styleTable: { type: String, default: "" },
     styleHeaderRow: { type: String, default: "" },
@@ -277,16 +292,43 @@ export default {
     // definition is provided, generate local definition and mix it
     // with defaults
     let headers = computed(() => {
-      if (props.definition) {
-        return props.definition.map((i) => {
-          return {
-            ...defaults,
-            ...i,
-            label: i.label || formatCase(i.key),
-          };
-        });
-      } else return setHeaders();
+      if (!props.definition) return setHeaders();
+      return props.definition.map((i) => {
+        return {
+          ...defaults,
+          ...i,
+          label: i.label || formatCase(i.key),
+        };
+      });
     });
+
+    // HEADER ROWS
+
+    // let headerRows = computed(() => {
+    //   if (props.headerRows) {
+    //     let headers = [];
+    //     for (let row of props.headerRows) {
+    //       for (let i of row) {
+    //         if (Array.isArray(i)) {
+    //           for (let c of i) {
+    //             let rowSpan = 1;
+    //             if (c.as)
+    //               headers.push({
+    //                 colSpan: i.length - 1,
+    //                 rowSpan: rowSpan,
+    //                 name: c.as,
+    //               });
+    //           }
+    //         } else {
+    //           let rowSpan = 1;
+    //           if (i === getHeaderKey(i).key) rowSpan = 2;
+    //           headers.push({ colSpan: 1, rowSpan, name: i });
+    //         }
+    //       }
+    //     }
+    //     return headers;
+    //   }
+    // });
 
     // SELECTION
 

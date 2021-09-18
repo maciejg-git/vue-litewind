@@ -11,6 +11,8 @@ import registerIcon from "./components/icons"
 import {
   KeyboardIcon,
 } from "./components/icons"
+import TableReference from "./components/Documentation/TableReference.vue";
+import TableReferenceBasic from "./components/Documentation/TableReferenceBasic.vue";
 
 let app = createApp(App);
 
@@ -40,6 +42,9 @@ app.provide("iconTypes", {
 })
 
 app.component("icon", Icon)
+
+app.component("TableReference", TableReference)
+app.component("TableReferenceBasic", TableReferenceBasic)
 
 app.use(router);
 app.use(plugin);

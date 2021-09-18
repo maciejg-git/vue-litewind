@@ -5,99 +5,56 @@
   <section>
     <h4>Reference</h4>
     <p></p>
-    <v-table
-      :items="reference"
-      :definition="referenceDefinition"
-      style-table="fixed"
-      style-header-cell="bordered"
-      style-cell="bordered"
-    >
-      <template #cell:type="{ value }">
-        <code class="code-word mx-1">
-          {{ value }}
-        </code>
-      </template>
-      <template #cell:default="{ value }">
-        <code class="text-sm">{{ value }}</code>
-      </template>
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
-    </v-table>
+    <table-reference :items="reference"></table-reference>
 
     <h6>Styling props</h6>
     <p></p>
-    <v-table
-      :items="referenceStyles"
-      :definition="referenceStylesDefinition"
-      style-table="fixed"
-      style-header-cell="bordered"
-      style-cell="bordered"
-    >
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
-    </v-table>
+    <table-reference-basic :items="styles"></table-reference-basic>
 
     <h6>Slots</h6>
     <p></p>
-    <v-table
-      :items="referenceSlots"
-      :definition="referenceSlotsDefinition"
-      style-table="fixed"
-      style-header-cell="bordered"
-      style-cell="bordered"
-    >
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
-    </v-table>
+    <table-reference-basic :items="slots"></table-reference-basic>
   </section>
 
   <section>
     <h4>Example</h4>
     <div class="example">
       <div class="example">
-        <v-input
-          v-model="name"
-          :state="nameValidated ? (name.length > 0 ? true : false) : null"
-          class="mr-4"
-        ></v-input>
-        <v-form-text
-          :state="nameValidated ? (name.length > 0 ? true : false) : null"
-          :inline="example.inline"
-          :visible-states="example.visibleStates"
-        >
-          <template #default="{ state }">This field cannot be empty.</template>
-        </v-form-text>
+        <div class="my-5">
+          <v-input
+            v-model="name"
+            :state="nameValidated ? (name.length > 0 ? true : false) : null"
+            class="mr-4"
+          ></v-input>
+          <v-form-text
+            :state="nameValidated ? (name.length > 0 ? true : false) : null"
+            :inline="example.inline"
+            :visible-states="example.visibleStates"
+          >
+            <template #default="{ state }">
+              This field cannot be empty.
+            </template>
+          </v-form-text>
+        </div>
 
-        <div v-for="l in languages" class="flex items-center my-2">
-          <v-checkbox
-            v-model="languagesModel"
-            :value="l"
-            :state="
-              languagesValidated
-                ? languagesModel.length >= 3
-                  ? true
-                  : false
-                : null
-            "
-            :id="'language-' + l"
-          ></v-checkbox>
-          <label :for="'language-' + l" class="ml-3">
-            {{ l }}
-          </label>
+        <div class="my-5">
+          <div v-for="l in languages" class="flex items-center my-2">
+            <v-checkbox
+              v-model="languagesModel"
+              :value="l"
+              :state="languagesState()"
+              :id="'language-' + l"
+            ></v-checkbox>
+            <label :for="'language-' + l" class="ml-3">
+              {{ l }}
+            </label>
+          </div>
         </div>
         <v-form-text
-          :state="
-            languagesValidated
-              ? languagesModel.length >= 3
-                ? true
-                : false
-              : null
-          "
+          :state="languagesState()"
             :visible-states="example.visibleStates"
         >
+          <v-icon :icon-type="languagesState()"></v-icon>
           Please select at least 3 languages.
         </v-form-text>
         <v-button @click="validate()" style-button="" class="mt-5">
@@ -158,116 +115,43 @@ export default {
     let reference = ref([
       {
         prop: "state",
-        type: "String",
+        type: ["String"],
         default: "empty string",
         description:
           "Current state. Most useful if form text uses the same state as input.",
       },
       {
         prop: "inline",
-        type: "Boolean",
+        type: ["Boolean"],
         default: "false",
         description: "Inline version of form text. Default is block.",
       },
       {
         prop: "visible-states",
-        type: "String",
+        type: ["String"],
         default: "default,invalid,valid",
         description:
           "List of coma seperated states. If state is one of those states then form text is visible",
       },
       {
         prop: "name",
-        type: "String",
+        type: ["String"],
         default: "form-text",
         description: "Name of the component",
       },
     ]);
 
-    let referenceDefinition = ref([
-      {
-        key: "prop",
-        sortable: true,
-        class: () => "whitespace-nowrap",
-      },
-      {
-        key: "type",
-        sortable: true,
-      },
-      {
-        key: "default",
-        class: () => "whitespace-nowrap",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
-    let referenceStyles = ref([
+    let styles = ref([
       {
         prop: "style-form-text",
         description: "Text element",
       },
     ]);
 
-    let referenceStylesDefinition = ref([
+    let slots = ref([
       {
-        key: "prop",
-        class: () => "w-1 whitespace-nowrap",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
-    let referenceEvents = ref([
-      {
-        event: "update:modelValue",
-        description: "Update v-model",
-      },
-    ]);
-
-    let referenceEventsDefinition = ref([
-      {
-        key: "event",
-        class: () => "w-1 whitespace-nowrap",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
-    let referenceSlots = ref([
-      {
-        slot: "default",
+        prop: "default",
         description: "Slot for text. Slot props: <code class='code-word'>state</code>",
-      },
-    ]);
-
-    let referenceSlotsDefinition = ref([
-      {
-        key: "slot",
-        class: () => "w-1 whitespace-nowrap",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
-    let referenceComponents = ref([
-      {
-        component: "-",
-        description: "This component does not provide any child components.",
-      },
-    ]);
-
-    let referenceComponentsDefinition = ref([
-      {
-        key: "component",
-        class: () => "w-1 whitespace-nowrap",
-      },
-      {
-        key: "description",
       },
     ]);
 
@@ -295,6 +179,14 @@ export default {
       nameValidated.value = true;
     };
 
+    let languagesState = () => {
+             return languagesValidated.value
+                ? languagesModel.value.length >= 3
+                  ? "valid"
+                  : "invalid"
+                : ""
+    }
+
     let reset = () => {
       languagesValidated.value = false;
       nameValidated.value = false;
@@ -308,15 +200,8 @@ export default {
 
     return {
       reference,
-      referenceDefinition,
-      referenceStyles,
-      referenceStylesDefinition,
-      referenceEvents,
-      referenceEventsDefinition,
-      referenceSlots,
-      referenceSlotsDefinition,
-      referenceComponents,
-      referenceComponentsDefinition,
+      styles,
+      slots,
       example,
       languages,
       validate,
@@ -324,6 +209,7 @@ export default {
       languagesModel,
       name,
       languagesValidated,
+      languagesState,
       nameValidated,
     };
   },

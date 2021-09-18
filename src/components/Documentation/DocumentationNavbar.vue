@@ -5,53 +5,15 @@
   <section>
     <h4>Reference</h4>
     <p></p>
-    <v-table
-      :items="reference"
-      :definition="referenceDefinition"
-      style-table="fixed"
-      style-header-cell="bordered"
-      style-cell="bordered"
-    >
-      <template #cell:type="{ value }">
-        <code class="code-word mx-1">
-          {{ value }}
-        </code>
-      </template>
-      <template #cell:default="{ value }">
-        <code class="text-sm">{{ value }}</code>
-      </template>
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
-    </v-table>
+    <table-reference :items="reference"></table-reference>
 
     <h6>Styling props</h6>
     <p></p>
-    <v-table
-      :items="referenceStyles"
-      :definition="referenceStylesDefinition"
-      style-table="fixed"
-      style-header-cell="bordered"
-      style-cell="bordered"
-    >
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
-    </v-table>
+    <table-reference :items="reference"></table-reference>
 
     <h6>Slots</h6>
     <p></p>
-    <v-table
-      :items="referenceSlots"
-      :definition="referenceSlotsDefinition"
-      style-table="fixed"
-      style-header-cell="bordered"
-      style-cell="bordered"
-    >
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
-    </v-table>
+    <table-reference-basic :items="slots"></table-reference-basic>
   </section>
 
   <section>
@@ -166,117 +128,44 @@ export default {
     let reference = ref([
       {
         prop: "fixed",
-        type: "Boolean",
+        type: ["Boolean"],
         default: "false",
         description:
           "If true navbar position is set to fixed. If both <code>fixed</code> and <code>sticky</code> are false then navbar is positioned as relative",
       },
       {
         prop: "sticky",
-        type: "Boolean",
+        type: ["Boolean"],
         default: "false",
         description:
           "If true navbar position is set to sticky. If both <code>fixed</code> and <code>sticky</code> are false then navbar is positioned as relative",
       },
       {
         prop: "bottom",
-        type: "Boolean",
+        type: ["Boolean"],
         default: "false",
         description:
           "Places navbar on the bottom. <span class='font-semibold'>Note</span>: fixed must be also set to true",
       },
       {
         prop: "name",
-        type: "String",
+        type: ["String"],
         default: "navbar",
         description: "Name of the component",
       },
     ]);
 
-    let referenceDefinition = ref([
-      {
-        key: "prop",
-        sortable: true,
-        class: () => "whitespace-nowrap",
-      },
-      {
-        key: "type",
-        sortable: true,
-      },
-      {
-        key: "default",
-        class: () => "whitespace-nowrap",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
-    let referenceStyles = ref([
+    let styles = ref([
       {
         prop: "style-navbar",
         description: "Main navbar element",
       },
     ]);
 
-    let referenceStylesDefinition = ref([
+    let slots = ref([
       {
-        key: "prop",
-        class: () => "w-1 whitespace-nowrap",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
-    let referenceEvents = ref([
-      {
-        event: "update:modelValue",
-        description: "Update v-model",
-      },
-    ]);
-
-    let referenceEventsDefinition = ref([
-      {
-        key: "event",
-        class: () => "w-1 whitespace-nowrap",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
-    let referenceSlots = ref([
-      {
-        slot: "default",
+        prop: "default",
         description: "Slot for navbar content",
-      },
-    ]);
-
-    let referenceSlotsDefinition = ref([
-      {
-        key: "slot",
-        class: () => "w-1 whitespace-nowrap",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
-    let referenceComponents = ref([
-      {
-        component: "-",
-        description: "This component does not provide any child components.",
-      },
-    ]);
-
-    let referenceComponentsDefinition = ref([
-      {
-        key: "component",
-        class: () => "w-1 whitespace-nowrap",
-      },
-      {
-        key: "description",
       },
     ]);
 
@@ -288,15 +177,8 @@ export default {
 
     return {
       reference,
-      referenceDefinition,
-      referenceStyles,
-      referenceStylesDefinition,
-      referenceEvents,
-      referenceEventsDefinition,
-      referenceSlots,
-      referenceSlotsDefinition,
-      referenceComponents,
-      referenceComponentsDefinition,
+      styles,
+      slots,
       example,
     };
   },

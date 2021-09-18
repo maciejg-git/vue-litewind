@@ -5,30 +5,12 @@
   <section>
     <h4>Reference</h4>
     <p></p>
-    <v-table
-      :items="reference"
-      :definition="referenceDefinition"
-      style-table="fixed"
-      style-header-cell="bordered"
-      style-cell="bordered"
-    >
-      <template #cell:type="{ value }">
-        <code class="code-word mx-1">
-          {{ value }}
-        </code>
-      </template>
-      <template #cell:default="{ value }">
-        <code class="text-sm">{{ value }}</code>
-      </template>
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
-    </v-table>
+    <table-reference :items="reference"></table-reference>
   </section>
 
   <section>
     <h5>Icon types</h5>
-    <p>Provide icon types via provide function in application entry file (typically main.js) or anywhere in top level component. Icon type is Object that maps icon name to any name. It can be useful in many ways for example define easy to remember aliases for frequently used icons, easier use of fonts from different vendors, define icons for various states and bind with states of other components for automatic updating icon etc.</p>
+    <p>Provide icon types via provide function in application entry file (typically main.js) or anywhere in top level component. Icon type is Object that maps icon name to any name. It can be useful in many ways for example define easy to remember aliases for frequently used icons, easier use of fonts from different vendors, define icons for various states and bind with states of components etc.</p>
     <pre>
     <code class="language-js">
 app.provide("iconTypes", {
@@ -66,102 +48,15 @@ export default {
     let reference = ref([
       {
         prop: "icon",
-        type: "String",
+        type: ["String"],
         default: "undefined",
         description: "Name of the imported and registered icon",
       },
       {
         prop: "icon-type",
-        type: "String",
+        type: ["String"],
         default: "undefined",
         description: "Icon type provided via iconTypes",
-      },
-    ]);
-
-    let referenceDefinition = ref([
-      {
-        key: "prop",
-        sortable: true,
-        class: () => "whitespace-nowrap",
-      },
-      {
-        key: "type",
-        sortable: true,
-      },
-      {
-        key: "default",
-        class: () => "whitespace-nowrap",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
-    let referenceStyles = ref([
-      {
-        prop: "style-table",
-        description: "Main table element",
-      },
-    ]);
-
-    let referenceStylesDefinition = ref([
-      {
-        key: "prop",
-        class: () => "w-1 whitespace-nowrap",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
-    let referenceEvents = ref([
-      {
-        event: "update:modelValue",
-        description: "Update v-model",
-      },
-    ]);
-
-    let referenceEventsDefinition = ref([
-      {
-        key: "event",
-        class: () => "w-1 whitespace-nowrap",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
-    let referenceSlots = ref([
-      {
-        slot: "-",
-        description: "This component does not provide any slots.",
-      },
-    ]);
-
-    let referenceSlotsDefinition = ref([
-      {
-        key: "slot",
-        class: () => "w-1 whitespace-nowrap",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
-    let referenceComponents = ref([
-      {
-        component: "-",
-        description: "This component does not provide any child components.",
-      },
-    ]);
-
-    let referenceComponentsDefinition = ref([
-      {
-        key: "component",
-        class: () => "w-1 whitespace-nowrap",
-      },
-      {
-        key: "description",
       },
     ]);
 
@@ -173,15 +68,6 @@ export default {
 
     return {
       reference,
-      referenceDefinition,
-      referenceStyles,
-      referenceStylesDefinition,
-      referenceEvents,
-      referenceEventsDefinition,
-      referenceSlots,
-      referenceSlotsDefinition,
-      referenceComponents,
-      referenceComponentsDefinition,
       example,
     };
   },

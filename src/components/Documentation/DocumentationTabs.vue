@@ -5,83 +5,23 @@
   <section>
     <h4>Reference</h4>
     <p></p>
-    <v-table
-      :items="reference"
-      :definition="referenceDefinition"
-      style-table="fixed"
-      style-header-cell="bordered"
-      style-cell="bordered"
-    >
-      <template #cell:type="{ value }">
-        <div class="space-y-1">
-          <code v-for="v in value" class="code-word">
-            {{ v }}
-          </code>
-        </div>
-      </template>
-      <template #cell:default="{ value }">
-        <code class="text-sm">{{ value }}</code>
-      </template>
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
-    </v-table>
+    <table-reference :items="reference"></table-reference>
 
     <h6>Styling props</h6>
     <p></p>
-    <v-table
-      :items="referenceStyles"
-      :definition="referenceStylesDefinition"
-      style-table="fixed"
-      style-header-cell="bordered"
-      style-cell="bordered"
-    >
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
-    </v-table>
+    <table-reference-basic :items="styles"></table-reference-basic>
 
     <h6>Events</h6>
     <p></p>
-    <v-table
-      :items="referenceEvents"
-      :definition="referenceEventsDefinition"
-      style-table="fixed"
-      style-header-cell="bordered"
-      style-cell="bordered"
-    >
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
-    </v-table>
+    <table-reference-basic :items="events"></table-reference-basic>
 
     <h6>Slots</h6>
     <p></p>
-    <v-table
-      :items="referenceSlots"
-      :definition="referenceSlotsDefinition"
-      style-table="fixed"
-      style-header-cell="bordered"
-      style-cell="bordered"
-    >
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
-    </v-table>
+    <table-reference-basic :items="slots"></table-reference-basic>
 
     <h6>Components</h6>
     <p></p>
-    <v-table
-      :items="referenceComponents"
-      :definition="referenceComponentsDefinition"
-      style-table="fixed"
-      style-header-cell="bordered"
-      style-cell="bordered"
-    >
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
-    </v-table>
+    <table-reference-basic :items="components"></table-reference-basic>
   </section>
 
   <section>
@@ -298,26 +238,7 @@ export default {
       },
     ]);
 
-    let referenceDefinition = ref([
-      {
-        key: "prop",
-        sortable: true,
-        class: () => "whitespace-nowrap",
-      },
-      {
-        key: "type",
-        sortable: true,
-      },
-      {
-        key: "default",
-        class: () => "whitespace-nowrap",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
-    let referenceStyles = ref([
+    let styles = ref([
       {
         prop: "style-tab-bar",
         description: "Tab bar style",
@@ -328,53 +249,23 @@ export default {
       },
     ]);
 
-    let referenceStylesDefinition = ref([
+    let events = ref([
       {
-        key: "prop",
-        class: () => "w-1 whitespace-nowrap",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
-    let referenceEvents = ref([
-      {
-        event: "input:changed-tab",
+        prop: "input:changed-tab",
         description: "Emitted when another tab is activated",
       },
     ]);
 
-    let referenceEventsDefinition = ref([
+    let slots = ref([
       {
-        key: "event",
-        class: () => "w-1 whitespace-nowrap",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
-    let referenceSlots = ref([
-      {
-        slot: "default",
+        prop: "default",
         description: "Slot for v-tab components",
       },
     ]);
 
-    let referenceSlotsDefinition = ref([
+    let components = ref([
       {
-        key: "slot",
-        class: () => "w-1 whitespace-nowrap",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
-    let referenceComponents = ref([
-      {
-        component: "v-tab",
+        prop: "v-tab",
         description: `Tab content component <br>
         <p class="font-semibold py-2">Props</p>
         <span class="font-semibold">name</span>: label of tab displayed on tab bar
@@ -385,16 +276,6 @@ export default {
         <br>
         <span class="font-semibold">name</span>: Slot for customizing label on tab bar. Useful for formatting or adding icons
         `,
-      },
-    ]);
-
-    let referenceComponentsDefinition = ref([
-      {
-        key: "component",
-        class: () => "w-1 whitespace-nowrap",
-      },
-      {
-        key: "description",
       },
     ]);
 
@@ -413,15 +294,10 @@ export default {
 
     return {
       reference,
-      referenceDefinition,
-      referenceStyles,
-      referenceStylesDefinition,
-      referenceEvents,
-      referenceEventsDefinition,
-      referenceSlots,
-      referenceSlotsDefinition,
-      referenceComponents,
-      referenceComponentsDefinition,
+      styles,
+      events,
+      slots,
+      components,
       example,
     };
   },

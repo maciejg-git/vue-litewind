@@ -3,7 +3,7 @@
     <div
       v-if="modelValue"
       :style="{ 'padding-right': scrollbarWidth }"
-      class="fixed inset-0 modal-z-31 overflow-y-auto"
+      class="fixed-main"
       @click.self="handleBackdropClick"
     >
       <div :class="classes.container.value">
@@ -175,6 +175,9 @@ export default {
 </script>
 
 <style scoped lang="postcss">
+.fixed-main {
+  @apply fixed inset-0 modal-z-31 overflow-y-auto;
+}
 .fixed-container {
   @apply flex relative min-h-full mx-auto py-6 px-6 md:px-0 pointer-events-none;
 }
