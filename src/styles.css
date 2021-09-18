@@ -482,6 +482,8 @@
     focus:ring-indigo-200
     focus:border-gray-400
     outline-none
+    transition
+    duration-200
 }
     .input--valid-state {
       @apply
@@ -1255,7 +1257,8 @@
       h-4
       w-4
   }
-  .b-icon--info-type {
+
+ .b-icon--info-type {
     @apply
       text-blue-500
   }
@@ -1283,3 +1286,9 @@
     @apply
       text-gray-500
   }
+
+.fa-icon {
+  @apply
+    h-5
+    w-5
+}
