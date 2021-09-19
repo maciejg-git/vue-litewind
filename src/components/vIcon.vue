@@ -8,18 +8,18 @@ import { isObject, isString } from "../tools/tools";
 
 export default {
   props: {
-    icon: { type: String, default: "" },
-    i: { type: String, default: "" },
-    name: { type: String, default: "" },
-    iconType: { type: String, default: "" },
+    icon: { type: [String, Object], default: "" },
+    i: { type: [String, Object], default: "" },
+    name: { type: [String, Object], default: "" },
+    iconType: { type: [String, Object], default: "" },
   },
   setup(props) {
     let iconTypes = inject("iconTypes", {});
 
     let icon = computed(() => {
-      if (props.icon) return props.icon + "-icon";
-      if (props.i) return props.i + "-icon";
-      if (props.name) return props.name + "-icon";
+      if (props.icon) return props.icon;
+      if (props.i) return props.i;
+      if (props.name) return props.name;
 
       let type = iconTypes[props.iconType];
       if (!type) return;
@@ -31,7 +31,7 @@ export default {
 
       if (!icon) return
 
-      return icon + "-icon";
+      return icon;
     });
 
     let classes = computed(() => {
