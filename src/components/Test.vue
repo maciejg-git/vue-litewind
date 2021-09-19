@@ -249,6 +249,10 @@
 
    <v-button style-button="secondary">button css</v-button> 
 
+   <v-button>button css fa<v-icon name="chevron-right-icon"></v-icon></v-button> 
+   <v-button>button css b<v-icon name="info-circle-icon"></v-icon></v-button> 
+   <v-button>button css mdi<v-icon name="keyboard-tab-icon"></v-icon></v-button> 
+
 <!-- <icon class="h-6 w-6"></icon> -->
 <!-- <icon icon="keyboard"></icon> -->
 <!-- <b-keyboard></b-keyboard> -->
