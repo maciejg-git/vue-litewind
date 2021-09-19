@@ -1248,8 +1248,8 @@
 
 .b-icon {
   @apply
-    h-6
-    w-6
+    h-4
+    w-4
     inline-block
 }
   .b-icon--small {
@@ -1287,8 +1287,17 @@
       text-gray-500
   }
 
+.mdi-icon {
+  @apply
+    h-4
+    w-4
+    fill-current
+}
+
 .fa-icon {
   @apply
-    h-5
-    w-5
+  ml-2
+    h-4
+    w-4
+    fill-current
 }
