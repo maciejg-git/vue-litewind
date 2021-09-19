@@ -92,8 +92,8 @@
     <div class="example">
       <example-table></example-table>
     </div>
-    <v-code :code="exampleTableCode" template></v-code>
-    <v-code :code="exampleTableCode" script></v-code>
+    <v-code :code="exampleTableCode" template language="html"></v-code>
+    <v-code :code="exampleTableCode" script language="js"></v-code>
   </section>
 </template>
 

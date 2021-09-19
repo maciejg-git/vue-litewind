@@ -16,39 +16,25 @@
     <h5>Path</h5>
     <span class="font-bold">Type</span>: <code class="code-word">Array</code>
     <p>Path is an Array of Objects where each object should have <code>label</code> property and <code>to</code> property that is used as <code>to</code> prop for router-link.</p>
-    <pre>
-      <code>
-let path = [
-  {
-    label: "Home",
-    to: "/",
-  },
-  {
-    label: "Documentation",
-    to: "/",
-  },
-  {
-    label: "Breadcrumb",
-  },
-],
-    </code>
-  </pre>
+    <v-code :code="examplePath" language="js"></v-code>
   </section>
 
   <section>
     <h4>Example</h4>
     <div class="example">
-      <example-breadcrumb></example-breadcrumb>
+      <example-breadcrumb />
     </div>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
+import vCode from "./components/vCode.vue"
 import ExampleBreadcrumb from "./examples/ExampleBreadcrumb.vue"
 
 export default {
   components: {
+    vCode,
     ExampleBreadcrumb,
   },
   setup(props) {
@@ -88,9 +74,25 @@ export default {
       },
     ]);
 
+    let examplePath = 
+`let path = [
+  {
+    label: "Home",
+    to: "/",
+  },
+  {
+    label: "Documentation",
+    to: "/",
+  },
+  {
+    label: "Breadcrumb",
+  },
+],`
+
     return {
       reference,
       styles,
+      examplePath,
     };
   },
 };
