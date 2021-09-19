@@ -13,6 +13,7 @@ import registerIcon from "./vue/registerIcon"
 // } from "./components/icons"
 import TableReference from "./components/Documentation/TableReference.vue";
 import TableReferenceBasic from "./components/Documentation/TableReferenceBasic.vue";
+import vCode from "./components/Documentation/Components/vCode.vue"
 
 let app = createApp(App);
 
@@ -47,6 +48,7 @@ app.component("icon", Icon)
 
 app.component("TableReference", TableReference)
 app.component("TableReferenceBasic", TableReferenceBasic)
+app.component("vCode", vCode)
 
 app.use(router);
 app.use(plugin);
