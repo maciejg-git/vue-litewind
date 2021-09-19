@@ -24,17 +24,17 @@
               <template v-if="h.sortable">
                 <v-icon
                   v-if="sortField != h.key"
-                  name="sort"
+                  :name="vSortIcon"
                   class="sort-icon"
                 ></v-icon>
                 <v-icon
                   v-else-if="sortField == h.key && sortAsc == 1"
-                  name="caret-up"
+                  :name="vCaretUpIcon"
                   class="sort-icon-active"
                 ></v-icon>
                 <v-icon
                   v-else-if="sortField == h.key && sortAsc == -1"
-                  name="caret-down"
+                  :name="vCaretDownIcon"
                   class="sort-icon-active"
                 ></v-icon>
               </template>
@@ -93,6 +93,10 @@
 
 <script>
 import { ref, computed, watch, nextTick } from "vue";
+import vIcon from "./vIcon.vue"
+import vSortIcon from "./icons/sort.js"
+import vCaretUpIcon from "./icons/caret-up.js"
+import vCaretDownIcon from "./icons/caret-down.js"
 import useStyles from "./composition/use-styles";
 import {
   formatCase,
@@ -129,6 +133,12 @@ export default {
     styleCell: { type: String, default: "" },
     styleSelected: { type: String, default: "" },
     styleCaption: { type: String, default: "" },
+  },
+  components: {
+    vIcon,
+    vSortIcon,
+    vCaretUpIcon,
+    vCaretDownIcon,
   },
   setup(props, { slots, emit }) {
     let { classes, states } = useStyles("table", props, {
@@ -366,6 +376,9 @@ export default {
       headersCount,
       handleRowClick,
       handleHeaderClick,
+      vSortIcon,
+      vCaretUpIcon,
+      vCaretDownIcon,
     };
   },
 };
