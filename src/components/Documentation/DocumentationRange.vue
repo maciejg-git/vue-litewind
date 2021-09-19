@@ -21,17 +21,6 @@
     <div class="example">
       <example-range></example-range>
     </div>
-    <pre>
-      <code class="language-html">
-&lt;v-range
-  v-model=&quot;example.model&quot;
-  :state=&quot;example.state&quot;
-  min=&quot;0&quot;
-  max=&quot;100&quot;
-  class=&quot;w-full&quot;
-&gt;&lt;/v-range&gt;
-      </code>
-    </pre>
   </section>
 </template>
 

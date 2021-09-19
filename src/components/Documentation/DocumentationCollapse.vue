@@ -17,54 +17,6 @@
     <div class="example">
       <example-collapse></example-collapse>
     </div>
-    <pre>
-      <code class="language-html">
-&lt;v-card class=&quot;p-1&quot;&gt;
-  &lt;v-button
-    style-button=&quot;default&quot;
-    block
-    @click=&quot;example.isVisible = !example.isVisible&quot;
-  &gt;
-    Toggle collapse
-  &lt;/v-button&gt;
-  &lt;v-collapse v-model=&quot;example.isVisible&quot;&gt;
-    &lt;div class=&quot;p-4&quot;&gt;
-      ...
-    &lt;/div&gt;
-  &lt;/v-collapse&gt;
-&lt;/v-card&gt;
-
-&lt;v-card class=&quot;p-1 mt-1&quot;&gt;
-  &lt;v-button
-    block
-    style-button=&quot;default&quot;
-    @click=&quot;example.isVisible2 = !example.isVisible2&quot;
-  &gt;
-    Toggle collapse 2
-  &lt;/v-button&gt;
-  &lt;v-collapse v-model=&quot;example.isVisible2&quot;&gt;
-    &lt;div class=&quot;p-4&quot;&gt;
-      ...
-    &lt;/div&gt;
-  &lt;/v-collapse&gt;
-&lt;/v-card&gt;
-
-&lt;v-card class=&quot;p-1 mt-1&quot;&gt;
-  &lt;v-button
-    block
-    style-button=&quot;default&quot;
-    @click=&quot;example.isVisible3 = !example.isVisible3&quot;
-  &gt;
-    Toggle collapse 3
-  &lt;/v-button&gt;
-  &lt;v-collapse v-model=&quot;example.isVisible3&quot;&gt;
-    &lt;div class=&quot;p-4&quot;&gt;
-      ...
-    &lt;/div&gt;
-  &lt;/v-collapse&gt;
-&lt;/v-card&gt;
-      </code>
-    </pre>
   </section>
 
   <section>
@@ -76,54 +28,6 @@
       </p>
       <example-collapse-accordion></example-collapse-accordion>
     </div>
-    <pre>
-      <code class="language-html">
-&lt;v-card class=&quot;p-1&quot;&gt;
-  &lt;v-button
-    style-button=&quot;default&quot;
-    block
-    @click=&quot;example.isVisible = !example.isVisible&quot;
-  &gt;
-    Toggle collapse
-  &lt;/v-button&gt;
-  &lt;v-collapse v-model=&quot;example.isVisible&quot;&gt;
-    &lt;div class=&quot;p-4&quot;&gt;
-      ...
-    &lt;/div&gt;
-  &lt;/v-collapse&gt;
-&lt;/v-card&gt;
-
-&lt;v-card class=&quot;p-1 mt-1&quot;&gt;
-  &lt;v-button
-    block
-    style-button=&quot;default&quot;
-    @click=&quot;example.isVisible2 = !example.isVisible2&quot;
-  &gt;
-    Toggle collapse 2
-  &lt;/v-button&gt;
-  &lt;v-collapse v-model=&quot;example.isVisible2&quot;&gt;
-    &lt;div class=&quot;p-4&quot;&gt;
-      ...
-    &lt;/div&gt;
-  &lt;/v-collapse&gt;
-&lt;/v-card&gt;
-
-&lt;v-card class=&quot;p-1 mt-1&quot;&gt;
-  &lt;v-button
-    block
-    style-button=&quot;default&quot;
-    @click=&quot;example.isVisible3 = !example.isVisible3&quot;
-  &gt;
-    Toggle collapse 3
-  &lt;/v-button&gt;
-  &lt;v-collapse v-model=&quot;example.isVisible3&quot;&gt;
-    &lt;div class=&quot;p-4&quot;&gt;
-      ...
-    &lt;/div&gt;
-  &lt;/v-collapse&gt;
-&lt;/v-card&gt;
-      </code>
-    </pre>
   </section>
 </template>
 

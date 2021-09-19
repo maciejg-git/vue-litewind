@@ -54,51 +54,6 @@
     <div class="example flex">
       <example-tooltip></example-tooltip>
     </div>
-    <pre>
-      <code class="language-html">
-&lt;div class=&quot;mb-10&quot;&gt;
-  &lt;v-button v-tooltip.bottom.delay100.oY5=&quot;'This is tooltip'&quot;&gt;
-    Hover me
-  &lt;/v-button&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;mb-10&quot;&gt;
-  &lt;v-button v-tooltip.top.delay100.oY5=&quot;'This is tooltip on the top'&quot;&gt;
-    Hover me (tooltip on top)
-  &lt;/v-button&gt;
-  &lt;v-button v-tooltip.right.delay100.oY5=&quot;'This is tooltip on the right'&quot;&gt;
-    Hover me (tooltip on right)
-  &lt;/v-button&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;mb-10&quot;&gt;
-  &lt;v-button v-tooltip.bottom.delay500.oY5=&quot;'This is delayed tooltip'&quot;&gt;
-    Hover me (long delay)
-  &lt;/v-button&gt;
-  &lt;v-button v-tooltip.bottom.delay0.oY5=&quot;'This tooltip apears instantaneously'&quot;&gt;
-    Hover me (no delay)
-  &lt;/v-button&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;mb-10&quot;&gt;
-  &lt;v-button v-tooltip.bottom.delay100.oY5=&quot;() =&gt; 'Dynamic content ' + (Math.random() * 100).toFixed(0)&quot;&gt;
-    Hover me (dynamic content)
-  &lt;/v-button&gt;
-  &lt;v-button
-    v-tooltip.bottom.delay100.oY5
-    data-title=&quot;This tooltip has content from data-title attribute&quot;
-  &gt;
-    Hover me (data title attribute)
-  &lt;/v-button&gt;
-&lt;/div&gt;
-
-&lt;div&gt;
-  &lt;v-button v-tooltip.bottom.delay100.oY5.nofade=&quot;'This is nofade tooltip'&quot;&gt;
-    Hover me (no animation tooltip)
-  &lt;/v-button&gt;
-&lt;/div&gt;
-      </code>
-    </pre>
   </section>
 </template>
 

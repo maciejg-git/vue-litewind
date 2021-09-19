@@ -25,24 +25,6 @@
     <div class="example">
       <example-list></example-list>
     </div>
-    <pre>
-      <code v-pre class="language-html">
-&lt;v-list width=&quot;500px&quot; :tag=&quot;example.tag&quot; :name=&quot;example.name&quot;&gt;
-  &lt;v-list-item :active=&quot;example.active1&quot;&gt;
-    &lt;div class=&quot;font-semibold&quot;&gt;
-      &#123;&#123; dataJSON[0].first_name  &#125;&#125; &#123;&#123; dataJSON[0].last_name &#125;&#125; 
-    &lt;/div&gt;
-    &lt;div class=&quot;text-gray-400&quot;&gt;
-      &#123;&#123; dataJSON[0].email &#125;&#125;
-    &lt;/div&gt;
-    &lt;div&gt;
-      &lt;input type=&quot;checkbox&quot; v-model=&quot;example.active1&quot; /&gt;
-      &lt;label for=&quot;&quot; class=&quot;ml-2&quot;&gt;toggle active&lt;/label&gt;
-    &lt;/div&gt;
-  &lt;/v-list-item&gt;
-&lt;/v-list&gt;
-      </code>
-    </pre>
   </section>
 </template>
 

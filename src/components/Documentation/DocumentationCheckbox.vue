@@ -21,18 +21,6 @@
     <div class="example">
     <example-checkbox></example-checkbox>
     </div>
-    <pre>
-      <code class="language-html">
-&lt;div class=&quot;flex items-center&quot;&gt;
-  &lt;v-checkbox
-    v-model=&quot;example.model&quot;
-    :state=&quot;example.state&quot;
-    id=&quot;example&quot;
-  &gt;&lt;/v-checkbox&gt;
-  &lt;label for=&quot;example&quot; class=&quot;ml-3&quot;&gt;Example checkbox&lt;/label&gt;
-&lt;/div&gt;
-      </code>
-    </pre>
   </section>
 
   <section>
@@ -40,66 +28,6 @@
     <div class="example">
       <example-checkbox-group></example-checkbox-group>
     </div>
-    <pre>
-      <code v-pre class="language-html">
-&lt;div v-for=&quot;l in languages&quot; class=&quot;flex items-center my-2&quot;&gt;
-  &lt;v-checkbox
-    v-model=&quot;languagesModel&quot;
-    :value=&quot;l&quot;
-    :state=&quot;
-      languagesValidated
-        ? languagesModel.length &gt;= 3
-          ? true
-          : false
-        : null
-    &quot;
-    :id=&quot;'language-' + l&quot;
-  &gt;&lt;/v-checkbox&gt;
-  &lt;label :for=&quot;'language-' + l&quot; class=&quot;ml-3&quot;&gt;
-    {{ l }}
-  &lt;/label&gt;
-&lt;/div&gt;
-
-&lt;div
-  v-if=&quot;languagesValidated &amp;&amp; languagesModel.length &lt; 3 ? true : false&quot;
-  class=&quot;text-red-500 mt-4&quot;
-&gt;
-  Please select at least 3 languages.
-&lt;/div&gt;
-
-&lt;v-button
-  @click=&quot;validate()&quot;
-  style-button=&quot;default&quot;
-  class=&quot;mt-5&quot;
-&gt;
-  Send
-&lt;/v-button&gt;
-
-&lt;div class=&quot;mt-5&quot;&gt;
-  &lt;span class=&quot;font-semibold&quot;&gt;Languages:&lt;/span&gt;
-  {{ languagesModel }}
-&lt;/div&gt;
-      </code>
-    </pre>
-    <pre>
-      <code class="language-js">
-let languages = ref([
-  "english",
-  "swedish",
-  "korean",
-  "german",
-  "icelandic",
-  "japanese",
-]);
-
-let languagesModel = ref([]);
-let languagesValidated = ref(false);
-
-let validate = () => {
-  languagesValidated.value = true;
-};
-      </code>
-    </pre>
   </section>
 </template>
 

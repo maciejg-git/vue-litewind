@@ -40,19 +40,6 @@
     <div class="example">
       <example-datepicker-model></example-datepicker-model>
     </div>
-    <pre>
-      <code>
-{{`<v-card 
-  style="width: 320px" 
-  class="p-2"
->
-  <v-date-picker 
-    v-model="date.date"
-  >
-  </v-date-picker>
-</v-card>`}}
-      </code>
-    </pre>
   </section>
   <section>
     <h4>Example</h4>
@@ -60,36 +47,6 @@
     <div class="example lg:flex">
       <example-datepicker></example-datepicker>
     </div>
-    <pre>
-      <code class="language-html">
-&lt;v-card style=&quot;width: 320px&quot; class=&quot;self-start p-2&quot;&gt;
-  &lt;v-date-picker
-    v-model=&quot;example.date&quot;
-    :range=&quot;example.range&quot;
-    :locale=&quot;example.locale&quot;
-    :monday-first-weekday=&quot;example.mondayFirstWeekday&quot;
-    :buttons=&quot;!!example.buttons&quot;
-    :primary-button-label=&quot;example.primaryButtonLabel&quot;
-    :secondary-button-label=&quot;example.secondaryButtonLabel&quot;
-    :adjacent-months=&quot;!!example.adjacentMonths&quot;
-    :range-hover-highlight=&quot;example.rangeHoverHighlight&quot;
-    :transition=&quot;example.transition&quot;
-    @update:modelValue=&quot;
-      example.events.unshift({ ev: 'update:modelValue', data: $event })
-    &quot;
-    @input:formatted=&quot;
-      example.events.unshift({ ev: 'input:formatted', data: $event })
-    &quot;
-    @state:done=&quot;
-      example.events.unshift({ ev: 'state:done', data: $event })
-    &quot;
-    @state:cancel=&quot;
-      example.events.unshift({ ev: 'state:cancel', data: $event })
-    &quot;
-  /&gt;
-&lt;/v-card&gt;
-      </code>
-    </pre>
   </section>
 
   <section>
@@ -98,30 +55,6 @@
     <div class="example md:flex">
       <example-datepicker-dropdown></example-datepicker-dropdown>
     </div>
-    <pre>
-      <code class="language-html">
-&lt;v-dropdown&gt;
-  &lt;template #activator&gt;
-    &lt;v-input
-      type=&quot;text&quot;
-      v-model=&quot;exampleDropdown.date&quot;
-      placeholder=&quot;Pick date&quot;
-    &gt;&lt;/v-input&gt;
-  &lt;/template&gt;
-  &lt;template #default=&quot;{ hide }&quot;&gt;
-    &lt;v-card style-card=&quot;shadow&quot; class=&quot;p-2&quot;&gt;
-      &lt;v-date-picker
-        v-model=&quot;exampleDropdown.date&quot;
-        width=&quot;305px&quot;
-        :buttons=&quot;exampleDropdown.buttons&quot;
-        adjacent-months
-        @state:done=&quot;hide&quot;
-      &gt;&lt;/v-date-picker&gt;
-    &lt;/v-card&gt;
-  &lt;/template&gt;
-&lt;/v-dropdown&gt;
-      </code>
-    </pre>
   </section>
 </template>
 

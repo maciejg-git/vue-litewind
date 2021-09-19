@@ -21,17 +21,6 @@
     <div class="example">
       <example-input></example-input>
     </div>
-    <pre>
-    <code class="language-html">
-&lt;v-input
-  v-model=&quot;example.model&quot;
-  :type=&quot;example.type&quot;
-  :state=&quot;example.state&quot;
-  placeholder=&quot;Input example&quot;
-&gt;
-&lt;/v-input&gt;
-    </code>
-    </pre>
   </section>
 </template>
 

@@ -17,10 +17,6 @@
     <div class="example">
       <example-chevron></example-chevron>
     </div>
-    <pre>
-      <code>
-      </code>
-    </pre>
   </section>
 </template>
 

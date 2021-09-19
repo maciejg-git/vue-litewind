@@ -17,32 +17,6 @@
     <div class="example">
       <example-spinner></example-spinner>
     </div>
-    <pre>
-      <code class="language-html">
-  &lt;v-spinner style-spinner=&quot;blue small&quot; class=&quot;mr-10&quot;&gt;&lt;/v-spinner&gt;
-  &lt;v-spinner style-spinner=&quot;green&quot; class=&quot;mr-10&quot;&gt;&lt;/v-spinner&gt;
-  &lt;v-spinner
-    style-spinner=&quot;yellow large&quot;
-    class=&quot;mr-4&quot;
-  &gt;&lt;/v-spinner&gt;
-
-  &lt;v-spinner thickness=&quot;0.07&quot; class=&quot;mr-4&quot;&gt;&lt;/v-spinner&gt;
-  &lt;v-spinner thickness=&quot;0.2&quot; style-spinner=&quot;yellow&quot; class=&quot;mr-4&quot;&gt;&lt;/v-spinner&gt;
-  &lt;v-spinner thickness=&quot;0.35&quot; style-spinner=&quot;green&quot; class=&quot;mr-4&quot;&gt;&lt;/v-spinner&gt;
-  &lt;v-spinner speed=&quot;0.6&quot; style-spinner=&quot;blue&quot; class=&quot;mr-4&quot;&gt;&lt;/v-spinner&gt;
-  &lt;v-spinner speed=&quot;1.0&quot; style-spinner=&quot;green&quot; class=&quot;mr-4&quot;&gt;&lt;/v-spinner&gt;
-  &lt;v-spinner speed=&quot;1.5&quot; style-spinner=&quot;yellow&quot; class=&quot;mr-4&quot;&gt;&lt;/v-spinner&gt;
-
-  &lt;v-button class=&quot;mr-2&quot;&gt;
-    &lt;v-spinner style-spinner=&quot;gray small&quot;&gt;&lt;/v-spinner&gt;
-    &lt;span class=&quot;ml-2&quot;&gt;Button&lt;/span&gt;
-  &lt;/v-button&gt;
-  &lt;v-button style-button=&quot;secondary&quot;&gt;
-    &lt;v-spinner style-spinner=&quot;green small&quot;&gt;&lt;/v-spinner&gt;
-    &lt;span class=&quot;ml-2&quot;&gt;Button&lt;/span&gt;
-  &lt;/v-button&gt;
-      </code>
-    </pre>
   </section>
 </template>
 

@@ -29,37 +29,6 @@
     <div class="example">
       <example-tabs></example-tabs>
     </div>
-    <pre>
-      <code class="language-html">
-&lt;v-tabs
-  :fill=&quot;example.fill&quot;
-  :center=&quot;example.center&quot;
-  :right=&quot;example.right&quot;
-  :transition=&quot;example.transition&quot;
-  :name=&quot;example.name&quot;
-  @input:changed-tab=&quot;
-    example.events.unshift({ ev: 'input:changed-tab', data: $event })
-  &quot;
-&gt;
-  &lt;v-tab name=&quot;Tab&quot; class=&quot;p-4&quot;&gt;
-    ...
-  &lt;/v-tab&gt;
-  &lt;v-tab name=&quot;Tab 2&quot; class=&quot;p-4&quot;&gt;
-    ...
-  &lt;/v-tab&gt;
-  &lt;v-tab name=&quot;Another tab&quot; class=&quot;p-4&quot;&gt;
-    ...
-  &lt;/v-tab&gt;
-  &lt;v-tab name=&quot;Another tab&quot; class=&quot;p-4&quot;&gt;
-    &lt;template #name&gt;
-      Tab with custom content
-      &lt;v-badge style-badge=&quot;secondary tiny&quot;&gt;4&lt;/v-badge&gt;
-    &lt;/template&gt;
-    ...
-  &lt;/v-tab&gt;
-&lt;/v-tabs&gt;
-      </code>
-    </pre>
   </section>
 </template>
 

@@ -21,10 +21,6 @@
     <div class="example">
       <example-form-text></example-form-text>
     </div>
-    <pre>
-      <code>
-      </code>
-    </pre>
   </section>
 </template>
 

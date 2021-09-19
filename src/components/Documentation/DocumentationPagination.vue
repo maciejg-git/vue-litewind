@@ -26,20 +26,6 @@
     <div class="example">
       <example-pagination></example-pagination>
     </div>
-    <pre>
-      <code class="language-html">
-&lt;v-pagination
-  v-model=&quot;example.page&quot;
-  :items-count=&quot;example.itemsCount&quot;
-  :items-per-page=&quot;example.itemsPerPage&quot;
-  :max-pages=&quot;example.maxPages&quot;
-  :icons=&quot;example.icons&quot;
-  @update:modelValue=&quot;
-    example.events.unshift({ ev: 'update:modelValue', data: $event })
-  &quot;
-/&gt;
-      </code>
-    </pre>
   </section>
 </template>
 

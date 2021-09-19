@@ -25,27 +25,6 @@
     <div class="example md:flex">
       <example-modal></example-modal>
     </div>
-    <pre>
-      <code class="language-html">
-&lt;v-modal
-  v-model=&quot;example.isVisibleLong&quot;
-  :title=&quot;example.title&quot;
-  :no-primary-button=&quot;!!example.noPrimaryButton&quot;
-  :no-secondary-button=&quot;!!example.noSecondaryButton&quot;
-  :primary-button-label=&quot;example.primaryButtonLabel&quot;
-  :secondary-button-label=&quot;example.secondaryButtonLabel&quot;
-  :primary-button-close=&quot;!!example.primaryButtonClose&quot;
-  :secondary-button-close=&quot;!!example.secondaryButtonClose&quot;
-  :no-close-button=&quot;!!example.noCloseButton&quot;
-  :static-backdrop=&quot;!!example.staticBackdrop&quot;
-  :position=&quot;example.position&quot;
-  :size=&quot;example.size&quot;
-  :transition=&quot;example.transition&quot;
-&gt;
-  ...
-&lt;/v-modal&gt;
-      </code>
-    </pre>
   </section>
 </template>
 

@@ -21,18 +21,6 @@
     <div class="example">
       <example-textarea></example-textarea>
     </div>
-    <pre>
-      <code class="language-html">
-&lt;v-textarea
-  v-model=&quot;example.model&quot;
-  :state=&quot;example.state&quot;
-  cols=&quot;40&quot;
-  rows=&quot;10&quot;
-  placeholder=&quot;Textarea example&quot;
-&gt;
-&lt;/v-textarea&gt;
-      </code>
-    </pre>
   </section>
 </template>
 

@@ -25,50 +25,6 @@
     <div class="example">
       <example-select></example-select>
     </div>
-    <pre>
-      <code class="language-html">
-&lt;v-select
-  v-model=&quot;example.model&quot;
-  :type=&quot;example.type&quot;
-  :state=&quot;example.state&quot;
-  :options=&quot;options&quot;
-  class=&quot;w-40&quot;
-&gt;
-  &lt;template #options-prepend&gt;
-    &lt;option value=&quot;option (prepend slot)&quot;&gt;option (prepend slot)&lt;/option&gt;
-  &lt;/template&gt;
-  &lt;option value=&quot;option (default slot)&quot;&gt;option (default slot)&lt;/option&gt;
-&lt;/v-select&gt;
-
-&lt;v-select
-  v-model=&quot;example.modelMultiple&quot;
-  :type=&quot;example.type&quot;
-  :state=&quot;example.state&quot;
-  :options=&quot;options&quot;
-  :multiple=&quot;true&quot;
-  class=&quot;w-40&quot;
-&gt;
-&lt;/v-select&gt;
-      </code>
-    </pre>
-    <pre>
-      <code class="language-js">
-let options = ref([
-  {
-    value: "option",
-    label: "option",
-  },
-  {
-    value: "option 2",
-    label: "option 2",
-  },
-  {
-    value: "option 3",
-    label: "option 3",
-  },
-])
-      </code>
-    </pre>
   </section>
 </template>
 

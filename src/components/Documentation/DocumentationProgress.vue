@@ -21,39 +21,6 @@
     <div class="example">
       <example-progress></example-progress>
     </div>
-    <pre>
-      <code v-pre class="language-html">
-&lt;v-progress
-  :value=&quot;+example.value&quot;
-  :max=&quot;+example.max&quot;
-  :label=&quot;example.label&quot;
-  :precision=&quot;+example.precision&quot;
-  :transition=&quot;example.transition&quot;
-&gt;&lt;/v-progress&gt;
-
-&lt;v-progress
-  :value=&quot;+example.value&quot;
-  :max=&quot;+example.max&quot;
-  :label=&quot;example.label&quot;
-  :precision=&quot;+example.precision&quot;
-  :transition=&quot;example.transition&quot;
-  class=&quot;mt-4&quot;
-&gt;
-  &lt;template #default=&quot;{ value, max }&quot;&gt;{{ value }} / {{ max }}&lt;/template&gt;
-&lt;/v-progress&gt;
-
-&lt;v-progress
-  :value=&quot;+example.value&quot;
-  :max=&quot;+example.max&quot;
-  :label=&quot;example.label&quot;
-  :precision=&quot;+example.precision&quot;
-  :transition=&quot;example.transition&quot;
-  style-progress=&quot;tiny&quot;
-  style-progress-bar=&quot;gradient&quot;
-  class=&quot;mt-4&quot;
-&gt;&lt;/v-progress&gt;
-      </code>
-    </pre>
   </section>
 
   <section>
@@ -61,54 +28,6 @@
     <div class="example">
       <example-progress-indeterminate></example-progress-indeterminate>
     </div>
-    <pre>
-      <code class="language-html">
-&lt;v-progress
-  style-progress=&quot;tiny&quot;
-  style-progress-bar=&quot;gradient&quot;
-  indeterminate
-  :indeterminate-width=&quot;50&quot;
-  :indeterminate-timing=&quot;example.timing&quot;
-  :indeterminate-speed=&quot;+example.speed&quot;
-  class=&quot;mt-4&quot;
-&gt;&lt;/v-progress&gt;
-
-&lt;v-card style-card=&quot;shadow&quot; width=&quot;400px&quot;&gt;
-  &lt;div class=&quot;flex justify-center p-4&quot;&gt;Checking for updates...&lt;/div&gt;
-  &lt;v-progress
-    style-progress=&quot;tiny&quot;
-    style-progress-bar=&quot;gradient&quot;
-    indeterminate
-    :indeterminate-width=&quot;50&quot;
-    :indeterminate-timing=&quot;example.timing&quot;
-    :indeterminate-speed=&quot;+example.speed&quot;
-    class=&quot;m-2&quot;
-  &gt;&lt;/v-progress&gt;
-&lt;/v-card&gt;
-
-&lt;v-card style-card=&quot;shadow&quot; width=&quot;400px&quot; class=&quot;mt-6&quot;&gt;
-  &lt;div class=&quot;flex justify-center p-4&quot;&gt;
-    &lt;span v-if=&quot;example.indeterminate&quot;&gt;
-      Checking for updates...
-    &lt;/span&gt;
-    &lt;span v-if=&quot;!example.indeterminate&quot;&gt;
-      Updating...
-    &lt;/span&gt;
-  &lt;/div&gt;
-  &lt;v-progress
-    style-progress=&quot;tiny&quot;
-    style-progress-bar=&quot;gradient&quot;
-    :value=&quot;example.indeterminateValue&quot;
-    :label=&quot;false&quot;
-    :indeterminate=&quot;example.indeterminate&quot;
-    :indeterminate-width=&quot;50&quot;
-    :indeterminate-timing=&quot;example.timing&quot;
-    :indeterminate-speed=&quot;+example.speed&quot;
-    class=&quot;m-2&quot;
-  &gt;&lt;/v-progress&gt;
-&lt;/v-card&gt;
-      </code>
-    </pre>
   </section>
 </template>
 

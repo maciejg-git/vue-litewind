@@ -33,10 +33,6 @@ app.provide("iconTypes", {
     <div class="example">
       <example-icon></example-icon>
     </div>
-    <pre>
-      <code>
-      </code>
-    </pre>
   </section>
 </template>
 

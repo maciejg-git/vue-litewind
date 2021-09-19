@@ -21,48 +21,6 @@
     <div class="example">
       <example-popover></example-popover>
     </div>
-    <pre>
-      <code class="language-html">
-&lt;v-popover
-  :placement=&quot;example.placement&quot;
-  :trigger=&quot;example.trigger&quot;
-  :no-header=&quot;example.noHeader&quot;
-  :title=&quot;example.title&quot;
-  :transition=&quot;example.transition&quot;
-  :click-outside-close=&quot;example.clickOutsideClose&quot;
-  @update:modelValue=&quot;
-    example.events.unshift({ ev: 'update:modelValue', data: $event })
-  &quot;
-&gt;
-  &lt;template #activator&gt;
-    &lt;v-button&gt;Show popover&lt;/v-button&gt;
-  &lt;/template&gt;
-  This is popover.
-&lt;/v-popover&gt;
-
-&lt;v-popover
-  :placement=&quot;example.placement&quot;
-  :trigger=&quot;example.trigger&quot;
-  :no-header=&quot;example.noHeader&quot;
-  title=&quot;Login&quot;
-  :transition=&quot;example.transition&quot;
-  :click-outside-close=&quot;example.clickOutsideClose&quot;
-  @update:modelValue=&quot;
-    example.events.unshift({ ev: 'update:modelValue', data: $event })
-  &quot;
-&gt;
-  &lt;template #activator&gt;
-    &lt;v-button&gt;Show popover&lt;/v-button&gt;
-  &lt;/template&gt;
-  &lt;div class=&quot;grid grid-cols-3 gap-2 my-2&quot;&gt;
-    &lt;label for=&quot;&quot;&gt;Login&lt;/label&gt;
-    &lt;v-input type=&quot;text&quot; class=&quot;col-span-2&quot;&gt;&lt;/v-input&gt;
-    &lt;label for=&quot;&quot;&gt;Password&lt;/label&gt;
-    &lt;v-input type=&quot;text&quot; class=&quot;col-span-2&quot;&gt;&lt;/v-input&gt;
-  &lt;/div&gt;
-&lt;/v-popover&gt;
-      </code>
-    </pre>
   </section>
 </template>
 

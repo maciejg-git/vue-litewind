@@ -21,23 +21,6 @@
     <div class="example">
       <example-alert></example-alert>
     </div>
-    <pre>
-      <code class="language-html">
-&lt;v-alert
-  v-model=&quot;example.isVisible&quot;
-  :dismissable=&quot;example.dismissable&quot;
-  :auto-dismiss-delay=&quot;example.autoDismissDelay&quot;
-  :style-alert=&quot;example.style&quot;
-  class=&quot;my-2&quot;
-&gt;
-  Alert
-&lt;/v-alert&gt;
-
-&lt;v-button :disabled=&quot;example.isVisible&quot; @click=&quot;example.isVisible = true&quot;&gt;
-  Show alert
-&lt;/v-button&gt;
-      </code>
-    </pre>
   </section>
 </template>
 
