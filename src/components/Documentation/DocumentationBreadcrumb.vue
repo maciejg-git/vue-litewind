@@ -38,7 +38,7 @@ let path = [
   <section>
     <h4>Example</h4>
     <div class="example">
-      <v-breadcrumb :path="example.path"></v-breadcrumb>
+      <example-breadcrumb></example-breadcrumb>
     </div>
     <pre>
       <code class="language-html">
@@ -68,10 +68,13 @@ let example = reactive({
 </template>
 
 <script>
-import { ref, reactive, onMounted } from "vue";
-import hljs from "highlight.js";
+import { ref } from "vue";
+import ExampleBreadcrumb from "./examples/ExampleBreadcrumb.vue"
 
 export default {
+  components: {
+    ExampleBreadcrumb,
+  },
   setup(props) {
     let reference = ref([
       {
@@ -109,31 +112,9 @@ export default {
       },
     ]);
 
-    let example = reactive({
-      path: [
-        {
-          label: "Home",
-          to: "/",
-        },
-        {
-          label: "Documentation",
-          to: "/",
-        },
-        {
-          label: "Breadcrumb",
-        },
-      ],
-      events: [],
-    });
-
-    onMounted(() => {
-      hljs.highlightAll();
-    });
-
     return {
       reference,
       styles,
-      example,
     };
   },
 };

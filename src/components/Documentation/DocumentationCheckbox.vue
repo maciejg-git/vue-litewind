@@ -19,48 +19,7 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <div class="flex items-center">
-        <v-checkbox
-          v-model="example.model"
-          :state="example.state"
-          id="example"
-        ></v-checkbox>
-        <label for="example" class="ml-3">Example checkbox</label>
-      </div>
-      <v-tabs name="tabs-material" class="mt-10">
-        <v-tab name="Props">
-          <div class="mb-2 mt-5">
-            <label for="model" class="font-semibold">v-model:</label>
-            <v-input type="text" id="model" v-model="example.model"></v-input>
-          </div>
-          <div class="mb-2">
-            <label for="state">state:</label>
-            <v-select id="state" v-model="example.state">
-              <option value="">normal (empty string)</option>
-              <option value="valid">valid</option>
-              <option value="invalid">invalid</option>
-            </v-select>
-          </div>
-        </v-tab>
-        <v-tab>
-          <template #name>
-            Events
-            <v-badge style-badge="secondary tiny" class="ml-2">
-              {{ example.events.length }}
-            </v-badge>
-          </template>
-          <div class="overflow-y-auto max-h-48 mt-5 w-full">
-            <div class="px-2 pb-2">
-              <template v-for="ev in example.events">
-                <div class="py-1">
-                  <code class="code-word">{{ ev.ev }}</code>
-                  {{ ev.data }}
-                </div>
-              </template>
-            </div>
-          </div>
-        </v-tab>
-      </v-tabs>
+    <example-checkbox></example-checkbox>
     </div>
     <pre>
       <code class="language-html">
@@ -79,50 +38,7 @@
   <section>
     <h4>Checkbox group</h4>
     <div class="example">
-      <!-- <div class="flex items-center mb-4"> -->
-      <!--   <v-checkbox -->
-      <!--     :checked="languagesModel.length == 6" -->
-      <!--     :indeterminate.prop=" -->
-      <!--       languagesModel.length > 0 &#38;&#38; languagesModel.length < languages.length -->
-      <!--     " -->
-      <!--     @change="toggleAll" -->
-      <!--   ></v-checkbox> -->
-      <!--   <label class="ml-3">all languages</label> -->
-      <!-- </div> -->
-      <div v-for="l in languages" class="flex items-center my-2">
-        <v-checkbox
-          v-model="languagesModel"
-          :value="l"
-          :state="
-            languagesValidated
-              ? languagesModel.length >= 3
-                ? true
-                : false
-              : null
-          "
-          :id="'language-' + l"
-        ></v-checkbox>
-        <label :for="'language-' + l" class="ml-3">
-          {{ l }}
-        </label>
-      </div>
-      <v-form-text
-        :state="
-          languagesValidated
-            ? languagesModel.length >= 3
-              ? true
-              : false
-            : null
-        "
-        visible-states="invalid"
-      >
-        Please select at least 3 languages.
-      </v-form-text>
-      <v-button @click="validate()" class="mt-5">Send</v-button>
-      <div class="mt-5">
-        <span class="font-semibold">Languages:</span>
-        {{ languagesModel }}
-      </div>
+      <example-checkbox-group></example-checkbox-group>
     </div>
     <pre>
       <code v-pre class="language-html">
@@ -189,9 +105,15 @@ let validate = () => {
 
 <script>
 import { ref, reactive, onMounted } from "vue";
+import ExampleCheckbox from "./examples/ExampleCheckbox.vue"
+import ExampleCheckboxGroup from "./examples/ExampleCheckboxGroup.vue"
 import hljs from "highlight.js";
 
 export default {
+  components: {
+    ExampleCheckbox,
+    ExampleCheckboxGroup,
+  },
   setup(props) {
     let reference = ref([
       {
@@ -229,32 +151,6 @@ export default {
       },
     ]);
 
-    let example = reactive({
-      model: true,
-      state: "",
-      events: [],
-    });
-
-    let languages = ref([
-      "english",
-      "swedish",
-      "korean",
-      "german",
-      "icelandic",
-      "japanese",
-    ]);
-
-    let languagesModel = ref([]);
-    let languagesValidated = ref(false);
-
-    let validate = () => {
-      languagesValidated.value = true;
-    };
-
-    let toggleAll = (ev) => {
-      languagesModel.value = ev.target.checked ? languages.value.slice() : [];
-    };
-
     onMounted(() => {
       hljs.highlightAll();
     });
@@ -263,12 +159,6 @@ export default {
       reference,
       styles,
       events,
-      example,
-      languages,
-      validate,
-      languagesModel,
-      languagesValidated,
-      toggleAll,
     };
   },
 };

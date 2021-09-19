@@ -27,13 +27,7 @@ p {
   margin-bottom: 1em;
 }
 .example {
-  margin-top: 2em;
-}
-pre {
-  @apply whitespace-normal my-5;
-}
-pre code {
-  @apply whitespace-pre;
+  @apply my-5
 }
 >>> .code-word {
   @apply text-sm bg-indigo-200 rounded p-1 mr-1;
@@ -41,7 +35,7 @@ pre code {
 >>> code {
   @apply text-sm;
 }
-label {
+>>> label {
   @apply mr-2;
 }
 >>>  a.link {

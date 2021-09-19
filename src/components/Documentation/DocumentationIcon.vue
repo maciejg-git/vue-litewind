@@ -31,14 +31,7 @@ app.provide("iconTypes", {
   <section>
     <h4>Example</h4>
     <div class="example">
-      <div>
-        <v-icon icon="star" />
-        <v-icon icon="check" />
-      </div>
-      <div>
-        <v-icon icon-type="valid" />
-        <v-icon icon-type="invalid" />
-      </div>
+      <example-icon></example-icon>
     </div>
     <pre>
       <code>
@@ -48,10 +41,13 @@ app.provide("iconTypes", {
 </template>
 
 <script>
-import { ref, reactive, onMounted } from "vue";
-import hljs from "highlight.js";
+import { ref } from "vue";
+import ExampleIcon from "./examples/ExampleIcon.vue"
 
 export default {
+  components: {
+    ExampleIcon,
+  },
   setup(props) {
     let reference = ref([
       {
@@ -68,15 +64,8 @@ export default {
       },
     ]);
 
-    let example = reactive({});
-
-    onMounted(() => {
-      hljs.highlightAll();
-    });
-
     return {
       reference,
-      example,
     };
   },
 };
