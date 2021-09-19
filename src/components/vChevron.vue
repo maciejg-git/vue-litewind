@@ -1,60 +1,61 @@
 <template>
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    :class="[
-      classes.chevron.value,
-      ['transform', rotate180 ? 'duration-300' : 'duration-150', getRotation()],
-    ]"
-    width="16"
-    height="16"
-    fill="currentColor"
-    viewBox="0 0 16 16"
-  >
-    <template v-if="triangle">
-      <path
-        v-if="initial == 'down'"
-        d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"
-      />
-      <path
-        v-if="initial == 'left'"
-        d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"
-      />
-      <path
-        v-if="initial == 'right'"
-        d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"
-      />
-      <path
-        v-if="initial == 'up'"
-        d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"
-      />
-    </template>
-    <template v-else>
-      <path
-        v-if="initial == 'down'"
-        fill-rule="evenodd"
-        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
-      />
-      <path
-        v-if="initial == 'left'"
-        fill-rule="evenodd"
-        d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
-      />
-      <path
-        v-if="initial == 'right'"
-        fill-rule="evenodd"
-        d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-      />
-      <path
-        v-if="initial == 'up'"
-        fill-rule="evenodd"
-        d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"
-      />
-    </template>
-  </svg>
+  <template v-if="!triangle">
+    <v-icon
+      v-if="initial == 'right'"
+      :name="vChevronRightIcon"
+      :class="getClass()"
+    ></v-icon>
+    <v-icon
+      v-else-if="initial == 'left'"
+      :name="vChevronLeftIcon"
+      :class="getClass()"
+    ></v-icon>
+    <v-icon
+      v-else-if="initial == 'up'"
+      :name="vChevronUpIcon"
+      :class="getClass()"
+    ></v-icon>
+    <v-icon
+      v-else-if="initial == 'down'"
+      :name="vChevronDownIcon"
+      :class="getClass()"
+    ></v-icon>
+  </template>
+  <template v-else-if="triangle">
+    <v-icon
+      v-if="initial == 'right'"
+      :name="vCaretRightFillIcon"
+      :class="getClass()"
+    ></v-icon>
+    <v-icon
+      v-else-if="initial == 'left'"
+      :name="vCaretLeftFillIcon"
+      :class="getClass()"
+    ></v-icon>
+    <v-icon
+      v-else-if="initial == 'up'"
+      :name="vCaretUpFillIcon"
+      :class="getClass()"
+    ></v-icon>
+    <v-icon
+      v-else-if="initial == 'down'"
+      :name="vCaretDownFillIcon"
+      :class="getClass()"
+    ></v-icon>
+  </template>
 </template>
 
 <script>
 import { computed } from "vue";
+import vIcon from "./vIcon.vue";
+import vChevronRightIcon from "./icons/chevron-right.js"
+import vChevronLeftIcon from "./icons/chevron-left.js"
+import vChevronUpIcon from "./icons/chevron-up.js"
+import vChevronDownIcon from "./icons/chevron-down.js"
+import vCaretRightFillIcon from "./icons/caret-right-fill.js"
+import vCaretLeftFillIcon from "./icons/caret-left-fill.js"
+import vCaretUpFillIcon from "./icons/caret-up-fill.js"
+import vCaretDownFillIcon from "./icons/caret-down-fill.js"
 import useStyles from "./composition/use-styles";
 
 export default {
@@ -67,10 +68,32 @@ export default {
     name: { type: String, default: "chevron" },
     styleChevron: { type: String, default: "" },
   },
+  components: {
+    vIcon,
+    vChevronUpIcon,
+    vChevronLeftIcon,
+    vChevronUpIcon,
+    vChevronDownIcon,
+    vCaretRightFillIcon,
+    vCaretLeftFillIcon,
+    vCaretUpFillIcon,
+    vCaretDownFillIcon,
+  },
   setup(props) {
     let { classes } = useStyles("chevron", props, {
       chevron: null,
     });
+
+    let getClass = () => {
+      return [
+        classes.chevron.value,
+        [
+          "transform",
+          props.rotate180 ? "duration-300" : "duration-150",
+          getRotation(),
+        ],
+      ];
+    };
 
     let initial = computed(() => {
       return props.initial == "down" ||
@@ -95,8 +118,17 @@ export default {
 
     return {
       classes,
+      getClass,
       initial,
       getRotation,
+      vChevronRightIcon,
+      vChevronLeftIcon,
+      vChevronUpIcon,
+      vChevronDownIcon,
+      vCaretRightFillIcon,
+      vCaretLeftFillIcon,
+      vCaretUpFillIcon,
+      vCaretDownFillIcon,
     };
   },
 };
