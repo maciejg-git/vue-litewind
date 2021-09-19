@@ -6,11 +6,11 @@ import { buttonPlugin, tablePlugin } from "./components/index.js";
 import "tailwindcss/tailwind.css";
 import "./styles.css"
 import "./styles-material.css"
-import Icon from "./components/icons/vue/Icon.vue"
-import registerIcon from "./components/icons"
-import {
-  KeyboardIcon,
-} from "./components/icons"
+import Icon from "./vue/Icon.vue"
+import registerIcon from "./vue/registerIcon"
+// import {
+//   KeyboardIcon,
+// } from "./components/icons"
 import TableReference from "./components/Documentation/TableReference.vue";
 import TableReferenceBasic from "./components/Documentation/TableReferenceBasic.vue";
 
@@ -25,7 +25,7 @@ Object.entries(modules).forEach(([path, definition]) => {
 })
 
 registerIcon(app, [
-  KeyboardIcon
+  // KeyboardIcon
 ], {
   vendorPrefix: false,
   iconSufix: true,
