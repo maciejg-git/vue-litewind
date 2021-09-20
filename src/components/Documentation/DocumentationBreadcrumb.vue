@@ -24,17 +24,18 @@
     <div class="example">
       <example-breadcrumb />
     </div>
+    <v-code :code="exampleBreadcrumbCode" template language="html"></v-code>
+    <v-code :code="exampleBreadcrumbCode" script language="js"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
-import vCode from "./components/vCode.vue"
 import ExampleBreadcrumb from "./examples/ExampleBreadcrumb.vue"
+import exampleBreadcrumbCode from "./examples/ExampleBreadcrumb.vue?raw"
 
 export default {
   components: {
-    vCode,
     ExampleBreadcrumb,
   },
   setup(props) {
@@ -93,6 +94,7 @@ export default {
       reference,
       styles,
       examplePath,
+      exampleBreadcrumbCode,
     };
   },
 };

@@ -16,6 +16,8 @@
     <h4>Example</h4>
     <div class="example">
       <example-chevron></example-chevron>
+    <v-code :code="exampleChevronCode" template language="html"></v-code>
+    <v-code :code="exampleChevronCode" script language="js"></v-code>
     </div>
   </section>
 </template>
@@ -23,6 +25,7 @@
 <script>
 import { ref } from "vue";
 import ExampleChevron from "./examples/ExampleChevron.vue"
+import exampleChevronCode from "./examples/ExampleChevron.vue?raw"
 
 export default {
   components: {
@@ -79,6 +82,7 @@ export default {
     return {
       reference,
       styles,
+      exampleChevronCode,
     };
   },
 };

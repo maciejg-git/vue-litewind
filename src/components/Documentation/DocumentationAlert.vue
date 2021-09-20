@@ -21,12 +21,15 @@
     <div class="example">
       <example-alert></example-alert>
     </div>
+    <v-code :code="exampleAlertCode" template language="html"></v-code>
+    <v-code :code="exampleAlertCode" script language="js"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
 import ExampleAlert from "./examples/ExampleAlert.vue"
+import exampleAlertCode from "./examples/ExampleAlert.vue?raw"
 
 export default {
   components: {
@@ -73,6 +76,7 @@ export default {
       reference,
       styles,
       slots,
+      exampleAlertCode,
     };
   },
 };

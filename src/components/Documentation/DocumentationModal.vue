@@ -25,12 +25,15 @@
     <div class="example md:flex">
       <example-modal></example-modal>
     </div>
+    <v-code :code="exampleModalCode" template language="html"></v-code>
+    <v-code :code="exampleModalCode" script language="js"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
 import ExampleModal from "./examples/ExampleModal.vue"
+import exampleModalCode from "./examples/ExampleModal.vue?raw"
 
 export default {
   components: {
@@ -192,6 +195,7 @@ export default {
       styles,
       events,
       slots,
+      exampleModalCode,
     };
   },
 };

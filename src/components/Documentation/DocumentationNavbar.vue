@@ -21,12 +21,14 @@
     <div class="example relative">
       <example-navbar></example-navbar>
     </div>
+    <v-code :code="exampleNavbarCode" template language="html"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
 import ExampleNavbar from "./examples/ExampleNavbar.vue"
+import exampleNavbarCode from "./examples/ExampleNavbar.vue?raw"
 
 export default {
   components: {
@@ -81,6 +83,7 @@ export default {
       reference,
       styles,
       slots,
+      exampleNavbarCode,
     };
   },
 };

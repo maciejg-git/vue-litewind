@@ -21,12 +21,14 @@
     <div class="example">
       <example-card></example-card>
     </div>
+    <v-code :code="exampleCardCode" template language="html"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
 import ExampleCard from "./examples/ExampleCard.vue"
+import exampleCardCode from "./examples/ExampleCard.vue?raw"
 
 export default {
   components: {
@@ -66,6 +68,7 @@ export default {
       reference,
       styles,
       slots,
+      exampleCardCode,
     };
   },
 };

@@ -25,12 +25,15 @@
     <div class="example">
       <example-select></example-select>
     </div>
+    <v-code :code="exampleSelectCode" template language="html"></v-code>
+    <v-code :code="exampleSelectCode" script language="js"></v-code>
   </section>
 </template>
 
 <script>
 import { ref, reactive, onMounted } from "vue";
 import ExampleSelect from "./examples/ExampleSelect.vue"
+import exampleSelectCode from "./examples/ExampleSelect.vue?raw"
 
 export default {
   components: {
@@ -96,6 +99,7 @@ export default {
       styles,
       events,
       slots,
+      exampleSelectCode,
     };
   },
 };

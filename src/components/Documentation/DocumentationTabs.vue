@@ -29,12 +29,15 @@
     <div class="example">
       <example-tabs></example-tabs>
     </div>
+    <v-code :code="exampleTabsCode" template language="html"></v-code>
+    <v-code :code="exampleTabsCode" script language="js"></v-code>
   </section>
 </template>
 
 <script>
 import { ref, reactive } from "vue";
 import ExampleTabs from "./examples/ExampleTabs.vue"
+import exampleTabsCode from "./examples/ExampleTabs.vue?raw"
 
 export default {
   components: {
@@ -122,6 +125,7 @@ export default {
       events,
       slots,
       components,
+      exampleTabsCode,
     };
   },
 };

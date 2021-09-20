@@ -40,6 +40,8 @@
     <div class="example">
       <example-datepicker-model></example-datepicker-model>
     </div>
+    <v-code :code="exampleDatepickerModelCode" template language="html"></v-code>
+    <v-code :code="exampleDatepickerModelCode" script language="js"></v-code>
   </section>
   <section>
     <h4>Example</h4>
@@ -47,6 +49,8 @@
     <div class="example lg:flex">
       <example-datepicker></example-datepicker>
     </div>
+    <v-code :code="exampleDatepickerCode" template language="html"></v-code>
+    <v-code :code="exampleDatepickerCode" script language="js"></v-code>
   </section>
 
   <section>
@@ -55,6 +59,8 @@
     <div class="example md:flex">
       <example-datepicker-dropdown></example-datepicker-dropdown>
     </div>
+    <v-code :code="exampleDatepickerDropdownCode" template language="html"></v-code>
+    <v-code :code="exampleDatepickerDropdownCode" script language="js"></v-code>
   </section>
 </template>
 
@@ -63,6 +69,9 @@ import { ref, reactive } from "vue";
 import ExampleDatepicker from "./examples/ExampleDatepicker.vue"
 import ExampleDatepickerModel from "./examples/ExampleDatepickerModel.vue"
 import ExampleDatepickerDropdown from "./examples/ExampleDatepickerDropdown.vue"
+import exampleDatepickerCode from "./examples/ExampleDatepicker.vue?raw"
+import exampleDatepickerModelCode from "./examples/ExampleDatepickerModel.vue?raw"
+import exampleDatepickerDropdownCode from "./examples/ExampleDatepickerDropdown.vue?raw"
 
 export default {
   components: {
@@ -223,6 +232,9 @@ export default {
       reference,
       styles,
       events,
+      exampleDatepickerCode,
+      exampleDatepickerModelCode,
+      exampleDatepickerDropdownCode,
     };
   },
 };

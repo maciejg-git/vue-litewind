@@ -17,12 +17,14 @@
     <div class="example">
       <example-spinner></example-spinner>
     </div>
+    <v-code :code="exampleSpinnerCode" template language="html"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
 import ExampleSpinner from "./examples/ExampleSpinner.vue"
+import exampleSpinnerCode from "./examples/ExampleSpinner.vue?raw"
 
 export default {
   components: {
@@ -76,6 +78,7 @@ export default {
       styles,
       events,
       slots,
+      exampleSpinnerCode,
     };
   },
 };

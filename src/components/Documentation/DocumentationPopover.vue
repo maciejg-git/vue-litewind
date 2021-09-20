@@ -21,12 +21,15 @@
     <div class="example">
       <example-popover></example-popover>
     </div>
+    <v-code :code="examplePopoverCode" template language="html"></v-code>
+    <v-code :code="examplePopoverCode" script language="js"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
 import ExamplePopover from "./examples/ExamplePopover.vue"
+import examplePopoverCode from "./examples/ExamplePopover.vue?raw"
 
 export default {
   components: {
@@ -112,6 +115,7 @@ export default {
       reference,
       styles,
       slots,
+      examplePopoverCode,
     };
   },
 };

@@ -25,12 +25,15 @@
     <div class="example">
       <example-sidepanel></example-sidepanel>
     </div>
+    <v-code :code="exampleSidepanelCode" template language="html"></v-code>
+    <v-code :code="exampleSidepanelCode" script language="js"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
 import ExampleSidepanel from "./examples/ExampleSidepanel.vue"
+import exampleSidepanelCode from "./examples/ExampleSidepanel.vue?raw"
 
 export default {
   components: {
@@ -107,6 +110,7 @@ export default {
       styles,
       events,
       slots,
+      exampleSidepanelCode,
     };
   },
 };

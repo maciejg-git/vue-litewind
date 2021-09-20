@@ -21,12 +21,14 @@
     <div class="example">
       <example-button></example-button>
     </div>
+    <v-code :code="exampleButtonCode" template language="html"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
 import ExampleButton from "./examples/ExampleButton.vue"
+import exampleButtonCode from "./examples/ExampleButton.vue?raw"
 
 export default {
   components: {
@@ -78,6 +80,7 @@ export default {
       reference,
       styles,
       slots,
+      exampleButtonCode,
     };
   },
 };

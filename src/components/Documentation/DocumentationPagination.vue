@@ -26,6 +26,8 @@
     <div class="example">
       <example-pagination></example-pagination>
     </div>
+    <v-code :code="examplePaginationCode" template language="html"></v-code>
+    <v-code :code="examplePaginationCode" script language="js"></v-code>
   </section>
 </template>
 
@@ -116,6 +118,7 @@ export default {
       reference,
       styles,
       events,
+      examplePaginationCode,
     };
   },
 };

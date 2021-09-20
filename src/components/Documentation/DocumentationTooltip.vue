@@ -54,12 +54,14 @@
     <div class="example flex">
       <example-tooltip></example-tooltip>
     </div>
+    <v-code :code="exampleTooltipCode" template language="html"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
 import ExampleTooltip from "./examples/ExampleTooltip.vue"
+import exampleTooltipCode from "./examples/ExampleTooltip.vue?raw"
 
 export default {
   components: {
@@ -137,6 +139,7 @@ export default {
       referenceDefinition,
       referenceValue,
       referenceValueDefinition,
+      exampleTooltipCode,
     };
   },
 };

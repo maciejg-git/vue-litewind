@@ -21,6 +21,8 @@
     <div class="example">
       <example-radio></example-radio>
     </div>
+    <v-code :code="exampleRadioCode" template language="html"></v-code>
+    <v-code :code="exampleRadioCode" script language="js"></v-code>
   </section>
 
   <section>
@@ -28,6 +30,8 @@
     <div class="example">
       <example-radio-group></example-radio-group>
     </div>
+    <v-code :code="exampleRadioGroupCode" template language="html"></v-code>
+    <v-code :code="exampleRadioGroupCode" script language="js"></v-code>
   </section>
 </template>
 
@@ -35,6 +39,8 @@
 import { ref, reactive, onMounted } from "vue";
 import ExampleRadio from "./examples/ExampleRadio.vue"
 import ExampleRadioGroup from "./examples/ExampleRadioGroup.vue"
+import exampleRadioCode from "./examples/ExampleRadio.vue?raw"
+import exampleRadioGroupCode from "./examples/ExampleRadioGroup.vue?raw"
 
 export default {
   components: {
@@ -82,6 +88,8 @@ export default {
       reference,
       styles,
       events,
+      exampleRadioCode,
+      exampleRadioGroupCode,
     };
   },
 };

@@ -25,12 +25,15 @@
     <div class="example">
       <example-list></example-list>
     </div>
+    <v-code :code="exampleListCode" template language="html"></v-code>
+    <v-code :code="exampleListCode" script language="js"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
 import ExampleList from "./examples/ExampleList.vue"
+import exampleListCode from "./examples/ExampleList.vue?raw"
 
 export default {
   components: {
@@ -88,6 +91,7 @@ export default {
       styles,
       slots,
       components,
+      exampleListCode,
     };
   },
 };

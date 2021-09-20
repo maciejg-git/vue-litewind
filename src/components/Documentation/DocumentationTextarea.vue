@@ -21,12 +21,15 @@
     <div class="example">
       <example-textarea></example-textarea>
     </div>
+    <v-code :code="exampleTextareaCode" template language="html"></v-code>
+    <v-code :code="exampleTextareaCode" script language="js"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
 import ExampleTextarea from "./examples/ExampleTextarea.vue"
+import exampleTextareaCode from "./examples/ExampleTextarea.vue?raw"
 
 export default {
   components: {
@@ -72,6 +75,7 @@ export default {
       reference,
       styles,
       events,
+      exampleTextareaCode,
     };
   },
 };

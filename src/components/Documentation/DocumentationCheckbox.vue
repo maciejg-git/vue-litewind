@@ -19,22 +19,32 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-    <example-checkbox></example-checkbox>
+      <example-checkbox></example-checkbox>
     </div>
+    <v-code :code="exampleCheckboxCode" template language="html"></v-code>
+    <v-code :code="exampleCheckboxCode" script language="js"></v-code>
   </section>
 
   <section>
     <h4>Checkbox group</h4>
     <div class="example">
       <example-checkbox-group></example-checkbox-group>
+      <v-code
+        :code="exampleCheckboxGroupCode"
+        template
+        language="html"
+      ></v-code>
+      <v-code :code="exampleCheckboxGroupCode" script language="js"></v-code>
     </div>
   </section>
 </template>
 
 <script>
 import { ref, reactive, onMounted } from "vue";
-import ExampleCheckbox from "./examples/ExampleCheckbox.vue"
-import ExampleCheckboxGroup from "./examples/ExampleCheckboxGroup.vue"
+import ExampleCheckbox from "./examples/ExampleCheckbox.vue";
+import ExampleCheckboxGroup from "./examples/ExampleCheckboxGroup.vue";
+import exampleCheckboxCode from "./examples/ExampleCheckbox.vue?raw";
+import exampleCheckboxGroupCode from "./examples/ExampleCheckboxGroup.vue?raw";
 import hljs from "highlight.js";
 
 export default {
@@ -87,6 +97,8 @@ export default {
       reference,
       styles,
       events,
+      exampleCheckboxCode,
+      exampleCheckboxGroupCode,
     };
   },
 };

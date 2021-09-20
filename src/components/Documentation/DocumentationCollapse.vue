@@ -17,6 +17,8 @@
     <div class="example">
       <example-collapse></example-collapse>
     </div>
+    <v-code :code="exampleCollapseCode" template language="html"></v-code>
+    <v-code :code="exampleCollapseCode" script language="js"></v-code>
   </section>
 
   <section>
@@ -28,6 +30,8 @@
       </p>
       <example-collapse-accordion></example-collapse-accordion>
     </div>
+    <v-code :code="exampleCollapseAccordionCode" template language="html"></v-code>
+    <v-code :code="exampleCollapseAccordionCode" script language="js"></v-code>
   </section>
 </template>
 
@@ -35,6 +39,8 @@
 import { ref, reactive, onMounted } from "vue";
 import ExampleCollapse from "./examples/ExampleCollapse.vue"
 import ExampleCollapseAccordion from "./examples/ExampleCollapseAccordion.vue"
+import exampleCollapseCode from "./examples/ExampleCollapse.vue?raw"
+import exampleCollapseAccordionCode from "./examples/ExampleCollapseAccordion.vue?raw"
 
 export default {
   components: {
@@ -62,6 +68,8 @@ export default {
     return {
       reference,
       slots,
+      exampleCollapseCode,
+      exampleCollapseAccordionCode,
     };
   },
 };

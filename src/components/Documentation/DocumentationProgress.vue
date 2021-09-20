@@ -21,6 +21,8 @@
     <div class="example">
       <example-progress></example-progress>
     </div>
+    <v-code :code="exampleProgressCode" template language="html"></v-code>
+    <v-code :code="exampleProgressCode" script language="js"></v-code>
   </section>
 
   <section>
@@ -28,6 +30,8 @@
     <div class="example">
       <example-progress-indeterminate></example-progress-indeterminate>
     </div>
+    <v-code :code="exampleProgressIndeterminateCode" template language="html"></v-code>
+    <v-code :code="exampleProgressIndeterminateCode" script language="js"></v-code>
   </section>
 </template>
 
@@ -35,6 +39,8 @@
 import { ref, reactive, onMounted } from "vue";
 import ExampleProgress from "./examples/ExampleProgress.vue"
 import ExampleProgressIndeterminate from "./examples/ExampleProgressIndeterminate.vue"
+import exampleProgressCode from "./examples/ExampleProgress.vue?raw"
+import exampleProgressIndeterminateCode from "./examples/ExampleProgressIndeterminate.vue?raw"
 
 export default {
   components: {
@@ -135,6 +141,8 @@ export default {
       reference,
       styles,
       slots,
+      exampleProgressCode,
+      exampleProgressIndeterminateCode,
     };
   },
 };

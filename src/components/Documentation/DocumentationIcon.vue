@@ -33,12 +33,14 @@ app.provide("iconTypes", {
     <div class="example">
       <example-icon></example-icon>
     </div>
+    <v-code :code="exampleIconCode" template language="html"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
 import ExampleIcon from "./examples/ExampleIcon.vue"
+import exampleIconCode from "./examples/ExampleIcon.vue?raw"
 
 export default {
   components: {
@@ -62,6 +64,7 @@ export default {
 
     return {
       reference,
+      exampleIconCode,
     };
   },
 };

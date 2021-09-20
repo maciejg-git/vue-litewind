@@ -29,12 +29,15 @@
     <div class="example">
       <example-dropdown></example-dropdown>
     </div>
+    <v-code :code="exampleDropdownCode" template language="html"></v-code>
+    <v-code :code="exampleDropdownCode" script language="js"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
 import ExampleDropdown from "./examples/ExampleDropdown.vue"
+import exampleDropdownCode from "./examples/ExampleDropdown.vue?raw"
 
 export default {
   components: {
@@ -139,6 +142,7 @@ export default {
       events,
       slots,
       components,
+      exampleDropdownCode,
     };
   },
 };

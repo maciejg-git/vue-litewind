@@ -21,12 +21,15 @@
     <div class="example">
       <example-range></example-range>
     </div>
+    <v-code :code="exampleRangeCode" template language="html"></v-code>
+    <v-code :code="exampleRangeCode" script language="js"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
 import ExampleRange from "./examples/ExampleRange.vue"
+import exampleRangeCode from "./examples/ExampleRange.vue?raw"
 
 export default {
   components: {
@@ -73,6 +76,7 @@ export default {
       reference,
       styles,
       events,
+      exampleRangeCode,
     };
   },
 };

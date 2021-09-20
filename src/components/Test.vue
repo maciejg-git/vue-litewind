@@ -268,6 +268,16 @@
 
 <v-icon icon-type="info"></v-icon>
 
+<!-- <pencil></pencil> -->
+<alt-icon></alt-icon>
+<align-top-icon></align-top-icon>
+
+<ad-icon></ad-icon>
+<adjust-icon></adjust-icon>
+
+<abjad-arabic-icon></abjad-arabic-icon>
+<abugida-devanagari-icon></abugida-devanagari-icon>
+
 <div class="relative h-40 w-40">
   rel
 <div class="absolute top-5 left-5">

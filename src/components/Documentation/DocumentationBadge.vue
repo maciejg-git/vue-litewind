@@ -21,12 +21,14 @@
     <div class="example">
       <example-badge></example-badge>
     </div>
+    <v-code :code="exampleBadgeCode" template language="html"></v-code>
   </section>
 </template>
 
 <script>
 import { ref, reactive } from "vue";
 import ExampleBadge from "./examples/ExampleBadge.vue"
+import exampleBadgeCode from "./examples/ExampleBadge.vue?raw"
 
 export default {
   components: {
@@ -67,6 +69,7 @@ export default {
       reference,
       styles,
       slots,
+      exampleBadgeCode,
     };
   },
 };

@@ -21,12 +21,15 @@
     <div class="example">
       <example-form-text></example-form-text>
     </div>
+    <v-code :code="exampleFormTextCode" template language="html"></v-code>
+    <v-code :code="exampleFormTextCode" script language="js"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
 import ExampleFormText from "./examples/ExampleFormText.vue"
+import exampleFormTextCode from "./examples/ExampleFormText.vue?raw"
 
 export default {
   components: {
@@ -81,6 +84,7 @@ export default {
       reference,
       styles,
       slots,
+      exampleFormTextCode,
     };
   },
 };

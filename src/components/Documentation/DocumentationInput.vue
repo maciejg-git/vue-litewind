@@ -21,12 +21,15 @@
     <div class="example">
       <example-input></example-input>
     </div>
+    <v-code :code="exampleInputCode" template language="html"></v-code>
+    <v-code :code="exampleInputCode" script language="js"></v-code>
   </section>
 </template>
 
 <script>
-import { ref, reactive, onMounted } from "vue";
+import { ref } from "vue";
 import ExampleInput from "./examples/ExampleInput.vue"
+import exampleInputCode from "./examples/ExampleInput.vue?raw"
 
 export default {
   components: {
@@ -79,6 +82,7 @@ export default {
       reference,
       styles,
       events,
+      exampleInputCode,
     };
   },
 };
