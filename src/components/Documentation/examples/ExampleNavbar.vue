@@ -1,0 +1,58 @@
+<template>
+  <v-card style="height: 600px">
+    <v-navbar class="py-2 px-4">
+      <div class="flex items-center">
+        <span class="font-bold text-lg">Brand</span>
+        <ul class="flex flex-row gap-x-7 ml-7">
+          <li>Home</li>
+          <li>About</li>
+          <li>
+            <v-dropdown trigger="hover" :offset-y="10" name="dropdown-flat">
+              <template #activator>
+                <v-button name="button-link">Dropdown</v-button>
+              </template>
+              <v-card width="420px" name="card-flat">
+                <v-dropdown-menu-item tag="button">
+                  <header class="font-semibold">Get started</header>
+                  <span class="text-sm">
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry. Lorem Ipsum has been the industry's
+                    standard dummy text ever since the 1500s, when an unknown
+                    printer took a galley of type and scrambled it to make a
+                    type specimen book
+                  </span>
+                </v-dropdown-menu-item>
+                <v-dropdown-menu-item tag="button">
+                  <header class="font-semibold">Documenation</header>
+                  <span class="text-sm">
+                    It is a long established fact that a reader will be
+                    distracted by the readable content of a page when looking at
+                    its layout
+                  </span>
+                </v-dropdown-menu-item>
+                <v-dropdown-menu-item tag="button">
+                  <header class="font-semibold">Team</header>
+                  <span class="text-sm">
+                    Contrary to popular belief, Lorem Ipsum is not simply random
+                    text. It has roots in a piece of classical Latin literature
+                    from 45 BC, making it over 2000 years old
+                  </span>
+                </v-dropdown-menu-item>
+                <v-dropdown-menu-item tag="button">
+                  <header class="font-semibold">About</header>
+                  <span class="text-sm">
+                    It is a long established fact that a reader will be
+                    distracted by the readable content of a page when looking at
+                    its layout
+                  </span>
+                </v-dropdown-menu-item>
+              </v-card>
+            </v-dropdown>
+          </li>
+        </ul>
+        <v-input class="ml-auto mr-4"></v-input>
+        <v-button>Search</v-button>
+      </div>
+    </v-navbar>
+  </v-card>
+</template>
