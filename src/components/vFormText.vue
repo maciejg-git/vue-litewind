@@ -7,7 +7,10 @@
         states.formText[state] && states.formText[state].value,
       ]"
     >
-      <slot name="default" :state="state"></slot>
+      <slot name="default" :state="state">
+        <slot name="prepend-message" :state="state"></slot>
+        {{ message }}
+      </slot>
     </div>
   </transition>
 </template>
@@ -21,6 +24,7 @@ export default {
     state: { type: [String, Boolean], default: "" },
     inline: { type: Boolean, default: false },
     visibleStates: { type: String, default: "default,valid,invalid" },
+    messages: { type: Object, default: {} },
     name: { type: String, default: "form-text" },
     styleFormText: { type: [String, Array], default: "" },
   },
@@ -50,11 +54,17 @@ export default {
         .includes(state.value === "" ? "default" : state.value);
     });
 
+    let message = computed(() => {
+      let s = props.state || "default"
+      return props.messages[s] || ""
+    })
+
     return {
       classes,
       states,
       state,
       visible,
+      message,
     };
   },
 };
