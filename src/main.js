@@ -14,7 +14,7 @@ import { registerIcon } from "./vue"
 // import {PencilIcon} from "./index.js"
 import TableReference from "./components/Documentation/TableReference.vue";
 import TableReferenceBasic from "./components/Documentation/TableReferenceBasic.vue";
-import vCode from "./components/Documentation/Components/vCode.vue"
+import vCode from "./components/Documentation/components/vCode.vue"
 
 let app = createApp(App);
 
@@ -41,6 +41,12 @@ Object.entries(modules3).forEach(([path, definition]) => {
   let icon = definition.default.name + "Icon"
   app.component(icon, definition.default)
 })
+const icons = import.meta.globEager('./assets/icons/*.js')
+
+Object.entries(icons).forEach(([path, definition]) => {
+  let icon = definition.default.name + "Icon"
+  app.component(icon, definition.default)
+})
 
 registerIcon(app, [
   // KeyboardIcon
@@ -50,15 +56,15 @@ registerIcon(app, [
 })
 
 app.provide("iconTypes", {
-  valid: "check",
-  invalid: "exclamation-triangle",
-  success: "check-lg",
-  info: "info-circle",
-  danger: "exclamation-octagon-fill",
-  warn: "exclamation-triangle",
-  light: "info-circle",
-  menu: "three-dots",
-  question: "question-circle",
+  valid: "check-icon",
+  invalid: "exclamation-triangle-icon",
+  success: "check-lg-icon",
+  info: "info-circle-icon",
+  danger: "exclamation-octagon-fill-icon",
+  warn: "exclamation-triangle-icon",
+  light: "info-circle-icon",
+  menu: "three-dots-icon",
+  question: "question-circle-icon",
 })
 
 app.component("icon", Icon)
