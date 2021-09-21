@@ -6,6 +6,7 @@
     max="100"
     class="w-full"
   ></v-range>
+  <!-- CUT START -->
   <v-tabs name="tabs-material" class="mt-5">
     <v-tab name="Props">
       <div class="mb-2 mt-5">
@@ -40,6 +41,7 @@
       </div>
     </v-tab>
   </v-tabs>
+  <!-- CUT END -->
 </template>
 
 <script>

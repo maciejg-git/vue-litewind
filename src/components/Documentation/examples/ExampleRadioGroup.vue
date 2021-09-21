@@ -10,15 +10,18 @@
       {{ l }}
     </label>
   </div>
+
   <v-form-text
     :state="languagesValidated ? (languagesModel ? true : false) : null"
     visible-states="invalid"
   >
     Please select the language.
   </v-form-text>
+
   <v-button @click="validate()" style-button="default" class="mt-5">
     Send
   </v-button>
+
   <div class="mt-5">
     <span class="font-semibold">Language:</span>
     {{ languagesModel }}
@@ -26,7 +29,7 @@
 </template>
 
 <script>
-import { ref, reactive } from "vue";
+import { ref } from "vue";
 
 export default {
   setup() {

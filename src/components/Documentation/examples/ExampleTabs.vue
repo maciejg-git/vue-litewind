@@ -76,6 +76,7 @@
       Rackham.
     </v-tab>
   </v-tabs>
+  <!-- CUT START -->
   <div class="mt-5">
     <label for="style">Tabs style:</label>
     <v-select id="style" v-model="example.name">
@@ -133,6 +134,7 @@
       </div>
     </v-tab>
   </v-tabs>
+  <!-- CUT END -->
 </template>
 
 <script>

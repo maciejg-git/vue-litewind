@@ -22,6 +22,7 @@
       <example-card></example-card>
     </div>
     <v-code :code="exampleCardCode" template language="html"></v-code>
+    <v-code :code="exampleCardCode" script language="html"></v-code>
   </section>
 </template>
 

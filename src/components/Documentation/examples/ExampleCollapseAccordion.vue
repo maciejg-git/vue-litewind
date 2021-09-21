@@ -17,6 +17,7 @@
       </v-button>
       <v-collapse v-model="accordion.isVisible">
         <div class="p-4">
+          <!-- CUT START -->
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever
           since the 1500s, when an unknown printer took a galley of type and
@@ -26,6 +27,7 @@
           the release of Letraset sheets containing Lorem Ipsum passages, and
           more recently with desktop publishing software like Aldus PageMaker
           including versions of Lorem Ipsum.
+          <!-- CUT END -->
         </div>
       </v-collapse>
     </v-card>
@@ -46,6 +48,7 @@
       </v-button>
       <v-collapse v-model="accordion.isVisible2">
         <div class="p-4">
+          <!-- CUT START -->
           It is a long established fact that a reader will be distracted by the
           readable content of a page when looking at its layout. The point of
           using Lorem Ipsum is that it has a more-or-less normal distribution of
@@ -55,6 +58,7 @@
           search for 'lorem ipsum' will uncover many web sites still in their
           infancy. Various versions have evolved over the years, sometimes by
           accident, sometimes on purpose (injected humour and the like).
+          <!-- CUT END -->
         </div>
       </v-collapse>
     </v-card>
@@ -75,6 +79,7 @@
       </v-button>
       <v-collapse v-model="accordion.isVisible3">
         <div class="p-4">
+          <!-- CUT START -->
           Contrary to popular belief, Lorem Ipsum is not simply random text. It
           has roots in a piece of classical Latin literature from 45 BC, making
           it over 2000 years old. Richard McClintock, a Latin professor at
@@ -94,6 +99,7 @@
           Finibus Bonorum et Malorum" by Cicero are also reproduced in their
           exact original form, accompanied by English versions from the 1914
           translation by H. Rackham.
+          <!-- CUT END -->
         </div>
       </v-collapse>
     </v-card>
@@ -118,6 +124,7 @@
       </v-button>
       <v-collapse v-model="accordion2.isVisible">
         <div class="p-4">
+          <!-- CUT START -->
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever
           since the 1500s, when an unknown printer took a galley of type and
@@ -127,6 +134,7 @@
           the release of Letraset sheets containing Lorem Ipsum passages, and
           more recently with desktop publishing software like Aldus PageMaker
           including versions of Lorem Ipsum.
+          <!-- CUT END -->
         </div>
       </v-collapse>
     </v-card>
@@ -148,6 +156,7 @@
       </v-button>
       <v-collapse v-model="accordion2.isVisible2">
         <div class="p-4">
+          <!-- CUT START -->
           It is a long established fact that a reader will be distracted by the
           readable content of a page when looking at its layout. The point of
           using Lorem Ipsum is that it has a more-or-less normal distribution of
@@ -157,6 +166,7 @@
           search for 'lorem ipsum' will uncover many web sites still in their
           infancy. Various versions have evolved over the years, sometimes by
           accident, sometimes on purpose (injected humour and the like).
+          <!-- CUT END -->
         </div>
       </v-collapse>
     </v-card>
@@ -177,6 +187,7 @@
       </v-button>
       <v-collapse v-model="accordion2.isVisible3">
         <div class="p-4">
+          <!-- CUT START -->
           Contrary to popular belief, Lorem Ipsum is not simply random text. It
           has roots in a piece of classical Latin literature from 45 BC, making
           it over 2000 years old. Richard McClintock, a Latin professor at
@@ -196,6 +207,7 @@
           Finibus Bonorum et Malorum" by Cicero are also reproduced in their
           exact original form, accompanied by English versions from the 1914
           translation by H. Rackham.
+          <!-- CUT END -->
         </div>
       </v-collapse>
     </v-card>

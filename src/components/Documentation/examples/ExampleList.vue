@@ -12,6 +12,7 @@
         <label for="" class="ml-2">toggle active</label>
       </div>
     </v-list-item>
+
     <v-list-item :active="example.active2">
       <div class="font-semibold">
         {{ dataJSON[1].first_name }} {{ dataJSON[1].last_name }}
@@ -24,6 +25,7 @@
         <label for="" class="ml-2">toggle active</label>
       </div>
     </v-list-item>
+
     <v-list-item :active="example.active3">
       <div class="font-semibold">
         {{ dataJSON[2].first_name }} {{ dataJSON[2].last_name }}
@@ -36,6 +38,7 @@
         <label for="" class="ml-2">toggle active</label>
       </div>
     </v-list-item>
+
     <v-list-item :active="example.active4">
       <div class="font-semibold">
         {{ dataJSON[3].first_name }} {{ dataJSON[3].last_name }}
@@ -48,6 +51,7 @@
         <label for="" class="ml-2">toggle active</label>
       </div>
     </v-list-item>
+
     <v-list-item :active="example.active5">
       <div class="font-semibold">
         {{ dataJSON[4].first_name }} {{ dataJSON[4].last_name }}
@@ -61,6 +65,7 @@
       </div>
     </v-list-item>
   </v-list>
+  <!-- CUT START -->
   <div class="mt-5">
     <label for="style">List style:</label>
     <v-select id="style" v-model="example.name">
@@ -93,12 +98,14 @@
       </div>
     </v-tab>
   </v-tabs>
+  <!-- CUT END -->
 </template>
 
 <script>
-import { ref, reactive } from "vue";
+import { reactive } from "vue";
+/* CUT START */
 import dataJSON from "../../../data.json";
-
+/* CUT END */
 export default {
   setup() {
     let example = reactive({

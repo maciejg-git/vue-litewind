@@ -11,6 +11,7 @@
     <v-badge style-badge="tiny yellow" class="mr-4">New</v-badge>
     <v-badge style-badge="tiny" class="mr-4">New</v-badge>
   </div>
+
   <div class="mt-10">
     <v-button class="relative mr-6">
       badge button
@@ -21,6 +22,7 @@
       <v-badge position="top-right" style-badge="circle red"></v-badge>
     </v-button>
   </div>
+
   <div class="mt-10">
     <v-button class="relative">
       badge button (custom)

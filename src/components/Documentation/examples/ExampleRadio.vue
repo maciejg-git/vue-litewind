@@ -8,6 +8,7 @@
     ></v-radio>
     <label for="option" class="ml-3">option</label>
   </div>
+
   <div class="flex items-center">
     <v-radio
       v-model="example.model"
@@ -17,6 +18,7 @@
     ></v-radio>
     <label for="option2" class="ml-3">option 2</label>
   </div>
+
   <div class="flex items-center">
     <v-radio
       v-model="example.model"
@@ -26,6 +28,7 @@
     ></v-radio>
     <label for="option3" class="ml-3">option 3</label>
   </div>
+  <!-- CUT START -->
   <v-tabs name="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="mb-2 mt-5">
@@ -60,6 +63,7 @@
       </div>
     </v-tab>
   </v-tabs>
+  <!-- CUT END -->
 </template>
 
 <script>

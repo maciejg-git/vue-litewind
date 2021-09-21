@@ -1,75 +1,75 @@
 <template>
-        <div class="my-5">
-          <v-input
-            v-model="name"
-            :state="nameValidated ? (name.length > 0 ? true : false) : null"
-            class="mr-4"
-          ></v-input>
-          <v-form-text
-            :state="nameValidated ? (name.length > 0 ? true : false) : null"
-            :inline="example.inline"
-            :visible-states="example.visibleStates"
-          >
-            <template #default="{ state }">
-              This field cannot be empty.
-            </template>
-          </v-form-text>
-        </div>
+  <div class="my-5">
+    <v-input
+      v-model="name"
+      :state="nameValidated ? (name.length > 0 ? true : false) : null"
+      class="mr-4"
+    ></v-input>
+    <v-form-text
+      :state="nameValidated ? (name.length > 0 ? true : false) : null"
+      :inline="example.inline"
+      :visible-states="example.visibleStates"
+    >
+      <template #default="{ state }">This field cannot be empty.</template>
+    </v-form-text>
+  </div>
 
-        <div class="mt-5">
-          <div v-for="l in languages" class="flex items-center my-2">
-            <v-checkbox
-              v-model="languagesModel"
-              :value="l"
-              :state="languagesState()"
-              :id="'language-' + l"
-            ></v-checkbox>
-            <label :for="'language-' + l" class="ml-3">
-              {{ l }}
-            </label>
-          </div>
+  <div class="mt-5">
+    <div v-for="l in languages" class="flex items-center my-2">
+      <v-checkbox
+        v-model="languagesModel"
+        :value="l"
+        :state="languagesState()"
+        :id="'language-' + l"
+      ></v-checkbox>
+      <label :for="'language-' + l" class="ml-3">
+        {{ l }}
+      </label>
+    </div>
+  </div>
+
+  <v-form-text
+    :state="languagesState()"
+    :visible-states="example.visibleStates"
+  >
+    <v-icon :icon-type="languagesState()" class="mr-2"></v-icon>
+    Please select at least 3 languages.
+  </v-form-text>
+
+  <v-button @click="validate()" style-button="" class="mt-5">Send</v-button>
+
+  <v-button @click="reset()" name="button-link" class="mt-5 ml-4">
+    <span class="font-semibold">Reset</span>
+  </v-button>
+
+  <div class="mt-5">
+    <span class="font-semibold">Languages:</span>
+    {{ languagesModel }}
+  </div>
+  <!-- CUT START -->
+  <v-tabs name="tabs-material" class="mt-5">
+    <v-tab name="Props">
+      <div class="mt-5">
+        <div class="mb-2">
+          <label for="inline">inline:</label>
+          <v-select id="inline" v-model="example.inline">
+            <option :value="true">true</option>
+            <option :value="false">false</option>
+          </v-select>
         </div>
-        <v-form-text
-          :state="languagesState()"
-          :visible-states="example.visibleStates"
-        >
-            <v-icon :icon-type="languagesState()" class="mr-2"></v-icon>
-            Please select at least 3 languages.
-        </v-form-text>
-        <v-button @click="validate()" style-button="" class="mt-5">
-          Send
-        </v-button>
-        <v-button @click="reset()" name="button-link" class="mt-5 ml-4">
-          <span class="font-semibold">Reset</span>
-        </v-button>
-        <div class="mt-5">
-          <span class="font-semibold">Languages:</span>
-          {{ languagesModel }}
+        <div class="mb-2">
+          <label for="visible-states">visible-states:</label>
+          <v-select id="visible-states" v-model="example.visibleStates">
+            <option value="default,invalid,valid">default,invalid,valid</option>
+            <option value="invalid,valid">invalid,valid</option>
+            <option value="invalid">invalid</option>
+            <option value="default">default</option>
+          </v-select>
         </div>
-      <v-tabs name="tabs-material" class="mt-5">
-        <v-tab name="Props">
-          <div class="mt-5">
-            <div class="mb-2">
-              <label for="inline">inline:</label>
-              <v-select id="inline" v-model="example.inline">
-                <option :value="true">true</option>
-                <option :value="false">false</option>
-              </v-select>
-            </div>
-            <div class="mb-2">
-              <label for="visible-states">visible-states:</label>
-              <v-select id="visible-states" v-model="example.visibleStates">
-                <option value="default,invalid,valid">
-                  default,invalid,valid
-                </option>
-                <option value="invalid,valid">invalid,valid</option>
-                <option value="invalid">invalid</option>
-                <option value="default">default</option>
-              </v-select>
-            </div>
-          </div>
-        </v-tab>
-      </v-tabs>
+      </div>
+    </v-tab>
+  </v-tabs>
+  <!-- CUT END -->
 </template>
 
 <script>

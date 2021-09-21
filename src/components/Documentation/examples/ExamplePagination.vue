@@ -9,6 +9,7 @@
       events.unshift({ ev: 'update:modelValue', data: $event })
     "
   />
+    <!-- CUT START -->
   <v-tabs name="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="mb-2 mt-5">
@@ -66,6 +67,7 @@
       </div>
     </v-tab>
   </v-tabs>
+  <!-- CUT END -->
 </template>
 
 <script>
