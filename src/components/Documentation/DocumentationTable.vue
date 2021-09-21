@@ -101,12 +101,10 @@
 import { ref } from "vue";
 import ExampleTable from "./examples/ExampleTable.vue"
 import exampleTableCode from "./examples/ExampleTable.vue?raw"
-import vCode from "./components/vCode.vue"
 
 export default {
   components: {
     ExampleTable,
-    vCode,
   },
   setup() {
     let reference = ref([

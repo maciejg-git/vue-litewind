@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { ref, reactive, onMounted } from "vue";
+import { ref } from "vue";
 import ExampleRadio from "./examples/ExampleRadio.vue"
 import ExampleRadioGroup from "./examples/ExampleRadioGroup.vue"
 import exampleRadioCode from "./examples/ExampleRadio.vue?raw"
@@ -47,7 +47,7 @@ export default {
     ExampleRadio,
     ExampleRadioGroup,
   },
-  setup(props) {
+  setup() {
     let reference = ref([
       {
         prop: "v-model",

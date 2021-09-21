@@ -2,10 +2,10 @@
   <v-list width="500px" :tag="example.tag" :name="example.name">
     <v-list-item :active="example.active1">
       <div class="font-semibold">
-        {{ dataJSON[0].first_name }} {{ dataJSON[0].last_name }}
+        {{ data[0].first_name }} {{ data[0].last_name }}
       </div>
       <div class="text-gray-400">
-        {{ dataJSON[0].email }}
+        {{ data[0].email }}
       </div>
       <div>
         <v-checkbox type="checkbox" v-model="example.active1" />
@@ -15,10 +15,10 @@
 
     <v-list-item :active="example.active2">
       <div class="font-semibold">
-        {{ dataJSON[1].first_name }} {{ dataJSON[1].last_name }}
+        {{ data[1].first_name }} {{ data[1].last_name }}
       </div>
       <div class="text-gray-400">
-        {{ dataJSON[1].email }}
+        {{ data[1].email }}
       </div>
       <div>
         <v-checkbox type="checkbox" v-model="example.active2" />
@@ -28,10 +28,10 @@
 
     <v-list-item :active="example.active3">
       <div class="font-semibold">
-        {{ dataJSON[2].first_name }} {{ dataJSON[2].last_name }}
+        {{ data[2].first_name }} {{ data[2].last_name }}
       </div>
       <div class="text-gray-400">
-        {{ dataJSON[2].email }}
+        {{ data[2].email }}
       </div>
       <div>
         <v-checkbox type="checkbox" v-model="example.active3" />
@@ -41,10 +41,10 @@
 
     <v-list-item :active="example.active4">
       <div class="font-semibold">
-        {{ dataJSON[3].first_name }} {{ dataJSON[3].last_name }}
+        {{ data[3].first_name }} {{ data[3].last_name }}
       </div>
       <div class="text-gray-400">
-        {{ dataJSON[3].email }}
+        {{ data[3].email }}
       </div>
       <div>
         <v-checkbox type="checkbox" v-model="example.active4" />
@@ -54,10 +54,10 @@
 
     <v-list-item :active="example.active5">
       <div class="font-semibold">
-        {{ dataJSON[4].first_name }} {{ dataJSON[4].last_name }}
+        {{ data[4].first_name }} {{ data[4].last_name }}
       </div>
       <div class="text-gray-400">
-        {{ dataJSON[4].email }}
+        {{ data[4].email }}
       </div>
       <div>
         <v-checkbox type="checkbox" v-model="example.active5" />
@@ -65,7 +65,7 @@
       </div>
     </v-list-item>
   </v-list>
-  <!-- CUT START -->
+<!-- CUT START -->
   <div class="mt-5">
     <label for="style">List style:</label>
     <v-select id="style" v-model="example.name">
@@ -98,13 +98,13 @@
       </div>
     </v-tab>
   </v-tabs>
-  <!-- CUT END -->
+<!-- CUT END -->
 </template>
 
 <script>
 import { reactive } from "vue";
 /* CUT START */
-import dataJSON from "../../../data.json";
+import data from "../../../data.json";
 /* CUT END */
 export default {
   setup() {
@@ -120,7 +120,9 @@ export default {
 
     return {
       example,
-      dataJSON,
+/* CUT START */
+      data,
+/* CUT END */
     };
   },
 };

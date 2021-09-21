@@ -1,4 +1,6 @@
 <template>
+  <!-- single value select -->
+
   <div>
     <v-select
       v-model="example.model"
@@ -13,6 +15,9 @@
       <option value="option (default slot)">option (default slot)</option>
     </v-select>
   </div>
+
+  <!-- multiple value select -->
+
   <div class="mt-4">
     <v-select
       v-model="example.modelMultiple"
@@ -53,7 +58,7 @@
       <template #name>
         Events
         <v-badge style-badge="secondary tiny" class="ml-2">
-          {{ example.events.length }}
+          {{ events.length }}
         </v-badge>
       </template>
       <div class="overflow-y-auto max-h-48 mt-5 w-full">
@@ -80,8 +85,9 @@ export default {
       model: "",
       modelMultiple: [],
       state: "",
-      events: [],
     });
+
+    let events = ref([]);
 
     let options = ref([
       {
@@ -101,6 +107,7 @@ export default {
     return {
       example,
       options,
+      events,
     };
   },
 };

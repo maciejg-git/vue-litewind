@@ -10,7 +10,7 @@
       style-chevron="right"
     />
   </v-button>
-  <!-- CUT START -->
+<!-- CUT START -->
   <v-tabs name="tabs-material" class="mt-5">
     <v-tab name="Props">
       <div class="mt-5">

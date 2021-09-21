@@ -3,7 +3,7 @@
     <v-radio
       v-model="languagesModel"
       :value="l"
-      :state="languagesValidated ? (languagesModel ? true : false) : null"
+      :state="languagesState()"
       :id="'language-' + l"
     ></v-radio>
     <label :for="'language-' + l" class="ml-3">
@@ -12,7 +12,7 @@
   </div>
 
   <v-form-text
-    :state="languagesValidated ? (languagesModel ? true : false) : null"
+    :state="languagesState()"
     visible-states="invalid"
   >
     Please select the language.
@@ -49,9 +49,18 @@ export default {
       languagesValidated.value = true;
     };
 
+    let languagesState = () => {
+      return languagesValidated.value
+        ? languagesModel.value
+          ? "valid"
+          : "invalid"
+        : "";
+    };
+
     return {
       languages,
       validate,
+      languagesState,
       languagesModel,
       languagesValidated,
     };

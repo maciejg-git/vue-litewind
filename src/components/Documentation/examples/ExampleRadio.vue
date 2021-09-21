@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center">
+  <div class="flex items-center my-2">
     <v-radio
       v-model="example.model"
       :state="example.state"
@@ -9,7 +9,7 @@
     <label for="option" class="ml-3">option</label>
   </div>
 
-  <div class="flex items-center">
+  <div class="flex items-center my-2">
     <v-radio
       v-model="example.model"
       :state="example.state"
@@ -19,7 +19,7 @@
     <label for="option2" class="ml-3">option 2</label>
   </div>
 
-  <div class="flex items-center">
+  <div class="flex items-center my-2">
     <v-radio
       v-model="example.model"
       :state="example.state"
@@ -28,7 +28,7 @@
     ></v-radio>
     <label for="option3" class="ml-3">option 3</label>
   </div>
-  <!-- CUT START -->
+<!-- CUT START -->
   <v-tabs name="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="mb-2 mt-5">
@@ -48,7 +48,7 @@
       <template #name>
         Events
         <v-badge style-badge="secondary tiny" class="ml-2">
-          {{ example.events.length }}
+          {{ events.length }}
         </v-badge>
       </template>
       <div class="overflow-y-auto max-h-48 mt-5 w-full">
@@ -63,22 +63,24 @@
       </div>
     </v-tab>
   </v-tabs>
-  <!-- CUT END -->
+<!-- CUT END -->
 </template>
 
 <script>
-import { reactive } from "vue";
+import { ref, reactive } from "vue";
 
 export default {
   setup() {
     let example = reactive({
       model: true,
       state: "",
-      events: [],
     });
+
+    let events = ref([]);
 
     return {
       example,
+      events,
     };
   },
 };

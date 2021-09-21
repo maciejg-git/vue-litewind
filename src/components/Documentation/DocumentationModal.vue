@@ -39,7 +39,7 @@ export default {
   components: {
     ExampleModal,
   },
-  setup(props) {
+  setup() {
     let reference = ref([
       {
         prop: "v-model",

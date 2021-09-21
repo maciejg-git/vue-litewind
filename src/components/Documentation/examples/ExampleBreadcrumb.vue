@@ -1,5 +1,5 @@
 <template>
-  <v-breadcrumb :path="example.path"></v-breadcrumb>
+  <v-breadcrumb :path="example.path" />
 </template>
 
 <script>

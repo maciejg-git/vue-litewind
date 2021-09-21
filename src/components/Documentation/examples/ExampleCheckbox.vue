@@ -1,13 +1,9 @@
 <template>
   <div class="flex items-center">
-    <v-checkbox
-      v-model="example.model"
-      :state="example.state"
-      id="example"
-    ></v-checkbox>
+    <v-checkbox v-model="example.model" :state="example.state" id="example" />
     <label for="example" class="ml-3">Example checkbox</label>
   </div>
-  <!-- CUT START -->
+<!-- CUT START -->
   <v-tabs name="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="mb-2 mt-5">
@@ -27,7 +23,7 @@
       <template #name>
         Events
         <v-badge style-badge="secondary tiny" class="ml-2">
-          {{ example.events.length }}
+          {{ events.length }}
         </v-badge>
       </template>
       <div class="overflow-y-auto max-h-48 mt-5 w-full">
@@ -42,7 +38,7 @@
       </div>
     </v-tab>
   </v-tabs>
-  <!-- CUT END -->
+<!-- CUT END -->
 </template>
 
 <script>
@@ -53,11 +49,13 @@ export default {
     let example = reactive({
       model: true,
       state: "",
-      events: [],
     });
+
+    let events = ref([]);
 
     return {
       example,
+      events,
     };
   },
 };

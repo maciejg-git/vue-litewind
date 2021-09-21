@@ -20,6 +20,7 @@
     class="min-w-full"
   >
     <template #cell:edit="{ item }">
+      <!-- stop propagation to avoid selecting row -->
       <v-button style-button="tiny" @click.stop="edit(item)">edit</v-button>
     </template>
     <template #caption>Example caption</template>
@@ -33,7 +34,7 @@
         :items-per-page="example.itemsPerPage"
         max-pages="7"
         icons
-      ></v-pagination>
+      />
     </div>
     <div class="mt-4 lg:mt-0">
       <label for="items-per-page" class="mr-10">Items per page</label>
@@ -45,7 +46,7 @@
       </v-select>
     </div>
   </div>
-  <!-- CUT START -->
+<!-- CUT START -->
   <v-tabs name="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="mb-2 mt-5">
@@ -98,7 +99,8 @@
       </div>
     </v-tab>
   </v-tabs>
-  <!-- CUT END -->
+<!-- CUT END -->
+
   <v-modal
     v-model="editModal"
     title="Edit"
@@ -110,8 +112,8 @@
 </template>
 
 <script>
-/* CUT START */
 import { ref, reactive } from "vue";
+/* CUT START */
 import dataJSON from "../../../data.json";
 /* CUT END */
 export default {
@@ -157,14 +159,14 @@ export default {
         },
       ],
     });
-    /* CUT START */
+
     let events = ref([]);
-    /* CUT END */
+
     let editModal = ref(false);
     let editContent = ref("");
 
-    let edit = (c) => {
-      editContent.value = JSON.stringify(c,null,1);
+    let edit = (content) => {
+      editContent.value = JSON.stringify(content,null,1);
       editModal.value = true;
     };
 

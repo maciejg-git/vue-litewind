@@ -1,4 +1,7 @@
 <template>
+
+  <!-- simple indeterminate progress -->
+
   <v-progress
     style-progress="tiny"
     style-progress-bar="gradient"
@@ -6,9 +9,10 @@
     :indeterminate-width="50"
     :indeterminate-timing="example.timing"
     :indeterminate-speed="+example.speed"
-    class="mt-4"
+    class="my-4"
   ></v-progress>
-  <br />
+
+  <!-- simple indeterminate progress -->
 
   <v-card style-card="shadow" width="400px">
     <div class="flex justify-center p-4">Checking for updates...</div>
@@ -23,6 +27,8 @@
     ></v-progress>
   </v-card>
 
+  <!-- combined indeterminate and deteminate progress -->
+
   <v-card style-card="shadow" width="400px" class="mt-6">
     <div class="flex justify-center p-4">
       <span v-if="example.indeterminate">Checking for updates...</span>
@@ -31,7 +37,7 @@
     <v-progress
       style-progress="tiny"
       style-progress-bar="gradient"
-      :value="example.indeterminateValue"
+      :value="example.value"
       :label="false"
       :indeterminate="example.indeterminate"
       :indeterminate-width="50"
@@ -41,7 +47,7 @@
     ></v-progress>
   </v-card>
   <div class="my-4">Combined indeterminate and deteminate example</div>
-
+<!-- CUT START -->
   <div class="mb-2 mt-10">
     <label for="timing">indeterminate-timing:</label>
     <v-select id="timing" v-model="example.timing">
@@ -56,6 +62,7 @@
     <label for="speed">indeterminate-speed:</label>
     <v-input type="text" id="speed" v-model="example.speed"></v-input>
   </div>
+<!-- CUT END -->
 </template>
 
 <script>
@@ -64,22 +71,21 @@ import { reactive, onMounted } from "vue";
 export default {
   setup() {
     let example = reactive({
-      value: 20,
+      value: 0,
       label: false,
       timing: "linear",
       width: "50",
       speed: 7,
       indeterminate: true,
-      indeterminateValue: 0,
     });
 
     onMounted(() => {
       setInterval(() => {
         example.indeterminate = !example.indeterminate;
-        example.indeterminateValue = 0;
+        example.value = 0;
         let i = setInterval(() => {
-          example.indeterminateValue += 0.05;
-          if (example.indeterminateValue >= 100) {
+          example.value += 0.05;
+          if (example.value >= 100) {
             clearInterval(i);
           }
         }, 2);

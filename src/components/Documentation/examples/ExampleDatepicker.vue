@@ -19,7 +19,7 @@
       @state:cancel="events.unshift({ ev: 'state:cancel', data: $event })"
     />
   </v-card>
-  <!-- CUT START -->
+<!-- CUT START -->
   <div class="flex-grow mt-4 lg:ml-14 lg:mt-0">
     <v-tabs name="tabs-material">
       <v-tab name="Props">
@@ -117,7 +117,7 @@
       </v-tab>
     </v-tabs>
   </div>
-  <!-- CUT END -->
+<!-- CUT END -->
 </template>
 
 <script>

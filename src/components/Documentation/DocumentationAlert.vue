@@ -35,7 +35,7 @@ export default {
   components: {
     ExampleAlert,
   },
-  setup(props) {
+  setup() {
     let reference = ref([
       {
         prop: "v-model",

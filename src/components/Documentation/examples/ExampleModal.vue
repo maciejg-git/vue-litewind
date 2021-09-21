@@ -13,7 +13,8 @@
       Show long scrollable modal
     </v-button>
   </v-card>
-  <!-- CUT START -->
+
+<!-- CUT START -->
   <div class="mt-4 md:ml-14 md:mt-0">
     <div class="mb-2">
       <label for="position">position:</label>
@@ -40,7 +41,10 @@
       </v-select>
     </div>
   </div>
-  <!-- CUT END -->
+<!-- CUT END -->
+
+  <!-- modal -->
+
   <v-modal
     v-model="example.isVisible"
     :title="example.title"
@@ -56,7 +60,7 @@
     :size="example.size"
     :transition="example.transition"
   >
-  <!-- CUT START -->
+<!-- CUT START -->
     <div>
       <div class="mb-2">
         <label for="title">title:</label>
@@ -151,8 +155,11 @@
         </v-select>
       </div>
     </div>
-    <!-- CUT END -->
+  <!-- CUT END -->
   </v-modal>
+
+  <!-- long scrollable modal -->
+
   <v-modal
     v-model="example.isVisibleLong"
     :title="example.title"
@@ -170,6 +177,7 @@
   >
     Early in the month of October, 1815, about an hour before sunset, a man who
     was travelling on foot entered the little town of D—— The few inhabitants
+<!-- CUT START -->
     who were at their windows or on their thresholds at the moment stared at
     this traveller with a sort of uneasiness. It was difficult to encounter a
     wayfarer of more wretched appearance. He was a man of medium stature,
@@ -184,7 +192,6 @@
     soldier knapsack, well buckled and perfectly new, on his back; an enormous,
     knotty stick in his hand; iron-shod shoes on his stockingless feet; a shaved
     head and a long beard.
-  <!-- CUT START -->
     <br />
 
     The sweat, the heat, the journey on foot, the dust, added I know not what
@@ -246,7 +253,7 @@
     flanked by white partridges and heather-cocks, was turning on a long spit
     before the fire; on the stove, two huge carps from Lake Lauzet and a trout
     from Lake Alloz were cooking.
-    <!-- CUT END -->
+<!-- CUT END -->
   </v-modal>
 </template>
 

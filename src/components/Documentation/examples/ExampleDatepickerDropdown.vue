@@ -15,7 +15,7 @@
           :buttons="example.buttons"
           adjacent-months
           @state:done="hide"
-        ></v-date-picker>
+        />
       </v-card>
     </template>
   </v-dropdown>
@@ -29,11 +29,11 @@
       </v-select>
     </div>
   </div>
-  <!-- CUT END -->
+<!-- CUT END -->
 </template>
 
 <script>
-import { ref, reactive } from "vue";
+import { reactive } from "vue";
 
 export default {
   setup() {

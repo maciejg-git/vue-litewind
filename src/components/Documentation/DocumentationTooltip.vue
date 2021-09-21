@@ -51,7 +51,7 @@
 
   <section>
     <h4>Example</h4>
-    <div class="example flex">
+    <div class="example">
       <example-tooltip></example-tooltip>
     </div>
     <v-code :code="exampleTooltipCode" template language="html"></v-code>

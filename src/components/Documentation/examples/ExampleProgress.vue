@@ -1,12 +1,15 @@
 <template>
+  <!-- simple progress -->
+
   <v-progress
     :value="+example.value"
     :max="+example.max"
     :label="example.label"
-    auto-close
     :precision="+example.precision"
     :transition="example.transition"
   ></v-progress>
+
+  <!-- progress with custom label -->
 
   <v-progress
     :value="+example.value"
@@ -23,6 +26,8 @@
     </template>
   </v-progress>
 
+  <!-- styled progress -->
+
   <v-progress
     :value="+example.value"
     :max="+example.max"
@@ -34,6 +39,8 @@
     class="mt-4"
   ></v-progress>
 
+  <!-- page load progress -->
+
   <v-progress
     style-progress="tiny"
     style-progress-bar="gradient"
@@ -41,7 +48,7 @@
     :label="false"
     class="fixed top-0 left-0 w-full z-50"
   ></v-progress>
-  <!-- CUT START -->
+<!-- CUT START -->
   <v-tabs name="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="mb-2 mt-5">
@@ -89,26 +96,8 @@
         </v-select>
       </div>
     </v-tab>
-    <v-tab>
-      <template #name>
-        Events
-        <v-badge style-badge="secondary tiny" class="ml-2">
-          {{ example.events.length }}
-        </v-badge>
-      </template>
-      <div class="overflow-y-auto max-h-48 mt-5 w-full">
-        <div class="px-2 pb-2">
-          <template v-for="ev in example.events">
-            <div class="py-1">
-              <code class="code-word">{{ ev.ev }}</code>
-              {{ ev.data }}
-            </div>
-          </template>
-        </div>
-      </div>
-    </v-tab>
   </v-tabs>
-  <!-- CUT END -->
+<!-- CUT END -->
 </template>
 
 <script>
@@ -122,7 +111,6 @@ export default {
       label: false,
       precision: 2,
       transition: true,
-      events: [],
     });
 
     return {

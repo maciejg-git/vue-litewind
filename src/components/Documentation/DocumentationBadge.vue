@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { ref, reactive } from "vue";
+import { ref } from "vue";
 import ExampleBadge from "./examples/ExampleBadge.vue"
 import exampleBadgeCode from "./examples/ExampleBadge.vue?raw"
 
@@ -34,7 +34,7 @@ export default {
   components: {
     ExampleBadge,
   },
-  setup(props) {
+  setup() {
     let reference = ref([
       {
         prop: "position",

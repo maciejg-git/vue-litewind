@@ -27,8 +27,8 @@ export default {
         ? scriptRegexp
         : templateRegexp;
 
-      let cutTemplateRegexp = /<!-- CUT START -->([\s\S]*?)<!-- CUT END -->/gm;
-      let cutScriptRegexp = /\/\* CUT START \*\/([\s\S]*?)\/\* CUT END \*\//gm;
+      let cutTemplateRegexp = /<!-- CUT START -->([\s\S]*?)<!-- CUT END -->\r\n/gm;
+      let cutScriptRegexp = /\/\* CUT START \*\/([\s\S]*?)\/\* CUT END \*\/\r\n/gm;
       let cutRegexp = props.template
         ? cutTemplateRegexp
         : props.script

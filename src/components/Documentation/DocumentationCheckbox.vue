@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { ref, reactive, onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import ExampleCheckbox from "./examples/ExampleCheckbox.vue";
 import ExampleCheckboxGroup from "./examples/ExampleCheckboxGroup.vue";
 import exampleCheckboxCode from "./examples/ExampleCheckbox.vue?raw";
@@ -52,7 +52,7 @@ export default {
     ExampleCheckbox,
     ExampleCheckboxGroup,
   },
-  setup(props) {
+  setup() {
     let reference = ref([
       {
         prop: "v-model",
@@ -65,7 +65,7 @@ export default {
         type: ["String"],
         default: "empty string",
         description:
-          "State of input validity. Supported values are 'valid' (or true), 'invalid' (or false) or 'empty string' (or null) for default state",
+          "State of input the validity. Supported values are 'valid' (or true), 'invalid' (or false) or 'empty string' (or null) for default state",
       },
       {
         prop: "name",

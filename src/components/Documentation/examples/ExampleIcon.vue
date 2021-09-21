@@ -1,10 +1,10 @@
 <template>
   <div>
-    <v-icon icon="star-icon" />
-    <v-icon icon="check-icon" />
+    <v-icon icon="star-icon" class="b-icon--md" />
+    <v-icon icon="check-icon" class="b-icon--md" />
   </div>
   <div>
-    <v-icon icon-type="valid" />
-    <v-icon icon-type="invalid" />
+    <v-icon icon-type="valid" class="b-icon--md" />
+    <v-icon icon-type="invalid" class="b-icon--md" />
   </div>
 </template>

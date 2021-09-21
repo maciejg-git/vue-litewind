@@ -48,7 +48,7 @@ export default {
         prop: "inline",
         type: ["Boolean"],
         default: "false",
-        description: "Inline-flex version of form text. Default is flex.",
+        description: "Inline-flex version of the form text. Default is flex.",
       },
       {
         prop: "visible-states",
@@ -56,6 +56,13 @@ export default {
         default: "default,invalid,valid",
         description:
           "List of coma seperated states. If state is one of those states then form text is visible",
+      },
+      {
+        prop: "messages",
+        type: ["Object"],
+        default: "{}",
+        description:
+        "Object with messages to display depending on current state. Each property of the object is one state and the value for that property is the message",
       },
       {
         prop: "name",
@@ -76,7 +83,12 @@ export default {
       {
         prop: "default",
         description:
-          "Slot for text. Slot props: <code class='code-word'>state</code>",
+        "Slot for the text. <p class='mt-4'>Slot props: <code class='code-word'>state</code></p>",
+      },
+      {
+        prop: "prepend-message",
+        description:
+        "Slot for the content in front of a message, for example for an icon. <p class='mt-4'>Slot props: <code class='code-word'>state</code></p>",
       },
     ]);
 

@@ -85,7 +85,7 @@ import "vue-wind/dist/style.css"
 &lt;v-button&gt;Default button&lt;/v-button&gt;
 &lt;v-button style-button=&quot;large&quot;&gt;Large button&lt;/v-button&gt;
 &lt;v-button style-button=&quot;primary&quot;&gt;Normal button&lt;/v-button&gt;
-&lt;v-button style-button=&quot;primary small outline &quot;&gt;Small outline button&lt;/v-button&gt;
+&lt;v-button style-button=&quot;primary small &quot;&gt;Small outline button&lt;/v-button&gt;
 &lt;v-button style-button=&quot;secondary tiny&quot;&gt;Tiny button&lt;/v-button&gt;
     </code>
   </pre>

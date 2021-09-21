@@ -5,8 +5,8 @@
     min="0"
     max="100"
     class="w-full"
-  ></v-range>
-  <!-- CUT START -->
+  />
+<!-- CUT START -->
   <v-tabs name="tabs-material" class="mt-5">
     <v-tab name="Props">
       <div class="mb-2 mt-5">
@@ -26,7 +26,7 @@
       <template #name>
         Events
         <v-badge style-badge="secondary tiny" class="ml-2">
-          {{ example.events.length }}
+          {{ events.length }}
         </v-badge>
       </template>
       <div class="overflow-y-auto max-h-48 mt-5 w-full">
@@ -41,22 +41,24 @@
       </div>
     </v-tab>
   </v-tabs>
-  <!-- CUT END -->
+<!-- CUT END -->
 </template>
 
 <script>
-import { reactive } from "vue";
+import { ref, reactive } from "vue";
 
 export default {
   setup() {
     let example = reactive({
       model: 0,
       state: "",
-      events: [],
     });
+
+    let events = ref([]);
 
     return {
       example,
+      events,
     };
   },
 };

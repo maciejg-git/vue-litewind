@@ -1,16 +1,19 @@
 <template>
   <div class="my-5">
-    <v-input
-      v-model="name"
-      :state="nameValidated ? (name.length > 0 ? true : false) : null"
-      class="mr-4"
-    ></v-input>
+    <v-input v-model="name" :state="nameState()" class="mr-4" />
     <v-form-text
-      :state="nameValidated ? (name.length > 0 ? true : false) : null"
+      :state="nameState()"
       :inline="example.inline"
       :visible-states="example.visibleStates"
+      :messages="messages"
     >
-      <template #default="{ state }">This field cannot be empty.</template>
+      <template #prepend-message>
+        <v-icon
+          :icon-type="nameState()"
+          transition="fade-scale-up"
+          class="mr-2"
+        />
+      </template>
     </v-form-text>
   </div>
 
@@ -21,7 +24,7 @@
         :value="l"
         :state="languagesState()"
         :id="'language-' + l"
-      ></v-checkbox>
+      />
       <label :for="'language-' + l" class="ml-3">
         {{ l }}
       </label>
@@ -32,7 +35,11 @@
     :state="languagesState()"
     :visible-states="example.visibleStates"
   >
-    <v-icon :icon-type="languagesState()" class="mr-2"></v-icon>
+    <v-icon
+      :icon-type="languagesState()"
+      transition="fade-scale-up"
+      class="mr-2"
+    />
     Please select at least 3 languages.
   </v-form-text>
 
@@ -82,6 +89,12 @@ export default {
       visibleStates: "default,invalid,valid",
     });
 
+    let messages = {
+      valid: "OK",
+      invalid: "This field cannot be empty",
+      default: "Username",
+    };
+
     let languages = ref([
       "english",
       "swedish",
@@ -109,6 +122,14 @@ export default {
         : "";
     };
 
+    let nameState = () => {
+      return nameValidated.value
+        ? name.value.length > 0
+          ? "valid"
+          : "invalid"
+        : "";
+    };
+
     let reset = () => {
       languagesValidated.value = false;
       nameValidated.value = false;
@@ -125,7 +146,9 @@ export default {
       name,
       languagesValidated,
       languagesState,
+      nameState,
       nameValidated,
+      messages,
     };
   },
 };

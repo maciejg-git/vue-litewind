@@ -5,8 +5,8 @@
     cols="40"
     rows="10"
     placeholder="Textarea example"
-  ></v-textarea>
-  <!-- CUT START -->
+  />
+<!-- CUT START -->
   <v-tabs name="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="mb-2 mt-5">
@@ -26,7 +26,7 @@
       <template #name>
         Events
         <v-badge style-badge="secondary tiny">
-          {{ example.events.length }}
+          {{ events.length }}
         </v-badge>
       </template>
       <div class="overflow-y-auto max-h-48 mt-5 w-full">
@@ -41,22 +41,24 @@
       </div>
     </v-tab>
   </v-tabs>
-  <!-- CUT END -->
+<!-- CUT END -->
 </template>
 
 <script>
-import { reactive } from "vue";
+import { ref, reactive } from "vue";
 
 export default {
   setup() {
     let example = reactive({
       model: "",
       state: "",
-      events: [],
     });
+
+    let events = ref([]);
 
     return {
       example,
+      events,
     };
   },
 };

@@ -3,9 +3,7 @@
     <v-checkbox
       v-model="languagesModel"
       :value="l"
-      :state="
-        languagesValidated ? (languagesModel.length >= 3 ? true : false) : null
-      "
+      :state="languagesState()"
       :id="'language-' + l"
     ></v-checkbox>
     <label :for="'language-' + l" class="ml-3">
@@ -13,12 +11,7 @@
     </label>
   </div>
 
-  <v-form-text
-    :state="
-      languagesValidated ? (languagesModel.length >= 3 ? true : false) : null
-    "
-    visible-states="invalid"
-  >
+  <v-form-text :state="languagesState()" visible-states="invalid">
     Please select at least 3 languages.
   </v-form-text>
 
@@ -51,16 +44,20 @@ export default {
       languagesValidated.value = true;
     };
 
-    let toggleAll = (ev) => {
-      languagesModel.value = ev.target.checked ? languages.value.slice() : [];
+    let languagesState = () => {
+      return languagesValidated.value
+        ? languagesModel.value.length >= 3
+          ? "valid"
+          : "invalid"
+        : "";
     };
 
     return {
       languages,
       validate,
+      languagesState,
       languagesModel,
       languagesValidated,
-      toggleAll,
     };
   },
 };

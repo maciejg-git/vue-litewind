@@ -1,4 +1,7 @@
 <template>
+
+  <!-- position relative -->
+
   <v-alert
     v-model="example.isVisible"
     :dismissable="example.dismissable"
@@ -12,6 +15,8 @@
     Alert
   </v-alert>
 
+  <!-- position absolute -->
+
   <v-alert
     v-model="example.isVisibleAbsolute"
     :dismissable="example.dismissable"
@@ -24,8 +29,8 @@
 <!-- CUT START -->
   <div class="flex justify-between items-center">
     <div class="mt-5">
-      <label for="style">Alert state:</label>
-      <v-select id="style" v-model="example.state">
+      <label for="state">Alert state:</label>
+      <v-select id="state" v-model="example.state">
         <option value="info">info</option>
         <option value="danger">danger</option>
         <option value="warn">warn</option>
@@ -70,7 +75,7 @@
       </div>
     </v-tab>
   </v-tabs>
-  <!-- CUT END -->
+<!-- CUT END -->
 </template>
 
 <script>
@@ -83,7 +88,6 @@ export default {
       isVisibleAbsolute: false,
       dismissable: true,
       autoDismissDelay: 0,
-      style: "",
       state: "info",
     });
 

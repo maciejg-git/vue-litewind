@@ -1,4 +1,7 @@
 <template>
+
+  <!-- simple popover -->
+
   <div>
     <v-popover
       :placement="example.placement"
@@ -17,6 +20,9 @@
       This is popover.
     </v-popover>
   </div>
+
+  <!-- form popover -->
+
   <div class="mt-4">
     <v-popover
       :placement="example.placement"
@@ -40,6 +46,9 @@
       </div>
     </v-popover>
   </div>
+
+  <!-- tooltip popover -->
+
   <div class="mt-4">
     <v-popover
       :placement="example.placement"
@@ -58,6 +67,7 @@
       </template>
       Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       Lorem Ipsum has been the industry's standard dummy text ever since the
+<!-- CUT START -->
       1500s, when an unknown printer took a galley of type and scrambled it to
       make a type specimen book. It has survived not only five centuries, but
       also the leap into electronic typesetting, remaining essentially
@@ -65,8 +75,10 @@
       sheets containing Lorem Ipsum passages, and more recently with desktop
       publishing software like Aldus PageMaker including versions of Lorem
       Ipsum.
+<!-- CUT END -->
     </v-popover>
   </div>
+<!-- CUT START -->
   <v-tabs name="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="mb-2 mt-5">
@@ -126,7 +138,7 @@
       <template #name>
         Events
         <v-badge style-badge="secondary tiny" class="ml-2">
-          {{ example.events.length }}
+          {{ events.length }}
         </v-badge>
       </template>
       <div class="overflow-y-auto max-h-48 mt-5 w-full">
@@ -141,10 +153,11 @@
       </div>
     </v-tab>
   </v-tabs>
+<!-- CUT END -->
 </template>
 
 <script>
-import { reactive } from "vue";
+import { ref, reactive } from "vue";
 
 export default {
   setup() {
@@ -155,11 +168,13 @@ export default {
       title: "Popover title",
       transition: "fade",
       clickOutsideClose: false,
-      events: [],
     });
+
+    let events = ref([]);
 
     return {
       example,
+      events,
     };
   },
 };
