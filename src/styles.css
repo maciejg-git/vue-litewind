@@ -1252,12 +1252,21 @@
     w-4
     inline-block
 }
-  .b-icon--small {
+  .b-icon--sm {
     @apply
       h-4
       w-4
   }
-
+  .b-icon--md {
+    @apply
+      h-6
+      w-6
+  }
+  .b-icon--lg {
+    @apply
+      h-8
+      w-8
+  }
  .b-icon--info-type {
     @apply
       text-blue-500
