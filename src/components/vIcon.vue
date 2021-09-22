@@ -13,7 +13,7 @@ export default {
     icon: { type: [String, Object], default: "" },
     i: { type: [String, Object], default: "" },
     name: { type: [String, Object], default: "" },
-    transition: { type: String, default: "fade" },
+    transition: { type: String, default: "" },
     iconType: { type: [String, Object], default: "" },
   },
   setup(props) {
