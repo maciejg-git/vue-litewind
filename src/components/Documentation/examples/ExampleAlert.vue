@@ -10,7 +10,7 @@
     class="my-2"
   >
     <template #icon>
-      <v-icon :icon-type="example.state" class="mr-2"></v-icon>
+      <v-icon :icon-type="example.state" class="b-icon--md mr-2"></v-icon>
     </template>
     Alert
   </v-alert>

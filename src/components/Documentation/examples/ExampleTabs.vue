@@ -60,7 +60,7 @@
   <!-- CUT END -->
     </v-tab>
 
-    <v-tab name="Another tab" class="p-4">
+    <v-tab class="p-4">
       <template #name>
         Tab with custom content
         <v-badge style-badge="secondary tiny">4</v-badge>

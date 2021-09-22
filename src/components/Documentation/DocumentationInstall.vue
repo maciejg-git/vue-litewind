@@ -79,7 +79,7 @@ import "vue-wind/dist/style.css"
   </pre>
     <h5>Styling</h5>
   <p>Each class begin with default component name. If you want to use another classes for component set different name for component using name prop. This can be useful if you do not want to modify default classes, experiment, use multiple themes or use same component for different purposes.</p>
-  <p><span class="font-semibold">style-[element]</span> components props are used to modify elements of component using css variants. You can list any number of variants. Use <span class="font-semibold">only variant name</span>, do not include component name or element name.</p>
+  <p><span class="font-semibold">style-[element]</span> props are used to modify style of component elements using variants. You can list any number of variants. Use <span class="font-semibold">only variant name</span>, do not include component name or element name.</p>
     <pre>
       <code class="language-html">
 &lt;v-button&gt;Default button&lt;/v-button&gt;

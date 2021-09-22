@@ -9,7 +9,7 @@
 
     <h6>Styling props</h6>
     <p></p>
-    <table-reference :items="reference"></table-reference>
+    <table-reference-basic :items="styles"></table-reference-basic>
 
     <h6>Slots</h6>
     <p></p>
