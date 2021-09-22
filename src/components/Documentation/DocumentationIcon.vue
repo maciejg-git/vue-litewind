@@ -69,6 +69,12 @@ export default {
         default: "undefined",
         description: "Icon type provided via iconTypes",
       },
+      {
+        prop: "transition",
+        type: ["String"],
+        default: "empty string",
+        description: "Transition when icon shows or changes. Valid transitions are 'fade', 'fade-scale-down', 'fade-scale-up' and empty string for no transition (default)",
+      },
     ]);
 
     return {
