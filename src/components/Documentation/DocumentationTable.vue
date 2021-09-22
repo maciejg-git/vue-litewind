@@ -38,7 +38,7 @@
     </p>
     <pre>
       <code>
-{{`let definition = ref([
+let definition = ref([
   {
     key: "id",
     class: (k, v, i) => v >= 5 ? 'bg-success' : ''
@@ -61,7 +61,7 @@
   {
     key: "details"
   },
-]);`}}
+]);
     </code>
   </pre>
     <v-table

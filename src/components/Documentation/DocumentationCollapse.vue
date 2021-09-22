@@ -10,6 +10,10 @@
     <h6>Slots</h6>
     <p></p>
     <table-reference-basic :items="slots"></table-reference-basic>
+
+    <h6>Components</h6>
+    <p></p>
+    <table-reference-basic :items="components"></table-reference-basic>
   </section>
 
   <section>
@@ -17,6 +21,8 @@
     <div class="example">
       <example-collapse></example-collapse>
     </div>
+    Use flavored button <code>v-button-collapse</code> for minimal set up or normal
+    <code>v-button</code> for more customizing options. <code>v-button-collapse</code> use the same props as <code>v-button</code>.
     <v-code :code="exampleCollapseCode" template language="html"></v-code>
     <v-code :code="exampleCollapseCode" script language="js"></v-code>
   </section>
@@ -25,8 +31,8 @@
     <h4>Example accordion</h4>
     <div class="example">
       <p>
-        Turn collapse components to accordion by wrapping them with v-accordion
-        component.
+        Turn collapse components to accordion by wrapping them with <code>v-accordion</code>
+        component. 
       </p>
       <example-collapse-accordion></example-collapse-accordion>
     </div>
@@ -69,9 +75,17 @@ export default {
       },
     ]);
 
+    let components = ref([
+      {
+        prop: "v-button-collapse",
+        description: "Flavored version of v-button that has indicator build in and toggles attached v-model. Quick to set up but has limited customizing options. Uses the same props as normal v-button",
+      },
+    ]);
+
     return {
       reference,
       slots,
+      components,
       exampleCollapseCode,
       exampleCollapseAccordionCode,
     };

@@ -17,6 +17,22 @@
   </section>
 
   <section>
+    <h4>Messages</h4>
+    <span class="font-bold">Type</span>
+    :
+    <code class="code-word">Object</code>
+    <pre>
+      <code class="language-js">
+let messages = {
+  valid: "OK",
+  invalid: "This field cannot be empty",
+  default: "Username",
+};
+      </code>
+    </pre>
+  </section>
+
+  <section>
     <h4>Example</h4>
     <div class="example">
       <example-form-text></example-form-text>
@@ -28,8 +44,8 @@
 
 <script>
 import { ref } from "vue";
-import ExampleFormText from "./examples/ExampleFormText.vue"
-import exampleFormTextCode from "./examples/ExampleFormText.vue?raw"
+import ExampleFormText from "./examples/ExampleFormText.vue";
+import exampleFormTextCode from "./examples/ExampleFormText.vue?raw";
 
 export default {
   components: {
@@ -62,7 +78,7 @@ export default {
         type: ["Object"],
         default: "{}",
         description:
-        "Object with messages to display depending on current state. Each property of the object is one state and the value for that property is the message",
+          "Object with messages to display depending on current state. Each property of the object is one state and the value for that property is the message. To display messages default slot must not be used",
       },
       {
         prop: "name",
@@ -83,12 +99,12 @@ export default {
       {
         prop: "default",
         description:
-        "Slot for the text. <p class='mt-4'>Slot props: <code class='code-word'>state</code></p>",
+          "Slot for the text. <p class='mt-4'>Slot props: <code class='code-word'>state</code></p>",
       },
       {
         prop: "prepend-message",
         description:
-        "Slot for the content in front of a message, for example for an icon. <p class='mt-4'>Slot props: <code class='code-word'>state</code></p>",
+          "Slot for the content in front of a message, for example for an icon. <p class='mt-4'>Slot props: <code class='code-word'>state</code></p>",
       },
     ]);
 

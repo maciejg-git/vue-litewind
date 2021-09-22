@@ -1,20 +1,9 @@
 <template>
   <v-accordion>
     <v-card>
-      <v-button
-        style-button="default"
-        block
-        @click="accordion.isVisible = !accordion.isVisible"
-      >
-        <span class="mx-auto">Toggle collapse</span>
-        <v-chevron
-          initial="down"
-          rotate180
-          counter-clockwise
-          :switch="accordion.isVisible"
-          class="ml-auto"
-        />
-      </v-button>
+      <v-button-collapse block v-model="accordion.isVisible">
+        Toggle collapse
+      </v-button-collapse>
       <v-collapse v-model="accordion.isVisible">
         <div class="p-4">
           Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -31,21 +20,11 @@
         </div>
       </v-collapse>
     </v-card>
+
     <v-card class="mt-1">
-      <v-button
-        block
-        style-button="default"
-        @click="accordion.isVisible2 = !accordion.isVisible2"
-      >
-        <span class="mx-auto">Toggle collapse 2</span>
-        <v-chevron
-          initial="down"
-          rotate180
-          counter-clockwise
-          :switch="accordion.isVisible2"
-          class="ml-auto"
-        />
-      </v-button>
+      <v-button-collapse block v-model="accordion.isVisible2">
+        Toggle collapse
+      </v-button-collapse>
       <v-collapse v-model="accordion.isVisible2">
         <div class="p-4">
           It is a long established fact that a reader will be distracted by the
@@ -62,21 +41,11 @@
         </div>
       </v-collapse>
     </v-card>
+
     <v-card class="mt-1">
-      <v-button
-        block
-        style-button="default"
-        @click="accordion.isVisible3 = !accordion.isVisible3"
-      >
-        <span class="mx-auto">Toggle collapse 3</span>
-        <v-chevron
-          initial="down"
-          rotate180
-          counter-clockwise
-          :switch="accordion.isVisible3"
-          class="ml-auto"
-        />
-      </v-button>
+      <v-button-collapse block v-model="accordion.isVisible3">
+        Toggle collapse
+      </v-button-collapse>
       <v-collapse v-model="accordion.isVisible3">
         <div class="p-4">
           Contrary to popular belief, Lorem Ipsum is not simply random text. It
@@ -107,21 +76,14 @@
 <!-- CUT START -->
   <v-accordion class="mt-10">
     <v-card name="card-flat">
-      <v-button
-        name="button-link"
+      <v-button-collapse
         block
-        @click="accordion2.isVisible = !accordion2.isVisible"
+        v-model="accordion2.isVisible"
+        name="button-link"
         class="p-3"
       >
-        <span class="mx-auto">Toggle collapse</span>
-        <v-chevron
-          initial="down"
-          rotate180
-          counter-clockwise
-          :switch="accordion2.isVisible"
-          class="ml-auto"
-        />
-      </v-button>
+        Toggle collapse
+      </v-button-collapse>
       <v-collapse v-model="accordion2.isVisible">
         <div class="p-4">
           Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -137,21 +99,14 @@
       </v-collapse>
     </v-card>
     <v-card name="card-flat" class="mt-2">
-      <v-button
+      <v-button-collapse
         block
+        v-model="accordion2.isVisible2"
         name="button-link"
-        @click="accordion2.isVisible2 = !accordion2.isVisible2"
         class="p-3"
       >
-        <span class="mx-auto">Toggle collapse 2</span>
-        <v-chevron
-          initial="down"
-          rotate180
-          counter-clockwise
-          :switch="accordion2.isVisible2"
-          class="ml-auto"
-        />
-      </v-button>
+        Toggle collapse
+      </v-button-collapse>
       <v-collapse v-model="accordion2.isVisible2">
         <div class="p-4">
           It is a long established fact that a reader will be distracted by the
@@ -167,20 +122,14 @@
       </v-collapse>
     </v-card>
     <v-card name="card-flat" class="mt-2">
-      <v-button
+      <v-button-collapse
         block
+        v-model="accordion2.isVisible3"
         name="button-link"
-        @click="accordion2.isVisible3 = !accordion2.isVisible3"
         class="p-3"
       >
-        <span class="mx-auto">Toggle collapse 3</span>
-        <v-chevron
-          initial="down"
-          rotate180
-          counter-clockwise
-          :switch="accordion2.isVisible3"
-        />
-      </v-button>
+        Toggle collapse
+      </v-button-collapse>
       <v-collapse v-model="accordion2.isVisible3">
         <div class="p-4">
           Contrary to popular belief, Lorem Ipsum is not simply random text. It

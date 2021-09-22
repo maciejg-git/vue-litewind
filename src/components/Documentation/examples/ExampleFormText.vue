@@ -1,6 +1,7 @@
 <template>
   <div class="my-5">
     <v-input v-model="name" :state="nameState()" class="mr-4" />
+
     <v-form-text
       :state="nameState()"
       :inline="example.inline"
@@ -53,7 +54,7 @@
     <span class="font-semibold">Languages:</span>
     {{ languagesModel }}
   </div>
-  <!-- CUT START -->
+<!-- CUT START -->
   <v-tabs name="tabs-material" class="mt-5">
     <v-tab name="Props">
       <div class="mt-5">
@@ -76,7 +77,7 @@
       </div>
     </v-tab>
   </v-tabs>
-  <!-- CUT END -->
+<!-- CUT END -->
 </template>
 
 <script>
