@@ -268,7 +268,7 @@
 
 <v-icon icon-type="info"></v-icon>
 
-<!-- <pencil></pencil> -->
+<pencil-icon></pencil-icon>
 <alt-icon></alt-icon>
 <align-top-icon></align-top-icon>
 

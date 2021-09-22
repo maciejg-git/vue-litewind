@@ -7,7 +7,7 @@
         states.alert[state] && states.alert[state].value,
       ]"
     >
-      <div class="flex">
+      <div class="flex items-center">
         <slot name="icon">
           <v-icon v-if="icon" icon-type="state"></v-icon>
         </slot>

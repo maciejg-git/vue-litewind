@@ -11,16 +11,17 @@ import { registerIcon } from "./vue"
 // import 
   // Sort
 //  from "./assets/icons/sort"
-// import {PencilIcon} from "./index.js"
+// import PencilIcon from "./dist-bootstrap/bootstrap/pencil"
 import TableReference from "./components/Documentation/TableReference.vue";
 import TableReferenceBasic from "./components/Documentation/TableReferenceBasic.vue";
 import vCode from "./components/Documentation/components/vCode.vue"
 
 let app = createApp(App);
 
-// app.provide("config-icon", {name: "name 2"})
+// app.provide("icon-config", {name: "name 2"})
 // app.component("sort", Sort)
 // let i = app.component("pencil", PencilIcon)
+// console.log(i)
 
 // TODO: global config
 const modules = import.meta.globEager('./dist-bootstrap/bootstrap/*.js')

@@ -2,6 +2,11 @@
   <span :class="classes.badge.value">
     <slot name="default"></slot>
   </span>
+  <!-- <flexbox wrap> -->
+  <!--   <flex> -->
+  <!--  -->
+  <!--   </flex> -->
+  <!-- </flexbox> -->
 </template>
 
 <script>
