@@ -34,6 +34,8 @@ import vAccordion from "./vAccordion.vue"
 import vIcon from "./vIcon.vue"
 import tooltip from "../directives/tooltip.js";
 
+import vButtonCollapse from "./vButtonCollapse.vue"
+
 export {
   vButton,
   vTable,
@@ -70,6 +72,8 @@ export {
   vAccordion,
   vIcon,
   tooltip,
+
+  vButtonCollapse,
 };
 
 export { 
@@ -141,6 +145,8 @@ function install(app) {
   app.component("v-accordion", vAccordion);
   app.component("v-icon", vIcon);
   app.directive("tooltip", tooltip);
+
+  app.component("v-button-collapse", vButtonCollapse);
 }
 
 export { install as plugin };
