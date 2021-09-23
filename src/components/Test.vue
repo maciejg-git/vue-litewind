@@ -278,6 +278,8 @@
 <abjad-arabic-icon></abjad-arabic-icon>
 <abugida-devanagari-icon></abugida-devanagari-icon>
 
+<align-bottom-icon></align-bottom-icon>
+
 <div class="relative h-40 w-40">
   rel
 <div class="absolute top-5 left-5">
