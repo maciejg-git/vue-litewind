@@ -32,6 +32,9 @@ pre {
 pre code {
   @apply whitespace-pre;
 }
+>>> code:not([class]) {
+  @apply text-yellow-700 font-semibold
+}
 .example {
   @apply my-5
 }

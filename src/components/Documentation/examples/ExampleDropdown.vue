@@ -14,10 +14,9 @@
     @state:closed="events.unshift({ ev: 'state:closed', data: $event })"
   >
     <template #activator>
-      <v-button>
+      <v-button-dropdown>
         Dropdown menu
-        <v-chevron style-chevron="right" />
-      </v-button>
+      </v-button-dropdown>
     </template>
     <v-card width="320px" style-card="shadow">
       <v-dropdown-menu-item tag="button">Menu item</v-dropdown-menu-item>

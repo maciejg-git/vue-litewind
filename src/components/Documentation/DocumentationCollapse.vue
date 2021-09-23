@@ -22,7 +22,7 @@
       <example-collapse></example-collapse>
     </div>
     Use flavored button <code>v-button-collapse</code> for minimal set up or normal
-    <code>v-button</code> for more customizing options. <code>v-button-collapse</code> use the same props as <code>v-button</code>.
+    <code>v-button</code> for more customizing options.
     <v-code :code="exampleCollapseCode" template language="html"></v-code>
     <v-code :code="exampleCollapseCode" script language="js"></v-code>
   </section>
@@ -32,7 +32,7 @@
     <div class="example">
       <p>
         Turn collapse components to accordion by wrapping them with <code>v-accordion</code>
-        component. 
+        component. In accordion mode only one item can be open at a time.
       </p>
       <example-collapse-accordion></example-collapse-accordion>
     </div>
@@ -78,7 +78,7 @@ export default {
     let components = ref([
       {
         prop: "v-button-collapse",
-        description: "Flavored version of v-button that has indicator build in and toggles attached v-model. Quick to set up but has limited customizing options. Uses the same props as normal v-button",
+        description: "Optional flavored version of <code>v-button</code> that has indicator build in and automatically toggles attached <code>v-model</code> on click. Uses the same props as normal <code>v-button</code> as well as triangle and icon props of <code>v-chevron</code>",
       },
     ]);
 

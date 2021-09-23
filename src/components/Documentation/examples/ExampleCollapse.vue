@@ -10,7 +10,7 @@
       <div class="p-4">
         Lorem Ipsum is simply dummy text of the printing and typesetting
         industry. Lorem Ipsum has been the industry's standard dummy text ever
-        <!-- CUT START -->
+<!-- CUT START -->
         since the 1500s, when an unknown printer took a galley of type and
         scrambled it to make a type specimen book. It has survived not only five
         centuries, but also the leap into electronic typesetting, remaining
@@ -18,7 +18,7 @@
         of Letraset sheets containing Lorem Ipsum passages, and more recently
         with desktop publishing software like Aldus PageMaker including versions
         of Lorem Ipsum.
-        <!-- CUT END -->
+<!-- CUT END -->
       </div>
     </v-collapse>
   </v-card>
@@ -27,7 +27,7 @@
 
   <v-card class="p-1 mt-1">
     <v-button block @click="example.isVisible2 = !example.isVisible2">
-      <span class="mx-auto">Toggle collapse 2</span>
+      <span class="ml-auto">Toggle collapse 2</span>
       <v-chevron
         initial="down"
         rotate180

@@ -105,7 +105,7 @@ export default {
         type: ["Object"],
         default: "",
         description:
-          "Format of date emmited by <code>input:formatted</code> event. Read about how to use this object <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat' class='link'>here</a> (options paremeter)",
+          "Format of date emmited by <code class='code-word'>input:formatted</code> event. Read about how to use this object <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat' class='link'>here</a> (options paremeter)",
       },
       {
         prop: "monday-first-weekday",

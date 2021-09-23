@@ -94,14 +94,14 @@ export default {
         type: ["Boolean"],
         default: "false",
         description:
-          "If true clicking primary button emits <code>input:secondaryButtonClick</code> event and closes modal. If false modal is not closed after emitting event",
+          "If true clicking primary button emits <code class='code-word'>input:secondaryButtonClick</code> event and closes modal. If false modal is not closed after emitting event",
       },
       {
         prop: "secondary-button-close",
         type: ["Boolean"],
         default: "false",
         description:
-          "If true clicking primary button emits <code>input:primaryButtonClick</code> event and closes modal. If false modal is not closed after emitting event",
+          "If true clicking primary button emits <code class='code-word'>input:primaryButtonClick</code> event and closes modal. If false modal is not closed after emitting event",
       },
       {
         prop: "no-close-button",

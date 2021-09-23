@@ -134,6 +134,10 @@ export default {
         prop: "v-dropdown-menu-item",
         description: "Single menu item",
       },
+      {
+        prop: "v-button-dropdown",
+        description: "Optional flavored version of <code>v-button</code> that has reactive indicator build in. Uses the same props as normal <code>v-button</code> as well as triangle and icon props of <code>v-chevron</code>",
+      },
     ]);
 
     return {
