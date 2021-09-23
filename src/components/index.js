@@ -35,6 +35,7 @@ import vIcon from "./vIcon.vue"
 import tooltip from "../directives/tooltip.js";
 
 import vButtonCollapse from "./vButtonCollapse.vue"
+import vButtonDropdown from "./vButtonDropdown.vue"
 
 export {
   vButton,
@@ -147,6 +148,7 @@ function install(app) {
   app.directive("tooltip", tooltip);
 
   app.component("v-button-collapse", vButtonCollapse);
+  app.component("v-button-dropdown", vButtonDropdown);
 }
 
 export { install as plugin };
