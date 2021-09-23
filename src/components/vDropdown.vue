@@ -10,7 +10,7 @@
     <slot name="activator"></slot>
   </div>
   <teleport to="body">
-    <transition :name="transition" :duration="300">
+    <transition :name="transition">
       <div
         v-if="isPopperVisible"
         ref="popper"
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { ref, reactive, watchEffect, provide, toRef, toRefs } from "vue";
+import { ref, provide, toRef, toRefs } from "vue";
 import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
 import useClickOutside from "./composition/use-click-outside";
@@ -120,6 +120,7 @@ export default {
     // provide hide function to menuitem to allow closing after click
     provide("autoCloseMenu", toRef(props, "autoCloseMenu"));
     provide("hide", hide);
+    provide("placement", toRef(props, "placement"))
 
     return {
       placement,
