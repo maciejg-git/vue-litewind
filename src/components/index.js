@@ -75,6 +75,7 @@ export {
   tooltip,
 
   vButtonCollapse,
+  vButtonDropdown,
 };
 
 export { 

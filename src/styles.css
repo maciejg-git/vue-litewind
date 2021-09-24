@@ -101,6 +101,17 @@
         pointer-events-none
     }
 
+    .button--collapse-true-state {
+      @apply
+        opacity-50
+        pointer-events-none
+    }
+    .button--collapse-false-state {
+      @apply
+        opacity-50
+        pointer-events-none
+    }
+
 /* TABS */
 
 .tabs--tab-bar {
@@ -1256,7 +1267,6 @@
   @apply
     h-4
     w-4
-    inline-block
 }
   .b-icon--sm {
     @apply
@@ -1306,12 +1316,16 @@
   @apply
     h-4
     w-4
-    fill-current
 }
 
 .fa-icon {
   @apply
     h-4
     w-4
-    fill-current
+}
+
+.ph-icon {
+  @apply
+    h-4
+    w-4
 }

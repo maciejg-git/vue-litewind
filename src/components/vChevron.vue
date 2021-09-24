@@ -1,68 +1,74 @@
 <template>
-  <div class="w-auto">
-    <template v-if="icon">
-      <v-icon :icon="icon" :class="getClass()"></v-icon>
+  <template v-if="icon">
+    <v-icon :icon="icon" :class="getClass()" v-bind="$attrs"></v-icon>
+  </template>
+  <template v-else>
+    <template v-if="!triangle">
+      <v-icon
+        v-if="initial == 'right'"
+        :name="vChevronRightIcon"
+        :class="getClass()"
+        v-bind="$attrs"
+      ></v-icon>
+      <v-icon
+        v-else-if="initial == 'left'"
+        :name="vChevronLeftIcon"
+        :class="getClass()"
+        v-bind="$attrs"
+      ></v-icon>
+      <v-icon
+        v-else-if="initial == 'up'"
+        :name="vChevronUpIcon"
+        :class="getClass()"
+        v-bind="$attrs"
+      ></v-icon>
+      <v-icon
+        v-else-if="initial == 'down'"
+        :name="vChevronDownIcon"
+        :class="getClass()"
+        v-bind="$attrs"
+      ></v-icon>
     </template>
-    <template v-else>
-      <template v-if="!triangle">
-        <v-icon
-          v-if="initial == 'right'"
-          :name="vChevronRightIcon"
-          :class="getClass()"
-        ></v-icon>
-        <v-icon
-          v-else-if="initial == 'left'"
-          :name="vChevronLeftIcon"
-          :class="getClass()"
-        ></v-icon>
-        <v-icon
-          v-else-if="initial == 'up'"
-          :name="vChevronUpIcon"
-          :class="getClass()"
-        ></v-icon>
-        <v-icon
-          v-else-if="initial == 'down'"
-          :name="vChevronDownIcon"
-          :class="getClass()"
-        ></v-icon>
-      </template>
-      <template v-else-if="triangle">
-        <v-icon
-          v-if="initial == 'right'"
-          :name="vCaretRightFillIcon"
-          :class="getClass()"
-        ></v-icon>
-        <v-icon
-          v-else-if="initial == 'left'"
-          :name="vCaretLeftFillIcon"
-          :class="getClass()"
-        ></v-icon>
-        <v-icon
-          v-else-if="initial == 'up'"
-          :name="vCaretUpFillIcon"
-          :class="getClass()"
-        ></v-icon>
-        <v-icon
-          v-else-if="initial == 'down'"
-          :name="vCaretDownFillIcon"
-          :class="getClass()"
-        ></v-icon>
-      </template>
+    <template v-else-if="triangle">
+      <v-icon
+        v-if="initial == 'right'"
+        :name="vCaretRightFillIcon"
+        :class="getClass()"
+        v-bind="$attrs"
+      ></v-icon>
+      <v-icon
+        v-else-if="initial == 'left'"
+        :name="vCaretLeftFillIcon"
+        :class="getClass()"
+        v-bind="$attrs"
+      ></v-icon>
+      <v-icon
+        v-else-if="initial == 'up'"
+        :name="vCaretUpFillIcon"
+        :class="getClass()"
+        v-bind="$attrs"
+      ></v-icon>
+      <v-icon
+        v-else-if="initial == 'down'"
+        :name="vCaretDownFillIcon"
+        :class="getClass()"
+        v-bind="$attrs"
+      ></v-icon>
     </template>
-  </div>
+  </template>
 </template>
 
 <script>
 import { computed } from "vue";
 import vIcon from "./vIcon.vue";
-import vChevronRightIcon from "./icons/chevron-right.js"
-import vChevronLeftIcon from "./icons/chevron-left.js"
-import vChevronUpIcon from "./icons/chevron-up.js"
-import vChevronDownIcon from "./icons/chevron-down.js"
-import vCaretRightFillIcon from "./icons/caret-right-fill.js"
-import vCaretLeftFillIcon from "./icons/caret-left-fill.js"
-import vCaretUpFillIcon from "./icons/caret-up-fill.js"
-import vCaretDownFillIcon from "./icons/caret-down-fill.js"
+import vChevronRightIcon from "./icons/chevron-right.js";
+import vChevronLeftIcon from "./icons/chevron-left.js";
+import vChevronUpIcon from "./icons/chevron-up.js";
+import vChevronDownIcon from "./icons/chevron-down.js";
+import vCaretRightFillIcon from "./icons/caret-right-fill.js";
+import vCaretLeftFillIcon from "./icons/caret-left-fill.js";
+import vCaretUpFillIcon from "./icons/caret-up-fill.js";
+import vCaretDownFillIcon from "./icons/caret-down-fill.js";
 import useStyles from "./composition/use-styles";
 
 export default {

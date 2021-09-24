@@ -28,6 +28,12 @@ import vRadio from "./vRadio.vue";
 import vCheckbox from "./vCheckbox.vue";
 import vRange from "./vRange.vue";
 import vBreadcrumb from "./vBreadcrumb.vue";
+import vFormText from "./vFormText.vue";
+import vAccordion from "./vAccordion.vue";
+import vIcon from "./vIcon.vue";
+import vChevron from "./vChevron.vue";
+import vButtonCollapse from "./vButtonCollapse.vue";
+import vButtonDropdown from "./vButtonDropdown.vue";
 import tooltip from "../directives/tooltip.js";
 
 function plugin(component, ...args) {
@@ -80,12 +86,20 @@ const progressPlugin = plugin(["v-progress", vProgress]);
 const dropdownPlugin = plugin(
   ["v-dropdown", vDropdown],
   ["v-dropdown-menu-item", vDropdownMenuItem],
-  ["v-dropdown-header", vDropdownHeader]
+  ["v-dropdown-header", vDropdownHeader],
+  ["v-button-dropdown", vButtonDropdown],
 );
-const collapsePlugin = plugin(["v-collapse", vCollapse]);
+const collapsePlugin = plugin(
+  ["v-collapse", vCollapse],
+  ["v-accordion", vAccordion],
+  ["v-button-collapse", vButtonCollapse],
+);
 const popoverPlugin = plugin(["v-popover", vPopover]);
 const closebuttonPlugin = plugin(["v-close-button", vCloseButton]);
 const dividerPlugin = plugin(["v-divider", vDivider]);
+const iconPlugin = plugin(["v-icon", vIcon]);
+const formtextPlugin = plugin(["v-form-text", vFormText]);
+const chevronPlugin = plugin(["v-chevron", vChevron]);
 const tooltipPlugin = directive("tooltip", tooltip);
 
 export {
@@ -115,5 +129,8 @@ export {
   popoverPlugin,
   closebuttonPlugin,
   dividerPlugin,
+  iconPlugin,
+  formtextPlugin,
+  chevronPlugin,
   tooltipPlugin,
 };

@@ -24,24 +24,7 @@ let app = createApp(App);
 // console.log(i)
 
 // TODO: global config
-const modules = import.meta.globEager('./dist-bootstrap/bootstrap/*.js')
 
-Object.entries(modules).forEach(([path, definition]) => {
-  let icon = definition.default.name + "Icon"
-  app.component(icon, definition.default)
-})
-const modules2 = import.meta.globEager('./dist-mdi/mdi/*.js')
-
-Object.entries(modules2).forEach(([path, definition]) => {
-  let icon = definition.default.name + "Icon"
-  app.component(icon, definition.default)
-})
-const modules3 = import.meta.globEager('./dist-fa/fa/solid/*.js')
-
-Object.entries(modules3).forEach(([path, definition]) => {
-  let icon = definition.default.name + "Icon"
-  app.component(icon, definition.default)
-})
 const icons = import.meta.globEager('./assets/icons/*.js')
 
 Object.entries(icons).forEach(([path, definition]) => {

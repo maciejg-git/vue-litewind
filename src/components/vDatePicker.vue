@@ -275,7 +275,7 @@ export default {
 
     let emitSelection = (selected, formatted) => {
       emit("update:modelValue", selected);
-      emit("input:formatted", formatted);
+      emit("update:formatted", formatted);
       emit("state:done");
     };
 
@@ -358,7 +358,7 @@ export default {
     };
 
     let handleSecondaryButtonClick = () => {
-      emit("state:cancel");
+      emit("input:cancel");
     };
 
     // update current month and year

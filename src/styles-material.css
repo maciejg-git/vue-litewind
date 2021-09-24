@@ -1,4 +1,4 @@
-/* TABS MATERIAL */
+/* TABS */
 
 .tabs-material-tab-fixed {
   @apply
@@ -26,3 +26,36 @@
   @apply
     border-b
 }
+
+/* LIST */
+
+.list-material {
+}
+    .list-material--round {
+      @apply
+        rounded-md
+    }
+    .list-material--borderless {
+      @apply
+        border-0
+    }
+
+.list-material--item {
+  @apply
+    border
+    border-gray-100
+    hover:bg-gray-50
+    shadow-md
+    p-2
+    px-4
+    my-1
+    transition-all
+}
+    .list-material--item--active-state {
+      @apply
+        border-blue-600
+        bg-blue-500
+        hover:bg-blue-600
+        text-white
+        border-l-4
+    }
