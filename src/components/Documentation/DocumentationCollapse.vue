@@ -78,7 +78,7 @@ export default {
     let components = ref([
       {
         prop: "v-button-collapse",
-        description: "Optional flavored version of <code>v-button</code> that has indicator build in and automatically toggles attached <code>v-model</code> on click. Uses the same props as normal <code>v-button</code> as well as triangle and icon props of <code>v-chevron</code>",
+        description: "Optional flavored version of <code>v-button</code> that has indicator build in and automatically toggles attached <code>v-model</code> on click. It uses the same props as normal <code>v-button</code> as well as triangle and icon props of <code>v-chevron</code>",
       },
     ]);
 

@@ -70,7 +70,7 @@
     <label for="style">List style:</label>
     <v-select id="style" v-model="example.name">
       <option value="list">bootstrap</option>
-      <option value="listMaterial">material</option>
+      <option value="list-material">material</option>
     </v-select>
   </div>
   <v-tabs name="tabs-material" class="mt-10">

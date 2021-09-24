@@ -27,7 +27,7 @@
     </template>
   </v-progress>
 
-  <!-- styled progress -->
+  <!-- narrow, styled progress -->
 
   <v-progress
     :value="+example.value"

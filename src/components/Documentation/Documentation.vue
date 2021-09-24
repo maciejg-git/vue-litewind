@@ -60,6 +60,23 @@
         </li>
       </ul>
 
+      <h6>
+        <router-link to="/documentation/form-components" class="transition-all">
+          Form Components
+        </router-link>
+      </h6>
+      <ul class="list-unstyled ml-2">
+        <li v-for="(c, i) in formComponents" :key="i">
+          <router-link
+            :to="'/documentation/' + c.name"
+            active-class="active"
+            class="transition-all"
+          >
+            {{ c.label }}
+          </router-link>
+        </li>
+      </ul>
+
       <!-- directives -->
 
       <h6 class="mt-4">Directives</h6>
@@ -90,7 +107,7 @@
 // import "highlight.js/styles/atom-one-light.css";
 // import "highlight.js/styles/foundation.css";
 import "highlight.js/styles/github.css";
-import { components } from "./Components";
+import { components, formComponents } from "./Components";
 import { provide } from "vue"
 
 export default {
@@ -102,6 +119,7 @@ provide("stateIcons", {
   )
     return {
       components,
+      formComponents,
     };
   },
 };

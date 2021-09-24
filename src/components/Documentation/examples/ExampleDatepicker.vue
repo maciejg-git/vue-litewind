@@ -14,9 +14,9 @@
       @update:modelValue="
         events.unshift({ ev: 'update:modelValue', data: $event })
       "
-      @input:formatted="events.unshift({ ev: 'input:formatted', data: $event })"
+      @update:formatted="events.unshift({ ev: 'update:formatted', data: $event })"
       @state:done="events.unshift({ ev: 'state:done', data: $event })"
-      @state:cancel="events.unshift({ ev: 'state:cancel', data: $event })"
+      @input:cancel="events.unshift({ ev: 'input:cancel', data: $event })"
     />
   </v-card>
 <!-- CUT START -->

@@ -1,4 +1,4 @@
-export let components = [
+let components = [
   {
     label: "Alert",
     name: "alert",
@@ -24,14 +24,6 @@ export let components = [
     name: "closebutton",
   },
   {
-    label: "Icon",
-    name: "icon",
-  },
-  {
-    label: "Divider",
-    name: "divider",
-  },
-  {
     label: "Chevron",
     name: "chevron",
   },
@@ -40,40 +32,20 @@ export let components = [
     name: "collapse",
   },
   {
-    label: "Dropdown",
-    name: "dropdown",
-  },
-  {
     label: "Date Picker",
     name: "datepicker",
   },
   {
-    label: "Input",
-    name: "input",
+    label: "Divider",
+    name: "divider",
   },
   {
-    label: "Select",
-    name: "select",
+    label: "Dropdown",
+    name: "dropdown",
   },
   {
-    label: "Checkbox",
-    name: "checkbox",
-  },
-  {
-    label: "Radio",
-    name: "radio",
-  },
-  {
-    label: "Textarea",
-    name: "textarea",
-  },
-  {
-    label: "Range",
-    name: "range",
-  },
-  {
-    label: "Form text",
-    name: "formtext",
+    label: "Icon",
+    name: "icon",
   },
   {
     label: "List",
@@ -116,3 +88,39 @@ export let components = [
     name: "table",
   },
 ]
+
+let formComponents = [
+  {
+    label: "Input",
+    name: "input",
+  },
+  {
+    label: "Select",
+    name: "select",
+  },
+  {
+    label: "Checkbox",
+    name: "checkbox",
+  },
+  {
+    label: "Radio",
+    name: "radio",
+  },
+  {
+    label: "Textarea",
+    name: "textarea",
+  },
+  {
+    label: "Range",
+    name: "range",
+  },
+  {
+    label: "Form text",
+    name: "formtext",
+  },
+]
+
+export { 
+  components, 
+  formComponents 
+}

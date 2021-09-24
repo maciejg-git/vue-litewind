@@ -213,7 +213,7 @@ export default {
         description: "Update v-model",
       },
       {
-        prop: "input:formatted",
+        prop: "update:formatted",
         description:
           "Emmited after selecting date along with update:modelValue. Date is in formatted using locale and format prop",
       },
@@ -223,7 +223,7 @@ export default {
           "Emmited after selecting date (and clicking primary button if buttons props is set to true)",
       },
       {
-        prop: "state:cancel",
+        prop: "input:cancel",
         description: "Emmited after clicking secondary button",
       },
     ]);

@@ -13,6 +13,11 @@
   </section>
 
   <section>
+    <h4>Notes</h4>
+    <p>When no using any icon framework having some chevrons/triangles around could be handy.</p>
+  </section>
+
+  <section>
     <h4>Example</h4>
     <div class="example">
       <example-chevron></example-chevron>
@@ -63,6 +68,13 @@ export default {
         default: "false",
         description:
           "Flick this to rotate chevron/triangle to initial/rotated position",
+      },
+      {
+        prop: "icon",
+        type: ["String"],
+        default: "empty string",
+        description:
+          "Name of the icon to use instead of default chevron/triangle",
       },
       {
         prop: "name",

@@ -43,8 +43,8 @@ export default {
 
     let styles = ref([
       {
-        prop: "style-table",
-        description: "Main table element",
+        prop: "style-divider",
+        description: "Main divider element",
       },
     ]);
 
