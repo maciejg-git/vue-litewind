@@ -280,6 +280,12 @@
 
 <align-bottom-icon></align-bottom-icon>
 
+<archive-bold-icon></archive-bold-icon>
+
+<chat-text-duotone-icon class="text-red-400"></chat-text-duotone-icon>
+<export-fill-icon></export-fill-icon>
+<git-diff-light-icon></git-diff-light-icon>
+
 <div class="relative h-40 w-40">
   rel
 <div class="absolute top-5 left-5">
