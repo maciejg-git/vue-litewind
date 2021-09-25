@@ -13,12 +13,12 @@
             <v-close-button
               v-if="!noCloseButton"
               @click="close"
-            ></v-close-button>
+            />
           </header>
           <main :class="classes.content.value">
             <slot name="default"></slot>
           </main>
-          <footer :class="classes.footer.value">
+          <footer v-if="!noFooter" :class="classes.footer.value">
             <slot name="footer">
               <v-button
                 v-if="!noSecondaryButton"
@@ -66,6 +66,7 @@ export default {
     secondaryButtonClose: { type: Boolean, default: false },
     noCloseButton: { type: Boolean, default: false },
     staticBackdrop: { type: Boolean, default: false },
+    noFooter: { type: Boolean, default: false },
     position: { type: String, default: "top" },
     size: { type: String, default: "md" },
     transition: { type: String, default: "fade-slide" },

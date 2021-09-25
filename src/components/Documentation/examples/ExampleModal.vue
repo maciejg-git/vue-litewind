@@ -56,6 +56,7 @@
     :secondary-button-close="!!example.secondaryButtonClose"
     :no-close-button="!!example.noCloseButton"
     :static-backdrop="!!example.staticBackdrop"
+    :no-footer="!!example.noFooter"
     :position="example.position"
     :size="example.size"
     :transition="example.transition"
@@ -126,6 +127,13 @@
       <div class="mb-2">
         <label for="static-backdrop">static-backdrop:</label>
         <v-select id="static-backdrop" v-model="example.staticBackdrop">
+          <option :value="true">true</option>
+          <option :value="false">false</option>
+        </v-select>
+      </div>
+      <div class="mb-2">
+        <label for="no-footer">no-footer:</label>
+        <v-select id="no-footer" v-model="example.noFooter">
           <option :value="true">true</option>
           <option :value="false">false</option>
         </v-select>
@@ -276,6 +284,7 @@ export default {
       secondaryButtonClose: true,
       noCloseButton: false,
       staticBackdrop: false,
+      noFooter: false,
       position: "top",
       size: "md",
       transition: "fade-slide",
