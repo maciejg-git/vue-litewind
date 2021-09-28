@@ -287,14 +287,14 @@
     <v-button
       @click="prev()"
       style-button="secondary"
-      class="absolute bottom-4 left-4 opacity-90 mix-blend-screen"
+      class="absolute bottom-4 left-4 opacity-97 mix-blend-screen"
     >
       Previous
     </v-button>
     <v-button
       @click="next()"
       style-button="secondary"
-      class="absolute bottom-4 right-4 opacity-90 mix-blend-screen"
+      class="absolute bottom-4 right-4 opacity-97 mix-blend-screen"
     >
       Next
     </v-button>

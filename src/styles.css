@@ -653,7 +653,7 @@
 
 .close-button {
   @apply
-    text-gray-600
+    text-gray-500
     w-5
     h-5
 }
