@@ -9,14 +9,31 @@
   </section>
 
   <section>
+    <h5>Icons source</h5>
+    <p>
+      <code>v-icon</code>
+      uses icon components from this repo. Check documentation on how to
+      install, import and use them.
+    </p>
+  </section>
+
+  <section>
+    <h4>Example</h4>
+    <div class="example">
+      <example-icon></example-icon>
+    </div>
+    <v-code :code="exampleIconCode" template language="html"></v-code>
+  </section>
+
+  <section>
     <h5>Icon types</h5>
     <p>
       Provide icon types via provide function in application entry file
       (typically main.js) or anywhere in top level component. Icon type is
       Object that maps icon name to any name. It can be useful in some ways for
       example to define easy to remember aliases for frequently used icons,
-      changing icons application wide, define icons for various states and bind with
-      states of components etc. Also those icons have
+      changing icons application wide, define icons for various states and bind
+      with states of components etc. Also those icons have
       <code>icon--[type]-type</code>
       class.
     </p>
@@ -36,14 +53,6 @@ app.provide("iconTypes", {
       </code>
     </pre>
   </section>
-
-  <section>
-    <h4>Example</h4>
-    <div class="example">
-      <example-icon></example-icon>
-    </div>
-    <v-code :code="exampleIconCode" template language="html"></v-code>
-  </section>
 </template>
 
 <script>
@@ -61,7 +70,8 @@ export default {
         prop: "icon",
         type: ["String"],
         default: "undefined",
-        description: "Name of the imported and registered icon. This prop have two aliases 'name' and 'i' (for example <code>&lt;icon name='icon name' /&gt;</code>)",
+        description:
+          "Name of the imported and registered icon. This prop have two aliases 'name' and 'i' (for example <code>&lt;icon name='icon name' /&gt;</code>)",
       },
       {
         prop: "icon-type",
@@ -73,7 +83,8 @@ export default {
         prop: "transition",
         type: ["String"],
         default: "empty string",
-        description: "Transition when icon shows or changes. Valid transitions are 'fade', 'fade-scale-down', 'fade-scale-up' and empty string for no transition (default)",
+        description:
+          "Transition when icon shows or changes. Valid transitions are 'fade', 'fade-scale-down', 'fade-scale-up' and empty string for no transition (default)",
       },
     ]);
 

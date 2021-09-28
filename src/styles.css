@@ -653,7 +653,7 @@
 
 .close-button {
   @apply
-    opacity-60
+    text-gray-600
     w-5
     h-5
 }
@@ -733,15 +733,15 @@
     px-6
     py-5
 }
-    .modal--content-relaxed {
+    .modal--content--relaxed {
       @apply
         px-9
         py-8
     }
-    .modal--content-edge-to-edge {
+    .modal--content--edge-to-edge {
       @apply
-        px-2
-        py-5
+        px-0
+        py-0
     }
 
 .modal--backdrop {

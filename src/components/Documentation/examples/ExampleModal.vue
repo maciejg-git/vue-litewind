@@ -12,9 +12,15 @@
     >
       Show long scrollable modal
     </v-button>
+    <v-button
+      @click="example.isVisibleImage = !example.isVisibleImage"
+      class="mx-auto self-center mt-4"
+    >
+      Show image modal
+    </v-button>
   </v-card>
 
-<!-- CUT START -->
+  <!-- CUT START -->
   <div class="mt-4 md:ml-14 md:mt-0">
     <div class="mb-2">
       <label for="position">position:</label>
@@ -30,6 +36,7 @@
         <option value="md">md</option>
         <option value="lg">lg</option>
         <option value="xl">xl</option>
+        <option value="fit">fit</option>
       </v-select>
     </div>
     <div class="mb-2">
@@ -41,7 +48,7 @@
       </v-select>
     </div>
   </div>
-<!-- CUT END -->
+  <!-- CUT END -->
 
   <!-- modal -->
 
@@ -56,12 +63,13 @@
     :secondary-button-close="!!example.secondaryButtonClose"
     :no-close-button="!!example.noCloseButton"
     :static-backdrop="!!example.staticBackdrop"
+    :no-header="!!example.noHeader"
     :no-footer="!!example.noFooter"
     :position="example.position"
     :size="example.size"
     :transition="example.transition"
   >
-<!-- CUT START -->
+    <!-- CUT START -->
     <div>
       <div class="mb-2">
         <label for="title">title:</label>
@@ -132,6 +140,13 @@
         </v-select>
       </div>
       <div class="mb-2">
+        <label for="no-header">no-header:</label>
+        <v-select id="no-header" v-model="example.noHeader">
+          <option :value="true">true</option>
+          <option :value="false">false</option>
+        </v-select>
+      </div>
+      <div class="mb-2">
         <label for="no-footer">no-footer:</label>
         <v-select id="no-footer" v-model="example.noFooter">
           <option :value="true">true</option>
@@ -154,16 +169,8 @@
           <option value="xl">xl</option>
         </v-select>
       </div>
-      <div class="mb-2">
-        <label for="transition-modal">transition:</label>
-        <v-select id="transition-modal" v-model="example.transition">
-          <option value="fade">fade</option>
-          <option value="fade-slide">fade-slide</option>
-          <option value="fade-scale">fade-scale</option>
-        </v-select>
-      </div>
     </div>
-  <!-- CUT END -->
+    <!-- CUT END -->
   </v-modal>
 
   <!-- long scrollable modal -->
@@ -185,7 +192,7 @@
   >
     Early in the month of October, 1815, about an hour before sunset, a man who
     was travelling on foot entered the little town of D—— The few inhabitants
-<!-- CUT START -->
+    <!-- CUT START -->
     who were at their windows or on their thresholds at the moment stared at
     this traveller with a sort of uneasiness. It was difficult to encounter a
     wayfarer of more wretched appearance. He was a man of medium stature,
@@ -261,18 +268,48 @@
     flanked by white partridges and heather-cocks, was turning on a long spit
     before the fire; on the stove, two huge carps from Lake Lauzet and a trout
     from Lake Alloz were cooking.
-<!-- CUT END -->
+    <!-- CUT END -->
+  </v-modal>
+
+  <!-- image modal -->
+
+  <v-modal
+    v-model="example.isVisibleImage"
+    no-header
+    no-footer
+    close-button-in-content
+    size="fit"
+    :position="example.position"
+    :transition="example.transition"
+    style-content="edge-to-edge"
+  >
+    <img :src="'/' + images[currentImage]" width="1000" alt="" />
+    <v-button
+      @click="prev()"
+      style-button="secondary"
+      class="absolute bottom-4 left-4 opacity-90 mix-blend-screen"
+    >
+      Previous
+    </v-button>
+    <v-button
+      @click="next()"
+      style-button="secondary"
+      class="absolute bottom-4 right-4 opacity-90 mix-blend-screen"
+    >
+      Next
+    </v-button>
   </v-modal>
 </template>
 
 <script>
-import { reactive } from "vue";
+import { ref, reactive } from "vue";
 
 export default {
   setup() {
     let example = reactive({
       isVisible: false,
       isVisibleLong: false,
+      isVisibleImage: false,
       title: "Example modal",
       noPrimaryButton: false,
       noSecondaryButton: false,
@@ -284,14 +321,33 @@ export default {
       secondaryButtonClose: true,
       noCloseButton: false,
       staticBackdrop: false,
+      noHeader: false,
       noFooter: false,
       position: "top",
       size: "md",
       transition: "fade-slide",
     });
 
+    let images = ["mononoke035.jpg", "mononoke033.jpg"];
+
+    let currentImage = ref(0);
+
+    let next = () => {
+      return (currentImage.value =
+        currentImage.value + 1 > 1 ? 0 : currentImage.value + 1);
+    };
+
+    let prev = () => {
+      return (currentImage.value =
+        currentImage.value - 1 < 0 ? 1 : currentImage.value - 1);
+    };
+
     return {
       example,
+      images,
+      currentImage,
+      next,
+      prev,
     };
   },
 };

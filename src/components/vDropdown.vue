@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { ref, provide, toRef, toRefs } from "vue";
+import { ref, computed, provide, toRef, toRefs } from "vue";
 import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
 import useClickOutside from "./composition/use-click-outside";
@@ -35,6 +35,7 @@ import { correctPlacement } from "../const.js";
 export default {
   inheritAttrs: true,
   props: {
+    modelValue: { type: Boolean, default: false },
     placement: {
       type: String,
       default: "bottom-start",
@@ -84,6 +85,10 @@ export default {
 
     let { onClickOutside } = useClickOutside();
     onClickOutside([popper, activator], hidePopper);
+
+    let isDropdownVisible = computed(() => {
+      return isPopperVisible.value || props.modelValue
+    })
 
     // prevent closing menu if pointer is over menu and using hover trigger
     let lock = () => {
@@ -137,6 +142,7 @@ export default {
       hide,
       lock,
       unlock,
+      isDropdownVisible,
     };
   },
 };

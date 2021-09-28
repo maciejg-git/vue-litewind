@@ -8,7 +8,7 @@
     >
       <div :class="classes.container.value">
         <div :class="classes.modal.value">
-          <header :class="classes.header.value">
+          <header v-if="!noHeader" :class="classes.header.value">
             {{ title }}
             <v-close-button
               v-if="!noCloseButton"
@@ -16,6 +16,11 @@
             />
           </header>
           <main :class="classes.content.value">
+            <v-close-button
+              v-if="noHeader && closeButtonInContent"
+              class="absolute top-6 right-6 mix-blend-screen"
+              @click="close"
+            />
             <slot name="default"></slot>
           </main>
           <footer v-if="!noFooter" :class="classes.footer.value">
@@ -65,7 +70,9 @@ export default {
     primaryButtonClose: { type: Boolean, default: false },
     secondaryButtonClose: { type: Boolean, default: false },
     noCloseButton: { type: Boolean, default: false },
+    closeButtonInContent: { type: Boolean, default: false },
     staticBackdrop: { type: Boolean, default: false },
+    noHeader: { type: Boolean, default: false },
     noFooter: { type: Boolean, default: false },
     position: { type: String, default: "top" },
     size: { type: String, default: "md" },
@@ -113,6 +120,7 @@ export default {
       else if (props.size == "lg") size = "md:w-8/12"
       else if (props.size == "md") size = "md:w-6/12"
       else if (props.size == "sm") size = "md:w-4/12"
+      else if (props.size == "fit") size = "md:w-max"
 
       return ["fixed-container", size, position];
     });

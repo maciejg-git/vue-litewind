@@ -110,11 +110,31 @@ export default {
         description: "Disables 'X' button in modal header",
       },
       {
+        prop: "close-button-in-content",
+        type: ["Boolean"],
+        default: "false",
+        description: "Renders absolute positioned close button inside content container (instead of header). This can be useful if header is disabled or when showing images that span entire modal. See such example below.",
+      },
+      {
         prop: "static-backdrop",
         type: ["Boolean"],
         default: "false",
         description:
           "If true modal dialog cannot be closed by clicking outside of it",
+      },
+      {
+        prop: "no-header",
+        type: ["Boolean"],
+        default: "false",
+        description:
+          "Do not render header if true",
+      },
+      {
+        prop: "no-footer",
+        type: ["Boolean"],
+        default: "false",
+        description:
+          "Do not render footer if true",
       },
       {
         prop: "position",
@@ -126,7 +146,7 @@ export default {
         prop: "size",
         type: ["String"],
         default: "md",
-        description: "Modal size. Valid values are: 'sm', 'md', 'lg' or 'xl'",
+        description: "Modal size. Valid values are: 'sm', 'md', 'lg', 'xl' or 'fit' ",
       },
       {
         prop: "transition",
