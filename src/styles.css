@@ -10,11 +10,6 @@
       text-gray-500
   }
 
-.button-link--padding {
-  @apply
-    p-4
-}
-
 /* BUTTON */
 
 .button {
@@ -46,29 +41,29 @@
         hover:bg-gray-600
         focus:ring-gray-200
     }
-    .button--yellow {
+    .button--warn {
       @apply
         bg-yellow-500
         hover:bg-yellow-600
         focus:ring-yellow-200
+    }
+    .button--success {
+      @apply
+        bg-green-500
+        hover:bg-green-600
+        focus:ring-green-200
+    }
+    .button--danger {
+      @apply
+        bg-red-500
+        hover:bg-red-600
+        focus:ring-red-200
     }
     .button--pink {
       @apply
         bg-pink-500
         hover:bg-pink-600
         focus:ring-pink-200
-    }
-    .button--green {
-      @apply
-        bg-green-500
-        hover:bg-green-600
-        focus:ring-green-200
-    }
-    .button--red {
-      @apply
-        bg-red-500
-        hover:bg-red-600
-        focus:ring-red-200
     }
     .button--large {
       @apply
@@ -299,10 +294,6 @@
     .progress--progress-bar--red {
       @apply
         bg-red-500
-    }
-    .progress--progress-bar--shadowed {
-      @apply
-        shadow-lg
     }
     .progress--progress-bar--gradient {
       @apply
@@ -559,6 +550,7 @@
     border-l-4
     rounded
     p-4
+    font-semibold
 }
     .alert--info {
       @apply
@@ -597,10 +589,6 @@
     .alert--shadowed {
       @apply
         shadow-md
-    }
-    .alert--borderless {
-      @apply
-        border-0
     }
     .alert--dense {
       @apply
@@ -837,8 +825,8 @@
     mx-auto
     text-left
     focus:outline-none
-    pr-4
     text-gray-700
+    pr-4
     px-4 
     py-2
     hover:bg-gray-100
@@ -974,7 +962,7 @@
     py-1
 }
 
-/* DATEPICKER */
+/* DATEPICKER FLAT */
 
 .datepicker-flat--day-fixed {
   @apply
@@ -1143,17 +1131,17 @@
         bg-gray-500
         text-white
     }
-    .badge--green {
+    .badge--success {
       @apply
         bg-green-500
         text-white
     }
-    .badge--yellow {
+    .badge--warn {
       @apply
         bg-yellow-500
         text-white
     }
-    .badge--red {
+    .badge--danger {
       @apply
         bg-red-500
         text-white

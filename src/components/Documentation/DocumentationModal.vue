@@ -21,6 +21,15 @@
   </section>
 
   <section>
+    <h4>Example - simple modal</h4>
+    <div class="example md:flex">
+      <example-modal-simple></example-modal-simple>
+    </div>
+    <v-code :code="exampleModalSimpleCode" template language="html"></v-code>
+    <v-code :code="exampleModalSimpleCode" script language="js"></v-code>
+  </section>
+
+  <section>
     <h4>Example</h4>
     <div class="example md:flex">
       <example-modal></example-modal>
@@ -33,11 +42,14 @@
 <script>
 import { ref } from "vue";
 import ExampleModal from "./examples/ExampleModal.vue"
+import ExampleModalSimple from "./examples/ExampleModalSimple.vue"
 import exampleModalCode from "./examples/ExampleModal.vue?raw"
+import exampleModalSimpleCode from "./examples/ExampleModalSimple.vue?raw"
 
 export default {
   components: {
     ExampleModal,
+    ExampleModalSimple,
   },
   setup() {
     let reference = ref([
@@ -216,6 +228,7 @@ export default {
       events,
       slots,
       exampleModalCode,
+      exampleModalSimpleCode,
     };
   },
 };

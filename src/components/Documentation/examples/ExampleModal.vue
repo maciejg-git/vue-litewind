@@ -69,7 +69,8 @@
     :size="example.size"
     :transition="example.transition"
   >
-    <!-- CUT START -->
+    <!-- forms -->
+<!-- CUT START -->
     <div>
       <div class="mb-2">
         <label for="title">title:</label>
@@ -170,7 +171,7 @@
         </v-select>
       </div>
     </div>
-    <!-- CUT END -->
+<!-- CUT END -->
   </v-modal>
 
   <!-- long scrollable modal -->
@@ -192,7 +193,7 @@
   >
     Early in the month of October, 1815, about an hour before sunset, a man who
     was travelling on foot entered the little town of D—— The few inhabitants
-    <!-- CUT START -->
+<!-- CUT START -->
     who were at their windows or on their thresholds at the moment stared at
     this traveller with a sort of uneasiness. It was difficult to encounter a
     wayfarer of more wretched appearance. He was a man of medium stature,
@@ -268,7 +269,7 @@
     flanked by white partridges and heather-cocks, was turning on a long spit
     before the fire; on the stove, two huge carps from Lake Lauzet and a trout
     from Lake Alloz were cooking.
-    <!-- CUT END -->
+<!-- CUT END -->
   </v-modal>
 
   <!-- image modal -->

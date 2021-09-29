@@ -108,8 +108,8 @@ import {
 
 export default {
   props: {
-    definition: { type: Array, default: () => [] },
-    items: { type: Array, default: () => [] },
+    definition: { type: Array, default: undefined },
+    items: { type: Array, default: undefined },
     filter: { type: [String, RegExp], default: "" },
     page: { type: [Number, String], default: 1 },
     itemsPerPage: { type: [Number, String], default: 0 },

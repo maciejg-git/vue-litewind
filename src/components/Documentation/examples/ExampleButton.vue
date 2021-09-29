@@ -13,9 +13,9 @@
 
   <div class="flex items-center gap-4 mt-4">
     <v-button style-button="secondary">Secondary button</v-button>
-    <v-button style-button="yellow">Yellow button</v-button>
-    <v-button style-button="green">Green button</v-button>
-    <v-button style-button="red">Red button</v-button>
+    <v-button style-button="warn">Warn button</v-button>
+    <v-button style-button="success">Success button</v-button>
+    <v-button style-button="danger">Danger button</v-button>
   </div>
 
   <div class="flex items-center gap-4 mt-4">
@@ -25,14 +25,14 @@
   </div>
 
   <div class="flex items-center gap-4 mt-4">
-    <v-button style-button="yellow">
+    <v-button style-button="warn">
       <v-icon icon="star-icon" class="b-icon--small mr-2" />
-      Yellow button
+      Warn button
     </v-button>
 
-    <v-button style-button="green">
+    <v-button style-button="success">
       <v-icon icon-type="success" class="b-icon--small mr-2" />
-      Green button
+      Success button
     </v-button>
   </div>
 

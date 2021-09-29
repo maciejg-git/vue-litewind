@@ -8,9 +8,7 @@
       ]"
     >
       <div class="flex items-center">
-        <slot name="icon">
-          <v-icon v-if="icon" icon-type="state"></v-icon>
-        </slot>
+        <slot name="icon"></slot>
         <slot name="default"></slot>
         <v-close-button
           v-if="dismissable"
@@ -33,7 +31,6 @@ export default {
     modelValue: { type: Boolean, default: false },
     dismissable: { type: Boolean, default: true },
     autoDismissDelay: { type: Number, default: 0 },
-    icon: { type: Boolean, default: false },
     state: { type: String, default: "info" },
     name: { type: String, default: "alert" },
     styleAlert: { type: [String, Array], default: "" },

@@ -1,5 +1,4 @@
 <template>
-
   <!-- position relative -->
 
   <v-alert
@@ -9,9 +8,7 @@
     :state="example.state"
     class="my-2"
   >
-    <template #icon>
-      <v-icon :icon-type="example.state" class="b-icon--md mr-2"></v-icon>
-    </template>
+    <v-icon :icon-type="example.state" class="b-icon--md mr-2"></v-icon>
     Alert
   </v-alert>
 
@@ -26,7 +23,7 @@
   >
     Alert
   </v-alert>
-<!-- CUT START -->
+  <!-- CUT START -->
   <div class="flex justify-between items-center">
     <div class="mt-5">
       <label for="state">Alert state:</label>
@@ -75,7 +72,7 @@
       </div>
     </v-tab>
   </v-tabs>
-<!-- CUT END -->
+  <!-- CUT END -->
 </template>
 
 <script>

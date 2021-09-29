@@ -88,6 +88,15 @@ let definition = ref([
   </section>
 
   <section>
+    <h4>Example - simple table</h4>
+    <div class="example">
+      <example-table-simple></example-table-simple>
+    </div>
+    <v-code :code="exampleTableSimpleCode" template language="html"></v-code>
+    <v-code :code="exampleTableSimpleCode" script language="js"></v-code>
+  </section>
+
+  <section>
     <h4>Example</h4>
     <div class="example">
       <example-table></example-table>
@@ -100,11 +109,14 @@ let definition = ref([
 <script>
 import { ref } from "vue";
 import ExampleTable from "./examples/ExampleTable.vue"
+import ExampleTableSimple from "./examples/ExampleTableSimple.vue"
 import exampleTableCode from "./examples/ExampleTable.vue?raw"
+import exampleTableSimpleCode from "./examples/ExampleTableSimple.vue?raw"
 
 export default {
   components: {
     ExampleTable,
+    ExampleTableSimple,
   },
   setup() {
     let reference = ref([
@@ -361,6 +373,7 @@ export default {
       referenceProp,
       referencePropDefinition,
       exampleTableCode,
+      exampleTableSimpleCode,
     };
   },
 };
