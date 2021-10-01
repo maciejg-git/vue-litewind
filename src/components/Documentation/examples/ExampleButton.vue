@@ -26,12 +26,12 @@
 
   <div class="flex items-center gap-4 mt-4">
     <v-button style-button="warn">
-      <v-icon icon="star-icon" class="b-icon--small mr-2" />
-      Warn button
+      <v-icon icon="star-icon" class="v-icon--small mr-2" />
+      Icon button
     </v-button>
 
     <v-button style-button="success">
-      <v-icon icon-type="success" class="b-icon--small mr-2" />
+      <v-icon icon-type="success" class="v-icon--small mr-2" />
       Success button
     </v-button>
   </div>

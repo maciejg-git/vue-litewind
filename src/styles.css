@@ -1,4 +1,4 @@
-/* BUTTON LINK */
+/* vUTTON LINK */
 
 .button-link {
   @apply 
@@ -745,7 +745,7 @@
     bg-white
     border
     border-gray-200
-    rounded
+    rounded-md
     overflow-hidden
 }
     .card--shadow {
@@ -765,6 +765,10 @@
         hover:shadow-lg
         transition-all
     }
+    .card--rounded-extra {
+      @apply
+        rounded-lg
+    }
 
 /* CARD FLAT */
 
@@ -772,7 +776,16 @@
   @apply
     bg-white
     shadow
+    overflow-hidden
 }
+    .card-flat--rounded {
+      @apply
+        rounded
+    }
+    .card-flat--shadow {
+      @apply
+        shadow-md
+    }
 
 /* DROPDOWN */
 
@@ -820,18 +833,17 @@
 .dropdown-relaxed--item {
   @apply
     w-11/12
-    my-1
-    rounded
-    mx-auto
-    text-left
-    focus:outline-none
-    text-gray-700
-    pr-4
-    px-4 
-    py-2
     hover:bg-gray-100
     focus:bg-indigo-500
     focus:text-white
+    focus:outline-none
+    rounded
+    mx-auto
+    text-left
+    text-gray-700
+    px-4 
+    py-2
+    my-1
 }
     .dropdown-relaxed--item--active-state {
       @apply
@@ -847,14 +859,14 @@
 
 .dropdown-relaxed--header {
   @apply
+    w-11/12
     text-left
     font-semibold
     text-sm
-    w-11/12
     mx-auto
-    my-1
     px-4
     py-2
+    my-1
     uppercase
 }
 
@@ -962,7 +974,7 @@
     py-1
 }
 
-/* DATEPICKER FLAT */
+/* DATEPICKER LOOSE */
 
 .datepicker-flat--day-fixed {
   @apply
@@ -988,6 +1000,16 @@
     focus:ring-indigo-200
     py-1
     px-2
+}
+
+.datepicker-flat--weekday-bar {
+  @apply
+     mb-2
+}
+
+.datepicker-flat--weekday {
+  @apply
+    font-semibold 
 }
 
 .datepicker-flat--day {
@@ -1039,19 +1061,19 @@
     h-8
     w-8
 }
-    .spinner--blue {
+    .spinner--primary {
       @apply
-        text-blue-500
+        text-indigo-500
     }
-    .spinner--yellow {
+    .spinner--warn {
       @apply
         text-yellow-500
     }
-    .spinner--green {
+    .spinner--success {
       @apply
         text-green-500
     }
-    .spinner--gray {
+    .spinner--light {
       @apply
         text-gray-300
     }
@@ -1110,17 +1132,17 @@
     bg-indigo-500
     text-white
 }
-.badge--circle {
-  @apply
-    rounded-full
-    border
-    border-white
-    bg-transparent
-    w-4
-    h-4
-    px-0
-    py-0
-}
+    .badge--circle {
+      @apply
+        rounded-full
+        border
+        border-white
+        bg-transparent
+        w-4
+        h-4
+        px-0
+        py-0
+    }
     .badge--primary {
       @apply
         bg-indigo-500
@@ -1163,75 +1185,75 @@
 
 /* PAGINATION */
 
-  .pagination-page-fixed {
-    @apply
-      hover:bg-gray-50
-      border
-      border-gray-300
-      text-sm
-      font-medium
-      font-semibold
-      rounded
-      w-12
-      h-10
-      mx-0.5
-  }
+.pagination-page-fixed {
+  @apply
+    hover:bg-gray-50
+    border
+    border-gray-300
+    text-sm
+    font-medium
+    font-semibold
+    rounded
+    w-12
+    h-10
+    mx-0.5
+}
 
-  .pagination-side-controls-fixed {
-    @apply
-      hover:bg-gray-50
-      border
-      border-gray-300
-      text-sm
-      font-medium
-      cursor-pointer
-      rounded
-      w-12
-      p-2
-  }
+.pagination-side-controls-fixed {
+  @apply
+    hover:bg-gray-50
+    border
+    border-gray-300
+    text-sm
+    font-medium
+    cursor-pointer
+    rounded
+    w-12
+    p-2
+}
 
-  .pagination--pagination-bar {
-    @apply
-      rounded-md
-  }
+.pagination--pagination-bar {
+  @apply
+    rounded-md
+}
 
-  .pagination--page {
-    @apply
-      pagination-page-fixed
-  }
-      .pagination--page--active-state {
-        @apply  
-          hover:bg-indigo-400
-          border-indigo-200
-          bg-indigo-500
-          ring-indigo-200
-          text-white
-          ring-2
-          font-semibold
-      }
+.pagination--page {
+  @apply
+    pagination-page-fixed
+}
+    .pagination--page--active-state {
+      @apply  
+        hover:bg-indigo-400
+        border-indigo-200
+        bg-indigo-500
+        ring-indigo-200
+        text-white
+        ring-2
+        font-semibold
+    }
 
-  .pagination--dots {
-    @apply
-      pagination-page-fixed;
-    @apply
-      tracking-wider
-  }
+.pagination--dots {
+  @apply
+    pagination-page-fixed;
+  @apply
+    tracking-wider
+}
 
-  .pagination--next {
-    @apply
-      pagination-side-controls-fixed;
-    @apply  
-      rounded-r-md
-      ml-0.5
-  }
+.pagination--next {
+  @apply
+    pagination-side-controls-fixed;
+  @apply  
+    rounded-r-md
+    ml-0.5
+}
 
-  .pagination--prev {
-    @apply
-      pagination-side-controls-fixed;
-    @apply  
-      rounded-l-md
-      mr-0.5
-  }
+.pagination--prev {
+  @apply
+    pagination-side-controls-fixed;
+  @apply  
+    rounded-l-md
+    mr-0.5
+}
 
 /* TOOLTIP */
 
@@ -1251,69 +1273,53 @@
     px-3
 }
 
-.b-icon {
+/* ICON */
+
+.v-icon {
   @apply
-    h-4
     w-4
+    h-4
 }
-  .b-icon--sm {
+  .v-icon--sm {
     @apply
-      h-4
-      w-4
+      h-2
+      w-2
   }
-  .b-icon--md {
+  .v-icon--md {
     @apply
       h-6
       w-6
   }
-  .b-icon--lg {
+  .v-icon--lg {
     @apply
       h-8
       w-8
   }
- .b-icon--info-type {
+ .v-icon--info-type {
     @apply
       text-blue-500
   }
-  .b-icon--danger-type {
+  .v-icon--danger-type {
     @apply
       text-red-500
   }
-  .b-icon--success-type {
+  .v-icon--success-type {
     @apply
       text-green-500
   }
-  .b-icon--warn-type {
+  .v-icon--warn-type {
     @apply
       text-yellow-500
   }
-  .b-icon--valid-type {
+  .v-icon--valid-type {
     @apply
       text-green-500
   }
-  .b-icon--invalid-type {
+  .v-icon--invalid-type {
     @apply
       text-red-500
   }
-  .b-icon--light-type {
+  .v-icon--light-type {
     @apply
       text-gray-500
   }
-
-.mdi-icon {
-  @apply
-    h-4
-    w-4
-}
-
-.fa-icon {
-  @apply
-    h-4
-    w-4
-}
-
-.ph-icon {
-  @apply
-    h-4
-    w-4
-}

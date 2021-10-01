@@ -40,7 +40,7 @@ registerIcon(app, [
 })
 
 app.provide("iconTypes", {
-  valid: "check-icon",
+  valid: "check-lg-icon",
   invalid: "exclamation-triangle-icon",
   success: "check-lg-icon",
   info: "info-circle-icon",

@@ -94,9 +94,9 @@
 <script>
 import { ref, computed, watch, nextTick } from "vue";
 import vIcon from "./vIcon.vue"
-import vSortIcon from "./icons/sort.js"
-import vCaretUpIcon from "./icons/caret-up.js"
-import vCaretDownIcon from "./icons/caret-down.js"
+import vSortIcon from "./icons/sort-solid.js"
+import vCaretUpIcon from "./icons/caret-up-solid.js"
+import vCaretDownIcon from "./icons/caret-down-solid.js"
 import useStyles from "./composition/use-styles";
 import {
   formatCase,

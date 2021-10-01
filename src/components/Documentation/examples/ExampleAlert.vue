@@ -8,7 +8,7 @@
     :state="example.state"
     class="my-2"
   >
-    <v-icon :icon-type="example.state" class="b-icon--md mr-2"></v-icon>
+    <v-icon :icon-type="example.state" class="v-icon--md mr-2"></v-icon>
     Alert
   </v-alert>
 

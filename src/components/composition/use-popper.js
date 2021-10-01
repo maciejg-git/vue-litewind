@@ -6,6 +6,7 @@ export default function usePopper({
   offsetX,
   offsetY,
   noFlip,
+  modelValue,
   emit,
 }) {
   let isPopperVisible = ref(false);
@@ -26,6 +27,7 @@ export default function usePopper({
   let hidePopper = function () {
     if (!isPopperVisible.value) return;
     isPopperVisible.value = false;
+    if (modelValue) emit('update:modelValue', false)
     emit("state:closed");
   };
 
@@ -69,6 +71,27 @@ export default function usePopper({
     });
   };
 
+  // optional virtual element as reference
+
+  let getVirtualElement = ({x, y}) => {
+    return () => ({
+      width: 0,
+      height: 0,
+      top: y,
+      right: x,
+      bottom: y,
+      left: x,
+    })
+  }
+
+  let virtualElement = {
+    getBoundingClientRect: getVirtualElement({x: 0, y:0}),
+  };
+
+  let updateVirtualElement = (value) => {
+    virtualElement.getBoundingClientRect = getVirtualElement(value)
+  }
+
   return {
     isPopperVisible,
     activator,
@@ -77,5 +100,7 @@ export default function usePopper({
     hidePopper,
     togglePopper,
     setPopper,
+    virtualElement,
+    updateVirtualElement,
   };
 }

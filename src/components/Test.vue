@@ -269,22 +269,45 @@
 <v-icon icon-type="info"></v-icon>
 
 <!-- <pencil-icon></pencil-icon> -->
-<alt-icon></alt-icon>
-<align-top-icon></align-top-icon>
+<!-- <alt-icon></alt-icon> -->
+<!-- <align-top-icon></align-top-icon> -->
 
-<ad-icon></ad-icon>
-<adjust-icon></adjust-icon>
+<!-- <ad-icon></ad-icon> -->
+<!-- <adjust-icon></adjust-icon> -->
 
-<abjad-arabic-icon></abjad-arabic-icon>
-<abugida-devanagari-icon></abugida-devanagari-icon>
+<!-- <abjad-arabic-icon></abjad-arabic-icon> -->
+<!-- <abugida-devanagari-icon></abugida-devanagari-icon> -->
+<!--  -->
+<!-- <align-bottom-icon></align-bottom-icon> -->
+<!--  -->
+<!-- <archive-bold-icon></archive-bold-icon> -->
+<!--  -->
+<!-- <chat-text-duotone-icon class="text-red-400"></chat-text-duotone-icon> -->
+<!-- <export-fill-icon></export-fill-icon> -->
+<!-- <git-diff-light-icon></git-diff-light-icon> -->
 
-<align-bottom-icon></align-bottom-icon>
-
-<archive-bold-icon></archive-bold-icon>
-
-<chat-text-duotone-icon class="text-red-400"></chat-text-duotone-icon>
-<export-fill-icon></export-fill-icon>
-<git-diff-light-icon></git-diff-light-icon>
+              <v-button style-button="primary small" @click="dropdownModel = !dropdownModel" ref="buttonRef">add model</v-button>
+              <v-dropdown auto-close-menu v-model="dropdownModel" :reference="dropodownReference">
+            <!-- <template #activator> -->
+            <!--   <v-button style-button="primary small">add</v-button> -->
+            <!-- </template> -->
+            <template #default="{ hide }">
+              <v-card style-card="default shadow" width="320px">
+                <v-dropdown-menu-item
+                  tag="button"
+                  active
+                  @click.prevent="log('click')"
+                >
+                  item
+                </v-dropdown-menu-item>
+                <v-dropdown-menu-item>item 2</v-dropdown-menu-item>
+                <v-dropdown-header>items</v-dropdown-header>
+                <v-dropdown-menu-item disabled>item 3</v-dropdown-menu-item>
+                <v-divider></v-divider>
+                <v-dropdown-menu-item tag="button">item 9</v-dropdown-menu-item>
+              </v-card>
+            </template>
+          </v-dropdown>
 
 <div class="relative h-40 w-40">
   rel
@@ -826,6 +849,17 @@ export default {
     let sidepanelHeader = ref(true)
     let stateFormGroup = ref("")
     let controlModel = ref("")
+    let dropdownModel = ref(false)
+    let buttonRef = ref(null)
+    let boundingBox = {
+      width: 0,
+      height: 0,
+      top: 500,
+      right: 500,
+      bottom: 0,
+      left: 0,
+    }
+    let dropodownReference = ref({})
     let header = ref([
       [
         "id", ["first_name", "last_name", {as: "name"}], "date", ["email", {as: "em"}], "city", "country", "item_city"
@@ -951,7 +985,21 @@ export default {
     controlModel.value = "tiny"
       await nextTick()
     controlModel.value = "control model"
+      // setTimeout(() => {
+      //   dropdownModel.value = true
+      // }, 3000)
+      // setTimeout(() => {
+      //   dropdownModel.value = false
+      // }, 6000)
     });
+
+    let openContext = (ev) => {
+      ev.preventDefault()
+      dropodownReference.value = {x: ev.clientX, y: ev.clientY}
+      dropdownModel.value = true
+    }
+
+    // document.body.addEventListener("contextmenu", openContext)
 
     return {
       data,
@@ -987,6 +1035,10 @@ export default {
       stateFormGroup,
       controlModel,
       header,
+      dropdownModel,
+      buttonRef,
+      boundingBox,
+      dropodownReference,
       log,
     };
   },

@@ -12,6 +12,7 @@ export default function useClickOutside() {
           return;
         }
       }
+      console.log('click')
       callback();
     };
 

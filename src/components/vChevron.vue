@@ -61,10 +61,10 @@
 <script>
 import { computed } from "vue";
 import vIcon from "./vIcon.vue";
-import vChevronRightIcon from "./icons/chevron-right.js";
-import vChevronLeftIcon from "./icons/chevron-left.js";
-import vChevronUpIcon from "./icons/chevron-up.js";
-import vChevronDownIcon from "./icons/chevron-down.js";
+import vChevronRightIcon from "./icons/chevron-right-solid.js";
+import vChevronLeftIcon from "./icons/chevron-left-solid.js";
+import vChevronUpIcon from "./icons/chevron-up-solid.js";
+import vChevronDownIcon from "./icons/chevron-down-solid.js";
 import vCaretRightFillIcon from "./icons/caret-right-fill.js";
 import vCaretLeftFillIcon from "./icons/caret-left-fill.js";
 import vCaretUpFillIcon from "./icons/caret-up-fill.js";

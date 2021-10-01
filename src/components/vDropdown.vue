@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="slots.activator"
     ref="activator"
     @[trigger.on]="show"
     @[trigger.off]="hide"
@@ -25,7 +26,7 @@
 </template>
 
 <script>
-import { ref, computed, provide, toRef, toRefs } from "vue";
+import { ref, computed, provide, toRef, toRefs, watch } from "vue";
 import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
 import useClickOutside from "./composition/use-click-outside";
@@ -36,6 +37,7 @@ export default {
   inheritAttrs: true,
   props: {
     modelValue: { type: Boolean, default: false },
+    reference: { type: Object, default: undefined },
     placement: {
       type: String,
       default: "bottom-start",
@@ -54,8 +56,8 @@ export default {
     styleHeader: { type: String, default: "" },
     styleIcon: { type: String, default: "" },
   },
-  emits: ["state:opened", "state:closed"],
-  setup(props, { emit }) {
+  emits: ["state:opened", "state:closed", "update:modelValue"],
+  setup(props, { slots, emit }) {
     let { classes, states } = useStyles("dropdown", props, {
       item: {
         fixed: "fixed-item",
@@ -67,13 +69,14 @@ export default {
       icon: null,
     });
 
-    let dropdown = ref(null);
-    let hideTimeout = null;
+    // trigger: click, focus, hover
 
-    let trigerRef = toRef(props, "trigger");
-    let trigger = useTrigger(trigerRef);
+    let triggerMethod = toRef(props, "trigger");
+    let trigger = useTrigger(triggerMethod);
 
-    const { offsetX, offsetY, noFlip, placement } = toRefs(props);
+    // popper
+
+    const { offsetX, offsetY, noFlip, placement, modelValue } = toRefs(props);
     const {
       isPopperVisible,
       activator,
@@ -81,16 +84,43 @@ export default {
       showPopper,
       hidePopper,
       togglePopper,
-    } = usePopper({ placement, offsetX, offsetY, noFlip, emit });
+      virtualElement,
+      updateVirtualElement,
+    } = usePopper({ placement, offsetX, offsetY, noFlip, modelValue, emit });
+
+    if (!slots.activator) {
+      watch(
+        () => props.reference,
+        (value) => {
+          if (!value) return;
+          updateVirtualElement(value);
+          activator.value = virtualElement;
+        },
+        { immediate: true }
+      );
+    }
+
+    // model show/hide
+
+    watch(
+      () => props.modelValue,
+      (value) => {
+        if (value) show();
+        else hide();
+      }
+    );
+
+    // click outside
 
     let { onClickOutside } = useClickOutside();
     onClickOutside([popper, activator], hidePopper);
 
-    let isDropdownVisible = computed(() => {
-      return isPopperVisible.value || props.modelValue
-    })
+    // show/hide dropdown
 
-    // prevent closing menu if pointer is over menu and using hover trigger
+    let hideTimeout = null;
+
+    // temporary prevent closing menu if pointer is over menu 
+    // and using hover trigger
     let lock = () => {
       if (props.trigger == "hover") clearTimeout(hideTimeout);
     };
@@ -125,11 +155,10 @@ export default {
     // provide hide function to menuitem to allow closing after click
     provide("autoCloseMenu", toRef(props, "autoCloseMenu"));
     provide("hide", hide);
-    provide("placement", toRef(props, "placement"))
+    provide("placement", toRef(props, "placement"));
 
     return {
       placement,
-      dropdown,
       activator,
       popper,
       showPopper,
@@ -142,7 +171,7 @@ export default {
       hide,
       lock,
       unlock,
-      isDropdownVisible,
+      slots,
     };
   },
 };

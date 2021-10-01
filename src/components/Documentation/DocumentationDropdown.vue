@@ -25,6 +25,15 @@
   </section>
 
   <section id="example">
+    <h4>Example - simple dropdown</h4>
+    <div class="example">
+      <example-dropdown-simple></example-dropdown-simple>
+    </div>
+    <v-code :code="exampleDropdownSimpleCode" template language="html"></v-code>
+    <v-code :code="exampleDropdownSimpleCode" script language="js"></v-code>
+  </section>
+
+  <section id="example">
     <h4>Example</h4>
     <div class="example">
       <example-dropdown></example-dropdown>
@@ -38,10 +47,13 @@
 import { ref } from "vue";
 import ExampleDropdown from "./examples/ExampleDropdown.vue"
 import exampleDropdownCode from "./examples/ExampleDropdown.vue?raw"
+import ExampleDropdownSimple from "./examples/ExampleDropdownSimple.vue"
+import exampleDropdownSimpleCode from "./examples/ExampleDropdownSimple.vue?raw"
 
 export default {
   components: {
     ExampleDropdown,
+    ExampleDropdownSimple,
   },
   setup(props) {
     let reference = ref([
@@ -147,6 +159,7 @@ export default {
       slots,
       components,
       exampleDropdownCode,
+      exampleDropdownSimpleCode,
     };
   },
 };
