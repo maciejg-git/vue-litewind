@@ -98,7 +98,7 @@
   </div>
   <footer class="flex bg-gray-200 border-gray-300 border-t py-4 shadow">
     <span class="ml-auto mr-4">
-      <v-icon icon="github" class="text-gray-500"></v-icon>
+      <v-icon name="github" class="text-gray-500"></v-icon>
     </span>
   </footer>
 </template>

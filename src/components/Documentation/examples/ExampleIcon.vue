@@ -1,7 +1,7 @@
 <template>
   <div>
-    <v-icon icon="star-icon" class="v-icon--md" />
-    <v-icon icon="check-icon" class="v-icon--md" />
+    <v-icon name="star-icon" class="v-icon--md" />
+    <v-icon name="check-icon" class="v-icon--md" />
   </div>
   <div>
     <v-icon icon-type="valid" class="v-icon--md" />

@@ -10,8 +10,6 @@ import { isObject, isString } from "../tools/tools";
 
 export default {
   props: {
-    icon: { type: [String, Object], default: "" },
-    i: { type: [String, Object], default: "" },
     name: { type: [String, Object], default: "" },
     transition: { type: String, default: "" },
     iconType: { type: [String, Object], default: "" },

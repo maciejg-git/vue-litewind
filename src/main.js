@@ -2,28 +2,21 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import { plugin } from "./components/index.js";
-import { buttonPlugin, tablePlugin } from "./components/index.js";
 import "tailwindcss/tailwind.css";
 import "./styles.css"
 import "./styles-material.css"
-import Icon from "./vue/Icon.vue"
 import { registerIcon } from "./vue"
-// import 
-  // Sort
-//  from "./assets/icons/sort"
-// import PencilIcon from "./dist-bootstrap/bootstrap/pencil"
+import BArrowClockwise from "./assets/icons/arrow-clockwise"
+import MdiLoading from "./assets/icons/loading"
 import TableReference from "./components/Documentation/TableReference.vue";
 import TableReferenceBasic from "./components/Documentation/TableReferenceBasic.vue";
 import vCode from "./components/Documentation/components/vCode.vue"
 
 let app = createApp(App);
 
-// app.provide("icon-config", {name: "name 2"})
-// app.component("sort", Sort)
-// let i = app.component("pencil", PencilIcon)
-// console.log(i)
-
-// TODO: global config
+app.component("TableReference", TableReference)
+app.component("TableReferenceBasic", TableReferenceBasic)
+app.component("vCode", vCode)
 
 const icons = import.meta.globEager('./assets/icons/*.js')
 
@@ -33,10 +26,11 @@ Object.entries(icons).forEach(([path, definition]) => {
 })
 
 registerIcon(app, [
-  // KeyboardIcon
+  BArrowClockwise,
+  MdiLoading,
 ], {
-  vendorPrefix: false,
-  iconSufix: true,
+  vendorPrefix: true,
+  iconSufix: false,
 })
 
 app.provide("iconTypes", {
@@ -51,14 +45,7 @@ app.provide("iconTypes", {
   question: "question-circle-icon",
 })
 
-app.component("icon", Icon)
-
-app.component("TableReference", TableReference)
-app.component("TableReferenceBasic", TableReferenceBasic)
-app.component("vCode", vCode)
 
 app.use(router);
 app.use(plugin);
-app.use(buttonPlugin);
-app.use(tablePlugin);
 app.mount("#app");

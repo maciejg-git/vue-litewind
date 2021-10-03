@@ -1,4 +1,55 @@
-/* vUTTON LINK */
+/* ICON */
+
+.v-icon {
+  @apply
+    w-4
+    h-4
+}
+  .v-icon--sm {
+    @apply
+      h-2
+      w-2
+  }
+  .v-icon--md {
+    @apply
+      h-6
+      w-6
+  }
+  .v-icon--lg {
+    @apply
+      h-8
+      w-8
+  }
+ .v-icon--info-type {
+    @apply
+      text-blue-500
+  }
+  .v-icon--danger-type {
+    @apply
+      text-red-500
+  }
+  .v-icon--success-type {
+    @apply
+      text-green-500
+  }
+  .v-icon--warn-type {
+    @apply
+      text-yellow-500
+  }
+  .v-icon--valid-type {
+    @apply
+      text-green-500
+  }
+  .v-icon--invalid-type {
+    @apply
+      text-red-500
+  }
+  .v-icon--light-type {
+    @apply
+      text-gray-500
+  }
+
+/* BUTTON LINK */
 
 .button-link {
   @apply 
@@ -1065,6 +1116,10 @@
       @apply
         text-indigo-500
     }
+    .spinner--secondary {
+      @apply
+        text-gray-300
+    }
     .spinner--warn {
       @apply
         text-yellow-500
@@ -1075,7 +1130,7 @@
     }
     .spinner--light {
       @apply
-        text-gray-300
+        text-gray-200
     }
     .spinner--large {
       @apply
@@ -1272,54 +1327,3 @@
     p-1
     px-3
 }
-
-/* ICON */
-
-.v-icon {
-  @apply
-    w-4
-    h-4
-}
-  .v-icon--sm {
-    @apply
-      h-2
-      w-2
-  }
-  .v-icon--md {
-    @apply
-      h-6
-      w-6
-  }
-  .v-icon--lg {
-    @apply
-      h-8
-      w-8
-  }
- .v-icon--info-type {
-    @apply
-      text-blue-500
-  }
-  .v-icon--danger-type {
-    @apply
-      text-red-500
-  }
-  .v-icon--success-type {
-    @apply
-      text-green-500
-  }
-  .v-icon--warn-type {
-    @apply
-      text-yellow-500
-  }
-  .v-icon--valid-type {
-    @apply
-      text-green-500
-  }
-  .v-icon--invalid-type {
-    @apply
-      text-red-500
-  }
-  .v-icon--light-type {
-    @apply
-      text-gray-500
-  }

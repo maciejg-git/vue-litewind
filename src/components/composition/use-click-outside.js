@@ -12,7 +12,6 @@ export default function useClickOutside() {
           return;
         }
       }
-      console.log('click')
       callback();
     };
 
@@ -20,7 +19,7 @@ export default function useClickOutside() {
       document.body.removeEventListener("mousedown", clickOutside)
     }
 
-    document.body.addEventListener("mousedown", clickOutside);
+    document.body.addEventListener("mousedown", clickOutside, true);
 
     return stop;
   }

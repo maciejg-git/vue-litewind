@@ -45,6 +45,12 @@ export default {
         description: "Speed of spinner in seconds",
       },
       {
+        prop: "icon",
+        type: ["String", "Object"],
+        default: "undefined",
+        description: "Icon to use instead of default spinner",
+      },
+      {
         prop: "name",
         type: ["String"],
         default: "spinner",

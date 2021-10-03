@@ -26,7 +26,7 @@
 
   <div class="flex items-center gap-4 mt-4">
     <v-button style-button="warn">
-      <v-icon icon="star-icon" class="v-icon--small mr-2" />
+      <v-icon name="star-icon" class="v-icon--small mr-2" />
       Icon button
     </v-button>
 

@@ -2,9 +2,9 @@
   <div
     v-if="slots.activator"
     ref="activator"
-    @[trigger.on]="show"
-    @[trigger.off]="hide"
-    @[trigger.toggle]="togglePopper"
+    @[trigger.on].stop="show"
+    @[trigger.off].stop="hide"
+    @[trigger.toggle].stop="togglePopper"
     class="inline-block"
     v-bind="$attrs"
   >
@@ -182,7 +182,7 @@ export default {
   @apply absolute z-50;
 }
 ::v-deep .fixed-item {
-  @apply block;
+  @apply flex;
 }
 .fade-enter-active,
 .fade-leave-active {

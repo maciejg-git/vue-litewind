@@ -1,20 +1,25 @@
 <template>
   <div>
-    <v-spinner style-spinner="primary small" class="mr-10"></v-spinner>
-    <v-spinner style-spinner="success" class="mr-10"></v-spinner>
-    <v-spinner style-spinner="warn large" class="mr-4"></v-spinner>
+    <v-spinner style-spinner="primary small" class="mr-10" />
+    <v-spinner style-spinner="success" class="mr-10" />
+    <v-spinner style-spinner="warn large" class="mr-4" />
   </div>
 
   <div class="mt-10">
     <v-spinner thickness="0.07" class="mr-4"></v-spinner>
-    <v-spinner thickness="0.2" style-spinner="yellow" class="mr-4"></v-spinner>
-    <v-spinner thickness="0.35" style-spinner="green" class="mr-4"></v-spinner>
+    <v-spinner thickness="0.2" style-spinner="yellow" class="mr-4" />
+    <v-spinner thickness="0.35" style-spinner="green" class="mr-4" />
   </div>
 
   <div class="mt-10">
-    <v-spinner speed="0.6" style-spinner="primary" class="mr-4"></v-spinner>
-    <v-spinner speed="1.0" style-spinner="success" class="mr-4"></v-spinner>
-    <v-spinner speed="1.5" style-spinner="warn" class="mr-4"></v-spinner>
+    <v-spinner speed="0.6" style-spinner="primary" class="mr-4" />
+    <v-spinner speed="1.0" style-spinner="success" class="mr-4" />
+    <v-spinner speed="1.5" style-spinner="warn" class="mr-4" />
+  </div>
+
+  <div class="mt-10">
+    <v-spinner icon="mdi-loading" style-spinner="primary" class="mr-4" />
+    <v-spinner icon="b-arrow-clockwise" style-spinner="success" class="mr-4" />
   </div>
 
   <div class="mt-10">
