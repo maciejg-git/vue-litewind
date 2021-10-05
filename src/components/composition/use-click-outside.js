@@ -16,10 +16,10 @@ export default function useClickOutside() {
     };
 
     let stop = () => {
-      document.body.removeEventListener("mousedown", clickOutside)
+      document.body.removeEventListener("click", clickOutside)
     }
 
-    document.body.addEventListener("mousedown", clickOutside, true);
+    document.body.addEventListener("click", clickOutside);
 
     return stop;
   }

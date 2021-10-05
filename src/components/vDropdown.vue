@@ -1,14 +1,14 @@
 <template>
   <div
-    v-if="slots.activator"
-    ref="activator"
-    @[trigger.on].stop="show"
-    @[trigger.off].stop="hide"
-    @[trigger.toggle].stop="togglePopper"
+    v-if="slots.reference"
+    ref="reference"
+    @[triggerEvents.on]="show"
+    @[triggerEvents.off]="hide"
+    @[triggerEvents.toggle]="togglePopper"
     class="inline-block"
     v-bind="$attrs"
   >
-    <slot name="activator"></slot>
+    <slot name="reference"></slot>
   </div>
   <teleport to="body">
     <transition :name="transition">
@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { ref, computed, provide, toRef, toRefs, watch } from "vue";
+import { provide, toRef, toRefs, watch } from "vue";
 import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
 import useClickOutside from "./composition/use-click-outside";
@@ -69,17 +69,21 @@ export default {
       icon: null,
     });
 
-    // trigger: click, focus, hover
+    // watch model change and show/hide dropdown
+    watch(
+      () => props.modelValue,
+      (value) => (value ? show() : hide())
+    );
 
-    let triggerMethod = toRef(props, "trigger");
-    let trigger = useTrigger(triggerMethod);
+    // set triggering events: click, focus and hover
+    let trigger = toRef(props, "trigger");
+    let triggerEvents = useTrigger(trigger);
 
     // popper
-
     const { offsetX, offsetY, noFlip, placement, modelValue } = toRefs(props);
     const {
       isPopperVisible,
-      activator,
+      reference,
       popper,
       showPopper,
       hidePopper,
@@ -88,38 +92,28 @@ export default {
       updateVirtualElement,
     } = usePopper({ placement, offsetX, offsetY, noFlip, modelValue, emit });
 
-    if (!slots.activator) {
+    // if reference slot is not used watch reference prop for changes
+    // and update popper
+    if (!slots.reference) {
       watch(
         () => props.reference,
         (value) => {
           if (!value) return;
           updateVirtualElement(value);
-          activator.value = virtualElement;
+          reference.value = virtualElement;
         },
-        { immediate: true }
+        { immediate: true, deep: true }
       );
     }
 
-    // model show/hide
-
-    watch(
-      () => props.modelValue,
-      (value) => {
-        if (value) show();
-        else hide();
-      }
-    );
-
-    // click outside
-
+    // add click outside callback
     let { onClickOutside } = useClickOutside();
-    onClickOutside([popper, activator], hidePopper);
+    onClickOutside([popper, reference], hidePopper);
 
-    // show/hide dropdown
-
+    // show and hide functions
     let hideTimeout = null;
 
-    // temporary prevent closing menu if pointer is over menu 
+    // temporary prevent closing menu if pointer is over menu
     // and using hover trigger
     let lock = () => {
       if (props.trigger == "hover") clearTimeout(hideTimeout);
@@ -129,21 +123,23 @@ export default {
       if (props.trigger == "hover") scheduleHide();
     };
 
+    // show and hide, the only special case is hover trigger which
+    // uses short delay before close
     let show = () => {
       if (props.trigger == "hover") {
         clearTimeout(hideTimeout);
-        showPopper();
-        return;
       }
       showPopper();
     };
 
     let hide = () => {
-      if (props.trigger == "hover") scheduleHide();
-      else hidePopper();
+      if (props.trigger == "hover") {
+        scheduleHide();
+        return;
+      }
+      hidePopper();
     };
 
-    // if using hover trigger delay hiding of menu
     let scheduleHide = () => {
       hideTimeout = setTimeout(() => {
         hidePopper();
@@ -159,13 +155,13 @@ export default {
 
     return {
       placement,
-      activator,
+      reference,
       popper,
       showPopper,
       hidePopper,
       togglePopper,
       isPopperVisible,
-      trigger,
+      triggerEvents,
       scheduleHide,
       show,
       hide,
@@ -182,7 +178,7 @@ export default {
   @apply absolute z-50;
 }
 ::v-deep .fixed-item {
-  @apply flex;
+  @apply block;
 }
 .fade-enter-active,
 .fade-leave-active {

@@ -11,7 +11,7 @@ export default function usePopper({
 }) {
   let isPopperVisible = ref(false);
   let instance = null;
-  let activator = ref(null);
+  let reference = ref(null);
   let popper = ref(null);
 
   let showPopper = async function () {
@@ -31,7 +31,7 @@ export default function usePopper({
     emit("state:closed");
   };
 
-  let togglePopper = function () {
+  let togglePopper = function (ev) {
     isPopperVisible.value ? hidePopper() : showPopper();
   };
 
@@ -47,7 +47,7 @@ export default function usePopper({
   });
 
   let setPopper = () => {
-    instance = createPopper(activator.value, popper.value, {
+    instance = createPopper(reference.value, popper.value, {
       modifiers: [
         {
           name: "offset",
@@ -90,11 +90,12 @@ export default function usePopper({
 
   let updateVirtualElement = (value) => {
     virtualElement.getBoundingClientRect = getVirtualElement(value)
+    if (instance) instance.update()
   }
 
   return {
     isPopperVisible,
-    activator,
+    reference,
     popper,
     showPopper,
     hidePopper,

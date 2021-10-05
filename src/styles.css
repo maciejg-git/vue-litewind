@@ -799,6 +799,10 @@
     rounded-md
     overflow-hidden
 }
+    .card--menu {
+      @apply
+        py-2
+    }
     .card--shadow {
       @apply
         shadow-md
@@ -843,6 +847,7 @@
 .dropdown--item {
   @apply
     text-left
+    text-sm
     w-full
     focus:outline-none
     pr-4
@@ -895,6 +900,7 @@
     px-4 
     py-2
     my-1
+    text-sm
 }
     .dropdown-relaxed--item--active-state {
       @apply
@@ -1025,7 +1031,7 @@
     py-1
 }
 
-/* DATEPICKER LOOSE */
+/* DATEPICKER RELAXED */
 
 .datepicker-flat--day-fixed {
   @apply

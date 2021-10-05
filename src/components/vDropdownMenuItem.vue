@@ -24,7 +24,7 @@ import { computed, inject } from "vue";
 
 export default {
   props: {
-    tag: { type: String, default: "a" },
+    tag: { type: String, default: "button" },
     disabled: { type: Boolean, default: false },
     active: { type: Boolean, default: false },
   },

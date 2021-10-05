@@ -1,14 +1,14 @@
 <template>
   <div
-    v-if="slots.activator"
-    ref="activator"
+    v-if="slots.reference"
+    ref="reference"
     @[trigger.on]="showPopper"
     @[trigger.off]="hidePopper"
     @[trigger.toggle]="togglePopper"
     class="inline-block"
     v-bind="$attrs"
   >
-    <slot name="activator"></slot>
+    <slot name="reference"></slot>
   </div>
   <transition :name="transition">
     <div v-if="isPopperVisible" ref="popper">
@@ -66,54 +66,30 @@ export default {
       content: null,
     });
 
-    // trigger
-
+    // set triggering events: click, focus and hover
     let trigerRef = toRef(props, "trigger");
     let trigger = useTrigger(trigerRef);
 
-    // activate by id
-
-    let activatorId = null;
-
-    onMounted(() => {
-      if (props.targetId) {
-        activatorId = document.getElementById(props.targetId);
-        if (activatorId) {
-          if (trigger.on) {
-            activatorId.addEventListener(trigger.on, showPopper);
-          }
-          if (trigger.off) {
-            activatorId.addEventListener(trigger.off, hidePopper);
-          }
-          if (trigger.toggle) {
-            activatorId.addEventListener(trigger.toggle, togglePopper);
-          }
-          activator.value = activatorId;
-        }
-      }
-    });
-
     // popper
-
     const { offsetX, offsetY, noFlip, placement } = toRefs(props);
     const {
       isPopperVisible,
-      activator,
+      reference,
       popper,
       showPopper,
       hidePopper,
       togglePopper,
     } = usePopper({ placement, offsetX, offsetY, noFlip, emit });
 
-    // click oustide
-
+    // add click outside callback
     let { onClickOutside } = useClickOutside();
     let stopClickOutside = null;
+
     watch(
       () => props.clickOutsideClose,
       (clickOutsideClose) => {
         if (clickOutsideClose) {
-          stopClickOutside = onClickOutside([popper, activator], hidePopper);
+          stopClickOutside = onClickOutside([popper, reference], hidePopper);
         } else {
           if (stopClickOutside) stopClickOutside();
         }
@@ -124,7 +100,7 @@ export default {
     return {
       classes,
       trigger,
-      activator,
+      reference,
       popper,
       isPopperVisible,
       showPopper,
