@@ -41,6 +41,15 @@
     <v-code :code="exampleDropdownCode" template language="html"></v-code>
     <v-code :code="exampleDropdownCode" script language="js"></v-code>
   </section>
+
+  <section id="example">
+    <h4>Example - context dropdown</h4>
+    <div class="example">
+      <example-dropdown-context></example-dropdown-context>
+    </div>
+    <v-code :code="ExampleDropdownContextCode" template language="html"></v-code>
+    <v-code :code="ExampleDropdownContextCode" script language="js"></v-code>
+  </section>
 </template>
 
 <script>
@@ -49,14 +58,31 @@ import ExampleDropdown from "./examples/ExampleDropdown.vue"
 import exampleDropdownCode from "./examples/ExampleDropdown.vue?raw"
 import ExampleDropdownSimple from "./examples/ExampleDropdownSimple.vue"
 import exampleDropdownSimpleCode from "./examples/ExampleDropdownSimple.vue?raw"
+import ExampleDropdownContext from "./examples/ExampleDropdownContext.vue"
+import ExampleDropdownContextCode from "./examples/ExampleDropdownContext.vue?raw"
 
 export default {
   components: {
     ExampleDropdown,
     ExampleDropdownSimple,
+    ExampleDropdownContext,
   },
   setup(props) {
     let reference = ref([
+      {
+        prop: "modelValue",
+        type: ["Boolean"],
+        default: "false",
+        description:
+          "Set it to true/false to programatically show or hide dropdown content",
+      },
+      {
+        prop: "reference",
+        type: ["Object"],
+        default: "bottom-start",
+        description:
+        "If reference slot is not used dropdown is positioned relative to the point <code>{x: number, y: number}</code> in this prop. This can be used to make context menus",
+      },
       {
         prop: "placement",
         type: ["String"],
@@ -131,8 +157,8 @@ export default {
 
     let slots = ref([
       {
-        prop: "activator",
-        description: "Slot for button or link that activates dropdown",
+        prop: "reference",
+        description: "Dropdown is positioned relative to element in this slot. Clicking/hovering/focusing element in this slot activates/toggles dropdown",
       },
       {
         prop: "default",
@@ -160,6 +186,7 @@ export default {
       components,
       exampleDropdownCode,
       exampleDropdownSimpleCode,
+      ExampleDropdownContextCode,
     };
   },
 };

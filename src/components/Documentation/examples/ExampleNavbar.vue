@@ -8,7 +8,7 @@
           <li>About</li>
           <li>
             <v-dropdown trigger="hover" :offset-y="10" name="dropdown-flat">
-              <template #activator>
+              <template #reference>
                 <v-button name="button-link">Dropdown</v-button>
               </template>
               <v-card width="420px" name="card-flat">

@@ -105,15 +105,8 @@ export default {
       "japanese",
     ]);
 
-    let name = ref("");
     let languagesModel = ref([]);
     let languagesValidated = ref(false);
-    let nameValidated = ref(false);
-
-    let validate = () => {
-      languagesValidated.value = true;
-      nameValidated.value = true;
-    };
 
     let languagesState = () => {
       return languagesValidated.value
@@ -123,12 +116,20 @@ export default {
         : "";
     };
 
+    let name = ref("");
+    let nameValidated = ref(false);
+
     let nameState = () => {
       return nameValidated.value
         ? name.value.length > 0
           ? "valid"
           : "invalid"
         : "";
+    };
+
+    let validate = () => {
+      languagesValidated.value = true;
+      nameValidated.value = true;
     };
 
     let reset = () => {

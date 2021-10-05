@@ -1,11 +1,11 @@
 <template>
   <v-dropdown auto-close-menu>
-    <template #activator>
+    <template #reference>
       <v-button-dropdown>
         Dropdown menu
       </v-button-dropdown>
     </template>
-    <v-card width="320px" style-card="shadow">
+    <v-card width="320px" style-card="menu shadow">
       <v-dropdown-menu-item tag="button">
         Menu item
       </v-dropdown-menu-item>

@@ -1,24 +1,21 @@
 <template>
-  <v-card class="flex flex-col w-full md:w-1/2 py-10">
+  <div class="flex flex-col items-center gap-y-2 w-full md:w-1/2">
     <v-button
       @click="example.isVisible = !example.isVisible"
-      class="mx-auto self-center"
     >
       Show modal
     </v-button>
     <v-button
       @click="example.isVisibleLong = !example.isVisibleLong"
-      class="mx-auto self-center mt-4"
     >
       Show long scrollable modal
     </v-button>
     <v-button
       @click="example.isVisibleImage = !example.isVisibleImage"
-      class="mx-auto self-center mt-4"
     >
       Show image modal
     </v-button>
-  </v-card>
+  </div>
 
   <!-- CUT START -->
   <div class="mt-4 md:ml-14 md:mt-0">

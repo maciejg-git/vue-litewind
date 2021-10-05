@@ -13,12 +13,12 @@
     @state:opened="events.unshift({ ev: 'state:opened', data: $event })"
     @state:closed="events.unshift({ ev: 'state:closed', data: $event })"
   >
-    <template #activator>
+    <template #reference>
       <v-button-dropdown>
         Dropdown menu
       </v-button-dropdown>
     </template>
-    <v-card width="320px" style-card="shadow">
+    <v-card width="320px" style-card="menu shadow">
       <v-dropdown-menu-item tag="button">
         Menu item
       </v-dropdown-menu-item>
@@ -57,7 +57,7 @@
     @state:closed="events.unshift({ ev: 'state:closed', data: $event })"
     class="ml-2"
   >
-    <template #activator>
+    <template #reference>
       <v-button>
         Dropdown menu (alternate style)
         <v-chevron style-chevron="right" />
@@ -101,7 +101,7 @@
     @state:closed="events.unshift({ ev: 'state:closed', data: $event })"
     class="ml-2"
   >
-    <template #activator>
+    <template #reference>
       <v-button>
         Dropdown datepicker
         <v-chevron style-chevron="right" />

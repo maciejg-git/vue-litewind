@@ -1,6 +1,6 @@
 <template>
   <v-dropdown>
-    <template #activator>
+    <template #reference>
       <v-input
         type="text"
         v-model="example.date"

@@ -14,7 +14,7 @@
         example.events.unshift({ ev: 'update:modelValue', data: $event })
       "
     >
-      <template #activator>
+      <template #reference>
         <v-button>Show simple popover</v-button>
       </template>
       This is popover.
@@ -35,7 +35,7 @@
         example.events.unshift({ ev: 'update:modelValue', data: $event })
       "
     >
-      <template #activator>
+      <template #reference>
         <v-button>Show form popover</v-button>
       </template>
       <div class="grid grid-cols-3 gap-2 my-2">
@@ -62,7 +62,7 @@
         example.events.unshift({ ev: 'update:modelValue', data: $event })
       "
     >
-      <template #activator>
+      <template #reference>
         <v-button>Show tooltip popover</v-button>
       </template>
       Lorem Ipsum is simply dummy text of the printing and typesetting industry.
