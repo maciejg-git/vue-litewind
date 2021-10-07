@@ -76,7 +76,7 @@ export default {
           "Position of the tooltip. Valid values are the same as placement values in Popperjs",
       },
       {
-        modifier: "d[miliseconds]",
+        modifier: "delay[miliseconds]",
         default: "50",
         description: "Delay before showing and hiding tooltip",
       },
