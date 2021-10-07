@@ -3,7 +3,6 @@
     :is="tag"
     :href="tagHref"
     :class="[
-      'fixed-item',
       active
         ? [classes.item.value, states.item.active.value]
         : disabled
@@ -12,9 +11,6 @@
     ]"
     @click="autoCloseMenu && hide()"
   >
-    <span v-if="slots.icon" :class="classes.icon.value">
-      <slot name="icon"></slot>
-    </span>
     <slot name="default"></slot>
   </component>
 </template>
@@ -28,7 +24,7 @@ export default {
     disabled: { type: Boolean, default: false },
     active: { type: Boolean, default: false },
   },
-  setup(props, { slots }) {
+  setup(props) {
     let classes = inject("classes");
     let states = inject("states");
 
@@ -43,7 +39,6 @@ export default {
       tagHref,
       autoCloseMenu,
       hide,
-      slots,
     };
   },
 };

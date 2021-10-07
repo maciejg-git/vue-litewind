@@ -6,13 +6,12 @@
 
   <div class="flex items-center gap-4 mt-4">
     <v-button style-button="large">Large button</v-button>
-    <v-button style-button="">Normal button</v-button>
     <v-button style-button="small">Small button</v-button>
     <v-button style-button="tiny">Tiny button</v-button>
   </div>
 
   <div class="flex items-center gap-4 mt-4">
-    <v-button style-button="secondary">Secondary button</v-button>
+    <v-button style-button="shadow active:secondary disabled:warn" variant="active">Secondary button</v-button>
     <v-button style-button="warn">Warn button</v-button>
     <v-button style-button="success">Success button</v-button>
     <v-button style-button="danger">Danger button</v-button>

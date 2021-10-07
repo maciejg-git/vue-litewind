@@ -19,7 +19,7 @@
         @mouseleave="unlock"
         class="fixed-dropdown"
       >
-        <slot name="default" :hide="hidePopper"></slot>
+        <slot name="default" :hide="hidePopper" :data="data"></slot>
       </div>
     </transition>
   </teleport>
@@ -38,6 +38,7 @@ export default {
   props: {
     modelValue: { type: Boolean, default: false },
     reference: { type: Object, default: undefined },
+    data: { default: undefined },
     placement: {
       type: String,
       default: "bottom-start",
@@ -54,7 +55,6 @@ export default {
     name: { type: String, default: "dropdown" },
     styleItem: { type: String, default: "" },
     styleHeader: { type: String, default: "" },
-    styleIcon: { type: String, default: "" },
   },
   emits: ["state:opened", "state:closed", "update:modelValue"],
   setup(props, { slots, emit }) {
@@ -66,7 +66,6 @@ export default {
       header: {
         fixed: "fixed-item",
       },
-      icon: null,
     });
 
     // watch model change and show/hide dropdown
@@ -176,9 +175,6 @@ export default {
 <style scoped lang="postcss">
 .fixed-dropdown {
   @apply absolute z-50;
-}
-::v-deep .fixed-item {
-  @apply block;
 }
 .fade-enter-active,
 .fade-leave-active {

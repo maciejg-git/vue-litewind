@@ -6,6 +6,7 @@ import "tailwindcss/tailwind.css";
 import "./styles.css"
 import "./styles-material.css"
 import { registerIcon } from "./vue"
+import { BSearch, BPencil, BPlusLg } from "./assets/dist-bootstrap"
 import BArrowClockwise from "./assets/icons/arrow-clockwise"
 import MdiLoading from "./assets/icons/loading"
 import TableReference from "./components/Documentation/TableReference.vue";
@@ -28,6 +29,9 @@ Object.entries(icons).forEach(([path, definition]) => {
 registerIcon(app, [
   BArrowClockwise,
   MdiLoading,
+  BSearch,
+  BPencil,
+  BPlusLg,
 ], {
   vendorPrefix: true,
   iconSufix: false,
