@@ -24,10 +24,11 @@ Current components:
 * Close button
 * Divider
 * Chevron
-* Collapse (accordion)
-* Dropdown
+* Collapse (+ accordion)
+* Dropdown (+ context menu)
 * Date Picker
 * Input
+* Icon
 * Select
 * Checkbox
 * Radio
