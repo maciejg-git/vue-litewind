@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { computed, inject } from "vue";
+import { computed, inject, getCurrentInstance } from "vue";
 import { isObject, isString } from "../tools/tools";
 
 export default {

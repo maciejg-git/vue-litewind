@@ -18,7 +18,7 @@
 
   <section>
     <h4>Notes</h4>
-    <p><span class="font-semibold">(positioning)</span> Position prop only positions badge in the corners of parent element. If you need some fine control over position skip position prop altogether and use utility/classes/style to set absolute position within parent.</p>
+    <p>If you need finer control over position skip position prop altogether and use utility/classes/style to set absolute position within parent.</p>
   </section>
 
   <section>

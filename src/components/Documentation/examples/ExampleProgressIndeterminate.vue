@@ -29,7 +29,8 @@
 
   <!-- combined indeterminate and deteminate progress -->
 
-  <v-card style-card="shadow" width="400px" class="mt-6">
+  <div class="my-6">Combined indeterminate and deteminate example</div>
+  <v-card style-card="shadow" width="400px">
     <div class="flex justify-center p-4">
       <span v-if="example.indeterminate">Checking for updates...</span>
       <span v-if="!example.indeterminate">Updating...</span>
@@ -46,7 +47,6 @@
       class="m-2"
     ></v-progress>
   </v-card>
-  <div class="my-4">Combined indeterminate and deteminate example</div>
 <!-- CUT START -->
   <div class="mb-2 mt-10">
     <label for="timing">indeterminate-timing:</label>

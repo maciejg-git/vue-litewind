@@ -34,7 +34,7 @@
       <v-dropdown-menu-item tag="button">
         Another menu item
       </v-dropdown-menu-item>
-      <v-divider></v-divider>
+      <v-divider />
       <v-dropdown-menu-item disabled tag="button">
         Disabled menu item
       </v-dropdown-menu-item>
@@ -79,7 +79,7 @@
       <v-dropdown-menu-item tag="button">
         Another menu item
       </v-dropdown-menu-item>
-      <v-divider class="w-11/12 mx-auto"></v-divider>
+      <v-divider class="w-11/12 mx-auto" />
       <v-dropdown-menu-item disabled tag="button">
         Disabled menu item
       </v-dropdown-menu-item>
