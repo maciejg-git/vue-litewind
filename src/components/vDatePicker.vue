@@ -154,7 +154,11 @@ export default {
         mouseOverRange.value &&
         isRangeSelected(date)
       ) {
-        return [classes.day.value, states.day["partially-selected"].value];
+        return [
+          classes.day.value,
+          states.day["partially-selected"].value,
+          isToday(date) ? states.day.today.value : "",
+        ];
       }
       if (isSelectedDay(date)) {
         return [classes.day.value, states.day.selected.value];
@@ -182,7 +186,7 @@ export default {
     let range = ref([]);
     let single = ref("");
 
-    // current state of range selection 
+    // current state of range selection
     // (not selected, partially selected, both selected)
     let rangeState = ref(0);
 
@@ -251,7 +255,7 @@ export default {
       }
     );
 
-    // month days to display in datepicker
+    // array of months days to display
     let daysList = computed(() => {
       let start = new Date(year.value, month.value).getDay();
       // handle monday as first weekday
@@ -273,6 +277,7 @@ export default {
       return { i: [...Array(start).fill(""), ...i] };
     });
 
+    // emit events and date as model after selecting
     let emitSelection = (selected, formatted) => {
       emit("update:modelValue", selected);
       emit("update:formatted", formatted);
@@ -304,6 +309,7 @@ export default {
       rangeState.value++;
     };
 
+    // handle template input events
     let handleDayClick = function (date, index) {
       if (isDisabled(index)) return;
       if (props.range) {
@@ -439,7 +445,7 @@ export default {
   @apply flex flex-col justify-center leading-none focus:outline-none mx-auto;
 }
 .fixed-weekday-bar {
-  @apply grid grid-cols-7
+  @apply grid grid-cols-7;
 }
 .fixed-day {
   @apply block;
