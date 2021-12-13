@@ -9,14 +9,9 @@
     :selectionMode="example.selectionMode"
     :captionTop="!!example.captionTop"
     :locale="example.locale"
-    @update:filtered-count="
-      example.itemsCount = $event;
-      events.unshift({ ev: 'update:filtered-count', data: $event });
-    "
-    @update:page="events.unshift({ ev: 'update:page', data: $event })"
-    @input:selection="
-      events.unshift({ ev: 'input:selection', data: $event })
-    "
+    @update:filtered-count="handleFilteredCount"
+    @update:page="handlePageChange"
+    @input:selection="handleSelection"
     class="min-w-full"
   >
     <template #cell:edit="{ item }">
@@ -27,6 +22,9 @@
   </v-table>
 
   <div class="lg:flex justify-between my-5">
+
+    <!-- pagination -->
+
     <div>
       <v-pagination
         v-model="example.page"
@@ -36,6 +34,9 @@
         icons
       />
     </div>
+
+    <!-- items per page -->
+
     <div class="mt-4 lg:mt-0">
       <label for="items-per-page" class="mr-10">Items per page</label>
       <v-select v-model="example.itemsPerPage" id="items-per-page">
@@ -102,24 +103,24 @@
 <!-- CUT END -->
 
   <v-modal
-    v-model="editModal"
+    v-model="editModalIsVisible"
     title="Edit"
     primaryButtonClose
     secondaryButtonClose
   >
-    <pre>{{ editContent }}</pre>
+    <pre>{{ editModalContent }}</pre>
   </v-modal>
 </template>
 
 <script>
 import { ref, reactive } from "vue";
 /* CUT START */
-import dataJSON from "../../../data.json";
+import data from "../../../data.json";
 /* CUT END */
 export default {
   setup() {
     let example = reactive({
-      data: dataJSON.slice(0, 60),
+      data: data.slice(0, 60),
       page: 1,
       itemsPerPage: 5,
       filter: "",
@@ -162,20 +163,36 @@ export default {
 
     let events = ref([]);
 
-    let editModal = ref(false);
-    let editContent = ref("");
+    let editModalIsVisible = ref(false);
+    let editModalContent = ref("");
 
     let edit = (content) => {
-      editContent.value = JSON.stringify(content,null,1);
-      editModal.value = true;
+      editModalContent.value = JSON.stringify(content,null,1);
+      editModalIsVisible.value = true;
     };
+
+    let handleFilteredCount = (count) => {
+      example.itemsCount = count;
+      events.value.unshift({ ev: 'update:filtered-count', data: count });
+    }
+
+    let handleSelection = (selection) => {
+      events.value.unshift({ ev: 'input:selection', data: selection })
+    }
+
+    let handlePageChange = (page) => {
+      events.value.unshift({ ev: 'update:page', data: page })
+    }
 
     return {
       example,
       events,
-      editModal,
+      editModalIsVisible,
       edit,
-      editContent,
+      editModalContent,
+      handlePageChange,
+      handleFilteredCount,
+      handleSelection,
     };
   },
 };

@@ -5,13 +5,13 @@
 <script>
 import { reactive } from "vue";
 /* CUT START */
-import dataJSON from "../../../data.json";
+import data from "../../../data.json";
 /* CUT END */
 
 export default {
   setup() {
     let example = reactive({
-      data: dataJSON.slice(0, 5),
+      data: data.slice(0, 5),
     });
 
     return {

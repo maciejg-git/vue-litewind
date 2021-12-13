@@ -846,17 +846,17 @@
 
 .dropdown--item {
   @apply
+    w-full
     text-left
     text-sm
-    w-full
     focus:outline-none
-    pr-4
     text-gray-700
-    px-6
-    py-2
     hover:bg-gray-100
     focus:bg-indigo-500
     focus:text-white
+    pr-4
+    px-6
+    py-2
 }
     .dropdown--item--active-state {
       @apply

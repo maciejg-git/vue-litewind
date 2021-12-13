@@ -30,7 +30,6 @@
       <example-dropdown-simple></example-dropdown-simple>
     </div>
     <v-code :code="exampleDropdownSimpleCode" template language="html"></v-code>
-    <v-code :code="exampleDropdownSimpleCode" script language="js"></v-code>
   </section>
 
   <section id="example">
