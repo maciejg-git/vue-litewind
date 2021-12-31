@@ -78,7 +78,7 @@ export default {
     let trigger = toRef(props, "trigger");
     let triggerEvents = useTrigger(trigger);
 
-    // popper
+    // set up popper
     const { offsetX, offsetY, noFlip, placement, modelValue } = toRefs(props);
     const {
       isPopperVisible,
