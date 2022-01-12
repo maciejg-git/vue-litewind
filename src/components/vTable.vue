@@ -8,6 +8,7 @@
     <caption v-if="slots.caption" :class="classes.caption.value">
       <slot name="caption"></slot>
     </caption>
+
     <thead :class="classes.headerRow.value">
       <tr>
         <template v-for="(h, i) in headers">
@@ -43,6 +44,7 @@
         </template>
       </tr>
     </thead>
+
     <tbody>
       <template v-if="busy && slots.busy">
         <tr>
@@ -184,13 +186,14 @@ export default {
 
     // DATA
 
-    // clone data to avoid modifing data
+    // clone data
     let items = computed(() => [...props.items]);
 
     let getItemValue = (i, k) => {
       return typeof k.f === "function" ? k.f(k.key, i[k.key], i) : i[k.key];
     };
 
+    // sort compare function
     let itemCompare = (a, b, h, localeCompare) => {
       a = (h.sortByFunction && getItemValue(a, h)) || a[h.key];
       b = (h.sortByFunction && getItemValue(b, h)) || b[h.key];

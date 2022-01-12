@@ -91,8 +91,7 @@ export default {
       updateVirtualElement,
     } = usePopper({ placement, offsetX, offsetY, noFlip, modelValue, emit });
 
-    // if reference slot is not used watch reference prop for changes
-    // and update popper
+    // update popper if reference prop changes
     if (!slots.reference) {
       watch(
         () => props.reference,

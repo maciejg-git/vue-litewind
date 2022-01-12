@@ -80,7 +80,7 @@ export default {
         type: ["Object"],
         default: "bottom-start",
         description:
-        "Dropdown is positioned relative to the point <code>{x: number, y: number}</code> in this prop. This can be used to make context menus",
+        "Dropdown can be positioned relative to another element in reference slot. If reference slot is empty then dropdown is positioned relative to the point <code>{x: number, y: number}</code> in this prop. This can be used to make context menus",
       },
       {
         prop: "placement",
