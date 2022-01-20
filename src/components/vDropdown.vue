@@ -68,13 +68,13 @@ export default {
       },
     });
 
-    // watch model change and show/hide dropdown
+    // watch model changes
     watch(
       () => props.modelValue,
       (value) => (value ? show() : hide())
     );
 
-    // set triggering events: click, focus and hover
+    // watch trigger prop and update triggering events
     let trigger = toRef(props, "trigger");
     let triggerEvents = useTrigger(trigger);
 
@@ -91,7 +91,7 @@ export default {
       updateVirtualElement,
     } = usePopper({ placement, offsetX, offsetY, noFlip, modelValue, emit });
 
-    // update popper if reference prop changes
+    // update popper if position of dropdown changes
     if (!slots.reference) {
       watch(
         () => props.reference,
@@ -108,11 +108,10 @@ export default {
     let { onClickOutside } = useClickOutside();
     onClickOutside([popper, reference], hidePopper);
 
-    // show and hide functions
+    // temporary prevent closing menu if using hover trigger and 
+    // pointer is over menu
     let hideTimeout = null;
 
-    // temporary prevent closing menu if pointer is over menu
-    // and using hover trigger
     let lock = () => {
       if (props.trigger == "hover") clearTimeout(hideTimeout);
     };
@@ -121,8 +120,8 @@ export default {
       if (props.trigger == "hover") scheduleHide();
     };
 
-    // show and hide, the only special case is hover trigger which
-    // uses short delay before close
+    // show and hide functions, the only special case is hover trigger which
+    // adds short delay before close
     let show = () => {
       if (props.trigger == "hover") {
         clearTimeout(hideTimeout);

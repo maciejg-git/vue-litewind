@@ -1,5 +1,5 @@
 <template>
-  <v-navbar sticky class="px-4 py-3 mh-20">
+  <v-navbar sticky class="h-14 px-4 py-3">
     <span class="text-lg font-bold">VueTailwind</span>
     <div class="inline-block ml-5">
       <a href="/documentation/installation">Docs</a>
@@ -15,12 +15,19 @@
         sticky
         text-gray-700
         overflow-auto
-        top-20
+        border-r
+        pb-20
+        top-16
         p-3
         w-64
       "
     >
-      <ul class="list-unstyled ml-2 mt-4">
+    <h6>
+      <router-link to="/documentation/components" class="transition-all">
+        Get started
+      </router-link>
+    </h6>
+      <ul class="list-unstyled ml-2">
         <li>
           <router-link
             to="/documentation/installation"
@@ -96,7 +103,7 @@
       <router-view></router-view>
     </div>
   </div>
-  <footer class="flex bg-gray-200 border-gray-300 border-t py-4 shadow">
+  <footer class="flex bg-gray-200 border-gray-300 py-4 shadow">
     <span class="ml-auto mr-4">
       <v-icon name="github" class="text-gray-500"></v-icon>
     </span>
@@ -151,12 +158,23 @@ h6 {
   margin-top: 1em;
 }
 a.active {
-  @apply inline-block font-semibold hover:bg-gray-100 py-1 pr-4 pl-4;
+  @apply inline-block font-bold py-1 pr-4 pl-4;
 }
 a {
-  @apply inline-block hover:bg-gray-100 py-1 pr-4 pl-2;
+  @apply inline-block  py-1 pr-4 pl-2;
+}
+a:hover {
+ @apply font-bold
 }
 .sidebar {
-  height: calc(100vh - 5rem);
+  height: calc(100vh - 4rem);
+}
+.sidebar::-webkit-scrollbar {
+  width: 0.5em;
+}
+.sidebar::-webkit-scrollbar-track {
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
 }
 </style>

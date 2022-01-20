@@ -12,14 +12,14 @@
             {{ title }}
             <v-close-button
               v-if="!noCloseButton"
-              @click="close"
+              @click="closeModal"
             />
           </header>
           <main :class="classes.content.value">
             <v-close-button
               v-if="noHeader && closeButtonInContent"
               class="absolute top-6 right-6 mix-blend-screen"
-              @click="close"
+              @click="closeModal"
             />
             <slot name="default"></slot>
           </main>
@@ -126,6 +126,7 @@ export default {
     });
 
     // remove scrollbar and add some padding to avoid shifting modal window
+    // when opening
     let scrollbarWidth = ref(0);
 
     let getScrollBarWidth = () =>
@@ -151,22 +152,22 @@ export default {
       }
     );
 
-    let close = function () {
+    let closeModal = function () {
       emit("update:modelValue", false);
     };
 
     let handleBackdropClick = function () {
       if (props.staticBackdrop) return;
-      close();
+      closeModal();
     };
 
     let handlePrimaryButtonClick = function () {
-      if (props.primaryButtonClose) close();
+      if (props.primaryButtonClose) closeModal();
       emit("input:primaryButtonClick");
     };
 
     let handleSecondaryButtonClick = function () {
-      if (props.secondaryButtonClose) close();
+      if (props.secondaryButtonClose) closeModal();
       emit("input:secondaryButtonClick");
     };
 
@@ -174,7 +175,7 @@ export default {
       classes,
       scrollbarWidth,
       resetScrollbar,
-      close,
+      closeModal,
       handleBackdropClick,
       handlePrimaryButtonClick,
       handleSecondaryButtonClick,

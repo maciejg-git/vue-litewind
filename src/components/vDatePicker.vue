@@ -168,8 +168,6 @@ export default {
       return classes.day.value;
     };
 
-    // regexp for validating date from model
-    let dateRegexp = /^\d\d\d\d-\d?\d-\d?\d$/;
 
     let isTransitioning = ref(false);
     let afterTransitionCall = null;
@@ -187,7 +185,7 @@ export default {
     let single = ref("");
 
     // current state of range selection
-    // (not selected, partially selected, both selected)
+    // (0 = not selected, 1 = from selected, 2 = from and to selected)
     let rangeState = ref(0);
 
     let mouseOverRange = ref(null);
@@ -197,8 +195,9 @@ export default {
 
     let parseDate = (d) => d.split("-").map((i) => +i);
 
-    let dateToString = (d) =>
-      [d.getFullYear(), pad(d.getMonth() + 1), pad(d.getDate())].join("-");
+    let dateToString = (d) => {
+      return [d.getFullYear(), pad(d.getMonth() + 1), pad(d.getDate())].join("-");
+    }
 
     let todayFormatted = computed(() =>
       today.toLocaleDateString(props.locale, props.format)
@@ -212,7 +211,7 @@ export default {
       return m + 1 > 11 ? { m: 0, y: y + 1 } : { m: m + 1, y };
     };
 
-    // localized month and day names
+    // get localized month names
     let monthNames = computed(() => {
       return Array.from({ length: 12 }, (v, i) =>
         new Date(0, i, 1).toLocaleString(props.locale, {
@@ -221,6 +220,7 @@ export default {
       );
     });
 
+    // get localized weekday names
     let dayNames = computed(() =>
       Array.from({ length: 7 }, (v, i) =>
         new Date(2021, 1, props.mondayFirstWeekday ? i + 1 : i).toLocaleString(
@@ -233,6 +233,8 @@ export default {
     );
 
     // update and validate local model if modelValue changes
+    let dateRegexp = /^\d\d\d\d-\d?\d-\d?\d$/;
+
     watch(
       () => props.modelValue,
       () => {
@@ -255,16 +257,16 @@ export default {
       }
     );
 
-    // array of months days to display
+    // days list to display for current month
     let daysList = computed(() => {
       let start = new Date(year.value, month.value).getDay();
-      // handle monday as first weekday
+      // shift array if monday is set as first weekday
       if (props.mondayFirstWeekday) start = (7 + (start - 1)) % 7;
       let daysInMonth = getCountDaysInMonth(year.value, month.value);
       let i = Array.from({ length: daysInMonth }, (v, i) => {
         return { day: i + 1, date: new Date(year.value, month.value, i + 1) };
       });
-      // generate days from previous and next month
+      // generate days for adjacent months
       if (props.adjacentMonths) {
         let dayNumbers = Array.from({ length: 31 }, (v, i) => i + 1);
         let { m, y } = prevMonth(month.value, year.value);
@@ -378,7 +380,7 @@ export default {
 
     let setPrevYear = () => --year.value;
 
-    // is functions to check state of the day and select proper classes
+    // is* functions to check type of the day
     let isDisabled = (index) =>
       props.disabled && props.disabled.findIndex((i) => i == index % 7) != -1;
 

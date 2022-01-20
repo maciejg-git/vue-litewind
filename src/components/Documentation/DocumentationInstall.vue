@@ -47,20 +47,18 @@ app.use(install);
   </pre>
     <p>
       <span class="font-semibold">[Option 2]</span>
-      or register components seperately if you plan to use only selected few or
-      single component. This should make your build smaller.
+      or register component plugins seperately. This should make your build smaller.
     </p>
     <pre>
       <code class="language-js">
 // main.js
 
-import { buttonPlugin, selectPlugin, spinnerPlugin } from "vue-wind";
+import { buttonPlugin, selectPlugin } from "vue-wind";
 
 let app = createApp(App);
 
 app.use(buttonPlugin);
 app.use(selectPlugin);
-app.use(spinnerPlugin);
     </code>
   </pre>
     <p>
@@ -70,7 +68,7 @@ app.use(spinnerPlugin);
       <code class="language-js">
 // main.js
 
-// copy styles.css to src directory of your project and modify to your liking
+// copy styles.css to src directory of your project and modify it to your liking
 import "./styles.css";
 
 // import fixed styles, order of importing is important
@@ -79,7 +77,7 @@ import "vue-wind/dist/style.css"
   </pre>
     <h5>Styling</h5>
   <p>Class begin with default component name, followed by element name and variants/states. You can set custom name for component using name prop. This can be useful if you do not want to modify default styles or use same component for different purposes.</p>
-  <p><span class="font-semibold">style-[element]</span> props are used to modify style of component elements using variants. You can list any number of variants. Use <span class="font-semibold">only variant name</span>, do not include component name or element name.</p>
+  <p><span class="font-semibold">style-[element]</span> props are used to modify style of component elements. You can add any number of variants. Variants names are based on class names.</p>
     <pre>
       <code class="language-html">
 &lt;v-button&gt;Default button&lt;/v-button&gt;
