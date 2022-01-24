@@ -208,7 +208,7 @@ export default {
       return localeCompare(a, b) * sortAsc.value;
     };
 
-    // return sorted items, if no sorting is active return local items
+    // return sorted items, if no sorting is active return unmodified data
     let itemsSorted = computed(() => {
       if (!sortField.value) return items.value;
       let h = getHeaderKey(sortField.value);
@@ -216,8 +216,7 @@ export default {
       return items.value.sort((a, b) => itemCompare(a, b, h, c));
     });
 
-    // if filter prop is regexp return it, if it is string
-    // return new regexp from string
+    // filter prop can be regexp or string
     let getFilterRegexp = () => {
       let f = props.filter;
       if (isRegexp(f)) return f;
@@ -258,7 +257,7 @@ export default {
       );
     });
 
-    // after changing itemsPerPage reset current page to current max page count
+    // watch itemsPerPage and reset current page
     watch(
       () => props.itemsPerPage,
       () => {
@@ -289,7 +288,8 @@ export default {
       );
     };
 
-    // no definition is provided, use first row to generate local definition
+    // if no definition is provided use first row of data to 
+    // generate local definition
     let setHeaders = () => {
       if (!props.items || !props.items.length) return;
       return Object.keys(props.items[0]).map((item) => {
@@ -305,8 +305,7 @@ export default {
       () => headers.value.filter((i) => i.visible !== false).length
     );
 
-    // definition is provided, generate local definition and mix it
-    // with defaults
+    // if definition is provided use it to generate local definition
     let headers = computed(() => {
       if (!props.definition) return setHeaders();
       return props.definition.map((i) => {
