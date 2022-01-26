@@ -149,6 +149,7 @@ export default {
     });
 
     let getDayClass = (date) => {
+      // classes for range selection
       if (
         props.rangeHoverHighlight &&
         mouseOverRange.value &&
@@ -164,7 +165,7 @@ export default {
         return [classes.day.value, states.day.selected.value];
       }
       if (isToday(date)) return [classes.day.value, states.day.today.value];
-      if (isDisabled(date)) return "text-gray-400";
+      // if (isDisabled(date)) return "text-gray-400";
       return classes.day.value;
     };
 

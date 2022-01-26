@@ -193,7 +193,9 @@ export default {
       return typeof k.f === "function" ? k.f(k.key, i[k.key], i) : i[k.key];
     };
 
-    // sort compare function
+    // sort
+
+    // compare function for sort
     let itemCompare = (a, b, h, localeCompare) => {
       a = (h.sortByFunction && getItemValue(a, h)) || a[h.key];
       b = (h.sortByFunction && getItemValue(b, h)) || b[h.key];
@@ -216,11 +218,19 @@ export default {
       return items.value.sort((a, b) => itemCompare(a, b, h, c));
     });
 
-    // filter prop can be regexp or string
+    // filter
+
+    // return filter regexp or generate regexp from filter string
     let getFilterRegexp = () => {
       let f = props.filter;
       if (isRegexp(f)) return f;
       return new RegExp(f.replace(/[.*+\-?^${}()|[\]\\]/g, "\\$&"), "i");
+    };
+
+    let getFilterableKeys = () => {
+      return headers.value.filter(
+        (k) => k.filterable !== false && k.visible !== false
+      );
     };
 
     // return filtered items, if no filter is active return sorted items
@@ -237,8 +247,7 @@ export default {
       });
     });
 
-    // after each filtering return new item count so external pagination
-    // can update and reset current page to 1
+    // after each filtering return new item count and reset current page to 1
     watch(
       itemsFiltered,
       () => {
@@ -247,6 +256,8 @@ export default {
       },
       { immediate: true }
     );
+
+    // pagination
 
     // return paginated items, if no pagination is used return filtered items
     let itemsPagination = computed(() => {
@@ -270,7 +281,7 @@ export default {
       }
     );
 
-    // HEADERS
+    // TABLE DEFINITION
 
     let defaults = {
       sortable: false,
@@ -281,12 +292,6 @@ export default {
     };
 
     let getHeaderKey = (k) => headers.value.find((i) => k === i.key);
-
-    let getFilterableKeys = () => {
-      return headers.value.filter(
-        (k) => k.filterable !== false && k.visible !== false
-      );
-    };
 
     // if no definition is provided use first row of data to 
     // generate local definition
@@ -305,7 +310,7 @@ export default {
       () => headers.value.filter((i) => i.visible !== false).length
     );
 
-    // if definition is provided use it to generate local definition
+    // if definition prop is provided use it to generate local definition
     let headers = computed(() => {
       if (!props.definition) return setHeaders();
       return props.definition.map((i) => {
@@ -317,14 +322,14 @@ export default {
       });
     });
 
-    // SELECTION
+    // ROW SELECTION
 
     let itemsSelected = ref({});
 
     let unselectRow = (i) => delete itemsSelected.value[i];
 
     let resetSelection = () => {
-      for (let p of Object.keys(itemsSelected.value)) unselectRow(p);
+      for (let i of Object.keys(itemsSelected.value)) unselectRow(i);
     };
 
     let isValidSelectionMode = () =>
@@ -342,7 +347,7 @@ export default {
 
     // HANDLE TEMPLATE EVENTS
 
-    // handle selection
+    // handle row selection
     let handleRowClick = function (i) {
       if (!isValidSelectionMode()) return;
       if (itemsSelected.value[i]) {
