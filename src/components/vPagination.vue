@@ -60,9 +60,9 @@ export default {
       },
     });
 
-    let getPageClass = (p) => {
-      if (p == "...") return classes.dots.value;
-      if (currentPage.value == p) {
+    let getPageClass = (page) => {
+      if (page === "...") return classes.dots.value;
+      if (currentPage.value == page) {
         return ["z-20", classes.page.value, states.page.active.value];
       }
       return classes.page.value;
@@ -105,11 +105,12 @@ export default {
       let max = props.maxPages > 3 ? props.maxPages : 3;
       // but no more than max set by user
       max = max > pagesCount.value ? pagesCount.value : max;
-      // calculate first page and generate following pages
+      // calculate first page
       let first = currentPage.value - Math.ceil(max / 2) + 1;
       first = clamp(first, 1, pagesCount.value - max + 1);
+      // generate following pages
       let p = Array.from({ length: max }, (v, i) => i + first);
-      // add dots if needed
+      // add dots pages if needed
       if (max >= 5) {
         if (p[0] != 1) p.splice(0, 2, 1, "...");
         if (p[max - 1] != pagesCount.value)
