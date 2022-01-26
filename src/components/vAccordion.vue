@@ -16,9 +16,6 @@ export default {
     let updateActive = (value) => (active.value = value);
 
     provide("accordion", { active, updateActive });
-
-    return {
-    };
   },
 };
 </script>

@@ -7,7 +7,7 @@
       @afterLeave="afterLeave"
       @leave="leave"
     >
-      <div v-show="isCollapsed">
+      <div v-show="modelValue">
         <slot name="default"></slot>
       </div>
     </transition>
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { computed, watch, onMounted, inject } from "vue";
+import { watch, onMounted, inject } from "vue";
 import useUid from "./composition/use-uid";
 
 export default {
@@ -23,19 +23,20 @@ export default {
     modelValue: { type: Boolean, default: false },
   },
   setup(props, { emit }) {
-    let isCollapsed = computed(() => props.modelValue);
     let { uid } = useUid();
 
     let accordion = inject("accordion", null);
 
     onMounted(() => {
       if (accordion) {
+        // notify accordion parent component
         watch(
           () => props.modelValue,
           () => {
             if (props.modelValue == true) accordion.updateActive(uid);
           }
         );
+        // collapse this instance if different collapse is activated
         watch(accordion.active, () => {
           if (accordion.active.value != uid && props.modelValue == true) {
             emit("update:modelValue", false);
@@ -65,7 +66,6 @@ export default {
     };
 
     return {
-      isCollapsed,
       afterEnter,
       afterLeave,
       enter,

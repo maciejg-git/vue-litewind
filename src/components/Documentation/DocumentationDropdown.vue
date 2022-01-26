@@ -173,7 +173,7 @@ export default {
       },
       {
         prop: "v-button-dropdown",
-        description: "Optional flavored version of <code>v-button</code> that has reactive indicator build in. It uses the same props as normal <code>v-button</code> as well as triangle and icon props of <code>v-chevron</code>",
+        description: "Optional version of <code>v-button</code> that has reactive indicator build in. It uses the same props as normal <code>v-button</code> as well as triangle and icon props of <code>v-chevron</code>",
       },
     ]);
 
