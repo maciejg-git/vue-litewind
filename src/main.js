@@ -21,13 +21,12 @@ app.component("vCode", vCode)
 
 const icons = import.meta.globEager('./assets/icons/*.js')
 
-Object.entries(icons).forEach(([path, definition]) => {
-  let icon = definition.default.name + "Icon"
-  app.component(icon, definition.default)
-})
+// Object.entries(icons).forEach(([path, definition]) => {
+//   let icon = definition.default.name + "Icon"
+//   app.component(icon, definition.default)
+// })
 
 registerIcon(app, [
-  BArrowClockwise,
   MdiLoading,
   BSearch,
   BPencil,
@@ -36,6 +35,8 @@ registerIcon(app, [
   vendorPrefix: true,
   iconSufix: false,
 })
+
+app.component('b-arrow-clockwise', BArrowClockwise)
 
 app.provide("iconTypes", {
   valid: "check-lg-icon",

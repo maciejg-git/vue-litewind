@@ -233,7 +233,8 @@
     {{ tableSelection }}
     <input v-model="filter" type="" class="form-control w-25" />
 <br>
-
+<v-icon name="chevron-right-icon" class="h-6 w-6"></v-icon>
+<v-icon name="b-arrow-clockwise" class="h-6 w-6"></v-icon>
   <v-chevron></v-chevron>
    <v-button style-button="primary large">button css
      <v-chevron triangle style-chevron="right" :dir="'d'" :switch="false">
@@ -266,7 +267,7 @@
 <!-- <BKeyboardIcon></KeyboardIcon> -->
 <!-- <keyboardIcon></keyboardIcon> -->
 
-<v-icon icon-type="info"></v-icon>
+<!-- <v-icon icon-type="info"></v-icon> -->
 
 <!-- <pencil-icon></pencil-icon> -->
 <!-- <alt-icon></alt-icon> -->
@@ -617,61 +618,61 @@
     </div>
     <br />
 
-    <v-popover
-      trigger="click"
-      :delay="0"
-      click-outside-close
-    >
-      <template #activator>
-        <input
-          ref="activator"
-          type="text"
-          placeholder="click popover"
-          class="
-            p-1
-            focus:ring-blue-500 focus:border-blue-500
-            block
-            w-full
-            shadow-sm
-            border-gray-300
-            rounded
-          "
-        />
-      </template>
-      <template #header>Popover</template>
-      item item 2
-      <input type="text" />
-      <input type="text" />
-    </v-popover>
+    <!-- <v-popover -->
+    <!--   trigger="click" -->
+    <!--   :delay="0" -->
+    <!--   click-outside-close -->
+    <!-- > -->
+    <!--   <template #activator> -->
+    <!--     <input -->
+    <!--       ref="activator" -->
+    <!--       type="text" -->
+    <!--       placeholder="click popover" -->
+    <!--       class=" -->
+    <!--         p-1 -->
+    <!--         focus:ring-blue-500 focus:border-blue-500 -->
+    <!--         block -->
+    <!--         w-full -->
+    <!--         shadow-sm -->
+    <!--         border-gray-300 -->
+    <!--         rounded -->
+    <!--       " -->
+    <!--     /> -->
+    <!--   </template> -->
+    <!--   <template #header>Popover</template> -->
+    <!--   item item 2 -->
+    <!--   <input type="text" /> -->
+    <!--   <input type="text" /> -->
+    <!-- </v-popover> -->
 
     <br>
 
-    <v-popover
-      trigger="focus"
-      :delay="0"
-      click-outside-close
-    >
-      <template #activator>
-        <input
-          ref="activator"
-          type="text"
-          placeholder="focus popover"
-          class="
-            p-1
-            focus:ring-blue-500 focus:border-blue-500
-            block
-            w-full
-            shadow-sm
-            border-gray-300
-            rounded
-          "
-        />
-      </template>
-      <template #header>Popover</template>
-      item item 2
-      <input type="text" />
-      <input type="text" />
-    </v-popover>
+    <!-- <v-popover -->
+    <!--   trigger="focus" -->
+    <!--   :delay="0" -->
+    <!--   click-outside-close -->
+    <!-- > -->
+    <!--   <template #activator> -->
+    <!--     <input -->
+    <!--       ref="activator" -->
+    <!--       type="text" -->
+    <!--       placeholder="focus popover" -->
+    <!--       class=" -->
+    <!--         p-1 -->
+    <!--         focus:ring-blue-500 focus:border-blue-500 -->
+    <!--         block -->
+    <!--         w-full -->
+    <!--         shadow-sm -->
+    <!--         border-gray-300 -->
+    <!--         rounded -->
+    <!--       " -->
+    <!--     /> -->
+    <!--   </template> -->
+    <!--   <template #header>Popover</template> -->
+    <!--   item item 2 -->
+    <!--   <input type="text" /> -->
+    <!--   <input type="text" /> -->
+    <!-- </v-popover> -->
 
     <br>
 
@@ -679,71 +680,71 @@
       popover model true
     </v-button>
     <v-button @click="popoverShow = false">popover model false</v-button>
-    <v-popover
-      trigger="focus"
-      :delay="0"
-      click-outside-close
-      v-model="popoverShow"
-    >
-      <template #activator>
-        <input
-          ref="activator"
-          type="text"
-          placeholder="focus popover"
-          class="
-            p-1
-            focus:ring-blue-500 focus:border-blue-500
-            block
-            w-full
-            shadow-sm
-            border-gray-300
-            rounded
-          "
-        />
-      </template>
-      <template #header>Popover</template>
-      item item 2
-      <input type="text" />
-      <input type="text" />
-    </v-popover>
+    <!-- <v-popover -->
+    <!--   trigger="focus" -->
+    <!--   :delay="0" -->
+    <!--   click-outside-close -->
+    <!--   v-model="popoverShow" -->
+    <!-- > -->
+    <!--   <template #activator> -->
+    <!--     <input -->
+    <!--       ref="activator" -->
+    <!--       type="text" -->
+    <!--       placeholder="focus popover" -->
+    <!--       class=" -->
+    <!--         p-1 -->
+    <!--         focus:ring-blue-500 focus:border-blue-500 -->
+    <!--         block -->
+    <!--         w-full -->
+    <!--         shadow-sm -->
+    <!--         border-gray-300 -->
+    <!--         rounded -->
+    <!--       " -->
+    <!--     /> -->
+    <!--   </template> -->
+    <!--   <template #header>Popover</template> -->
+    <!--   item item 2 -->
+    <!--   <input type="text" /> -->
+    <!--   <input type="text" /> -->
+    <!-- </v-popover> -->
 
     <br>
 
         <v-button @click="dropdownplacement = 'bottom'">placement bottom</v-button>
     <v-button id="button">popover button id</v-button>
-    <v-popover
-      trigger="click"
-      :delay="50"
-      click-outside-close
-      target-id="button"
-      :placement="dropdownplacement"
-    >
-      <!-- <template #activator><v-button>popover click</v-button></template> -->
-      <template #header>Popover</template>
-      item item 2
-      <input type="" />
-    </v-popover>
+    <!-- <v-popover -->
+    <!--   trigger="click" -->
+    <!--   :delay="50" -->
+    <!--   click-outside-close -->
+    <!--   target-id="button" -->
+    <!--   :placement="dropdownplacement" -->
+    <!-- > -->
+    <!--   &#60;&#33;&#45;&#45; <template #activator><v-button>popover click</v-button></template> &#45;&#45;&#62; -->
+    <!--   <template #header>Popover</template> -->
+    <!--   item item 2 -->
+    <!--   <input type="" /> -->
+    <!-- </v-popover> -->
 
     <br>
 
-    <v-popover title="popover" trigger="hover" :delay="500" transition="fade">
-      <template #activator>
-        <!-- <v&#45;button>popover</v&#45;button> -->
-        <v-button>popover hover</v-button>
-      </template>
-      <template #header>Popover</template>
-      item item 2
-      <input type="" />
-    </v-popover>
+    <!-- <v-popover title="popover" trigger="hover" :delay="500" transition="fade"> -->
+    <!--   <template #activator> -->
+    <!--     &#60;&#33;&#45;&#45; <v&#38;#45;button>popover</v&#38;#45;button> &#45;&#45;&#62; -->
+    <!--     <v-button>popover hover</v-button> -->
+    <!--   </template> -->
+    <!--   <template #header>Popover</template> -->
+    <!--   item item 2 -->
+    <!--   <input type="" /> -->
+    <!-- </v-popover> -->
 
-    <v-popover trigger="focus">
-      <template #activator>
-        <input ref="activator" type="text" placeholder="focus popover" />
-      </template>
-      <template #header>Popover</template>
-      item item 2
-      <input type="" />
-    </v-popover>
+    <!-- <v-popover trigger="focus"> -->
+    <!--   <template #activator> -->
+    <!--     <input ref="activator" type="text" placeholder="focus popover" /> -->
+    <!--   </template> -->
+    <!--   <template #header>Popover</template> -->
+    <!--   item item 2 -->
+    <!--   <input type="" /> -->
+    <!-- </v-popover> -->
 
   </div>
 </template>
