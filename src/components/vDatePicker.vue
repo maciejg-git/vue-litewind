@@ -121,6 +121,7 @@ export default {
     styleWeekday: { type: String, default: "" },
     styleButton: { type: String, default: "" },
     styleDay: { type: String, default: "" },
+    styleToday: { type: String, default: "" },
     styleAdjacentMonthDay: { type: String, default: "" },
     styleFooter: { type: String, default: "" },
   },
@@ -140,7 +141,10 @@ export default {
       },
       day: {
         fixed: "fixed-day",
-        states: ["selected", "partially-selected", "today"],
+        states: ["selected", "partially-selected"],
+      },
+      today: {
+        fixed: "fixed-day",
       },
       adjacentMonthDay: {
         name: "adjacent-month-day",
@@ -158,13 +162,13 @@ export default {
         return [
           classes.day.value,
           states.day["partially-selected"].value,
-          isToday(date) ? states.day.today.value : "",
+          isToday(date) ? classes.today.value : "",
         ];
       }
       if (isSelectedDay(date)) {
         return [classes.day.value, states.day.selected.value];
       }
-      if (isToday(date)) return [classes.day.value, states.day.today.value];
+      if (isToday(date)) return [classes.day.value, classes.today.value];
       // if (isDisabled(date)) return "text-gray-400";
       return classes.day.value;
     };

@@ -1003,12 +1003,15 @@
         font-semibold
         text-white
     }
-    .datepicker--day--today-state {
-      @apply  
-        hover:bg-gray-50
-        text-indigo-500
-        font-extrabold
-    }
+
+.datepicker--today {
+  @apply
+    datepicker-day-fixed;
+  @apply  
+    hover:bg-gray-50
+    text-indigo-500
+    font-extrabold
+}
 
 .datepicker--adjacent-month-day {
   @apply
