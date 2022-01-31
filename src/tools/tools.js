@@ -1,3 +1,7 @@
+let noop = () => {};
+
+// format case
+
 let formatCase = function (str) {
   return str
     .replace(/^[^A-Za-z0-9]*|[^A-Za-z0-9]*$/g, "")
@@ -10,18 +14,22 @@ let formatCase = function (str) {
     );
 };
 
+// types
+
 let isDate = (d) => Object.prototype.toString.call(d) == "[object Date]";
 let isRegexp = (v) => Object.prototype.toString.call(v) === "[object RegExp]";
 let isObject = (v) => typeof v === "object";
 let isString = (v) => typeof v === "string";
+let undefNullToStr = (v) => (v == undefined || v == null ? "" : v);
+
+// compare
 
 let compare = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
 
+// math
+
 let clamp = (v, f, t) => (v < f ? f : v >= t ? t : v);
-
 let pad = (d) => (d < 10 ? "0" + d : d);
-
-let undefNullToStr = (v) => (v == undefined || v == null ? "" : v);
 
 function timeout(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -33,6 +41,7 @@ let schedule = async (fn, ms, ...args) => {
 };
 
 export {
+  noop,
   formatCase,
   compare,
   clamp,
