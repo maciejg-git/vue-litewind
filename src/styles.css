@@ -948,16 +948,6 @@
 
 /* DATEPICKER */
 
-.datepicker-day-fixed {
-  @apply
-    cursor-pointer
-    rounded
-    text-sm
-    py-1
-    mx-1
-    my-1
-}
-
 .datepicker {
   @apply
     bg-white
@@ -984,12 +974,28 @@
     font-semibold 
 }
 
+.datepicker-day-fixed {
+  @apply
+    cursor-pointer
+    rounded
+    text-sm
+    py-1
+    mx-1
+    my-1
+}
+
 .datepicker--day {
   @apply
     datepicker-day-fixed;
   @apply
     hover:bg-gray-100
 }
+    .datepicker--day--today {
+      @apply  
+        hover:bg-gray-50
+        text-indigo-500
+        font-extrabold !important
+    }
     .datepicker--day--partially-selected-state {
       @apply
         bg-gray-300
@@ -1031,17 +1037,6 @@
 
 /* DATEPICKER RELAXED */
 
-.datepicker-flat--day-fixed {
-  @apply
-    cursor-pointer
-    rounded-lg
-    text-sm
-    py-2
-    px-2
-    mx-1
-    my-1
-}
-
 .datepicker-flat {
   @apply
     bg-white
@@ -1067,6 +1062,17 @@
     font-semibold 
 }
 
+.datepicker-flat--day-fixed {
+  @apply
+    cursor-pointer
+    rounded-lg
+    text-sm
+    py-2
+    px-2
+    mx-1
+    my-1
+}
+
 .datepicker-flat--day {
   @apply
     datepicker-flat--day-fixed;
@@ -1086,12 +1092,13 @@
         font-semibold
         text-white
     }
-    .datepicker-flat--day--today-state {
-      @apply  
-        hover:bg-gray-50
-        text-indigo-500
-        font-extrabold
-    }
+
+.datepicker-flat--today {
+  @apply  
+    hover:bg-gray-50
+    text-indigo-500
+    font-extrabold
+}
 
 .datepicker-flat--adjacent-month-day {
   @apply

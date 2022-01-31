@@ -129,7 +129,7 @@ export default {
     vButton,
   },
   setup(props, { emit }) {
-    let { classes, states } = useStyles("datepicker", props, {
+    let { classes, states, variants } = useStyles("datepicker", props, {
       datepicker: null,
       weekdayBar: {
         name: "weekday-bar",
@@ -142,15 +142,18 @@ export default {
       day: {
         fixed: "fixed-day",
         states: ["selected", "partially-selected"],
+        variant: ["today"],
       },
-      today: {
-        fixed: "fixed-day",
-      },
+      // today: {
+      //   fixed: "fixed-day",
+      // },
       adjacentMonthDay: {
         name: "adjacent-month-day",
       },
       footer: null,
     });
+
+    console.log(variants)
 
     let getDayClass = (date) => {
       // classes for range selection
@@ -162,13 +165,13 @@ export default {
         return [
           classes.day.value,
           states.day["partially-selected"].value,
-          isToday(date) ? classes.today.value : "",
+          isToday(date) ? variants.day.today.value : "",
         ];
       }
       if (isSelectedDay(date)) {
         return [classes.day.value, states.day.selected.value];
       }
-      if (isToday(date)) return [classes.day.value, classes.today.value];
+      if (isToday(date)) return [classes.day.value, variants.day.today.value];
       // if (isDisabled(date)) return "text-gray-400";
       return classes.day.value;
     };

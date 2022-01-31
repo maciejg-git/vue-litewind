@@ -39,6 +39,16 @@ export default function useStyles(name, props, elements) {
         });
       }
     }
+
+    let variant = elements[el] && elements[el].variant;
+    if (variant && variant.length) {
+      variants[el] = {};
+      for (let v of variant) {
+        variants[el][v] = computed(() => {
+          return [props.name, e, v].filter(Boolean).join("--");
+        });
+      }
+    }
   }
 
   return {
