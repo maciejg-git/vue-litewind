@@ -10,7 +10,7 @@
           href=""
           :class="[
             classes.tab.value,
-            active == i ? states.tab.active.value : '',
+            active == i ? states.tab.value.active : '',
           ]"
           @click.prevent="handleClickTab(i)"
         >

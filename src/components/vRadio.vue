@@ -5,7 +5,7 @@
     type="radio"
     :class="[
       classes.radio.value,
-      states.radio[state] && states.radio[state].value,
+      states.radio.value && states.radio.value[state],
       attrs.disabled === '' || attrs.disabled === true
         ? states.radio.disabled
         : '',

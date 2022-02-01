@@ -4,7 +4,7 @@
     v-model="localModel"
     :class="[
       classes.textarea.value,
-      states.textarea[state] && states.textarea[state].value,
+      states.textarea.value && states.textarea.value[state],
       attrs.disabled === '' || attrs.disabled === true
         ? states.textarea.disabled
         : '',

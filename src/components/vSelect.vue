@@ -4,7 +4,7 @@
     v-model="localModel"
     :class="[
       classes.select.value,
-      states.select[state] && states.select[state].value,
+      states.select.value && states.select.value[state],
       attrs.disabled === '' || attrs.disabled === true
         ? states.select.disabled
         : '',

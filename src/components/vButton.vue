@@ -5,7 +5,7 @@
     type="button"
     :class="[
       classes.button.value,
-      disabled ? states.button.disabled.value : '',
+      disabled ? states.button.value.disabled: '',
     ]"
   >
     <slot name="default"></slot>

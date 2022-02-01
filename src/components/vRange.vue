@@ -5,7 +5,7 @@
     type="range"
     :class="[
       classes.range.value,
-      states.range[state],
+      states.range.value[state],
       attrs.disabled === '' || attrs.disabled === true
         ? states.range.disabled
         : '',

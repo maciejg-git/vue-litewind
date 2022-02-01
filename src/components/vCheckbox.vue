@@ -5,7 +5,7 @@
     type="checkbox"
     :class="[
       classes.checkbox.value,
-      states.checkbox[state] && states.checkbox[state].value,
+      states.checkbox.value && states.checkbox.value[state],
       attrs.disabled === '' || attrs.disabled === true
         ? states.checkbox.disabled
         : '',

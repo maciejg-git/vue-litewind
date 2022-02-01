@@ -5,7 +5,7 @@
     :type="type"
     :class="[
       classes.input.value,
-      states.input[state] && states.input[state].value,
+      states.input.value && states.input.value[state],
       attrs.disabled === '' || attrs.disabled === true
         ? states.input.disabled
         : '',

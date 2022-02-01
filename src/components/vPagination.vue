@@ -63,7 +63,7 @@ export default {
     let getPageClass = (page) => {
       if (page === "...") return classes.dots.value;
       if (currentPage.value == page) {
-        return ["z-20", classes.page.value, states.page.active.value];
+        return ["z-20", classes.page.value, states.page.value.active];
       }
       return classes.page.value;
     };

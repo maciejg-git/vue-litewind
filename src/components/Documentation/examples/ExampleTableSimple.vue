@@ -4,9 +4,7 @@
 
 <script>
 import { reactive } from "vue";
-/* CUT START */
 import data from "../../../data.json";
-/* CUT END */
 
 export default {
   setup() {

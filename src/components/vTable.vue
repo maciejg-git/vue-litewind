@@ -2,7 +2,7 @@
   <table
     :class="[
       classes.table.value,
-      state == 'busy' ? [states.table.busy.value, 'pointer-events-none'] : '',
+      state == 'busy' ? [states.table.value.busy, 'pointer-events-none'] : '',
     ]"
   >
     <caption v-if="slots.caption" :class="classes.caption.value">
@@ -95,10 +95,10 @@
 
 <script>
 import { ref, computed, watch, nextTick } from "vue";
-import vIcon from "./vIcon.vue"
-import vSortIcon from "./icons/sort-solid.js"
-import vCaretUpIcon from "./icons/caret-up-solid.js"
-import vCaretDownIcon from "./icons/caret-down-solid.js"
+import vIcon from "./vIcon.vue";
+import vSortIcon from "./icons/sort-solid.js";
+import vCaretUpIcon from "./icons/caret-up-solid.js";
+import vCaretDownIcon from "./icons/caret-down-solid.js";
 import useStyles from "./composition/use-styles";
 import {
   formatCase,
@@ -133,7 +133,6 @@ export default {
     styleHeaderCell: { type: String, default: "" },
     styleRow: { type: String, default: "" },
     styleCell: { type: String, default: "" },
-    styleSelected: { type: String, default: "" },
     styleCaption: { type: String, default: "" },
   },
   components: {
@@ -155,11 +154,7 @@ export default {
       },
       row: null,
       cell: {
-        prop: computed(() =>
-          props.selectionMode !== "" ? "cursor-pointer" : ""
-        ),
-      },
-      selected: {
+        states: ["selected"],
         prop: computed(() =>
           props.selectionMode !== "" ? "cursor-pointer" : ""
         ),
@@ -172,7 +167,9 @@ export default {
     });
 
     let getCellClass = (k, i, item) => {
-      if (itemsSelected.value[i]) return classes.selected.value;
+      if (itemsSelected.value[i]) {
+        return [classes.cell.value, states.cell.value.selected];
+      }
       return [
         classes.cell.value,
         k.class && typeof k.class === "function"
@@ -293,7 +290,7 @@ export default {
 
     let getHeaderKey = (k) => headers.value.find((i) => k === i.key);
 
-    // if no definition is provided use first row of data to 
+    // if no definition is provided use first row of data to
     // generate local definition
     let setHeaders = () => {
       if (!props.items || !props.items.length) return;

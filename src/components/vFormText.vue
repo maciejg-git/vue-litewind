@@ -4,7 +4,7 @@
       v-if="visible"
       :class="[
         classes.formText.value,
-        states.formText[state] && states.formText[state].value,
+        states.formText.value && states.formText.value[state],
       ]"
     >
       <slot name="default" :state="state">

@@ -4,9 +4,9 @@
     :href="tagHref"
     :class="[
       active
-        ? [classes.item.value, states.item.active.value]
+        ? [classes.item.value, states.item.value.active]
         : disabled
-        ? [classes.item.value, states.item.disabled.value]
+        ? [classes.item.value, states.item.value.disabled]
         : classes.item.value,
     ]"
     @click="autoCloseMenu && hide()"

@@ -21,10 +21,10 @@ app.component("vCode", vCode)
 
 const icons = import.meta.globEager('./assets/icons/*.js')
 
-// Object.entries(icons).forEach(([path, definition]) => {
-//   let icon = definition.default.name + "Icon"
-//   app.component(icon, definition.default)
-// })
+Object.entries(icons).forEach(([path, definition]) => {
+  let icon = definition.default.name + "Icon"
+  app.component(icon, definition.default)
+})
 
 registerIcon(app, [
   MdiLoading,

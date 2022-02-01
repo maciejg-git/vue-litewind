@@ -4,7 +4,7 @@
       v-if="modelValue"
       :class="[
         classes.alert.value,
-        states.alert[state] && states.alert[state].value,
+        states.alert.value && states.alert.value[state],
       ]"
     >
       <div class="flex items-center">

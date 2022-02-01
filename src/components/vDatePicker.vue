@@ -121,7 +121,6 @@ export default {
     styleWeekday: { type: String, default: "" },
     styleButton: { type: String, default: "" },
     styleDay: { type: String, default: "" },
-    styleToday: { type: String, default: "" },
     styleAdjacentMonthDay: { type: String, default: "" },
     styleFooter: { type: String, default: "" },
   },
@@ -142,18 +141,13 @@ export default {
       day: {
         fixed: "fixed-day",
         states: ["selected", "partially-selected"],
-        variant: ["today"],
+        variants: ["today"],
       },
-      // today: {
-      //   fixed: "fixed-day",
-      // },
       adjacentMonthDay: {
         name: "adjacent-month-day",
       },
       footer: null,
     });
-
-    console.log(variants)
 
     let getDayClass = (date) => {
       // classes for range selection
@@ -164,14 +158,14 @@ export default {
       ) {
         return [
           classes.day.value,
-          states.day["partially-selected"].value,
-          isToday(date) ? variants.day.today.value : "",
+          states.day.value["partially-selected"],
+          isToday(date) ? variants.day.value.today: "",
         ];
       }
       if (isSelectedDay(date)) {
-        return [classes.day.value, states.day.selected.value];
+        return [classes.day.value, states.day.value.selected];
       }
-      if (isToday(date)) return [classes.day.value, variants.day.today.value];
+      if (isToday(date)) return [classes.day.value, variants.day.value.today];
       // if (isDisabled(date)) return "text-gray-400";
       return classes.day.value;
     };
