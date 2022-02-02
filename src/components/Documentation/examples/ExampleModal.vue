@@ -59,6 +59,7 @@
     :primary-button-close="!!example.primaryButtonClose"
     :secondary-button-close="!!example.secondaryButtonClose"
     :no-close-button="!!example.noCloseButton"
+    :close-button-in-content="!!example.closeButtonInContent"
     :static-backdrop="!!example.staticBackdrop"
     :no-header="!!example.noHeader"
     :no-footer="!!example.noFooter"
@@ -126,6 +127,13 @@
       <div class="mb-2">
         <label for="no-close-button">no-close-button:</label>
         <v-select id="no-close-button" v-model="example.noCloseButton">
+          <option :value="true">true</option>
+          <option :value="false">false</option>
+        </v-select>
+      </div>
+      <div class="mb-2">
+        <label for="close-button-in-content">close-button-in-content:</label>
+        <v-select id="close-button-in-content" v-model="example.closeButtonInContent">
           <option :value="true">true</option>
           <option :value="false">false</option>
         </v-select>
@@ -318,6 +326,7 @@ export default {
       primaryButtonClose: false,
       secondaryButtonClose: true,
       noCloseButton: false,
+      closeButtonInContent: false,
       staticBackdrop: false,
       noHeader: false,
       noFooter: false,

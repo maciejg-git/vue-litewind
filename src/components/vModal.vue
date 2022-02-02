@@ -18,7 +18,7 @@
           <main :class="classes.content.value">
             <v-close-button
               v-if="noHeader && closeButtonInContent"
-              class="absolute top-6 right-6 mix-blend-screen"
+              class="absolute top-6 right-6"
               @click="closeModal"
             />
             <slot name="default"></slot>
