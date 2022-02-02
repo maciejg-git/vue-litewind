@@ -16,16 +16,18 @@
 
 <script>
 import { watch, onMounted, inject } from "vue";
-import useUid from "./composition/use-uid";
 
 export default {
   props: {
     modelValue: { type: Boolean, default: false },
   },
   setup(props, { emit }) {
-    let { uid } = useUid();
-
     let accordion = inject("accordion", null);
+
+    let collapse = () => {
+      if (props.modelValue == false) return
+      emit("update:modelValue", false);
+    }
 
     onMounted(() => {
       if (accordion) {
@@ -33,15 +35,9 @@ export default {
         watch(
           () => props.modelValue,
           () => {
-            if (props.modelValue == true) accordion.updateActive(uid);
+            if (props.modelValue == true) accordion.updateActive(collapse);
           }
         );
-        // collapse this instance if different collapse is activated
-        watch(accordion.active, () => {
-          if (accordion.active.value != uid && props.modelValue == true) {
-            emit("update:modelValue", false);
-          }
-        });
       }
     });
 

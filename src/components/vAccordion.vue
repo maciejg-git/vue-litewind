@@ -5,17 +5,18 @@
 </template>
 
 <script>
-import { ref, provide } from "vue";
+import { provide } from "vue";
 
 export default {
-  props: {
-  },
-  setup(props) {
-    let active = ref(0);
+  setup() {
+    let collapse = null;
 
-    let updateActive = (value) => (active.value = value);
+    let updateActive = (c) => {
+      if (collapse && collapse != c) collapse()
+      collapse = c;
+    }
 
-    provide("accordion", { active, updateActive });
+    provide("accordion", { updateActive });
   },
 };
 </script>
