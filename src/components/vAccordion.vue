@@ -5,14 +5,16 @@
 </template>
 
 <script>
-import { provide } from "vue";
+import { ref, provide } from "vue";
 
 export default {
   setup() {
+    let active = ref(null)
     let collapse = null;
 
-    let updateActive = (c) => {
-      if (collapse && collapse != c) collapse()
+    let updateActive = (uid, c) => {
+      if (collapse && active.value !== uid) collapse()
+      active.value = uid;
       collapse = c;
     }
 
