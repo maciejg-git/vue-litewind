@@ -1,18 +1,12 @@
 <template>
   <div class="flex flex-col items-center gap-y-2 w-full md:w-1/2">
-    <v-button
-      @click="example.isVisible = !example.isVisible"
-    >
+    <v-button @click="example.isVisible = !example.isVisible">
       Show modal
     </v-button>
-    <v-button
-      @click="example.isVisibleLong = !example.isVisibleLong"
-    >
+    <v-button @click="example.isVisibleLong = !example.isVisibleLong">
       Show long scrollable modal
     </v-button>
-    <v-button
-      @click="example.isVisibleImage = !example.isVisibleImage"
-    >
+    <v-button @click="example.isVisibleImage = !example.isVisibleImage">
       Show image modal
     </v-button>
   </div>

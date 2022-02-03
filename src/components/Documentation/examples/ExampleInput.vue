@@ -5,6 +5,14 @@
     :state="example.state"
     placeholder="Input example"
   />
+  <v-input
+    v-model="example.model"
+    name="input-underline"
+    :type="example.type"
+    :state="example.state"
+    placeholder="Input example"
+    class="mt-4"
+  />
 <!-- CUT START -->
   <v-tabs name="tabs-material" class="mt-10">
     <v-tab name="Props">
