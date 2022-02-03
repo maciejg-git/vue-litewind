@@ -12,13 +12,18 @@ export default {
     let active = ref(null)
     let collapse = null;
 
-    let updateActive = (uid, c) => {
-      if (collapse && active.value !== uid) collapse()
-      active.value = uid;
-      collapse = c;
+    let update = (uid, state, callback) => {
+      if (state && active.value !== uid) {
+        if (active.value) collapse()
+        active.value = uid;
+        collapse = callback;
+      } else if (!state && active.value === uid) {
+        active.value = null;
+        collapse = null;
+      }
     }
 
-    provide("accordion", { updateActive });
+    provide("accordion", { update });
   },
 };
 </script>

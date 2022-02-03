@@ -7,7 +7,7 @@
       @afterLeave="afterLeave"
       @leave="leave"
     >
-      <div v-show="modelValue">
+      <div v-show="isVisible">
         <slot name="default"></slot>
       </div>
     </transition>
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { watch, onMounted, inject } from "vue";
+import { watch, toRef, onMounted, onUnmounted, inject } from "vue";
 import useUid from "./composition/use-uid";
 
 export default {
@@ -27,20 +27,24 @@ export default {
 
     let accordion = inject("accordion", null);
 
-    let collapse = () => {
-      if (props.modelValue) emit("update:modelValue", false);
-    };
+    let isVisible = toRef(props, "modelValue");
+
+    let collapse = () => emit("update:modelValue", false);
 
     onMounted(() => {
       if (accordion) {
-        // notify accordion parent component
         watch(
-          () => props.modelValue,
-          () => {
-            if (props.modelValue == true) accordion.updateActive(uid, collapse);
-          },
+          isVisible,
+          () => accordion.update(uid, isVisible.value, collapse),
           { immediate: true }
         );
+      }
+    });
+
+    onUnmounted(() => {
+      if (accordion) {
+        if (isVisible.value) collapse();
+        accordion.update(uid, false);
       }
     });
 
@@ -65,6 +69,7 @@ export default {
     };
 
     return {
+      isVisible,
       afterEnter,
       afterLeave,
       enter,
