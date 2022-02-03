@@ -974,6 +974,11 @@ export default {
     let log = (m) => console.log(m);
 
 
+    let buttonStyle = {
+      primary: true,
+      small: true,
+    }
+
     let buttonPrimary = "bg-indigo-500 hover:bg-indigo-600";
     let buttonSmall = "py-1";
 
