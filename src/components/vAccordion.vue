@@ -9,16 +9,16 @@ import { ref, provide } from "vue";
 
 export default {
   setup() {
-    let active = ref(null)
+    let activeUid = ref(null)
     let collapse = null;
 
     let update = (uid, state, callback) => {
-      if (state && active.value !== uid) {
-        if (active.value) collapse()
-        active.value = uid;
+      if (state && activeUid.value !== uid) {
+        if (activeUid.value) collapse()
+        activeUid.value = uid;
         collapse = callback;
-      } else if (!state && active.value === uid) {
-        active.value = null;
+      } else if (!state && activeUid.value === uid) {
+        activeUid.value = null;
         collapse = null;
       }
     }
