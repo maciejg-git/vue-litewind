@@ -551,6 +551,30 @@
         opacity-50
     }
 
+.input-underline {
+  @apply
+    block
+    w-full
+    px-0.5
+    border-0 
+    border-b-2 
+    border-gray-200
+    focus:ring-0 
+    focus:border-black
+}
+    .input-material--valid-state {
+      @apply
+        border-green-300
+    }
+    .input-material--invalid-state {
+      @apply
+        border-red-300
+    }
+    .input-material--disabled-state {
+      @apply
+        opacity-50
+    }
+
 /* TEXTAREA */
 
 .textarea {
