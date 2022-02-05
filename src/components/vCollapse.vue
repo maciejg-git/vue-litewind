@@ -7,7 +7,7 @@
       @afterLeave="afterLeave"
       @leave="leave"
     >
-      <div v-show="isVisible">
+      <div v-show="isOpen">
         <slot name="default"></slot>
       </div>
     </transition>
@@ -27,15 +27,15 @@ export default {
 
     let accordion = inject("accordion", null);
 
-    let isVisible = toRef(props, "modelValue");
+    let isOpen = toRef(props, "modelValue");
 
     let collapse = () => emit("update:modelValue", false);
 
     onMounted(() => {
       if (accordion) {
         watch(
-          isVisible,
-          () => accordion.update(uid, isVisible.value, collapse),
+          isOpen,
+          () => accordion.update(uid, isOpen.value, collapse),
           { immediate: true }
         );
       }
@@ -43,7 +43,7 @@ export default {
 
     onUnmounted(() => {
       if (accordion) {
-        if (isVisible.value) collapse();
+        if (isOpen.value) collapse();
         accordion.update(uid, false);
       }
     });
@@ -69,7 +69,7 @@ export default {
     };
 
     return {
-      isVisible,
+      isOpen,
       afterEnter,
       afterLeave,
       enter,

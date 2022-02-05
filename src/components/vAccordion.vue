@@ -9,19 +9,23 @@ import { ref, provide } from "vue";
 
 export default {
   setup() {
-    let activeUid = ref(null)
+    let activeUid = ref(null);
     let collapse = null;
 
-    let update = (uid, state, callback) => {
-      if (state && activeUid.value !== uid) {
-        if (activeUid.value) collapse()
-        activeUid.value = uid;
-        collapse = callback;
-      } else if (!state && activeUid.value === uid) {
-        activeUid.value = null;
-        collapse = null;
+    let update = (uid, isOpen, callback) => {
+      if (isOpen) {
+        if (activeUid.value !== uid) {
+          if (activeUid.value) collapse();
+          activeUid.value = uid;
+          collapse = callback;
+        }
+      } else {
+        if (activeUid.value === uid) {
+          activeUid.value = null;
+          collapse = null;
+        }
       }
-    }
+    };
 
     provide("accordion", { update });
   },
