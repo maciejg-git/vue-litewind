@@ -1,7 +1,7 @@
 <template>
   <nav :class="classes.paginationBar.value">
     <a href="" :class="getPrevButtonClass()" @click.prevent="handleClickPrev">
-      {{ icons ? "" : "Previous" }}
+      <chevron-left />
     </a>
     <a
       href=""
@@ -13,29 +13,34 @@
       {{ i }}
     </a>
     <a href="" :class="getNextButtonClass()" @click.prevent="handleClickNext">
-      {{ icons ? "" : "Next" }}
+      <chevron-right />
     </a>
   </nav>
 </template>
 
 <script>
 import { ref, computed, watch } from "vue";
+import ChevronLeft from "./icons/chevron-left.js";
+import ChevronRight from "./icons/chevron-right.js";
 import useStyles from "./composition/use-styles";
-import { clamp } from "../tools/tools.js";
+import { clamp, getNumberRange, isNumber } from "../tools/tools.js";
 
 export default {
   props: {
-    modelValue: { type: Number, default: undefined },
+    modelValue: { type: [Number, String], default: undefined },
     itemsCount: { type: [Number, String], default: undefined },
     itemsPerPage: { type: [Number, String], default: undefined },
     maxPages: { type: [Number, String], default: undefined },
-    icons: { type: Boolean, default: false },
     name: { type: String, default: "pagination" },
     stylePaginationBar: { type: [String, Array], default: "default" },
     stylePage: { type: [String, Array], default: "" },
     styleDots: { type: [String, Array], default: "" },
     styleNext: { type: [String, Array], default: "" },
     stylePrev: { type: [String, Array], default: "" },
+  },
+  components: {
+    ChevronLeft,
+    ChevronRight,
   },
   setup(props, { emit }) {
     let { classes, states } = useStyles("pagination", props, {
@@ -52,11 +57,9 @@ export default {
       },
       next: {
         fixed: "fixed-control",
-        prop: computed(() => (props.icons ? "btn-next" : "")),
       },
       prev: {
         fixed: "fixed-control",
-        prop: computed(() => (props.icons ? "btn-prev" : "")),
       },
     });
 
@@ -84,41 +87,47 @@ export default {
 
     let currentPage = ref(1);
 
+    // calculate total number of pages
+    let pagesCount = computed(() => {
+      let p = Math.ceil(props.itemsCount / props.itemsPerPage);
+      return p > 1 ? p : 1;
+    });
+
+    // calculate number of pages do display
+    let maxPagesCount = () => {
+      return Math.min(pagesCount.value, Math.max(props.maxPages, 3));
+    };
+
     // watch for model changes and update current page
     watch(
       () => props.modelValue,
       () => {
-        return (currentPage.value =
-          typeof props.modelValue === "number" && props.modelValue);
+        let p = isNumber(+props.modelValue) && +props.modelValue;
+        currentPage.value = clamp(p, 1, pagesCount.value)
       },
       { immediate: true }
     );
 
-    let pagesCount = computed(() => {
-      let p = Math.ceil(props.itemsCount / props.itemsPerPage)
-      return p > 1 ? p : 1;
-    }
-    );
-
     let pages = computed(() => {
-      // there always must be more than 3 pages
-      let max = props.maxPages > 3 ? props.maxPages : 3;
-      // but no more than max set by user
-      max = max > pagesCount.value ? pagesCount.value : max;
+      let maxPages = maxPagesCount();
       // calculate first page
-      let first = currentPage.value - Math.ceil(max / 2) + 1;
-      first = clamp(first, 1, pagesCount.value - max + 1);
+      let first = currentPage.value - Math.ceil(maxPages / 2) + 1;
+      first = clamp(first, 1, pagesCount.value - maxPages + 1);
       // generate following pages
-      let p = Array.from({ length: max }, (v, i) => i + first);
+      let p = getNumberRange(first, maxPages);
       // add dots pages if needed
-      if (max >= 5) {
-        if (p[0] != 1) p.splice(0, 2, 1, "...");
-        if (p[max - 1] != pagesCount.value)
-          p.splice(max - 2, 2, "...", pagesCount.value);
+      if (maxPages >= 5) {
+        if (p[0] != 1) {
+          p.splice(0, 2, 1, "...");
+        }
+        if (p[maxPages - 1] != pagesCount.value) {
+          p.splice(maxPages - 2, 2, "...", pagesCount.value);
+        }
       }
       return p;
     });
 
+    // handle template events
     let handleClickNext = function () {
       let p = currentPage.value + 1;
       currentPage.value = p >= pagesCount.value ? pagesCount.value : p;
@@ -158,17 +167,9 @@ export default {
   @apply relative z-0 flex flex-row w-min;
 }
 .fixed-page {
-  @apply z-10 cursor-pointer flex justify-center items-center;
+  @apply z-10 cursor-pointer flex justify-center items-center transition-all;
 }
 .fixed-control {
   @apply flex flex-col justify-center items-center;
-}
-.btn-next:before {
-  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chevron-right' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
-  max-height: 16px;
-}
-.btn-prev:before {
-  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chevron-left' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3E%3C/svg%3E");
-  max-height: 16px;
 }
 </style>
