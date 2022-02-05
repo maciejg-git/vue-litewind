@@ -17,9 +17,15 @@ let formatCase = function (str) {
 // types
 
 let isDate = (d) => Object.prototype.toString.call(d) == "[object Date]";
+
 let isRegexp = (v) => Object.prototype.toString.call(v) === "[object RegExp]";
+
 let isObject = (v) => typeof v === "object";
+
 let isString = (v) => typeof v === "string";
+
+let isNumber = (v) => typeof v === "number";
+
 let undefNullToStr = (v) => (v == undefined || v == null ? "" : v);
 
 // compare
@@ -29,7 +35,14 @@ let compare = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
 // math
 
 let clamp = (v, f, t) => (v < f ? f : v >= t ? t : v);
+
 let pad = (d) => (d < 10 ? "0" + d : d);
+
+let getNumberRange = (from, count) => {
+  return Array.from({ length: count }, (_, i) => i + from);
+}
+
+// timeout
 
 function timeout(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -47,7 +60,9 @@ export {
   clamp,
   isDate,
   isRegexp,
+  isNumber,
   pad,
+  getNumberRange,
   undefNullToStr,
   schedule,
   isObject,
