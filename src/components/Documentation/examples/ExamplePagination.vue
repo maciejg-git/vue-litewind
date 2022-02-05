@@ -4,7 +4,6 @@
     :items-count="example.itemsCount"
     :items-per-page="example.itemsPerPage"
     :max-pages="example.maxPages"
-    :icons="example.icons"
     @update:modelValue="
       events.unshift({ ev: 'update:modelValue', data: $event })
     "
@@ -40,13 +39,6 @@
           v-model="example.maxPages"
         ></v-input>
       </div>
-      <div class="mb-2">
-        <label for="icons">icons:</label>
-        <v-select id="icons" v-model="example.icons">
-          <option :value="true">true</option>
-          <option :value="false">false</option>
-        </v-select>
-      </div>
     </v-tab>
     <v-tab name="Events">
       <template #name>
@@ -80,7 +72,6 @@ export default {
       itemsPerPage: 5,
       itemsCount: 50,
       maxPages: 7,
-      icons: true,
     });
 
     let events = ref([]);
