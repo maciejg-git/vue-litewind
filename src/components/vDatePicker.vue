@@ -2,28 +2,32 @@
   <div :class="classes.datepicker.value" :style="{ width: width }">
     <div class="grid grid-cols-6 grid-flow-col my-2">
       <button
-        class="btn-prev-double"
         :class="classes.button.value"
         @click="handleClickPrevYear"
-      ></button>
+      >
+        <chevron-double-left />
+      </button>
       <button
-        class="btn-prev"
         :class="classes.button.value"
         @click="handleClickPrevMonth"
-      ></button>
+      >
+        <chevron-left />
+      </button>
       <div class="inline-block col-span-2 font-bold">
         <span class="align-baseline">{{ monthNames[month] }} {{ year }}</span>
       </div>
       <button
-        class="btn-next"
         :class="classes.button.value"
         @click="handleClickNextMonth"
-      ></button>
+      >
+        <chevron-right />
+      </button>
       <button
-        class="btn-next-double"
         :class="classes.button.value"
         @click="handleClickNextYear"
-      ></button>
+      >
+        <chevron-double-right />
+      </button>
     </div>
     <div :class="classes.weekdayBar.value">
       <div v-for="day in dayNames" :class="classes.weekday.value">
@@ -39,7 +43,7 @@
             </div>
           </div>
         </template>
-        <div v-for="(d, index) in daysList.i" :key="index">
+        <div v-for="(d, index) in daysList.days" :key="index">
           <a
             v-if="d"
             @click="handleDayClick(d.date, index)"
@@ -81,8 +85,12 @@
 <script>
 import { ref, computed, watch } from "vue";
 import vButton from "./vButton.vue";
+import ChevronRight from "./icons/chevron-right.js"
+import ChevronDoubleLeft from "./icons/chevron-double-left.js"
+import ChevronDoubleRight from "./icons/chevron-double-right.js"
+import ChevronLeft from "./icons/chevron-left.js"
 import useStyles from "./composition/use-styles";
-import { pad } from "../tools/tools.js";
+import { pad, getNumberRange } from "../tools/tools.js";
 
 export default {
   props: {
@@ -126,6 +134,10 @@ export default {
   },
   components: {
     vButton,
+    ChevronLeft,
+    ChevronRight,
+    ChevronDoubleLeft,
+    ChevronDoubleRight,
   },
   setup(props, { emit }) {
     let { classes, states, variants } = useStyles("datepicker", props, {
@@ -159,7 +171,7 @@ export default {
         return [
           classes.day.value,
           states.day.value["partially-selected"],
-          isToday(date) ? variants.day.value.today: "",
+          isToday(date) ? variants.day.value.today : "",
         ];
       }
       if (isSelectedDay(date)) {
@@ -170,11 +182,11 @@ export default {
       return classes.day.value;
     };
 
-
     let isTransitioning = ref(false);
     let afterTransitionCall = null;
     let transition = ref("");
 
+    // today date
     let today = new Date();
     today.setHours(0, 0, 0, 0);
 
@@ -182,7 +194,7 @@ export default {
     let month = ref(today.getMonth());
     let year = ref(today.getFullYear());
 
-    // range and single local models
+    // local models for range and single mode
     let range = ref([]);
     let single = ref("");
 
@@ -198,12 +210,10 @@ export default {
     let parseDate = (d) => d.split("-").map((i) => +i);
 
     let dateToString = (d) => {
-      return [d.getFullYear(), pad(d.getMonth() + 1), pad(d.getDate())].join("-");
-    }
-
-    let todayFormatted = computed(() =>
-      today.toLocaleDateString(props.locale, props.format)
-    );
+      return [d.getFullYear(), pad(d.getMonth() + 1), pad(d.getDate())].join(
+        "-"
+      );
+    };
 
     let prevMonth = (m, y) => {
       return m - 1 < 0 ? { m: 11, y: y - 1 } : { m: m - 1, y };
@@ -212,6 +222,11 @@ export default {
     let nextMonth = (m, y) => {
       return m + 1 > 11 ? { m: 0, y: y + 1 } : { m: m + 1, y };
     };
+
+    let getFirstDay = (m, y) => {
+      let d = new Date(m, y).getDay();
+      return props.mondayFirstWeekday ? (6 + d) % 7 : d;
+    }
 
     // get localized month names
     let monthNames = computed(() => {
@@ -234,6 +249,11 @@ export default {
       )
     );
 
+    // get today localized string
+    let todayFormatted = computed(() =>
+      today.toLocaleDateString(props.locale, props.format)
+    );
+
     // update and validate local model if modelValue changes
     let dateRegexp = /^\d\d\d\d-\d?\d-\d?\d$/;
 
@@ -242,6 +262,7 @@ export default {
       () => {
         let m = props.modelValue;
         if (!m) return;
+
         if (props.range) {
           if (m[0] && dateRegexp.test(m[0]) && m[1] && dateRegexp.test(m[1])) {
             range.value = m.map((d) => new Date(parseDate(d)));
@@ -259,29 +280,28 @@ export default {
       }
     );
 
-    // days list to display for current month
+    // generate days to display for current month
     let daysList = computed(() => {
-      let start = new Date(year.value, month.value).getDay();
-      // shift array if monday is set as first weekday
-      if (props.mondayFirstWeekday) start = (7 + (start - 1)) % 7;
+      let start = getFirstDay(year.value, month.value)
       let daysInMonth = getCountDaysInMonth(year.value, month.value);
-      let i = Array.from({ length: daysInMonth }, (v, i) => {
-        return { day: i + 1, date: new Date(year.value, month.value, i + 1) };
-      });
-      // generate days for adjacent months
-      if (props.adjacentMonths) {
-        let dayNumbers = Array.from({ length: 31 }, (v, i) => i + 1);
-        let { m, y } = prevMonth(month.value, year.value);
-        let daysPrev = getCountDaysInMonth(y, m);
-        let prevMonthDays = dayNumbers.slice(daysPrev - start, daysPrev);
-        let nextMonthDays = dayNumbers.slice(0, 42 - daysInMonth - start);
-        return { prevMonthDays, nextMonthDays, i };
+
+      let days = getNumberRange(1, daysInMonth)
+      days = days.map((i) => {
+        return { day: i, date: new Date(year.value, month.value, i) };
+      })
+
+      if (!props.adjacentMonths) {
+        return { days: [...Array(start).fill(""), ...days] };
       }
-      // if not generating adjacent month days shift day array by adding "" days
-      return { i: [...Array(start).fill(""), ...i] };
+
+      let { m, y } = prevMonth(month.value, year.value);
+      let daysCountPrev = getCountDaysInMonth(y, m);
+      let prevMonthDays = getNumberRange(daysCountPrev - start + 1, start);
+      let nextMonthDays = getNumberRange(1, 42 - daysInMonth - start);
+      return { prevMonthDays, days, nextMonthDays };
     });
 
-    // emit events and date as model after selecting
+    // emit date model after selecting
     let emitSelection = (selected, formatted) => {
       emit("update:modelValue", selected);
       emit("update:formatted", formatted);
@@ -453,22 +473,6 @@ export default {
 }
 .fixed-day {
   @apply block;
-}
-.btn-prev-double:before {
-  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chevron-double-left' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3E%3Cpath fill-rule='evenodd' d='M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3E%3C/svg%3E");
-  max-height: 16px;
-}
-.btn-next-double:before {
-  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chevron-double-right' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z'/%3E%3Cpath fill-rule='evenodd' d='M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
-  max-height: 16px;
-}
-.btn-next:before {
-  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chevron-right' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
-  max-height: 16px;
-}
-.btn-prev:before {
-  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chevron-left' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3E%3C/svg%3E");
-  max-height: 16px;
 }
 
 .fade-enter-active,
