@@ -329,8 +329,11 @@ export default {
       for (let i of Object.keys(itemsSelected.value)) unselectRow(i);
     };
 
-    let isValidSelectionMode = () =>
-      props.selectionMode == "single" || props.selectionMode == "multiple";
+    let isValidSelectionMode = () => {
+      return (
+        props.selectionMode == "single" || props.selectionMode == "multiple"
+      );
+    };
 
     let selectRow = (i) => (itemsSelected.value[i] = itemsPagination.value[i]);
 
@@ -395,7 +398,6 @@ export default {
 .sort-icon-active {
   @apply ml-3 opacity-70;
 }
-
 .caption-bottom {
   caption-side: bottom;
 }

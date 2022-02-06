@@ -5,10 +5,8 @@ import { plugin } from "./components/index.js";
 import "tailwindcss/tailwind.css";
 import "./styles.css"
 import "./styles-material.css"
+import BChevronRight from "./assets/chevron-right"
 import { registerIcon } from "./vue"
-import { BSearch, BPencil, BPlusLg } from "./assets/dist-bootstrap"
-import BArrowClockwise from "./assets/icons/arrow-clockwise"
-import MdiLoading from "./assets/icons/loading"
 import TableReference from "./components/Documentation/TableReference.vue";
 import TableReferenceBasic from "./components/Documentation/TableReferenceBasic.vue";
 import vCode from "./components/Documentation/components/vCode.vue"
@@ -27,16 +25,11 @@ Object.entries(icons).forEach(([path, definition]) => {
 })
 
 registerIcon(app, [
-  MdiLoading,
-  BSearch,
-  BPencil,
-  BPlusLg,
+  BChevronRight,
 ], {
   vendorPrefix: true,
   iconSufix: false,
 })
-
-app.component('b-arrow-clockwise', BArrowClockwise)
 
 app.provide("iconTypes", {
   valid: "check-lg-icon",

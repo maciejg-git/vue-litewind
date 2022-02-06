@@ -27,10 +27,26 @@ import { clamp, getNumberRange, isNumber } from "../tools/tools.js";
 
 export default {
   props: {
-    modelValue: { type: [Number, String], default: undefined },
-    itemsCount: { type: [Number, String], default: undefined },
-    itemsPerPage: { type: [Number, String], default: undefined },
-    maxPages: { type: [Number, String], default: undefined },
+    modelValue: { 
+      type: [Number, String],
+      default: undefined,
+      validator(v) { return isNumber(+v) },
+    },
+    itemsCount: { 
+      type: [Number, String], 
+      default: undefined,
+      validator(v) { return isNumber(+v) },
+    },
+    itemsPerPage: { 
+      type: [Number, String],
+      default: undefined,
+      validator(v) { return isNumber(+v) },
+    },
+    maxPages: { 
+      type: [Number, String], 
+      default: undefined,
+      validator(v) { return isNumber(+v) },
+    },
     name: { type: String, default: "pagination" },
     stylePaginationBar: { type: [String, Array], default: "default" },
     stylePage: { type: [String, Array], default: "" },
@@ -102,8 +118,10 @@ export default {
     watch(
       () => props.modelValue,
       () => {
-        let p = isNumber(+props.modelValue) && +props.modelValue;
-        currentPage.value = clamp(p, 1, pagesCount.value)
+        let m = +props.modelValue;
+        if (isNumber(m) && m > 0 && m <= pagesCount.value) {
+          currentPage.value = m;
+        }
       },
       { immediate: true }
     );

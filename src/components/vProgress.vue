@@ -30,12 +30,20 @@
 <script>
 import { ref, computed, onMounted, onUnmounted } from "vue";
 import useStyles from "./composition/use-styles";
-import { clamp } from "../tools/tools";
+import { clamp, isNumber } from "../tools/tools";
 
 export default {
   props: {
-    value: { type: Number, default: 0 },
-    max: { type: Number, default: 100 },
+    value: { 
+      type: [Number, String], 
+      default: 0,
+      validator(v) { return isNumber(+v) },
+    },
+    max: { 
+      type: [Number, String], 
+      default: 100,
+      validator(v) { return isNumber(+v) },
+    },
     label: { type: Boolean, default: true },
     precision: { type: Number, default: 2 },
     indeterminate: { type: Boolean, default: false },

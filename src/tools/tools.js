@@ -24,7 +24,7 @@ let isObject = (v) => typeof v === "object";
 
 let isString = (v) => typeof v === "string";
 
-let isNumber = (v) => typeof v === "number";
+let isNumber = (v) => typeof v === "number" && !isNaN(v);
 
 let undefNullToStr = (v) => (v == undefined || v == null ? "" : v);
 
