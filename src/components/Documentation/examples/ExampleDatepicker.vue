@@ -128,7 +128,7 @@ export default {
     let example = reactive({
       date: "",
       range: false,
-      locale: "en-GB",
+      locale: navigator.language,
       buttons: true,
       adjacentMonths: true,
       secondaryButtonLabel: "Cancel",
