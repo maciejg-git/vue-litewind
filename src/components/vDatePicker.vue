@@ -91,11 +91,12 @@ import ChevronDoubleRight from "./icons/chevron-double-right.js"
 import ChevronLeft from "./icons/chevron-left.js"
 import useStyles from "./composition/use-styles";
 import { pad, getNumberRange } from "../tools/tools.js";
+import { locales } from "../const"
 
 export default {
   props: {
     modelValue: [String, Array],
-    locale: { type: String, default: "en-GB" },
+    locale: { type: String, default: "" },
     mondayFirstWeekday: { type: Boolean, default: false },
     range: { type: Boolean, default: false },
     format: {
@@ -228,10 +229,16 @@ export default {
       return props.mondayFirstWeekday ? (6 + d) % 7 : d;
     }
 
+    // get valid locale
+    let locale = computed(() => {
+      if (!props.locale) return navigator.language;
+      return locales.find((l) => props.locale === l) || "en-GB"
+    })
+  
     // get localized month names
     let monthNames = computed(() => {
       return Array.from({ length: 12 }, (v, i) =>
-        new Date(0, i, 1).toLocaleString(props.locale, {
+        new Date(0, i, 1).toLocaleString(locale.value, {
           month: "short",
         })
       );
@@ -241,7 +248,7 @@ export default {
     let dayNames = computed(() =>
       Array.from({ length: 7 }, (v, i) =>
         new Date(2021, 1, props.mondayFirstWeekday ? i + 1 : i).toLocaleString(
-          props.locale,
+          locale.value,
           {
             weekday: "short",
           }
@@ -249,9 +256,9 @@ export default {
       )
     );
 
-    // get today localized string
+    // get localized today string
     let todayFormatted = computed(() =>
-      today.toLocaleDateString(props.locale, props.format)
+      today.toLocaleDateString(locale.value, props.format)
     );
 
     // update and validate local model if modelValue changes
@@ -282,7 +289,7 @@ export default {
 
     // generate days to display for current month
     let daysList = computed(() => {
-      let start = getFirstDay(year.value, month.value)
+      let day = getFirstDay(year.value, month.value)
       let daysInMonth = getCountDaysInMonth(year.value, month.value);
 
       let days = getNumberRange(1, daysInMonth)
@@ -291,13 +298,14 @@ export default {
       })
 
       if (!props.adjacentMonths) {
-        return { days: [...Array(start).fill(""), ...days] };
+        days = [...Array(day).fill(""), ...days];
+        return { days };
       }
 
       let { m, y } = prevMonth(month.value, year.value);
       let daysCountPrev = getCountDaysInMonth(y, m);
-      let prevMonthDays = getNumberRange(daysCountPrev - start + 1, start);
-      let nextMonthDays = getNumberRange(1, 42 - daysInMonth - start);
+      let prevMonthDays = getNumberRange(daysCountPrev - day + 1, day);
+      let nextMonthDays = getNumberRange(1, 42 - daysInMonth - day);
       return { prevMonthDays, days, nextMonthDays };
     });
 
@@ -312,7 +320,7 @@ export default {
       let from = dateToString(range.value[0]);
       let to = dateToString(range.value[1]);
       let formatted = [range.value[0], range.value[1]].map((i) =>
-        i.toLocaleDateString(props.locale, props.format)
+        i.toLocaleDateString(locale.value, props.format)
       );
       emitSelection([from, to], formatted);
     };
@@ -320,7 +328,7 @@ export default {
     let emitSelectionSingle = () => {
       if (!single.value) return;
       let formatted = single.value.toLocaleDateString(
-        props.locale,
+        locale.value,
         props.format
       );
       emitSelection(dateToString(single.value), formatted);
