@@ -233,7 +233,7 @@
     {{ tableSelection }}
     <input v-model="filter" type="" class="form-control w-25" />
 <br>
-<v-icon name="chevron-right-icon" class="h-6 w-6"></v-icon>
+<v-icon name="b-chevron-right" class="h-6 w-6"></v-icon>
 <v-icon name="b-arrow-clockwise" class="h-6 w-6"></v-icon>
   <v-chevron></v-chevron>
    <v-button style-button="primary large">button css
@@ -520,18 +520,18 @@
     <!--   </template> -->
     <!-- </v-dropdown> -->
 
-    <v-list width="320px">
-      <v-list-item>item</v-list-item>
-      <v-list-item>item2</v-list-item>
-      <v-list-item>item3</v-list-item>
-      <v-list-item active>item</v-list-item>
-      <v-list-item>item2</v-list-item>
-      <v-list-item v-tooltip.right.delay100="'item content'">item3</v-list-item>
-      <v-list-item>item</v-list-item>
-      <v-list-item>item2</v-list-item>
-      <v-list-item>item3</v-list-item>
-      <v-list-item>item3</v-list-item>
-    </v-list>
+    <!-- <v-list width="320px"> -->
+    <!--   <v-list-item>item</v-list-item> -->
+    <!--   <v-list-item>item2</v-list-item> -->
+    <!--   <v-list-item>item3</v-list-item> -->
+    <!--   <v-list-item active>item</v-list-item> -->
+    <!--   <v-list-item>item2</v-list-item> -->
+    <!--   <v-list-item v-tooltip.right.delay100="'item content'">item3</v-list-item> -->
+    <!--   <v-list-item>item</v-list-item> -->
+    <!--   <v-list-item>item2</v-list-item> -->
+    <!--   <v-list-item>item3</v-list-item> -->
+    <!--   <v-list-item>item3</v-list-item> -->
+    <!-- </v-list> -->
 
     <v-button @click="i2 = !i2">collapse</v-button>
     <v-collapse v-model="i2">
