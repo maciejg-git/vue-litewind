@@ -22,7 +22,7 @@ export default {
     let { uid } = useUid();
 
     let active = ref(false);
-    let { addTab, removeTab } = inject("controlTab");
+    let { addTab, removeTab } = inject("control-tab");
     let transition = inject("transition");
 
     let beforeLeave = (el) => (el.style.display = "none");

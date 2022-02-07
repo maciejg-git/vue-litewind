@@ -20,33 +20,17 @@
 
 <script>
 import { ref, computed, watch } from "vue";
-import ChevronLeft from "./icons/chevron-left.js";
-import ChevronRight from "./icons/chevron-right.js";
 import useStyles from "./composition/use-styles";
 import { clamp, getNumberRange, isNumber } from "../tools/tools.js";
+import ChevronLeft from "./icons/chevron-left.js";
+import ChevronRight from "./icons/chevron-right.js";
 
 export default {
   props: {
-    modelValue: { 
-      type: [Number, String],
-      default: undefined,
-      validator(v) { return isNumber(+v) },
-    },
-    itemsCount: { 
-      type: [Number, String], 
-      default: undefined,
-      validator(v) { return isNumber(+v) },
-    },
-    itemsPerPage: { 
-      type: [Number, String],
-      default: undefined,
-      validator(v) { return isNumber(+v) },
-    },
-    maxPages: { 
-      type: [Number, String], 
-      default: undefined,
-      validator(v) { return isNumber(+v) },
-    },
+    modelValue: { type: Number, default: undefined },
+    itemsCount: { type: Number, default: undefined },
+    itemsPerPage: { type: Number, default: undefined },
+    maxPages: { type: Number, default: undefined },
     name: { type: String, default: "pagination" },
     stylePaginationBar: { type: [String, Array], default: "default" },
     stylePage: { type: [String, Array], default: "" },
@@ -88,25 +72,28 @@ export default {
     };
 
     let getPrevButtonClass = () => {
-      if (currentPage.value == 1) {
-        return [...classes.prev.value, "pointer-events-none", "opacity-50"];
-      }
-      return classes.prev.value;
+      return [
+        classes.prev.value,
+        currentPage.value == 1 ? "pointer-events-none opacity-50" : "",
+      ];
     };
 
     let getNextButtonClass = () => {
-      if (currentPage.value == pagesCount.value) {
-        return [...classes.next.value, "pointer-events-none", "opacity-50"];
-      }
-      return classes.next.value;
+      return [
+        classes.next.value,
+        currentPage.value == pagesCount.value
+          ? "pointer-events-none opacity-50"
+          : "",
+      ];
     };
 
     let currentPage = ref(1);
 
     // calculate total number of pages
     let pagesCount = computed(() => {
-      let p = Math.ceil(props.itemsCount / props.itemsPerPage);
-      return p > 1 ? p : 1;
+      // if itemsPerPage or itemsCount prop is 0 then show only single page
+      if (props.itemsPerPage <= 0 || props.itemsCount <= 0) return 1;
+      return Math.ceil(props.itemsCount / props.itemsPerPage);
     });
 
     // calculate number of pages do display
@@ -114,14 +101,16 @@ export default {
       return Math.min(pagesCount.value, Math.max(props.maxPages, 3));
     };
 
+    let validateModel = () => {
+      let m = +props.modelValue;
+      return isNumber(m) && m > 0 && m <= pagesCount.value
+    }
+
     // watch for model changes and update current page
     watch(
       () => props.modelValue,
       () => {
-        let m = +props.modelValue;
-        if (isNumber(m) && m > 0 && m <= pagesCount.value) {
-          currentPage.value = m;
-        }
+        if (validateModel()) currentPage.value = props.modelValue;
       },
       { immediate: true }
     );

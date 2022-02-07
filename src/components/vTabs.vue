@@ -89,9 +89,7 @@ export default {
     };
 
     // this is called by v-tab child after mounting
-    let addTab = (tab) => {
-      tabs.value.push(tab);
-    };
+    let addTab = (tab) => tabs.value.push(tab);
 
     // this is called by v-tab child after unmounting
     let removeTab = (uid) => {
@@ -104,11 +102,10 @@ export default {
       else activateTab(index);
     };
 
-    let handleClickTab = (index) => {
-      activateTab(index);
-    };
+    // handle template events
+    let handleClickTab = (index) => activateTab(index);
 
-    provide("controlTab", { addTab, removeTab });
+    provide("control-tab", { addTab, removeTab });
     provide("transition", toRef(props, "transition"));
 
     return {

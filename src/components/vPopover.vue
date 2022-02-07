@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { toRef, toRefs, onMounted, watch } from "vue";
+import { toRef, toRefs, watch } from "vue";
 import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
 import useClickOutside from "./composition/use-click-outside";

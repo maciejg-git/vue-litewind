@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { ref, computed, watch } from "vue";
+import { ref, computed, watch, toRef } from "vue";
 import vCloseButton from "./vCloseButton.vue";
 import useStyles from "./composition/use-styles";
 
@@ -51,28 +51,11 @@ export default {
       closeButton: null,
     })
 
-    let isShow = ref(false);
+    let isShow = toRef(props, "modelValue")
 
-    watch(
-      () => props.modelValue,
-      () => {
-        if (props.modelValue) open();
-        else close();
-      }
-    );
+    let close = () => emit("update:modelValue", false)
 
-    function open() {
-      isShow.value = true;
-    }
-
-    function close() {
-      isShow.value = false;
-      emit("update:modelValue", false);
-    }
-
-    let handleClose = function () {
-      close();
-    };
+    let handleClose = () => close();
 
     return {
       classes,

@@ -11,9 +11,9 @@
 
     <thead :class="classes.headerRow.value">
       <tr>
-        <template v-for="(h, i) in headers">
+        <template v-for="(h, i) in definition">
           <th
-            v-if="headers[i].visible !== false"
+            v-if="definition[i].visible !== false"
             @click="handleHeaderClick(h.key, i)"
             :class="classes.headerCell.value"
           >
@@ -24,17 +24,17 @@
               {{ h.label }}
               <template v-if="h.sortable">
                 <v-icon
-                  v-if="sortField != h.key"
+                  v-if="sortKey != h.key"
                   :name="vSortIcon"
                   class="sort-icon"
                 ></v-icon>
                 <v-icon
-                  v-else-if="sortField == h.key && sortAsc == 1"
+                  v-else-if="sortKey == h.key && sortAsc == 1"
                   :name="vCaretUpIcon"
                   class="sort-icon-active"
                 ></v-icon>
                 <v-icon
-                  v-else-if="sortField == h.key && sortAsc == -1"
+                  v-else-if="sortKey == h.key && sortAsc == -1"
                   :name="vCaretDownIcon"
                   class="sort-icon-active"
                 ></v-icon>
@@ -80,7 +80,7 @@
           :class="[...classes.row.value]"
           @click="handleRowClick(i)"
         >
-          <template v-for="k in headers">
+          <template v-for="k in definition">
             <td v-if="k.visible !== false" :class="getCellClass(k, i, item)">
               <slot :name="'cell:' + k.key" :value="item[k.key]" :item="item">
                 {{ getItemValue(item, k) }}
@@ -113,9 +113,9 @@ export default {
     definition: { type: Array, default: undefined },
     items: { type: Array, default: undefined },
     filter: { type: [String, RegExp], default: "" },
-    page: { type: [Number, String], default: 1 },
-    itemsPerPage: { type: [Number, String], default: 0 },
-    primaryKey: { type: [Number, String], default: undefined },
+    page: { type: Number, default: 1 },
+    itemsPerPage: { type: Number, default: 0 },
+    primaryKey: { type: String, default: undefined },
     captionTop: { type: Boolean, default: false },
     emptyText: { type: String, default: "Empty table" },
     emptyFilteredText: {
@@ -178,9 +178,6 @@ export default {
       ];
     };
 
-    let sortField = ref("");
-    let sortAsc = ref(1);
-
     // DATA
 
     // clone data
@@ -191,6 +188,9 @@ export default {
     };
 
     // sort
+
+    let sortKey = ref("");
+    let sortAsc = ref(1);
 
     // compare function for sort
     let itemCompare = (a, b, h, localeCompare) => {
@@ -209,8 +209,8 @@ export default {
 
     // return sorted items, if no sorting is active return unmodified data
     let itemsSorted = computed(() => {
-      if (!sortField.value) return items.value;
-      let h = getHeaderKey(sortField.value);
+      if (!sortKey.value) return items.value;
+      let h = getDefinitionByKey(sortKey.value);
       let c = new Intl.Collator(props.locale).compare;
       return items.value.sort((a, b) => itemCompare(a, b, h, c));
     });
@@ -225,7 +225,7 @@ export default {
     };
 
     let getFilterableKeys = () => {
-      return headers.value.filter(
+      return definition.value.filter(
         (k) => k.filterable !== false && k.visible !== false
       );
     };
@@ -280,7 +280,7 @@ export default {
 
     // TABLE DEFINITION
 
-    let defaults = {
+    let definitionDefaults = {
       sortable: false,
       filterable: true,
       visible: true,
@@ -288,31 +288,27 @@ export default {
       sortByFunction: true,
     };
 
-    let getHeaderKey = (k) => headers.value.find((i) => k === i.key);
+    let getDefinitionByKey = (k) => definition.value.find((i) => k === i.key);
+
+    let headersCount = computed(() => {
+      return definition.value.filter((i) => i.visible !== false).length
+    });
 
     // if no definition is provided use first row of data to
     // generate local definition
-    let setHeaders = () => {
+    let getDefinition = () => {
       if (!props.items || !props.items.length) return;
       return Object.keys(props.items[0]).map((item) => {
-        return {
-          key: item,
-          label: formatCase(item),
-          ...defaults,
-        };
+        return { key: item };
       });
     };
 
-    let headersCount = computed(
-      () => headers.value.filter((i) => i.visible !== false).length
-    );
-
-    // if definition prop is provided use it to generate local definition
-    let headers = computed(() => {
-      if (!props.definition) return setHeaders();
-      return props.definition.map((i) => {
+    // generate local definition
+    let definition = computed(() => {
+      let d = props.definition ? props.definition : getDefinition()
+      return d.map((i) => {
         return {
-          ...defaults,
+          ...definitionDefaults,
           ...i,
           label: i.label || formatCase(i.key),
         };
@@ -321,7 +317,15 @@ export default {
 
     // ROW SELECTION
 
+    let validSelectionModes = ["single", "multiple"];
+
+    let isValidSelectionMode = () => {
+      return validSelectionModes.includes(props.selectionMode)
+    };
+
     let itemsSelected = ref({});
+
+    let selectRow = (i) => (itemsSelected.value[i] = itemsPagination.value[i]);
 
     let unselectRow = (i) => delete itemsSelected.value[i];
 
@@ -329,20 +333,12 @@ export default {
       for (let i of Object.keys(itemsSelected.value)) unselectRow(i);
     };
 
-    let isValidSelectionMode = () => {
-      return (
-        props.selectionMode == "single" || props.selectionMode == "multiple"
-      );
-    };
-
-    let selectRow = (i) => (itemsSelected.value[i] = itemsPagination.value[i]);
-
-    // emit new selection
+    // automatically emit new selection
     watch(itemsSelected.value, () => {
       emit("input:selection", Object.values(itemsSelected.value));
     });
 
-    // clear selection if selection mode or page changes
+    // reset selection if selection mode or page changes
     watch([() => props.selectionMode, itemsPagination], () => resetSelection());
 
     // HANDLE TEMPLATE EVENTS
@@ -362,9 +358,9 @@ export default {
 
     // handle sorting
     let handleHeaderClick = function (key, index) {
-      if (!headers.value[index].sortable) return;
-      sortAsc.value = sortField.value == key ? -sortAsc.value : 1;
-      sortField.value = key;
+      if (!definition.value[index].sortable) return;
+      sortAsc.value = sortKey.value == key ? -sortAsc.value : 1;
+      sortKey.value = key;
     };
 
     return {
@@ -372,8 +368,8 @@ export default {
       classes,
       states,
       getCellClass,
-      headers,
-      sortField,
+      definition,
+      sortKey,
       sortAsc,
       getItemValue,
       items,
