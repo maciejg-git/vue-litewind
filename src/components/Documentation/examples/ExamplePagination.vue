@@ -1,9 +1,9 @@
 <template>
   <v-pagination
     v-model="example.page"
-    :items-count="example.itemsCount"
-    :items-per-page="example.itemsPerPage"
-    :max-pages="example.maxPages"
+    :items-count="+example.itemsCount"
+    :items-per-page="+example.itemsPerPage"
+    :max-pages="+example.maxPages"
     @update:modelValue="
       events.unshift({ ev: 'update:modelValue', data: $event })
     "

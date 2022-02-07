@@ -53,7 +53,7 @@ export default {
         type: ["Number"],
         default: "undefined",
         description:
-          "Number of items per page. Pagination uses this value to compute the number of pages to render. It is usually provided by another component that uses pagination for navigation",
+          "Number of items per page. Pagination uses this value to compute the number of pages to render. It is usually provided by another component that uses pagination for navigation. 0 disables pagination (displays only 1 page)",
       },
       {
         prop: "items-count",
@@ -68,13 +68,6 @@ export default {
         default: "undefined",
         description:
           "Maximum number of pages to display. This prop must have value of 3 or more",
-      },
-      {
-        prop: "icons",
-        type: ["Boolean"],
-        default: "true",
-        description:
-          "If true use icons for next/previous buttons instead of labels",
       },
       {
         prop: "name",

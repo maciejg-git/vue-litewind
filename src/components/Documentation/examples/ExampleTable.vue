@@ -4,7 +4,7 @@
     :definition="example.definition"
     :filter="example.filter"
     v-model:page="example.page"
-    :items-per-page="example.itemsPerPage"
+    :items-per-page="+example.itemsPerPage"
     :state="example.state"
     :selectionMode="example.selectionMode"
     :captionTop="!!example.captionTop"
@@ -28,9 +28,9 @@
     <div>
       <v-pagination
         v-model="example.page"
-        :items-count="example.itemsCount"
-        :items-per-page="example.itemsPerPage"
-        max-pages="7"
+        :items-count="+example.itemsCount"
+        :items-per-page="+example.itemsPerPage"
+        :max-pages="7"
         icons
       />
     </div>
@@ -40,6 +40,7 @@
     <div class="mt-4 lg:mt-0">
       <label for="items-per-page" class="mr-10">Items per page</label>
       <v-select v-model="example.itemsPerPage" id="items-per-page">
+        <option value="0">0</option>
         <option value="5">5</option>
         <option value="10">10</option>
         <option value="20">20</option>

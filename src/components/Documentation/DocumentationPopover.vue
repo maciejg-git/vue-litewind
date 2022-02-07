@@ -76,12 +76,6 @@ export default {
         description: "If true clicking outside of popover closes it",
       },
       {
-        prop: "target-id",
-        type: ["String"],
-        default: "undefined",
-        description: "Id of element that controls popover",
-      },
-      {
         prop: "name",
         type: ["String"],
         default: "popover",
