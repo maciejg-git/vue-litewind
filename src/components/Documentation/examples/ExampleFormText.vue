@@ -46,7 +46,7 @@
 
   <v-button @click="validate()" style-button="" class="mt-5">Send</v-button>
 
-  <v-button @click="reset()" name="button-link" class="mt-5 ml-4">
+  <v-button @click="reset()" name="button-plain" class="mt-5 ml-4">
     <span class="font-semibold">Reset</span>
   </v-button>
 

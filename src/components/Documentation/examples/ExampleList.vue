@@ -84,19 +84,6 @@
         </v-select>
       </div>
     </v-tab>
-    <v-tab name="Events">
-      <div class="overflow-y-auto max-h-48 mt-5 w-full">
-        <div class="px-2 pb-2">
-          <div class="py-1">This component does not emit any events</div>
-          <template v-for="ev in example.events">
-            <div class="py-1">
-              <code class="code-word">{{ ev.ev }}</code>
-              {{ ev.data }}
-            </div>
-          </template>
-        </div>
-      </div>
-    </v-tab>
   </v-tabs>
 <!-- CUT END -->
 </template>

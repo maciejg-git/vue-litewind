@@ -79,7 +79,7 @@
       <v-button-collapse
         block
         v-model="accordion2.isVisible"
-        name="button-link"
+        name="button-plain"
         class="p-3"
       >
         Toggle collapse
@@ -102,7 +102,7 @@
       <v-button-collapse
         block
         v-model="accordion2.isVisible2"
-        name="button-link"
+        name="button-plain"
         class="p-3"
       >
         Toggle collapse
@@ -125,7 +125,7 @@
       <v-button-collapse
         block
         v-model="accordion2.isVisible3"
-        name="button-link"
+        name="button-plain"
         class="p-3"
       >
         Toggle collapse

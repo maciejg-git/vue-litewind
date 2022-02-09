@@ -15,7 +15,7 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <v-close-button></v-close-button>
+      <v-close-button />
     </div>
     <pre>
       <code class="language-html">

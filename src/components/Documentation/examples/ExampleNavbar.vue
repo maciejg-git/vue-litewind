@@ -9,7 +9,7 @@
           <li>
             <v-dropdown trigger="hover" :offset-y="10" name="dropdown-flat">
               <template #reference>
-                <v-button name="button-link">Dropdown</v-button>
+                <v-button name="button-plain">Dropdown</v-button>
               </template>
               <v-card width="420px" name="card-flat">
                 <v-dropdown-menu-item tag="button">
