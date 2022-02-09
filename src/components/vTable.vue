@@ -83,7 +83,7 @@
           <template v-for="k in definition">
             <td v-if="k.visible !== false" :class="getCellClass(k, i, item)">
               <slot :name="'cell:' + k.key" :value="item[k.key]" :item="item">
-                {{ getItemValue(item, k) }}
+                {{ getKeyValue(item, k) }}
               </slot>
             </td>
           </template>
@@ -105,6 +105,7 @@ import {
   compare,
   isDate,
   isRegexp,
+  isFunction,
   undefNullToStr,
 } from "../tools/tools.js";
 
@@ -183,8 +184,10 @@ export default {
     // clone data
     let items = computed(() => [...props.items]);
 
-    let getItemValue = (i, k) => {
-      return typeof k.f === "function" ? k.f(k.key, i[k.key], i) : i[k.key];
+    let getKeyValue = (i, k, skipFunction) => {
+      return skipFunction || typeof k.f !== "function"
+        ? i[k.key]
+        : k.f(k.key, i[k.key], i);
     };
 
     // sort
@@ -193,26 +196,31 @@ export default {
     let sortAsc = ref(1);
 
     // compare function for sort
-    let itemCompare = (a, b, h, localeCompare) => {
-      a = (h.sortByFunction && getItemValue(a, h)) || a[h.key];
-      b = (h.sortByFunction && getItemValue(b, h)) || b[h.key];
+    let itemCompare = (a, b, key, localeCompare) => {
+      a = getKeyValue(a, h, !key.sortByFunction)
+      b = getKeyValue(b, h, !key.sortByFunction)
       a = undefNullToStr(a);
       b = undefNullToStr(b);
+
       if (isDate(a) && isDate(b)) return compare(a, b) * sortAsc.value;
+
       if (typeof a == "number" && typeof b == "number") {
         if (isNaN(a) && !isNaN(b)) return -1;
         if (!isNaN(a) && isNaN(b)) return 1;
         return compare(a, b) * sortAsc.value;
       }
+
       return localeCompare(a, b) * sortAsc.value;
     };
 
     // return sorted items, if no sorting is active return unmodified data
     let itemsSorted = computed(() => {
       if (!sortKey.value) return items.value;
-      let h = getDefinitionByKey(sortKey.value);
-      let c = new Intl.Collator(props.locale).compare;
-      return items.value.sort((a, b) => itemCompare(a, b, h, c));
+
+      let key = getDefinitionByKey(sortKey.value);
+      let compare = new Intl.Collator(props.locale).compare;
+
+      return items.value.sort((a, b) => itemCompare(a, b, key, compare));
     });
 
     // filter
@@ -220,7 +228,9 @@ export default {
     // return filter regexp or generate regexp from filter string
     let getFilterRegexp = () => {
       let f = props.filter;
+
       if (isRegexp(f)) return f;
+
       return new RegExp(f.replace(/[.*+\-?^${}()|[\]\\]/g, "\\$&"), "i");
     };
 
@@ -233,14 +243,16 @@ export default {
     // return filtered items, if no filter is active return sorted items
     let itemsFiltered = computed(() => {
       if (!props.filter) return itemsSorted.value;
+
       let regexp = getFilterRegexp();
       let keys = getFilterableKeys();
+
       return itemsSorted.value.filter((item) => {
-        for (let k of keys) {
-          let s = (k.filterByFunction && getItemValue(item, k)) || item[k.key];
-          s = undefNullToStr(s);
-          if (("" + s).search(regexp) != -1) return item;
-        }
+        return keys.some((key) => {
+          let s = getKeyValue(item, key, !key.filterByFunction);
+          s = undefNullToStr(s) + "";
+          return s.search(regexp) !== -1;
+        });
       });
     });
 
@@ -259,6 +271,7 @@ export default {
     // return paginated items, if no pagination is used return filtered items
     let itemsPagination = computed(() => {
       if (!props.itemsPerPage) return itemsFiltered.value;
+
       return itemsFiltered.value.slice(
         (props.page - 1) * props.itemsPerPage,
         props.page * props.itemsPerPage
@@ -291,21 +304,28 @@ export default {
     let getDefinitionByKey = (k) => definition.value.find((i) => k === i.key);
 
     let headersCount = computed(() => {
-      return definition.value.filter((i) => i.visible !== false).length
+      return definition.value.filter((i) => i.visible !== false).length;
     });
 
     // if no definition is provided use first row of data to
     // generate local definition
     let getDefinition = () => {
-      if (!props.items || !props.items.length) return;
+      if (!props.items || !props.items.length) return [];
+
       return Object.keys(props.items[0]).map((item) => {
         return { key: item };
       });
     };
 
+    let validateDefinition = () => {
+      if (!Array.isArray(props.definition)) return false;
+      return props.definition.every((i) => i.key);
+    };
+
     // generate local definition
     let definition = computed(() => {
-      let d = props.definition ? props.definition : getDefinition()
+      let d = (validateDefinition() && props.definition) || getDefinition();
+
       return d.map((i) => {
         return {
           ...definitionDefaults,
@@ -320,7 +340,7 @@ export default {
     let validSelectionModes = ["single", "multiple"];
 
     let isValidSelectionMode = () => {
-      return validSelectionModes.includes(props.selectionMode)
+      return validSelectionModes.includes(props.selectionMode);
     };
 
     let itemsSelected = ref({});
@@ -339,7 +359,7 @@ export default {
     });
 
     // reset selection if selection mode or page changes
-    watch([() => props.selectionMode, itemsPagination], () => resetSelection());
+    watch([() => props.selectionMode, itemsPagination], resetSelection);
 
     // HANDLE TEMPLATE EVENTS
 
@@ -371,7 +391,7 @@ export default {
       definition,
       sortKey,
       sortAsc,
-      getItemValue,
+      getKeyValue,
       items,
       itemsFiltered,
       itemsPagination,

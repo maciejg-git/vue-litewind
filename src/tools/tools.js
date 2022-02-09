@@ -26,7 +26,9 @@ let isString = (v) => typeof v === "string";
 
 let isNumber = (v) => typeof v === "number" && !isNaN(v);
 
-let undefNullToStr = (v) => (v == undefined || v == null ? "" : v);
+let isFunction = (v) => typeof v === "function";
+
+let undefNullToStr = (v) => (v === undefined || v === null ? "" : v);
 
 // compare
 
@@ -67,4 +69,5 @@ export {
   schedule,
   isObject,
   isString,
+  isFunction,
 };

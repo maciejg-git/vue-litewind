@@ -6,6 +6,8 @@ import "tailwindcss/tailwind.css";
 import "./styles.css"
 import "./styles-material.css"
 import BChevronRight from "./assets/chevron-right"
+import BStar from "./components/Documentation/icons/star"
+import BCheckLg from "./components/Documentation/icons/check-lg"
 import { registerIcon } from "./vue"
 import TableReference from "./components/Documentation/TableReference.vue";
 import TableReferenceBasic from "./components/Documentation/TableReferenceBasic.vue";
@@ -26,6 +28,8 @@ Object.entries(icons).forEach(([path, definition]) => {
 
 registerIcon(app, [
   BChevronRight,
+  BStar,
+  BCheckLg,
 ], {
   vendorPrefix: true,
   iconSufix: false,
@@ -34,7 +38,7 @@ registerIcon(app, [
 app.provide("iconTypes", {
   valid: "check-lg-icon",
   invalid: "exclamation-triangle-icon",
-  success: "check-lg-icon",
+  success: "b-check-lg",
   info: "info-circle-icon",
   danger: "exclamation-octagon-fill-icon",
   warn: "exclamation-triangle-icon",

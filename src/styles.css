@@ -49,16 +49,16 @@
       text-gray-500
   }
 
-/* BUTTON LINK */
+/* BUTTON PLAIN */
 
-.button-link {
+.button-plain {
   @apply 
     focus:outline-none
     font-semibold
 }
-  .button-link--light {
+  .button-plain--light {
     @apply
-      text-gray-500
+      text-slate-500
   }
 
 /* BUTTON */
@@ -69,14 +69,14 @@
     text-sm
     sm:text-base
     font-medium
-    text-gray-200
     focus:outline-none
     focus:ring-4
-    px-4
-    py-2
+    focus:ring-indigo-200
+    text-gray-200
     bg-indigo-500
     hover:bg-indigo-600
-    focus:ring-indigo-200
+    px-4
+    py-2
 }
     .button--primary {
       @apply
@@ -147,17 +147,6 @@
         pointer-events-none
     }
 
-    .button--collapse-true-state {
-      @apply
-        opacity-50
-        pointer-events-none
-    }
-    .button--collapse-false-state {
-      @apply
-        opacity-50
-        pointer-events-none
-    }
-
 /* TABS */
 
 .tabs--tab-bar {
@@ -168,18 +157,18 @@
 
 .tabs--tab {
   @apply
-    border
     rounded-t-md
+    whitespace-nowrap
+    overflow-ellipsis
+    no-underline
+    border
     border-gray-300
+    bg-gray-100
+    hover:bg-gray-50
     -mb-px
     -ml-px
     p-2
     px-4
-    whitespace-nowrap
-    overflow-ellipsis
-    no-underline
-    bg-gray-100
-    hover:bg-gray-50
 }
     .tabs--tab--small {
       @apply
@@ -202,15 +191,14 @@
     border-collapse
     text-left
 }
+    .table--fixed-layout {
+      @apply
+        table-fixed
+    }
     .table--busy-state {
       @apply
         opacity-50
     }
-
-.table--fixed-layout {
-  @apply
-    table-fixed
-}
 
 .table--header-row {
 
@@ -238,8 +226,11 @@
     }
 
 .table--row {
-
 }
+    .table--row--striped {
+      @apply
+        even:bg-gray-50
+    }
 
 .table--cell {
   @apply
@@ -254,7 +245,6 @@
     .table--cell--bordered {
       @apply
         border
-        border-t
         border-gray-300
         py-2
         px-2
@@ -262,7 +252,7 @@
     }
     .table--cell--selected-state {
       @apply
-        bg-gray-100
+        bg-slate-300
     }
 
 .table--caption {
@@ -293,9 +283,9 @@
 
 .list--item {
   @apply
+    hover:bg-gray-50
     p-2
     px-4
-    hover:bg-gray-50
 }
     .list--item--active-state {
       @apply
@@ -535,6 +525,8 @@
     outline-none
     transition
     duration-200
+    placeholder:italic 
+    placeholder:text-slate-400
 }
     .input--valid-state {
       @apply
@@ -551,6 +543,8 @@
         opacity-50
     }
 
+/* INPUT UNDERLINED */
+
 .input-underline {
   @apply
     block
@@ -562,15 +556,15 @@
     focus:ring-0 
     focus:border-black
 }
-    .input-material--valid-state {
+    .input-underline--valid-state {
       @apply
         border-green-300
     }
-    .input-material--invalid-state {
+    .input-underline--invalid-state {
       @apply
         border-red-300
     }
-    .input-material--disabled-state {
+    .input-underline--disabled-state {
       @apply
         opacity-50
     }
@@ -616,8 +610,8 @@
     border-blue-200
     border-l-4
     rounded
-    p-4
     font-semibold
+    p-4
 }
     .alert--info {
       @apply
@@ -1026,15 +1020,6 @@
         text-white
     }
 
-.datepicker--today {
-  @apply
-    datepicker-day-fixed;
-  @apply  
-    hover:bg-gray-50
-    text-indigo-500
-    font-extrabold
-}
-
 .datepicker--adjacent-month-day {
   @apply
     datepicker-day-fixed;
@@ -1051,7 +1036,7 @@
     py-1
 }
 
-/* DATEPICKER RELAXED */
+/* DATEPICKER FLAT */
 
 .datepicker-flat {
   @apply

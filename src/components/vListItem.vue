@@ -19,7 +19,7 @@ export default {
     let tagHref = computed(() => (tag == "a" ? "#" : null));
 
     let itemClass = computed(() => {
-      if (props.active) return [classes.item.value, states.item.active.value];
+      if (props.active) return [classes.item.value, states.item.value.active];
       else return classes.item.value;
     });
 
