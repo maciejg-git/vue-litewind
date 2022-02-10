@@ -8,6 +8,7 @@ import "./styles-material.css"
 import BChevronRight from "./assets/chevron-right"
 import BStar from "./components/Documentation/icons/star"
 import BCheckLg from "./components/Documentation/icons/check-lg"
+import BExclamationTriangle from "./components/Documentation/icons/exclamation-triangle"
 import { registerIcon } from "./vue"
 import TableReference from "./components/Documentation/TableReference.vue";
 import TableReferenceBasic from "./components/Documentation/TableReferenceBasic.vue";
@@ -30,14 +31,15 @@ registerIcon(app, [
   BChevronRight,
   BStar,
   BCheckLg,
+  BExclamationTriangle,
 ], {
   vendorPrefix: true,
   iconSufix: false,
 })
 
 app.provide("iconTypes", {
-  valid: "check-lg-icon",
-  invalid: "exclamation-triangle-icon",
+  valid: "b-check-lg",
+  invalid: "b-exclamation-triangle",
   success: "b-check-lg",
   info: "info-circle-icon",
   danger: "exclamation-octagon-fill-icon",

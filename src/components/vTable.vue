@@ -197,8 +197,8 @@ export default {
 
     // compare function for sort
     let itemCompare = (a, b, key, localeCompare) => {
-      a = getKeyValue(a, h, !key.sortByFunction)
-      b = getKeyValue(b, h, !key.sortByFunction)
+      a = getKeyValue(a, key, !key.sortByFunction)
+      b = getKeyValue(b, key, !key.sortByFunction)
       a = undefNullToStr(a);
       b = undefNullToStr(b);
 

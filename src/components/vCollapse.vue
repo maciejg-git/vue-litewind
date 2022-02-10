@@ -1,7 +1,7 @@
 <template>
   <div class="overflow-hidden">
     <transition
-      name="fade-collapse"
+      :name="transition"
       @enter="enter"
       @afterEnter="afterEnter"
       @afterLeave="afterLeave"
@@ -21,6 +21,7 @@ import useUid from "./composition/use-uid";
 export default {
   props: {
     modelValue: { type: Boolean, default: false },
+    transition: { type: String, default: "fade-collapse" },
   },
   setup(props, { emit }) {
     let { uid } = useUid();
