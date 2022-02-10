@@ -6,7 +6,7 @@
     <v-button-collapse block v-model="example.isVisible">
       Toggle collapse
     </v-button-collapse>
-    <v-collapse v-model="example.isVisible">
+    <v-collapse v-model="example.isVisible" :transition="example.transition">
       <div class="p-4">
         Lorem Ipsum is simply dummy text of the printing and typesetting
         industry. Lorem Ipsum has been the industry's standard dummy text ever
@@ -36,7 +36,7 @@
         class="ml-auto"
       />
     </v-button>
-    <v-collapse v-model="example.isVisible2">
+    <v-collapse v-model="example.isVisible2" :transition="example.transition">
       <div class="p-4">
         It is a long established fact that a reader will be distracted by the
         readable content of a page when looking at its layout. The point of
@@ -63,7 +63,7 @@
     >
       Toggle collapse
     </v-button-collapse>
-    <v-collapse v-model="example.isVisible3">
+    <v-collapse v-model="example.isVisible3" :transition="example.transition">
       <div class="p-4">
         Lorem Ipsum is simply dummy text of the printing and typesetting
         industry. Lorem Ipsum has been the industry's standard dummy text ever
@@ -79,6 +79,17 @@
       </div>
     </v-collapse>
   </v-card>
+  <v-tabs name="tabs-material" class="mt-10">
+    <v-tab name="Props">
+      <div class="mb-2 mt-5">
+        <label for="transition">transition:</label>
+        <v-select id="transition" v-model="example.transition">
+          <option value="fade-collapse">fade-collapse</option>
+          <option value="">none (empty string)</option>
+        </v-select>
+      </div>
+    </v-tab>
+  </v-tabs>
 </template>
 
 <script>
@@ -90,6 +101,7 @@ export default {
       isVisible: false,
       isVisible2: false,
       isVisible3: false,
+      transition: "fade-collapse",
     });
 
     return {

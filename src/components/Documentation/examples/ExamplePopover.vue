@@ -167,7 +167,7 @@ export default {
       noHeader: false,
       title: "Popover title",
       transition: "fade",
-      clickOutsideClose: false,
+      clickOutsideClose: true,
     });
 
     let events = ref([]);
