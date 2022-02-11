@@ -105,9 +105,8 @@ import {
   compare,
   isDate,
   isRegexp,
-  isFunction,
   undefNullToStr,
-} from "../tools/tools.js";
+} from "../tools.js";
 
 export default {
   props: {

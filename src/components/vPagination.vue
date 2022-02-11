@@ -21,7 +21,7 @@
 <script>
 import { ref, computed, watch } from "vue";
 import useStyles from "./composition/use-styles";
-import { clamp, getNumberRange, isNumber } from "../tools/tools.js";
+import { clamp, getNumberRange, isNumber } from "../tools.js";
 import ChevronLeft from "./icons/chevron-left.js";
 import ChevronRight from "./icons/chevron-right.js";
 

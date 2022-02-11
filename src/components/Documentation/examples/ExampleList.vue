@@ -91,7 +91,7 @@
 <script>
 import { reactive } from "vue";
 /* CUT START */
-import data from "../../../data.json";
+import data from "../data/data.json";
 /* CUT END */
 export default {
   setup() {

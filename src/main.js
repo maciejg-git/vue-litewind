@@ -5,7 +5,6 @@ import { plugin } from "./components/index.js";
 import "tailwindcss/tailwind.css";
 import "./styles.css"
 import "./styles-material.css"
-import BChevronRight from "./assets/chevron-right"
 import BStar from "./components/Documentation/icons/star"
 import BCheckLg from "./components/Documentation/icons/check-lg"
 import BExclamationTriangle from "./components/Documentation/icons/exclamation-triangle"
@@ -28,7 +27,6 @@ Object.entries(icons).forEach(([path, definition]) => {
 })
 
 registerIcon(app, [
-  BChevronRight,
   BStar,
   BCheckLg,
   BExclamationTriangle,

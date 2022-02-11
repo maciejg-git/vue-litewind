@@ -30,7 +30,7 @@
 <script>
 import { ref, computed, onMounted, onUnmounted } from "vue";
 import useStyles from "./composition/use-styles";
-import { clamp, isNumber } from "../tools/tools";
+import { clamp, isNumber } from "../tools";
 
 export default {
   props: {

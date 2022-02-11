@@ -751,7 +751,7 @@
 
 <script>
 import { ref, onMounted, nextTick } from "vue";
-import dataJSON from "./../data.json";
+import dataJSON from "../components/Documentation/data/data.json";
 import vTabs from "./vTabs.vue";
 import vTab from "./vTab.vue";
 import vTable from './vTable.vue'

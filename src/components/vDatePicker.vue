@@ -90,7 +90,7 @@ import ChevronDoubleLeft from "./icons/chevron-double-left.js"
 import ChevronDoubleRight from "./icons/chevron-double-right.js"
 import ChevronLeft from "./icons/chevron-left.js"
 import useStyles from "./composition/use-styles";
-import { pad, getNumberRange } from "../tools/tools.js";
+import { pad, getNumberRange } from "../tools.js";
 import { locales } from "../const"
 
 export default {

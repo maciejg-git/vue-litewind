@@ -6,7 +6,7 @@
 
 <script>
 import { computed, inject } from "vue";
-import { isObject, isString } from "../tools/tools";
+import { isObject, isString } from "../tools";
 
 export default {
   props: {
