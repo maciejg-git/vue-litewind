@@ -3,8 +3,8 @@
     <transition
       :name="transition"
       @enter="enter"
-      @afterEnter="afterEnter"
-      @afterLeave="afterLeave"
+      @afterEnter="afterTransition"
+      @afterLeave="afterTransition"
       @leave="leave"
     >
       <div v-show="isOpen">
@@ -49,9 +49,7 @@ export default {
       }
     });
 
-    let afterEnter = (element) => (element.style.height = "auto");
-
-    let afterLeave = (element) => (element.style.height = "auto");
+    let afterTransition = (element) => (element.style.height = "auto");
 
     let enter = (element) => {
       const { height } = getComputedStyle(element);
@@ -71,8 +69,7 @@ export default {
 
     return {
       isOpen,
-      afterEnter,
-      afterLeave,
+      afterTransition,
       enter,
       leave,
     };

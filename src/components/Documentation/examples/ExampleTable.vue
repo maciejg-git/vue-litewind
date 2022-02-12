@@ -1,5 +1,6 @@
 <template>
   <v-table
+      ref="table"
     :items="example.data"
     :definition="example.definition"
     :filter="example.filter"
@@ -162,6 +163,9 @@ export default {
       ],
     });
 
+    let table = ref(null)
+    console.log(table)
+
     let events = ref([]);
 
     let editModalIsVisible = ref(false);
@@ -194,6 +198,7 @@ export default {
       handlePageChange,
       handleFilteredCount,
       handleSelection,
+      table,
     };
   },
 };

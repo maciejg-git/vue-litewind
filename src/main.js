@@ -3,15 +3,17 @@ import App from "./App.vue";
 import router from "./router";
 import { plugin } from "./components/index.js";
 import "tailwindcss/tailwind.css";
-import "./styles.css"
-import "./styles-material.css"
-import BStar from "./components/Documentation/icons/star"
-import BCheckLg from "./components/Documentation/icons/check-lg"
-import BExclamationTriangle from "./components/Documentation/icons/exclamation-triangle"
+import "./styles/styles.css"
+import "./styles/styles-material.css"
 import { registerIcon } from "./vue"
+
 import TableReference from "./components/Documentation/TableReference.vue";
 import TableReferenceBasic from "./components/Documentation/TableReferenceBasic.vue";
 import vCode from "./components/Documentation/components/vCode.vue"
+
+import BStar from "./components/Documentation/icons/star"
+import BCheckLg from "./components/Documentation/icons/check-lg"
+import BExclamationTriangle from "./components/Documentation/icons/exclamation-triangle"
 
 let app = createApp(App);
 

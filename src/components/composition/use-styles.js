@@ -13,7 +13,7 @@ let getComponentClasses = (props, p, el, element) => {
     c.push([props.name, element].filter(Boolean).join("--"));
     let fixed = el && el.fixed;
     let prop = el && el.prop && el.prop.value;
-    return [fixed, ...c, prop];
+    return [fixed, ...c, prop].filter(Boolean);
   });
 };
 

@@ -54,9 +54,7 @@ export default {
       },
     });
 
-    let closeAlert = () => {
-      emit("update:modelValue", false);
-    };
+    let closeAlert = () => emit("update:modelValue", false);
 
     // set auto dismiss timer if alarm is visible
     watch(
@@ -70,9 +68,7 @@ export default {
       }
     );
 
-    let handleCloseButtonClick = () => {
-      closeAlert();
-    };
+    let handleCloseButtonClick = () => closeAlert();
 
     return {
       classes,
