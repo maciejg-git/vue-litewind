@@ -5,7 +5,8 @@
     v-model="example.isVisible"
     :dismissable="example.dismissable"
     :auto-dismiss-delay="example.autoDismissDelay"
-    :state="example.state"
+    style-alert="info:info danger:danger warn:warn success:success"
+    :variant="example.variant"
     class="my-2"
   >
     <v-icon :icon-type="example.state" class="v-icon--md mr-2"></v-icon>
@@ -26,8 +27,8 @@
   <!-- CUT START -->
   <div class="flex justify-between items-center">
     <div class="mt-5">
-      <label for="state">Alert state:</label>
-      <v-select id="state" v-model="example.state">
+      <label for="variant">Alert variant:</label>
+      <v-select id="variant" v-model="example.variant">
         <option value="info">info</option>
         <option value="danger">danger</option>
         <option value="warn">warn</option>
@@ -85,7 +86,7 @@ export default {
       isVisibleAbsolute: false,
       dismissable: true,
       autoDismissDelay: 0,
-      state: "info",
+      variant: "info",
     });
 
     return {

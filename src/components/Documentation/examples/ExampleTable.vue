@@ -10,6 +10,7 @@
     :selectionMode="example.selectionMode"
     :captionTop="!!example.captionTop"
     :locale="example.locale"
+      style-row="valid:valid"
     @update:filtered-count="handleFilteredCount"
     @update:page="handlePageChange"
     @input:selection="handleSelection"
@@ -164,7 +165,6 @@ export default {
     });
 
     let table = ref(null)
-    console.log(table)
 
     let events = ref([]);
 
