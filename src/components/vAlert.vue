@@ -4,7 +4,6 @@
       v-if="modelValue"
       :class="[
         classes.alert.value,
-        states.alert.value && states.alert.value[state],
       ]"
     >
       <div class="flex items-center">
@@ -31,27 +30,16 @@ export default {
     modelValue: { type: Boolean, default: false },
     dismissable: { type: Boolean, default: true },
     autoDismissDelay: { type: Number, default: 0 },
-    state: { type: String, default: "info" },
     name: { type: String, default: "alert" },
     styleAlert: { type: [String, Array], default: "" },
+    variant: { type: String, default: "" },
   },
   components: {
     vCloseButton,
   },
   setup(props, { emit }) {
     let { classes, states } = useStyles("alert", props, {
-      alert: {
-        states: [
-          "valid",
-          "invalid",
-          "default",
-          "info",
-          "danger",
-          "warn",
-          "success",
-          "light",
-        ],
-      },
+      alert: null,
     });
 
     let closeAlert = () => emit("update:modelValue", false);

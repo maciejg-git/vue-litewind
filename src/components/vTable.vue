@@ -134,6 +134,7 @@ export default {
     styleRow: { type: String, default: "" },
     styleCell: { type: String, default: "" },
     styleCaption: { type: String, default: "" },
+    variant: { type: String, default: ""},
   },
   components: {
     vIcon,

@@ -6,13 +6,16 @@ let getComponentClasses = (props, p, el, element) => {
     // get variant classes from component props
     if (props[p]) {
       c = props[p].split(" ").map((variant) => {
-        return [props.name, element, variant].filter(Boolean).join("--");
+        let [v, c] = variant.split(":");
+        if (c && v !== props.variant) return;
+        return [props.name, element, c || v].filter(Boolean).join("--");
       });
     }
     // get base element classes
     c.push([props.name, element].filter(Boolean).join("--"));
     let fixed = el && el.fixed;
     let prop = el && el.prop && el.prop.value;
+    let v = props.variant;
     return [fixed, ...c, prop].filter(Boolean);
   });
 };
