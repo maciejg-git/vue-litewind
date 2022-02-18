@@ -1,11 +1,11 @@
 {
   "name": "vue-component-tailwind",
-  "version": "0.0.9",
+  "version": "0.0.12",
   "main": "dist/vue-component-tailwind.umd.js",
   "module": "dist/vue-component-tailwind.es.js",
   "files": [
     "dist/*",
-    "src/styles.js"
+    "src/styles/*"
   ],
   "scripts": {
     "dev": "vite",

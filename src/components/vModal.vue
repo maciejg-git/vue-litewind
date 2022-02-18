@@ -1,54 +1,58 @@
 <template>
-  <transition :name="transition" @after-leave="resetScrollbar">
-    <div
-      v-if="modelValue"
-      :style="{ 'padding-right': scrollbarWidth }"
-      class="fixed-main"
-      @click.self="handleBackdropClick"
-    >
-      <div :class="classes.container.value">
-        <div :class="classes.modal.value">
-          <header v-if="!noHeader" :class="classes.header.value">
-            {{ title }}
-            <v-close-button
-              v-if="!noCloseButton"
-              @click="closeModal"
-            />
-          </header>
-          <main :class="classes.content.value">
-            <v-close-button
-              v-if="noHeader && closeButtonInContent"
-              class="absolute top-6 right-6"
-              @click="closeModal"
-            />
-            <slot name="default"></slot>
-          </main>
-          <footer v-if="!noFooter" :class="classes.footer.value">
-            <slot name="footer">
-              <v-button
-                v-if="!noSecondaryButton"
-                :style-button="secondaryButtonStyle"
-                @click="handleSecondaryButtonClick"
-              >
-                {{ secondaryButtonLabel }}
-              </v-button>
-              <v-button
-                v-if="!noPrimaryButton"
-                :style-button="primaryButtonStyle"
-                class="ml-2"
-                @click="handlePrimaryButtonClick"
-              >
-                {{ primaryButtonLabel }}
-              </v-button>
-            </slot>
-          </footer>
+  <teleport to="body">
+    <transition :name="transition" @after-leave="resetScrollbar">
+      <div
+        v-if="modelValue"
+        :style="{ 'padding-right': scrollbarWidth }"
+        class="fixed-main"
+        @click.self="handleBackdropClick"
+      >
+        <div :class="classes.container.value">
+          <div :class="classes.modal.value">
+            <header v-if="!noHeader" :class="classes.header.value">
+              <span>
+                {{ title }}
+              </span>
+              <v-close-button
+                v-if="!noCloseButton"
+                @click="closeModal"
+              />
+            </header>
+            <main :class="classes.content.value">
+              <v-close-button
+                v-if="noHeader && closeButtonInContent"
+                class="absolute top-6 right-6"
+                @click="closeModal"
+              />
+              <slot name="default"></slot>
+            </main>
+            <footer v-if="!noFooter" :class="classes.footer.value">
+              <slot name="footer">
+                <v-button
+                  v-if="!noSecondaryButton"
+                  :style-button="secondaryButtonStyle"
+                  @click="handleSecondaryButtonClick"
+                >
+                  {{ secondaryButtonLabel }}
+                </v-button>
+                <v-button
+                  v-if="!noPrimaryButton"
+                  :style-button="primaryButtonStyle"
+                  class="ml-2"
+                  @click="handlePrimaryButtonClick"
+                >
+                  {{ primaryButtonLabel }}
+                </v-button>
+              </slot>
+            </footer>
+          </div>
         </div>
       </div>
-    </div>
-  </transition>
-  <transition name="fade">
-    <div v-if="modelValue" :class="classes.backdrop.value"></div>
-  </transition>
+    </transition>
+    <transition name="fade">
+      <div v-if="modelValue" :class="classes.backdrop.value"></div>
+    </transition>
+  </teleport>
 </template>
 
 <script>

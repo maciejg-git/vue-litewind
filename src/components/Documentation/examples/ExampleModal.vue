@@ -65,25 +65,25 @@
 <!-- CUT START -->
     <div>
       <div class="mb-2">
-        <label for="title">title:</label>
+        <label for="title" class="mr-2">title:</label>
         <v-input type="text" id="title" v-model="example.title"></v-input>
       </div>
       <div class="mb-2">
-        <label for="no-primary-button">no-primary-button:</label>
+        <label for="no-primary-button" class="mr-2">no-primary-button:</label>
         <v-select id="no-primary-button" v-model="example.noPrimaryButton">
           <option :value="true">true</option>
           <option :value="false">false</option>
         </v-select>
       </div>
       <div class="mb-2">
-        <label for="no-secondary-button">no-secondary-button:</label>
+        <label for="no-secondary-button" class="mr-2">no-secondary-button:</label>
         <v-select id="no-secondary-button" v-model="example.noSecondaryButton">
           <option :value="true">true</option>
           <option :value="false">false</option>
         </v-select>
       </div>
       <div class="mb-2">
-        <label for="primary-button-label">primary-button-label:</label>
+        <label for="primary-button-label" class="mr-2">primary-button-label:</label>
         <v-input
           type="text"
           id="primary-button-label"
@@ -91,7 +91,7 @@
         ></v-input>
       </div>
       <div class="mb-2">
-        <label for="secondary-button-label">secondary-button-label:</label>
+        <label for="secondary-button-label" class="mr-2">secondary-button-label:</label>
         <v-input
           type="text"
           id="secondary-button-label"
@@ -99,7 +99,7 @@
         ></v-input>
       </div>
       <div class="mb-2">
-        <label for="primary-button-close">primary-button-close:</label>
+        <label for="primary-button-close" class="mr-2">primary-button-close:</label>
         <v-select
           id="primary-button-close"
           v-model="example.primaryButtonClose"
@@ -109,7 +109,7 @@
         </v-select>
       </div>
       <div class="mb-2">
-        <label for="secondary-button-close">secondary-button-close:</label>
+        <label for="secondary-button-close" class="mr-2">secondary-button-close:</label>
         <v-select
           id="secondary-button-close"
           v-model="example.secondaryButtonClose"
@@ -119,49 +119,49 @@
         </v-select>
       </div>
       <div class="mb-2">
-        <label for="no-close-button">no-close-button:</label>
+        <label for="no-close-button" class="mr-2">no-close-button:</label>
         <v-select id="no-close-button" v-model="example.noCloseButton">
           <option :value="true">true</option>
           <option :value="false">false</option>
         </v-select>
       </div>
       <div class="mb-2">
-        <label for="close-button-in-content">close-button-in-content:</label>
+        <label for="close-button-in-content" class="mr-2">close-button-in-content:</label>
         <v-select id="close-button-in-content" v-model="example.closeButtonInContent">
           <option :value="true">true</option>
           <option :value="false">false</option>
         </v-select>
       </div>
       <div class="mb-2">
-        <label for="static-backdrop">static-backdrop:</label>
+        <label for="static-backdrop" class="mr-2">static-backdrop:</label>
         <v-select id="static-backdrop" v-model="example.staticBackdrop">
           <option :value="true">true</option>
           <option :value="false">false</option>
         </v-select>
       </div>
       <div class="mb-2">
-        <label for="no-header">no-header:</label>
+        <label for="no-header" class="mr-2">no-header:</label>
         <v-select id="no-header" v-model="example.noHeader">
           <option :value="true">true</option>
           <option :value="false">false</option>
         </v-select>
       </div>
       <div class="mb-2">
-        <label for="no-footer">no-footer:</label>
+        <label for="no-footer" class="mr-2">no-footer:</label>
         <v-select id="no-footer" v-model="example.noFooter">
           <option :value="true">true</option>
           <option :value="false">false</option>
         </v-select>
       </div>
       <div class="mb-2">
-        <label for="position-modal">position:</label>
+        <label for="position-modal" class="mr-2">position:</label>
         <v-select id="position-modal" v-model="example.position">
           <option value="top">top</option>
           <option value="center">center</option>
         </v-select>
       </div>
       <div class="mb-2">
-        <label for="size-modal">size:</label>
+        <label for="size-modal" class="mr-2">size:</label>
         <v-select id="size-modal" v-model="example.size">
           <option value="sm">sm</option>
           <option value="md">md</option>

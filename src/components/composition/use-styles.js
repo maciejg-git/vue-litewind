@@ -13,24 +13,24 @@ let getComponentClasses = (props, p, el, element) => {
     }
     // get base element classes
     c.push([props.name, element].filter(Boolean).join("--"));
-    let fixed = el && el.fixed;
-    let prop = el && el.prop && el.prop.value;
-    let v = props.variant;
-    return [fixed, ...c, prop].filter(Boolean);
+    return [el && el.fixed, ...c, el && el.prop && el.prop.value].filter(Boolean);
   });
 };
 
 let getComponentStates = (props, el, element) => {
   let state = el && el.states;
-  if (state && state.length) {
+  if (!state || !state.length) return
     return computed(() => {
-      let c = {};
-      for (let s of state) {
-        c[s] = [props.name, element, s + "-state"].filter(Boolean).join("--");
-      }
-      return c;
+      return state.reduce((acc, i) => {
+        acc[i] = [props.name, element, i + "-state"].filter(Boolean).join("--");
+        return acc;
+      }, {})
+      // let c = {};
+      // for (let s of state) {
+      //   c[s] = [props.name, element, s + "-state"].filter(Boolean).join("--");
+      // }
+      // return c;
     });
-  }
 };
 
 export default function useStyles(name, props, elements) {
