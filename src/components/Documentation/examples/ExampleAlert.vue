@@ -7,7 +7,19 @@
     :auto-dismiss-delay="example.autoDismissDelay"
     style-alert="info:info danger:danger warn:warn success:success"
     :variant="example.variant"
-    class="my-2"
+    class="my-4"
+  >
+    <v-icon :icon-type="example.state" class="v-icon--md mr-2"></v-icon>
+    Alert
+  </v-alert>
+
+  <v-alert
+    v-model="example.isVisible"
+    :dismissable="example.dismissable"
+    :auto-dismiss-delay="example.autoDismissDelay"
+    style-alert="borderless shadowed outline info:info danger:danger warn:warn success:success"
+    :variant="example.variant"
+    class="my-4"
   >
     <v-icon :icon-type="example.state" class="v-icon--md mr-2"></v-icon>
     Alert

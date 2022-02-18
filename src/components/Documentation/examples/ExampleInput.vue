@@ -13,6 +13,14 @@
     placeholder="Input example"
     class="mt-4"
   />
+  <v-input
+    v-model="example.model"
+    name="input-rounded"
+    :type="example.type"
+    :state="example.state"
+    placeholder="Input example"
+    class="mt-8"
+  />
 <!-- CUT START -->
   <v-tabs name="tabs-material" class="mt-10">
     <v-tab name="Props">

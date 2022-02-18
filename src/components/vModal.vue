@@ -3,16 +3,21 @@
     <transition :name="transition" @after-leave="resetScrollbar">
       <div
         v-if="modelValue"
+        ref="modalRef"
         :style="{ 'padding-right': scrollbarWidth }"
         class="fixed-main"
+        tabindex="0"
         @click.self="handleBackdropClick"
+        @keydown.esc="handleKeydown"
       >
         <div :class="classes.container.value">
           <div :class="classes.modal.value">
             <header v-if="!noHeader" :class="classes.header.value">
-              <span>
-                {{ title }}
-              </span>
+              <slot name="header">
+                <span>
+                  {{ title }}
+                </span>
+              </slot>
               <v-close-button
                 v-if="!noCloseButton"
                 @click="closeModal"
@@ -129,6 +134,15 @@ export default {
       return ["fixed-container", size, position];
     });
 
+    // focus main modal element
+    let modalRef = ref(null);
+
+    watch(
+      modalRef,
+      (v) => v && modalRef.value.focus(),
+      { flush: "post" }
+    );
+
     // remove scrollbar and add some padding to avoid shifting modal window
     // when opening
     let scrollbarWidth = ref(0);
@@ -151,9 +165,7 @@ export default {
 
     watch(
       () => props.modelValue,
-      (v) => {
-        if (v) removeScrollbar();
-      }
+      (v) => v && removeScrollbar(),
     );
 
     let closeModal = function () {
@@ -175,7 +187,12 @@ export default {
       emit("input:secondaryButtonClick");
     };
 
+    let handleKeydown = () => {
+      closeModal()
+    }
+
     return {
+      modalRef,
       classes,
       scrollbarWidth,
       resetScrollbar,
@@ -183,6 +200,7 @@ export default {
       handleBackdropClick,
       handlePrimaryButtonClick,
       handleSecondaryButtonClick,
+      handleKeydown,
     };
   },
 };

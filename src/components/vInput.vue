@@ -1,6 +1,5 @@
 <template>
   <input
-    v-bind="$attrs"
     v-model="localModel"
     :type="type"
     :class="[

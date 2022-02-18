@@ -2,6 +2,7 @@
   <div class="flex items-center gap-4">
     <v-button>Button</v-button>
     <v-button tag="a">Button (link)</v-button>
+    <v-button name="button-plain">Plain button</v-button>
   </div>
 
   <div class="flex items-center gap-4 mt-4">

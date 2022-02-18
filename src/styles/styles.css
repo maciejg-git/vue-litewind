@@ -1,3 +1,8 @@
+.disabled {
+  @apply 
+    opacity-50
+}
+
 /* ICON */
 
 .v-icon {
@@ -60,11 +65,6 @@
     @apply
       text-slate-500
   }
-
-/* test */
-.bg-primary {
-  @apply bg-neutral-400
-}
 
 /* BUTTON */
 
@@ -149,7 +149,7 @@
     }
     .button--disabled-state {
       @apply
-        opacity-50
+        disabled
         pointer-events-none
     }
 
@@ -203,7 +203,7 @@
     }
     .table--busy-state {
       @apply
-        opacity-50
+        disabled
     }
 
 .table--header-row {
@@ -412,7 +412,7 @@
     }
     .select--disabled-state {
       @apply
-        opacity-50
+        disabled
     }
 
 /* RANGE */
@@ -440,7 +440,7 @@
     }
     .range--disabled-state {
       @apply
-        opacity-50
+        disabled
     }
 
 /* RADIO */
@@ -476,7 +476,7 @@
     }
     .radio--disabled-state {
       @apply
-        opacity-50
+        disabled
     }
 
 /* CHECKBOX */
@@ -513,14 +513,14 @@
     }
     .checkbox--disabled-state {
       @apply
-        opacity-50
+        disabled
     }
 
-/* INPUT */
+/* INPUT ROUNDED */
 
-.input {
+.input-rounded {
   @apply
-    rounded
+    rounded-full
     border
     bg-white
     border-gray-300
@@ -531,22 +531,24 @@
     outline-none
     transition
     duration-200
-    placeholder:italic 
-    placeholder:text-slate-400
+    /* dark:bg-neutral-700 */
+    /* dark:border-neutral-500 */
+    /* dark:text-neutral-300 */
+    /* dark:focus:ring-indigo-300 */
 }
-    .input--valid-state {
+    .input-rounded--valid-state {
       @apply
         border-green-300
         focus:ring-green-200
     }
-    .input--invalid-state {
+    .input-rounded--invalid-state {
       @apply
         border-red-300
         focus:ring-red-200
     }
-    .input--disabled-state {
+    .input-rounded--disabled-state {
       @apply
-        opacity-50
+        disabled
     }
 
 /* INPUT UNDERLINED */
@@ -572,7 +574,43 @@
     }
     .input-underline--disabled-state {
       @apply
-        opacity-50
+        disabled
+    }
+
+
+/* INPUT */
+
+.input {
+  @apply
+    rounded
+    border
+    bg-white
+    border-gray-300
+    focus:outline-none
+    focus:ring
+    focus:ring-indigo-200
+    focus:border-gray-400
+    outline-none
+    transition
+    duration-200
+    placeholder:italic 
+    placeholder:text-slate-400
+}
+    .input--valid-state {
+      @apply
+        text-green-600
+        border-green-300
+        focus:ring-green-200
+    }
+    .input--invalid-state {
+      @apply
+        text-red-600
+        border-red-300
+        focus:ring-red-200
+    }
+    .input--disabled-state {
+      @apply
+        disabled
     }
 
 /* TEXTAREA */
@@ -603,7 +641,7 @@
     }
     .textarea--disabled-state {
       @apply
-        opacity-50
+        disabled
     }
 
 /* ALERT */
@@ -616,23 +654,32 @@
     font-semibold
     p-4
 }
-    .alert--info {
+.alert--info {
       @apply
-        bg-blue-50
-        text-blue-600
-        border-blue-200
+        bg-blue-300
+        text-blue-900
+        border-blue-400
+        /* dark:bg-blue-500 */
+        /* dark:text-gray-200 */
+        /* dark:border-blue-600 */
     }
     .alert--danger {
       @apply
-        bg-red-50
-        text-red-600
-        border-red-200
+        bg-red-300
+        text-red-900
+        border-red-400
+        /* dark:bg-red-500 */
+        /* dark:text-gray-200 */
+        /* dark:border-red-600 */
     }
     .alert--warn {
       @apply
-        bg-yellow-50
-        text-yellow-600
-        border-yellow-200
+        bg-yellow-300
+        text-yellow-900
+        border-yellow-400
+        /* dark:bg-yellow-500 */
+        /* dark:text-gray-200 */
+        /* dark:border-yellow-600 */
     }
     .alert--success {
       @apply
@@ -648,7 +695,13 @@
     }
     .alert--outline {
       @apply
-        bg-transparent
+        text-gray-800
+        bg-white !important
+    }
+    .alert--borderless {
+      @apply 
+      border-0 
+      border-l-8 !important
     }
     .alert--shadowed {
       @apply
@@ -851,7 +904,7 @@
     }
     .dropdown--item--disabled-state {
       @apply
-        opacity-50
+        disabled
         pointer-events-none
     }
 
@@ -890,7 +943,7 @@
     }
     .dropdown-relaxed--item--disabled-state {
       @apply
-        opacity-50
+        disabled
         pointer-events-none
     }
 
