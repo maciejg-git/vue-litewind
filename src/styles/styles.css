@@ -596,6 +596,10 @@
     placeholder:italic 
     placeholder:text-slate-400
 }
+    .input--icon {
+      @apply
+        pl-8
+    }
     .input--valid-state {
       @apply
         text-green-600
@@ -1227,16 +1231,20 @@
     bg-indigo-500
     text-white
 }
+    .badge--plain {
+      @apply
+        rounded
+        p-0
+    }
     .badge--circle {
       @apply
         rounded-full
         border
         border-white
-        bg-transparent
         w-4
         h-4
         px-0
-        py-0
+        py-0 !important
     }
     .badge--primary {
       @apply

@@ -24,6 +24,13 @@
       badge button
       <v-badge position="top-right" style-badge="circle danger"></v-badge>
     </v-button>
+
+    <v-button class="relative mr-6">
+      badge button (icon)
+      <v-badge position="top-right" style-badge="plain success">
+        <v-icon name="BCheckLg"></v-icon>
+      </v-badge>
+    </v-button>
   </div>
 
   <!-- custom position badge -->
