@@ -115,6 +115,7 @@ export default {
       getTabName,
       active,
       handleClickTab,
+      activateTab,
     };
   },
 };

@@ -521,8 +521,7 @@
 .input-rounded {
   @apply
     rounded-full
-    border
-    bg-white
+    border-0
     border-gray-300
     focus:outline-none
     focus:ring
@@ -531,10 +530,12 @@
     outline-none
     transition
     duration-200
-    /* dark:bg-neutral-700 */
-    /* dark:border-neutral-500 */
-    /* dark:text-neutral-300 */
-    /* dark:focus:ring-indigo-300 */
+    bg-neutral-100
+    dark:bg-neutral-700
+    dark:border-neutral-500
+    dark:text-neutral-300
+    dark:focus:ring-indigo-300
+    pl-4
 }
     .input-rounded--valid-state {
       @apply
@@ -1244,7 +1245,7 @@
         w-4
         h-4
         px-0
-        py-0 !important
+        py-0 !important;
     }
     .badge--primary {
       @apply

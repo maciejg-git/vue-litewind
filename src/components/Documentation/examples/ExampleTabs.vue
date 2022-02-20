@@ -12,7 +12,7 @@
     <v-tab name="Tab" class="p-4">
       Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       Lorem Ipsum has been the industry's standard dummy text ever since the
-<!-- CUT START -->
+      <!-- CUT START -->
       1500s, when an unknown printer took a galley of type and scrambled it to
       make a type specimen book. It has survived not only five centuries, but
       also the leap into electronic typesetting, remaining essentially
@@ -20,13 +20,13 @@
       sheets containing Lorem Ipsum passages, and more recently with desktop
       publishing software like Aldus PageMaker including versions of Lorem
       Ipsum.
-  <!-- CUT END -->
+      <!-- CUT END -->
     </v-tab>
 
     <v-tab name="Tab 2" class="p-4">
       It is a long established fact that a reader will be distracted by the
       readable content of a page when looking at its layout. The point of using
-<!-- CUT START -->
+      <!-- CUT START -->
       Lorem Ipsum is that it has a more-or-less normal distribution of letters,
       as opposed to using 'Content here, content here', making it look like
       readable English. Many desktop publishing packages and web page editors
@@ -34,13 +34,13 @@
       ipsum' will uncover many web sites still in their infancy. Various
       versions have evolved over the years, sometimes by accident, sometimes on
       purpose (injected humour and the like).
-  <!-- CUT END -->
+      <!-- CUT END -->
     </v-tab>
 
     <v-tab name="Another tab" class="p-4">
       Contrary to popular belief, Lorem Ipsum is not simply random text. It has
       roots in a piece of classical Latin literature from 45 BC, making it over
-<!-- CUT START -->
+      <!-- CUT START -->
       2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney
       College in Virginia, looked up one of the more obscure Latin words,
       consectetur, from a Lorem Ipsum passage, and going through the cites of
@@ -57,7 +57,7 @@
       Bonorum et Malorum" by Cicero are also reproduced in their exact original
       form, accompanied by English versions from the 1914 translation by H.
       Rackham.
-  <!-- CUT END -->
+      <!-- CUT END -->
     </v-tab>
 
     <v-tab class="p-4">
@@ -67,7 +67,7 @@
       </template>
       Contrary to popular belief, Lorem Ipsum is not simply random text. It has
       roots in a piece of classical Latin literature from 45 BC, making it over
-<!-- CUT START -->
+      <!-- CUT START -->
       2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney
       College in Virginia, looked up one of the more obscure Latin words,
       consectetur, from a Lorem Ipsum passage, and going through the cites of
@@ -84,10 +84,29 @@
       Bonorum et Malorum" by Cicero are also reproduced in their exact original
       form, accompanied by English versions from the 1914 translation by H.
       Rackham.
-  <!-- CUT END -->
+      <!-- CUT END -->
     </v-tab>
   </v-tabs>
-<!-- CUT START -->
+  <v-tabs
+    :fill="example.fill"
+    :center="example.center"
+    :right="example.right"
+    :transition="example.transition"
+    :name="example.name"
+    @input:changed-tab="
+      events.unshift({ ev: 'input:changed-tab', data: $event })
+    "
+  >
+    <v-tab v-for="tab in example.tabs" :name="tab.name" class="p-4">
+      <component :is="tab.component" v-bind="tab.props">
+        {{ tab.content }}
+      </component>
+    </v-tab>
+  </v-tabs>
+  <v-input v-model="example.search"></v-input>
+  <v-button @click="handleSearch">Search</v-button>
+
+  <!-- CUT START -->
   <div class="mt-5">
     <label for="style">Tabs style:</label>
     <v-select id="style" v-model="example.name">
@@ -153,19 +172,76 @@ import { ref, reactive } from "vue";
 
 export default {
   setup() {
+    let text = `Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      Lorem Ipsum has been the industry's standard dummy text ever since the
+      1500s, when an unknown printer took a galley of type and scrambled it to
+      make a type specimen book. It has survived not only five centuries, but
+      also the leap into electronic typesetting, remaining essentially
+      unchanged. It was popularised in the 1960s with the release of Letraset
+      sheets containing Lorem Ipsum passages, and more recently with desktop
+      publishing software like Aldus PageMaker including versions of Lorem
+      Ipsum.`
+
     let example = reactive({
       fill: false,
       center: false,
       right: false,
       transition: "fade",
       name: "tabs",
+      tabs: [
+        {
+          name: "Tab",
+          component: "v-card",
+          props: {
+            class: "p-4",
+          },
+          content: text,
+        },
+        {
+          name: "Tab 2",
+          component: "v-card",
+          props: {
+            class: "p-4",
+          },
+          content: text,
+        },
+      ],
     });
 
+    let tabs = ref(null);
     let events = ref([]);
+
+    let search = ref("")
+
+    let addTab = () => {
+      example.tabs.push({
+        name: "Tab dynamic",
+        component: "v-card",
+        props: {
+          class: "p-4",
+        },
+        content: text,
+      });
+    };
+
+    let handleSearch = () => {
+      example.tabs.push({
+        name: example.search,
+        component: "v-card",
+        props: {
+          class: "p-4",
+        },
+        content: `Search for ${example.search}`,
+      });
+    };
 
     return {
       example,
       events,
+      tabs,
+      addTab,
+      search,
+      handleSearch,
     };
   },
 };
