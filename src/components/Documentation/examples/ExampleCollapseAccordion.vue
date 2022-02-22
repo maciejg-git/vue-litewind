@@ -6,17 +6,7 @@
       </v-button-collapse>
       <v-collapse v-model="accordion.isVisible">
         <div class="p-4">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-<!-- CUT START -->
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.
-<!-- CUT END -->
+          {{ text[0] }}
         </div>
       </v-collapse>
     </v-card>
@@ -27,17 +17,7 @@
       </v-button-collapse>
       <v-collapse v-model="accordion.isVisible2">
         <div class="p-4">
-          It is a long established fact that a reader will be distracted by the
-          readable content of a page when looking at its layout. The point of
-<!-- CUT START -->
-          using Lorem Ipsum is that it has a more-or-less normal distribution of
-          letters, as opposed to using 'Content here, content here', making it
-          look like readable English. Many desktop publishing packages and web
-          page editors now use Lorem Ipsum as their default model text, and a
-          search for 'lorem ipsum' will uncover many web sites still in their
-          infancy. Various versions have evolved over the years, sometimes by
-          accident, sometimes on purpose (injected humour and the like).
-<!-- CUT END -->
+          {{ text[1] }}
         </div>
       </v-collapse>
     </v-card>
@@ -48,32 +28,12 @@
       </v-button-collapse>
       <v-collapse v-model="accordion.isVisible3">
         <div class="p-4">
-          Contrary to popular belief, Lorem Ipsum is not simply random text. It
-          has roots in a piece of classical Latin literature from 45 BC, making
-<!-- CUT START -->
-          it over 2000 years old. Richard McClintock, a Latin professor at
-          Hampden-Sydney College in Virginia, looked up one of the more obscure
-          Latin words, consectetur, from a Lorem Ipsum passage, and going
-          through the cites of the word in classical literature, discovered the
-          undoubtable source. Lorem Ipsum comes from sections 1.10.32 and
-          1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and
-          Evil) by Cicero, written in 45 BC. This book is a treatise on the
-          theory of ethics, very popular during the Renaissance. The first line
-          of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in
-          section 1.10.32.
-          <br />
-
-          The standard chunk of Lorem Ipsum used since the 1500s is reproduced
-          below for those interested. Sections 1.10.32 and 1.10.33 from "de
-          Finibus Bonorum et Malorum" by Cicero are also reproduced in their
-          exact original form, accompanied by English versions from the 1914
-          translation by H. Rackham.
-<!-- CUT END -->
+          {{ text[2] }}
         </div>
       </v-collapse>
     </v-card>
   </v-accordion>
-<!-- CUT START -->
+
   <v-accordion class="mt-10">
     <v-card name="card-flat">
       <v-button-collapse
@@ -86,18 +46,11 @@
       </v-button-collapse>
       <v-collapse v-model="accordion2.isVisible">
         <div class="p-4">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.
+          {{ text[0] }}
         </div>
       </v-collapse>
     </v-card>
+
     <v-card name="card-flat" class="mt-2">
       <v-button-collapse
         block
@@ -109,18 +62,11 @@
       </v-button-collapse>
       <v-collapse v-model="accordion2.isVisible2">
         <div class="p-4">
-          It is a long established fact that a reader will be distracted by the
-          readable content of a page when looking at its layout. The point of
-          using Lorem Ipsum is that it has a more-or-less normal distribution of
-          letters, as opposed to using 'Content here, content here', making it
-          look like readable English. Many desktop publishing packages and web
-          page editors now use Lorem Ipsum as their default model text, and a
-          search for 'lorem ipsum' will uncover many web sites still in their
-          infancy. Various versions have evolved over the years, sometimes by
-          accident, sometimes on purpose (injected humour and the like).
+          {{ text[1] }}
         </div>
       </v-collapse>
     </v-card>
+
     <v-card name="card-flat" class="mt-2">
       <v-button-collapse
         block
@@ -132,34 +78,16 @@
       </v-button-collapse>
       <v-collapse v-model="accordion2.isVisible3">
         <div class="p-4">
-          Contrary to popular belief, Lorem Ipsum is not simply random text. It
-          has roots in a piece of classical Latin literature from 45 BC, making
-          it over 2000 years old. Richard McClintock, a Latin professor at
-          Hampden-Sydney College in Virginia, looked up one of the more obscure
-          Latin words, consectetur, from a Lorem Ipsum passage, and going
-          through the cites of the word in classical literature, discovered the
-          undoubtable source. Lorem Ipsum comes from sections 1.10.32 and
-          1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and
-          Evil) by Cicero, written in 45 BC. This book is a treatise on the
-          theory of ethics, very popular during the Renaissance. The first line
-          of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in
-          section 1.10.32.
-          <br />
-
-          The standard chunk of Lorem Ipsum used since the 1500s is reproduced
-          below for those interested. Sections 1.10.32 and 1.10.33 from "de
-          Finibus Bonorum et Malorum" by Cicero are also reproduced in their
-          exact original form, accompanied by English versions from the 1914
-          translation by H. Rackham.
+          {{ text[0] }}
         </div>
       </v-collapse>
     </v-card>
   </v-accordion>
-<!-- CUT END -->
 </template>
 
 <script>
 import { reactive } from "vue";
+import { text } from "../../../const"
 
 export default {
   setup() {
@@ -168,19 +96,17 @@ export default {
       isVisible2: false,
       isVisible3: false,
     });
-/* CUT START */
+
     let accordion2 = reactive({
       isVisible: false,
       isVisible2: false,
       isVisible3: false,
     });
-/* CUT END */
 
     return {
       accordion,
-/* CUT START */
       accordion2,
-/* CUT END */
+      text,
     };
   },
 };

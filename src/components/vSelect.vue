@@ -26,6 +26,7 @@
 <script>
 import { computed } from "vue";
 import useStyles from "./composition/use-styles";
+import useLocalModel from "./composition/use-local-model"
 
 export default {
   props: {
@@ -35,13 +36,14 @@ export default {
     name: { type: String, default: "select" },
     styleSelect: { type: [String, Array], default: "" },
   },
-  emits: ["update:modelValue"],
   setup(props, { attrs, emit }) {
     let { classes, states } = useStyles("select", props, {
       select: {
         states: ["valid", "invalid", "disabled"],
       },
     });
+
+    let localModel = useLocalModel(props, emit);
 
     let state = computed(() =>
       props.state === true
@@ -56,15 +58,6 @@ export default {
     let isOptionDisabled = (o) => {
       return o.disabled == undefined || o.disabled == null ? false : o.disabled;
     };
-
-    let localModel = computed({
-      get() {
-        return props.modelValue;
-      },
-      set(value) {
-        emit("update:modelValue", value);
-      },
-    });
 
     return {
       classes,

@@ -34,11 +34,9 @@ export default {
 
     onMounted(() => {
       if (accordion) {
-        watch(
-          isOpen,
-          () => accordion.update(uid, isOpen.value, collapse),
-          { immediate: true }
-        );
+        watch(isOpen, () => accordion.update(uid, isOpen.value, collapse), {
+          immediate: true,
+        });
       }
     });
 
@@ -52,19 +50,37 @@ export default {
     let afterTransition = (element) => (element.style.height = "auto");
 
     let enter = (element) => {
+      const { width } = getComputedStyle(element);
+
+      element.style.width = width;
+      element.style.position = "absolute";
+      element.style.visibility = "hidden";
+      element.style.height = "auto";
+
       const { height } = getComputedStyle(element);
+
+      element.style.width = null;
+      element.style.position = null;
+      element.style.visibility = null;
       element.style.height = 0;
+
       // trigger reflow
       let l = element.scrollHeight;
-      element.style.height = height;
+      setTimeout(() => {
+        element.style.height = height;
+      });
     };
 
     let leave = (element) => {
       const { height } = getComputedStyle(element);
+
       element.style.height = height;
+
       // trigger reflow
       let l = element.scrollHeight;
-      element.style.height = 0;
+      setTimeout(() => {
+        element.style.height = 0;
+      })
     };
 
     return {

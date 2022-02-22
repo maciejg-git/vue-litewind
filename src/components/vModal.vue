@@ -168,28 +168,24 @@ export default {
       (v) => v && removeScrollbar(),
     );
 
-    let closeModal = function () {
-      emit("update:modelValue", false);
-    };
+    let closeModal = () => emit("update:modelValue", false);
 
-    let handleBackdropClick = function () {
+    let handleBackdropClick = () => {
       if (props.staticBackdrop) return;
       closeModal();
     };
 
-    let handlePrimaryButtonClick = function () {
+    let handlePrimaryButtonClick = () => {
       if (props.primaryButtonClose) closeModal();
       emit("input:primaryButtonClick");
     };
 
-    let handleSecondaryButtonClick = function () {
+    let handleSecondaryButtonClick = () => {
       if (props.secondaryButtonClose) closeModal();
       emit("input:secondaryButtonClick");
     };
 
-    let handleKeydown = () => {
-      closeModal()
-    }
+    let handleKeydown = () => closeModal()
 
     return {
       modalRef,
@@ -207,31 +203,27 @@ export default {
 </script>
 
 <style scoped lang="postcss">
+.modal-z-31 {
+  z-index: 31;
+}
+
 .fixed-main {
   @apply fixed inset-0 modal-z-31 overflow-y-auto;
 }
 .fixed-container {
   @apply flex relative min-h-full mx-auto py-6 px-6 md:px-0 pointer-events-none;
 }
-
 .fixed-modal {
   @apply flex-1 relative overflow-auto pointer-events-auto;
 }
-
 .fixed-footer {
   @apply flex justify-end;
 }
-
 .fixed-header {
   @apply flex items-center justify-between;
 }
-
 .fixed-backdrop {
   @apply fixed inset-0 overflow-y-auto min-h-screen z-30;
-}
-
-.modal-z-31 {
-  z-index: 31;
 }
 
 .fade-enter-active,
@@ -245,7 +237,7 @@ export default {
 
 .fade-slide-enter-active,
 .fade-slide-leave-active {
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.15s ease;
 }
 .fade-slide-enter-from,
 .fade-slide-leave-to {
@@ -255,7 +247,7 @@ export default {
 
 .fade-scale-enter-active,
 .fade-scale-leave-active {
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.2s ease, transform 0.15s ease;
 }
 .fade-scale-enter-from,
 .fade-scale-leave-to {

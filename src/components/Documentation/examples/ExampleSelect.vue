@@ -4,7 +4,6 @@
   <div>
     <v-select
       v-model="example.model"
-      :type="example.type"
       :state="example.state"
       :options="options"
       class="w-52"
@@ -21,7 +20,6 @@
   <div class="mt-4">
     <v-select
       v-model="example.modelMultiple"
-      :type="example.type"
       :state="example.state"
       :options="options"
       :multiple="true"
