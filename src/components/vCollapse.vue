@@ -32,9 +32,14 @@ export default {
 
     let collapse = () => emit("update:modelValue", false);
 
+    let c = {
+      isOpen,
+      collapse,
+    }
+
     onMounted(() => {
       if (accordion) {
-        watch(isOpen, () => accordion.update(uid, isOpen.value, collapse), {
+        watch(isOpen, () => accordion.update(c), {
           immediate: true,
         });
       }

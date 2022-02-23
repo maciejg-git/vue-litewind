@@ -3,12 +3,11 @@
     <transition :name="transition" @after-leave="resetScrollbar">
       <div
         v-if="modelValue"
-        ref="modalRef"
-        :style="{ 'padding-right': scrollbarWidth }"
         class="fixed-main"
         tabindex="0"
         @click.self="handleBackdropClick"
         @keydown.esc="handleKeydown"
+        v-focus
       >
         <div :class="classes.container.value">
           <div :class="classes.modal.value">
@@ -54,6 +53,7 @@
         </div>
       </div>
     </transition>
+
     <transition name="fade">
       <div v-if="modelValue" :class="classes.backdrop.value"></div>
     </transition>
@@ -64,6 +64,7 @@
 import { ref, computed, watch } from "vue";
 import vButton from "./vButton.vue";
 import vCloseButton from "./vCloseButton.vue";
+import focus from "../directives/focus"
 import useStyles from "./composition/use-styles";
 
 export default {
@@ -96,6 +97,9 @@ export default {
   components: {
     vButton,
     vCloseButton,
+  },
+  directives: {
+    focus,
   },
   emits: [
     "input:primaryButtonClick",
@@ -134,38 +138,28 @@ export default {
       return ["fixed-container", size, position];
     });
 
-    // focus main modal element
-    let modalRef = ref(null);
-
-    watch(
-      modalRef,
-      (v) => v && modalRef.value.focus(),
-      { flush: "post" }
-    );
-
     // remove scrollbar and add some padding to avoid shifting modal window
     // when opening
-    let scrollbarWidth = ref(0);
-
-    let getScrollBarWidth = () =>
-      window.innerWidth - document.documentElement.clientWidth;
+    let getScrollBarWidth = () => {
+      return window.innerWidth - document.documentElement.clientWidth;
+    }
 
     let removeScrollbar = () => {
-      scrollbarWidth.value = getScrollBarWidth();
-      if (scrollbarWidth.value > 0) {
-        document.body.classList.add("overflow-y-hidden");
-        document.body.style.paddingRight = scrollbarWidth.value + "px";
+      let scrollbarWidth = getScrollBarWidth();
+      if (scrollbarWidth > 0) {
+        document.body.style.overflowY = "hidden"
+        document.body.style.paddingRight = scrollbarWidth + "px";
       }
     };
 
     let resetScrollbar = () => {
-      document.body.classList.remove("overflow-y-hidden");
+      document.body.style.overflowY = null;
       document.body.style.paddingRight = null;
     };
 
     watch(
       () => props.modelValue,
-      (v) => v && removeScrollbar(),
+      (value) => value && removeScrollbar(),
     );
 
     let closeModal = () => emit("update:modelValue", false);
@@ -188,9 +182,7 @@ export default {
     let handleKeydown = () => closeModal()
 
     return {
-      modalRef,
       classes,
-      scrollbarWidth,
       resetScrollbar,
       closeModal,
       handleBackdropClick,

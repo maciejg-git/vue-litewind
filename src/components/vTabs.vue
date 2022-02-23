@@ -10,7 +10,7 @@
           href=""
           :class="[
             classes.tab.value,
-            active == i ? states.tab.value.active : '',
+            tab.active ? states.tab.value.active : '',
           ]"
           @click.prevent="handleClickTab(i)"
         >
@@ -59,12 +59,10 @@ export default {
     });
 
     let tabs = ref([]);
-    let active = ref(null);
-    let lastActive = ref(null);
+    let activeTab = null;
+    let lastActiveTab = null;
 
-    onMounted(() => {
-      if (tabs.value.length) activateTab(0);
-    });
+    onMounted(() => activateTab(0));
 
     // tab name can be set in name slot of child v-tab
     let getTabName = (tab) => {
@@ -72,18 +70,17 @@ export default {
     };
 
     let activateTab = (index) => {
-      if (index < 0 || tabs.value.length < index || active.value == index) {
-        return;
-      }
+      if (index < 0 || tabs.value.length < index) return
 
-      let currentTab = tabs.value[active.value];
-      let newTab = tabs.value[index];
+      let tab = tabs.value[index];
 
-      newTab.active = true;
-      if (currentTab) currentTab.active = false;
+      if (tab.active) return;
 
-      lastActive.value = active.value;
-      active.value = index;
+      tab.active = true
+      if (activeTab) activeTab.active = false
+
+      lastActiveTab = activeTab
+      activeTab = tab
 
       emit("input:changed-tab", index);
     };
@@ -92,14 +89,14 @@ export default {
     let addTab = (tab) => tabs.value.push(tab);
 
     // this is called by v-tab child after unmounting
-    let removeTab = (uid) => {
-      let index = tabs.value.findIndex((tab) => tab.uid == uid);
+    let removeTab = (tab) => {
+      let index = tabs.value.findIndex((t) => t === tab);
+
       if (index === -1) return;
 
-      tabs.value.splice(index, 1);
+      if (tab.active) activateTab(index - 1);
 
-      if (active.value == index) activateTab(index - 1);
-      else activateTab(index);
+      tabs.value.splice(index, 1);
     };
 
     // handle template events
@@ -113,7 +110,6 @@ export default {
       states,
       tabs,
       getTabName,
-      active,
       handleClickTab,
       activateTab,
     };

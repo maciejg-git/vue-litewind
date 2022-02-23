@@ -12,33 +12,28 @@
 
 <script>
 import { ref, onMounted, onUnmounted, inject } from "vue";
-import useUid from "./composition/use-uid";
 
 export default {
   props: {
     name: { type: String, default: undefined },
   },
   setup(props, { slots }) {
-    let { uid } = useUid();
-
     let active = ref(false);
+
     let { addTab, removeTab } = inject("control-tab");
     let transition = inject("transition");
 
     let beforeLeave = (el) => (el.style.display = "none");
 
-    onMounted(() => {
-      addTab({
-        active,
-        uid,
-        name: props.name,
-        slots,
-      });
-    });
+    let tab = { 
+      active, 
+      name: props.name,
+      slots
+    }
 
-    onUnmounted(() => {
-      removeTab(uid);
-    });
+    onMounted(() => addTab(tab));
+
+    onUnmounted(() => removeTab(tab));
 
     return {
       active,
