@@ -79,6 +79,7 @@ export default {
     secondaryButtonLabel: { type: String, default: "Close" },
     primaryButtonClose: { type: Boolean, default: false },
     secondaryButtonClose: { type: Boolean, default: false },
+    justifyButtons: { type: String, default: "end" },
     noCloseButton: { type: Boolean, default: false },
     closeButtonInContent: { type: Boolean, default: false },
     staticBackdrop: { type: Boolean, default: false },
@@ -116,6 +117,10 @@ export default {
       },
       footer: {
         fixed: "fixed-footer",
+        prop: computed(() => {
+          let valid = ["start", "end", "center", "between", "around", "evenly"].includes(props.justifyButtons)
+          if (valid) return "justify-" + props.justifyButtons
+        })
       },
       content: null,
       backdrop: {
@@ -209,7 +214,7 @@ export default {
   @apply flex-1 relative overflow-auto pointer-events-auto;
 }
 .fixed-footer {
-  @apply flex justify-end;
+  @apply flex;
 }
 .fixed-header {
   @apply flex items-center justify-between;

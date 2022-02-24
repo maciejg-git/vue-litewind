@@ -2,10 +2,9 @@
   <div class="overflow-hidden">
     <transition
       :name="transition"
-      @enter="enter"
-      @afterEnter="afterTransition"
-      @afterLeave="afterTransition"
-      @leave="leave"
+      @enter="enterTransition"
+      @afterEnter="afterEnterTransition"
+      @leave="leaveTransition"
     >
       <div v-show="isOpen">
         <slot name="default"></slot>
@@ -16,7 +15,6 @@
 
 <script>
 import { watch, toRef, onMounted, onUnmounted, inject } from "vue";
-import useUid from "./composition/use-uid";
 
 export default {
   props: {
@@ -24,18 +22,13 @@ export default {
     transition: { type: String, default: "fade-collapse" },
   },
   setup(props, { emit }) {
-    let { uid } = useUid();
-
     let accordion = inject("accordion", null);
 
     let isOpen = toRef(props, "modelValue");
 
     let collapse = () => emit("update:modelValue", false);
 
-    let c = {
-      isOpen,
-      collapse,
-    }
+    let c = { isOpen, collapse };
 
     onMounted(() => {
       if (accordion) {
@@ -45,16 +38,11 @@ export default {
       }
     });
 
-    onUnmounted(() => {
-      if (accordion) {
-        if (isOpen.value) collapse();
-        accordion.update(uid, false);
-      }
-    });
+    onUnmounted(() => accordion && accordion.remove(c));
 
-    let afterTransition = (element) => (element.style.height = "auto");
+    let afterEnterTransition = (element) => (element.style.height = "auto");
 
-    let enter = (element) => {
+    let enterTransition = (element) => {
       const { width } = getComputedStyle(element);
 
       element.style.width = width;
@@ -76,7 +64,7 @@ export default {
       });
     };
 
-    let leave = (element) => {
+    let leaveTransition = (element) => {
       const { height } = getComputedStyle(element);
 
       element.style.height = height;
@@ -85,14 +73,14 @@ export default {
       let l = element.scrollHeight;
       setTimeout(() => {
         element.style.height = 0;
-      })
+      });
     };
 
     return {
       isOpen,
-      afterTransition,
-      enter,
-      leave,
+      afterEnterTransition,
+      enterTransition,
+      leaveTransition,
     };
   },
 };

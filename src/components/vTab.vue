@@ -1,9 +1,9 @@
 <template>
   <transition
-    :name="transition == '' ? 'no-transition' : transition"
-    @beforeLeave="beforeLeave"
+    :name="transition"
+    @beforeLeave="beforeLeaveTransition"
   >
-    <div v-show="active">
+    <div v-show="tab.isActive.value">
       <slot v-if="false" name="name"></slot>
       <slot name="default"></slot>
     </div>
@@ -11,43 +11,40 @@
 </template>
 
 <script>
-import { ref, onMounted, onUnmounted, inject } from "vue";
+import { ref, onMounted, onUnmounted, inject, toRef } from "vue";
 
 export default {
   props: {
     name: { type: String, default: undefined },
   },
   setup(props, { slots }) {
-    let active = ref(false);
+    let tabs = inject("control-tab");
 
-    let { addTab, removeTab } = inject("control-tab");
-    let transition = inject("transition");
-
-    let beforeLeave = (el) => (el.style.display = "none");
-
+    // uid, toRaw, shallow concat new array
     let tab = { 
-      active, 
-      name: props.name,
+      isActive: ref(false), 
+      name: toRef(props, "name"),
       slots
     }
 
-    onMounted(() => addTab(tab));
+    onMounted(() => tabs.addTab(tab));
 
-    onUnmounted(() => removeTab(tab));
+    onUnmounted(() => tabs.removeTab(tab));
+
+    // transition
+
+    let beforeLeaveTransition = (el) => (el.style.display = "none");
 
     return {
-      active,
-      transition,
-      beforeLeave,
+      tab,
+      transition: tabs.transition,
+      beforeLeaveTransition,
     };
   },
 };
 </script>
 
 <style scoped>
-.no-transtition-leave-active {
-  position: absolute;
-}
 .fade-leave-active {
   position: absolute;
 }

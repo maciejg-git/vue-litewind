@@ -10,7 +10,7 @@
           href=""
           :class="[
             classes.tab.value,
-            tab.active ? states.tab.value.active : '',
+            tab.isActive ? states.tab.value.active : '',
           ]"
           @click.prevent="handleClickTab(i)"
         >
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { ref, toRef, onMounted, computed, provide, h } from "vue";
+import { ref, toRef, onMounted, computed, provide, h, toRaw } from "vue";
 import useStyles from "./composition/use-styles";
 
 export default {
@@ -60,7 +60,6 @@ export default {
 
     let tabs = ref([]);
     let activeTab = null;
-    let lastActiveTab = null;
 
     onMounted(() => activateTab(0));
 
@@ -70,17 +69,16 @@ export default {
     };
 
     let activateTab = (index) => {
-      if (index < 0 || tabs.value.length < index) return
+      if (index < 0 || tabs.value.length < index) return;
 
       let tab = tabs.value[index];
 
-      if (tab.active) return;
+      if (tab.isActive) return;
 
-      tab.active = true
-      if (activeTab) activeTab.active = false
+      tab.isActive = true;
+      if (activeTab) activeTab.isActive = false;
 
-      lastActiveTab = activeTab
-      activeTab = tab
+      activeTab = tab;
 
       emit("input:changed-tab", index);
     };
@@ -90,11 +88,11 @@ export default {
 
     // this is called by v-tab child after unmounting
     let removeTab = (tab) => {
-      let index = tabs.value.findIndex((t) => t === tab);
+      let index = tabs.value.findIndex((t) => toRaw(t) === tab);
 
       if (index === -1) return;
 
-      if (tab.active) activateTab(index - 1);
+      if (tab.isActive) activateTab(index - 1);
 
       tabs.value.splice(index, 1);
     };
@@ -102,8 +100,11 @@ export default {
     // handle template events
     let handleClickTab = (index) => activateTab(index);
 
-    provide("control-tab", { addTab, removeTab });
-    provide("transition", toRef(props, "transition"));
+    provide("control-tab", {
+      addTab,
+      removeTab,
+      transition: toRef(props, "transition"),
+    });
 
     return {
       classes,
