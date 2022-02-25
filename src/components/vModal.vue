@@ -17,10 +17,7 @@
                   {{ title }}
                 </span>
               </slot>
-              <v-close-button
-                v-if="!noCloseButton"
-                @click="closeModal"
-              />
+              <v-close-button v-if="!noCloseButton" @click="closeModal" />
             </header>
             <main :class="classes.content.value">
               <v-close-button
@@ -64,7 +61,7 @@
 import { ref, computed, watch } from "vue";
 import vButton from "./vButton.vue";
 import vCloseButton from "./vCloseButton.vue";
-import focus from "../directives/focus"
+import focus from "../directives/focus";
 import useStyles from "./composition/use-styles";
 
 export default {
@@ -117,10 +114,7 @@ export default {
       },
       footer: {
         fixed: "fixed-footer",
-        prop: computed(() => {
-          let valid = ["start", "end", "center", "between", "around", "evenly"].includes(props.justifyButtons)
-          if (valid) return "justify-" + props.justifyButtons
-        })
+        prop: computed(() => classesJustify[props.justifyButtons]),
       },
       content: null,
       backdrop: {
@@ -129,30 +123,45 @@ export default {
     });
 
     classes.container = computed(() => {
-      let position = "items-start";
-      if (props.position == "top") position = "items-start";
-      else if (props.position == "center") position = "items-center";
-
-      let size = "md:w-6/12";
-      if (props.size == "xl") size = "md:w-10/12"
-      else if (props.size == "lg") size = "md:w-8/12"
-      else if (props.size == "md") size = "md:w-6/12"
-      else if (props.size == "sm") size = "md:w-4/12"
-      else if (props.size == "fit") size = "md:w-max"
-
-      return ["fixed-container", size, position];
+      return [
+        "fixed-container",
+        classesWidth[props.size],
+        classesAlign[props.position],
+      ];
     });
+
+    const classesJustify = {
+      start: "justify-start",
+      end: "justify-end",
+      center: "justify-center",
+      between: "justify-between",
+      around: "justify-around",
+      evenly: "justify-evenly",
+    };
+
+    const classesAlign = {
+      top: "items-start",
+      center: "items-center",
+    };
+
+    const classesWidth = {
+      sm: "md:w-4/12",
+      md: "md:w-6/12",
+      lg: "md:w-8/12",
+      xl: "md:w-10/12",
+      fit: "md:w-max",
+    };
 
     // remove scrollbar and add some padding to avoid shifting modal window
     // when opening
     let getScrollBarWidth = () => {
       return window.innerWidth - document.documentElement.clientWidth;
-    }
+    };
 
     let removeScrollbar = () => {
       let scrollbarWidth = getScrollBarWidth();
       if (scrollbarWidth > 0) {
-        document.body.style.overflowY = "hidden"
+        document.body.style.overflowY = "hidden";
         document.body.style.paddingRight = scrollbarWidth + "px";
       }
     };
@@ -164,7 +173,7 @@ export default {
 
     watch(
       () => props.modelValue,
-      (value) => value && removeScrollbar(),
+      (value) => value && removeScrollbar()
     );
 
     let closeModal = () => emit("update:modelValue", false);
@@ -184,7 +193,7 @@ export default {
       emit("input:secondaryButtonClick");
     };
 
-    let handleKeydown = () => closeModal()
+    let handleKeydown = () => closeModal();
 
     return {
       classes,

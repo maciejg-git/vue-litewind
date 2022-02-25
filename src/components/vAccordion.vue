@@ -13,11 +13,11 @@ export default {
 
     let update = (collapse) => {
       if (collapse.isOpen.value) {
-        if (active && active !== collapse) active.collapse()
+        active && active.collapse()
         active = collapse
-      } else {
-        if (active === collapse) active = null
+        return;
       }
+      if (active === collapse) active = null
     }
 
     let remove = (collapse) => {

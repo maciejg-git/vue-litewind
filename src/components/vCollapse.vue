@@ -40,6 +40,8 @@ export default {
 
     onUnmounted(() => accordion && accordion.remove(c));
 
+    // transition
+
     let afterEnterTransition = (element) => (element.style.height = "auto");
 
     let enterTransition = (element) => {

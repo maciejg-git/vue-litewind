@@ -20,7 +20,6 @@ export default {
   setup(props, { slots }) {
     let tabs = inject("control-tab");
 
-    // uid, toRaw, shallow concat new array
     let tab = { 
       isActive: ref(false), 
       name: toRef(props, "name"),

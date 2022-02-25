@@ -25,7 +25,6 @@
     <v-tab v-for="(tab, i) in tabs" :name="tab.name" class="p-4">
       <component :is="tab.component" v-bind="tab.props">
         {{ tab.content }}
-        <v-button @click="removeTab(i)">Remove tab</v-button>
       </component>
     </v-tab>
   </v-tabs>
@@ -121,14 +120,11 @@ export default {
       });
     };
 
-    let removeTab = (index) => tabs.value.splice(index, 1)
-
     let events = ref([]);
 
     return {
       example,
       text,
-      removeTab,
       events,
       tabs,
       addTab,
