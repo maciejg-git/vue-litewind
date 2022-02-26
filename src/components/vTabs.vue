@@ -8,10 +8,7 @@
       >
         <a
           href=""
-          :class="[
-            classes.tab.value,
-            tab.isActive ? states.tab.value.active : '',
-          ]"
+          :class="getTabClasses(tab)"
           @click.prevent="handleClickTab(i)"
         >
           <render-vnode :vnodes="getTabName(tab)" />
@@ -58,15 +55,17 @@ export default {
       },
     });
 
+    let getTabClasses = (tab) => {
+      return [classes.tab.value, tab.isActive && states.tab.value.active];
+    };
+
     let tabs = ref([]);
     let activeTab = null;
 
     onMounted(() => activateTab(0));
 
     // tab name can be set in name slot of child v-tab
-    let getTabName = (tab) => {
-      return tab.slots.name ? tab.slots.name() : tab.name;
-    };
+    let getTabName = (tab) => (tab.slots.name && tab.slots.name()) || tab.name;
 
     let activateTab = (index) => {
       if (index < 0 || tabs.value.length < index) return;
@@ -83,12 +82,14 @@ export default {
       emit("input:changed-tab", index);
     };
 
+    let getTab = (tab) => tabs.value.findIndex((t) => toRaw(t) === tab);
+
     // this is called by v-tab child after mounting
     let addTab = (tab) => tabs.value.push(tab);
 
     // this is called by v-tab child after unmounting
     let removeTab = (tab) => {
-      let index = tabs.value.findIndex((t) => toRaw(t) === tab);
+      let index = getTab(tab)
 
       if (index === -1) return;
 
@@ -109,6 +110,7 @@ export default {
     return {
       classes,
       states,
+      getTabClasses,
       tabs,
       getTabName,
       handleClickTab,

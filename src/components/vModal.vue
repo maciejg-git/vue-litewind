@@ -114,7 +114,7 @@ export default {
       },
       footer: {
         fixed: "fixed-footer",
-        prop: computed(() => classesJustify[props.justifyButtons]),
+        prop: computed(() => classesJustifyButtons[props.justifyButtons]),
       },
       content: null,
       backdrop: {
@@ -125,12 +125,12 @@ export default {
     classes.container = computed(() => {
       return [
         "fixed-container",
-        classesWidth[props.size],
-        classesAlign[props.position],
+        classesSize[props.size],
+        classesPosition[props.position],
       ];
     });
 
-    const classesJustify = {
+    const classesJustifyButtons = {
       start: "justify-start",
       end: "justify-end",
       center: "justify-center",
@@ -139,12 +139,12 @@ export default {
       evenly: "justify-evenly",
     };
 
-    const classesAlign = {
+    const classesPosition = {
       top: "items-start",
       center: "items-center",
     };
 
-    const classesWidth = {
+    const classesSize = {
       sm: "md:w-4/12",
       md: "md:w-6/12",
       lg: "md:w-8/12",
@@ -185,12 +185,12 @@ export default {
 
     let handlePrimaryButtonClick = () => {
       if (props.primaryButtonClose) closeModal();
-      emit("input:primaryButtonClick");
+      emit("input:primary-button-click");
     };
 
     let handleSecondaryButtonClick = () => {
       if (props.secondaryButtonClose) closeModal();
-      emit("input:secondaryButtonClick");
+      emit("input:secondary-button-click");
     };
 
     let handleKeydown = () => closeModal();
