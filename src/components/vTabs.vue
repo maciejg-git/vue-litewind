@@ -64,7 +64,8 @@ export default {
 
     onMounted(() => activateTab(0));
 
-    // tab name can be set in name slot of child v-tab
+    let getTab = (tab) => tabs.value.findIndex((t) => toRaw(t) === tab);
+
     let getTabName = (tab) => (tab.slots.name && tab.slots.name()) || tab.name;
 
     let activateTab = (index) => {
@@ -81,8 +82,6 @@ export default {
 
       emit("input:changed-tab", index);
     };
-
-    let getTab = (tab) => tabs.value.findIndex((t) => toRaw(t) === tab);
 
     // this is called by v-tab child after mounting
     let addTab = (tab) => tabs.value.push(tab);

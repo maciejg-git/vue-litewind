@@ -33,22 +33,16 @@ export default {
   setup(props) {
     let reference = ref([
       {
-        prop: "thickness",
+        prop: "type",
         type: ["String"],
-        default: "0.15",
-        description: "Thickness of spinner in em units",
-      },
-      {
-        prop: "speed",
-        type: ["String"],
-        default: "0.75",
-        description: "Speed of spinner in seconds",
+        default: "border",
+        description: "Valid values are 'border' for border spinner or 'svg' for SVG spinner.",
       },
       {
         prop: "icon",
         type: ["String", "Object"],
         default: "undefined",
-        description: "Icon to use instead of default spinner",
+        description: "Icon to use instead of border or SVG spinner",
       },
       {
         prop: "name",

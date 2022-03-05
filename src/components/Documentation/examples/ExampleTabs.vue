@@ -17,8 +17,10 @@
     </v-tab>
     <v-tab class="p-4">
       <template #name>
-        Tab with custom content
-        <v-badge style-badge="secondary tiny">4</v-badge>
+        <span class="flex justify-between">
+          Tab with custom content
+          <v-badge style-badge="secondary tiny" class="ml-4">4</v-badge>
+        </span>
       </template>
       {{ text[2] }}
     </v-tab>
@@ -35,6 +37,7 @@
       <v-select id="style" v-model="example.name">
         <option value="tabs">browser</option>
         <option value="tabs-material">material</option>
+        <option value="tabs-rounded">rounded</option>
       </v-select>
     </div>
     <v-button @click="addTab">Add tab</v-button>
@@ -67,6 +70,8 @@
         <label for="transition">transition:</label>
         <v-select id="transition" v-model="example.transition">
           <option value="fade">fade</option>
+          <option value="fade-side-slide">fade-side-slide</option>
+          <option value="fade-top-slide">fade-top-slide</option>
           <option value="">empty string (no transition)</option>
         </v-select>
       </div>

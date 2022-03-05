@@ -1,36 +1,21 @@
 <template>
+  <p class="my-4">Border spinners</p>
   <div>
     <v-spinner style-spinner="primary small" class="mr-10" />
     <v-spinner style-spinner="success" class="mr-10" />
     <v-spinner style-spinner="warn large" class="mr-4" />
   </div>
 
-  <div class="mt-10">
-    <v-spinner thickness="0.07" class="mr-4"></v-spinner>
-    <v-spinner thickness="0.2" style-spinner="yellow" class="mr-4" />
-    <v-spinner thickness="0.35" style-spinner="green" class="mr-4" />
+  <p class="my-4">SVG spinners</p>
+  <div>
+    <v-spinner type="svg" style-spinner="primary small" class="mr-10" />
+    <v-spinner type="svg" style-spinner="success" class="mr-10" />
+    <v-spinner type="svg" style-spinner="warn large" class="mr-10" />
   </div>
 
-  <div class="mt-10">
-    <v-spinner speed="0.6" style-spinner="primary" class="mr-4" />
-    <v-spinner speed="1.0" style-spinner="success" class="mr-4" />
-    <v-spinner speed="1.5" style-spinner="warn" class="mr-4" />
-  </div>
-
-  <div class="mt-10">
-    <v-spinner icon="mdi-loading" style-spinner="primary" class="mr-4" />
-    <v-spinner icon="b-arrow-clockwise" style-spinner="success" class="mr-4" />
-  </div>
-
-  <div class="mt-10">
-    <v-button class="mr-2">
-      <v-spinner style-spinner="light small"></v-spinner>
-      <span class="ml-2">Button</span>
-    </v-button>
-
-    <v-button style-button="secondary">
-      <v-spinner style-spinner="success small"></v-spinner>
-      <span class="ml-2">Button</span>
-    </v-button>
+  <p class="my-4">Icon spinners</p>
+  <div>
+    <v-spinner icon="mdi-loading" style-spinner="primary" class="mr-10" />
+    <v-spinner icon="b-arrow-clockwise" style-spinner="success" class="mr-10" />
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <pre>
+  <pre class="">
     <code class="code" :class="'language-' + language">{{ code }}</code>
   </pre>
 </template>
@@ -59,6 +59,6 @@ pre {
   @apply whitespace-normal my-5;
 }
 pre code {
-  @apply whitespace-pre;
+  @apply whitespace-pre pl-4;
 }
 </style>

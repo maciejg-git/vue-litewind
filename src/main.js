@@ -14,6 +14,8 @@ import vCode from "./components/Documentation/components/vCode.vue"
 import BStar from "./components/Documentation/icons/star"
 import BCheckLg from "./components/Documentation/icons/check-lg"
 import BExclamationTriangle from "./components/Documentation/icons/exclamation-triangle"
+import BArrowClockwise from "./components/Documentation/icons/arrow-clockwise"
+import MdiLoading from "./components/Documentation/icons/loading"
 
 let app = createApp(App);
 
@@ -32,6 +34,8 @@ registerIcon(app, [
   BStar,
   BCheckLg,
   BExclamationTriangle,
+  BArrowClockwise,
+  MdiLoading,
 ], {
   vendorPrefix: true,
   iconSufix: false,

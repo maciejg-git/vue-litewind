@@ -1,22 +1,21 @@
 <template>
   <div class="overflow-hidden">
-    <transition
-      :name="transition"
-      @enter="enterTransition"
-      @afterEnter="afterEnterTransition"
-      @leave="leaveTransition"
-    >
+    <v-transition :name="transition">
       <div v-show="isOpen">
         <slot name="default"></slot>
       </div>
-    </transition>
+    </v-transition>
   </div>
 </template>
 
 <script>
 import { watch, toRef, onMounted, onUnmounted, inject } from "vue";
+import vTransition from "./vTransition.vue"
 
 export default {
+  components: {
+    vTransition,
+  },
   props: {
     modelValue: { type: Boolean, default: false },
     transition: { type: String, default: "fade-collapse" },
@@ -40,63 +39,12 @@ export default {
 
     onUnmounted(() => accordion && accordion.remove(c));
 
-    // transition
-
-    let afterEnterTransition = (element) => (element.style.height = "auto");
-
-    let enterTransition = (element) => {
-      const { width } = getComputedStyle(element);
-
-      element.style.width = width;
-      element.style.position = "absolute";
-      element.style.visibility = "hidden";
-      element.style.height = "auto";
-
-      const { height } = getComputedStyle(element);
-
-      element.style.width = null;
-      element.style.position = null;
-      element.style.visibility = null;
-      element.style.height = 0;
-
-      // trigger reflow
-      let l = element.scrollHeight;
-      setTimeout(() => {
-        element.style.height = height;
-      });
-    };
-
-    let leaveTransition = (element) => {
-      const { height } = getComputedStyle(element);
-
-      element.style.height = height;
-
-      // trigger reflow
-      let l = element.scrollHeight;
-      setTimeout(() => {
-        element.style.height = 0;
-      });
-    };
-
     return {
       isOpen,
-      afterEnterTransition,
-      enterTransition,
-      leaveTransition,
     };
   },
 };
 </script>
 
 <style scoped>
-.fade-collapse-enter-active,
-.fade-collapse-leave-active {
-  transition: height 0.3s ease, opacity 0.3s ease;
-  overflow: hidden;
-}
-
-.fade-collapse-enter-from,
-.fade-collapse-leave-active {
-  opacity: 0;
-}
 </style>

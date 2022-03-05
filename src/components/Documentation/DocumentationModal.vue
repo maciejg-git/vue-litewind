@@ -116,6 +116,13 @@ export default {
           "If true clicking primary button emits <code class='code-word'>input:primaryButtonClick</code> event and closes modal. If false modal is not closed after emitting event",
       },
       {
+        prop: "justify-buttons",
+        type: ["String"],
+        default: "false",
+        description:
+          "Use this prop to place buttons in footer. Valid values are: 'start', 'end', 'center', 'between', 'around', 'evenly'",
+      },
+      {
         prop: "no-close-button",
         type: ["Boolean"],
         default: "false",
