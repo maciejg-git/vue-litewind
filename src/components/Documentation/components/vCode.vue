@@ -51,10 +51,6 @@ export default {
 </script>
 
 <style scoped>
-/* .code { */
-/*   max-height: 700px; */
-/*   @apply overflow-y-scroll; */
-/* } */
 pre {
   @apply whitespace-normal my-5;
 }

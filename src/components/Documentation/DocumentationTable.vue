@@ -144,7 +144,7 @@ export default {
         type: ["String"],
         default: "empty string",
         description:
-          "Use this String to filter items. Filtering always emits <span class='code-word'>update:page</span> with value 1 and resets any active selection",
+          "Use this String to filter items. Filtering always emits <code class='code-word'>update:page</code> with value 1 and resets any active selection",
       },
       {
         prop: "locale",
@@ -164,7 +164,7 @@ export default {
         type: ["String"],
         default: "empty string",
         description:
-          "Enables or disables selection of rows. Valid values are 'single' (allows selection of single row only), 'multiple' (allows multiple rows to be selected) or empty string (disables selection). After new row is selected or unselected event <span class='code-word'>input:selection</span> is emmited that conatins array of all selected records. <span class='font-semibold'>Filtering</span>, <span class='font-semibold'>sorting</span>, <span class='font-semibold'>changing current page</span> or <span class='font-semibold'>modifying selection-mode prop</span> resets current selection by emmiting empty array",
+          "Enables or disables selection of rows. Valid values are 'single' (allows selection of single row only), 'multiple' (allows multiple rows to be selected) or empty string (disables selection). After new row is selected or unselected event <code class='code-word'>input:selection</code> is emmited that conatins array of all selected records. <span class='font-semibold'>Filtering</span>, <span class='font-semibold'>sorting</span>, <span class='font-semibold'>changing current page</span> or <span class='font-semibold'>modifying selection-mode prop</span> resets current selection by emmiting empty array",
       },
       {
         prop: "page",

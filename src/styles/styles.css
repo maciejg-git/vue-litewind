@@ -1181,10 +1181,10 @@
 /* SPINNER */
 
 .spinner-container {
-  @apply 
-    inline-block;
   --spinner-border-speed: 0.75s;
   --spinner-svg-speed: 1s;
+  @apply 
+    inline-block;
 }
 
 .spinner {
