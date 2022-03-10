@@ -23,6 +23,7 @@ export default {
     block: { type: Boolean, default: false },
     name: { type: String, default: "button" },
     styleButton: { type: String, default: "" },
+    variant: { type: String, default: ""},
   },
   setup(props) {
     let { classes, states } = useStyles("button", props, {

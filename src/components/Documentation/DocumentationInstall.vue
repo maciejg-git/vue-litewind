@@ -11,19 +11,20 @@ npm i vue-wind
     </code>
   </pre>
     <p>
-      Vue-wind uses Tailwindcss as CSS framework. To install Tailwindcss
-      follow
+      Vue-wind uses Tailwindcss as CSS framework. To install Tailwindcss follow
       <a class="link" href="https://tailwindcss.com/docs/installation">
         instruction
       </a>
       in their offical documentation.
     </p>
     <p>
-      <span class="font-semibold">[Option if using form components]</span> Install 
+      <span class="font-semibold">[Option if using form components]</span>
+      Install
       <a class="link" href="https://github.com/tailwindlabs/tailwindcss-forms">
         @tailwindcss/forms
-      </a> 
-      plugin that provides a basic reset for form styles that makes form elements easy to override with utilities.
+      </a>
+      plugin that provides a basic reset for form styles that makes form
+      elements easy to override with utilities.
     </p>
     <pre>
       <code>
@@ -47,7 +48,8 @@ app.use(install);
   </pre>
     <p>
       <span class="font-semibold">[Option 2]</span>
-      or register component plugins seperately. This should make your build smaller.
+      or register component plugins seperately. This should make your build
+      smaller.
     </p>
     <pre>
       <code class="language-js">
@@ -62,7 +64,9 @@ app.use(selectPlugin);
     </code>
   </pre>
     <p>
-    Copy styles.css from 'node_modules/vue-wind/dist/' to the src directory of your project and import it. You can edit this file to customize look of components.
+      Copy styles.css from 'node_modules/vue-wind/dist/' to the src directory of
+      your project and import it. You can edit this file to customize look of
+      components.
     </p>
     <pre>
       <code class="language-js">
@@ -71,55 +75,59 @@ app.use(selectPlugin);
 // copy styles.css to src directory of your project and modify it to your liking
 import "./styles.css";
 
-// import fixed styles, order of importing is important
+// import fixed styles, order of imports is important
 import "vue-wind/dist/style.css"
     </code>
   </pre>
     <h5>Styling</h5>
-  <p>Class begin with default component name, followed by element name and variants/states. You can set custom name for component using name prop. This can be useful if you do not want to modify default styles or use same component for different purposes.</p>
-  <p><span class="font-semibold">style-[element]</span> props are used to modify style of component elements. You can add any number of variants. Variants names are based on class names.</p>
-    <pre>
-      <code class="language-html">
-&lt;v-button&gt;Default button&lt;/v-button&gt;
-&lt;v-button style-button=&quot;large&quot;&gt;Large button&lt;/v-button&gt;
-&lt;v-button style-button=&quot;primary&quot;&gt;Normal button&lt;/v-button&gt;
-&lt;v-button style-button=&quot;primary small &quot;&gt;Small outline button&lt;/v-button&gt;
-&lt;v-button style-button=&quot;secondary tiny&quot;&gt;Tiny button&lt;/v-button&gt;
-    </code>
-  </pre>
-  <p class="font-semibold">Classes that define state (with -state ending) must always be below variant classes in css to work properly</p>
-  <p>
-    The final classes applied to element are the result of merging:
-    <ul>
-    <li class="my-4">
-      🔨 <span class="font-semibold">fixed classes hardcoded into components</span>, those are to properly display and interact with components
-    </li>
-    <li class="my-4">
-      🎨 <span class="font-semibold">classes from styles.css</span> those ideally should be only 'visual theme' classes like colors, typography, paddings, focus and hover, rounding, text decorations, borders, transitions etc
-    </li>
-    <li class="my-4">
-      🔧 <span class="font-semibold">classes added as a result of using certain props.</span> Those props add classes in secure, reactive way to proper elements of components for example block prop on button, fill on tabs, position and size on modal, state prop etc
-    </li>
-    <li class="my-4">
-      🚀 <span class="font-semibold">classes defined with class attribute on components</span> those should be avoided as there is no way to tell to which element they apply. Most often it is wrapper element. Should only be used to position component and set margins.
-    </li>
-    </ul>
-  </p>
-  
+    <p>
+      Classes begin with <span class="font-semibold">component name</span>, followed by <span class="font-semibold">element</span> and
+      <span class="font-semibold">variants/states</span>. 
+    </p>
+      <p>
+      Following props are used to set classes for component elements:
+      <ul>
+        <li class="my-2">
+          <span class="font-semibold">base</span> - sets base name for classes. By default the value is component name. This can be useful if you want to have multiple layouts with different set of variants for the same component
+        </li>
+        <li class="my-2">
+          <span class="font-semibold">style-[element]</span> - used to style elements of component with a list of variants. Variant can be applied conditionaly by putting [identifier]: in front of any variant.
+        </li>
+        <li class="my-2">
+          <span class="font-semibold">variant</span> - allows toggling conditional variants.
+        </li>
+        <li class="my-2">
+          <span class="font-semibold">props that sets fixed classes</span> - those props are usually boolean switches that set fixed or state classes in secure way
+        </li>
+      </ul>
+      </p>
+      <example-install-button />
+    <v-code :code="exampleButtonCode" template language="html"></v-code>
+    <p class="font-semibold">
+      Classes that define state (with -state ending) must always be below
+      variant classes in css to work properly
+    </p>
   </section>
 </template>
 
 <script>
 import { onMounted } from "vue";
+import ExampleInstallButton from "./examples/ExampleInstallButton.vue"
+import exampleButtonCode from "./examples/ExampleInstallButton.vue?raw"
 import hljs from "highlight.js";
 
 export default {
+  components: {
+    ExampleInstallButton,
+  },
   setup() {
     onMounted(() => {
       hljs.highlightAll();
     });
 
-    return {};
+    return {
+      exampleButtonCode,
+    };
   },
 };
 </script>
