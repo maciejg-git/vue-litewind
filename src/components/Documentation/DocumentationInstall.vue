@@ -81,17 +81,23 @@ import "vue-wind/dist/style.css"
   </pre>
     <h5>Styling</h5>
     <p>
-      Classes begin with <span class="font-semibold">component name</span>, followed by <span class="font-semibold">element</span> and
+      Classes begin with <span class="font-semibold">base name</span>, followed by <span class="font-semibold">element</span> and
       <span class="font-semibold">variants/states</span>. 
     </p>
+    <pre>
+    <code>
+    base--element--variant/state
+    </code>
+    </pre>
       <p>
-      Following props are used to set classes for component elements:
+      Component props are used to set up those classes:
       <ul>
         <li class="my-2">
-          <span class="font-semibold">base</span> - sets base name for classes. By default the value is component name. This can be useful if you want to have multiple layouts with different set of variants for the same component
+          <span class="font-semibold">base</span> - sets base name. By default the value is component name. This can be useful if you want to have multiple layouts with different set of variants for the same component
         </li>
         <li class="my-2">
           <span class="font-semibold">style-[element]</span> - used to style elements of component with a list of variants. Variant can be applied conditionaly by putting [identifier]: in front of any variant.
+          Variant can be applied conditionaly by putting [identifier]: in front of any variant.
         </li>
         <li class="my-2">
           <span class="font-semibold">variant</span> - allows toggling conditional variants.
@@ -101,8 +107,11 @@ import "vue-wind/dist/style.css"
         </li>
       </ul>
       </p>
-      <example-install-button />
+      <div class="example">
+        <example-install-button />
+      </div>
     <v-code :code="exampleButtonCode" template language="html"></v-code>
+    <v-code :code="exampleButtonCode" script language="js"></v-code>
     <p class="font-semibold">
       Classes that define state (with -state ending) must always be below
       variant classes in css to work properly
