@@ -22,6 +22,7 @@ export default {
   props: {
     name: { type: String, default: "close-button" },
     styleCloseButton: { type: String, default: "" },
+    variant: { type: String, default: ""},
   },
   setup(props) {
     let { classes } = useStyles("close-button", props, {

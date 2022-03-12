@@ -24,6 +24,7 @@ export default {
     state: { type: String, default: "" },
     name: { type: String, default: "range" },
     styleRange: { type: [String, Array], default: "" },
+    variant: { type: String, default: ""},
   },
   setup(props, { attrs, emit }) {
     let { classes, states } = useStyles("range", props, {

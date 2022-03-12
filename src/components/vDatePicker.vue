@@ -132,6 +132,7 @@ export default {
     styleDay: { type: String, default: "" },
     styleAdjacentMonthDay: { type: String, default: "" },
     styleFooter: { type: String, default: "" },
+    variant: { type: String, default: ""},
   },
   components: {
     vButton,

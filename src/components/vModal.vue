@@ -91,6 +91,7 @@ export default {
     styleFooter: { type: String, default: "" },
     styleContent: { type: String, default: "" },
     styleBackdrop: { type: String, default: "" },
+    variant: { type: String, default: ""},
   },
   components: {
     vButton,

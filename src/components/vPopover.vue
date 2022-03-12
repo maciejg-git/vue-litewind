@@ -59,6 +59,7 @@ export default {
     name: { type: String, default: "popover" },
     stylePopover: { type: String, default: "" },
     styleContent: { type: String, default: "" },
+    variant: { type: String, default: ""},
   },
   setup(props, { slots, emit }) {
     let { classes } = useStyles("popover", props, {

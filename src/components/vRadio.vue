@@ -24,6 +24,7 @@ export default {
     state: { type: [String, Boolean], default: "" },
     name: { type: String, default: "radio" },
     styleRadio: { type: [String, Array], default: "" },
+    variant: { type: String, default: ""},
   },
   setup(props, { attrs, emit }) {
     let { classes, states } = useStyles("radio", props, {

@@ -37,6 +37,7 @@ export default {
     styleDots: { type: [String, Array], default: "" },
     styleNext: { type: [String, Array], default: "" },
     stylePrev: { type: [String, Array], default: "" },
+    variant: { type: String, default: ""},
   },
   components: {
     ChevronLeft,

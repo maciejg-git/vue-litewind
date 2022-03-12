@@ -32,6 +32,7 @@ export default {
     name: { type: String, default: "tabs" },
     styleTabBar: { type: [String, Array], default: "" },
     styleTab: { type: [String, Array], default: "" },
+    variant: { type: String, default: ""},
   },
   components: {
     // component to render content of child v-tab name slot

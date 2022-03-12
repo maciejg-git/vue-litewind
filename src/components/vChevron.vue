@@ -81,6 +81,7 @@ export default {
     icon: { type: String, default: "" },
     name: { type: String, default: "chevron" },
     styleChevron: { type: String, default: "" },
+    variant: { type: String, default: ""},
   },
   components: {
     vIcon,

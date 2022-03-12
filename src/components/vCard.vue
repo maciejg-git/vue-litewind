@@ -12,6 +12,7 @@ export default {
     width: { type: String, default: undefined },
     name: { type: String, default: "card" },
     styleCard: { type: String, default: "" },
+    variant: { type: String, default: ""},
   },
   setup(props) {
     let { classes } = useStyles("card", props, {

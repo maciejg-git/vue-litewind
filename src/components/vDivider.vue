@@ -9,6 +9,7 @@ export default {
   props: {
     name: { type: String, default: "divider" },
     styleDivider: { type: [String, Array], default: "" },
+    variant: { type: String, default: ""},
   },
   setup(props) {
     let { classes } = useStyles("divider", props, {

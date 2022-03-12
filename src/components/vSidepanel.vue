@@ -38,6 +38,7 @@ export default {
     name: { type: String, default: "sidepanel" },
     styleSidepanel: { type: String, default: "" },
     styleCloseButton: { type: String, default: "" },
+    variant: { type: String, default: ""},
   },
   components: {
     vCloseButton,

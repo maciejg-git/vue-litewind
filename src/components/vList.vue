@@ -15,6 +15,7 @@ export default {
     name: { type: String, default: "list" },
     styleList: { type: String, default: "" },
     styleItem: { type: [String, Array], default: "" },
+    variant: { type: String, default: ""},
   },
   setup(props) {
     let { classes, states } = useStyles("list", props, {

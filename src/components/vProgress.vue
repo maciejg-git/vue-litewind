@@ -55,6 +55,7 @@ export default {
     styleProgress: { type: [String, Array], default: "" },
     styleProgressBar: { type: [String, Array], default: "" },
     styleLabel: { type: [String, Array], default: "" },
+    variant: { type: String, default: ""},
   },
   setup(props) {
     let { classes } = useStyles("progress", props, {

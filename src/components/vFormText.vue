@@ -27,6 +27,7 @@ export default {
     messages: { type: Object, default: {} },
     name: { type: String, default: "form-text" },
     styleFormText: { type: [String, Array], default: "" },
+    variant: { type: String, default: ""},
   },
   setup(props) {
     let { classes, states } = useStyles("form-text", props, {

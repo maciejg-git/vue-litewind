@@ -37,6 +37,7 @@ export default {
     icon: { type: [String, Object], default: undefined },
     name: { type: String, default: "spinner" },
     styleSpinner: { type: String, default: "" },
+    variant: { type: String, default: ""},
   },
   components: {
     vIcon,

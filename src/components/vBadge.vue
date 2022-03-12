@@ -13,6 +13,7 @@ export default {
     position: { type: String, default: "" },
     name: { type: String, default: "badge" },
     styleBadge: { type: String, default: "" },
+    variant: { type: String, default: ""},
   },
   setup(props) {
     let { classes } = useStyles("badge", props, {

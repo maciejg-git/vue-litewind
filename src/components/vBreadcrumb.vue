@@ -33,6 +33,7 @@ export default {
     styleBreadcrumb: { type: [String, Array], default: "" },
     styleSeparator: { type: [String, Array], default: "" },
     styleActive: { type: [String, Array], default: "" },
+    variant: { type: String, default: ""},
   },
   setup(props) {
     let { classes } = useStyles("breadcrumb", props, {

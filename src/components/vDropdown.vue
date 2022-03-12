@@ -55,6 +55,7 @@ export default {
     name: { type: String, default: "dropdown" },
     styleItem: { type: String, default: "" },
     styleHeader: { type: String, default: "" },
+    variant: { type: String, default: ""},
   },
   emits: ["state:opened", "state:closed", "update:modelValue"],
   setup(props, { slots, emit }) {

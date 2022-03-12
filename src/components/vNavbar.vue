@@ -15,6 +15,7 @@ export default {
     bottom: { type: Boolean, default: false },
     name: { type: String, default: "navbar" },
     styleNavbar: { type: String, default: "" },
+    variant: { type: String, default: ""},
   },
   setup(props) {
     let { classes } = useStyles("navbar", props, {
