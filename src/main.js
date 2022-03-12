@@ -5,7 +5,7 @@ import { plugin } from "./components/index.js";
 import "tailwindcss/tailwind.css";
 import "./styles/styles.css"
 import "./styles/styles-material.css"
-import { registerIcon } from "./vue"
+import registerIcon from "./registerIcon"
 
 import TableReference from "./components/Documentation/TableReference.vue";
 import TableReferenceBasic from "./components/Documentation/TableReferenceBasic.vue";
