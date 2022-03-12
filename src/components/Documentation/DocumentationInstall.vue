@@ -80,30 +80,14 @@ import "vue-wind/dist/style.css"
     </code>
   </pre>
     <h5>Styling</h5>
-    <p>
-      Classes begin with <span class="font-semibold">base name</span>, followed by <span class="font-semibold">element</span> and
-      <span class="font-semibold">variants/states</span>. 
-    </p>
-    <pre>
-    <code>
-    base--element--variant/state
-    </code>
-    </pre>
       <p>
-      Component props are used to set up those classes:
+      To change the default look of components use style.css file that contains base classes and some variants. To select base class or add variants to component use following props:
       <ul>
         <li class="my-2">
-          <span class="font-semibold">base</span> - sets base name. By default the value is component name. This can be useful if you want to have multiple layouts with different set of variants for the same component
+          <span class="font-semibold">base</span> - sets base name. The default value is component name. This can be useful if you want to have multiple layouts with different set of variants for the same component
         </li>
         <li class="my-2">
-          <span class="font-semibold">style-[element]</span> - used to style elements of component with a list of variants. Variant can be applied conditionaly by putting [identifier]: in front of any variant.
-          Variant can be applied conditionaly by putting [identifier]: in front of any variant.
-        </li>
-        <li class="my-2">
-          <span class="font-semibold">variant</span> - allows toggling conditional variants.
-        </li>
-        <li class="my-2">
-          <span class="font-semibold">props that sets fixed classes</span> - those props are usually boolean switches that set fixed or state classes in secure way
+          <span class="font-semibold">style-[element]</span> - used to style elements of component with a list of variants. Variant can be applied conditionaly by putting [identifier]: in front of any variant. Conditional variant can be toggled with <span class="font-semibold">variant</span> prop set to [identifier]. 
         </li>
       </ul>
       </p>
