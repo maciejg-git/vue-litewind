@@ -59,11 +59,10 @@
 .button-plain {
   @apply 
     focus:outline-none
-    font-semibold
 }
-  .button-plain--light {
+  .button-plain--bold {
     @apply
-      text-slate-500
+      font-semibold
   }
 
 /* BUTTON */
