@@ -81,7 +81,7 @@ import "vue-wind/dist/style.css"
   </pre>
     <h5>Styling</h5>
       <p>
-      To change the default look of components use style.css file that contains base classes and some variants. To select base class or add variants to component use following props:
+      To change the default look of components use style.css file. To add base or variant  classes component use following props:
       <ul>
         <li class="my-2">
           <span class="font-semibold">base</span> - sets base name. The default value is component name. This can be useful if you want to have multiple layouts with different set of variants for the same component
