@@ -174,10 +174,10 @@
     }
     .tabs-rounded--tab--active-state {
       @apply
-        bg-gray-100
-        hover:bg-white
+        bg-indigo-400
+        hover:bg-indigo-300
+        text-white
         shadow-none
-        hover:bg-gray-50
     }
 
 /* TABS */
