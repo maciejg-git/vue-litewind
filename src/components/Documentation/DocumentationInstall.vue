@@ -95,7 +95,7 @@ import "vue-wind/dist/style.css"
           <span class="font-semibold">base</span> - sets base name. The default value is component name ("button", "dropdown", "modal" etc...). This can be useful if you want to have multiple layouts with different set of variants for the same component
         </li>
         <li class="my-2">
-          <span class="font-semibold">style-[element]</span> - used to style elements of component with a list of variants. Variant can be applied conditionaly by putting [identifier]: in front of any variant. Conditional variant can be toggled with <span class="font-semibold">variant</span> prop set to [identifier]. 
+          <span class="font-semibold">style-[element]</span> - this prop allows styling elements of component with a list of variants. Variant can be applied conditionaly by putting "identifier:" in front of any variant. Active variant can be chosen with <span class="font-semibold">variant</span> prop set to identifier. Identifier can be any word and does not have any relation to css.
         </li>
       </ul>
       </p>
@@ -104,10 +104,6 @@ import "vue-wind/dist/style.css"
       </div>
     <v-code :code="exampleButtonCode" template language="html"></v-code>
     <v-code :code="exampleButtonCode" script language="js"></v-code>
-    <p class="font-semibold">
-      Classes that define state (with -state ending) must always be below
-      variant classes in css to work properly
-    </p>
   </section>
 </template>
 
