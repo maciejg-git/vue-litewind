@@ -5,7 +5,7 @@
     v-model="example.isVisible"
     :dismissable="example.dismissable"
     :auto-dismiss-delay="example.autoDismissDelay"
-    style-alert="info:info danger:danger warn:warn success:success"
+    style-alert="info:info danger:danger warn:warn success:success invalid:danger valid:success"
     :variant="example.variant"
     class="my-4"
   >
@@ -17,7 +17,7 @@
     v-model="example.isVisible"
     :dismissable="example.dismissable"
     :auto-dismiss-delay="example.autoDismissDelay"
-    style-alert="borderless shadowed outline info:info danger:danger warn:warn success:success"
+    style-alert="borderless shadowed outline info:info danger:danger warn:warn success:success invalid:danger valid:success"
     :variant="example.variant"
     class="my-4"
   >

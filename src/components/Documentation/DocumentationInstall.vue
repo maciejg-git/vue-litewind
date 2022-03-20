@@ -81,13 +81,13 @@ import "vue-wind/dist/style.css"
   </pre>
     <h5>Styling components</h5>
       <p>
-      There are 2 parts to style:
+      To customize styles of components you can use:
       <ul class="list-disc list-inside">
         <li>
       <span class="font-semibold">style.css</span> file that contains base classes and variants
         </li>
         <li>
-      and following <span class="font-semibold">component props</span> that allow selection of base and variant classes:
+      and following <span class="font-semibold">component props</span> that allow selection of base and variant classes per component:
         </li>
       </ul>
       <ul>
@@ -95,7 +95,7 @@ import "vue-wind/dist/style.css"
           <span class="font-semibold">base</span> - sets base name. The default value is component name ("button", "dropdown", "modal" etc...). This can be useful if you want to have multiple layouts with different set of variants for the same component
         </li>
         <li class="my-2">
-          <span class="font-semibold">style-[element]</span> - this prop allows styling elements of component with a list of variants. Variant can be applied conditionaly by putting "identifier:" in front of any variant. Active variant can be chosen with <span class="font-semibold">variant</span> prop set to identifier. Identifier can be any word and does not have any relation to css.
+          <span class="font-semibold">style-[element]</span> - this prop allows styling elements of component with a list of variants. Variant can be applied conditionaly by putting "identifier:" in front of any variant. Active conditional variant can be chosen with <span class="font-semibold">variant</span> prop set to identifier. Identifier can be any word and does not have any relation to css.
         </li>
       </ul>
       </p>
