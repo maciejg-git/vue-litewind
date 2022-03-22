@@ -1,7 +1,3 @@
-.text-primary {
-  @apply text-gray-700
-}
-
 .disabled {
   @apply 
     opacity-50
@@ -81,14 +77,14 @@
     focus:ring-4
     focus:ring-indigo-200
     text-gray-100
-    bg-indigo-500
+    bg-primary-500
     hover:bg-indigo-600
     px-4
     py-2
 }
     .button--primary {
       @apply
-        bg-indigo-500
+        bg-primary-500
         hover:bg-indigo-600
         focus:ring-indigo-200
     }

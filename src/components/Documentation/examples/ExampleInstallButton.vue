@@ -5,6 +5,7 @@
     <v-button style-button="primary small">Small button</v-button>
     <v-button style-button="secondary tiny uppercase">Tiny button</v-button>
   </div>
+
   <div class="flex items-center gap-4 mt-6">
     <v-button
       style-button="new:danger visited:secondary small"

@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   content: [
     './src/**/*.html',
@@ -6,15 +8,10 @@ module.exports = {
   ],
   darkMode: 'class', // or 'media' or 'class'
   theme: {
-    extend: {
+     extend: {
       colors: {
-        primary: "var(--primary)",
-        secondary: "var(--secondary)",
-        main: "var(--main)",
-        background: "var(--background)",
-        header: "var(--header)",
-        accent: "var(--accent)",
-      },
+        primary: colors.indigo,
+      }
     },
   },
   variants: {
