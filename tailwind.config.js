@@ -11,6 +11,15 @@ module.exports = {
      extend: {
       colors: {
         primary: colors.indigo,
+        secondary: colors.gray,
+        info: colors.blue,
+        warn: colors.yellow,
+        info: colors.blue,
+        success: colors.green,
+        danger: colors.red,
+        dark: colors.neutral,
+        light: colors.white,
+        text: colors.gray,
       }
     },
   },
