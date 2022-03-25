@@ -25,16 +25,16 @@ pre {
 pre code {
   @apply text-sm whitespace-pre;
 }
->>> code:not([class]) {
+code:not([class]) {
   @apply text-yellow-700 font-semibold text-sm
 }
->>> .code-word {
-  @apply text-sm bg-indigo-200 rounded p-1 mr-1 text-sm;
+.code-word {
+  @apply text-sm bg-indigo-200 text-dark-800 dark:text-text-100 dark:bg-indigo-500 rounded p-1 mr-1 text-sm;
 }
 
->>> label {
+label {
   @apply mr-2;
 }
->>>  a.link {
+a.link {
   @apply underline text-blue-400;
 }

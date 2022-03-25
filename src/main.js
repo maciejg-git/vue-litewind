@@ -6,7 +6,7 @@ import "tailwindcss/tailwind.css";
 import "./styles/styles.css"
 import "./styles/styles-material.css"
 import registerIcon from "./registerIcon"
-
+import "./components/Documentation/Documentation.css"
 import TableReference from "./components/Documentation/TableReference.vue";
 import TableReferenceBasic from "./components/Documentation/TableReferenceBasic.vue";
 import vCode from "./components/Documentation/components/vCode.vue"
@@ -29,6 +29,8 @@ Object.entries(icons).forEach(([path, definition]) => {
   let icon = definition.default.name + "Icon"
   app.component(icon, definition.default)
 })
+
+document.documentElement.classList.add("dark");
 
 registerIcon(app, [
   BStar,

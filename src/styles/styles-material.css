@@ -11,7 +11,7 @@
   @apply
     tabs-material-tab-fixed;
   @apply
-    hover:bg-gray-50
+    /* hover:bg-gray-50 */
     transition-colors
     border-b-2
     border-transparent
@@ -19,15 +19,15 @@
 }
     .tabs-material--tab--active-state {
       @apply
-        bg-white
         shadow-none
         border-b-2
-        border-indigo-500
+        border-primary-500
     }
 
 .tabs-material--tab-bar {
   @apply
     border-b
+    dark:border-dark-700
 }
 
 /* LIST */

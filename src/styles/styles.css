@@ -75,12 +75,12 @@
     font-medium
     focus:outline-none
     focus:ring-4
-    focus:ring-primary-200
+    px-4
+    py-2
     text-text-100
     bg-primary-500
     hover:bg-primary-600
-    px-4
-    py-2
+    focus:ring-primary-200
 }
     .button--primary {
       @apply
@@ -164,8 +164,8 @@
     mx-2
     transition-all
     duration-200
-    border-secondary-300
     hover:bg-secondary-50
+    border-secondary-300
 }
     .tabs-rounded--tab--small {
       @apply
@@ -201,13 +201,13 @@
     px-4
     transition-all
     duration-200
-    border-secondary-300
     bg-secondary-100
     hover:bg-secondary-50
-    dark:border-dark-600
+    border-secondary-300
+    dark:text-text-400
     dark:bg-dark-900
     dark:hover:bg-dark-800
-    dark:text-text-400
+    dark:border-dark-600
     
 }
     .tabs--tab--small {
@@ -217,12 +217,12 @@
     }
     .tabs--tab--active-state {
       @apply
+        shadow-none
         bg-white
         hover:bg-white
-        shadow-none
+        dark:text-text-300
         dark:bg-dark-800
-        dark:hover:bg-dark-800
-        dark:text-text-300;
+        dark:hover:bg-dark-800;
       border-bottom-color: transparent;
     }
 
@@ -252,6 +252,7 @@
     py-2
     px-2
     border-secondary-300
+    dark:border-dark-700
 }
     .table--header-cell--bordered {
       @apply
@@ -259,8 +260,8 @@
     }
     .table--header-cell--dark {
       @apply
-        bg-secondary-700
         text-white
+        bg-secondary-700
     }
     .table--header-cell--light {
       @apply
@@ -283,6 +284,7 @@
     px-2
     pr-6
     border-secondary-300
+    dark:border-dark-700
 }
     .table--cell--bordered {
       @apply
@@ -295,6 +297,7 @@
     .table--cell--selected-state {
       @apply
         bg-slate-300
+        dark:bg-slate-700
     }
 
 .table--caption {
@@ -313,6 +316,8 @@
     rounded-md
     overflow-hidden
     divide-secondary-200
+    dark:border-dark-700
+    dark:divide-dark-700
 }
     .list--square {
       @apply
@@ -328,12 +333,15 @@
     p-2
     px-4
     hover:bg-secondary-50
+    dark:hover:bg-dark-700
 }
     .list--item--active-state {
       @apply
+        text-white
         bg-info-500
         hover:bg-info-600
-        text-white
+        dark:bg-info-500
+        dark:hover:bg-info-600
     }
 
 /* PROGRESS */
@@ -344,6 +352,7 @@
     overflow-hidden
     h-4
     bg-secondary-100
+    dark:bg-dark-700
 }
     .progress--rounded {
       @apply
@@ -381,8 +390,8 @@
 .progress--label {
   @apply
     text-xs
-    text-white
     font-bold
+    text-white
 }
 
 /* BREADCRUMB */
@@ -391,17 +400,20 @@
   @apply
     underline
     text-text-500
+    dark:text-text-400
 }
 
 .breadcrumb--separator {
   @apply
     mx-3
     text-text-500 
+    dark:text-text-400
 }
 
 .breadcrumb--active {
   @apply
     text-text-700 
+    dark:text-text-500
 }
 
 /* FORMTEXT */
@@ -433,8 +445,8 @@
     overflow-y-auto
     bg-white
     border-secondary-300
-    focus:ring-primary-200
     focus:border-secondary-400
+    focus:ring-primary-200
 }
     .select--valid-state {
       @apply
@@ -459,10 +471,9 @@
     focus:outline-none
     focus:ring
     outline-none
-    bg-white
     border-secondary-300
-    focus:ring-primary-200
     focus:border-secondary-400
+    focus:ring-primary-200
 }
     .range--valid-state {
       @apply
@@ -492,9 +503,9 @@
     outline-none
     transition-all
     duration-150
+    text-primary-500
     bg-white
     border-secondary-300
-    text-primary-500
     focus:border-secondary-400
     focus:ring-primary-200
 }
@@ -529,9 +540,9 @@
     outline-none
     transition-all
     duration-150
+    text-primary-500
     bg-white
     border-secondary-300
-    text-primary-500
     focus:border-secondary-400
     focus:ring-primary-200
 }
@@ -564,13 +575,13 @@
     transition
     duration-200
     pl-4
-    border-secondary-300
-    focus:ring-primary-200
-    focus:border-secondary-400
     bg-dark-100
+    border-secondary-300
+    focus:border-secondary-400
+    focus:ring-primary-200
+    dark:text-dark-300
     dark:bg-dark-700
     dark:border-dark-500
-    dark:text-dark-300
     dark:focus:ring-primary-300
 }
     .input-rounded--valid-state {
@@ -598,8 +609,12 @@
     border-0 
     border-b-2 
     focus:ring-0 
+    bg-transparent
     focus:border-black
     border-secondary-200
+    dark:text-dark-300
+    dark:border-dark-500
+    
 }
     .input-underline--valid-state {
       @apply
@@ -626,17 +641,15 @@
     outline-none
     transition
     duration-200
-    placeholder:italic 
-    placeholder:text-slate-400
     bg-white
     border-secondary-300
-    focus:ring-primary-200
     focus:border-secondary-400
+    focus:ring-primary-200
+    dark:text-text-300
+    dark:bg-dark-700
+    dark:border-dark-500
+    dark:focus:ring-primary-300
 }
-    .input--icon {
-      @apply
-        pl-8
-    }
     .input--valid-state {
       @apply
         text-success-600
@@ -667,8 +680,8 @@
     px-3
     bg-white
     border-secondary-300
-    focus:ring-primary-200
     focus:border-secondary-400
+    focus:ring-primary-200
 }
     .textarea--valid-state {
       @apply
@@ -697,47 +710,52 @@
 }
     .alert--info {
       @apply
-        bg-info-300
         text-info-900
+        bg-info-300
         border-info-400
-        /* dark:bg-blue-500 */
-        /* dark:text-gray-200 */
-        /* dark:border-blue-600 */
+        dark:text-text-200
+        dark:bg-info-500
+        dark:border-info-600
     }
     .alert--danger {
       @apply
-        bg-danger-300
         text-danger-900
+        bg-danger-300
         border-danger-400
-        /* dark:bg-red-500 */
-        /* dark:text-gray-200 */
-        /* dark:border-red-600 */
+        dark:text-text-200
+        dark:bg-danger-500
+        dark:border-danger-600
     }
     .alert--warn {
       @apply
-        bg-warn-300
         text-warn-900
+        bg-warn-300
         border-warn-400
-        /* dark:bg-yellow-500 */
-        /* dark:text-gray-200 */
-        /* dark:border-yellow-600 */
+        dark:text-text-200
+        dark:bg-warn-500
+        dark:border-warn-600
     }
     .alert--success {
       @apply
-        bg-success-300
         text-success-900
+        bg-success-300
         border-success-400
+        dark:text-text-200
+        dark:bg-success-500
+        dark:border-success-600
     }
     .alert--light {
       @apply
-        bg-secondary-50
         text-secondary-600
+        bg-secondary-50
         border-secondary-200
     }
     .alert--outline {
       @apply
         text-text-800
-        bg-white !important
+        dark:text-text-300
+        bg-white 
+        dark:bg-dark-700 !important
     }
     .alert--borderless {
       @apply 
@@ -758,9 +776,9 @@
 
 .navbar {
   @apply
-    w-full
     shadow-md
     bg-secondary-100
+    dark:bg-dark-800
 }
     .navbar--bottom {
       @apply
@@ -797,7 +815,7 @@
 
 .divider {
   @apply
-    my-1
+    dark:border-dark-700
 }
 
 /* SIDEPANEL */
@@ -805,7 +823,9 @@
 .sidepanel {
   @apply
     text-left
-    bg-secondary-100;
+    bg-secondary-100
+    dark:text-text-300
+    dark:bg-dark-700;
   -webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.2);
@@ -817,8 +837,10 @@
   @apply
     shadow-lg
     rounded-md
-    bg-white
     text-text-900
+    bg-white
+    dark:text-text-300
+    dark:bg-dark-800
 }
     .modal--square {
       @apply
@@ -836,8 +858,10 @@
     font-medium
     px-6
     py-6
+    text-text-900
     bg-secondary-50
-    text-secondary-900
+    dark:text-text-300
+    dark:bg-dark-800
 }
 
 .modal--footer {
@@ -877,6 +901,9 @@
     overflow-hidden
     bg-white
     border-secondary-200
+    dark:text-text-400
+    dark:bg-dark-800
+    dark:border-dark-700
 }
     .card--menu {
       @apply
@@ -898,6 +925,7 @@
       @apply
         hover:shadow-lg
         transition-all
+        hover:scale-105
     }
     .card--rounded-extra {
       @apply
@@ -933,9 +961,9 @@
     px-6
     py-2
     text-text-700
+    focus:text-white
     hover:bg-secondary-100
     focus:bg-primary-500
-    focus:text-white
 }
     .dropdown--item--active-state {
       @apply
@@ -971,10 +999,10 @@
     px-4 
     py-2
     my-1
+    text-text-700
+    focus:text-white
     hover:bg-secondary-100
     focus:bg-primary-500
-    focus:text-white
-    text-text-700
 }
     .dropdown-relaxed--item--active-state {
       @apply
@@ -1011,9 +1039,9 @@
     px-5
     py-3
     text-text-700
+    focus:text-white
     hover:bg-secondary-100
     focus:bg-primary-400
-    focus:text-white
 }
 
 .dropdown-flat--header {
@@ -1031,6 +1059,7 @@
   @apply
     text-center
     bg-white
+    dark:bg-dark-800
 }
 
 .datepicker--button {
@@ -1040,6 +1069,7 @@
     py-1
     px-2
     focus:ring-primary-200
+    dark:focus:ring-primary-400
 }
 
 .datepicker--weekday-bar {
@@ -1051,6 +1081,7 @@
   @apply
     text-sm 
     font-semibold 
+    dark:text-text-300
 }
 
 .datepicker-day-fixed {
@@ -1061,6 +1092,7 @@
     py-1
     mx-1
     my-1
+    dark:text-text-400
 }
 
 .datepicker--day {
@@ -1068,25 +1100,29 @@
     datepicker-day-fixed;
   @apply
     hover:bg-secondary-100
+    dark:hover:bg-dark-700
 }
     .datepicker--day--today {
       @apply  
         font-extrabold
-        hover:bg-secondary-50
         text-primary-500 !important
     }
     .datepicker--day--partially-selected-state {
       @apply
         font-semibold
-        bg-secondary-300
         text-text-500
+        bg-secondary-300
+        dark:bg-dark-700
     }
     .datepicker--day--selected-state {
       @apply
         font-semibold
+        text-white
         bg-primary-400
         hover:bg-primary-600
-        text-white
+        dark:text-text-200
+        dark:bg-primary-500
+        dark:hover:bg-primary-700
     }
 
 .datepicker--adjacent-month-day {
@@ -1095,6 +1131,7 @@
   @apply  
     pointer-events-none
     text-text-200
+    dark:text-text-700
 }
 
 .datepicker--footer {
@@ -1103,6 +1140,8 @@
     font-semibold
     py-1
     bg-secondary-100
+    dark:text-text-300
+    dark:bg-dark-700
 }
 
 /* DATEPICKER FLAT */
@@ -1152,22 +1191,22 @@
     .datepicker-flat--day--partially-selected-state {
       @apply
         font-semibold
-        bg-secondary-300
         text-text-500
+        bg-secondary-300
     }
     .datepicker-flat--day--selected-state {
       @apply
         font-semibold
+        text-white
         bg-primary-400
         hover:bg-primary-600
-        text-white
     }
 
 .datepicker-flat--today {
   @apply  
     font-extrabold
-    hover:bg-secondary-50
     text-primary-500
+    hover:bg-secondary-50
 }
 
 .datepicker-flat--adjacent-month-day {
@@ -1272,8 +1311,8 @@
     font-bold
     p-1
     px-3
-    bg-primary-500
     text-white
+    bg-primary-500
 }
     .badge--plain {
       @apply
@@ -1292,28 +1331,28 @@
     }
     .badge--primary {
       @apply
-        bg-primary-500
         text-white
+        bg-primary-500
     }
     .badge--secondary {
       @apply
-        bg-secondary-500
         text-white
+        bg-secondary-500
     }
     .badge--success {
       @apply
-        bg-success-500
         text-white
+        bg-success-500
     }
     .badge--warn {
       @apply
-        bg-warn-500
         text-white
+        bg-warn-500
     }
     .badge--danger {
       @apply
-        bg-danger-500
         text-white
+        bg-danger-500
     }
     .badge--small {
       @apply
@@ -1343,6 +1382,9 @@
     mx-0.5
     hover:bg-secondary-50
     border-secondary-300
+    dark:text-text-300
+    dark:hover:bg-dark-700
+    dark:border-dark-700
 }
 
 .pagination-side-controls-fixed {
@@ -1356,6 +1398,9 @@
     p-2
     hover:bg-secondary-50
     border-secondary-300
+    dark:text-text-300
+    dark:hover:bg-dark-700
+    dark:border-dark-700
 }
 
 .pagination--pagination-bar {
@@ -1371,11 +1416,16 @@
       @apply  
         ring-2
         font-semibold
+        text-white
+        bg-primary-500
         hover:bg-primary-400
         border-primary-200
-        bg-primary-500
         ring-primary-200
-        text-white
+        dark:text-text-100
+        dark:bg-primary-500
+        dark:hover:bg-primary-400
+        dark:border-primary-300
+        dark:ring-primary-300
     }
 
 .pagination--dots {
@@ -1408,8 +1458,8 @@
     rounded-md
     z-50
     max-w-sm
-    bg-secondary-700
     text-text-100
+    bg-secondary-700
 }
 
 .tooltip--content {

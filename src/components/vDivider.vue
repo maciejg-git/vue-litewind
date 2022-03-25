@@ -1,5 +1,5 @@
 <template>
-  <hr class="classes.divider.value" />
+  <hr :class="classes.divider.value" />
 </template>
 
 <script>

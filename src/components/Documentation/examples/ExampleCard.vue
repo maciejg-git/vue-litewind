@@ -9,7 +9,7 @@
       1500s, when an unknown printer took a galley of type and scrambled it to
       make a type specimen book.
     </div>
-    <hr />
+    <v-divider />
     <div class="text-sm px-3 py-2">Card footer</div>
   </v-card>
 
@@ -31,8 +31,8 @@
         since the 1500s, when an unknown printer took a galley of type and
         scrambled it to make a type specimen book.
       </div>
-      <hr class="w-11/12 mx-auto" />
-      <v-button style-button="small" class="ml-auto my-auto m-4">
+      <v-divider class="w-11/12 mx-auto mt-auto" />
+      <v-button style-button="small" class="ml-auto m-3 mr-6">
         Details
       </v-button>
     </div>

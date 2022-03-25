@@ -6,9 +6,9 @@
     </div>
   </v-navbar>
 
-  <div class="flex">
+  <div class="flex dark:bg-neutral-800 dark:text-text-300/90">
     <div
-      class="sidebar sticky lg:block flex-none overflow-auto text-gray-700 border-r pb-20 top-16 p-3 w-64"
+      class="sidebar sticky lg:block flex-none overflow-auto text-gray-700 dark:text-gray-400 border-r dark:border-dark-700 pb-20 top-16 p-3 w-64"
     >
 
       <!-- general -->

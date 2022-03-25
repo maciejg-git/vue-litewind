@@ -106,5 +106,4 @@ export default {
 </script>
 
 <style scoped>
-@import "./Documentation.css";
 </style>
