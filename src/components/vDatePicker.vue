@@ -3,13 +3,13 @@
     <div class="grid grid-cols-6 grid-flow-col my-2">
       <button
         :class="classes.button.value"
-        @click="handleClickPrevYear"
+        @click="handleButtonClick('prev', 'year')"
       >
         <chevron-double-left />
       </button>
       <button
         :class="classes.button.value"
-        @click="handleClickPrevMonth"
+        @click="handleButtonClick('prev', 'month')"
       >
         <chevron-left />
       </button>
@@ -18,13 +18,13 @@
       </div>
       <button
         :class="classes.button.value"
-        @click="handleClickNextMonth"
+        @click="handleButtonClick('next', 'month')"
       >
         <chevron-right />
       </button>
       <button
         :class="classes.button.value"
-        @click="handleClickNextYear"
+        @click="handleButtonClick('next', 'year')"
       >
         <chevron-double-right />
       </button>
@@ -285,7 +285,8 @@ export default {
             year.value = single.value.getFullYear();
           }
         }
-      }
+      },
+      { immediate: true }
     );
 
     // generate days to display for current month
@@ -367,6 +368,14 @@ export default {
       afterTransitionCall = setNextMonth;
     };
 
+    let handleButtonClick = (d, t) => {
+      isTransitioning.value = true;
+      transition.value = getTransition(d);
+      afterTransitionCall = d === "next" ? 
+        (t === "month" ? setNextMonth : setNextYear) :
+        (t === "month" ? setPrevMonth : setPrevYear)
+    }
+
     let handleClickPrevMonth = () => {
       isTransitioning.value = true;
       transition.value = getTransition("prev");
@@ -393,12 +402,12 @@ export default {
     let handlePrimaryButtonClick = () => {
       if (props.range) {
         if (rangeState.value == 2) emitSelectionRange();
-      } else emitSelectionSingle();
+      } else {
+        emitSelectionSingle();
+      }
     };
 
-    let handleSecondaryButtonClick = () => {
-      emit("input:cancel");
-    };
+    let handleSecondaryButtonClick = () => emit("input:cancel");
 
     // update current month and year
     let setNextMonth = () =>
@@ -459,6 +468,7 @@ export default {
       setPrevYear,
       isDisabled,
       handleDayClick,
+      handleButtonClick,
       handleClickNextMonth,
       handleClickPrevMonth,
       handleClickNextYear,

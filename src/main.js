@@ -12,6 +12,7 @@ import TableReferenceBasic from "./components/Documentation/TableReferenceBasic.
 import vCode from "./components/Documentation/components/vCode.vue"
 
 import BStar from "./components/Documentation/icons/star"
+import BMoon from "./components/Documentation/icons/moon"
 import BCheckLg from "./components/Documentation/icons/check-lg"
 import BExclamationTriangle from "./components/Documentation/icons/exclamation-triangle"
 import BArrowClockwise from "./components/Documentation/icons/arrow-clockwise"
@@ -30,14 +31,13 @@ Object.entries(icons).forEach(([path, definition]) => {
   app.component(icon, definition.default)
 })
 
-document.documentElement.classList.add("dark");
-
 registerIcon(app, [
   BStar,
   BCheckLg,
   BExclamationTriangle,
   BArrowClockwise,
   MdiLoading,
+  BMoon,
 ], {
   vendorPrefix: true,
   iconSufix: false,

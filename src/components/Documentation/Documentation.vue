@@ -1,14 +1,19 @@
 <template>
-  <v-navbar sticky style-navbar="gray" class="px-4 py-2">
-    <span class="text-lg font-bold">VueTailwind</span>
-    <div class="inline-block ml-5">
-      <a href="/documentation/installation">Docs</a>
+  <v-navbar sticky style-navbar="gray" class="flex justify-between px-4 py-2">
+    <div>
+      <span class="text-lg font-bold">VueTailwind</span>
+      <div class="inline-block ml-5">
+        <a href="/documentation/installation">Docs</a>
+      </div>
     </div>
+    <v-button name="button-plain" class="mr-2" @click="setDarkMode">
+      <v-icon name="b-moon" class="text-dark-800 dark:text-dark-400" :class="{ 'opacity-40': !darkMode }"></v-icon>
+    </v-button>
   </v-navbar>
 
   <div class="flex dark:bg-neutral-800 dark:text-text-300/90">
     <div
-      class="sidebar sticky lg:block flex-none overflow-auto text-gray-700 dark:text-gray-400 border-r dark:border-dark-700 pb-20 top-16 p-3 w-64"
+      class="sidebar sticky lg:block flex-none overflow-auto text-gray-700  dark:text-text-300/90 border-r dark:border-dark-700 pb-20 top-16 p-3 w-64"
     >
 
       <!-- general -->
@@ -99,12 +104,28 @@
 </template>
 
 <script>
+import { ref, onMounted } from "vue";
 import "highlight.js/styles/github.css";
 import { components, formComponents } from "./Components";
 
 export default {
   setup() {
+    let darkMode = ref(true);
+
+    let setDarkMode = () => {
+      if (!darkMode.value) document.documentElement.classList.add("dark");
+      else document.documentElement.classList.remove("dark");
+      darkMode.value = !darkMode.value
+    }
+
+    onMounted(() => {
+      if (darkMode.value) document.documentElement.classList.add("dark");
+      else document.documentElement.classList.remove("dark");
+    })
+
     return {
+      setDarkMode,
+      darkMode,
       components,
       formComponents,
     };

@@ -5,6 +5,9 @@
     :state="example.state"
     placeholder="Input example"
   />
+
+  <!-- underlined -->
+
   <v-input
     v-model="example.model"
     name="input-underline"
@@ -13,6 +16,9 @@
     placeholder="Input example"
     class="mt-4"
   />
+
+  <!-- rounded -->
+
   <v-input
     v-model="example.model"
     name="input-rounded"

@@ -16,7 +16,7 @@ p {
 }
 
 .example {
-  @apply my-5
+  @apply my-8
 }
 
 pre {
@@ -26,7 +26,7 @@ pre code {
   @apply text-sm whitespace-pre;
 }
 code:not([class]) {
-  @apply text-yellow-700 font-semibold text-sm
+  @apply text-yellow-700 dark:text-yellow-600 font-semibold text-sm
 }
 .code-word {
   @apply text-sm bg-indigo-200 text-dark-800 dark:text-text-100 dark:bg-indigo-500 rounded p-1 mr-1 text-sm;
