@@ -1,17 +1,16 @@
 <template>
   <div class="flex flex-col items-center gap-y-2 w-full md:w-1/2">
-    <v-button @click="example.isVisible = !example.isVisible">
+    <v-button @click="state.isVisible = !state.isVisible">
       Show modal
     </v-button>
-    <v-button @click="example.isVisibleLong = !example.isVisibleLong">
+    <v-button @click="state.isVisibleLong = !state.isVisibleLong">
       Show long scrollable modal
     </v-button>
-    <v-button @click="example.isVisibleImage = !example.isVisibleImage">
+    <v-button @click="state.isVisibleImage = !state.isVisibleImage">
       Show image modal
     </v-button>
   </div>
-
-  <!-- CUT START -->
+<!-- CUT START -->
   <div class="mt-4 md:ml-14 md:mt-0">
     <div class="mb-2">
       <label for="position">position:</label>
@@ -39,150 +38,151 @@
       </v-select>
     </div>
   </div>
-  <!-- CUT END -->
+<!-- CUT END -->
 
   <!-- modal -->
 
-  <v-modal
-    v-model="example.isVisible"
-    :title="example.title"
-    :no-primary-button="!!example.noPrimaryButton"
-    :no-secondary-button="!!example.noSecondaryButton"
-    :primary-button-label="example.primaryButtonLabel"
-    :secondary-button-label="example.secondaryButtonLabel"
-    :primary-button-close="!!example.primaryButtonClose"
-    :secondary-button-close="!!example.secondaryButtonClose"
-    :justify-buttons="example.justifyButtons"
-    :no-close-button="!!example.noCloseButton"
-    :close-button-in-content="!!example.closeButtonInContent"
-    :static-backdrop="!!example.staticBackdrop"
-    :no-header="!!example.noHeader"
-    :no-footer="!!example.noFooter"
-    :position="example.position"
-    :size="example.size"
-    :transition="example.transition"
+  <v-modal 
+    v-model="state.isVisible" 
+    v-bind="example"
   >
     <!-- forms -->
 <!-- CUT START -->
-    <div>
-      <div class="mb-2">
-        <label for="title" class="mr-2">title:</label>
-        <v-input type="text" id="title" v-model="example.title"></v-input>
+    <div class="flex justify-around">
+      <div>
+        <div class="mb-2">
+          <label for="title" class="mr-2">title:</label>
+          <v-input type="text" id="title" v-model="example.title"></v-input>
+        </div>
+        <div class="mb-2">
+          <label for="no-primary-button" class="mr-2">no-primary-button:</label>
+          <v-select id="no-primary-button" v-model="example.noPrimaryButton">
+            <option :value="true">true</option>
+            <option :value="false">false</option>
+          </v-select>
+        </div>
+        <div class="mb-2">
+          <label for="no-secondary-button" class="mr-2">
+            no-secondary-button:
+          </label>
+          <v-select id="no-secondary-button" v-model="example.noSecondaryButton">
+            <option :value="true">true</option>
+            <option :value="false">false</option>
+          </v-select>
+        </div>
+        <div class="mb-2">
+          <label for="primary-button-label" class="mr-2">
+            primary-button-label:
+          </label>
+          <v-input
+            type="text"
+            id="primary-button-label"
+            v-model="example.primaryButtonLabel"
+          ></v-input>
+        </div>
+        <div class="mb-2">
+          <label for="secondary-button-label" class="mr-2">
+            secondary-button-label:
+          </label>
+          <v-input
+            type="text"
+            id="secondary-button-label"
+            v-model="example.secondaryButtonLabel"
+          ></v-input>
+        </div>
+        <div class="mb-2">
+          <label for="primary-button-close" class="mr-2">
+            primary-button-close:
+          </label>
+          <v-select
+            id="primary-button-close"
+            v-model="example.primaryButtonClose"
+          >
+            <option :value="true">true</option>
+            <option :value="false">false</option>
+          </v-select>
+        </div>
+        <div class="mb-2">
+          <label for="secondary-button-close" class="mr-2">
+            secondary-button-close:
+          </label>
+          <v-select
+            id="secondary-button-close"
+            v-model="example.secondaryButtonClose"
+          >
+            <option :value="true">true</option>
+            <option :value="false">false</option>
+          </v-select>
+        </div>
+        <div class="mb-2">
+          <label for="justify-buttons" class="mr-2">justify-buttons:</label>
+          <v-select id="justify-buttons" v-model="example.justifyButtons">
+            <option value="start">start</option>
+            <option value="end">end</option>
+            <option value="center">center</option>
+            <option value="between">between</option>
+            <option value="around">around</option>
+            <option value="evenly">evenly</option>
+          </v-select>
+        </div>
       </div>
-      <div class="mb-2">
-        <label for="no-primary-button" class="mr-2">no-primary-button:</label>
-        <v-select id="no-primary-button" v-model="example.noPrimaryButton">
-          <option :value="true">true</option>
-          <option :value="false">false</option>
-        </v-select>
-      </div>
-      <div class="mb-2">
-        <label for="no-secondary-button" class="mr-2">no-secondary-button:</label>
-        <v-select id="no-secondary-button" v-model="example.noSecondaryButton">
-          <option :value="true">true</option>
-          <option :value="false">false</option>
-        </v-select>
-      </div>
-      <div class="mb-2">
-        <label for="primary-button-label" class="mr-2">primary-button-label:</label>
-        <v-input
-          type="text"
-          id="primary-button-label"
-          v-model="example.primaryButtonLabel"
-        ></v-input>
-      </div>
-      <div class="mb-2">
-        <label for="secondary-button-label" class="mr-2">secondary-button-label:</label>
-        <v-input
-          type="text"
-          id="secondary-button-label"
-          v-model="example.secondaryButtonLabel"
-        ></v-input>
-      </div>
-      <div class="mb-2">
-        <label for="primary-button-close" class="mr-2">primary-button-close:</label>
-        <v-select
-          id="primary-button-close"
-          v-model="example.primaryButtonClose"
-        >
-          <option :value="true">true</option>
-          <option :value="false">false</option>
-        </v-select>
-      </div>
-      <div class="mb-2">
-        <label for="secondary-button-close" class="mr-2">secondary-button-close:</label>
-        <v-select
-          id="secondary-button-close"
-          v-model="example.secondaryButtonClose"
-        >
-          <option :value="true">true</option>
-          <option :value="false">false</option>
-        </v-select>
-      </div>
-      <div class="mb-2">
-        <label for="justify-buttons" class="mr-2">justify-buttons:</label>
-        <v-select
-          id="justify-buttons"
-          v-model="example.justifyButtons"
-        >
-          <option value="start">start</option>
-          <option value="end">end</option>
-          <option value="center">center</option>
-          <option value="between">between</option>
-          <option value="around">around</option>
-          <option value="evenly">evenly</option>
-        </v-select>
-      </div>
-      <div class="mb-2">
-        <label for="no-close-button" class="mr-2">no-close-button:</label>
-        <v-select id="no-close-button" v-model="example.noCloseButton">
-          <option :value="true">true</option>
-          <option :value="false">false</option>
-        </v-select>
-      </div>
-      <div class="mb-2">
-        <label for="close-button-in-content" class="mr-2">close-button-in-content:</label>
-        <v-select id="close-button-in-content" v-model="example.closeButtonInContent">
-          <option :value="true">true</option>
-          <option :value="false">false</option>
-        </v-select>
-      </div>
-      <div class="mb-2">
-        <label for="static-backdrop" class="mr-2">static-backdrop:</label>
-        <v-select id="static-backdrop" v-model="example.staticBackdrop">
-          <option :value="true">true</option>
-          <option :value="false">false</option>
-        </v-select>
-      </div>
-      <div class="mb-2">
-        <label for="no-header" class="mr-2">no-header:</label>
-        <v-select id="no-header" v-model="example.noHeader">
-          <option :value="true">true</option>
-          <option :value="false">false</option>
-        </v-select>
-      </div>
-      <div class="mb-2">
-        <label for="no-footer" class="mr-2">no-footer:</label>
-        <v-select id="no-footer" v-model="example.noFooter">
-          <option :value="true">true</option>
-          <option :value="false">false</option>
-        </v-select>
-      </div>
-      <div class="mb-2">
-        <label for="position-modal" class="mr-2">position:</label>
-        <v-select id="position-modal" v-model="example.position">
-          <option value="top">top</option>
-          <option value="center">center</option>
-        </v-select>
-      </div>
-      <div class="mb-2">
-        <label for="size-modal" class="mr-2">size:</label>
-        <v-select id="size-modal" v-model="example.size">
-          <option value="sm">sm</option>
-          <option value="md">md</option>
-          <option value="lg">lg</option>
-          <option value="xl">xl</option>
-        </v-select>
+      <div>
+        <div class="mb-2">
+          <label for="no-close-button" class="mr-2">no-close-button:</label>
+          <v-select id="no-close-button" v-model="example.noCloseButton">
+            <option :value="true">true</option>
+            <option :value="false">false</option>
+          </v-select>
+        </div>
+        <div class="mb-2">
+          <label for="close-button-in-content" class="mr-2">
+            close-button-in-content:
+          </label>
+          <v-select
+            id="close-button-in-content"
+            v-model="example.closeButtonInContent"
+          >
+            <option :value="true">true</option>
+            <option :value="false">false</option>
+          </v-select>
+        </div>
+        <div class="mb-2">
+          <label for="static-backdrop" class="mr-2">static-backdrop:</label>
+          <v-select id="static-backdrop" v-model="example.staticBackdrop">
+            <option :value="true">true</option>
+            <option :value="false">false</option>
+          </v-select>
+        </div>
+        <div class="mb-2">
+          <label for="no-header" class="mr-2">no-header:</label>
+          <v-select id="no-header" v-model="example.noHeader">
+            <option :value="true">true</option>
+            <option :value="false">false</option>
+          </v-select>
+        </div>
+        <div class="mb-2">
+          <label for="no-footer" class="mr-2">no-footer:</label>
+          <v-select id="no-footer" v-model="example.noFooter">
+            <option :value="true">true</option>
+            <option :value="false">false</option>
+          </v-select>
+        </div>
+        <div class="mb-2">
+          <label for="position-modal" class="mr-2">position:</label>
+          <v-select id="position-modal" v-model="example.position">
+            <option value="top">top</option>
+            <option value="center">center</option>
+          </v-select>
+        </div>
+        <div class="mb-2">
+          <label for="size-modal" class="mr-2">size:</label>
+          <v-select id="size-modal" v-model="example.size">
+            <option value="sm">sm</option>
+            <option value="md">md</option>
+            <option value="lg">lg</option>
+            <option value="xl">xl</option>
+          </v-select>
+        </div>
       </div>
     </div>
 <!-- CUT END -->
@@ -191,7 +191,7 @@
   <!-- long scrollable modal -->
 
   <v-modal
-    v-model="example.isVisibleLong"
+    v-model="state.isVisibleLong"
     :title="example.title"
     :no-primary-button="!!example.noPrimaryButton"
     :no-secondary-button="!!example.noSecondaryButton"
@@ -212,7 +212,7 @@
   <!-- image modal -->
 
   <v-modal
-    v-model="example.isVisibleImage"
+    v-model="state.isVisibleImage"
     no-header
     no-footer
     close-button-in-content
@@ -241,14 +241,11 @@
 
 <script>
 import { ref, reactive } from "vue";
-import { longText } from "../../../const"
+import { longText } from "../../../const";
 
 export default {
   setup() {
     let example = reactive({
-      isVisible: false,
-      isVisibleLong: false,
-      isVisibleImage: false,
       title: "Example modal",
       noPrimaryButton: false,
       noSecondaryButton: false,
@@ -269,6 +266,12 @@ export default {
       transition: "fade-slide",
     });
 
+    let state = reactive({
+      isVisible: false,
+      isVisibleLong: false,
+      isVisibleImage: false,
+    });
+
     let images = ["mononoke035.jpg", "mononoke033.jpg"];
 
     let currentImage = ref(0);
@@ -285,6 +288,7 @@ export default {
 
     return {
       example,
+      state,
       longText,
       images,
       currentImage,

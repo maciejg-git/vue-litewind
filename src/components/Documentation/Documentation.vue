@@ -1,13 +1,13 @@
 <template>
-  <v-navbar sticky style-navbar="gray" class="flex justify-between px-4 py-2">
+  <v-navbar sticky style-navbar="gray" class="flex justify-between px-4 py-2 border-b dark:border-dark-700">
     <div>
-      <span class="text-lg font-bold">VueTailwind</span>
-      <div class="inline-block ml-5">
+      <span class="text-lg font-bold dark:text-text-300">VueTailwind</span>
+      <div class="inline-block dark:text-text-300 ml-5">
         <a href="/documentation/installation">Docs</a>
       </div>
     </div>
     <v-button name="button-plain" class="mr-2" @click="setDarkMode">
-      <v-icon name="b-moon" class="text-dark-800 dark:text-dark-400" :class="{ 'opacity-40': !darkMode }"></v-icon>
+      <v-icon name="b-moon" class="v-icon--md text-dark-800 dark:text-dark-400" :class="{ 'opacity-40': !darkMode }"></v-icon>
     </v-button>
   </v-navbar>
 
@@ -106,6 +106,7 @@
 <script>
 import { ref, onMounted } from "vue";
 import "highlight.js/styles/github.css";
+import "../../styles/tokyo-night-dark.css"
 import { components, formComponents } from "./Components";
 
 export default {

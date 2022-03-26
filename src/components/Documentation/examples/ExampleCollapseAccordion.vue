@@ -34,6 +34,8 @@
     </v-card>
   </v-accordion>
 
+  <!-- style flat -->
+
   <v-accordion class="mt-10">
     <v-card name="card-flat">
       <v-button-collapse

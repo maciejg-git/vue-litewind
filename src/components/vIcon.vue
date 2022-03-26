@@ -6,37 +6,24 @@
 
 <script>
 import { computed, inject } from "vue";
-import { isObject, isString } from "../tools";
 
 export default {
   props: {
     name: { type: [String, Object], default: "" },
+    icon: { type: [String, Object], default: "" },
+    i: { type: [String, Object], default: "" },
     transition: { type: String, default: "" },
-    iconType: { type: [String, Object], default: "" },
+    iconType: { type: String, default: "" },
   },
   setup(props) {
     let iconTypes = inject("iconTypes", {});
 
     let icon = computed(() => {
-      if (props.icon) return props.icon;
-      if (props.i) return props.i;
-      if (props.name) return props.name;
-
-      let type = iconTypes[props.iconType];
-      if (!type) return;
-
-      let icon = null;
-
-      if (isObject(type)) icon = type.icon ? type.icon : null;
-      else if (isString(type)) icon = type;
-
-      if (!icon) return
-
-      return icon;
+      return iconTypes[props.iconType] || props.name || props.icon || props.i;
     });
 
     let classes = computed(() => {
-      return props.iconType ? "icon--" + props.iconType + "-type" : "";
+      return props.iconType ? "icon-type--" + props.iconType : "";
     });
 
     return {

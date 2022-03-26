@@ -1,15 +1,6 @@
 <template>
   <v-table
-      ref="table"
-    :items="example.data"
-    :definition="example.definition"
-    :filter="example.filter"
-    v-model:page="example.page"
-    :items-per-page="+example.itemsPerPage"
-    :state="example.state"
-    :selectionMode="example.selectionMode"
-    :captionTop="!!example.captionTop"
-    :locale="example.locale"
+    v-bind="example"
     @update:filtered-count="handleFilteredCount"
     @update:page="handlePageChange"
     @input:selection="handleSelection"
@@ -41,11 +32,11 @@
     <div class="mt-4 lg:mt-0">
       <label for="items-per-page" class="mr-10">Items per page</label>
       <v-select v-model="example.itemsPerPage" id="items-per-page">
-        <option value="0">0</option>
-        <option value="5">5</option>
-        <option value="10">10</option>
-        <option value="20">20</option>
-        <option value="50">50</option>
+        <option :value="0">0</option>
+        <option :value="5">5</option>
+        <option :value="10">10</option>
+        <option :value="20">20</option>
+        <option :value="50">50</option>
       </v-select>
     </div>
   </div>
@@ -122,7 +113,7 @@ import data from "../data/data.json";
 export default {
   setup() {
     let example = reactive({
-      data: data.slice(0, 60),
+      items: data.slice(0, 60),
       page: 1,
       itemsPerPage: 5,
       filter: "",
@@ -163,8 +154,6 @@ export default {
       ],
     });
 
-    let table = ref(null)
-
     let events = ref([]);
 
     let editModalIsVisible = ref(false);
@@ -197,7 +186,6 @@ export default {
       handlePageChange,
       handleFilteredCount,
       handleSelection,
-      table,
     };
   },
 };

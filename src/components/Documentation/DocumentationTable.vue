@@ -37,31 +37,37 @@
       filtering etc you need to provide definition array.
     </p>
     <pre>
-      <code>
-let definition = ref([
+      <code class="language-javascript">
+let definition: ref([
   {
     key: "id",
-    class: (k, v, i) => v >= 5 ? 'bg-success' : ''
+    visible: false,
   },
   {
     key: "first_name",
     sortable: true,
   },
   {
-    key: "city",
-    visible: false,
+    key: "last_name",
+    sortable: true,
   },
   {
     key: "email",
     sortable: true,
   },
   {
-    key: "country",
+    key: "city",
+    sortable: true,
   },
   {
-    key: "details"
+    key: "country",
+    sortable: true,
+    class: (k, v) => (v == "ID" ? "bg-red-50" : ""),
   },
-]);
+  {
+    key: "edit",
+  },
+])
     </code>
   </pre>
     <v-table

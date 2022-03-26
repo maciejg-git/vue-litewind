@@ -68,10 +68,24 @@ export default {
     let reference = ref([
       {
         prop: "icon",
-        type: ["String"],
+        type: ["String", "Object"],
         default: "undefined",
         description:
-          "Name of the imported and registered icon. This prop have two aliases 'name' and 'i' (for example <code>&lt;icon name='icon name' /&gt;</code>)",
+          "Name of the imported and registered icon. This prop have two aliases 'name' and 'i'",
+      },
+      {
+        prop: "i",
+        type: ["String", "Object"],
+        default: "undefined",
+        description:
+          "Same as icon prop",
+      },
+      {
+        prop: "name",
+        type: ["String", "Object"],
+        default: "undefined",
+        description:
+          "Same as icon prop",
       },
       {
         prop: "icon-type",

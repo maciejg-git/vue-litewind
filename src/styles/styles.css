@@ -5,9 +5,9 @@
 
 .fixed-shadow {
   @apply
-    shadow-lg
+    shadow-md
     dark:shadow-lg
-    dark:shadow-black/40
+    dark:shadow-black/30
 }
 
 /* ICON */
@@ -156,6 +156,38 @@
         pointer-events-none
     }
 
+/* TABS MATERIAL */
+
+.tabs-material-tab-fixed {
+  @apply
+    -mb-px
+    p-2
+    px-4
+}
+
+.tabs-material--tab {
+  @apply
+    tabs-material-tab-fixed;
+  @apply
+    /* hover:bg-gray-50 */
+    transition-colors
+    border-b-2
+    border-transparent
+    duration-200
+}
+    .tabs-material--tab--active-state {
+      @apply
+        shadow-none
+        border-b-2
+        border-primary-500
+    }
+
+.tabs-material--tab-bar {
+  @apply
+    border-b
+    dark:border-dark-700
+}
+
 /* TABS ROUNDED */
 
 .tabs-rounded--tab-bar {
@@ -173,6 +205,8 @@
     duration-200
     hover:bg-secondary-50
     border-secondary-300
+    dark:text-text-400
+    dark:hover:bg-dark-700
 }
     .tabs-rounded--tab--small {
       @apply
@@ -185,6 +219,9 @@
         shadow-none
         bg-primary-400
         hover:bg-primary-300
+        dark:text-white
+        dark:bg-primary-500
+        dark:hover:bg-primary-500
     }
 
 /* TABS */
@@ -251,7 +288,6 @@
     }
 
 .table--header-row {
-
 }
 
 .table--header-cell {
@@ -314,7 +350,46 @@
     text-left
     py-2
     text-text-600
+    dark:text-text-400
 }
+
+/* LIST MATERIAL */
+
+.list-material {
+}
+    .list-material--round {
+      @apply
+        rounded-md
+    }
+    .list-material--borderless {
+      @apply
+        border-0
+    }
+
+.list-material--item {
+  @apply
+    border
+    shadow-md
+    p-2
+    px-4
+    my-1
+    transition-all
+    border-gray-100
+    hover:bg-gray-50
+    dark:border-dark-700
+    dark:shadow-black/20
+    dark:hover:bg-dark-700
+}
+    .list-material--item--active-state {
+      @apply
+        border-l-4
+        text-white
+        border-blue-600
+        bg-blue-500
+        hover:bg-blue-600
+        dark:border-blue-600
+        dark:hover:bg-blue-600
+    }
 
 /* LIST */
 
@@ -432,14 +507,17 @@
     text-sm
     mt-1
     text-text-600
+    dark:text-text-400
 }
     .form-text--valid-state {
       @apply
         text-success-600
+        dark:text-success-500
     }
     .form-text--invalid-state {
       @apply
         text-danger-600
+        dark:text-danger-500
     }
 
 /* SELECT */
@@ -519,20 +597,31 @@
     text-primary-500
     bg-white
     border-secondary-300
-    focus:border-secondary-400
     focus:ring-primary-200
+    dark:text-primary-500
+    dark:bg-dark-800
+    dark:checked:bg-current
+    dark:checked:border-current
+    dark:border-dark-700
+    dark:focus:ring-primary-200
 }
     .radio--valid-state {
       @apply
         text-success-500
         border-success-300
         focus:ring-success-200
+        dark:text-success-500
+        dark:border-success-400
+        dark:focus:ring-success-300
     }
     .radio--invalid-state {
       @apply
         text-danger-500
         border-danger-300
         focus:ring-danger-200
+        dark:text-danger-500
+        dark:border-danger-400
+        dark:focus:ring-danger-300
     }
     .radio--disabled-state {
       @apply
@@ -556,14 +645,12 @@
     text-primary-500
     bg-white
     border-secondary-300
-    focus:border-secondary-400
     focus:ring-primary-200
     dark:text-primary-500
     dark:bg-dark-800
     dark:checked:bg-current
     dark:checked:border-current
     dark:border-dark-700
-    dark:focus:border-dark-800
     dark:focus:ring-primary-200
 }
     .checkbox--valid-state {
@@ -571,12 +658,18 @@
         text-success-500
         border-success-300
         focus:ring-success-200
+        dark:text-success-500
+        dark:border-success-400
+        dark:focus:ring-success-300
     }
     .checkbox--invalid-state {
       @apply
         text-danger-500
         border-danger-300
         focus:ring-danger-200
+        dark:text-danger-500
+        dark:border-danger-400
+        dark:focus:ring-danger-300
     }
     .checkbox--disabled-state {
       @apply
@@ -761,7 +854,7 @@
         text-warn-900
         bg-warn-300
         border-warn-400
-        dark:text-text-200
+        dark:text-warn-900
         dark:bg-warn-500
         dark:border-warn-600
     }
@@ -770,7 +863,7 @@
         text-success-900
         bg-success-300
         border-success-400
-        dark:text-text-200
+        dark:text-success-900
         dark:bg-success-500
         dark:border-success-600
     }
@@ -807,7 +900,7 @@
 
 .navbar {
   @apply
-    shadow-md
+    shadow-lg
     bg-secondary-100
     dark:bg-dark-800
 }
@@ -822,7 +915,8 @@
   @apply
     w-5
     h-5
-    text-secondary-500
+    text-text-500
+    dark:text-text-300
 }
     .close-button--small {
       @apply
@@ -969,6 +1063,7 @@
     shadow
     overflow-hidden
     bg-white
+    dark:bg-dark-700
 }
     .card-flat--rounded {
       @apply
@@ -1308,9 +1403,11 @@
     rounded-md
     overflow-hidden
     max-w-xs
-    shadow-lg
+    fixed-shadow
     bg-white
     border-secondary-300
+    dark:bg-dark-800
+    dark:border-dark-700
 }
 
 .popover--content {
@@ -1326,6 +1423,7 @@
     max-w-xs
     shadow-lg
     bg-secondary-50
+    dark:bg-dark-700
 }
 
 .popover-plain--content {

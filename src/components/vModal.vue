@@ -91,7 +91,7 @@ export default {
     styleFooter: { type: String, default: "" },
     styleContent: { type: String, default: "" },
     styleBackdrop: { type: String, default: "" },
-    variant: { type: String, default: ""},
+    variant: { type: String, default: "" },
   },
   components: {
     vButton,
@@ -180,7 +180,10 @@ export default {
     let closeModal = () => emit("update:modelValue", false);
 
     let handleBackdropClick = () => {
-      if (props.staticBackdrop) return;
+      if (props.staticBackdrop) {
+        emit("input:static-backdrop-click");
+        return;
+      }
       closeModal();
     };
 

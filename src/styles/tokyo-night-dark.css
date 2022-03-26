@@ -1,0 +1,8 @@
+pre code.dark .hljs{display:block;overflow-x:auto;padding:1em}code.dark .hljs{padding:3px 5px}/*!
+  Theme: Tokyo-night-Dark
+  origin: https://github.dark .com/enkia/tokyo-night-vscode-theme
+  Description: Original highlight.dark .js style
+  Author: (c) Henri Vandersleyen <hvandersleyen@gmail.dark .com>
+  License: see project LICENSE
+  Touched: 2022
+*/.dark .hljs-comment,.dark .hljs-meta{color:#565f89}.dark .hljs-deletion,.dark .hljs-doctag,.dark .hljs-regexp,.dark .hljs-selector-attr,.dark .hljs-selector-class,.dark .hljs-selector-id,.dark .hljs-selector-pseudo,.dark .hljs-tag,.dark .hljs-template-tag,.dark .hljs-variable.dark .language_{color:#f7768e}.dark .hljs-link,.dark .hljs-literal,.dark .hljs-number,.dark .hljs-params,.dark .hljs-template-variable,.dark .hljs-type,.dark .hljs-variable{color:#ff9e64}.dark .hljs-attribute,.dark .hljs-built_in{color:#e0af68}.dark .hljs-keyword,.dark .hljs-property,.dark .hljs-subst,.dark .hljs-title,.dark .hljs-title.dark .class_,.dark .hljs-title.dark .class_.dark .inherited__,.dark .hljs-title.dark .function_{color:#7dcfff}.dark .hljs-selector-tag{color:#73daca}.dark .hljs-addition,.dark .hljs-bullet,.dark .hljs-quote,.dark .hljs-string,.dark .hljs-symbol{color:#9ece6a}.dark .hljs-code,.dark .hljs-formula,.dark .hljs-section{color:#7aa2f7}.dark .hljs-attr,.dark .hljs-char.dark .escape_,.dark .hljs-keyword,.dark .hljs-name,.dark .hljs-operator{color:#bb9af7}.dark .hljs-punctuation{color:#c0caf5}.dark .hljs{background:#303030;color:#9aa5ce}.dark .hljs-emphasis{font-style:italic}.dark .hljs-strong{font-weight:700}

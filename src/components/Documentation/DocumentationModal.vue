@@ -208,19 +208,28 @@ export default {
         description: "Update v-model",
       },
       {
-        prop: "input:primaryButtonClick",
+        prop: "input:primary-button-click",
         description: "Emmited after clicking primary button",
       },
       {
-        prop: "input:secondaryButtonClick",
+        prop: "input:secondary-button-click",
         description: "Emmited after clicking secondary button",
+      },
+      {
+        prop: "input:static-backdrop-click",
+        description: "Emmited after clicking backdrop if static-backdrop prop is true",
       },
     ]);
 
     let slots = ref([
       {
         prop: "default",
-        description: "Slot for modal content",
+        description: "Modal content",
+      },
+      {
+        prop: "header",
+        description:
+          "Modal header content",
       },
       {
         prop: "footer",
