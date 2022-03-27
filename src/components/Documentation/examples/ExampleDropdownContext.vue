@@ -1,14 +1,15 @@
 <template>
-  <div v-for="language in languages">
+  <div class="flex mb-4">
     <div
-      class="inline-block border cursor-pointer p-2 my-2"
+      v-for="language in languages"
+      class="border hover:bg-secondary-50 dark:hover:bg-dark-700 dark:border-dark-700 cursor-pointer p-2 mr-4"
       @contextmenu.prevent="showContextDropdown($event, language)"
     >
       {{ language }}
     </div>
   </div>
 
-  <span class="font-semibold mt-6">Current language:</span>
+  <span class="font-semibold mt-10">Current language:</span>
   {{ currentLanguage }}
 
   <v-dropdown
@@ -20,7 +21,9 @@
       <v-dropdown-menu-item @click="currentLanguage = context.data">
         Switch to {{ context.data }}
       </v-dropdown-menu-item>
-      <v-dropdown-menu-item @click="window.open('https://google.com/search?q=' + context.data)">
+      <v-dropdown-menu-item
+        @click="window.open('https://google.com/search?q=' + context.data)"
+      >
         Search {{ context.data }}
       </v-dropdown-menu-item>
       <v-dropdown-menu-item @click="languages.push('spanish')">

@@ -42,11 +42,11 @@ registerIcon(app, [
   iconSufix: false,
 })
 
-app.provide("iconTypes", {
+app.provide("icon-types", {
   valid: "b-check-lg",
   invalid: "b-exclamation-triangle",
   success: "b-check-lg",
-  info: "info-circle-icon",
+  info: "b-info-circle-icon",
   danger: "exclamation-octagon-fill-icon",
   warn: "exclamation-triangle-icon",
   light: "info-circle-icon",

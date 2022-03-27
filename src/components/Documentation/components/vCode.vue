@@ -1,11 +1,11 @@
 <template>
   <pre class="">
-    <code class="code" :class="'language-' + language">{{ code }}</code>
+    <code ref="codeEl" class="code" :class="'language-' + language"><slot name="default">{{ code }}</slot></code>
   </pre>
 </template>
 
 <script>
-import { onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 import hljs from "highlight.js";
 
 export default {
@@ -17,6 +17,8 @@ export default {
   },
   setup(props) {
     let code = props.code;
+
+    let codeEl = ref(null)
 
     if (props.template || props.script) {
       let templateRegexp = /^<template>([\s\S]*?)^<\/template>/gm;
@@ -40,10 +42,17 @@ export default {
     }
 
     onMounted(() => {
-      hljs.highlightAll();
-    });
+      hljs.highlightElement(codeEl.value)
+    })
+
+    // watch(
+    //   [codeEl, () => props.code],
+    //   () => hljs.highlightElement(codeEl.value),
+    //   { flush: "post" }
+    // );
 
     return {
+      codeEl,
       code,
     };
   },

@@ -1,15 +1,14 @@
 <template>
-  <!-- position relative -->
-
   <v-alert
     v-model="example.isVisible"
     :dismissable="example.dismissable"
     :auto-dismiss-delay="example.autoDismissDelay"
     style-alert="info:info danger:danger warn:warn success:success invalid:danger valid:success"
     :variant="example.variant"
+    icon="success"
     class="my-4"
   >
-    <v-icon :icon-type="example.state" class="v-icon--md mr-2"></v-icon>
+    <v-icon :icon-type="example.variant" class="v-icon--md mr-2"></v-icon>
     Alert
   </v-alert>
 
@@ -21,7 +20,7 @@
     :variant="example.variant"
     class="my-4"
   >
-    <v-icon :icon-type="example.state" class="v-icon--md mr-2"></v-icon>
+    <v-icon :icon-type="example.variant" class="v-icon--md mr-2"></v-icon>
     Alert
   </v-alert>
 
@@ -31,7 +30,6 @@
     v-model="example.isVisibleAbsolute"
     :dismissable="example.dismissable"
     :auto-dismiss-delay="example.autoDismissDelay"
-    :state="example.state"
     class="fixed top-20 left-1/2 w-3/4 transform -translate-x-1/2 shadow"
   >
     Alert
@@ -99,6 +97,7 @@ export default {
       dismissable: true,
       autoDismissDelay: 0,
       variant: "info",
+      state: "info",
     });
 
     return {

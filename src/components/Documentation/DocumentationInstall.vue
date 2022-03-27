@@ -5,11 +5,11 @@
   <section>
     <h5>Installation</h5>
     <p></p>
-    <pre>
-      <code>
-npm i vue-wind
-    </code>
-  </pre>
+
+    <v-code language="javascript">
+      npm i vue-wind
+    </v-code>
+
     <p>
       Vue-wind uses Tailwindcss as CSS framework. To install Tailwindcss follow
       <a class="link" href="https://tailwindcss.com/docs/installation">
@@ -17,6 +17,7 @@ npm i vue-wind
       </a>
       in their offical documentation.
     </p>
+
     <p>
       <span class="font-semibold">[Option if using form components]</span>
       Install
@@ -26,59 +27,59 @@ npm i vue-wind
       plugin that provides a basic reset for form styles that makes form
       elements easy to override with utilities.
     </p>
-    <pre>
-      <code>
-npm i @tailwindcss/forms
-    </code>
-  </pre>
+
+    <v-code language="javascript">
+      npm i @tailwindcss/forms
+    </v-code>
+
     <p>
       <span class="font-semibold">[Option 1]</span>
       Register all components in application entry file (for example main.js)
     </p>
-    <pre>
-      <code class="language-js">
-// main.js
+
+    <v-code language="javascript">
+      {{ `// main.js
 
 import { install } from "vue-wind";
 
 let app = createApp(App);
 
-app.use(install);
-    </code>
-  </pre>
+app.use(install); `}}
+    </v-code>
+
     <p>
       <span class="font-semibold">[Option 2]</span>
       or register component plugins seperately. This should make your build
       smaller.
     </p>
-    <pre>
-      <code class="language-js">
-// main.js
+
+    <v-code language="javascript">
+      {{ `// main.js
 
 import { buttonPlugin, selectPlugin } from "vue-wind";
 
 let app = createApp(App);
 
 app.use(buttonPlugin);
-app.use(selectPlugin);
-    </code>
-  </pre>
+app.use(selectPlugin); `}}
+    </v-code>
+
     <p>
       Copy styles.css from 'node_modules/vue-wind/dist/' to the src directory of
       your project and import it. You can edit this file to customize look of
       components.
     </p>
-    <pre>
-      <code class="language-js">
-// main.js
+
+    <v-code language="javascript">
+      {{ `// main.js
 
 // copy styles.css to src directory of your project and modify it to your liking
 import "./styles.css";
 
 // import fixed styles, order of imports is important
-import "vue-wind/dist/style.css"
-    </code>
-  </pre>
+import "vue-wind/dist/style.css" `}}
+    </v-code>
+
     <h5>Styling components</h5>
       <p>
       To customize appearance of components use following:
@@ -99,29 +100,25 @@ import "vue-wind/dist/style.css"
         </li>
       </ul>
       </p>
+
       <div class="example">
         <example-install-button />
       </div>
+
     <v-code :code="exampleButtonCode" template language="html"></v-code>
     <v-code :code="exampleButtonCode" script language="js"></v-code>
   </section>
 </template>
 
 <script>
-import { onMounted } from "vue";
 import ExampleInstallButton from "./examples/ExampleInstallButton.vue"
 import exampleButtonCode from "./examples/ExampleInstallButton.vue?raw"
-import hljs from "highlight.js";
 
 export default {
   components: {
     ExampleInstallButton,
   },
   setup() {
-    onMounted(() => {
-      hljs.highlightAll();
-    });
-
     return {
       exampleButtonCode,
     };

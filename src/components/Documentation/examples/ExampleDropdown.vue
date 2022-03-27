@@ -14,7 +14,7 @@
     @state:closed="events.unshift({ ev: 'state:closed', data: $event })"
   >
     <template #reference>
-      <v-button-dropdown>
+      <v-button-dropdown class="mr-4">
         Dropdown menu
       </v-button-dropdown>
     </template>
@@ -58,7 +58,7 @@
     class="ml-2"
   >
     <template #reference>
-      <v-button>
+      <v-button class="mr-4">
         Dropdown menu (alternate style)
         <v-chevron style-chevron="right" />
       </v-button>
@@ -102,7 +102,7 @@
     class="ml-2"
   >
     <template #reference>
-      <v-button>
+      <v-button class="mr-4">
         Dropdown datepicker
         <v-chevron style-chevron="right" />
       </v-button>

@@ -2,7 +2,7 @@ h3 {
   @apply text-4xl font-semibold mt-12;
 }
 h4 {
-  @apply text-2xl font-semibold mt-12;
+  @apply text-2xl font-semibold mt-20;
 }
 h5 {
   @apply text-xl font-semibold mt-12;

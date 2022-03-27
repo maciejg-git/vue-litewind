@@ -96,7 +96,7 @@
 
   </div>
 
-  <footer class="flex bg-gray-200 border-gray-300 py-4 shadow">
+  <footer class="flex border-t bg-gray-200 border-gray-300 dark:bg-dark-800 dark:border-dark-700 min-h-[100px] py-4">
     <span class="ml-auto mr-4">
       <v-icon name="github" class="text-gray-500"></v-icon>
     </span>
@@ -105,8 +105,8 @@
 
 <script>
 import { ref, onMounted } from "vue";
-import "highlight.js/styles/github.css";
-import "../../styles/tokyo-night-dark.css"
+import "../../styles/hljs/github.css";
+import "../../styles/hljs/tokyo-night-dark.css"
 import { components, formComponents } from "./Components";
 
 export default {

@@ -30,25 +30,25 @@
     <p>
       Provide icon types via provide function in application entry file
       (typically main.js) or anywhere in top level component. Icon type is
-      Object that maps icon name to any name. It can be useful in some ways for
+      the object that allows mapping of icon name or icon component object to any name. It can be useful for
       example to define easy to remember aliases for frequently used icons,
       changing icons application wide, define icons for various states and bind
-      with states of components etc. Also those icons have
+      with states of components etc. Those icons have
       <code>icon--[type]-type</code>
-      class.
+      class added by default.
     </p>
     <pre>
       <code class="language-js">
-app.provide("iconTypes", {
-  valid: "check-icon",
-  invalid: "exclamation-triangle-icon",
-  success: "check-lg-icon",
-  info: "info-circle-icon",
-  danger: "exclamation-octagon-fill-icon",
-  warn: "exclamation-triangle-icon",
-  light: "info-circle-icon",
-  menu: "three-dots-icon",
-  question: "question-circle-icon",
+app.provide("icon-types", {
+  valid: BCheck, // icon component object
+  invalid: "exclamation-triangle", // registered icon name
+  success: "check-lg",
+  info: "info-circle",
+  danger: "exclamation-octagon-fill",
+  warn: "exclamation-triangle",
+  light: "info-circle",
+  menu: "three-dots",
+  question: "question-circle",
 })
       </code>
     </pre>
@@ -71,14 +71,7 @@ export default {
         type: ["String", "Object"],
         default: "undefined",
         description:
-          "Name of the imported and registered icon. This prop have two aliases 'name' and 'i'",
-      },
-      {
-        prop: "i",
-        type: ["String", "Object"],
-        default: "undefined",
-        description:
-          "Same as icon prop",
+          "Name of the registered icon component or icon component object",
       },
       {
         prop: "name",

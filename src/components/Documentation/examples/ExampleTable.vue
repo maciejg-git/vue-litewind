@@ -13,10 +13,9 @@
     <template #caption>Example caption</template>
   </v-table>
 
+  <!-- pagination and items per page -->
+
   <div class="lg:flex justify-between my-5">
-
-    <!-- pagination -->
-
     <div>
       <v-pagination
         v-model="example.page"
@@ -26,11 +25,8 @@
         icons
       />
     </div>
-
-    <!-- items per page -->
-
     <div class="mt-4 lg:mt-0">
-      <label for="items-per-page" class="mr-10">Items per page</label>
+      <label for="items-per-page" class="mr-4">Items per page</label>
       <v-select v-model="example.itemsPerPage" id="items-per-page">
         <option :value="0">0</option>
         <option :value="5">5</option>
@@ -40,7 +36,7 @@
       </v-select>
     </div>
   </div>
-<!-- CUT START -->
+  <!-- CUT START -->
   <v-tabs name="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="mb-2 mt-5">
@@ -93,7 +89,7 @@
       </div>
     </v-tab>
   </v-tabs>
-<!-- CUT END -->
+  <!-- CUT END -->
 
   <v-modal
     v-model="editModalIsVisible"
@@ -110,8 +106,40 @@ import { ref, reactive } from "vue";
 /* CUT START */
 import data from "../data/data.json";
 /* CUT END */
+
 export default {
   setup() {
+    let definition = [
+      {
+        key: "id",
+        visible: false,
+      },
+      {
+        key: "first_name",
+        sortable: true,
+      },
+      {
+        key: "last_name",
+        sortable: true,
+      },
+      {
+        key: "email",
+        sortable: true,
+      },
+      {
+        key: "city",
+        sortable: true,
+      },
+      {
+        key: "country",
+        sortable: true,
+        class: (k, v) => (v == "ID" ? "bg-red-50" : ""),
+      },
+      {
+        key: "edit",
+      },
+    ];
+
     let example = reactive({
       items: data.slice(0, 60),
       page: 1,
@@ -122,36 +150,7 @@ export default {
       captionTop: false,
       locale: "en-GB",
       state: "",
-      definition: [
-        {
-          key: "id",
-          visible: false,
-        },
-        {
-          key: "first_name",
-          sortable: true,
-        },
-        {
-          key: "last_name",
-          sortable: true,
-        },
-        {
-          key: "email",
-          sortable: true,
-        },
-        {
-          key: "city",
-          sortable: true,
-        },
-        {
-          key: "country",
-          sortable: true,
-          class: (k, v) => (v == "ID" ? "bg-red-50" : ""),
-        },
-        {
-          key: "edit",
-        },
-      ],
+      definition: definition,
     });
 
     let events = ref([]);
@@ -160,22 +159,22 @@ export default {
     let editModalContent = ref("");
 
     let edit = (content) => {
-      editModalContent.value = JSON.stringify(content,null,1);
+      editModalContent.value = JSON.stringify(content, null, 1);
       editModalIsVisible.value = true;
     };
 
     let handleFilteredCount = (count) => {
       example.itemsCount = count;
-      events.value.unshift({ ev: 'update:filtered-count', data: count });
-    }
+      events.value.unshift({ ev: "update:filtered-count", data: count });
+    };
 
     let handleSelection = (selection) => {
-      events.value.unshift({ ev: 'input:selection', data: selection })
-    }
+      events.value.unshift({ ev: "input:selection", data: selection });
+    };
 
     let handlePageChange = (page) => {
-      events.value.unshift({ ev: 'update:page', data: page })
-    }
+      events.value.unshift({ ev: "update:page", data: page });
+    };
 
     return {
       example,

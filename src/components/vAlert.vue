@@ -7,7 +7,7 @@
       ]"
     >
       <div class="flex items-center">
-        <slot name="icon"></slot>
+        <v-icon v-if="icon" :name="icons[icon]"></v-icon>
         <slot name="default"></slot>
         <v-close-button
           v-if="dismissable"
@@ -24,12 +24,14 @@
 import { watch } from "vue";
 import vCloseButton from "./vCloseButton.vue";
 import useStyles from "./composition/use-styles";
+import BCheckLg from "./icons/check-lg"
 
 export default {
   props: {
     modelValue: { type: Boolean, default: false },
     dismissable: { type: Boolean, default: true },
     autoDismissDelay: { type: Number, default: 0 },
+    icon: { type: String, default: "" },
     name: { type: String, default: "alert" },
     styleAlert: { type: [String, Array], default: "" },
     variant: { type: String, default: "" },
@@ -56,12 +58,17 @@ export default {
       }
     );
 
+    let icons = {
+      success: BCheckLg,
+    }
+
     let handleCloseButtonClick = () => closeAlert();
 
     return {
       classes,
       states,
       handleCloseButtonClick,
+      icons,
     };
   },
 };
