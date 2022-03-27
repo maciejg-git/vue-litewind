@@ -6,10 +6,21 @@
     style-alert="info:info danger:danger warn:warn success:success invalid:danger valid:success"
     :variant="example.variant"
     icon="success"
-    class="my-4"
+    class="my-6"
+  >
+    Alert
+  </v-alert>
+
+  <v-alert
+    v-model="example.isVisible"
+    :dismissable="example.dismissable"
+    :auto-dismiss-delay="example.autoDismissDelay"
+    style-alert="info:info danger:danger warn:warn success:success invalid:danger valid:success"
+    :variant="example.variant"
+    class="my-6"
   >
     <v-icon :icon-type="example.variant" class="v-icon--md mr-2"></v-icon>
-    Alert
+    Alert (custom icon)
   </v-alert>
 
   <v-alert
@@ -18,7 +29,7 @@
     :auto-dismiss-delay="example.autoDismissDelay"
     style-alert="borderless shadowed outline info:info danger:danger warn:warn success:success invalid:danger valid:success"
     :variant="example.variant"
-    class="my-4"
+    class="my-6"
   >
     <v-icon :icon-type="example.variant" class="v-icon--md mr-2"></v-icon>
     Alert

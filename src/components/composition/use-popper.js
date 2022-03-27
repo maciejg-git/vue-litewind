@@ -1,4 +1,4 @@
-import { ref, watch, nextTick } from "vue";
+import { ref, reactive, watch, nextTick } from "vue";
 import { createPopper } from "@popperjs/core";
 
 export default function usePopper({
@@ -23,6 +23,17 @@ export default function usePopper({
     instance.update();
     emit("state:opened");
   };
+
+  let context = reactive({
+    position: {},
+    data: null,
+  });
+
+  let showContextPopper = (e, data) => {
+    context.position.x = e.clientX;
+    context.position.y = e.clientY;
+    context.data = data;
+  }
 
   let hidePopper = function () {
     if (!isPopperVisible.value) return;

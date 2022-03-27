@@ -33,12 +33,43 @@
     </v-code>
 
     <p>
-      <span class="font-semibold">[Option 1]</span>
-      Register all components in application entry file (for example main.js)
+      Add dark mode, colors and (optional) forms plugin in tailwind.config.js:
+    </p>
+
+    <v-code language="javascript">
+      {{ `const colors = require('tailwindcss/colors')
+
+module.exports = {
+  darkMode: 'class',
+  theme: {
+     extend: {
+      colors: {
+        primary: colors.indigo,
+        secondary: colors.gray,
+        info: colors.blue,
+        warn: colors.yellow,
+        success: colors.green,
+        danger: colors.red,
+        dark: colors.neutral,
+        light: colors.white,
+        text: colors.gray,
+      }
+    },
+  },
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
+} `}}
+    </v-code>
+
+    <p>
+      Register selected or all components in application entry file (for example main.js)
     </p>
 
     <v-code language="javascript">
       {{ `// main.js
+
+// register all components
 
 import { install } from "vue-wind";
 
@@ -47,14 +78,11 @@ let app = createApp(App);
 app.use(install); `}}
     </v-code>
 
-    <p>
-      <span class="font-semibold">[Option 2]</span>
-      or register component plugins seperately. This should make your build
-      smaller.
-    </p>
 
     <v-code language="javascript">
       {{ `// main.js
+
+// register selected components
 
 import { buttonPlugin, selectPlugin } from "vue-wind";
 

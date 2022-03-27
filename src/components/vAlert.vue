@@ -1,13 +1,8 @@
 <template>
   <transition name="fade">
-    <div
-      v-if="modelValue"
-      :class="[
-        classes.alert.value,
-      ]"
-    >
+    <div v-if="modelValue" :class="[classes.alert.value]">
       <div class="flex items-center">
-        <v-icon v-if="icon" :name="icons[icon]"></v-icon>
+        <v-icon v-if="icon" :name="icons[icon]" :class="classes.icon.value" />
         <slot name="default"></slot>
         <v-close-button
           v-if="dismissable"
@@ -24,7 +19,7 @@
 import { watch } from "vue";
 import vCloseButton from "./vCloseButton.vue";
 import useStyles from "./composition/use-styles";
-import BCheckLg from "./icons/check-lg"
+import BCheckLg from "./icons/check-lg";
 
 export default {
   props: {
@@ -32,8 +27,10 @@ export default {
     dismissable: { type: Boolean, default: true },
     autoDismissDelay: { type: Number, default: 0 },
     icon: { type: String, default: "" },
+    iconClass: { type: String, default: "" },
     name: { type: String, default: "alert" },
     styleAlert: { type: [String, Array], default: "" },
+    styleIcon: { type: [String, Array], default: "" },
     variant: { type: String, default: "" },
   },
   components: {
@@ -42,6 +39,7 @@ export default {
   setup(props, { emit }) {
     let { classes, states } = useStyles("alert", props, {
       alert: null,
+      icon: null,
     });
 
     let closeAlert = () => emit("update:modelValue", false);
@@ -58,9 +56,13 @@ export default {
       }
     );
 
+    // default icons
+
     let icons = {
       success: BCheckLg,
-    }
+    };
+
+    // handle template events
 
     let handleCloseButtonClick = () => closeAlert();
 

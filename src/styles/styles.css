@@ -896,6 +896,13 @@
         py-1
     }
 
+.alert--icon {
+  @apply
+    w-6
+    h-6
+    mr-2
+}
+
 /* NAVBAR */
 
 .navbar {

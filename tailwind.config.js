@@ -14,7 +14,6 @@ module.exports = {
         secondary: colors.gray,
         info: colors.blue,
         warn: colors.yellow,
-        info: colors.blue,
         success: colors.green,
         danger: colors.red,
         dark: colors.neutral,
