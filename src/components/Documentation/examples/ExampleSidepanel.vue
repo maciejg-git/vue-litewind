@@ -1,14 +1,12 @@
 <template>
-  <v-button @click="example.isOpen = !example.isOpen">
-    Toggle sidepanel
-  </v-button>
+  <v-button @click="isOpen = !isOpen">Toggle sidepanel</v-button>
 
   <v-sidepanel
-    v-model="example.isOpen"
-    :closeButton="example.closeButton"
-    :sidebar-left="example.sidebarLeft"
-    :width="example.width"
-    :no-header="example.noHeader"
+    v-model="isOpen"
+    v-bind="example"
+    @update:modelValue="
+      events.unshift({ ev: 'update:modelValue', data: $event })
+    "
   >
     <template #header>
       <span class="text-xl font-bold">Sidepanel</span>
@@ -16,7 +14,7 @@
     <div class="p-5">
       Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       Lorem Ipsum has been the industry's standard dummy text ever since the
-<!-- CUT START -->
+      <!-- CUT START -->
       1500s, when an unknown printer took a galley of type and scrambled it to
       make a type specimen book. It has survived not only five centuries, but
       also the leap into electronic typesetting, remaining essentially
@@ -24,15 +22,15 @@
       sheets containing Lorem Ipsum passages, and more recently with desktop
       publishing software like Aldus PageMaker including versions of Lorem
       Ipsum.
-<!-- CUT END -->
+      <!-- CUT END -->
     </div>
   </v-sidepanel>
-<!-- CUT START -->
+  <!-- CUT START -->
   <v-tabs name="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="mb-2 mt-5">
         <label for="model" class="font-semibold">v-model:</label>
-        <v-input type="text" id="model" v-model="example.isOpen"></v-input>
+        <v-input type="text" id="model" v-model="isOpen"></v-input>
       </div>
       <div class="mb-2">
         <label for="close-button">close-button:</label>
@@ -79,7 +77,7 @@
       </div>
     </v-tab>
   </v-tabs>
-<!-- CUT END -->
+  <!-- CUT END -->
 </template>
 
 <script>
@@ -88,17 +86,19 @@ import { ref, reactive } from "vue";
 export default {
   setup() {
     let example = reactive({
-      isOpen: false,
       closeButton: true,
       sidebarLeft: false,
       width: "320px",
       noHeader: false,
     });
 
+    let isOpen = ref(false);
+
     let events = ref([]);
 
     return {
       example,
+      isOpen,
       events,
     };
   },

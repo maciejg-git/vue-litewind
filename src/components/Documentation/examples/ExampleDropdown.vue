@@ -3,13 +3,7 @@
   <!-- Dropdown menu -->
 
   <v-dropdown
-    :placement="example.placement"
-    :offset-x="+example.offsetX"
-    :offset-y="+example.offsetY"
-    :no-flip="example.noFlip"
-    :auto-close-menu="example.autoCloseMenu"
-    :transition="example.transition"
-    :trigger="example.trigger"
+    v-bind="example"
     @state:opened="events.unshift({ ev: 'state:opened', data: $event })"
     @state:closed="events.unshift({ ev: 'state:closed', data: $event })"
   >
@@ -45,13 +39,7 @@
   <!-- Dropdown menu (alternate style) -->
 
   <v-dropdown
-    :placement="example.placement"
-    :offset-x="+example.offsetX"
-    :offset-y="+example.offsetY"
-    :no-flip="example.noFlip"
-    :auto-close-menu="example.autoCloseMenu"
-    :transition="example.transition"
-    :trigger="example.trigger"
+    v-bind="example"
     name="dropdown-relaxed"
     @state:opened="events.unshift({ ev: 'state:opened', data: $event })"
     @state:closed="events.unshift({ ev: 'state:closed', data: $event })"
@@ -90,13 +78,7 @@
   <!-- Dropdown datepicker -->
 
   <v-dropdown
-    :placement="example.placement"
-    :offset-x="+example.offsetX"
-    :offset-y="+example.offsetY"
-    :no-flip="example.noFlip"
-    :auto-close-menu="example.autoCloseMenu"
-    :transition="example.transition"
-    :trigger="example.trigger"
+    v-bind="example"
     @state:opened="events.unshift({ ev: 'state:opened', data: $event })"
     @state:closed="events.unshift({ ev: 'state:closed', data: $event })"
     class="ml-2"
@@ -150,11 +132,11 @@
       </div>
       <div class="mb-2">
         <label for="offsetX">offsetX:</label>
-        <v-input type="text" id="offsetX" v-model="example.offsetX"></v-input>
+        <v-input type="text" id="offsetX" v-model.numer="example.offsetX"></v-input>
       </div>
       <div class="mb-2">
         <label for="offsetY">offsetY:</label>
-        <v-input type="text" id="offsetY" v-model="example.offsetY"></v-input>
+        <v-input type="text" id="offsetY" v-model.numer="example.offsetY"></v-input>
       </div>
       <div class="mb-2">
         <label for="no-flip">no-flip:</label>
@@ -207,8 +189,8 @@ export default {
   setup() {
     let example = reactive({
       placement: "bottom-start",
-      offsetX: "0",
-      offsetY: "5",
+      offsetX: 0,
+      offsetY: 5,
       noFlip: false,
       autoCloseMenu: false,
       transition: "fade",

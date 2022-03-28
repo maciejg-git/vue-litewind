@@ -281,14 +281,7 @@ export default {
     // watch itemsPerPage and reset current page
     watch(
       () => props.itemsPerPage,
-      () => {
-        nextTick(() => {
-          let pageCount = Math.ceil(
-            itemsFiltered.value.length / props.itemsPerPage
-          );
-          if (pageCount < props.page) emit("update:page", pageCount);
-        });
-      }
+      () => emit("update:page", 1),
     );
 
     // TABLE DEFINITION

@@ -2,29 +2,27 @@
   <div class="flex mb-4">
     <div
       v-for="language in languages"
+      :key="language"
       class="border hover:bg-secondary-50 dark:hover:bg-dark-700 dark:border-dark-700 cursor-pointer p-2 mr-4"
-      @contextmenu.prevent="showContextDropdown($event, language)"
+      @contextmenu.prevent="dropdown.showContextDropdown($event, language)"
     >
       {{ language }}
     </div>
   </div>
 
-  <span class="font-semibold mt-10">Current language:</span>
-  {{ currentLanguage }}
+  Language: {{ currentLanguage }}
 
-  <v-dropdown
-    v-model="context.isVisible"
-    :reference="context.position"
-    auto-close-menu
+  <v-dropdown 
+    ref="dropdown" 
+    auto-close-menu 
+    v-slot="{ contextData }"
   >
     <v-card width="280px" style-card="menu shadow">
-      <v-dropdown-menu-item @click="currentLanguage = context.data">
-        Switch to {{ context.data }}
+      <v-dropdown-menu-item @click="currentLanguage = contextData">
+        Switch to {{ contextData }}
       </v-dropdown-menu-item>
-      <v-dropdown-menu-item
-        @click="window.open('https://google.com/search?q=' + context.data)"
-      >
-        Search {{ context.data }}
+      <v-dropdown-menu-item @click="search(contextData)">
+        Search {{ contextData }}
       </v-dropdown-menu-item>
       <v-dropdown-menu-item @click="languages.push('spanish')">
         Add spanish
@@ -37,15 +35,11 @@
 </template>
 
 <script>
-import { ref, reactive } from "vue";
+import { ref } from "vue";
 
 export default {
   setup() {
-    let context = reactive({
-      isVisible: false,
-      position: {},
-      data: null,
-    });
+    let dropdown = ref(null);
 
     let currentLanguage = ref("");
 
@@ -58,19 +52,13 @@ export default {
       "japanese",
     ]);
 
-    let showContextDropdown = (e, data) => {
-      context.position.x = e.clientX;
-      context.position.y = e.clientY;
-      context.isVisible = true;
-      context.data = data;
-    };
+    let search = (data) => window.open("https://google.com/search?q=" + data);
 
     return {
-      context,
-      showContextDropdown,
+      dropdown,
       languages,
       currentLanguage,
-      window,
+      search,
     };
   },
 };

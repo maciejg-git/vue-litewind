@@ -1,9 +1,9 @@
 <template>
   <v-pagination
     v-model="example.page"
-    :items-count="+example.itemsCount"
-    :items-per-page="+example.itemsPerPage"
-    :max-pages="+example.maxPages"
+    :items-count="example.itemsCount"
+    :items-per-page="example.itemsPerPage"
+    :max-pages="example.maxPages"
     @update:modelValue="
       events.unshift({ ev: 'update:modelValue', data: $event })
     "
@@ -20,7 +20,7 @@
         <v-input
           type="text"
           id="items-count"
-          v-model="example.itemsCount"
+          v-model.number="example.itemsCount"
         ></v-input>
       </div>
       <div class="mb-2">
@@ -28,7 +28,7 @@
         <v-input
           type="text"
           id="items-per-page"
-          v-model="example.itemsPerPage"
+          v-model.number="example.itemsPerPage"
         ></v-input>
       </div>
       <div class="mb-2">
@@ -36,7 +36,7 @@
         <v-input
           type="text"
           id="max-pages"
-          v-model="example.maxPages"
+          v-model.number="example.maxPages"
         ></v-input>
       </div>
     </v-tab>

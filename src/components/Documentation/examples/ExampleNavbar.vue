@@ -4,12 +4,12 @@
       <div class="flex items-center">
         <span class="font-bold text-lg">Brand</span>
         <ul class="flex flex-row gap-x-7 ml-7">
-          <li>Home</li>
-          <li>About</li>
+          <li><div class="py-2">Home</div></li>
+          <li><div class="py-2">About</div></li>
           <li>
-            <v-dropdown trigger="hover" :offset-y="10" name="dropdown-flat">
+            <v-dropdown trigger="hover" :offset-y="2" name="dropdown-flat">
               <template #reference>
-                <v-button name="button-plain">Dropdown</v-button>
+                <v-button name="button-plain" class="py-2">Dropdown</v-button>
               </template>
               <v-card width="420px" name="card-flat">
                 <v-dropdown-menu-item tag="button">

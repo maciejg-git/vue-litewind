@@ -15,18 +15,18 @@
       <div
         v-if="isPopperVisible"
         ref="popper"
-        @mouseenter="lock"
-        @mouseleave="unlock"
+        @mouseenter="preventHiding"
+        @mouseleave="allowHiding"
         class="fixed-dropdown"
       >
-        <slot name="default" :hide="hidePopper" :data="data"></slot>
+        <slot name="default" :hide="hidePopper" :context-data="contextData"></slot>
       </div>
     </transition>
   </teleport>
 </template>
 
 <script>
-import { provide, toRef, toRefs, watch } from "vue";
+import { ref, provide, toRef, toRefs, watch } from "vue";
 import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
 import useClickOutside from "./composition/use-click-outside";
@@ -37,8 +37,6 @@ export default {
   inheritAttrs: true,
   props: {
     modelValue: { type: Boolean, default: false },
-    reference: { type: Object, default: undefined },
-    data: { default: undefined },
     placement: {
       type: String,
       default: "bottom-start",
@@ -75,7 +73,7 @@ export default {
       (value) => (value ? show() : hide())
     );
 
-    // watch trigger prop and update triggering events
+    // set up triggering events
     let trigger = toRef(props, "trigger");
     let triggerEvents = useTrigger(trigger);
 
@@ -88,61 +86,52 @@ export default {
       showPopper,
       hidePopper,
       togglePopper,
-      virtualElement,
-      updateVirtualElement,
+      showVirtualPopper,
     } = usePopper({ placement, offsetX, offsetY, noFlip, modelValue, emit });
-
-    // update popper if position of dropdown changes
-    if (!slots.reference) {
-      watch(
-        () => props.reference,
-        (value) => {
-          if (!value) return;
-          updateVirtualElement(value);
-          reference.value = virtualElement;
-        },
-        { immediate: true, deep: true }
-      );
-    }
 
     // add click outside callback
     let { onClickOutside } = useClickOutside();
-    onClickOutside([popper, reference], hidePopper);
+    let clickOutsideElements = [popper];
+    if (slots.reference) clickOutsideElements.push(reference)
+    onClickOutside(clickOutsideElements, hidePopper);
 
-    // temporary prevent closing menu if using hover trigger and 
-    // pointer is over menu
+    // delay closing menu if using hover trigger
     let hideTimeout = null;
 
-    let lock = () => {
-      if (props.trigger == "hover") clearTimeout(hideTimeout);
-    };
+    let preventHiding = () => {
+      if (props.trigger === "hover") clearTimeout(hideTimeout);
+    }
 
-    let unlock = () => {
-      if (props.trigger == "hover") scheduleHide();
-    };
+    let allowHiding = () => {
+      if (props.trigger === "hover") hideTimeout = scheduleHide();
+    }
 
     // show and hide functions, the only special case is hover trigger which
     // adds short delay before close
     let show = () => {
-      if (props.trigger == "hover") {
-        clearTimeout(hideTimeout);
-      }
+      if (props.trigger === "hover") clearTimeout(hideTimeout);
       showPopper();
     };
 
     let hide = () => {
-      if (props.trigger == "hover") {
-        scheduleHide();
+      if (props.trigger === "hover") {
+        hideTimeout = scheduleHide();
         return;
       }
       hidePopper();
     };
 
-    let scheduleHide = () => {
-      hideTimeout = setTimeout(() => {
-        hidePopper();
-      }, 100);
-    };
+    let scheduleHide = () => setTimeout(hidePopper, 100);
+
+    // context dropdown
+
+    let contextData = ref(null);
+
+    let showContextDropdown = (e, data) => {
+      if (slots.reference) return;
+      showVirtualPopper(e)
+      contextData.value = data
+    }
 
     provide("classes", classes);
     provide("states", states);
@@ -163,9 +152,11 @@ export default {
       scheduleHide,
       show,
       hide,
-      lock,
-      unlock,
+      preventHiding,
+      allowHiding,
       slots,
+      showContextDropdown,
+      contextData,
     };
   },
 };

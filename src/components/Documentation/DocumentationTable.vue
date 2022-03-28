@@ -36,9 +36,8 @@
       This may be enough for simple tables however to use features like sorting,
       filtering etc you need to provide definition array.
     </p>
-    <pre>
-      <code class="language-javascript">
-let definition: ref([
+    <v-code language="javascript">
+{{ `let definition: ref([
   {
     key: "id",
     visible: false,
@@ -67,9 +66,8 @@ let definition: ref([
   {
     key: "edit",
   },
-])
-    </code>
-  </pre>
+]) `}}
+    </v-code>
     <v-table
       :items="referenceProp"
       :definition="referencePropDefinition"

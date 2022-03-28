@@ -24,15 +24,9 @@ export default function usePopper({
     emit("state:opened");
   };
 
-  let context = reactive({
-    position: {},
-    data: null,
-  });
-
-  let showContextPopper = (e, data) => {
-    context.position.x = e.clientX;
-    context.position.y = e.clientY;
-    context.data = data;
+  let showVirtualPopper = (e) => {
+    updateVirtualElement({ x: e.clientX, y: e.clientY })
+    showPopper()
   }
 
   let hidePopper = function () {
@@ -42,7 +36,7 @@ export default function usePopper({
     emit("state:closed");
   };
 
-  let togglePopper = function (ev) {
+  let togglePopper = function () {
     isPopperVisible.value ? hidePopper() : showPopper();
   };
 
@@ -53,12 +47,10 @@ export default function usePopper({
     }
   });
 
-  watch(popper, () => {
-    if (popper.value) setPopper();
-  });
+  watch(popper, () => popper.value && setPopper());
 
   let setPopper = () => {
-    instance = createPopper(reference.value, popper.value, {
+    instance = createPopper(reference.value || virtualElement, popper.value, {
       modifiers: [
         {
           name: "offset",
@@ -96,7 +88,7 @@ export default function usePopper({
   }
 
   let virtualElement = {
-    getBoundingClientRect: getVirtualElement({x: 0, y:0}),
+    getBoundingClientRect: getVirtualElement({x: 0, y: 0}),
   };
 
   let updateVirtualElement = (value) => {
@@ -114,5 +106,6 @@ export default function usePopper({
     setPopper,
     virtualElement,
     updateVirtualElement,
+    showVirtualPopper,
   };
 }

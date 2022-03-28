@@ -192,19 +192,7 @@
 
   <v-modal
     v-model="state.isVisibleLong"
-    :title="example.title"
-    :no-primary-button="!!example.noPrimaryButton"
-    :no-secondary-button="!!example.noSecondaryButton"
-    :primary-button-label="example.primaryButtonLabel"
-    :secondary-button-label="example.secondaryButtonLabel"
-    :primary-button-close="!!example.primaryButtonClose"
-    :secondary-button-close="!!example.secondaryButtonClose"
-    :justify-buttons="example.justifyButtons"
-    :no-close-button="!!example.noCloseButton"
-    :static-backdrop="!!example.staticBackdrop"
-    :position="example.position"
-    :size="example.size"
-    :transition="example.transition"
+    v-bind="example"
   >
     {{ longText[0] }}
   </v-modal>

@@ -1,6 +1,7 @@
 <template>
   <v-table
     v-bind="example"
+    v-model:page="page"
     @update:filtered-count="handleFilteredCount"
     @update:page="handlePageChange"
     @input:selection="handleSelection"
@@ -18,21 +19,21 @@
   <div class="lg:flex justify-between my-5">
     <div>
       <v-pagination
-        v-model="example.page"
-        :items-count="+example.itemsCount"
-        :items-per-page="+example.itemsPerPage"
+        v-model="page"
+        :items-count="example.itemsCount"
+        :items-per-page="example.itemsPerPage"
         :max-pages="7"
         icons
       />
     </div>
     <div class="mt-4 lg:mt-0">
       <label for="items-per-page" class="mr-4">Items per page</label>
-      <v-select v-model="example.itemsPerPage" id="items-per-page">
-        <option :value="0">0</option>
-        <option :value="5">5</option>
-        <option :value="10">10</option>
-        <option :value="20">20</option>
-        <option :value="50">50</option>
+      <v-select v-model.number="example.itemsPerPage" id="items-per-page">
+        <option value="0">0</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="50">50</option>
       </v-select>
     </div>
   </div>
@@ -142,7 +143,6 @@ export default {
 
     let example = reactive({
       items: data.slice(0, 60),
-      page: 1,
       itemsPerPage: 5,
       filter: "",
       busy: false,
@@ -152,6 +152,8 @@ export default {
       state: "",
       definition: definition,
     });
+
+    let page = ref(1);
 
     let events = ref([]);
 
@@ -178,6 +180,7 @@ export default {
 
     return {
       example,
+      page,
       events,
       editModalIsVisible,
       edit,
