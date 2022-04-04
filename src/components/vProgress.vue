@@ -60,7 +60,7 @@ export default {
   setup(props) {
     let { classes } = useStyles("progress", props, {
       progress: {
-        fixed: "fixed-button",
+        fixed: "fixed-progress",
       },
       progressBar: {
         name: "progress-bar",

@@ -1,5 +1,4 @@
 <template>
-
   <!-- simple indeterminate progress -->
 
   <v-progress
@@ -8,7 +7,7 @@
     indeterminate
     :indeterminate-width="50"
     :indeterminate-timing="example.timing"
-    :indeterminate-speed="+example.speed"
+    :indeterminate-speed="example.speed"
     class="my-4"
   ></v-progress>
 
@@ -22,7 +21,7 @@
       indeterminate
       :indeterminate-width="50"
       :indeterminate-timing="example.timing"
-      :indeterminate-speed="+example.speed"
+      :indeterminate-speed="example.speed"
       class="m-2"
     ></v-progress>
   </v-card>
@@ -43,11 +42,11 @@
       :indeterminate="example.indeterminate"
       :indeterminate-width="50"
       :indeterminate-timing="example.timing"
-      :indeterminate-speed="+example.speed"
+      :indeterminate-speed="example.speed"
       class="m-2"
     ></v-progress>
   </v-card>
-<!-- CUT START -->
+  <!-- CUT START -->
   <div class="mb-2 mt-10">
     <label for="timing">indeterminate-timing:</label>
     <v-select id="timing" v-model="example.timing">
@@ -60,9 +59,9 @@
   </div>
   <div class="mb-2">
     <label for="speed">indeterminate-speed:</label>
-    <v-input type="text" id="speed" v-model="example.speed"></v-input>
+    <v-input type="text" id="speed" v-model.number="example.speed"></v-input>
   </div>
-<!-- CUT END -->
+  <!-- CUT END -->
 </template>
 
 <script>

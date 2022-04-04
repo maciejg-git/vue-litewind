@@ -198,11 +198,11 @@
     rounded-md
     whitespace-nowrap
     overflow-ellipsis
+    transition-all
+    duration-200
     p-2
     px-4
     mx-2
-    transition-all
-    duration-200
     hover:bg-secondary-50
     border-secondary-300
     dark:text-text-400
@@ -215,8 +215,8 @@
     }
     .tabs-rounded--tab--active-state {
       @apply
-        text-white
         shadow-none
+        text-white
         bg-primary-400
         hover:bg-primary-300
         dark:text-white
@@ -241,10 +241,10 @@
     border
     -mb-px
     -ml-px
-    p-2
-    px-4
     transition-all
     duration-200
+    p-2
+    px-4
     bg-secondary-100
     hover:bg-secondary-50
     border-secondary-300
@@ -323,7 +323,7 @@
 .table--cell {
   @apply
     border-t
-    transition
+    transition-colors
     duration-200
     py-2
     px-2
@@ -370,10 +370,10 @@
   @apply
     border
     shadow-md
+    transition-all
     p-2
     px-4
     my-1
-    transition-all
     border-gray-100
     hover:bg-gray-50
     dark:border-dark-700
@@ -445,6 +445,7 @@
     .progress--transparent {
       @apply
         bg-transparent
+        dark:bg-transparent
     }
     .progress--tiny {
       @apply
@@ -454,6 +455,7 @@
 .progress--progress-bar {
   @apply
     bg-primary-500
+    dark:bg-primary-500
 }
     .progress--progress-bar--rounded {
       @apply
@@ -462,6 +464,7 @@
     .progress--progress-bar--red {
       @apply
         bg-danger-500
+        dark:bg-danger-500
     }
     .progress--progress-bar--gradient {
       @apply
@@ -585,14 +588,14 @@
 
 .radio {
   @apply
+    scale-110
     border
     focus:ring
     focus:ring-offset-0
     focus:outline-none
     transform
-    scale-110
     outline-none
-    transition-all
+    transition-shadow
     duration-150
     text-primary-500
     bg-white
@@ -685,7 +688,7 @@
     focus:outline-none
     focus:ring
     outline-none
-    transition
+    transition-shadow
     duration-200
     pl-4
     bg-dark-100
@@ -718,10 +721,10 @@
   @apply
     block
     w-full
-    px-0.5
     border-0 
     border-b-2 
     focus:ring-0 
+    px-0.5
     bg-transparent
     focus:border-black
     border-secondary-200
@@ -752,7 +755,7 @@
     focus:outline-none
     focus:ring
     outline-none
-    transition
+    transition-shadow
     duration-200
     bg-white
     border-secondary-300
@@ -1169,10 +1172,10 @@
     font-semibold
     text-sm
     mx-auto
+    uppercase
     px-4
     py-2
     my-1
-    uppercase
 }
 
 /* DROPDOWN FLAT */

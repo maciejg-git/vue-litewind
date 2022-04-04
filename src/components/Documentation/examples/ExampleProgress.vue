@@ -1,23 +1,12 @@
 <template>
-
   <!-- simple progress -->
 
-  <v-progress
-    :value="+example.value"
-    :max="+example.max"
-    :label="example.label"
-    :precision="+example.precision"
-    :transition="example.transition"
-  ></v-progress>
+  <v-progress v-bind="example"></v-progress>
 
   <!-- progress with custom label -->
 
   <v-progress
-    :value="+example.value"
-    :max="+example.max"
-    :label="example.label"
-    :precision="+example.precision"
-    :transition="example.transition"
+    v-bind="example"
     style-progress="rounded"
     style-progress-bar="red rounded"
     class="mt-4"
@@ -30,11 +19,7 @@
   <!-- narrow, styled progress -->
 
   <v-progress
-    :value="+example.value"
-    :max="+example.max"
-    :label="false"
-    :precision="+example.precision"
-    :transition="example.transition"
+    v-bind="example"
     style-progress="tiny"
     style-progress-bar="gradient"
     class="mt-4"
@@ -43,18 +28,22 @@
   <!-- page load progress -->
 
   <v-progress
-    style-progress="tiny"
+    style-progress="tiny transparent"
     style-progress-bar="gradient"
     :value="example.value"
     :label="false"
     class="fixed top-0 left-0 w-full z-50"
   ></v-progress>
-<!-- CUT START -->
+  <!-- CUT START -->
   <v-tabs name="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="mb-2 mt-5">
         <label for="value">value:</label>
-        <v-input type="text" id="value" v-model="example.value"></v-input>
+        <v-input
+          type="text"
+          id="value"
+          v-model.number="example.value"
+        ></v-input>
         <v-button
           style-button="small"
           @click="example.value += 10"
@@ -72,14 +61,14 @@
       </div>
       <div class="mb-2">
         <label for="max">max:</label>
-        <v-input type="text" id="max" v-model="example.max"></v-input>
+        <v-input type="text" id="max" v-model.number="example.max"></v-input>
       </div>
       <div class="mb-2">
         <label for="precision">precision:</label>
         <v-input
           type="text"
           id="precision"
-          v-model="example.precision"
+          v-model.number="example.precision"
         ></v-input>
       </div>
       <div class="mb-2">
@@ -98,7 +87,7 @@
       </div>
     </v-tab>
   </v-tabs>
-<!-- CUT END -->
+  <!-- CUT END -->
 </template>
 
 <script>

@@ -33,7 +33,7 @@
     </v-code>
 
     <p>
-      Add dark mode, colors and (optional) forms plugin in tailwind.config.js:
+      Configure Tailwind: add dark mode, color definitions and (optional) forms plugin in tailwind.config.js:
     </p>
 
     <v-code language="javascript">
@@ -60,6 +60,27 @@ module.exports = {
     require('@tailwindcss/forms'),
   ],
 } `}}
+    </v-code>
+
+    <p>
+    In application:
+    </p>
+
+    <p>
+      Import two css files. 
+      Copy styles.css from 'node_modules/vue-wind/dist/' to the src directory of
+      your project and import it. You can edit this file to customize look of
+      components. Import second css file directly as in example:
+    </p>
+
+    <v-code language="javascript">
+      {{ `// main.js
+
+// copy styles.css to src directory of your project and modify it to your liking
+import "./styles.css";
+
+// import fixed styles, order of imports is important
+import "vue-wind/dist/style.css" `}}
     </v-code>
 
     <p>
@@ -92,28 +113,15 @@ app.use(buttonPlugin);
 app.use(selectPlugin); `}}
     </v-code>
 
-    <p>
-      Copy styles.css from 'node_modules/vue-wind/dist/' to the src directory of
-      your project and import it. You can edit this file to customize look of
-      components.
-    </p>
-
-    <v-code language="javascript">
-      {{ `// main.js
-
-// copy styles.css to src directory of your project and modify it to your liking
-import "./styles.css";
-
-// import fixed styles, order of imports is important
-import "vue-wind/dist/style.css" `}}
-    </v-code>
-
     <h5>Styling components</h5>
       <p>
       To customize appearance of components use following:
       <ul class="list-disc list-inside">
         <li>
-      <span class="font-semibold">style.css</span> file that contains base classes and variants
+      <span class="font-semibold">tailwind.config.js</span> file that have definitions for colors used,
+        </li>
+        <li>
+      <span class="font-semibold">style.css</span> file that contains base classes and variants for components,
         </li>
         <li>
       and following <span class="font-semibold">component props</span> that allow selection of base and variant classes per component:
@@ -124,7 +132,7 @@ import "vue-wind/dist/style.css" `}}
           <span class="font-semibold">base</span> - sets base name. The default value is component name ("button", "dropdown", "modal" etc...). This can be useful to make new version of appearance with different set of variants.
         </li>
         <li class="my-2">
-          <span class="font-semibold">style-[element]</span> - this prop allows variant classes to elements of component. Variant can be applied conditionaly by putting "identifier:" in front of any variant. Active conditional variant can be chosen with <span class="font-semibold">variant</span> prop set to identifier. Identifier can be any word and does not have any relation to css.
+          <span class="font-semibold">style-[element]</span> - this prop adds variant classes to elements of component. Variant can be applied conditionaly by putting "identifier:" in front of any variant. Active conditional variant can be chosen with <span class="font-semibold">variant</span> prop set to identifier. Identifier can be any word and does not have any relation to css.
         </li>
       </ul>
       </p>

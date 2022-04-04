@@ -1,10 +1,10 @@
 <template>
   <div class="flex mb-4">
     <div
-      v-for="language in languages"
+      v-for="(language, index) in languages"
       :key="language"
       class="border hover:bg-secondary-50 dark:hover:bg-dark-700 dark:border-dark-700 cursor-pointer p-2 mr-4"
-      @contextmenu.prevent="dropdown.showContextDropdown($event, language)"
+      @contextmenu.prevent="dropdown.showContextDropdown($event, { language, index })"
     >
       {{ language }}
     </div>
@@ -18,11 +18,14 @@
     v-slot="{ contextData }"
   >
     <v-card width="280px" style-card="menu shadow">
-      <v-dropdown-menu-item @click="currentLanguage = contextData">
-        Switch to {{ contextData }}
+      <v-dropdown-menu-item @click="currentLanguage = contextData.language">
+        Switch to {{ contextData.language }}
       </v-dropdown-menu-item>
-      <v-dropdown-menu-item @click="search(contextData)">
-        Search {{ contextData }}
+      <v-dropdown-menu-item @click="search(contextData.language)">
+        Search {{ contextData.language }}
+      </v-dropdown-menu-item>
+      <v-dropdown-menu-item @click="languages.splice(contextData.index, 1)">
+        Remove {{ contextData.language }}
       </v-dropdown-menu-item>
       <v-dropdown-menu-item @click="languages.push('spanish')">
         Add spanish

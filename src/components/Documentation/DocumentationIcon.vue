@@ -37,9 +37,8 @@
       <code>icon--[type]-type</code>
       class added by default.
     </p>
-    <pre>
-      <code class="language-js">
-app.provide("icon-types", {
+<v-code language="js">
+{{ `app.provide("icon-types", {
   valid: BCheck, // icon component object
   invalid: "exclamation-triangle", // registered icon name
   success: "check-lg",
@@ -49,9 +48,8 @@ app.provide("icon-types", {
   light: "info-circle",
   menu: "three-dots",
   question: "question-circle",
-})
-      </code>
-    </pre>
+}) `}}
+</v-code>
   </section>
 </template>
 

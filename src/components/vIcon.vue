@@ -1,7 +1,9 @@
 <template>
-  <transition :name="transition" mode="out-in">
-    <component :is="icon" :class="classes"></component>
-  </transition>
+  <template v-if="icon">
+    <transition :name="transition" mode="out-in">
+      <component :is="icon"></component>
+    </transition>
+  </template>
 </template>
 
 <script>
@@ -21,13 +23,8 @@ export default {
       return iconTypes[props.iconType] || props.name || props.icon;
     });
 
-    let classes = computed(() => {
-      return props.iconType ? "icon-type--" + props.iconType : "";
-    });
-
     return {
       icon,
-      classes,
     };
   },
 };
