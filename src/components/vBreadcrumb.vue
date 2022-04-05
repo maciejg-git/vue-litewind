@@ -24,16 +24,16 @@
 
 <script>
 import useStyles from "./composition/use-styles";
+import { sharedStyleProps } from "../sharedProps"
 
 export default {
   props: {
     path: { type: Array, default: [] },
     separator: { type: String, default: "/" },
-    name: { type: String, default: "breadcrumb" },
     styleBreadcrumb: { type: [String, Array], default: "" },
     styleSeparator: { type: [String, Array], default: "" },
     styleActive: { type: [String, Array], default: "" },
-    variant: { type: String, default: ""},
+    ...sharedStyleProps("breadcrumb"),
   },
   setup(props) {
     let { classes } = useStyles("breadcrumb", props, {

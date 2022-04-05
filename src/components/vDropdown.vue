@@ -31,29 +31,19 @@ import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
 import useClickOutside from "./composition/use-click-outside";
 import useTrigger from "./composition/use-trigger";
-import { correctPlacement } from "../const.js";
+import { sharedPopperProps, sharedStyleProps } from "../sharedProps"
 
 export default {
   inheritAttrs: true,
   props: {
     modelValue: { type: Boolean, default: false },
-    placement: {
-      type: String,
-      default: "bottom-start",
-      validator: function (v) {
-        return correctPlacement.includes(v);
-      },
-    },
-    offsetX: { type: Number, default: 0 },
-    offsetY: { type: Number, default: 0 },
-    noFlip: { type: Boolean, default: false },
+    ...sharedPopperProps,
     autoCloseMenu: { type: Boolean, default: false },
     trigger: { type: String, default: "click" },
     transition: { type: String, default: "fade" },
-    name: { type: String, default: "dropdown" },
     styleItem: { type: String, default: "" },
     styleHeader: { type: String, default: "" },
-    variant: { type: String, default: ""},
+    ...sharedStyleProps("dropdown"),
   },
   emits: ["state:opened", "state:closed", "update:modelValue"],
   setup(props, { slots, emit }) {

@@ -80,6 +80,8 @@
     text-sm
     sm:text-base
     font-medium
+    transition-shadow
+    duration-150
     focus:outline-none
     focus:ring-4
     px-4

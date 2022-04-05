@@ -22,6 +22,7 @@
 <script>
 import { ref, toRef, onMounted, computed, provide, h, toRaw } from "vue";
 import useStyles from "./composition/use-styles";
+import { sharedStyleProps } from "../sharedProps"
 
 export default {
   props: {
@@ -29,10 +30,9 @@ export default {
     center: { type: Boolean, default: false },
     right: { type: Boolean, default: false },
     transition: { type: String, default: "fade" },
-    name: { type: String, default: "tabs" },
     styleTabBar: { type: [String, Array], default: "" },
     styleTab: { type: [String, Array], default: "" },
-    variant: { type: String, default: ""},
+    ...sharedStyleProps("tabs"),
   },
   components: {
     // component to render content of child v-tab name slot

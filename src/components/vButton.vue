@@ -5,7 +5,7 @@
     type="button"
     :class="[
       classes.button.value,
-      disabled ? states.button.value.disabled: '',
+      disabled ? states.button.value.disabled : '',
     ]"
   >
     <slot name="default"></slot>
@@ -15,15 +15,15 @@
 <script>
 import { computed } from "vue";
 import useStyles from "./composition/use-styles";
+import { sharedStyleProps } from "../sharedProps";
 
 export default {
   props: {
     disabled: { type: Boolean, default: false },
     tag: { type: String, default: "button" },
     block: { type: Boolean, default: false },
-    name: { type: String, default: "button" },
     styleButton: { type: String, default: "" },
-    variant: { type: String, default: ""},
+    ...sharedStyleProps("button"),
   },
   setup(props) {
     let { classes, states } = useStyles("button", props, {

@@ -7,15 +7,15 @@
 <script>
 import { provide, toRef } from "vue";
 import useStyles from "./composition/use-styles";
+import { sharedStyleProps } from "../sharedProps"
 
 export default {
   props: {
     width: { type: String, default: undefined },
     tag: { type: String, default: "div" },
-    name: { type: String, default: "list" },
     styleList: { type: String, default: "" },
     styleItem: { type: [String, Array], default: "" },
-    variant: { type: String, default: ""},
+    ...sharedStyleProps("list"),
   },
   setup(props) {
     let { classes, states } = useStyles("list", props, {

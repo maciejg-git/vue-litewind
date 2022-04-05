@@ -24,9 +24,11 @@
       <v-dropdown-menu-item @click="search(contextData.language)">
         Search {{ contextData.language }}
       </v-dropdown-menu-item>
+      <v-divider />
       <v-dropdown-menu-item @click="languages.splice(contextData.index, 1)">
         Remove {{ contextData.language }}
       </v-dropdown-menu-item>
+      <v-divider />
       <v-dropdown-menu-item @click="languages.push('spanish')">
         Add spanish
       </v-dropdown-menu-item>

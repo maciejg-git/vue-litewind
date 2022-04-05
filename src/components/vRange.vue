@@ -17,14 +17,14 @@
 import { computed } from "vue";
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model"
+import { sharedStyleProps } from "../sharedProps"
 
 export default {
   props: {
     modelValue: { type: [String, Number], default: undefined },
     state: { type: String, default: "" },
-    name: { type: String, default: "range" },
     styleRange: { type: [String, Array], default: "" },
-    variant: { type: String, default: ""},
+    ...sharedStyleProps("range"),
   },
   setup(props, { attrs, emit }) {
     let { classes, states } = useStyles("range", props, {

@@ -21,15 +21,13 @@
     <span class="font-bold">Type</span>
     :
     <code class="code-word">Object</code>
-    <pre>
-      <code class="language-js">
-let messages = {
+<v-code language="js">
+  {{ `let messages = {
   valid: "OK",
   invalid: "This field cannot be empty",
   default: "Username",
-};
-      </code>
-    </pre>
+};` }}
+</v-code>
   </section>
 
   <section>
@@ -78,7 +76,7 @@ export default {
         type: ["Object"],
         default: "{}",
         description:
-          "Object with messages to display depending on current state. Each property of the object is one state and the value for that property is the message. To display messages default slot must not be used",
+          "Object with messages to display depending on current state. To display messages default slot must not be used",
       },
       {
         prop: "name",

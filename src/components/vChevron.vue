@@ -70,6 +70,7 @@ import vCaretLeftFillIcon from "./icons/caret-left-fill.js";
 import vCaretUpFillIcon from "./icons/caret-up-fill.js";
 import vCaretDownFillIcon from "./icons/caret-down-fill.js";
 import useStyles from "./composition/use-styles";
+import { sharedStyleProps } from "../sharedProps"
 
 export default {
   props: {
@@ -79,9 +80,8 @@ export default {
     counterClockwise: { type: Boolean, default: false },
     switch: { type: Boolean, default: false },
     icon: { type: String, default: "" },
-    name: { type: String, default: "chevron" },
     styleChevron: { type: String, default: "" },
-    variant: { type: String, default: ""},
+    ...sharedStyleProps("chevron"),
   },
   components: {
     vIcon,

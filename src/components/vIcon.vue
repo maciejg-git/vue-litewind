@@ -1,9 +1,7 @@
 <template>
-  <template v-if="icon">
-    <transition :name="transition" mode="out-in">
-      <component :is="icon"></component>
-    </transition>
-  </template>
+  <transition :name="transition" mode="out-in">
+    <component :is="iconTypes[iconType] || name || icon"></component>
+  </transition>
 </template>
 
 <script>
@@ -19,12 +17,8 @@ export default {
   setup(props) {
     let iconTypes = inject("icon-types", {});
 
-    let icon = computed(() => {
-      return iconTypes[props.iconType] || props.name || props.icon;
-    });
-
     return {
-      icon,
+      iconTypes,
     };
   },
 };
@@ -46,7 +40,7 @@ export default {
 .fade-scale-down-enter-from,
 .fade-scale-down-leave-to {
   opacity: 0;
-  transform: scale(0.2)
+  transform: scale(0.2);
 }
 .fade-scale-up-enter-active,
 .fade-scale-up-leave-active {
@@ -55,6 +49,6 @@ export default {
 .fade-scale-up-enter-from,
 .fade-scale-up-leave-to {
   opacity: 0;
-  transform: scale(2.5)
+  transform: scale(2.5);
 }
 </style>

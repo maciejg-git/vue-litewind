@@ -92,6 +92,7 @@ import ChevronLeft from "./icons/chevron-left.js"
 import useStyles from "./composition/use-styles";
 import { pad, getNumberRange } from "../tools.js";
 import { locales } from "../const"
+import { sharedStyleProps } from "../sharedProps"
 
 export default {
   props: {
@@ -123,7 +124,6 @@ export default {
       type: String,
       default: "default primary small",
     },
-    name: { type: String, default: "datepicker" },
     transition: { type: String, default: "fade" },
     styleDatepicker: { type: String, default: "" },
     styleWeekdayBar: { type: String, default: "" },
@@ -132,7 +132,7 @@ export default {
     styleDay: { type: String, default: "" },
     styleAdjacentMonthDay: { type: String, default: "" },
     styleFooter: { type: String, default: "" },
-    variant: { type: String, default: ""},
+    ...sharedStyleProps("datepicker"),
   },
   components: {
     vButton,

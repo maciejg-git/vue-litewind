@@ -7,13 +7,13 @@
 <script>
 import { computed } from "vue";
 import useStyles from "./composition/use-styles";
+import { sharedStyleProps } from "../sharedProps"
 
 export default {
   props: {
     position: { type: String, default: "" },
-    name: { type: String, default: "badge" },
     styleBadge: { type: String, default: "" },
-    variant: { type: String, default: ""},
+    ...sharedStyleProps("badge"),
   },
   setup(props) {
     let { classes } = useStyles("badge", props, {

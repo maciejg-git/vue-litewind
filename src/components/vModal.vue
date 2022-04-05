@@ -63,6 +63,7 @@ import vButton from "./vButton.vue";
 import vCloseButton from "./vCloseButton.vue";
 import focus from "../directives/focus";
 import useStyles from "./composition/use-styles";
+import { sharedStyleProps } from "../sharedProps"
 
 export default {
   props: {
@@ -85,13 +86,12 @@ export default {
     position: { type: String, default: "top" },
     size: { type: String, default: "md" },
     transition: { type: String, default: "fade-slide" },
-    name: { type: String, default: "modal" },
     styleModal: { type: String, default: "" },
     styleHeader: { type: String, default: "" },
     styleFooter: { type: String, default: "" },
     styleContent: { type: String, default: "" },
     styleBackdrop: { type: String, default: "" },
-    variant: { type: String, default: "" },
+    ...sharedStyleProps("modal"),
   },
   components: {
     vButton,

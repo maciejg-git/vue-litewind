@@ -107,6 +107,7 @@ import {
   isRegexp,
   undefNullToStr,
 } from "../tools.js";
+import { sharedStyleProps } from "../sharedProps"
 
 export default {
   props: {
@@ -127,14 +128,13 @@ export default {
     selectionMode: { type: String, default: "" },
     state: { type: String, default: "" },
     headerRows: { type: Array, default: [] },
-    name: { type: String, default: "table" },
     styleTable: { type: String, default: "" },
     styleHeaderRow: { type: String, default: "" },
     styleHeaderCell: { type: String, default: "" },
     styleRow: { type: String, default: "" },
     styleCell: { type: String, default: "" },
     styleCaption: { type: String, default: "" },
-    variant: { type: String, default: ""},
+    ...sharedStyleProps("table"),
   },
   components: {
     vIcon,

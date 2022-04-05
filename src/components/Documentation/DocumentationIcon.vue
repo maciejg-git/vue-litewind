@@ -45,7 +45,6 @@
   info: "info-circle",
   danger: "exclamation-octagon-fill",
   warn: "exclamation-triangle",
-  light: "info-circle",
   menu: "three-dots",
   question: "question-circle",
 }) `}}

@@ -27,15 +27,15 @@
 import { computed } from "vue";
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model"
+import { sharedStyleProps } from "../sharedProps"
 
 export default {
   props: {
     modelValue: { type: [String, Number, Array, Boolean], default: undefined },
     options: { type: Array, default: undefined },
     state: { type: [String, Boolean], default: "" },
-    name: { type: String, default: "select" },
     styleSelect: { type: [String, Array], default: "" },
-    variant: { type: String, default: ""},
+    ...sharedStyleProps("select"),
   },
   setup(props, { attrs, emit }) {
     let { classes, states } = useStyles("select", props, {

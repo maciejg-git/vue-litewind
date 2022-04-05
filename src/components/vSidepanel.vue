@@ -27,6 +27,7 @@
 import { computed, toRef } from "vue";
 import vCloseButton from "./vCloseButton.vue";
 import useStyles from "./composition/use-styles";
+import { sharedStyleProps } from "../sharedProps"
 
 export default {
   props: {
@@ -35,10 +36,9 @@ export default {
     sidebarLeft: { type: Boolean, default: false },
     width: { type: String, default: "320px" },
     noHeader: { type: Boolean, default: false },
-    name: { type: String, default: "sidepanel" },
     styleSidepanel: { type: String, default: "" },
     styleCloseButton: { type: String, default: "" },
-    variant: { type: String, default: ""},
+    ...sharedStyleProps("sidepanel"),
   },
   components: {
     vCloseButton,

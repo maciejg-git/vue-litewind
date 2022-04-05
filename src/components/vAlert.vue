@@ -20,6 +20,7 @@ import { watch } from "vue";
 import vCloseButton from "./vCloseButton.vue";
 import useStyles from "./composition/use-styles";
 import BCheckLg from "./icons/check-lg";
+import { sharedStyleProps } from "../sharedProps"
 
 export default {
   props: {
@@ -28,10 +29,9 @@ export default {
     autoDismissDelay: { type: Number, default: 0 },
     icon: { type: String, default: "" },
     iconClass: { type: String, default: "" },
-    name: { type: String, default: "alert" },
     styleAlert: { type: [String, Array], default: "" },
     styleIcon: { type: [String, Array], default: "" },
-    variant: { type: String, default: "" },
+    ...sharedStyleProps("alert"),
   },
   components: {
     vCloseButton,

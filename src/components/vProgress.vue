@@ -31,6 +31,7 @@
 import { ref, computed, onMounted, onUnmounted } from "vue";
 import useStyles from "./composition/use-styles";
 import { clamp, isNumber } from "../tools";
+import { sharedStyleProps } from "../sharedProps"
 
 export default {
   props: {
@@ -51,11 +52,10 @@ export default {
     indeterminateTiming: { type: String, default: "linear" },
     indeterminateSpeed: { type: Number, default: 7 },
     transition: { type: Boolean, default: true },
-    name: { type: String, default: "progress" },
     styleProgress: { type: [String, Array], default: "" },
     styleProgressBar: { type: [String, Array], default: "" },
     styleLabel: { type: [String, Array], default: "" },
-    variant: { type: String, default: ""},
+    ...sharedStyleProps("progress"),
   },
   setup(props) {
     let { classes } = useStyles("progress", props, {

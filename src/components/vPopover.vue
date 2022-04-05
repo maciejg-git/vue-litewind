@@ -35,30 +35,20 @@ import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
 import useClickOutside from "./composition/use-click-outside";
 import useTrigger from "./composition/use-trigger";
-import { correctPlacement } from "../const.js";
+import { sharedPopperProps, sharedStyleProps } from "../sharedProps"
 
 export default {
   props: {
-    placement: {
-      type: String,
-      default: "auto",
-      validator: function (v) {
-        return correctPlacement.includes(v);
-      },
-    },
+    ...sharedPopperProps,
     trigger: { type: String, default: "click" },
     delay: { type: Number, default: 50 },
     noHeader: { type: Boolean, default: false },
     title: { type: String, default: undefined },
     transition: { type: String, default: "fade" },
     clickOutsideClose: { type: Boolean, default: false },
-    offsetX: { type: Number, default: 0 },
-    offsetY: { type: Number, default: 0 },
-    noFlip: { type: Boolean, default: false },
-    name: { type: String, default: "popover" },
     stylePopover: { type: String, default: "" },
     styleContent: { type: String, default: "" },
-    variant: { type: String, default: ""},
+    ...sharedStyleProps("popover"),
   },
   setup(props, { slots, emit }) {
     let { classes } = useStyles("popover", props, {

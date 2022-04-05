@@ -16,15 +16,15 @@
 import { computed } from "vue";
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model"
+import { sharedStyleProps } from "../sharedProps"
 
 export default {
   props: {
     modelValue: { type: [String, Number, Boolean, Array], default: undefined },
     type: { type: String, default: "text" },
     state: { type: [String, Boolean], default: "" },
-    name: { type: String, default: "input" },
     styleInput: { type: [String, Array], default: "" },
-    variant: { type: String, default: ""},
+    ...sharedStyleProps("input"),
   },
   setup(props, { attrs, emit }) {
     let { classes, states } = useStyles("input", props, {

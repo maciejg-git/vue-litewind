@@ -42,7 +42,7 @@
 module.exports = {
   darkMode: 'class',
   theme: {
-     extend: {
+    extend: {
       colors: {
         primary: colors.indigo,
         secondary: colors.gray,
@@ -61,10 +61,6 @@ module.exports = {
   ],
 } `}}
     </v-code>
-
-    <p>
-    In application:
-    </p>
 
     <p>
       Import two css files. 
@@ -129,7 +125,7 @@ app.use(selectPlugin); `}}
       </ul>
       <ul>
         <li class="my-2">
-          <span class="font-semibold">base</span> - sets base name. The default value is component name ("button", "dropdown", "modal" etc...). This can be useful to make new version of appearance with different set of variants.
+          <span class="font-semibold">base</span> - changes base name for styling. The default value is component name ("button", "dropdown", "modal" etc...). This can be useful to make new version of appearance with different set of variants.
         </li>
         <li class="my-2">
           <span class="font-semibold">style-[element]</span> - this prop adds variant classes to elements of component. Variant can be applied conditionaly by putting "identifier:" in front of any variant. Active conditional variant can be chosen with <span class="font-semibold">variant</span> prop set to identifier. Identifier can be any word and does not have any relation to css.

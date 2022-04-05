@@ -132,11 +132,11 @@
       </div>
       <div class="mb-2">
         <label for="offsetX">offsetX:</label>
-        <v-input type="text" id="offsetX" v-model.numer="example.offsetX"></v-input>
+        <v-input type="text" id="offsetX" v-model.number="example.offsetX"></v-input>
       </div>
       <div class="mb-2">
         <label for="offsetY">offsetY:</label>
-        <v-input type="text" id="offsetY" v-model.numer="example.offsetY"></v-input>
+        <v-input type="text" id="offsetY" v-model.number="example.offsetY"></v-input>
       </div>
       <div class="mb-2">
         <label for="no-flip">no-flip:</label>

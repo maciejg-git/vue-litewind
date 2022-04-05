@@ -24,6 +24,7 @@ import useStyles from "./composition/use-styles";
 import { clamp, getNumberRange, isNumber } from "../tools.js";
 import ChevronLeft from "./icons/chevron-left.js";
 import ChevronRight from "./icons/chevron-right.js";
+import { sharedStyleProps } from "../sharedProps"
 
 export default {
   props: {
@@ -31,13 +32,12 @@ export default {
     itemsCount: { type: Number, default: undefined },
     itemsPerPage: { type: Number, default: undefined },
     maxPages: { type: Number, default: undefined },
-    name: { type: String, default: "pagination" },
     stylePaginationBar: { type: [String, Array], default: "default" },
     stylePage: { type: [String, Array], default: "" },
     styleDots: { type: [String, Array], default: "" },
     styleNext: { type: [String, Array], default: "" },
     stylePrev: { type: [String, Array], default: "" },
-    variant: { type: String, default: ""},
+    ...sharedStyleProps("pagination"),
   },
   components: {
     ChevronLeft,

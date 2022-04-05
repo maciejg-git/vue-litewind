@@ -16,22 +16,8 @@
         Active menu item
       </v-dropdown-menu-item>
       <v-dropdown-menu-item tag="button">
-        Active menu item
+        Third menu item
       </v-dropdown-menu-item>
     </v-card>
   </v-dropdown>
 </template>
-
-<script>
-import { ref, reactive } from "vue";
-
-export default {
-  setup() {
-    let example = reactive({
-    });
-
-    return {
-    };
-  },
-};
-</script>

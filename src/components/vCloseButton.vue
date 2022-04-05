@@ -17,12 +17,12 @@
 
 <script>
 import useStyles from "./composition/use-styles";
+import { sharedStyleProps } from "../sharedProps"
 
 export default {
   props: {
-    name: { type: String, default: "close-button" },
     styleCloseButton: { type: String, default: "" },
-    variant: { type: String, default: ""},
+    ...sharedStyleProps("close-button"),
   },
   setup(props) {
     let { classes } = useStyles("close-button", props, {

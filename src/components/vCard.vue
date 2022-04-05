@@ -6,13 +6,13 @@
 
 <script>
 import useStyles from "./composition/use-styles";
+import { sharedStyleProps } from "../sharedProps"
 
 export default {
   props: {
     width: { type: String, default: undefined },
-    name: { type: String, default: "card" },
     styleCard: { type: String, default: "" },
-    variant: { type: String, default: ""},
+    ...sharedStyleProps("card"),
   },
   setup(props) {
     let { classes } = useStyles("card", props, {

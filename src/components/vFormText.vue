@@ -18,6 +18,7 @@
 <script>
 import { computed } from "vue";
 import useStyles from "./composition/use-styles";
+import { sharedStyleProps } from "../sharedProps"
 
 export default {
   props: {
@@ -25,9 +26,8 @@ export default {
     inline: { type: Boolean, default: false },
     visibleStates: { type: String, default: "default,valid,invalid" },
     messages: { type: Object, default: {} },
-    name: { type: String, default: "form-text" },
     styleFormText: { type: [String, Array], default: "" },
-    variant: { type: String, default: ""},
+    ...sharedStyleProps("form-text"),
   },
   setup(props) {
     let { classes, states } = useStyles("form-text", props, {

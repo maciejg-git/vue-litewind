@@ -41,7 +41,7 @@ export default function usePopper({
   };
 
   watch([placement, offsetX, offsetY, noFlip], () => {
-    if (popper.value) {
+    if (instance && popper.value) {
       setPopper();
       instance.update();
     }

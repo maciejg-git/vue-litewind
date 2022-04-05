@@ -30,14 +30,14 @@
 <script>
 import vIcon from "./vIcon.vue";
 import useStyles from "./composition/use-styles";
+import { sharedStyleProps } from "../sharedProps"
 
 export default {
   props: {
     type: { type: String, default: "border" },
     icon: { type: [String, Object], default: undefined },
-    name: { type: String, default: "spinner" },
     styleSpinner: { type: String, default: "" },
-    variant: { type: String, default: ""},
+    ...sharedStyleProps("spinner"),
   },
   components: {
     vIcon,
