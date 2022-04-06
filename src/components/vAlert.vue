@@ -20,6 +20,8 @@ import { watch } from "vue";
 import vCloseButton from "./vCloseButton.vue";
 import useStyles from "./composition/use-styles";
 import BCheckLg from "./icons/check-lg";
+import BExclamationCircle from "./icons/exclamation-circle";
+import BInfoCircle from "./icons/info-circle";
 import { sharedStyleProps } from "../sharedProps"
 
 export default {
@@ -60,6 +62,11 @@ export default {
 
     let icons = {
       success: BCheckLg,
+      warn: BExclamationCircle,
+      danger: BExclamationCircle,
+      info: BInfoCircle,
+      valid: BCheckLg,
+      invalid: BExclamationCircle,
     };
 
     // handle template events

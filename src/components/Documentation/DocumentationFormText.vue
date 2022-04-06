@@ -76,7 +76,7 @@ export default {
         type: ["Object"],
         default: "{}",
         description:
-          "Object with messages to display depending on current state. To display messages default slot must not be used",
+          "Object with messages to display depending on current state. To display those messages default slot must not be used",
       },
       {
         prop: "name",

@@ -3,9 +3,9 @@
     v-model="example.isVisible"
     :dismissable="example.dismissable"
     :auto-dismiss-delay="example.autoDismissDelay"
-    style-alert="info:info danger:danger warn:warn success:success invalid:danger valid:success"
+    :icon="example.variant"
     :variant="example.variant"
-    icon="success"
+    style-alert="info:info danger:danger warn:warn success:success invalid:danger valid:success"
     class="my-6"
   >
     Alert
@@ -27,11 +27,11 @@
     v-model="example.isVisible"
     :dismissable="example.dismissable"
     :auto-dismiss-delay="example.autoDismissDelay"
-    style-alert="borderless shadowed outline info:info danger:danger warn:warn success:success invalid:danger valid:success"
+    :icon="example.variant"
     :variant="example.variant"
+    style-alert="borderless shadowed outline info:info danger:danger warn:warn success:success invalid:danger valid:success"
     class="my-6"
   >
-    <v-icon :icon-type="example.variant" class="v-icon--md mr-2"></v-icon>
     Alert
   </v-alert>
 
@@ -108,7 +108,7 @@ export default {
       dismissable: true,
       autoDismissDelay: 0,
       variant: "info",
-      state: "info",
+      icon: "info",
     });
 
     return {

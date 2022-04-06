@@ -13,6 +13,8 @@ import vCode from "./components/Documentation/components/vCode.vue"
 import BStar from "./components/Documentation/icons/star"
 import BMoon from "./components/Documentation/icons/moon"
 import BCheckLg from "./components/Documentation/icons/check-lg"
+import BExclamationCircle from "./components/Documentation/icons/exclamation-circle"
+import BInfoCircle from "./components/Documentation/icons/info-circle"
 import BExclamationTriangle from "./components/Documentation/icons/exclamation-triangle"
 import BArrowClockwise from "./components/Documentation/icons/arrow-clockwise"
 import MdiLoading from "./components/Documentation/icons/loading"
@@ -43,13 +45,12 @@ registerIcon(app, [
 })
 
 app.provide("icon-types", {
-  valid: "b-check-lg",
+  valid: BCheckLg,
   invalid: "b-exclamation-triangle",
-  success: "b-check-lg",
-  info: "b-info-circle-icon",
-  danger: "exclamation-octagon-fill-icon",
-  warn: "exclamation-triangle-icon",
-  light: "info-circle-icon",
+  success: BCheckLg,
+  info: BInfoCircle,
+  danger: BExclamationCircle,
+  warn: BExclamationCircle,
   menu: "three-dots-icon",
   question: "question-circle-icon",
 })
