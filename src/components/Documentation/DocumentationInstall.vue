@@ -64,16 +64,16 @@ module.exports = {
 
     <p>
       Import two css files. 
-      Copy styles.css from 'node_modules/vue-wind/dist/' to the src directory of
-      your project and import it. You can edit this file to customize look of
+      Copy components.css from 'node_modules/vue-wind/dist/' to the directory of
+      your application and import it. You can edit this file to customize look of
       components. Import second css file directly as in example:
     </p>
 
     <v-code language="javascript">
       {{ `// main.js
 
-// copy styles.css to src directory of your project and modify it to your liking
-import "./styles.css";
+// copy components.css to src directory of your project and modify it to your liking
+import "./components.css";
 
 // import fixed styles, order of imports is important
 import "vue-wind/dist/style.css" `}}
@@ -111,7 +111,7 @@ app.use(selectPlugin); `}}
 
     <h5>Styling components</h5>
       <p>
-      To customize appearance of components use following:
+      To customize style of components use following:
       <ul class="list-disc list-inside">
         <li>
       <span class="font-semibold">tailwind.config.js</span> file that have definitions for colors used,

@@ -3,13 +3,6 @@
     opacity-50
 }
 
-.fixed-shadow {
-  @apply
-    shadow-md
-    dark:shadow-lg
-    dark:shadow-black/30
-}
-
 /* ICON */
 
 .v-icon {
@@ -66,6 +59,8 @@
 .button-plain {
   @apply 
     focus:outline-none
+    text-text-600
+    dark:text-text-300
 }
   .button-plain--bold {
     @apply
@@ -143,6 +138,15 @@
     .button--square {
       @apply
         rounded-none
+    }
+    .button--circle {
+      @apply
+        rounded-full
+        p-4 !important
+    }
+    .button--equal {
+      @apply
+        p-2 !important
     }
     .button--pill {
       @apply
@@ -1047,7 +1051,9 @@
     }
     .card--shadow {
       @apply
-        fixed-shadow
+        shadow-md
+        dark:shadow-lg
+        dark:shadow-black/30
     }
     .card--square {
       @apply
@@ -1083,7 +1089,9 @@
     }
     .card-flat--shadow {
       @apply
-        fixed-shadow
+        shadow-md
+        dark:shadow-lg
+        dark:shadow-black/30
     }
 
 /* DROPDOWN */
@@ -1434,7 +1442,9 @@
     rounded-md
     overflow-hidden
     max-w-xs
-    fixed-shadow
+    shadow-md
+    dark:shadow-lg
+    dark:shadow-black/30
     bg-white
     border-secondary-300
     dark:bg-dark-800

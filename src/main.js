@@ -3,7 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import { plugin } from "./components/index.js";
 import "tailwindcss/tailwind.css";
-import "./styles/styles.css"
+import "./styles/components.css"
 import registerIcon from "./registerIcon"
 import "./components/Documentation/Documentation.css"
 import TableReference from "./components/Documentation/TableReference.vue";
