@@ -529,6 +529,60 @@
         dark:text-danger-500
     }
 
+/* AUTOCOMPLETE */
+
+.autocomplete {
+  @apply
+    rounded
+    border
+    focus:outline-none
+    focus:ring
+    outline-none
+    transition-shadow
+    duration-200
+    bg-white
+    border-secondary-300
+    focus:border-secondary-400
+    focus:ring-primary-200
+    dark:text-text-300
+    dark:bg-dark-700
+    dark:border-dark-500
+    dark:focus:ring-primary-300
+}
+
+.autocomplete--item {
+  @apply
+    w-full
+    text-left
+    text-sm
+    focus:outline-none
+    cursor-pointer
+    px-6
+    py-4
+    text-text-700
+    focus:text-white
+    hover:bg-secondary-100
+    focus:bg-primary-500
+    dark:text-text-300
+    dark:focus:text-white
+    dark:hover:bg-dark-700
+    dark:focus:bg-primary-500
+}
+    .autocomplete--item--active-state {
+      @apply
+        text-white
+        bg-primary-500
+        hover:bg-primary-600
+        dark:text-white
+        dark:bg-primary-500
+        dark:hover:bg-primary-600
+    }
+    .autocomplete--item--disabled-state {
+      @apply
+        disabled
+        pointer-events-none
+    }
+
 /* SELECT */
 
 .select {
@@ -1038,7 +1092,6 @@
   @apply
     border
     rounded-md
-    overflow-hidden
     bg-white
     border-secondary-200
     dark:text-text-400
@@ -1104,7 +1157,7 @@
     focus:outline-none
     pr-4
     px-6
-    py-2
+    py-4
     text-text-700
     focus:text-white
     hover:bg-secondary-100
@@ -1149,7 +1202,7 @@
     text-left
     mx-auto
     px-4 
-    py-2
+    py-4
     my-1
     text-text-700
     focus:text-white

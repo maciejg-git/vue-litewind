@@ -32,6 +32,9 @@ import vBreadcrumb from "./vBreadcrumb.vue";
 import vFormText from "./vFormText.vue";
 import vAccordion from "./vAccordion.vue"
 import vIcon from "./vIcon.vue"
+
+import vAutocomplete from "./vAutocomplete.vue"
+
 import tooltip from "../directives/tooltip.js";
 
 import vButtonCollapse from "./vButtonCollapse.vue"
@@ -146,6 +149,9 @@ function install(app) {
   app.component("v-divider", vDivider);
   app.component("v-accordion", vAccordion);
   app.component("v-icon", vIcon);
+
+  app.component("v-autocomplete", vAutocomplete);
+
   app.directive("tooltip", tooltip);
 
   app.component("v-button-collapse", vButtonCollapse);

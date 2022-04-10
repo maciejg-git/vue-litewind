@@ -6,6 +6,10 @@
     placeholder="Input example"
   />
 
+  <v-autocomplete v-model="example.model" :items="languages">
+
+  </v-autocomplete>
+
   <!-- underlined -->
 
   <v-input
@@ -81,6 +85,7 @@
 
 <script>
 import { ref, reactive } from "vue";
+import { languages } from "../../../const"
 
 export default {
   setup() {
@@ -95,6 +100,7 @@ export default {
     return {
       example,
       events,
+      languages,
     };
   },
 };

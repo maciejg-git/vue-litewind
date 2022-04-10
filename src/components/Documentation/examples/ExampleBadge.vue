@@ -7,7 +7,6 @@
     <v-badge class="mr-4">New</v-badge>
     <v-badge style-badge="small warn" class="mr-4">New</v-badge>
     <v-badge style-badge="small success" class="mr-4">New</v-badge>
-    <v-badge style-badge="small" class="mr-4">New</v-badge>
     <v-badge style-badge="tiny warn" class="mr-4">New</v-badge>
     <v-badge style-badge="tiny" class="mr-4">New</v-badge>
   </div>

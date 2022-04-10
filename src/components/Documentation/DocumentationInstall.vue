@@ -19,7 +19,7 @@
     </p>
 
     <p>
-      <span class="font-semibold">[Option if using form components]</span>
+      <span class="font-semibold dark:font-bold dark:text-text-500">[Option if using form components]</span>
       Install
       <a class="link" href="https://github.com/tailwindlabs/tailwindcss-forms">
         @tailwindcss/forms
@@ -33,7 +33,7 @@
     </v-code>
 
     <p>
-      Configure Tailwind: add dark mode, color definitions and (optional) forms plugin in tailwind.config.js:
+      Configure Tailwind: add dark mode option, extend color definitions and <span class="font-semibold dark:font-bold dark:text-text-500">(optional)</span> add forms plugin in tailwind.config.js:
     </p>
 
     <v-code language="javascript">
@@ -64,9 +64,9 @@ module.exports = {
 
     <p>
       Import two css files. 
-      Copy components.css from 'node_modules/vue-wind/dist/' to the directory of
+      Copy <code>components.css</code> from <code>'node_modules/vue-wind/dist/'</code> to the directory of
       your application and import it. You can edit this file to customize look of
-      components. Import second css file directly as in example:
+      components. Import <code>style.css</code> file directly as in example:
     </p>
 
     <v-code language="javascript">
@@ -114,21 +114,21 @@ app.use(selectPlugin); `}}
       To customize style of components use following:
       <ul class="list-disc list-inside">
         <li>
-      <span class="font-semibold">tailwind.config.js</span> file that have definitions for colors used,
+      <code>tailwind.config.js</code> file that have definitions for colors,
         </li>
         <li>
-      <span class="font-semibold">style.css</span> file that contains base classes and variants for components,
+      <code>style.css</code> file that contains base classes and variants for components,
         </li>
         <li>
-      and following <span class="font-semibold">component props</span> that allow selection of base and variant classes per component:
+      and following component props that allow selection of base and variant classes per component:
         </li>
       </ul>
       <ul>
         <li class="my-2">
-          <span class="font-semibold">base</span> - changes base name for styling. The default value is component name ("button", "dropdown", "modal" etc...). This can be useful to make new version of appearance with different set of variants.
+          <code>base</code> - changes base name for styling. The default value is component name ("button", "dropdown", "modal" etc...). This can be useful to make new version of appearance with different set of variants.
         </li>
         <li class="my-2">
-          <span class="font-semibold">style-[element]</span> - this prop adds variant classes to elements of component. Variant can be applied conditionaly by putting "identifier:" in front of any variant. Active conditional variant can be chosen with <span class="font-semibold">variant</span> prop set to identifier. Identifier can be any word and does not have any relation to css.
+          <code>style-[element]</code> - adds list of variants to elements of component. Variant can be applied conditionaly by putting "identifier:" in front of any variant. Active conditional variant can be chosen with <code>variant</code> prop set to identifier. Identifier can be any word and does not have any relation to css.
         </li>
       </ul>
       </p>

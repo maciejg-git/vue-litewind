@@ -37,7 +37,7 @@ export default {
   inheritAttrs: true,
   props: {
     modelValue: { type: Boolean, default: false },
-    ...sharedPopperProps,
+    ...sharedPopperProps(),
     autoCloseMenu: { type: Boolean, default: false },
     trigger: { type: String, default: "click" },
     transition: { type: String, default: "fade" },

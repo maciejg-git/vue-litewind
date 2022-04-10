@@ -1,5 +1,5 @@
 <template>
-  <v-card width="320px" style-card="shadow hoverable">
+  <v-card width="320px" style-card="shadow hoverable" class="overflow-hidden">
     <img :src="randomPhoto()" alt="" />
     <header class="font-semibold text-lg pt-3 px-6">Example card</header>
     <header class="text-gray-500 text-sm py-1 px-6">Subtitle</header>
@@ -19,7 +19,7 @@
     width="720px"
     style-card="shadow hoverable"
     style="height: 360px"
-    class="flex flex-row my-10"
+    class="flex flex-row my-10 overflow-hidden"
   >
     <img :src="randomPhoto(360, 360)" alt="" />
     <div class="flex flex-col">
@@ -40,7 +40,7 @@
 
   <!-- overlay -->
 
-  <v-card width="360px" style-card="shadow hoverable" class="relative">
+  <v-card width="360px" style-card="shadow hoverable" class="relative overflow-hidden">
     <img :src="randomPhoto(360, 600)" alt="" class="opacity-100"/>
     <div class="absolute bottom-0 bg-gray-800 bg-opacity-50 text-gray-100">
       <header class="font-semibold text-lg pt-3 px-6">Example card</header>

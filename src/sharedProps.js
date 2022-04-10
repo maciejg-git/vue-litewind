@@ -1,16 +1,20 @@
 import { correctPlacement } from "./const.js";
 
-export const sharedPopperProps = {
+export const sharedPopperProps = (d) => {
+  d = d || {}
+
+  return {
   placement: {
     type: String,
-    default: "bottom-start",
+    default: d.placement || "bottom-start",
     validator: function (v) {
       return correctPlacement.includes(v);
     },
   },
-  offsetX: { type: Number, default: 0 },
-  offsetY: { type: Number, default: 0 },
-  noFlip: { type: Boolean, default: false },
+  offsetX: { type: Number, default: d.offsetX || 0 },
+  offsetY: { type: Number, default: d.offsetY || 0 },
+  noFlip: { type: Boolean, default: d.noFlip || false },
+  }
 }
 
 export const sharedStyleProps = (base) => {

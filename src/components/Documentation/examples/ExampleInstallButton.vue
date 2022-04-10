@@ -12,7 +12,7 @@
       :variant="variant"
       @click="variant = 'visited'"
     >
-    {{ variant === "new" ? "Click me" : "Visited" }}
+      {{ variant === "new" ? "Click me" : "Visited" }}
     </v-button>
   </div>
 </template>

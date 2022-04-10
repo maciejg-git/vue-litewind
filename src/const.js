@@ -448,3 +448,5 @@ export let longText = [
     before the fire; on the stove, two huge carps from Lake Lauzet and a trout
     from Lake Alloz were cooking.`
 ]
+
+export let languages = ['spanish', 'french', 'portuguese', 'german', 'japanese', 'korean', 'italian', 'polish', 'dutch', 'romanian', 'thai', 'greek', 'czech', 'swedish']

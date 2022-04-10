@@ -11,6 +11,8 @@
     Alert
   </v-alert>
 
+  <!-- alert with custom icon -->
+
   <v-alert
     v-model="example.isVisible"
     :dismissable="example.dismissable"
@@ -23,6 +25,8 @@
     Alert (custom icon)
   </v-alert>
 
+  <!-- alternate style alert -->
+
   <v-alert
     v-model="example.isVisible"
     :dismissable="example.dismissable"
@@ -31,17 +35,6 @@
     :variant="example.variant"
     style-alert="borderless shadowed outline info:info danger:danger warn:warn success:success invalid:danger valid:success"
     class="my-6"
-  >
-    Alert
-  </v-alert>
-
-  <!-- position absolute -->
-
-  <v-alert
-    v-model="example.isVisibleAbsolute"
-    :dismissable="example.dismissable"
-    :auto-dismiss-delay="example.autoDismissDelay"
-    class="fixed top-20 left-1/2 w-3/4 transform -translate-x-1/2 shadow"
   >
     Alert
   </v-alert>
@@ -62,12 +55,6 @@
     <div class="flex gap-4">
       <v-button :disabled="example.isVisible" @click="example.isVisible = true">
         Show alert
-      </v-button>
-      <v-button
-        :disabled="example.isVisibleAbsolute"
-        @click="example.isVisibleAbsolute = true"
-      >
-        Show absolute alert
       </v-button>
     </div>
   </div>

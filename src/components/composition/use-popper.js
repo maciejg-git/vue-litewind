@@ -6,7 +6,6 @@ export default function usePopper({
   offsetX,
   offsetY,
   noFlip,
-  modelValue,
   emit,
 }) {
   let isPopperVisible = ref(false);
@@ -32,7 +31,6 @@ export default function usePopper({
   let hidePopper = function () {
     if (!isPopperVisible.value) return;
     isPopperVisible.value = false;
-    if (modelValue) emit('update:modelValue', false)
     emit("state:closed");
   };
 
@@ -72,6 +70,8 @@ export default function usePopper({
       ],
       placement: placement.value,
     });
+
+    instance.state.styles.popper.width = reference.value.clientWidth + "px"
   };
 
   // optional virtual element as reference
