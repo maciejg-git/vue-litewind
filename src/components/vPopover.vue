@@ -39,7 +39,7 @@ import { sharedPopperProps, sharedStyleProps } from "../sharedProps"
 
 export default {
   props: {
-    ...sharedPopperProps,
+    ...sharedPopperProps(),
     trigger: { type: String, default: "click" },
     delay: { type: Number, default: 50 },
     noHeader: { type: Boolean, default: false },

@@ -6,8 +6,11 @@
     placeholder="Input example"
   />
 
-  <v-autocomplete v-model="example.model" :items="languages">
-
+  <v-autocomplete v-model="example.model" :items="items" item-text="Description" item-value="Description" style-dropdown="shadow" @input:touched="getItems()">
+    <!-- <template #item="{ item }"> -->
+    <!--   {{ item }} -->
+    <!--   <span> {{ item }} </span> -->
+    <!-- </template> -->
   </v-autocomplete>
 
   <!-- underlined -->
@@ -97,10 +100,28 @@ export default {
 
     let events = ref([]);
 
+    let items = ref([])
+
+    let getItems = () => {
+    fetch('https://api.publicapis.org/entries', {mode: "cors"})
+          .then(res => res.json())
+          .then(res => {
+            const { count, entries } = res
+            // this.count = count
+            items.value = entries
+          })
+          .catch(err => {
+            console.log(err)
+          })
+          .finally()
+    }
+
     return {
       example,
       events,
       languages,
+      items,
+      getItems,
     };
   },
 };

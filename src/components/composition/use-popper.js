@@ -1,13 +1,19 @@
 import { ref, reactive, watch, nextTick } from "vue";
 import { createPopper } from "@popperjs/core";
 
-export default function usePopper({
-  placement,
-  offsetX,
-  offsetY,
-  noFlip,
-  emit,
-}) {
+export default function usePopper(
+  { placement, offsetX, offsetY, noFlip, emit },
+  { resizePopper = false } = {}
+) {
+  const resize = {
+    name: "resize",
+    enabled: resizePopper,
+    phase: "main",
+    fn({ state }) {
+      state.styles.popper.width = reference.value.clientWidth + "px";
+    },
+  };
+
   let isPopperVisible = ref(false);
   let instance = null;
   let reference = ref(null);
@@ -24,9 +30,9 @@ export default function usePopper({
   };
 
   let showVirtualPopper = (e) => {
-    updateVirtualElement({ x: e.clientX, y: e.clientY })
-    showPopper()
-  }
+    updateVirtualElement({ x: e.clientX, y: e.clientY });
+    showPopper();
+  };
 
   let hidePopper = function () {
     if (!isPopperVisible.value) return;
@@ -45,38 +51,42 @@ export default function usePopper({
     }
   });
 
-  watch(popper, () => popper.value && setPopper());
+  watch(popper, (value) => {
+    if (value) setPopper()
+    else instance.destroy()
+  });
 
   let setPopper = () => {
+    let modifiers = [
+      {
+        name: "offset",
+        options: {
+          offset: [offsetX.value, offsetY.value],
+        },
+      },
+      {
+        name: "flip",
+        enabled: !noFlip.value,
+      },
+      {
+        name: "preventOverflow",
+        options: {
+          // overflow hidden on cards
+          // mainAxis: false,
+        },
+      },
+      resize,
+    ];
+
     instance = createPopper(reference.value || virtualElement, popper.value, {
-      modifiers: [
-        {
-          name: "offset",
-          options: {
-            offset: [offsetX.value, offsetY.value],
-          },
-        },
-        {
-          name: "flip",
-          enabled: !noFlip.value,
-        },
-        {
-          name: "preventOverflow",
-          options: {
-            // overflow hidden on cards
-            // mainAxis: false,
-          },
-        },
-      ],
+      modifiers,
       placement: placement.value,
     });
-
-    instance.state.styles.popper.width = reference.value.clientWidth + "px"
   };
 
   // optional virtual element as reference
 
-  let getVirtualElement = ({x, y}) => {
+  let getVirtualElement = ({ x, y }) => {
     return () => ({
       width: 0,
       height: 0,
@@ -84,17 +94,17 @@ export default function usePopper({
       right: x,
       bottom: y,
       left: x,
-    })
-  }
+    });
+  };
 
   let virtualElement = {
-    getBoundingClientRect: getVirtualElement({x: 0, y: 0}),
+    getBoundingClientRect: getVirtualElement({ x: 0, y: 0 }),
   };
 
   let updateVirtualElement = (value) => {
-    virtualElement.getBoundingClientRect = getVirtualElement(value)
-    if (instance) instance.update()
-  }
+    virtualElement.getBoundingClientRect = getVirtualElement(value);
+    if (instance) instance.update();
+  };
 
   return {
     isPopperVisible,
