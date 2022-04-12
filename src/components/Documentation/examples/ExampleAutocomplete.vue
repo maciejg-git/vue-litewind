@@ -1,33 +1,32 @@
 <template>
-  <v-input
+  <!-- <v-autocomplete -->
+  <!--   v-model="example.model" -->
+  <!--   :items="items" -->
+  <!--   item-text="Description" -->
+  <!--   item-value="Description" -->
+  <!--   style-dropdown="shadow" -->
+  <!--   @input:touched="getItems()" -->
+  <!-- > -->
+  <!--   <template #item="{ item }"> -->
+  <!--     {{ item }} -->
+  <!--     <span>{{ item }}</span> -->
+  <!--   </template> -->
+  <!-- </v-autocomplete> -->
+  <v-autocomplete
     v-model="example.model"
-    :type="example.type"
-    :state="example.state"
-    placeholder="Input example"
-  />
-
-  <!-- underlined -->
-
-  <v-input
-    v-model="example.model"
-    name="input-underline"
-    :type="example.type"
-    :state="example.state"
-    placeholder="Input example"
-    class="mt-4"
-  />
-
-  <!-- rounded -->
-
-  <v-input
-    v-model="example.model"
-    name="input-rounded"
-    :type="example.type"
-    :state="example.state"
-    placeholder="Input example"
-    class="mt-8"
-  />
-<!-- CUT START -->
+    :items="items"
+    item-text="Description"
+    item-value="Description"
+    style-dropdown="shadow"
+    @input:value="getItems($event)"
+    class="w-[620px]"
+  >
+    <!-- <template #item="{ item }"> -->
+    <!--   {{ item }} -->
+    <!--   <span> {{ item }} </span> -->
+    <!-- </template> -->
+  </v-autocomplete>
+  <!-- CUT START -->
   <v-tabs name="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="mb-2 mt-5">
@@ -76,11 +75,12 @@
       </div>
     </v-tab>
   </v-tabs>
-<!-- CUT END -->
+  <!-- CUT END -->
 </template>
 
 <script>
 import { ref, reactive } from "vue";
+import { languages } from "../../../const";
 
 export default {
   setup() {
@@ -92,9 +92,44 @@ export default {
 
     let events = ref([]);
 
+    let items = ref([]);
+
+    // let getItems = () => {
+    // fetch('https://api.publicapis.org/entries')
+    //       .then(res => res.json())
+    //       .then(res => {
+    //         const { count, entries } = res
+    //         // this.count = count
+    //         items.value = entries
+    //       })
+    //       .catch(err => {
+    //         console.log(err)
+    //       })
+    //       .finally()
+    // }
+    let getItems = (v) => {
+      let regexp = new RegExp(v);
+      fetch("https://api.publicapis.org/entries")
+        .then((res) => res.json())
+        .then((res) => {
+          const { count, entries } = res;
+          // this.count = count
+          items.value = entries.filter((i) => {
+            return i.Description.search(regexp) !== -1;
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+        .finally();
+    };
+
     return {
       example,
       events,
+      languages,
+      items,
+      getItems,
     };
   },
 };

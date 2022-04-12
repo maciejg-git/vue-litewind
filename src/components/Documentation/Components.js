@@ -118,6 +118,10 @@ let formComponents = [
     label: "Form text",
     name: "formtext",
   },
+  {
+    label: "Autocomplete",
+    name: "autocomplete",
+  },
 ]
 
 export { 

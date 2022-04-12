@@ -12,18 +12,19 @@
     ]"
     @input="handleInput"
     @click="show()"
+    v-bind="$attrs"
   />
 
   <teleport to="body">
     <transition :name="transition">
       <div v-if="isPopperVisible" ref="popper" class="fixed-dropdown">
-        <div :class="classes.dropdown.value">
-          <div v-if="!filteredItems.length" :class="classes.item.value">
+        <div :class="classes.dropdown.value" ref="dropdownEl">
+          <div v-if="!itemsFiltered.length" :class="classes.item.value">
             No data available
           </div>
           <div
             v-else
-            v-for="item in filteredItems"
+            v-for="item in itemsPagination"
             :key="item"
             :class="classes.item.value"
             @click="selectItem(item)"
@@ -39,7 +40,7 @@
 </template>
 
 <script>
-import { ref, computed, toRefs } from "vue";
+import { ref, computed, watch, toRefs } from "vue";
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
 import usePopper from "./composition/use-popper.js";
@@ -52,14 +53,17 @@ export default {
     ...sharedPopperProps({ offsetY: 10 }),
     items: { type: Array, default: [] },
     state: { type: [String, Boolean], default: "" },
-    itemText: { type: String, default: "" },
-    itemValue: { type: String, default: "" },
+    itemText: { type: String, default: "text" },
+    itemValue: { type: String, default: "value" },
+    isLoading: { type: Boolean, default: false },
+    itemsPerPage: { type: Number, default: 10 },
     transition: { type: String, default: "fade" },
     styleAutocomplete: { type: [String, Array], default: "" },
     styleDropdown: { type: [String, Array], default: "" },
     styleItem: { type: [String, Array], default: "" },
     ...sharedStyleProps("autocomplete"),
   },
+  emits: ["update:modelValue"],
   setup(props, { attrs, emit }) {
     let { classes, states } = useStyles("autocomplete", props, {
       autocomplete: {
@@ -94,7 +98,7 @@ export default {
     let clickOutsideElements = [popper, reference];
     onClickOutside(clickOutsideElements, cancelInput);
 
-    let filteredItems = computed(() => {
+    let itemsFiltered = computed(() => {
       if (localValue.value === "") return props.items;
 
       let regexp = new RegExp(localValue.value);
@@ -103,6 +107,26 @@ export default {
         return getItemValue(i).search(regexp) !== -1;
       });
     });
+
+    let page = ref(0);
+
+    let itemsPagination = computed(() => {
+      return itemsFiltered.value.slice(
+        0,
+        (page.value + 1) * props.itemsPerPage
+      );
+    });
+
+    let dropdownEl = ref(null);
+
+    watch(dropdownEl, (value) => {
+      if (value)
+dropdownEl.value.addEventListener('scroll', () => {  
+  if (dropdownEl.value.offsetHeight + dropdownEl.value.scrollTop >= dropdownEl.value.scrollHeight) {  
+    page.value++;
+  }  
+})
+}, { flush: "post" })
 
     let localValue = ref("");
     let touched = ref(false);
@@ -164,11 +188,13 @@ export default {
       localValue,
       localModel,
       attrs,
-      filteredItems,
+      itemsFiltered,
+      itemsPagination,
       selectItem,
       getItemText,
       getItemValue,
       show,
+      dropdownEl,
       handleInput,
       isPopperVisible,
       reference,

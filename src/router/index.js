@@ -33,6 +33,7 @@ import DocumentationRange from "../components/Documentation/DocumentationRange.v
 import DocumentationBreadcrumb from "../components/Documentation/DocumentationBreadcrumb.vue";
 import DocumentationChevron from "../components/Documentation/DocumentationChevron.vue";
 import DocumentationFormText from "../components/Documentation/DocumentationFormText.vue";
+import DocumentationAutocomplete from "../components/Documentation/DocumentationAutocomplete.vue";
 import DocumentationClosebutton from "../components/Documentation/DocumentationClosebutton.vue";
 import DocumentationIcon from "../components/Documentation/DocumentationIcon.vue";
 import DocumentationDivider from "../components/Documentation/DocumentationDivider.vue";
@@ -181,6 +182,10 @@ const routes = [
       {
         path: "icon",
         component: DocumentationIcon,
+      },
+      {
+        path: "autocomplete",
+        component: DocumentationAutocomplete,
       },
 
       // directives
