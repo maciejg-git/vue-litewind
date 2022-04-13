@@ -11,7 +11,7 @@
     <slot name="reference"></slot>
   </div>
   <teleport to="body">
-    <transition :name="transition">
+    <transition :name="transition" @after-leave="onPopperTransitionLeave">
       <div
         v-if="isPopperVisible"
         ref="popper"
@@ -19,7 +19,11 @@
         @mouseleave="allowHiding"
         class="fixed-dropdown"
       >
-        <slot name="default" :hide="hidePopper" :context-data="contextData"></slot>
+        <slot
+          name="default"
+          :hide="hidePopper"
+          :context-data="contextData"
+        ></slot>
       </div>
     </transition>
   </teleport>
@@ -31,7 +35,7 @@ import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
 import useClickOutside from "./composition/use-click-outside";
 import useTrigger from "./composition/use-trigger";
-import { sharedPopperProps, sharedStyleProps } from "../sharedProps"
+import { sharedPopperProps, sharedStyleProps } from "../sharedProps";
 
 export default {
   inheritAttrs: true,
@@ -76,13 +80,14 @@ export default {
       showPopper,
       hidePopper,
       togglePopper,
+      onPopperTransitionLeave,
       showVirtualPopper,
     } = usePopper({ placement, offsetX, offsetY, noFlip, modelValue, emit });
 
     // add click outside callback
     let { onClickOutside } = useClickOutside();
     let clickOutsideElements = [popper];
-    if (slots.reference) clickOutsideElements.push(reference)
+    if (slots.reference) clickOutsideElements.push(reference);
     onClickOutside(clickOutsideElements, hidePopper);
 
     // delay closing menu if using hover trigger
@@ -90,11 +95,11 @@ export default {
 
     let preventHiding = () => {
       if (props.trigger === "hover") clearTimeout(hideTimeout);
-    }
+    };
 
     let allowHiding = () => {
       if (props.trigger === "hover") hideTimeout = scheduleHide();
-    }
+    };
 
     // show and hide functions, the only special case is hover trigger which
     // adds short delay before close
@@ -119,9 +124,9 @@ export default {
 
     let showContextDropdown = (e, data) => {
       if (slots.reference) return;
-      showVirtualPopper(e)
-      contextData.value = data
-    }
+      showVirtualPopper(e);
+      contextData.value = data;
+    };
 
     provide("classes", classes);
     provide("states", states);
@@ -142,6 +147,7 @@ export default {
       scheduleHide,
       show,
       hide,
+      onPopperTransitionLeave,
       preventHiding,
       allowHiding,
       slots,

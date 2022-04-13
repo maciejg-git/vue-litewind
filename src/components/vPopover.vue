@@ -10,23 +10,25 @@
   >
     <slot name="reference"></slot>
   </div>
-  <transition :name="transition">
-    <div v-if="isPopperVisible" ref="popper">
-      <div :class="classes.popover.value">
-        <header v-if="!noHeader" class="flex font-semibold px-3 py-2">
-          {{ title }}
-          <v-close-button
-            style-close-button="small"
-            class="ml-auto"
-            @click="hidePopper"
-          />
-        </header>
-        <div :class="classes.content.value">
-          <slot name="default"></slot>
+  <teleport to="body">
+    <transition :name="transition" @after-leave="onPopperTransitionLeave">
+      <div v-if="isPopperVisible" ref="popper">
+        <div :class="classes.popover.value">
+          <header v-if="!noHeader" class="flex font-semibold px-3 py-2">
+            {{ title }}
+            <v-close-button
+              style-close-button="small"
+              class="ml-auto"
+              @click="hidePopper"
+            />
+          </header>
+          <div :class="classes.content.value">
+            <slot name="default"></slot>
+          </div>
         </div>
       </div>
-    </div>
-  </transition>
+    </transition>
+  </teleport>
 </template>
 
 <script>
@@ -35,7 +37,7 @@ import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
 import useClickOutside from "./composition/use-click-outside";
 import useTrigger from "./composition/use-trigger";
-import { sharedPopperProps, sharedStyleProps } from "../sharedProps"
+import { sharedPopperProps, sharedStyleProps } from "../sharedProps";
 
 export default {
   props: {
@@ -69,6 +71,7 @@ export default {
       showPopper,
       hidePopper,
       togglePopper,
+      onPopperTransitionLeave,
     } = usePopper({ placement, offsetX, offsetY, noFlip, emit });
 
     // add click outside callback
@@ -96,6 +99,7 @@ export default {
       showPopper,
       hidePopper,
       togglePopper,
+      onPopperTransitionLeave,
       slots,
     };
   },

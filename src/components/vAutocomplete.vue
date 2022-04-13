@@ -16,9 +16,9 @@
   />
 
   <teleport to="body">
-    <transition :name="transition">
+    <transition :name="transition" @after-leave="onPopperTransitionLeave">
       <div v-if="isPopperVisible" ref="popper" class="fixed-dropdown">
-        <div :class="classes.dropdown.value" ref="dropdownEl">
+        <div :class="classes.dropdown.value" v-scroll-bottom="() => page++">
           <div v-if="!itemsFiltered.length" :class="classes.item.value">
             No data available
           </div>
@@ -29,9 +29,9 @@
             :class="classes.item.value"
             @click="selectItem(item)"
           >
-          <slot name="item" :item="item">
-            {{ getItemText(item) }}
-          </slot>
+            <slot name="item" :item="item">
+              <span v-html="highlightString(getItemText(item))"></span>
+            </slot>
           </div>
         </div>
       </div>
@@ -45,6 +45,7 @@ import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
 import usePopper from "./composition/use-popper.js";
 import useClickOutside from "./composition/use-click-outside";
+import scrollBottom from "../directives/scroll-bottom";
 import { sharedPopperProps, sharedStyleProps } from "../sharedProps";
 
 export default {
@@ -63,7 +64,16 @@ export default {
     styleItem: { type: [String, Array], default: "" },
     ...sharedStyleProps("autocomplete"),
   },
-  emits: ["update:modelValue"],
+  directives: {
+    scrollBottom,
+  },
+  emits: [
+    "update:modelValue",
+    "state:touched",
+    "input:value",
+    "state:opened",
+    "state:closed",
+  ],
   setup(props, { attrs, emit }) {
     let { classes, states } = useStyles("autocomplete", props, {
       autocomplete: {
@@ -88,6 +98,7 @@ export default {
       showPopper,
       hidePopper,
       togglePopper,
+      onPopperTransitionLeave,
       showVirtualPopper,
     } = usePopper(
       { placement, offsetX, offsetY, noFlip, modelValue, emit },
@@ -97,6 +108,18 @@ export default {
     let { onClickOutside } = useClickOutside();
     let clickOutsideElements = [popper, reference];
     onClickOutside(clickOutsideElements, cancelInput);
+
+    let touched = ref(false);
+
+    let show = () => {
+      if (!touched.value) {
+        emit("state:touched");
+        touched.value = true;
+      }
+      showPopper();
+    };
+
+    let localValue = ref("");
 
     let itemsFiltered = computed(() => {
       if (localValue.value === "") return props.items;
@@ -111,41 +134,25 @@ export default {
     let page = ref(0);
 
     let itemsPagination = computed(() => {
+      if (props.itemsPerPage === 0) return itemsFiltered.value;
+
       return itemsFiltered.value.slice(
         0,
         (page.value + 1) * props.itemsPerPage
       );
     });
 
-    let dropdownEl = ref(null);
-
-    watch(dropdownEl, (value) => {
-      if (value)
-dropdownEl.value.addEventListener('scroll', () => {  
-  if (dropdownEl.value.offsetHeight + dropdownEl.value.scrollTop >= dropdownEl.value.scrollHeight) {  
-    page.value++;
-  }  
-})
-}, { flush: "post" })
-
-    let localValue = ref("");
-    let touched = ref(false);
-
-    let show = () => {
-      if (!touched.value) {
-        emit("input:touched")
-        touched.value = true;
-      }
-      showPopper();
-    }
-
     let getItemText = (item) => {
       return item[props.itemText] !== undefined ? item[props.itemText] : item;
-    }
+    };
 
     let getItemValue = (item) => {
       return item[props.itemValue] !== undefined ? item[props.itemValue] : item;
-    }
+    };
+
+    let highlightString = (string) => {
+      return string.replace(new RegExp("(" + localValue.value + ")"), "<span>$1</span>")
+    } 
 
     let update = (item) => {
       localValue.value = getItemValue(item);
@@ -179,7 +186,7 @@ dropdownEl.value.addEventListener('scroll', () => {
     let handleInput = () => {
       show();
       emit("input:value", localValue.value);
-    }
+    };
 
     return {
       classes,
@@ -194,7 +201,9 @@ dropdownEl.value.addEventListener('scroll', () => {
       getItemText,
       getItemValue,
       show,
-      dropdownEl,
+      onPopperTransitionLeave,
+      page,
+      highlightString,
       handleInput,
       isPopperVisible,
       reference,

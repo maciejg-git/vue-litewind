@@ -1,9 +1,9 @@
-import { ref, reactive, watch, nextTick } from "vue";
+import { ref, watch, nextTick } from "vue";
 import { createPopper } from "@popperjs/core";
 
 export default function usePopper(
   { placement, offsetX, offsetY, noFlip, emit },
-  { resizePopper = false } = {}
+  { resizePopper = false, destroyOnRemove = false } = {}
 ) {
   const resize = {
     name: "resize",
@@ -44,6 +44,8 @@ export default function usePopper(
     isPopperVisible.value ? hidePopper() : showPopper();
   };
 
+  // watch component props changes and update instance
+
   watch([placement, offsetX, offsetY, noFlip], () => {
     if (instance && popper.value) {
       setPopper();
@@ -51,10 +53,21 @@ export default function usePopper(
     }
   });
 
+  // watch popper element and create new instance
+
   watch(popper, (value) => {
-    if (value) setPopper()
-    else instance.destroy()
+    if (value) setPopper();
+    else if (destroyOnRemove) destroyInstance();
   });
+
+  let destroyInstance = () => {
+    if (instance) {
+      instance.destroy();
+      instance = null;
+    }
+  };
+
+  let onPopperTransitionLeave = () => destroyInstance();
 
   let setPopper = () => {
     let modifiers = [
@@ -114,6 +127,7 @@ export default function usePopper(
     hidePopper,
     togglePopper,
     setPopper,
+    onPopperTransitionLeave,
     virtualElement,
     updateVirtualElement,
     showVirtualPopper,
