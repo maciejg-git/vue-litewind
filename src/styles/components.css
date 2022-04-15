@@ -3,6 +3,12 @@
     opacity-50
 }
 
+.match {
+  @apply
+    bg-secondary-100
+    dark:bg-dark-600
+}
+
 /* ICON */
 
 .v-icon {
@@ -593,7 +599,6 @@
   @apply
     w-full
     text-left
-    text-sm
     focus:outline-none
     cursor-pointer
     px-6
@@ -607,15 +612,6 @@
     dark:hover:bg-dark-700
     dark:focus:bg-primary-500
 }
-    .autocomplete--item--active-state {
-      @apply
-        text-white
-        bg-primary-500
-        hover:bg-primary-600
-        dark:text-white
-        dark:bg-primary-500
-        dark:hover:bg-primary-600
-    }
     .autocomplete--item--disabled-state {
       @apply
         disabled

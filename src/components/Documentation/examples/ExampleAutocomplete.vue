@@ -3,22 +3,37 @@
   <!--   v-model="example.model" -->
   <!--   :items="items" -->
   <!--   item-text="Description" -->
+  <!--   item-value="Link" -->
+  <!--   style-dropdown="shadow" -->
+  <!--   @state:touched="getItems()" -->
+  <!-- > -->
+  <!--   &#60;&#33;&#45;&#45; <template #item="{ item }"> &#45;&#45;&#62; -->
+  <!--   &#60;&#33;&#45;&#45;   {{ item }} &#45;&#45;&#62; -->
+  <!--   &#60;&#33;&#45;&#45;   <span>{{ item }}</span> &#45;&#45;&#62; -->
+  <!--   &#60;&#33;&#45;&#45; </template> &#45;&#45;&#62; -->
+  <!-- </v-autocomplete> -->
+
+  <!-- <v-autocomplete -->
+  <!--   v-model="example.model" -->
+  <!--   :items="items" -->
+  <!--   item-text="Description" -->
   <!--   item-value="Description" -->
   <!--   style-dropdown="shadow" -->
-  <!--   @input:touched="getItems()" -->
+  <!--   @input:value="getItems($event)" -->
+  <!--   class="w-[620px]" -->
   <!-- > -->
-  <!--   <template #item="{ item }"> -->
-  <!--     {{ item }} -->
-  <!--     <span>{{ item }}</span> -->
-  <!--   </template> -->
+  <!--   &#60;&#33;&#45;&#45; <template #item="{ item }"> &#45;&#45;&#62; -->
+  <!--   &#60;&#33;&#45;&#45;   {{ item }} &#45;&#45;&#62; -->
+  <!--   &#60;&#33;&#45;&#45;   <span> {{ item }} </span> &#45;&#45;&#62; -->
+  <!--   &#60;&#33;&#45;&#45; </template> &#45;&#45;&#62; -->
   <!-- </v-autocomplete> -->
+
   <v-autocomplete
     v-model="example.model"
     :items="items"
     item-text="Description"
-    item-value="Description"
+    item-value="Link"
     style-dropdown="shadow"
-    @input:value="getItems($event)"
     class="w-[620px]"
   >
     <!-- <template #item="{ item }"> -->
@@ -92,37 +107,38 @@ export default {
 
     let events = ref([]);
 
-    let items = ref([]);
+    // let items = ref([]);
+    let items = ref(languages);
 
-    // let getItems = () => {
-    // fetch('https://api.publicapis.org/entries')
-    //       .then(res => res.json())
-    //       .then(res => {
-    //         const { count, entries } = res
-    //         // this.count = count
-    //         items.value = entries
-    //       })
-    //       .catch(err => {
-    //         console.log(err)
-    //       })
-    //       .finally()
-    // }
-    let getItems = (v) => {
-      let regexp = new RegExp(v);
-      fetch("https://api.publicapis.org/entries")
-        .then((res) => res.json())
-        .then((res) => {
-          const { count, entries } = res;
-          // this.count = count
-          items.value = entries.filter((i) => {
-            return i.Description.search(regexp) !== -1;
-          });
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-        .finally();
-    };
+    let getItems = () => {
+      fetch('https://api.publicapis.org/entries', {mode: "cors"})
+          .then(res => res.json())
+          .then(res => {
+            const { count, entries } = res
+            // this.count = count
+            items.value = entries
+          })
+          .catch(err => {
+            console.log(err)
+          })
+          .finally()
+    }
+    // let getItems = (v) => {
+    //   let regexp = new RegExp(v);
+    //   fetch("https://api.publicapis.org/entries")
+    //     .then((res) => res.json())
+    //     .then((res) => {
+    //       const { count, entries } = res;
+    //       // this.count = count
+    //       items.value = entries.filter((i) => {
+    //         return i.Description.search(regexp) !== -1;
+    //       });
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     })
+    //     .finally();
+    // };
 
     return {
       example,

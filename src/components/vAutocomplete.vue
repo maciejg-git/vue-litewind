@@ -1,6 +1,6 @@
 <template>
   <input
-    v-model="localValue"
+    v-model="localText"
     type="text"
     ref="reference"
     :class="[
@@ -26,11 +26,15 @@
             v-else
             v-for="item in itemsPagination"
             :key="item"
-            :class="classes.item.value"
+            :class="getItemClass(item)"
             @click="selectItem(item)"
           >
             <slot name="item" :item="item">
-              <span v-html="highlightString(getItemText(item))"></span>
+              <span
+                v-html="
+                  isNewSelection() ? getItemText(item) : getHighligtedText(item)
+                "
+              ></span>
             </slot>
           </div>
         </div>
@@ -88,6 +92,14 @@ export default {
       },
     });
 
+    let getItemClass = (item) => {
+      return [
+        item.disabled
+          ? [classes.item.value, states.item.value.disabled]
+          : classes.item.value,
+      ];
+    };
+
     let localModel = useLocalModel(props, emit);
 
     const { offsetX, offsetY, noFlip, placement, modelValue } = toRefs(props);
@@ -119,15 +131,24 @@ export default {
       showPopper();
     };
 
-    let localValue = ref("");
+    let selected = ref(null);
+
+    let localText = ref("");
+
+    let isNewSelection = () => {
+      return (
+        localText.value === "" ||
+        (selected.value && localText.value === getItemText(selected.value))
+      );
+    };
 
     let itemsFiltered = computed(() => {
-      if (localValue.value === "") return props.items;
+      if (isNewSelection()) return props.items;
 
-      let regexp = new RegExp(localValue.value);
+      let regexp = new RegExp(localText.value);
 
       return props.items.filter((i) => {
-        return getItemValue(i).search(regexp) !== -1;
+        return getItemText(i).search(regexp) !== -1;
       });
     });
 
@@ -150,17 +171,23 @@ export default {
       return item[props.itemValue] !== undefined ? item[props.itemValue] : item;
     };
 
+    let getHighligtedText = (item) => highlightString(getItemText(item));
+
     let highlightString = (string) => {
-      return string.replace(new RegExp("(" + localValue.value + ")"), "<span>$1</span>")
-    } 
+      return string.replace(
+        new RegExp(`(${localText.value})`),
+        "<span class='match'>$1</span>"
+      );
+    };
 
     let update = (item) => {
-      localValue.value = getItemValue(item);
-      localModel.value = localValue.value;
+      selected.value = item;
+      localText.value = getItemText(item);
+      localModel.value = getItemValue(item);
     };
 
     let revert = () => {
-      localValue.value = localModel.value;
+      localText.value = getItemText(selected.value);
     };
 
     function cancelInput() {
@@ -185,14 +212,14 @@ export default {
 
     let handleInput = () => {
       show();
-      emit("input:value", localValue.value);
+      emit("input:value", localText.value);
     };
 
     return {
       classes,
       states,
       state,
-      localValue,
+      localText,
       localModel,
       attrs,
       itemsFiltered,
@@ -200,7 +227,10 @@ export default {
       selectItem,
       getItemText,
       getItemValue,
+      getHighligtedText,
+      isNewSelection,
       show,
+      getItemClass,
       onPopperTransitionLeave,
       page,
       highlightString,

@@ -1,5 +1,5 @@
 <template>
-  <h3>Input</h3>
+  <h3>Autocomplete</h3>
   <p></p>
 
   <section>
