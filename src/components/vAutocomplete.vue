@@ -11,7 +11,7 @@
         : '',
     ]"
     @input="handleInput"
-    @click="show()"
+    @focus="handleClickInput"
     v-bind="$attrs"
   />
 
@@ -19,7 +19,7 @@
     <transition :name="transition" @after-leave="onPopperTransitionLeave">
       <div v-if="isPopperVisible" ref="popper" class="fixed-dropdown">
         <div :class="classes.dropdown.value" v-scroll-bottom="() => page++">
-          <div v-if="!itemsFiltered.length" :class="classes.item.value">
+          <div v-if="!itemsPagination.length" :class="classes.item.value">
             No data available
           </div>
           <div
@@ -32,7 +32,7 @@
             <slot name="item" :item="item">
               <span
                 v-html="
-                  isNewSelection() ? getItemText(item) : getHighligtedText(item)
+                  getHighligtedText(item)
                 "
               ></span>
             </slot>
@@ -61,6 +61,7 @@ export default {
     itemText: { type: String, default: "text" },
     itemValue: { type: String, default: "value" },
     isLoading: { type: Boolean, default: false },
+    noFilter: { type: Boolean, default: false },
     itemsPerPage: { type: Number, default: 10 },
     transition: { type: String, default: "fade" },
     styleAutocomplete: { type: [String, Array], default: "" },
@@ -128,6 +129,9 @@ export default {
         emit("state:touched");
         touched.value = true;
       }
+
+      isNewSelection.value = true
+
       showPopper();
     };
 
@@ -135,17 +139,32 @@ export default {
 
     let localText = ref("");
 
-    let isNewSelection = () => {
-      return (
-        localText.value === "" ||
-        (selected.value && localText.value === getItemText(selected.value))
-      );
-    };
+    let isNewSelection = ref(true)
+
+    // let isNewSelection = () => {
+    //   console.log(localText.value)
+    //   console.log(selected.value && localText.value === getItemText(selected.value))
+    //   return (
+    //     localText.value === "" ||
+    //     (selected.value && localText.value === getItemText(selected.value))
+    //   );
+    // };
+
+    let isVisible = ref(false)
+
+    watch(() => props.items, (value) => {
+      if (isVisible.value && value.length) show()
+    })
+
+    watch(isVisible, (value) => {
+      if (value && props.items.length) show()
+    })
 
     let itemsFiltered = computed(() => {
-      if (isNewSelection()) return props.items;
+      console.log(props.items)
+      if (isNewSelection.value || props.noFilter) return props.items;
 
-      let regexp = new RegExp(localText.value);
+      let regexp = new RegExp(localText.value, 'i');
 
       return props.items.filter((i) => {
         return getItemText(i).search(regexp) !== -1;
@@ -175,7 +194,7 @@ export default {
 
     let highlightString = (string) => {
       return string.replace(
-        new RegExp(`(${localText.value})`),
+        new RegExp(`(${localText.value})`, 'i'),
         "<span class='match'>$1</span>"
       );
     };
@@ -187,15 +206,22 @@ export default {
     };
 
     let revert = () => {
+      console.log('revert selected', selected.value)
+      if (!selected.value) {
+        localText.value = ""
+        return
+      }
       localText.value = getItemText(selected.value);
     };
 
     function cancelInput() {
+      isVisible.value = false
       revert();
       hidePopper();
     }
 
     let selectItem = (item) => {
+      isVisible.value = false
       update(item);
       hidePopper();
     };
@@ -210,8 +236,14 @@ export default {
         : props.state;
     });
 
+    let handleClickInput = () => {
+      if (props.noFilter && selected.value) return
+      isVisible.value =  true
+    }
+
     let handleInput = () => {
-      show();
+      isVisible.value = true
+      isNewSelection.value = false
       emit("input:value", localText.value);
     };
 
@@ -234,6 +266,7 @@ export default {
       onPopperTransitionLeave,
       page,
       highlightString,
+      handleClickInput,
       handleInput,
       isPopperVisible,
       reference,

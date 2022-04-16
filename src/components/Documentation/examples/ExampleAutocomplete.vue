@@ -1,46 +1,75 @@
 <template>
-  <!-- <v-autocomplete -->
-  <!--   v-model="example.model" -->
-  <!--   :items="items" -->
-  <!--   item-text="Description" -->
-  <!--   item-value="Link" -->
-  <!--   style-dropdown="shadow" -->
-  <!--   @state:touched="getItems()" -->
-  <!-- > -->
-  <!--   &#60;&#33;&#45;&#45; <template #item="{ item }"> &#45;&#45;&#62; -->
-  <!--   &#60;&#33;&#45;&#45;   {{ item }} &#45;&#45;&#62; -->
-  <!--   &#60;&#33;&#45;&#45;   <span>{{ item }}</span> &#45;&#45;&#62; -->
-  <!--   &#60;&#33;&#45;&#45; </template> &#45;&#45;&#62; -->
-  <!-- </v-autocomplete> -->
+  <div>
+    state touched
+    <v-autocomplete
+      v-model="example.model"
+      :items="items"
+      item-text="Description"
+      item-value="Link"
+      style-dropdown="shadow"
+      @state:touched="getItems()"
+      class="w-[620px]"
+    >
+      <!-- <template #item="{ item }"> -->
+      <!--   {{ item }} -->
+      <!--   <span>{{ item }}</span> -->
+      <!-- </template> -->
+    </v-autocomplete>
+  </div>
 
-  <!-- <v-autocomplete -->
-  <!--   v-model="example.model" -->
-  <!--   :items="items" -->
-  <!--   item-text="Description" -->
-  <!--   item-value="Description" -->
-  <!--   style-dropdown="shadow" -->
-  <!--   @input:value="getItems($event)" -->
-  <!--   class="w-[620px]" -->
-  <!-- > -->
-  <!--   &#60;&#33;&#45;&#45; <template #item="{ item }"> &#45;&#45;&#62; -->
-  <!--   &#60;&#33;&#45;&#45;   {{ item }} &#45;&#45;&#62; -->
-  <!--   &#60;&#33;&#45;&#45;   <span> {{ item }} </span> &#45;&#45;&#62; -->
-  <!--   &#60;&#33;&#45;&#45; </template> &#45;&#45;&#62; -->
-  <!-- </v-autocomplete> -->
+  <div>
+    remote
+    <v-autocomplete
+      v-model="example.model"
+      :items="itemsRemote"
+      item-text="Description"
+      item-value="Link"
+      style-dropdown="shadow"
+      @input:value="getItemsRemote($event)"
+      class="w-[620px]"
+    >
+      <!-- <template #item="{ item }"> -->
+      <!--   {{ item }} -->
+      <!--   <span> {{ item }} </span> -->
+      <!-- </template> -->
+    </v-autocomplete>
+  </div>
 
-  <v-autocomplete
-    v-model="example.model"
-    :items="items"
-    item-text="Description"
-    item-value="Link"
-    style-dropdown="shadow"
-    class="w-[620px]"
-  >
-    <!-- <template #item="{ item }"> -->
-    <!--   {{ item }} -->
-    <!--   <span> {{ item }} </span> -->
-    <!-- </template> -->
-  </v-autocomplete>
+  <div>
+    remote state
+    <v-autocomplete
+      v-model="example.model"
+      :items="itemsState"
+      item-text="Description"
+      item-value="Link"
+      style-dropdown="shadow"
+      no-filter
+      @input:value="querySelections($event)"
+      class="w-[620px]"
+    >
+      <!-- <template #item="{ item }"> -->
+      <!--   {{ item }} -->
+      <!--   <span> {{ item }} </span> -->
+      <!-- </template> -->
+    </v-autocomplete>
+  </div>
+
+  <div>
+    local
+    <v-autocomplete
+      v-model="example.model"
+      :items="itemsLanguages"
+      item-text="Description"
+      item-value="Link"
+      style-dropdown="shadow"
+      class="w-[620px]"
+    >
+      <!-- <template #item="{ item }"> -->
+      <!--   {{ item }} -->
+      <!--   <span> {{ item }} </span> -->
+      <!-- </template> -->
+    </v-autocomplete>
+  </div>
   <!-- CUT START -->
   <v-tabs name="tabs-material" class="mt-10">
     <v-tab name="Props">
@@ -105,10 +134,85 @@ export default {
       state: "",
     });
 
+    let states = [
+          'Alabama',
+          'Alaska',
+          'American Samoa',
+          'Arizona',
+          'Arkansas',
+          'California',
+          'Colorado',
+          'Connecticut',
+          'Delaware',
+          'District of Columbia',
+          'Federated States of Micronesia',
+          'Florida',
+          'Georgia',
+          'Guam',
+          'Hawaii',
+          'Idaho',
+          'Illinois',
+          'Indiana',
+          'Iowa',
+          'Kansas',
+          'Kentucky',
+          'Louisiana',
+          'Maine',
+          'Marshall Islands',
+          'Maryland',
+          'Massachusetts',
+          'Michigan',
+          'Minnesota',
+          'Mississippi',
+          'Missouri',
+          'Montana',
+          'Nebraska',
+          'Nevada',
+          'New Hampshire',
+          'New Jersey',
+          'New Mexico',
+          'New York',
+          'North Carolina',
+          'North Dakota',
+          'Northern Mariana Islands',
+          'Ohio',
+          'Oklahoma',
+          'Oregon',
+          'Palau',
+          'Pennsylvania',
+          'Puerto Rico',
+          'Rhode Island',
+          'South Carolina',
+          'South Dakota',
+          'Tennessee',
+          'Texas',
+          'Utah',
+          'Vermont',
+          'Virgin Island',
+          'Virginia',
+          'Washington',
+          'West Virginia',
+          'Wisconsin',
+          'Wyoming',
+        ]
+
     let events = ref([]);
 
     // let items = ref([]);
-    let items = ref(languages);
+    let itemsLanguages = ref(languages);
+    let items = ref([]);
+    let itemsRemote = ref([]);
+
+    let itemsState = ref([])
+
+    let querySelections = (v) => {
+        // Simulated ajax query
+        setTimeout(() => {
+          itemsState.value = states.filter(e => {
+            return (e || '').toLowerCase().indexOf((v || '').toLowerCase()) > -1
+          })
+        }, 500)
+      };
 
     let getItems = () => {
       fetch('https://api.publicapis.org/entries', {mode: "cors"})
@@ -123,29 +227,36 @@ export default {
           })
           .finally()
     }
-    // let getItems = (v) => {
-    //   let regexp = new RegExp(v);
-    //   fetch("https://api.publicapis.org/entries")
-    //     .then((res) => res.json())
-    //     .then((res) => {
-    //       const { count, entries } = res;
-    //       // this.count = count
-    //       items.value = entries.filter((i) => {
-    //         return i.Description.search(regexp) !== -1;
-    //       });
-    //     })
-    //     .catch((err) => {
-    //       console.log(err);
-    //     })
-    //     .finally();
-    // };
+    let getItemsRemote = (v) => {
+      console.log('get', v)
+      let regexp = new RegExp(v);
+      fetch("https://api.publicapis.org/entries")
+        .then((res) => res.json())
+        .then((res) => {
+          console.log('res')
+          const { count, entries } = res;
+          // this.count = count
+          itemsRemote.value = entries.filter((i) => {
+            return i.Description.search(regexp) !== -1;
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+        .finally();
+    };
 
     return {
       example,
       events,
       languages,
+      itemsState,
       items,
+      itemsLanguages,
+      itemsRemote,
+      querySelections,
       getItems,
+      getItemsRemote,
     };
   },
 };
