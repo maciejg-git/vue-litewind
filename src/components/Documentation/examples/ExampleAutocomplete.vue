@@ -42,6 +42,7 @@
       :items="itemsState"
       item-text="Description"
       item-value="Link"
+      :is-loading="example.isLoading"
       style-dropdown="shadow"
       no-filter
       @input:value="querySelections($event)"
@@ -132,6 +133,7 @@ export default {
       model: "",
       type: "text",
       state: "",
+      isLoading: false,
     });
 
     let states = [
@@ -207,10 +209,12 @@ export default {
 
     let querySelections = (v) => {
         // Simulated ajax query
+      example.isLoading = true
         setTimeout(() => {
           itemsState.value = states.filter(e => {
             return (e || '').toLowerCase().indexOf((v || '').toLowerCase()) > -1
           })
+          example.isLoading = false
         }, 500)
       };
 

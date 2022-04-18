@@ -14,12 +14,13 @@
     @focus="handleClickInput"
     v-bind="$attrs"
   />
+  <v-spinner v-if="isLoading" type="svg"></v-spinner>
 
   <teleport to="body">
     <transition :name="transition" @after-leave="onPopperTransitionLeave">
       <div v-if="isPopperVisible" ref="popper" class="fixed-dropdown">
         <div :class="classes.dropdown.value" v-scroll-bottom="() => page++">
-          <div v-if="!itemsPagination.length" :class="classes.item.value">
+          <div v-if="!itemsPagination.length && !isLoading" :class="classes.item.value">
             No data available
           </div>
           <div
@@ -49,6 +50,7 @@ import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
 import usePopper from "./composition/use-popper.js";
 import useClickOutside from "./composition/use-click-outside";
+import vSpinner from "./vSpinner.vue"
 import scrollBottom from "../directives/scroll-bottom";
 import { sharedPopperProps, sharedStyleProps } from "../sharedProps";
 
@@ -68,6 +70,9 @@ export default {
     styleDropdown: { type: [String, Array], default: "" },
     styleItem: { type: [String, Array], default: "" },
     ...sharedStyleProps("autocomplete"),
+  },
+  components: {
+    vSpinner,
   },
   directives: {
     scrollBottom,
@@ -141,6 +146,8 @@ export default {
 
     let isNewSelection = ref(true)
 
+    let isReverted = ref(false)
+
     // let isNewSelection = () => {
     //   console.log(localText.value)
     //   console.log(selected.value && localText.value === getItemText(selected.value))
@@ -152,16 +159,18 @@ export default {
 
     let isVisible = ref(false)
 
-    watch(() => props.items, (value) => {
-      if (isVisible.value && value.length) show()
+    watch(() => props.isLoading, (value) => {
+      if (isVisible.value && !value) show()
     })
 
     watch(isVisible, (value) => {
-      if (value && props.items.length) show()
+      if (value && !props.noFilter) show()
     })
 
     let itemsFiltered = computed(() => {
       console.log(props.items)
+      if (props.isLoading) return props.items
+      // if (props.isLoading) return []
       if (isNewSelection.value || props.noFilter) return props.items;
 
       let regexp = new RegExp(localText.value, 'i');
@@ -207,6 +216,7 @@ export default {
 
     let revert = () => {
       console.log('revert selected', selected.value)
+      isReverted.value = true
       if (!selected.value) {
         localText.value = ""
         return
