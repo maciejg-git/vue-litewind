@@ -618,6 +618,12 @@
         pointer-events-none
     }
 
+.autocomplete--match {
+  @apply
+    bg-secondary-100
+    dark:bg-dark-600
+}
+
 /* SELECT */
 
 .select {

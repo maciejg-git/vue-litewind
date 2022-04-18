@@ -1,25 +1,31 @@
 <template>
-  <input
-    v-model="localText"
-    type="text"
-    ref="reference"
-    :class="[
-      classes.autocomplete.value,
-      states.autocomplete.value && states.autocomplete.value[state],
-      attrs.disabled === '' || attrs.disabled === true
-        ? states.autocomplete.disabled
-        : '',
-    ]"
-    @input="handleInput"
-    @focus="handleClickInput"
-    v-bind="$attrs"
-  />
-  <v-spinner v-if="isLoading" type="svg"></v-spinner>
+  <div class="inline-flex relative items-center"
+      v-bind="$attrs"
+    >
+    <input
+      v-model="localText"
+      type="text"
+      ref="reference"
+      class="block w-full pr-10"
+      :class="[
+        classes.autocomplete.value,
+        states.autocomplete.value && states.autocomplete.value[state],
+        attrs.disabled === '' || attrs.disabled === true
+          ? states.autocomplete.disabled
+          : '',
+      ]"
+      @input="handleInput"
+      @focus="handleClickInput"
+    />
+  <div v-if="!noLoader" class="absolute flex right-0 mr-2">
+    <v-spinner v-show="isLoading" type="svg"></v-spinner>
+  </div>
+  </div>
 
   <teleport to="body">
     <transition :name="transition" @after-leave="onPopperTransitionLeave">
       <div v-if="isPopperVisible" ref="popper" class="fixed-dropdown">
-        <div :class="classes.dropdown.value" v-scroll-bottom="() => page++">
+        <div :class="classes.dropdown.value" v-scroll-bottom="handlePagination">
           <div v-if="!itemsPagination.length && !isLoading" :class="classes.item.value">
             No data available
           </div>
@@ -64,11 +70,14 @@ export default {
     itemValue: { type: String, default: "value" },
     isLoading: { type: Boolean, default: false },
     noFilter: { type: Boolean, default: false },
+    noPagination: { type: Boolean, default: false },
+    noLoader: { type: Boolean, default: false },
     itemsPerPage: { type: Number, default: 10 },
     transition: { type: String, default: "fade" },
     styleAutocomplete: { type: [String, Array], default: "" },
     styleDropdown: { type: [String, Array], default: "" },
     styleItem: { type: [String, Array], default: "" },
+    styleMatch: { type: [String, Array], default: "" },
     ...sharedStyleProps("autocomplete"),
   },
   components: {
@@ -79,7 +88,8 @@ export default {
   },
   emits: [
     "update:modelValue",
-    "state:touched",
+    "update:page",
+    "state:focus",
     "input:value",
     "state:opened",
     "state:closed",
@@ -96,6 +106,7 @@ export default {
         fixed: "fixed-item",
         states: ["active", "disabled"],
       },
+      match: null,
     });
 
     let getItemClass = (item) => {
@@ -127,16 +138,8 @@ export default {
     let clickOutsideElements = [popper, reference];
     onClickOutside(clickOutsideElements, cancelInput);
 
-    let touched = ref(false);
-
     let show = () => {
-      if (!touched.value) {
-        emit("state:touched");
-        touched.value = true;
-      }
-
       isNewSelection.value = true
-
       showPopper();
     };
 
@@ -146,39 +149,31 @@ export default {
 
     let isNewSelection = ref(true)
 
-    let isReverted = ref(false)
-
-    // let isNewSelection = () => {
-    //   console.log(localText.value)
-    //   console.log(selected.value && localText.value === getItemText(selected.value))
-    //   return (
-    //     localText.value === "" ||
-    //     (selected.value && localText.value === getItemText(selected.value))
-    //   );
-    // };
-
     let isVisible = ref(false)
 
     watch(() => props.isLoading, (value) => {
-      if (isVisible.value && !value) show()
+      isVisible.value && !value && show()
     })
 
     watch(isVisible, (value) => {
-      if (value && !props.noFilter) show()
+      value && !props.noFilter && show()
     })
 
+    // filter
+
     let itemsFiltered = computed(() => {
-      console.log(props.items)
       if (props.isLoading) return props.items
       // if (props.isLoading) return []
       if (isNewSelection.value || props.noFilter) return props.items;
 
-      let regexp = new RegExp(localText.value, 'i');
+      let regexp = new RegExp(localText.value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
 
       return props.items.filter((i) => {
         return getItemText(i).search(regexp) !== -1;
       });
     });
+
+    // pagination
 
     let page = ref(0);
 
@@ -204,9 +199,11 @@ export default {
     let highlightString = (string) => {
       return string.replace(
         new RegExp(`(${localText.value})`, 'i'),
-        "<span class='match'>$1</span>"
+        `<span class='${classes.match.value}'>$1</span>`
       );
     };
+
+    // update local value and model after selecting option
 
     let update = (item) => {
       selected.value = item;
@@ -214,9 +211,9 @@ export default {
       localModel.value = getItemValue(item);
     };
 
+    // revert to previous value
+
     let revert = () => {
-      console.log('revert selected', selected.value)
-      isReverted.value = true
       if (!selected.value) {
         localText.value = ""
         return
@@ -234,7 +231,15 @@ export default {
       isVisible.value = false
       update(item);
       hidePopper();
+      console.log(selected)
     };
+
+    let clearInput = () => {
+      localText.value = ""
+      selected.value = ""
+      localModel.value = ""
+      emit("update:modelValue", "")
+    }
 
     let state = computed(() => {
       props.state === true
@@ -246,9 +251,17 @@ export default {
         : props.state;
     });
 
+    // handle template events
+
+    let handlePagination = () => {
+      page.value++
+      emit("update:page")
+    }
+
     let handleClickInput = () => {
       if (props.noFilter && selected.value) return
       isVisible.value =  true
+      emit("state:focus")
     }
 
     let handleInput = () => {
@@ -278,6 +291,7 @@ export default {
       highlightString,
       handleClickInput,
       handleInput,
+      handlePagination,
       isPopperVisible,
       reference,
       popper,

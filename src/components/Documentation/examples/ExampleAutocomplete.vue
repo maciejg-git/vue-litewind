@@ -1,75 +1,77 @@
 <template>
-  <div>
-    state touched
-    <v-autocomplete
-      v-model="example.model"
-      :items="items"
-      item-text="Description"
-      item-value="Link"
-      style-dropdown="shadow"
-      @state:touched="getItems()"
-      class="w-[620px]"
-    >
-      <!-- <template #item="{ item }"> -->
-      <!--   {{ item }} -->
-      <!--   <span>{{ item }}</span> -->
-      <!-- </template> -->
-    </v-autocomplete>
-  </div>
-
-  <div>
-    remote
-    <v-autocomplete
-      v-model="example.model"
-      :items="itemsRemote"
-      item-text="Description"
-      item-value="Link"
-      style-dropdown="shadow"
-      @input:value="getItemsRemote($event)"
-      class="w-[620px]"
-    >
-      <!-- <template #item="{ item }"> -->
-      <!--   {{ item }} -->
-      <!--   <span> {{ item }} </span> -->
-      <!-- </template> -->
-    </v-autocomplete>
-  </div>
-
-  <div>
-    remote state
-    <v-autocomplete
-      v-model="example.model"
-      :items="itemsState"
-      item-text="Description"
-      item-value="Link"
-      :is-loading="example.isLoading"
-      style-dropdown="shadow"
-      no-filter
-      @input:value="querySelections($event)"
-      class="w-[620px]"
-    >
-      <!-- <template #item="{ item }"> -->
-      <!--   {{ item }} -->
-      <!--   <span> {{ item }} </span> -->
-      <!-- </template> -->
-    </v-autocomplete>
-  </div>
-
-  <div>
-    local
-    <v-autocomplete
-      v-model="example.model"
-      :items="itemsLanguages"
-      item-text="Description"
-      item-value="Link"
-      style-dropdown="shadow"
-      class="w-[620px]"
-    >
-      <!-- <template #item="{ item }"> -->
-      <!--   {{ item }} -->
-      <!--   <span> {{ item }} </span> -->
-      <!-- </template> -->
-    </v-autocomplete>
+  <div class="flex flex-col gap-y-4">
+    <div>
+      state touched
+      <v-autocomplete
+        v-model="example.model"
+        :items="items"
+        item-text="Description"
+        item-value="Link"
+        style-dropdown="shadow"
+        @state:focus.once="getItems()"
+        class="w-[620px]"
+      >
+        <!-- <template #item="{ item }"> -->
+        <!--   {{ item }} -->
+        <!--   <span>{{ item }}</span> -->
+        <!-- </template> -->
+      </v-autocomplete>
+    </div>
+    
+    <div>
+      remote
+      <v-autocomplete
+        v-model="example.model"
+        :items="itemsRemote"
+        :isLoading="example.isLoading"
+        item-text="Description"
+        item-value="Link"
+        style-dropdown="shadow"
+        no-filter
+        @input:value="getItemsRemote($event)"
+        class="w-[620px]"
+      >
+        <!-- <template #item="{ item }"> -->
+        <!--   {{ item }} -->
+        <!--   <span> {{ item }} </span> -->
+        <!-- </template> -->
+      </v-autocomplete>
+    </div>
+    
+    <div>
+      remote state
+      <v-autocomplete
+        v-model="example.model"
+        :items="itemsState"
+        :is-loading="example.isLoading"
+        style-dropdown="shadow"
+        no-filter
+        @input:value="querySelections($event)"
+        class="w-[620px]"
+      >
+        <!-- <template #item="{ item }"> -->
+        <!--   {{ item }} -->
+        <!--   <span> {{ item }} </span> -->
+        <!-- </template> -->
+      </v-autocomplete>
+    </div>
+    
+    <div>
+      local
+      <v-autocomplete
+        v-model="example.model"
+        :items="itemsLanguages"
+        item-text="Description"
+        item-value="Link"
+        style-dropdown="shadow"
+        class="w-[620px]"
+      >
+        <!-- <template #item="{ item }"> -->
+        <!--   {{ item }} -->
+        <!--   <span> {{ item }} </span> -->
+        <!-- </template> -->
+      </v-autocomplete>
+    </div>
   </div>
   <!-- CUT START -->
   <v-tabs name="tabs-material" class="mt-10">
@@ -137,65 +139,242 @@ export default {
     });
 
     let states = [
-          'Alabama',
-          'Alaska',
-          'American Samoa',
-          'Arizona',
-          'Arkansas',
-          'California',
-          'Colorado',
-          'Connecticut',
-          'Delaware',
-          'District of Columbia',
-          'Federated States of Micronesia',
-          'Florida',
-          'Georgia',
-          'Guam',
-          'Hawaii',
-          'Idaho',
-          'Illinois',
-          'Indiana',
-          'Iowa',
-          'Kansas',
-          'Kentucky',
-          'Louisiana',
-          'Maine',
-          'Marshall Islands',
-          'Maryland',
-          'Massachusetts',
-          'Michigan',
-          'Minnesota',
-          'Mississippi',
-          'Missouri',
-          'Montana',
-          'Nebraska',
-          'Nevada',
-          'New Hampshire',
-          'New Jersey',
-          'New Mexico',
-          'New York',
-          'North Carolina',
-          'North Dakota',
-          'Northern Mariana Islands',
-          'Ohio',
-          'Oklahoma',
-          'Oregon',
-          'Palau',
-          'Pennsylvania',
-          'Puerto Rico',
-          'Rhode Island',
-          'South Carolina',
-          'South Dakota',
-          'Tennessee',
-          'Texas',
-          'Utah',
-          'Vermont',
-          'Virgin Island',
-          'Virginia',
-          'Washington',
-          'West Virginia',
-          'Wisconsin',
-          'Wyoming',
+      {
+          text: 'Alabama',
+          value: 'Alabama',
+      },
+      {
+          text: 'Alaska',
+          value: 'Alaska',
+      },
+      {
+          text: 'American Samoa',
+          value: 'American Samoa',
+      },
+      {
+          text: 'Arizona',
+          value: 'Arizona',
+      },
+      {
+          text: 'Arkansas',
+          value: 'Arkansas',
+      },
+      {
+          text: 'California',
+          value: 'California',
+      },
+      {
+          text: 'Colorado',
+          value: 'Colorado',
+      },
+      {
+          text: 'Connecticut',
+          value: 'Connecticut',
+      },
+      {
+          text: 'Delaware',
+          value: 'Delaware',
+      },
+      {
+          text: 'District of Columbia',
+          value: 'District of Columbia',
+      },
+      {
+          text: 'Federated States of Micronesia',
+          value: 'Federated States of Micronesia',
+      },
+      {
+          text: 'Florida',
+          value: 'Florida',
+      },
+      {
+          text: 'Georgia',
+          value: 'Georgia',
+      },
+      {
+          text: 'Guam',
+          value: 'Guam',
+      },
+      {
+          text: 'Hawaii',
+          value: 'Hawaii',
+      },
+      {
+          text: 'Idaho',
+          value: 'Idaho',
+      },
+      {
+          text: 'Illinois',
+          value: 'Illinois',
+      },
+      {
+          text: 'Indiana',
+          value: 'Indiana',
+      },
+      {
+          text: 'Iowa',
+          value: 'Iowa',
+      },
+      {
+          text: 'Kansas',
+          value: 'Kansas',
+      },
+      {
+          text: 'Kentucky',
+          value: 'Kentucky',
+      },
+      {
+          text: 'Louisiana',
+          value: 'Louisiana',
+      },
+      {
+          text: 'Maine',
+          value: 'Maine',
+      },
+      {
+          text: 'Marshall Islands',
+          value: 'Marshall Islands',
+      },
+      {
+          text: 'Maryland',
+          value: 'Maryland',
+      },
+      {
+          text: 'Massachusetts',
+          value: 'Massachusetts',
+      },
+      {
+          text: 'Michigan',
+          value: 'Michigan',
+      },
+      {
+          text: 'Minnesota',
+          value: 'Minnesota',
+      },
+      {
+          text: 'Mississippi',
+          value: 'Mississippi',
+      },
+      {
+          text: 'Missouri',
+          value: 'Missouri',
+      },
+      {
+          text: 'Montana',
+          value: 'Montana',
+      },
+      {
+          text: 'Nebraska',
+          value: 'Nebraska',
+      },
+      {
+          text: 'Nevada',
+          value: 'Nevada',
+      },
+      {
+          text: 'New Hampshire',
+          value: 'New Hampshire',
+      },
+      {
+          text: 'New Jersey',
+          value: 'New Jersey',
+      },
+      {
+          text: 'New Mexico',
+          value: 'New Mexico',
+      },
+      {
+          text: 'New York',
+          value: 'New York',
+      },
+      {
+          text: 'North Carolina',
+          value: 'North Carolina',
+      },
+      {
+          text: 'North Dakota',
+          value: 'North Dakota',
+      },
+      {
+          text: 'Northern Mariana Islands',
+          value: 'Northern Mariana Islands',
+      },
+      {
+          text: 'Ohio',
+          value: 'Ohio',
+      },
+      {
+          text: 'Oklahoma',
+          value: 'Oklahoma',
+      },
+      {
+          text: 'Oregon',
+          value: 'Oregon',
+      },
+      {
+          text: 'Palau',
+          value: 'Palau',
+      },
+      {
+          text: 'Pennsylvania',
+          value: 'Pennsylvania',
+      },
+      {
+          text: 'Puerto Rico',
+          value: 'Puerto Rico',
+      },
+      {
+          text: 'Rhode Island',
+          value: 'Rhode Island',
+      },
+      {
+          text: 'South Carolina',
+          value: 'South Carolina',
+      },
+      {
+          text: 'South Dakota',
+          value: 'South Dakota',
+      },
+      {
+          text: 'Tennessee',
+          value: 'Tennessee',
+      },
+      {
+          text: 'Texas',
+          value: 'Texas',
+      },
+      {
+          text: 'Utah',
+          value: 'Utah',
+      },
+      {
+          text: 'Vermont',
+          value: 'Vermont',
+      },
+      {
+          text: 'Virgin Island',
+          value: 'Virgin Island',
+      },
+      {
+          text: 'Virginia',
+          value: 'Virginia',
+      },
+      {
+          text: 'Washington',
+          value: 'Washington',
+      },
+      {
+          text: 'West Virginia',
+          value: 'West Virginia',
+      },
+      {
+          text: 'Wisconsin',
+          value: 'Wisconsin',
+      },
+      {
+          text: 'Wyoming',
+          value: 'Wyoming',
+      },
         ]
 
     let events = ref([]);
@@ -212,13 +391,14 @@ export default {
       example.isLoading = true
         setTimeout(() => {
           itemsState.value = states.filter(e => {
-            return (e || '').toLowerCase().indexOf((v || '').toLowerCase()) > -1
+            return (e.text || '').toLowerCase().indexOf((v || '').toLowerCase()) > -1
           })
           example.isLoading = false
         }, 500)
       };
 
     let getItems = () => {
+      console.log('get  ')
       fetch('https://api.publicapis.org/entries', {mode: "cors"})
           .then(res => res.json())
           .then(res => {
@@ -234,6 +414,7 @@ export default {
     let getItemsRemote = (v) => {
       console.log('get', v)
       let regexp = new RegExp(v);
+      example.isLoading = true
       fetch("https://api.publicapis.org/entries")
         .then((res) => res.json())
         .then((res) => {
@@ -243,6 +424,7 @@ export default {
           itemsRemote.value = entries.filter((i) => {
             return i.Description.search(regexp) !== -1;
           });
+          example.isLoading = false
         })
         .catch((err) => {
           console.log(err);
