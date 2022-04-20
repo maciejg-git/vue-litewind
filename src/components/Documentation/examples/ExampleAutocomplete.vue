@@ -49,10 +49,10 @@
         @input:value="querySelections($event)"
         class="w-[620px]"
       >
-        <!-- <template #item="{ item }"> -->
-        <!--   {{ item }} -->
-        <!--   <span> {{ item }} </span> -->
-        <!-- </template> -->
+        <template #item="{ text, item, value, inputValue, highlightMatch }">
+          <span v-html="highlightMatch(text, inputValue)"></span>
+          <span v-html="highlightMatch(value, inputValue)">  </span>
+        </template>
       </v-autocomplete>
     </div>
     

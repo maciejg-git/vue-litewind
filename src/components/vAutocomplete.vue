@@ -36,7 +36,7 @@
             :class="getItemClass(item)"
             @click="selectItem(item)"
           >
-            <slot name="item" :item="item">
+            <slot name="item" :text="getItemText(item)" :value="getItemValue(item)" :item="item" :highlightMatch="highlightString" :inputValue="localText">
               <span
                 v-html="
                   getHighligtedText(item)
@@ -126,9 +126,7 @@ export default {
       popper,
       showPopper,
       hidePopper,
-      togglePopper,
       onPopperTransitionLeave,
-      showVirtualPopper,
     } = usePopper(
       { placement, offsetX, offsetY, noFlip, modelValue, emit },
       { resizePopper: true }
@@ -143,33 +141,27 @@ export default {
       showPopper();
     };
 
-    let selected = ref(null);
-
+    let selectedItem = ref(null);
     let localText = ref("");
-
     let isNewSelection = ref(true)
-
     let isVisible = ref(false)
 
     watch(() => props.isLoading, (value) => {
-      isVisible.value && !value && show()
+      !isPopperVisible.value && isVisible.value && !value && show()
     })
 
     watch(isVisible, (value) => {
-      value && !props.noFilter && show()
+      !isPopperVisible.value && value && !props.noFilter && show()
     })
 
     // filter
 
     let itemsFiltered = computed(() => {
-      if (props.isLoading) return props.items
-      // if (props.isLoading) return []
-      if (isNewSelection.value || props.noFilter) return props.items;
-
-      let regexp = new RegExp(localText.value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
+      if (props.isLoading || props.noFilter) return props.items
+      if (isNewSelection.value) return props.items;
 
       return props.items.filter((i) => {
-        return getItemText(i).search(regexp) !== -1;
+        return getItemText(i).toLowerCase().indexOf(localText.value.toLowerCase()) !== -1;
       });
     });
 
@@ -178,7 +170,7 @@ export default {
     let page = ref(0);
 
     let itemsPagination = computed(() => {
-      if (props.itemsPerPage === 0) return itemsFiltered.value;
+      if (props.itemsPerPage === 0 || props.noPagination) return itemsFiltered.value;
 
       return itemsFiltered.value.slice(
         0,
@@ -194,19 +186,16 @@ export default {
       return item[props.itemValue] !== undefined ? item[props.itemValue] : item;
     };
 
-    let getHighligtedText = (item) => highlightString(getItemText(item));
+    let getHighligtedText = (item) => highlightString(getItemText(item), localText.value);
 
-    let highlightString = (string) => {
-      return string.replace(
-        new RegExp(`(${localText.value})`, 'i'),
-        `<span class='${classes.match.value}'>$1</span>`
-      );
+    let highlightString = (string, match) => {
+      return string.replace(match, `<span class="${classes.match.value}">$&</span>`)
     };
 
     // update local value and model after selecting option
 
     let update = (item) => {
-      selected.value = item;
+      selectedItem.value = item;
       localText.value = getItemText(item);
       localModel.value = getItemValue(item);
     };
@@ -214,11 +203,11 @@ export default {
     // revert to previous value
 
     let revert = () => {
-      if (!selected.value) {
+      if (!selectedItem.value) {
         localText.value = ""
         return
       }
-      localText.value = getItemText(selected.value);
+      localText.value = getItemText(selectedItem.value);
     };
 
     function cancelInput() {
@@ -231,12 +220,11 @@ export default {
       isVisible.value = false
       update(item);
       hidePopper();
-      console.log(selected)
     };
 
     let clearInput = () => {
       localText.value = ""
-      selected.value = ""
+      selectedItem.value = ""
       localModel.value = ""
       emit("update:modelValue", "")
     }
@@ -255,13 +243,12 @@ export default {
 
     let handlePagination = () => {
       page.value++
-      emit("update:page")
+      emit("update:page", page.value)
     }
 
     let handleClickInput = () => {
-      if (props.noFilter && selected.value) return
-      isVisible.value =  true
       emit("state:focus")
+      isVisible.value =  true
     }
 
     let handleInput = () => {
@@ -297,8 +284,6 @@ export default {
       popper,
       showPopper,
       hidePopper,
-      togglePopper,
-      showVirtualPopper,
     };
   },
 };
