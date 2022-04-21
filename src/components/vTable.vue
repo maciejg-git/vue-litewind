@@ -94,7 +94,7 @@
 </template>
 
 <script>
-import { ref, computed, watch, nextTick } from "vue";
+import { ref, computed, watch } from "vue";
 import vIcon from "./vIcon.vue";
 import vSortIcon from "./icons/sort-solid.js";
 import vCaretUpIcon from "./icons/caret-up-solid.js";

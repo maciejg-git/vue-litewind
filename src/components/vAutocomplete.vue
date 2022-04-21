@@ -147,6 +147,7 @@ export default {
     let isVisible = ref(false)
 
     watch(() => props.isLoading, (value) => {
+      !value && console.log(props.items)
       !isPopperVisible.value && isVisible.value && !value && show()
     })
 
@@ -189,7 +190,10 @@ export default {
     let getHighligtedText = (item) => highlightString(getItemText(item), localText.value);
 
     let highlightString = (string, match) => {
-      return string.replace(match, `<span class="${classes.match.value}">$&</span>`)
+      return string.replace(
+        new RegExp(`(${localText.value})`, 'i'),
+        `<span class='${classes.match.value}'>$1</span>`
+      );
     };
 
     // update local value and model after selecting option

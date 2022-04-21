@@ -23,7 +23,6 @@
       <v-autocomplete
         v-model="example.model"
         :items="itemsRemote"
-        :isLoading="example.isLoading"
         item-text="Description"
         item-value="Link"
         style-dropdown="shadow"
@@ -42,6 +41,7 @@
       remote state
       <v-autocomplete
         v-model="example.model"
+        v-model:input-value="example.inputValue"
         :items="itemsState"
         :is-loading="example.isLoading"
         style-dropdown="shadow"
@@ -49,10 +49,10 @@
         @input:value="querySelections($event)"
         class="w-[620px]"
       >
-        <template #item="{ text, item, value, inputValue, highlightMatch }">
-          <span v-html="highlightMatch(text, inputValue)"></span>
-          <span v-html="highlightMatch(value, inputValue)">  </span>
-        </template>
+        <!-- <template #item="{ text, item, value, inputValue, highlightMatch }"> -->
+        <!--   <span v-html="highlightMatch(text, inputValue)"></span> -->
+        <!--   <span v-html="highlightMatch(value, inputValue)">  </span> -->
+        <!-- </template> -->
       </v-autocomplete>
     </div>
     
@@ -133,6 +133,7 @@ export default {
   setup() {
     let example = reactive({
       model: "",
+      inputValue: "",
       type: "text",
       state: "",
       isLoading: false,
@@ -388,6 +389,7 @@ export default {
 
     let querySelections = (v) => {
         // Simulated ajax query
+      if (v === "") return
       example.isLoading = true
         setTimeout(() => {
           itemsState.value = states.filter(e => {
