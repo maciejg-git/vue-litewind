@@ -1,7 +1,5 @@
 <template>
-  <div class="inline-flex relative items-center"
-      v-bind="$attrs"
-    >
+  <div class="inline-flex relative items-center" v-bind="$attrs">
     <input
       v-model="localText"
       type="text"
@@ -17,16 +15,20 @@
       @input="handleInput"
       @focus="handleClickInput"
     />
-  <div v-if="!noLoader" class="absolute flex right-0 mr-2">
-    <v-spinner v-show="isLoading" type="svg"></v-spinner>
-  </div>
+    <div v-if="!noLoader" class="absolute flex right-0 mr-2">
+      <v-spinner v-show="isLoading" type="svg"></v-spinner>
+      <v-close-button v-if="clearable" class="ml-2"></v-close-button>
+    </div>
   </div>
 
   <teleport to="body">
     <transition :name="transition" @after-leave="onPopperTransitionLeave">
       <div v-if="isPopperVisible" ref="popper" class="fixed-dropdown">
         <div :class="classes.dropdown.value" v-scroll-bottom="handlePagination">
-          <div v-if="!itemsPagination.length && !isLoading" :class="classes.item.value">
+          <div
+            v-if="!itemsPagination.length && !isLoading"
+            :class="classes.item.value"
+          >
             No data available
           </div>
           <div
@@ -36,12 +38,15 @@
             :class="getItemClass(item)"
             @click="selectItem(item)"
           >
-            <slot name="item" :text="getItemText(item)" :value="getItemValue(item)" :item="item" :highlightMatch="highlightString" :inputValue="localText">
-              <span
-                v-html="
-                  getHighligtedText(item)
-                "
-              ></span>
+            <slot
+              name="item"
+              :text="getItemText(item)"
+              :value="getItemValue(item)"
+              :item="item"
+              :highlightMatch="highlightString"
+              :inputValue="localText"
+            >
+              <span v-html="getHighligtedText(item)"></span>
             </slot>
           </div>
         </div>
@@ -51,13 +56,19 @@
 </template>
 
 <script>
+// vue
 import { ref, computed, watch, toRefs } from "vue";
+// composition
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
 import usePopper from "./composition/use-popper.js";
 import useClickOutside from "./composition/use-click-outside";
-import vSpinner from "./vSpinner.vue"
+// components
+import vSpinner from "./vSpinner.vue";
+import vCloseButton from "./vCloseButton.vue";
+// directives
 import scrollBottom from "../directives/scroll-bottom";
+// props
 import { sharedPopperProps, sharedStyleProps } from "../sharedProps";
 
 export default {
@@ -72,6 +83,7 @@ export default {
     noFilter: { type: Boolean, default: false },
     noPagination: { type: Boolean, default: false },
     noLoader: { type: Boolean, default: false },
+    clearable: { type: Boolean, default: true },
     itemsPerPage: { type: Number, default: 10 },
     transition: { type: String, default: "fade" },
     styleAutocomplete: { type: [String, Array], default: "" },
@@ -82,6 +94,7 @@ export default {
   },
   components: {
     vSpinner,
+    vCloseButton,
   },
   directives: {
     scrollBottom,
@@ -137,32 +150,38 @@ export default {
     onClickOutside(clickOutsideElements, cancelInput);
 
     let show = () => {
-      isNewSelection.value = true
+      isNewSelection.value = true;
       showPopper();
     };
 
     let selectedItem = ref(null);
     let localText = ref("");
-    let isNewSelection = ref(true)
-    let isVisible = ref(false)
+    let isNewSelection = ref(true);
+    let isVisible = ref(false);
 
-    watch(() => props.isLoading, (value) => {
-      !value && console.log(props.items)
-      !isPopperVisible.value && isVisible.value && !value && show()
-    })
+    watch(
+      () => props.isLoading,
+      (value) => {
+        !isPopperVisible.value && isVisible.value && !value && show();
+      }
+    );
 
     watch(isVisible, (value) => {
-      !isPopperVisible.value && value && !props.noFilter && show()
-    })
+      !isPopperVisible.value && value && !props.noFilter && show();
+    });
 
     // filter
 
     let itemsFiltered = computed(() => {
-      if (props.isLoading || props.noFilter) return props.items
+      if (props.isLoading || props.noFilter) return props.items;
       if (isNewSelection.value) return props.items;
 
       return props.items.filter((i) => {
-        return getItemText(i).toLowerCase().indexOf(localText.value.toLowerCase()) !== -1;
+        return (
+          getItemText(i)
+            .toLowerCase()
+            .indexOf(localText.value.toLowerCase()) !== -1
+        );
       });
     });
 
@@ -171,7 +190,8 @@ export default {
     let page = ref(0);
 
     let itemsPagination = computed(() => {
-      if (props.itemsPerPage === 0 || props.noPagination) return itemsFiltered.value;
+      if (props.itemsPerPage === 0 || props.noPagination)
+        return itemsFiltered.value;
 
       return itemsFiltered.value.slice(
         0,
@@ -187,11 +207,12 @@ export default {
       return item[props.itemValue] !== undefined ? item[props.itemValue] : item;
     };
 
-    let getHighligtedText = (item) => highlightString(getItemText(item), localText.value);
+    let getHighligtedText = (item) =>
+      highlightString(getItemText(item), localText.value);
 
     let highlightString = (string, match) => {
       return string.replace(
-        new RegExp(`(${localText.value})`, 'i'),
+        new RegExp(`(${localText.value})`, "i"),
         `<span class='${classes.match.value}'>$1</span>`
       );
     };
@@ -208,30 +229,30 @@ export default {
 
     let revert = () => {
       if (!selectedItem.value) {
-        localText.value = ""
-        return
+        localText.value = "";
+        return;
       }
       localText.value = getItemText(selectedItem.value);
     };
 
     function cancelInput() {
-      isVisible.value = false
+      if (isVisible.value) isVisible.value = false;
       revert();
       hidePopper();
     }
 
     let selectItem = (item) => {
-      isVisible.value = false
+      if (isVisible.value) isVisible.value = false
       update(item);
       hidePopper();
     };
 
     let clearInput = () => {
-      localText.value = ""
-      selectedItem.value = ""
-      localModel.value = ""
-      emit("update:modelValue", "")
-    }
+      localText.value = "";
+      selectedItem.value = "";
+      localModel.value = "";
+      emit("update:modelValue", "");
+    };
 
     let state = computed(() => {
       props.state === true
@@ -246,18 +267,18 @@ export default {
     // handle template events
 
     let handlePagination = () => {
-      page.value++
-      emit("update:page", page.value)
-    }
+      page.value++;
+      emit("update:page", page.value);
+    };
 
     let handleClickInput = () => {
-      emit("state:focus")
-      isVisible.value =  true
-    }
+      emit("state:focus");
+      if (!isVisible.value) isVisible.value = true;
+    };
 
     let handleInput = () => {
-      isVisible.value = true
-      isNewSelection.value = false
+      if (!isVisible.value) isVisible.value = true;
+      isNewSelection.value = false;
       emit("input:value", localText.value);
     };
 
