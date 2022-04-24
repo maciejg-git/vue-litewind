@@ -209,7 +209,7 @@
     :transition="example.transition"
     style-content="edge-to-edge"
   >
-    <img :src="'/' + images[currentImage]" width="1000" alt="" />
+    <img :src="'/assets/' + images[currentImage]" width="1000" alt="" />
     <v-button
       @click="prev()"
       style-button="secondary"

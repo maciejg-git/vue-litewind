@@ -1,43 +1,6 @@
 <template>
   <div class="flex flex-col gap-y-4">
     <div>
-      state touched
-      <v-autocomplete
-        v-model="example.model"
-        :items="items"
-        item-text="Description"
-        item-value="Link"
-        style-dropdown="shadow"
-        @state:focus.once="getItems()"
-        class="w-[620px]"
-      >
-        <!-- <template #item="{ item }"> -->
-        <!--   {{ item }} -->
-        <!--   <span>{{ item }}</span> -->
-        <!-- </template> -->
-      </v-autocomplete>
-    </div>
-    
-    <div>
-      remote
-      <v-autocomplete
-        v-model="example.model"
-        :items="itemsRemote"
-        item-text="Description"
-        item-value="Link"
-        style-dropdown="shadow"
-        no-filter
-        @input:value="getItemsRemote($event)"
-        class="w-[620px]"
-      >
-        <!-- <template #item="{ item }"> -->
-        <!--   {{ item }} -->
-        <!--   <span> {{ item }} </span> -->
-        <!-- </template> -->
-      </v-autocomplete>
-    </div>
-    
-    <div>
       remote state
       <v-autocomplete
         v-model="example.model"
@@ -66,10 +29,6 @@
         style-dropdown="shadow"
         class="w-[620px]"
       >
-        <!-- <template #item="{ item }"> -->
-        <!--   {{ item }} -->
-        <!--   <span> {{ item }} </span> -->
-        <!-- </template> -->
       </v-autocomplete>
     </div>
   </div>
@@ -380,7 +339,6 @@ export default {
 
     let events = ref([]);
 
-    // let items = ref([]);
     let itemsLanguages = ref(languages);
     let items = ref([]);
     let itemsRemote = ref([]);
@@ -399,41 +357,6 @@ export default {
         }, 500)
       };
 
-    let getItems = () => {
-      console.log('get  ')
-      fetch('https://api.publicapis.org/entries', {mode: "cors"})
-          .then(res => res.json())
-          .then(res => {
-            const { count, entries } = res
-            // this.count = count
-            items.value = entries
-          })
-          .catch(err => {
-            console.log(err)
-          })
-          .finally()
-    }
-    let getItemsRemote = (v) => {
-      console.log('get', v)
-      let regexp = new RegExp(v);
-      example.isLoading = true
-      fetch("https://api.publicapis.org/entries")
-        .then((res) => res.json())
-        .then((res) => {
-          console.log('res')
-          const { count, entries } = res;
-          // this.count = count
-          itemsRemote.value = entries.filter((i) => {
-            return i.Description.search(regexp) !== -1;
-          });
-          example.isLoading = false
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-        .finally();
-    };
-
     return {
       example,
       events,
@@ -443,8 +366,6 @@ export default {
       itemsLanguages,
       itemsRemote,
       querySelections,
-      getItems,
-      getItemsRemote,
     };
   },
 };

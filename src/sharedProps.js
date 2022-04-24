@@ -1,5 +1,7 @@
 import { correctPlacement } from "./const.js";
 
+// popper props
+
 export const sharedPopperProps = (d) => {
   d = d || {}
 
@@ -16,6 +18,8 @@ export const sharedPopperProps = (d) => {
   noFlip: { type: Boolean, default: d.noFlip || false },
   }
 }
+
+// style props
 
 export const sharedStyleProps = (base) => {
   return {
