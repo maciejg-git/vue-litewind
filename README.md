@@ -2,20 +2,15 @@
 
 Component collection for Vue 3 applications. 
 
-Vue-wind uses **Tailwindcss** as CSS framework and **popper.js** (included) for positioning.
+Vue-wind uses **Tailwindc CSS** as CSS framework and **popper.js** (included) for positioning.
 
 ```
 npm -i vue-wind
 ```
 
-TODO:
-* aria support
-* kayboard navigation in datapicker and dropdown
-* dark theme
-
 [Documentation and examples](https://keen-gates-f84e1c.netlify.app/)
 
-Current components:
+Components:
 * Alert
 * Badge
 * Breadcrumb
@@ -28,12 +23,13 @@ Current components:
 * Dropdown (+ context menu)
 * Date Picker
 * Input
+* Autocomplete
 * Icon
 * Select
 * Checkbox
 * Radio
 * Textarea
-* Form text helper
+* Form Text
 * Range
 * List
 * Modal
@@ -46,4 +42,8 @@ Current components:
 * Tabs
 * Table
 * Tooltip (directive)
+
+TODO:
+* aria support
+* kayboard navigation
 
