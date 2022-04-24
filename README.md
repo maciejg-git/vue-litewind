@@ -1,4 +1,4 @@
-# mini-vue-tailwind
+# Vue-wind
 
 Component collection for Vue 3 applications. 
 
@@ -8,7 +8,7 @@ Vue-wind uses **Tailwindc CSS** as CSS framework and **popper.js** (included) fo
 npm -i vue-wind
 ```
 
-[Documentation and examples](https://keen-gates-f84e1c.netlify.app/)
+[Documentation and examples](https://vue-wind.netlify.app/documentation/installation)
 
 Components:
 * Alert
