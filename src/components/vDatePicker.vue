@@ -2,12 +2,14 @@
   <div :class="classes.datepicker.value" :style="{ width: width }">
     <div class="grid grid-cols-6 grid-flow-col my-2">
       <button
+        aria-label="Previous year"
         :class="classes.button.value"
         @click="handleButtonClick('prev', 'year')"
       >
         <chevron-double-left />
       </button>
       <button
+        aria-label="Previous month"
         :class="classes.button.value"
         @click="handleButtonClick('prev', 'month')"
       >
@@ -17,18 +19,21 @@
         <span class="align-baseline">{{ monthNames[month] }} {{ year }}</span>
       </div>
       <button
+        aria-label="Next month"
         :class="classes.button.value"
         @click="handleButtonClick('next', 'month')"
       >
         <chevron-right />
       </button>
       <button
+        aria-label="Next year"
         :class="classes.button.value"
         @click="handleButtonClick('next', 'year')"
       >
         <chevron-double-right />
       </button>
     </div>
+    {{ modelValue }}
     <div :class="classes.weekdayBar.value">
       <div v-for="day in dayNames" :class="classes.weekday.value">
         {{ day }}
@@ -46,9 +51,10 @@
         <div v-for="(d, index) in daysList.days" :key="index">
           <a
             v-if="d"
+            role="button"
+            :class="getDayClass(d.date)"
             @click="handleDayClick(d.date, index)"
             @mouseenter="mouseOverRange = d.date"
-            :class="getDayClass(d.date)"
           >
             {{ d.day }}
           </a>
@@ -85,14 +91,14 @@
 <script>
 import { ref, computed, watch } from "vue";
 import vButton from "./vButton.vue";
-import ChevronRight from "./icons/chevron-right.js"
-import ChevronDoubleLeft from "./icons/chevron-double-left.js"
-import ChevronDoubleRight from "./icons/chevron-double-right.js"
-import ChevronLeft from "./icons/chevron-left.js"
+import ChevronRight from "./icons/chevron-right.js";
+import ChevronDoubleLeft from "./icons/chevron-double-left.js";
+import ChevronDoubleRight from "./icons/chevron-double-right.js";
+import ChevronLeft from "./icons/chevron-left.js";
 import useStyles from "./composition/use-styles";
 import { pad, getNumberRange } from "../tools.js";
-import { locales } from "../const"
-import { sharedStyleProps } from "../sharedProps"
+import { locales } from "../const";
+import { sharedStyleProps } from "../sharedProps";
 
 export default {
   props: {
@@ -228,14 +234,14 @@ export default {
     let getFirstDay = (m, y) => {
       let d = new Date(m, y).getDay();
       return props.mondayFirstWeekday ? (6 + d) % 7 : d;
-    }
+    };
 
     // get valid locale
     let locale = computed(() => {
       if (!props.locale) return navigator.language;
-      return locales.find((l) => props.locale === l) || "en-GB"
-    })
-  
+      return locales.find((l) => props.locale === l) || "en-GB";
+    });
+
     // get localized month names
     let monthNames = computed(() => {
       return Array.from({ length: 12 }, (v, i) =>
@@ -291,13 +297,13 @@ export default {
 
     // generate days to display for current month
     let daysList = computed(() => {
-      let day = getFirstDay(year.value, month.value)
+      let day = getFirstDay(year.value, month.value);
       let daysInMonth = getCountDaysInMonth(year.value, month.value);
 
-      let days = getNumberRange(1, daysInMonth)
+      let days = getNumberRange(1, daysInMonth);
       days = days.map((i) => {
         return { day: i, date: new Date(year.value, month.value, i) };
-      })
+      });
 
       if (!props.adjacentMonths) {
         days = [...Array(day).fill(""), ...days];
@@ -371,10 +377,15 @@ export default {
     let handleButtonClick = (d, t) => {
       isTransitioning.value = true;
       transition.value = getTransition(d);
-      afterTransitionCall = d === "next" ? 
-        (t === "month" ? setNextMonth : setNextYear) :
-        (t === "month" ? setPrevMonth : setPrevYear)
-    }
+      afterTransitionCall =
+        d === "next"
+          ? t === "month"
+            ? setNextMonth
+            : setNextYear
+          : t === "month"
+          ? setPrevMonth
+          : setPrevYear;
+    };
 
     let handleClickPrevMonth = () => {
       isTransitioning.value = true;
