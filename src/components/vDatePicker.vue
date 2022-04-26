@@ -33,7 +33,6 @@
         <chevron-double-right />
       </button>
     </div>
-    {{ modelValue }}
     <div :class="classes.weekdayBar.value">
       <div v-for="day in dayNames" :class="classes.weekday.value">
         {{ day }}

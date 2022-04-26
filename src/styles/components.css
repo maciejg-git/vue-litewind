@@ -170,18 +170,11 @@
 
 /* TABS MATERIAL */
 
-.tabs-material-tab-fixed {
-  @apply
-    -mb-px
-    p-2
-    px-4
-}
-
 .tabs-material--tab {
   @apply
-    tabs-material-tab-fixed;
-  @apply
-    /* hover:bg-gray-50 */
+    -mb-px
+    p-3
+    px-4
     transition-colors
     border-b-2
     border-transparent

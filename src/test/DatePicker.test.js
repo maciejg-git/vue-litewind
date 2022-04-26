@@ -1,4 +1,4 @@
-import { render, fireEvent } from "@testing-library/vue"
+import { render, fireEvent, waitFor } from "@testing-library/vue"
 import DatePicker from "../components/vDatePicker.vue"
 
 test("renders component", () => {
@@ -12,13 +12,17 @@ test("renders component", () => {
 })
 
 test("select date", async () => {
-   const { getByRole } = render(DatePicker, {
+   const { getByRole, getByText, findByText } = render(DatePicker, {
     props: {
       /* ... */
     }
   })
 
-  let button = getByRole("button", { name: "1" })
+  const button = getByRole("button", { name: "Previous month" })
+
+  const date = getByText("Apr 2022")
 
   await fireEvent.click(button)
+
+  await findByText("Mar 2022")
 })
