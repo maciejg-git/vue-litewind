@@ -1,19 +1,10 @@
 <template>
   <v-autocomplete
     v-model="example.model"
-    v-model:input-value="example.inputValue"
     :items="example.items"
-    :is-loading="example.isLoading"
     style-dropdown="shadow"
-    no-filter
-    @input:value="query($event)"
     class="w-[620px]"
-  >
-    <!-- <template #item="{ text, item, value, inputValue, highlightMatch }"> -->
-    <!--   <span v-html="highlightMatch(text, inputValue)"></span> -->
-    <!--   <span v-html="highlightMatch(value, inputValue)">  </span> -->
-    <!-- </template> -->
-  </v-autocomplete>
+  ></v-autocomplete>
   <!-- CUT START -->
   <v-tabs name="tabs-material" class="mt-10">
     <v-tab name="Props">
@@ -68,35 +59,19 @@
 
 <script>
 import { ref, reactive } from "vue";
-import { states } from "../../../const";
+import { languages } from "../../../const";
 
 export default {
   setup() {
     let example = reactive({
       model: "",
-      items: [],
-      isLoading: false,
+      items: languages,
     });
-
-    let query = (q) => {
-      if (q === "") return;
-
-      example.isLoading = true;
-      setTimeout(() => {
-        example.items = states.filter((e) => {
-          return (
-            (e.text || "").toLowerCase().indexOf((q || "").toLowerCase()) > -1
-          );
-        });
-        example.isLoading = false;
-      }, 500);
-    };
 
     let events = ref([]);
 
     return {
       example,
-      query,
       events,
     };
   },

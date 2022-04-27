@@ -43,7 +43,7 @@
               :text="getItemText(item)"
               :value="getItemValue(item)"
               :item="item"
-              :highlightMatch="highlightString"
+              :highlightMatch="highlightMatch"
               :inputValue="localText"
             >
               <span v-html="getHighligtedText(item)"></span>
@@ -83,7 +83,7 @@ export default {
     noFilter: { type: Boolean, default: false },
     noPagination: { type: Boolean, default: false },
     noLoader: { type: Boolean, default: false },
-    clearable: { type: Boolean, default: true },
+    clearable: { type: Boolean, default: false },
     itemsPerPage: { type: Number, default: 10 },
     transition: { type: String, default: "fade" },
     styleAutocomplete: { type: [String, Array], default: "" },
@@ -208,9 +208,9 @@ export default {
     };
 
     let getHighligtedText = (item) =>
-      highlightString(getItemText(item), localText.value);
+      highlightMatch(getItemText(item), localText.value);
 
-    let highlightString = (string, match) => {
+    let highlightMatch = (string, match) => {
       return string.replace(
         new RegExp(`(${localText.value})`, "i"),
         `<span class='${classes.match.value}'>$1</span>`
@@ -300,7 +300,7 @@ export default {
       getItemClass,
       onPopperTransitionLeave,
       page,
-      highlightString,
+      highlightMatch,
       handleClickInput,
       handleInput,
       handlePagination,
