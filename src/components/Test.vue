@@ -775,7 +775,6 @@ import vPopover from "./vPopover.vue";
 import tooltip from "../directives/tooltip.js";
 import vSpinner from "./vSpinner.vue";
 import vAlert from "./vAlert.vue";
-import vInputDate from "./vInputDate.vue";
 import vInput from "./vInput.vue";
 import vSelect from "./vSelect.vue";
 import vProgress from "./vProgress.vue";
@@ -810,7 +809,6 @@ export default {
     vBadge,
     vPopover,
     vSpinner,
-    vInputDate,
     vProgress,
     vAlert,
     vInput,

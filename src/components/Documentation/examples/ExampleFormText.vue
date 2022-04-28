@@ -1,6 +1,6 @@
 <template>
   <div class="my-5">
-    <v-input v-model="name" :state="nameState()" class="mr-4" />
+    <v-input v-model="nameModel" :state="nameState()" class="mr-4" />
 
     <v-form-text
       :state="nameState()"
@@ -11,7 +11,6 @@
       <template #prepend-message>
         <v-icon
           :icon-type="nameState()"
-          transition="fade-scale-up"
           class="mr-2"
         />
       </template>
@@ -38,7 +37,6 @@
   >
     <v-icon
       :icon-type="languagesState()"
-      transition="fade-scale-up"
       class="mr-2"
     />
     Please select at least 3 languages.
@@ -85,17 +83,6 @@ import { ref, reactive } from "vue";
 
 export default {
   setup() {
-    let example = reactive({
-      inline: false,
-      visibleStates: "default,invalid,valid",
-    });
-
-    let messages = {
-      valid: "OK",
-      invalid: "This field cannot be empty",
-      default: "Username",
-    };
-
     let languages = ref([
       "english",
       "swedish",
@@ -105,7 +92,21 @@ export default {
       "japanese",
     ]);
 
+    let messages = {
+      valid: "OK",
+      invalid: "This field cannot be empty",
+      default: "Username",
+    };
+
+    let example = reactive({
+      inline: false,
+      visibleStates: "default,invalid,valid",
+    });
+
+    let nameModel = ref("");
     let languagesModel = ref([]);
+
+    let nameValidated = ref(false);
     let languagesValidated = ref(false);
 
     let languagesState = () => {
@@ -115,9 +116,6 @@ export default {
           : "invalid"
         : "";
     };
-
-    let name = ref("");
-    let nameValidated = ref(false);
 
     let nameState = () => {
       return nameValidated.value
@@ -136,7 +134,7 @@ export default {
       languagesValidated.value = false;
       nameValidated.value = false;
       languagesModel.value = [];
-      name.value = "";
+      nameModel.value = "";
     };
 
     return {
@@ -145,7 +143,7 @@ export default {
       validate,
       reset,
       languagesModel,
-      name,
+      nameModel,
       languagesValidated,
       languagesState,
       nameState,

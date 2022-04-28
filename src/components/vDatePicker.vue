@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes.datepicker.value" :style="{ width: width }">
+  <div :class="[classes.datepicker.value, 'overflow-hidden']" :style="{ width: width }">
     <div class="grid grid-cols-6 grid-flow-col my-2">
       <button
         aria-label="Previous year"
@@ -38,7 +38,7 @@
         {{ day }}
       </div>
     </div>
-    <transition :name="transition" @after-leave="afterLeaveTransition">
+    <transition :name="transition" @after-leave="onAfterLeaveTransition">
       <div v-if="!isTransitioning" class="grid grid-cols-7 mb-2 relative">
         <template v-if="adjacentMonths">
           <div v-for="(day, index) in daysList.prevMonthDays" :key="index">
@@ -367,46 +367,21 @@ export default {
       return props.transition == "slide" ? "slide-" + d : props.transition;
     };
 
-    let handleClickNextMonth = () => {
-      isTransitioning.value = true;
-      transition.value = getTransition("next");
-      afterTransitionCall = setNextMonth;
+    let onAfterLeaveTransition = () => {
+      isTransitioning.value = false;
     };
 
     let handleButtonClick = (d, t) => {
       isTransitioning.value = true;
       transition.value = getTransition(d);
-      afterTransitionCall =
-        d === "next"
-          ? t === "month"
-            ? setNextMonth
-            : setNextYear
-          : t === "month"
-          ? setPrevMonth
-          : setPrevYear;
-    };
 
-    let handleClickPrevMonth = () => {
-      isTransitioning.value = true;
-      transition.value = getTransition("prev");
-      afterTransitionCall = setPrevMonth;
-    };
-
-    let handleClickNextYear = () => {
-      isTransitioning.value = true;
-      transition.value = getTransition("next");
-      afterTransitionCall = setNextYear;
-    };
-
-    let handleClickPrevYear = () => {
-      isTransitioning.value = true;
-      transition.value = getTransition("prev");
-      afterTransitionCall = setPrevYear;
-    };
-
-    let afterLeaveTransition = () => {
-      afterTransitionCall();
-      isTransitioning.value = false;
+      if (d === "next") {
+        if (t === "month") setNextMonth()
+        else setNextYear()
+      } else {
+        if (t === "month") setPrevMonth()
+        else setPrevYear()
+      }
     };
 
     let handlePrimaryButtonClick = () => {
@@ -479,13 +454,9 @@ export default {
       isDisabled,
       handleDayClick,
       handleButtonClick,
-      handleClickNextMonth,
-      handleClickPrevMonth,
-      handleClickNextYear,
-      handleClickPrevYear,
       handlePrimaryButtonClick,
       handleSecondaryButtonClick,
-      afterLeaveTransition,
+      onAfterLeaveTransition,
       isTransitioning,
       transition,
     };
@@ -517,7 +488,7 @@ export default {
 
 .slide-prev-enter-active,
 .slide-prev-leave-active {
-  transition: transform 0.1s ease;
+  transition: transform 0.12s ease;
 }
 .slide-prev-enter-from {
   transform: translateX(-100%);
