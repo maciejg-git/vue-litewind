@@ -492,20 +492,20 @@
   @apply
     underline
     text-text-500
-    dark:text-text-400
+    dark:text-text-300
 }
 
 .breadcrumb--separator {
   @apply
-    mx-3
+    mx-2
     text-text-500 
-    dark:text-text-400
+    dark:text-text-300
 }
 
 .breadcrumb--active {
   @apply
     text-text-700 
-    dark:text-text-500
+    dark:text-text-400
 }
 
 /* FORMTEXT */
@@ -1191,7 +1191,8 @@
     focus:outline-none
     pr-4
     px-6
-    py-4
+    py-3
+    my-1
     text-text-700
     focus:text-white
     hover:bg-secondary-100
@@ -1584,7 +1585,8 @@
         h-4
         px-0
         py-0
-        border-white !important
+        border-white
+        dark:border-dark-800 !important
     }
     .badge--primary {
       @apply

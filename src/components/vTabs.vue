@@ -20,8 +20,11 @@
 </template>
 
 <script>
+// vue
 import { ref, toRef, onMounted, computed, provide, h, toRaw } from "vue";
+// composition
 import useStyles from "./composition/use-styles";
+// props
 import { sharedStyleProps } from "../sharedProps"
 
 export default {

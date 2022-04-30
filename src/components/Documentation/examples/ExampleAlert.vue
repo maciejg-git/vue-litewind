@@ -17,11 +17,13 @@
     v-model="example.isVisible"
     :dismissable="example.dismissable"
     :auto-dismiss-delay="example.autoDismissDelay"
-    style-alert="info:info danger:danger warn:warn success:success invalid:danger valid:success"
     :variant="example.variant"
+    style-alert="info:info danger:danger warn:warn success:success invalid:danger valid:success"
     class="my-6"
   >
-    <v-icon :icon-type="example.variant" class="v-icon--md mr-2"></v-icon>
+    <template #icon>
+      <v-icon :icon-type="example.variant" class="v-icon--md mr-2"></v-icon>
+    </template>
     Alert (custom icon)
   </v-alert>
 
@@ -47,7 +49,6 @@
         <option value="danger">danger</option>
         <option value="warn">warn</option>
         <option value="success">success</option>
-        <option value="light">light</option>
         <option value="valid">valid</option>
         <option value="invalid">invalid</option>
       </v-select>

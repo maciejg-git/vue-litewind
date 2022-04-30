@@ -1,5 +1,5 @@
 <template>
-  <button class="focus:outline-none">
+  <button class="focus:outline-none" aria-label="Close">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       :class="classes.closeButton.value"
@@ -16,7 +16,9 @@
 </template>
 
 <script>
+// composition
 import useStyles from "./composition/use-styles";
+// props
 import { sharedStyleProps } from "../sharedProps"
 
 export default {

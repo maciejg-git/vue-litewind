@@ -44,11 +44,25 @@ export default {
         description: "Visiblity state of alert",
       },
       {
+        prop: "dissmisable",
+        type: ["Boolean"],
+        default: "true",
+        description:
+          "If false close button is not rendered and alert cannot be dissmised",
+      },
+      {
         prop: "dismiss-delay",
         type: ["Number"],
         default: "0",
         description:
           "Delay after which alert is closed (<code class='code-word'>v-model</code> is set to <code>false</code>)",
+      },
+      {
+        prop: "icon",
+        type: ["String"],
+        default: "''",
+        description:
+          "Alert has few default icons for variants: 'success', 'warn', 'danger', 'info', 'valid', 'invalid'. Icon or default slot can be used for custom icons.",
       },
       {
         prop: "name",
@@ -63,12 +77,20 @@ export default {
         prop: "style-alert",
         description: "Main alert element",
       },
+      {
+        prop: "style-icon",
+        description: "Default icon element (does not apply to icons in slot)",
+      },
     ]);
 
     let slots = ref([
       {
         prop: "default",
         description: "Slot for alert content",
+      },
+      {
+        prop: "icon",
+        description: "Slot for icon prepending message",
       },
     ]);
 

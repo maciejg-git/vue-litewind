@@ -88,15 +88,20 @@
 </template>
 
 <script>
+// vue
 import { ref, computed, watch } from "vue";
+// composition
+import useStyles from "./composition/use-styles";
+// components
 import vButton from "./vButton.vue";
 import ChevronRight from "./icons/chevron-right.js";
 import ChevronDoubleLeft from "./icons/chevron-double-left.js";
 import ChevronDoubleRight from "./icons/chevron-double-right.js";
 import ChevronLeft from "./icons/chevron-left.js";
-import useStyles from "./composition/use-styles";
+// tools
 import { pad, getNumberRange } from "../tools.js";
 import { locales } from "../const";
+// props
 import { sharedStyleProps } from "../sharedProps";
 
 export default {
@@ -449,8 +454,6 @@ export default {
       year,
       daysList,
       todayFormatted,
-      setNextYear,
-      setPrevYear,
       isDisabled,
       handleDayClick,
       handleButtonClick,

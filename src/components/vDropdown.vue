@@ -30,11 +30,14 @@
 </template>
 
 <script>
+// vue
 import { ref, provide, toRef, toRefs, watch } from "vue";
+// composition
 import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
 import useClickOutside from "./composition/use-click-outside";
 import useTrigger from "./composition/use-trigger";
+// props
 import { sharedPopperProps, sharedStyleProps } from "../sharedProps";
 
 export default {

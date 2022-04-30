@@ -76,13 +76,6 @@ export default {
           "Set it to true/false to programatically show or hide dropdown content. Model is optional if dropdown is activated from reference slot",
       },
       {
-        prop: "reference",
-        type: ["Object"],
-        default: "bottom-start",
-        description:
-        "If reference slot is empty then dropdown is positioned relative to the point <code>{x: number, y: number}</code> in this prop. This can be used to make context menus",
-      },
-      {
         prop: "placement",
         type: ["String"],
         default: "bottom-start",
@@ -157,7 +150,7 @@ export default {
     let slots = ref([
       {
         prop: "reference",
-        description: "Slot for button that activates dropdown. Dropdown is positioned relative to element in this slot. If this slot is empty then reference prop is used to position dropdown",
+        description: "Slot for button that activates dropdown. Dropdown is positioned relative to element in this slot.",
       },
       {
         prop: "default",

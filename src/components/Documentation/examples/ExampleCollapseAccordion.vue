@@ -34,7 +34,7 @@
     </v-card>
   </v-accordion>
 
-  <!-- style flat -->
+  <!-- alternate style -->
 
   <v-accordion class="mt-10">
     <v-card name="card-flat">

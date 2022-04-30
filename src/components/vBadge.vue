@@ -42,7 +42,7 @@ export default {
 
 <style scoped lang="postcss">
 .fixed-badge {
-  @apply inline-flex items-center;
+  @apply inline-flex items-center align-top;
 }
 .fixed-absolute-tr {
   @apply absolute transform top-0 right-0 -translate-y-1/2 translate-x-1/2;

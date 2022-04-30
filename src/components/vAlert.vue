@@ -3,6 +3,7 @@
     <div v-if="modelValue" :class="[classes.alert.value]">
       <div class="flex items-center">
         <v-icon v-if="icon" :name="icons[icon]" :class="classes.icon.value" />
+        <slot name="icon"></slot>
         <slot name="default"></slot>
         <v-close-button
           v-if="dismissable"
@@ -16,12 +17,16 @@
 </template>
 
 <script>
+// vue
 import { watch } from "vue";
-import vCloseButton from "./vCloseButton.vue";
+// composition
 import useStyles from "./composition/use-styles";
+// components
+import vCloseButton from "./vCloseButton.vue";
 import BCheckLg from "./icons/check-lg";
 import BExclamationCircle from "./icons/exclamation-circle";
 import BInfoCircle from "./icons/info-circle";
+// props
 import { sharedStyleProps } from "../sharedProps"
 
 export default {
@@ -30,7 +35,6 @@ export default {
     dismissable: { type: Boolean, default: true },
     autoDismissDelay: { type: Number, default: 0 },
     icon: { type: String, default: "" },
-    iconClass: { type: String, default: "" },
     styleAlert: { type: [String, Array], default: "" },
     styleIcon: { type: [String, Array], default: "" },
     ...sharedStyleProps("alert"),
@@ -76,8 +80,8 @@ export default {
     return {
       classes,
       states,
-      handleCloseButtonClick,
       icons,
+      handleCloseButtonClick,
     };
   },
 };

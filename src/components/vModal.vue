@@ -4,6 +4,7 @@
       <div
         v-if="modelValue"
         class="fixed-main"
+        role="dialog"
         tabindex="0"
         @click.self="handleBackdropClick"
         @keydown.esc="handleKeydown"
@@ -58,11 +59,16 @@
 </template>
 
 <script>
-import { ref, computed, watch } from "vue";
+// vue
+import { computed, watch } from "vue";
+// composition
+import useStyles from "./composition/use-styles";
+// components
 import vButton from "./vButton.vue";
 import vCloseButton from "./vCloseButton.vue";
+// directives
 import focus from "../directives/focus";
-import useStyles from "./composition/use-styles";
+// props
 import { sharedStyleProps } from "../sharedProps"
 
 export default {

@@ -24,9 +24,13 @@
 </template>
 
 <script>
+// vue
 import { computed, toRef } from "vue";
-import vCloseButton from "./vCloseButton.vue";
+// composition
 import useStyles from "./composition/use-styles";
+// components
+import vCloseButton from "./vCloseButton.vue";
+// props
 import { sharedStyleProps } from "../sharedProps"
 
 export default {

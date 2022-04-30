@@ -74,31 +74,6 @@
       <v-dropdown-menu-item tag="button">Menu item</v-dropdown-menu-item>
     </v-card>
   </v-dropdown>
-
-  <!-- Dropdown datepicker -->
-
-  <v-dropdown
-    v-bind="example"
-    @state:opened="events.unshift({ ev: 'state:opened', data: $event })"
-    @state:closed="events.unshift({ ev: 'state:closed', data: $event })"
-    class="ml-2"
-  >
-    <template #reference>
-      <v-button class="mr-4">
-        Dropdown datepicker
-        <v-chevron style-chevron="right" />
-      </v-button>
-    </template>
-    <template #default="{ hide }">
-      <v-card width="320px" style-card="shadow" class="p-2">
-        <v-date-picker
-          v-model="example.date"
-          adjacent-months
-          @state:done="hide"
-        />
-      </v-card>
-    </template>
-  </v-dropdown>
 <!-- CUT START -->
   <v-tabs name="tabs-material" class="mt-10">
     <v-tab name="Props">
@@ -195,7 +170,6 @@ export default {
       autoCloseMenu: false,
       transition: "fade",
       trigger: "click",
-      date: "",
     });
 
     let events = ref([]);
