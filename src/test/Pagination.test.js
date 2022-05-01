@@ -21,5 +21,4 @@ test("renders buttons", () => {
 
   getByRole("button", { name: "Page 1" });
   getByRole("button", { name: "Page 8" });
-  getByRole("button", { name: "..." });
 });
