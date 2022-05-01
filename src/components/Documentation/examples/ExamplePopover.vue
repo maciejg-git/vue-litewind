@@ -1,15 +1,10 @@
 <template>
+  <div class="flex flex-col gap-y-4">
 
-  <!-- simple popover -->
+    <!-- simple popover -->
 
-  <div>
     <v-popover
-      :placement="example.placement"
-      :trigger="example.trigger"
-      :no-header="example.noHeader"
-      :title="example.title"
-      :transition="example.transition"
-      :click-outside-close="example.clickOutsideClose"
+      v-bind="example"
       @update:modelValue="
         example.events.unshift({ ev: 'update:modelValue', data: $event })
       "
@@ -19,18 +14,12 @@
       </template>
       This is popover.
     </v-popover>
-  </div>
 
-  <!-- form popover -->
+    <!-- form popover -->
 
-  <div class="mt-4">
     <v-popover
-      :placement="example.placement"
-      :trigger="example.trigger"
-      :no-header="example.noHeader"
+      v-bind="example"
       title="Login"
-      :transition="example.transition"
-      :click-outside-close="example.clickOutsideClose"
       @update:modelValue="
         example.events.unshift({ ev: 'update:modelValue', data: $event })
       "
@@ -39,24 +28,18 @@
         <v-button>Show form popover</v-button>
       </template>
       <div class="grid grid-cols-3 gap-2 my-2">
-        <label for="">Login</label>
-        <v-input type="text" class="col-span-2"></v-input>
-        <label for="">Password</label>
-        <v-input type="text" class="col-span-2"></v-input>
+        <label for="login">Login</label>
+        <v-input type="text" id="login" class="col-span-2"></v-input>
+        <label for="password">Password</label>
+        <v-input type="password" id="password" class="col-span-2"></v-input>
       </div>
     </v-popover>
-  </div>
 
-  <!-- tooltip popover -->
+    <!-- tooltip popover -->
 
-  <div class="mt-4">
     <v-popover
-      :placement="example.placement"
-      :trigger="example.trigger"
-      :no-header="example.noHeader"
+      v-bind="example"
       title="Header"
-      :transition="example.transition"
-      :click-outside-close="example.clickOutsideClose"
       name="popover-plain"
       @update:modelValue="
         example.events.unshift({ ev: 'update:modelValue', data: $event })
@@ -67,7 +50,6 @@
       </template>
       Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       Lorem Ipsum has been the industry's standard dummy text ever since the
-<!-- CUT START -->
       1500s, when an unknown printer took a galley of type and scrambled it to
       make a type specimen book. It has survived not only five centuries, but
       also the leap into electronic typesetting, remaining essentially
@@ -75,10 +57,9 @@
       sheets containing Lorem Ipsum passages, and more recently with desktop
       publishing software like Aldus PageMaker including versions of Lorem
       Ipsum.
-<!-- CUT END -->
     </v-popover>
   </div>
-<!-- CUT START -->
+  <!-- CUT START -->
   <v-tabs name="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="mb-2 mt-5">
@@ -153,7 +134,7 @@
       </div>
     </v-tab>
   </v-tabs>
-<!-- CUT END -->
+  <!-- CUT END -->
 </template>
 
 <script>

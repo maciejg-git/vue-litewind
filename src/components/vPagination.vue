@@ -1,30 +1,50 @@
 <template>
-  <nav :class="classes.paginationBar.value">
-    <a href="" :class="getPrevButtonClass()" @click.prevent="handleClickPrev">
+  <nav :class="classes.paginationBar.value" role="navigation" aria-label="Pagination navigation">
+    <a
+      href=""
+      role="button"
+      aria-label="Previous page"
+      :class="getPrevButtonClass()"
+      @click.prevent="handleClickPrev"
+    >
       <chevron-left />
     </a>
     <a
+      v-for="(page, index) in pages"
       href=""
-      v-for="(i, index) in pages"
+      role="button"
+      :aria-label="'Page ' + page"
+      :aria-current="isCurrent(page)"
       :key="index"
-      :class="getPageClass(i)"
-      @click.prevent="handleClickPage(i)"
+      :class="getPageClass(page)"
+      @click.prevent="handleClickPage(page)"
     >
-      {{ i }}
+      {{ page }}
     </a>
-    <a href="" :class="getNextButtonClass()" @click.prevent="handleClickNext">
+    <a
+      href=""
+      role="button"
+      aria-label="Next page"
+      :class="getNextButtonClass()"
+      @click.prevent="handleClickNext"
+    >
       <chevron-right />
     </a>
   </nav>
 </template>
 
 <script>
+// vue
 import { ref, computed, watch } from "vue";
+// composition
 import useStyles from "./composition/use-styles";
-import { clamp, getNumberRange, isNumber } from "../tools.js";
+// components
 import ChevronLeft from "./icons/chevron-left.js";
 import ChevronRight from "./icons/chevron-right.js";
-import { sharedStyleProps } from "../sharedProps"
+// tools
+import { clamp, getNumberRange, isNumber } from "../tools.js";
+// props
+import { sharedStyleProps } from "../sharedProps";
 
 export default {
   props: {
@@ -64,9 +84,11 @@ export default {
       },
     });
 
+    let isCurrent = (page) => currentPage.value === page
+
     let getPageClass = (page) => {
       if (page === "...") return classes.dots.value;
-      if (currentPage.value == page) {
+      if (isCurrent(page)) {
         return ["z-20", classes.page.value, states.page.value.active];
       }
       return classes.page.value;
@@ -104,8 +126,8 @@ export default {
 
     let validateModel = () => {
       let m = +props.modelValue;
-      return isNumber(m) && m > 0 && m <= pagesCount.value
-    }
+      return isNumber(m) && m > 0 && m <= pagesCount.value;
+    };
 
     // watch for model changes and update current page
     watch(
@@ -159,6 +181,7 @@ export default {
       getPageClass,
       getPrevButtonClass,
       getNextButtonClass,
+      isCurrent,
       currentPage,
       pagesCount,
       pages,
