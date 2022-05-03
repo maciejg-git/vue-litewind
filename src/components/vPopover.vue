@@ -10,6 +10,7 @@
   >
     <slot name="reference"></slot>
   </div>
+
   <teleport to="body">
     <transition :name="transition" @after-leave="onPopperTransitionLeave">
       <div v-if="isPopperVisible" ref="popper">
