@@ -7,8 +7,8 @@
     @state:opened="events.unshift({ ev: 'state:opened', data: $event })"
     @state:closed="events.unshift({ ev: 'state:closed', data: $event })"
   >
-    <template #reference>
-      <v-button-dropdown class="mr-4">
+    <template #reference="{ reference, onTrigger }">
+      <v-button-dropdown :ref="reference" v-on="onTrigger" class="mr-4">
         Dropdown menu
       </v-button-dropdown>
     </template>
@@ -43,10 +43,9 @@
     name="dropdown-relaxed"
     @state:opened="events.unshift({ ev: 'state:opened', data: $event })"
     @state:closed="events.unshift({ ev: 'state:closed', data: $event })"
-    class="ml-2"
   >
-    <template #reference>
-      <v-button class="mr-4">
+    <template #reference="{ reference, onTrigger }">
+      <v-button :ref="reference" v-on="onTrigger" class="mr-4">
         Dropdown menu (alternate style)
         <v-chevron style-chevron="right" />
       </v-button>

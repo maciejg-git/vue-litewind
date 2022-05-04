@@ -1,4 +1,4 @@
-import { ref, watch, nextTick } from "vue";
+import { ref, computed, watch, nextTick } from "vue";
 import { createPopper } from "@popperjs/core";
 
 export default function usePopper(
@@ -60,6 +60,10 @@ export default function usePopper(
     else if (destroyOnRemove) destroyInstance();
   });
 
+  let referenceEl = computed(() => {
+    return (reference.value && reference.value.$el) || reference.value;
+  });
+
   let destroyInstance = () => {
     if (instance) {
       instance.destroy();
@@ -88,10 +92,16 @@ export default function usePopper(
           // mainAxis: false,
         },
       },
+      {
+        name: "arrow",
+        options: {
+          padding: 6,
+        },
+      },
       resize,
     ];
 
-    instance = createPopper(reference.value || virtualElement, popper.value, {
+    instance = createPopper(referenceEl.value || virtualElement, popper.value, {
       modifiers,
       placement: placement.value,
     });
@@ -122,6 +132,7 @@ export default function usePopper(
   return {
     isPopperVisible,
     reference,
+    referenceEl,
     popper,
     showPopper,
     hidePopper,

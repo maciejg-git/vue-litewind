@@ -1,21 +1,13 @@
 <template>
-  <div
-    v-if="slots.reference"
-    ref="reference"
-    @[triggerEvents.on]="show"
-    @[triggerEvents.off]="hide"
-    @[triggerEvents.toggle]="togglePopper"
-    class="inline-block"
-    v-bind="$attrs"
-  >
-    <slot name="reference"></slot>
-  </div>
+  <slot name="reference" v-bind="referenceSlotProps"></slot>
 
   <teleport to="body">
     <transition :name="transition" @after-leave="onPopperTransitionLeave">
       <div
         v-if="isPopperVisible"
         ref="popper"
+        role="listbox"
+        tabindex="-1"
         @mouseenter="preventHiding"
         @mouseleave="allowHiding"
         class="fixed-dropdown"
@@ -71,15 +63,12 @@ export default {
       (value) => (value ? show() : hide())
     );
 
-    // set up triggering events
-    let trigger = toRef(props, "trigger");
-    let triggerEvents = useTrigger(trigger);
-
     // set up popper
     const { offsetX, offsetY, noFlip, placement, modelValue } = toRefs(props);
     const {
       isPopperVisible,
       reference,
+      referenceEl,
       popper,
       showPopper,
       hidePopper,
@@ -91,8 +80,14 @@ export default {
     // add click outside callback
     let { onClickOutside } = useClickOutside();
     let clickOutsideElements = [popper];
-    if (slots.reference) clickOutsideElements.push(reference);
+    if (slots.reference) clickOutsideElements.push(referenceEl);
     onClickOutside(clickOutsideElements, hidePopper);
+
+    // set up triggering events
+    let trigger = toRef(props, "trigger");
+    let onTrigger = useTrigger(trigger, show, hide, togglePopper);
+
+    let referenceSlotProps = { reference, onTrigger };
 
     // delay closing menu if using hover trigger
     let hideTimeout = null;
@@ -107,18 +102,18 @@ export default {
 
     // show and hide functions, the only special case is hover trigger which
     // adds short delay before close
-    let show = () => {
+    function show() {
       if (props.trigger === "hover") clearTimeout(hideTimeout);
       showPopper();
-    };
+    }
 
-    let hide = () => {
+    function hide() {
       if (props.trigger === "hover") {
         hideTimeout = scheduleHide();
         return;
       }
       hidePopper();
-    };
+    }
 
     let scheduleHide = () => setTimeout(hidePopper, 100);
 
@@ -147,14 +142,13 @@ export default {
       hidePopper,
       togglePopper,
       isPopperVisible,
-      triggerEvents,
       scheduleHide,
       show,
       hide,
       onPopperTransitionLeave,
       preventHiding,
       allowHiding,
-      slots,
+      referenceSlotProps,
       showContextDropdown,
       contextData,
     };

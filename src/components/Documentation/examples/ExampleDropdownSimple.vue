@@ -1,7 +1,7 @@
 <template>
   <v-dropdown auto-close-menu>
-    <template #reference>
-      <v-button-dropdown>
+    <template #reference="{ reference, onTrigger }">
+      <v-button-dropdown :ref="reference" v-on="onTrigger">
         Dropdown menu
       </v-button-dropdown>
     </template>

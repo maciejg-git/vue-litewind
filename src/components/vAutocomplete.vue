@@ -212,7 +212,7 @@ export default {
 
     let highlightMatch = (string, match) => {
       return string.replace(
-        new RegExp(`(${localText.value})`, "i"),
+        new RegExp(`(${match})`, "i"),
         `<span class='${classes.match.value}'>$1</span>`
       );
     };

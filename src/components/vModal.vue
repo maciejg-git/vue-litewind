@@ -32,15 +32,18 @@
               <slot name="footer">
                 <v-button
                   v-if="!noSecondaryButton"
+                  aria-label="Cancel button"
                   :style-button="secondaryButtonStyle"
+                  class="mx-2"
                   @click="handleSecondaryButtonClick"
                 >
                   {{ secondaryButtonLabel }}
                 </v-button>
                 <v-button
                   v-if="!noPrimaryButton"
+                  aria-label="OK button"
                   :style-button="primaryButtonStyle"
-                  class="ml-2"
+                  class="mx-2"
                   @click="handlePrimaryButtonClick"
                 >
                   {{ primaryButtonLabel }}

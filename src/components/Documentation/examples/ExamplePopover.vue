@@ -1,31 +1,21 @@
 <template>
-  <div class="flex flex-col gap-y-4">
-
+  <div class="flex flex-col items-start gap-y-4">
     <!-- simple popover -->
 
-    <v-popover
-      v-bind="example"
-      @update:modelValue="
-        example.events.unshift({ ev: 'update:modelValue', data: $event })
-      "
-    >
-      <template #reference>
-        <v-button>Show simple popover</v-button>
+    <v-popover v-bind="example">
+      <template #reference="{ reference, onTrigger }">
+        <v-button :ref="reference" v-on="onTrigger">
+          Show simple popover
+        </v-button>
       </template>
       This is popover.
     </v-popover>
 
     <!-- form popover -->
 
-    <v-popover
-      v-bind="example"
-      title="Login"
-      @update:modelValue="
-        example.events.unshift({ ev: 'update:modelValue', data: $event })
-      "
-    >
-      <template #reference>
-        <v-button>Show form popover</v-button>
+    <v-popover v-bind="example" title="Login">
+      <template #reference="{ reference, onTrigger }">
+        <v-button :ref="reference" v-on="onTrigger">Show form popover</v-button>
       </template>
       <div class="grid grid-cols-3 gap-2 my-2">
         <label for="login">Login</label>
@@ -37,16 +27,11 @@
 
     <!-- tooltip popover -->
 
-    <v-popover
-      v-bind="example"
-      title="Header"
-      name="popover-plain"
-      @update:modelValue="
-        example.events.unshift({ ev: 'update:modelValue', data: $event })
-      "
-    >
-      <template #reference>
-        <v-button>Show tooltip popover</v-button>
+    <v-popover v-bind="example" title="Header" name="popover-plain">
+      <template #reference="{ reference, onTrigger }">
+        <v-button :ref="reference" v-on="onTrigger">
+          Show tooltip popover
+        </v-button>
       </template>
       Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       Lorem Ipsum has been the industry's standard dummy text ever since the

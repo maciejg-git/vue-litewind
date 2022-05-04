@@ -1,15 +1,5 @@
 <template>
-  <div
-    v-if="slots.reference"
-    ref="reference"
-    @[trigger.on]="showPopper"
-    @[trigger.off]="hidePopper"
-    @[trigger.toggle]="togglePopper"
-    class="inline-block w-max"
-    v-bind="$attrs"
-  >
-    <slot name="reference"></slot>
-  </div>
+  <slot name="reference" v-bind="referenceSlotProps"></slot>
 
   <teleport to="body">
     <transition :name="transition" @after-leave="onPopperTransitionLeave">
@@ -56,21 +46,18 @@ export default {
     styleContent: { type: String, default: "" },
     ...sharedStyleProps("popover"),
   },
-  setup(props, { slots, emit }) {
+  setup(props, { emit }) {
     let { classes } = useStyles("popover", props, {
       popover: null,
       content: null,
     });
-
-    // set triggering events: click, focus and hover
-    let trigerRef = toRef(props, "trigger");
-    let trigger = useTrigger(trigerRef);
 
     // popper
     const { offsetX, offsetY, noFlip, placement } = toRefs(props);
     const {
       isPopperVisible,
       reference,
+      referenceEl,
       popper,
       showPopper,
       hidePopper,
@@ -82,11 +69,16 @@ export default {
     let { onClickOutside } = useClickOutside();
     let stopClickOutside = null;
 
+    let trigerRef = toRef(props, "trigger");
+    let onTrigger = useTrigger(trigerRef, showPopper, hidePopper, togglePopper);
+
+    let referenceSlotProps = { reference, onTrigger }
+
     watch(
       () => props.clickOutsideClose,
       (clickOutsideClose) => {
         if (clickOutsideClose) {
-          stopClickOutside = onClickOutside([popper, reference], hidePopper);
+          stopClickOutside = onClickOutside([popper, referenceEl], hidePopper);
         } else {
           if (stopClickOutside) stopClickOutside();
         }
@@ -96,15 +88,13 @@ export default {
 
     return {
       classes,
-      trigger,
-      reference,
       popper,
       isPopperVisible,
       showPopper,
       hidePopper,
       togglePopper,
       onPopperTransitionLeave,
-      slots,
+      referenceSlotProps,
     };
   },
 };

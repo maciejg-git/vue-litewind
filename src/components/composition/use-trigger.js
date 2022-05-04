@@ -1,27 +1,39 @@
-import { reactive, watchEffect } from "vue"
+import { watch } from "vue";
 
-export default function useTrigger(trigger) {
-  let t = reactive({
-    on: null,
-    off: null,
-    toggle: null,
-  });
+export default function useTrigger(trigger, show, hide, toggle) {
+  let onTrigger = {
+    click: null,
+    mouseenter: null,
+    mouseleave: null,
+    focusin: null,
+    focusout: null,
+  };
 
-  watchEffect(() => {
-    if (trigger.value == "click") {
-      t.on = null;
-      t.off = null;
-      t.toggle = "click";
-    } else if (trigger.value == "hover") {
-      t.on = "mouseenter";
-      t.off = "mouseleave";
-      t.toggle = null;
-    } else if (trigger.value == "focus") {
-      t.on = "focusin";
-      t.off = "focusout";
-      t.toggle = null;
-    }
-  });
+  watch(
+    trigger,
+    (value) => {
+      if (value === "click") {
+        onTrigger.click = toggle;
+        onTrigger.mouseenter = null;
+        onTrigger.mouseleave = null;
+        onTrigger.focusin = null;
+        onTrigger.focusout = null;
+      } else if (value === "hover") {
+        onTrigger.click = null;
+        onTrigger.mouseenter = show;
+        onTrigger.mouseleave = hide;
+        onTrigger.focusin = null;
+        onTrigger.focusout = null;
+      } else if (value === "focus") {
+        onTrigger.click = null;
+        onTrigger.mouseenter = null;
+        onTrigger.mouseleave = null;
+        onTrigger.focusin = show;
+        onTrigger.focusout = hide;
+      }
+    },
+    { immediate: true }
+  );
 
-  return t;
+  return onTrigger;
 }
