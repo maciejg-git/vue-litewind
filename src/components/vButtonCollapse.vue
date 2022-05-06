@@ -9,7 +9,7 @@
       :counter-clockwise="counterClockwise"
       :triangle="triangle"
       :icon="icon"
-      :switch="modelValue"
+      :switch="switch"
       :style-chevron="styleChevron"
       class="ml-auto"
     />

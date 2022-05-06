@@ -68,7 +68,6 @@ export default {
     const {
       isPopperVisible,
       reference,
-      referenceEl,
       popper,
       showPopper,
       hidePopper,
@@ -80,7 +79,7 @@ export default {
     // add click outside callback
     let { onClickOutside } = useClickOutside();
     let clickOutsideElements = [popper];
-    if (slots.reference) clickOutsideElements.push(referenceEl);
+    if (slots.reference) clickOutsideElements.push(reference);
     onClickOutside(clickOutsideElements, hidePopper);
 
     // set up triggering events

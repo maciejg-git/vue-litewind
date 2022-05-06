@@ -1,4 +1,6 @@
 <template>
+  <slot name="reference" v-bind="referenceSlotProps"></slot>
+
   <div class="overflow-hidden">
     <v-transition :name="transition">
       <div v-show="isOpen">
@@ -9,8 +11,8 @@
 </template>
 
 <script>
-import { watch, toRef, onMounted, onUnmounted, inject } from "vue";
-import vTransition from "./vTransition.vue"
+import { ref, watch, onMounted, onUnmounted, inject } from "vue";
+import vTransition from "./vTransition.vue";
 
 export default {
   components: {
@@ -23,9 +25,34 @@ export default {
   setup(props, { emit }) {
     let accordion = inject("accordion", null);
 
-    let isOpen = toRef(props, "modelValue");
+    let isOpen = ref(props.modelValue);
 
-    let collapse = () => emit("update:modelValue", false);
+    watch(
+      () => props.modelValue,
+      (value) => (isOpen.value = value)
+    );
+
+    let uncollapse = () => {
+      isOpen.value = true;
+      emit("update:modelValue", true);
+    };
+
+    let collapse = () => {
+      isOpen.value = false;
+      emit("update:modelValue", false);
+    };
+
+    let toggleCollapse = () => {
+      isOpen.value ? collapse() : uncollapse();
+    };
+
+    let onTrigger = {
+      click: toggleCollapse,
+    };
+
+    let referenceSlotProps = { isOpen, onTrigger }
+
+    // accordion
 
     let c = { isOpen, collapse };
 
@@ -41,10 +68,10 @@ export default {
 
     return {
       isOpen,
+      referenceSlotProps,
     };
   },
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

@@ -34,6 +34,47 @@
     </v-card>
   </v-accordion>
 
+  <v-accordion class="mt-10">
+    <v-card>
+      <v-collapse>
+        <template #reference="{ onTrigger }">
+          <v-button-collapse block v-on="onTrigger">
+            Toggle collapse
+          </v-button-collapse>
+        </template>
+        <div class="p-4">
+          {{ text[0] }}
+        </div>
+      </v-collapse>
+    </v-card>
+
+    <v-card class="mt-1">
+      <v-collapse>
+        <template #reference="{ onTrigger }">
+          <v-button-collapse block v-on="onTrigger">
+            Toggle collapse
+          </v-button-collapse>
+        </template>
+        <div class="p-4">
+          {{ text[1] }}
+        </div>
+      </v-collapse>
+    </v-card>
+
+    <v-card class="mt-1">
+      <v-collapse>
+        <template #reference="{ onTrigger }">
+          <v-button-collapse block v-on="onTrigger">
+            Toggle collapse
+          </v-button-collapse>
+        </template>
+        <div class="p-4">
+          {{ text[2] }}
+        </div>
+      </v-collapse>
+    </v-card>
+  </v-accordion>
+
   <!-- alternate style -->
 
   <v-accordion class="mt-10">
@@ -89,12 +130,12 @@
 
 <script>
 import { reactive } from "vue";
-import { text } from "../../../const"
+import { text } from "../../../const";
 
 export default {
   setup() {
     let accordion = reactive({
-      isVisible: false,
+      isVisible: true,
       isVisible2: false,
       isVisible3: false,
     });

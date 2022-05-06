@@ -1128,7 +1128,6 @@
     rounded-md
     bg-white
     border-secondary-200
-    dark:text-text-400
     dark:bg-dark-800
     dark:border-dark-700
 }
@@ -1222,8 +1221,11 @@
     text-left
     font-semibold
     text-sm
+    uppercase
     px-6
     py-2
+    text-text-700
+    dark:text-text-300
 }
 
 /* DROPDOWN RELAXED */
@@ -1274,6 +1276,8 @@
     px-4
     py-2
     my-1
+    text-text-700
+    dark:text-text-300
 }
 
 /* DROPDOWN FLAT */
@@ -1303,6 +1307,7 @@
     px-5
     py-4
     text-text-600
+    dark:text-text-300
 }
 
 /* DATEPICKER */

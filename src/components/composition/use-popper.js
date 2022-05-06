@@ -16,8 +16,17 @@ export default function usePopper(
 
   let isPopperVisible = ref(false);
   let instance = null;
-  let reference = ref(null);
   let popper = ref(null);
+  let localReference = ref(null)
+
+  let reference = computed({
+    get() {
+      return (localReference.value && localReference.value.$el) || localReference.value
+    },
+    set (value) {
+      localReference.value = value
+    }
+  })
 
   let showPopper = async function () {
     if (isPopperVisible.value) return;
@@ -60,10 +69,6 @@ export default function usePopper(
     else if (destroyOnRemove) destroyInstance();
   });
 
-  let referenceEl = computed(() => {
-    return (reference.value && reference.value.$el) || reference.value;
-  });
-
   let destroyInstance = () => {
     if (instance) {
       instance.destroy();
@@ -101,7 +106,7 @@ export default function usePopper(
       resize,
     ];
 
-    instance = createPopper(referenceEl.value || virtualElement, popper.value, {
+    instance = createPopper(reference.value || virtualElement, popper.value, {
       modifiers,
       placement: placement.value,
     });
@@ -132,7 +137,6 @@ export default function usePopper(
   return {
     isPopperVisible,
     reference,
-    referenceEl,
     popper,
     showPopper,
     hidePopper,

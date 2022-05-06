@@ -52,12 +52,12 @@ export default {
       content: null,
     });
 
+    const { offsetX, offsetY, noFlip, placement, trigger } = toRefs(props);
+
     // popper
-    const { offsetX, offsetY, noFlip, placement } = toRefs(props);
     const {
       isPopperVisible,
       reference,
-      referenceEl,
       popper,
       showPopper,
       hidePopper,
@@ -65,12 +65,11 @@ export default {
       onPopperTransitionLeave,
     } = usePopper({ placement, offsetX, offsetY, noFlip, emit });
 
-    // add click outside callback
+    // click outside
     let { onClickOutside } = useClickOutside();
     let stopClickOutside = null;
 
-    let trigerRef = toRef(props, "trigger");
-    let onTrigger = useTrigger(trigerRef, showPopper, hidePopper, togglePopper);
+    let onTrigger = useTrigger(trigger, showPopper, hidePopper, togglePopper);
 
     let referenceSlotProps = { reference, onTrigger }
 
@@ -78,7 +77,7 @@ export default {
       () => props.clickOutsideClose,
       (clickOutsideClose) => {
         if (clickOutsideClose) {
-          stopClickOutside = onClickOutside([popper, referenceEl], hidePopper);
+          stopClickOutside = onClickOutside([popper, reference], hidePopper);
         } else {
           if (stopClickOutside) stopClickOutside();
         }
@@ -90,9 +89,7 @@ export default {
       classes,
       popper,
       isPopperVisible,
-      showPopper,
       hidePopper,
-      togglePopper,
       onPopperTransitionLeave,
       referenceSlotProps,
     };
