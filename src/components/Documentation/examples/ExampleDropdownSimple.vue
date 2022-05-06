@@ -1,5 +1,5 @@
 <template>
-  <v-dropdown auto-close-menu>
+  <v-dropdown auto-close-menu offsetY="5">
     <template #reference="{ reference, onTrigger }">
       <v-button-dropdown :ref="reference" v-on="onTrigger">
         Dropdown menu

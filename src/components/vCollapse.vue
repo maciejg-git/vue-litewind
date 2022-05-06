@@ -1,5 +1,5 @@
 <template>
-  <slot name="reference" v-bind="referenceSlotProps"></slot>
+  <slot name="reference" :isOpen="isOpen" :onTrigger="onTrigger"></slot>
 
   <div class="overflow-hidden">
     <v-transition :name="transition">
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { ref, watch, onMounted, onUnmounted, inject } from "vue";
+import { ref, watch, toRef, onMounted, onUnmounted, inject } from "vue";
 import vTransition from "./vTransition.vue";
 
 export default {
@@ -23,8 +23,6 @@ export default {
     transition: { type: String, default: "fade-collapse" },
   },
   setup(props, { emit }) {
-    let accordion = inject("accordion", null);
-
     let isOpen = ref(props.modelValue);
 
     watch(
@@ -50,9 +48,9 @@ export default {
       click: toggleCollapse,
     };
 
-    let referenceSlotProps = { isOpen, onTrigger }
-
     // accordion
+
+    let accordion = inject("accordion", null);
 
     let c = { isOpen, collapse };
 
@@ -68,7 +66,7 @@ export default {
 
     return {
       isOpen,
-      referenceSlotProps,
+      onTrigger,
     };
   },
 };

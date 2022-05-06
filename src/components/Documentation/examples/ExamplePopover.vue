@@ -2,6 +2,8 @@
   <div class="flex flex-col items-start gap-y-4">
     <!-- simple popover -->
 
+    <span>Simple popover</span>
+
     <v-popover v-bind="example">
       <template #reference="{ reference, onTrigger }">
         <v-button :ref="reference" v-on="onTrigger">
@@ -12,6 +14,8 @@
     </v-popover>
 
     <!-- form popover -->
+
+    <span>Form popover</span>
 
     <v-popover v-bind="example" title="Login">
       <template #reference="{ reference, onTrigger }">
@@ -26,6 +30,8 @@
     </v-popover>
 
     <!-- tooltip popover -->
+
+    <span>Tooltip popover</span>
 
     <v-popover v-bind="example" title="Header" name="popover-plain">
       <template #reference="{ reference, onTrigger }">

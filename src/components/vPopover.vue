@@ -24,7 +24,7 @@
 
 <script>
 // vue
-import { toRef, toRefs, watch } from "vue";
+import { toRefs, watch } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
@@ -92,6 +92,8 @@ export default {
       hidePopper,
       onPopperTransitionLeave,
       referenceSlotProps,
+      reference,
+      onTrigger,
     };
   },
 };
