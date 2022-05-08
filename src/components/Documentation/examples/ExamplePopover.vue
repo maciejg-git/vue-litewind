@@ -18,7 +18,7 @@
     <template #reference="{ reference, onTrigger }">
       <v-button :ref="reference" v-on="onTrigger">Show form popover</v-button>
     </template>
-    <div class="flex flex-col gap-y-4 w-[300px]">
+    <div class="flex flex-col gap-y-4 w-[250px]">
       <div class="flex flex-col gap-y-1">
         <label for="login">Email</label>
         <v-input type="text" id="login" placeholder="Enter email"></v-input>

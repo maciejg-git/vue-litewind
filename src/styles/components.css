@@ -894,6 +894,10 @@
       @apply
         disabled
     }
+    .input--icon-variant {
+      @apply
+        pl-10
+    }
 
 /* TEXTAREA */
 

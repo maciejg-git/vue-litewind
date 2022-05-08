@@ -41,6 +41,7 @@ registerIcon(app, [
   MdiLoading,
   BMoon,
   BArrowRight,
+  BExclamationCircle,
 ], {
   vendorPrefix: true,
   iconSufix: false,

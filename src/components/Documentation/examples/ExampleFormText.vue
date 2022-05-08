@@ -119,7 +119,7 @@ export default {
 
     let nameState = () => {
       return nameValidated.value
-        ? name.value.length > 0
+        ? nameModel.value.length > 0
           ? "valid"
           : "invalid"
         : "";

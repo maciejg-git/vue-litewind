@@ -4,7 +4,7 @@
       v-for="(language, index) in languages"
       :key="language"
       class="border hover:bg-secondary-50 dark:hover:bg-dark-700 dark:border-dark-700 cursor-pointer p-2 mr-4"
-      @contextmenu.prevent="dropdown.showContextDropdown($event, { language, index })"
+      @contextmenu.prevent="contextMenu.showContextDropdown($event, { language, index })"
     >
       {{ language }}
     </div>
@@ -13,7 +13,7 @@
   Language: {{ currentLanguage }}
 
   <v-dropdown 
-    ref="dropdown" 
+    ref="contextMenu" 
     auto-close-menu 
     v-slot="{ language, index }"
   >
@@ -44,7 +44,7 @@ import { ref } from "vue";
 
 export default {
   setup() {
-    let dropdown = ref(null);
+    let contextMenu = ref(null);
 
     let currentLanguage = ref("");
 
@@ -60,7 +60,7 @@ export default {
     let search = (data) => window.open("https://google.com/search?q=" + data);
 
     return {
-      dropdown,
+      contextMenu,
       languages,
       currentLanguage,
       search,

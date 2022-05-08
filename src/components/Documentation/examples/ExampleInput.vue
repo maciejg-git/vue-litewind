@@ -6,6 +6,14 @@
     placeholder="Input example"
   />
 
+  <v-input
+    v-model="example.model"
+    :type="example.type"
+    :state="example.state"
+    icon="b-exclamation-circle"
+    placeholder="Input example"
+  />
+
   <!-- underlined -->
 
   <v-input
