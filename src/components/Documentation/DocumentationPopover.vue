@@ -30,6 +30,7 @@
 import { ref } from "vue";
 import ExamplePopover from "./examples/ExamplePopover.vue"
 import examplePopoverCode from "./examples/ExamplePopover.vue?raw"
+import { popperProps, styleProps } from "./shared-props"
 
 export default {
   components: {
@@ -37,13 +38,6 @@ export default {
   },
   setup(props) {
     let reference = ref([
-      {
-        prop: "placement",
-        type: ["String"],
-        default: "auto",
-        description:
-          "Initial placement of popover. Valid values are same as for <a href='https://popper.js.org/docs/v2/constructors/' class='link'>Popperjs</a>",
-      },
       {
         prop: "trigger",
         type: ["String"],
@@ -75,12 +69,8 @@ export default {
         default: "false",
         description: "If true clicking outside of popover closes it",
       },
-      {
-        prop: "name",
-        type: ["String"],
-        default: "popover",
-        description: "Name of the component",
-      },
+      ...popperProps,
+      ...styleProps("popover"),
     ]);
 
     let styles = ref([

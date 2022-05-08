@@ -17,6 +17,7 @@ import BExclamationCircle from "./components/Documentation/icons/exclamation-cir
 import BInfoCircle from "./components/Documentation/icons/info-circle"
 import BExclamationTriangle from "./components/Documentation/icons/exclamation-triangle"
 import BArrowClockwise from "./components/Documentation/icons/arrow-clockwise"
+import BArrowRight from "./components/Documentation/icons/arrow-right"
 import MdiLoading from "./components/Documentation/icons/loading"
 
 let app = createApp(App);
@@ -39,6 +40,7 @@ registerIcon(app, [
   BArrowClockwise,
   MdiLoading,
   BMoon,
+  BArrowRight,
 ], {
   vendorPrefix: true,
   iconSufix: false,
@@ -53,6 +55,7 @@ app.provide("icon-types", {
   warn: BExclamationCircle,
   menu: "three-dots-icon",
   question: "question-circle-icon",
+  ["arrow-right"]: BArrowRight,
 })
 
 

@@ -1,56 +1,58 @@
 <template>
-  <div class="flex flex-col items-start gap-y-4">
-    <!-- simple popover -->
+  <!-- simple popover -->
 
-    <span>Simple popover</span>
+  <p class="my-4">Simple popover</p>
 
-    <v-popover v-bind="example">
-      <template #reference="{ reference, onTrigger }">
-        <v-button :ref="reference" v-on="onTrigger">
-          Show simple popover
-        </v-button>
-      </template>
-      This is popover.
-    </v-popover>
+  <v-popover v-bind="example">
+    <template #reference="{ reference, onTrigger }">
+      <v-button :ref="reference" v-on="onTrigger">Show simple popover</v-button>
+    </template>
+    This is popover.
+  </v-popover>
 
-    <!-- form popover -->
+  <!-- form popover -->
 
-    <span>Form popover</span>
+  <p class="my-4">Form popover</p>
 
-    <v-popover v-bind="example" title="Login">
-      <template #reference="{ reference, onTrigger }">
-        <v-button :ref="reference" v-on="onTrigger">Show form popover</v-button>
-      </template>
-      <div class="grid grid-cols-3 gap-2 my-2">
-        <label for="login">Login</label>
-        <v-input type="text" id="login" class="col-span-2"></v-input>
-        <label for="password">Password</label>
-        <v-input type="password" id="password" class="col-span-2"></v-input>
+  <v-popover v-bind="example" title="Login">
+    <template #reference="{ reference, onTrigger }">
+      <v-button :ref="reference" v-on="onTrigger">Show form popover</v-button>
+    </template>
+    <div class="flex flex-col gap-y-4 w-[300px]">
+      <div class="flex flex-col gap-y-1">
+        <label for="login">Email</label>
+        <v-input type="text" id="login" placeholder="Enter email"></v-input>
       </div>
-    </v-popover>
+      <div class="flex flex-col gap-y-1">
+        <label for="password">Password</label>
+        <v-input type="password" id="password" placeholder="Enter password"></v-input>
+      </div>
+      <v-button style-button="small" class="ml-auto mt-6">Login</v-button>
+    </div>
+  </v-popover>
 
-    <!-- tooltip popover -->
+  <!-- tooltip popover -->
 
-    <span>Tooltip popover</span>
+  <p class="my-4">Tooltip popover</p>
 
-    <v-popover v-bind="example" title="Header" name="popover-plain">
-      <template #reference="{ reference, onTrigger }">
-        <v-button :ref="reference" v-on="onTrigger">
-          Show tooltip popover
-        </v-button>
-      </template>
+  <v-popover v-bind="example" title="Header" name="popover-plain">
+    <template #reference="{ reference, onTrigger }">
+      <v-button :ref="reference" v-on="onTrigger">
+        Show tooltip popover
+      </v-button>
+    </template>
+    <div class="w-[280px]">
       Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       Lorem Ipsum has been the industry's standard dummy text ever since the
       1500s, when an unknown printer took a galley of type and scrambled it to
-      make a type specimen book. It has survived not only five centuries, but
-      also the leap into electronic typesetting, remaining essentially
-      unchanged. It was popularised in the 1960s with the release of Letraset
-      sheets containing Lorem Ipsum passages, and more recently with desktop
-      publishing software like Aldus PageMaker including versions of Lorem
-      Ipsum.
-    </v-popover>
-  </div>
-  <!-- CUT START -->
+      make a type specimen book. It has survived not only five centuries, but also
+      the leap into electronic typesetting, remaining essentially unchanged. It
+      was popularised in the 1960s with the release of Letraset sheets containing
+      Lorem Ipsum passages, and more recently with desktop publishing software
+      like Aldus PageMaker including versions of Lorem Ipsum.
+    </div>
+  </v-popover>
+<!-- CUT START -->
   <v-tabs name="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="mb-2 mt-5">
@@ -125,7 +127,7 @@
       </div>
     </v-tab>
   </v-tabs>
-  <!-- CUT END -->
+<!-- CUT END -->
 </template>
 
 <script>

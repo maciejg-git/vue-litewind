@@ -1,4 +1,8 @@
 <template>
+  <!-- Simple alert -->
+
+  <p class="my-4">Simple alert</p>
+
   <v-alert
     v-model="example.isVisible"
     :dismissable="example.dismissable"
@@ -13,6 +17,8 @@
 
   <!-- alert with custom icon -->
 
+  <p class="my-4">Custom icon alert</p>
+
   <v-alert
     v-model="example.isVisible"
     :dismissable="example.dismissable"
@@ -22,12 +28,14 @@
     class="my-6"
   >
     <template #icon>
-      <v-icon :icon-type="example.variant" class="v-icon--md mr-2"></v-icon>
+      <v-icon :icon-type="example.variant" class="w-6 h-6 mr-2"></v-icon>
     </template>
-    Alert (custom icon)
+    Alert
   </v-alert>
 
   <!-- alternate style alert -->
+
+  <p class="my-4">Alternate style alert</p>
 
   <v-alert
     v-model="example.isVisible"
@@ -40,7 +48,7 @@
   >
     Alert
   </v-alert>
-  <!-- CUT START -->
+<!-- CUT START -->
   <div class="flex justify-between items-center">
     <div class="mt-5">
       <label for="variant">Alert variant:</label>
@@ -82,7 +90,7 @@
       </div>
     </v-tab>
   </v-tabs>
-  <!-- CUT END -->
+<!-- CUT END -->
 </template>
 
 <script>

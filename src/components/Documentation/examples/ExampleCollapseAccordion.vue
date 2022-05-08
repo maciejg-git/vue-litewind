@@ -1,37 +1,37 @@
 <template>
   <!-- model collapse accordion -->
 
-  <span>Model collapse accordion</span>
+  <p class="mt-8 mb-4">Model collapse accordion</p>
 
-  <v-accordion class="my-4">
+  <v-accordion class="my-2">
     <v-card>
       <v-button-collapse v-model="accordion.isVisible" block>
         Toggle collapse
       </v-button-collapse>
       <v-collapse v-model="accordion.isVisible">
-        <div class="py-8 px-10">
+        <div class="p-8">
           {{ text[0] }}
         </div>
       </v-collapse>
     </v-card>
 
-    <v-card class="mt-1">
+    <v-card class="my-2">
       <v-button-collapse v-model="accordion.isVisible2" block>
         Toggle collapse
       </v-button-collapse>
       <v-collapse v-model="accordion.isVisible2">
-        <div class="py-8 px-10">
+        <div class="p-8">
           {{ text[1] }}
         </div>
       </v-collapse>
     </v-card>
 
-    <v-card class="mt-1">
+    <v-card class="my-2">
       <v-button-collapse v-model="accordion.isVisible3" block>
         Toggle collapse
       </v-button-collapse>
       <v-collapse v-model="accordion.isVisible3">
-        <div class="py-8 px-10">
+        <div class="p-8">
           {{ text[2] }}
         </div>
       </v-collapse>
@@ -40,9 +40,9 @@
 
   <!-- reference slot accordion -->
 
-  <span>Reference slot accordion</span>
+  <p class="mt-8 mb-4">Reference slot accordion</p>
 
-  <v-accordion class="my-4">
+  <v-accordion class="my-2">
     <v-card name="card-flat">
       <v-collapse>
         <template #reference="{ isOpen, onTrigger }">
@@ -56,13 +56,13 @@
             Toggle collapse
           </v-button-collapse>
         </template>
-        <div class="py-8 px-10">
+        <div class="p-8">
           {{ text[0] }}
         </div>
       </v-collapse>
     </v-card>
 
-    <v-card name="card-flat" class="mt-2">
+    <v-card name="card-flat" class="my-2">
       <v-collapse>
         <template #reference="{ isOpen, onTrigger }">
           <v-button-collapse
@@ -75,13 +75,13 @@
             Toggle collapse
           </v-button-collapse>
         </template>
-        <div class="py-8 px-10">
+        <div class="p-8">
           {{ text[1] }}
         </div>
       </v-collapse>
     </v-card>
 
-    <v-card name="card-flat" class="mt-2">
+    <v-card name="card-flat" class="my-2">
       <v-collapse>
         <template #reference="{ isOpen, onTrigger }">
           <v-button-collapse
@@ -94,7 +94,7 @@
             Toggle collapse
           </v-button-collapse>
         </template>
-        <div class="py-8 px-10">
+        <div class="p-8">
           {{ text[0] }}
         </div>
       </v-collapse>

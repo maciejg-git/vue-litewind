@@ -18,7 +18,7 @@
     <v-tab class="p-4">
       <template #name>
         <span class="flex justify-between">
-          Tab with custom content
+          Tab 3
           <v-badge style-badge="secondary tiny" class="ml-4">4</v-badge>
         </span>
       </template>
@@ -30,7 +30,7 @@
       </component>
     </v-tab>
   </v-tabs>
-
+<!-- CUT START -->
   <div class="flex justify-between items-center">
     <div class="mt-5">
       <label for="style">Tabs style:</label>
@@ -42,7 +42,6 @@
     </div>
     <v-button @click="addTab">Add tab</v-button>
   </div>
-  <!-- CUT START -->
   <v-tabs name="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="mb-2 mt-5">

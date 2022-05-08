@@ -14,7 +14,6 @@
     <div class="p-5">
       Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       Lorem Ipsum has been the industry's standard dummy text ever since the
-      <!-- CUT START -->
       1500s, when an unknown printer took a galley of type and scrambled it to
       make a type specimen book. It has survived not only five centuries, but
       also the leap into electronic typesetting, remaining essentially
@@ -22,10 +21,9 @@
       sheets containing Lorem Ipsum passages, and more recently with desktop
       publishing software like Aldus PageMaker including versions of Lorem
       Ipsum.
-      <!-- CUT END -->
     </div>
   </v-sidepanel>
-  <!-- CUT START -->
+<!-- CUT START -->
   <v-tabs name="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="mb-2 mt-5">
@@ -77,7 +75,7 @@
       </div>
     </v-tab>
   </v-tabs>
-  <!-- CUT END -->
+<!-- CUT END -->
 </template>
 
 <script>

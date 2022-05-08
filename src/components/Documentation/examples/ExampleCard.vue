@@ -1,4 +1,6 @@
 <template>
+  <!-- simple card -->
+
   <v-card width="320px" style-card="shadow hoverable" class="overflow-hidden">
     <img :src="randomPhoto()" alt="" />
     <header class="font-semibold text-lg pt-3 px-6">Example card</header>
@@ -13,7 +15,7 @@
     <div class="text-sm px-3 py-2">Card footer</div>
   </v-card>
 
-  <!-- horizontal -->
+  <!-- horizontal card -->
 
   <v-card
     width="720px"
@@ -38,7 +40,7 @@
     </div>
   </v-card>
 
-  <!-- overlay -->
+  <!-- overlay card -->
 
   <v-card width="360px" style-card="shadow hoverable" class="relative overflow-hidden">
     <img :src="randomPhoto(360, 600)" alt="" class="opacity-100"/>

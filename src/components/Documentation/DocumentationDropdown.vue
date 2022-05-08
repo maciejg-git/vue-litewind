@@ -43,6 +43,7 @@
 
   <section id="example">
     <h4>Example - context dropdown</h4>
+    <p>To make context dropdown skip reference slot and use <code>showContextDropdown</code> function to show menu. Context data is available in slot props of default slot:</p>
     <div class="example">
       <example-dropdown-context></example-dropdown-context>
     </div>
@@ -59,6 +60,7 @@ import ExampleDropdownSimple from "./examples/ExampleDropdownSimple.vue"
 import exampleDropdownSimpleCode from "./examples/ExampleDropdownSimple.vue?raw"
 import ExampleDropdownContext from "./examples/ExampleDropdownContext.vue"
 import ExampleDropdownContextCode from "./examples/ExampleDropdownContext.vue?raw"
+import { popperProps, styleProps } from "./shared-props"
 
 export default {
   components: {
@@ -76,34 +78,6 @@ export default {
           "Set it to true/false to programatically show or hide dropdown content. Model is optional if dropdown is activated from reference slot",
       },
       {
-        prop: "placement",
-        type: ["String"],
-        default: "bottom-start",
-        description:
-          "Initial placement of dropdown content. See valid values in <a href='https://popper.js.org/docs/v2/constructors/' class='link'>Popperjs documentation</a>",
-      },
-      {
-        prop: "offsetX",
-        type: ["Number"],
-        default: "0",
-        description:
-          "Offset of dropdown relative to reference element. See how to use this offset <a href='https://popper.js.org/docs/v2/modifiers/offset/' class='link'>here</a>",
-      },
-      {
-        prop: "offsetY",
-        type: ["Number"],
-        default: "0",
-        description:
-          "Offset of dropdown relative to reference element. See how to use this offset <a href='https://popper.js.org/docs/v2/modifiers/offset/' class='link'>here</a>",
-      },
-      {
-        prop: "no-flip",
-        type: ["Boolean"],
-        default: "false",
-        description:
-          "Allows fliping dropdown to opposite placement if outside of current view",
-      },
-      {
         prop: "auto-close-menu",
         type: ["Boolean"],
         default: "false",
@@ -117,12 +91,8 @@ export default {
         description:
           "By default showing or hiding dropdown uses fading animation. Set this prop to empty string to disable animation",
       },
-      {
-        prop: "name",
-        type: ["String"],
-        default: "dropdown",
-        description: "Name of the component",
-      },
+      ...popperProps,
+      ...styleProps("dropdown"),
     ]);
 
     let styles = ref([

@@ -45,6 +45,7 @@ import ExampleAutocompleteSimple from "./examples/ExampleAutocompleteSimple.vue"
 import ExampleAutocompleteSimpleCode from "./examples/ExampleAutocompleteSimple.vue?raw"
 import ExampleAutocomplete from "./examples/ExampleAutocomplete.vue"
 import ExampleAutocompleteCode from "./examples/ExampleAutocomplete.vue?raw"
+import { popperProps, styleProps } from "./shared-props"
 
 export default {
   components: {
@@ -120,42 +121,14 @@ export default {
         description: "By default showing or hiding dropdown uses fading animation. Set this prop to empty string to disable animation",
       },
       {
-        prop: "placement",
-        type: ["String"],
-        default: "bottom-start",
-        description: "Initial placement of dropdown content",
-      },
-      {
-        prop: "offsetX",
-        type: ["Number"],
-        default: "0",
-        description: "Offset of dropdown relative to input element",
-      },
-      {
-        prop: "offsetY",
-        type: ["Number"],
-        default: "10",
-        description: "Offset of dropdown relative to input element",
-      },
-      {
-        prop: "noFlip",
-        type: ["Boolean"],
-        default: "false",
-        description: "Allows fliping dropdown to opposite placement if outside of current view",
-      },
-      {
         prop: "state",
         type: ["String", "Boolean"],
         default: "empty string",
         description:
           "State of input validity. Supported values are 'valid' (or true), 'invalid' (or false) or 'empty string' (or null) for default state",
       },
-      {
-        prop: "name",
-        type: ["String"],
-        default: "autocomplete",
-        description: "Name of the component",
-      },
+      ...popperProps,
+      ...styleProps("autocomplete"),
     ]);
 
     let styles = ref([

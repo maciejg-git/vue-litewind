@@ -1,14 +1,14 @@
 <template>
   <!-- model collapse -->
 
-  <span>Model collapse</span>
+  <p class="mt-8 mb-4">Model collapse</p>
 
-  <v-card class="my-4">
+  <v-card>
     <v-button-collapse block v-model="example.isVisible">
       Toggle collapse
     </v-button-collapse>
     <v-collapse v-model="example.isVisible" :transition="example.transition">
-      <div class="py-8 px-10">
+      <div class="p-8">
         {{ text[0] }}
       </div>
     </v-collapse>
@@ -16,16 +16,16 @@
 
   <!-- reference slot collapse -->
 
-  <span>Reference slot collapse</span>
+  <p class="mt-8 mb-4">Reference slot collapse</p>
 
-  <v-card class="my-4">
+  <v-card>
     <v-collapse :transition="example.transition">
       <template #reference="{ isOpen, onTrigger }">
         <v-button-collapse block v-on="onTrigger" :switch="isOpen">
           Toggle collapse
         </v-button-collapse>
       </template>
-      <div class="py-8 px-10">
+      <div class="p-8">
         {{ text[0] }}
       </div>
     </v-collapse>
@@ -33,9 +33,9 @@
 
   <!-- custom button collapse -->
 
-  <span>Custom button collapse</span>
+  <p class="mt-8 mb-4">Custom button collapse</p>
 
-  <v-card class="my-4">
+  <v-card>
     <v-collapse :transition="example.transition">
       <template #reference="{ isOpen, onTrigger }">
         <v-button block v-on="onTrigger">
@@ -49,7 +49,7 @@
           />
         </v-button>
       </template>
-      <div class="py-8 px-10">
+      <div class="p-8">
         {{ text[1] }}
       </div>
     </v-collapse>

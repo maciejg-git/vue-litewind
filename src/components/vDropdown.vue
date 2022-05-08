@@ -15,7 +15,7 @@
         <slot
           name="default"
           :hide="hidePopper"
-          :context-data="contextData"
+          v-bind="contextData"
         ></slot>
       </div>
     </transition>

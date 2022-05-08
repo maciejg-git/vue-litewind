@@ -40,13 +40,13 @@
 <v-code language="js">
 {{ `app.provide("icon-types", {
   valid: BCheck, // icon component object
-  invalid: "exclamation-triangle", // registered icon name
-  success: "check-lg",
-  info: "info-circle",
-  danger: "exclamation-octagon-fill",
-  warn: "exclamation-triangle",
-  menu: "three-dots",
-  question: "question-circle",
+  invalid: "b-exclamation-triangle", // registered icon component name
+  success: "b-check-lg",
+  info: "b-info-circle",
+  danger: "b-exclamation-octagon-fill",
+  warn: "b-exclamation-triangle",
+  menu: "b-three-dots",
+  question: "b-question-circle",
 }) `}}
 </v-code>
   </section>

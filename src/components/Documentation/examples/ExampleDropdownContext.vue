@@ -15,18 +15,18 @@
   <v-dropdown 
     ref="dropdown" 
     auto-close-menu 
-    v-slot="{ contextData }"
+    v-slot="{ language, index }"
   >
     <v-card width="280px" style-card="menu shadow">
-      <v-dropdown-menu-item @click="currentLanguage = contextData.language">
-        Switch to {{ contextData.language }}
+      <v-dropdown-menu-item @click="currentLanguage = language">
+        Switch to {{ language }}
       </v-dropdown-menu-item>
-      <v-dropdown-menu-item @click="search(contextData.language)">
-        Search {{ contextData.language }}
+      <v-dropdown-menu-item @click="search(language)">
+        Search {{ language }}
       </v-dropdown-menu-item>
       <v-divider />
-      <v-dropdown-menu-item @click="languages.splice(contextData.index, 1)">
-        Remove {{ contextData.language }}
+      <v-dropdown-menu-item @click="languages.splice(index, 1)">
+        Remove {{ language }}
       </v-dropdown-menu-item>
       <v-divider />
       <v-dropdown-menu-item @click="languages.push('spanish')">
