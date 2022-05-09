@@ -75,7 +75,7 @@ export default {
     let getInputClasses = () => {
       return [
         classes.input.value,
-        states.input.value && states.input.value[state],
+        states.input.value && states.input.value[state.value],
         attrs.disabled === "" || attrs.disabled === true
           ? states.input.disabled
           : "",

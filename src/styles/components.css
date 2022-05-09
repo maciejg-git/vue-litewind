@@ -810,11 +810,13 @@
       @apply
         border-success-300
         focus:ring-success-200
+        dark:border-success-300
     }
     .input-rounded--invalid-state {
       @apply
         border-danger-300
         focus:ring-danger-200
+        dark:border-danger-300
     }
     .input-rounded--disabled-state {
       @apply
@@ -849,10 +851,12 @@
     .input-underline--valid-state {
       @apply
         border-success-300
+        dark:border-success-300
     }
     .input-underline--invalid-state {
       @apply
         border-danger-300
+        dark:border-danger-300
     }
     .input-underline--disabled-state {
       @apply
