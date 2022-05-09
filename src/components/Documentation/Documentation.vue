@@ -12,9 +12,8 @@
     </div>
     <v-button name="button-plain" class="mr-2" @click="setDarkMode">
       <v-icon
-        name="b-moon"
+        :name="darkMode ? 'b-sun' : 'b-moon'"
         class="v-icon--md text-dark-800 dark:text-dark-400"
-        :class="{ 'opacity-40': !darkMode }"
       ></v-icon>
     </v-button>
   </v-navbar>

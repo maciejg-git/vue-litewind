@@ -820,6 +820,14 @@
       @apply
         disabled
     }
+    .input-rounded--icon-variant {
+      @apply
+        pl-10
+    }
+    .input-rounded--clearable-variant {
+      @apply
+        pr-10
+    }
 
 /* INPUT UNDERLINED */
 
@@ -849,6 +857,14 @@
     .input-underline--disabled-state {
       @apply
         disabled
+    }
+    .input-underline--icon-variant {
+      @apply
+        pl-10
+    }
+    .input-underline--clearable-variant {
+      @apply
+        pr-10
     }
 
 
@@ -898,6 +914,18 @@
       @apply
         pl-10
     }
+    .input--clearable-variant {
+      @apply
+        pr-10
+    }
+
+.input--clear-button {
+  @apply
+    w-4
+    h-4
+    text-text-500
+    dark:text-text-300
+}
 
 /* TEXTAREA */
 

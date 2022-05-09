@@ -1,6 +1,6 @@
 <template>
   <div class="my-5">
-    <v-input v-model="nameModel" :state="nameState()" class="mr-4" />
+    <v-input v-model="nameModel" type="text" :state="nameState()" class="mr-4" />
 
     <v-form-text
       :state="nameState()"

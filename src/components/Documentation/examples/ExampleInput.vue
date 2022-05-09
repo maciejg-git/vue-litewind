@@ -38,7 +38,7 @@
       <template #icon>
         <v-icon
           name="b-exclamation-circle"
-          class="absolute h-6 w-6 text-gray-400 dark:text-gray-400 ml-2"
+          class="absolute h-6 w-6 text-gray-400 dark:text-gray-400 ml-2 mr-2"
         ></v-icon>
       </template>
     </v-input>

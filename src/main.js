@@ -19,6 +19,7 @@ import BExclamationTriangle from "./components/Documentation/icons/exclamation-t
 import BArrowClockwise from "./components/Documentation/icons/arrow-clockwise"
 import BArrowRight from "./components/Documentation/icons/arrow-right"
 import MdiLoading from "./components/Documentation/icons/loading"
+import BSun from "./components/Documentation/icons/sun"
 
 let app = createApp(App);
 
@@ -42,6 +43,7 @@ registerIcon(app, [
   BMoon,
   BArrowRight,
   BExclamationCircle,
+  BSun,
 ], {
   vendorPrefix: true,
   iconSufix: false,

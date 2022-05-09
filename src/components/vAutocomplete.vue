@@ -1,7 +1,8 @@
 <template>
-  <div class="inline-flex relative items-center" v-bind="$attrs">
+  <div class="inline-flex relative items-center">
     <input
       v-model="localText"
+      v-bind="$attrs"
       type="text"
       ref="reference"
       class="block w-full pr-10"
