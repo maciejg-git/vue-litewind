@@ -28,9 +28,13 @@
 </template>
 
 <script>
+// vue
 import { ref, computed, onMounted, onUnmounted } from "vue";
+// composition
 import useStyles from "./composition/use-styles";
+// tools
 import { clamp, isNumber } from "../tools";
+// props
 import { sharedStyleProps } from "../sharedProps"
 
 export default {

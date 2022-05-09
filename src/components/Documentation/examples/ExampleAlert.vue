@@ -1,7 +1,7 @@
 <template>
   <!-- Simple alert -->
 
-  <p class="my-4">Simple alert</p>
+  <p class="my-6">Simple alert</p>
 
   <v-alert
     v-model="example.isVisible"
@@ -10,14 +10,13 @@
     :icon="example.variant"
     :variant="example.variant"
     style-alert="info:info danger:danger warn:warn success:success invalid:danger valid:success"
-    class="my-6"
   >
     Alert
   </v-alert>
 
   <!-- alert with custom icon -->
 
-  <p class="my-4">Custom icon alert</p>
+  <p class="my-6">Custom icon alert</p>
 
   <v-alert
     v-model="example.isVisible"
@@ -25,7 +24,6 @@
     :auto-dismiss-delay="example.autoDismissDelay"
     :variant="example.variant"
     style-alert="info:info danger:danger warn:warn success:success invalid:danger valid:success"
-    class="my-6"
   >
     <template #icon>
       <v-icon :icon-type="example.variant" class="w-6 h-6 mr-2"></v-icon>
@@ -33,9 +31,9 @@
     Alert
   </v-alert>
 
-  <!-- alternate style alert -->
+  <!-- styled alert -->
 
-  <p class="my-4">Alternate style alert</p>
+  <p class="my-6">Styled alert</p>
 
   <v-alert
     v-model="example.isVisible"
@@ -44,7 +42,6 @@
     :icon="example.variant"
     :variant="example.variant"
     style-alert="borderless shadowed outline info:info danger:danger warn:warn success:success invalid:danger valid:success"
-    class="my-6"
   >
     Alert
   </v-alert>

@@ -15,8 +15,8 @@
       @input="handleInput"
       @focus="handleClickInput"
     />
-    <div v-if="!noLoader" class="absolute flex right-0 mr-2">
-      <v-spinner v-show="isLoading" type="svg"></v-spinner>
+    <div class="absolute flex right-0 mr-2">
+      <v-spinner v-if="!noLoader" v-show="isLoading" type="svg"></v-spinner>
       <v-close-button v-if="clearable" class="ml-2"></v-close-button>
     </div>
   </div>

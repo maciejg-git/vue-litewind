@@ -1,13 +1,16 @@
 <template>
-  <div class="relative inline-flex items-center">
-    <v-icon
-      v-if="icon"
-      :name="icon"
-      class="absolute h-6 w-6 text-gray-400 dark:text-gray-400 ml-2"
-    ></v-icon>
+  <div class="relative inline-flex items-center" :class="class" :style="style">
+    <slot name="icon">
+      <v-icon
+        v-if="icon"
+        :name="icon"
+        class="absolute h-6 w-6 text-gray-400 dark:text-gray-400 ml-2"
+      ></v-icon>
+    </slot>
+
     <input
       v-model="localModel"
-      :type="type"
+      v-bind="$attrs"
       class="grow"
       :class="[
         classes.input.value,
@@ -18,6 +21,10 @@
         icon ? variants.input.value['icon-variant'] : '',
       ]"
     />
+
+    <div v-if="clearable" class="absolute flex right-0 mr-2">
+      <v-close-button v-if="clearable" class="ml-2"></v-close-button>
+    </div>
   </div>
 </template>
 
@@ -33,12 +40,15 @@ import { sharedStyleProps } from "../sharedProps";
 export default {
   props: {
     modelValue: { type: [String, Number, Boolean, Array], default: undefined },
-    type: { type: String, default: "text" },
+    class: { type: [String, Array], default: "" },
+    style: { type: [String], default: "" },
     icon: { type: String, default: "" },
+    clearable: { type: Boolean, default: false },
     state: { type: [String, Boolean], default: "" },
     styleInput: { type: [String, Array], default: "" },
     ...sharedStyleProps("input"),
   },
+  inheritAttrs: false,
   setup(props, { attrs, emit }) {
     let { classes, states, variants } = useStyles("input", props, {
       input: {

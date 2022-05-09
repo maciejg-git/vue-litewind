@@ -1,41 +1,75 @@
 <template>
-  <v-input
-    v-model="example.model"
-    :type="example.type"
-    :state="example.state"
-    placeholder="Input example"
-  />
+  <div class="flex flex-col items-start">
+    <p class="my-6">Simple input</p>
 
-  <v-input
-    v-model="example.model"
-    :type="example.type"
-    :state="example.state"
-    icon="b-exclamation-circle"
-    placeholder="Input example"
-  />
+    <v-input
+      v-model="example.model"
+      :type="example.type"
+      :clearable="example.clearable"
+      :state="example.state"
+      placeholder="Type something..."
+    />
 
-  <!-- underlined -->
+    <!-- icon (prop) -->
 
-  <v-input
-    v-model="example.model"
-    name="input-underline"
-    :type="example.type"
-    :state="example.state"
-    placeholder="Input example"
-    class="mt-4"
-  />
+    <p class="my-6">Input with icon (prop)</p>
 
-  <!-- rounded -->
+    <v-input
+      v-model="example.model"
+      :type="example.type"
+      :clearable="example.clearable"
+      :state="example.state"
+      icon="b-exclamation-circle"
+      placeholder="Type something..."
+    />
 
-  <v-input
-    v-model="example.model"
-    name="input-rounded"
-    :type="example.type"
-    :state="example.state"
-    placeholder="Input example"
-    class="mt-8"
-  />
-<!-- CUT START -->
+    <!-- icon (slot) -->
+
+    <p class="my-6">Input with icon (slot)</p>
+
+    <v-input
+      v-model="example.model"
+      :type="example.type"
+      :clearable="example.clearable"
+      :state="example.state"
+      icon="b-exclamation-circle"
+      placeholder="Type something..."
+    >
+      <template #icon>
+        <v-icon
+          name="b-exclamation-circle"
+          class="absolute h-6 w-6 text-gray-400 dark:text-gray-400 ml-2"
+        ></v-icon>
+      </template>
+    </v-input>
+
+    <p class="my-6">Styled inputs</p>
+
+    <!-- underlined -->
+
+    <div class="flex gap-x-10">
+      <v-input
+        v-model="example.model"
+        name="input-underline"
+        :type="example.type"
+        :clearable="example.clearable"
+        :state="example.state"
+        placeholder="Type something..."
+      />
+
+      <!-- rounded -->
+
+      <v-input
+        v-model="example.model"
+        name="input-rounded"
+        :type="example.type"
+        :clearable="example.clearable"
+        :state="example.state"
+        placeholder="Type something..."
+      />
+    </div>
+  </div>
+  <!-- CUT START -->
   <v-tabs name="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="mb-2 mt-5">
@@ -54,6 +88,13 @@
           <option value="url">url</option>
           <option value="color">color</option>
           <option value="date">date</option>
+        </v-select>
+      </div>
+      <div class="mb-2">
+        <label for="clearable">clearable:</label>
+        <v-select id="clearable" v-model="example.clearable">
+          <option :value="true">true</option>
+          <option :value="false">false</option>
         </v-select>
       </div>
       <div class="mb-2">
@@ -84,7 +125,7 @@
       </div>
     </v-tab>
   </v-tabs>
-<!-- CUT END -->
+  <!-- CUT END -->
 </template>
 
 <script>
@@ -95,6 +136,7 @@ export default {
     let example = reactive({
       model: "",
       type: "text",
+      clearable: false,
       state: "",
     });
 

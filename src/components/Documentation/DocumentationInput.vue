@@ -44,12 +44,6 @@ export default {
         description: "Input v-model",
       },
       {
-        prop: "type",
-        type: ["String"],
-        default: "text",
-        description: "Type of input element eg. text, password, search etc",
-      },
-      {
         prop: "state",
         type: ["String", "Boolean"],
         default: "empty string",
