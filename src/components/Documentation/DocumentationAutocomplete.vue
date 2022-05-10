@@ -152,10 +152,6 @@ export default {
 
     let events = ref([
       {
-        prop: "update:modelValue",
-        description: "Update v-model",
-      },
-      {
         prop: "update:page",
         description: "Fired when next page is displayed (scroll reach end of dropdown menu)",
       },

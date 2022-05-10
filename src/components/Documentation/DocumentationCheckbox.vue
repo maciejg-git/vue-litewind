@@ -11,9 +11,9 @@
     <p></p>
     <table-reference-basic :items="styles"></table-reference-basic>
 
-    <h6>Events</h6>
-    <p></p>
-    <table-reference-basic :items="events"></table-reference-basic>
+    <!-- <h6>Events</h6> -->
+    <!-- <p></p> -->
+    <!-- <table-reference-basic :items="events"></table-reference-basic> -->
   </section>
 
   <section>
@@ -83,10 +83,6 @@ export default {
     ]);
 
     let events = ref([
-      {
-        prop: "update:modelValue",
-        description: "Update v-model",
-      },
     ]);
 
     onMounted(() => {

@@ -11,9 +11,9 @@
     <p></p>
     <table-reference-basic :items="styles"></table-reference-basic>
 
-    <h6>Events</h6>
-    <p></p>
-    <table-reference-basic :items="events"></table-reference-basic>
+    <!-- <h6>Events</h6> -->
+    <!-- <p></p> -->
+    <!-- <table-reference-basic :items="events"></table-reference-basic> -->
 
     <h6>Slots</h6>
     <p></p>
@@ -34,6 +34,7 @@
 import { ref, reactive, onMounted } from "vue";
 import ExampleSelect from "./examples/ExampleSelect.vue"
 import exampleSelectCode from "./examples/ExampleSelect.vue?raw"
+import { styleProps } from "./shared-props"
 
 export default {
   components: {
@@ -52,7 +53,14 @@ export default {
         type: ["Array"],
         default: "undefined",
         description:
-          "Array of options to display in select element. Each option is <code class='code-word'>Object</code> with <code class='code-word'>value</code> and <code class='code-word'>label</code> properties. This prop is optional, you can use default slot to add options instead",
+          "Array of options to display in select element. Each option is <code>Object</code> with <code>value</code> and <code>label</code> properties. This prop is optional, you can use default slot to add options instead",
+      },
+      {
+        prop: "icon",
+        type: ["String"],
+        default: "empty string",
+        description:
+          "Adds icon to input element. Valid value is the same as in v-icon components",
       },
       {
         prop: "state",
@@ -61,12 +69,7 @@ export default {
         description:
           "State of select validity. Supported values are 'valid', 'invalid' or 'empty string' for default state",
       },
-      {
-        prop: "name",
-        type: ["String"],
-        default: "select",
-        description: "Name of the component",
-      },
+      ...styleProps("select"),
     ]);
 
     let styles = ref([
@@ -74,13 +77,13 @@ export default {
         prop: "style-select",
         description: "Main select element",
       },
+      {
+        prop: "style-icon",
+        description: "Icon element if icon prop is true",
+      },
     ]);
 
     let events = ref([
-      {
-        prop: "update:modelValue",
-        description: "Update v-model",
-      },
     ]);
 
     let slots = ref([
@@ -91,6 +94,10 @@ export default {
       {
         prop: "default",
         description: "Slot for additional options (added after options from options prop)",
+      },
+      {
+        prop: "icon",
+        description: "Slot for icon",
       },
     ]);
 

@@ -1,18 +1,21 @@
 <template>
   <div class="inline-flex relative items-center">
+    <slot name="icon">
+      <v-icon
+        v-if="icon"
+        :name="icon"
+        class="absolute"
+        :class="classes.icon.value"
+      ></v-icon>
+    </slot>
+
     <input
       v-model="localText"
       v-bind="$attrs"
       type="text"
       ref="reference"
       class="block w-full pr-10"
-      :class="[
-        classes.autocomplete.value,
-        states.autocomplete.value && states.autocomplete.value[state],
-        attrs.disabled === '' || attrs.disabled === true
-          ? states.autocomplete.disabled
-          : '',
-      ]"
+      :class="getInputClasses()"
       @input="handleInput"
       @focus="handleClickInput"
     />
@@ -77,6 +80,7 @@ export default {
     modelValue: { type: String, default: undefined },
     ...sharedPopperProps({ offsetY: 10 }),
     items: { type: Array, default: [] },
+    icon: { type: String, default: "" },
     state: { type: [String, Boolean], default: "" },
     itemText: { type: String, default: "text" },
     itemValue: { type: String, default: "value" },
@@ -91,6 +95,7 @@ export default {
     styleDropdown: { type: [String, Array], default: "" },
     styleItem: { type: [String, Array], default: "" },
     styleMatch: { type: [String, Array], default: "" },
+    styleIcon: { type: [String, Array], default: "" },
     ...sharedStyleProps("autocomplete"),
   },
   components: {
@@ -109,9 +114,10 @@ export default {
     "state:closed",
   ],
   setup(props, { attrs, emit }) {
-    let { classes, states } = useStyles("autocomplete", props, {
+    let { classes, states, variants } = useStyles("autocomplete", props, {
       autocomplete: {
         states: ["valid", "invalid", "disabled"],
+        variants: ["icon-variant", "clearable-variant"],
       },
       dropdown: {
         fixed: "fixed-autocomplete-dropdown",
@@ -121,7 +127,20 @@ export default {
         states: ["active", "disabled"],
       },
       match: null,
+      icon: null,
     });
+
+    let getInputClasses = () => {
+return [
+        classes.autocomplete.value,
+        states.autocomplete.value && states.autocomplete.value[state],
+        attrs.disabled === '' || attrs.disabled === true
+          ? states.autocomplete.disabled
+          : '',
+        props.icon ? variants.autocomplete.value["icon-variant"] : "",
+        props.clearable ? variants.autocomplete.value["clearable-variant"] : "",
+      ]
+    }
 
     let getItemClass = (item) => {
       return [
@@ -286,10 +305,12 @@ export default {
     return {
       classes,
       states,
+      variants,
       state,
       localText,
       localModel,
       attrs,
+      getInputClasses,
       itemsFiltered,
       itemsPagination,
       selectItem,

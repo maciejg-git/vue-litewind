@@ -1,7 +1,9 @@
 <template>
-  <!-- single value select -->
+  <div class="flex flex-col items-start">
+    <!-- single value select -->
 
-  <div>
+    <p class="my-6">Simple select</p>
+
     <v-select
       v-model="example.model"
       :state="example.state"
@@ -13,11 +15,11 @@
       </template>
       <option value="option (default slot)">option (default slot)</option>
     </v-select>
-  </div>
 
-  <!-- multiple value select -->
+    <!-- multiple value select -->
 
-  <div class="mt-4">
+    <p class="my-6">Multiple options select</p>
+
     <v-select
       v-model="example.modelMultiple"
       :state="example.state"
@@ -25,6 +27,37 @@
       :multiple="true"
       class="w-52"
     ></v-select>
+
+    <!-- icon (prop) -->
+
+    <p class="my-6">Select with icon (prop)</p>
+
+    <v-select
+      v-model="example.model"
+      :state="example.state"
+      :options="options"
+      icon="b-exclamation-circle"
+      class="w-52"
+    ></v-select>
+
+    <!-- icon (slot) -->
+
+    <p class="my-6">Select with icon (slot)</p>
+
+    <v-select
+      v-model="example.model"
+      :state="example.state"
+      :options="options"
+      icon="b-exclamation-circle"
+      class="w-52"
+    >
+      <template #icon>
+        <v-icon
+          name="b-exclamation-circle"
+          class="absolute h-6 w-6 text-gray-400 dark:text-gray-400 ml-2 mr-2"
+        ></v-icon>
+      </template>
+    </v-select>
   </div>
   <!-- CUT START -->
   <v-tabs name="tabs-material" class="mt-10">

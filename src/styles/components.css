@@ -560,6 +560,23 @@
     dark:border-dark-500
     dark:focus:ring-primary-300
 }
+    .autocomplete--icon-variant {
+      @apply
+        pl-10
+    }
+    .autocomplete--clearable-variant {
+      @apply
+        pr-10
+    }
+
+.autocomplete--icon {
+  @apply
+    w-6
+    h-6
+    ml-2
+    text-text-400
+    dark:text-gray-400
+}
 
 .autocomplete--dropdown {
   @apply
@@ -662,6 +679,31 @@
       @apply
         disabled
     }
+    .select--icon-variant {
+      @apply
+        pl-10
+    }
+    .select--clearable-variant {
+      @apply
+        pr-10
+    }
+
+.select--icon {
+  @apply
+    w-6
+    h-6
+    ml-2
+    text-text-400
+    dark:text-gray-400
+}
+
+.select--clear-button {
+  @apply
+    w-4
+    h-4
+    text-text-500
+    dark:text-text-300
+}
 
 /* RANGE */
 
@@ -831,6 +873,23 @@
         pr-10
     }
 
+.input-rounded--icon {
+  @apply
+    w-6
+    h-6
+    ml-2
+    text-text-400
+    dark:text-gray-400
+}
+
+.input-rounded--clear-button {
+  @apply
+    w-4
+    h-4
+    text-text-500
+    dark:text-text-300
+}
+
 /* INPUT UNDERLINED */
 
 .input-underline {
@@ -870,6 +929,23 @@
       @apply
         pr-10
     }
+
+.input-underline--icon {
+  @apply
+    w-6
+    h-6
+    ml-2
+    text-text-400
+    dark:text-gray-400
+}
+
+.input-underline--clear-button {
+  @apply
+    w-4
+    h-4
+    text-text-500
+    dark:text-text-300
+}
 
 
 /* INPUT */
@@ -922,6 +998,15 @@
       @apply
         pr-10
     }
+
+.input--icon {
+  @apply
+    w-6
+    h-6
+    ml-2
+    text-text-400
+    dark:text-gray-400
+}
 
 .input--clear-button {
   @apply

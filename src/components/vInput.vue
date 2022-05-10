@@ -4,7 +4,8 @@
       <v-icon
         v-if="icon"
         :name="icon"
-        class="absolute h-6 w-6 text-gray-400 dark:text-gray-400 ml-2"
+        class="absolute"
+        :class="classes.icon.value"
       ></v-icon>
     </slot>
 
@@ -55,6 +56,7 @@ export default {
     clearable: { type: Boolean, default: false },
     state: { type: [String, Boolean], default: "" },
     styleInput: { type: [String, Array], default: "" },
+    styleIcon: { type: [String, Array], default: "" },
     styleClearButton: { type: [String, Array], default: "" },
     ...sharedStyleProps("input"),
   },
@@ -68,6 +70,7 @@ export default {
       clearButton: {
         name: "clear-button",
       },
+      icon: null,
     });
 
     let localModel = useLocalModel(props, emit);

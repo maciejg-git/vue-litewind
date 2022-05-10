@@ -209,10 +209,6 @@ export default {
 
     let events = ref([
       {
-        prop: "update:modelValue",
-        description: "Update v-model",
-      },
-      {
         prop: "update:formatted",
         description:
           "Emmited after selecting date along with update:modelValue. Date is in formatted using locale and format prop",

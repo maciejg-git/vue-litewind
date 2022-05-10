@@ -1,47 +1,17 @@
 <template>
   <div class="flex flex-col items-start">
+    <!-- simple input -->
+
     <p class="my-6">Simple input</p>
 
     <v-input
       v-model="example.model"
       :type="example.type"
+      :icon="example.icon"
       :clearable="example.clearable"
       :state="example.state"
       placeholder="Type something..."
     />
-
-    <!-- icon (prop) -->
-
-    <p class="my-6">Input with icon (prop)</p>
-
-    <v-input
-      v-model="example.model"
-      :type="example.type"
-      :clearable="example.clearable"
-      :state="example.state"
-      icon="b-exclamation-circle"
-      placeholder="Type something..."
-    />
-
-    <!-- icon (slot) -->
-
-    <p class="my-6">Input with icon (slot)</p>
-
-    <v-input
-      v-model="example.model"
-      :type="example.type"
-      :clearable="example.clearable"
-      :state="example.state"
-      icon="b-exclamation-circle"
-      placeholder="Type something..."
-    >
-      <template #icon>
-        <v-icon
-          name="b-exclamation-circle"
-          class="absolute h-6 w-6 text-gray-400 dark:text-gray-400 ml-2 mr-2"
-        ></v-icon>
-      </template>
-    </v-input>
 
     <p class="my-6">Styled inputs</p>
 
@@ -52,6 +22,7 @@
         v-model="example.model"
         name="input-underline"
         :type="example.type"
+      :icon="example.icon"
         :clearable="example.clearable"
         :state="example.state"
         placeholder="Type something..."
@@ -63,6 +34,7 @@
         v-model="example.model"
         name="input-rounded"
         :type="example.type"
+      :icon="example.icon"
         :clearable="example.clearable"
         :state="example.state"
         placeholder="Type something..."
@@ -95,6 +67,13 @@
         <v-select id="clearable" v-model="example.clearable">
           <option :value="true">true</option>
           <option :value="false">false</option>
+        </v-select>
+      </div>
+      <div class="mb-2">
+        <label for="icon">icon:</label>
+        <v-select id="icon" v-model="example.icon">
+          <option value="">no icon</option>
+          <option value="b-exclamation-circle">icon</option>
         </v-select>
       </div>
       <div class="mb-2">
@@ -136,6 +115,7 @@ export default {
     let example = reactive({
       model: "",
       type: "text",
+      icon: "",
       clearable: false,
       state: "",
     });

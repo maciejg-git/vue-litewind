@@ -204,10 +204,6 @@ export default {
 
     let events = ref([
       {
-        prop: "update:modelValue",
-        description: "Update v-model",
-      },
-      {
         prop: "input:primary-button-click",
         description: "Emmited after clicking primary button",
       },

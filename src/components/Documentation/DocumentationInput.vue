@@ -11,9 +11,13 @@
     <p></p>
     <table-reference-basic :items="styles"></table-reference-basic>
 
-    <h6>Events</h6>
+    <!-- <h6>Events</h6> -->
+    <!-- <p></p> -->
+    <!-- <table-reference-basic :items="events"></table-reference-basic> -->
+
+    <h6>Slots</h6>
     <p></p>
-    <table-reference-basic :items="events"></table-reference-basic>
+    <table-reference-basic :items="slots"></table-reference-basic>
   </section>
 
   <section>
@@ -73,12 +77,23 @@ export default {
         prop: "style-input",
         description: "Main input element",
       },
+      {
+        prop: "style-icon",
+        description: "Icon element if icon prop is true",
+      },
+      {
+        prop: "style-clear-button",
+        description: "Clear input button if clearable prop is true",
+      },
     ]);
 
     let events = ref([
+    ]);
+
+    let slots = ref([
       {
-        prop: "update:modelValue",
-        description: "Update v-model",
+        prop: "icon",
+        description: "Slot for icon",
       },
     ]);
 
@@ -86,6 +101,7 @@ export default {
       reference,
       styles,
       events,
+      slots,
       exampleInputCode,
     };
   },
