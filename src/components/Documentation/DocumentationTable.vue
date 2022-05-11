@@ -116,6 +116,7 @@ import ExampleTable from "./examples/ExampleTable.vue"
 import ExampleTableSimple from "./examples/ExampleTableSimple.vue"
 import exampleTableCode from "./examples/ExampleTable.vue?raw"
 import exampleTableSimpleCode from "./examples/ExampleTableSimple.vue?raw"
+import { styleProps } from "./shared-props"
 
 export default {
   components: {
@@ -203,12 +204,7 @@ export default {
         description:
           "Text displayed if table is empty after filtering out all items",
       },
-      {
-        prop: "name",
-        type: ["String"],
-        default: "table",
-        description: "Name of the component",
-      },
+      ...styleProps("table"),
     ]);
 
     let styles = ref([

@@ -34,7 +34,7 @@
 import { ref } from "vue";
 import ExampleInput from "./examples/ExampleInput.vue"
 import exampleInputCode from "./examples/ExampleInput.vue?raw"
-import { styleProps } from "./shared-props"
+import { styleProps, formProps } from "./shared-props"
 
 export default {
   components: {
@@ -48,27 +48,7 @@ export default {
         default: "undefined",
         description: "Input v-model",
       },
-      {
-        prop: "icon",
-        type: ["String"],
-        default: "empty string",
-        description:
-          "Adds icon to input element. Valid value is the same as in v-icon components",
-      },
-      {
-        prop: "clearable",
-        type: ["Boolean"],
-        default: "false",
-        description:
-          "Makes input clearable",
-      },
-      {
-        prop: "state",
-        type: ["String", "Boolean"],
-        default: "empty string",
-        description:
-          "State of input validity. Supported values are 'valid' (or true), 'invalid' (or false) or 'empty string' (or null) for default state",
-      },
+      ...formProps({ icon:true, clearable: true }),
       ...styleProps("input"),
     ]);
 

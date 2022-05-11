@@ -1,29 +1,26 @@
 <template>
   <input
-    v-bind="$attrs"
     v-model="localModel"
+    v-bind="$attrs"
     type="checkbox"
-    :class="[
-      classes.checkbox.value,
-      states.checkbox.value && states.checkbox.value[state],
-      attrs.disabled === '' || attrs.disabled === true
-        ? states.checkbox.disabled
-        : '',
-    ]"
+    :class="getCheckBoxClasses()"
   />
 </template>
 
 <script>
+// vue
 import { computed } from "vue";
+// composition
 import useStyles from "./composition/use-styles";
-import useLocalModel from "./composition/use-local-model"
-import { sharedStyleProps } from "../sharedProps"
+import useLocalModel from "./composition/use-local-model";
+// props
+import { sharedStyleProps, sharedFormProps } from "../sharedProps";
 
 export default {
   props: {
     modelValue: { type: [Array, Boolean], default: undefined },
-    state: { type: [String, Boolean], default: "" },
     styleCheckbox: { type: [String, Array], default: "" },
+    ...sharedFormProps(null),
     ...sharedStyleProps("checkbox"),
   },
   setup(props, { attrs, emit }) {
@@ -34,6 +31,16 @@ export default {
     });
 
     let localModel = useLocalModel(props, emit);
+
+    let getCheckBoxClasses = () => {
+      return [
+        classes.checkbox.value,
+        states.checkbox.value && states.checkbox.value[state.value],
+        attrs.disabled === "" || attrs.disabled === true
+          ? states.checkbox.disabled
+          : "",
+      ];
+    };
 
     let state = computed(() =>
       props.state === true
@@ -48,6 +55,7 @@ export default {
     return {
       classes,
       states,
+      getCheckBoxClasses,
       state,
       localModel,
       attrs,

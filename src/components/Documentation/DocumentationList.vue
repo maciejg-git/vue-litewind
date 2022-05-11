@@ -34,6 +34,7 @@
 import { ref } from "vue";
 import ExampleList from "./examples/ExampleList.vue"
 import exampleListCode from "./examples/ExampleList.vue?raw"
+import { styleProps } from "./shared-props"
 
 export default {
   components: {
@@ -53,12 +54,7 @@ export default {
         default: "div",
         description: "Defines tag to use in list item child component (for example 'div', 'a' or 'button')",
       },
-      {
-        prop: "name",
-        type: ["String"],
-        default: "list",
-        description: "Name of the component",
-      },
+      ...styleProps("list"),
     ]);
 
     let styles = ref([

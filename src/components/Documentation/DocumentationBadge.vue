@@ -34,6 +34,7 @@
 import { ref } from "vue";
 import ExampleBadge from "./examples/ExampleBadge.vue"
 import exampleBadgeCode from "./examples/ExampleBadge.vue?raw"
+import { styleProps } from "./shared-props"
 
 export default {
   components: {
@@ -48,12 +49,7 @@ export default {
         description:
           "Position of badge. Valid values are 'top-right', 'top-left', 'bottom-right', 'bottom-left'. If position is set to any of those values badge is positioned as absolute in the corner of parent element (parent element must be positioned as relative)",
       },
-      {
-        prop: "name",
-        type: ["String"],
-        default: "badge",
-        description: "Name of the component",
-      },
+      ...styleProps("badge"),
     ]);
 
     let styles = ref([

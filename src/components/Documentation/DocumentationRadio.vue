@@ -41,6 +41,7 @@ import ExampleRadio from "./examples/ExampleRadio.vue"
 import ExampleRadioGroup from "./examples/ExampleRadioGroup.vue"
 import exampleRadioCode from "./examples/ExampleRadio.vue?raw"
 import exampleRadioGroupCode from "./examples/ExampleRadioGroup.vue?raw"
+import { styleProps, formProps } from "./shared-props"
 
 export default {
   components: {
@@ -55,19 +56,8 @@ export default {
         default: "undefined",
         description: "Radio v-model",
       },
-      {
-        prop: "state",
-        type: ["String"],
-        default: "empty string",
-        description:
-          "State of input validity. Supported values are 'valid', 'invalid' or 'empty string' for default state",
-      },
-      {
-        prop: "name",
-        type: ["String"],
-        default: "radio",
-        description: "Name of the component",
-      },
+      ...formProps(),
+      ...styleProps("input"),
     ]);
 
     let styles = ref([

@@ -14,16 +14,19 @@
 </template>
 
 <script>
+// vue
 import { computed } from "vue";
+// composition
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model"
-import { sharedStyleProps } from "../sharedProps"
+// props
+import { sharedStyleProps, sharedFormProps } from "../sharedProps"
 
 export default {
   props: {
     modelValue: { type: [String, Number], default: undefined },
-    state: { type: String, default: "" },
     styleRange: { type: [String, Array], default: "" },
+    ...sharedFormProps(null),
     ...sharedStyleProps("range"),
   },
   setup(props, { attrs, emit }) {

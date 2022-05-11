@@ -3,21 +3,15 @@
     v-bind="$attrs"
     v-model="localModel"
     type="radio"
-    :class="[
-      classes.radio.value,
-      states.radio.value && states.radio.value[state],
-      attrs.disabled === '' || attrs.disabled === true
-        ? states.radio.disabled
-        : '',
-    ]"
+    :class="getRadioClasses()"
   />
 </template>
 
 <script>
 import { computed } from "vue";
 import useStyles from "./composition/use-styles";
-import useLocalModel from "./composition/use-local-model"
-import { sharedStyleProps } from "../sharedProps"
+import useLocalModel from "./composition/use-local-model";
+import { sharedStyleProps } from "../sharedProps";
 
 export default {
   props: {
@@ -35,6 +29,16 @@ export default {
 
     let localModel = useLocalModel(props, emit);
 
+    let getRadioClasses = () => {
+      return [
+        classes.radio.value,
+        states.radio.value && states.radio.value[state.value],
+        attrs.disabled === "" || attrs.disabled === true
+          ? states.radio.disabled
+          : "",
+      ];
+    };
+
     let state = computed(() =>
       props.state === true
         ? "valid"
@@ -48,6 +52,7 @@ export default {
     return {
       classes,
       states,
+      getRadioClasses,
       state,
       localModel,
       attrs,

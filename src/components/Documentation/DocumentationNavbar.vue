@@ -29,6 +29,7 @@
 import { ref } from "vue";
 import ExampleNavbar from "./examples/ExampleNavbar.vue"
 import exampleNavbarCode from "./examples/ExampleNavbar.vue?raw"
+import { styleProps } from "./shared-props"
 
 export default {
   components: {
@@ -57,12 +58,7 @@ export default {
         description:
           "Places navbar on the bottom. <span class='font-semibold'>Note</span>: fixed must be also set to true",
       },
-      {
-        prop: "name",
-        type: ["String"],
-        default: "navbar",
-        description: "Name of the component",
-      },
+      ...styleProps("navbar"),
     ]);
 
     let styles = ref([

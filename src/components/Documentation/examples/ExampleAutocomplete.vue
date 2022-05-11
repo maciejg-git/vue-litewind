@@ -1,4 +1,9 @@
 <template>
+
+  <!-- remote async autocomplete -->
+
+  <p class="my-6">Remote async autocomplete</p>
+
   <v-autocomplete
     v-model="example.model"
     v-model:input-value="example.inputValue"
@@ -7,12 +12,39 @@
     style-dropdown="shadow"
     no-filter
     @input:value="query($event)"
-    class="w-[620px]"
+    @update:page="events.unshift({ ev: 'update:page', data: $event })"
+    @state:focus="events.unshift({ ev: 'state:focus', data: $event })"
+    @state:opened="events.unshift({ ev: 'state:opened', data: $event })"
+    @state:closed="events.unshift({ ev: 'state:closed', data: $event })"
+    class="w-[420px]"
   >
-    <!-- <template #item="{ text, item, value, inputValue, highlightMatch }"> -->
-    <!--   <span v-html="highlightMatch(text, inputValue)"></span> -->
-    <!--   <span v-html="highlightMatch(value, inputValue)">  </span> -->
-    <!-- </template> -->
+  </v-autocomplete>
+
+  <!-- customized menu options -->
+
+  <p class="my-6">Customized menu options</p>
+
+  <v-autocomplete
+    v-model="example.model"
+    v-model:input-value="example.inputValue"
+    :items="example.items"
+    :is-loading="example.isLoading"
+    style-dropdown="shadow"
+    no-filter
+    @input:value="query($event)"
+    @update:page="events.unshift({ ev: 'update:page', data: $event })"
+    @state:focus="events.unshift({ ev: 'state:focus', data: $event })"
+    @state:opened="events.unshift({ ev: 'state:opened', data: $event })"
+    @state:closed="events.unshift({ ev: 'state:closed', data: $event })"
+    class="w-[420px]"
+  >
+    <template #item="{ text, item, value, inputValue, highlightMatch }">
+      <div class="flex justify-between">
+        <div v-html="highlightMatch(text, inputValue)"></div>
+        <div>USA</div>
+      </div>
+      <span class="text-text-400 dark:text-text-400 text-sm font-semibold">free</span>
+    </template>
   </v-autocomplete>
   <!-- CUT START -->
   <v-tabs name="tabs-material" class="mt-10">
@@ -53,7 +85,7 @@
       </template>
       <div class="overflow-y-auto max-h-48 mt-5 w-full">
         <div class="px-2 pb-2">
-          <template v-for="ev in example.events">
+          <template v-for="ev in events">
             <div class="py-1">
               <code class="code-word">{{ ev.ev }}</code>
               {{ ev.data }}
@@ -82,6 +114,7 @@ export default {
       if (q === "") return;
 
       example.isLoading = true;
+
       setTimeout(() => {
         example.items = states.filter((e) => {
           return (
@@ -90,6 +123,8 @@ export default {
         });
         example.isLoading = false;
       }, 500);
+
+      events.value.unshift({ ev: "input:value", data: q });
     };
 
     let events = ref([]);

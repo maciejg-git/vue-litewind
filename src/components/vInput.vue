@@ -47,17 +47,15 @@ import { computed } from "vue";
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
 // props
-import { sharedStyleProps } from "../sharedProps";
+import { sharedStyleProps, sharedFormProps } from "../sharedProps";
 
 export default {
   props: {
     modelValue: { type: [String, Number, Boolean, Array], default: undefined },
-    icon: { type: String, default: "" },
-    clearable: { type: Boolean, default: false },
-    state: { type: [String, Boolean], default: "" },
     styleInput: { type: [String, Array], default: "" },
     styleIcon: { type: [String, Array], default: "" },
     styleClearButton: { type: [String, Array], default: "" },
+    ...sharedFormProps(null, { icon: true, clearable: true }),
     ...sharedStyleProps("input"),
   },
   inheritAttrs: false,

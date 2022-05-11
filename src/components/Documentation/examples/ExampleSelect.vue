@@ -1,36 +1,37 @@
 <template>
-  <div class="flex flex-col items-start">
-    <!-- single value select -->
+  <!-- single value select -->
 
-    <p class="my-6">Simple select</p>
+  <p class="my-6">Simple select</p>
 
-    <v-select
-      v-model="example.model"
-      :state="example.state"
-      :options="options"
-      class="w-52"
-    >
-      <template #options-prepend>
-        <option value="option (prepend slot)">option (prepend slot)</option>
-      </template>
-      <option value="option (default slot)">option (default slot)</option>
-    </v-select>
+  <v-select
+    v-model="example.model"
+    :state="example.state"
+    :options="options"
+    class="w-52"
+  >
+    <template #options-prepend>
+      <option value="option (prepend slot)">option (prepend slot)</option>
+    </template>
+    <option value="option (default slot)">option (default slot)</option>
+  </v-select>
 
-    <!-- multiple value select -->
+  <!-- multiple value select -->
 
-    <p class="my-6">Multiple options select</p>
+  <p class="my-6">Multiple options select</p>
 
-    <v-select
-      v-model="example.modelMultiple"
-      :state="example.state"
-      :options="options"
-      :multiple="true"
-      class="w-52"
-    ></v-select>
+  <v-select
+    v-model="example.modelMultiple"
+    :state="example.state"
+    :options="options"
+    :multiple="true"
+    class="w-52"
+  ></v-select>
+
+  <p class="my-6">Select with icon</p>
+
+  <div class="flex gap-x-10">
 
     <!-- icon (prop) -->
-
-    <p class="my-6">Select with icon (prop)</p>
 
     <v-select
       v-model="example.model"
@@ -41,8 +42,6 @@
     ></v-select>
 
     <!-- icon (slot) -->
-
-    <p class="my-6">Select with icon (slot)</p>
 
     <v-select
       v-model="example.model"

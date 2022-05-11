@@ -44,6 +44,7 @@
 import { ref } from "vue";
 import ExampleFormText from "./examples/ExampleFormText.vue";
 import exampleFormTextCode from "./examples/ExampleFormText.vue?raw";
+import { styleProps } from "./shared-props"
 
 export default {
   components: {
@@ -78,12 +79,7 @@ export default {
         description:
           "Object with messages to display depending on current state. To display those messages default slot must not be used",
       },
-      {
-        prop: "name",
-        type: ["String"],
-        default: "form-text",
-        description: "Name of the component",
-      },
+      ...styleProps("form-text"),
     ]);
 
     let styles = ref([

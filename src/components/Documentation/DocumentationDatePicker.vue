@@ -72,6 +72,7 @@ import ExampleDatepickerDropdown from "./examples/ExampleDatepickerDropdown.vue"
 import exampleDatepickerCode from "./examples/ExampleDatepicker.vue?raw"
 import exampleDatepickerModelCode from "./examples/ExampleDatepickerModel.vue?raw"
 import exampleDatepickerDropdownCode from "./examples/ExampleDatepickerDropdown.vue?raw"
+import { styleProps } from "./shared-props"
 
 export default {
   components: {
@@ -175,12 +176,7 @@ export default {
         description:
           "Transition when switching months or years. Valid values are 'fade', 'slide' or empty string for no transition",
       },
-      {
-        prop: "name",
-        type: ["String"],
-        default: "datepicker",
-        description: "Name of the component",
-      },
+      ...styleProps("datepicker"),
     ]);
 
     let styles = ref([

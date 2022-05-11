@@ -21,7 +21,11 @@
     />
     <div class="absolute flex right-0 mr-2">
       <v-spinner v-if="!noLoader" v-show="isLoading" type="svg"></v-spinner>
-      <v-close-button v-if="clearable" class="ml-2"></v-close-button>
+      <v-close-button
+        v-if="clearable"
+        class="ml-2"
+        @click="handleClickClearButton"
+      ></v-close-button>
     </div>
   </div>
 
@@ -73,22 +77,23 @@ import vCloseButton from "./vCloseButton.vue";
 // directives
 import scrollBottom from "../directives/scroll-bottom";
 // props
-import { sharedPopperProps, sharedStyleProps } from "../sharedProps";
+import {
+  sharedPopperProps,
+  sharedStyleProps,
+  sharedFormProps,
+} from "../sharedProps";
 
 export default {
   props: {
     modelValue: { type: String, default: undefined },
     ...sharedPopperProps({ offsetY: 10 }),
     items: { type: Array, default: [] },
-    icon: { type: String, default: "" },
-    state: { type: [String, Boolean], default: "" },
     itemText: { type: String, default: "text" },
     itemValue: { type: String, default: "value" },
     isLoading: { type: Boolean, default: false },
     noFilter: { type: Boolean, default: false },
     noPagination: { type: Boolean, default: false },
     noLoader: { type: Boolean, default: false },
-    clearable: { type: Boolean, default: false },
     itemsPerPage: { type: Number, default: 10 },
     transition: { type: String, default: "fade" },
     styleAutocomplete: { type: [String, Array], default: "" },
@@ -96,6 +101,7 @@ export default {
     styleItem: { type: [String, Array], default: "" },
     styleMatch: { type: [String, Array], default: "" },
     styleIcon: { type: [String, Array], default: "" },
+    ...sharedFormProps(null, { icon: true, clearable: true }),
     ...sharedStyleProps("autocomplete"),
   },
   components: {
@@ -131,16 +137,16 @@ export default {
     });
 
     let getInputClasses = () => {
-return [
+      return [
         classes.autocomplete.value,
         states.autocomplete.value && states.autocomplete.value[state],
-        attrs.disabled === '' || attrs.disabled === true
+        attrs.disabled === "" || attrs.disabled === true
           ? states.autocomplete.disabled
-          : '',
+          : "",
         props.icon ? variants.autocomplete.value["icon-variant"] : "",
         props.clearable ? variants.autocomplete.value["clearable-variant"] : "",
-      ]
-    }
+      ];
+    };
 
     let getItemClass = (item) => {
       return [
@@ -262,7 +268,7 @@ return [
     }
 
     let selectItem = (item) => {
-      if (isVisible.value) isVisible.value = false
+      if (isVisible.value) isVisible.value = false;
       update(item);
       hidePopper();
     };
@@ -296,6 +302,12 @@ return [
       if (!isVisible.value) isVisible.value = true;
     };
 
+    let handleClickClearButton = () => {
+      localModel.value = "";
+      selectedItem.value = null;
+      localText.value = "";
+    };
+
     let handleInput = () => {
       if (!isVisible.value) isVisible.value = true;
       isNewSelection.value = false;
@@ -324,6 +336,7 @@ return [
       page,
       highlightMatch,
       handleClickInput,
+      handleClickClearButton,
       handleInput,
       handlePagination,
       isPopperVisible,

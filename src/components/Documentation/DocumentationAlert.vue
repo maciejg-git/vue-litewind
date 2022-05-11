@@ -30,6 +30,7 @@
 import { ref } from "vue";
 import ExampleAlert from "./examples/ExampleAlert.vue"
 import exampleAlertCode from "./examples/ExampleAlert.vue?raw"
+import { styleProps } from "./shared-props"
 
 export default {
   components: {
@@ -64,12 +65,7 @@ export default {
         description:
           "Alert has few default icons for variants: 'success', 'warn', 'danger', 'info', 'valid', 'invalid'. Icon or default slot can be used for custom icons.",
       },
-      {
-        prop: "name",
-        type: ["Array"],
-        default: "undefined",
-        description: "Name of the component",
-      },
+      ...styleProps("alert"),
     ]);
 
     let styles = ref([

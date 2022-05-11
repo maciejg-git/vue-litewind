@@ -25,6 +25,7 @@
 import { ref } from "vue";
 import ExampleSpinner from "./examples/ExampleSpinner.vue"
 import exampleSpinnerCode from "./examples/ExampleSpinner.vue?raw"
+import { styleProps } from "./shared-props"
 
 export default {
   components: {
@@ -44,12 +45,7 @@ export default {
         default: "undefined",
         description: "Icon to use instead of border or SVG spinner",
       },
-      {
-        prop: "name",
-        type: ["String"],
-        default: "spinner",
-        description: "Name of the component",
-      },
+      ...styleProps("spinner"),
     ]);
 
     let styles = ref([

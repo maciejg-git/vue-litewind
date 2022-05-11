@@ -31,16 +31,15 @@ import { computed } from "vue";
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
 // props
-import { sharedStyleProps } from "../sharedProps";
+import { sharedStyleProps, sharedFormProps } from "../sharedProps";
 
 export default {
   props: {
     modelValue: { type: [String, Number, Array, Boolean], default: undefined },
     options: { type: Array, default: undefined },
-    icon: { type: String, default: "" },
-    state: { type: [String, Boolean], default: "" },
     styleSelect: { type: [String, Array], default: "" },
     styleIcon: { type: [String, Array], default: "" },
+    ...sharedFormProps(null, { icon: true }),
     ...sharedStyleProps("select"),
   },
   inheritAttrs: false,
@@ -58,7 +57,7 @@ export default {
     let getSelectClasses = () => {
       return [
         classes.select.value,
-        states.select.value && states.select.value[state],
+        states.select.value && states.select.value[state.value],
         attrs.disabled === "" || attrs.disabled === true
           ? states.select.disabled
           : "",

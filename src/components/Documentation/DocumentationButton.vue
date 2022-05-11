@@ -29,6 +29,7 @@
 import { ref } from "vue";
 import ExampleButton from "./examples/ExampleButton.vue"
 import exampleButtonCode from "./examples/ExampleButton.vue?raw"
+import { styleProps } from "./shared-props"
 
 export default {
   components: {
@@ -54,12 +55,7 @@ export default {
         default: "false",
         description: "Displays button as full width block",
       },
-      {
-        prop: "name",
-        type: ["String"],
-        default: "button",
-        description: "Name of the component",
-      },
+      ...styleProps("button"),
     ]);
 
     let styles = ref([

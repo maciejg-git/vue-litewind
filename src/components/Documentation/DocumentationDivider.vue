@@ -25,6 +25,7 @@
 import { ref } from "vue";
 import ExampleDivider from "./examples/ExampleDivider.vue"
 import exampleDividerCode from "./examples/ExampleDivider.vue?raw"
+import { styleProps } from "./shared-props"
 
 export default {
   components: {
@@ -32,13 +33,7 @@ export default {
   },
   setup(props) {
     let reference = ref([
-      {
-        prop: "name",
-        type: ["Array"],
-        default: "undefined",
-        description:
-          "Name of the component",
-      },
+      ...styleProps("table"),
     ]);
 
     let styles = ref([

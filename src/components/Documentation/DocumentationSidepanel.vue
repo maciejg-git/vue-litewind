@@ -34,6 +34,7 @@
 import { ref } from "vue";
 import ExampleSidepanel from "./examples/ExampleSidepanel.vue"
 import exampleSidepanelCode from "./examples/ExampleSidepanel.vue?raw"
+import { styleProps } from "./shared-props"
 
 export default {
   components: {
@@ -72,12 +73,7 @@ export default {
         default: "false",
         description: "When true the header slot content and close button is not rendered",
       },
-      {
-        prop: "name",
-        type: ["String"],
-        default: "sidepanel",
-        description: "Name of the component",
-      },
+      ...styleProps("sidepanel"),
     ]);
 
     let styles = ref([

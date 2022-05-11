@@ -39,3 +39,37 @@ export let styleProps = (name) => {
     },
   ];
 };
+
+export let formProps = (options) => {
+  options = options || {};
+
+  let props = [];
+
+  if (options.icon === true)
+    props.push({
+      prop: "icon",
+      type: ["String"],
+      default: "empty string",
+      description:
+        "Adds icon to input element. Valid value is the same as in v-icon components",
+    });
+
+  if (options.clearable === true)
+    props.push({
+      prop: "clearable",
+      type: ["Boolean"],
+      default: "false",
+      description: "Makes input clearable",
+    });
+
+  return [
+    ...props,
+    {
+      prop: "state",
+      type: ["String", "Boolean"],
+      default: "empty string",
+      description:
+        "State of input validity. Supported values are 'valid' (or true), 'invalid' (or false) or 'empty string' (or null) for default state",
+    },
+  ];
+};

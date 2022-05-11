@@ -17,27 +17,18 @@
     <div class="example">
       <v-close-button />
     </div>
-    <pre>
-      <code class="language-html">
-&lt;v-close-button&gt;&lt;/v-close-button&gt;
-      </code>
-    </pre>
+    <v-code :code="code" template language="html"></v-code>
   </section>
 </template>
 
 <script>
-import { ref, reactive, onMounted } from "vue";
-import hljs from "highlight.js";
+import { ref, reactive } from "vue";
+import { styleProps } from "./shared-props"
 
 export default {
   setup(props) {
     let reference = ref([
-      {
-        prop: "name",
-        type: ["String"],
-        default: "closebutton",
-        description: "Name of the component",
-      },
+      ...styleProps("closebutton"),
     ]);
 
     let styles = ref([
@@ -47,16 +38,14 @@ export default {
       },
     ]);
 
-    let example = reactive({});
-
-    onMounted(() => {
-      hljs.highlightAll();
-    });
+    let code = `<template>
+  <v-close-button />
+</template>`
 
     return {
       reference,
       styles,
-      example,
+      code,
     };
   },
 };

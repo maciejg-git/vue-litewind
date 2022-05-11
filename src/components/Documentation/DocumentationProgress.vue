@@ -41,6 +41,7 @@ import ExampleProgress from "./examples/ExampleProgress.vue"
 import ExampleProgressIndeterminate from "./examples/ExampleProgressIndeterminate.vue"
 import exampleProgressCode from "./examples/ExampleProgress.vue?raw"
 import exampleProgressIndeterminateCode from "./examples/ExampleProgressIndeterminate.vue?raw"
+import { styleProps } from "./shared-props"
 
 export default {
   components: {
@@ -107,12 +108,7 @@ export default {
         default: "7",
         description: "Speed of indeterminate bar animation (1 - 20)",
       },
-      {
-        prop: "name",
-        type: ["String"],
-        default: "progress",
-        description: "Name of the component",
-      },
+      ...styleProps("progress"),
     ]);
 
     let styles = ref([

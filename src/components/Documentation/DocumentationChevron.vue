@@ -31,6 +31,7 @@
 import { ref } from "vue";
 import ExampleChevron from "./examples/ExampleChevron.vue"
 import exampleChevronCode from "./examples/ExampleChevron.vue?raw"
+import { styleProps } from "./shared-props"
 
 export default {
   components: {
@@ -76,12 +77,7 @@ export default {
         description:
           "Name of the icon to use instead of default chevron/triangle",
       },
-      {
-        prop: "name",
-        type: ["String"],
-        default: "chevron",
-        description: "Name of the component",
-      },
+      ...styleProps("chevron"),
     ]);
 
     let styles = ref([

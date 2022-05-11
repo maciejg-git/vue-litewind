@@ -34,7 +34,7 @@
 import { ref, reactive, onMounted } from "vue";
 import ExampleSelect from "./examples/ExampleSelect.vue"
 import exampleSelectCode from "./examples/ExampleSelect.vue?raw"
-import { styleProps } from "./shared-props"
+import { styleProps, formProps } from "./shared-props"
 
 export default {
   components: {
@@ -55,20 +55,7 @@ export default {
         description:
           "Array of options to display in select element. Each option is <code>Object</code> with <code>value</code> and <code>label</code> properties. This prop is optional, you can use default slot to add options instead",
       },
-      {
-        prop: "icon",
-        type: ["String"],
-        default: "empty string",
-        description:
-          "Adds icon to input element. Valid value is the same as in v-icon components",
-      },
-      {
-        prop: "state",
-        type: ["String"],
-        default: "empty string",
-        description:
-          "State of select validity. Supported values are 'valid', 'invalid' or 'empty string' for default state",
-      },
+      ...formProps({ icon: true }),
       ...styleProps("select"),
     ]);
 

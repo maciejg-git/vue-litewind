@@ -30,6 +30,7 @@
 import { ref } from "vue";
 import ExampleRange from "./examples/ExampleRange.vue"
 import exampleRangeCode from "./examples/ExampleRange.vue?raw"
+import { styleProps, formProps } from "./shared-props"
 
 export default {
   components: {
@@ -43,19 +44,8 @@ export default {
         default: "undefined",
         description: "Range v-model",
       },
-      {
-        prop: "state",
-        type: ["String"],
-        default: "empty string",
-        description:
-          "State of input validity. Supported values are 'valid', 'invalid' or 'empty string' for default state",
-      },
-      {
-        prop: "name",
-        type: ["String"],
-        default: "range",
-        description: "Name of the component",
-      },
+      ...formProps(),
+      ...styleProps("input"),
     ]);
 
     let styles = ref([

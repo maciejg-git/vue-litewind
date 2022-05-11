@@ -33,6 +33,7 @@
 import { ref } from "vue";
 import ExampleBreadcrumb from "./examples/ExampleBreadcrumb.vue"
 import exampleBreadcrumbCode from "./examples/ExampleBreadcrumb.vue?raw"
+import { styleProps } from "./shared-props"
 
 export default {
   components: {
@@ -52,12 +53,7 @@ export default {
         default: "/",
         description: "Character or string that seperates links",
       },
-      {
-        prop: "name",
-        type: ["String"],
-        default: "breadcrumb",
-        description: "Name of the component",
-      },
+      ...styleProps("breadcrumb"),
     ]);
 
     let styles = ref([

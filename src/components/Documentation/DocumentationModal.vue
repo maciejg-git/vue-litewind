@@ -45,6 +45,7 @@ import ExampleModal from "./examples/ExampleModal.vue"
 import ExampleModalSimple from "./examples/ExampleModalSimple.vue"
 import exampleModalCode from "./examples/ExampleModal.vue?raw"
 import exampleModalSimpleCode from "./examples/ExampleModalSimple.vue?raw"
+import { styleProps } from "./shared-props"
 
 export default {
   components: {
@@ -174,12 +175,7 @@ export default {
         description:
           "Sets animation effect when showing or hiding modal. Valid values are: 'fade', 'fade-slide' or 'fade-scale'",
       },
-      {
-        prop: "name",
-        type: ["String"],
-        default: "modal",
-        description: "Name of the component",
-      },
+      ...styleProps("modal"),
     ]);
 
     let styles = ref([

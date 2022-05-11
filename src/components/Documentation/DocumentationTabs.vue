@@ -38,6 +38,7 @@
 import { ref, reactive } from "vue";
 import ExampleTabs from "./examples/ExampleTabs.vue"
 import exampleTabsCode from "./examples/ExampleTabs.vue?raw"
+import { styleProps } from "./shared-props"
 
 export default {
   components: {
@@ -70,12 +71,7 @@ export default {
         description:
           "Transition animation to use when swtiching tab content. Valid values are 'fade' or empty string (no transition)",
       },
-      {
-        prop: "name",
-        type: ["String"],
-        default: "tabs",
-        description: "Name of the component",
-      },
+      ...styleProps("tabs"),
     ]);
 
     let styles = ref([
