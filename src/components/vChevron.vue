@@ -59,7 +59,11 @@
 </template>
 
 <script>
+// vue
 import { computed } from "vue";
+// composition
+import useStyles from "./composition/use-styles";
+// components
 import vIcon from "./vIcon.vue";
 import vChevronRightIcon from "./icons/chevron-right-solid.js";
 import vChevronLeftIcon from "./icons/chevron-left-solid.js";
@@ -69,8 +73,8 @@ import vCaretRightFillIcon from "./icons/caret-right-fill.js";
 import vCaretLeftFillIcon from "./icons/caret-left-fill.js";
 import vCaretUpFillIcon from "./icons/caret-up-fill.js";
 import vCaretDownFillIcon from "./icons/caret-down-fill.js";
-import useStyles from "./composition/use-styles";
-import { sharedStyleProps } from "../sharedProps"
+// props
+import { sharedStyleProps } from "../shared-props"
 
 export default {
   props: {

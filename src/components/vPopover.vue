@@ -31,7 +31,7 @@ import usePopper from "./composition/use-popper.js";
 import useClickOutside from "./composition/use-click-outside";
 import useTrigger from "./composition/use-trigger";
 // props
-import { sharedPopperProps, sharedStyleProps } from "../sharedProps";
+import { sharedPopperProps, sharedStyleProps } from "../shared-props";
 
 export default {
   props: {

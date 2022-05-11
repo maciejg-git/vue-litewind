@@ -72,7 +72,7 @@ import vCloseButton from "./vCloseButton.vue";
 // directives
 import focus from "../directives/focus";
 // props
-import { sharedStyleProps } from "../sharedProps"
+import { sharedStyleProps } from "../shared-props"
 
 export default {
   props: {

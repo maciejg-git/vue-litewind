@@ -27,7 +27,7 @@ import BCheckLg from "./icons/check-lg";
 import BExclamationCircle from "./icons/exclamation-circle";
 import BInfoCircle from "./icons/info-circle";
 // props
-import { sharedStyleProps } from "../sharedProps"
+import { sharedStyleProps } from "../shared-props"
 
 export default {
   props: {

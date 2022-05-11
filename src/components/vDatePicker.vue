@@ -102,7 +102,7 @@ import ChevronLeft from "./icons/chevron-left.js";
 import { pad, getNumberRange } from "../tools.js";
 import { locales } from "../const";
 // props
-import { sharedStyleProps } from "../sharedProps";
+import { sharedStyleProps } from "../shared-props";
 
 export default {
   props: {

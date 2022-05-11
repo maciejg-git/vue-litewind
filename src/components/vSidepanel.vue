@@ -31,7 +31,7 @@ import useStyles from "./composition/use-styles";
 // components
 import vCloseButton from "./vCloseButton.vue";
 // props
-import { sharedStyleProps } from "../sharedProps"
+import { sharedStyleProps } from "../shared-props"
 
 export default {
   props: {

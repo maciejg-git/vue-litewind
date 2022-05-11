@@ -81,7 +81,7 @@ import {
   sharedPopperProps,
   sharedStyleProps,
   sharedFormProps,
-} from "../sharedProps";
+} from "../shared-props";
 
 export default {
   props: {

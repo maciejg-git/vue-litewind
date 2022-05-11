@@ -25,7 +25,7 @@ import { ref, toRef, onMounted, computed, provide, h, toRaw } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 // props
-import { sharedStyleProps } from "../sharedProps"
+import { sharedStyleProps } from "../shared-props"
 
 export default {
   props: {

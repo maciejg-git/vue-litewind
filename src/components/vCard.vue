@@ -6,7 +6,7 @@
 
 <script>
 import useStyles from "./composition/use-styles";
-import { sharedStyleProps } from "../sharedProps"
+import { sharedStyleProps } from "../shared-props"
 
 export default {
   props: {

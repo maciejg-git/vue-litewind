@@ -35,7 +35,7 @@ import useStyles from "./composition/use-styles";
 // tools
 import { clamp, isNumber } from "../tools";
 // props
-import { sharedStyleProps } from "../sharedProps"
+import { sharedStyleProps } from "../shared-props"
 
 export default {
   props: {

@@ -107,7 +107,7 @@ import {
   isRegexp,
   undefNullToStr,
 } from "../tools.js";
-import { sharedStyleProps } from "../sharedProps"
+import { sharedStyleProps } from "../shared-props"
 
 export default {
   props: {

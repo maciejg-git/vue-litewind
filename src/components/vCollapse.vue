@@ -11,7 +11,9 @@
 </template>
 
 <script>
-import { ref, watch, toRef, onMounted, onUnmounted, inject } from "vue";
+// vue
+import { ref, watch, onMounted, onUnmounted, inject } from "vue";
+// components
 import vTransition from "./vTransition.vue";
 
 export default {

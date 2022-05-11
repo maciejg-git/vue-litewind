@@ -11,7 +11,7 @@
 import { computed } from "vue";
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
-import { sharedStyleProps } from "../sharedProps";
+import { sharedStyleProps } from "../shared-props";
 
 export default {
   props: {

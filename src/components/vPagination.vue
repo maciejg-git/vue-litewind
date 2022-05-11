@@ -44,7 +44,7 @@ import ChevronRight from "./icons/chevron-right.js";
 // tools
 import { clamp, getNumberRange, isNumber } from "../tools.js";
 // props
-import { sharedStyleProps } from "../sharedProps";
+import { sharedStyleProps } from "../shared-props";
 
 export default {
   props: {
