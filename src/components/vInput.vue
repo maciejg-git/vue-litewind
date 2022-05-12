@@ -104,7 +104,6 @@ export default {
       getInputClasses,
       state,
       localModel,
-      attrs,
       handleClickClearButton,
     };
   },

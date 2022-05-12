@@ -87,7 +87,6 @@ export default {
       state,
       isOptionDisabled,
       localModel,
-      attrs,
     };
   },
 };

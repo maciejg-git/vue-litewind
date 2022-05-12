@@ -4,9 +4,6 @@
     :items-count="example.itemsCount"
     :items-per-page="example.itemsPerPage"
     :max-pages="example.maxPages"
-    @update:modelValue="
-      events.unshift({ ev: 'update:modelValue', data: $event })
-    "
   />
 <!-- CUT START -->
   <v-tabs name="tabs-material" class="mt-10">

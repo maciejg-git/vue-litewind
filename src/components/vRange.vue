@@ -1,16 +1,5 @@
 <template>
-  <input
-    v-bind="$attrs"
-    v-model="localModel"
-    type="range"
-    :class="[
-      classes.range.value,
-      states.range.value[state],
-      attrs.disabled === '' || attrs.disabled === true
-        ? states.range.disabled
-        : '',
-    ]"
-  />
+  <input v-bind="$attrs" v-model="localModel" type="range" :class="getRangeClasses()" />
 </template>
 
 <script>
@@ -18,9 +7,9 @@
 import { computed } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
-import useLocalModel from "./composition/use-local-model"
+import useLocalModel from "./composition/use-local-model";
 // props
-import { sharedStyleProps, sharedFormProps } from "../shared-props"
+import { sharedStyleProps, sharedFormProps } from "../shared-props";
 
 export default {
   props: {
@@ -35,6 +24,16 @@ export default {
         states: ["valid", "invalid", "disabled"],
       },
     });
+
+    let getRangeClasses = () => {
+      return [
+        classes.range.value,
+        states.range.value[state.value],
+        attrs.disabled === "" || attrs.disabled === true
+          ? states.range.disabled
+          : "",
+      ];
+    };
 
     let localModel = useLocalModel(props, emit);
 
@@ -53,7 +52,7 @@ export default {
       states,
       state,
       localModel,
-      attrs,
+      getRangeClasses,
     };
   },
 };

@@ -1,5 +1,4 @@
 <template>
-
   <!-- remote async autocomplete -->
 
   <p class="my-6">Remote async autocomplete</p>
@@ -11,14 +10,14 @@
     :is-loading="example.isLoading"
     style-dropdown="shadow"
     no-filter
+    :no-loader="example.noLoader"
+    :clearable="example.clearable"
+    :transition="example.transition"
+    :state="example.state"
     @input:value="query($event)"
-    @update:page="events.unshift({ ev: 'update:page', data: $event })"
-    @state:focus="events.unshift({ ev: 'state:focus', data: $event })"
-    @state:opened="events.unshift({ ev: 'state:opened', data: $event })"
-    @state:closed="events.unshift({ ev: 'state:closed', data: $event })"
+    v-on="handleEvent"
     class="w-[420px]"
-  >
-  </v-autocomplete>
+  ></v-autocomplete>
 
   <!-- customized menu options -->
 
@@ -31,11 +30,12 @@
     :is-loading="example.isLoading"
     style-dropdown="shadow"
     no-filter
+    :no-loader="example.noLoader"
+    :clearable="example.clearable"
+    :transition="example.transition"
+    :state="example.state"
     @input:value="query($event)"
-    @update:page="events.unshift({ ev: 'update:page', data: $event })"
-    @state:focus="events.unshift({ ev: 'state:focus', data: $event })"
-    @state:opened="events.unshift({ ev: 'state:opened', data: $event })"
-    @state:closed="events.unshift({ ev: 'state:closed', data: $event })"
+    v-on="handleEvent"
     class="w-[420px]"
   >
     <template #item="{ text, item, value, inputValue, highlightMatch }">
@@ -43,7 +43,9 @@
         <div v-html="highlightMatch(text, inputValue)"></div>
         <div>USA</div>
       </div>
-      <span class="text-text-400 dark:text-text-400 text-sm font-semibold">free</span>
+      <span class="text-text-400 dark:text-text-400 text-sm font-semibold">
+        free
+      </span>
     </template>
   </v-autocomplete>
   <!-- CUT START -->
@@ -53,18 +55,30 @@
         <label for="model" class="font-semibold">v-model:</label>
         <v-input type="text" id="model" v-model="example.model"></v-input>
       </div>
+      <!-- no loader -->
+      <!-- transition -->
+      <!-- clearable -->
+      <!-- placement -->
+      <!-- no flip -->
       <div class="mb-2">
-        <label for="type">type:</label>
-        <v-select id="type" v-model="example.type">
-          <option value="text">text</option>
-          <option value="password">password</option>
-          <option value="email">email</option>
-          <option value="number">number</option>
-          <option value="search">search</option>
-          <option value="time">time</option>
-          <option value="url">url</option>
-          <option value="color">color</option>
-          <option value="date">date</option>
+        <label for="noloader">no-loader:</label>
+        <v-select id="noloader" v-model="example.noLoader">
+          <option :value="true">true</option>
+          <option :value="false">false</option>
+        </v-select>
+      </div>
+      <div class="mb-2">
+        <label for="clearable">clearable:</label>
+        <v-select id="clearable" v-model="example.clearable">
+          <option :value="true">true</option>
+          <option :value="false">false</option>
+        </v-select>
+      </div>
+      <div class="mb-2">
+        <label for="transition">transition:</label>
+        <v-select id="transition" v-model="example.transition">
+          <option value="fade">fade</option>
+          <option value="">empty string</option>
         </v-select>
       </div>
       <div class="mb-2">
@@ -108,13 +122,15 @@ export default {
       model: "",
       items: [],
       isLoading: false,
+      noLoader: false,
+      clearable: false,
+      transition: "fade",
+      state: "",
     });
 
     let query = (q) => {
       if (q === "") return;
-
       example.isLoading = true;
-
       setTimeout(() => {
         example.items = states.filter((e) => {
           return (
@@ -123,16 +139,28 @@ export default {
         });
         example.isLoading = false;
       }, 500);
-
-      events.value.unshift({ ev: "input:value", data: q });
     };
 
     let events = ref([]);
+
+    let handleEvent = {
+      ["update:page"]: (event) =>
+        events.value.unshift({ ev: "update:page", data: event }),
+      ["state:focus"]: (event) =>
+        events.value.unshift({ ev: "state:focus", data: event }),
+      ["state:opened"]: (event) =>
+        events.value.unshift({ ev: "state:opened", data: event }),
+      ["state:closed"]: (event) =>
+        events.value.unshift({ ev: "state:closed", data: event }),
+      ["input:value"]: (event) =>
+        events.value.unshift({ ev: "input:value", data: event }),
+    };
 
     return {
       example,
       query,
       events,
+      handleEvent,
     };
   },
 };

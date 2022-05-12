@@ -98,6 +98,7 @@
         <label for="transition">transition:</label>
         <v-select id="transition" v-model="example.transition">
           <option value="fade">fade</option>
+          <option value="">empty string</option>
         </v-select>
       </div>
       <div class="mb-2">

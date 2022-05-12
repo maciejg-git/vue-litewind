@@ -58,7 +58,6 @@ export default {
       getCheckBoxClasses,
       state,
       localModel,
-      attrs,
     };
   },
 };

@@ -37,7 +37,7 @@ export const sharedFormProps = (d, options) => {
   let props = {};
   if (options.icon === true) props.icon = { type: String, default: d.icon || "" };
   if (options.clearable === true)
-    props.clearable = { type: Boolean, default: d.clearable || true };
+    props.clearable = { type: Boolean, default: d.clearable || false };
 
   return {
     ...props,

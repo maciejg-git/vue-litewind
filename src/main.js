@@ -18,6 +18,8 @@ import BInfoCircle from "./components/Documentation/icons/info-circle"
 import BExclamationTriangle from "./components/Documentation/icons/exclamation-triangle"
 import BArrowClockwise from "./components/Documentation/icons/arrow-clockwise"
 import BArrowRight from "./components/Documentation/icons/arrow-right"
+import BGeoAlt from "./components/Documentation/icons/geo-alt"
+import BGeoAltFill from "./components/Documentation/icons/geo-alt-fill"
 import MdiLoading from "./components/Documentation/icons/loading"
 import BSun from "./components/Documentation/icons/sun"
 
@@ -44,6 +46,8 @@ registerIcon(app, [
   BArrowRight,
   BExclamationCircle,
   BSun,
+  BGeoAlt,
+  BGeoAltFill,
 ], {
   vendorPrefix: true,
   iconSufix: false,

@@ -32,7 +32,7 @@
   <teleport to="body">
     <transition :name="transition" @after-leave="onPopperTransitionLeave">
       <div v-if="isPopperVisible" ref="popper" class="fixed-dropdown">
-        <div :class="classes.dropdown.value" v-scroll-bottom="handlePagination">
+        <div :class="classes.dropdown.value" v-detect-scroll-bottom="handlePagination">
           <div
             v-if="!itemsPagination.length && !isLoading"
             :class="classes.item.value"
@@ -75,7 +75,7 @@ import useClickOutside from "./composition/use-click-outside";
 import vSpinner from "./vSpinner.vue";
 import vCloseButton from "./vCloseButton.vue";
 // directives
-import scrollBottom from "../directives/scroll-bottom";
+import detectScrollBottom from "../directives/detect-scroll-bottom";
 // props
 import {
   sharedPopperProps,
@@ -109,7 +109,7 @@ export default {
     vCloseButton,
   },
   directives: {
-    scrollBottom,
+    detectScrollBottom,
   },
   emits: [
     "update:modelValue",
@@ -139,7 +139,7 @@ export default {
     let getInputClasses = () => {
       return [
         classes.autocomplete.value,
-        states.autocomplete.value && states.autocomplete.value[state],
+        states.autocomplete.value && states.autocomplete.value[state.value],
         attrs.disabled === "" || attrs.disabled === true
           ? states.autocomplete.disabled
           : "",
@@ -175,15 +175,19 @@ export default {
     let clickOutsideElements = [popper, reference];
     onClickOutside(clickOutsideElements, cancelInput);
 
+    let selectedItem = ref(null);
+    let localText = ref("");
+    let isNewSelection = ref(true);
+    let isVisible = ref(false);
+
+    // show autocomplete menu
+
     let show = () => {
       isNewSelection.value = true;
       showPopper();
     };
 
-    let selectedItem = ref(null);
-    let localText = ref("");
-    let isNewSelection = ref(true);
-    let isVisible = ref(false);
+    // those watchers show autocomplete menu after all data is ready
 
     watch(
       () => props.isLoading,
@@ -196,7 +200,17 @@ export default {
       !isPopperVisible.value && value && !props.noFilter && show();
     });
 
-    // filter
+    // get text and value of item
+
+    let getItemText = (item) => {
+      return item[props.itemText] !== undefined ? item[props.itemText] : item;
+    };
+
+    let getItemValue = (item) => {
+      return item[props.itemValue] !== undefined ? item[props.itemValue] : item;
+    };
+
+    // filter items
 
     let itemsFiltered = computed(() => {
       if (props.isLoading || props.noFilter) return props.items;
@@ -211,7 +225,7 @@ export default {
       });
     });
 
-    // pagination
+    // paginate items
 
     let page = ref(0);
 
@@ -225,13 +239,7 @@ export default {
       );
     });
 
-    let getItemText = (item) => {
-      return item[props.itemText] !== undefined ? item[props.itemText] : item;
-    };
-
-    let getItemValue = (item) => {
-      return item[props.itemValue] !== undefined ? item[props.itemValue] : item;
-    };
+    // matching text higlight
 
     let getHighligtedText = (item) =>
       highlightMatch(getItemText(item), localText.value);
@@ -243,7 +251,7 @@ export default {
       );
     };
 
-    // update local value and model after selecting option
+    // update local input text and model after selecting option
 
     let update = (item) => {
       selectedItem.value = item;
@@ -251,7 +259,8 @@ export default {
       localModel.value = getItemValue(item);
     };
 
-    // revert to previous value
+    // revert to previous value for example after closing
+    // dropdown menu without selecting option
 
     let revert = () => {
       if (!selectedItem.value) {
@@ -277,8 +286,9 @@ export default {
       localText.value = "";
       selectedItem.value = "";
       localModel.value = "";
-      emit("update:modelValue", "");
     };
+
+    // use state?
 
     let state = computed(() => {
       props.state === true
@@ -302,11 +312,7 @@ export default {
       if (!isVisible.value) isVisible.value = true;
     };
 
-    let handleClickClearButton = () => {
-      localModel.value = "";
-      selectedItem.value = null;
-      localText.value = "";
-    };
+    let handleClickClearButton = () => clearInput();
 
     let handleInput = () => {
       if (!isVisible.value) isVisible.value = true;
@@ -321,7 +327,6 @@ export default {
       state,
       localText,
       localModel,
-      attrs,
       getInputClasses,
       itemsFiltered,
       itemsPagination,
@@ -342,8 +347,6 @@ export default {
       isPopperVisible,
       reference,
       popper,
-      showPopper,
-      hidePopper,
     };
   },
 };

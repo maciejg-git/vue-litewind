@@ -4,9 +4,6 @@
   <v-sidepanel
     v-model="isOpen"
     v-bind="example"
-    @update:modelValue="
-      events.unshift({ ev: 'update:modelValue', data: $event })
-    "
   >
     <template #header>
       <span class="text-xl font-bold">Sidepanel</span>

@@ -1,15 +1,11 @@
 <template>
-  <textarea
-    v-bind="$attrs"
-    v-model="localModel"
-    :class="[
-      classes.textarea.value,
-      states.textarea.value && states.textarea.value[state],
-      attrs.disabled === '' || attrs.disabled === true
-        ? states.textarea.disabled
-        : '',
-    ]"
-  ></textarea>
+  <div class="relative inline-flex items-center">
+    <textarea
+      v-bind="$attrs"
+      v-model="localModel"
+      :class="getTextareaClasses()"
+    ></textarea>
+  </div>
 </template>
 
 <script>
@@ -17,9 +13,9 @@
 import { computed } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
-import useLocalModel from "./composition/use-local-model"
+import useLocalModel from "./composition/use-local-model";
 // props
-import { sharedStyleProps, sharedFormProps } from "../shared-props"
+import { sharedStyleProps, sharedFormProps } from "../shared-props";
 
 export default {
   props: {
@@ -28,12 +24,23 @@ export default {
     ...sharedFormProps(null),
     ...sharedStyleProps("textarea"),
   },
+  inheritAttrs: false,
   setup(props, { attrs, emit }) {
     let { classes, states } = useStyles("textarea", props, {
       textarea: {
         states: ["valid", "invalid", "disabled"],
       },
     });
+
+    let getTextareaClasses = () => {
+      return [
+        classes.textarea.value,
+        states.textarea.value && states.textarea.value[state.value],
+        attrs.disabled === "" || attrs.disabled === true
+          ? states.textarea.disabled
+          : "",
+      ];
+    };
 
     let localModel = useLocalModel(props, emit);
 
@@ -52,6 +59,7 @@ export default {
       state,
       states,
       localModel,
+      getTextareaClasses,
       attrs,
     };
   },

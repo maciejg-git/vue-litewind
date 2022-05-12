@@ -45,7 +45,7 @@ import ExampleAutocompleteSimple from "./examples/ExampleAutocompleteSimple.vue"
 import ExampleAutocompleteSimpleCode from "./examples/ExampleAutocompleteSimple.vue?raw"
 import ExampleAutocomplete from "./examples/ExampleAutocomplete.vue"
 import ExampleAutocompleteCode from "./examples/ExampleAutocomplete.vue?raw"
-import { popperProps, styleProps } from "./shared-props"
+import { popperProps, styleProps, formProps } from "./shared-props"
 
 export default {
   components: {
@@ -128,6 +128,7 @@ export default {
           "State of input validity. Supported values are 'valid' (or true), 'invalid' (or false) or 'empty string' (or null) for default state",
       },
       ...popperProps,
+      ...formProps({ icon: true, clearable: true }),
       ...styleProps("autocomplete"),
     ]);
 

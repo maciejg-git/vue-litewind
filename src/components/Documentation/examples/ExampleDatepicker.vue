@@ -11,9 +11,6 @@
       :adjacent-months="!!example.adjacentMonths"
       :range-hover-highlight="example.rangeHoverHighlight"
       :transition="example.transition"
-      @update:modelValue="
-        events.unshift({ ev: 'update:modelValue', data: $event })
-      "
       @update:formatted="events.unshift({ ev: 'update:formatted', data: $event })"
       @state:done="events.unshift({ ev: 'state:done', data: $event })"
       @input:cancel="events.unshift({ ev: 'input:cancel', data: $event })"

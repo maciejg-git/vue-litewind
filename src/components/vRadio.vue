@@ -55,7 +55,6 @@ export default {
       getRadioClasses,
       state,
       localModel,
-      attrs,
     };
   },
 };
