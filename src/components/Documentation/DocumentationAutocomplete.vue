@@ -21,9 +21,9 @@
   </section>
 
   <section>
-    <h4>Example</h4>
+    <h4>Example - simple autocomplete</h4>
     <div class="example">
-      <example-autocomplete-simple></example-autocomplete-simple>
+      <!-- <example-autocomplete-simple></example-autocomplete-simple> -->
     </div>
     <v-code :code="ExampleAutocompleteSimpleCode" template language="html"></v-code>
     <v-code :code="ExampleAutocompleteSimpleCode" script language="js"></v-code>
@@ -37,6 +37,15 @@
     <v-code :code="ExampleAutocompleteCode" template language="html"></v-code>
     <v-code :code="ExampleAutocompleteCode" script language="js"></v-code>
   </section>
+
+  <section>
+    <h4>Example - customized items</h4>
+    <div class="example">
+      <!-- <example-autocomplete-slot></example-autocomplete-slot> -->
+    </div>
+    <v-code :code="ExampleAutocompleteSlotCode" template language="html"></v-code>
+    <v-code :code="ExampleAutocompleteSlotCode" script language="js"></v-code>
+  </section>
 </template>
 
 <script>
@@ -45,12 +54,15 @@ import ExampleAutocompleteSimple from "./examples/ExampleAutocompleteSimple.vue"
 import ExampleAutocompleteSimpleCode from "./examples/ExampleAutocompleteSimple.vue?raw"
 import ExampleAutocomplete from "./examples/ExampleAutocomplete.vue"
 import ExampleAutocompleteCode from "./examples/ExampleAutocomplete.vue?raw"
+import ExampleAutocompleteSlot from "./examples/ExampleAutocompleteSlot.vue"
+import ExampleAutocompleteSlotCode from "./examples/ExampleAutocompleteSlot.vue?raw"
 import { popperProps, styleProps, formProps } from "./shared-props"
 
 export default {
   components: {
     ExampleAutocompleteSimple,
     ExampleAutocomplete,
+    ExampleAutocompleteSlot,
   },
   setup(props) {
     let reference = ref([
@@ -189,6 +201,7 @@ export default {
       slots,
       ExampleAutocompleteCode,
       ExampleAutocompleteSimpleCode,
+      ExampleAutocompleteSlotCode,
     };
   },
 };

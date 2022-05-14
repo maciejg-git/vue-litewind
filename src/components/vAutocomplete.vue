@@ -14,10 +14,11 @@
       v-bind="$attrs"
       type="text"
       ref="reference"
-      class="block w-full pr-10"
+      class="block w-full"
       :class="getInputClasses()"
       @input="handleInput"
       @focus="handleClickInput"
+      @blur="handleBlur"
     />
     <div class="absolute flex right-0 mr-2">
       <v-spinner v-if="!noLoader" v-show="isLoading" type="svg"></v-spinner>
@@ -32,7 +33,10 @@
   <teleport to="body">
     <transition :name="transition" @after-leave="onPopperTransitionLeave">
       <div v-if="isPopperVisible" ref="popper" class="fixed-dropdown">
-        <div :class="classes.dropdown.value" v-detect-scroll-bottom="handlePagination">
+        <div
+          :class="classes.menu.value"
+          v-detect-scroll-bottom="handlePagination"
+        >
           <div
             v-if="!itemsPagination.length && !isLoading"
             :class="classes.item.value"
@@ -85,7 +89,7 @@ import {
 
 export default {
   props: {
-    modelValue: { type: String, default: undefined },
+    modelValue: { type: Object, default: undefined },
     ...sharedPopperProps({ offsetY: 10 }),
     items: { type: Array, default: [] },
     itemText: { type: String, default: "text" },
@@ -94,10 +98,11 @@ export default {
     noFilter: { type: Boolean, default: false },
     noPagination: { type: Boolean, default: false },
     noLoader: { type: Boolean, default: false },
+    validate: { type: Object, default: {} },
     itemsPerPage: { type: Number, default: 10 },
     transition: { type: String, default: "fade" },
     styleAutocomplete: { type: [String, Array], default: "" },
-    styleDropdown: { type: [String, Array], default: "" },
+    styleMenu: { type: [String, Array], default: "" },
     styleItem: { type: [String, Array], default: "" },
     styleMatch: { type: [String, Array], default: "" },
     styleIcon: { type: [String, Array], default: "" },
@@ -118,6 +123,7 @@ export default {
     "input:value",
     "state:opened",
     "state:closed",
+    "validate",
   ],
   setup(props, { attrs, emit }) {
     let { classes, states, variants } = useStyles("autocomplete", props, {
@@ -125,8 +131,8 @@ export default {
         states: ["valid", "invalid", "disabled"],
         variants: ["icon-variant", "clearable-variant"],
       },
-      dropdown: {
-        fixed: "fixed-autocomplete-dropdown",
+      menu: {
+        fixed: "fixed-autocomplete-menu",
       },
       item: {
         fixed: "fixed-item",
@@ -135,6 +141,11 @@ export default {
       match: null,
       icon: null,
     });
+
+    let localValidate = props.validate
+    localValidate.status = ref({
+      status: "validate",
+    })
 
     let getInputClasses = () => {
       return [
@@ -156,8 +167,11 @@ export default {
       ];
     };
 
+    // let val = props.modelValue
+    // emit("update:modelValue", { ...val, model: "val"})
     let localModel = useLocalModel(props, emit);
 
+    localModel.value = "localModel"
     const { offsetX, offsetY, noFlip, placement, modelValue } = toRefs(props);
     const {
       isPopperVisible,
@@ -290,15 +304,15 @@ export default {
 
     // use state?
 
-    let state = computed(() => {
+    let state = computed(() =>
       props.state === true
         ? "valid"
         : props.state === false
         ? "invalid"
         : props.state === null
         ? ""
-        : props.state;
-    });
+        : props.state
+    );
 
     // handle template events
 
@@ -324,7 +338,6 @@ export default {
       classes,
       states,
       variants,
-      state,
       localText,
       localModel,
       getInputClasses,
@@ -353,7 +366,7 @@ export default {
 </script>
 
 <style scoped>
-.fixed-autocomplete-dropdown {
+.fixed-autocomplete-menu {
   @apply max-h-[300px] overflow-y-auto overflow-x-hidden;
 }
 .fade-enter-active,

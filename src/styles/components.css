@@ -596,7 +596,7 @@
     dark:text-gray-400
 }
 
-.autocomplete--dropdown {
+.autocomplete--menu {
   @apply
     border
     rounded-md
@@ -606,33 +606,11 @@
     dark:bg-dark-800
     dark:border-dark-700
 }
-    .autocomplete--dropdown--menu {
-      @apply
-        py-2
-    }
-    .autocomplete--dropdown--shadow {
+    .autocomplete--menu--shadow {
       @apply
         shadow-md
         dark:shadow-lg
         dark:shadow-black/30
-    }
-    .autocomplete--dropdown--square {
-      @apply
-        rounded-none
-    }
-    .autocomplete--dropdown--borderless {
-      @apply
-        border-0
-    }
-    .autocomplete--dropdown--hoverable {
-      @apply
-        hover:shadow-lg
-        transition-all
-        hover:scale-105
-    }
-    .autocomplete--dropdown--rounded-extra {
-      @apply
-        rounded-lg
     }
 
 .autocomplete--item {

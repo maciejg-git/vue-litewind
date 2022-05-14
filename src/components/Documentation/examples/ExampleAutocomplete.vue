@@ -1,53 +1,20 @@
 <template>
-  <!-- remote async autocomplete -->
-
-  <p class="my-6">Remote async autocomplete</p>
-
-  <v-autocomplete
-    v-model="example.model"
-    v-model:input-value="example.inputValue"
-    :items="example.items"
-    :is-loading="example.isLoading"
-    style-dropdown="shadow"
-    no-filter
-    :no-loader="example.noLoader"
-    :clearable="example.clearable"
-    :transition="example.transition"
-    :state="example.state"
-    @input:value="query($event)"
-    v-on="handleEvent"
-    class="w-[420px]"
-  ></v-autocomplete>
-
-  <!-- customized menu options -->
-
-  <p class="my-6">Customized menu options</p>
-
-  <v-autocomplete
-    v-model="example.model"
-    v-model:input-value="example.inputValue"
-    :items="example.items"
-    :is-loading="example.isLoading"
-    style-dropdown="shadow"
-    no-filter
-    :no-loader="example.noLoader"
-    :clearable="example.clearable"
-    :transition="example.transition"
-    :state="example.state"
-    @input:value="query($event)"
-    v-on="handleEvent"
-    class="w-[420px]"
-  >
-    <template #item="{ text, item, value, inputValue, highlightMatch }">
-      <div class="flex justify-between">
-        <div v-html="highlightMatch(text, inputValue)"></div>
-        <div>USA</div>
-      </div>
-      <span class="text-text-400 dark:text-text-400 text-sm font-semibold">
-        free
-      </span>
-    </template>
-  </v-autocomplete>
+    <v-autocomplete
+      v-model="user"
+      v-model:input-value="example.inputValue"
+      :validate="validate"
+      :items="example.items"
+      :is-loading="example.isLoading"
+      style-menu="shadow"
+      no-filter
+      :no-loader="example.noLoader"
+      :clearable="example.clearable"
+      :transition="example.transition"
+      :state="example.state"
+      @input:value="query($event)"
+      v-on="handleExampleEvents"
+      class="w-[420px]"
+    ></v-autocomplete>
   <!-- CUT START -->
   <v-tabs name="tabs-material" class="mt-10">
     <v-tab name="Props">
@@ -113,10 +80,15 @@
 </template>
 
 <script>
-import { ref, reactive } from "vue";
+import { ref, reactive, watch, toRef, computed } from "vue";
 import { states } from "../../../const";
 
+// import vForm from "../../vForm.vue"
+
 export default {
+  components: {
+    // vForm,
+  },
   setup() {
     let example = reactive({
       model: "",
@@ -127,6 +99,33 @@ export default {
       transition: "fade",
       state: "",
     });
+
+    // model: toRef(example, "model"),
+    let validate = {
+      status: ref({}),
+      minLength: 8,
+      minNumber: 2,
+      passwordMin(value) {
+
+      },
+    }
+    let user = ref({
+      model: 6,
+      status: {},
+    })
+
+    setTimeout(() => {
+      console.log(user.value.model)
+    }, 5000)
+    // validateRef
+    // :validate
+    // v-model:validate
+
+    // <v-input v-model="test" :validate="validate" @validate=""></v-input>
+
+    // watch(verify.model, (value) => {
+    //   console.log(value)
+    // })
 
     let query = (q) => {
       if (q === "") return;
@@ -143,7 +142,7 @@ export default {
 
     let events = ref([]);
 
-    let handleEvent = {
+    let handleExampleEvents = {
       ["update:page"]: (event) =>
         events.value.unshift({ ev: "update:page", data: event }),
       ["state:focus"]: (event) =>
@@ -160,7 +159,9 @@ export default {
       example,
       query,
       events,
-      handleEvent,
+      handleExampleEvents,
+      validate,
+      user,
     };
   },
 };

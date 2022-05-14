@@ -47,9 +47,12 @@ function hide(ev) {
 
   el._v_tooltip.timerOut = setTimeout(() => {
     addTransition(el._v_tooltip, true);
-    el._v_tooltip.timerRemove = setTimeout(() => {
-      el._v_tooltip.wrapper.remove();
-    }, 300);
+    el._v_tooltip.timerRemove = setTimeout(
+      () => {
+        el._v_tooltip.wrapper.remove();
+      },
+      el._v_tooltip.transition === "noanim" ? 0 : 200
+    );
   }, el._v_tooltip.delay);
 }
 
@@ -94,31 +97,47 @@ function addTransition(m, v) {
 }
 
 function addFixedTransition(m) {
-  m.tooltip.style.transition = "opacity 0.3s ease, transform 0.3s";
+  if (m.transition === "noanim") return;
+  m.tooltip.style.transition = "opacity 0.2s ease, transform 0.2s";
 }
 
 function parseModifiers(modifiers) {
   let m = {};
 
-  m.placement = modifiers.find((i) => correctPlacement.includes(i));
-  m.placement = m.placement || defaults.placement;
-  m.delay = modifiers.find((i) => delayRegexp.test(i));
-  m.delay = m.delay ? +m.delay.substring(5) : defaults.delay;
-  m.offsetX = modifiers.find((i) => offsetXRegexp.test(i));
-  m.offsetX = m.offsetX ? +m.offsetX.substring(2) : defaults.offsetX;
-  m.offsetY = modifiers.find((i) => offsetYRegexp.test(i));
-  m.offsetY = m.offsetY ? +m.offsetY.substring(2) : defaults.offsetY;
-  m.transition = modifiers.find((i) => transitions.includes(i));
-  m.transition = m.transition || defaults.transition;
+  modifiers.forEach((modifier) => {
+    if (correctPlacement.includes(modifier)) {
+      m.placement = modifier;
+      return;
+    }
+    if (delayRegexp.test(modifier)) {
+      m.delay = +modifier.substring(5);
+      return;
+    }
+    if (offsetXRegexp.test(modifier)) {
+      m.offsetX = +modifier.substring(2);
+      return;
+    }
+    if (offsetYRegexp.test(modifier)) {
+      m.offsetY = +modifier.substring(2);
+      return;
+    }
+    if (transitions.includes(modifier)) {
+      m.transition = modifier;
+      return;
+    }
+  });
 
-  return m;
+  return {
+    ...defaults,
+    ...m,
+  };
 }
 
 export default {
   mounted(el, binding) {
     let m = parseModifiers(Object.keys(binding.modifiers));
 
-    el._v_tooltip = {
+    let t = {
       wrapper: createTooltipElement(),
       tooltip: null,
       timer: null,
@@ -128,19 +147,21 @@ export default {
       ...m,
     };
 
-    el._v_tooltip.tooltip = el._v_tooltip.wrapper.firstChild;
-    el._v_tooltip.f = typeof binding.value == "function" ? binding.value : null;
-    el._v_popper = setPopper(el, el._v_tooltip.wrapper, el._v_tooltip);
+    t.tooltip = t.wrapper.firstChild;
+    t.f = typeof binding.value == "function" ? binding.value : null;
+
+    el._v_popper = setPopper(el, t.wrapper, t);
 
     if (binding.value && typeof binding.value == "string") {
-      el._v_tooltip.tooltip.firstChild.innerText = binding.value;
+      t.tooltip.firstChild.innerText = binding.value;
     } else {
-      el._v_tooltip.tooltip.firstChild.innerText =
-        el.getAttribute("data-title") || "";
+      t.tooltip.firstChild.innerText = el.getAttribute("data-title") || "";
     }
 
-    addFixedTransition(el._v_tooltip, true);
-    addTransition(el._v_tooltip, true);
+    addFixedTransition(t, true);
+    addTransition(t, true);
+
+    el._v_tooltip = t;
 
     el.addEventListener("mouseenter", show);
     el.addEventListener("mouseleave", hide);

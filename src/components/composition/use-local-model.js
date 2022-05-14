@@ -6,7 +6,8 @@ export default function useLocalModel(props, emit) {
         return props.modelValue;
       },
       set(value) {
-        emit("update:modelValue", value);
+        let val = props.modelValue
+        emit("update:modelValue", { ...val, model: value});
       },
     });
 }
