@@ -2,7 +2,6 @@
     <v-autocomplete
       v-model="user"
       v-model:input-value="example.inputValue"
-      :validate="validate"
       :items="example.items"
       :is-loading="example.isLoading"
       style-menu="shadow"
@@ -20,7 +19,7 @@
     <v-tab name="Props">
       <div class="mb-2 mt-5">
         <label for="model" class="font-semibold">v-model:</label>
-        <v-input type="text" id="model" v-model="example.model"></v-input>
+        <v-input type="text" id="model" v-model="user.model"></v-input>
       </div>
       <!-- no loader -->
       <!-- transition -->
@@ -83,6 +82,7 @@
 import { ref, reactive, watch, toRef, computed } from "vue";
 import { states } from "../../../const";
 
+import useValidateRef from "../../composition/use-validate-ref"
 // import vForm from "../../vForm.vue"
 
 export default {
@@ -100,32 +100,17 @@ export default {
       state: "",
     });
 
-    // model: toRef(example, "model"),
-    let validate = {
-      status: ref({}),
-      minLength: 8,
-      minNumber: 2,
-      passwordMin(value) {
-
-      },
-    }
-    let user = ref({
-      model: 6,
-      status: {},
+    let user = useValidateRef("", {
+      minLength: 6,
     })
+    console.log(user)
 
-    setTimeout(() => {
-      console.log(user.value.model)
-    }, 5000)
+    // setTimeout(() => {
+    //   console.log(user.value.model)
+    // }, 5000)
     // validateRef
     // :validate
     // v-model:validate
-
-    // <v-input v-model="test" :validate="validate" @validate=""></v-input>
-
-    // watch(verify.model, (value) => {
-    //   console.log(value)
-    // })
 
     let query = (q) => {
       if (q === "") return;
@@ -160,7 +145,6 @@ export default {
       query,
       events,
       handleExampleEvents,
-      validate,
       user,
     };
   },

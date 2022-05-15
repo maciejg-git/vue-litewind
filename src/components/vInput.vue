@@ -51,13 +51,16 @@ import { sharedStyleProps, sharedFormProps } from "../shared-props";
 
 export default {
   props: {
-    modelValue: { type: [String, Number, Boolean, Array], default: undefined },
+    modelValue: { type: [String, Number, Boolean, Array, Object], default: undefined },
     styleInput: { type: [String, Array], default: "" },
     styleIcon: { type: [String, Array], default: "" },
     styleClearButton: { type: [String, Array], default: "" },
     ...sharedFormProps(null, { icon: true, clearable: true }),
     ...sharedStyleProps("input"),
   },
+  emits: [
+    "update:modelValue",
+  ],
   inheritAttrs: false,
   setup(props, { attrs, emit }) {
     let { classes, states, variants } = useStyles("input", props, {
@@ -84,6 +87,10 @@ export default {
         props.clearable ? variants.input.value["clearable-variant"] : "",
       ];
     };
+
+    setTimeout(() => {
+      props.modelValue.trigger()
+    }, 2000)
 
     let state = computed(() =>
       props.state === true

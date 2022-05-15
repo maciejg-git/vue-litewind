@@ -89,7 +89,7 @@ import {
 
 export default {
   props: {
-    modelValue: { type: Object, default: undefined },
+    modelValue: { type: [String, Object], default: undefined },
     ...sharedPopperProps({ offsetY: 10 }),
     items: { type: Array, default: [] },
     itemText: { type: String, default: "text" },
@@ -142,11 +142,6 @@ export default {
       icon: null,
     });
 
-    let localValidate = props.validate
-    localValidate.status = ref({
-      status: "validate",
-    })
-
     let getInputClasses = () => {
       return [
         classes.autocomplete.value,
@@ -167,11 +162,8 @@ export default {
       ];
     };
 
-    // let val = props.modelValue
-    // emit("update:modelValue", { ...val, model: "val"})
     let localModel = useLocalModel(props, emit);
 
-    localModel.value = "localModel"
     const { offsetX, offsetY, noFlip, placement, modelValue } = toRefs(props);
     const {
       isPopperVisible,

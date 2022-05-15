@@ -4,7 +4,7 @@
     <p class="my-6">Simple input</p>
 
     <v-input
-      v-model="example.model"
+      v-model="user"
       :type="example.type"
       :clearable="example.clearable"
       :state="example.state"
@@ -132,6 +132,8 @@
 <script>
 import { ref, reactive } from "vue";
 
+import useValidateRef from "../../composition/use-validate-ref"
+
 export default {
   setup() {
     let example = reactive({
@@ -141,11 +143,17 @@ export default {
       state: "",
     });
 
+    let user = useValidateRef("", {
+      minLength: 6,
+    })
+    console.log(user)
+
     let events = ref([]);
 
     return {
       example,
       events,
+      user,
     };
   },
 };
