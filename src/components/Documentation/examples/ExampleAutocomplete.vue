@@ -103,7 +103,6 @@ export default {
     let user = useValidateRef("", {
       minLength: 6,
     })
-    console.log(user)
 
     // setTimeout(() => {
     //   console.log(user.value.model)

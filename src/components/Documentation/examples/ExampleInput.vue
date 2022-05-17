@@ -3,6 +3,10 @@
 
     <p class="my-6">Simple input</p>
 
+      <pre>
+        <div v-html="JSON.stringify(user, null, '<br>')"></div>
+      </pre>
+      
     <v-input
       v-model="user"
       :type="example.type"
@@ -145,6 +149,8 @@ export default {
 
     let user = useValidateRef("", {
       minLength: 6,
+      alpha: true,
+      passwordMin: () => { return true }
     })
     console.log(user)
 

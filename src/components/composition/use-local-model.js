@@ -1,31 +1,26 @@
 import { computed } from "vue";
 
-let validators = {
-  minLength: (value, length) => {
-    return value.length >= length 
-  }
-}
-
-let validate = (value) => {
-
-}
-
 export default function useLocalModel(props, emit) {
-    return computed({
-      get() {
-        return props.modelValue.model;
-      },
-      set(value) {
+    let updateLocalModel = (value) => {
         let m = props.modelValue
         if (m._isValidateRef) {
-          // let status = {}
-          // for (let v in m.validate) {
-          //   let res = validators[v] && validators[v](value, validate[v])
-          // }
-          emit("update:modelValue", { ...m, model: value});
-        } else {
+          let validateRef = m.validate(value)
+          emit("update:modelValue", validateRef);
+          return
+        } 
           emit("update:modelValue", value);
-        }
+    } 
+
+    return {
+      localModel: computed({
+      get() {
+        return props.modelValue._isValidateRef ? props.modelValue.model : props.modelValue;
       },
-    });
+      set(value) {
+        updateModel(value)
+      },
+    }),
+      updateLocalModel,
+
+    }
 }

@@ -15,6 +15,7 @@
       v-bind="$attrs"
       class="grow"
       :class="getInputClasses()"
+      @blur="handleBlur"
     />
 
     <div v-if="clearable" class="absolute flex right-0 mr-3">
@@ -51,16 +52,17 @@ import { sharedStyleProps, sharedFormProps } from "../shared-props";
 
 export default {
   props: {
-    modelValue: { type: [String, Number, Boolean, Array, Object], default: undefined },
+    modelValue: {
+      type: [String, Number, Boolean, Array, Object],
+      default: undefined,
+    },
     styleInput: { type: [String, Array], default: "" },
     styleIcon: { type: [String, Array], default: "" },
     styleClearButton: { type: [String, Array], default: "" },
     ...sharedFormProps(null, { icon: true, clearable: true }),
     ...sharedStyleProps("input"),
   },
-  emits: [
-    "update:modelValue",
-  ],
+  emits: ["update:modelValue"],
   inheritAttrs: false,
   setup(props, { attrs, emit }) {
     let { classes, states, variants } = useStyles("input", props, {
@@ -74,7 +76,7 @@ export default {
       icon: null,
     });
 
-    let localModel = useLocalModel(props, emit);
+    let { localModel, updateLocalModel } = useLocalModel(props, emit);
 
     let getInputClasses = () => {
       return [
@@ -88,10 +90,6 @@ export default {
       ];
     };
 
-    setTimeout(() => {
-      props.modelValue.trigger()
-    }, 2000)
-
     let state = computed(() =>
       props.state === true
         ? "valid"
@@ -102,6 +100,12 @@ export default {
         : props.state
     );
 
+    let handleBlur = () => {
+      if (props.modelValue._isValidateRef && props.modelValue._validateOnBlur()) {
+        updateLocalModel();
+      }
+    };
+
     let handleClickClearButton = () => (localModel.value = "");
 
     return {
@@ -111,6 +115,7 @@ export default {
       getInputClasses,
       state,
       localModel,
+      handleBlur,
       handleClickClearButton,
     };
   },
