@@ -77,6 +77,7 @@ export default {
     });
 
     let { localModel, updateLocalModel } = useLocalModel(props, emit);
+    // let localModel = useLocalModel(props, emit);
 
     let getInputClasses = () => {
       return [
@@ -90,19 +91,22 @@ export default {
       ];
     };
 
-    let state = computed(() =>
-      props.state === true
-        ? "valid"
-        : props.state === false
-        ? "invalid"
-        : props.state === null
-        ? ""
-        : props.state
+    let state = computed(() => {
+      if (props.modelValue._isValidateRef) {
+        return !props.modelValue._isTouched() ? "" : props.modelValue._isValid() ? "valid" : "invalid"
+      }
+    }
     );
 
+    let validateOnBlur = () => {
+      // return props.modelValue._isValidateRef && !props.modelValue._isValidated()
+      return props.modelValue._isValidateRef && props.modelValue.status.value.dirty
+    }
+
     let handleBlur = () => {
-      if (props.modelValue._isValidateRef && props.modelValue._validateOnBlur()) {
-        updateLocalModel();
+      // if (validateOnBlur()) updateLocalModel({ blur: true })
+      if (props.modelValue._isValidateRef) {
+        props.modelValue.touch()
       }
     };
 
