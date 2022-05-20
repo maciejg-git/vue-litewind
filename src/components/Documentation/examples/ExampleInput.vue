@@ -142,7 +142,7 @@
 </template>
 
 <script>
-import { ref, reactive } from "vue";
+import { ref, reactive, computed } from "vue";
 
 import useValidateRef from "../../composition/use-validate-ref"
 
@@ -161,9 +161,19 @@ export default {
       numeric: true,
       // alphanumeric: true,
       required: true,
-      passwordMin: () => { return true }
+      passwordMin: () => { return true },
+      // email: true,
     })
+    let messages = {
+      numeric: "numeric",
+      required: "required",
+    }
     console.log(user)
+
+    let showMessages = computed(() => {
+      let messages = Object.keys(messages).filter((message) => user.value.status.value[message] === false)
+    })
+    console.log(showMessages)
 
     let events = ref([]);
 

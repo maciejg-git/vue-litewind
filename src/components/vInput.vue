@@ -92,21 +92,22 @@ export default {
     };
 
     let state = computed(() => {
-      if (props.modelValue._isValidateRef) {
-        return !props.modelValue._isTouched() ? "" : props.modelValue._isValid() ? "valid" : "invalid"
+      if (!props.modelValue._isValidateRef || !props.modelValue._isValidated()) {
+        return "";
       }
-    }
-    );
+      return props.modelValue._isValid() ? "valid" : "invalid";
+    });
 
     let validateOnBlur = () => {
       // return props.modelValue._isValidateRef && !props.modelValue._isValidated()
-      return props.modelValue._isValidateRef && props.modelValue.status.value.dirty
-    }
+      return (
+        props.modelValue._isValidateRef && props.modelValue.status.value.dirty
+      );
+    };
 
     let handleBlur = () => {
-      // if (validateOnBlur()) updateLocalModel({ blur: true })
       if (props.modelValue._isValidateRef) {
-        props.modelValue.touch()
+        props.modelValue.touch();
       }
     };
 
