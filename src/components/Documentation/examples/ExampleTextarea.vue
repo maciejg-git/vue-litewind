@@ -7,7 +7,7 @@
     placeholder="Textarea example"
   />
 <!-- CUT START -->
-  <v-tabs name="tabs-material" class="mt-10">
+  <v-tabs base="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="mb-2 mt-5">
         <label for="model" class="font-semibold">v-model:</label>

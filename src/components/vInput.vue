@@ -76,8 +76,7 @@ export default {
       icon: null,
     });
 
-    let { localModel, updateLocalModel } = useLocalModel(props, emit);
-    // let localModel = useLocalModel(props, emit);
+    let localModel = useLocalModel(props, emit);
 
     let getInputClasses = () => {
       return [
@@ -92,18 +91,10 @@ export default {
     };
 
     let state = computed(() => {
-      if (!props.modelValue._isValidateRef || !props.modelValue._isValidated()) {
-        return "";
+      if (props.modelValue._isValidateRef) {
+        return props.modelValue.getValidStatus()
       }
-      return props.modelValue._isValid() ? "valid" : "invalid";
     });
-
-    let validateOnBlur = () => {
-      // return props.modelValue._isValidateRef && !props.modelValue._isValidated()
-      return (
-        props.modelValue._isValidateRef && props.modelValue.status.value.dirty
-      );
-    };
 
     let handleBlur = () => {
       if (props.modelValue._isValidateRef) {

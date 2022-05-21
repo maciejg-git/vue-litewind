@@ -1,9 +1,9 @@
 <template>
-    <!-- simple input -->
+  <!-- simple input -->
 
-    <p class="my-6">Simple input</p>
+  <p class="my-6">Simple input</p>
 
-      <pre>
+  <pre>
       <div>
           <code v-html="JSON.stringify(user.model.value, null, '&#9;')"></code>
       </div>
@@ -14,76 +14,75 @@
           <code v-html="JSON.stringify(user.status.value, null, '&#9;')"></code>
         </div>
       </pre>
-      
+
+  <v-input
+    v-model="user"
+    :type="example.type"
+    :clearable="example.clearable"
+    :state="example.state"
+    placeholder="Type something..."
+  />
+
+  <p class="my-6">Input with icon</p>
+
+  <div class="flex gap-x-10">
+    <!-- icon (prop) -->
+
     <v-input
-      v-model="user"
+      v-model="example.model"
+      :type="example.type"
+      :clearable="example.clearable"
+      :state="example.state"
+      icon="b-exclamation-circle"
+      placeholder="Type something..."
+    />
+
+    <!-- icon (slot) -->
+
+    <v-input
+      v-model="example.model"
+      :type="example.type"
+      :clearable="example.clearable"
+      :state="example.state"
+      icon="b-exclamation-circle"
+      placeholder="Type something..."
+    >
+      <template #icon>
+        <v-icon
+          name="b-exclamation-circle"
+          class="absolute h-6 w-6 text-gray-400 dark:text-gray-400 ml-2 mr-2"
+        ></v-icon>
+      </template>
+    </v-input>
+  </div>
+
+  <p class="my-6">Styled inputs</p>
+
+  <!-- underlined -->
+
+  <div class="flex gap-x-10">
+    <v-input
+      v-model="example.model"
+      base="input-underline"
       :type="example.type"
       :clearable="example.clearable"
       :state="example.state"
       placeholder="Type something..."
     />
 
-    <p class="my-6">Input with icon</p>
+    <!-- rounded -->
 
-    <div class="flex gap-x-10">
-  
-      <!-- icon (prop) -->
-  
-      <v-input
-        v-model="example.model"
-        :type="example.type"
-        :clearable="example.clearable"
-        :state="example.state"
-        icon="b-exclamation-circle"
-        placeholder="Type something..."
-      />
-  
-      <!-- icon (slot) -->
-  
-      <v-input
-        v-model="example.model"
-        :type="example.type"
-        :clearable="example.clearable"
-        :state="example.state"
-        icon="b-exclamation-circle"
-        placeholder="Type something..."
-      >
-        <template #icon>
-          <v-icon
-            name="b-exclamation-circle"
-            class="absolute h-6 w-6 text-gray-400 dark:text-gray-400 ml-2 mr-2"
-          ></v-icon>
-        </template>
-      </v-input>
-    </div>
-
-    <p class="my-6">Styled inputs</p>
-
-    <!-- underlined -->
-
-    <div class="flex gap-x-10">
-      <v-input
-        v-model="example.model"
-        name="input-underline"
-        :type="example.type"
-        :clearable="example.clearable"
-        :state="example.state"
-        placeholder="Type something..."
-      />
-
-      <!-- rounded -->
-
-      <v-input
-        v-model="example.model"
-        name="input-rounded"
-        :type="example.type"
-        :clearable="example.clearable"
-        :state="example.state"
-        placeholder="Type something..."
-      />
-    </div>
+    <v-input
+      v-model="example.model"
+      base="input-rounded"
+      :type="example.type"
+      :clearable="example.clearable"
+      :state="example.state"
+      placeholder="Type something..."
+    />
+  </div>
   <!-- CUT START -->
-  <v-tabs name="tabs-material" class="mt-10">
+  <v-tabs base="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="mb-2 mt-5">
         <label for="model" class="font-semibold">v-model:</label>
@@ -144,7 +143,7 @@
 <script>
 import { ref, reactive, computed } from "vue";
 
-import useValidateRef from "../../composition/use-validate-ref"
+import useValidateRef from "../../composition/use-validate-ref";
 
 export default {
   setup() {
@@ -161,19 +160,23 @@ export default {
       numeric: true,
       // alphanumeric: true,
       required: true,
-      passwordMin: () => { return true },
+      passwordMin: () => {
+        return true;
+      },
       // email: true,
-    })
+    },
+    "model");
+    console.log(user)
     let messages = {
       numeric: "numeric",
       required: "required",
-    }
-    console.log(user)
+    };
 
     let showMessages = computed(() => {
-      let messages = Object.keys(messages).filter((message) => user.value.status.value[message] === false)
-    })
-    console.log(showMessages)
+      let messages = Object.keys(messages).filter(
+        (message) => user.value.status.value[message] === false
+      );
+    });
 
     let events = ref([]);
 

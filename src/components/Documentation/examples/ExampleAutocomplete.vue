@@ -1,6 +1,6 @@
 <template>
     <v-autocomplete
-      v-model="user"
+      v-model="example.model"
       v-model:input-value="example.inputValue"
       :items="example.items"
       :is-loading="example.isLoading"
@@ -15,11 +15,11 @@
       class="w-[420px]"
     ></v-autocomplete>
   <!-- CUT START -->
-  <v-tabs name="tabs-material" class="mt-10">
+  <v-tabs base="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="mb-2 mt-5">
         <label for="model" class="font-semibold">v-model:</label>
-        <v-input type="text" id="model" v-model="user.model"></v-input>
+        <v-input type="text" id="model" v-model="example.model"></v-input>
       </div>
       <!-- no loader -->
       <!-- transition -->
@@ -82,12 +82,8 @@
 import { ref, reactive, watch, toRef, computed } from "vue";
 import { states } from "../../../const";
 
-import useValidateRef from "../../composition/use-validate-ref"
-// import vForm from "../../vForm.vue"
-
 export default {
   components: {
-    // vForm,
   },
   setup() {
     let example = reactive({
@@ -99,17 +95,6 @@ export default {
       transition: "fade",
       state: "",
     });
-
-    let user = useValidateRef("", {
-      minLength: 6,
-    })
-
-    // setTimeout(() => {
-    //   console.log(user.value.model)
-    // }, 5000)
-    // validateRef
-    // :validate
-    // v-model:validate
 
     let query = (q) => {
       if (q === "") return;
@@ -144,7 +129,6 @@ export default {
       query,
       events,
       handleExampleEvents,
-      user,
     };
   },
 };

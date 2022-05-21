@@ -40,7 +40,7 @@
 
   <v-dropdown
     v-bind="example"
-    name="dropdown-relaxed"
+    base="dropdown-relaxed"
     @state:opened="events.unshift({ ev: 'state:opened', data: $event })"
     @state:closed="events.unshift({ ev: 'state:closed', data: $event })"
   >
@@ -74,7 +74,7 @@
     </v-card>
   </v-dropdown>
 <!-- CUT START -->
-  <v-tabs name="tabs-material" class="mt-10">
+  <v-tabs base="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="mb-2 mt-5">
         <label for="placement">placement:</label>

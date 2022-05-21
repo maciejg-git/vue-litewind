@@ -8,29 +8,26 @@ let getComponentClasses = (props, p, el, element) => {
       c = props[p].split(" ").map((variant) => {
         let [v, c] = variant.split(":");
         if (c && v !== props.variant) return;
-        return [props.name, element, c || v].filter(Boolean).join("--");
+        return [props.base, element, c || v].filter(Boolean).join("--");
       });
     }
     // get base element classes
-    c.push([props.name, element].filter(Boolean).join("--"));
-    return [el && el.fixed, ...c, el && el.prop && el.prop.value].filter(Boolean);
+    c.push([props.base, element].filter(Boolean).join("--"));
+    return [el && el.fixed, ...c, el && el.prop && el.prop.value].filter(
+      Boolean
+    );
   });
 };
 
 let getComponentStates = (props, el, element) => {
   let state = el && el.states;
-  if (!state || !state.length) return
-    return computed(() => {
-      return state.reduce((acc, i) => {
-        acc[i] = [props.name, element, i + "-state"].filter(Boolean).join("--");
-        return acc;
-      }, {})
-      // let c = {};
-      // for (let s of state) {
-      //   c[s] = [props.name, element, s + "-state"].filter(Boolean).join("--");
-      // }
-      // return c;
-    });
+  if (!state || !state.length) return;
+  return computed(() => {
+    return state.reduce((acc, i) => {
+      acc[i] = [props.base, element, i + "-state"].filter(Boolean).join("--");
+      return acc;
+    }, {});
+  });
 };
 
 export default function useStyles(name, props, elements) {
@@ -58,7 +55,7 @@ export default function useStyles(name, props, elements) {
       variants[el] = computed(() => {
         let c = {};
         for (let v of variant) {
-          c[v] = [props.name, element, v].filter(Boolean).join("--");
+          c[v] = [props.base, element, v].filter(Boolean).join("--");
         }
         return c;
       });

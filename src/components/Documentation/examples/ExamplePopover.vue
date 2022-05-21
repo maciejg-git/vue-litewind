@@ -35,7 +35,7 @@
 
   <p class="my-4">Tooltip popover</p>
 
-  <v-popover v-bind="example" title="Header" name="popover-plain">
+  <v-popover v-bind="example" title="Header" base="popover-plain">
     <template #reference="{ reference, onTrigger }">
       <v-button :ref="reference" v-on="onTrigger">
         Show tooltip popover
@@ -53,7 +53,7 @@
     </div>
   </v-popover>
 <!-- CUT START -->
-  <v-tabs name="tabs-material" class="mt-10">
+  <v-tabs base="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="mb-2 mt-5">
         <label for="placement">placement:</label>

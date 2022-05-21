@@ -35,7 +35,7 @@ import { sharedStyleProps, sharedFormProps } from "../shared-props";
 
 export default {
   props: {
-    modelValue: { type: [String, Number, Array, Boolean], default: undefined },
+    modelValue: { type: [String, Number, Array, Boolean, Object], default: undefined },
     options: { type: Array, default: undefined },
     styleSelect: { type: [String, Array], default: "" },
     styleIcon: { type: [String, Array], default: "" },

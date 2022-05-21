@@ -35,7 +35,7 @@
     class="fixed top-0 left-0 w-full z-50"
   ></v-progress>
   <!-- CUT START -->
-  <v-tabs name="tabs-material" class="mt-10">
+  <v-tabs base="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="mb-2 mt-5">
         <label for="value">value:</label>

@@ -1,59 +1,55 @@
 <template>
   <div class="my-5">
-    <v-input v-model="nameModel" type="text" :state="nameState()" class="mr-4" />
+    <v-input v-model="username" type="text" class="mr-4" />
 
     <v-form-text
-      :state="nameState()"
+        :status=username
       :inline="example.inline"
       :visible-states="example.visibleStates"
       :messages="messages"
     >
       <template #prepend-message>
         <v-icon
-          :icon-type="nameState()"
           class="mr-2"
         />
       </template>
     </v-form-text>
   </div>
 
-  <div class="mt-5">
-    <div v-for="l in languages" class="flex items-center my-2">
-      <v-checkbox
-        v-model="languagesModel"
-        :value="l"
-        :state="languagesState()"
-        :id="'language-' + l"
-      />
-      <label :for="'language-' + l" class="ml-3">
-        {{ l }}
-      </label>
-    </div>
-  </div>
+  <!-- <div class="mt-5"> -->
+  <!--   <div v-for="l in languages" class="flex items-center my-2"> -->
+  <!--     <v-checkbox -->
+  <!--       :value="l" -->
+  <!--       :id="'language-' + l" -->
+  <!--     /> -->
+  <!--     <label :for="'language-' + l" class="ml-3"> -->
+  <!--       {{ l }} -->
+  <!--     </label> -->
+  <!--   </div> -->
+  <!-- </div> -->
+  <!--  -->
+  <!-- <v-form-text -->
+  <!--   :visible-states="example.visibleStates" -->
+  <!-- > -->
+  <!--   <v-icon -->
+  <!--     :icon-type="languagesState()" -->
+  <!--     class="mr-2" -->
+  <!--   /> -->
+  <!--   Please select at least 3 languages. -->
+  <!-- </v-form-text> -->
+  <!--  -->
+  <!-- <v-button @click="validate()" style-button="" class="mt-5">Send</v-button> -->
+  <!--  -->
+  <!-- <v-button @click="reset()" name="button-plain" class="mt-5 ml-4"> -->
+  <!--   <span class="font-semibold">Reset</span> -->
+  <!-- </v-button> -->
 
-  <v-form-text
-    :state="languagesState()"
-    :visible-states="example.visibleStates"
-  >
-    <v-icon
-      :icon-type="languagesState()"
-      class="mr-2"
-    />
-    Please select at least 3 languages.
-  </v-form-text>
-
-  <v-button @click="validate()" style-button="" class="mt-5">Send</v-button>
-
-  <v-button @click="reset()" name="button-plain" class="mt-5 ml-4">
-    <span class="font-semibold">Reset</span>
-  </v-button>
-
-  <div class="mt-5">
-    <span class="font-semibold">Languages:</span>
-    {{ languagesModel }}
-  </div>
+  <!-- <div class="mt-5"> -->
+  <!--   <span class="font-semibold">Languages:</span> -->
+  <!--   {{ languagesModel }} -->
+  <!-- </div> -->
 <!-- CUT START -->
-  <v-tabs name="tabs-material" class="mt-5">
+  <v-tabs base="tabs-material" class="mt-5">
     <v-tab name="Props">
       <div class="mt-5">
         <div class="mb-2">
@@ -80,6 +76,7 @@
 
 <script>
 import { ref, reactive } from "vue";
+import useValidateRef from "../../composition/use-validate-ref"
 
 export default {
   setup() {
@@ -92,63 +89,38 @@ export default {
       "japanese",
     ]);
 
+    // let messages = {
+    //   valid: "OK",
+    //   invalid: "This field cannot be empty",
+    //   default: "Username",
+    // };
     let messages = {
-      valid: "OK",
-      invalid: "This field cannot be empty",
-      default: "Username",
+      numeric: "numeric",
+      required: "required",
+      minLength: "min length"
     };
+
+    let username = useValidateRef("", {
+      minLength: 6,
+      // alpha: true,
+      numeric: true,
+      // alphanumeric: true,
+      required: true,
+      passwordMin: () => {
+        return true;
+      },
+    })
 
     let example = reactive({
       inline: false,
       visibleStates: "default,invalid,valid",
     });
 
-    let nameModel = ref("");
-    let languagesModel = ref([]);
-
-    let nameValidated = ref(false);
-    let languagesValidated = ref(false);
-
-    let languagesState = () => {
-      return languagesValidated.value
-        ? languagesModel.value.length >= 3
-          ? "valid"
-          : "invalid"
-        : "";
-    };
-
-    let nameState = () => {
-      return nameValidated.value
-        ? nameModel.value.length > 0
-          ? "valid"
-          : "invalid"
-        : "";
-    };
-
-    let validate = () => {
-      languagesValidated.value = true;
-      nameValidated.value = true;
-    };
-
-    let reset = () => {
-      languagesValidated.value = false;
-      nameValidated.value = false;
-      languagesModel.value = [];
-      nameModel.value = "";
-    };
-
     return {
       example,
       languages,
-      validate,
-      reset,
-      languagesModel,
-      nameModel,
-      languagesValidated,
-      languagesState,
-      nameState,
-      nameValidated,
       messages,
+      username,
     };
   },
 };

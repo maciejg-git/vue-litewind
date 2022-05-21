@@ -4,7 +4,7 @@
     :center="example.center"
     :right="example.right"
     :transition="example.transition"
-    :name="example.name"
+    :base="example.base"
     @input:changed-tab="
       events.unshift({ ev: 'input:changed-tab', data: $event })
     "
@@ -34,7 +34,7 @@
   <div class="flex justify-between items-center">
     <div class="mt-5">
       <label for="style">Tabs style:</label>
-      <v-select id="style" v-model="example.name">
+      <v-select id="style" v-model="example.base">
         <option value="tabs">browser</option>
         <option value="tabs-material">material</option>
         <option value="tabs-rounded">rounded</option>
@@ -42,7 +42,7 @@
     </div>
     <v-button @click="addTab">Add tab</v-button>
   </div>
-  <v-tabs name="tabs-material" class="mt-10">
+  <v-tabs base="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="mb-2 mt-5">
         <label for="fill">fill:</label>
@@ -108,7 +108,7 @@ export default {
       center: false,
       right: false,
       transition: "fade",
-      name: "tabs",
+      base: "tabs",
     });
 
     let tabs = ref([]);

@@ -32,7 +32,7 @@ export let popperProps = [
 export let styleProps = (name) => {
   return [
     {
-      prop: "name",
+      prop: "base",
       type: ["String"],
       default: name,
       description: "Name of the component",

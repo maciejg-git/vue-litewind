@@ -10,7 +10,7 @@
         <a href="/documentation/installation">Docs</a>
       </div>
     </div>
-    <v-button name="button-plain" class="mr-2" @click="setDarkMode">
+    <v-button base="button-plain" class="mr-2" @click="setDarkMode">
       <v-icon
         :name="darkMode ? 'b-sun' : 'b-moon'"
         class="v-icon--md text-dark-800 dark:text-dark-400"

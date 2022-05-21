@@ -7,18 +7,18 @@
           <li><div class="py-2">Home</div></li>
           <li><div class="py-2">About</div></li>
           <li>
-            <v-dropdown trigger="hover" :offset-y="2" name="dropdown-flat">
+            <v-dropdown trigger="hover" :offset-y="2" base="dropdown-flat">
               <template #reference="{ reference, onTrigger }">
                 <v-button
                   :ref="reference"
                   v-on="onTrigger"
-                  name="button-plain"
+                  base="button-plain"
                   class="py-2"
                 >
                   Dropdown
                 </v-button>
               </template>
-              <v-card width="420px" name="card-flat">
+              <v-card width="420px" base="card-flat">
                 <v-dropdown-menu-item tag="button">
                   <header class="font-semibold">Get started</header>
                   <span class="text-sm">

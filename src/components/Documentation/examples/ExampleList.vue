@@ -1,5 +1,5 @@
 <template>
-  <v-list width="500px" :tag="example.tag" :name="example.name">
+  <v-list width="500px" :tag="example.tag" :base="example.base">
     <v-list-item :active="example.active1">
       <div class="font-semibold">
         {{ data[0].first_name }} {{ data[0].last_name }}
@@ -68,12 +68,12 @@
 <!-- CUT START -->
   <div class="mt-5">
     <label for="style">List style:</label>
-    <v-select id="style" v-model="example.name">
+    <v-select id="style" v-model="example.base">
       <option value="list">bootstrap</option>
       <option value="list-material">material</option>
     </v-select>
   </div>
-  <v-tabs name="tabs-material" class="mt-10">
+  <v-tabs base="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="mb-2 mt-5">
         <label for="tag">tag:</label>
@@ -102,7 +102,7 @@ export default {
       active3: false,
       active4: false,
       active5: false,
-      name: "list",
+      base: "list",
     });
 
     return {

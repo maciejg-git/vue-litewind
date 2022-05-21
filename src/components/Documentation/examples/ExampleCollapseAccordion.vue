@@ -43,12 +43,12 @@
   <p class="mt-8 mb-4">Reference slot accordion</p>
 
   <v-accordion class="my-2">
-    <v-card name="card-flat">
+    <v-card base="card-flat">
       <v-collapse>
         <template #reference="{ isOpen, onTrigger }">
           <v-button-collapse
             block
-            name="button-plain"
+            base="button-plain"
             class="p-3"
             :switch="isOpen"
             v-on="onTrigger"
@@ -62,12 +62,12 @@
       </v-collapse>
     </v-card>
 
-    <v-card name="card-flat" class="my-2">
+    <v-card base="card-flat" class="my-2">
       <v-collapse>
         <template #reference="{ isOpen, onTrigger }">
           <v-button-collapse
             block
-            name="button-plain"
+            base="button-plain"
             class="p-3"
             :switch="isOpen"
             v-on="onTrigger"
@@ -81,12 +81,12 @@
       </v-collapse>
     </v-card>
 
-    <v-card name="card-flat" class="my-2">
+    <v-card base="card-flat" class="my-2">
       <v-collapse>
         <template #reference="{ isOpen, onTrigger }">
           <v-button-collapse
             block
-            name="button-plain"
+            base="button-plain"
             class="p-3"
             :switch="isOpen"
             v-on="onTrigger"
