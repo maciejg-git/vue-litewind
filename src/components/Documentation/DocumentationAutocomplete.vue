@@ -23,7 +23,7 @@
   <section>
     <h4>Example - simple autocomplete</h4>
     <div class="example">
-      <!-- <example-autocomplete-simple></example-autocomplete-simple> -->
+      <example-autocomplete-simple></example-autocomplete-simple>
     </div>
     <v-code :code="ExampleAutocompleteSimpleCode" template language="html"></v-code>
     <v-code :code="ExampleAutocompleteSimpleCode" script language="js"></v-code>
@@ -41,7 +41,7 @@
   <section>
     <h4>Example - customized items</h4>
     <div class="example">
-      <!-- <example-autocomplete-slot></example-autocomplete-slot> -->
+      <example-autocomplete-slot></example-autocomplete-slot>
     </div>
     <v-code :code="ExampleAutocompleteSlotCode" template language="html"></v-code>
     <v-code :code="ExampleAutocompleteSlotCode" script language="js"></v-code>

@@ -41,6 +41,7 @@ import DocumentationDivider from "../components/Documentation/DocumentationDivid
 import DocumentationTooltip from "../components/Documentation/DocumentationTooltip.vue";
 
 import DocumentationStyling from "../components/Documentation/DocumentationStyling.vue";
+import DocumentationFormValidation from "../components/Documentation/DocumentationFormValidation.vue";
 
 const routes = [
   {
@@ -186,6 +187,10 @@ const routes = [
       {
         path: "autocomplete",
         component: DocumentationAutocomplete,
+      },
+      {
+        path: "form-validation",
+        component: DocumentationFormValidation,
       },
 
       // directives

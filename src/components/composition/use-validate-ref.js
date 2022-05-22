@@ -7,15 +7,31 @@ let defaultStatus = {
   touched: false,
   dirty: false,
   valid: true,
+  isValidated() {
+    return this.dirty && this.touched
+  }
 };
 
-let formStatus = ref({});
+let formStatus = {};
+
+let getFormStatus = (form) => {
+  if (!form) return
+  if (formStatus[form]) return formStatus[form]
+  formStatus[form] = ref({ ...defaultStatus });
+  return formStatus[form]
+}
+
+let updateFormStatus = (status, { touched, dirty, valid }) => {
+  status.value.touched = status.value.touched || touched;
+  status.value.dirty = status.value.dirty || dirty;
+  status.value.valid = status.value.valid && valid;
+}
 
 let getValidateStatus = (v, { validators, status, model, formStatus }) => {
   let newStatus = {
+    ...defaultStatus,
     touched: status.value.touched,
     dirty: (v && !!v.length) || status.value.dirty,
-    valid: true,
   };
 
   v = v === undefined || v === null ? model.value : v;
@@ -29,23 +45,19 @@ let getValidateStatus = (v, { validators, status, model, formStatus }) => {
     newStatus.valid = newStatus.valid && newStatus[key];
   }
 
-  formStatus.touched = formStatus.touched || newStatus.touched;
-  formStatus.dirty = formStatus.dirty || newStatus.dirty;
-  formStatus.valid = formStatus.valid && newStatus.valid;
+  updateFormStatus(formStatus, newStatus)
 
   return newStatus;
 };
 
 export default function useValidateRef(model, validators, form) {
-  if (form) formStatus.value[form] = { ...defaultStatus };
-
   let m = {
     _isValidateRef: true,
     _isValid() {
       return this.status.value.valid;
     },
     _isValidated() {
-      return this._isDirty() && this._isTouched();
+      return this.status.value.isValidated();
     },
     _isTouched() {
       return this.status.value.touched;
@@ -56,7 +68,7 @@ export default function useValidateRef(model, validators, form) {
     model: ref(model),
     validators: validators || {},
     status: ref({ ...defaultStatus }),
-    formStatus: formStatus.value[form],
+    formStatus: getFormStatus(form),
     touch() {
       this.status.value.touched = true;
       this.status.value = getValidateStatus(null, this);

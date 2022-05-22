@@ -1,28 +1,37 @@
 <template>
   <transition name="fade">
     <div
-      v-if="visible"
       :class="[
         classes.formText.value,
-        states.formText.value && states.formText.value[state],
+        states.formText.value && states.formText.value.invalid,
       ]"
     >
       <slot name="default" :state="state">
-        <slot name="prepend-message" :state="state"></slot>
-        {{ message }}
+        <transition-group name="fade">
+          <div v-for="m in messages" :key="m">
+            <slot name="prepend-message"></slot>
+            <slot name="message" :message="m">
+              {{ m }}
+            </slot>
+          </div>
+        </transition-group>
       </slot>
     </div>
   </transition>
 </template>
 
 <script>
+// vue
 import { computed } from "vue";
+// composition
 import useStyles from "./composition/use-styles";
-import { sharedStyleProps } from "../shared-props"
+// props
+import { sharedStyleProps } from "../shared-props";
 
 export default {
   props: {
     state: { type: [String, Boolean], default: "" },
+    status: { type: Object, default: {} },
     inline: { type: Boolean, default: false },
     visibleStates: { type: String, default: "default,valid,invalid" },
     messages: { type: Object, default: {} },
@@ -35,7 +44,7 @@ export default {
         name: "form-text",
         fixed: "fixed-form-text",
         states: ["valid", "invalid", "disabled"],
-        prop: computed(() => (props.inline ? "inline-flex" : "flex")),
+        prop: computed(() => (props.inline ? "inline-flex" : "flex flex-col")),
       },
     });
 
@@ -55,17 +64,22 @@ export default {
         .includes(state.value === "" ? "default" : state.value);
     });
 
-    let message = computed(() => {
-      let s = props.state || "default"
-      return props.messages[s] || ""
-    })
+    let messages = computed(() => {
+      let status = props.status
+      if (!status.value.isValidated()) return {};
+      return Object.fromEntries(
+        Object.entries(props.messages).filter(
+          (m) => status.value[m[0]] === false
+        )
+      );
+    });
 
     return {
       classes,
       states,
       state,
       visible,
-      message,
+      messages,
     };
   },
 };
@@ -73,7 +87,7 @@ export default {
 
 <style scoped lang="postcss">
 .fixed-form-text {
-  @apply items-center
+  /* @apply items-center; */
 }
 
 .fade-enter-active,

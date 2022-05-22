@@ -3,20 +3,8 @@
 
   <p class="my-6">Simple input</p>
 
-  <pre>
-      <div>
-          <code v-html="JSON.stringify(user.model.value, null, '&#9;')"></code>
-      </div>
-        <div>
-          <code v-html="JSON.stringify(user.validators, null, '&#9;')"></code>
-        </div>
-        <div>
-          <code v-html="JSON.stringify(user.status.value, null, '&#9;')"></code>
-        </div>
-      </pre>
-
   <v-input
-    v-model="user"
+    v-model="example.model"
     :type="example.type"
     :clearable="example.clearable"
     :state="example.state"
@@ -143,8 +131,6 @@
 <script>
 import { ref, reactive, computed } from "vue";
 
-import useValidateRef from "../../composition/use-validate-ref";
-
 export default {
   setup() {
     let example = reactive({
@@ -154,36 +140,11 @@ export default {
       state: "",
     });
 
-    let user = useValidateRef("", {
-      minLength: 6,
-      // alpha: true,
-      numeric: true,
-      // alphanumeric: true,
-      required: true,
-      passwordMin: () => {
-        return true;
-      },
-      // email: true,
-    },
-    "model");
-    console.log(user)
-    let messages = {
-      numeric: "numeric",
-      required: "required",
-    };
-
-    let showMessages = computed(() => {
-      let messages = Object.keys(messages).filter(
-        (message) => user.value.status.value[message] === false
-      );
-    });
-
     let events = ref([]);
 
     return {
       example,
       events,
-      user,
     };
   },
 };

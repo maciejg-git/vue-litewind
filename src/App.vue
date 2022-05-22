@@ -11,4 +11,7 @@ export default {
 </script>
 
 <style>
+body {
+  @apply h-screen dark:bg-dark-800
+}
 </style>

@@ -77,6 +77,15 @@
             {{ c.label }}
           </router-link>
         </li>
+        <li>
+          <router-link
+            to="/documentation/form-validation"
+            active-class="active"
+            class="transition-all"
+          >
+            Form Validation
+          </router-link>
+        </li>
       </ul>
 
       <!-- directives -->
