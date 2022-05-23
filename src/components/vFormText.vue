@@ -44,40 +44,36 @@ export default {
         name: "form-text",
         fixed: "fixed-form-text",
         states: ["valid", "invalid", "disabled"],
-        prop: computed(() => (props.inline ? "inline-flex" : "flex flex-col")),
+        prop: computed(() =>
+          props.inline ? "inline-flex flex-col" : "flex flex-col"
+        ),
       },
     });
-
-    let state = computed(() =>
-      props.state === true
-        ? "valid"
-        : props.state === false
-        ? "invalid"
-        : props.state === null
-        ? ""
-        : props.state
-    );
 
     let visible = computed(() => {
       return props.visibleStates
         .split(",")
-        .includes(state.value === "" ? "default" : state.value);
+        .includes(props.state === "" ? "default" : props.state);
     });
 
     let messages = computed(() => {
-      let status = props.status
+      let status = props.status;
       if (!status.value.isValidated()) return {};
+
       return Object.fromEntries(
-        Object.entries(props.messages).filter(
-          (m) => status.value[m[0]] === false
-        )
+        Object.entries(props.messages).reduce((pm, m) => {
+          if (status.value[m[0]] === false) {
+            pm.push(m);
+            return pm;
+          }
+          return pm;
+        }, [])
       );
     });
 
     return {
       classes,
       states,
-      state,
       visible,
       messages,
     };

@@ -29,7 +29,7 @@
     <h4>Example accordion</h4>
     <div class="example">
       <p>
-        Turn collapse components to accordion by wrapping them with <code>v-accordion</code>
+        Turn collapse components to accordion by wrapping them with <code class="code-text">v-accordion</code>
         component. In accordion mode only one item can be open at a time.
       </p>
       <example-collapse-accordion></example-collapse-accordion>
@@ -62,7 +62,7 @@ export default {
         type: ["Boolean"],
         default: "undefined",
         description:
-          "Setting v-model to <code>true</code> shows collapsible element, <code>false </code>value hides it",
+          "Setting v-model to <code class='code-text'>true</code> shows collapsible element, <code class='code-text'>false </code>value hides it",
       },
     ]);
 
@@ -76,7 +76,7 @@ export default {
     let components = ref([
       {
         prop: "v-button-collapse",
-        description: "Optional version of <code>v-button</code> that has indicator build in and automatically toggles attached <code>v-model</code> on click. It uses the same props as <code>v-button</code> as well as props of <code>v-chevron</code>. Use <code>v-button-collapse</code> for minimal setup or normal <code>v-button</code> for more customizing options.",
+        description: "Optional version of <code class='code-text'>v-button</code> that has indicator build in and automatically toggles attached <code class='code-text'>v-model</code> on click. It uses the same props as <code class='code-text'>v-button</code> as well as props of <code class='code-text'>v-chevron</code>. Use <code class='code-text'>v-button-collapse</code> for minimal setup or normal <code class='code-text'>v-button</code> for more customizing options.",
       },
     ]);
 

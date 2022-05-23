@@ -24,17 +24,17 @@
     <code class="code-word">Array</code>
     <p>
       v-model is used to return date after selection. v-model can be
-      <code>Array</code>
+      <code class="code-text">Array</code>
       or
-      <code>String</code>
+      <code class="code-text">String</code>
       depending on selection mode. In range mode v-model returns
-      <code>Array</code>
+      <code class="code-text">Array</code>
       of two
-      <code>String</code>
+      <code class="code-text">String</code>
       . In single mode v-model returns
-      <code>String</code>
+      <code class="code-text">String</code>
       . Date is in
-      <code>YYYY-MM-DD</code>
+      <code class="code-text">YYYY-MM-DD</code>
       format.
     </p>
     <div class="example">

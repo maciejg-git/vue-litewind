@@ -25,7 +25,7 @@ pre {
 pre code {
   @apply text-sm whitespace-pre;
 }
-code:not([class]) {
+.code-text {
   @apply text-yellow-700 dark:text-yellow-600 font-semibold text-sm
 }
 .code-word {

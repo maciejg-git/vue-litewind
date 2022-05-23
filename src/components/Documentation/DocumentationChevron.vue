@@ -14,7 +14,7 @@
 
   <section>
     <h4>Notes</h4>
-    <p><code>v-chevron</code> rotates chevron/triangle or any icon depending on switch prop. It is used internally by dropdown, collapse etc</p>
+    <p><code class="code-text">v-chevron</code> rotates chevron/triangle or any icon depending on switch prop. It is used internally by dropdown, collapse etc</p>
   </section>
 
   <section>

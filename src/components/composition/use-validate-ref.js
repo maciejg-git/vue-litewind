@@ -12,6 +12,8 @@ let defaultStatus = {
   }
 };
 
+// shared form status
+
 let formStatus = {};
 
 let getFormStatus = (form) => {
@@ -21,20 +23,19 @@ let getFormStatus = (form) => {
   return formStatus[form]
 }
 
+//  FIX:
 let updateFormStatus = (status, { touched, dirty, valid }) => {
   status.value.touched = status.value.touched || touched;
   status.value.dirty = status.value.dirty || dirty;
   status.value.valid = status.value.valid && valid;
 }
 
-let getValidateStatus = (v, { validators, status, model, formStatus }) => {
+let getValidateStatus = (v, { validators, status, formStatus }) => {
   let newStatus = {
     ...defaultStatus,
     touched: status.value.touched,
     dirty: (v && !!v.length) || status.value.dirty,
   };
-
-  v = v === undefined || v === null ? model.value : v;
 
   for (let [key, value] of Object.entries(validators)) {
     if (globalValidators[key]) {
@@ -71,7 +72,7 @@ export default function useValidateRef(model, validators, form) {
     formStatus: getFormStatus(form),
     touch() {
       this.status.value.touched = true;
-      this.status.value = getValidateStatus(null, this);
+      this.status.value = getValidateStatus(this.model.value, this);
     },
     getValidStatus() {
       return !this._isValidated() ? "" : this._isValid() ? "valid" : "invalid";
@@ -83,7 +84,7 @@ export default function useValidateRef(model, validators, form) {
       return m;
     },
     set(value) {
-      if (isString(value)) m.model.value = value;
+      if (isString(value)) m.model.value = value
       m.status.value = getValidateStatus(value, m);
     },
   });

@@ -27,9 +27,9 @@
     <code class="code-word">Array</code>
     <p>
       Table definition is an optional
-      <code>Array</code>
+      <code class="code-text">Array</code>
       of
-      <code>Objects</code>
+      <code class="code-text">Objects</code>
       that defines columns of the table. Each object represents one column, has
       one required, unique key property and number of optional properties. If
       definition is not provided component makes one using first record of data.
@@ -136,7 +136,7 @@ export default {
         prop: "definition",
         type: ["Array"],
         default: "undefined",
-        description: `Table definition is an optional <code>Array</code> of <code>Objects</code> that defines look and behavior of the table.`,
+        description: `Table definition is an optional <code class='code-text'>Array</code> of <code class='code-text'>Objects</code> that defines look and behavior of the table.`,
       },
       {
         prop: "primary-key",
@@ -302,7 +302,7 @@ export default {
         type: ["Boolean"],
         default: "false",
         description:
-          "enables sorting of the column. By default records are sorted as strings and using locale prop to compare values. Number and dates are sorted as numbers and dates. <code>null</code>,<code>undefined</code> and <code>NaN</code> values are always first when sorting in ascending direction",
+          "enables sorting of the column. By default records are sorted as strings and using locale prop to compare values. Number and dates are sorted as numbers and dates. <code class='code-text'>null</code>,<code class='code-text'>undefined</code> and <code class='code-text'>NaN</code> values are always first when sorting in ascending direction",
       },
       {
         prop: "filterable",
@@ -322,14 +322,14 @@ export default {
         type: ["Function"],
         default: "undefined",
         description:
-          "function that should return string of classes to apply to each cell in column. Takes 3 arguments: <code>key</code>, <code>value</code> and <code>item</code>",
+          "function that should return string of classes to apply to each cell in column. Takes 3 arguments: <code class='code-text'>key</code>, <code class='code-text'>value</code> and <code class='code-text'>item</code>",
       },
       {
         prop: "f",
         type: ["Function"],
         default: "undefined",
         description:
-          "if defined this function is called for every cell in this column and the return value is set as content of the cell. Takes 3 arguments: <code>key</code>, <code>value</code> and <code>item</code>. This function cannot be used to add html to cell content",
+          "if defined this function is called for every cell in this column and the return value is set as content of the cell. Takes 3 arguments: <code class='code-text'>key</code>, <code class='code-text'>value</code> and <code class='code-text'>item</code>. This function cannot be used to add html to cell content",
       },
       {
         prop: "filterByFunction",

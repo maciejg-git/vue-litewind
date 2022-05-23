@@ -43,7 +43,7 @@
 
   <section id="example">
     <h4>Example - context dropdown</h4>
-    <p>To make context dropdown skip reference slot and use <code>showContextDropdown</code> function to show menu. Context data is available in slot props of default slot:</p>
+    <p>To make context dropdown skip reference slot and use <code class="code-text">showContextDropdown</code> function to show menu. Context data is available in slot props of default slot:</p>
     <div class="example">
       <example-dropdown-context></example-dropdown-context>
     </div>
@@ -136,7 +136,7 @@ export default {
       },
       {
         prop: "v-button-dropdown",
-        description: "Optional version of <code>v-button</code> that has reactive indicator build in. It uses the same props as normal <code>v-button</code> as well as triangle and icon props of <code>v-chevron</code>",
+        description: "Optional version of <code class=code-text'>v-button</code> that has reactive indicator build in. It uses the same props as normal <code class='code-text'>v-button</code> as well as triangle and icon props of <code class='code-text'>v-chevron</code>",
       },
     ]);
 

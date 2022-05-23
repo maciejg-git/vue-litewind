@@ -56,7 +56,7 @@ export default {
         type: ["Number"],
         default: "0",
         description:
-          "Delay after which alert is closed (<code class='code-word'>v-model</code> is set to <code>false</code>)",
+          "Delay after which alert is closed (<code class='code-word'>v-model</code> is set to <code class='code-text'>false</code>)",
       },
       {
         prop: "icon",

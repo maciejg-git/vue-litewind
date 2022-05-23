@@ -11,7 +11,7 @@
   <section>
     <h5>Icons source</h5>
     <p>
-      <code>v-icon</code>
+      <code class="code-text">v-icon</code>
       uses icon components from this repo. Check documentation on how to
       install, import and use them.
     </p>
@@ -34,7 +34,7 @@
       example to define easy to remember aliases for frequently used icons,
       changing icons application wide, define icons for various states and bind
       with states of components etc. Those icons have
-      <code>icon--[type]-type</code>
+      <code class="code-text">icon--[type]-type</code>
       class added by default.
     </p>
 <v-code language="js">

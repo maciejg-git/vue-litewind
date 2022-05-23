@@ -64,9 +64,9 @@ module.exports = {
 
     <p>
       Import two css files. 
-      Copy <code>components.css</code> from <code>'node_modules/vue-wind/dist/'</code> to the directory of
+      Copy <code class="code-text">components.css</code> from <code class="code-text">'node_modules/vue-wind/dist/'</code> to the directory of
       your application and import it. You can edit this file to customize look of
-      components. Import <code>style.css</code> file directly as in example:
+      components. Import <code class="code-text">style.css</code> file directly as in example:
     </p>
 
     <v-code language="javascript">
@@ -114,10 +114,10 @@ app.use(selectPlugin); `}}
       To customize style of components use following:
       <ul class="list-disc list-inside">
         <li>
-      <code>tailwind.config.js</code> file that have definitions for colors,
+      <code class="code-text">tailwind.config.js</code> file that have definitions for colors,
         </li>
         <li>
-      <code>style.css</code> file that contains base classes and variants for components,
+      <code class="code-text">style.css</code> file that contains base classes and variants for components,
         </li>
         <li>
       and following component props that allow selection of base and variant classes per component:
@@ -125,10 +125,10 @@ app.use(selectPlugin); `}}
       </ul>
       <ul>
         <li class="my-2">
-          <code>base</code> - changes base name for styling. The default value is component name ("button", "dropdown", "modal" etc...). This can be useful to make new version of appearance with different set of variants.
+          <code class="code-text">base</code> - changes base name for styling. The default value is component name ("button", "dropdown", "modal" etc...). This can be useful to make new version of appearance with different set of variants.
         </li>
         <li class="my-2">
-          <code>style-[element]</code> - adds list of variants to elements of component. Variant can be applied conditionaly by putting "identifier:" in front of any variant. Active conditional variant can be chosen with <code>variant</code> prop set to identifier. Identifier can be any word and does not have any relation to css.
+          <code class="code-text">style-[element]</code> - adds list of variants to elements of component. Variant can be applied conditionaly by putting "identifier:" in front of any variant. Active conditional variant can be chosen with <code class="code-text">variant</code> prop set to identifier. Identifier can be any word and does not have any relation to css.
         </li>
       </ul>
       </p>
