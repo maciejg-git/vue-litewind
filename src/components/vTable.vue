@@ -107,7 +107,7 @@ import {
   isRegexp,
   undefNullToStr,
 } from "../tools.js";
-import { sharedStyleProps } from "../shared-props"
+import { sharedStyleProps } from "../shared-props";
 
 export default {
   props: {
@@ -197,8 +197,8 @@ export default {
 
     // compare function for sort
     let itemCompare = (a, b, key, localeCompare) => {
-      a = getKeyValue(a, key, !key.sortByFunction)
-      b = getKeyValue(b, key, !key.sortByFunction)
+      a = getKeyValue(a, key, !key.sortByFunction);
+      b = getKeyValue(b, key, !key.sortByFunction);
       a = undefNullToStr(a);
       b = undefNullToStr(b);
 
@@ -281,7 +281,7 @@ export default {
     // watch itemsPerPage and reset current page
     watch(
       () => props.itemsPerPage,
-      () => emit("update:page", 1),
+      () => emit("update:page", 1)
     );
 
     // TABLE DEFINITION
@@ -352,7 +352,9 @@ export default {
     });
 
     // reset selection if selection mode or page changes
-    watch([() => props.selectionMode, itemsPagination], resetSelection);
+    watch([() => props.selectionMode, itemsPagination, sortKey, sortAsc], () =>
+      resetSelection()
+    );
 
     // HANDLE TEMPLATE EVENTS
 

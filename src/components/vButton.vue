@@ -30,7 +30,7 @@ export default {
       button: {
         fixed: "fixed-button",
         prop: computed(() => {
-          return [props.block ? "w-full" : ""];
+          return [props.block ? "flex" : "inline-flex"];
         }),
         states: ["disabled"],
       },
@@ -50,6 +50,6 @@ export default {
 
 <style scoped lang="postcss">
 .fixed-button {
-  @apply inline-flex justify-center items-center;
+  @apply justify-center items-center;
 }
 </style>

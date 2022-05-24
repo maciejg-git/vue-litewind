@@ -1,5 +1,5 @@
 <template>
-  <div class="relative inline-flex items-center">
+  <div class="relative items-center" :class="wrapperClasses">
     <slot name="icon">
       <v-icon
         v-if="icon"
@@ -13,7 +13,6 @@
       v-model="localModel"
       type="text"
       v-bind="$attrs"
-      class="grow"
       :class="getInputClasses()"
       @blur="handleBlur"
     />
@@ -54,8 +53,9 @@ export default {
   props: {
     modelValue: {
       type: [String, Number, Boolean, Array, Object],
-      default: undefined,
+      default: "",
     },
+    block: { type: Boolean, default: false },
     styleInput: { type: [String, Array], default: "" },
     styleIcon: { type: [String, Array], default: "" },
     styleClearButton: { type: [String, Array], default: "" },
@@ -74,6 +74,10 @@ export default {
         name: "clear-button",
       },
       icon: null,
+    });
+
+    let wrapperClasses = computed(() => {
+      return props.block ? "flex" : "inline-flex";
     });
 
     let localModel = useLocalModel(props, emit);
@@ -106,6 +110,7 @@ export default {
 
     return {
       classes,
+      wrapperClasses,
       states,
       variants,
       getInputClasses,

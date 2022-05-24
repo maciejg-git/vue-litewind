@@ -346,7 +346,7 @@
     px-2
     pr-6
     border-secondary-300
-    dark:border-dark-700
+    dark:border-dark-700 !important
 }
     .table--cell--bordered {
       @apply
@@ -898,8 +898,6 @@
 
 .input-underline {
   @apply
-    block
-    w-full
     border-0 
     border-b-2 
     focus:ring-0 

@@ -4,6 +4,7 @@
     v-bind="$attrs"
     type="checkbox"
     :class="getCheckBoxClasses()"
+      @blur="handleBlur"
   />
 </template>
 
@@ -18,7 +19,7 @@ import { sharedStyleProps, sharedFormProps } from "../shared-props";
 
 export default {
   props: {
-    modelValue: { type: [Array, Boolean], default: undefined },
+    modelValue: { type: [Array, Boolean, Object], default: undefined },
     styleCheckbox: { type: [String, Array], default: "" },
     ...sharedFormProps(null),
     ...sharedStyleProps("checkbox"),
@@ -42,15 +43,17 @@ export default {
       ];
     };
 
-    let state = computed(() =>
-      props.state === true
-        ? "valid"
-        : props.state === false
-        ? "invalid"
-        : props.state === null
-        ? ""
-        : props.state
-    );
+    let state = computed(() => {
+      if (props.modelValue._isValidateRef) {
+        return props.modelValue.getValidStatus()
+      }
+    });
+
+    let handleBlur = () => {
+      if (props.modelValue._isValidateRef) {
+        props.modelValue.touch();
+      }
+    };
 
     return {
       classes,
@@ -58,6 +61,7 @@ export default {
       getCheckBoxClasses,
       state,
       localModel,
+      handleBlur,
     };
   },
 };

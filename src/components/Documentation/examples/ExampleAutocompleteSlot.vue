@@ -13,7 +13,13 @@
   >
     <template #item="{ text, item, value, inputValue, highlightMatch }">
       <div class="flex justify-between">
-        <div v-html="item['first_name'] + ' ' + highlightMatch(item['last_name'], inputValue)"></div>
+        <div
+          v-html="
+            item['first_name'] +
+            ' ' +
+            highlightMatch(item['last_name'], inputValue)
+          "
+        ></div>
         <div class="text-xs">{{ item.department }}</div>
       </div>
       <span class="text-text-400 dark:text-text-400 text-sm font-semibold">
@@ -41,7 +47,9 @@ export default {
       setTimeout(() => {
         example.items = company.filter((e) => {
           return (
-            (e["last_name"] || "").toLowerCase().indexOf((q || "").toLowerCase()) > -1
+            (e["last_name"] || "")
+              .toLowerCase()
+              .indexOf((q || "").toLowerCase()) > -1
           );
         });
         example.isLoading = false;

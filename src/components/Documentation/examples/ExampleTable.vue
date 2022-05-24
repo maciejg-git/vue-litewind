@@ -7,9 +7,29 @@
     @input:selection="handleSelection"
     class="min-w-full"
   >
+    <template #cell:status="{ item }">
+      <v-icon
+        v-if="item.status"
+        name="mdi-checkbox-outline"
+        class="text-success-400 dark:text-success-400"
+      ></v-icon>
+      <v-icon v-else name="mdi-checkbox-blank-outline"></v-icon>
+    </template>
+    <template #cell:department="{ item }">
+      <div class="w-[150px] whitespace-nowrap text-ellipsis overflow-hidden">
+        {{ item.department }}
+      </div>
+    </template>
     <template #cell:edit="{ item }">
       <!-- stop propagation to avoid selecting row -->
-      <v-button style-button="tiny" @click.stop="edit(item)">edit</v-button>
+      <v-button
+        base="button-plain"
+        style-button="tiny"
+        @click.stop="edit(item)"
+        block
+      >
+        <v-icon name="mdi-account-edit"></v-icon>
+      </v-button>
     </template>
     <template #caption>Example caption</template>
   </v-table>
@@ -98,14 +118,14 @@
     primaryButtonClose
     secondaryButtonClose
   >
-    <pre>{{ editModalContent }}</pre>
+    <pre v-html="editModalContent" class="whitespace-pre my-0 ml-4"></pre>
   </v-modal>
 </template>
 
 <script>
 import { ref, reactive } from "vue";
 /* CUT START */
-import data from "../data/data.json";
+import data from "../data/company-complete.json";
 /* CUT END */
 
 export default {
@@ -116,6 +136,10 @@ export default {
         visible: false,
       },
       {
+        key: "status",
+        sortable: true,
+      },
+      {
         key: "first_name",
         sortable: true,
       },
@@ -124,17 +148,16 @@ export default {
         sortable: true,
       },
       {
-        key: "email",
+        key: "department",
+        sortable: true,
+      },
+      {
+        key: "title",
         sortable: true,
       },
       {
         key: "city",
         sortable: true,
-      },
-      {
-        key: "country",
-        sortable: true,
-        class: (k, v) => (v == "ID" ? "bg-red-50" : ""),
       },
       {
         key: "edit",
@@ -161,7 +184,7 @@ export default {
     let editModalContent = ref("");
 
     let edit = (content) => {
-      editModalContent.value = JSON.stringify(content, null, 1);
+      editModalContent.value = JSON.stringify(content, null, 2);
       editModalIsVisible.value = true;
     };
 

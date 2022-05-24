@@ -1,7 +1,13 @@
 <template>
   <div class="flex gap-x-20">
-    <div>
-      <v-input v-model="username" type="text" placeholder="Username" />
+    <div class="basis-1/2">
+      <v-input
+        v-model="username"
+        type="text"
+        placeholder="Username"
+        block
+        class="w-full"
+      />
       <v-form-text
         :status="username.status"
         :messages="messages"
@@ -20,8 +26,14 @@
   <v-divider class="my-10" />
 
   <div class="flex gap-x-20">
-    <div>
-      <v-input v-model="email" type="text" placeholder="Email" />
+    <div class="basis-1/2">
+      <v-input
+        v-model="email"
+        type="text"
+        placeholder="Email"
+        block
+        class="w-full"
+      />
       <v-form-text
         :status="email.status"
         :messages="messages"
@@ -40,8 +52,14 @@
   <v-divider class="my-10" />
 
   <div class="flex gap-x-20">
-    <div>
-      <v-input v-model="password" type="text" placeholder="Password" />
+    <div class="basis-1/2">
+      <v-input
+        v-model="password"
+        type="text"
+        placeholder="Password"
+        block
+        class="w-full"
+      />
       <v-form-text
         :status="password.status"
         :messages="messages"
@@ -54,6 +72,50 @@
       <code v-html="'validators: ' + getStatusString(password.validators)"></code>
       <code v-html="'status: ' + getStatusString(password.status.value, true)"></code>
       <code v-html="'formstatus: ' + getStatusString(password.formStatus.value)"></code>
+    </pre>
+  </div>
+
+  <v-divider class="my-10" />
+
+  <div class="flex gap-x-20">
+    <div class="basis-1/2">
+      <v-select v-model="option" :options="options"></v-select>
+      <v-form-text
+        :status="option.status"
+        :messages="messages"
+        class="absolute"
+      ></v-form-text>
+    </div>
+
+    <pre class="m-0">
+      <code v-html="'model: ' + getStatusString(option.model.value)"></code>
+      <code v-html="'validators: ' + getStatusString(option.validators)"></code>
+      <code v-html="'status: ' + getStatusString(option.status.value, true)"></code>
+      <code v-html="'formstatus: ' + getStatusString(option.formStatus.value)"></code>
+    </pre>
+  </div>
+
+  <v-divider class="my-10" />
+
+  <div class="flex gap-x-20">
+    <div class="basis-1/2">
+      <div v-for="l in languagesData" class="flex items-center my-2">
+        <v-checkbox
+          v-model="languages"
+          :value="l"
+          :id="'language-' + l"
+        ></v-checkbox>
+        <label :for="'language-' + l" class="ml-3">
+          {{ l }}
+        </label>
+      </div>
+    </div>
+
+    <pre class="m-0">
+      <code v-html="'model: ' + getStatusString(languages.model.value)"></code>
+      <code v-html="'validators: ' + getStatusString(languages.validators)"></code>
+      <code v-html="'status: ' + getStatusString(languages.status.value, true)"></code>
+      <code v-html="'formstatus: ' + getStatusString(languages.formStatus.value)"></code>
     </pre>
   </div>
 </template>
@@ -97,12 +159,52 @@ export default {
       "form"
     );
 
+    let option = useValidateRef(
+      "",
+      {
+        required: true,
+      },
+      "form"
+    );
+
+    let languages = useValidateRef(
+      [],
+      {
+        required: true,
+        minElementCount: 3,
+      },
+      "form"
+    );
+
+    let options = ref([
+      {
+        value: "option",
+        label: "option",
+      },
+      {
+        value: "option 2",
+        label: "option 2",
+      },
+      {
+        value: "option 3",
+        label: "option 3",
+      },
+    ]);
+
+    let languagesData = ref([
+      "english",
+      "swedish",
+      "korean",
+      "german",
+      "icelandic",
+      "japanese",
+    ]);
+
     let messages = {
       required: "Please enter a value for this field",
       alpha: "Please enter only letters",
       numeric: "Please enter only numbers",
       alphanumeric: "Please enter only letters or numbers",
-      // minLength: (value) => `Please enter at least ${value} characters`,
       minLength: "Please enter at least 3 characters",
       email: "Please enter valid email address",
       atLeastOneUppercase: "Please enter at least one uppercase character",
@@ -124,6 +226,10 @@ export default {
       email,
       password,
       messages,
+      option,
+      options,
+      languages,
+      languagesData,
       getStatusString,
     };
   },

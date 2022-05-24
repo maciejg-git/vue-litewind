@@ -4,7 +4,7 @@
 
 <script>
 import { reactive } from "vue";
-import data from "../data/data.json";
+import data from "../data/company-simple.json";
 
 export default {
   setup() {

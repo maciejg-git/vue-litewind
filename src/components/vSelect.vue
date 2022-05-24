@@ -1,5 +1,5 @@
 <template>
-  <div class="relative inline-flex items-center">
+  <div class="relative items-center" :class="wrapperClasses">
     <slot name="icon">
       <v-icon
         v-if="icon"
@@ -9,7 +9,12 @@
       ></v-icon>
     </slot>
 
-    <select v-bind="$attrs" v-model="localModel" :class="getSelectClasses()">
+    <select
+      v-bind="$attrs"
+      v-model="localModel"
+      :class="getSelectClasses()"
+      @blur="handleBlur"
+    >
       <slot name="options-prepend"></slot>
       <option
         v-for="(o, i) in options"
@@ -35,7 +40,11 @@ import { sharedStyleProps, sharedFormProps } from "../shared-props";
 
 export default {
   props: {
-    modelValue: { type: [String, Number, Array, Boolean, Object], default: undefined },
+    modelValue: {
+      type: [String, Number, Array, Boolean, Object],
+      default: undefined,
+    },
+    block: { type: Boolean, default: false },
     options: { type: Array, default: undefined },
     styleSelect: { type: [String, Array], default: "" },
     styleIcon: { type: [String, Array], default: "" },
@@ -52,6 +61,10 @@ export default {
       icon: null,
     });
 
+    let wrapperClasses = computed(() => {
+      return props.block ? "flex" : "inline-flex";
+    });
+
     let localModel = useLocalModel(props, emit);
 
     let getSelectClasses = () => {
@@ -65,28 +78,32 @@ export default {
       ];
     };
 
-    let state = computed(() =>
-      props.state === true
-        ? "valid"
-        : props.state === false
-        ? "invalid"
-        : props.state === null
-        ? ""
-        : props.state
-    );
+    let state = computed(() => {
+      if (props.modelValue._isValidateRef) {
+        return props.modelValue.getValidStatus();
+      }
+    });
 
     let isOptionDisabled = (o) => {
       return o.disabled == undefined || o.disabled == null ? false : o.disabled;
     };
 
+    let handleBlur = () => {
+      if (props.modelValue._isValidateRef) {
+        props.modelValue.touch();
+      }
+    };
+
     return {
       classes,
+      wrapperClasses,
       states,
       variants,
       getSelectClasses,
       state,
       isOptionDisabled,
       localModel,
+      handleBlur,
     };
   },
 };

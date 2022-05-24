@@ -22,6 +22,9 @@ import BGeoAlt from "./components/Documentation/icons/geo-alt"
 import BGeoAltFill from "./components/Documentation/icons/geo-alt-fill"
 import MdiLoading from "./components/Documentation/icons/loading"
 import BSun from "./components/Documentation/icons/sun"
+import MdiCheckboxOutline from "./components/Documentation/icons/checkbox-outline"
+import MdiCheckboxBlankOutline from "./components/Documentation/icons/checkbox-blank-outline"
+import MdiAccountEdit from "./components/Documentation/icons/account-edit"
 
 let app = createApp(App);
 
@@ -48,6 +51,9 @@ registerIcon(app, [
   BSun,
   BGeoAlt,
   BGeoAltFill,
+  MdiCheckboxOutline,
+  MdiCheckboxBlankOutline,
+  MdiAccountEdit,
 ], {
   vendorPrefix: true,
   iconSufix: false,

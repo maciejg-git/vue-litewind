@@ -30,7 +30,9 @@ let updateFormStatus = (status, { touched, dirty, valid }) => {
   status.value.valid = status.value.valid && valid;
 }
 
-let getValidateStatus = (v, { validators, status, formStatus }) => {
+let getValidateStatus = ({ validators, status, model, formStatus }) => {
+  let v = model.value
+
   let newStatus = {
     ...defaultStatus,
     touched: status.value.touched,
@@ -72,7 +74,7 @@ export default function useValidateRef(model, validators, form) {
     formStatus: getFormStatus(form),
     touch() {
       this.status.value.touched = true;
-      this.status.value = getValidateStatus(this.model.value, this);
+      this.status.value = getValidateStatus(this);
     },
     getValidStatus() {
       return !this._isValidated() ? "" : this._isValid() ? "valid" : "invalid";
@@ -84,8 +86,8 @@ export default function useValidateRef(model, validators, form) {
       return m;
     },
     set(value) {
-      if (isString(value)) m.model.value = value
-      m.status.value = getValidateStatus(value, m);
+      if (isString(value) || Array.isArray(value)) m.model.value = value
+      m.status.value = getValidateStatus(m);
     },
   });
 }

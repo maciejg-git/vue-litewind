@@ -42,7 +42,7 @@
   </div>
 
   <div class="flex items-center gap-6 mt-6">
-    <v-button block>Block button</v-button>
+    <v-button block class="w-full">Block button</v-button>
   </div>
 
   <div class="flex items-center gap-6 mt-6">

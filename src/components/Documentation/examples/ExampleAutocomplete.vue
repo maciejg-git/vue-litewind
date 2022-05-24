@@ -21,11 +21,6 @@
         <label for="model" class="font-semibold">v-model:</label>
         <v-input type="text" id="model" v-model="example.model"></v-input>
       </div>
-      <!-- no loader -->
-      <!-- transition -->
-      <!-- clearable -->
-      <!-- placement -->
-      <!-- no flip -->
       <div class="mb-2">
         <label for="noloader">no-loader:</label>
         <v-select id="noloader" v-model="example.noLoader">
@@ -79,7 +74,7 @@
 </template>
 
 <script>
-import { ref, reactive, watch, toRef, computed } from "vue";
+import { ref, reactive } from "vue";
 import { states } from "../../../const";
 
 export default {

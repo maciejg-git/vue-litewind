@@ -30,7 +30,7 @@
   </section>
 
   <section>
-    <h4>Example</h4>
+    <h4>Example - remote source</h4>
     <div class="example">
       <example-autocomplete></example-autocomplete>
     </div>

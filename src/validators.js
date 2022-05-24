@@ -38,4 +38,7 @@ export let globalValidators = {
   atLeastOneDigit: (value) => {
     return /[0-9]/.test(value)
   },
+  minElementCount: (value, length) => {
+    return value.length >= length;
+  },
 };

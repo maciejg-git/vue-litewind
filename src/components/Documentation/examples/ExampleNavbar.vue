@@ -57,7 +57,9 @@
             </v-dropdown>
           </li>
         </ul>
-        <v-input class="ml-auto mr-4"></v-input>
+        <div class="ml-auto mr-4">
+          <v-input></v-input>
+        </div>
         <v-button>Search</v-button>
       </div>
     </v-navbar>
