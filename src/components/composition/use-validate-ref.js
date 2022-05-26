@@ -8,8 +8,8 @@ let defaultStatus = {
   dirty: false,
   valid: true,
   isValidated() {
-    return this.dirty && this.touched
-  }
+    return this.dirty && this.touched;
+  },
 };
 
 // shared form status
@@ -17,21 +17,21 @@ let defaultStatus = {
 let formStatus = {};
 
 let getFormStatus = (form) => {
-  if (!form) return
-  if (formStatus[form]) return formStatus[form]
+  if (!form) return;
+  if (formStatus[form]) return formStatus[form];
   formStatus[form] = ref({ ...defaultStatus });
-  return formStatus[form]
-}
+  return formStatus[form];
+};
 
 //  FIX:
 let updateFormStatus = (status, { touched, dirty, valid }) => {
   status.value.touched = status.value.touched || touched;
   status.value.dirty = status.value.dirty || dirty;
   status.value.valid = status.value.valid && valid;
-}
+};
 
 let getValidateStatus = ({ validators, status, model, formStatus }) => {
-  let v = model.value
+  let v = model.value;
 
   let newStatus = {
     ...defaultStatus,
@@ -48,7 +48,7 @@ let getValidateStatus = ({ validators, status, model, formStatus }) => {
     newStatus.valid = newStatus.valid && newStatus[key];
   }
 
-  updateFormStatus(formStatus, newStatus)
+  updateFormStatus(formStatus, newStatus);
 
   return newStatus;
 };
@@ -73,10 +73,13 @@ export default function useValidateRef(model, validators, form) {
     status: ref({ ...defaultStatus }),
     formStatus: getFormStatus(form),
     touch() {
+      // this.status.value = getValidateStatus(this);
       this.status.value.touched = true;
-      this.status.value = getValidateStatus(this);
     },
     getValidStatus() {
+      // if (!this._isValidated()) return ""
+      // if (this._isDirty() && !this._isTouched()) return ""
+      // if (this._isValidated()) return this._isValid() ? "valid" : "invalid"
       return !this._isValidated() ? "" : this._isValid() ? "valid" : "invalid";
     },
   };
@@ -86,7 +89,7 @@ export default function useValidateRef(model, validators, form) {
       return m;
     },
     set(value) {
-      if (isString(value) || Array.isArray(value)) m.model.value = value
+      if (isString(value) || Array.isArray(value)) m.model.value = value;
       m.status.value = getValidateStatus(m);
     },
   });

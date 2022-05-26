@@ -171,7 +171,6 @@ export default {
       [],
       {
         required: true,
-        minElementCount: 3,
       },
       "form"
     );

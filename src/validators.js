@@ -1,5 +1,6 @@
 export let globalValidators = {
   required: (value) => {
+    if (Array.isArray(value)) return !!value.length
     return !!value;
   },
   maxLength: (value, length) => {
@@ -37,8 +38,5 @@ export let globalValidators = {
   },
   atLeastOneDigit: (value) => {
     return /[0-9]/.test(value)
-  },
-  minElementCount: (value, length) => {
-    return value.length >= length;
   },
 };

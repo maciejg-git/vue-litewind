@@ -42,7 +42,7 @@
 
 <script>
 // vue
-import { computed } from "vue";
+import { ref, computed, watch, toRefs } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
@@ -94,15 +94,29 @@ export default {
       ];
     };
 
-    let state = computed(() => {
-      if (props.modelValue._isValidateRef) {
-        return props.modelValue.getValidStatus()
-      }
-    });
+    // let state = computed(() => {
+    //   if (props.modelValue._isValidateRef) {
+    //     return props.modelValue.getValidStatus()
+    //   }
+    // });
+    let state = ref("")
+
+    // let { touched, dirty, valid } = toRefs(props.modelValue.status.value)
+    let { status } = props.modelValue
+
+    // watch(status, (status, prevStatus) => {
+    //   console.log(status, prevStatus)
+    // })
 
     let handleBlur = () => {
       if (props.modelValue._isValidateRef) {
         props.modelValue.touch();
+        if (status.value.valid) state.value = ""
+        else state.value = "invalid"
+        watch(status, (value) => {
+          if (value.valid) state.value = "valid"
+          else state.value = "invalid"
+        })
       }
     };
 
