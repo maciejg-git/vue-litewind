@@ -12,7 +12,7 @@
     <h5>Icons source</h5>
     <p>
       <code class="code-text">v-icon</code>
-      uses icon components from this repo. Check documentation on how to
+      uses icon components. Check documentation on how to
       install, import and use them.
     </p>
   </section>
@@ -33,22 +33,9 @@
       the object that allows mapping of icon name or icon component object to any name. It can be useful for
       example to define easy to remember aliases for frequently used icons,
       changing icons application wide, define icons for various states and bind
-      with states of components etc. Those icons have
-      <code class="code-text">icon--[type]-type</code>
-      class added by default.
+      with states of components etc.
     </p>
-<v-code language="js">
-{{ `app.provide("icon-types", {
-  valid: BCheck, // icon component object
-  invalid: "b-exclamation-triangle", // registered icon component name
-  success: "b-check-lg",
-  info: "b-info-circle",
-  danger: "b-exclamation-octagon-fill",
-  warn: "b-exclamation-triangle",
-  menu: "b-three-dots",
-  question: "b-question-circle",
-}) `}}
-</v-code>
+    <v-code :code="exampleIconMainCode" language="js"></v-code>
   </section>
 </template>
 
@@ -56,6 +43,7 @@
 import { ref } from "vue";
 import ExampleIcon from "./examples/ExampleIcon.vue";
 import exampleIconCode from "./examples/ExampleIcon.vue?raw";
+import exampleIconMainCode from "./examples/ExampleIconMain.js?raw";
 
 export default {
   components: {
@@ -83,18 +71,12 @@ export default {
         default: "undefined",
         description: "Icon type provided via iconTypes",
       },
-      {
-        prop: "transition",
-        type: ["String"],
-        default: "empty string",
-        description:
-          "Transition when icon shows or changes. Valid transitions are 'fade', 'fade-scale-down', 'fade-scale-up' and empty string for no transition (default)",
-      },
     ]);
 
     return {
       reference,
       exampleIconCode,
+      exampleIconMainCode,
     };
   },
 };
