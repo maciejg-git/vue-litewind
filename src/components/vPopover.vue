@@ -32,6 +32,7 @@ import useClickOutside from "./composition/use-click-outside";
 import useTrigger from "./composition/use-trigger";
 // props
 import { sharedPopperProps, sharedStyleProps } from "../shared-props";
+import "../styles/transitions.css"
 
 export default {
   props: {
@@ -40,7 +41,7 @@ export default {
     delay: { type: Number, default: 50 },
     noHeader: { type: Boolean, default: false },
     title: { type: String, default: undefined },
-    transition: { type: String, default: "fade" },
+    transition: { type: String, default: "fade-m" },
     clickOutsideClose: { type: Boolean, default: false },
     stylePopover: { type: String, default: "" },
     styleContent: { type: String, default: "" },
@@ -100,12 +101,4 @@ export default {
 </script>
 
 <style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
 </style>

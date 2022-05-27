@@ -97,7 +97,9 @@
       <div class="mb-2">
         <label for="transition">transition:</label>
         <v-select id="transition" v-model="example.transition">
-          <option value="fade">fade</option>
+          <option value="fade-f">fade-f</option>
+          <option value="fade-m">fade-m</option>
+          <option value="fade-s">fade-s</option>
           <option value="">empty string</option>
         </v-select>
       </div>
@@ -141,7 +143,7 @@ export default {
       trigger: "click",
       noHeader: false,
       title: "Popover title",
-      transition: "fade",
+      transition: "fade-m",
       clickOutsideClose: true,
       offsetY: 10,
     });

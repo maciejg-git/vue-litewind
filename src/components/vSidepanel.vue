@@ -1,5 +1,5 @@
 <template>
-  <transition :name="sidebarLeft ? 'fade-slide-left' : 'fade-slide-right'">
+  <transition :name="sidebarLeft ? transition + '-left' : transition + '-right'">
     <div
       v-show="isShow"
       :class="classes.sidepanel.value"
@@ -32,6 +32,7 @@ import useStyles from "./composition/use-styles";
 import vCloseButton from "./vCloseButton.vue";
 // props
 import { sharedStyleProps } from "../shared-props"
+import "../styles/transitions.css"
 
 export default {
   props: {
@@ -40,6 +41,7 @@ export default {
     sidebarLeft: { type: Boolean, default: false },
     width: { type: String, default: "320px" },
     noHeader: { type: Boolean, default: false },
+    transition: { type: String, default: "fade-slide-m" },
     styleSidepanel: { type: String, default: "" },
     styleCloseButton: { type: String, default: "" },
     ...sharedStyleProps("sidepanel"),
@@ -80,22 +82,22 @@ export default {
   @apply flex justify-between w-full
 }
 
-.fade-slide-right-enter-active,
-.fade-slide-right-leave-active {
-  transition: opacity 0.3s ease, transform 0.4s ease;
-}
-.fade-slide-right-enter-from,
-.fade-slide-right-leave-to {
-  opacity: 0;
-  transform: translateX(200px);
-}
-.fade-slide-left-enter-active,
-.fade-slide-left-leave-active {
-  transition: opacity 0.3s ease, transform 0.4s ease;
-}
-.fade-slide-left-enter-from,
-.fade-slide-left-leave-to {
-  opacity: 0;
-  transform: translateX(-200px);
-}
+/* .fade-slide-right-enter-active, */
+/* .fade-slide-right-leave-active { */
+/*   transition: opacity 0.3s ease, transform 0.4s ease; */
+/* } */
+/* .fade-slide-right-enter-from, */
+/* .fade-slide-right-leave-to { */
+/*   opacity: 0; */
+/*   transform: translateX(200px); */
+/* } */
+/* .fade-slide-left-enter-active, */
+/* .fade-slide-left-leave-active { */
+/*   transition: opacity 0.3s ease, transform 0.4s ease; */
+/* } */
+/* .fade-slide-left-enter-from, */
+/* .fade-slide-left-leave-to { */
+/*   opacity: 0; */
+/*   transform: translateX(-200px); */
+/* } */
 </style>

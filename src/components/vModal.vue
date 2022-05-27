@@ -55,7 +55,7 @@
       </div>
     </transition>
 
-    <transition name="fade">
+    <transition name="fade-backdrop">
       <div v-if="modelValue" :class="classes.backdrop.value"></div>
     </transition>
   </teleport>
@@ -73,6 +73,7 @@ import vCloseButton from "./vCloseButton.vue";
 import focus from "../directives/focus";
 // props
 import { sharedStyleProps } from "../shared-props"
+import "../styles/transitions.css"
 
 export default {
   props: {
@@ -94,7 +95,7 @@ export default {
     noFooter: { type: Boolean, default: false },
     position: { type: String, default: "top" },
     size: { type: String, default: "md" },
-    transition: { type: String, default: "fade-slide" },
+    transition: { type: String, default: "fade-slide-m" },
     styleModal: { type: String, default: "" },
     styleHeader: { type: String, default: "" },
     styleFooter: { type: String, default: "" },
@@ -245,32 +246,12 @@ export default {
   @apply fixed inset-0 overflow-y-auto min-h-screen z-30;
 }
 
-.fade-enter-active,
-.fade-leave-active {
+.fade-backdrop-enter-active,
+.fade-backdrop-leave-active {
   transition: opacity 0.2s ease;
 }
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
-.fade-slide-enter-active,
-.fade-slide-leave-active {
-  transition: opacity 0.2s ease, transform 0.15s ease;
-}
-.fade-slide-enter-from,
-.fade-slide-leave-to {
-  transform: translateY(-20px);
-  opacity: 0;
-}
-
-.fade-scale-enter-active,
-.fade-scale-leave-active {
-  transition: opacity 0.2s ease, transform 0.15s ease;
-}
-.fade-scale-enter-from,
-.fade-scale-leave-to {
-  transform: scale(0.96);
+.fade-backdrop-enter-from,
+.fade-backdrop-leave-to {
   opacity: 0;
 }
 </style>

@@ -4,6 +4,7 @@ import router from "./router";
 import { plugin } from "./components/index.js";
 import "tailwindcss/tailwind.css";
 import "./styles/components.css"
+// import "./styles/transitions.css"
 import registerIcon from "./register-icon"
 import "./components/Documentation/Documentation.css"
 import TableReference from "./components/Documentation/TableReference.vue";

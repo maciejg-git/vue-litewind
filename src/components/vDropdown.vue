@@ -32,6 +32,7 @@ import useClickOutside from "./composition/use-click-outside";
 import useTrigger from "./composition/use-trigger";
 // props
 import { sharedPopperProps, sharedStyleProps } from "../shared-props";
+import "../styles/transitions.css"
 
 export default {
   inheritAttrs: true,
@@ -40,7 +41,7 @@ export default {
     ...sharedPopperProps(),
     autoCloseMenu: { type: Boolean, default: false },
     trigger: { type: String, default: "click" },
-    transition: { type: String, default: "fade" },
+    transition: { type: String, default: "fade-m" },
     styleItem: { type: String, default: "" },
     styleHeader: { type: String, default: "" },
     ...sharedStyleProps("dropdown"),
@@ -158,13 +159,5 @@ export default {
 <style scoped lang="postcss">
 .fixed-dropdown {
   @apply absolute z-50;
-}
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
 }
 </style>
