@@ -19,9 +19,6 @@
       style-progress="tiny"
       style-progress-bar="gradient"
       indeterminate
-      :indeterminate-width="50"
-      :indeterminate-timing="example.timing"
-      :indeterminate-speed="example.speed"
       class="m-2"
     ></v-progress>
   </v-card>
@@ -40,28 +37,9 @@
       :value="example.value"
       :label="false"
       :indeterminate="example.indeterminate"
-      :indeterminate-width="50"
-      :indeterminate-timing="example.timing"
-      :indeterminate-speed="example.speed"
       class="m-2"
     ></v-progress>
   </v-card>
-  <!-- CUT START -->
-  <div class="mb-2 mt-10">
-    <label for="timing">indeterminate-timing:</label>
-    <v-select id="timing" v-model="example.timing">
-      <option value="linear">linear</option>
-      <option value="ease">ease</option>
-      <option value="ease-in">ease-in</option>
-      <option value="ease-out">ease-out</option>
-      <option value="ease-in-out">ease-in-out</option>
-    </v-select>
-  </div>
-  <div class="mb-2">
-    <label for="speed">indeterminate-speed:</label>
-    <v-input type="text" id="speed" v-model.number="example.speed"></v-input>
-  </div>
-  <!-- CUT END -->
 </template>
 
 <script>
@@ -72,9 +50,6 @@ export default {
     let example = reactive({
       value: 0,
       label: false,
-      timing: "linear",
-      width: "50",
-      speed: 7,
       indeterminate: true,
     });
 

@@ -1,11 +1,15 @@
 <template>
+  <p class="my-6">Default tooltip:</p>
+
   <div class="mb-10">
-    <v-button v-tooltip.bottom.delay100.oY5="'This is tooltip'">
+    <v-button v-tooltip.oY5="'This is tooltip'">
       Hover me
     </v-button>
   </div>
 
   <!-- tooltip placement -->
+
+  <p class="my-6">Tooltip placement:</p>
 
   <div class="mb-10">
     <v-button v-tooltip.top.delay100.oY5="'This is tooltip on the top'">
@@ -21,6 +25,8 @@
 
   <!-- tooltip delay -->
 
+  <p class="my-6">Tooltip delay:</p>
+
   <div class="mb-10">
     <v-button v-tooltip.bottom.delay500.oY5="'This is delayed tooltip'">
       Hover me (long delay)
@@ -34,6 +40,8 @@
   </div>
 
   <!-- tooltip content -->
+
+  <p class="my-6">Tooltip content source:</p>
 
   <div class="mb-10">
     <v-button
@@ -51,6 +59,8 @@
   </div>
 
   <!-- tooltip animation -->
+
+  <p class="my-6">Tooltip animation:</p>
 
   <div>
     <v-button v-tooltip.bottom.delay100.oY5.fade="'This is fade tooltip'">

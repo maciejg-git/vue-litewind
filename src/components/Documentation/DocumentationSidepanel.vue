@@ -73,6 +73,13 @@ export default {
         default: "false",
         description: "When true the header slot content and close button is not rendered",
       },
+      {
+        prop: "transition",
+        type: ["String"],
+        default: "fade-slide-m",
+        description:
+          "Sets animation effect when showing or hiding sidepanel. Valid values are: 'fade-slide-f', 'fade-slide-m' and 'fade-slide-s'. Empty string disables animations.",
+      },
       ...styleProps("sidepanel"),
     ]);
 

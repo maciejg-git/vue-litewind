@@ -60,8 +60,8 @@ export default {
       {
         prop: "transition",
         type: ["String"],
-        default: "fade",
-        description: "Animation when showing or hiding popover",
+        default: "fade-m",
+        description: "Sets animation effect when showing or hiding popover. Valid values are: 'fade-f', 'fade-m' and 'fade-s'. Empty string disables animations.",
       },
       {
         prop: "click-outside-close",

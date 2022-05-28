@@ -87,9 +87,9 @@ export default {
       {
         prop: "transition",
         type: ["String"],
-        default: "fade",
+        default: "fade-m",
         description:
-          "By default showing or hiding dropdown uses fading animation. Set this prop to empty string to disable animation",
+          "Sets animation effect when showing or hiding dropdown. Valid values are: 'fade-f', 'fade-m' and 'fade-s'. Empty string disables animations.",
       },
       ...popperProps,
       ...styleProps("dropdown"),

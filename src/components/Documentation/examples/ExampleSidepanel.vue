@@ -52,6 +52,15 @@
           <option :value="false">false</option>
         </v-select>
       </div>
+      <div class="mb-2">
+        <label for="transition">transition:</label>
+        <v-select id="transition" v-model="example.transition">
+          <option value="fade-slide-f">fade-slide-f</option>
+          <option value="fade-slide-m">fade-slide-m</option>
+          <option value="fade-slide-s">fade-slide-s</option>
+          <option value="">empty string</option>
+        </v-select>
+      </div>
     </v-tab>
     <v-tab>
       <template #name>
@@ -85,6 +94,7 @@ export default {
       sidebarLeft: false,
       width: "320px",
       noHeader: false,
+      transition: "fade-slide-m",
     });
 
     let isOpen = ref(false);

@@ -32,6 +32,7 @@ import useClickOutside from "./composition/use-click-outside";
 import useTrigger from "./composition/use-trigger";
 // props
 import { sharedPopperProps, sharedStyleProps } from "../shared-props";
+// style
 import "../styles/transitions.css"
 
 export default {

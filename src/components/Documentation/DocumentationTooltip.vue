@@ -4,11 +4,19 @@
 
   <section>
     <h4>Usage</h4>
-    <p>To show tooltip when hovering over html element use the following directive:</p>
-    <p class="font-semibold ml-4">
-      v-tooltip.modifier1.modifier2="'Tooltip text' or function that returns tooltip
-      text"
+    <p>
+      To show tooltip when hovering over html element use the following
+      directive:
     </p>
+    <code class="code-text ml-6">
+      v-tooltip.modifier1.modifier2='Tooltip text'
+    </code>
+    <p>
+      Tooltip text can be function:
+    </p>
+    <code class="code-text ml-6">
+      v-tooltip.modifier1.modifier2='() => "Tooltip text"'
+    </code>
     <p>Modifiers can be in any order.</p>
   </section>
 
@@ -43,9 +51,9 @@
       style-header-cell="bordered"
       style-cell="bordered"
     >
-      <template #cell:description="{ value }"
-        ><span v-html="value"></span
-      ></template>
+      <template #cell:description="{ value }">
+        <span v-html="value"></span>
+      </template>
     </v-table>
   </section>
 
@@ -60,8 +68,8 @@
 
 <script>
 import { ref } from "vue";
-import ExampleTooltip from "./examples/ExampleTooltip.vue"
-import exampleTooltipCode from "./examples/ExampleTooltip.vue?raw"
+import ExampleTooltip from "./examples/ExampleTooltip.vue";
+import exampleTooltipCode from "./examples/ExampleTooltip.vue?raw";
 
 export default {
   components: {
@@ -95,8 +103,7 @@ export default {
       {
         modifier: "nofade",
         default: "",
-        description:
-          "Disables fade animation when showing or hiding tooltip",
+        description: "Disables fade animation when showing or hiding tooltip",
       },
     ]);
 
@@ -145,5 +152,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

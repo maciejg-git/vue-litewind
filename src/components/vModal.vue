@@ -73,6 +73,7 @@ import vCloseButton from "./vCloseButton.vue";
 import focus from "../directives/focus";
 // props
 import { sharedStyleProps } from "../shared-props"
+// style
 import "../styles/transitions.css"
 
 export default {

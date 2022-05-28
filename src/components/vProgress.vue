@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div ref="progress" :class="classes.progress.value" class="relative">
+    <div :class="classes.progress.value" class="relative">
       <div
         v-if="!indeterminate"
         :class="classes.progressBar.value"
@@ -12,17 +12,7 @@
           </slot>
         </span>
       </div>
-      <div
-        v-else
-        :class="classes.progressBar.value"
-        :style="{
-          width: indeterminateWidth + '%',
-          '--progress-bar-width': -progressBarWidth + 'px',
-          '--progress-bar-timer': getProgressTimer(),
-          '--progress-bar-timing': indeterminateTiming,
-        }"
-        ref="progressBar"
-      ></div>
+      <div v-else :class="classes.progressBar.value"></div>
     </div>
   </div>
 </template>
@@ -35,26 +25,27 @@ import useStyles from "./composition/use-styles";
 // tools
 import { clamp, isNumber } from "../tools";
 // props
-import { sharedStyleProps } from "../shared-props"
+import { sharedStyleProps } from "../shared-props";
 
 export default {
   props: {
-    value: { 
-      type: [Number, String], 
+    value: {
+      type: [Number, String],
       default: 0,
-      validator(v) { return isNumber(+v) },
+      validator(v) {
+        return isNumber(+v);
+      },
     },
-    max: { 
-      type: [Number, String], 
+    max: {
+      type: [Number, String],
       default: 100,
-      validator(v) { return isNumber(+v) },
+      validator(v) {
+        return isNumber(+v);
+      },
     },
     label: { type: Boolean, default: true },
     precision: { type: Number, default: 2 },
     indeterminate: { type: Boolean, default: false },
-    indeterminateWidth: { type: [String, Number], default: 50 },
-    indeterminateTiming: { type: String, default: "linear" },
-    indeterminateSpeed: { type: Number, default: 7 },
     transition: { type: Boolean, default: true },
     styleProgress: { type: [String, Array], default: "" },
     styleProgressBar: { type: [String, Array], default: "" },
@@ -90,46 +81,10 @@ export default {
       () => props.label && value.value.toFixed(precision.value) + " %"
     );
 
-    // indeterminate
-
-    let progress = ref(null);
-    let progressBar = ref(null);
-    let progressWidth = ref(0);
-    let progressBarWidth = ref(0);
-
-    // handle resize window event to update width of progress bar
-    onMounted(() => {
-      if (props.indeterminate) {
-        getProgressWidth();
-        addEventListener("resize", getProgressWidth);
-      }
-    });
-
-    onUnmounted(() => {
-      if (props.indeterminate) {
-        removeEventListener("resize", getProgressWidth);
-      }
-    });
-
-    // speed should be similar for wide and narrow progress bars
-    let getProgressTimer = () => {
-      let speed = clamp(props.indeterminateSpeed, 1, 20) + 10;
-      return Math.sqrt(progressWidth.value + 300) / speed + "s";
-    };
-
-    let getProgressWidth = () => {
-      progressBarWidth.value = progressBar.value.clientWidth;
-      progressWidth.value = progress.value.clientWidth;
-    };
-
     return {
       classes,
       value,
       label,
-      progress,
-      progressBar,
-      progressBarWidth,
-      getProgressTimer,
     };
   },
 };
@@ -144,16 +99,17 @@ export default {
 }
 .indeterminate {
   position: absolute;
+  width: var(--progress-bar-width);
   transform-origin: left;
   animation-name: slide;
   animation-iteration-count: infinite;
   animation-timing-function: var(--progress-bar-timing);
-  animation-duration: var(--progress-bar-timer);
+  animation-duration: var(--progress-bar-speed);
 }
 
 @keyframes slide {
   from {
-    left: var(--progress-bar-width);
+    left: calc(var(--progress-bar-width) * -1);
   }
 
   to {

@@ -26,10 +26,29 @@
   </section>
 
   <section>
-    <h4>Example indeterminate</h4>
+    <h4>Example - indeterminate</h4>
     <div class="example">
       <example-progress-indeterminate></example-progress-indeterminate>
     </div>
+    <p>Set width, speed and timing function of indeterminate progress bar with css variables:
+  <ul>
+  <li>
+    <code class="code-text">
+      --progress-bar-timing: linear;
+    </code>
+  </li>
+  <li>
+    <code class="code-text">
+    --progress-bar-speed: 1.5s;
+    </code>
+  </li>
+  <li>
+    <code class="code-text">
+  --progress-bar-width: 50%;
+    </code>
+  </li>
+  </ul>
+    </p>
     <v-code :code="exampleProgressIndeterminateCode" template language="html"></v-code>
     <v-code :code="exampleProgressIndeterminateCode" script language="js"></v-code>
   </section>
@@ -88,25 +107,6 @@ export default {
         default: "false",
         description:
           "Renders indeterminate progress bar. <span class='font-semibold'>Note</span>: value, max, label, precision and transition props are ignored if indeterminate is true. You can switch between indeterminate or determinate by flicking this prop on and off",
-      },
-      {
-        prop: "indeterminate-width",
-        type: ["Number"],
-        default: "50",
-        description: "Width of indeterminate bar in %",
-      },
-      {
-        prop: "indeterminate-timing",
-        type: ["String"],
-        default: "linear",
-        description:
-          "Value of animation-timing-function property. Valid values are: 'linear', 'ease', 'ease-in', 'ease-out' or 'ease-in-out'",
-      },
-      {
-        prop: "indeterminate-speed",
-        type: ["Number"],
-        default: "7",
-        description: "Speed of indeterminate bar animation (1 - 20)",
       },
       ...styleProps("progress"),
     ]);

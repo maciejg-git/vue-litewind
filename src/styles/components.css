@@ -448,6 +448,9 @@
 /* PROGRESS */
 
 .progress {
+  --progress-bar-timing: linear;
+  --progress-bar-speed: 1.5s;
+  --progress-bar-width: 50%;
   @apply
     rounded
     overflow-hidden
@@ -487,8 +490,8 @@
       @apply
         bg-gradient-to-r
         from-yellow-400
-        via-red-500
-        to-pink-500
+        via-orange-500
+        to-red-500
     }
 
 .progress--label {
