@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import "../styles/transitions.css"
+
 export default {
   props: {
     name: { type: String, default: "" },
@@ -61,14 +63,4 @@ export default {
 </script>
 
 <style scoped>
-.fade-collapse-enter-active,
-.fade-collapse-leave-active {
-  transition: height 0.3s ease, opacity 0.3s ease;
-  overflow: hidden;
-}
-
-.fade-collapse-enter-from,
-.fade-collapse-leave-active {
-  opacity: 0;
-}
 </style>

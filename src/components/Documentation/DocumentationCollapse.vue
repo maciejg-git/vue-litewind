@@ -26,7 +26,7 @@
   </section>
 
   <section>
-    <h4>Example accordion</h4>
+    <h4>Example - accordion</h4>
     <div class="example">
       <p>
         Turn collapse components to accordion by wrapping them with <code class="code-text">v-accordion</code>

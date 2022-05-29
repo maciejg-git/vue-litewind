@@ -8,7 +8,7 @@
     :indeterminate-width="50"
     :indeterminate-timing="example.timing"
     :indeterminate-speed="example.speed"
-    class="my-4"
+    class="my-8"
   ></v-progress>
 
   <!-- simple indeterminate progress -->

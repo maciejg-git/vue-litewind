@@ -64,6 +64,6 @@ pre {
   @apply whitespace-normal my-5;
 }
 pre code {
-  @apply text-sm whitespace-pre pl-4;
+  @apply text-sm whitespace-pre pl-4 py-6;
 }
 </style>

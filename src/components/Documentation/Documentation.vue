@@ -121,7 +121,9 @@
 <script>
 import { ref, onMounted } from "vue";
 import "../../styles/hljs/github.css";
-import "../../styles/hljs/tokyo-night-dark.css";
+// import "../../styles/hljs/tokyo-night-dark.css";
+// import "../../styles/hljs/darktooth.css";
+import "../../styles/hljs/vs2015.css";
 import { components, formComponents } from "./Components";
 
 export default {

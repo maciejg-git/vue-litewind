@@ -4,7 +4,7 @@
   <p class="mt-8 mb-4">Model collapse</p>
 
   <v-card>
-    <v-button-collapse block v-model="example.isVisible">
+    <v-button-collapse v-model="example.isVisible" block class="w-full">
       Toggle collapse
     </v-button-collapse>
     <v-collapse v-model="example.isVisible" :transition="example.transition">
@@ -21,7 +21,12 @@
   <v-card>
     <v-collapse :transition="example.transition">
       <template #reference="{ isOpen, onTrigger }">
-        <v-button-collapse block v-on="onTrigger" :switch="isOpen">
+        <v-button-collapse
+          :switch="isOpen"
+          block
+          class="w-full"
+          v-on="onTrigger"
+        >
           Toggle collapse
         </v-button-collapse>
       </template>
@@ -38,12 +43,13 @@
   <v-card>
     <v-collapse :transition="example.transition">
       <template #reference="{ isOpen, onTrigger }">
-        <v-button block v-on="onTrigger">
+        <v-button block class="w-full" v-on="onTrigger">
           <span class="ml-auto">Toggle collapse</span>
           <v-chevron
             initial="down"
             rotate180
             counter-clockwise
+            triangle
             :switch="isOpen"
             class="ml-auto"
           />
@@ -54,19 +60,21 @@
       </div>
     </v-collapse>
   </v-card>
-<!-- CUT START -->
+  <!-- CUT START -->
   <v-tabs base="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="mb-2 mt-5">
         <label for="transition">transition:</label>
         <v-select id="transition" v-model="example.transition">
-          <option value="fade-collapse">fade-collapse</option>
+          <option value="fade-collapse-f">fade-collapse-f</option>
+          <option value="fade-collapse-m">fade-collapse-m</option>
+          <option value="fade-collapse-s">fade-collapse-s</option>
           <option value="">none (empty string)</option>
         </v-select>
       </div>
     </v-tab>
   </v-tabs>
-<!-- CUT END -->
+  <!-- CUT END -->
 </template>
 
 <script>
@@ -77,7 +85,7 @@ export default {
   setup() {
     let example = reactive({
       isVisible: false,
-      transition: "fade-collapse",
+      transition: "fade-collapse-m",
     });
 
     return {

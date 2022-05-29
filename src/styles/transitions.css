@@ -1,5 +1,3 @@
-/* modal */
-
 .fade-f-enter-active,
 .fade-f-leave-active {
   transition: opacity 0.15s ease;
@@ -84,11 +82,37 @@
   opacity: 0;
 }
 
+/* collapse */
+
+.fade-collapse-f-enter-active,
+.fade-collapse-f-leave-active {
+  transition: height 0.2s ease, opacity 0.2s ease;
+  overflow: hidden;
+}
+
+.fade-collapse-m-enter-active,
+.fade-collapse-m-leave-active {
+  transition: height 0.3s ease, opacity 0.3s ease;
+  overflow: hidden;
+}
+
+.fade-collapse-s-enter-active,
+.fade-collapse-s-leave-active {
+  transition: height 0.35s ease, opacity 0.35s ease;
+  overflow: hidden;
+}
+
+.fade-collapse-f-enter-from,
+.fade-collapse-f-leave-active,
+.fade-collapse-m-enter-from,
+.fade-collapse-m-leave-active,
+.fade-collapse-s-enter-from,
+.fade-collapse-s-leave-active {
+  opacity: 0;
+}
+
 /* tab */
 
-.fade-leave-active {
-  position: absolute;
-}
 .fade-enter-active {
   transition: opacity 0.8s ease;
 }
@@ -97,9 +121,6 @@
   opacity: 0;
 }
 
-.fade-side-slide-leave-active {
-  position: absolute;
-}
 .fade-side-slide-enter-active {
   transition: opacity 0.8s ease, transform 0.4s ease;
 }
@@ -109,9 +130,6 @@
   transform: translateX(15px)
 }
 
-.fade-top-slide-leave-active {
-  position: absolute;
-}
 .fade-top-slide-enter-active {
   transition: opacity 0.8s ease, transform 0.4s ease;
 }
@@ -153,7 +171,7 @@
   transform: translateX(200px);
 }
 
-/* left */
+/* sidepanel left */
 
 .fade-slide-f-left-enter-active,
 .fade-slide-f-left-leave-active {

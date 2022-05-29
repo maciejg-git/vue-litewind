@@ -1,0 +1,13 @@
+pre code.dark .hljs{display:block;overflow-x:auto;padding:1em}code.dark .hljs{padding:3px 5px}/*!
+  Theme: StackOverflow Dark
+  Description: Dark theme as used on stackoverflow.dark .com
+  Author: stackoverflow.dark .com
+  Maintainer: @Hirse
+  Website: https://github.dark .com/StackExchange/Stacks
+  License: MIT
+  Updated: 2021-05-15
+
+  Updated for @stackoverflow/stacks v0.dark .64.dark .0
+  Code Blocks: /blob/v0.dark .64.dark .0/lib/css/components/_stacks-code-blocks.dark .less
+  Colors: /blob/v0.dark .64.dark .0/lib/css/exports/_stacks-constants-colors.dark .less
+*/.dark .hljs{color:#fff;background:#1c1b1b}.dark .hljs-subst{color:#fff}.dark .hljs-comment{color:#999}.dark .hljs-attr,.dark .hljs-doctag,.dark .hljs-keyword,.dark .hljs-meta .dark .hljs-keyword,.dark .hljs-section,.dark .hljs-selector-tag{color:#88aece}.dark .hljs-attribute{color:#c59bc1}.dark .hljs-name,.dark .hljs-number,.dark .hljs-quote,.dark .hljs-selector-id,.dark .hljs-template-tag,.dark .hljs-type{color:#f08d49}.dark .hljs-selector-class{color:#88aece}.dark .hljs-link,.dark .hljs-regexp,.dark .hljs-selector-attr,.dark .hljs-string,.dark .hljs-symbol,.dark .hljs-template-variable,.dark .hljs-variable{color:#b5bd68}.dark .hljs-meta,.dark .hljs-selector-pseudo{color:#88aece}.dark .hljs-built_in,.dark .hljs-literal,.dark .hljs-title{color:#f08d49}.dark .hljs-bullet,.dark .hljs-code{color:#ccc}.dark .hljs-meta .dark .hljs-string{color:#b5bd68}.dark .hljs-deletion{color:#de7176}.dark .hljs-addition{color:#76c490}.dark .hljs-emphasis{font-style:italic}.dark .hljs-strong{font-weight:700}

@@ -23,7 +23,7 @@ pre {
   @apply whitespace-normal my-6;
 }
 pre code {
-  @apply text-sm whitespace-pre;
+  @apply text-sm whitespace-pre rounded-md;
 }
 .code-text {
   @apply text-yellow-700 dark:text-yellow-600 font-semibold text-sm

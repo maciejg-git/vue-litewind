@@ -1752,7 +1752,7 @@
     }
     .badge--success {
       @apply
-        text-white
+        text-success-800
         bg-success-500
     }
     .badge--warn {

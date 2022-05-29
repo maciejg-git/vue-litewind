@@ -1,10 +1,6 @@
 <template>
   <v-tabs
-    :fill="example.fill"
-    :center="example.center"
-    :right="example.right"
-    :transition="example.transition"
-    :base="example.base"
+    v-bind="example"
     @input:changed-tab="
       events.unshift({ ev: 'input:changed-tab', data: $event })
     "
@@ -17,9 +13,9 @@
     </v-tab>
     <v-tab class="p-4">
       <template #name>
-        <span class="flex justify-between">
+        <span class="flex justify-between items-center">
           Tab 3
-          <v-badge style-badge="secondary tiny" class="ml-4">4</v-badge>
+          <v-badge style-badge="success tiny" class="ml-3">4</v-badge>
         </span>
       </template>
       {{ text[2] }}
@@ -30,7 +26,7 @@
       </component>
     </v-tab>
   </v-tabs>
-<!-- CUT START -->
+  <!-- CUT START -->
   <div class="flex justify-between items-center">
     <div class="mt-5">
       <label for="style">Tabs style:</label>
@@ -94,13 +90,13 @@
       </div>
     </v-tab>
   </v-tabs>
-<!-- CUT END -->
+  <!-- CUT END -->
 </template>
 
 <script>
 import { ref, reactive } from "vue";
-import { text } from "../../../const.js"
- 
+import { text } from "../../../const.js";
+
 export default {
   setup() {
     let example = reactive({

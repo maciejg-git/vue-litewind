@@ -5,7 +5,7 @@
 
   <v-accordion class="my-2">
     <v-card>
-      <v-button-collapse v-model="accordion.isVisible" block>
+      <v-button-collapse v-model="accordion.isVisible" block class="w-full">
         Toggle collapse
       </v-button-collapse>
       <v-collapse v-model="accordion.isVisible">
@@ -16,7 +16,7 @@
     </v-card>
 
     <v-card class="my-2">
-      <v-button-collapse v-model="accordion.isVisible2" block>
+      <v-button-collapse v-model="accordion.isVisible2" block class="w-full">
         Toggle collapse
       </v-button-collapse>
       <v-collapse v-model="accordion.isVisible2">
@@ -27,7 +27,7 @@
     </v-card>
 
     <v-card class="my-2">
-      <v-button-collapse v-model="accordion.isVisible3" block>
+      <v-button-collapse v-model="accordion.isVisible3" block class="w-full">
         Toggle collapse
       </v-button-collapse>
       <v-collapse v-model="accordion.isVisible3">
@@ -47,10 +47,10 @@
       <v-collapse>
         <template #reference="{ isOpen, onTrigger }">
           <v-button-collapse
-            block
-            base="button-plain"
-            class="p-3"
             :switch="isOpen"
+            base="button-plain"
+            block
+            class="w-full p-3"
             v-on="onTrigger"
           >
             Toggle collapse
@@ -66,10 +66,10 @@
       <v-collapse>
         <template #reference="{ isOpen, onTrigger }">
           <v-button-collapse
-            block
-            base="button-plain"
-            class="p-3"
             :switch="isOpen"
+            base="button-plain"
+            block
+            class="w-full p-3"
             v-on="onTrigger"
           >
             Toggle collapse
@@ -85,10 +85,10 @@
       <v-collapse>
         <template #reference="{ isOpen, onTrigger }">
           <v-button-collapse
-            block
-            base="button-plain"
-            class="p-3"
             :switch="isOpen"
+            base="button-plain"
+            block
+            class="w-full p-3"
             v-on="onTrigger"
           >
             Toggle collapse

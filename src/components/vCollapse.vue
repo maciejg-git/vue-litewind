@@ -22,7 +22,7 @@ export default {
   },
   props: {
     modelValue: { type: Boolean, default: false },
-    transition: { type: String, default: "fade-collapse" },
+    transition: { type: String, default: "fade-collapse-m" },
   },
   setup(props, { emit }) {
     let isOpen = ref(props.modelValue);

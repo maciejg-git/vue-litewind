@@ -1,0 +1,7 @@
+pre code.dark .hljs{display:block;overflow-x:auto;padding:1em}code.dark .hljs{padding:3px 5px}/*!
+  Theme: a11y-dark
+  Author: @ericwbailey
+  Maintainer: @ericwbailey
+
+  Based on the Tomorrow Night Eighties theme: https://github.dark .com/isagalaev/highlight.dark .js/blob/master/src/styles/tomorrow-night-eighties.dark .css
+*/.dark .hljs{background:#2b2b2b;color:#f8f8f2}.dark .hljs-comment,.dark .hljs-quote{color:#d4d0ab}.dark .hljs-deletion,.dark .hljs-name,.dark .hljs-regexp,.dark .hljs-selector-class,.dark .hljs-selector-id,.dark .hljs-tag,.dark .hljs-template-variable,.dark .hljs-variable{color:#ffa07a}.dark .hljs-built_in,.dark .hljs-link,.dark .hljs-literal,.dark .hljs-meta,.dark .hljs-number,.dark .hljs-params,.dark .hljs-type{color:#f5ab35}.dark .hljs-attribute{color:gold}.dark .hljs-addition,.dark .hljs-bullet,.dark .hljs-string,.dark .hljs-symbol{color:#abe338}.dark .hljs-section,.dark .hljs-title{color:#00e0e0}.dark .hljs-keyword,.dark .hljs-selector-tag{color:#dcc6e0}.dark .hljs-emphasis{font-style:italic}.dark .hljs-strong{font-weight:700}@media screen and (-ms-high-contrast:active){.dark .hljs-addition,.dark .hljs-attribute,.dark .hljs-built_in,.dark .hljs-bullet,.dark .hljs-comment,.dark .hljs-link,.dark .hljs-literal,.dark .hljs-meta,.dark .hljs-number,.dark .hljs-params,.dark .hljs-quote,.dark .hljs-string,.dark .hljs-symbol,.dark .hljs-type{color:highlight}.dark .hljs-keyword,.dark .hljs-selector-tag{font-weight:700}}

@@ -19,7 +19,7 @@
 
 <script>
 // vue
-import { ref, computed, onMounted, onUnmounted } from "vue";
+import { ref, computed } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 // tools
