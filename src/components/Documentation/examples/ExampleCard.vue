@@ -34,8 +34,8 @@
         scrambled it to make a type specimen book.
       </div>
       <v-divider class="w-11/12 mx-auto mt-auto" />
-      <v-button style-button="small" class="ml-auto m-3 mr-6">
-        Details
+      <v-button base="button-plain" class="ml-auto font-semibold underline m-3 mr-6">
+        Show more
       </v-button>
     </div>
   </v-card>

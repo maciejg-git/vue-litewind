@@ -105,15 +105,16 @@ export default {
   animation-iteration-count: infinite;
   animation-timing-function: var(--progress-bar-timing);
   animation-duration: var(--progress-bar-speed);
+  animation-direction: var(--progress-bar-direction);
 }
 
 @keyframes slide {
   from {
-    left: calc(var(--progress-bar-width) * -1);
+    left: calc(var(--progress-bar-width) * -1.1);
   }
 
   to {
-    left: 100%;
+    left: 110%;
   }
 }
 </style>

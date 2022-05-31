@@ -1,7 +1,9 @@
 <template>
   <v-dropdown>
-    <template #reference>
+    <template #reference="{ reference, onTrigger }">
       <v-input
+        :ref="reference"
+        v-on="onTrigger"
         type="text"
         v-model="example.date"
         placeholder="Pick date"

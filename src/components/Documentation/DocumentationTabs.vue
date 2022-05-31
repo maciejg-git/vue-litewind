@@ -21,7 +21,44 @@
 
     <h6>Components</h6>
     <p></p>
-    <table-reference-basic :items="components"></table-reference-basic>
+    <table-reference-basic :items="components">
+      <template #description-v-tab="{ value }">
+        Tab content component
+        <br />
+        <p class="font-semibold py-1">Props</p>
+        <ul class="ml-4">
+          <li>
+        <code class="code-text">name</code>
+        <div class="ml-4">
+          label of tab displayed on tab bar
+        </div>
+          </li>
+        </ul>
+        <p class="font-semibold py-1">Slots</p>
+        <ul class="ml-4">
+          <li>
+        <code class="code-text">default</code>
+        <div class="ml-4">
+          Slot for content of tab
+        </div>
+          </li>
+          <li>
+        <code class="code-text">name</code>
+        <div class="ml-4">
+          Slot for customizing label on tab bar. Useful for formatting or adding icons
+        </div>
+          </li>
+        </ul>
+      </template>
+    </table-reference-basic>
+  </section>
+
+  <section>
+    <h4>Example - simple tabs</h4>
+    <div class="example">
+      <example-tabs-simple></example-tabs-simple>
+    </div>
+    <v-code :code="exampleTabsSimpleCode" template language="html"></v-code>
   </section>
 
   <section>
@@ -35,14 +72,17 @@
 </template>
 
 <script>
-import { ref, reactive } from "vue";
-import ExampleTabs from "./examples/ExampleTabs.vue"
-import exampleTabsCode from "./examples/ExampleTabs.vue?raw"
-import { styleProps } from "./shared-props"
+import { ref } from "vue";
+import ExampleTabs from "./examples/ExampleTabs.vue";
+import ExampleTabsSimple from "./examples/ExampleTabsSimple.vue";
+import exampleTabsCode from "./examples/ExampleTabs.vue?raw";
+import exampleTabsSimpleCode from "./examples/ExampleTabsSimple.vue?raw";
+import { styleProps } from "./shared-props";
 
 export default {
   components: {
     ExampleTabs,
+    ExampleTabsSimple,
   },
   setup(props) {
     let reference = ref([
@@ -122,10 +162,10 @@ export default {
       slots,
       components,
       exampleTabsCode,
+      exampleTabsSimpleCode,
     };
   },
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

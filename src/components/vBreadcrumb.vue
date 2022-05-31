@@ -1,7 +1,9 @@
 <template>
   <nav>
-    <ol>
-      <li v-for="(i, index) in path" :key="index" class="inline-block">
+    <ol class="flex items-center">
+      <li v-for="(i, index) in path" :key="index" class="inline-flex items-center">
+        <v-icon v-if="i.icon" :name="i.icon" class="inline mr-1"/>
+
         <!-- href -->
         <a v-if="i.href" :href="i.href" :class="classes.breadcrumb.value">
           {{ i.label }}
@@ -10,11 +12,11 @@
         <router-link v-if="i.to" :to="i.to" :class="classes.breadcrumb.value">
           {{ i.label }}
         </router-link>
-        <!-- active -->
-        <span v-if="index == path.length - 1" :class="classes.active.value">
+
+        <span v-if="isActive(index)" :class="classes.active.value">
           {{ i.label }}
         </span>
-        <span v-if="index < path.length - 1" :class="classes.separator.value">
+        <span v-else :class="classes.separator.value">
           {{ separator }}
         </span>
       </li>
@@ -42,8 +44,13 @@ export default {
       active: null,
     });
 
+    let isActive = (index) => {
+      return index == props.path.length - 1;
+    }
+
     return {
       classes,
+      isActive,
     };
   },
 };

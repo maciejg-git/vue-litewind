@@ -30,7 +30,7 @@
     <div class="example">
       <p>
         Turn collapse components to accordion by wrapping them with <code class="code-text">v-accordion</code>
-        component. In accordion mode only one item can be open at a time.
+        component. In accordion mode only one collapse element can be opened.
       </p>
       <example-collapse-accordion></example-collapse-accordion>
     </div>

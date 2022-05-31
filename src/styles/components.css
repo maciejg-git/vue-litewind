@@ -448,9 +448,6 @@
 /* PROGRESS */
 
 .progress {
-  --progress-bar-timing: linear;
-  --progress-bar-speed: 1.5s;
-  --progress-bar-width: 50%;
   @apply
     rounded
     overflow-hidden
@@ -473,6 +470,10 @@
     }
 
 .progress--progress-bar {
+  --progress-bar-timing: linear;
+  --progress-bar-speed: 1.5s;
+  --progress-bar-width: 50%;
+  --progress-bar-direction: normal;
   @apply
     bg-primary-500
     dark:bg-primary-500
@@ -492,6 +493,12 @@
         from-yellow-400
         via-orange-500
         to-red-500
+    }
+    .progress--progress-bar--alternate {
+      --progress-bar-timing: ease-in-out;
+      --progress-bar-speed: 1.4s;
+      --progress-bar-width: 50%;
+      --progress-bar-direction: alternate;
     }
 
 .progress--label {
@@ -515,6 +522,15 @@
     mx-2
     text-text-500 
     dark:text-text-300
+}
+
+.breadcrumb--icon {
+  @apply
+    w-6
+    h-6
+    ml-2
+    text-text-400
+    dark:text-gray-400
 }
 
 .breadcrumb--active {
@@ -1461,7 +1477,9 @@
 .datepicker {
   @apply
     text-center
+    text-text-800
     bg-white
+    dark:text-text-300
     dark:bg-dark-800
 }
 
@@ -1724,11 +1742,6 @@
     text-white
     bg-primary-500
 }
-    .badge--plain {
-      @apply
-        rounded
-        p-0
-    }
     .badge--circle {
       @apply
         rounded-full
@@ -1774,7 +1787,6 @@
     .badge--tiny {
       @apply
         text-xs
-        font-semibold
         p-0.5
         px-2
     }

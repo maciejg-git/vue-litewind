@@ -6,8 +6,10 @@
     :definition="definition"
     class="min-w-full"
   >
-    <template #cell:description="{ value }">
-      <span v-html="value"></span>
+    <template #cell:description="{ value, item }">
+      <slot :name="'description-' + item.prop" :value="value">
+        <span v-html="value"></span>
+      </slot>
     </template>
   </v-table>
 </template>

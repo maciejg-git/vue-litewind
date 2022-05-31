@@ -12,10 +12,11 @@ export default {
         {
           label: "Home",
           to: "/",
+          icon: "b-house-fill",
         },
         {
           label: "Documentation",
-          to: "/",
+          to: "/documentation",
         },
         {
           label: "Breadcrumb",

@@ -35,7 +35,9 @@ export default {
 
     // transition
 
-    let beforeLeaveTransition = (el) => (el.style.display = "none");
+    let beforeLeaveTransition = (el) => {
+      el.style.display = "none";
+    }
 
     return {
       tab,

@@ -17,11 +17,6 @@
   </section>
 
   <section>
-    <h4>Notes</h4>
-    <p>If you need finer control over position skip position prop altogether and use utility/classes/style to set absolute position within parent.</p>
-  </section>
-
-  <section>
     <h4>Example</h4>
     <div class="example">
       <example-badge></example-badge>
@@ -47,7 +42,7 @@ export default {
         type: ["String"],
         default: "empty string",
         description:
-          "Position of badge. Valid values are 'top-right', 'top-left', 'bottom-right', 'bottom-left'. If position is set to any of those values badge is positioned as absolute in the corner of parent element (parent element must be positioned as relative)",
+          "Position of badge. Valid values are 'top-right', 'top-left', 'bottom-right', 'bottom-left'. If position is set to any of those values badge is positioned as absolute in the corner of parent element (parent element must be positioned as relative). If you need finer control over position skip position prop altogether and use utility/classes/style to set absolute position within parent.",
       },
       ...styleProps("badge"),
     ]);

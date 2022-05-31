@@ -23,6 +23,9 @@ import BGeoAlt from "./components/Documentation/icons/geo-alt"
 import BGeoAltFill from "./components/Documentation/icons/geo-alt-fill"
 import MdiLoading from "./components/Documentation/icons/loading"
 import BSun from "./components/Documentation/icons/sun"
+import BCode from "./components/Documentation/icons/code"
+import BHouseFill from "./components/Documentation/icons/house-fill"
+import MdiLanguageJavascript from "./components/Documentation/icons/language-javascript"
 import MdiCheckboxOutline from "./components/Documentation/icons/checkbox-outline"
 import MdiCheckboxBlankOutline from "./components/Documentation/icons/checkbox-blank-outline"
 import MdiAccountEdit from "./components/Documentation/icons/account-edit"
@@ -55,6 +58,9 @@ registerIcon(app, [
   MdiCheckboxOutline,
   MdiCheckboxBlankOutline,
   MdiAccountEdit,
+  BCode,
+  BHouseFill,
+  MdiLanguageJavascript,
 ], {
   vendorPrefix: true,
   iconSufix: false,

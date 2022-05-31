@@ -54,21 +54,21 @@ export default {
       {
         prop: "icon",
         type: ["String", "Object"],
-        default: "undefined",
+        default: "empty string",
         description:
           "Name of the registered icon component or icon component object",
       },
       {
         prop: "name",
         type: ["String", "Object"],
-        default: "undefined",
+        default: "empty string",
         description:
           "Same as icon prop",
       },
       {
         prop: "icon-type",
         type: ["String"],
-        default: "undefined",
+        default: "empty string",
         description: "Icon type provided via iconTypes",
       },
     ]);

@@ -94,12 +94,16 @@
 </template>
 
 <script>
+// vue
 import { ref, computed, watch } from "vue";
+// composition
+import useStyles from "./composition/use-styles";
+// components
 import vIcon from "./vIcon.vue";
 import vSortIcon from "./icons/sort-solid.js";
 import vCaretUpIcon from "./icons/caret-up-solid.js";
 import vCaretDownIcon from "./icons/caret-down-solid.js";
-import useStyles from "./composition/use-styles";
+// tools
 import {
   formatCase,
   compare,
@@ -107,6 +111,7 @@ import {
   isRegexp,
   undefNullToStr,
 } from "../tools.js";
+// props
 import { sharedStyleProps } from "../shared-props";
 
 export default {

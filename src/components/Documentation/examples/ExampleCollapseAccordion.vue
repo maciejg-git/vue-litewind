@@ -1,7 +1,7 @@
 <template>
   <!-- model collapse accordion -->
 
-  <p class="mt-8 mb-4">Model collapse accordion</p>
+  <p class="mt-8 mb-4">Accordion - controlled by models</p>
 
   <v-accordion class="my-2">
     <v-card>
@@ -40,7 +40,7 @@
 
   <!-- reference slot accordion -->
 
-  <p class="mt-8 mb-4">Reference slot accordion</p>
+  <p class="mt-8 mb-4">Accordion - controlled from reference slot</p>
 
   <v-accordion class="my-2">
     <v-card base="card-flat">

@@ -30,24 +30,29 @@
     <div class="example">
       <example-progress-indeterminate></example-progress-indeterminate>
     </div>
-    <p>Set width, speed and timing function of indeterminate progress bar with css variables:
-  <ul>
-  <li>
-    <code class="code-text">
-      --progress-bar-timing: linear;
-    </code>
-  </li>
-  <li>
-    <code class="code-text">
-    --progress-bar-speed: 1.5s;
-    </code>
-  </li>
-  <li>
-    <code class="code-text">
-  --progress-bar-width: 50%;
-    </code>
-  </li>
-  </ul>
+    <p>Width, speed, timing function and direction of indeterminate progress bar can be customized with css variables:
+    <ul>
+      <li>
+        <code class="code-text">
+          --progress-bar-timing
+        </code>
+      </li>
+      <li>
+        <code class="code-text">
+          --progress-bar-speed
+        </code>
+      </li>
+      <li>
+        <code class="code-text">
+          --progress-bar-width
+        </code>
+      </li>
+      <li>
+        <code class="code-text">
+          --progress-bar-direction
+        </code>
+      </li>
+    </ul>
     </p>
     <v-code :code="exampleProgressIndeterminateCode" template language="html"></v-code>
     <v-code :code="exampleProgressIndeterminateCode" script language="js"></v-code>
@@ -55,7 +60,7 @@
 </template>
 
 <script>
-import { ref, reactive, onMounted } from "vue";
+import { ref } from "vue";
 import ExampleProgress from "./examples/ExampleProgress.vue"
 import ExampleProgressIndeterminate from "./examples/ExampleProgressIndeterminate.vue"
 import exampleProgressCode from "./examples/ExampleProgress.vue?raw"

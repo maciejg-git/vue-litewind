@@ -1,6 +1,10 @@
 <template>
-  <pre class="">
+  <pre class="relative">
     <code ref="codeEl" class="code" :class="'language-' + language"><slot name="default">{{ code }}</slot></code>
+  <div class="absolute right-4 top-4 text-text-500 dark:text-text-400">
+    <v-icon v-if="template" name="b-code" class="w-10 h-10"></v-icon>
+    <v-icon v-else-if="script" name="mdi-language-javascript" class="w-10 h-10"></v-icon>
+  </div>
   </pre>
 </template>
 

@@ -28,8 +28,11 @@
 </template>
 
 <script>
-import vIcon from "./vIcon.vue";
+// composition
 import useStyles from "./composition/use-styles";
+// components
+import vIcon from "./vIcon.vue";
+// props
 import { sharedStyleProps } from "../shared-props"
 
 export default {

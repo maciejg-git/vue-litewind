@@ -108,7 +108,7 @@
       <router-view></router-view>
 
       <footer
-        class="flex border-t bg-gray-200 border-gray-300 dark:bg-dark-800 dark:border-dark-700 min-h-[100px] mt-10 py-4"
+        class="flex border-t bg-gray-200 border-gray-300 bg-white dark:bg-dark-800 dark:border-dark-700 min-h-[100px] mt-10 py-4"
       >
         <span class="ml-auto mr-4">
           <v-icon name="github" class="text-gray-500"></v-icon>
@@ -120,10 +120,13 @@
 
 <script>
 import { ref, onMounted } from "vue";
-import "../../styles/hljs/github.css";
+// light style
+// import "../../styles/hljs/github.css";
+import "../../styles/hljs/google-light.css";
+// dark style
 // import "../../styles/hljs/tokyo-night-dark.css";
-// import "../../styles/hljs/darktooth.css";
-import "../../styles/hljs/vs2015.css";
+// import "../../styles/hljs/vs2015.css";
+import "../../styles/hljs/oceanicnext.css";
 import { components, formComponents } from "./Components";
 
 export default {

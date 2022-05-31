@@ -24,6 +24,8 @@
     <v-button style-button="raised">Raised button</v-button>
   </div>
 
+  <!-- icon buttons -->
+
   <div class="flex items-center gap-6 mt-6">
     <v-button style-button="warn" class="flex-col">
       <v-icon name="b-star" class="w-6 h-6" />
@@ -41,9 +43,13 @@
     </v-button>
   </div>
 
+  <!-- block button -->
+
   <div class="flex items-center gap-6 mt-6">
     <v-button block class="w-full">Block button</v-button>
   </div>
+
+  <!-- disabled button -->
 
   <div class="flex items-center gap-6 mt-6">
     <v-button disabled>Button (disabled)</v-button>

@@ -7,6 +7,9 @@
     @input:selection="handleSelection"
     class="min-w-full"
   >
+  <template #prepend-id>
+
+  </template>
     <template #cell:status="{ item }">
       <v-icon
         v-if="item.status"
@@ -15,11 +18,13 @@
       ></v-icon>
       <v-icon v-else name="mdi-checkbox-blank-outline"></v-icon>
     </template>
+
     <template #cell:department="{ item }">
       <div class="w-[150px] whitespace-nowrap text-ellipsis overflow-hidden">
         {{ item.department }}
       </div>
     </template>
+
     <template #cell:edit="{ item }">
       <!-- stop propagation to avoid selecting row -->
       <v-button
@@ -31,6 +36,7 @@
         <v-icon name="mdi-account-edit"></v-icon>
       </v-button>
     </template>
+
     <template #caption>Example caption</template>
   </v-table>
 
@@ -177,9 +183,6 @@ export default {
     });
 
     let page = ref(1);
-
-    let events = ref([]);
-
     let editModalIsVisible = ref(false);
     let editModalContent = ref("");
 
@@ -187,6 +190,8 @@ export default {
       editModalContent.value = JSON.stringify(content, null, 2);
       editModalIsVisible.value = true;
     };
+
+    let events = ref([]);
 
     let handleFilteredCount = (count) => {
       example.itemsCount = count;
