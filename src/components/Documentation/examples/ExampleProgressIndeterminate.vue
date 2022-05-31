@@ -17,7 +17,7 @@
     <div class="flex justify-center p-4">Checking for updates...</div>
     <v-progress
       style-progress="tiny"
-      style-progress-bar="gradient alternate"
+      style-progress-bar="gradient"
       indeterminate
       class="m-2"
     ></v-progress>
