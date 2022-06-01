@@ -33,6 +33,8 @@ import vFormText from "./vFormText.vue";
 import vAccordion from "./vAccordion.vue"
 import vIcon from "./vIcon.vue"
 
+import vTree from "./vTree.vue"
+
 import vAutocomplete from "./vAutocomplete.vue"
 
 import tooltip from "../directives/tooltip.js";
@@ -76,6 +78,9 @@ export {
   vAccordion,
   vIcon,
   tooltip,
+
+  vAutocomplete,
+  vTree,
 
   vButtonCollapse,
   vButtonDropdown,
@@ -151,6 +156,7 @@ function install(app) {
   app.component("v-icon", vIcon);
 
   app.component("v-autocomplete", vAutocomplete);
+  app.component("v-tree", vTree);
 
   app.directive("tooltip", tooltip);
 

@@ -746,6 +746,21 @@
     <!--   <input type="" /> -->
     <!-- </v-popover> -->
 
+    <v-tree :items="treeData" @input:item="log(item)">
+      <!-- <template #item-prepend="{ isFolder, isOpen }"> -->
+      <!--   <div v-if="isFolder"> -->
+      <!--     [] -->
+      <!--   </div> -->
+      <!--   <div v-if="isFolder &#38;&#38; isOpen"> -->
+      <!--     [open] -->
+      <!--   </div> -->
+      <!-- </template> -->
+      <!-- <template #item="{ item }"> -->
+      <!--   <div :class="{'text-warn-400': item.children?.length}"><v-chevron></v-chevron>{{ item.name + 'slot' }}</div> -->
+      <!-- </template> -->
+    </v-tree>
+    <div class="h-[500px]"></div>
+
   </div>
 </template>
 
@@ -870,6 +885,29 @@ export default {
     //   [
     //     "id", "name" col = 2, "em", "city"
     //   ]
+
+    const treeData = ref({
+  name: 'My Tree',
+  children: [
+    { name: 'hello' },
+    { name: 'world' },
+    {
+      name: 'child folder',
+      children: [
+        {
+          name: 'child folder',
+          children: [{ name: 'hello' }, { name: 'world' }]
+        },
+        { name: 'hello' },
+        { name: 'world' },
+        {
+          name: 'child folder',
+          children: [{ name: 'hello' }, { name: 'world' }]
+        }
+      ]
+    }
+  ]
+})
     
     let progress = ref(10);
     let textModel = ref("text")
@@ -1044,6 +1082,7 @@ export default {
       boundingBox,
       dropodownReference,
       log,
+      treeData,
     };
   },
 };

@@ -1874,6 +1874,19 @@
     mr-0.5
 }
 
+/* TREE */
+
+.tree--folder {
+  @apply
+    font-bold
+    ml-4
+}
+
+.tree--item {
+  @apply
+    ml-4
+}
+
 /* TOOLTIP */
 
 .tooltip {
