@@ -80,6 +80,8 @@ import vSpinner from "./vSpinner.vue";
 import vCloseButton from "./vCloseButton.vue";
 // directives
 import detectScrollBottom from "../directives/detect-scroll-bottom";
+// tools
+import { isString } from "../tools";
 // props
 import {
   sharedPopperProps,
@@ -94,6 +96,7 @@ export default {
     items: { type: Array, default: [] },
     itemText: { type: String, default: "text" },
     itemValue: { type: String, default: "value" },
+    multipleText: { type: Array, default: [] },
     isLoading: { type: Boolean, default: false },
     noFilter: { type: Boolean, default: false },
     noPagination: { type: Boolean, default: false },
@@ -208,12 +211,14 @@ export default {
 
     // get text and value of item
 
-    let getItemText = (item) => {
-      return item[props.itemText] !== undefined ? item[props.itemText] : item;
+    let getItemText = (item, key) => {
+      if (isString(item)) return item;
+      return item[key !== undefined ? key : props.itemText];
     };
 
-    let getItemValue = (item) => {
-      return item[props.itemValue] !== undefined ? item[props.itemValue] : item;
+    let getItemValue = (item, key) => {
+      if (isString(item)) return item;
+      return item[key !== undefined ? key : props.itemValue];
     };
 
     // filter items
@@ -222,11 +227,21 @@ export default {
       if (props.isLoading || props.noFilter) return props.items;
       if (isNewSelection.value) return props.items;
 
-      return props.items.filter((i) => {
+      if (props.multipleText.length) {
+        return props.items.filter((item) => {
+          return props.multipleText.some((key) => {
+            let s = getItemText(item, key);
+            return (
+              s && s.toLowerCase().indexOf(localText.value.toLowerCase()) !== -1
+            );
+          });
+        });
+      }
+
+      return props.items.filter((item) => {
+        let s = getItemText(item);
         return (
-          getItemText(i)
-            .toLowerCase()
-            .indexOf(localText.value.toLowerCase()) !== -1
+          s && s.toLowerCase().indexOf(localText.value.toLowerCase()) !== -1
         );
       });
     });
@@ -247,8 +262,9 @@ export default {
 
     // matching text higlight
 
-    let getHighligtedText = (item) =>
-      highlightMatch(getItemText(item), localText.value);
+    let getHighligtedText = (item) => {
+      return highlightMatch(getItemText(item), localText.value);
+    };
 
     let highlightMatch = (string, match) => {
       return string.replace(

@@ -746,7 +746,7 @@
     <!--   <input type="" /> -->
     <!-- </v-popover> -->
 
-    <v-tree :items="treeData" @input:item="log(item)">
+    <v-tree :items="treeData" @input:item="log">
       <!-- <template #item-prepend="{ isFolder, isOpen }"> -->
       <!--   <div v-if="isFolder"> -->
       <!--     [] -->

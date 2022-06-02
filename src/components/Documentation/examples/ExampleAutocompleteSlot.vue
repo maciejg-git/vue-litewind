@@ -5,7 +5,7 @@
     :items="example.items"
     :is-loading="example.isLoading"
     item-text="last_name"
-    item-value="last_name"
+    item-value="id"
     style-menu="shadow"
     no-filter
     @input:value="query($event)"
@@ -15,7 +15,7 @@
       <div class="flex justify-between">
         <div
           v-html="
-            item['first_name'] +
+            highlightMatch(item['first_name'], inputValue) +
             ' ' +
             highlightMatch(item['last_name'], inputValue)
           "
@@ -47,7 +47,10 @@ export default {
       setTimeout(() => {
         example.items = company.filter((e) => {
           return (
-            (e["last_name"] || "")
+            (e["first_name"] || "")
+              .toLowerCase()
+              .indexOf((q || "").toLowerCase()) > -1
+            || (e["last_name"] || "")
               .toLowerCase()
               .indexOf((q || "").toLowerCase()) > -1
           );
