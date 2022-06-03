@@ -4,25 +4,19 @@
     v-model:input-value="example.inputValue"
     :items="example.items"
     :is-loading="example.isLoading"
-    item-text="last_name"
+    item-text="full_name"
     item-value="id"
     style-menu="shadow"
     no-filter
     @input:value="query($event)"
     class="w-[420px]"
   >
-    <template #item="{ text, item, value, inputValue, highlightMatch }">
+    <template #item="{ item, inputValue, highlightMatch }">
       <div class="flex justify-between">
-        <div
-          v-html="
-            highlightMatch(item['first_name'], inputValue) +
-            ' ' +
-            highlightMatch(item['last_name'], inputValue)
-          "
-        ></div>
+        <div v-html="highlightMatch(item['full_name'], inputValue)"></div>
         <div class="text-xs">{{ item.department }}</div>
       </div>
-      <span class="text-text-400 dark:text-text-400 text-sm font-semibold">
+      <span class="text-sm font-semibold text-text-400 dark:text-text-400">
         {{ item.title }}
       </span>
     </template>
@@ -30,7 +24,7 @@
 </template>
 
 <script>
-import { ref, reactive } from "vue";
+import { reactive } from "vue";
 import company from "../data/company.json";
 
 export default {
@@ -47,10 +41,7 @@ export default {
       setTimeout(() => {
         example.items = company.filter((e) => {
           return (
-            (e["first_name"] || "")
-              .toLowerCase()
-              .indexOf((q || "").toLowerCase()) > -1
-            || (e["last_name"] || "")
+            (e["full_name"] || "")
               .toLowerCase()
               .indexOf((q || "").toLowerCase()) > -1
           );
