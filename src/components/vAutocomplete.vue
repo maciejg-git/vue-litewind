@@ -96,7 +96,7 @@ export default {
     items: { type: Array, default: [] },
     itemText: { type: String, default: "text" },
     itemValue: { type: String, default: "value" },
-    multipleText: { type: Array, default: [] },
+    filterKeys: { type: Array, default: [] },
     isLoading: { type: Boolean, default: false },
     noFilter: { type: Boolean, default: false },
     noPagination: { type: Boolean, default: false },
@@ -196,7 +196,7 @@ export default {
       showPopper();
     };
 
-    // those watchers show autocomplete menu after all data is ready
+    // those watchers controls autocomplete menu visibility
 
     watch(
       () => props.isLoading,
@@ -212,13 +212,13 @@ export default {
     // get text and value of item
 
     let getItemText = (item, key) => {
-      if (isString(item)) return item;
-      return item[key !== undefined ? key : props.itemText];
+      return isString(item)
+        ? item
+        : item[key !== undefined ? key : props.itemText];
     };
 
-    let getItemValue = (item, key) => {
-      if (isString(item)) return item;
-      return item[key !== undefined ? key : props.itemValue];
+    let getItemValue = (item) => {
+      return isString(item) ? item : item[props.itemValue];
     };
 
     // filter items
@@ -227,21 +227,21 @@ export default {
       if (props.isLoading || props.noFilter) return props.items;
       if (isNewSelection.value) return props.items;
 
-      if (props.multipleText.length) {
+      if (props.filterKeys.length) {
         return props.items.filter((item) => {
-          return props.multipleText.some((key) => {
-            let s = getItemText(item, key);
+          return props.filterKeys.some((key) => {
+            let i = getItemText(item, key);
             return (
-              s && s.toLowerCase().indexOf(localText.value.toLowerCase()) !== -1
+              i && i.toLowerCase().indexOf(localText.value.toLowerCase()) !== -1
             );
           });
         });
       }
 
       return props.items.filter((item) => {
-        let s = getItemText(item);
+        let i = getItemText(item);
         return (
-          s && s.toLowerCase().indexOf(localText.value.toLowerCase()) !== -1
+          i && i.toLowerCase().indexOf(localText.value.toLowerCase()) !== -1
         );
       });
     });

@@ -87,6 +87,10 @@ let components = [
     label: "Table",
     name: "table",
   },
+  {
+    label: "Tree",
+    name: "tree",
+  },
 ]
 
 let formComponents = [

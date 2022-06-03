@@ -34,6 +34,7 @@ import DocumentationBreadcrumb from "../components/Documentation/DocumentationBr
 import DocumentationChevron from "../components/Documentation/DocumentationChevron.vue";
 import DocumentationFormText from "../components/Documentation/DocumentationFormText.vue";
 import DocumentationAutocomplete from "../components/Documentation/DocumentationAutocomplete.vue";
+import DocumentationTree from "../components/Documentation/DocumentationTree.vue";
 import DocumentationClosebutton from "../components/Documentation/DocumentationClosebutton.vue";
 import DocumentationIcon from "../components/Documentation/DocumentationIcon.vue";
 import DocumentationDivider from "../components/Documentation/DocumentationDivider.vue";
@@ -187,6 +188,10 @@ const routes = [
       {
         path: "autocomplete",
         component: DocumentationAutocomplete,
+      },
+      {
+        path: "tree",
+        component: DocumentationTree,
       },
       {
         path: "form-validation",

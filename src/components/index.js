@@ -34,6 +34,7 @@ import vAccordion from "./vAccordion.vue"
 import vIcon from "./vIcon.vue"
 
 import vTree from "./vTree.vue"
+import vTreeNode from "./vTreeNode.vue"
 
 import vAutocomplete from "./vAutocomplete.vue"
 
@@ -80,6 +81,7 @@ export {
   tooltip,
 
   vAutocomplete,
+  vTreeNode,
   vTree,
 
   vButtonCollapse,
@@ -156,6 +158,7 @@ function install(app) {
   app.component("v-icon", vIcon);
 
   app.component("v-autocomplete", vAutocomplete);
+  app.component("v-tree-node", vTreeNode);
   app.component("v-tree", vTree);
 
   app.directive("tooltip", tooltip);

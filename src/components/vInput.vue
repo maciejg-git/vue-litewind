@@ -42,7 +42,7 @@
 
 <script>
 // vue
-import { ref, computed, watch, toRefs } from "vue";
+import { ref, computed, watch } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
