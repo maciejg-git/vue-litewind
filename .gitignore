@@ -4,3 +4,4 @@ dist
 dist-ssr
 *.local
 lazygit.exe
+src/components/Test.vue
