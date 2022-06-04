@@ -1877,16 +1877,24 @@
 
 /* TREE */
 
+.tree-item-fixed {
+  @apply
+    my-3
+    ml-5
+}
+
 .tree--folder {
   @apply
+    tree-item-fixed;
+  @apply
     font-bold
-    ml-4
 }
 
 .tree--item {
   @apply
+    tree-item-fixed;
+  @apply
     font-normal
-    ml-4
 }
 
 /* TOOLTIP */

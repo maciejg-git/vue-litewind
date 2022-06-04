@@ -1,17 +1,26 @@
 <template>
   <ul>
-    <v-tree-node v-bind="$attrs"></v-tree-node>
+    <v-tree-node v-bind="$attrs">
+      <template v-for="(_, slot) of slots" #[slot]="i">
+        <slot :name="slot" v-bind="i"></slot>
+      </template>
+    </v-tree-node>
   </ul>
 </template>
 
 <script>
-import { provide } from "vue"
+// vue
+import { toRef, provide } from "vue";
+// composition
 import useStyles from "./composition/use-styles";
-import vTreeNode from "./vTreeNode.vue"
+// components
+import vTreeNode from "./vTreeNode.vue";
+// props
 import { sharedStyleProps } from "../shared-props";
 
 export default {
   props: {
+    transition: { type: String, default: "fade-m" },
     styleFolder: { type: String, default: "" },
     styleItem: { type: String, default: "" },
     ...sharedStyleProps("tree"),
@@ -20,15 +29,26 @@ export default {
     vTreeNode,
   },
   inheritAttrs: false,
-  setup(props) {
+  setup(props, { slots }) {
     let { classes, states } = useStyles("tree", props, {
       folder: {
+        // fixed: ["inline-flex"],
         states: ["opened"],
       },
-      item: null,
+      item: {
+        // fixed: ["inline-flex"],
+      },
     });
-    
-    provide("tree", { classes, states })
+
+    provide("tree", {
+      classes,
+      states,
+      transition: toRef(props, "transition"),
+    });
+
+    return {
+      slots,
+    }
   },
-}
+};
 </script>

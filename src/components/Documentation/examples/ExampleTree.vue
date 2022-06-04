@@ -1,5 +1,5 @@
 <template>
-  <v-tree :items="example.items">
+  <v-tree :items="example.items" @input:item="handleClickItem" :chevron-attrs="{ triangle: true }">
     <!-- <template #item-prepend="{ isFolder, isOpen }"> -->
     <!--   <div v-if="isFolder"> -->
     <!--     [] -->
@@ -47,38 +47,51 @@ import { ref, reactive } from "vue";
 
 export default {
   setup() {
-    const treeData = ref({
-      name: "My Tree",
+    const treeData = {
+      name: "Movies",
       children: [
-        { name: "hello" },
-        { name: "world" },
+        { name: "Out of Africa" },
+        { name: "Lost in Translation" },
+        { name: "Before Sunset" },
+        { name: "Groundhog Day" },
         {
-          name: "child folder",
+          name: "Science-fiction",
           children: [
             {
-              name: "child folder",
-              children: [{ name: "hello" }, { name: "world" }],
+              name: "Matrix",
+              children: [
+                { name: "Matrix" },
+                { name: "Matrix: Revolutions" }
+              ],
             },
-            { name: "hello" },
-            { name: "world" },
+            { name: "Blade Runner" },
+            { name: "Futurama" },
+            { name: "Dune" },
+            { name: "Ghost in the Shell" },
             {
-              name: "child folder",
-              children: [{ name: "hello" }, { name: "world" }],
+              name: "Star Wars",
+              children: [{ name: "Return of The Jedi" }, { name: "The Phantom Menace" }],
             },
           ],
         },
+        { name: "Spirited Away" },
       ],
-    });
+    };
 
     let example = reactive({
       items: treeData,
     });
+
+    let handleClickItem = (item) => {
+      console.log(item)
+    }
 
     let events = ref([]);
 
     return {
       example,
       events,
+      handleClickItem,
     };
   },
 };
