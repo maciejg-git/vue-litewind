@@ -1,7 +1,7 @@
 <template>
   <v-tree :items="example.items" @input:item="handleClickItem" :chevron-attrs="{ triangle: true }">
     <!-- <template #item-prepend="{ isFolder, isOpen }"> -->
-    <!--   <div v-if="isFolder"> -->
+    <!--   <div v-if="isFolder &#38;&#38; !isOpen"> -->
     <!--     [] -->
     <!--   </div> -->
     <!--   <div v-if="isFolder &#38;&#38; isOpen"> -->
@@ -50,12 +50,13 @@ export default {
     const treeData = {
       name: "Movies",
       children: [
-        { name: "Out of Africa" },
         { name: "Lost in Translation" },
         { name: "Before Sunset" },
         { name: "Groundhog Day" },
+        { name: "Out of Africa", icon: "b-star" },
         {
           name: "Science-fiction",
+          icon: "b-star",
           children: [
             {
               name: "Matrix",

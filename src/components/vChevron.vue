@@ -74,7 +74,7 @@ import vCaretLeftFillIcon from "./icons/caret-left-fill.js";
 import vCaretUpFillIcon from "./icons/caret-up-fill.js";
 import vCaretDownFillIcon from "./icons/caret-down-fill.js";
 // props
-import { sharedStyleProps } from "../shared-props"
+import { sharedStyleProps } from "../shared-props";
 
 export default {
   props: {
@@ -114,13 +114,13 @@ export default {
       ];
     };
 
+    let validInitial = ["down", "left", "right", "up"];
+
     let initial = computed(() => {
-      return props.initial == "down" ||
-        props.initial == "left" ||
-        props.initial == "right" ||
-        props.initial == "up"
-        ? props.initial
-        : "down";
+      return (
+        (validInitial.some((i) => i === props.initial) && props.initial) ||
+        "down"
+      );
     });
 
     let getRotation = () => {

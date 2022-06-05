@@ -44,15 +44,45 @@ export default {
     let reference = ref([
       {
         prop: "items",
-        type: ["Array"],
-        default: "undefined",
-        description: "Array of items to make tree from",
+        type: ["Object"],
+        default: "{}",
+        description: "Object of items to make tree from",
+      },
+      {
+        prop: "item-name",
+        type: ["String"],
+        default: "name",
+        description: "Name of the property that hold name of item",
+      },
+      {
+        prop: "item-children",
+        type: ["String"],
+        default: "children",
+        description: "Name of the property that hold name of array of children",
+      },
+      {
+        prop: "open-on-click",
+        type: ["Boolean"],
+        default: "true",
+        description: "If true folders are automatically opened when clicked",
+      },
+      {
+        prop: "indicators",
+        type: ["Boolean"],
+        default: "true",
+        description: "Whether to display open indicators",
+      },
+      {
+        prop: "chevron-attrs",
+        type: ["Object"],
+        default: "{}",
+        description: "Object of attributes that are passed to v-chevron component",
       },
       {
         prop: "transition",
         type: ["String"],
         default: "fade-m",
-        description: "Sets an animation when opening or closing folders",
+        description: "Defines an animation when opening or closing folders",
       },
       ...styleProps("tree"),
     ]);
@@ -70,12 +100,16 @@ export default {
 
     let events = ref([
       {
-        prop: "update:page",
-        description: "Fired when next page is displayed (scroll reach end of dropdown menu)",
+        prop: "input:item",
+        description: "Fired when item is clicked (folders and items). Passes item as argument",
       },
       {
-        prop: "state:focus",
-        description: "Input element recieved focus",
+        prop: "input:opened-item",
+        description: "Fired after opening folder",
+      },
+      {
+        prop: "input:closed-item",
+        description: "Fired after closing folder",
       },
     ]);
 
@@ -89,6 +123,11 @@ export default {
         prop: "item-append",
         description:
           "This slot can be used to append icons, checkboxes, badges etc. to items",
+      },
+      {
+        prop: "item",
+        description:
+          "Slot for customizing items",
       },
     ]);
 

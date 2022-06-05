@@ -1,8 +1,8 @@
 <template>
   <ul>
     <v-tree-node v-bind="$attrs">
-      <template v-for="(_, slot) of slots" #[slot]="i">
-        <slot :name="slot" v-bind="i"></slot>
+      <template v-for="(name, slot) of slots" #[slot]="items">
+        <slot :name="slot" v-bind="items"></slot>
       </template>
     </v-tree-node>
   </ul>

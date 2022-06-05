@@ -44,13 +44,13 @@ export default {
     };
 
     let state = computed(() => {
-      if (props.modelValue._isValidateRef) {
+      if (props.modelValue && props.modelValue._isValidateRef) {
         return props.modelValue.getValidStatus()
       }
     });
 
     let handleBlur = () => {
-      if (props.modelValue._isValidateRef) {
+      if (props.modelValue && props.modelValue._isValidateRef) {
         props.modelValue.touch();
       }
     };

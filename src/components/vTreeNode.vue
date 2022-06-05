@@ -2,6 +2,25 @@
   <li :class="getItemClasses()">
     <slot name="item" v-bind="{ item: items, isFolder, isOpen }">
       <div class="flex items-center">
+        <!-- indicator -->
+        <div class="w-4">
+          <v-button v-if="isFolder" base="button-plain" @click="handleIndicatorClick">
+            <v-chevron
+              :switch="isOpen"
+              initial="right"
+              v-bind="chevronAttrs"
+            ></v-chevron>
+          </v-button>
+        </div>
+        <!-- checkbox -->
+        <div>
+          <v-checkbox></v-checkbox>
+        </div>
+        <!-- icon -->
+        <div v-if="items[itemIcon]">
+          <v-icon :name="items[itemIcon]"></v-icon>
+        </div>
+        <!-- prepend slot -->
         <div>
           <slot
             name="item-prepend"
@@ -9,22 +28,14 @@
             :isOpen="isOpen"
           ></slot>
         </div>
-        <div class="w-5 mr-1">
-          <v-button base="button-plain" @click="handleIndicatorClick">
-            <v-chevron
-              v-if="isFolder"
-              :switch="isOpen"
-              initial="right"
-              v-bind="chevronAttrs"
-            ></v-chevron>
-          </v-button>
-        </div>
+        <!-- item name -->
         <div
           @click="handleItemClick"
           :class="{ 'cursor-pointer': isFolder && openOnClick }"
         >
           {{ items[itemName] }}
         </div>
+        <!-- append slot -->
         <slot name="item-append" :isFolder="isFolder" :isOpen="isOpen"></slot>
       </div>
     </slot>
@@ -36,7 +47,7 @@
           :items="i"
           v-bind="{...$attrs, chevronAttrs}"
         >
-          <template v-for="(_, slot) of slots" #[slot]="i">
+          <template v-for="(name, slot) of slots" #[slot]="i">
             <slot :name="slot" v-bind="i"></slot>
           </template>
         </v-tree-node>
@@ -54,11 +65,12 @@ export default {
     items: { type: Object, default: {} },
     itemName: { type: String, default: "name" },
     itemChildren: { type: String, default: "children" },
+    itemIcon: { type: String, default: "icon" },
     openOnClick: { type: Boolean, default: true },
     indicators: { type: Boolean, default: true },
     chevronAttrs: { type: Object, default: {} },
   },
-  // inheritAttrs: false,
+  inheritAttrs: false,
   setup(props, { emit, slots }) {
     let { classes, states, transition } = inject("tree");
 
