@@ -31,34 +31,6 @@
       h-8
       w-8
   }
- .v-icon--info-type {
-    @apply
-      text-info-500
-  }
-  .v-icon--danger-type {
-    @apply
-      text-danger-500
-  }
-  .v-icon--success-type {
-    @apply
-      text-success-500
-  }
-  .v-icon--warn-type {
-    @apply
-      text-warn-500
-  }
-  .v-icon--valid-type {
-    @apply
-      text-success-500
-  }
-  .v-icon--invalid-type {
-    @apply
-      text-danger-500
-  }
-  .v-icon--light-type {
-    @apply
-      text-gray-500
-  }
 
 /* BUTTON PLAIN */
 
