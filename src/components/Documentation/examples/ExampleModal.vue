@@ -243,8 +243,6 @@ export default {
       title: "Example modal",
       noPrimaryButton: false,
       noSecondaryButton: false,
-      primaryButtonStyle: "primary",
-      secondaryButtonStyle: "secondary",
       primaryButtonLabel: "OK",
       secondaryButtonLabel: "Cancel",
       primaryButtonClose: false,

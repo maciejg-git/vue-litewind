@@ -33,7 +33,7 @@
                 <v-button
                   v-if="!noSecondaryButton"
                   aria-label="Cancel button"
-                  :style-button="secondaryButtonStyle"
+                  v-bind="secondaryButtonAttrs"
                   class="mx-2"
                   @click="handleSecondaryButtonClick"
                 >
@@ -42,7 +42,7 @@
                 <v-button
                   v-if="!noPrimaryButton"
                   aria-label="OK button"
-                  :style-button="primaryButtonStyle"
+                  v-bind="primaryButtonAttrs"
                   class="mx-2"
                   @click="handlePrimaryButtonClick"
                 >
@@ -82,8 +82,8 @@ export default {
     title: { type: String, default: undefined },
     noPrimaryButton: { type: Boolean, default: false },
     noSecondaryButton: { type: Boolean, default: false },
-    primaryButtonStyle: { type: String, default: "primary" },
-    secondaryButtonStyle: { type: String, default: "secondary" },
+    primaryButtonAttrs: { type: Object, default: { styleButton: "primary" } },
+    secondaryButtonAttrs: { type: Object, default: { styleButton: "secondary" } },
     primaryButtonLabel: { type: String, default: "Accept" },
     secondaryButtonLabel: { type: String, default: "Close" },
     primaryButtonClose: { type: Boolean, default: false },
@@ -126,7 +126,7 @@ export default {
       },
       footer: {
         fixed: "fixed-footer",
-        prop: computed(() => classesJustifyButtons[props.justifyButtons]),
+        prop: computed(() => classesFooter[props.justifyButtons]),
       },
       content: null,
       backdrop: {
@@ -142,7 +142,7 @@ export default {
       ];
     });
 
-    const classesJustifyButtons = {
+    const classesFooter = {
       start: "justify-start",
       end: "justify-end",
       center: "justify-center",
