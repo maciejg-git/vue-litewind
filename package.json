@@ -10,7 +10,8 @@
   "scripts": {
     "dev": "vite",
     "test": "vitest",
-    "build": "vite build",
+    "build-docs": "vite build --config vite-docs.config.js",
+    "build-lib": "vite build --config vite-lib.config.js",
     "serve": "vite preview"
   },
   "dependencies": {
