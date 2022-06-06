@@ -8,7 +8,7 @@
     "src/styles/*"
   ],
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --config vite-docs.config.js",
     "test": "vitest",
     "build-docs": "vite build --config vite-docs.config.js",
     "build-lib": "vite build --config vite-lib.config.js",
