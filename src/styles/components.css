@@ -1852,7 +1852,7 @@
 .tree-item-fixed {
   @apply
     my-3
-    ml-5
+    ml-8
 }
 
 .tree--folder {
@@ -1867,6 +1867,12 @@
     tree-item-fixed;
   @apply
     font-normal
+}
+
+.tree--icon {
+  @apply
+    w-5
+    h-5
 }
 
 /* TOOLTIP */

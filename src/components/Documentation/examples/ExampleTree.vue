@@ -1,6 +1,12 @@
 <template>
-  <v-tree :items="example.items" @input:item="handleClickItem" :chevron-attrs="{ triangle: true }">
-    <!-- <template #item-prepend="{ isFolder, isOpen }"> -->
+  <v-tree
+    :items="example.items"
+    @input:item="handleClickItem"
+    :chevron-attrs="{ triangle: true }"
+    :placeholder-folder-icon="['mdi-folder', 'mdi-folder-open']"
+    placeholder-item-icon="b-file-earmark"
+  >
+    <!-- <template #item-append="{ isFolder, isOpen }"> -->
     <!--   <div v-if="isFolder &#38;&#38; !isOpen"> -->
     <!--     [] -->
     <!--   </div> -->
@@ -8,8 +14,15 @@
     <!--     [open] -->
     <!--   </div> -->
     <!-- </template> -->
-    <!-- <template #item="{ item }"> -->
-    <!--   <div :class="{'text-warn-400': item.children?.length}"><v-chevron></v-chevron>{{ item.name + 'slot' }}</div> -->
+    <!-- <template #item="{ item, isFolder, isOpen, toggleItem }"> -->
+    <!--   <div class="flex items-center"> -->
+    <!--     <div class="w-5"> -->
+    <!--       <v-button v-if="isFolder" base="button-plain" @click="toggleItem"> -->
+    <!--         <v-chevron initial="right" :switch="isOpen"></v-chevron> -->
+    <!--       </v-button> -->
+    <!--     </div> -->
+    <!--     {{ item.name }} -->
+    <!--   </div> -->
     <!-- </template> -->
   </v-tree>
   <!-- CUT START -->
@@ -56,22 +69,22 @@ export default {
         { name: "Out of Africa", icon: "b-star" },
         {
           name: "Science-fiction",
-          icon: "b-star",
+          icon: ["mdi-folder", "mdi-folder-open"],
           children: [
             {
               name: "Matrix",
-              children: [
-                { name: "Matrix" },
-                { name: "Matrix: Revolutions" }
-              ],
+              children: [{ name: "Matrix" }, { name: "Matrix: Revolutions" }],
             },
             { name: "Blade Runner" },
             { name: "Futurama" },
-            { name: "Dune" },
+            { name: "Dune", disabled: true },
             { name: "Ghost in the Shell" },
             {
               name: "Star Wars",
-              children: [{ name: "Return of The Jedi" }, { name: "The Phantom Menace" }],
+              children: [
+                { name: "Return of The Jedi" },
+                { name: "The Phantom Menace" },
+              ],
             },
           ],
         },
@@ -84,8 +97,8 @@ export default {
     });
 
     let handleClickItem = (item) => {
-      console.log(item)
-    }
+      console.log(item);
+    };
 
     let events = ref([]);
 

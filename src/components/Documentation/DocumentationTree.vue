@@ -61,6 +61,12 @@ export default {
         description: "Name of the property that hold name of array of children",
       },
       {
+        prop: "item-icon",
+        type: ["String"],
+        default: "children",
+        description: "Name of the property that hold name of item's icon. Valid name is the same as for v-icon name prop",
+      },
+      {
         prop: "open-on-click",
         type: ["Boolean"],
         default: "true",
@@ -71,6 +77,30 @@ export default {
         type: ["Boolean"],
         default: "true",
         description: "Whether to display open indicators",
+      },
+      {
+        prop: "icons",
+        type: ["Boolean"],
+        default: "true",
+        description: "Whether to display icons",
+      },
+      {
+        prop: "checkboxes",
+        type: ["Boolean"],
+        default: "true",
+        description: "Whether to display checkboxes",
+      },
+      {
+        prop: "placeholder-folder-icon",
+        type: ["String", "Object"],
+        default: "undefined",
+        description: "Folder icon to display if no icon is provided",
+      },
+      {
+        prop: "placeholder-item-icon",
+        type: ["String", "Object"],
+        default: "undefined",
+        description: "Item icon to display if no icon is provided",
       },
       {
         prop: "chevron-attrs",
@@ -101,7 +131,7 @@ export default {
     let events = ref([
       {
         prop: "input:item",
-        description: "Fired when item is clicked (folders and items). Passes item as argument",
+        description: "Fired when item is clicked (folders and items). Passes item as argument. Note that disabled items also trigger this event but those can be easly dismissed by checking <code class='code-text'>disabled</code> property",
       },
       {
         prop: "input:opened-item",
@@ -115,6 +145,16 @@ export default {
 
     let slots = ref([
       {
+        prop: "item",
+        description:
+          "Slot for complete customization of appearance of items. Note that you will need to provide own toggle indicators, icons, checkboxes, native event listeners etc. Other slots are unavailable when using this slot",
+      },
+      {
+        prop: "item-name",
+        description:
+          "Item name",
+      },
+      {
         prop: "item-prepend",
         description:
           "This slot can be used to prepend items with icons, arrows, checkboxes etc.",
@@ -123,11 +163,6 @@ export default {
         prop: "item-append",
         description:
           "This slot can be used to append icons, checkboxes, badges etc. to items",
-      },
-      {
-        prop: "item",
-        description:
-          "Slot for customizing items",
       },
     ]);
 

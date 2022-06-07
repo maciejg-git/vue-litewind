@@ -104,10 +104,6 @@ export default {
     // let { touched, dirty, valid } = toRefs(props.modelValue.status.value)
     let { status } = props.modelValue
 
-    // watch(status, (status, prevStatus) => {
-    //   console.log(status, prevStatus)
-    // })
-
     let handleBlur = () => {
       if (props.modelValue._isValidateRef) {
         props.modelValue.touch();

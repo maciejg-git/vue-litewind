@@ -3,58 +3,11 @@
     <v-icon :icon="icon" :class="getClass()" v-bind="$attrs"></v-icon>
   </template>
   <template v-else>
-    <template v-if="!triangle">
-      <v-icon
-        v-if="initial == 'right'"
-        :name="vChevronRightIcon"
-        :class="getClass()"
-        v-bind="$attrs"
-      ></v-icon>
-      <v-icon
-        v-else-if="initial == 'left'"
-        :name="vChevronLeftIcon"
-        :class="getClass()"
-        v-bind="$attrs"
-      ></v-icon>
-      <v-icon
-        v-else-if="initial == 'up'"
-        :name="vChevronUpIcon"
-        :class="getClass()"
-        v-bind="$attrs"
-      ></v-icon>
-      <v-icon
-        v-else-if="initial == 'down'"
-        :name="vChevronDownIcon"
-        :class="getClass()"
-        v-bind="$attrs"
-      ></v-icon>
-    </template>
-    <template v-else-if="triangle">
-      <v-icon
-        v-if="initial == 'right'"
-        :name="vCaretRightFillIcon"
-        :class="getClass()"
-        v-bind="$attrs"
-      ></v-icon>
-      <v-icon
-        v-else-if="initial == 'left'"
-        :name="vCaretLeftFillIcon"
-        :class="getClass()"
-        v-bind="$attrs"
-      ></v-icon>
-      <v-icon
-        v-else-if="initial == 'up'"
-        :name="vCaretUpFillIcon"
-        :class="getClass()"
-        v-bind="$attrs"
-      ></v-icon>
-      <v-icon
-        v-else-if="initial == 'down'"
-        :name="vCaretDownFillIcon"
-        :class="getClass()"
-        v-bind="$attrs"
-      ></v-icon>
-    </template>
+    <v-icon
+      :name="triangle ? chevron.triangle[initial] : chevron.chevron[initial]"
+      :class="getClass()"
+      v-bind="$attrs"
+    ></v-icon>
   </template>
 </template>
 
@@ -89,14 +42,6 @@ export default {
   },
   components: {
     vIcon,
-    vChevronUpIcon,
-    vChevronLeftIcon,
-    vChevronUpIcon,
-    vChevronDownIcon,
-    vCaretRightFillIcon,
-    vCaretLeftFillIcon,
-    vCaretUpFillIcon,
-    vCaretDownFillIcon,
   },
   setup(props) {
     let { classes } = useStyles("chevron", props, {
@@ -112,6 +57,21 @@ export default {
           getRotation(),
         ],
       ];
+    };
+
+    let chevron = {
+      chevron: {
+        right: vChevronRightIcon,
+        left: vChevronLeftIcon,
+        up: vChevronUpIcon,
+        down: vChevronDownIcon,
+      },
+      triangle: {
+        right: vCaretRightFillIcon,
+        left: vCaretLeftFillIcon,
+        up: vCaretUpFillIcon,
+        down: vCaretDownFillIcon,
+      },
     };
 
     let validInitial = ["down", "left", "right", "up"];
@@ -139,6 +99,7 @@ export default {
       classes,
       getClass,
       initial,
+      chevron,
       getRotation,
       vChevronRightIcon,
       vChevronLeftIcon,

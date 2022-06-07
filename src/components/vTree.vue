@@ -23,6 +23,7 @@ export default {
     transition: { type: String, default: "fade-m" },
     styleFolder: { type: String, default: "" },
     styleItem: { type: String, default: "" },
+    styleIcon: { type: String, default: "" },
     ...sharedStyleProps("tree"),
   },
   components: {
@@ -32,15 +33,13 @@ export default {
   setup(props, { slots }) {
     let { classes, states } = useStyles("tree", props, {
       folder: {
-        // fixed: ["inline-flex"],
         states: ["opened"],
       },
-      item: {
-        // fixed: ["inline-flex"],
-      },
+      item: null,
+      icon: null,
     });
 
-    provide("tree", {
+    provide("control-tree", {
       classes,
       states,
       transition: toRef(props, "transition"),

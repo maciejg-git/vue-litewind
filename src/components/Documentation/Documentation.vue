@@ -1,12 +1,11 @@
 <template>
   <v-navbar
     sticky
-    style-navbar="gray"
-    class="flex justify-between px-4 py-2 border-b dark:border-dark-700"
+    class="flex justify-between border-b dark:text-text-300 dark:border-dark-700 px-4 py-2"
   >
     <div>
-      <span class="text-lg font-bold dark:text-text-300">VueTailwind</span>
-      <div class="inline-block dark:text-text-300 ml-5">
+      <span class="text-lg font-bold">VueTailwind</span>
+      <div class="inline-block ml-5">
         <a href="/documentation/installation">Docs</a>
       </div>
     </div>
@@ -18,9 +17,9 @@
     </v-button>
   </v-navbar>
 
-  <div class="flex dark:bg-neutral-800 dark:text-text-300/90">
+  <div class="flex text-text-800 dark:bg-neutral-800 dark:text-text-300/90">
     <div
-      class="sidebar sticky lg:block flex-none overflow-auto text-gray-700 dark:text-text-300/90 border-r dark:border-dark-700 pb-20 top-16 p-3 w-64"
+      class="sidebar sticky lg:block flex-none overflow-auto border-r dark:border-dark-700 pb-20 top-16 p-3 w-64"
     >
       <!-- general -->
 
@@ -104,11 +103,11 @@
       </ul>
     </div>
 
-    <div class="container mx-auto p-3 w-full lg:max-w-screen-xl px-2 lg:px-24">
+    <div class="container w-full lg:max-w-screen-xl px-2 lg:px-24 mx-auto p-3">
       <router-view></router-view>
 
       <footer
-        class="flex border-t bg-gray-200 border-gray-300 bg-white dark:bg-dark-800 dark:border-dark-700 min-h-[100px] mt-10 py-4"
+        class="flex min-h-[100px] border-t border-gray-300 bg-white dark:bg-dark-800 dark:border-dark-700 mt-10 py-4"
       >
         <span class="ml-auto mr-4">
           <v-icon name="github" class="text-gray-500"></v-icon>
