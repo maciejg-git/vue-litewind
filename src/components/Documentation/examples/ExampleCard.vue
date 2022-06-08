@@ -44,7 +44,7 @@
 
   <v-card width="360px" style-card="shadow hoverable" class="relative overflow-hidden">
     <img :src="randomPhoto(360, 600)" alt="" class="opacity-100"/>
-    <div class="absolute bottom-0 bg-gray-800 bg-opacity-50 text-gray-100">
+    <div class="absolute bottom-0 bg-gray-800 bg-opacity-80 text-gray-100">
       <header class="font-semibold text-lg pt-3 px-6">Example card</header>
       <header class="text-gray-500 text-sm py-1 px-6">Subtitle</header>
       <div class="p-6 pb-10">
