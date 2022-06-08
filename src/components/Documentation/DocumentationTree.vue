@@ -46,7 +46,7 @@ export default {
         prop: "items",
         type: ["Object"],
         default: "{}",
-        description: "Object of items to make tree from",
+        description: "Object of tree nodes",
       },
       {
         prop: "item-name",
@@ -67,25 +67,43 @@ export default {
         description: "Name of the property that hold name of item's icon. Valid name is the same as for v-icon name prop",
       },
       {
+        prop: "filter",
+        type: ["String"],
+        default: "empty string",
+        description: "Filters items matching string",
+      },
+      {
+        prop: "open-all",
+        type: ["Boolean"],
+        default: "false",
+        description: "Set to true or false to open or close all nodes",
+      },
+      {
+        prop: "auto-open-root",
+        type: ["Boolean"],
+        default: "false",
+        description: "If true mounts tree with root node opened",
+      },
+      {
         prop: "open-on-click",
         type: ["Boolean"],
         default: "true",
-        description: "If true folders are automatically opened when clicked",
+        description: "If true clicking on labels opens folders. Clicking indicators always opens folders",
       },
       {
-        prop: "indicators",
+        prop: "show-indicators",
         type: ["Boolean"],
         default: "true",
         description: "Whether to display open indicators",
       },
       {
-        prop: "icons",
+        prop: "show-icons",
         type: ["Boolean"],
         default: "true",
         description: "Whether to display icons",
       },
       {
-        prop: "checkboxes",
+        prop: "show-checkboxes",
         type: ["Boolean"],
         default: "true",
         description: "Whether to display checkboxes",
@@ -94,19 +112,19 @@ export default {
         prop: "placeholder-folder-icon",
         type: ["String", "Object"],
         default: "undefined",
-        description: "Folder icon to display if no icon is provided",
+        description: "Default folder icon if no icon is provided in items prop",
       },
       {
         prop: "placeholder-item-icon",
         type: ["String", "Object"],
         default: "undefined",
-        description: "Item icon to display if no icon is provided",
+        description: "Default item icon if no icon is provided in items prop",
       },
       {
         prop: "chevron-attrs",
         type: ["Object"],
         default: "{}",
-        description: "Object of attributes that are passed to v-chevron component",
+        description: "Object passed to <code class='code-text'>v-chevron</code> (open indicator) component. See documentation for valid props",
       },
       {
         prop: "transition",
@@ -152,17 +170,17 @@ export default {
       {
         prop: "item-name",
         description:
-          "Item name",
+          "Slot for item name",
       },
       {
         prop: "item-prepend",
         description:
-          "This slot can be used to prepend items with icons, arrows, checkboxes etc.",
+          "Slot for content that prepends item name",
       },
       {
         prop: "item-append",
         description:
-          "This slot can be used to append icons, checkboxes, badges etc. to items",
+          "Slot for content that is appended to item name",
       },
     ]);
 

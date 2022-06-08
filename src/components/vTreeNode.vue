@@ -1,9 +1,9 @@
 <template>
-  <li :class="getItemClasses()">
+  <li :class="getItemClasses()" v-if="!isFiltered">
     <slot name="item" v-bind="{ item: items, isFolder, isOpen, toggleItem }">
       <div class="flex items-center">
         <!-- indicator -->
-        <div class="w-5 order-first mr-2">
+        <div v-if="showIndicators" class="w-5 order-first mr-2">
           <v-button
             v-if="isFolder"
             base="button-plain"
@@ -17,11 +17,13 @@
           </v-button>
         </div>
         <!-- checkbox -->
-        <div v-if="checkboxes">
-          <v-checkbox v-model="isSelected"></v-checkbox>
-        </div>
+        <transition :name="transition">
+          <div v-if="showCheckboxes" class="flex items-center mr-2">
+            <v-checkbox v-model="isSelected" @change="handleItemSelected"></v-checkbox>
+          </div>
+        </transition>
         <!-- icon -->
-        <div>
+        <div v-if="showIcons">
           <slot name="icon" v-bind="{ item: items, isFolder, isOpen }">
             <div
               v-if="
@@ -67,7 +69,7 @@
       <ul v-show="isOpen" v-if="isFolder">
         <v-tree-node
           v-for="i in items[itemChildren]"
-          v-bind="{ ...$attrs, ...$props, items: i }"
+          v-bind="{ ...$attrs, ...$props, items: i, itemLevel: itemLevel + 1 }"
         >
           <template v-for="(name, slot) of slots" #[slot]="i">
             <slot :name="slot" v-bind="i"></slot>
@@ -80,36 +82,33 @@
 
 <script>
 // vue
-import { ref, computed, inject } from "vue";
+import { ref, computed, watch, inject } from "vue";
 
 export default {
   props: {
     items: { type: Object, default: {} },
+    itemKey: { type: [String, Number], default: undefined },
     itemName: { type: String, default: "name" },
     itemChildren: { type: String, default: "children" },
     itemIcon: { type: String, default: "icon" },
+    itemLevel: { type: Number, default: 0 },
     openOnClick: { type: Boolean, default: true },
-    indicators: { type: Boolean, default: true },
-    icons: { type: Boolean, default: true },
-    checkboxes: { type: Boolean, default: false },
+    showIndicators: { type: Boolean, default: true },
+    showIcons: { type: Boolean, default: true },
+    showCheckboxes: { type: Boolean, default: false },
     placeholderItemIcon: { type: [String, Object], default: undefined },
     placeholderFolderIcon: { type: [String, Object], default: undefined },
     chevronAttrs: { type: Object, default: {} },
   },
   inheritAttrs: false,
   setup(props, { emit, slots }) {
-    let { classes, states, transition } = inject("control-tree");
+    let { classes, states, openAll, filter, transition } =
+      inject("control-tree");
 
     // computed
     let getItemClasses = () => {
       return isFolder.value ? classes.folder.value : classes.item.value;
     };
-
-    const isOpen = ref(false);
-    const isSelected = ref(false);
-    const isFolder = computed(() => {
-      return props.items.children && props.items.children.length;
-    });
 
     const getIcon = () => {
       let icon = props.items[props.itemIcon];
@@ -129,6 +128,36 @@ export default {
       );
     };
 
+    let itemLevel = computed(() => props.itemLevel)
+
+    const isOpen = ref(false);
+
+    const isSelected = ref(false);
+
+    const isFolder = computed(() => {
+      return props.items.children && props.items.children.length;
+    });
+
+    const isFiltered = computed(() => {
+      if (!filter.value || isFolder.value) return false;
+      return (
+        props.items[props.itemName]
+          .toLowerCase()
+          .indexOf(filter.value.toLowerCase()) === -1
+      );
+    });
+
+    let isRoot = () => itemLevel.value === 0
+
+    watch(
+      openAll,
+      (val) => {
+        if (val) isOpen.value = true;
+        else isOpen.value = false;
+      },
+      { immediate: true }
+    );
+
     let toggleItem = () => {
       isOpen.value = !isOpen.value;
       if (isOpen.value) emit("input:opened-item", props.items);
@@ -147,7 +176,6 @@ export default {
     };
 
     let handleItemSelected = () => {
-      isSelected.value = true;
       emit("input:selected");
     };
 
@@ -155,10 +183,13 @@ export default {
       classes,
       getItemClasses,
       states,
+      itemLevel,
       transition,
       isOpen,
       isFolder,
       isSelected,
+      isFiltered,
+      isRoot,
       getIcon,
       slots,
       toggleItem,

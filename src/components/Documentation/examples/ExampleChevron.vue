@@ -10,11 +10,11 @@
       style-chevron="right"
     />
   </v-button>
-<!-- CUT START -->
+  <!-- CUT START -->
   <v-tabs base="tabs-material" class="mt-5">
     <v-tab name="Props">
-      <div class="mt-5">
-        <div class="mb-2">
+      <div class="flex flex-col gap-y-2 mt-5">
+        <div>
           <label for="initial">initial:</label>
           <v-select id="initial" v-model="example.initial">
             <option value="down">down</option>
@@ -23,28 +23,28 @@
             <option value="up">up</option>
           </v-select>
         </div>
-        <div class="mb-2">
+        <div>
           <label for="rotate180">rotate180:</label>
           <v-select id="rotate180" v-model="example.rotate180">
             <option :value="true">true</option>
             <option :value="false">false</option>
           </v-select>
         </div>
-        <div class="mb-2">
+        <div>
           <label for="triangle">triangle:</label>
           <v-select id="triangle" v-model="example.triangle">
             <option :value="true">true</option>
             <option :value="false">false</option>
           </v-select>
         </div>
-        <div class="mb-2">
+        <div>
           <label for="counter-clockwise">counter-clockwise:</label>
           <v-select id="counter-clockwise" v-model="example.counterClockwise">
             <option :value="true">true</option>
             <option :value="false">false</option>
           </v-select>
         </div>
-        <div class="mb-2">
+        <div>
           <label for="switch">switch:</label>
           <v-select id="switch" v-model="example.switch">
             <option :value="true">true</option>

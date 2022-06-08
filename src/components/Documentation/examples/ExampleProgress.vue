@@ -37,53 +37,55 @@
   <!-- CUT START -->
   <v-tabs base="tabs-material" class="mt-10">
     <v-tab name="Props">
-      <div class="mb-2 mt-5">
-        <label for="value">value:</label>
-        <v-input
-          type="text"
-          id="value"
-          v-model.number="example.value"
-        ></v-input>
-        <v-button
-          style-button="small"
-          @click="example.value += 10"
-          class="ml-2"
-        >
-          +10
-        </v-button>
-        <v-button
-          style-button="small"
-          @click="example.value -= 10"
-          class="ml-2"
-        >
-          -10
-        </v-button>
-      </div>
-      <div class="mb-2">
-        <label for="max">max:</label>
-        <v-input type="text" id="max" v-model.number="example.max"></v-input>
-      </div>
-      <div class="mb-2">
-        <label for="precision">precision:</label>
-        <v-input
-          type="text"
-          id="precision"
-          v-model.number="example.precision"
-        ></v-input>
-      </div>
-      <div class="mb-2">
-        <label for="label">label:</label>
-        <v-select id="label" v-model="example.label">
-          <option :value="true">true</option>
-          <option :value="false">false</option>
-        </v-select>
-      </div>
-      <div class="mb-2">
-        <label for="transition">transition:</label>
-        <v-select id="transition" v-model="example.transition">
-          <option :value="true">true</option>
-          <option :value="false">false</option>
-        </v-select>
+      <div class="flex flex-col gap-y-2 mt-5">
+        <div>
+          <label for="value">value:</label>
+          <v-input
+            type="text"
+            id="value"
+            v-model.number="example.value"
+          ></v-input>
+          <v-button
+            style-button="small"
+            @click="example.value += 10"
+            class="ml-2"
+          >
+            +10
+          </v-button>
+          <v-button
+            style-button="small"
+            @click="example.value -= 10"
+            class="ml-2"
+          >
+            -10
+          </v-button>
+        </div>
+        <div>
+          <label for="max">max:</label>
+          <v-input type="text" id="max" v-model.number="example.max"></v-input>
+        </div>
+        <div>
+          <label for="precision">precision:</label>
+          <v-input
+            type="text"
+            id="precision"
+            v-model.number="example.precision"
+          ></v-input>
+        </div>
+        <div>
+          <label for="label">label:</label>
+          <v-select id="label" v-model="example.label">
+            <option :value="true">true</option>
+            <option :value="false">false</option>
+          </v-select>
+        </div>
+        <div>
+          <label for="transition">transition:</label>
+          <v-select id="transition" v-model="example.transition">
+            <option :value="true">true</option>
+            <option :value="false">false</option>
+          </v-select>
+        </div>
       </div>
     </v-tab>
   </v-tabs>

@@ -28,25 +28,22 @@
         <p class="font-semibold py-1">Props</p>
         <ul class="ml-4">
           <li>
-        <code class="code-text">name</code>
-        <div class="ml-4">
-          label of tab displayed on tab bar
-        </div>
+            <code class="code-text">name</code>
+            <div class="ml-4">label of tab displayed on tab bar</div>
           </li>
         </ul>
         <p class="font-semibold py-1">Slots</p>
         <ul class="ml-4">
           <li>
-        <code class="code-text">default</code>
-        <div class="ml-4">
-          Slot for content of tab
-        </div>
+            <code class="code-text">default</code>
+            <div class="ml-4">Slot for content of tab</div>
           </li>
           <li>
-        <code class="code-text">name</code>
-        <div class="ml-4">
-          Slot for customizing label on tab bar. Useful for formatting or adding icons
-        </div>
+            <code class="code-text">name</code>
+            <div class="ml-4">
+              Slot for customizing label on tab bar. Useful for formatting or
+              adding icons
+            </div>
           </li>
         </ul>
       </template>

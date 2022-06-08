@@ -404,7 +404,7 @@
 
 .list--item {
   @apply
-    p-2
+    py-4
     px-4
     hover:bg-secondary-50
     dark:hover:bg-dark-700

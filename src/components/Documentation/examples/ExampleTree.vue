@@ -1,10 +1,10 @@
 <template>
   <v-tree
-    :items="example.items"
-    @input:item="handleClickItem"
+    v-bind="example"
     :chevron-attrs="{ triangle: true }"
     :placeholder-folder-icon="['mdi-folder', 'mdi-folder-open']"
     placeholder-item-icon="b-file-earmark"
+    @input:item="handleClickItem"
   >
     <!-- <template #item-append="{ isFolder, isOpen }"> -->
     <!--   <div v-if="isFolder &#38;&#38; !isOpen"> -->
@@ -28,9 +28,50 @@
   <!-- CUT START -->
   <v-tabs base="tabs-material" class="mt-10">
     <v-tab name="Props">
-      <div class="mb-2 mt-5">
-        <label for="model" class="font-semibold">v-model:</label>
-        <v-input type="text" id="model" v-model="example.model"></v-input>
+      <div class="flex flex-col gap-y-2 mt-5">
+        <div>
+          <label for="model" class="font-semibold">v-model:</label>
+          <v-input type="text" id="model" v-model="example.model"></v-input>
+        </div>
+        <div>
+          <label for="filter">filter:</label>
+          <v-input type="text" id="filter" v-model="example.filter"></v-input>
+        </div>
+        <div>
+          <label for="openAll">open-all:</label>
+          <v-select id="openAll" v-model="example.openAll">
+            <option :value="true">true</option>
+            <option :value="false">false</option>
+          </v-select>
+        </div>
+        <div>
+          <label for="open-on-click">open-on-click:</label>
+          <v-select id="open-on-click" v-model="example.openOnClick">
+            <option :value="true">true</option>
+            <option :value="false">false</option>
+          </v-select>
+        </div>
+        <div>
+          <label for="show-indicators">show-indicators:</label>
+          <v-select id="show-indicators" v-model="example.showIndicators">
+            <option :value="true">true</option>
+            <option :value="false">false</option>
+          </v-select>
+        </div>
+        <div>
+          <label for="show-icons">show-icons:</label>
+          <v-select id="show-icons" v-model="example.showIcons">
+            <option :value="true">true</option>
+            <option :value="false">false</option>
+          </v-select>
+        </div>
+        <div>
+          <label for="show-checkboxes">show-checkboxes:</label>
+          <v-select id="show-checkboxes" v-model="example.showCheckboxes">
+            <option :value="true">true</option>
+            <option :value="false">false</option>
+          </v-select>
+        </div>
       </div>
     </v-tab>
     <v-tab>
@@ -60,6 +101,7 @@ import { ref, reactive } from "vue";
 
 export default {
   setup() {
+    // prettier-ignore
     const treeData = {
       name: "Movies",
       children: [
@@ -73,7 +115,10 @@ export default {
           children: [
             {
               name: "Matrix",
-              children: [{ name: "Matrix" }, { name: "Matrix: Revolutions" }],
+              children: [
+                { name: "Matrix" },
+                { name: "Matrix: Revolutions" }
+              ],
             },
             { name: "Blade Runner" },
             { name: "Futurama" },
@@ -94,6 +139,12 @@ export default {
 
     let example = reactive({
       items: treeData,
+      openOnClick: true,
+      showIndicators: true,
+      showIcons: true,
+      showCheckboxes: false,
+      filter: "",
+      openAll: false,
     });
 
     let handleClickItem = (item) => {

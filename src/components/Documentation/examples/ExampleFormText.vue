@@ -3,15 +3,13 @@
     <v-input v-model="username" type="text" class="mr-4" />
 
     <v-form-text
-        :status=username
+      :status="username"
       :inline="example.inline"
       :visible-states="example.visibleStates"
       :messages="messages"
     >
       <template #prepend-message>
-        <v-icon
-          class="mr-2"
-        />
+        <v-icon class="mr-2" />
       </template>
     </v-form-text>
   </div>
@@ -48,18 +46,18 @@
   <!--   <span class="font-semibold">Languages:</span> -->
   <!--   {{ languagesModel }} -->
   <!-- </div> -->
-<!-- CUT START -->
+  <!-- CUT START -->
   <v-tabs base="tabs-material" class="mt-5">
     <v-tab name="Props">
-      <div class="mt-5">
-        <div class="mb-2">
+      <div class="flex flex-col gap-y-2 mt-5">
+        <div>
           <label for="inline">inline:</label>
           <v-select id="inline" v-model="example.inline">
             <option :value="true">true</option>
             <option :value="false">false</option>
           </v-select>
         </div>
-        <div class="mb-2">
+        <div>
           <label for="visible-states">visible-states:</label>
           <v-select id="visible-states" v-model="example.visibleStates">
             <option value="default,invalid,valid">default,invalid,valid</option>
@@ -71,12 +69,12 @@
       </div>
     </v-tab>
   </v-tabs>
-<!-- CUT END -->
+  <!-- CUT END -->
 </template>
 
 <script>
 import { ref, reactive } from "vue";
-import useValidateRef from "../../composition/use-validate-ref"
+import useValidateRef from "../../composition/use-validate-ref";
 
 export default {
   setup() {
@@ -97,7 +95,7 @@ export default {
     let messages = {
       numeric: "numeric",
       required: "required",
-      minLength: "min length"
+      minLength: "min length",
     };
 
     let username = useValidateRef("", {
@@ -109,7 +107,7 @@ export default {
       passwordMin: () => {
         return true;
       },
-    })
+    });
 
     let example = reactive({
       inline: false,

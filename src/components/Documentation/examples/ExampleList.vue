@@ -1,71 +1,25 @@
 <template>
   <v-list width="500px" :tag="example.tag" :base="example.base">
-    <v-list-item :active="example.active1">
-      <div class="font-semibold">
-        {{ data[0].first_name }} {{ data[0].last_name }}
-      </div>
-      <div class="text-gray-400">
-        {{ data[0].email }}
-      </div>
-      <div>
-        <v-checkbox type="checkbox" v-model="example.active1" />
-        <label for="" class="ml-2">toggle active</label>
-      </div>
-    </v-list-item>
-
-    <v-list-item :active="example.active2">
-      <div class="font-semibold">
-        {{ data[1].first_name }} {{ data[1].last_name }}
-      </div>
-      <div class="text-gray-400">
-        {{ data[1].email }}
-      </div>
-      <div>
-        <v-checkbox type="checkbox" v-model="example.active2" />
-        <label for="" class="ml-2">toggle active</label>
-      </div>
-    </v-list-item>
-
-    <v-list-item :active="example.active3">
-      <div class="font-semibold">
-        {{ data[2].first_name }} {{ data[2].last_name }}
-      </div>
-      <div class="text-gray-400">
-        {{ data[2].email }}
-      </div>
-      <div>
-        <v-checkbox type="checkbox" v-model="example.active3" />
-        <label for="" class="ml-2">toggle active</label>
-      </div>
-    </v-list-item>
-
-    <v-list-item :active="example.active4">
-      <div class="font-semibold">
-        {{ data[3].first_name }} {{ data[3].last_name }}
-      </div>
-      <div class="text-gray-400">
-        {{ data[3].email }}
-      </div>
-      <div>
-        <v-checkbox type="checkbox" v-model="example.active4" />
-        <label for="" class="ml-2">toggle active</label>
-      </div>
-    </v-list-item>
-
-    <v-list-item :active="example.active5">
-      <div class="font-semibold">
-        {{ data[4].first_name }} {{ data[4].last_name }}
-      </div>
-      <div class="text-gray-400">
-        {{ data[4].email }}
-      </div>
-      <div>
-        <v-checkbox type="checkbox" v-model="example.active5" />
-        <label for="" class="ml-2">toggle active</label>
+    <v-list-item v-for="item in example.users" :active="item.active">
+      <div class="flex gap-x-4">
+        <div>
+          <v-checkbox type="checkbox" v-model="item.active" />
+        </div>
+        <div>
+          <div class="font-semibold">
+            {{ item.full_name }}
+          </div>
+          <div class="text-text-400">
+            {{ item.title }}
+          </div>
+        </div>
+        <div class="text-sm text-gray-400 ml-auto">
+          {{ item.department }}
+        </div>
       </div>
     </v-list-item>
   </v-list>
-<!-- CUT START -->
+  <!-- CUT START -->
   <div class="mt-5">
     <label for="style">List style:</label>
     <v-select id="style" v-model="example.base">
@@ -75,41 +29,35 @@
   </div>
   <v-tabs base="tabs-material" class="mt-10">
     <v-tab name="Props">
-      <div class="mb-2 mt-5">
-        <label for="tag">tag:</label>
-        <v-select id="tag" v-model="example.tag">
-          <option value="div">div</option>
-          <option value="a">a</option>
-          <option value="button">button</option>
-        </v-select>
+      <div class="flex flex-col gap-y-2 mt-5">
+        <div>
+          <label for="tag">tag:</label>
+          <v-select id="tag" v-model="example.tag">
+            <option value="div">div</option>
+            <option value="a">a</option>
+            <option value="button">button</option>
+          </v-select>
+        </div>
       </div>
     </v-tab>
   </v-tabs>
-<!-- CUT END -->
+  <!-- CUT END -->
 </template>
 
 <script>
 import { reactive } from "vue";
-/* CUT START */
-import data from "../data/data.json";
-/* CUT END */
+import company from "../data/company.json";
+
 export default {
   setup() {
     let example = reactive({
+      users: company.slice(0, 5).map((i) => ({ ...i, active: false })),
       tag: "div",
-      active1: false,
-      active2: false,
-      active3: false,
-      active4: false,
-      active5: false,
       base: "list",
     });
 
     return {
       example,
-/* CUT START */
-      data,
-/* CUT END */
     };
   },
 };

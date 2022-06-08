@@ -46,8 +46,8 @@
     Alert
   </v-alert>
 <!-- CUT START -->
-  <div class="flex justify-between items-center">
-    <div class="mt-5">
+  <div class="flex justify-between mt-5">
+    <div>
       <label for="variant">Alert variant:</label>
       <v-select id="variant" v-model="example.variant">
         <option value="info">info</option>
@@ -66,24 +66,26 @@
   </div>
   <v-tabs base="tabs-material" class="mt-5">
     <v-tab name="Props">
-      <div class="mb-2 mt-5">
-        <label for="model" class="font-semibold">v-model:</label>
-        <v-input type="text" id="model" v-model="example.isVisible"></v-input>
-      </div>
-      <div class="mb-2">
-        <label for="dismissable">dismissable:</label>
-        <v-select id="dismissable" v-model="example.dismissable">
-          <option :value="true">true</option>
-          <option :value="false">false</option>
-        </v-select>
-      </div>
-      <div class="mb-2">
-        <label for="auto-dismiss-delay">auto-dismiss-delay:</label>
-        <v-input
-          type="text"
-          id="auto-dismiss-delay"
-          v-model="example.autoDismissDelay"
-        ></v-input>
+      <div class="flex flex-col gap-y-2 mt-5">
+        <div>
+          <label for="model" class="font-semibold">v-model:</label>
+          <v-input type="text" id="model" v-model="example.isVisible"></v-input>
+        </div>
+        <div>
+          <label for="dismissable">dismissable:</label>
+          <v-select id="dismissable" v-model="example.dismissable">
+            <option :value="true">true</option>
+            <option :value="false">false</option>
+          </v-select>
+        </div>
+        <div>
+          <label for="auto-dismiss-delay">auto-dismiss-delay:</label>
+          <v-input
+            type="text"
+            id="auto-dismiss-delay"
+            v-model="example.autoDismissDelay"
+          ></v-input>
+        </div>
       </div>
     </v-tab>
   </v-tabs>

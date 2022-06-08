@@ -351,12 +351,12 @@ export default {
       for (let i of Object.keys(itemsSelected.value)) unselectRow(i);
     };
 
-    // automatically emit new selection
+    // emit new selection
     watch(itemsSelected.value, () => {
       emit("input:selection", Object.values(itemsSelected.value));
     });
 
-    // reset selection if selection mode or page changes
+    // reset selection if some variables changes
     watch([() => props.selectionMode, itemsPagination, sortKey, sortAsc], () =>
       resetSelection()
     );

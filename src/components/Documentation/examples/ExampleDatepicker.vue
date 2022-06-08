@@ -20,78 +20,80 @@
   <div class="flex-grow mt-4 lg:ml-20 lg:mt-0">
     <v-tabs base="tabs-material">
       <v-tab name="Props">
-        <div class="mb-2 mt-5">
-          <label for="model" class="font-semibold">v-model:</label>
-          <v-input type="text" id="model" v-model="example.date"></v-input>
-        </div>
-        <div class="mb-2">
-          <label for="range">range:</label>
-          <v-select id="range" v-model="example.range">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
-          </v-select>
-        </div>
-        <div class="mb-2">
-          <label for="locale">locale:</label>
-          <v-input type="text" id="locale" v-model="example.locale"></v-input>
-        </div>
-        <div class="mb-2">
-          <label for="monday-first-weekday">monday-first-weekday:</label>
-          <v-select
-            id="monday-first-weekday"
-            v-model="example.mondayFirstWeekday"
-          >
-            <option :value="true">true</option>
-            <option :value="false">false</option>
-          </v-select>
-        </div>
-        <div class="mb-2">
-          <label for="buttons">buttons:</label>
-          <v-select id="buttons" v-model="example.buttons">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
-          </v-select>
-        </div>
-        <div class="mb-2">
-          <label for="primary-button-label">primary-button-label:</label>
-          <v-input
-            type="text"
-            id="primary-button-label"
-            v-model="example.primaryButtonLabel"
-          ></v-input>
-        </div>
-        <div class="mb-2">
-          <label for="secondary-button-label">secondary-button-label:</label>
-          <v-input
-            type="text"
-            id="secondary-button-label"
-            v-model="example.secondaryButtonLabel"
-          ></v-input>
-        </div>
-        <div class="mb-2">
-          <label for="adjacent-months">adjacent-months:</label>
-          <v-select id="adjacent-months" v-model="example.adjacentMonths">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
-          </v-select>
-        </div>
-        <div class="mb-2">
-          <label for="range-hover-highlight">range-hover-highlight:</label>
-          <v-select
-            id="range-hover-highlight"
-            v-model="example.rangeHoverHighlight"
-          >
-            <option :value="true">true</option>
-            <option :value="false">false</option>
-          </v-select>
-        </div>
-        <div class="mb-5">
-          <label for="transition">transition:</label>
-          <v-select id="transition" v-model="example.transition">
-            <option value="fade">fade</option>
-            <option value="slide">slide</option>
-            <option value="">empty string (no transition)</option>
-          </v-select>
+        <div class="flex flex-col gap-y-2 mt-5">
+          <div>
+            <label for="model" class="font-semibold">v-model:</label>
+            <v-input type="text" id="model" v-model="example.date"></v-input>
+          </div>
+          <div>
+            <label for="range">range:</label>
+            <v-select id="range" v-model="example.range">
+              <option :value="true">true</option>
+              <option :value="false">false</option>
+            </v-select>
+          </div>
+          <div>
+            <label for="locale">locale:</label>
+            <v-input type="text" id="locale" v-model="example.locale"></v-input>
+          </div>
+          <div>
+            <label for="monday-first-weekday">monday-first-weekday:</label>
+            <v-select
+              id="monday-first-weekday"
+              v-model="example.mondayFirstWeekday"
+            >
+              <option :value="true">true</option>
+              <option :value="false">false</option>
+            </v-select>
+          </div>
+          <div>
+            <label for="buttons">buttons:</label>
+            <v-select id="buttons" v-model="example.buttons">
+              <option :value="true">true</option>
+              <option :value="false">false</option>
+            </v-select>
+          </div>
+          <div>
+            <label for="primary-button-label">primary-button-label:</label>
+            <v-input
+              type="text"
+              id="primary-button-label"
+              v-model="example.primaryButtonLabel"
+            ></v-input>
+          </div>
+          <div>
+            <label for="secondary-button-label">secondary-button-label:</label>
+            <v-input
+              type="text"
+              id="secondary-button-label"
+              v-model="example.secondaryButtonLabel"
+            ></v-input>
+          </div>
+          <div>
+            <label for="adjacent-months">adjacent-months:</label>
+            <v-select id="adjacent-months" v-model="example.adjacentMonths">
+              <option :value="true">true</option>
+              <option :value="false">false</option>
+            </v-select>
+          </div>
+          <div>
+            <label for="range-hover-highlight">range-hover-highlight:</label>
+            <v-select
+              id="range-hover-highlight"
+              v-model="example.rangeHoverHighlight"
+            >
+              <option :value="true">true</option>
+              <option :value="false">false</option>
+            </v-select>
+          </div>
+          <div>
+            <label for="transition">transition:</label>
+            <v-select id="transition" v-model="example.transition">
+              <option value="fade">fade</option>
+              <option value="slide">slide</option>
+              <option value="">empty string (no transition)</option>
+            </v-select>
+          </div>
         </div>
       </v-tab>
       <v-tab>

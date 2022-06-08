@@ -11,15 +11,15 @@
     </v-button>
   </div>
 <!-- CUT START -->
-  <div class="mt-4 md:ml-14 md:mt-0">
-    <div class="mb-2">
+  <div class="flex flex-col gap-y-2 mt-4 md:ml-14 md:mt-0">
+    <div>
       <label for="position">position:</label>
       <v-select id="position" v-model="example.position">
         <option value="top">top</option>
         <option value="center">center</option>
       </v-select>
     </div>
-    <div class="mb-2">
+    <div>
       <label for="size">size:</label>
       <v-select id="size" v-model="example.size">
         <option value="sm">sm</option>
@@ -29,7 +29,7 @@
         <option value="fit">fit</option>
       </v-select>
     </div>
-    <div class="mb-2">
+    <div>
       <label for="transition">transition:</label>
       <v-select id="transition" v-model="example.transition">
         <option value="fade-f">fade-f</option>

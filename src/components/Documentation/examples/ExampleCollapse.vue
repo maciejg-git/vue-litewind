@@ -63,14 +63,16 @@
   <!-- CUT START -->
   <v-tabs base="tabs-material" class="mt-10">
     <v-tab name="Props">
-      <div class="mb-2 mt-5">
-        <label for="transition">transition:</label>
-        <v-select id="transition" v-model="example.transition">
-          <option value="fade-collapse-f">fade-collapse-f</option>
-          <option value="fade-collapse-m">fade-collapse-m</option>
-          <option value="fade-collapse-s">fade-collapse-s</option>
-          <option value="">none (empty string)</option>
-        </v-select>
+      <div class="flex flex-col gap-y-2 mt-5">
+        <div>
+          <label for="transition">transition:</label>
+          <v-select id="transition" v-model="example.transition">
+            <option value="fade-collapse-f">fade-collapse-f</option>
+            <option value="fade-collapse-m">fade-collapse-m</option>
+            <option value="fade-collapse-s">fade-collapse-s</option>
+            <option value="">none (empty string)</option>
+          </v-select>
+        </div>
       </div>
     </v-tab>
   </v-tabs>

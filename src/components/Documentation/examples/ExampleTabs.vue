@@ -40,35 +40,37 @@
   </div>
   <v-tabs base="tabs-material" class="mt-10">
     <v-tab name="Props">
-      <div class="mb-2 mt-5">
-        <label for="fill">fill:</label>
-        <v-select id="fill" v-model="example.fill">
-          <option :value="true">true</option>
-          <option :value="false">false</option>
-        </v-select>
-      </div>
-      <div class="mb-2">
-        <label for="center">center:</label>
-        <v-select id="center" v-model="example.center">
-          <option :value="true">true</option>
-          <option :value="false">false</option>
-        </v-select>
-      </div>
-      <div class="mb-2">
-        <label for="right">right:</label>
-        <v-select id="right" v-model="example.right">
-          <option :value="true">true</option>
-          <option :value="false">false</option>
-        </v-select>
-      </div>
-      <div class="mb-2">
-        <label for="transition">transition:</label>
-        <v-select id="transition" v-model="example.transition">
-          <option value="fade">fade</option>
-          <option value="fade-side-slide">fade-side-slide</option>
-          <option value="fade-top-slide">fade-top-slide</option>
-          <option value="">empty string (no transition)</option>
-        </v-select>
+      <div class="flex flex-col gap-y-2 mt-5">
+        <div>
+          <label for="fill">fill:</label>
+          <v-select id="fill" v-model="example.fill">
+            <option :value="true">true</option>
+            <option :value="false">false</option>
+          </v-select>
+        </div>
+        <div>
+          <label for="center">center:</label>
+          <v-select id="center" v-model="example.center">
+            <option :value="true">true</option>
+            <option :value="false">false</option>
+          </v-select>
+        </div>
+        <div>
+          <label for="right">right:</label>
+          <v-select id="right" v-model="example.right">
+            <option :value="true">true</option>
+            <option :value="false">false</option>
+          </v-select>
+        </div>
+        <div>
+          <label for="transition">transition:</label>
+          <v-select id="transition" v-model="example.transition">
+            <option value="fade">fade</option>
+            <option value="fade-side-slide">fade-side-slide</option>
+            <option value="fade-top-slide">fade-top-slide</option>
+            <option value="">empty string (no transition)</option>
+          </v-select>
+        </div>
       </div>
     </v-tab>
     <v-tab>

@@ -9,17 +9,19 @@
 <!-- CUT START -->
   <v-tabs base="tabs-material" class="mt-5">
     <v-tab name="Props">
-      <div class="mb-2 mt-5">
-        <label for="model" class="font-semibold">v-model:</label>
-        <v-input type="text" id="model" v-model="example.model"></v-input>
-      </div>
-      <div class="mb-2">
-        <label for="state">state:</label>
-        <v-select id="state" v-model="example.state">
-          <option value="">normal (empty string)</option>
-          <option value="valid">valid</option>
-          <option value="invalid">invalid</option>
-        </v-select>
+      <div class="flex flex-col gap-y-2 mt-5">
+        <div>
+          <label for="model" class="font-semibold">v-model:</label>
+          <v-input type="text" id="model" v-model="example.model"></v-input>
+        </div>
+        <div>
+          <label for="state">state:</label>
+          <v-select id="state" v-model="example.state">
+            <option value="">normal (empty string)</option>
+            <option value="valid">valid</option>
+            <option value="invalid">invalid</option>
+          </v-select>
+        </div>
       </div>
     </v-tab>
     <v-tab>
