@@ -151,14 +151,6 @@ export default {
         prop: "input:item",
         description: "Fired when item is clicked (folders and items). Passes item as argument. Note that disabled items also trigger this event but those can be easly dismissed by checking <code class='code-text'>disabled</code> property",
       },
-      {
-        prop: "input:opened-item",
-        description: "Fired after opening folder",
-      },
-      {
-        prop: "input:closed-item",
-        description: "Fired after closing folder",
-      },
     ]);
 
     let slots = ref([

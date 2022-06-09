@@ -101,50 +101,87 @@ import { ref, reactive } from "vue";
 
 export default {
   setup() {
-    // prettier-ignore
-    const treeData = {
-      name: "Movies",
-      children: [
-        { name: "Lost in Translation" },
-        { name: "Before Sunset" },
-        { name: "Groundhog Day" },
-        { name: "Out of Africa", icon: "b-star" },
-        {
-          name: "Science-fiction",
-          icon: ["mdi-folder", "mdi-folder-open"],
-          children: [
-            {
-              name: "Matrix",
-              children: [
-                { name: "Matrix" },
-                { name: "Matrix: Revolutions" }
-              ],
-            },
-            { name: "Blade Runner" },
-            { name: "Futurama" },
-            { name: "Dune", disabled: true },
-            { name: "Ghost in the Shell" },
-            {
-              name: "Star Wars",
-              children: [
-                { name: "Return of The Jedi" },
-                { name: "The Phantom Menace" },
-              ],
-            },
-          ],
-        },
-        { name: "Spirited Away" },
-      ],
-    };
+    const treeData = [
+      {
+        name: "Movies",
+        children: [
+          { name: "Lost in Translation" },
+          { name: "Before Sunset" },
+          { name: "Groundhog Day" },
+          { name: "Out of Africa", icon: "b-star" },
+          {
+            name: "Science-fiction",
+            icon: ["mdi-folder", "mdi-folder-open"],
+            children: [
+              {
+                name: "Matrix",
+                children: [
+                  { name: "Matrix" },
+                  { name: "Matrix: Revolutions" }
+                ],
+              },
+              { name: "Blade Runner" },
+              { name: "Futurama" },
+              { name: "Dune", disabled: true },
+              { name: "Ghost in the Shell" },
+              {
+                name: "Star Wars",
+                disabled: true,
+                children: [
+                  { name: "Return of The Jedi" },
+                  { name: "The Phantom Menace" },
+                ],
+              },
+            ],
+          },
+          { name: "Spirited Away" },
+        ],
+      },
+      {
+        name: "Movies",
+        children: [
+          { name: "Lost in Translation" },
+          { name: "Before Sunset" },
+          { name: "Groundhog Day" },
+          { name: "Out of Africa", icon: "b-star" },
+          {
+            name: "Science-fiction",
+            icon: ["mdi-folder", "mdi-folder-open"],
+            children: [
+              {
+                name: "Matrix",
+                children: [
+                  { name: "Matrix" },
+                  { name: "Matrix: Revolutions" }
+                ],
+              },
+              { name: "Blade Runner" },
+              { name: "Futurama" },
+              { name: "Dune", disabled: true },
+              { name: "Ghost in the Shell" },
+              {
+                name: "Star Wars",
+                children: [
+                  { name: "Return of The Jedi" },
+                  { name: "The Phantom Menace" },
+                ],
+              },
+            ],
+          },
+          { name: "Spirited Away" },
+        ],
+      },
+    ];
 
     let example = reactive({
       items: treeData,
       openOnClick: true,
       showIndicators: true,
       showIcons: true,
-      showCheckboxes: false,
+      showCheckboxes: true,
       filter: "",
       openAll: false,
+      autoOpenRoot: true,
     });
 
     let handleClickItem = (item) => {

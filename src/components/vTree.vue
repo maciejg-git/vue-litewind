@@ -1,6 +1,12 @@
 <template>
+  {{ selectedItems }}
   <ul>
-    <v-tree-node ref="root" v-bind="$attrs" :level="0">
+    <v-tree-node
+      v-for="(i, index) in items"
+      :ref="(i) => (nodeList[index] = i)"
+      v-bind="$attrs"
+      :items="i"
+    >
       <template v-for="(name, slot) of slots" #[slot]="items">
         <slot :name="slot" v-bind="items"></slot>
       </template>
@@ -10,7 +16,7 @@
 
 <script>
 // vue
-import { ref, toRef, provide, nextTick } from "vue";
+import { ref, toRef, watch, provide, onMounted } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 // components
@@ -20,9 +26,11 @@ import { sharedStyleProps } from "../shared-props";
 
 export default {
   props: {
+    items: { type: Object, default: [] },
     filter: { type: String, default: "" },
     openAll: { type: Boolean, default: false },
     autoOpenRoot: { type: Boolean, default: false },
+    selectMode: { type: Boolean, default: false },
     transition: { type: String, default: "fade-m" },
     styleFolder: { type: String, default: "" },
     styleItem: { type: String, default: "" },
@@ -42,24 +50,48 @@ export default {
       icon: null,
     });
 
-    let root = ref(null)
+    let selectedItems = ref([])
 
-    nextTick(() => {
-      if (root.value) root.value.isOpen = true
-    })
+    let nodeList = ref([]);
+
+    let _forNode = (node, callback) => {
+      node.nodeList.forEach((node) => _forNode(node, callback));
+      callback(node);
+    };
+
+    let _forEachNode = (callback) => {
+      nodeList.value.forEach((node) => {
+        _forNode(node, callback);
+      });
+    }
+
+    let openAll = () => _forEachNode((i) => i.isFolder && i.open())
+
+    let closeAll = () => _forEachNode((i) => i.isFolder && i.close())
+
+    let openAllLevel = (level) => {
+      _forEachNode((i) => i.itemLevel <= level && i.isFolder && i.open())
+    }
+
+    onMounted(() => props.autoOpenRoot && openAllLevel(0));
+
+    watch(() => props.openAll, (val) => val ? openAll() : closeAll())
+
+    console.log(selectedItems)
 
     provide("control-tree", {
       classes,
       states,
-      openAll: toRef(props, "openAll"),
+      selectedItems,
       filter: toRef(props, "filter"),
       transition: toRef(props, "transition"),
     });
 
     return {
       slots,
-      root,
-    }
+      selectedItems,
+      nodeList,
+    };
   },
 };
 </script>
