@@ -34,7 +34,7 @@
 import { ref } from "vue";
 import ExampleTree from "./examples/ExampleTree.vue"
 import ExampleTreeCode from "./examples/ExampleTree.vue?raw"
-import { popperProps, styleProps, formProps } from "./shared-props"
+import { styleProps } from "./shared-props"
 
 export default {
   components: {
@@ -65,6 +65,12 @@ export default {
         type: ["String"],
         default: "children",
         description: "Name of the property that hold name of item's icon. Valid name is the same as for v-icon name prop",
+      },
+      {
+        prop: "item-disabled",
+        type: ["String"],
+        default: "disabled",
+        description: "Name of the property for disabled items",
       },
       {
         prop: "filter",

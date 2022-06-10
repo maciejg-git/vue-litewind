@@ -3,7 +3,7 @@
     <slot name="item" v-bind="{ item: items, isFolder, isOpen, toggle }">
       <div class="flex items-center">
         <!-- indicator -->
-        <div v-if="showIndicators" class="w-5 order-first mr-2">
+        <div v-if="showIndicators" class="w-5 mr-2 order-1">
           <v-button
             v-if="isFolder"
             base="button-plain"
@@ -19,12 +19,12 @@
         </div>
         <!-- checkbox -->
         <transition :name="transition">
-          <div v-if="showCheckboxes" class="flex items-center mr-2">
-            <v-checkbox v-model="isSelected" @change="handleItemSelected" />
+          <div v-if="showCheckboxes" class="flex items-center mr-2 order-3">
+            <v-checkbox :checked="isSelected" @change="handleItemSelected" />
           </div>
         </transition>
         <!-- icon -->
-        <div v-if="showIcons">
+        <div v-if="showIcons" class="order-5">
           <slot name="icon" v-bind="{ item: items, isFolder, isOpen }">
             <div
               v-if="
@@ -40,7 +40,7 @@
           </slot>
         </div>
         <!-- prepend slot -->
-        <div>
+        <div class="order-7">
           <slot
             name="item-prepend"
             v-bind="{ item: items, isFolder, isOpen, toggle }"
@@ -49,6 +49,7 @@
         <!-- item name -->
         <div
           @click="handleItemClick"
+            class="order-9"
           :class="{
             'cursor-pointer': isFolder && openOnClick,
             disabled: items[itemDisabled],
@@ -77,6 +78,7 @@
             itemLevel: itemLevel + 1,
           }"
           :ref="(i) => (nodeList[index] = i)"
+          @children-selected="handleChildrenSelected"
         >
           <template v-for="(name, slot) of slots" #[slot]="i">
             <slot :name="slot" v-bind="i"></slot>
@@ -104,13 +106,15 @@ export default {
     showIndicators: { type: Boolean, default: true },
     showIcons: { type: Boolean, default: true },
     showCheckboxes: { type: Boolean, default: false },
+    selectable: { type: Boolean, default: false },
     placeholderItemIcon: { type: [String, Object], default: undefined },
     placeholderFolderIcon: { type: [String, Object], default: undefined },
     chevronAttrs: { type: Object, default: {} },
   },
   inheritAttrs: false,
+  emits: ["children-selected"],
   setup(props, { emit, slots, expose }) {
-    let { classes, states, selectedItems, filter, transition } =
+    let { classes, states, forNode, selectedItems, filter, transition } =
       inject("control-tree");
 
     // computed
@@ -174,16 +178,16 @@ export default {
 
     let toggle = () => (isOpen.value ? close() : open());
 
-    // handle template events
+    let isChildrenSelected = () => {
+      return nodeList.value.every((i) => i.isSelected)
+    }
 
-    let handleItemClick = () => {
-      if (isFolder.value && props.openOnClick) toggle();
-      emit("input:item", props.items);
-    };
+    let selectChildrenItems = () => {
+      nodeList.value.forEach((i) => forNode(i, (i) => i.selectItems(isSelected.value, true)))
+    }
 
-    let handleIndicatorClick = () => toggle();
-
-    let handleItemSelected = () => {
+    let selectItems = (value, isFolderSelect) => {
+      isSelected.value = value != undefined ? value : !isSelected.value
       if (isSelected.value) {
         if (selectedItems.value.includes(props.items)) return;
         selectedItems.value.push(props.items);
@@ -192,9 +196,34 @@ export default {
           (i) => i !== props.items
         );
       }
+      if (isFolderSelect === true) return
+      emit("children-selected")
+    }
+
+    // handle template events
+
+    let handleItemClick = () => {
+      if (isFolder.value && props.openOnClick) toggle();
+      emit("input:item", props.items);
     };
 
-    expose({ open, close, toggle, isOpen, isFolder, nodeList, itemLevel });
+    let handleChildrenSelected = () => {
+      let childrenSelected = isChildrenSelected()
+      if (!childrenSelected) {
+        if (isSelected.value) selectItems(false)
+      } else {
+        if (!isSelected.value) selectItems(true)
+      }
+    }
+
+    let handleIndicatorClick = () => toggle();
+
+    let handleItemSelected = () => {
+      selectItems()
+      if (isFolder.value) selectChildrenItems()
+    }
+
+    expose({ open, close, toggle, isOpen, isFolder, isSelected, nodeList, itemLevel, selectItems });
 
     return {
       classes,
@@ -212,6 +241,7 @@ export default {
       slots,
       toggle,
       handleItemClick,
+      handleChildrenSelected,
       handleItemSelected,
       handleIndicatorClick,
     };

@@ -5,6 +5,7 @@ export default function usePopper(
   { placement, offsetX, offsetY, noFlip, emit },
   { resizePopper = false, destroyOnRemove = false } = {}
 ) {
+  // resize modifier to make popper the same width as reference element
   const resize = {
     name: "resize",
     enabled: resizePopper,
@@ -19,6 +20,7 @@ export default function usePopper(
   let popper = ref(null);
   let localReference = ref(null)
 
+  // reference can be element or template ref
   let reference = computed({
     get() {
       return (localReference.value && localReference.value.$el) || localReference.value
@@ -29,6 +31,7 @@ export default function usePopper(
   })
 
   let showPopper = async function () {
+    console.log('show popper')
     if (isPopperVisible.value) return;
     isPopperVisible.value = true;
     // for v-if
@@ -38,12 +41,8 @@ export default function usePopper(
     emit("state:opened");
   };
 
-  let showVirtualPopper = (e) => {
-    updateVirtualElement({ x: e.clientX, y: e.clientY });
-    showPopper();
-  };
-
   let hidePopper = function () {
+    console.log('hide popper')
     if (!isPopperVisible.value) return;
     isPopperVisible.value = false;
     emit("state:closed");
@@ -54,7 +53,6 @@ export default function usePopper(
   };
 
   // watch component props changes and update instance
-
   watch([placement, offsetX, offsetY, noFlip], () => {
     if (instance && popper.value) {
       setPopper();
@@ -63,7 +61,6 @@ export default function usePopper(
   });
 
   // watch popper element and create new instance
-
   watch(popper, (value) => {
     if (value) setPopper();
     else if (destroyOnRemove) destroyInstance();
@@ -113,7 +110,6 @@ export default function usePopper(
   };
 
   // optional virtual element as reference
-
   let getVirtualElement = ({ x, y }) => {
     return () => ({
       width: 0,
@@ -129,6 +125,7 @@ export default function usePopper(
     getBoundingClientRect: getVirtualElement({ x: 0, y: 0 }),
   };
 
+  // call updateVirtualElement before showing or updating position of virtual popper
   let updateVirtualElement = (value) => {
     virtualElement.getBoundingClientRect = getVirtualElement(value);
     if (instance) instance.update();
@@ -145,6 +142,5 @@ export default function usePopper(
     onPopperTransitionLeave,
     virtualElement,
     updateVirtualElement,
-    showVirtualPopper,
   };
 }

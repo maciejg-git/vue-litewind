@@ -24,7 +24,7 @@
 
 <script>
 // vue
-import { ref, provide, toRef, toRefs, watch } from "vue";
+import { ref, provide, toRef, toRefs, watch, nextTick } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
@@ -48,7 +48,7 @@ export default {
     ...sharedStyleProps("dropdown"),
   },
   emits: ["state:opened", "state:closed", "update:modelValue"],
-  setup(props, { slots, emit }) {
+  setup(props, { slots, emit, expose }) {
     let { classes, states } = useStyles("dropdown", props, {
       item: {
         fixed: "fixed-item",
@@ -75,18 +75,19 @@ export default {
       hidePopper,
       togglePopper,
       onPopperTransitionLeave,
-      showVirtualPopper,
+      updateVirtualElement,
     } = usePopper({ placement, offsetX, offsetY, noFlip, modelValue, emit });
 
-    // add click outside callback
     let { onClickOutside } = useClickOutside();
-    let clickOutsideElements = [popper];
-    if (slots.reference) clickOutsideElements.push(reference);
-    onClickOutside(clickOutsideElements, hidePopper);
+
+    let handleReferenceClick = (ev) => {
+      if (!isPopperVisible.value) ev.stopPropagation()
+      show()
+    }
 
     // set up triggering events
     let trigger = toRef(props, "trigger");
-    let onTrigger = useTrigger(trigger, show, hide, togglePopper);
+    let onTrigger = useTrigger(trigger, handleReferenceClick, hide, togglePopper);
 
     let referenceSlotProps = { reference, onTrigger };
 
@@ -101,19 +102,28 @@ export default {
       if (props.trigger === "hover") hideTimeout = scheduleHide();
     };
 
-    // show and hide functions, the only special case is hover trigger which
-    // adds short delay before close
+    // show and hide functions, hover trigger which adds short delay before
+    // close
+
+    let stopClickOutside = null
+
     function show() {
+      if (isPopperVisible.value) return
       if (props.trigger === "hover") clearTimeout(hideTimeout);
       showPopper();
+      if (props.trigger === "click") {
+        stopClickOutside = onClickOutside(popper, hide);
+      }
     }
 
     function hide() {
+      if (!isPopperVisible.value) return
       if (props.trigger === "hover") {
         hideTimeout = scheduleHide();
         return;
       }
       hidePopper();
+      if (stopClickOutside) stopClickOutside = stopClickOutside()
     }
 
     let scheduleHide = () => setTimeout(hidePopper, 100);
@@ -122,35 +132,29 @@ export default {
 
     let contextData = ref(null);
 
-    let showContextDropdown = (e, data) => {
+    let showContextDropdown = (ev, data) => {
       if (slots.reference) return;
-      showVirtualPopper(e);
+      updateVirtualElement(ev)
+      show()
       contextData.value = data;
     };
 
     provide("classes", classes);
     provide("states", states);
-    // provide hide function to menuitem to allow closing after click
     provide("autoCloseMenu", toRef(props, "autoCloseMenu"));
     provide("hide", hide);
     provide("placement", toRef(props, "placement"));
 
+    expose({ showContextDropdown })
+
     return {
-      placement,
-      reference,
       popper,
-      showPopper,
       hidePopper,
-      togglePopper,
       isPopperVisible,
-      scheduleHide,
-      show,
-      hide,
       onPopperTransitionLeave,
       preventHiding,
       allowHiding,
       referenceSlotProps,
-      showContextDropdown,
       contextData,
     };
   },

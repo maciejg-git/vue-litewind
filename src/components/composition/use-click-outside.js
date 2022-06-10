@@ -1,21 +1,21 @@
 import { unref, onUnmounted } from "vue";
 
 export default function useClickOutside() {
-  function onClickOutside(elements, callback) {
+  function onClickOutside(el, callback) {
+    console.log("outside callback");
     let clickOutside = function (ev) {
-      if (!elements.length) return;
-
-      for (let el of elements) {
-        el = unref(el);
-        if (!el) return;
-        if (el === ev.target || ev.composedPath().includes(el)) {
-          return;
-        }
+      el = unref(el);
+      if (!el) return;
+      if (el === ev.target || ev.composedPath().includes(el)) {
+        return;
       }
       callback();
     };
 
-    let stop = () => document.body.removeEventListener("click", clickOutside);
+    let stop = () => {
+      document.body.removeEventListener("click", clickOutside);
+      return null;
+    };
 
     document.body.addEventListener("click", clickOutside);
 

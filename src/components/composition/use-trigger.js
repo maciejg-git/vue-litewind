@@ -1,6 +1,6 @@
 import { watch } from "vue";
 
-export default function useTrigger(trigger, show, hide, toggle) {
+export default function useTrigger(trigger, show, hide) {
   let onTrigger = {
     click: null,
     mouseenter: null,
@@ -13,7 +13,7 @@ export default function useTrigger(trigger, show, hide, toggle) {
     trigger,
     (value) => {
       if (value === "click") {
-        onTrigger.click = toggle;
+        onTrigger.click = show;
         onTrigger.mouseenter = null;
         onTrigger.mouseleave = null;
         onTrigger.focusin = null;

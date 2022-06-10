@@ -1,12 +1,14 @@
 <template>
+  {{ selectedItems }}
   <v-tree
     v-bind="example"
     :chevron-attrs="{ triangle: true }"
     :placeholder-folder-icon="['mdi-folder', 'mdi-folder-open']"
     placeholder-item-icon="b-file-earmark"
     @input:item="handleClickItem"
+    @input:selected="event => selectedItems = event"
   >
-    <!-- <template #item-append="{ isFolder, isOpen }"> -->
+    <!-- <template #item-prepend="{ isFolder, isOpen }"> -->
     <!--   <div v-if="isFolder &#38;&#38; !isOpen"> -->
     <!--     [] -->
     <!--   </div> -->
@@ -184,6 +186,8 @@ export default {
       autoOpenRoot: true,
     });
 
+    let selectedItems = ref([])
+
     let handleClickItem = (item) => {
       console.log(item);
     };
@@ -192,6 +196,7 @@ export default {
 
     return {
       example,
+      selectedItems,
       events,
       handleClickItem,
     };

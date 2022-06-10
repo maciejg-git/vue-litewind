@@ -1,5 +1,4 @@
 <template>
-  {{ selectedItems }}
   <ul>
     <v-tree-node
       v-for="(i, index) in items"
@@ -30,7 +29,7 @@ export default {
     filter: { type: String, default: "" },
     openAll: { type: Boolean, default: false },
     autoOpenRoot: { type: Boolean, default: false },
-    selectMode: { type: Boolean, default: false },
+    selectIndependent: { type: Boolean, default: false },
     transition: { type: String, default: "fade-m" },
     styleFolder: { type: String, default: "" },
     styleItem: { type: String, default: "" },
@@ -41,7 +40,7 @@ export default {
     vTreeNode,
   },
   inheritAttrs: false,
-  setup(props, { slots }) {
+  setup(props, { slots, emit }) {
     let { classes, states } = useStyles("tree", props, {
       folder: {
         states: ["opened"],
@@ -50,38 +49,44 @@ export default {
       icon: null,
     });
 
-    let selectedItems = ref([])
+    let selectedItems = ref([]);
+
+    watch(selectedItems, (value) => emit("input:selected", value), { deep: true })
 
     let nodeList = ref([]);
 
-    let _forNode = (node, callback) => {
-      node.nodeList.forEach((node) => _forNode(node, callback));
+    let forNode = (node, callback) => {
+      node.nodeList.forEach((node) => forNode(node, callback));
       callback(node);
     };
 
-    let _forEachNode = (callback) => {
+    let forEachNode = (callback) => {
       nodeList.value.forEach((node) => {
-        _forNode(node, callback);
+        forNode(node, callback);
       });
-    }
+    };
 
-    let openAll = () => _forEachNode((i) => i.isFolder && i.open())
+    let openAll = () => forEachNode((i) => i.isFolder && i.open());
 
-    let closeAll = () => _forEachNode((i) => i.isFolder && i.close())
+    let closeAll = () => forEachNode((i) => i.isFolder && i.close());
 
     let openAllLevel = (level) => {
-      _forEachNode((i) => i.itemLevel <= level && i.isFolder && i.open())
-    }
+      forEachNode((i) => i.itemLevel <= level && i.isFolder && i.open());
+    };
 
     onMounted(() => props.autoOpenRoot && openAllLevel(0));
 
-    watch(() => props.openAll, (val) => val ? openAll() : closeAll())
+    watch(
+      () => props.openAll,
+      (val) => (val ? openAll() : closeAll())
+    );
 
-    console.log(selectedItems)
+    console.log(selectedItems);
 
     provide("control-tree", {
       classes,
       states,
+      forNode,
       selectedItems,
       filter: toRef(props, "filter"),
       transition: toRef(props, "transition"),
