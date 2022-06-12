@@ -106,74 +106,129 @@ export default {
     const treeData = [
       {
         name: "Movies",
+        key: 17,
         children: [
-          { name: "Lost in Translation" },
-          { name: "Before Sunset" },
-          { name: "Groundhog Day" },
-          { name: "Out of Africa", icon: "b-star" },
+          { name: "Lost in Translation", key: 1},
+          { name: "Before Sunset", key: 2 },
+          { name: "Groundhog Day", key: 3 },
+          { name: "Out of Africa", icon: "b-star", key: 4 },
           {
             name: "Science-fiction",
+            key: 5,
             icon: ["mdi-folder", "mdi-folder-open"],
             children: [
               {
                 name: "Matrix",
+            key: 6,
                 children: [
-                  { name: "Matrix" },
-                  { name: "Matrix: Revolutions" }
+                  { name: "Matrix", key: 7 },
+                  { name: "Matrix: Revolutions", key: 8 }
                 ],
               },
-              { name: "Blade Runner" },
-              { name: "Futurama" },
-              { name: "Dune", disabled: true },
-              { name: "Ghost in the Shell" },
+              { name: "Blade Runner", key: 9 },
+              { name: "Futurama", key: 10 },
+              { name: "Dune", disabled: true, key: 11 },
+              { name: "Ghost in the Shell", key: 12 },
               {
                 name: "Star Wars",
+            key: 13,
                 disabled: true,
                 children: [
-                  { name: "Return of The Jedi" },
-                  { name: "The Phantom Menace" },
+                  { name: "Return of The Jedi", key: 14 },
+                  { name: "The Phantom Menace", key: 15 },
                 ],
               },
             ],
           },
-          { name: "Spirited Away" },
+          { name: "Spirited Away", key: 16 },
         ],
       },
       {
         name: "Movies",
+        key: 34,
         children: [
-          { name: "Lost in Translation" },
-          { name: "Before Sunset" },
-          { name: "Groundhog Day" },
-          { name: "Out of Africa", icon: "b-star" },
+          { name: "Lost in Translation", key: 18},
+          { name: "Before Sunset 3", key: 19 },
+          { name: "Groundhog Day", key: 20 },
+          { name: "Out of Africa", icon: "b-star", key: 21 },
           {
             name: "Science-fiction",
+            key: 22,
             icon: ["mdi-folder", "mdi-folder-open"],
             children: [
               {
                 name: "Matrix",
+            key: 23,
                 children: [
-                  { name: "Matrix" },
-                  { name: "Matrix: Revolutions" }
+                  { name: "Matrix", key: 24 },
+                  { name: "Matrix: Revolutions", key: 25 }
                 ],
               },
-              { name: "Blade Runner" },
-              { name: "Futurama" },
-              { name: "Dune", disabled: true },
-              { name: "Ghost in the Shell" },
+              { name: "Blade Runner", key: 26 },
+              { name: "Futurama", key: 27 },
+              { name: "Dune", disabled: true, key: 28 },
+              { name: "Ghost in the Shell", key: 29 },
               {
                 name: "Star Wars",
+            key: 30,
+                disabled: true,
                 children: [
-                  { name: "Return of The Jedi" },
-                  { name: "The Phantom Menace" },
+                  { name: "Return of The Jedi", key: 31 },
+                  { name: "The Phantom Menace", key: 32 },
                 ],
               },
             ],
           },
-          { name: "Spirited Away" },
+          { name: "Spirited Away", key: 33 },
+        ],
+      },
+      {
+        name: "Movies",
+        key: 51,
+        children: [
+          { name: "Lost in Translation", key: 35},
+          { name: "Before Sunset", key: 36 },
+          { name: "Groundhog Day", key: 37 },
+          { name: "Out of Africa", icon: "b-star", key: 38 },
+          {
+            name: "Science-fiction",
+            key: 39,
+            icon: ["mdi-folder", "mdi-folder-open"],
+            children: [
+              {
+                name: "Matrix",
+            key: 40,
+                children: [
+                  { name: "Matrix", key: 41 },
+                  { name: "Matrix: Revolutions", key: 42 }
+                ],
+              },
+              { name: "Blade Runner", key: 43 },
+              { name: "Futurama", key: 44 },
+              { name: "Dune", disabled: true, key: 45 },
+              { name: "Ghost in the Shell", key: 46 },
+              {
+                name: "Star Wars",
+            key: 47,
+                disabled: true,
+                children: [
+                  { name: "Return of The Jedi", key: 48 },
+                  { name: "The Phantom Menace", key: 49 },
+                ],
+              },
+            ],
+          },
+          { name: "Spirited Away", key: 50 },
         ],
       },
     ];
+
+    // setTimeout(() => {
+    //   example.items.splice(1, 1)
+    // }, 5000)
+    // setTimeout(() => {
+    //   example.items.splice(0, 1)
+    // }, 8000)
 
     let example = reactive({
       items: treeData,

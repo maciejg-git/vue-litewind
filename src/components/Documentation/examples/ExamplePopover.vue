@@ -104,13 +104,6 @@
             <option value="">empty string</option>
           </v-select>
         </div>
-        <div>
-          <label for="click-outside-close">click-outside-close:</label>
-          <v-select id="click-outside-close" v-model="example.clickOutsideClose">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
-          </v-select>
-        </div>
       </div>
     </v-tab>
     <v-tab>
@@ -146,7 +139,6 @@ export default {
       noHeader: false,
       title: "Popover title",
       transition: "fade-m",
-      clickOutsideClose: true,
       offsetY: 10,
     });
 

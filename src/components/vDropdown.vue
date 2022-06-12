@@ -73,23 +73,14 @@ export default {
       popper,
       showPopper,
       hidePopper,
-      togglePopper,
       onPopperTransitionLeave,
       updateVirtualElement,
     } = usePopper({ placement, offsetX, offsetY, noFlip, modelValue, emit });
 
     let { onClickOutside } = useClickOutside();
 
-    let handleReferenceClick = (ev) => {
-      if (!isPopperVisible.value) ev.stopPropagation()
-      show()
-    }
-
     // set up triggering events
     let trigger = toRef(props, "trigger");
-    let onTrigger = useTrigger(trigger, handleReferenceClick, hide, togglePopper);
-
-    let referenceSlotProps = { reference, onTrigger };
 
     // delay closing menu if using hover trigger
     let hideTimeout = null;
@@ -107,16 +98,16 @@ export default {
 
     let stopClickOutside = null
 
-    function show() {
+    let show = () => {
       if (isPopperVisible.value) return
       if (props.trigger === "hover") clearTimeout(hideTimeout);
       showPopper();
       if (props.trigger === "click") {
-        stopClickOutside = onClickOutside(popper, hide);
+        stopClickOutside = onClickOutside(popper, hide, reference);
       }
     }
 
-    function hide() {
+    let hide = () => {
       if (!isPopperVisible.value) return
       if (props.trigger === "hover") {
         hideTimeout = scheduleHide();
@@ -125,6 +116,10 @@ export default {
       hidePopper();
       if (stopClickOutside) stopClickOutside = stopClickOutside()
     }
+
+    let toggle = () => isPopperVisible.value ? hide() : show()
+
+    let onTrigger = useTrigger(trigger, show, hide, toggle);
 
     let scheduleHide = () => setTimeout(hidePopper, 100);
 
@@ -138,6 +133,8 @@ export default {
       show()
       contextData.value = data;
     };
+
+    let referenceSlotProps = { reference, onTrigger };
 
     provide("classes", classes);
     provide("states", states);

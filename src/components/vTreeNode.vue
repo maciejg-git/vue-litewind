@@ -13,7 +13,7 @@
               :switch="isOpen"
               initial="right"
               v-bind="chevronAttrs"
-              :class="{ disabled: items[itemDisabled] }"
+              :class="{ disabled: isDisabled }"
             ></v-chevron>
           </v-button>
         </div>
@@ -34,7 +34,7 @@
             >
               <v-icon
                 :name="getIcon()"
-                :class="[{ disabled: items[itemDisabled] }, classes.icon.value]"
+                :class="[{ disabled: isDisabled }, classes.icon.value]"
               ></v-icon>
             </div>
           </slot>
@@ -52,7 +52,7 @@
             class="order-9"
           :class="{
             'cursor-pointer': isFolder && openOnClick,
-            disabled: items[itemDisabled],
+            disabled: isDisabled,
           }"
         >
           <slot name="item-name" v-bind="{ item: items, isFolder, isOpen }">
@@ -70,15 +70,16 @@
     <transition :name="transition">
       <ul v-show="isOpen" v-if="isFolder">
         <v-tree-node
-          v-for="(i, index) in items[itemChildren]"
+          v-for="i in items[itemChildren]"
           v-bind="{
             ...$attrs,
             ...$props,
             items: i,
             itemLevel: itemLevel + 1,
           }"
-          :ref="(i) => (nodeList[index] = i)"
-          @children-selected="handleChildrenSelected"
+          :ref="(i) => i && nodeList.push(i)"
+          @children-state-changed="handleChildrenSelected"
+          :disabled="isDisabled"
         >
           <template v-for="(name, slot) of slots" #[slot]="i">
             <slot :name="slot" v-bind="i"></slot>
@@ -91,7 +92,7 @@
 
 <script>
 // vue
-import { ref, computed, toRef, inject } from "vue";
+import { ref, computed, toRef, inject, onBeforeUpdate } from "vue";
 
 export default {
   props: {
@@ -103,6 +104,7 @@ export default {
     itemKey: { type: String, default: undefined },
     itemLevel: { type: Number, default: 0 },
     openOnClick: { type: Boolean, default: true },
+    disabled: { type: Boolean, default: false },
     showIndicators: { type: Boolean, default: true },
     showIcons: { type: Boolean, default: true },
     showCheckboxes: { type: Boolean, default: false },
@@ -112,7 +114,7 @@ export default {
     chevronAttrs: { type: Object, default: {} },
   },
   inheritAttrs: false,
-  emits: ["children-selected"],
+  emits: ["children-state-changed"],
   setup(props, { emit, slots, expose }) {
     let { classes, states, forNode, selectedItems, filter, transition } =
       inject("control-tree");
@@ -145,11 +147,15 @@ export default {
 
     let nodeList = ref([]);
 
+    onBeforeUpdate(() => nodeList.value = [])
+
     const isOpen = ref(false);
 
     const isSelected = ref(false);
 
-    const isDisabled = () => props.items[props.itemDisabled];
+    const isDisabled = computed(() => {
+      return props.items[props.itemDisabled] || props.disabled
+    })
 
     const isFolder = computed(() => {
       return props.items.children && props.items.children.length;
@@ -167,20 +173,19 @@ export default {
     // control state
 
     let open = () => {
-      if (isDisabled()) return;
+      // if (isDisabled()) return;
       isOpen.value = true;
     };
 
     let close = () => {
-      if (isDisabled()) return;
+      // if (isDisabled()) return;
       isOpen.value = false;
     };
 
     let toggle = () => (isOpen.value ? close() : open());
 
-    let isChildrenSelected = () => {
-      return nodeList.value.every((i) => i.isSelected)
-    }
+    let isChildrenSelected = () => nodeList.value.every((i) => i.isSelected)
+    
 
     let selectChildrenItems = () => {
       nodeList.value.forEach((i) => forNode(i, (i) => i.selectItems(isSelected.value, true)))
@@ -188,8 +193,8 @@ export default {
 
     let selectItems = (value, isFolderSelect) => {
       isSelected.value = value != undefined ? value : !isSelected.value
+
       if (isSelected.value) {
-        if (selectedItems.value.includes(props.items)) return;
         selectedItems.value.push(props.items);
       } else {
         selectedItems.value = selectedItems.value.filter(
@@ -197,7 +202,7 @@ export default {
         );
       }
       if (isFolderSelect === true) return
-      emit("children-selected")
+      emit("children-state-changed")
     }
 
     // handle template events
@@ -208,12 +213,11 @@ export default {
     };
 
     let handleChildrenSelected = () => {
-      let childrenSelected = isChildrenSelected()
-      if (!childrenSelected) {
+      if (!isChildrenSelected()) {
         if (isSelected.value) selectItems(false)
-      } else {
-        if (!isSelected.value) selectItems(true)
+        return
       }
+      if (!isSelected.value) selectItems(true)
     }
 
     let handleIndicatorClick = () => toggle();
@@ -235,6 +239,7 @@ export default {
       isOpen,
       isFolder,
       isSelected,
+      isDisabled,
       isFiltered,
       nodeList,
       getIcon,

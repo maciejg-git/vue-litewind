@@ -1,8 +1,8 @@
 <template>
   <ul>
     <v-tree-node
-      v-for="(i, index) in items"
-      :ref="(i) => (nodeList[index] = i)"
+      v-for="i in items"
+      :ref="(i) => i && nodeList.push(i)"
       v-bind="$attrs"
       :items="i"
     >
@@ -15,7 +15,7 @@
 
 <script>
 // vue
-import { ref, toRef, watch, provide, onMounted } from "vue";
+import { ref, toRef, watch, provide, onMounted, onBeforeUpdate } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 // components
@@ -76,12 +76,12 @@ export default {
 
     onMounted(() => props.autoOpenRoot && openAllLevel(0));
 
+    onBeforeUpdate(() => nodeList.value = [])
+
     watch(
       () => props.openAll,
       (val) => (val ? openAll() : closeAll())
     );
-
-    console.log(selectedItems);
 
     provide("control-tree", {
       classes,

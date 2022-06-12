@@ -10,7 +10,7 @@
             <v-close-button
               style-close-button="small"
               class="ml-auto"
-              @click="hidePopper"
+              @click="hide"
             />
           </header>
           <div :class="classes.content.value">
@@ -42,7 +42,6 @@ export default {
     noHeader: { type: Boolean, default: false },
     title: { type: String, default: undefined },
     transition: { type: String, default: "fade-m" },
-    clickOutsideClose: { type: Boolean, default: false },
     stylePopover: { type: String, default: "" },
     styleContent: { type: String, default: "" },
     ...sharedStyleProps("popover"),
@@ -62,7 +61,6 @@ export default {
       popper,
       showPopper,
       hidePopper,
-      togglePopper,
       onPopperTransitionLeave,
     } = usePopper({ placement, offsetX, offsetY, noFlip, emit });
 
@@ -70,27 +68,34 @@ export default {
     let { onClickOutside } = useClickOutside();
     let stopClickOutside = null;
 
-    let onTrigger = useTrigger(trigger, showPopper, hidePopper, togglePopper);
+    let handleReferenceClick = (ev) => {
+      if (!isPopperVisible.value) ev.stopPropagation()
+      show()
+    }
+
+    let hide = () => {
+      if (!isPopperVisible.value) return
+      hidePopper()
+      if (stopClickOutside) stopClickOutside = stopClickOutside()
+    }
+
+    let show = () => {
+      if (isPopperVisible.value) return
+      showPopper()
+      if (props.trigger === "click") {
+        stopClickOutside = onClickOutside(popper, hide)
+      }
+    }
+
+    let onTrigger = useTrigger(trigger, handleReferenceClick, hide);
 
     let referenceSlotProps = { reference, onTrigger }
-
-    watch(
-      () => props.clickOutsideClose,
-      (clickOutsideClose) => {
-        if (clickOutsideClose) {
-          stopClickOutside = onClickOutside([popper, reference], hidePopper);
-        } else {
-          if (stopClickOutside) stopClickOutside();
-        }
-      },
-      { immediate: true }
-    );
 
     return {
       classes,
       popper,
       isPopperVisible,
-      hidePopper,
+      hide,
       onPopperTransitionLeave,
       referenceSlotProps,
       reference,
