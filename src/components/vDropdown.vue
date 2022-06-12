@@ -117,9 +117,7 @@ export default {
       if (stopClickOutside) stopClickOutside = stopClickOutside()
     }
 
-    let toggle = () => isPopperVisible.value ? hide() : show()
-
-    let onTrigger = useTrigger(trigger, show, hide, toggle);
+    let onTrigger = useTrigger(trigger, show, hide);
 
     let scheduleHide = () => setTimeout(hidePopper, 100);
 

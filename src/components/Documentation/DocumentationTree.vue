@@ -63,7 +63,7 @@ export default {
       {
         prop: "item-icon",
         type: ["String"],
-        default: "children",
+        default: "icon",
         description: "Name of the property that hold name of item's icon. Valid name is the same as for v-icon name prop",
       },
       {
@@ -91,10 +91,34 @@ export default {
         description: "If true mounts tree with root node opened",
       },
       {
+        prop: "auto-open-all",
+        type: ["Boolean"],
+        default: "false",
+        description: "If true mounts tree with all nodes opened",
+      },
+      {
         prop: "open-on-click",
         type: ["Boolean"],
         default: "true",
         description: "If true clicking on labels opens folders. Clicking indicators always opens folders",
+      },
+      {
+        prop: "allow-select-disabled",
+        type: ["Boolean"],
+        default: "false",
+        description: "If true disabled items can be selected",
+      },
+      {
+        prop: "allow-open-disabled",
+        type: ["Boolean"],
+        default: "true",
+        description: "If true disabled items can be opened",
+      },
+      {
+        prop: "independent-select",
+        type: ["Boolean"],
+        default: "false",
+        description: "If true folders and items can be selected independently. By default selecting folders selects all children items and selecting every children selects parent folder",
       },
       {
         prop: "show-indicators",
@@ -150,12 +174,20 @@ export default {
         prop: "style-item",
         description: "Item element",
       },
+      {
+        prop: "style-icon",
+        description: "Icon element",
+      },
     ]);
 
     let events = ref([
       {
         prop: "input:item",
         description: "Fired when item is clicked (folders and items). Passes item as argument. Note that disabled items also trigger this event but those can be easly dismissed by checking <code class='code-text'>disabled</code> property",
+      },
+      {
+        prop: "input:selected",
+        description: "Fired when item is selected. Passes array of selected items",
       },
     ]);
 

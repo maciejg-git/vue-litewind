@@ -31,7 +31,6 @@ export default function usePopper(
   })
 
   let showPopper = async function () {
-    console.log('show popper')
     if (isPopperVisible.value) return;
     isPopperVisible.value = true;
     // for v-if
@@ -42,7 +41,6 @@ export default function usePopper(
   };
 
   let hidePopper = function () {
-    console.log('hide popper')
     if (!isPopperVisible.value) return;
     isPopperVisible.value = false;
     emit("state:closed");

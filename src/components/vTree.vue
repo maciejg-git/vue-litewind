@@ -2,6 +2,7 @@
   <ul>
     <v-tree-node
       v-for="i in items"
+      :key="i.key"
       :ref="(i) => i && nodeList.push(i)"
       v-bind="$attrs"
       :items="i"
@@ -29,7 +30,7 @@ export default {
     filter: { type: String, default: "" },
     openAll: { type: Boolean, default: false },
     autoOpenRoot: { type: Boolean, default: false },
-    selectIndependent: { type: Boolean, default: false },
+    autoOpenAll: { type: Boolean, default: false },
     transition: { type: String, default: "fade-m" },
     styleFolder: { type: String, default: "" },
     styleItem: { type: String, default: "" },
@@ -51,9 +52,11 @@ export default {
 
     let selectedItems = ref([]);
 
-    watch(selectedItems, (value) => emit("input:selected", value), { deep: true })
+    watch(selectedItems, (value) => emit("input:selected", [...value]))
 
     let nodeList = ref([]);
+
+    onBeforeUpdate(() => nodeList.value = [])
 
     let forNode = (node, callback) => {
       node.nodeList.forEach((node) => forNode(node, callback));
@@ -61,12 +64,8 @@ export default {
     };
 
     let forEachNode = (callback) => {
-      nodeList.value.forEach((node) => {
-        forNode(node, callback);
-      });
+      nodeList.value.forEach((node) => forNode(node, callback));
     };
-
-    let openAll = () => forEachNode((i) => i.isFolder && i.open());
 
     let closeAll = () => forEachNode((i) => i.isFolder && i.close());
 
@@ -74,13 +73,14 @@ export default {
       forEachNode((i) => i.itemLevel <= level && i.isFolder && i.open());
     };
 
-    onMounted(() => props.autoOpenRoot && openAllLevel(0));
-
-    onBeforeUpdate(() => nodeList.value = [])
+    onMounted(() => {
+      let level = props.autoOpenAll ? 9999 : props.autoOpenRoot ? 0 : null
+      level !== null && openAllLevel(level)
+    });
 
     watch(
       () => props.openAll,
-      (val) => (val ? openAll() : closeAll())
+      (val) => (val ? openAllLevel(9999) : closeAll())
     );
 
     provide("control-tree", {

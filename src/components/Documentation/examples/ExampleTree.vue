@@ -1,13 +1,15 @@
 <template>
-  {{ selectedItems }}
   <v-tree
     v-bind="example"
     :chevron-attrs="{ triangle: true }"
     :placeholder-folder-icon="['mdi-folder', 'mdi-folder-open']"
     placeholder-item-icon="b-file-earmark"
     @input:item="handleClickItem"
-    @input:selected="event => selectedItems = event"
+    @input:selected="handleSelectedItem"
   >
+    <!-- <template #icon="{ item, isFolder }"> -->
+    <!--   <v-icon :name="isFolder ? 'mdi-folder' : 'b-star'"></v-icon> -->
+    <!-- </template> -->
     <!-- <template #item-prepend="{ isFolder, isOpen }"> -->
     <!--   <div v-if="isFolder &#38;&#38; !isOpen"> -->
     <!--     [] -->
@@ -32,10 +34,6 @@
     <v-tab name="Props">
       <div class="flex flex-col gap-y-2 mt-5">
         <div>
-          <label for="model" class="font-semibold">v-model:</label>
-          <v-input type="text" id="model" v-model="example.model"></v-input>
-        </div>
-        <div>
           <label for="filter">filter:</label>
           <v-input type="text" id="filter" v-model="example.filter"></v-input>
         </div>
@@ -49,6 +47,27 @@
         <div>
           <label for="open-on-click">open-on-click:</label>
           <v-select id="open-on-click" v-model="example.openOnClick">
+            <option :value="true">true</option>
+            <option :value="false">false</option>
+          </v-select>
+        </div>
+        <div>
+          <label for="independent-select">independent-select:</label>
+          <v-select id="independent-select" v-model="example.independentSelect">
+            <option :value="true">true</option>
+            <option :value="false">false</option>
+          </v-select>
+        </div>
+        <div>
+          <label for="allow-select-disabled">allow-select-disabled:</label>
+          <v-select id="allow-select-disabled" v-model="example.allowSelectDisabled">
+            <option :value="true">true</option>
+            <option :value="false">false</option>
+          </v-select>
+        </div>
+        <div>
+          <label for="allow-open-disabled">allow-open-disabled:</label>
+          <v-select id="allow-open-disabled" v-model="example.allowOpenDisabled">
             <option :value="true">true</option>
             <option :value="false">false</option>
           </v-select>
@@ -127,12 +146,11 @@ export default {
               },
               { name: "Blade Runner", key: 9 },
               { name: "Futurama", key: 10 },
-              { name: "Dune", disabled: true, key: 11 },
+              { name: "Dune", key: 11 },
               { name: "Ghost in the Shell", key: 12 },
               {
                 name: "Star Wars",
             key: 13,
-                disabled: true,
                 children: [
                   { name: "Return of The Jedi", key: 14 },
                   { name: "The Phantom Menace", key: 15 },
@@ -182,45 +200,7 @@ export default {
           { name: "Spirited Away", key: 33 },
         ],
       },
-      {
-        name: "Movies",
-        key: 51,
-        children: [
-          { name: "Lost in Translation", key: 35},
-          { name: "Before Sunset", key: 36 },
-          { name: "Groundhog Day", key: 37 },
-          { name: "Out of Africa", icon: "b-star", key: 38 },
-          {
-            name: "Science-fiction",
-            key: 39,
-            icon: ["mdi-folder", "mdi-folder-open"],
-            children: [
-              {
-                name: "Matrix",
-            key: 40,
-                children: [
-                  { name: "Matrix", key: 41 },
-                  { name: "Matrix: Revolutions", key: 42 }
-                ],
-              },
-              { name: "Blade Runner", key: 43 },
-              { name: "Futurama", key: 44 },
-              { name: "Dune", disabled: true, key: 45 },
-              { name: "Ghost in the Shell", key: 46 },
-              {
-                name: "Star Wars",
-            key: 47,
-                disabled: true,
-                children: [
-                  { name: "Return of The Jedi", key: 48 },
-                  { name: "The Phantom Menace", key: 49 },
-                ],
-              },
-            ],
-          },
-          { name: "Spirited Away", key: 50 },
-        ],
-      },
+      
     ];
 
     // setTimeout(() => {
@@ -239,21 +219,30 @@ export default {
       filter: "",
       openAll: false,
       autoOpenRoot: true,
+      autoOpenAll: false,
+      independentSelect: false,
+      allowSelectDisabled: false,
+      allowOpenDisabled: true,
     });
 
     let selectedItems = ref([])
 
-    let handleClickItem = (item) => {
-      console.log(item);
-    };
-
     let events = ref([]);
+
+    let handleClickItem = (item) => {
+      events.value.unshift({ ev: "input:item", data: item})
+    }
+
+    let handleSelectedItem = (selection) => {
+      events.value.unshift({ ev: "input:selected", data: selection})
+    }
 
     return {
       example,
       selectedItems,
       events,
       handleClickItem,
+      handleSelectedItem,
     };
   },
 };

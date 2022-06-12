@@ -333,8 +333,7 @@ export default {
       });
     });
 
-    // ROW SELECTION
-
+    // row selection
     let validSelectionModes = ["single", "multiple"];
 
     let isValidSelectionMode = () => {

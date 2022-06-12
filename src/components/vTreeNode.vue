@@ -1,5 +1,5 @@
 <template>
-  <li :class="getItemClasses()" v-if="!isFiltered">
+  <li :class="getItemClasses()" v-if="!isFilteredOut">
     <slot name="item" v-bind="{ item: items, isFolder, isOpen, toggle }">
       <div class="flex items-center">
         <!-- indicator -->
@@ -20,7 +20,11 @@
         <!-- checkbox -->
         <transition :name="transition">
           <div v-if="showCheckboxes" class="flex items-center mr-2 order-3">
-            <v-checkbox :checked="isSelected" @change="handleItemSelected" />
+            <v-checkbox
+              :checked="isSelected"
+              @change="handleItemSelected"
+              :disabled="isDisabled && !allowSelectDisabled"
+            />
           </div>
         </transition>
         <!-- icon -->
@@ -49,7 +53,7 @@
         <!-- item name -->
         <div
           @click="handleItemClick"
-            class="order-9"
+          class="order-9"
           :class="{
             'cursor-pointer': isFolder && openOnClick,
             disabled: isDisabled,
@@ -71,6 +75,7 @@
       <ul v-show="isOpen" v-if="isFolder">
         <v-tree-node
           v-for="i in items[itemChildren]"
+          :key="i.key"
           v-bind="{
             ...$attrs,
             ...$props,
@@ -105,10 +110,13 @@ export default {
     itemLevel: { type: Number, default: 0 },
     openOnClick: { type: Boolean, default: true },
     disabled: { type: Boolean, default: false },
+    allowSelectDisabled: { type: Boolean, default: true },
+    allowOpenDisabled: { type: Boolean, default: true },
     showIndicators: { type: Boolean, default: true },
     showIcons: { type: Boolean, default: true },
     showCheckboxes: { type: Boolean, default: false },
     selectable: { type: Boolean, default: false },
+    independentSelect: { type: Boolean, default: false },
     placeholderItemIcon: { type: [String, Object], default: undefined },
     placeholderFolderIcon: { type: [String, Object], default: undefined },
     chevronAttrs: { type: Object, default: {} },
@@ -119,7 +127,6 @@ export default {
     let { classes, states, forNode, selectedItems, filter, transition } =
       inject("control-tree");
 
-    // computed
     let getItemClasses = () => {
       return isFolder.value ? classes.folder.value : classes.item.value;
     };
@@ -147,21 +154,32 @@ export default {
 
     let nodeList = ref([]);
 
-    onBeforeUpdate(() => nodeList.value = [])
+    onBeforeUpdate(() => (nodeList.value = []));
 
+    // check state of item
     const isOpen = ref(false);
 
     const isSelected = ref(false);
 
     const isDisabled = computed(() => {
-      return props.items[props.itemDisabled] || props.disabled
-    })
+      return props.items[props.itemDisabled] || props.disabled;
+    });
+
+    const isSelectable = () => {
+      return (
+        !isDisabled.value || (isDisabled.value && props.allowSelectDisabled)
+      );
+    };
+
+    const isOpenable = () => {
+      return !isDisabled.value || (isDisabled.value && props.allowOpenDisabled);
+    };
 
     const isFolder = computed(() => {
       return props.items.children && props.items.children.length;
     });
 
-    const isFiltered = computed(() => {
+    const isFilteredOut = computed(() => {
       if (!filter.value || isFolder.value) return false;
       return (
         props.items[props.itemName]
@@ -171,39 +189,41 @@ export default {
     });
 
     // control state
-
     let open = () => {
-      // if (isDisabled()) return;
+      if (!isOpenable()) return;
       isOpen.value = true;
     };
 
-    let close = () => {
-      // if (isDisabled()) return;
-      isOpen.value = false;
-    };
+    let close = () => (isOpen.value = false);
 
     let toggle = () => (isOpen.value ? close() : open());
 
-    let isChildrenSelected = () => nodeList.value.every((i) => i.isSelected)
-    
+    // item selection
+    let isChildrenSelected = () => nodeList.value.every((i) => i.isSelected);
 
-    let selectChildrenItems = () => {
-      nodeList.value.forEach((i) => forNode(i, (i) => i.selectItems(isSelected.value, true)))
-    }
+    let selectChildren = () => {
+      nodeList.value.forEach((i) =>
+        forNode(i, (i) => i.select(isSelected.value, true))
+      );
+    };
 
-    let selectItems = (value, isFolderSelect) => {
-      isSelected.value = value != undefined ? value : !isSelected.value
+    let select = (value, isFolderSelect) => {
+      if (!isSelectable() || value === isSelected.value) return;
+
+      isSelected.value = value !== undefined ? value : !isSelected.value;
 
       if (isSelected.value) {
-        selectedItems.value.push(props.items);
+        selectedItems.value = [...selectedItems.value, props.items]
       } else {
         selectedItems.value = selectedItems.value.filter(
           (i) => i !== props.items
         );
       }
-      if (isFolderSelect === true) return
-      emit("children-state-changed")
-    }
+
+      if (isFolderSelect === true || props.independentSelect) return;
+
+      emit("children-state-changed");
+    };
 
     // handle template events
 
@@ -214,20 +234,30 @@ export default {
 
     let handleChildrenSelected = () => {
       if (!isChildrenSelected()) {
-        if (isSelected.value) selectItems(false)
-        return
+        if (isSelected.value) select(false);
+        return;
       }
-      if (!isSelected.value) selectItems(true)
-    }
+      if (!isSelected.value) select(true);
+    };
 
     let handleIndicatorClick = () => toggle();
 
     let handleItemSelected = () => {
-      selectItems()
-      if (isFolder.value) selectChildrenItems()
-    }
+      select();
+      if (isFolder.value && !props.independentSelect) selectChildren();
+    };
 
-    expose({ open, close, toggle, isOpen, isFolder, isSelected, nodeList, itemLevel, selectItems });
+    expose({
+      open,
+      close,
+      toggle,
+      isOpen,
+      isFolder,
+      isSelected,
+      nodeList,
+      itemLevel,
+      select,
+    });
 
     return {
       classes,
@@ -240,7 +270,7 @@ export default {
       isFolder,
       isSelected,
       isDisabled,
-      isFiltered,
+      isFilteredOut,
       nodeList,
       getIcon,
       slots,

@@ -63,10 +63,9 @@ module.exports = {
     </v-code>
 
     <p>
-      Import two css files. 
-      Copy <code class="code-text">components.css</code> from <code class="code-text">'node_modules/vue-wind/dist/'</code> to the directory of
-      your application and import it. You can edit this file to customize look of
-      components. Import <code class="code-text">style.css</code> file directly as in example:
+      Import two css files:
+      <code class="code-text">style.css</code> contains fixed classes,
+      <code class="code-text">components.css</code> contains customizable classes for components. You can import it directly or copy from <code class="code-text">'node_modules/vue-wind/dist/'</code> to the directory of your application for customization.
     </p>
 
     <v-code language="javascript">
@@ -114,13 +113,13 @@ app.use(selectPlugin); `}}
       To customize style of components use following:
       <ul class="list-disc list-inside">
         <li>
-      <code class="code-text">tailwind.config.js</code> file that have definitions for colors,
+      <code class="code-text">tailwind.config.js</code> for color definitions,
         </li>
         <li>
-      <code class="code-text">style.css</code> file that contains base classes and variants for components,
+      <code class="code-text">components.css</code> to customize base classes and variants for components,
         </li>
         <li>
-      and following component props that allow selection of base and variant classes per component:
+      and following component props that allow selection of active base and variant classes:
         </li>
       </ul>
       <ul>
@@ -132,6 +131,8 @@ app.use(selectPlugin); `}}
         </li>
       </ul>
       </p>
+
+      <h5>Example - styling button</h5>
 
       <div class="example">
         <example-install-button />

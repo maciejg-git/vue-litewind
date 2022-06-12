@@ -32,10 +32,11 @@ export const sharedStyleProps = (base) => {
 
 export const sharedFormProps = (d, options) => {
   d = d || {};
-  options = options || {}
+  options = options || {};
 
   let props = {};
-  if (options.icon === true) props.icon = { type: String, default: d.icon || "" };
+  if (options.icon === true)
+    props.icon = { type: String, default: d.icon || "" };
   if (options.clearable === true)
     props.clearable = { type: Boolean, default: d.clearable || false };
 
