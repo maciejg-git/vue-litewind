@@ -25,11 +25,7 @@ export default {
     active: { type: Boolean, default: false },
   },
   setup(props) {
-    let classes = inject("classes");
-    let states = inject("states");
-
-    let autoCloseMenu = inject("autoCloseMenu");
-    let hide = inject("hide");
+    let { classes, states, autoCloseMenu, hide } = inject("control-dropdown");
 
     let tagHref = computed(() => (props.tag == "a" ? "#" : null));
 

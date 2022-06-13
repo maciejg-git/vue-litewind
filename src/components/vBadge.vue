@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { computed, onUpdated } from "vue";
+import { computed } from "vue";
 import useStyles from "./composition/use-styles";
 import { sharedStyleProps } from "../shared-props"
 

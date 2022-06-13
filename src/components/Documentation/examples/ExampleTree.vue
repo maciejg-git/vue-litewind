@@ -1,22 +1,27 @@
 <template>
   <v-tree
     v-bind="example"
+    ref="treeRef"
     :chevron-attrs="{ triangle: true }"
     :placeholder-folder-icon="['mdi-folder', 'mdi-folder-open']"
     placeholder-item-icon="b-file-earmark"
-    @input:item="handleClickItem"
+    @input:click="handleClickItem"
     @input:selected="handleSelectedItem"
   >
+    <!-- <template #item-append="{ item }"> -->
+    <!--   <v-badge v-if="item.badge" style-badge="tiny" class="ml-2"> {{ item.badge }} </v-badge> -->
+    <!-- </template> -->
     <!-- <template #icon="{ item, isFolder }"> -->
-    <!--   <v-icon :name="isFolder ? 'mdi-folder' : 'b-star'"></v-icon> -->
+      <!-- <v-icon :name="isFolder ? 'mdi-folder' : 'b-star'"></v-icon> -->
     <!-- </template> -->
     <!-- <template #item-prepend="{ isFolder, isOpen }"> -->
-    <!--   <div v-if="isFolder &#38;&#38; !isOpen"> -->
-    <!--     [] -->
-    <!--   </div> -->
-    <!--   <div v-if="isFolder &#38;&#38; isOpen"> -->
-    <!--     [open] -->
-    <!--   </div> -->
+      <!-- <v-icon :name="'b-star'"></v-icon> -->
+      <!-- <div v-if="isFolder &#38;&#38; !isOpen"> -->
+      <!--   [] -->
+      <!-- </div> -->
+      <!-- <div v-if="isFolder &#38;&#38; isOpen"> -->
+      <!--   [open] -->
+      <!-- </div> -->
     <!-- </template> -->
     <!-- <template #item="{ item, isFolder, isOpen, toggleItem }"> -->
     <!--   <div class="flex items-center"> -->
@@ -29,45 +34,30 @@
     <!--   </div> -->
     <!-- </template> -->
   </v-tree>
+  <v-button @click="treeRef.openAllLevel(9999)" class="mr-4 mt-4">Open all</v-button>
+  <v-button @click="treeRef.closeAll()">Close all</v-button>
   <!-- CUT START -->
   <v-tabs base="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="flex flex-col gap-y-2 mt-5">
         <div>
           <label for="filter">filter:</label>
-          <v-input type="text" id="filter" v-model="example.filter"></v-input>
-        </div>
-        <div>
-          <label for="openAll">open-all:</label>
-          <v-select id="openAll" v-model="example.openAll">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
-          </v-select>
+          <v-input
+            type="text"
+            id="filter"
+            v-model="example.filter"
+            clearable
+          ></v-input>
         </div>
         <div>
           <label for="open-on-click">open-on-click:</label>
-          <v-select id="open-on-click" v-model="example.openOnClick">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
-          </v-select>
-        </div>
-        <div>
-          <label for="independent-select">independent-select:</label>
-          <v-select id="independent-select" v-model="example.independentSelect">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
-          </v-select>
-        </div>
-        <div>
-          <label for="allow-select-disabled">allow-select-disabled:</label>
-          <v-select id="allow-select-disabled" v-model="example.allowSelectDisabled">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
-          </v-select>
-        </div>
-        <div>
-          <label for="allow-open-disabled">allow-open-disabled:</label>
-          <v-select id="allow-open-disabled" v-model="example.allowOpenDisabled">
+          <v-select
+            id="open-on-click"
+            v-model="example.openOnClick"
+            style-icon="true:valid false:invalid"
+            :variant="example.openOnClick"
+            :icon="example.openOnClick ? 'b-check-lg' : 'b-x'"
+          >
             <option :value="true">true</option>
             <option :value="false">false</option>
           </v-select>
@@ -93,6 +83,45 @@
             <option :value="false">false</option>
           </v-select>
         </div>
+        <div>
+          <label for="independent-select">independent-select:</label>
+          <v-select id="independent-select" v-model="example.independentSelect">
+            <option :value="true">true</option>
+            <option :value="false">false</option>
+          </v-select>
+        </div>
+        <div>
+          <label for="allow-select-disabled">allow-select-disabled:</label>
+          <v-select
+            id="allow-select-disabled"
+            v-model="example.allowSelectDisabled"
+          >
+            <option :value="true">true</option>
+            <option :value="false">false</option>
+          </v-select>
+        </div>
+        <div>
+          <label for="allow-open-disabled">allow-open-disabled:</label>
+          <v-select
+            id="allow-open-disabled"
+            v-model="example.allowOpenDisabled"
+          >
+            <option :value="true">true</option>
+            <option :value="false">false</option>
+          </v-select>
+        </div>
+        <div>
+          <label for="transition">transition:</label>
+          <v-select id="transition" v-model="example.transition">
+            <option value="fade-f">fade-f</option>
+            <option value="fade-m">fade-m</option>
+            <option value="fade-s">fade-s</option>
+            <option value="fade-slide-f">fade-slide-f</option>
+            <option value="fade-slide-m">fade-slide-m</option>
+            <option value="fade-slide-s">fade-slide-s</option>
+            <option value="">empty string</option>
+          </v-select>
+        </div>
       </div>
     </v-tab>
     <v-tab>
@@ -102,16 +131,7 @@
           {{ events.length }}
         </v-badge>
       </template>
-      <div class="overflow-y-auto max-h-48 mt-5 w-full">
-        <div class="px-2 pb-2">
-          <template v-for="ev in events">
-            <div class="py-1">
-              <code class="code-word">{{ ev.ev }}</code>
-              {{ ev.data }}
-            </div>
-          </template>
-        </div>
-      </div>
+      <event-viewer :events="events" />
     </v-tab>
   </v-tabs>
   <!-- CUT END -->
@@ -125,82 +145,81 @@ export default {
     const treeData = [
       {
         name: "Movies",
-        key: 17,
+        id: 17,
         children: [
-          { name: "Lost in Translation", key: 1},
-          { name: "Before Sunset", key: 2 },
-          { name: "Groundhog Day", key: 3 },
-          { name: "Out of Africa", icon: "b-star", key: 4 },
+          { name: "Lost in Translation", id: 1 },
+          { name: "Before Sunset", id: 2 },
+          { name: "Groundhog Day", id: 3 },
+          { name: "Out of Africa", icon: "b-star", id: 4 },
           {
             name: "Science-fiction",
-            key: 5,
+            id: 5,
             icon: ["mdi-folder", "mdi-folder-open"],
             children: [
               {
                 name: "Matrix",
-            key: 6,
+                id: 6,
                 children: [
-                  { name: "Matrix", key: 7 },
-                  { name: "Matrix: Revolutions", key: 8 }
+                  { name: "Matrix", id: 7 },
+                  { name: "Matrix: Revolutions", id: 8 },
                 ],
               },
-              { name: "Blade Runner", key: 9 },
-              { name: "Futurama", key: 10 },
-              { name: "Dune", key: 11 },
-              { name: "Ghost in the Shell", key: 12 },
+              { name: "Blade Runner", id: 9 },
+              { name: "Futurama", id: 10 },
+              { name: "Dune", id: 11 },
+              { name: "Ghost in the Shell", id: 12 },
               {
                 name: "Star Wars",
-            key: 13,
+                id: 13,
                 children: [
-                  { name: "Return of The Jedi", key: 14 },
-                  { name: "The Phantom Menace", key: 15 },
+                  { name: "Return of The Jedi", id: 14, badge: "NEW" },
+                  { name: "The Phantom Menace", id: 15 },
                 ],
               },
             ],
           },
-          { name: "Spirited Away", key: 16 },
+          { name: "Spirited Away", id: 16 },
         ],
       },
       {
         name: "Movies",
-        key: 34,
+        id: 34,
         children: [
-          { name: "Lost in Translation", key: 18},
-          { name: "Before Sunset 3", key: 19 },
-          { name: "Groundhog Day", key: 20 },
-          { name: "Out of Africa", icon: "b-star", key: 21 },
+          { name: "Lost in Translation", id: 18 },
+          { name: "Before Sunset 3", id: 19 },
+          { name: "Groundhog Day", id: 20 },
+          { name: "Out of Africa", icon: "b-star", id: 21 },
           {
             name: "Science-fiction",
-            key: 22,
+            id: 22,
             icon: ["mdi-folder", "mdi-folder-open"],
             children: [
               {
                 name: "Matrix",
-            key: 23,
+                id: 23,
                 children: [
-                  { name: "Matrix", key: 24 },
-                  { name: "Matrix: Revolutions", key: 25 }
+                  { name: "Matrix", id: 24 },
+                  { name: "Matrix: Revolutions", id: 25 },
                 ],
               },
-              { name: "Blade Runner", key: 26 },
-              { name: "Futurama", key: 27 },
-              { name: "Dune", disabled: true, key: 28 },
-              { name: "Ghost in the Shell", key: 29 },
+              { name: "Blade Runner", id: 26 },
+              { name: "Futurama", id: 27 },
+              { name: "Dune", disabled: true, id: 28 },
+              { name: "Ghost in the Shell", id: 29 },
               {
                 name: "Star Wars",
-            key: 30,
+                id: 30,
                 disabled: true,
                 children: [
-                  { name: "Return of The Jedi", key: 31 },
-                  { name: "The Phantom Menace", key: 32 },
+                  { name: "Return of The Jedi", id: 31 },
+                  { name: "The Phantom Menace", id: 32 },
                 ],
               },
             ],
           },
-          { name: "Spirited Away", key: 33 },
+          { name: "Spirited Away", id: 33 },
         ],
       },
-      
     ];
 
     // setTimeout(() => {
@@ -215,7 +234,7 @@ export default {
       openOnClick: true,
       showIndicators: true,
       showIcons: true,
-      showCheckboxes: true,
+      showCheckboxes: false,
       filter: "",
       openAll: false,
       autoOpenRoot: true,
@@ -223,23 +242,27 @@ export default {
       independentSelect: false,
       allowSelectDisabled: false,
       allowOpenDisabled: true,
+      transition: "fade-m",
     });
 
-    let selectedItems = ref([])
+    let treeRef = ref(null)
+
+    let selectedItems = ref([]);
 
     let events = ref([]);
 
     let handleClickItem = (item) => {
-      events.value.unshift({ ev: "input:item", data: item})
-    }
+      events.value.unshift({ ev: "input:item", data: item });
+    };
 
     let handleSelectedItem = (selection) => {
-      events.value.unshift({ ev: "input:selected", data: selection})
-    }
+      events.value.unshift({ ev: "input:selected", data: selection });
+    };
 
     return {
       example,
       selectedItems,
+      treeRef,
       events,
       handleClickItem,
       handleSelectedItem,

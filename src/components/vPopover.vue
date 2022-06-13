@@ -68,9 +68,12 @@ export default {
     let { onClickOutside } = useClickOutside();
     let stopClickOutside = null;
 
-    let handleReferenceClick = (ev) => {
-      if (!isPopperVisible.value) ev.stopPropagation()
-      show()
+    let show = () => {
+      if (isPopperVisible.value) return
+      showPopper()
+      if (props.trigger === "click") {
+        stopClickOutside = onClickOutside(popper, hide, reference)
+      }
     }
 
     let hide = () => {
@@ -79,15 +82,7 @@ export default {
       if (stopClickOutside) stopClickOutside = stopClickOutside()
     }
 
-    let show = () => {
-      if (isPopperVisible.value) return
-      showPopper()
-      if (props.trigger === "click") {
-        stopClickOutside = onClickOutside(popper, hide)
-      }
-    }
-
-    let onTrigger = useTrigger(trigger, handleReferenceClick, hide);
+    let onTrigger = useTrigger(trigger, show, hide);
 
     let referenceSlotProps = { reference, onTrigger }
 

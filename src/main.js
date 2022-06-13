@@ -6,6 +6,7 @@ import App from "./App.vue";
 import TableReference from "./components/Documentation/TableReference.vue";
 import TableReferenceBasic from "./components/Documentation/TableReferenceBasic.vue";
 import vCode from "./components/Documentation/components/vCode.vue"
+import EventViewer from "./components/Documentation/components/EventViewer.vue"
 import { plugin } from "./components/index.js";
 // styles
 import "tailwindcss/tailwind.css";
@@ -20,6 +21,7 @@ let app = createApp(App);
 app.component("TableReference", TableReference)
 app.component("TableReferenceBasic", TableReferenceBasic)
 app.component("vCode", vCode)
+app.component("EventViewer", EventViewer)
 
 // icons
 const icons = import.meta.globEager('./components/Documentation/icons/*.js')

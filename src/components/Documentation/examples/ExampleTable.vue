@@ -63,12 +63,23 @@
       </v-select>
     </div>
   </div>
+
+  <!-- edit modal -->
+
+  <v-modal
+    v-model="editModalIsVisible"
+    title="Edit"
+    primaryButtonClose
+    secondaryButtonClose
+  >
+    <pre v-html="editModalContent" class="whitespace-pre my-0 ml-4"></pre>
+  </v-modal>
   <!-- CUT START -->
   <v-tabs base="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="mb-2 mt-5">
         <label for="locale">filter:</label>
-        <v-input type="text" v-model="example.filter"></v-input>
+        <v-input type="text" v-model="example.filter" clearable></v-input>
       </div>
       <div class="mb-2">
         <label for="locale">locale:</label>
@@ -104,28 +115,10 @@
           {{ events.length }}
         </v-badge>
       </template>
-      <div class="overflow-y-scroll max-h-48 mt-5">
-        <div class="px-2 pb-2">
-          <template v-for="ev in events">
-            <div class="py-1">
-              <code class="code-word">{{ ev.ev }}</code>
-              {{ ev.data }}
-            </div>
-          </template>
-        </div>
-      </div>
+      <event-viewer :events="events" />
     </v-tab>
   </v-tabs>
   <!-- CUT END -->
-
-  <v-modal
-    v-model="editModalIsVisible"
-    title="Edit"
-    primaryButtonClose
-    secondaryButtonClose
-  >
-    <pre v-html="editModalContent" class="whitespace-pre my-0 ml-4"></pre>
-  </v-modal>
 </template>
 
 <script>

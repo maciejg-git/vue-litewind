@@ -31,16 +31,7 @@
           {{ events.length }}
         </v-badge>
       </template>
-      <div class="overflow-y-auto max-h-48 mt-5 w-full">
-        <div class="px-2 pb-2">
-          <template v-for="ev in example.events">
-            <div class="py-1">
-              <code class="code-word">{{ ev.ev }}</code>
-              {{ ev.data }}
-            </div>
-          </template>
-        </div>
-      </div>
+      <event-viewer :events="events" />
     </v-tab>
   </v-tabs>
 <!-- CUT END -->

@@ -3,7 +3,7 @@
     <slot name="item" v-bind="{ item: items, isFolder, isOpen, toggle }">
       <div class="flex items-center">
         <!-- indicator -->
-        <div v-if="showIndicators" class="w-5 mr-2 order-1">
+        <div v-if="showIndicators" class="w-5 mr-2 order-first">
           <v-button
             v-if="isFolder"
             base="button-plain"
@@ -19,7 +19,7 @@
         </div>
         <!-- checkbox -->
         <transition :name="transition">
-          <div v-if="showCheckboxes" class="flex items-center mr-2 order-3">
+          <div v-if="showCheckboxes" class="flex items-center mr-2 order-1">
             <v-checkbox
               :checked="isSelected"
               @change="handleItemSelected"
@@ -28,7 +28,7 @@
           </div>
         </transition>
         <!-- icon -->
-        <div v-if="showIcons" class="order-5">
+        <div v-if="showIcons" class="order-3">
           <slot name="icon" v-bind="{ item: items, isFolder, isOpen }">
             <div
               v-if="
@@ -44,7 +44,7 @@
           </slot>
         </div>
         <!-- prepend slot -->
-        <div class="order-7">
+        <div class="order-5">
           <slot
             name="item-prepend"
             v-bind="{ item: items, isFolder, isOpen, toggle }"
@@ -53,21 +53,23 @@
         <!-- item name -->
         <div
           @click="handleItemClick"
-          class="order-9"
+          class="order-7"
           :class="{
             'cursor-pointer': isFolder && openOnClick,
             disabled: isDisabled,
           }"
         >
-          <slot name="item-name" v-bind="{ item: items, isFolder, isOpen }">
+          <slot name="name" v-bind="{ item: items, isFolder, isOpen }">
             {{ items[itemName] }}
           </slot>
         </div>
         <!-- append slot -->
-        <slot
-          name="item-append"
-          v-bind="{ item: items, isFolder, isOpen, toggle }"
-        ></slot>
+        <div class="order-last">
+          <slot
+            name="item-append"
+            v-bind="{ item: items, isFolder, isOpen, toggle }"
+          ></slot>
+        </div>
       </div>
     </slot>
 
@@ -75,7 +77,7 @@
       <ul v-show="isOpen" v-if="isFolder">
         <v-tree-node
           v-for="i in items[itemChildren]"
-          :key="i.key"
+          :key="i[itemKey]"
           v-bind="{
             ...$attrs,
             ...$props,
@@ -83,8 +85,8 @@
             itemLevel: itemLevel + 1,
           }"
           :ref="(i) => i && nodeList.push(i)"
-          @children-state-changed="handleChildrenSelected"
           :disabled="isDisabled"
+          @children-state-changed="handleChildrenSelected"
         >
           <template v-for="(name, slot) of slots" #[slot]="i">
             <slot :name="slot" v-bind="i"></slot>
@@ -106,7 +108,7 @@ export default {
     itemChildren: { type: String, default: "children" },
     itemIcon: { type: String, default: "icon" },
     itemDisabled: { type: String, default: "disabled" },
-    itemKey: { type: String, default: undefined },
+    itemKey: { type: String, default: "id" },
     itemLevel: { type: Number, default: 0 },
     openOnClick: { type: Boolean, default: true },
     disabled: { type: Boolean, default: false },
@@ -124,11 +126,22 @@ export default {
   inheritAttrs: false,
   emits: ["children-state-changed"],
   setup(props, { emit, slots, expose }) {
-    let { classes, states, forNode, selectedItems, filter, transition } =
-      inject("control-tree");
+    let {
+      classes,
+      states,
+      variants,
+      forNode,
+      selectedItems,
+      filter,
+      transition,
+    } = inject("control-tree");
 
     let getItemClasses = () => {
-      return isFolder.value ? classes.folder.value : classes.item.value;
+      return isFolder.value
+        ? itemLevel.value === 0
+          ? [classes.folder.value, variants.folder.value["root-variant"]]
+          : classes.folder.value
+        : classes.item.value;
     };
 
     const getIcon = () => {
@@ -150,6 +163,8 @@ export default {
       );
     };
 
+    let prependSlotOrder = ["order-0", "order-2", "order-5"]
+
     let itemLevel = toRef(props, "itemLevel");
 
     let nodeList = ref([]);
@@ -166,13 +181,11 @@ export default {
     });
 
     const isSelectable = () => {
-      return (
-        !isDisabled.value || (isDisabled.value && props.allowSelectDisabled)
-      );
+      return !isDisabled.value || props.allowSelectDisabled
     };
 
     const isOpenable = () => {
-      return !isDisabled.value || (isDisabled.value && props.allowOpenDisabled);
+      return !isDisabled.value || props.allowOpenDisabled
     };
 
     const isFolder = computed(() => {
@@ -181,6 +194,7 @@ export default {
 
     const isFilteredOut = computed(() => {
       if (!filter.value || isFolder.value) return false;
+
       return (
         props.items[props.itemName]
           .toLowerCase()
@@ -213,7 +227,7 @@ export default {
       isSelected.value = value !== undefined ? value : !isSelected.value;
 
       if (isSelected.value) {
-        selectedItems.value = [...selectedItems.value, props.items]
+        selectedItems.value.push(props.items)
       } else {
         selectedItems.value = selectedItems.value.filter(
           (i) => i !== props.items
@@ -229,7 +243,7 @@ export default {
 
     let handleItemClick = () => {
       if (isFolder.value && props.openOnClick) toggle();
-      emit("input:item", props.items);
+      emit("input:click", props.items);
     };
 
     let handleChildrenSelected = () => {
@@ -261,8 +275,9 @@ export default {
 
     return {
       classes,
-      getItemClasses,
       states,
+      variants,
+      getItemClasses,
       selectedItems,
       itemLevel,
       transition,

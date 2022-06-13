@@ -9,7 +9,7 @@ import { inject } from "vue";
 
 export default {
   setup() {
-    let classes = inject("classes");
+    let { classes } = inject("control-dropdown");
 
     return {
       classes,

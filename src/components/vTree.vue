@@ -41,10 +41,11 @@ export default {
     vTreeNode,
   },
   inheritAttrs: false,
-  setup(props, { slots, emit }) {
-    let { classes, states } = useStyles("tree", props, {
+  setup(props, { slots, emit, expose }) {
+    let { classes, states, variants } = useStyles("tree", props, {
       folder: {
         states: ["opened"],
+        variants: ["root-variant"],
       },
       item: null,
       icon: null,
@@ -78,19 +79,17 @@ export default {
       level !== null && openAllLevel(level)
     });
 
-    watch(
-      () => props.openAll,
-      (val) => (val ? openAllLevel(9999) : closeAll())
-    );
-
     provide("control-tree", {
       classes,
       states,
+      variants,
       forNode,
       selectedItems,
       filter: toRef(props, "filter"),
       transition: toRef(props, "transition"),
     });
+
+    expose({ openAllLevel, closeAll })
 
     return {
       slots,

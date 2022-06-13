@@ -24,7 +24,7 @@ export const sharedPopperProps = (d) => {
 export const sharedStyleProps = (base) => {
   return {
     base: { type: String, default: base },
-    variant: { type: String, default: "" },
+    variant: { type: [String, Boolean], default: "" },
   };
 };
 

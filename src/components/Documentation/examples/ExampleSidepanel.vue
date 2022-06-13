@@ -62,24 +62,6 @@
         </v-select>
       </div>
     </v-tab>
-    <v-tab>
-      <template #name>
-        Events
-        <v-badge style-badge="secondary tiny" class="ml-2">
-          {{ events.length }}
-        </v-badge>
-      </template>
-      <div class="overflow-y-auto max-h-48 mt-5 w-full">
-        <div class="px-2 pb-2">
-          <template v-for="ev in example.events">
-            <div class="py-1">
-              <code class="code-word">{{ ev.ev }}</code>
-              {{ ev.data }}
-            </div>
-          </template>
-        </div>
-      </div>
-    </v-tab>
   </v-tabs>
 <!-- CUT END -->
 </template>
@@ -99,12 +81,9 @@ export default {
 
     let isOpen = ref(false);
 
-    let events = ref([]);
-
     return {
       example,
       isOpen,
-      events,
     };
   },
 };

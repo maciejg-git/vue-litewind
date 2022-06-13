@@ -2,7 +2,7 @@
   <v-button>
     <slot name="default"></slot>
     <v-chevron
-      :initial="placement"
+      :initial="dropdownPlacement"
       :triangle="triangle"
       :icon="icon"
       class="ml-2"
@@ -18,9 +18,10 @@ export default {
     icon: { type: String, default: "" },
   },
   setup() {
-    let initialPlacement = inject("placement", "down");
-    let placement = computed(() => {
-      let i = initialPlacement.value.split("-")[0];
+    let { placement } = inject("control-dropdown", "down");
+
+    let dropdownPlacement = computed(() => {
+      let i = placement.value.split("-")[0];
       return i == "auto"
         ? "down"
         : i == "top"
@@ -31,7 +32,7 @@ export default {
     });
 
     return {
-      placement,
+      dropdownPlacement,
     };
   },
 };

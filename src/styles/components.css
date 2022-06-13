@@ -692,6 +692,16 @@
     text-text-400
     dark:text-gray-400
 }
+    .select--icon--valid {
+      @apply
+        text-success-500
+        dark:text-success-500
+    }
+    .select--icon--invalid {
+      @apply
+        text-danger-500
+        dark:text-danger-500
+    }
 
 .select--clear-button {
   @apply
@@ -1861,6 +1871,10 @@
   @apply
     font-bold
 }
+    .tree--folder--root-variant {
+      @apply
+        ml-0
+    }
 
 .tree--item {
   @apply

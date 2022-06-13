@@ -7,7 +7,7 @@ let getComponentClasses = (props, p, el, element) => {
     if (props[p]) {
       c = props[p].split(" ").map((variant) => {
         let [v, c] = variant.split(":");
-        if (c && v !== props.variant) return;
+        if (c && v !== props.variant.toString()) return;
         return [props.base, element, c || v].filter(Boolean).join("--");
       });
     }
