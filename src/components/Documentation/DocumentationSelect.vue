@@ -17,7 +17,7 @@
 
     <h6>Slots</h6>
     <p></p>
-    <table-reference-basic :items="slots"></table-reference-basic>
+    <table-reference-basic :items="slots" reference="slot"></table-reference-basic>
   </section>
 
   <section>
@@ -75,15 +75,15 @@ export default {
 
     let slots = ref([
       {
-        prop: "options-prepend",
+        slot: "options-prepend",
         description: "Slot for additional options (added before options from options prop)",
       },
       {
-        prop: "default",
+        slot: "default",
         description: "Slot for additional options (added after options from options prop)",
       },
       {
-        prop: "icon",
+        slot: "icon",
         description: "Slot for icon",
       },
     ]);

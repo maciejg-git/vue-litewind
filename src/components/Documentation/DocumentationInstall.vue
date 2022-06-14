@@ -127,8 +127,8 @@ app.use(selectPlugin); `}}
           <code class="code-text">base</code> - changes base name for styling. The default value is component name ("button", "dropdown", "modal" etc...). This can be useful to make new version of appearance with different set of variants.
         </li>
         <li class="my-2">
-          <code class="code-text">style-[element]</code> - adds list of variants to elements of component. Variant can be applied conditionaly by putting "identifier:" in front of any variant. Active conditional variant can be chosen with <code class="code-text">variant</code> prop set to identifier. Identifier can be any word and does not have any relation to css.
-        </li>
+          <code class="code-text">style-[element]</code> - adds list of variants to elements of component. Variant can be applied conditionaly by putting "identifier:" in front of any variant. Active conditional variant can be chosen with <code class="code-text">variant</code> prop set to identifier. Identifier can be any word and does not have any relation to css. Boolean, null and undefined values of variant prop are automatically converted to strings.
+        </li> 
       </ul>
       </p>
 

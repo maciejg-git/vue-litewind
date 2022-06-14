@@ -51,16 +51,13 @@
         </div>
         <div>
           <label for="open-on-click">open-on-click:</label>
-          <v-select
+          <v-select-prop
             id="open-on-click"
             v-model="example.openOnClick"
-            style-icon="true:valid false:invalid"
-            :variant="example.openOnClick"
-            :icon="example.openOnClick ? 'b-check-lg' : 'b-x'"
           >
             <option :value="true">true</option>
             <option :value="false">false</option>
-          </v-select>
+          </v-select-prop>
         </div>
         <div>
           <label for="show-indicators">show-indicators:</label>
@@ -222,13 +219,6 @@ export default {
       },
     ];
 
-    // setTimeout(() => {
-    //   example.items.splice(1, 1)
-    // }, 5000)
-    // setTimeout(() => {
-    //   example.items.splice(0, 1)
-    // }, 8000)
-
     let example = reactive({
       items: treeData,
       openOnClick: true,
@@ -252,7 +242,7 @@ export default {
     let events = ref([]);
 
     let handleClickItem = (item) => {
-      events.value.unshift({ ev: "input:item", data: item });
+      events.value.unshift({ ev: "input:click", data: item });
     };
 
     let handleSelectedItem = (selection) => {

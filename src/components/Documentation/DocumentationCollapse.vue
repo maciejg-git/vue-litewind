@@ -9,11 +9,11 @@
 
     <h6>Slots</h6>
     <p></p>
-    <table-reference-basic :items="slots"></table-reference-basic>
+    <table-reference-basic :items="slots" reference="slot"></table-reference-basic>
 
     <h6>Components</h6>
     <p></p>
-    <table-reference-basic :items="components"></table-reference-basic>
+    <table-reference-basic :items="components" reference="component"></table-reference-basic>
   </section>
 
   <section>
@@ -68,14 +68,14 @@ export default {
 
     let slots = ref([
       {
-        prop: "default",
+        slot: "default",
         description: "Slot for content that is collapsed",
       },
     ]);
 
     let components = ref([
       {
-        prop: "v-button-collapse",
+        component: "v-button-collapse",
         description: "Optional version of <code class='code-text'>v-button</code> that has indicator build in and automatically toggles attached <code class='code-text'>v-model</code> on click. It uses the same props as <code class='code-text'>v-button</code> as well as props of <code class='code-text'>v-chevron</code>. Use <code class='code-text'>v-button-collapse</code> for minimal setup or normal <code class='code-text'>v-button</code> for more customizing options.",
       },
     ]);

@@ -13,11 +13,11 @@
 
     <h6>Events</h6>
     <p></p>
-    <table-reference-basic :items="events"></table-reference-basic>
+    <table-reference-basic :items="events" reference="event"></table-reference-basic>
 
     <h6>Slots</h6>
     <p></p>
-    <table-reference-basic :items="slots"></table-reference-basic>
+    <table-reference-basic :items="slots" reference="slot"></table-reference-basic>
   </section>
 
   <section>
@@ -240,15 +240,15 @@ export default {
 
     let events = ref([
       {
-        prop: "update:page",
+        event: "update:page",
         description: "Emmited after filtering. Useful for updating pagination",
       },
       {
-        prop: "update:filtered-count",
+        event: "update:filtered-count",
         description: "Emmited after filtering. Useful for updating pagination",
       },
       {
-        prop: "input:selection",
+        event: "input:selection",
         description:
           "Emmited after selecting rows. Event data contains array of selected records",
       },
@@ -256,27 +256,27 @@ export default {
 
     let slots = ref([
       {
-        prop: "cell:key",
+        slot: "cell:key",
         description:
           "Slot for cell content. Useful for adding some html formatting, transforming value etc. Key is one of the keys of data record or additional key from definition array<p class='mt-4'>Slot props: <code class='code-word'>value</code>, <code class='code-word'>item</code></p>",
       },
       {
-        prop: "caption",
+        slot: "caption",
         description:
           "Slot for caption text. Position caption using caption-top prop",
       },
       {
-        prop: "busy",
+        slot: "busy",
         description:
           "Content of this slot replaces data records if table is busy",
       },
       {
-        prop: "empty-table-message",
+        slot: "empty-table-message",
         description:
           "Slot for custom empty table message when item prop is empty table",
       },
       {
-        prop: "empty-filtered-table-message",
+        slot: "empty-filtered-table-message",
         description:
           "Slot for custom empty filtered table message when table is empty after filtering",
       },

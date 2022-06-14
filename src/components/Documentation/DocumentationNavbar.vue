@@ -13,7 +13,7 @@
 
     <h6>Slots</h6>
     <p></p>
-    <table-reference-basic :items="slots"></table-reference-basic>
+    <table-reference-basic :items="slots" reference="slot"></table-reference-basic>
   </section>
 
   <section>
@@ -70,7 +70,7 @@ export default {
 
     let slots = ref([
       {
-        prop: "default",
+        slot: "default",
         description: "Slot for navbar content",
       },
     ]);

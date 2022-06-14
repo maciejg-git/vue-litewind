@@ -13,7 +13,7 @@
 
     <h6>Events</h6>
     <p></p>
-    <table-reference-basic :items="events"></table-reference-basic>
+    <table-reference-basic :items="events" reference="event"></table-reference-basic>
   </section>
 
   <section>
@@ -65,7 +65,7 @@
 </template>
 
 <script>
-import { ref, reactive } from "vue";
+import { ref } from "vue";
 import ExampleDatepicker from "./examples/ExampleDatepicker.vue"
 import ExampleDatepickerModel from "./examples/ExampleDatepickerModel.vue"
 import ExampleDatepickerDropdown from "./examples/ExampleDatepickerDropdown.vue"
@@ -205,17 +205,17 @@ export default {
 
     let events = ref([
       {
-        prop: "update:formatted",
+        event: "update:formatted",
         description:
           "Emmited after selecting date along with update:modelValue. Date is in formatted using locale and format prop",
       },
       {
-        prop: "state:done",
+        event: "state:done",
         description:
           "Emmited after selecting date (and clicking primary button if buttons props is set to true)",
       },
       {
-        prop: "input:cancel",
+        event: "input:cancel",
         description: "Emmited after clicking secondary button",
       },
     ]);

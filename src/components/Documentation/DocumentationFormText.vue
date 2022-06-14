@@ -13,7 +13,7 @@
 
     <h6>Slots</h6>
     <p></p>
-    <table-reference-basic :items="slots"></table-reference-basic>
+    <table-reference-basic :items="slots" reference="slot"></table-reference-basic>
   </section>
 
   <section>
@@ -91,12 +91,12 @@ export default {
 
     let slots = ref([
       {
-        prop: "default",
+        slot: "default",
         description:
           "Slot for the text. <p class='mt-4'>Slot props: <code class='code-word'>state</code></p>",
       },
       {
-        prop: "prepend-message",
+        slot: "prepend-message",
         description:
           "Slot for the content in front of a message, for example for an icon. <p class='mt-4'>Slot props: <code class='code-word'>state</code></p>",
       },

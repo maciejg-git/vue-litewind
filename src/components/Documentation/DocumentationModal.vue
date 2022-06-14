@@ -13,11 +13,11 @@
 
     <h6>Events</h6>
     <p></p>
-    <table-reference-basic :items="events"></table-reference-basic>
+    <table-reference-basic :items="events" reference="event"></table-reference-basic>
 
     <h6>Slots</h6>
     <p></p>
-    <table-reference-basic :items="slots"></table-reference-basic>
+    <table-reference-basic :items="slots" reference="slot"></table-reference-basic>
   </section>
 
   <section>
@@ -200,31 +200,31 @@ export default {
 
     let events = ref([
       {
-        prop: "input:primary-button-click",
+        event: "input:primary-button-click",
         description: "Emmited after clicking primary button",
       },
       {
-        prop: "input:secondary-button-click",
+        event: "input:secondary-button-click",
         description: "Emmited after clicking secondary button",
       },
       {
-        prop: "input:static-backdrop-click",
+        event: "input:static-backdrop-click",
         description: "Emmited after clicking backdrop if static-backdrop prop is true",
       },
     ]);
 
     let slots = ref([
       {
-        prop: "default",
+        slot: "default",
         description: "Modal content",
       },
       {
-        prop: "header",
+        slot: "header",
         description:
           "Modal header content",
       },
       {
-        prop: "footer",
+        slot: "footer",
         description:
           "Modal footer content",
       },

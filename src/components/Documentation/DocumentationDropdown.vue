@@ -13,15 +13,19 @@
 
     <h6>Events</h6>
     <p></p>
-    <table-reference-basic :items="events"></table-reference-basic>
+    <table-reference-basic :items="events" reference="event"></table-reference-basic>
 
     <h6>Slots</h6>
     <p></p>
-    <table-reference-basic :items="slots"></table-reference-basic>
+    <table-reference-basic :items="slots" reference="slot"></table-reference-basic>
 
     <h6>Components</h6>
     <p></p>
-    <table-reference-basic :items="components"></table-reference-basic>
+    <table-reference-basic :items="components" reference="component"></table-reference-basic>
+
+    <h6>Functions</h6>
+    <p></p>
+    <table-reference-basic :items="functions" reference="function"></table-reference-basic>
   </section>
 
   <section id="example">
@@ -43,7 +47,7 @@
 
   <section id="example">
     <h4>Example - context dropdown</h4>
-    <p>To make context dropdown skip reference slot and use <code class="code-text">showContextDropdown</code> function to show menu. Context data is available in slot props of default slot:</p>
+    <p>To make context dropdown skip reference slot and call <code class="code-text">showContextDropdown($event, { contextData })</code> function to show menu. Context data is available in slot props of default slot:</p>
     <div class="example">
       <example-dropdown-context></example-dropdown-context>
     </div>
@@ -108,22 +112,22 @@ export default {
 
     let events = ref([
       {
-        prop: "state:opened",
+        event: "state:opened",
         description: "Emitted after dropdown is opened",
       },
       {
-        prop: "state:closed",
+        event: "state:closed",
         description: "Emitted after dropdown is closed",
       },
     ]);
 
     let slots = ref([
       {
-        prop: "reference",
+        slot: "reference",
         description: "Slot for button that activates dropdown. Dropdown is positioned relative to element in this slot.",
       },
       {
-        prop: "default",
+        slot: "default",
         description:
           "Slot for dropdown content. <p class='mt-4'>Slot props: <code class='code-word'>hide()</code></p>",
       },
@@ -131,12 +135,19 @@ export default {
 
     let components = ref([
       {
-        prop: "v-dropdown-menu-item",
+        component: "v-dropdown-menu-item",
         description: "Single menu item",
       },
       {
-        prop: "v-button-dropdown",
+        component: "v-button-dropdown",
         description: "Optional version of <code class=code-text'>v-button</code> that has reactive indicator build in. It uses the same props as normal <code class='code-text'>v-button</code> as well as triangle and icon props of <code class='code-text'>v-chevron</code>",
+      },
+    ]);
+
+    let functions = ref([
+      {
+        function: "showContextDropdown($event, contextData: Object)",
+        description: "Shows context menu. Context data is available in slot props of default slot",
       },
     ]);
 
@@ -145,6 +156,7 @@ export default {
       styles,
       events,
       slots,
+      functions,
       components,
       exampleDropdownCode,
       exampleDropdownSimpleCode,

@@ -13,11 +13,11 @@
 
     <h6>Slots</h6>
     <p></p>
-    <table-reference-basic :items="styles"></table-reference-basic>
+    <table-reference-basic :items="slots" reference="slot"></table-reference-basic>
 
     <h6>Components</h6>
     <p></p>
-    <table-reference-basic :items="components"></table-reference-basic>
+    <table-reference-basic :items="components" reference="component"></table-reference-basic>
   </section>
 
   <section>
@@ -70,14 +70,14 @@ export default {
 
     let slots = ref([
       {
-        prop: "default",
+        slot: "default",
         description: "Slot for v-list-item components",
       },
     ]);
 
     let components = ref([
       {
-        prop: "v-list-item",
+        component: "v-list-item",
         description: "List item component",
       },
     ]);

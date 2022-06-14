@@ -13,11 +13,15 @@
 
     <h6>Events</h6>
     <p></p>
-    <table-reference-basic :items="events"></table-reference-basic>
+    <table-reference-basic :items="events" reference="event"></table-reference-basic>
 
     <h6>Slots</h6>
     <p></p>
-    <table-reference-basic :items="slots"></table-reference-basic>
+    <table-reference-basic :items="slots" reference="slot"></table-reference-basic>
+
+    <h6>Functions</h6>
+    <p></p>
+    <table-reference-basic :items="functions" reference="function"></table-reference-basic>
   </section>
 
   <section>
@@ -147,7 +151,7 @@ export default {
       {
         prop: "show-checkboxes",
         type: ["Boolean"],
-        default: "true",
+        default: "false",
         description: "Whether to display checkboxes",
       },
       {
@@ -194,40 +198,53 @@ export default {
 
     let events = ref([
       {
-        prop: "input:click",
+        event: "input:click",
         description: "Fired when item is clicked (folders and items). Passes item as argument. Note that disabled items also trigger this event but those can be easly dismissed by checking <code class='code-text'>disabled</code> property",
       },
       {
-        prop: "input:selected",
+        event: "input:selected",
         description: "Fired when item is selected. Passes array of selected items",
       },
     ]);
 
     let slots = ref([
       {
-        prop: "item",
+        slot: "item",
         description:
           "Slot for complete customization of appearance of items. Other slots are unavailable when using this slot",
       },
       {
-        prop: "icon",
+        slot: "icon",
         description:
           "Slot for items icon",
       },
       {
-        prop: "name",
+        slot: "name",
         description:
           "Slot for items name",
       },
       {
-        prop: "item-prepend",
+        slot: "item-prepend",
         description:
           "Slot for content that prepends item name",
       },
       {
-        prop: "item-append",
+        slot: "item-append",
         description:
           "Slot for content that is appended to item name",
+      },
+    ]);
+
+    let functions = ref([
+      {
+        function: "openAllLevel(level: Number)",
+        description:
+          "Opens all nodes on level (0 for root, any high number to open all nodes)",
+      },
+      {
+        function: "closeAll()",
+        description:
+          "Closes all nodes",
       },
     ]);
 
@@ -236,6 +253,7 @@ export default {
       styles,
       events,
       slots,
+      functions,
       ExampleTreeCode,
       ExampleTreeSimpleCode,
     };

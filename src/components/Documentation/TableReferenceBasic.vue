@@ -18,10 +18,13 @@
 import { ref } from "vue";
 
 export default {
-  setup() {
+  props: {
+    reference: { type: String, default: "prop" },
+  },
+  setup(props) {
     let definition = ref([
       {
-        key: "prop",
+        key: props.reference,
         class: () => "w-1 whitespace-nowrap",
       },
       {

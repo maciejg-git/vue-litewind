@@ -13,11 +13,11 @@
 
     <h6>Events</h6>
     <p></p>
-    <table-reference-basic :items="events"></table-reference-basic>
+    <table-reference-basic :items="events" reference="event"></table-reference-basic>
 
     <h6>Slots</h6>
     <p></p>
-    <table-reference-basic :items="slots"></table-reference-basic>
+    <table-reference-basic :items="slots" reference="slot"></table-reference-basic>
   </section>
 
   <section>
@@ -165,30 +165,30 @@ export default {
 
     let events = ref([
       {
-        prop: "update:page",
+        event: "update:page",
         description: "Fired when next page is displayed (scroll reach end of dropdown menu)",
       },
       {
-        prop: "state:focus",
+        event: "state:focus",
         description: "Input element recieved focus",
       },
       {
-        prop: "input:value",
+        event: "input:value",
         description: "Fired when input value changes",
       },
       {
-        prop: "state:opened",
+        event: "state:opened",
         description: "Dropdown menu opens",
       },
       {
-        prop: "state:closed",
+        event: "state:closed",
         description: "Dropdown menu closes",
       },
     ]);
 
     let slots = ref([
       {
-        prop: "item",
+        slot: "item",
         description:
           "Slot for item customization. Slot props: text, value, item, inputValue, highlightMatch (function)",
       },

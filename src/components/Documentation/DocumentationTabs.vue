@@ -13,15 +13,15 @@
 
     <h6>Events</h6>
     <p></p>
-    <table-reference-basic :items="events"></table-reference-basic>
+    <table-reference-basic :items="events" reference="event"></table-reference-basic>
 
     <h6>Slots</h6>
     <p></p>
-    <table-reference-basic :items="slots"></table-reference-basic>
+    <table-reference-basic :items="slots" reference="slot"></table-reference-basic>
 
     <h6>Components</h6>
     <p></p>
-    <table-reference-basic :items="components">
+    <table-reference-basic :items="components" reference="component">
       <template #description-v-tab="{ value }">
         Tab content component
         <br />
@@ -124,21 +124,21 @@ export default {
 
     let events = ref([
       {
-        prop: "input:changed-tab",
+        event: "input:changed-tab",
         description: "Emitted when another tab is activated",
       },
     ]);
 
     let slots = ref([
       {
-        prop: "default",
+        slot: "default",
         description: "Slot for v-tab components",
       },
     ]);
 
     let components = ref([
       {
-        prop: "v-tab",
+        component: "v-tab",
         description: `Tab content component <br>
         <p class="font-semibold py-2">Props</p>
         <span class="font-semibold">name</span>: label of tab displayed on tab bar

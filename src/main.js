@@ -7,6 +7,7 @@ import TableReference from "./components/Documentation/TableReference.vue";
 import TableReferenceBasic from "./components/Documentation/TableReferenceBasic.vue";
 import vCode from "./components/Documentation/components/vCode.vue"
 import EventViewer from "./components/Documentation/components/EventViewer.vue"
+import vSelectProp from "./components/Documentation/components/vSelectProp.vue"
 import { plugin } from "./components/index.js";
 // styles
 import "tailwindcss/tailwind.css";
@@ -22,6 +23,7 @@ app.component("TableReference", TableReference)
 app.component("TableReferenceBasic", TableReferenceBasic)
 app.component("vCode", vCode)
 app.component("EventViewer", EventViewer)
+app.component("vSelectProp", vSelectProp)
 
 // icons
 const icons = import.meta.globEager('./components/Documentation/icons/*.js')

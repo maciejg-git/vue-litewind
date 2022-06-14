@@ -37,12 +37,12 @@ export default {
                 id: 14,
                 children: [
                   { name: "Return of The Jedi", id: 15 },
-                  { name: "The Phantom Menace", id: 15 },
+                  { name: "The Phantom Menace", id: 16 },
                 ],
               },
             ],
           },
-          { name: "Spirited Away", id: 16 },
+          { name: "Spirited Away", id: 17 },
         ],
       },
     ]);

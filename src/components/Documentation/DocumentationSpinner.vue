@@ -55,20 +55,6 @@ export default {
       },
     ]);
 
-    let events = ref([
-      {
-        event: "-",
-        description: "Update v-model",
-      },
-    ]);
-
-    let slots = ref([
-      {
-        slot: "-",
-        description: "This component does not provide any slots.",
-      },
-    ]);
-
     return {
       reference,
       styles,

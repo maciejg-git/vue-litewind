@@ -18,7 +18,7 @@
           </v-button>
         </div>
         <!-- checkbox -->
-        <transition :name="transition">
+        <transition name="fade-m">
           <div v-if="showCheckboxes" class="flex items-center mr-2 order-1">
             <v-checkbox
               :checked="isSelected"
@@ -258,7 +258,8 @@ export default {
 
     let handleItemSelected = () => {
       select();
-      if (isFolder.value && !props.independentSelect) selectChildren();
+      if (props.independentSelect) return
+      if (isFolder.value) selectChildren();
     };
 
     expose({
