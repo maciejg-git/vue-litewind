@@ -1,12 +1,9 @@
 <template>
   <div class="relative items-center" :class="wrapperClasses">
     <slot name="icon">
-      <v-icon
-        v-if="icon"
-        :name="icon"
-        class="absolute"
-        :class="classes.icon.value"
-      ></v-icon>
+      <button v-if="icon" class="absolute" @click="handleIconClick">
+        <v-icon :name="icon" :class="classes.icon.value"></v-icon>
+      </button>
     </slot>
 
     <select
@@ -80,13 +77,14 @@ export default {
 
     let state = computed(() => {
       if (props.modelValue._isValidateRef) {
-        return props.modelValue.getValidStatus();
       }
     });
 
     let isOptionDisabled = (o) => {
       return o.disabled == undefined || o.disabled == null ? false : o.disabled;
     };
+
+    let handleIconClick = () => emit("input:icon-click");
 
     let handleBlur = () => {
       if (props.modelValue._isValidateRef) {
@@ -103,6 +101,7 @@ export default {
       state,
       isOptionDisabled,
       localModel,
+      handleIconClick,
       handleBlur,
     };
   },

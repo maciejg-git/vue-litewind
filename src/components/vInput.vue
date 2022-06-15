@@ -1,12 +1,9 @@
 <template>
   <div class="relative items-center" :class="wrapperClasses">
     <slot name="icon">
-      <v-icon
-        v-if="icon"
-        :name="icon"
-        class="absolute"
-        :class="classes.icon.value"
-      ></v-icon>
+      <button v-if="icon" class="absolute" @click="handleIconClick">
+        <v-icon :name="icon" :class="classes.icon.value"></v-icon>
+      </button>
     </slot>
 
     <input
@@ -94,25 +91,26 @@ export default {
       ];
     };
 
-    // let state = computed(() => {
-    //   if (props.modelValue._isValidateRef) {
-    //     return props.modelValue.getValidStatus()
-    //   }
-    // });
-    let state = ref("")
+    let state = ref("");
 
-    // let { touched, dirty, valid } = toRefs(props.modelValue.status.value)
-    let { status } = props.modelValue
+    let { status } = props.modelValue;
 
     let handleBlur = () => {
       if (props.modelValue._isValidateRef) {
+        if (status.value.touched) return
         props.modelValue.touch();
-        if (status.value.valid) state.value = ""
-        else state.value = "invalid"
-        watch(status, (value) => {
-          if (value.valid) state.value = "valid"
-          else state.value = "invalid"
-        })
+        if (status.value.valid) state.value = "";
+        else state.value = "invalid";
+        watch(status, (status) => {
+          if (status.valid) {
+            if (status.wasInvalid)
+              state.value = "valid"
+            else state.value = "";
+          }
+          else {
+            state.value = "invalid";
+          }
+        });
       }
     };
 

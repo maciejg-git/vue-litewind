@@ -38,8 +38,8 @@
         {{ day }}
       </div>
     </div>
-    <transition :name="transition" @after-leave="onAfterLeaveTransition">
-      <div v-if="!isTransitioning" class="grid grid-cols-7 mb-2 relative">
+    <transition :name="transition" mode="out-in">
+      <div :key="monthNames[month]" class="grid grid-cols-7 mb-2 relative">
         <template v-if="adjacentMonths">
           <div v-for="(day, index) in daysList.prevMonthDays" :key="index">
             <div :class="classes.adjacentMonthDay.value">
@@ -194,8 +194,6 @@ export default {
       return classes.day.value;
     };
 
-    let isTransitioning = ref(false);
-    let afterTransitionCall = null;
     let transition = ref("");
 
     // today date
@@ -372,12 +370,7 @@ export default {
       return props.transition == "slide" ? "slide-" + d : props.transition;
     };
 
-    let onAfterLeaveTransition = () => {
-      isTransitioning.value = false;
-    };
-
     let handleButtonClick = (d, t) => {
-      isTransitioning.value = true;
       transition.value = getTransition(d);
 
       if (d === "next") {
@@ -459,8 +452,6 @@ export default {
       handleButtonClick,
       handlePrimaryButtonClick,
       handleSecondaryButtonClick,
-      onAfterLeaveTransition,
-      isTransitioning,
       transition,
     };
   },

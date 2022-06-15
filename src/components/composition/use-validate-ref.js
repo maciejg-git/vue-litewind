@@ -7,9 +7,7 @@ let defaultStatus = {
   touched: false,
   dirty: false,
   valid: true,
-  isValidated() {
-    return this.dirty && this.touched;
-  },
+  wasInvalid: false,
 };
 
 // shared form status
@@ -36,6 +34,7 @@ let getValidateStatus = ({ validators, status, model, formStatus }) => {
   let newStatus = {
     ...defaultStatus,
     touched: status.value.touched,
+    wasInvalid: status.value.wasInvalid,
     dirty: (v && !!v.length) || status.value.dirty,
   };
 
@@ -48,6 +47,8 @@ let getValidateStatus = ({ validators, status, model, formStatus }) => {
     newStatus.valid = newStatus.valid && newStatus[key];
   }
 
+  newStatus.wasInvalid = newStatus.wasInvalid || (!newStatus.valid && newStatus.touched)  
+
   updateFormStatus(formStatus, newStatus);
 
   return newStatus;
@@ -56,31 +57,16 @@ let getValidateStatus = ({ validators, status, model, formStatus }) => {
 export default function useValidateRef(model, validators, form) {
   let m = {
     _isValidateRef: true,
-    _isValid() {
-      return this.status.value.valid;
-    },
-    _isValidated() {
-      return this.status.value.isValidated();
-    },
-    _isTouched() {
-      return this.status.value.touched;
-    },
-    _isDirty() {
-      return this.status.value.dirty;
-    },
     model: ref(model),
     validators: validators || {},
     status: ref({ ...defaultStatus }),
+    state: {
+      invalid: false,
+    },
     formStatus: getFormStatus(form),
     touch() {
       // this.status.value = getValidateStatus(this);
       this.status.value.touched = true;
-    },
-    getValidStatus() {
-      // if (!this._isValidated()) return ""
-      // if (this._isDirty() && !this._isTouched()) return ""
-      // if (this._isValidated()) return this._isValid() ? "valid" : "invalid"
-      return !this._isValidated() ? "" : this._isValid() ? "valid" : "invalid";
     },
   };
 

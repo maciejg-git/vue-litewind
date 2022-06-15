@@ -74,17 +74,17 @@
         </div>
         <div>
           <label for="label">label:</label>
-          <v-select id="label" v-model="example.label">
+          <v-select-prop id="label" v-model="example.label">
             <option :value="true">true</option>
             <option :value="false">false</option>
-          </v-select>
+          </v-select-prop>
         </div>
         <div>
           <label for="transition">transition:</label>
-          <v-select id="transition" v-model="example.transition">
+          <v-select-prop id="transition" v-model="example.transition">
             <option :value="true">true</option>
             <option :value="false">false</option>
-          </v-select>
+          </v-select-prop>
         </div>
       </div>
     </v-tab>

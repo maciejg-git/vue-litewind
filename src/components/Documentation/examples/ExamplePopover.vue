@@ -86,10 +86,10 @@
         </div>
         <div>
           <label for="no-header">no-header:</label>
-          <v-select id="no-header" v-model="example.noHeader">
+          <v-select-prop id="no-header" v-model="example.noHeader">
             <option :value="true">true</option>
             <option :value="false">false</option>
-          </v-select>
+          </v-select-prop>
         </div>
         <div>
           <label for="title">title</label>

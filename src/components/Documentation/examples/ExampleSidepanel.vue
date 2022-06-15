@@ -29,17 +29,17 @@
       </div>
       <div class="mb-2">
         <label for="close-button">close-button:</label>
-        <v-select id="close-button" v-model="example.closeButton">
+        <v-select-prop id="close-button" v-model="example.closeButton">
           <option :value="true">true</option>
           <option :value="false">false</option>
-        </v-select>
+        </v-select-prop>
       </div>
       <div class="mb-2">
         <label for="sidebar-left">sidebar-left:</label>
-        <v-select id="sidebar-left" v-model="example.sidebarLeft">
+        <v-select-prop id="sidebar-left" v-model="example.sidebarLeft">
           <option :value="true">true</option>
           <option :value="false">false</option>
-        </v-select>
+        </v-select-prop>
       </div>
       <div class="mb-2">
         <label for="width">width:</label>
@@ -47,10 +47,10 @@
       </div>
       <div class="mb-2">
         <label for="no-header">no-header:</label>
-        <v-select id="no-header" v-model="example.noHeader">
+        <v-select-prop id="no-header" v-model="example.noHeader">
           <option :value="true">true</option>
           <option :value="false">false</option>
-        </v-select>
+        </v-select-prop>
       </div>
       <div class="mb-2">
         <label for="transition">transition:</label>

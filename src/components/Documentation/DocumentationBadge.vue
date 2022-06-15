@@ -44,6 +44,20 @@ export default {
         description:
           "Position of badge. Valid values are 'top-right', 'top-left', 'bottom-right', 'bottom-left'. If position is set to any of those values badge is positioned as absolute in the corner of parent element (parent element must be positioned as relative). If you need finer control over position skip position prop altogether and use utility/classes/style to set absolute position within parent.",
       },
+      {
+        prop: "update-animation",
+        type: ["String"],
+        default: "empty string",
+        description:
+          "Animation to play when updating content of badge. Valid values are: 'scale-up', 'bounce', 'to-danger' and 'to-success'",
+      },
+      {
+        prop: "update-key",
+        type: ["String"],
+        default: "undefined",
+        description:
+          "Update this prop to unique key every time contents of default slot changes (required to rerender component and play animation)",
+      },
       ...styleProps("badge"),
     ]);
 

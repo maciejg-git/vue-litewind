@@ -93,10 +93,10 @@
         </div>
         <div>
           <label for="clearable">clearable:</label>
-          <v-select id="clearable" v-model="example.clearable">
+          <v-select-prop id="clearable" v-model="example.clearable">
             <option :value="true">true</option>
             <option :value="false">false</option>
-          </v-select>
+          </v-select-prop>
         </div>
         <div>
           <label for="state">state:</label>

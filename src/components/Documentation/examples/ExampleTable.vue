@@ -7,9 +7,7 @@
     @input:selection="handleSelection"
     class="min-w-full"
   >
-  <template #prepend-id>
-
-  </template>
+    <template #prepend-id></template>
     <template #cell:status="{ item }">
       <v-icon
         v-if="item.status"
@@ -102,16 +100,21 @@
       </div>
       <div class="mb-2">
         <label for="caption-top">caption-top:</label>
-        <v-select id="caption-top" v-model="example.captionTop">
+        <v-select-prop id="caption-top" v-model="example.captionTop">
           <option :value="true">true</option>
           <option :value="false">false</option>
-        </v-select>
+        </v-select-prop>
       </div>
     </v-tab>
     <v-tab>
       <template #name>
         Events
-        <v-badge style-badge="secondary tiny" class="ml-2">
+        <v-badge
+          style-badge="secondary tiny"
+          class="ml-2"
+          update-animation="scale-up"
+          :update-key="events.length"
+        >
           {{ events.length }}
         </v-badge>
       </template>

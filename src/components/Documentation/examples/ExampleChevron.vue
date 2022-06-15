@@ -25,31 +25,31 @@
         </div>
         <div>
           <label for="rotate180">rotate180:</label>
-          <v-select id="rotate180" v-model="example.rotate180">
+          <v-select-prop id="rotate180" v-model="example.rotate180">
             <option :value="true">true</option>
             <option :value="false">false</option>
-          </v-select>
+          </v-select-prop>
         </div>
         <div>
           <label for="triangle">triangle:</label>
-          <v-select id="triangle" v-model="example.triangle">
+          <v-select-prop id="triangle" v-model="example.triangle">
             <option :value="true">true</option>
             <option :value="false">false</option>
-          </v-select>
+          </v-select-prop>
         </div>
         <div>
           <label for="counter-clockwise">counter-clockwise:</label>
-          <v-select id="counter-clockwise" v-model="example.counterClockwise">
+          <v-select-prop id="counter-clockwise" v-model="example.counterClockwise">
             <option :value="true">true</option>
             <option :value="false">false</option>
-          </v-select>
+          </v-select-prop>
         </div>
         <div>
           <label for="switch">switch:</label>
-          <v-select id="switch" v-model="example.switch">
+          <v-select-prop id="switch" v-model="example.switch">
             <option :value="true">true</option>
             <option :value="false">false</option>
-          </v-select>
+          </v-select-prop>
         </div>
       </div>
     </v-tab>

@@ -58,7 +58,7 @@ export default {
 
     let messages = computed(() => {
       let status = props.status;
-      if (!status.value.isValidated()) return {};
+      if (!(status.value.dirty && status.value.touched)) return {};
 
       return Object.fromEntries(
         Object.entries(props.messages).reduce((pm, m) => {

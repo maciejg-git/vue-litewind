@@ -12,16 +12,16 @@
     <!--   <v-badge v-if="item.badge" style-badge="tiny" class="ml-2"> {{ item.badge }} </v-badge> -->
     <!-- </template> -->
     <!-- <template #icon="{ item, isFolder }"> -->
-      <!-- <v-icon :name="isFolder ? 'mdi-folder' : 'b-star'"></v-icon> -->
+    <!-- <v-icon :name="isFolder ? 'mdi-folder' : 'b-star'"></v-icon> -->
     <!-- </template> -->
     <!-- <template #item-prepend="{ isFolder, isOpen }"> -->
-      <!-- <v-icon :name="'b-star'"></v-icon> -->
-      <!-- <div v-if="isFolder &#38;&#38; !isOpen"> -->
-      <!--   [] -->
-      <!-- </div> -->
-      <!-- <div v-if="isFolder &#38;&#38; isOpen"> -->
-      <!--   [open] -->
-      <!-- </div> -->
+    <!-- <v-icon :name="'b-star'"></v-icon> -->
+    <!-- <div v-if="isFolder &#38;&#38; !isOpen"> -->
+    <!--   [] -->
+    <!-- </div> -->
+    <!-- <div v-if="isFolder &#38;&#38; isOpen"> -->
+    <!--   [open] -->
+    <!-- </div> -->
     <!-- </template> -->
     <!-- <template #item="{ item, isFolder, isOpen, toggleItem }"> -->
     <!--   <div class="flex items-center"> -->
@@ -34,7 +34,9 @@
     <!--   </div> -->
     <!-- </template> -->
   </v-tree>
-  <v-button @click="treeRef.openAllLevel(9999)" class="mr-4 mt-4">Open all</v-button>
+  <v-button @click="treeRef.openAllLevel(9999)" class="mr-4 mt-4">
+    Open all
+  </v-button>
   <v-button @click="treeRef.closeAll()">Close all</v-button>
   <!-- CUT START -->
   <v-tabs base="tabs-material" class="mt-10">
@@ -51,41 +53,38 @@
         </div>
         <div>
           <label for="open-on-click">open-on-click:</label>
-          <v-select-prop
-            id="open-on-click"
-            v-model="example.openOnClick"
-          >
+          <v-select-prop id="open-on-click" v-model="example.openOnClick">
             <option :value="true">true</option>
             <option :value="false">false</option>
           </v-select-prop>
         </div>
         <div>
           <label for="show-indicators">show-indicators:</label>
-          <v-select id="show-indicators" v-model="example.showIndicators">
+          <v-select-prop id="show-indicators" v-model="example.showIndicators">
             <option :value="true">true</option>
             <option :value="false">false</option>
-          </v-select>
+          </v-select-prop>
         </div>
         <div>
           <label for="show-icons">show-icons:</label>
-          <v-select id="show-icons" v-model="example.showIcons">
+          <v-select-prop id="show-icons" v-model="example.showIcons">
             <option :value="true">true</option>
             <option :value="false">false</option>
-          </v-select>
+          </v-select-prop>
         </div>
         <div>
           <label for="show-checkboxes">show-checkboxes:</label>
-          <v-select id="show-checkboxes" v-model="example.showCheckboxes">
+          <v-select-prop id="show-checkboxes" v-model="example.showCheckboxes">
             <option :value="true">true</option>
             <option :value="false">false</option>
-          </v-select>
+          </v-select-prop>
         </div>
         <div>
           <label for="independent-select">independent-select:</label>
-          <v-select id="independent-select" v-model="example.independentSelect">
+          <v-select-prop id="independent-select" v-model="example.independentSelect">
             <option :value="true">true</option>
             <option :value="false">false</option>
-          </v-select>
+          </v-select-prop>
         </div>
         <div>
           <label for="allow-select-disabled">allow-select-disabled:</label>
@@ -99,13 +98,13 @@
         </div>
         <div>
           <label for="allow-open-disabled">allow-open-disabled:</label>
-          <v-select
+          <v-select-prop
             id="allow-open-disabled"
             v-model="example.allowOpenDisabled"
           >
             <option :value="true">true</option>
             <option :value="false">false</option>
-          </v-select>
+          </v-select-prop>
         </div>
         <div>
           <label for="transition">transition:</label>
@@ -124,7 +123,12 @@
     <v-tab>
       <template #name>
         Events
-        <v-badge style-badge="secondary tiny" class="ml-2">
+        <v-badge
+          style-badge="secondary tiny"
+          class="ml-2"
+          update-animation="scale-up"
+          :update-key="events.length"
+        >
           {{ events.length }}
         </v-badge>
       </template>
@@ -235,7 +239,7 @@ export default {
       transition: "fade-m",
     });
 
-    let treeRef = ref(null)
+    let treeRef = ref(null);
 
     let selectedItems = ref([]);
 

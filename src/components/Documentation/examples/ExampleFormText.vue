@@ -52,10 +52,10 @@
       <div class="flex flex-col gap-y-2 mt-5">
         <div>
           <label for="inline">inline:</label>
-          <v-select id="inline" v-model="example.inline">
+          <v-select-prop id="inline" v-model="example.inline">
             <option :value="true">true</option>
             <option :value="false">false</option>
-          </v-select>
+          </v-select-prop>
         </div>
         <div>
           <label for="visible-states">visible-states:</label>

@@ -73,10 +73,10 @@
         </div>
         <div>
           <label for="dismissable">dismissable:</label>
-          <v-select id="dismissable" v-model="example.dismissable">
+          <v-select-prop id="dismissable" v-model="example.dismissable">
             <option :value="true">true</option>
             <option :value="false">false</option>
-          </v-select>
+          </v-select-prop>
         </div>
         <div>
           <label for="auto-dismiss-delay">auto-dismiss-delay:</label>

@@ -1,17 +1,24 @@
 <template>
-  <span :class="classes.badge.value">
-    <slot name="default"></slot>
-  </span>
+  <transition :name="updateAnimation" mode="out-in">
+    <span :class="classes.badge.value" :key="updateKey + ''">
+      <slot name="default"></slot>
+    </span>
+  </transition>
 </template>
 
 <script>
+// vue
 import { computed } from "vue";
+// composition
 import useStyles from "./composition/use-styles";
+// props
 import { sharedStyleProps } from "../shared-props"
 
 export default {
   props: {
     position: { type: String, default: "" },
+    updateKey: { type: [String, Number], default: undefined },
+    updateAnimation: { type: String, default: "" },
     styleBadge: { type: String, default: "" },
     ...sharedStyleProps("badge"),
   },
@@ -45,15 +52,15 @@ export default {
   @apply inline-flex items-center align-top;
 }
 .fixed-absolute-tr {
-  @apply absolute transform top-0 right-0 -translate-y-1/2 translate-x-1/2;
+  @apply absolute top-0 right-0 -translate-y-1/2 translate-x-1/2;
 }
 .fixed-absolute-tl {
-  @apply absolute transform top-0 left-0 -translate-y-1/2 -translate-x-1/2;
+  @apply absolute top-0 left-0 -translate-y-1/2 -translate-x-1/2;
 }
 .fixed-absolute-br {
-  @apply absolute transform bottom-0 right-0 translate-y-1/2 translate-x-1/2;
+  @apply absolute bottom-0 right-0 translate-y-1/2 translate-x-1/2;
 }
 .fixed-absolute-bl {
-  @apply absolute transform bottom-0 left-0 translate-y-1/2 -translate-x-1/2;
+  @apply absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2;
 }
 </style>

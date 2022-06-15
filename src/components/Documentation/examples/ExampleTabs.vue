@@ -43,24 +43,24 @@
       <div class="flex flex-col gap-y-2 mt-5">
         <div>
           <label for="fill">fill:</label>
-          <v-select id="fill" v-model="example.fill">
+          <v-select-prop id="fill" v-model="example.fill">
             <option :value="true">true</option>
             <option :value="false">false</option>
-          </v-select>
+          </v-select-prop>
         </div>
         <div>
           <label for="center">center:</label>
-          <v-select id="center" v-model="example.center">
+          <v-select-prop id="center" v-model="example.center">
             <option :value="true">true</option>
             <option :value="false">false</option>
-          </v-select>
+          </v-select-prop>
         </div>
         <div>
           <label for="right">right:</label>
-          <v-select id="right" v-model="example.right">
+          <v-select-prop id="right" v-model="example.right">
             <option :value="true">true</option>
             <option :value="false">false</option>
-          </v-select>
+          </v-select-prop>
         </div>
         <div>
           <label for="transition">transition:</label>

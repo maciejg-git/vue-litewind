@@ -44,9 +44,6 @@ export default {
     };
 
     let state = computed(() => {
-      if (props.modelValue && props.modelValue._isValidateRef) {
-        return props.modelValue.getValidStatus()
-      }
     });
 
     let handleBlur = () => {
