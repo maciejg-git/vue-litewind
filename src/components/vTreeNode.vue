@@ -64,7 +64,7 @@
           </slot>
         </div>
         <!-- append slot -->
-        <div class="order-last">
+        <div class="order-last flex">
           <slot
             name="item-append"
             v-bind="{ item: items, isFolder, isOpen, toggle }"
@@ -118,7 +118,7 @@ export default {
     showIcons: { type: Boolean, default: true },
     showCheckboxes: { type: Boolean, default: false },
     selectable: { type: Boolean, default: false },
-    independentSelect: { type: Boolean, default: false },
+    selectIndependent: { type: Boolean, default: false },
     placeholderItemIcon: { type: [String, Object], default: undefined },
     placeholderFolderIcon: { type: [String, Object], default: undefined },
     chevronAttrs: { type: Object, default: {} },
@@ -234,7 +234,7 @@ export default {
         );
       }
 
-      if (isFolderSelect === true || props.independentSelect) return;
+      if (isFolderSelect === true || props.selectIndependent) return;
 
       emit("children-state-changed");
     };
@@ -258,7 +258,7 @@ export default {
 
     let handleItemSelected = () => {
       select();
-      if (props.independentSelect) return
+      if (props.selectIndependent) return
       if (isFolder.value) selectChildren();
     };
 

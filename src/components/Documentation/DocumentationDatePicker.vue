@@ -160,14 +160,16 @@ export default {
         description: "Primary (accept) button label",
       },
       {
-        prop: "secondary-button-style",
-        type: ["String"],
-        description: "Secondary button styles",
+        prop: "secondary-button-attrs",
+        type: ["Object"],
+        default: "{ styleButton: 'default secondary small' }",
+        description: "Props of secondary button",
       },
       {
-        prop: "primary-button-style",
-        type: ["String"],
-        description: "Primary button styles",
+        prop: "primary-button-attrs",
+        type: ["Object"],
+        default: "{ styleButton: 'default primary small' }",
+        description: "Props of primary button",
       },
       {
         prop: "transition",

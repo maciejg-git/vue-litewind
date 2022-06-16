@@ -10,6 +10,8 @@ let defaultStatus = {
   wasInvalid: false,
 };
 
+let forms = {}
+
 // shared form status
 
 let formStatus = {};
@@ -28,28 +30,43 @@ let updateFormStatus = (status, { touched, dirty, valid }) => {
   status.value.valid = status.value.valid && valid;
 };
 
+let getForm = (form, input) => {
+  if (!forms[form]) {
+    forms[form] = {
+      inputs: [input],
+      status: {
+        ...defaultStatus
+      }
+    }
+  } else {
+    forms[form].inputs.push(input)
+  }
+
+  return forms[form]
+}
+
 let getValidateStatus = ({ validators, status, model, formStatus }) => {
-  let v = model.value;
+  let valueToValidate = model.value;
 
   let newStatus = {
     ...defaultStatus,
     touched: status.value.touched,
     wasInvalid: status.value.wasInvalid,
-    dirty: (v && !!v.length) || status.value.dirty,
+    dirty: status.value.dirty || (valueToValidate && !!valueToValidate.length),
   };
 
   for (let [key, value] of Object.entries(validators)) {
     if (globalValidators[key]) {
-      newStatus[key] = globalValidators[key](v, value);
+      newStatus[key] = globalValidators[key](valueToValidate, value);
     } else if (typeof validators[key] === "function") {
-      newStatus[key] = validators[key](v);
+      newStatus[key] = validators[key](valueToValidate);
     }
     newStatus.valid = newStatus.valid && newStatus[key];
   }
 
   newStatus.wasInvalid = newStatus.wasInvalid || (!newStatus.valid && newStatus.touched)  
 
-  updateFormStatus(formStatus, newStatus);
+  // updateFormStatus(formStatus, newStatus);
 
   return newStatus;
 };
@@ -60,15 +77,12 @@ export default function useValidateRef(model, validators, form) {
     model: ref(model),
     validators: validators || {},
     status: ref({ ...defaultStatus }),
-    state: {
-      invalid: false,
-    },
-    formStatus: getFormStatus(form),
     touch() {
-      // this.status.value = getValidateStatus(this);
       this.status.value.touched = true;
     },
   };
+
+  m.formStatus = getForm(form, m)
 
   return computed({
     get() {

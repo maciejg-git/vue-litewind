@@ -31,6 +31,7 @@ export default {
     openAll: { type: Boolean, default: false },
     autoOpenRoot: { type: Boolean, default: false },
     autoOpenAll: { type: Boolean, default: false },
+    selectReturnKeys: { type: Boolean, default: false },
     transition: { type: String, default: "fade-m" },
     styleFolder: { type: String, default: "" },
     styleItem: { type: String, default: "" },
@@ -53,11 +54,24 @@ export default {
 
     let selectedItems = ref([]);
 
-    watch(selectedItems, (value) => emit("input:selected", [...value]))
+    watch(
+      selectedItems,
+      (value) => {
+        if (props.selectReturnKeys) {
+          emit(
+            "input:selected",
+            value.map((i) => i.id)
+          );
+          return;
+        }
+        emit("input:selected", [...value]);
+      },
+      { deep: true }
+    );
 
     let nodeList = ref([]);
 
-    onBeforeUpdate(() => nodeList.value = [])
+    onBeforeUpdate(() => (nodeList.value = []));
 
     let forNode = (node, callback) => {
       node.nodeList.forEach((node) => forNode(node, callback));
@@ -75,8 +89,8 @@ export default {
     };
 
     onMounted(() => {
-      let level = props.autoOpenAll ? 9999 : props.autoOpenRoot ? 0 : null
-      level !== null && openAllLevel(level)
+      let level = props.autoOpenAll ? 9999 : props.autoOpenRoot ? 0 : null;
+      level !== null && openAllLevel(level);
     });
 
     provide("control-tree", {
@@ -89,7 +103,7 @@ export default {
       transition: toRef(props, "transition"),
     });
 
-    expose({ openAllLevel, closeAll })
+    expose({ openAllLevel, closeAll });
 
     return {
       slots,

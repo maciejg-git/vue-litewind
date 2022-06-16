@@ -1508,7 +1508,8 @@
 }
     .datepicker--day--today {
       @apply  
-        font-extrabold
+        font-bold
+        underline
         text-primary-500 !important
     }
     .datepicker--day--partially-selected-state {
@@ -1546,86 +1547,6 @@
     bg-secondary-100
     dark:text-text-300
     dark:bg-dark-700
-}
-
-/* DATEPICKER FLAT */
-
-.datepicker-flat {
-  @apply
-    text-center
-    bg-white
-}
-
-.datepicker-flat--button {
-  @apply
-    rounded
-    focus:ring-2
-    py-1
-    px-2
-    focus:ring-primary-200
-}
-
-.datepicker-flat--weekday-bar {
-  @apply
-     mb-2
-}
-
-.datepicker-flat--weekday {
-  @apply
-    font-semibold 
-}
-
-.datepicker-flat--day-fixed {
-  @apply
-    cursor-pointer
-    rounded-lg
-    text-sm
-    py-2
-    px-2
-    mx-1
-    my-1
-}
-
-.datepicker-flat--day {
-  @apply
-    datepicker-flat--day-fixed;
-  @apply
-    hover:bg-secondary-100
-}
-    .datepicker-flat--day--partially-selected-state {
-      @apply
-        font-semibold
-        text-text-500
-        bg-secondary-300
-    }
-    .datepicker-flat--day--selected-state {
-      @apply
-        font-semibold
-        text-white
-        bg-primary-400
-        hover:bg-primary-600
-    }
-
-.datepicker-flat--today {
-  @apply  
-    font-extrabold
-    text-primary-500
-    hover:bg-secondary-50
-}
-
-.datepicker-flat--adjacent-month-day {
-  @apply
-    datepicker-day-fixed;
-  @apply  
-    pointer-events-none
-    text-text-200
-}
-
-.datepicker-flat--footer {
-  @apply
-    text-sm
-    font-semibold
-    py-1
 }
 
 /* SPINNER */

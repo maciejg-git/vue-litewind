@@ -90,7 +90,7 @@
 }
 .scale-up-enter-from,
 .scale-up-leave-to {
-  transform: scale(1.6);
+  transform: scale(1.4);
 }
 
 .to-danger-enter-active,

@@ -11,12 +11,14 @@
       :adjacent-months="!!example.adjacentMonths"
       :range-hover-highlight="example.rangeHoverHighlight"
       :transition="example.transition"
-      @update:formatted="events.unshift({ ev: 'update:formatted', data: $event })"
+      @update:formatted="
+        events.unshift({ ev: 'update:formatted', data: $event })
+      "
       @state:done="events.unshift({ ev: 'state:done', data: $event })"
       @input:cancel="events.unshift({ ev: 'input:cancel', data: $event })"
     />
   </v-card>
-<!-- CUT START -->
+  <!-- CUT START -->
   <div class="flex-grow mt-4 lg:ml-20 lg:mt-0">
     <v-tabs base="tabs-material">
       <v-tab name="Props">
@@ -27,10 +29,10 @@
           </div>
           <div>
             <label for="range">range:</label>
-            <v-select id="range" v-model="example.range">
+            <v-select-prop id="range" v-model="example.range">
               <option :value="true">true</option>
               <option :value="false">false</option>
-            </v-select>
+            </v-select-prop>
           </div>
           <div>
             <label for="locale">locale:</label>
@@ -38,20 +40,20 @@
           </div>
           <div>
             <label for="monday-first-weekday">monday-first-weekday:</label>
-            <v-select
+            <v-select-prop
               id="monday-first-weekday"
               v-model="example.mondayFirstWeekday"
             >
               <option :value="true">true</option>
               <option :value="false">false</option>
-            </v-select>
+            </v-select-prop>
           </div>
           <div>
             <label for="buttons">buttons:</label>
-            <v-select id="buttons" v-model="example.buttons">
+            <v-select-prop id="buttons" v-model="example.buttons">
               <option :value="true">true</option>
               <option :value="false">false</option>
-            </v-select>
+            </v-select-prop>
           </div>
           <div>
             <label for="primary-button-label">primary-button-label:</label>
@@ -71,20 +73,23 @@
           </div>
           <div>
             <label for="adjacent-months">adjacent-months:</label>
-            <v-select id="adjacent-months" v-model="example.adjacentMonths">
+            <v-select-prop
+              id="adjacent-months"
+              v-model="example.adjacentMonths"
+            >
               <option :value="true">true</option>
               <option :value="false">false</option>
-            </v-select>
+            </v-select-prop>
           </div>
           <div>
             <label for="range-hover-highlight">range-hover-highlight:</label>
-            <v-select
+            <v-select-prop
               id="range-hover-highlight"
               v-model="example.rangeHoverHighlight"
             >
               <option :value="true">true</option>
               <option :value="false">false</option>
-            </v-select>
+            </v-select-prop>
           </div>
           <div>
             <label for="transition">transition:</label>
@@ -99,7 +104,12 @@
       <v-tab>
         <template #name>
           Events
-          <v-badge style-badge="secondary tiny" class="ml-2">
+          <v-badge
+            style-badge="secondary tiny"
+            class="ml-2"
+            update-animation="scale-up"
+            :update-key="events.length"
+          >
             {{ events.length }}
           </v-badge>
         </template>
@@ -107,7 +117,7 @@
       </v-tab>
     </v-tabs>
   </div>
-<!-- CUT END -->
+  <!-- CUT END -->
 </template>
 
 <script>

@@ -8,13 +8,13 @@
     @input:click="handleClickItem"
     @input:selected="handleSelectedItem"
   >
-    <!-- <template #item-append="{ item }"> -->
-    <!--   <v-badge v-if="item.badge" style-badge="tiny" class="ml-2"> {{ item.badge }} </v-badge> -->
-    <!-- </template> -->
+    <template #item-append="{ item }">
+      <v-badge v-if="item.badge" style-badge="tiny" class="ml-2"> {{ item.badge }} </v-badge>
+    </template>
     <!-- <template #icon="{ item, isFolder }"> -->
     <!-- <v-icon :name="isFolder ? 'mdi-folder' : 'b-star'"></v-icon> -->
     <!-- </template> -->
-    <!-- <template #item-prepend="{ isFolder, isOpen }"> -->
+    <template #item-prepend="{ isFolder, isOpen, mouseOver }">
     <!-- <v-icon :name="'b-star'"></v-icon> -->
     <!-- <div v-if="isFolder &#38;&#38; !isOpen"> -->
     <!--   [] -->
@@ -22,7 +22,10 @@
     <!-- <div v-if="isFolder &#38;&#38; isOpen"> -->
     <!--   [open] -->
     <!-- </div> -->
-    <!-- </template> -->
+    <div v-show="mouseOver">
+      [mouse]
+    </div>
+    </template>
     <!-- <template #item="{ item, isFolder, isOpen, toggleItem }"> -->
     <!--   <div class="flex items-center"> -->
     <!--     <div class="w-5"> -->
@@ -34,6 +37,7 @@
     <!--   </div> -->
     <!-- </template> -->
   </v-tree>
+
   <v-button @click="treeRef.openAllLevel(9999)" class="mr-4 mt-4">
     Open all
   </v-button>
@@ -80,8 +84,15 @@
           </v-select-prop>
         </div>
         <div>
-          <label for="independent-select">independent-select:</label>
-          <v-select-prop id="independent-select" v-model="example.independentSelect">
+          <label for="select-return-keys">select-return-keys:</label>
+          <v-select-prop id="select-return-keys" v-model="example.selectReturnKeys">
+            <option :value="true">true</option>
+            <option :value="false">false</option>
+          </v-select-prop>
+        </div>
+        <div>
+          <label for="select-independent">select-independent:</label>
+          <v-select-prop id="select-independent" v-model="example.selectIndependent">
             <option :value="true">true</option>
             <option :value="false">false</option>
           </v-select-prop>
@@ -155,7 +166,6 @@ export default {
           {
             name: "Science-fiction",
             id: 5,
-            icon: ["mdi-folder", "mdi-folder-open"],
             children: [
               {
                 name: "Matrix",
@@ -186,39 +196,19 @@ export default {
         name: "Movies",
         id: 34,
         children: [
-          { name: "Lost in Translation", id: 18 },
-          { name: "Before Sunset 3", id: 19 },
-          { name: "Groundhog Day", id: 20 },
-          { name: "Out of Africa", icon: "b-star", id: 21 },
+          { name: "Rambo", id: 18 },
+          { name: "Total Recall", id: 19 },
           {
-            name: "Science-fiction",
+            name: "More movies",
             id: 22,
-            icon: ["mdi-folder", "mdi-folder-open"],
             children: [
-              {
-                name: "Matrix",
-                id: 23,
-                children: [
-                  { name: "Matrix", id: 24 },
-                  { name: "Matrix: Revolutions", id: 25 },
-                ],
-              },
-              { name: "Blade Runner", id: 26 },
-              { name: "Futurama", id: 27 },
-              { name: "Dune", disabled: true, id: 28 },
-              { name: "Ghost in the Shell", id: 29 },
-              {
-                name: "Star Wars",
-                id: 30,
-                disabled: true,
-                children: [
-                  { name: "Return of The Jedi", id: 31 },
-                  { name: "The Phantom Menace", id: 32 },
-                ],
-              },
+              { name: "Fanny and Alexander", id: 26 },
+              { name: "Ame Agaru", disabled: true, id: 28 },
+              { name: "Yojimbo", id: 29 },
             ],
           },
-          { name: "Spirited Away", id: 33 },
+          { name: "Fight Club", id: 20 },
+          { name: "Mulholland Drive", id: 21 },
         ],
       },
     ];
@@ -233,7 +223,8 @@ export default {
       openAll: false,
       autoOpenRoot: true,
       autoOpenAll: false,
-      independentSelect: false,
+      selectReturnKeys: false,
+      selectIndependent: false,
       allowSelectDisabled: false,
       allowOpenDisabled: true,
       transition: "fade-m",

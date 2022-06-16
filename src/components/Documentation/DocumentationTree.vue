@@ -131,6 +131,12 @@ export default {
         description: "If true disabled items can be opened",
       },
       {
+        prop: "select-return-keys",
+        type: ["Boolean"],
+        default: "false",
+        description: "If true <code class='code-word'>input:selected</code> return array of item keys. If false (default) this event returns array of item objects",
+      },
+      {
         prop: "independent-select",
         type: ["Boolean"],
         default: "false",
@@ -170,7 +176,7 @@ export default {
         prop: "chevron-attrs",
         type: ["Object"],
         default: "{}",
-        description: "Object with props passed to <code class='code-text'>v-chevron</code> (open indicator) component. See documentation for valid props",
+        description: "Props of <code class='code-text'>v-chevron</code> (open indicator) component. See documentation for valid values",
       },
       {
         prop: "transition",

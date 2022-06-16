@@ -1,5 +1,8 @@
 <template>
-  <div :class="[classes.datepicker.value, 'overflow-hidden']" :style="{ width: width }">
+  <div
+    :class="[classes.datepicker.value, 'overflow-hidden']"
+    :style="{ width: width }"
+  >
     <div class="grid grid-cols-6 grid-flow-col my-2">
       <button
         aria-label="Previous year"
@@ -39,7 +42,10 @@
       </div>
     </div>
     <transition :name="transition" mode="out-in">
-      <div :key="monthNames[month]" class="grid grid-cols-7 mb-2 relative">
+      <div
+        :key="monthNames[month] + year"
+        class="grid grid-cols-7 mb-2 relative"
+      >
         <template v-if="adjacentMonths">
           <div v-for="(day, index) in daysList.prevMonthDays" :key="index">
             <div :class="classes.adjacentMonthDay.value">
@@ -72,15 +78,12 @@
     </div>
     <div v-if="buttons" class="flex justify-between pt-2">
       <v-button
-        :style-button="secondaryButtonStyle"
+        v-bind="secondaryButtonAttrs"
         @click="handleSecondaryButtonClick"
       >
         {{ secondaryButtonLabel }}
       </v-button>
-      <v-button
-        :style-button="primaryButtonStyle"
-        @click="handlePrimaryButtonClick"
-      >
+      <v-button v-bind="primaryButtonAttrs" @click="handlePrimaryButtonClick">
         {{ primaryButtonLabel }}
       </v-button>
     </div>
@@ -126,13 +129,13 @@ export default {
     buttons: { type: Boolean, default: false },
     secondaryButtonLabel: { type: String, default: "Cancel" },
     primaryButtonLabel: { type: String, default: "OK" },
-    secondaryButtonStyle: {
-      type: String,
-      default: "default secondary small",
+    primaryButtonAttrs: {
+      type: Object,
+      default: { styleButton: "default primary small" },
     },
-    primaryButtonStyle: {
-      type: String,
-      default: "default primary small",
+    secondaryButtonAttrs: {
+      type: Object,
+      default: { styleButton: "default secondary small" },
     },
     transition: { type: String, default: "fade" },
     styleDatepicker: { type: String, default: "" },
@@ -374,11 +377,11 @@ export default {
       transition.value = getTransition(d);
 
       if (d === "next") {
-        if (t === "month") setNextMonth()
-        else setNextYear()
+        if (t === "month") setNextMonth();
+        else setNextYear();
       } else {
-        if (t === "month") setPrevMonth()
-        else setPrevYear()
+        if (t === "month") setPrevMonth();
+        else setPrevYear();
       }
     };
 
