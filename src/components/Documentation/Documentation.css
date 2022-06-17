@@ -29,7 +29,7 @@ pre code {
   @apply text-yellow-700 dark:text-yellow-600 font-semibold text-sm
 }
 .code-word {
-  @apply text-sm bg-indigo-200 text-dark-800 dark:text-text-100 dark:bg-indigo-500 rounded p-1 mr-1 text-sm;
+  @apply text-sm bg-indigo-300 text-dark-800 dark:text-text-100 dark:bg-indigo-500 rounded p-1 mr-1 text-sm;
 }
 
 label {

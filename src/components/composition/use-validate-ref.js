@@ -12,40 +12,28 @@ let defaultStatus = {
 
 let forms = {}
 
-// shared form status
+let addToForm = (ref, form) => {
+  if (!form) return
+  form.inputs.push(ref)
 
-let formStatus = {};
-
-let getFormStatus = (form) => {
-  if (!form) return;
-  if (formStatus[form]) return formStatus[form];
-  formStatus[form] = ref({ ...defaultStatus });
-  return formStatus[form];
-};
-
-//  FIX:
-let updateFormStatus = (status, { touched, dirty, valid }) => {
-  status.value.touched = status.value.touched || touched;
-  status.value.dirty = status.value.dirty || dirty;
-  status.value.valid = status.value.valid && valid;
-};
-
-let getForm = (form, input) => {
-  if (!forms[form]) {
-    forms[form] = {
-      inputs: [input],
-      status: {
-        ...defaultStatus
-      }
-    }
-  } else {
-    forms[form].inputs.push(input)
-  }
-
-  return forms[form]
+  return form
 }
 
-let getValidateStatus = ({ validators, status, model, formStatus }) => {
+let getValidateFormStatus = (form) => {
+  if (!form) return
+
+  let newStatus = {
+    touched: form.inputs.some((i) => i.status.value.touched),
+    dirty: form.inputs.some((i) => i.status.value.dirty),
+    valid: form.inputs.every((i) => i.status.value.valid)
+  }
+
+  newStatus.wasInvalid = newStatus.wasInvalid || (!newStatus.valid && newStatus.touched)
+
+  return newStatus
+}
+
+let getValidateStatus = ({ validators, status, model }) => {
   let valueToValidate = model.value;
 
   let newStatus = {
@@ -66,12 +54,24 @@ let getValidateStatus = ({ validators, status, model, formStatus }) => {
 
   newStatus.wasInvalid = newStatus.wasInvalid || (!newStatus.valid && newStatus.touched)  
 
-  // updateFormStatus(formStatus, newStatus);
-
   return newStatus;
 };
 
-export default function useValidateRef(model, validators, form) {
+export default function useValidate() {
+  let validateForm = (form) => {
+    if (!forms[form]) {
+      forms[form] = {
+        inputs: [],
+        status: ref({
+          ...defaultStatus,
+        })
+      }
+
+      return forms[form]
+    }
+  }
+
+  let validateRef = (model, validators, form) => {
   let m = {
     _isValidateRef: true,
     model: ref(model),
@@ -82,7 +82,7 @@ export default function useValidateRef(model, validators, form) {
     },
   };
 
-  m.formStatus = getForm(form, m)
+  if (form) m.form = addToForm(m, form)
 
   return computed({
     get() {
@@ -91,6 +91,12 @@ export default function useValidateRef(model, validators, form) {
     set(value) {
       if (isString(value) || Array.isArray(value)) m.model.value = value;
       m.status.value = getValidateStatus(m);
+      if (m.form) {
+        m.form.status.value = getValidateFormStatus(m.form)
+      }
     },
   });
+  }
+
+  return { validateRef, validateForm }
 }

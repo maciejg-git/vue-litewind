@@ -1,14 +1,9 @@
 <template>
-  <template v-if="icon">
-    <v-icon :icon="icon" :class="getClass()" v-bind="$attrs"></v-icon>
-  </template>
-  <template v-else>
     <v-icon
-      :name="triangle ? chevron.triangle[initial] : chevron.chevron[initial]"
+      :name="icon"
       :class="getClass()"
       v-bind="$attrs"
     ></v-icon>
-  </template>
 </template>
 
 <script>
@@ -59,6 +54,10 @@ export default {
       ];
     };
 
+    let icon = computed(() => {
+      return props.icon ? props.icon : (props.triangle ? chevron.triangle[initial.value] : chevron.chevron[initial.value])
+    })
+console.log(icon)
     let chevron = {
       chevron: {
         right: vChevronRightIcon,
@@ -98,6 +97,7 @@ export default {
     return {
       classes,
       getClass,
+      icon,
       initial,
       chevron,
       getRotation,

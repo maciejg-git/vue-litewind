@@ -181,8 +181,7 @@ export default {
     );
 
     let { onClickOutside } = useClickOutside();
-    let clickOutsideElements = [popper, reference];
-    onClickOutside(clickOutsideElements, cancelInput);
+    let stopClickOutside = null
 
     let selectedItem = ref(null);
     let localText = ref("");
@@ -194,6 +193,7 @@ export default {
     let show = () => {
       isNewSelection.value = true;
       showPopper();
+      stopClickOutside = onClickOutside(popper, cancelInput, reference);
     };
 
     // those watchers controls autocomplete menu visibility
@@ -296,6 +296,7 @@ export default {
       if (isVisible.value) isVisible.value = false;
       revert();
       hidePopper();
+      if (stopClickOutside) stopClickOutside = stopClickOutside()
     }
 
     let selectItem = (item) => {

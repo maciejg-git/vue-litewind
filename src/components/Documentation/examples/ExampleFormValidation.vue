@@ -19,7 +19,7 @@
       <code v-html="'model: ' + getStatusString(username.model.value)"></code>
       <code v-html="'validators: ' + getStatusString(username.validators)"></code>
       <code v-html="'status: ' + getStatusString(username.status.value, true)"></code>
-      <code v-html="'formstatus: ' + getStatusString(username.formStatus.value)"></code>
+      <!-- <code v-html="'formstatus: ' + getStatusString(username.formStatus.value)"></code> -->
     </pre>
   </div>
 
@@ -45,7 +45,7 @@
       <code v-html="'model: ' + getStatusString(email.model.value)"></code>
       <code v-html="'validators: ' + getStatusString(email.validators)"></code>
       <code v-html="'status: ' + getStatusString(email.status.value, true)"></code>
-      <code v-html="'formstatus: ' + getStatusString(email.formStatus.value)"></code>
+      <!-- <code v-html="'formstatus: ' + getStatusString(email.formStatus.value)"></code> -->
     </pre>
   </div>
 
@@ -71,7 +71,7 @@
       <code v-html="'model: ' + getStatusString(password.model.value)"></code>
       <code v-html="'validators: ' + getStatusString(password.validators)"></code>
       <code v-html="'status: ' + getStatusString(password.status.value, true)"></code>
-      <code v-html="'formstatus: ' + getStatusString(password.formStatus.value)"></code>
+      <!-- <code v-html="'formstatus: ' + getStatusString(password.formStatus.value)"></code> -->
     </pre>
   </div>
 
@@ -91,7 +91,7 @@
       <code v-html="'model: ' + getStatusString(option.model.value)"></code>
       <code v-html="'validators: ' + getStatusString(option.validators)"></code>
       <code v-html="'status: ' + getStatusString(option.status.value, true)"></code>
-      <code v-html="'formstatus: ' + getStatusString(option.formStatus.value)"></code>
+      <!-- <code v-html="'formstatus: ' + getStatusString(option.formStatus.value)"></code> -->
     </pre>
   </div>
 
@@ -115,38 +115,42 @@
       <code v-html="'model: ' + getStatusString(languages.model.value)"></code>
       <code v-html="'validators: ' + getStatusString(languages.validators)"></code>
       <code v-html="'status: ' + getStatusString(languages.status.value, true)"></code>
-      <code v-html="'formstatus: ' + getStatusString(languages.formStatus.value)"></code>
+      <!-- <code v-html="'formstatus: ' + getStatusString(languages.formStatus.value)"></code> -->
     </pre>
   </div>
 </template>
 
 <script>
 import { ref } from "vue";
-import useValidateRef from "../../composition/use-validate-ref";
+import useValidate from "../../composition/use-validate-ref";
 
 export default {
   components: {},
   setup() {
-    let username = useValidateRef(
+    let { validateForm, validateRef } = useValidate()
+    let user = validateForm("form")
+    console.log(user)
+
+    let username = validateRef(
       "",
       {
         required: true,
         minLength: 3,
         alphanumeric: true,
       },
-      "form"
+      user
     );
 
-    let email = useValidateRef(
+    let email = validateRef(
       "",
       {
         required: true,
         email: true,
       },
-      "form"
+      user
     );
 
-    let password = useValidateRef(
+    let password = validateRef(
       "",
       {
         required: true,
@@ -156,23 +160,23 @@ export default {
         atLeastOneSpecial: true,
         atLeastOneDigit: true,
       },
-      "form"
+      user
     );
 
-    let option = useValidateRef(
+    let option = validateRef(
       "",
       {
         required: true,
       },
-      "form"
+      user
     );
 
-    let languages = useValidateRef(
+    let languages = validateRef(
       [],
       {
         required: true,
       },
-      "form"
+      user
     );
 
     let options = ref([
