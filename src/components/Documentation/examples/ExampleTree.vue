@@ -99,13 +99,13 @@
         </div>
         <div>
           <label for="allow-select-disabled">allow-select-disabled:</label>
-          <v-select
+          <v-select-prop
             id="allow-select-disabled"
             v-model="example.allowSelectDisabled"
           >
             <option :value="true">true</option>
             <option :value="false">false</option>
-          </v-select>
+          </v-select-prop>
         </div>
         <div>
           <label for="allow-open-disabled">allow-open-disabled:</label>

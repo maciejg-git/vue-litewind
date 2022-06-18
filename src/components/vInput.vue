@@ -95,22 +95,24 @@ export default {
 
     let { status } = props.modelValue;
 
+    watch(status, (status) => {
+      if (!status.touched) return
+      if (status.valid) {
+        if (status.wasInvalid)
+          state.value = "valid"
+        else state.value = "";
+      }
+      else {
+        state.value = "invalid";
+      }
+    }, { deep: true });
+
     let handleBlur = () => {
       if (props.modelValue._isValidateRef) {
         if (status.value.touched) return
         props.modelValue.touch();
-        if (status.value.valid) state.value = "";
-        else state.value = "invalid";
-        watch(status, (status) => {
-          if (status.valid) {
-            if (status.wasInvalid)
-              state.value = "valid"
-            else state.value = "";
-          }
-          else {
-            state.value = "invalid";
-          }
-        });
+        // if (status.value.valid) state.value = "";
+        // else state.value = "invalid";
       }
     };
 

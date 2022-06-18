@@ -17,15 +17,26 @@
     <v-code :code="ExampleFormValidationCode" template language="html"></v-code>
     <v-code :code="ExampleFormValidationCode" script language="js"></v-code>
   </section>
+
+  <section>
+    <h4>Example</h4>
+    <div class="example">
+      <example-input-validation></example-input-validation>
+    </div>
+    <!-- <v-code :code="ExampleInputValidationCode" template language="html"></v-code> -->
+    <!-- <v-code :code="ExampleInputValidationCode" script language="js"></v-code> -->
+  </section>
 </template>
 
 <script>
 import ExampleFormValidation from "./examples/ExampleFormValidation.vue"
+import ExampleInputValidation from "./examples/ExampleInputValidation.vue"
 import ExampleFormValidationCode from "./examples/ExampleFormValidation.vue?raw"
 
 export default {
   components: {
     ExampleFormValidation,
+    ExampleInputValidation,
   },
   setup(props) {
     return {

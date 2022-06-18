@@ -53,6 +53,7 @@ let getValidateStatus = ({ validators, status, model }) => {
   }
 
   newStatus.wasInvalid = newStatus.wasInvalid || (!newStatus.valid && newStatus.touched)  
+  console.log(newStatus)
 
   return newStatus;
 };
@@ -64,7 +65,13 @@ export default function useValidate() {
         inputs: [],
         status: ref({
           ...defaultStatus,
+        }),
+        validate() {
+          this.inputs.forEach((i) => {
+            i.touch()
+            i.status.value = getValidateStatus(i)
         })
+        }
       }
 
       return forms[form]
@@ -78,7 +85,8 @@ export default function useValidate() {
     validators: validators || {},
     status: ref({ ...defaultStatus }),
     touch() {
-      this.status.value.touched = true;
+      if (this.status.value.dirty) this.status.value.touched = true;
+      // this.status.value.touched = true;
     },
   };
 

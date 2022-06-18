@@ -128,7 +128,7 @@ export default {
   components: {},
   setup() {
     let { validateForm, validateRef } = useValidate()
-    let user = validateForm("form")
+    let user = validateForm("user")
     console.log(user)
 
     let username = validateRef(
