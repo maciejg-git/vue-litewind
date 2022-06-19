@@ -6,8 +6,10 @@ let isString = (v) => typeof v === "string";
 let defaultStatus = {
   touched: false,
   dirty: false,
+  interacted: false,
   valid: true,
   wasInvalid: false,
+  wasValid: false,
 };
 
 let forms = {}
@@ -39,7 +41,9 @@ let getValidateStatus = ({ validators, status, model }) => {
   let newStatus = {
     ...defaultStatus,
     touched: status.value.touched,
+    interacted: status.value.interacted,
     wasInvalid: status.value.wasInvalid,
+    wasValid: status.value.wasValid,
     dirty: status.value.dirty || (valueToValidate && !!valueToValidate.length),
   };
 
@@ -52,7 +56,10 @@ let getValidateStatus = ({ validators, status, model }) => {
     newStatus.valid = newStatus.valid && newStatus[key];
   }
 
-  newStatus.wasInvalid = newStatus.wasInvalid || (!newStatus.valid && newStatus.touched)  
+  // newStatus.wasInvalid = newStatus.wasInvalid || (!newStatus.valid && newStatus.interacted)  
+  // newStatus.wasValid = newStatus.wasValid || (newStatus.valid && newStatus.interacted)  
+  newStatus.wasValid = newStatus.wasValid || newStatus.valid
+  newStatus.wasInvalid = newStatus.wasInvalid || (!newStatus.valid && newStatus.wasValid)  
   console.log(newStatus)
 
   return newStatus;
@@ -85,8 +92,9 @@ export default function useValidate() {
     validators: validators || {},
     status: ref({ ...defaultStatus }),
     touch() {
-      if (this.status.value.dirty) this.status.value.touched = true;
-      // this.status.value.touched = true;
+      // if (this.status.value.dirty) this.status.value.touched = true;
+      this.status.value.touched = true;
+      if (this.status.value.dirty) this.status.value.interacted = true
     },
   };
 

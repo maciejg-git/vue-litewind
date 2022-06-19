@@ -95,21 +95,81 @@ export default {
 
     let { status } = props.modelValue;
 
+    // immedietely all state
+    // immedietely valid only if wasInvalid
+    // touched valid silent
+    // touched all state
+    // interacted
+
+    // immedietely:valid-invalid
+    // immedietely:silent wasInvalid wasValid
+
+    // touched:silent only invalid
+    // touched:valid-invalid
+
+    // interacted-silent
+    // interacted-valid-invalid
+    // let validateTime = ref("immediate")
+    let validateTime = ref("touched")
+    let validateType = ref("silent")
+    // let validateType = ref("valid-invalid")
+
     watch(status, (status) => {
-      if (!status.touched) return
-      if (status.valid) {
-        if (status.wasInvalid)
+      if (!status.touched && validateTime.value == 'touched'
+        || !status.interacted && validateTime.value == 'interacted') return
+
+      if (!status.dirty) return
+
+      if (validateType.value == "valid-invalid") {
+        if (status.valid) {
           state.value = "valid"
-        else state.value = "";
+        } else {
+          state.value = "invalid"
+        }
+        return
       }
-      else {
-        state.value = "invalid";
+      if (validateType.value == "silent") {
+        if (status.valid) {
+          if (status.wasInvalid) {
+            state.value = "valid"
+          } else {
+            state.value = ""
+          }
+        } else {
+          if (status.wasValid) {
+            state.value = "invalid"
+          } else {
+            state.value = ""
+          }
+        }
       }
+      // if (status.valid) {
+      //   if (validateType.value == "valid-invalid") {
+      //     state.value = "valid"
+      //     return
+      //   }
+      //   if (validateType.value == "silent") {
+      //     if (status.wasInvalid)
+      //       state.value = "valid"
+      //     else state.value = "";
+      //   }
+      // }
+      // else {
+      //   if (validateType.value == "valid-invalid") {
+      //     state.value = "invalid";
+      //     return
+      //   }
+      //   if (validateType.value == "silent") {
+      //     if (status.wasValid)
+      //       state.value = "invalid"
+      //     else state.value = "";
+      //   }
+      // }
     }, { deep: true });
 
     let handleBlur = () => {
       if (props.modelValue._isValidateRef) {
-        if (status.value.touched) return
+        // if (status.value.touched) return
         props.modelValue.touch();
         // if (status.value.valid) state.value = "";
         // else state.value = "invalid";
