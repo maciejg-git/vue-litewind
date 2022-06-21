@@ -6,7 +6,6 @@ let isString = (v) => typeof v === "string";
 let defaultStatus = {
   touched: false,
   dirty: false,
-  interacted: false,
   valid: true,
   wasInvalid: false,
   wasValid: false,
@@ -41,10 +40,9 @@ let getValidateStatus = ({ validators, status, model }) => {
   let newStatus = {
     ...defaultStatus,
     touched: status.value.touched,
-    interacted: status.value.interacted,
     wasInvalid: status.value.wasInvalid,
     wasValid: status.value.wasValid,
-    dirty: status.value.dirty || (valueToValidate && !!valueToValidate.length),
+    dirty: status.value.dirty || !!(valueToValidate && !!valueToValidate.length),
   };
 
   for (let [key, value] of Object.entries(validators)) {
@@ -56,11 +54,8 @@ let getValidateStatus = ({ validators, status, model }) => {
     newStatus.valid = newStatus.valid && newStatus[key];
   }
 
-  // newStatus.wasInvalid = newStatus.wasInvalid || (!newStatus.valid && newStatus.interacted)  
-  // newStatus.wasValid = newStatus.wasValid || (newStatus.valid && newStatus.interacted)  
   newStatus.wasValid = newStatus.wasValid || newStatus.valid
-  newStatus.wasInvalid = newStatus.wasInvalid || (!newStatus.valid && newStatus.wasValid)  
-  console.log(newStatus)
+  newStatus.wasInvalid = newStatus.wasInvalid || (!newStatus.valid && (newStatus.wasValid || status.value.touched))  
 
   return newStatus;
 };
@@ -76,7 +71,7 @@ export default function useValidate() {
         validate() {
           this.inputs.forEach((i) => {
             i.touch()
-            i.status.value = getValidateStatus(i)
+            this.status.value = getValidateFormStatus(this)
         })
         }
       }
@@ -92,9 +87,8 @@ export default function useValidate() {
     validators: validators || {},
     status: ref({ ...defaultStatus }),
     touch() {
-      // if (this.status.value.dirty) this.status.value.touched = true;
       this.status.value.touched = true;
-      if (this.status.value.dirty) this.status.value.interacted = true
+      this.status.value = getValidateStatus(this)
     },
   };
 
@@ -107,9 +101,6 @@ export default function useValidate() {
     set(value) {
       if (isString(value) || Array.isArray(value)) m.model.value = value;
       m.status.value = getValidateStatus(m);
-      if (m.form) {
-        m.form.status.value = getValidateFormStatus(m.form)
-      }
     },
   });
   }

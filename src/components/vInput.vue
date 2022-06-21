@@ -53,6 +53,7 @@ export default {
       default: "",
     },
     block: { type: Boolean, default: false },
+    validate: { type: String, default: "on-blur" },
     styleInput: { type: [String, Array], default: "" },
     styleIcon: { type: [String, Array], default: "" },
     styleClearButton: { type: [String, Array], default: "" },
@@ -95,48 +96,34 @@ export default {
 
     let { status } = props.modelValue;
 
-    // immedietely all state
-    // immedietely valid only if wasInvalid
-    // touched valid silent
-    // touched all state
-    // interacted
-
-    // immedietely:valid-invalid
-    // immedietely:silent wasInvalid wasValid
-
-    // touched:silent only invalid
-    // touched:valid-invalid
-
-    // interacted-silent
-    // interacted-valid-invalid
     // let validateTime = ref("immediate")
     let validateTime = ref("touched")
-    let validateType = ref("silent")
-    // let validateType = ref("valid-invalid")
+    // let validateType = ref("silent")
+    let validateType = ref("eager")
 
     watch(status, (status) => {
-      if (!status.touched && validateTime.value == 'touched'
-        || !status.interacted && validateTime.value == 'interacted') return
+      if (!status.touched && validateTime.value === 'touched') return
 
       if (!status.dirty) return
 
-      if (validateType.value == "valid-invalid") {
-        if (status.valid) {
-          state.value = "valid"
-        } else {
-          state.value = "invalid"
-        }
+      if (validateType.value === "valid-invalid") {
+        // if (status.valid) {
+        //   state.value = "valid"
+        // } else {
+        //   state.value = "invalid"
+        // }
+        state.value = status.valid ? "valid" : "invalid"
         return
       }
-      if (validateType.value == "silent") {
+      if (validateType.value === "silent") {
         if (status.valid) {
           if (status.wasInvalid) {
             state.value = "valid"
           } else {
             state.value = ""
           }
-        } else {
-          if (status.wasValid) {
+        } else { // invalid
+          if (status.wasValid || status.wasInvalid) {
             state.value = "invalid"
           } else {
             state.value = ""
