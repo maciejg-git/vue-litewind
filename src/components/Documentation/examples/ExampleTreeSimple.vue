@@ -1,5 +1,5 @@
 <template>
-  <v-tree :items="items" auto-open-root></v-tree>
+  <v-tree :items="items"></v-tree>
 </template>
 
 <script>

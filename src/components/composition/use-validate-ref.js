@@ -1,14 +1,14 @@
 import { ref, computed } from "vue";
 import { globalValidators } from "../../validators";
-
-let isString = (v) => typeof v === "string";
+import { isString } from "../../tools"
 
 let defaultStatus = {
   touched: false,
   dirty: false,
   valid: true,
-  wasInvalid: false,
-  wasValid: false,
+  // wasInvalid: false,
+  // wasValid: false,
+  validated: false,
 };
 
 let forms = {}
@@ -34,14 +34,16 @@ let getValidateFormStatus = (form) => {
   return newStatus
 }
 
-let getValidateStatus = ({ validators, status, model }) => {
+let getValidateStatus = ({ validators, status, model, options, validateTime }, validate) => {
   let valueToValidate = model.value;
 
   let newStatus = {
     ...defaultStatus,
     touched: status.value.touched,
-    wasInvalid: status.value.wasInvalid,
-    wasValid: status.value.wasValid,
+    // wasTouched: status.value.wasTouched || !!touched,
+    // wasInvalid: status.value.wasInvalid,
+    // wasValid: status.value.wasValid,
+    validated: status.value.validated || !!validate,
     dirty: status.value.dirty || !!(valueToValidate && !!valueToValidate.length),
   };
 
@@ -54,8 +56,10 @@ let getValidateStatus = ({ validators, status, model }) => {
     newStatus.valid = newStatus.valid && newStatus[key];
   }
 
-  newStatus.wasValid = newStatus.wasValid || newStatus.valid
-  newStatus.wasInvalid = newStatus.wasInvalid || (!newStatus.valid && (newStatus.wasValid || status.value.touched))  
+  // newStatus.wasValid = newStatus.wasValid || newStatus.valid
+  // newStatus.wasInvalid = 
+  //   newStatus.wasInvalid ||
+  //   (!newStatus.valid && (newStatus.wasValid))  
 
   return newStatus;
 };
@@ -70,7 +74,8 @@ export default function useValidate() {
         }),
         validate() {
           this.inputs.forEach((i) => {
-            i.touch()
+            // i.touch()
+            i.validate(true)
             this.status.value = getValidateFormStatus(this)
         })
         }
@@ -86,10 +91,24 @@ export default function useValidate() {
     model: ref(model),
     validators: validators || {},
     status: ref({ ...defaultStatus }),
+    validateTime: "touched",
+    form: {},
+    options: {
+      validateTime: "touched",
+      validateType: "silent"
+    },
+    validate(isFormValidated) {
+      this.status.value = getValidateStatus(this, isFormValidated)
+    },
     touch() {
       this.status.value.touched = true;
       this.status.value = getValidateStatus(this)
+      this.validateTime = 'immediate'
     },
+    setValidateOptions(validateTime, validateType) {
+      this.options.validateTime = validateTime
+      this.options.validateType = validateType
+    }
   };
 
   if (form) m.form = addToForm(m, form)

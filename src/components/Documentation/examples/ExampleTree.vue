@@ -9,32 +9,12 @@
     @input:selected="handleSelectedItem"
   >
     <template #item-append="{ item }">
-      <v-badge v-if="item.badge" style-badge="tiny" class="ml-2"> {{ item.badge }} </v-badge>
+      <v-badge v-if="item.badge" style-badge="tiny" class="ml-2">
+        {{ item.badge }}
+      </v-badge>
     </template>
     <!-- <template #icon="{ item, isFolder }"> -->
     <!-- <v-icon :name="isFolder ? 'mdi-folder' : 'b-star'"></v-icon> -->
-    <!-- </template> -->
-    <template #item-prepend="{ isFolder, isOpen, mouseOver }">
-    <!-- <v-icon :name="'b-star'"></v-icon> -->
-    <!-- <div v-if="isFolder &#38;&#38; !isOpen"> -->
-    <!--   [] -->
-    <!-- </div> -->
-    <!-- <div v-if="isFolder &#38;&#38; isOpen"> -->
-    <!--   [open] -->
-    <!-- </div> -->
-    <div v-show="mouseOver">
-      [mouse]
-    </div>
-    </template>
-    <!-- <template #item="{ item, isFolder, isOpen, toggleItem }"> -->
-    <!--   <div class="flex items-center"> -->
-    <!--     <div class="w-5"> -->
-    <!--       <v-button v-if="isFolder" base="button-plain" @click="toggleItem"> -->
-    <!--         <v-chevron initial="right" :switch="isOpen"></v-chevron> -->
-    <!--       </v-button> -->
-    <!--     </div> -->
-    <!--     {{ item.name }} -->
-    <!--   </div> -->
     <!-- </template> -->
   </v-tree>
 
@@ -85,14 +65,20 @@
         </div>
         <div>
           <label for="select-return-keys">select-return-keys:</label>
-          <v-select-prop id="select-return-keys" v-model="example.selectReturnKeys">
+          <v-select-prop
+            id="select-return-keys"
+            v-model="example.selectReturnKeys"
+          >
             <option :value="true">true</option>
             <option :value="false">false</option>
           </v-select-prop>
         </div>
         <div>
           <label for="select-independent">select-independent:</label>
-          <v-select-prop id="select-independent" v-model="example.selectIndependent">
+          <v-select-prop
+            id="select-independent"
+            v-model="example.selectIndependent"
+          >
             <option :value="true">true</option>
             <option :value="false">false</option>
           </v-select-prop>
@@ -221,7 +207,7 @@ export default {
       showCheckboxes: false,
       filter: "",
       openAll: false,
-      autoOpenRoot: true,
+      autoOpenRoot: false,
       autoOpenAll: false,
       selectReturnKeys: false,
       selectIndependent: false,
