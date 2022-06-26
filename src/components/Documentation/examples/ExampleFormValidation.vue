@@ -135,7 +135,7 @@ export default {
       "",
       {
         required: true,
-        minLength: 3,
+        minLength: 5,
         alphanumeric: true,
       },
       user

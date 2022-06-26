@@ -53,7 +53,7 @@ export default {
       default: "",
     },
     block: { type: Boolean, default: false },
-    validate: { type: String, default: "on-blur silent" },
+    validate: { type: String, default: "immediate silent" },
     styleInput: { type: [String, Array], default: "" },
     styleIcon: { type: [String, Array], default: "" },
     styleClearButton: { type: [String, Array], default: "" },
@@ -96,130 +96,66 @@ export default {
 
     let { status } = props.modelValue;
 
-    let wasValid = ref(false)
     let wasInvalid = ref(false)
 
     let validate = {
       on: "",
       states: "",
-    }
+    };
 
-    watch(() => props.validate, () => {
-      let i = props.validate.split(" ")
-      validate.on = i[0]
-      validate.states = i[1]
-    }, { immediate: true })
+    watch(
+      () => props.validate,
+      () => {
+        let i = props.validate.split(" ");
+        validate.on = i[0];
+        validate.states = i[1];
+      },
+      { immediate: true }
+    );
 
-    if (props.modelValue._isValidateRef) {
-    watch(() => status.value.touched, (touched) => {
-      if (!status.value.dirty || !touched || validate.on !== 'on-blur') 
-        return
+    watch(
+      status,
+      (status, prevStatus) => {
+        let touched =
+          status.touched !== prevStatus.touched
+        let immediate = status.touched || validate.on === "immediate";
 
-        if (!status.value.valid) {
-          state.value = 'invalid'
-          wasInvalid.value = true
-        } else {
-          if (validate.states === 'valid-invalid') {
-            state.value = 'valid'
-          }
-        }
-        return
-    })
-
-    watch(() => status.value.valid, (valid, wasValid) => {
-      if (!status.value.touched || validate.on !== 'immediate') 
-      return
-
-      wasValid.value = wasValid.value || valid
-      wasInvalid.value = wasInvalid.value || (!valid && wasValid.value)
-      if (!valid && wasValid) {
-        state.value = 'invalid'
-      } else if (valid && !wasInvalid) {
-        if (validate.states === 'silent') {
-          state.value = ''
-        }
-      }
-      if (validate.states === "valid-invalid") {
-        if (valid) {
-          state.value = "valid"
-        } else {
-          state.value = "invalid"
-        }
-        return
-      }
-      if (validate.states === "silent") {
-        if (valid) {
-          if (wasInvalid.value) {
-            state.value = "valid"
+        if (touched) {
+          if (!status.dirty) return
+          if (!status.valid) {
+            state.value = "invalid";
+            wasInvalid.value = true
           } else {
-            state.value = ""
+            if (validate.states === "valid-invalid") {
+              state.value = "valid";
+            }
           }
-        } else { // invalid
-          if (wasValid.value || wasInvalid.value) {
-            state.value = "invalid"
-          } else {
-            state.value = ""
+          return;
+        }
+
+        if (immediate) {
+          let valid = status.valid && !prevStatus.valid;
+          let invalid = !status.valid && prevStatus.valid;
+          wasInvalid.value = wasInvalid.value || invalid
+
+          if (!status.valid) {
+            if (validate.states === 'valid-invalid' || (validate.states === 'silent' && invalid))
+            state.value = "invalid";
+          }
+          if (status.valid) {
+            if (validate.states === "valid-invalid") 
+              state.value = "valid";
+            if (validate.states === 'silent') {
+              if (wasInvalid.value)
+                state.value = "valid"
+              else 
+                state.value = ""
+            }
           }
         }
-      }
-    })
-    }
-
-    // watch(status, (status) => {
-    //
-    //
-    //
-    //   // if (status.validated) {
-    //   //   if (!status.valid) {
-    //   //     state.value = 'invalid'
-    //   //     wasInvalid.value = true
-    //   //   }
-    //   // }
-    //
-    //   // if (!status.dirty) return
-    //
-    //   if (status.dirty && !wasTouched.value && status.touched && validate.on === 'on-blur') {
-    //     if (!status.valid) {
-    //       state.value = 'invalid'
-    //       wasInvalid.value = true
-    //       wasTouched.value = true
-    //       // wasTouched.value = true
-    //     } else {
-    //       if (validate.states === 'valid-invalid') {
-    //         state.value = 'valid'
-    //       }
-    //     }
-    //     return
-    //   }
-    //
-    //   if (status.validated || wasTouched.value || validate.on === 'immediate') {
-    //   wasValid.value = wasValid.value || status.valid
-    //   wasInvalid.value = wasInvalid.value || (!status.valid && wasValid.value)
-    //   if (validate.states === "valid-invalid") {
-    //     if (status.valid) {
-    //       state.value = "valid"
-    //     } else {
-    //       state.value = "invalid"
-    //     }
-    //     return
-    //   }
-    //   if (validate.states === "silent") {
-    //     if (status.valid) {
-    //       if (wasInvalid.value) {
-    //         state.value = "valid"
-    //       } else {
-    //         state.value = ""
-    //       }
-    //     } else { // invalid
-    //       if (wasValid.value || wasInvalid.value || status.validated) {
-    //         state.value = "invalid"
-    //       } else {
-    //         state.value = ""
-    //       }
-    //     }
-    //   }
-    //   }
-    // }, { deep: true });
+      },
+      { deep: true }
+    );
 
     let handleBlur = () => {
       if (props.modelValue._isValidateRef) {
@@ -242,8 +178,6 @@ export default {
       localModel,
       handleBlur,
       handleClickClearButton,
-      wasInvalid,
-      wasValid,
     };
   },
 };
