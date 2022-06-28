@@ -75,35 +75,37 @@
   <!-- CUT START -->
   <v-tabs base="tabs-material" class="mt-10">
     <v-tab name="Props">
-      <div class="mb-2 mt-5">
-        <label for="locale">filter:</label>
-        <v-input type="text" v-model="example.filter" clearable></v-input>
-      </div>
-      <div class="mb-2">
-        <label for="locale">locale:</label>
-        <v-input type="text" id="locale" v-model="example.locale"></v-input>
-      </div>
-      <div class="mb-2">
-        <label for="busy">state:</label>
-        <v-select id="busy" v-model="example.state">
-          <option value="">empty string (normal state)</option>
-          <option value="busy">busy</option>
-        </v-select>
-      </div>
-      <div class="mb-2">
-        <label for="selection-mode">selection-mode:</label>
-        <v-select id="selection-mode" v-model="example.selectionMode">
-          <option value="single">single</option>
-          <option value="multiple">multiple</option>
-          <option value="">empty string (selection disabled)</option>
-        </v-select>
-      </div>
-      <div class="mb-2">
-        <label for="caption-top">caption-top:</label>
-        <v-select-prop id="caption-top" v-model="example.captionTop">
-          <option :value="true">true</option>
-          <option :value="false">false</option>
-        </v-select-prop>
+      <div class="flex flex-col gap-y-2 mt-5">
+        <div>
+          <label for="locale">filter:</label>
+          <v-input type="text" v-model="example.filter" clearable></v-input>
+        </div>
+        <div>
+          <label for="locale">locale:</label>
+          <v-input type="text" id="locale" v-model="example.locale"></v-input>
+        </div>
+        <div>
+          <label for="busy">state:</label>
+          <v-select id="busy" v-model="example.state">
+            <option value="">empty string (normal state)</option>
+            <option value="busy">busy</option>
+          </v-select>
+        </div>
+        <div>
+          <label for="selection-mode">selection-mode:</label>
+          <v-select id="selection-mode" v-model="example.selectionMode">
+            <option value="single">single</option>
+            <option value="multiple">multiple</option>
+            <option value="">empty string (selection disabled)</option>
+          </v-select>
+        </div>
+        <div>
+          <label for="caption-top">caption-top:</label>
+          <v-select-prop id="caption-top" v-model="example.captionTop">
+            <option :value="true">true</option>
+            <option :value="false">false</option>
+          </v-select-prop>
+        </div>
       </div>
     </v-tab>
     <v-tab>

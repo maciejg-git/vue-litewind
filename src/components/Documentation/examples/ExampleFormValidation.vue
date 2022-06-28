@@ -28,32 +28,6 @@
   <div class="flex gap-x-20">
     <div class="basis-1/2">
       <v-input
-        v-model="email"
-        type="text"
-        placeholder="Email"
-        block
-        class="w-full"
-      />
-      <v-form-text
-        :status="email.status"
-        :messages="messages"
-        class="absolute"
-      ></v-form-text>
-    </div>
-
-    <pre class="m-0">
-      <code v-html="'model: ' + getStatusString(email.model.value)"></code>
-      <code v-html="'validators: ' + getStatusString(email.validators)"></code>
-      <code v-html="'status: ' + getStatusString(email.status.value, true)"></code>
-      <!-- <code v-html="'formstatus: ' + getStatusString(email.formStatus.value)"></code> -->
-    </pre>
-  </div>
-
-  <v-divider class="my-10" />
-
-  <div class="flex gap-x-20">
-    <div class="basis-1/2">
-      <v-input
         v-model="password"
         type="text"
         placeholder="Password"

@@ -142,62 +142,68 @@ export default {
   setup() {
     const treeData = [
       {
-        name: "Movies",
+        name: "Directory",
         id: 17,
         children: [
-          { name: "Lost in Translation", id: 1 },
-          { name: "Before Sunset", id: 2 },
-          { name: "Groundhog Day", id: 3 },
-          { name: "Out of Africa", icon: "b-star", id: 4 },
+          { name: "Some item", id: 1 },
+          { name: "Another item", id: 2 },
+          { name: "Third item", id: 3 },
+          { name: "File", icon: "b-star", id: 4 },
           {
-            name: "Science-fiction",
+            name: "Sub directory",
             id: 5,
             children: [
               {
-                name: "Matrix",
+                name: "Another sub directory",
                 id: 6,
                 children: [
-                  { name: "Matrix", id: 7 },
-                  { name: "Matrix: Revolutions", id: 8 },
+                  { name: "Content", id: 7 },
+                  { name: "Another item", id: 8 },
                 ],
               },
-              { name: "Blade Runner", id: 9 },
-              { name: "Futurama", id: 10 },
-              { name: "Dune", id: 11 },
-              { name: "Ghost in the Shell", id: 12 },
+              { name: "Fourth item", id: 9 },
+              { name: "Another file", id: 10 },
+              { name: "Video file", id: 11 },
+              { name: "Secret item", id: 12 },
               {
-                name: "Star Wars",
+                name: "More content here",
                 id: 13,
                 children: [
-                  { name: "Return of The Jedi", id: 14, badge: "NEW" },
-                  { name: "The Phantom Menace", id: 15 },
+                  { name: "Another video file", id: 14, badge: "NEW" },
+                  { name: "Fifth item", id: 15 },
                 ],
               },
             ],
           },
-          { name: "Spirited Away", id: 16 },
+          { name: "Sixth item", id: 16 },
         ],
       },
       {
-        name: "Movies",
-        id: 34,
+        name: "Another directory",
+        id: 17,
         children: [
-          { name: "Rambo", id: 18 },
-          { name: "Total Recall", id: 19 },
           {
-            name: "More movies",
-            id: 22,
+            name: "Sub dir",
+            id: 5,
             children: [
-              { name: "Fanny and Alexander", id: 26 },
-              { name: "Ame Agaru", disabled: true, id: 28 },
-              { name: "Yojimbo", id: 29 },
+              { name: "New file", id: 9 },
+              { name: "Music file", id: 10 },
+              { name: "Secret content", id: 12 },
+              {
+                name: "Folder",
+                id: 13,
+                children: [
+                  { name: "Another file", id: 14, badge: "NEW" },
+                  { name: "Readme", id: 15 },
+                ],
+              },
             ],
           },
-          { name: "Fight Club", id: 20 },
-          { name: "Mulholland Drive", id: 21 },
+          { name: "More content", id: 1 },
+          { name: "Movie file", id: 16 },
         ],
       },
-    ];
+      ]
 
     let example = reactive({
       items: treeData,

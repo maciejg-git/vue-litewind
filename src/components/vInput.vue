@@ -53,7 +53,7 @@ export default {
       default: "",
     },
     block: { type: Boolean, default: false },
-    validate: { type: String, default: "immediate silent" },
+    validate: { type: String, default: "on-blur silent" },
     styleInput: { type: [String, Array], default: "" },
     styleIcon: { type: [String, Array], default: "" },
     styleClearButton: { type: [String, Array], default: "" },
@@ -96,7 +96,8 @@ export default {
 
     let { status } = props.modelValue;
 
-    let wasInvalid = ref(false)
+    let wasInvalid = ref(false);
+    let wasValid = ref(false);
 
     let validate = {
       on: "",
@@ -116,43 +117,101 @@ export default {
     watch(
       status,
       (status, prevStatus) => {
-        let touched =
-          status.touched !== prevStatus.touched
-        let immediate = status.touched || validate.on === "immediate";
+        let touched = status.touched !== prevStatus.touched;
+        let validated = status.validated !== prevStatus.validated;
+        let immediate = status.touched || status.validated || validate.on === "immediate";
+          // let valid = status.valid && !prevStatus.valid;
+          // let invalid = !status.valid && prevStatus.valid;
+          let becomeValid = status.valid && !prevStatus.valid;
+          let becomeInvalid = !status.valid && prevStatus.valid;
+        wasValid.value = wasValid.value || becomeValid
+        wasInvalid.value = wasInvalid.value || becomeInvalid
 
         if (touched) {
-          if (!status.dirty) return
+          if (!status.dirty) return;
+
           if (!status.valid) {
             state.value = "invalid";
-            wasInvalid.value = true
+            wasInvalid.value = true;
           } else {
-            if (validate.states === "valid-invalid") {
+            if (validate.states === "eager") {
               state.value = "valid";
             }
           }
           return;
         }
 
-        if (immediate) {
-          let valid = status.valid && !prevStatus.valid;
-          let invalid = !status.valid && prevStatus.valid;
-          wasInvalid.value = wasInvalid.value || invalid
-
-          if (!status.valid) {
-            if (validate.states === 'valid-invalid' || (validate.states === 'silent' && invalid))
-            state.value = "invalid";
-          }
-          if (status.valid) {
-            if (validate.states === "valid-invalid") 
-              state.value = "valid";
-            if (validate.states === 'silent') {
-              if (wasInvalid.value)
-                state.value = "valid"
-              else 
-                state.value = ""
-            }
-          }
+        if (validate.states === 'eager') {
+          if (!status.touched && validate.on === 'on-blur') return
+          if (status.valid) state.value = 'valid'
+          else state.value = 'invalid'
         }
+
+        if (becomeInvalid) {
+          if (!status.touched && validate.on === 'on-blur') return
+          state.value = 'invalid'
+        }
+
+        if (becomeValid) {
+          if (!status.touched && validate.on === 'on-blur') return
+          if (validate.states === 'silent') {
+            if (wasInvalid.value) {
+              state.value = 'valid'
+            }
+            return
+          }
+          state.value = 'valid'
+        }
+
+        // if (validated) {
+        //   console.log('validated')
+        //   if (!status.valid) {
+        //     state.value = "invalid";
+        //     wasInvalid.value = true;
+        //   } else {
+        //     if (validate.states === "eager") {
+        //       state.value = "valid";
+        //     }
+        //   }
+        //   return;
+        // }
+
+        // if (touched) {
+        //   console.log('touched')
+        //   if (!status.dirty) return;
+        //
+        //   if (!status.valid) {
+        //     state.value = "invalid";
+        //     wasinvalid.value = true;
+        //   } else {
+        //     if (validate.states === "eager") {
+        //       state.value = "valid";
+        //     }
+        //   }
+        //   return;
+        // }
+        //
+        // if (immediate) {
+        //   console.log('immediate')
+        //   let valid = status.valid && !prevStatus.valid;
+        //   let invalid = !status.valid && prevStatus.valid;
+        //   wasInvalid.value = wasInvalid.value || invalid;
+        //
+        //   if (!status.valid) {
+        //     if (
+        //       validate.states === "eager" ||
+        //       (validate.states === "silent" && invalid)
+        //     )
+        //       state.value = "invalid";
+        //   }
+        //   if (status.valid) {
+        //     if (validate.states === "eager") state.value = "valid";
+        //     if (validate.states === "silent") {
+        //       if (wasInvalid.value) state.value = "valid";
+        //       else state.value = "";
+        //     }
+        //   }
+        // }
       },
       { deep: true }
     );
@@ -161,8 +220,6 @@ export default {
       if (props.modelValue._isValidateRef) {
         // if (status.value.touched) return
         props.modelValue.touch();
-        // if (status.value.valid) state.value = "";
-        // else state.value = "invalid";
       }
     };
 

@@ -71,6 +71,12 @@ export default {
         default: "empty string",
         description: "Icon type provided via iconTypes",
       },
+      {
+        prop: "no-icon-class",
+        type: ["Boolean"],
+        default: "false",
+        description: "If true default v-icon class is not added to icon",
+      },
     ]);
 
     return {

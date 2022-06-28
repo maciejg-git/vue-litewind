@@ -19,7 +19,24 @@
   </section>
 
   <section>
-    <h4>Example</h4>
+    <h4>Example - validation modes</h4>
+    <p>Validation modes allows control over when to display validation results and how to display them. Currently there are 4 of them: 
+    <ul>
+      <li class="my-2"><code class="code-text">"on-blur silent"</code> updates input state only after it loses focus. After focusing out update state only if validation result is invalid. Valid values do not change input state.</li>
+      <li class="my-2"><code class="code-text">"on-blur eager"</code> as above but also changes state if input is valid.</li>
+      <li class="my-2"><code class="code-text">"immediate silent"</code> start updating state immediately after first input. Invalid states are ignored until state is at last once valid.</li>
+      <li class="my-2"><code class="code-text">"immediate eager"</code> as above but makes input invalid immededietely if value is invalid.</li>
+    </ul>
+    </p>
+    <div class="example">
+      <example-validation-modes></example-validation-modes>
+    </div>
+    <!-- <v-code :code="ExampleFormValidationCode" template language="html"></v-code> -->
+    <!-- <v-code :code="ExampleFormValidationCode" script language="js"></v-code> -->
+  </section>
+
+  <section>
+    <h4>Example - form validation</h4>
     <div class="example">
       <example-input-validation></example-input-validation>
     </div>
@@ -31,12 +48,14 @@
 <script>
 import ExampleFormValidation from "./examples/ExampleFormValidation.vue"
 import ExampleInputValidation from "./examples/ExampleInputValidation.vue"
+import ExampleValidationModes from "./examples/ExampleValidationModes.vue"
 import ExampleFormValidationCode from "./examples/ExampleFormValidation.vue?raw"
 
 export default {
   components: {
     ExampleFormValidation,
     ExampleInputValidation,
+    ExampleValidationModes,
   },
   setup(props) {
     return {

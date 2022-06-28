@@ -32,13 +32,13 @@ let getValidateFormStatus = (form) => {
   return newStatus
 }
 
-let getValidateStatus = ({ validators, status, model }, touched) => {
+let getValidateStatus = ({ validators, status, model }, touched, validated) => {
   let valueToValidate = model.value;
 
   let newStatus = {
     valid: true,
     touched: status.value.touched || !!touched,
-    // validated: status.value.validated || !!validate,
+    validated: status.value.validated || !!validated,
     dirty: status.value.dirty || !!(valueToValidate && !!valueToValidate.length),
   };
 
@@ -82,10 +82,9 @@ export default function useValidate() {
     status: ref({ ...defaultStatus }),
     form: {},
     validate(isFormValidated) {
-      this.status.value = getValidateStatus(this, isFormValidated)
+      this.status.value = getValidateStatus(this, false, isFormValidated)
     },
     touch() {
-      // this.status.value.touched = true;
       this.status.value = getValidateStatus(this, true)
     },
   };

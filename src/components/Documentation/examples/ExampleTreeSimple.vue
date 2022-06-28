@@ -9,43 +9,43 @@ export default {
   setup() {
     const items = ref([
       {
-        name: "Movies",
-        id: 1,
+        name: "Directory",
+        id: 17,
         children: [
-          { name: "Lost in Translation", id: 2 },
-          { name: "Before Sunset", id: 3 },
-          { name: "Groundhog Day", id: 4 },
-          { name: "Out of Africa", id: 5 },
+          { name: "Some item", id: 1 },
+          { name: "Another item", id: 2 },
+          { name: "Third", id: 3 },
+          { name: "File"},
           {
-            name: "Science-fiction",
-            id: 6,
+            name: "Sub directory",
+            id: 5,
             children: [
               {
-                name: "Matrix",
-                id: 7,
+                name: "Another sub directory",
+                id: 6,
                 children: [
-                  { name: "Matrix", id: 8 },
-                  { name: "Matrix: Revolutions", id: 9 },
+                  { name: "Content", id: 7 },
+                  { name: "Another item", id: 8 },
                 ],
               },
-              { name: "Blade Runner", id: 10 },
-              { name: "Futurama", id: 11 },
-              { name: "Dune", id: 12 },
-              { name: "Ghost in the Shell", id: 13 },
+              { name: "Fourth", id: 9 },
+              { name: "Another file", id: 10 },
+              { name: "Video file", id: 11 },
+              { name: "Secret item", id: 12 },
               {
-                name: "Star Wars",
-                id: 14,
+                name: "More content here",
+                id: 13,
                 children: [
-                  { name: "Return of The Jedi", id: 15 },
-                  { name: "The Phantom Menace", id: 16 },
+                  { name: "Another video file", id: 14},
+                  { name: "Fifth", id: 15 },
                 ],
               },
             ],
           },
-          { name: "Spirited Away", id: 17 },
+          { name: "Sixth item", id: 16 },
         ],
       },
-    ]);
+    ])
 
     return {
       items,
