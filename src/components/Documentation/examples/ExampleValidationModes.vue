@@ -46,9 +46,9 @@
 
     <pre class="m-0">
       Mode: "on-blur eager"
-      <code v-html="'model: ' + getStatusString(username.model.value)"></code>
-      <code v-html="'validators: ' + getStatusString(username.validators)"></code>
-      <code v-html="'status: ' + getStatusString(username.status.value, true)"></code>
+      <code v-html="'model: ' + getStatusString(username2.model.value)"></code>
+      <code v-html="'validators: ' + getStatusString(username2.validators)"></code>
+      <code v-html="'status: ' + getStatusString(username2.status.value, true)"></code>
       <!-- <code v-html="'formstatus: ' + getStatusString(username.formStatus.value)"></code> -->
     </pre>
   </div>
@@ -74,9 +74,9 @@
 
     <pre class="m-0">
       Mode: "immediate silent"
-      <code v-html="'model: ' + getStatusString(username.model.value)"></code>
-      <code v-html="'validators: ' + getStatusString(username.validators)"></code>
-      <code v-html="'status: ' + getStatusString(username.status.value, true)"></code>
+      <code v-html="'model: ' + getStatusString(username3.model.value)"></code>
+      <code v-html="'validators: ' + getStatusString(username3.validators)"></code>
+      <code v-html="'status: ' + getStatusString(username3.status.value, true)"></code>
       <!-- <code v-html="'formstatus: ' + getStatusString(username.formStatus.value)"></code> -->
     </pre>
   </div>
@@ -102,9 +102,9 @@
 
     <pre class="m-0">
       Mode: "immediate eager"
-      <code v-html="'model: ' + getStatusString(username.model.value)"></code>
-      <code v-html="'validators: ' + getStatusString(username.validators)"></code>
-      <code v-html="'status: ' + getStatusString(username.status.value, true)"></code>
+      <code v-html="'model: ' + getStatusString(username4.model.value)"></code>
+      <code v-html="'validators: ' + getStatusString(username4.validators)"></code>
+      <code v-html="'status: ' + getStatusString(username4.status.value, true)"></code>
       <!-- <code v-html="'formstatus: ' + getStatusString(username.formStatus.value)"></code> -->
     </pre>
   </div>

@@ -119,16 +119,27 @@ export default {
       (status, prevStatus) => {
         let touched = status.touched !== prevStatus.touched;
         let validated = status.validated !== prevStatus.validated;
-        let immediate = status.touched || status.validated || validate.on === "immediate";
-          // let valid = status.valid && !prevStatus.valid;
-          // let invalid = !status.valid && prevStatus.valid;
-          let becomeValid = status.valid && !prevStatus.valid;
-          let becomeInvalid = !status.valid && prevStatus.valid;
-        wasValid.value = wasValid.value || becomeValid
-        wasInvalid.value = wasInvalid.value || becomeInvalid
+        let immediate =
+          status.touched || status.validated || validate.on === "immediate";
+
+        wasValid.value = wasValid.value || (status.valid && !prevStatus.valid);
+        wasInvalid.value =
+          wasInvalid.value || (!status.valid && prevStatus.valid);
+
+        if (validated) {
+          if (!status.valid) {
+            state.value = "invalid";
+            wasInvalid.value = true;
+          } else {
+            if (validate.states === "eager") {
+              state.value = "valid";
+            }
+          }
+          return;
+        }
 
         if (touched) {
-          if (!status.dirty) return;
+          if (!status.dirty || status.validated) return;
 
           if (!status.valid) {
             state.value = "invalid";
@@ -141,77 +152,30 @@ export default {
           return;
         }
 
-        if (validate.states === 'eager') {
-          if (!status.touched && validate.on === 'on-blur') return
-          if (status.valid) state.value = 'valid'
-          else state.value = 'invalid'
-        }
-
-        if (becomeInvalid) {
-          if (!status.touched && validate.on === 'on-blur') return
-          state.value = 'invalid'
-        }
-
-        if (becomeValid) {
-          if (!status.touched && validate.on === 'on-blur') return
-          if (validate.states === 'silent') {
-            if (wasInvalid.value) {
-              state.value = 'valid'
+        if (immediate) {
+          if (!status.valid) {
+            if (validate.states === "silent") {
+              if (wasValid.value) {
+                state.value = "invalid";
+              }
+              return;
             }
-            return
+            if (validate.states === "eager") {
+              state.value = "invalid";
+            }
+          } else {
+            // valid
+            if (validate.states === "silent") {
+              if (wasInvalid.value) {
+                state.value = "valid";
+              }
+              return;
+            }
+            if (validate.states === "eager") {
+              state.value = "valid";
+            }
           }
-          state.value = 'valid'
         }
-
-        // if (validated) {
-        //   console.log('validated')
-        //   if (!status.valid) {
-        //     state.value = "invalid";
-        //     wasInvalid.value = true;
-        //   } else {
-        //     if (validate.states === "eager") {
-        //       state.value = "valid";
-        //     }
-        //   }
-        //   return;
-        // }
-
-        // if (touched) {
-        //   console.log('touched')
-        //   if (!status.dirty) return;
-        //
-        //   if (!status.valid) {
-        //     state.value = "invalid";
-        //     wasinvalid.value = true;
-        //   } else {
-        //     if (validate.states === "eager") {
-        //       state.value = "valid";
-        //     }
-        //   }
-        //   return;
-        // }
-        //
-        // if (immediate) {
-        //   console.log('immediate')
-        //   let valid = status.valid && !prevStatus.valid;
-        //   let invalid = !status.valid && prevStatus.valid;
-        //   wasInvalid.value = wasInvalid.value || invalid;
-        //
-        //   if (!status.valid) {
-        //     if (
-        //       validate.states === "eager" ||
-        //       (validate.states === "silent" && invalid)
-        //     )
-        //       state.value = "invalid";
-        //   }
-        //   if (status.valid) {
-        //     if (validate.states === "eager") state.value = "valid";
-        //     if (validate.states === "silent") {
-        //       if (wasInvalid.value) state.value = "valid";
-        //       else state.value = "";
-        //     }
-        //   }
-        // }
       },
       { deep: true }
     );
