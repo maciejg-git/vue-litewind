@@ -116,18 +116,16 @@ export default {
 
     watch(
       status,
-      (status, prevStatus) => {
-        let touched = status.touched !== prevStatus.touched;
-        let validated = status.validated !== prevStatus.validated;
-        let immediate =
-          status.touched || status.validated || validate.on === "immediate";
+      (s, prev) => {
+        let touched = s.touched !== prev.touched;
+        let validated = s.validated !== prev.validated;
+        let immediate = s.touched || s.validated || validate.on === "immediate";
 
-        wasValid.value = wasValid.value || (status.valid && !prevStatus.valid);
-        wasInvalid.value =
-          wasInvalid.value || (!status.valid && prevStatus.valid);
+        wasValid.value = wasValid.value || (s.valid && !prev.valid);
+        wasInvalid.value = wasInvalid.value || (!s.valid && prev.valid);
 
         if (validated) {
-          if (!status.valid) {
+          if (!s.valid) {
             state.value = "invalid";
             wasInvalid.value = true;
           } else {
@@ -139,9 +137,9 @@ export default {
         }
 
         if (touched) {
-          if (!status.dirty || status.validated) return;
+          if (!s.dirty || s.validated) return;
 
-          if (!status.valid) {
+          if (!s.valid) {
             state.value = "invalid";
             wasInvalid.value = true;
           } else {
@@ -153,7 +151,7 @@ export default {
         }
 
         if (immediate) {
-          if (!status.valid) {
+          if (!s.valid) {
             if (validate.states === "silent") {
               if (wasValid.value) {
                 state.value = "invalid";

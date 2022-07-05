@@ -1,6 +1,6 @@
 <template>
     <div class="flex gap-x-20">
-      <div class="basis-1/2 flex flex-col gap-y-4">
+      <div class="basis-1/2 flex flex-col gap-y-32">
         <div>
           <v-input
             v-model="username"
