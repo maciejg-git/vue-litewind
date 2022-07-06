@@ -34,12 +34,14 @@
         </svg>
       </button>
     </div>
+    <v-form-text v-if="modelValue._isValidateRef" :state="state" :status="modelValue.status" :messages="modelValue.messages"></v-form-text>
   </div>
 </template>
 
 <script>
 // vue
 import { ref, computed, watch } from "vue";
+import vFormText from "./vFormText.vue"
 // composition
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
@@ -59,6 +61,9 @@ export default {
     styleClearButton: { type: [String, Array], default: "" },
     ...sharedFormProps(null, { icon: true, clearable: true }),
     ...sharedStyleProps("input"),
+  },
+  components: {
+    vFormText,
   },
   emits: ["update:modelValue"],
   inheritAttrs: false,
@@ -94,89 +99,69 @@ export default {
 
     let state = ref("");
 
-    let { status } = props.modelValue;
+    if (props.modelValue._isValidateRef) {
+      let { status } = props.modelValue;
 
-    let wasInvalid = ref(false);
-    let wasValid = ref(false);
+      let [validateOn, validateMode] = props.validate.split(" ")
 
-    let validate = {
-      on: "",
-      states: "",
-    };
+      watch(
+        status,
+        (s, prev) => {
+          let touched = (s.touched !== prev.touched) && !s.validated;
+          let validated = s.validated !== prev.validated;
+          let immediate =
+            s.touched || s.validated || validateOn === "immediate";
 
-    watch(
-      () => props.validate,
-      () => {
-        let i = props.validate.split(" ");
-        validate.on = i[0];
-        validate.states = i[1];
-      },
-      { immediate: true }
-    );
-
-    watch(
-      status,
-      (s, prev) => {
-        let touched = s.touched !== prev.touched;
-        let validated = s.validated !== prev.validated;
-        let immediate = s.touched || s.validated || validate.on === "immediate";
-
-        wasValid.value = wasValid.value || (s.valid && !prev.valid);
-        wasInvalid.value = wasInvalid.value || (!s.valid && prev.valid);
-
-        if (validated) {
-          if (!s.valid) {
-            state.value = "invalid";
-            wasInvalid.value = true;
-          } else {
-            if (validate.states === "eager") {
-              state.value = "valid";
-            }
-          }
-          return;
-        }
-
-        if (touched) {
-          if (!s.dirty || s.validated) return;
-
-          if (!s.valid) {
-            state.value = "invalid";
-            wasInvalid.value = true;
-          } else {
-            if (validate.states === "eager") {
-              state.value = "valid";
-            }
-          }
-          return;
-        }
-
-        if (immediate) {
-          if (!s.valid) {
-            if (validate.states === "silent") {
-              if (wasValid.value) {
-                state.value = "invalid";
-              }
-              return;
-            }
-            if (validate.states === "eager") {
+          if (validated) {
+            if (!s.valid) {
               state.value = "invalid";
-            }
-          } else {
-            // valid
-            if (validate.states === "silent") {
-              if (wasInvalid.value) {
+            } else {
+              if (validateMode === "eager") {
                 state.value = "valid";
               }
-              return;
             }
-            if (validate.states === "eager") {
-              state.value = "valid";
+            return;
+          }
+
+          if (touched) {
+            if (!s.valid) {
+              state.value = "invalid";
+            } else {
+              if (validateMode === "eager") {
+                state.value = "valid";
+              }
+            }
+            return;
+          }
+
+          if (immediate) {
+            if (!s.valid) {
+              if (validateMode === "silent") {
+                if (s.wasValid || s.wasInvalid) {
+                  state.value = "invalid";
+                }
+                return;
+              }
+              if (validateMode === "eager") {
+                state.value = "invalid";
+              }
+            } else {
+              // valid
+              if (validateMode === "silent") {
+                if (s.wasInvalid) {
+                  state.value = "valid";
+                }
+                return;
+              }
+              if (validateMode === "eager") {
+                state.value = "valid";
+              }
             }
           }
-        }
-      },
-      { deep: true }
-    );
+        },
+        { deep: true }
+      );
+    }
 
     let handleBlur = () => {
       if (props.modelValue._isValidateRef) {

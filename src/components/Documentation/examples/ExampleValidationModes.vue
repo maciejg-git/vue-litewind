@@ -9,11 +9,11 @@
         block
         class="w-full"
       />
-      <!-- <v-form-text -->
-      <!--   :status="username.status" -->
-      <!--   :messages="messages" -->
-      <!--   class="absolute" -->
-      <!-- ></v-form-text> -->
+      <v-form-text
+        :status="username.status"
+        :messages="messages"
+        class="absolute"
+      ></v-form-text>
     </div>
 
     <pre class="m-0">

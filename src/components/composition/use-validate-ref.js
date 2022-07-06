@@ -1,6 +1,6 @@
 import { ref, computed } from "vue";
 import { globalValidators } from "../../validators";
-import { isString } from "../../tools"
+import { isString } from "../../tools";
 
 let defaultStatus = {
   touched: false,
@@ -9,37 +9,40 @@ let defaultStatus = {
   validated: false,
 };
 
-let forms = {}
+let forms = {};
 
 let addToForm = (ref, form) => {
-  if (!form) return
-  form.inputs.push(ref)
+  if (!form) return;
+  form.inputs.push(ref);
 
-  return form
-}
+  return form;
+};
 
 let getValidateFormStatus = (form) => {
-  if (!form) return
+  if (!form) return;
 
   let newStatus = {
     touched: form.inputs.some((i) => i.status.value.touched),
     dirty: form.inputs.some((i) => i.status.value.dirty),
-    valid: form.inputs.every((i) => i.status.value.valid)
-  }
+    valid: form.inputs.every((i) => i.status.value.valid),
+  };
 
-  newStatus.wasInvalid = newStatus.wasInvalid || (!newStatus.valid && newStatus.touched)
+  newStatus.wasInvalid =
+    newStatus.wasInvalid || (!newStatus.valid && newStatus.touched);
 
-  return newStatus
-}
+  return newStatus;
+};
 
 let getValidateStatus = ({ validators, status, model }, touched, validated) => {
   let valueToValidate = model.value;
 
   let newStatus = {
     valid: true,
+    isRequired: status.value.isRequired,
     touched: status.value.touched || !!touched,
     validated: status.value.validated || !!validated,
-    dirty: status.value.dirty || !!(valueToValidate && !!valueToValidate.length),
+    dirty:
+      status.value.dirty || !!(valueToValidate && !!valueToValidate.length),
   };
 
   for (let [key, value] of Object.entries(validators)) {
@@ -50,6 +53,12 @@ let getValidateStatus = ({ validators, status, model }, touched, validated) => {
     }
     newStatus.valid = newStatus.valid && newStatus[key];
   }
+
+  newStatus.wasValid = status.value.wasValid || newStatus.valid;
+
+  newStatus.wasInvalid =
+    status.value.wasInvalid ||
+    (!newStatus.valid && (status.value.wasValid || touched || validated));
 
   return newStatus;
 };
@@ -64,43 +73,44 @@ export default function useValidate() {
         }),
         validate() {
           this.inputs.forEach((i) => {
-            i.validate(true)
-            this.status.value = getValidateFormStatus(this)
-        })
-        }
-      }
+            i.validate(true);
+            this.status.value = getValidateFormStatus(this);
+          });
+        },
+      };
 
-      return forms[form]
+      return forms[form];
     }
-  }
-
-  let validateRef = (model, validators, form) => {
-  let m = {
-    _isValidateRef: true,
-    model: ref(model),
-    validators: validators || {},
-    status: ref({ ...defaultStatus }),
-    form: {},
-    validate(isFormValidated) {
-      this.status.value = getValidateStatus(this, false, isFormValidated)
-    },
-    touch() {
-      this.status.value = getValidateStatus(this, true)
-    },
   };
 
-  if (form) m.form = addToForm(m, form)
+  let validateRef = (model, validators, form) => {
+    let m = {
+      _isValidateRef: true,
+      model: ref(model),
+      validators: validators || {},
+      status: ref({ ...defaultStatus, isRequired: !!validators.required }),
+      messages: {},
+      form: {},
+      validate(isFormValidated) {
+        this.status.value = getValidateStatus(this, false, isFormValidated);
+      },
+      touch() {
+        this.status.value = getValidateStatus(this, true);
+      },
+    };
 
-  return computed({
-    get() {
-      return m;
-    },
-    set(value) {
-      if (isString(value) || Array.isArray(value)) m.model.value = value;
-      m.status.value = getValidateStatus(m);
-    },
-  });
-  }
+    if (form) m.form = addToForm(m, form);
 
-  return { validateRef, validateForm }
+    return computed({
+      get() {
+        return m;
+      },
+      set(value) {
+        if (isString(value) || Array.isArray(value)) m.model.value = value;
+        m.status.value = getValidateStatus(m);
+      },
+    });
+  };
+
+  return { validateRef, validateForm };
 }

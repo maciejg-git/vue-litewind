@@ -57,18 +57,18 @@ export default {
     });
 
     let messages = computed(() => {
-      let status = props.status;
-      if (!(status.value.dirty && status.value.touched)) return {};
-
-      return Object.fromEntries(
-        Object.entries(props.messages).reduce((pm, m) => {
-          if (status.value[m[0]] === false) {
-            pm.push(m);
-            return pm;
-          }
-          return pm;
-        }, [])
-      );
+      // let status = props.status;
+      // if (!(status.value.dirty && status.value.touched)) return {};
+      //
+      // return Object.fromEntries(
+      //   Object.entries(props.messages).reduce((pm, m) => {
+      //     if (status.value[m[0]] === false) {
+      //       pm.push(m);
+      //       return pm;
+      //     }
+      //     return pm;
+      //   }, [])
+      // );
     });
 
     return {
