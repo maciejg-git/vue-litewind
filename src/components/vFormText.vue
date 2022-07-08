@@ -33,7 +33,7 @@ export default {
     state: { type: [String, Boolean], default: "" },
     status: { type: Object, default: {} },
     inline: { type: Boolean, default: false },
-    visibleStates: { type: String, default: "default,valid,invalid" },
+    // visibleStates: { type: String, default: "default,valid,invalid" },
     messages: { type: Object, default: {} },
     styleFormText: { type: [String, Array], default: "" },
     ...sharedStyleProps("form-text"),
@@ -51,12 +51,14 @@ export default {
     });
 
     let visible = computed(() => {
-      return props.visibleStates
-        .split(",")
-        .includes(props.state === "" ? "default" : props.state);
+      // return props.visibleStates
+      //   .split(",")
+      //   .includes(props.state === "" ? "default" : props.state);
     });
 
     let messages = computed(() => {
+      if (props.state === "invalid")
+      return props.messages
       // let status = props.status;
       // if (!(status.value.dirty && status.value.touched)) return {};
       //

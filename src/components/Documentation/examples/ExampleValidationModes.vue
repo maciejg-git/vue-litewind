@@ -21,6 +21,7 @@
       <code v-html="'model: ' + getStatusString(username.model.value)"></code>
       <code v-html="'validators: ' + getStatusString(username.validators)"></code>
       <code v-html="'status: ' + getStatusString(username.status.value, true)"></code>
+      <code v-html="'messages: ' + getStatusString(username.messages, true)"></code>
       <!-- <code v-html="'formstatus: ' + getStatusString(username.formStatus.value)"></code> -->
     </pre>
   </div>

@@ -1,6 +1,34 @@
 <template>
   <div class="flex gap-x-20">
     <div class="basis-1/2">
+      <v-form-field
+          v-model="usernameFormField"
+          @update:status="data => status = data"
+        >
+        <v-input
+          type="text"
+          placeholder="Username"
+          block
+          :rules="{
+        required: true,
+        minLength: 5,
+        alphanumeric: true,
+      }"
+          class="w-full"
+        />
+      </v-form-field>
+    </div>
+
+    <pre class="m-0">
+      <code v-html="'model: ' + getStatusString(usernameFormField)"></code>
+      <code v-html="'validators: ' + getStatusString(username.validators)"></code>
+      <code v-html="'status: ' + getStatusString(status, true)"></code>
+      <!-- <code v-html="'formstatus: ' + getStatusString(username.formStatus.value)"></code> -->
+    </pre>
+  </div>
+
+  <div class="flex gap-x-20">
+    <div class="basis-1/2">
       <v-input
         v-model="username"
         type="text"
@@ -45,6 +73,7 @@
       <code v-html="'model: ' + getStatusString(password.model.value)"></code>
       <code v-html="'validators: ' + getStatusString(password.validators)"></code>
       <code v-html="'status: ' + getStatusString(password.status.value, true)"></code>
+      <code v-html="'messages: ' + getStatusString(password.messages, true)"></code>
       <!-- <code v-html="'formstatus: ' + getStatusString(password.formStatus.value)"></code> -->
     </pre>
   </div>
@@ -104,6 +133,9 @@ export default {
     let { validateForm, validateRef } = useValidate()
     let user = validateForm("user")
     console.log(user)
+
+    let usernameFormField = ref("")
+    let status = ref({})
 
     let username = validateRef(
       "",
@@ -189,6 +221,9 @@ export default {
       atLeastOneDigit: "Please enter at least one numeric character",
       atLeastOneSpecial: "Please enter at least one special character",
     };
+    setTimeout(() => {
+      console.log(status.value)
+    }, 3000)
 
     let getStatusString = (value, highlight) => {
       let s = JSON.stringify(value, null, "&#9;");
@@ -208,6 +243,9 @@ export default {
       languages,
       languagesData,
       getStatusString,
+      usernameFormField,
+      status,
+      log: (v) => console.log(v)
     };
   },
 };

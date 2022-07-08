@@ -43,6 +43,8 @@ import tooltip from "../directives/tooltip.js";
 import vButtonCollapse from "./vButtonCollapse.vue"
 import vButtonDropdown from "./vButtonDropdown.vue"
 
+import vFormField from "./vFormField.vue"
+
 export {
   vButton,
   vTable,
@@ -165,6 +167,8 @@ function install(app) {
 
   app.component("v-button-collapse", vButtonCollapse);
   app.component("v-button-dropdown", vButtonDropdown);
+
+  app.component("v-form-field", vFormField);
 }
 
 export { install as plugin };

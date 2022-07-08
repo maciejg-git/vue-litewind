@@ -45,11 +45,19 @@ let getValidateStatus = ({ validators, status, model }, touched, validated) => {
       status.value.dirty || !!(valueToValidate && !!valueToValidate.length),
   };
 
+  let messages = {};
+
+  let res = null;
+
   for (let [key, value] of Object.entries(validators)) {
     if (globalValidators[key]) {
-      newStatus[key] = globalValidators[key](valueToValidate, value);
+      res = globalValidators[key](valueToValidate, value);
+      newStatus[key] = res === true;
+      if (res !== true) messages[key] = res;
     } else if (typeof validators[key] === "function") {
-      newStatus[key] = validators[key](valueToValidate);
+      res = validators[key](valueToValidate);
+      newStatus[key] = res === true;
+      if (res !== true) messages[key] = res;
     }
     newStatus.valid = newStatus.valid && newStatus[key];
   }
@@ -60,7 +68,7 @@ let getValidateStatus = ({ validators, status, model }, touched, validated) => {
     status.value.wasInvalid ||
     (!newStatus.valid && (status.value.wasValid || touched || validated));
 
-  return newStatus;
+  return { newStatus, messages };
 };
 
 export default function useValidate() {
@@ -95,7 +103,10 @@ export default function useValidate() {
         this.status.value = getValidateStatus(this, false, isFormValidated);
       },
       touch() {
-        this.status.value = getValidateStatus(this, true);
+        let { newStatus, messages } = getValidateStatus(m, true);
+        m.status.value = newStatus;
+        m.messages = messages;
+        // this.status.value = getValidateStatus(this, true);
       },
     };
 
@@ -107,7 +118,9 @@ export default function useValidate() {
       },
       set(value) {
         if (isString(value) || Array.isArray(value)) m.model.value = value;
-        m.status.value = getValidateStatus(m);
+        let { newStatus, messages } = getValidateStatus(m);
+        m.status.value = newStatus;
+        m.messages = messages;
       },
     });
   };

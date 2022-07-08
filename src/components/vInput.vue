@@ -40,7 +40,7 @@
 
 <script>
 // vue
-import { ref, computed, watch } from "vue";
+import { ref, computed, watch, inject } from "vue";
 import vFormText from "./vFormText.vue"
 // composition
 import useStyles from "./composition/use-styles";
@@ -83,7 +83,9 @@ export default {
       return props.block ? "flex" : "inline-flex";
     });
 
-    let localModel = useLocalModel(props, emit);
+    let updateFormFieldValue = inject("update-value", null)
+
+    let localModel = useLocalModel(props, emit, updateFormFieldValue);
 
     let getInputClasses = () => {
       return [
@@ -146,7 +148,6 @@ export default {
                 state.value = "invalid";
               }
             } else {
-              // valid
               if (validateMode === "silent") {
                 if (s.wasInvalid) {
                   state.value = "valid";
