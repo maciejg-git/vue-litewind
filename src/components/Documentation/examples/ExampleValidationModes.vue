@@ -134,8 +134,8 @@ export default {
 
     let username3 = validateRef("", {
       required: true,
-      minLength: 5,
       alphanumeric: true,
+      minLength: 5,
     });
 
     let username4 = validateRef("", {
@@ -174,6 +174,7 @@ export default {
       getStatusString,
     };
   },
+
 };
 </script>
 

@@ -2,20 +2,15 @@
   <div class="flex gap-x-20">
     <div class="basis-1/2">
       <v-form-field
-          v-model="usernameFormField"
-          @update:status="data => status = data"
-        >
-        <v-input
-          type="text"
-          placeholder="Username"
-          block
-          :rules="{
-        required: true,
-        minLength: 5,
-        alphanumeric: true,
-      }"
-          class="w-full"
-        />
+        v-model="usernameFormField"
+        :rules="{
+          required: true,
+          minLength: 5,
+          alphanumeric: true,
+        }"
+        @update:status="(data) => (status = data)"
+      >
+        <v-input type="text" placeholder="Username" block class="w-full" />
       </v-form-field>
     </div>
 
@@ -130,12 +125,12 @@ import useValidate from "../../composition/use-validate-ref";
 export default {
   components: {},
   setup() {
-    let { validateForm, validateRef } = useValidate()
-    let user = validateForm("user")
-    console.log(user)
+    let { validateForm, validateRef } = useValidate();
+    let user = validateForm("user");
+    console.log(user);
 
-    let usernameFormField = ref("")
-    let status = ref({})
+    let usernameFormField = ref("");
+    let status = ref({});
 
     let username = validateRef(
       "",
@@ -222,8 +217,8 @@ export default {
       atLeastOneSpecial: "Please enter at least one special character",
     };
     setTimeout(() => {
-      console.log(status.value)
-    }, 3000)
+      console.log(status.value);
+    }, 3000);
 
     let getStatusString = (value, highlight) => {
       let s = JSON.stringify(value, null, "&#9;");
@@ -245,7 +240,7 @@ export default {
       getStatusString,
       usernameFormField,
       status,
-      log: (v) => console.log(v)
+      log: (v) => console.log(v),
     };
   },
 };

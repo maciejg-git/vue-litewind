@@ -83,7 +83,7 @@ export default {
       return props.block ? "flex" : "inline-flex";
     });
 
-    let updateFormFieldValue = inject("update-value", null)
+    let { updateFormFieldValue, status, touch } = inject("form-field", {})
 
     let localModel = useLocalModel(props, emit, updateFormFieldValue);
 
@@ -165,6 +165,7 @@ export default {
     }
 
     let handleBlur = () => {
+      touch()
       if (props.modelValue._isValidateRef) {
         // if (status.value.touched) return
         props.modelValue.touch();

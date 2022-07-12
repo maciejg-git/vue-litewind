@@ -18,6 +18,7 @@ export default {
     },
     rules: { type: Object, default: {} },
     messages: { type: Object, default: {} },
+    validate: { type: String, default: "on-blur silent" },
   },
   setup(props, { emit }) {
     let defaultStatus = {
@@ -27,20 +28,31 @@ export default {
       validated: false,
     };
 
+    let [validateOn, validateMode] = props.validate.split(" ")
+
     let value = ref(null);
     let status = ref({ ...defaultStatus });
+    let messages = ref({});
+    let state = ref("")
 
     let updateFormFieldValue = (v) => {
       value.value = v;
-      status.value = getValidateStatus(v)
+      let { newStatus, messages } = getValidateStatus(v)
+      status.value = newStatus
       emit("update:status", status.value)
       emit("update:modelValue", v)
     };
 
-    provide("update-value", updateFormFieldValue)
+    let touch = () => {
+      let { newStatus, messages } = getValidateStatus(value.value, true);
+      status.value = newStatus
+      emit("update:status", status.value)
+    };
 
-    let messages = computed(() => {
-      if (props.state === "invalid") return props.messages;
+    provide("form-field", { updateFormFieldValue, status, touch } )
+
+    // let messages = computed(() => {
+      // if (props.state === "invalid") return props.messages;
       // let status = props.status;
       // if (!(status.value.dirty && status.value.touched)) return {};
       //
@@ -53,25 +65,24 @@ export default {
       //     return pm;
       //   }, [])
       // );
-    });
+    // });
 
-    let getValidateStatus = (value) => {
+    let getValidateStatus = (value, touched) => {
       let newStatus = {
         valid: true,
         isRequired: status.value.isRequired,
-        // touched: status.value.touched || !!touched,
+        touched: status.value.touched || !!touched,
         // validated: status.value.validated || !!validated,
-        dirty:
-          status.value.dirty || !!(value && !!value.length),
+        dirty: status.value.dirty || !!(value && !!value.length),
       };
 
       let messages = {};
 
       let res = null;
 
-      for (let [key, value] of Object.entries(props.rules)) {
+      for (let [key, v] of Object.entries(props.rules)) {
         if (globalValidators[key]) {
-          res = globalValidators[key](value, value);
+          res = globalValidators[key](value, v);
           newStatus[key] = res === true;
           if (res !== true) messages[key] = res;
         } else if (typeof validators[key] === "function") {
