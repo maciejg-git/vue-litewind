@@ -216,9 +216,6 @@ export default {
       atLeastOneDigit: "Please enter at least one numeric character",
       atLeastOneSpecial: "Please enter at least one special character",
     };
-    setTimeout(() => {
-      console.log(status.value);
-    }, 3000);
 
     let getStatusString = (value, highlight) => {
       let s = JSON.stringify(value, null, "&#9;");

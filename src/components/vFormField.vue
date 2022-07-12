@@ -30,42 +30,56 @@ export default {
 
     let [validateOn, validateMode] = props.validate.split(" ")
 
-    let value = ref(null);
+    let fieldValue = ref(null);
     let status = ref({ ...defaultStatus });
     let messages = ref({});
     let state = ref("")
 
     let updateFormFieldValue = (v) => {
-      value.value = v;
+      fieldValue.value = v;
       let { newStatus, messages } = getValidateStatus(v)
       status.value = newStatus
+
+      if (!status.value.valid) {
+        if (validateMode === "silent") {
+          if (status.value.wasValid || status.value.wasInvalid) {
+            state.value = "invalid";
+          }
+        }
+        if (validateMode === "eager") {
+          state.value = "invalid";
+        }
+      } else {
+        if (validateMode === "silent") {
+          if (status.value.wasInvalid) {
+            state.value = "valid";
+          }
+        }
+        if (validateMode === "eager") {
+          state.value = "valid";
+        }
+      }
+
       emit("update:status", status.value)
       emit("update:modelValue", v)
     };
 
     let touch = () => {
-      let { newStatus, messages } = getValidateStatus(value.value, true);
+      let { newStatus, messages } = getValidateStatus(fieldValue.value, true);
       status.value = newStatus
+
+      if (!status.value.valid) {
+        state.value = "invalid";
+      } else {
+        if (validateMode === "eager") {
+          state.value = "valid";
+        }
+      }
+
       emit("update:status", status.value)
     };
 
-    provide("form-field", { updateFormFieldValue, status, touch } )
-
-    // let messages = computed(() => {
-      // if (props.state === "invalid") return props.messages;
-      // let status = props.status;
-      // if (!(status.value.dirty && status.value.touched)) return {};
-      //
-      // return Object.fromEntries(
-      //   Object.entries(props.messages).reduce((pm, m) => {
-      //     if (status.value[m[0]] === false) {
-      //       pm.push(m);
-      //       return pm;
-      //     }
-      //     return pm;
-      //   }, [])
-      // );
-    // });
+    provide("form-field", { fieldValue, updateFormFieldValue, touch, status, state, messages } )
 
     let getValidateStatus = (value, touched) => {
       let newStatus = {
@@ -85,19 +99,19 @@ export default {
           res = globalValidators[key](value, v);
           newStatus[key] = res === true;
           if (res !== true) messages[key] = res;
-        } else if (typeof validators[key] === "function") {
-          res = validators[key](value);
+        } else if (typeof props.rules[key] === "function") {
+          res = props.rules[key](value);
           newStatus[key] = res === true;
           if (res !== true) messages[key] = res;
         }
         newStatus.valid = newStatus.valid && newStatus[key];
       }
 
-      // newStatus.wasValid = status.value.wasValid || newStatus.valid;
+      newStatus.wasValid = status.value.wasValid || newStatus.valid;
 
-      // newStatus.wasInvalid =
-      //   status.value.wasInvalid ||
-      //   (!newStatus.valid && (status.value.wasValid || touched || validated));
+      newStatus.wasInvalid =
+        status.value.wasInvalid ||
+        (!newStatus.valid && (status.value.wasValid || touched));
 
       return { newStatus, messages };
     };

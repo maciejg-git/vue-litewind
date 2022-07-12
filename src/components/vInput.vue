@@ -83,14 +83,14 @@ export default {
       return props.block ? "flex" : "inline-flex";
     });
 
-    let { updateFormFieldValue, status, touch } = inject("form-field", {})
+    let { fieldValue, updateFormFieldValue, status, touch, state } = inject("form-field", {})
 
-    let localModel = useLocalModel(props, emit, updateFormFieldValue);
+    let localModel = useLocalModel(props, emit, fieldValue, updateFormFieldValue);
 
     let getInputClasses = () => {
       return [
         classes.input.value,
-        states.input.value && states.input.value[state.value],
+        state && states.input.value && states.input.value[state.value],
         attrs.disabled === "" || attrs.disabled === true
           ? states.input.disabled
           : "",
@@ -99,70 +99,70 @@ export default {
       ];
     };
 
-    let state = ref("");
-
-    if (props.modelValue._isValidateRef) {
-      let { status } = props.modelValue;
-
-      let [validateOn, validateMode] = props.validate.split(" ")
-
-      watch(
-        status,
-        (s, prev) => {
-          let touched = (s.touched !== prev.touched) && !s.validated;
-          let validated = s.validated !== prev.validated;
-          let immediate =
-            s.touched || s.validated || validateOn === "immediate";
-
-          if (validated) {
-            if (!s.valid) {
-              state.value = "invalid";
-            } else {
-              if (validateMode === "eager") {
-                state.value = "valid";
-              }
-            }
-            return;
-          }
-
-          if (touched) {
-            if (!s.valid) {
-              state.value = "invalid";
-            } else {
-              if (validateMode === "eager") {
-                state.value = "valid";
-              }
-            }
-            return;
-          }
-
-          if (immediate) {
-            if (!s.valid) {
-              if (validateMode === "silent") {
-                if (s.wasValid || s.wasInvalid) {
-                  state.value = "invalid";
-                }
-                return;
-              }
-              if (validateMode === "eager") {
-                state.value = "invalid";
-              }
-            } else {
-              if (validateMode === "silent") {
-                if (s.wasInvalid) {
-                  state.value = "valid";
-                }
-                return;
-              }
-              if (validateMode === "eager") {
-                state.value = "valid";
-              }
-            }
-          }
-        },
-        { deep: true }
-      );
-    }
+    // let state = ref("");
+    //
+    // if (props.modelValue._isValidateRef) {
+    //   let { status } = props.modelValue;
+    //
+    //   let [validateOn, validateMode] = props.validate.split(" ")
+    //
+    //   watch(
+    //     status,
+    //     (s, prev) => {
+    //       let touched = (s.touched !== prev.touched) && !s.validated;
+    //       let validated = s.validated !== prev.validated;
+    //       let immediate =
+    //         s.touched || s.validated || validateOn === "immediate";
+    //
+    //       if (validated) {
+    //         if (!s.valid) {
+    //           state.value = "invalid";
+    //         } else {
+    //           if (validateMode === "eager") {
+    //             state.value = "valid";
+    //           }
+    //         }
+    //         return;
+    //       }
+    //
+    //       if (touched) {
+    //         if (!s.valid) {
+    //           state.value = "invalid";
+    //         } else {
+    //           if (validateMode === "eager") {
+    //             state.value = "valid";
+    //           }
+    //         }
+    //         return;
+    //       }
+    //
+    //       if (immediate) {
+    //         if (!s.valid) {
+    //           if (validateMode === "silent") {
+    //             if (s.wasValid || s.wasInvalid) {
+    //               state.value = "invalid";
+    //             }
+    //             return;
+    //           }
+    //           if (validateMode === "eager") {
+    //             state.value = "invalid";
+    //           }
+    //         } else {
+    //           if (validateMode === "silent") {
+    //             if (s.wasInvalid) {
+    //               state.value = "valid";
+    //             }
+    //             return;
+    //           }
+    //           if (validateMode === "eager") {
+    //             state.value = "valid";
+    //           }
+    //         }
+    //       }
+    //     },
+    //     { deep: true }
+    //   );
+    // }
 
     let handleBlur = () => {
       touch()
