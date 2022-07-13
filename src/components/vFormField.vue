@@ -8,7 +8,6 @@
 // vue
 import { ref, computed, provide } from "vue";
 import { globalValidators } from "../validators";
-import { isString } from "../tools";
 
 export default {
   props: {
@@ -28,58 +27,65 @@ export default {
       validated: false,
     };
 
-    let [validateOn, validateMode] = props.validate.split(" ")
+    let [validateOn, validateMode] = props.validate.split(" ");
 
-    let fieldValue = ref(null);
+    let fieldValue = ref("");
     let status = ref({ ...defaultStatus });
     let messages = ref({});
-    let state = ref("")
+    let state = ref("");
+    let isRequired = props.rules && props.rules.required
 
     let updateFormFieldValue = (v) => {
       fieldValue.value = v;
-      let { newStatus, messages } = getValidateStatus(v)
-      status.value = newStatus
 
-      if (!status.value.valid) {
-        if (validateMode === "silent") {
-          if (status.value.wasValid || status.value.wasInvalid) {
+      let { newStatus, messages } = getValidateStatus(v);
+
+      status.value = newStatus;
+      messages.value = messages;
+
+      if (status.value.touched || validateOn === "eager") {
+        if (!status.value.valid) {
+          if (validateMode === "silent") {
+            if (status.value.wasValid || status.value.wasInvalid) {
+              state.value = "invalid";
+            }
+          }
+          if (validateMode === "eager") {
             state.value = "invalid";
           }
-        }
-        if (validateMode === "eager") {
-          state.value = "invalid";
-        }
-      } else {
-        if (validateMode === "silent") {
-          if (status.value.wasInvalid) {
+        } else {
+          if (validateMode === "silent") {
+            if (status.value.wasInvalid) {
+              state.value = "valid";
+            }
+          }
+          if (validateMode === "eager") {
             state.value = "valid";
           }
         }
-        if (validateMode === "eager") {
-          state.value = "valid";
-        }
       }
 
-      emit("update:status", status.value)
-      emit("update:modelValue", v)
+      emit("update:status", status.value);
+      emit("update:modelValue", v);
     };
 
     let touch = () => {
       let { newStatus, messages } = getValidateStatus(fieldValue.value, true);
-      status.value = newStatus
+      status.value = newStatus;
+      messages.value = messages;
 
-      if (!status.value.valid) {
-        state.value = "invalid";
-      } else {
-        if (validateMode === "eager") {
-          state.value = "valid";
+      if (status.value.dirty || props.rules.required) {
+        if (!status.value.valid) {
+          state.value = "invalid";
+        } else {
+          if (validateMode === "eager") {
+            state.value = "valid";
+          }
         }
       }
 
-      emit("update:status", status.value)
+      emit("update:status", status.value);
     };
-
-    provide("form-field", { fieldValue, updateFormFieldValue, touch, status, state, messages } )
 
     let getValidateStatus = (value, touched) => {
       let newStatus = {
@@ -89,6 +95,10 @@ export default {
         // validated: status.value.validated || !!validated,
         dirty: status.value.dirty || !!(value && !!value.length),
       };
+
+      if (props.rules.required) {
+        newStatus.required = globalValidators.required(value)
+      }
 
       let messages = {};
 
@@ -115,6 +125,15 @@ export default {
 
       return { newStatus, messages };
     };
+
+    provide("form-field", {
+      fieldValue,
+      updateFormFieldValue,
+      touch,
+      status,
+      state,
+      messages,
+    });
 
     return {};
   },

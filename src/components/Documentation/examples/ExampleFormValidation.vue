@@ -24,6 +24,28 @@
 
   <div class="flex gap-x-20">
     <div class="basis-1/2">
+      <v-form-field
+        v-model="usernameFormField"
+        :rules="{
+          minLength: 5,
+          alphanumeric: true,
+        }"
+        @update:status="(data) => (status = data)"
+      >
+        <v-input type="text" placeholder="Username" block class="w-full" />
+      </v-form-field>
+    </div>
+
+    <pre class="m-0">
+      <code v-html="'model: ' + getStatusString(usernameFormField)"></code>
+      <code v-html="'validators: ' + getStatusString(username.validators)"></code>
+      <code v-html="'status: ' + getStatusString(status, true)"></code>
+      <!-- <code v-html="'formstatus: ' + getStatusString(username.formStatus.value)"></code> -->
+    </pre>
+  </div>
+
+  <div class="flex gap-x-20">
+    <div class="basis-1/2">
       <v-input
         v-model="username"
         type="text"
