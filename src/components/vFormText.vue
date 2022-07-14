@@ -1,6 +1,7 @@
 <template>
   <transition name="fade">
     <div
+      v-if="state === 'invalid'"
       :class="[
         classes.formText.value,
         states.formText.value && states.formText.value.invalid,
@@ -22,7 +23,7 @@
 
 <script>
 // vue
-import { computed } from "vue";
+import { computed, inject } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 // props
@@ -34,7 +35,7 @@ export default {
     status: { type: Object, default: {} },
     inline: { type: Boolean, default: false },
     // visibleStates: { type: String, default: "default,valid,invalid" },
-    messages: { type: Object, default: {} },
+    // messages: { type: Object, default: {} },
     styleFormText: { type: [String, Array], default: "" },
     ...sharedStyleProps("form-text"),
   },
@@ -50,15 +51,17 @@ export default {
       },
     });
 
+    let { state, messages } = inject("form-field", {})
+
     let visible = computed(() => {
       // return props.visibleStates
       //   .split(",")
       //   .includes(props.state === "" ? "default" : props.state);
     });
 
-    let messages = computed(() => {
-      if (props.state === "invalid")
-      return props.messages
+    // let messages = computed(() => {
+      // if (props.state === "invalid")
+      // return props.messages
       // let status = props.status;
       // if (!(status.value.dirty && status.value.touched)) return {};
       //
@@ -71,12 +74,13 @@ export default {
       //     return pm;
       //   }, [])
       // );
-    });
+    // });
 
     return {
       classes,
       states,
       visible,
+      state,
       messages,
     };
   },

@@ -33,17 +33,16 @@ export default {
     let status = ref({ ...defaultStatus });
     let messages = ref({});
     let state = ref("");
-    let isRequired = props.rules && props.rules.required
 
     let updateFormFieldValue = (v) => {
       fieldValue.value = v;
 
-      let { newStatus, messages } = getValidateStatus(v);
+      let { newStatus, newMessages } = getValidateStatus(v);
 
       status.value = newStatus;
-      messages.value = messages;
+      messages.value = newMessages;
 
-      if (status.value.touched || validateOn === "eager") {
+      if (status.value.touched || validateOn === "immediate") {
         if (!status.value.valid) {
           if (validateMode === "silent") {
             if (status.value.wasValid || status.value.wasInvalid) {
@@ -70,9 +69,9 @@ export default {
     };
 
     let touch = () => {
-      let { newStatus, messages } = getValidateStatus(fieldValue.value, true);
+      let { newStatus, newMessages } = getValidateStatus(fieldValue.value, true);
       status.value = newStatus;
-      messages.value = messages;
+      messages.value = newMessages;
 
       if (status.value.dirty || props.rules.required) {
         if (!status.value.valid) {
@@ -96,11 +95,11 @@ export default {
         dirty: status.value.dirty || !!(value && !!value.length),
       };
 
-      if (props.rules.required) {
+      if (props.rules && props.rules.required) {
         newStatus.required = globalValidators.required(value)
       }
 
-      let messages = {};
+      let newMessages = {};
 
       let res = null;
 
@@ -108,11 +107,11 @@ export default {
         if (globalValidators[key]) {
           res = globalValidators[key](value, v);
           newStatus[key] = res === true;
-          if (res !== true) messages[key] = res;
+          if (res !== true) newMessages[key] = res;
         } else if (typeof props.rules[key] === "function") {
           res = props.rules[key](value);
           newStatus[key] = res === true;
-          if (res !== true) messages[key] = res;
+          if (res !== true) newMessages[key] = res;
         }
         newStatus.valid = newStatus.valid && newStatus[key];
       }
@@ -123,7 +122,7 @@ export default {
         status.value.wasInvalid ||
         (!newStatus.valid && (status.value.wasValid || touched));
 
-      return { newStatus, messages };
+      return { newStatus, newMessages };
     };
 
     provide("form-field", {
@@ -134,6 +133,8 @@ export default {
       state,
       messages,
     });
+
+    emit("update:status", status.value)
 
     return {};
   },
