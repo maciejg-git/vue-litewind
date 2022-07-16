@@ -1,127 +1,73 @@
 <template>
   <div class="flex gap-x-20">
     <div class="basis-1/2">
-      <v-form-field
-        v-model="usernameFormField"
+      <v-input 
+         type="text" 
+         placeholder="Username"
+         block 
+         class="w-full"
+        v-model="username"
         :rules="{
           required: true,
           minLength: 5,
           alphanumeric: true,
         }"
-        @update:status="(data) => (status = data)"
-      >
-        <v-input type="text" placeholder="Username" block class="w-full" />
-      </v-form-field>
+        @update:status="(data) => (usernameStatus = data)"
+        >
+        </v-input>
     </div>
-
     <pre class="m-0">
-      <code v-html="'model: ' + getStatusString(usernameFormField)"></code>
-      <code v-html="'validators: ' + getStatusString(username.validators)"></code>
-      <code v-html="'status: ' + getStatusString(status, true)"></code>
+      <code v-html="'model: ' + getStatusString(username)"></code>
+      <!-- <code v-html="'validators: ' + getStatusString(username.validators)"></code> -->
+      <code v-html="'status: ' + getStatusString(usernameStatus, true)"></code>
       <!-- <code v-html="'formstatus: ' + getStatusString(username.formStatus.value)"></code> -->
     </pre>
-  </div>
-
-  <div class="flex gap-x-20">
-    <div class="basis-1/2">
-      <v-form-field
-        v-model="usernameFormField"
-        :rules="{
-          minLength: 5,
-          alphanumeric: true,
-        }"
-        @update:status="(data) => (status = data)"
-      >
-        <v-input type="text" placeholder="Username" block class="w-full" />
-      </v-form-field>
     </div>
-
-    <pre class="m-0">
-      <code v-html="'model: ' + getStatusString(usernameFormField)"></code>
-      <code v-html="'validators: ' + getStatusString(username.validators)"></code>
-      <code v-html="'status: ' + getStatusString(status, true)"></code>
-      <!-- <code v-html="'formstatus: ' + getStatusString(username.formStatus.value)"></code> -->
-    </pre>
-  </div>
-
-  <div class="flex gap-x-20">
-    <div class="basis-1/2">
-      <v-input
-        v-model="username"
-        type="text"
-        placeholder="Username"
-        block
-        class="w-full"
-      />
-      <v-form-text
-        :status="username.status"
-        :messages="messages"
-        class="absolute"
-      ></v-form-text>
-    </div>
-
-    <pre class="m-0">
-      <code v-html="'model: ' + getStatusString(username.model.value)"></code>
-      <code v-html="'validators: ' + getStatusString(username.validators)"></code>
-      <code v-html="'status: ' + getStatusString(username.status.value, true)"></code>
-      <!-- <code v-html="'formstatus: ' + getStatusString(username.formStatus.value)"></code> -->
-    </pre>
-  </div>
 
   <v-divider class="my-10" />
 
   <div class="flex gap-x-20">
     <div class="basis-1/2">
-      <v-input
+      <v-input 
+         type="text" 
+         placeholder="Username"
+         block 
+         class="w-full"
         v-model="password"
-        type="text"
-        placeholder="Password"
-        block
-        class="w-full"
-      />
-      <v-form-text
-        :status="password.status"
-        :messages="messages"
-        class="absolute"
-      ></v-form-text>
+        :rules="{
+          required: true,
+          minLength: 8,
+          atLeastOneUppercase: true,
+          atLeastOneLowercase: true,
+          atLeastOneSpecial: true,
+          atLeastOneDigit: true,
+        }"
+        @update:status="(data) => (passwordStatus = data)"
+        >
+        </v-input>
     </div>
-
     <pre class="m-0">
-      <code v-html="'model: ' + getStatusString(password.model.value)"></code>
-      <code v-html="'validators: ' + getStatusString(password.validators)"></code>
-      <code v-html="'status: ' + getStatusString(password.status.value, true)"></code>
-      <code v-html="'messages: ' + getStatusString(password.messages, true)"></code>
-      <!-- <code v-html="'formstatus: ' + getStatusString(password.formStatus.value)"></code> -->
+      <code v-html="'model: ' + getStatusString(password)"></code>
+      <!-- <code v-html="'validators: ' + getStatusString(username.validators)"></code> -->
+      <code v-html="'status: ' + getStatusString(passwordStatus, true)"></code>
+      <!-- <code v-html="'formstatus: ' + getStatusString(username.formStatus.value)"></code> -->
     </pre>
-  </div>
+    </div>
 
   <v-divider class="my-10" />
 
   <div class="flex gap-x-20">
     <div class="basis-1/2">
-      <v-select v-model="option" :options="options"></v-select>
-      <v-form-text
-        :status="option.status"
-        :messages="messages"
-        class="absolute"
-      ></v-form-text>
-    </div>
-
-    <pre class="m-0">
-      <code v-html="'model: ' + getStatusString(option.model.value)"></code>
-      <code v-html="'validators: ' + getStatusString(option.validators)"></code>
-      <code v-html="'status: ' + getStatusString(option.status.value, true)"></code>
-      <!-- <code v-html="'formstatus: ' + getStatusString(option.formStatus.value)"></code> -->
-    </pre>
-  </div>
-
-  <v-divider class="my-10" />
-
-  <div class="flex gap-x-20">
-    <div class="basis-1/2">
+      <v-checkbox-group
+        v-model="languages"
+        :rules="{
+          required: true,
+          minLength: 3,
+        }"
+        @update:status="(data) => (languagesStatus = data)"
+      >
       <div v-for="l in languagesData" class="flex items-center my-2">
         <v-checkbox
-          v-model="languages"
           :value="l"
           :id="'language-' + l"
         ></v-checkbox>
@@ -129,15 +75,21 @@
           {{ l }}
         </label>
       </div>
+      <v-form-text
+        class="absolute"
+      ></v-form-text>
+      </v-checkbox-group>
     </div>
 
     <pre class="m-0">
-      <code v-html="'model: ' + getStatusString(languages.model.value)"></code>
-      <code v-html="'validators: ' + getStatusString(languages.validators)"></code>
-      <code v-html="'status: ' + getStatusString(languages.status.value, true)"></code>
+      <code v-html="'model: ' + getStatusString(languages)"></code>
+      <!-- <code v-html="'validators: ' + getStatusString(languages.validators)"></code> -->
+      <code v-html="'status: ' + getStatusString(languagesStatus, true)"></code>
       <!-- <code v-html="'formstatus: ' + getStatusString(languages.formStatus.value)"></code> -->
     </pre>
   </div>
+
+  <v-divider class="my-10" />
 </template>
 
 <script>
@@ -151,56 +103,14 @@ export default {
     let user = validateForm("user");
     console.log(user);
 
-    let usernameFormField = ref("");
-    let status = ref({});
+    let username = ref("");
+    let usernameStatus = ref({});
 
-    let username = validateRef(
-      "",
-      {
-        required: true,
-        minLength: 5,
-        alphanumeric: true,
-      },
-      user
-    );
+    let password = ref("");
+    let passwordStatus = ref({});
 
-    let email = validateRef(
-      "",
-      {
-        required: true,
-        email: true,
-      },
-      user
-    );
-
-    let password = validateRef(
-      "",
-      {
-        required: true,
-        minLength: 8,
-        atLeastOneUppercase: true,
-        atLeastOneLowercase: true,
-        atLeastOneSpecial: true,
-        atLeastOneDigit: true,
-      },
-      user
-    );
-
-    let option = validateRef(
-      "",
-      {
-        required: true,
-      },
-      user
-    );
-
-    let languages = validateRef(
-      [],
-      {
-        required: true,
-      },
-      user
-    );
+    let languages = ref([])
+    let languagesStatus = ref({});
 
     let options = ref([
       {
@@ -226,19 +136,6 @@ export default {
       "japanese",
     ]);
 
-    let messages = {
-      required: "Please enter a value for this field",
-      alpha: "Please enter only letters",
-      numeric: "Please enter only numbers",
-      alphanumeric: "Please enter only letters or numbers",
-      minLength: "Please enter at least 3 characters",
-      email: "Please enter valid email address",
-      atLeastOneUppercase: "Please enter at least one uppercase character",
-      atLeastOneLowercase: "Please enter at least one lowercase character",
-      atLeastOneDigit: "Please enter at least one numeric character",
-      atLeastOneSpecial: "Please enter at least one special character",
-    };
-
     let getStatusString = (value, highlight) => {
       let s = JSON.stringify(value, null, "&#9;");
       if (!highlight) return s;
@@ -249,17 +146,14 @@ export default {
 
     return {
       username,
-      email,
+      usernameStatus,
       password,
-      messages,
-      option,
+      passwordStatus,
       options,
       languages,
+      languagesStatus,
       languagesData,
       getStatusString,
-      usernameFormField,
-      status,
-      log: (v) => console.log(v),
     };
   },
 };

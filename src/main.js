@@ -15,6 +15,7 @@ import "./styles/components.css"
 import "./components/Documentation/Documentation.css"
 // tools
 import registerIcon from "./register-icon"
+import { messages } from "./validators"
 
 let app = createApp(App);
 

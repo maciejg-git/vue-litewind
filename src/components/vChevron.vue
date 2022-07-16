@@ -57,7 +57,7 @@ export default {
     let icon = computed(() => {
       return props.icon ? props.icon : (props.triangle ? chevron.triangle[initial.value] : chevron.chevron[initial.value])
     })
-console.log(icon)
+
     let chevron = {
       chevron: {
         right: vChevronRightIcon,

@@ -4,13 +4,13 @@
     v-bind="$attrs"
     type="checkbox"
     :class="getCheckBoxClasses()"
-      @blur="handleBlur"
+    @blur="handleBlur"
   />
 </template>
 
 <script>
 // vue
-import { computed } from "vue";
+import { computed, inject } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
@@ -31,7 +31,17 @@ export default {
       },
     });
 
-    let localModel = useLocalModel(props, emit);
+    let { fieldValue, updateValue, touch, state } = inject(
+      "form-field",
+      {}
+    );
+
+    let localModel = useLocalModel(
+      props,
+      emit,
+      updateValue,
+      fieldValue
+    );
 
     let getCheckBoxClasses = () => {
       return [
@@ -43,14 +53,7 @@ export default {
       ];
     };
 
-    let state = computed(() => {
-    });
-
-    let handleBlur = () => {
-      if (props.modelValue && props.modelValue._isValidateRef) {
-        props.modelValue.touch();
-      }
-    };
+    let handleBlur = () => touch();
 
     return {
       classes,

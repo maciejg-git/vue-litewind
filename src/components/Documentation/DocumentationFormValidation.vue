@@ -5,7 +5,6 @@
   <section>
     <h4>Usage</h4>
     <p>
-    To validate forms Vue-wind uses extended refs.
     </p>
   </section>
 
@@ -22,10 +21,10 @@
     <h4>Example - validation modes</h4>
     <p>Validation modes allows control over when to display validation results and how to display them. Currently there are 4 of them: 
     <ul>
-      <li class="my-2"><code class="code-text">"on-blur silent"</code> updates input state only after it loses focus. After focusing out update state only if validation result is invalid. Valid values do not change input state.</li>
+      <li class="my-2"><code class="code-text">"on-blur silent"</code> updates input state only after it loses focus. If after focusing out validation result is invalid set state to invalid. Valid values do not change input state.</li>
       <li class="my-2"><code class="code-text">"on-blur eager"</code> as above but also changes state if input is valid.</li>
-      <li class="my-2"><code class="code-text">"immediate silent"</code> start updating state immediately after first input. Invalid states are ignored until state is at last once valid.</li>
-      <li class="my-2"><code class="code-text">"immediate eager"</code> as above but makes input invalid immededietely if value is invalid.</li>
+      <li class="my-2"><code class="code-text">"immediate silent"</code> start updating state immediately after first input. Invalid states are ignored until value is at last once valid.</li>
+      <li class="my-2"><code class="code-text">"immediate eager"</code> as above but state is updated immedietely for invalid and valid values.</li>
     </ul>
     </p>
     <div class="example">

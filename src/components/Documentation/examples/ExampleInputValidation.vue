@@ -9,11 +9,11 @@
             block
             class="w-full"
           />
-          <v-form-text
-            :status="username.status"
-            :messages="messages"
-            class="absolute"
-          ></v-form-text>
+          <!-- <v-form-text -->
+          <!--   :status="username.status" -->
+          <!--   :messages="messages" -->
+          <!--   class="absolute" -->
+          <!-- ></v-form-text> -->
         </div>
         
         <div>
@@ -24,11 +24,11 @@
             block
             class="w-full"
           />
-          <v-form-text
-            :status="email.status"
-            :messages="messages"
-            class="absolute"
-          ></v-form-text>
+          <!-- <v-form-text -->
+          <!--   :status="email.status" -->
+          <!--   :messages="messages" -->
+          <!--   class="absolute" -->
+          <!-- ></v-form-text> -->
         </div>
         
         <div>
@@ -39,29 +39,29 @@
             block
             class="w-full"
           />
-          <v-form-text
-            :status="password.status"
-            :messages="messages"
-            class="absolute"
-          ></v-form-text>
+          <!-- <v-form-text -->
+          <!--   :status="password.status" -->
+          <!--   :messages="messages" -->
+          <!--   class="absolute" -->
+          <!-- ></v-form-text> -->
         </div>
         
         <div>
           <v-select v-model="option" :options="options"></v-select>
-          <v-form-text
-            :status="option.status"
-            :messages="messages"
-            class="absolute"
-          ></v-form-text>
+          <!-- <v-form-text -->
+          <!--   :status="option.status" -->
+          <!--   :messages="messages" -->
+          <!--   class="absolute" -->
+          <!-- ></v-form-text> -->
         </div>
         
         <div>
           <div v-for="l in languagesData" class="flex items-center my-2">
-            <v-checkbox
-              v-model="languages"
-              :value="l"
-              :id="'language-' + l"
-            ></v-checkbox>
+            <!-- <v-checkbox -->
+            <!--   v-model="languages" -->
+            <!--   :value="l" -->
+            <!--   :id="'language-' + l" -->
+            <!-- ></v-checkbox> -->
             <label :for="'language-' + l" class="ml-3">
               {{ l }}
             </label>

@@ -1,5 +1,5 @@
-let messages = {
-  required: "Please enter a value for this field",
+export let messages = {
+  required: "This field is required",
   alpha: "Please enter only letters",
   numeric: "Please enter only numbers",
   alphanumeric: "Please enter only letters or numbers",
@@ -18,6 +18,9 @@ export let globalValidators = {
   required: (value) => {
     if (Array.isArray(value)) return !!value.length || messages.required;
     return !!value || messages.required;
+  },
+  minLength: (value, length) => {
+    return value.length >= length || messages.minLength;
   },
   maxLength: (value, length) => {
     return value.length <= length || messages.maxLength;
@@ -41,9 +44,6 @@ export let globalValidators = {
     return /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/.test(
       value
     ) || messages.email;
-  },
-  minLength: (value, length) => {
-    return value.length >= length || messages.minLength;
   },
   atLeastOneUppercase: (value) => {
     return /[A-Z]/.test(value) || messages.atLeastOneUppercase;

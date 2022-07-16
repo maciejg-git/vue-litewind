@@ -44,6 +44,7 @@ import vButtonCollapse from "./vButtonCollapse.vue"
 import vButtonDropdown from "./vButtonDropdown.vue"
 
 import vFormField from "./vFormField.vue"
+import vCheckboxGroup from "./vCheckboxGroup.vue"
 
 export {
   vButton,
@@ -169,6 +170,7 @@ function install(app) {
   app.component("v-button-dropdown", vButtonDropdown);
 
   app.component("v-form-field", vFormField);
+  app.component("v-checkbox-group", vCheckboxGroup);
 }
 
 export { install as plugin };

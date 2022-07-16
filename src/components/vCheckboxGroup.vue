@@ -25,10 +25,7 @@ export default {
       dirty: false,
       valid: false,
       validated: false,
-      // required: null,
     };
-
-    let [validateOn, validateMode] = props.validate.split(" ");
 
     let fieldValue = ref(props.modelValue);
     let status = ref({ ...defaultStatus });
@@ -36,45 +33,18 @@ export default {
     let state = ref("");
 
     let updateFieldState = () => {
-      console.log('update')
-      if (status.value.touched || validateOn === "immediate") {
-        if (!status.value.valid) {
-          if (validateMode === "silent") {
-            if (status.value.wasValid || status.value.wasInvalid) {
-              state.value = "invalid";
-            }
-          }
-          if (validateMode === "eager") {
-            state.value = "invalid";
-          }
-        } else {
-          if (validateMode === "silent") {
-            if (status.value.wasInvalid) {
-              state.value = "valid";
-            }
-          }
-          if (validateMode === "eager") {
-            state.value = "valid";
-          }
-        }
-      }
-    }
-
-    let updateTouchFieldState = () => {
-      console.log('touched')
-      if (status.value.dirty || props.rules.required) {
-        if (!status.value.valid) {
+      if (!status.value.valid) {
+        if (status.value.wasValid || status.value.wasInvalid) {
           state.value = "invalid";
-        } else {
-          if (validateMode === "eager") {
-            state.value = "valid";
-          }
+        }
+      } else {
+        if (status.value.wasInvalid) {
+          state.value = "valid";
         }
       }
-    }
+    };
 
-    let updateFormFieldValue = (v) => {
-      console.log('update status')
+    let updateValue = (v) => {
       fieldValue.value = v;
 
       let { newStatus, newMessages } = getValidateStatus(v);
@@ -82,21 +52,15 @@ export default {
       status.value = newStatus;
       messages.value = newMessages;
 
-      updateFieldState()
+      updateFieldState();
 
       emit("update:status", status.value);
       emit("update:modelValue", v);
     };
 
     let touch = () => {
-      let { newStatus, newMessages } = getValidateStatus(fieldValue.value, true);
-      status.value = newStatus;
-      messages.value = newMessages;
-
-      updateTouchFieldState()
-
-      emit("update:status", status.value);
-    };
+      status.value.touched = true
+    }
 
     let getValidateStatus = (value, touched) => {
       let newStatus = {
@@ -126,22 +90,19 @@ export default {
       newStatus.wasValid = status.value.wasValid || newStatus.valid;
 
       newStatus.wasInvalid =
-        status.value.wasInvalid ||
-        (!newStatus.valid && (status.value.wasValid || touched));
+        status.value.wasInvalid || (!newStatus.valid && status.value.wasValid);
 
       return { newStatus, newMessages };
     };
 
     provide("form-field", {
       fieldValue,
-      updateFormFieldValue,
+      updateValue,
       touch,
-      status,
       state,
-      messages,
     });
 
-    emit("update:status", status.value)
+    emit("update:status", status.value);
 
     return {};
   },

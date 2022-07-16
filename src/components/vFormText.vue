@@ -1,7 +1,6 @@
 <template>
   <transition name="fade">
     <div
-      v-if="state === 'invalid'"
       :class="[
         classes.formText.value,
         states.formText.value && states.formText.value.invalid,
@@ -9,7 +8,7 @@
     >
       <slot name="default" :state="state">
         <transition-group name="fade">
-          <div v-for="m in messages" :key="m">
+          <div v-for="m in formText" :key="m">
             <slot name="prepend-message"></slot>
             <slot name="message" :message="m">
               {{ m }}
@@ -34,8 +33,7 @@ export default {
     state: { type: [String, Boolean], default: "" },
     status: { type: Object, default: {} },
     inline: { type: Boolean, default: false },
-    // visibleStates: { type: String, default: "default,valid,invalid" },
-    // messages: { type: Object, default: {} },
+    messages: { type: Object, default: {} },
     styleFormText: { type: [String, Array], default: "" },
     ...sharedStyleProps("form-text"),
   },
@@ -51,20 +49,15 @@ export default {
       },
     });
 
-    let { state, messages } = inject("form-field", {})
+    // let { state, status, messages } = inject("form-field", {})
 
-    let visible = computed(() => {
-      // return props.visibleStates
-      //   .split(",")
-      //   .includes(props.state === "" ? "default" : props.state);
-    });
+    let formText = computed(() => {
+      if (props.state === "invalid") {
+        if (props.status === false)
+          return [props.messages.required]
+        else return props.messages
+      }
 
-    // let messages = computed(() => {
-      // if (props.state === "invalid")
-      // return props.messages
-      // let status = props.status;
-      // if (!(status.value.dirty && status.value.touched)) return {};
-      //
       // return Object.fromEntries(
       //   Object.entries(props.messages).reduce((pm, m) => {
       //     if (status.value[m[0]] === false) {
@@ -74,14 +67,14 @@ export default {
       //     return pm;
       //   }, [])
       // );
-    // });
+    });
 
     return {
       classes,
       states,
-      visible,
-      state,
-      messages,
+      // state,
+      // messages,
+      formText,
     };
   },
 };

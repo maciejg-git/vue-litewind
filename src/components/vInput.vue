@@ -34,19 +34,28 @@
         </svg>
       </button>
     </div>
-    <v-form-text v-if="modelValue._isValidateRef" :state="state" :status="modelValue.status" :messages="modelValue.messages"></v-form-text>
   </div>
+  <slot name="form-text">
+    <v-form-text
+      :messages="messages"
+      :state="state"
+      :status="status"
+      class="absolute"
+    ></v-form-text>
+  </slot>
 </template>
 
 <script>
 // vue
 import { ref, computed, watch, inject } from "vue";
-import vFormText from "./vFormText.vue"
+import vFormText from "./vFormText.vue";
 // composition
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
 // props
 import { sharedStyleProps, sharedFormProps } from "../shared-props";
+
+import { globalValidators } from "../validators";
 
 export default {
   props: {
@@ -61,6 +70,8 @@ export default {
     styleClearButton: { type: [String, Array], default: "" },
     ...sharedFormProps(null, { icon: true, clearable: true }),
     ...sharedStyleProps("input"),
+
+    rules: { type: Object, default: {} },
   },
   components: {
     vFormText,
@@ -83,9 +94,121 @@ export default {
       return props.block ? "flex" : "inline-flex";
     });
 
-    let { fieldValue, updateFormFieldValue, status, touch, state } = inject("form-field", {})
+    // validate
 
-    let localModel = useLocalModel(props, emit, fieldValue, updateFormFieldValue);
+    let defaultStatus = {
+      touched: false,
+      dirty: false,
+      valid: false,
+      validated: false,
+      // required: null,
+    };
+
+    let [validateOn, validateMode] = props.validate.split(" ");
+
+    let status = ref({ ...defaultStatus });
+    let messages = ref({});
+    let state = ref("");
+
+    let updateFieldState = () => {
+      if (status.value.touched || validateOn === "immediate") {
+        if (!status.value.valid) {
+          if (validateMode === "silent") {
+            if (status.value.wasValid || status.value.wasInvalid) {
+              state.value = "invalid";
+            }
+          }
+          if (validateMode === "eager") {
+            state.value = "invalid";
+          }
+        } else {
+          if (validateMode === "silent") {
+            if (status.value.wasInvalid) {
+              state.value = "valid";
+            }
+          }
+          if (validateMode === "eager") {
+            state.value = "valid";
+          }
+        }
+      }
+    };
+
+    let updateTouchFieldState = () => {
+      if (status.value.dirty || props.rules.required) {
+        if (!status.value.valid) {
+          state.value = "invalid";
+        } else {
+          if (validateMode === "eager") {
+            state.value = "valid";
+          }
+        }
+      }
+    };
+
+    let updateValue = (v) => {
+      // fieldValue.value = v;
+
+      let { newStatus, newMessages } = getValidateStatus(v);
+
+      status.value = newStatus;
+      messages.value = newMessages;
+
+      updateFieldState();
+
+      emit("update:status", status.value);
+    };
+
+    let touch = () => {
+      let { newStatus, newMessages } = getValidateStatus(
+        localModel.value,
+        true
+      );
+      status.value = newStatus;
+      messages.value = newMessages;
+
+      updateTouchFieldState();
+
+      emit("update:status", status.value);
+    };
+
+    let getValidateStatus = (value, touched) => {
+      let newStatus = {
+        valid: true,
+        touched: status.value.touched || !!touched,
+        // validated: status.value.validated || !!validated,
+        dirty: status.value.dirty || !!(value && !!value.length),
+      };
+
+      let newMessages = {};
+
+      let res = null;
+
+      for (let [key, v] of Object.entries(props.rules)) {
+        if (globalValidators[key]) {
+          res = globalValidators[key](value, v);
+          newStatus[key] = res === true;
+          if (res !== true) newMessages[key] = res;
+        } else if (typeof props.rules[key] === "function") {
+          res = props.rules[key](value);
+          newStatus[key] = res === true;
+          if (res !== true) newMessages[key] = res;
+        }
+        newStatus.valid = newStatus.valid && newStatus[key];
+      }
+
+      newStatus.wasValid = status.value.wasValid || newStatus.valid;
+
+      newStatus.wasInvalid =
+        status.value.wasInvalid ||
+        (!newStatus.valid && (status.value.wasValid || touched));
+
+      return { newStatus, newMessages };
+    };
+
+    // let { fieldValue, updateFormFieldValue, status, touch, state } = inject("form-field", {})
+
+    let localModel = useLocalModel(props, emit, updateValue);
 
     let getInputClasses = () => {
       return [
@@ -99,77 +222,8 @@ export default {
       ];
     };
 
-    // let state = ref("");
-    //
-    // if (props.modelValue._isValidateRef) {
-    //   let { status } = props.modelValue;
-    //
-    //   let [validateOn, validateMode] = props.validate.split(" ")
-    //
-    //   watch(
-    //     status,
-    //     (s, prev) => {
-    //       let touched = (s.touched !== prev.touched) && !s.validated;
-    //       let validated = s.validated !== prev.validated;
-    //       let immediate =
-    //         s.touched || s.validated || validateOn === "immediate";
-    //
-    //       if (validated) {
-    //         if (!s.valid) {
-    //           state.value = "invalid";
-    //         } else {
-    //           if (validateMode === "eager") {
-    //             state.value = "valid";
-    //           }
-    //         }
-    //         return;
-    //       }
-    //
-    //       if (touched) {
-    //         if (!s.valid) {
-    //           state.value = "invalid";
-    //         } else {
-    //           if (validateMode === "eager") {
-    //             state.value = "valid";
-    //           }
-    //         }
-    //         return;
-    //       }
-    //
-    //       if (immediate) {
-    //         if (!s.valid) {
-    //           if (validateMode === "silent") {
-    //             if (s.wasValid || s.wasInvalid) {
-    //               state.value = "invalid";
-    //             }
-    //             return;
-    //           }
-    //           if (validateMode === "eager") {
-    //             state.value = "invalid";
-    //           }
-    //         } else {
-    //           if (validateMode === "silent") {
-    //             if (s.wasInvalid) {
-    //               state.value = "valid";
-    //             }
-    //             return;
-    //           }
-    //           if (validateMode === "eager") {
-    //             state.value = "valid";
-    //           }
-    //         }
-    //       }
-    //     },
-    //     { deep: true }
-    //   );
-    // }
-
     let handleBlur = () => {
-      touch()
-      if (props.modelValue._isValidateRef) {
-        // if (status.value.touched) return
-        props.modelValue.touch();
-      }
+      touch();
     };
 
     let handleClickClearButton = () => (localModel.value = "");
@@ -182,6 +236,8 @@ export default {
       getInputClasses,
       state,
       localModel,
+      status,
+      messages,
       handleBlur,
       handleClickClearButton,
     };
