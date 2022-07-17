@@ -1,91 +1,66 @@
 <template>
   <div class="flex gap-x-20">
     <div class="basis-1/2">
-      <v-input 
-         type="text" 
-         placeholder="Username"
-         block 
-         class="w-full"
+      <v-input
         v-model="username"
-        :rules="{
-          required: true,
-          minLength: 5,
-          alphanumeric: true,
-        }"
-        @update:status="(data) => (usernameStatus = data)"
-        >
-        </v-input>
+        :rules="usernameRules"
+        type="text"
+        placeholder="Username"
+        block
+        class="w-full"
+        @update:status="(status) => (usernameStatus = status)"
+      ></v-input>
     </div>
     <pre class="m-0">
-      <code v-html="'model: ' + getStatusString(username)"></code>
-      <!-- <code v-html="'validators: ' + getStatusString(username.validators)"></code> -->
-      <code v-html="'status: ' + getStatusString(usernameStatus, true)"></code>
-      <!-- <code v-html="'formstatus: ' + getStatusString(username.formStatus.value)"></code> -->
+      <code v-html="'model: ' + stringifyObject(username)"></code>
+      <code v-html="'validators: ' + stringifyObject(usernameRules)"></code>
+      <code v-html="'status: ' + stringifyObject(usernameStatus, true)"></code>
     </pre>
-    </div>
+  </div>
 
   <v-divider class="my-10" />
 
   <div class="flex gap-x-20">
     <div class="basis-1/2">
-      <v-input 
-         type="text" 
-         placeholder="Username"
-         block 
-         class="w-full"
+      <v-input
         v-model="password"
-        :rules="{
-          required: true,
-          minLength: 8,
-          atLeastOneUppercase: true,
-          atLeastOneLowercase: true,
-          atLeastOneSpecial: true,
-          atLeastOneDigit: true,
-        }"
-        @update:status="(data) => (passwordStatus = data)"
-        >
-        </v-input>
+        :rules="passwordRules"
+        type="text"
+        placeholder="Password"
+        block
+        class="w-full"
+        @update:status="(status) => (passwordStatus = status)"
+      ></v-input>
     </div>
     <pre class="m-0">
-      <code v-html="'model: ' + getStatusString(password)"></code>
-      <!-- <code v-html="'validators: ' + getStatusString(username.validators)"></code> -->
-      <code v-html="'status: ' + getStatusString(passwordStatus, true)"></code>
-      <!-- <code v-html="'formstatus: ' + getStatusString(username.formStatus.value)"></code> -->
+      <code v-html="'model: ' + stringifyObject(password)"></code>
+      <code v-html="'validators: ' + stringifyObject(passwordRules)"></code>
+      <code v-html="'status: ' + stringifyObject(passwordStatus, true)"></code>
     </pre>
-    </div>
+  </div>
 
   <v-divider class="my-10" />
 
   <div class="flex gap-x-20">
-    <div class="basis-1/2">
+    <div class="basis-1/2 pl-4">
       <v-checkbox-group
         v-model="languages"
-        :rules="{
-          required: true,
-          minLength: 3,
-        }"
-        @update:status="(data) => (languagesStatus = data)"
+        :rules="languagesRules"
+        @update:status="(status) => (languagesStatus = status)"
       >
-      <div v-for="l in languagesData" class="flex items-center my-2">
-        <v-checkbox
-          :value="l"
-          :id="'language-' + l"
-        ></v-checkbox>
-        <label :for="'language-' + l" class="ml-3">
-          {{ l }}
-        </label>
-      </div>
-      <v-form-text
-        class="absolute"
-      ></v-form-text>
+        <div v-for="l in languagesData" class="flex items-center my-2">
+          <v-checkbox :value="l" :id="'language-' + l"></v-checkbox>
+          <label :for="'language-' + l" class="ml-3">
+            {{ l }}
+          </label>
+        </div>
       </v-checkbox-group>
     </div>
 
     <pre class="m-0">
-      <code v-html="'model: ' + getStatusString(languages)"></code>
-      <!-- <code v-html="'validators: ' + getStatusString(languages.validators)"></code> -->
-      <code v-html="'status: ' + getStatusString(languagesStatus, true)"></code>
-      <!-- <code v-html="'formstatus: ' + getStatusString(languages.formStatus.value)"></code> -->
+      <code v-html="'model: ' + stringifyObject(languages)"></code>
+      <code v-html="'validators: ' + stringifyObject(languagesRules)"></code>
+      <code v-html="'status: ' + stringifyObject(languagesStatus, true)"></code>
     </pre>
   </div>
 
@@ -94,23 +69,38 @@
 
 <script>
 import { ref } from "vue";
-import useValidate from "../../composition/use-validate-ref";
+import { stringifyObject } from "../doc-tools"
 
 export default {
   components: {},
   setup() {
-    let { validateForm, validateRef } = useValidate();
-    let user = validateForm("user");
-    console.log(user);
-
     let username = ref("");
     let usernameStatus = ref({});
+    let usernameRules = {
+      required: true,
+      minLength: 5,
+      alphanumeric: true,
+    };
 
     let password = ref("");
     let passwordStatus = ref({});
+    let passwordRules = {
+      required: true,
+      minLength: 8,
+      atLeastOneUppercase: true,
+      atLeastOneLowercase: true,
+      atLeastOneSpecial: true,
+      atLeastOneDigit: true,
+      wasNotUsed: (v) => v !== 'l@stP@ssword' || "Password cannot be same as previous",
+    };
 
-    let languages = ref([])
+    let languages = ref([]);
     let languagesStatus = ref({});
+    let languagesRules = {
+      required: true,
+      minElements: 3,
+      maxElements: 5,
+    };
 
     let options = ref([
       {
@@ -136,24 +126,19 @@ export default {
       "japanese",
     ]);
 
-    let getStatusString = (value, highlight) => {
-      let s = JSON.stringify(value, null, "&#9;");
-      if (!highlight) return s;
-      return s
-        .replace(/(false)/gi, "<span class='text-danger-400'>$1</span>")
-        .replace(/(true)/gi, "<span class='text-success-400'>$1</span>");
-    };
-
     return {
       username,
       usernameStatus,
+      usernameRules,
       password,
       passwordStatus,
-      options,
+      passwordRules,
       languages,
       languagesStatus,
+      languagesRules,
       languagesData,
-      getStatusString,
+      options,
+      stringifyObject,
     };
   },
 };

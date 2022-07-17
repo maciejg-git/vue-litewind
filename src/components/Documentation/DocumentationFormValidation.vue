@@ -5,6 +5,17 @@
   <section>
     <h4>Usage</h4>
     <p>
+    <ul>
+      <li>
+        Validation modes
+      </li>
+      <li>
+        Form validation
+      </li>
+      <li>
+        Global validators
+      </li>
+    </ul>
     </p>
   </section>
 

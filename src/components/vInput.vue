@@ -76,7 +76,7 @@ export default {
   components: {
     vFormText,
   },
-  emits: ["update:modelValue"],
+  emits: ["update:modelValue", "update:status"],
   inheritAttrs: false,
   setup(props, { attrs, emit }) {
     let { classes, states, variants } = useStyles("input", props, {
@@ -90,6 +90,18 @@ export default {
       icon: null,
     });
 
+    let getInputClasses = () => {
+      return [
+        classes.input.value,
+        state && states.input.value && states.input.value[state.value],
+        attrs.disabled === "" || attrs.disabled === true
+          ? states.input.disabled
+          : "",
+        props.icon ? variants.input.value["icon-variant"] : "",
+        props.clearable ? variants.input.value["clearable-variant"] : "",
+      ];
+    };
+
     let wrapperClasses = computed(() => {
       return props.block ? "flex" : "inline-flex";
     });
@@ -101,7 +113,6 @@ export default {
       dirty: false,
       valid: false,
       validated: false,
-      // required: null,
     };
 
     let [validateOn, validateMode] = props.validate.split(" ");
@@ -110,7 +121,7 @@ export default {
     let messages = ref({});
     let state = ref("");
 
-    let updateFieldState = () => {
+    let updateState = () => {
       if (status.value.touched || validateOn === "immediate") {
         if (!status.value.valid) {
           if (validateMode === "silent") {
@@ -134,7 +145,7 @@ export default {
       }
     };
 
-    let updateTouchFieldState = () => {
+    let updateTouchState = () => {
       if (status.value.dirty || props.rules.required) {
         if (!status.value.valid) {
           state.value = "invalid";
@@ -147,14 +158,12 @@ export default {
     };
 
     let updateValue = (v) => {
-      // fieldValue.value = v;
-
       let { newStatus, newMessages } = getValidateStatus(v);
 
       status.value = newStatus;
       messages.value = newMessages;
 
-      updateFieldState();
+      updateState();
 
       emit("update:status", status.value);
     };
@@ -167,7 +176,7 @@ export default {
       status.value = newStatus;
       messages.value = newMessages;
 
-      updateTouchFieldState();
+      updateTouchState();
 
       emit("update:status", status.value);
     };
@@ -190,6 +199,7 @@ export default {
           newStatus[key] = res === true;
           if (res !== true) newMessages[key] = res;
         } else if (typeof props.rules[key] === "function") {
+          console.log('function')
           res = props.rules[key](value);
           newStatus[key] = res === true;
           if (res !== true) newMessages[key] = res;
@@ -206,25 +216,11 @@ export default {
       return { newStatus, newMessages };
     };
 
-    // let { fieldValue, updateFormFieldValue, status, touch, state } = inject("form-field", {})
+    emit("update:status", status.value)
 
     let localModel = useLocalModel(props, emit, updateValue);
 
-    let getInputClasses = () => {
-      return [
-        classes.input.value,
-        state && states.input.value && states.input.value[state.value],
-        attrs.disabled === "" || attrs.disabled === true
-          ? states.input.disabled
-          : "",
-        props.icon ? variants.input.value["icon-variant"] : "",
-        props.clearable ? variants.input.value["clearable-variant"] : "",
-      ];
-    };
-
-    let handleBlur = () => {
-      touch();
-    };
+    let handleBlur = () => touch();
 
     let handleClickClearButton = () => (localModel.value = "");
 

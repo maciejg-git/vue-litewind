@@ -1,7 +1,6 @@
 <template>
   <component
     :is="iconTypes[iconType] || name || icon || null"
-    :class="{ 'v-icon': !noIconClass }"
   ></component>
 </template>
 
@@ -14,7 +13,6 @@ export default {
     icon: { type: [String, Object], default: "" },
     transition: { type: String, default: "" },
     iconType: { type: String, default: "" },
-    noIconClass: { type: Boolean, default: false },
   },
   setup(props) {
     let iconTypes = inject("icon-types", {});

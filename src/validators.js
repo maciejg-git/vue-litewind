@@ -5,6 +5,8 @@ export let messages = {
   alphanumeric: "Please enter only letters or numbers",
   minLength: "Please enter at least 3 characters",
   maxLength: "Please enter at least 3 characters",
+  minElements: "Please select at least 3 elements",
+  maxElements: "Please select at least 3 elements",
   minValue: "",
   maxValue: "",
   email: "Please enter valid email address",
@@ -23,6 +25,12 @@ export let globalValidators = {
     return value.length >= length || messages.minLength;
   },
   maxLength: (value, length) => {
+    return value.length <= length || messages.maxLength;
+  },
+  minElements: (value, length) => {
+    return value.length >= length || messages.minLength;
+  },
+  maxElements: (value, length) => {
     return value.length <= length || messages.maxLength;
   },
   alpha: (value, active) => {

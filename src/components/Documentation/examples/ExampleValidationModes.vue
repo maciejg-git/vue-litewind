@@ -1,21 +1,19 @@
 <template>
   <div class="flex gap-x-20">
     <div class="basis-1/2">
-      <v-form-field
+      <v-input
+        type="text"
+        placeholder="Username"
+        block
+        class="w-full"
         v-model="username"
         :rules="{
           required: true,
           minLength: 5,
           alphanumeric: true,
         }"
-        validate="on-blur silent"
         @update:status="(data) => (usernameStatus = data)"
-      >
-        <v-input type="text" placeholder="Username" block class="w-full" />
-      <v-form-text
-        class="absolute"
-      ></v-form-text>
-      </v-form-field>
+      ></v-input>
     </div>
 
     <pre class="m-0">
@@ -23,8 +21,6 @@
       <code v-html="'model: ' + getStatusString(username)"></code>
       <!-- <code v-html="'validators: ' + getStatusString(username.validators)"></code> -->
       <code v-html="'status: ' + getStatusString(usernameStatus, true)"></code>
-      <!-- <code v-html="'messages: ' + getStatusString(username.messages, true)"></code> -->
-      <!-- <code v-html="'formstatus: ' + getStatusString(username.formStatus.value)"></code> -->
     </pre>
   </div>
 
@@ -32,7 +28,11 @@
 
   <div class="flex gap-x-20">
     <div class="basis-1/2">
-      <v-form-field
+      <v-input
+        type="text"
+        placeholder="Username"
+        block
+        class="w-full"
         v-model="username2"
         :rules="{
           required: true,
@@ -41,14 +41,7 @@
         }"
         validate="on-blur eager"
         @update:status="(data) => (usernameStatus2 = data)"
-      >
-        <v-input type="text" placeholder="Username" block class="w-full" />
-      <v-form-text
-        :status="username.status"
-        :messages="messages"
-        class="absolute"
-      ></v-form-text>
-      </v-form-field>
+      ></v-input>
     </div>
 
     <pre class="m-0">
@@ -56,8 +49,6 @@
       <code v-html="'model: ' + getStatusString(username2)"></code>
       <!-- <code v-html="'validators: ' + getStatusString(username.validators)"></code> -->
       <code v-html="'status: ' + getStatusString(usernameStatus2, true)"></code>
-      <!-- <code v-html="'messages: ' + getStatusString(username.messages, true)"></code> -->
-      <!-- <code v-html="'formstatus: ' + getStatusString(username.formStatus.value)"></code> -->
     </pre>
   </div>
 
@@ -65,7 +56,11 @@
 
   <div class="flex gap-x-20">
     <div class="basis-1/2">
-      <v-form-field
+      <v-input
+        type="text"
+        placeholder="Username"
+        block
+        class="w-full"
         v-model="username3"
         :rules="{
           required: true,
@@ -74,14 +69,7 @@
         }"
         validate="immediate silent"
         @update:status="(data) => (usernameStatus3 = data)"
-      >
-        <v-input type="text" placeholder="Username" block class="w-full" />
-      <v-form-text
-        :status="username.status"
-        :messages="messages"
-        class="absolute"
-      ></v-form-text>
-      </v-form-field>
+      ></v-input>
     </div>
 
     <pre class="m-0">
@@ -89,8 +77,6 @@
       <code v-html="'model: ' + getStatusString(username3)"></code>
       <!-- <code v-html="'validators: ' + getStatusString(username.validators)"></code> -->
       <code v-html="'status: ' + getStatusString(usernameStatus3, true)"></code>
-      <!-- <code v-html="'messages: ' + getStatusString(username.messages, true)"></code> -->
-      <!-- <code v-html="'formstatus: ' + getStatusString(username.formStatus.value)"></code> -->
     </pre>
   </div>
 
@@ -98,7 +84,11 @@
 
   <div class="flex gap-x-20">
     <div class="basis-1/2">
-      <v-form-field
+      <v-input
+        type="text"
+        placeholder="Username"
+        block
+        class="w-full"
         v-model="username4"
         :rules="{
           required: true,
@@ -107,14 +97,7 @@
         }"
         validate="immediate eager"
         @update:status="(data) => (usernameStatus4 = data)"
-      >
-        <v-input type="text" placeholder="Username" block class="w-full" />
-      <v-form-text
-        :status="username.status"
-        :messages="messages"
-        class="absolute"
-      ></v-form-text>
-      </v-form-field>
+      ></v-input>
     </div>
 
     <pre class="m-0">
@@ -122,36 +105,24 @@
       <code v-html="'model: ' + getStatusString(username4)"></code>
       <!-- <code v-html="'validators: ' + getStatusString(username.validators)"></code> -->
       <code v-html="'status: ' + getStatusString(usernameStatus4, true)"></code>
-      <!-- <code v-html="'messages: ' + getStatusString(username.messages, true)"></code> -->
-      <!-- <code v-html="'formstatus: ' + getStatusString(username.formStatus.value)"></code> -->
     </pre>
   </div>
 </template>
 
 <script>
-import { ref, reactive } from "vue";
-import useValidate from "../../composition/use-validate-ref";
+import { ref } from "vue";
 
 export default {
-  components: {},
   setup() {
-    let { validateRef } = useValidate();
+    let username = ref("");
+    let username2 = ref("");
+    let username3 = ref("");
+    let username4 = ref("");
 
-    let username = ref("")
-
-    let username2 = ref("")
-
-    let username3 = ref("")
-
-    let username4 = ref("")
-
-    let usernameStatus = ref("")
-
-    let usernameStatus2 = ref("")
-
-    let usernameStatus3 = ref("")
-
-    let usernameStatus4 = ref("")
+    let usernameStatus = ref("");
+    let usernameStatus2 = ref("");
+    let usernameStatus3 = ref("");
+    let usernameStatus4 = ref("");
 
     let messages = {
       required: "Please enter a value for this field",
@@ -187,7 +158,6 @@ export default {
       getStatusString,
     };
   },
-
 };
 </script>
 

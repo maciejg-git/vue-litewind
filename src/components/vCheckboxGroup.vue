@@ -27,7 +27,7 @@ export default {
       validated: false,
     };
 
-    let fieldValue = ref(props.modelValue);
+    let groupValue = ref(props.modelValue);
     let status = ref({ ...defaultStatus });
     let messages = ref({});
     let state = ref("");
@@ -45,7 +45,7 @@ export default {
     };
 
     let updateValue = (v) => {
-      fieldValue.value = v;
+      groupValue.value = v;
 
       let { newStatus, newMessages } = getValidateStatus(v);
 
@@ -96,7 +96,7 @@ export default {
     };
 
     provide("form-field", {
-      fieldValue,
+      groupValue,
       updateValue,
       touch,
       state,
@@ -110,16 +110,4 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-.fixed-form-text {
-  /* @apply items-center; */
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.2s ease;
-}
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
 </style>

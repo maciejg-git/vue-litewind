@@ -10,7 +10,7 @@
 
 <script>
 // vue
-import { computed, inject } from "vue";
+import { inject } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
@@ -31,7 +31,7 @@ export default {
       },
     });
 
-    let { fieldValue, updateValue, touch, state } = inject(
+    let { groupValue, updateValue, touch, state } = inject(
       "form-field",
       {}
     );
@@ -40,7 +40,7 @@ export default {
       props,
       emit,
       updateValue,
-      fieldValue
+      groupValue
     );
 
     let getCheckBoxClasses = () => {

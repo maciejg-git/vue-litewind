@@ -22,7 +22,7 @@
 
 <script>
 // vue
-import { computed, inject } from "vue";
+import { computed } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 // props
@@ -49,31 +49,19 @@ export default {
       },
     });
 
-    // let { state, status, messages } = inject("form-field", {})
-
     let formText = computed(() => {
       if (props.state === "invalid") {
-        if (props.status === false)
+        if (props.status.required === false) {
           return [props.messages.required]
-        else return props.messages
+        } else {
+          return props.messages
+        }
       }
-
-      // return Object.fromEntries(
-      //   Object.entries(props.messages).reduce((pm, m) => {
-      //     if (status.value[m[0]] === false) {
-      //       pm.push(m);
-      //       return pm;
-      //     }
-      //     return pm;
-      //   }, [])
-      // );
     });
 
     return {
       classes,
       states,
-      // state,
-      // messages,
       formText,
     };
   },
@@ -81,10 +69,6 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-.fixed-form-text {
-  /* @apply items-center; */
-}
-
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.2s ease;
