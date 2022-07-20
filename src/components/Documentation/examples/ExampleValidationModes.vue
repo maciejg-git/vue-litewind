@@ -7,20 +7,18 @@
         block
         class="w-full"
         v-model="username"
-        :rules="{
-          required: true,
-          minLength: 5,
-          alphanumeric: true,
-        }"
+        :rules="rules"
         @update:status="(data) => (usernameStatus = data)"
       ></v-input>
     </div>
 
     <pre class="m-0">
+      <span class="font-bold">
       Mode: "on-blur silent"
-      <code v-html="'model: ' + getStatusString(username)"></code>
-      <!-- <code v-html="'validators: ' + getStatusString(username.validators)"></code> -->
-      <code v-html="'status: ' + getStatusString(usernameStatus, true)"></code>
+      </span>
+      <code v-html="'model: ' + stringifyObject(username)"></code>
+      <code v-html="'rules: ' + stringifyObject(rules)"></code>
+      <code v-html="'status: ' + stringifyObject(usernameStatus, true)"></code>
     </pre>
   </div>
 
@@ -34,21 +32,19 @@
         block
         class="w-full"
         v-model="username2"
-        :rules="{
-          required: true,
-          minLength: 5,
-          alphanumeric: true,
-        }"
+        :rules="rules"
         validate="on-blur eager"
         @update:status="(data) => (usernameStatus2 = data)"
       ></v-input>
     </div>
 
     <pre class="m-0">
+      <span class="font-bold">
       Mode: "on-blur eager"
-      <code v-html="'model: ' + getStatusString(username2)"></code>
-      <!-- <code v-html="'validators: ' + getStatusString(username.validators)"></code> -->
-      <code v-html="'status: ' + getStatusString(usernameStatus2, true)"></code>
+      </span>
+      <code v-html="'model: ' + stringifyObject(username2)"></code>
+      <code v-html="'rules: ' + stringifyObject(rules)"></code>
+      <code v-html="'status: ' + stringifyObject(usernameStatus2, true)"></code>
     </pre>
   </div>
 
@@ -62,21 +58,19 @@
         block
         class="w-full"
         v-model="username3"
-        :rules="{
-          required: true,
-          minLength: 5,
-          alphanumeric: true,
-        }"
+        :rules="rules"
         validate="immediate silent"
         @update:status="(data) => (usernameStatus3 = data)"
       ></v-input>
     </div>
 
     <pre class="m-0">
-      Mode: "immediate silent"
-      <code v-html="'model: ' + getStatusString(username3)"></code>
-      <!-- <code v-html="'validators: ' + getStatusString(username.validators)"></code> -->
-      <code v-html="'status: ' + getStatusString(usernameStatus3, true)"></code>
+      <span class="font-bold">
+        Mode: "immediate silent"
+      </span>
+      <code v-html="'model: ' + stringifyObject(username3)"></code>
+      <code v-html="'rules: ' + stringifyObject(rules)"></code>
+      <code v-html="'status: ' + stringifyObject(usernameStatus3, true)"></code>
     </pre>
   </div>
 
@@ -90,27 +84,26 @@
         block
         class="w-full"
         v-model="username4"
-        :rules="{
-          required: true,
-          minLength: 5,
-          alphanumeric: true,
-        }"
+        :rules="rules"
         validate="immediate eager"
         @update:status="(data) => (usernameStatus4 = data)"
       ></v-input>
     </div>
 
     <pre class="m-0">
+      <span class="font-bold">
       Mode: "immediate eager"
-      <code v-html="'model: ' + getStatusString(username4)"></code>
-      <!-- <code v-html="'validators: ' + getStatusString(username.validators)"></code> -->
-      <code v-html="'status: ' + getStatusString(usernameStatus4, true)"></code>
+      </span>
+      <code v-html="'model: ' + stringifyObject(username4)"></code>
+      <code v-html="'rules: ' + stringifyObject(rules)"></code>
+      <code v-html="'status: ' + stringifyObject(usernameStatus4, true)"></code>
     </pre>
   </div>
 </template>
 
 <script>
 import { ref } from "vue";
+import { stringifyObject } from "../doc-tools";
 
 export default {
   setup() {
@@ -118,6 +111,12 @@ export default {
     let username2 = ref("");
     let username3 = ref("");
     let username4 = ref("");
+
+    let rules = {
+      required: true,
+      minLength: 5,
+      alphanumeric: true,
+    };
 
     let usernameStatus = ref("");
     let usernameStatus2 = ref("");
@@ -137,25 +136,18 @@ export default {
       atLeastOneSpecial: "Please enter at least one special character",
     };
 
-    let getStatusString = (value, highlight) => {
-      let s = JSON.stringify(value, null, "&#9;");
-      if (!highlight) return s;
-      return s
-        .replace(/(false)/gi, "<span class='text-danger-400'>$1</span>")
-        .replace(/(true)/gi, "<span class='text-success-400'>$1</span>");
-    };
-
     return {
       username,
       username2,
       username3,
       username4,
+      rules,
       usernameStatus,
       usernameStatus2,
       usernameStatus3,
       usernameStatus4,
       messages,
-      getStatusString,
+      stringifyObject,
     };
   },
 };

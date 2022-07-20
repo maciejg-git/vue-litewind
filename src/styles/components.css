@@ -1509,8 +1509,8 @@
     .datepicker--day--today {
       @apply  
         font-bold
-        underline
-        text-primary-500 !important
+        text-primary-400
+        dark:text-primary-400 !important
     }
     .datepicker--day--partially-selected-state {
       @apply

@@ -9,39 +9,40 @@
 import { ref, provide } from "vue";
 
 export default {
-  props: {
-    modelValue: {
-      type: [String, Number, Boolean, Array, Object],
-      default: "",
-    },
-    rules: { type: Object, default: {} },
-    messages: { type: Object, default: {} },
-    validate: { type: String, default: "on-blur silent" },
-  },
-  setup(props, { emit }) {
+  props: {},
+  setup(props, { emit, expose }) {
     let defaultStatus = {
       valid: false,
     };
 
+    let inputs = [];
+
     let status = ref({ ...defaultStatus });
 
+    let addInput = (input) => {
+      inputs.push(input);
+    };
+
     let validate = () => {
+      inputs.forEach((i) => i.formValidate());
 
-    }
+      status.value.valid = inputs.every((i) => i.status.value.valid);
 
-    provide("form-field", {
-      groupValue,
-      updateValue,
-      touch,
-      state,
+      emit("update:form-status", status.value);
+    };
+
+    provide("form", {
+      addInput,
+      validate,
     });
 
-    emit("update:status", status.value);
+    emit("update:form-status", status.value);
+
+    expose({ validate });
 
     return {};
   },
 };
 </script>
 
-<style scoped lang="postcss">
-</style>
+<style scoped lang="postcss"></style>

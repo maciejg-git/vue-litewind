@@ -76,8 +76,8 @@ export default {
     };
 
     let state = computed(() => {
-      if (props.modelValue._isValidateRef) {
-      }
+      // if (props.modelValue._isValidateRef) {
+      // }
     });
 
     let isOptionDisabled = (o) => {
@@ -87,9 +87,9 @@ export default {
     let handleIconClick = () => emit("input:icon-click");
 
     let handleBlur = () => {
-      if (props.modelValue._isValidateRef) {
-        props.modelValue.touch();
-      }
+      // if (props.modelValue._isValidateRef) {
+      //   props.modelValue.touch();
+      // }
     };
 
     return {

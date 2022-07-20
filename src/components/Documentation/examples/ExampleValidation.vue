@@ -13,7 +13,7 @@
     </div>
     <pre class="m-0">
       <code v-html="'model: ' + stringifyObject(username)"></code>
-      <code v-html="'validators: ' + stringifyObject(usernameRules)"></code>
+      <code v-html="'rules: ' + stringifyObject(usernameRules)"></code>
       <code v-html="'status: ' + stringifyObject(usernameStatus, true)"></code>
     </pre>
   </div>
@@ -34,7 +34,7 @@
     </div>
     <pre class="m-0">
       <code v-html="'model: ' + stringifyObject(password)"></code>
-      <code v-html="'validators: ' + stringifyObject(passwordRules)"></code>
+      <code v-html="'rules: ' + stringifyObject(passwordRules)"></code>
       <code v-html="'status: ' + stringifyObject(passwordStatus, true)"></code>
     </pre>
   </div>
@@ -59,7 +59,7 @@
 
     <pre class="m-0">
       <code v-html="'model: ' + stringifyObject(languages)"></code>
-      <code v-html="'validators: ' + stringifyObject(languagesRules)"></code>
+      <code v-html="'rules: ' + stringifyObject(languagesRules)"></code>
       <code v-html="'status: ' + stringifyObject(languagesStatus, true)"></code>
     </pre>
   </div>

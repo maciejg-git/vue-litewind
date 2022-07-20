@@ -45,6 +45,8 @@ import vButtonDropdown from "./vButtonDropdown.vue"
 
 import vCheckboxGroup from "./vCheckboxGroup.vue"
 
+import vForm from "./vForm.vue"
+
 export {
   vButton,
   vTable,
@@ -169,6 +171,8 @@ function install(app) {
   app.component("v-button-dropdown", vButtonDropdown);
 
   app.component("v-checkbox-group", vCheckboxGroup);
+
+  app.component("v-form", vForm);
 }
 
 export { install as plugin };

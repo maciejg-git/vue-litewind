@@ -1,23 +1,21 @@
 <template>
-  <transition name="fade">
-    <div
-      :class="[
-        classes.formText.value,
-        states.formText.value && states.formText.value.invalid,
-      ]"
-    >
-      <slot name="default" :state="state">
-        <transition-group name="fade">
-          <div v-for="m in formText" :key="m">
-            <slot name="prepend-message"></slot>
-            <slot name="message" :message="m">
-              {{ m }}
-            </slot>
-          </div>
-        </transition-group>
-      </slot>
-    </div>
-  </transition>
+  <div
+    :class="[
+      classes.formText.value,
+      states.formText.value && states.formText.value.invalid,
+    ]"
+  >
+    <slot name="default" :state="state">
+      <transition-group name="fade-group">
+        <div v-for="m in formText" :key="m">
+          <slot name="prepend-message"></slot>
+          <slot name="message" :message="m">
+            {{ m }}
+          </slot>
+        </div>
+      </transition-group>
+    </slot>
+  </div>
 </template>
 
 <script>
@@ -52,9 +50,9 @@ export default {
     let formText = computed(() => {
       if (props.state === "invalid") {
         if (props.status.required === false) {
-          return [props.messages.required]
+          return [props.messages.required];
         } else {
-          return props.messages
+          return props.messages;
         }
       }
     });
@@ -76,5 +74,18 @@ export default {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+.fade-group-move,
+.fade-group-enter-active,
+.fade-group-leave-active {
+  transition: opacity 0.2s ease;
+}
+.fade-group-enter-from,
+.fade-group-leave-to {
+  opacity: 0;
+}
+.fade-group-leave-active {
+  display: absolute;
 }
 </style>

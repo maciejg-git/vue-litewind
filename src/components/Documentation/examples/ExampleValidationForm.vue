@@ -1,7 +1,11 @@
 <template>
   <div class="flex gap-x-20">
-    <div class="basis-1/2 flex flex-col gap-y-32">
-      <div>
+    <div class="basis-1/2 flex flex-col">
+      <v-form
+        ref="form"
+        class="flex flex-col gap-y-32"
+        @update:form-status="(status) => (formStatus = status)"
+      >
         <v-input
           type="text"
           placeholder="Username"
@@ -15,12 +19,10 @@
           }"
           @update:status="(data) => (usernameStatus = data)"
         ></v-input>
-      </div>
 
-      <div>
         <v-input
           type="text"
-          placeholder="Username"
+          placeholder="Password"
           block
           class="w-full"
           v-model="password"
@@ -34,12 +36,10 @@
           }"
           @update:status="(data) => (usernameStatus = data)"
         ></v-input>
-      </div>
 
-      <div>
         <v-input
           type="text"
-          placeholder="Username"
+          placeholder="Email"
           block
           class="w-full"
           v-model="email"
@@ -49,52 +49,47 @@
           }"
           @update:status="(data) => (usernameStatus = data)"
         ></v-input>
-      </div>
+      </v-form>
 
-      <v-button @click="form.validate()" class="self-start">Send</v-button>
+      <v-button @click="form.validate()" class="self-end mt-20">Send</v-button>
     </div>
-    <div>
-      <pre class="m-0">
-          <!-- <code v-html="'model: ' + getStatusString(username.model.value)"></code> -->
-          <!-- <code v-html="'status: ' + getStatusString(form.status.value, true)"></code> -->
-          <!-- <code v-html="'formstatus: ' + getStatusString(username.formStatus.value)"></code> -->
-        </pre>
-    </div>
+
+    <pre class="m-0">
+      <code v-html="'form status: ' + stringifyObject(formStatus, true)"></code>
+    </pre>
   </div>
 </template>
 
 <script>
 import { ref } from "vue";
+import { stringifyObject } from "../doc-tools";
 
 export default {
   components: {},
   setup() {
     let username = ref("");
+    let usernameStatus = ref({});
+
     let email = ref("");
+    let emailStatus = ref({});
+
     let password = ref("");
+    let passwordStatus = ref({});
 
-    let languagesData = ref([
-      "english",
-      "swedish",
-      "korean",
-      "german",
-      "icelandic",
-      "japanese",
-    ]);
+    let formStatus = ref({});
 
-    let getStatusString = (value, highlight) => {
-      let s = JSON.stringify(value, null, "&#9;");
-      if (!highlight) return s;
-      return s
-        .replace(/(false)/gi, "<span class='text-danger-400'>$1</span>")
-        .replace(/(true)/gi, "<span class='text-success-400'>$1</span>");
-    };
+    let form = ref(null);
 
     return {
       username,
+      usernameStatus,
       email,
+      emailStatus,
       password,
-      getStatusString,
+      passwordStatus,
+      formStatus,
+      form,
+      stringifyObject,
     };
   },
 };

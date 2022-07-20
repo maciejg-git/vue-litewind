@@ -95,7 +95,7 @@ export default {
       return { newStatus, newMessages };
     };
 
-    provide("form-field", {
+    provide("checkbox-group", {
       groupValue,
       updateValue,
       touch,

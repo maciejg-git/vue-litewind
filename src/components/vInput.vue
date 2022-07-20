@@ -47,15 +47,15 @@
 
 <script>
 // vue
-import { ref, computed, watch, inject } from "vue";
+import { ref, computed, inject } from "vue";
 import vFormText from "./vFormText.vue";
 // composition
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
+// validators
+import { globalValidators } from "../validators";
 // props
 import { sharedStyleProps, sharedFormProps } from "../shared-props";
-
-import { globalValidators } from "../validators";
 
 export default {
   props: {
@@ -65,13 +65,13 @@ export default {
     },
     block: { type: Boolean, default: false },
     validate: { type: String, default: "on-blur silent" },
+    rules: { type: Object, default: {} },
+    state: { type: String, default: "" },
     styleInput: { type: [String, Array], default: "" },
     styleIcon: { type: [String, Array], default: "" },
     styleClearButton: { type: [String, Array], default: "" },
     ...sharedFormProps(null, { icon: true, clearable: true }),
     ...sharedStyleProps("input"),
-
-    rules: { type: Object, default: {} },
   },
   components: {
     vFormText,
@@ -113,16 +113,24 @@ export default {
       dirty: false,
       valid: false,
       validated: false,
+      wasInvalid: false,
+      wasValid: false,
     };
-
-    let [validateOn, validateMode] = props.validate.split(" ");
 
     let status = ref({ ...defaultStatus });
     let messages = ref({});
     let state = ref("");
 
+    let { addInput } = inject("form", {});
+
+    let [validateOn, validateMode] = props.validate.split(" ");
+
     let updateState = () => {
-      if (status.value.touched || validateOn === "immediate") {
+      if (
+        status.value.touched ||
+        status.value.validated ||
+        validateOn === "immediate"
+      ) {
         if (!status.value.valid) {
           if (validateMode === "silent") {
             if (status.value.wasValid || status.value.wasInvalid) {
@@ -146,6 +154,18 @@ export default {
     };
 
     let updateTouchState = () => {
+      if (status.value.dirty || props.rules.required) {
+        if (!status.value.valid) {
+          state.value = "invalid";
+        } else {
+          if (validateMode === "eager") {
+            state.value = "valid";
+          }
+        }
+      }
+    };
+
+    let updateFormState = () => {
       if (status.value.dirty || props.rules.required) {
         if (!status.value.valid) {
           state.value = "invalid";
@@ -181,11 +201,26 @@ export default {
       emit("update:status", status.value);
     };
 
-    let getValidateStatus = (value, touched) => {
+    let formValidate = () => {
+      let { newStatus, newMessages } = getValidateStatus(
+        localModel.value,
+        false,
+        true
+      );
+
+      status.value = newStatus;
+      messages.value = newMessages;
+
+      updateFormState();
+
+      emit("update:status", status.value);
+    };
+
+    let getValidateStatus = (value, touched, validated) => {
       let newStatus = {
         valid: true,
         touched: status.value.touched || !!touched,
-        // validated: status.value.validated || !!validated,
+        validated: status.value.validated || !!validated,
         dirty: status.value.dirty || !!(value && !!value.length),
       };
 
@@ -199,7 +234,6 @@ export default {
           newStatus[key] = res === true;
           if (res !== true) newMessages[key] = res;
         } else if (typeof props.rules[key] === "function") {
-          console.log('function')
           res = props.rules[key](value);
           newStatus[key] = res === true;
           if (res !== true) newMessages[key] = res;
@@ -211,12 +245,14 @@ export default {
 
       newStatus.wasInvalid =
         status.value.wasInvalid ||
-        (!newStatus.valid && (status.value.wasValid || touched));
+        (!newStatus.valid && (status.value.wasValid || touched || validated));
 
       return { newStatus, newMessages };
     };
 
-    emit("update:status", status.value)
+    if (addInput) addInput({ status, formValidate });
+
+    emit("update:status", status.value);
 
     let localModel = useLocalModel(props, emit, updateValue);
 
