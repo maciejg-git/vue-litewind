@@ -13,9 +13,9 @@
     </div>
 
     <pre class="m-0">
-      <span class="font-bold">
-      Mode: "on-blur silent"
-      </span>
+  <div class="font-semibold text-lg mb-5">
+    Mode: "on-blur silent"
+  </div>
       <code v-html="'model: ' + stringifyObject(username)"></code>
       <code v-html="'rules: ' + stringifyObject(rules)"></code>
       <code v-html="'status: ' + stringifyObject(usernameStatus, true)"></code>
@@ -39,9 +39,9 @@
     </div>
 
     <pre class="m-0">
-      <span class="font-bold">
-      Mode: "on-blur eager"
-      </span>
+  <div class="font-semibold text-lg mb-5">
+    Mode: "on-blur eager"
+  </div>
       <code v-html="'model: ' + stringifyObject(username2)"></code>
       <code v-html="'rules: ' + stringifyObject(rules)"></code>
       <code v-html="'status: ' + stringifyObject(usernameStatus2, true)"></code>
@@ -65,9 +65,9 @@
     </div>
 
     <pre class="m-0">
-      <span class="font-bold">
-        Mode: "immediate silent"
-      </span>
+  <div class="font-semibold text-lg mb-5">
+    Mode: "immediate silent"
+  </div>
       <code v-html="'model: ' + stringifyObject(username3)"></code>
       <code v-html="'rules: ' + stringifyObject(rules)"></code>
       <code v-html="'status: ' + stringifyObject(usernameStatus3, true)"></code>
@@ -91,9 +91,9 @@
     </div>
 
     <pre class="m-0">
-      <span class="font-bold">
-      Mode: "immediate eager"
-      </span>
+  <div class="font-semibold text-lg mb-5">
+    Mode: "immediate eager"
+  </div>
       <code v-html="'model: ' + stringifyObject(username4)"></code>
       <code v-html="'rules: ' + stringifyObject(rules)"></code>
       <code v-html="'status: ' + stringifyObject(usernameStatus4, true)"></code>

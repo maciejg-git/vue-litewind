@@ -51,9 +51,10 @@
         ></v-input>
       </v-form>
 
-      <v-button @click="form.validate()" class="self-end mt-20">Send</v-button>
+      <v-button @click="form.validate()" class="self-end mt-20">
+        Validate
+      </v-button>
     </div>
-
     <pre class="m-0">
       <code v-html="'form status: ' + stringifyObject(formStatus, true)"></code>
     </pre>

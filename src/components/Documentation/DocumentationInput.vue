@@ -48,6 +48,24 @@ export default {
         default: "undefined",
         description: "Input v-model",
       },
+      {
+        prop: "rules",
+        type: ["Object"],
+        default: "{}",
+        description: "Rules for validation",
+      },
+      {
+        prop: "validate",
+        type: ["String"],
+        default: "on-blur silent",
+        description: "Validation modes. See Form Validation for possible modes",
+      },
+      {
+        prop: "block",
+        type: ["Boolean"],
+        default: "false",
+        description: "Input v-model",
+      },
       ...formProps({ icon:true, clearable: true }),
       ...styleProps("input"),
     ]);

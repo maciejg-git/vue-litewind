@@ -82,13 +82,15 @@
           atLeastOneSpecial
         </code>
       </li>
+      <li>
+        <code class="code-text">
+          sameAs
+        </code>
+      </li>
     </ul>
     </p>
-    <h4>
-      Form validation
-    </h4>
     <p>
-    Wrap inputs with v-form component to add validation to form
+      Default messages returned by global validators can be changed by importing <code class="code-text">validationMessages</code> object:
     </p>
   </section>
 
@@ -103,9 +105,9 @@
 
   <section>
     <h4>Example - validation modes</h4>
-    <p>Validation modes allows control over when to display validation results and how to display them. Currently there are 4 of them: 
+    <p>Validation modes, only available on text inputs, allows control over when to display validation results and how to display them. Currently there are 4: 
     <ul>
-      <li class="my-2"><code class="code-text">"on-blur silent"</code> starts updating input state only after it loses focus. State of input is changed only for invalid values.</li>
+      <li class="my-2"><code class="code-text">"on-blur silent"</code> starts updating input state only after it loses focus. State of input is changed only for invalid values (default)</li>
       <li class="my-2"><code class="code-text">"on-blur eager"</code> as above but also changes state if input is valid.</li>
       <li class="my-2"><code class="code-text">"immediate silent"</code> starts updating state immediately after first input. Invalid values are ignored until value is at last once valid.</li>
       <li class="my-2"><code class="code-text">"immediate eager"</code> as above but state is updated immedietely for invalid and valid values.</li>
@@ -120,6 +122,9 @@
 
   <section>
     <h4>Example - form validation</h4>
+    <p>
+     In order to validate entire form wrap inputs with v-form component and use exposed <code class="code-text">validate</code> function. This function updates state of every input according to validation results and return true if all are valid. Additioanlly it emits <code class="code-word">update:form-state</code> with new form state after each validation.
+    </p>
     <div class="example">
       <example-validation-form />
     </div>

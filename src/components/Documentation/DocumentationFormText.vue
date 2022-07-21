@@ -17,20 +17,6 @@
   </section>
 
   <section>
-    <h4>Messages</h4>
-    <span class="font-bold">Type</span>
-    :
-    <code class="code-word">Object</code>
-<v-code language="js">
-  {{ `let messages = {
-  valid: "OK",
-  invalid: "This field cannot be empty",
-  default: "Username",
-};` }}
-</v-code>
-  </section>
-
-  <section>
     <h4>Example</h4>
     <div class="example">
       <example-form-text></example-form-text>

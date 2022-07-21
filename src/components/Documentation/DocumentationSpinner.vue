@@ -58,8 +58,6 @@ export default {
     return {
       reference,
       styles,
-      events,
-      slots,
       exampleSpinnerCode,
     };
   },

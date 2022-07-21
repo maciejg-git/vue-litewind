@@ -11,13 +11,9 @@ import { ref, provide } from "vue";
 export default {
   props: {},
   setup(props, { emit, expose }) {
-    let defaultStatus = {
-      valid: false,
-    };
-
     let inputs = [];
 
-    let status = ref({ ...defaultStatus });
+    let valid = ref(false);
 
     let addInput = (input) => {
       inputs.push(input);
@@ -26,17 +22,18 @@ export default {
     let validate = () => {
       inputs.forEach((i) => i.formValidate());
 
-      status.value.valid = inputs.every((i) => i.status.value.valid);
+      valid.value = inputs.every((i) => i.status.value.valid);
 
-      emit("update:form-status", status.value);
+      emit("update:form-status", valid.value);
+
+      return valid.value
     };
 
     provide("form", {
       addInput,
-      validate,
     });
 
-    emit("update:form-status", status.value);
+    emit("update:form-status", valid.value);
 
     expose({ validate });
 

@@ -1,53 +1,55 @@
 <template>
-  <div class="relative items-center" :class="wrapperClasses">
-    <slot name="icon">
-      <button v-if="icon" class="absolute" @click="handleIconClick">
-        <v-icon :name="icon" :class="classes.icon.value"></v-icon>
-      </button>
-    </slot>
+  <div class="relative" :class="wrapperClasses">
+    <div class="flex items-center">
+      <slot name="icon">
+        <button v-if="icon" class="absolute" @click="handleIconClick">
+          <v-icon :name="icon" :class="classes.icon.value"></v-icon>
+        </button>
+      </slot>
 
-    <input
-      v-model="localModel"
-      type="text"
-      v-bind="$attrs"
-      :class="getInputClasses()"
-      @blur="handleBlur"
-    />
+      <input
+        v-model="localModel"
+        type="text"
+        v-bind="$attrs"
+        :class="getInputClasses()"
+        @blur="handleBlur"
+      />
 
-    <div v-if="clearable" class="absolute flex right-0 mr-3">
-      <button
-        class="focus:outline-none"
-        aria-label="Close"
-        @click="handleClickClearButton"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          :class="classes.clearButton.value"
-          width="16"
-          height="16"
-          fill="currentColor"
-          viewBox="0 0 16 16"
+      <div v-if="clearable" class="absolute flex right-0 mr-3">
+        <button
+          class="focus:outline-none"
+          aria-label="Close"
+          @click="handleClickClearButton"
         >
-          <path
-            d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"
-          />
-        </svg>
-      </button>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            :class="classes.clearButton.value"
+            width="16"
+            height="16"
+            fill="currentColor"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"
+            />
+          </svg>
+        </button>
+      </div>
     </div>
+    <slot name="form-text">
+      <v-form-text
+        :messages="messages"
+        :state="state"
+        :status="status"
+        class="absolute"
+      ></v-form-text>
+    </slot>
   </div>
-  <slot name="form-text">
-    <v-form-text
-      :messages="messages"
-      :state="state"
-      :status="status"
-      class="absolute"
-    ></v-form-text>
-  </slot>
 </template>
 
 <script>
 // vue
-import { ref, computed, inject } from "vue";
+import { ref, computed, watch, inject } from "vue";
 import vFormText from "./vFormText.vue";
 // composition
 import useStyles from "./composition/use-styles";
@@ -103,7 +105,7 @@ export default {
     };
 
     let wrapperClasses = computed(() => {
-      return props.block ? "flex" : "inline-flex";
+      return props.block ? "block" : "inline-block";
     });
 
     // validate
@@ -134,47 +136,50 @@ export default {
         if (!status.value.valid) {
           if (validateMode === "silent") {
             if (status.value.wasValid || status.value.wasInvalid) {
-              state.value = "invalid";
+              return "invalid";
             }
           }
           if (validateMode === "eager") {
-            state.value = "invalid";
+            return "invalid";
           }
         } else {
           if (validateMode === "silent") {
             if (status.value.wasInvalid) {
-              state.value = "valid";
+              return "valid";
             }
           }
           if (validateMode === "eager") {
-            state.value = "valid";
+            return "valid";
           }
         }
       }
+      return state.value;
     };
 
     let updateTouchState = () => {
       if (status.value.dirty || props.rules.required) {
         if (!status.value.valid) {
-          state.value = "invalid";
+          return "invalid";
         } else {
           if (validateMode === "eager") {
-            state.value = "valid";
+            return "valid";
           }
         }
       }
+      return state.value;
     };
 
     let updateFormState = () => {
       if (status.value.dirty || props.rules.required) {
         if (!status.value.valid) {
-          state.value = "invalid";
+          return "invalid";
         } else {
           if (validateMode === "eager") {
-            state.value = "valid";
+            return "valid";
           }
         }
       }
+      return state.value;
     };
 
     let updateValue = (v) => {
@@ -183,9 +188,7 @@ export default {
       status.value = newStatus;
       messages.value = newMessages;
 
-      updateState();
-
-      emit("update:status", status.value);
+      state.value = updateState();
     };
 
     let touch = () => {
@@ -196,9 +199,7 @@ export default {
       status.value = newStatus;
       messages.value = newMessages;
 
-      updateTouchState();
-
-      emit("update:status", status.value);
+      state.value = updateTouchState();
     };
 
     let formValidate = () => {
@@ -211,10 +212,10 @@ export default {
       status.value = newStatus;
       messages.value = newMessages;
 
-      updateFormState();
-
-      emit("update:status", status.value);
+      state.value = updateFormState();
     };
+
+    watch(status, () => emit("update:status", status.value));
 
     let getValidateStatus = (value, touched, validated) => {
       let newStatus = {

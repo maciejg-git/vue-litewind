@@ -32,6 +32,7 @@
     style-progress-bar="gradient"
     :value="example.value"
     :label="false"
+    :transition="example.transition"
     class="fixed top-0 left-0 w-full z-50"
   ></v-progress>
   <!-- CUT START -->

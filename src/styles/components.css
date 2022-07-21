@@ -1674,7 +1674,7 @@
     }
     .badge--warn {
       @apply
-        text-white
+        text-warn-800
         bg-warn-500
     }
     .badge--danger {

@@ -20,7 +20,6 @@ import { sharedStyleProps, sharedFormProps } from "../shared-props";
 export default {
   props: {
     modelValue: { type: [Array, Boolean, Object], default: undefined },
-    rules: { type: Object, default: {} },
     styleCheckbox: { type: [String, Array], default: "" },
     ...sharedFormProps(null),
     ...sharedStyleProps("checkbox"),
@@ -44,7 +43,7 @@ export default {
 
     let { groupValue, updateValue, touch, state } = inject(
       "checkbox-group",
-      {}
+      { state: "" }
     );
 
     let localModel = useLocalModel(
@@ -54,7 +53,9 @@ export default {
       groupValue
     );
 
-    let handleBlur = () => touch();
+    let handleBlur = () => {
+      if (touch) touch();
+    }
 
     return {
       classes,

@@ -32,20 +32,17 @@ import vBreadcrumb from "./vBreadcrumb.vue";
 import vFormText from "./vFormText.vue";
 import vAccordion from "./vAccordion.vue"
 import vIcon from "./vIcon.vue"
-
 import vTree from "./vTree.vue"
 import vTreeNode from "./vTreeNode.vue"
-
 import vAutocomplete from "./vAutocomplete.vue"
-
-import tooltip from "../directives/tooltip.js";
-
+import vCheckboxGroup from "./vCheckboxGroup.vue"
+import vForm from "./vForm.vue"
 import vButtonCollapse from "./vButtonCollapse.vue"
 import vButtonDropdown from "./vButtonDropdown.vue"
 
-import vCheckboxGroup from "./vCheckboxGroup.vue"
+import tooltip from "../directives/tooltip.js";
 
-import vForm from "./vForm.vue"
+import { validationMessages } from "../validators"
 
 export {
   vButton,
@@ -82,14 +79,17 @@ export {
   vDivider,
   vAccordion,
   vIcon,
-  tooltip,
-
   vAutocomplete,
   vTreeNode,
   vTree,
-
+  vCheckboxGroup,
+  vForm,
   vButtonCollapse,
   vButtonDropdown,
+
+  tooltip,
+
+  validationMessages,
 };
 
 export { 
@@ -160,19 +160,15 @@ function install(app) {
   app.component("v-divider", vDivider);
   app.component("v-accordion", vAccordion);
   app.component("v-icon", vIcon);
-
   app.component("v-autocomplete", vAutocomplete);
   app.component("v-tree-node", vTreeNode);
   app.component("v-tree", vTree);
-
-  app.directive("tooltip", tooltip);
-
+  app.component("v-checkbox-group", vCheckboxGroup);
+  app.component("v-form", vForm);
   app.component("v-button-collapse", vButtonCollapse);
   app.component("v-button-dropdown", vButtonDropdown);
 
-  app.component("v-checkbox-group", vCheckboxGroup);
-
-  app.component("v-form", vForm);
+  app.directive("tooltip", tooltip);
 }
 
 export { install as plugin };

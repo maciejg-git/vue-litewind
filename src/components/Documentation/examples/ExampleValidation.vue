@@ -91,7 +91,6 @@ export default {
       atLeastOneLowercase: true,
       atLeastOneSpecial: true,
       atLeastOneDigit: true,
-      wasNotUsed: (v) => v !== 'l@stP@ssword' || "Password cannot be same as previous",
     };
 
     let languages = ref([]);
