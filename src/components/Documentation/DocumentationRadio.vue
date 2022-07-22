@@ -56,6 +56,12 @@ export default {
         default: "undefined",
         description: "Radio v-model",
       },
+      {
+        prop: "label",
+        type: ["String"],
+        default: "",
+        description: "Radio label",
+      },
       ...formProps(),
       ...styleProps("input"),
     ]);
@@ -64,6 +70,10 @@ export default {
       {
         prop: "style-radio",
         description: "Main input element",
+      },
+      {
+        prop: "style-label",
+        description: "Input label element",
       },
     ]);
 

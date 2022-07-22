@@ -97,10 +97,22 @@
   <section>
     <h4>Example - simple validation</h4>
     <div class="example">
-      <example-validation></example-validation>
+      <example-validation-username></example-validation-username>
     </div>
-    <v-code :code="ExampleValidationCode" template language="html"></v-code>
-    <v-code :code="ExampleValidationCode" script language="js"></v-code>
+    <v-code :code="ExampleValidationUsernameCode" template language="html"></v-code>
+    <v-code :code="ExampleValidationUsernameCode" script language="js"></v-code>
+
+    <div class="example">
+      <example-validation-password></example-validation-password>
+    </div>
+    <v-code :code="ExampleValidationPasswordCode" template language="html"></v-code>
+    <v-code :code="ExampleValidationPasswordCode" script language="js"></v-code>
+
+    <div class="example">
+      <example-validation-checkbox></example-validation-checkbox>
+    </div>
+    <v-code :code="ExampleValidationCheckboxCode" template language="html"></v-code>
+    <v-code :code="ExampleValidationCheckboxCode" script language="js"></v-code>
   </section>
 
   <section>
@@ -134,21 +146,29 @@
 </template>
 
 <script>
-import ExampleValidation from "./examples/ExampleValidation.vue"
+import ExampleValidationUsername from "./examples/ExampleValidationUsername.vue"
+import ExampleValidationPassword from "./examples/ExampleValidationPassword.vue"
+import ExampleValidationCheckbox from "./examples/ExampleValidationCheckbox.vue"
 import ExampleValidationForm from "./examples/ExampleValidationForm.vue"
 import ExampleValidationModes from "./examples/ExampleValidationModes.vue"
-import ExampleValidationCode from "./examples/ExampleValidation.vue?raw"
+import ExampleValidationUsernameCode from "./examples/ExampleValidationUsername.vue?raw"
+import ExampleValidationPasswordCode from "./examples/ExampleValidationPassword.vue?raw"
+import ExampleValidationCheckboxCode from "./examples/ExampleValidationUsername.vue?raw"
 import ExampleValidationFormCode from "./examples/ExampleValidationForm.vue?raw"
 
 export default {
   components: {
-    ExampleValidation,
+    ExampleValidationUsername,
+    ExampleValidationPassword,
+    ExampleValidationCheckbox,
     ExampleValidationForm,
     ExampleValidationModes,
   },
   setup(props) {
     return {
-      ExampleValidationCode,
+      ExampleValidationUsernameCode,
+      ExampleValidationPasswordCode,
+      ExampleValidationCheckboxCode,
       ExampleValidationFormCode,
     };
   },

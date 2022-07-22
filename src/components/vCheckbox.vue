@@ -1,11 +1,16 @@
 <template>
-  <input
-    v-model="localModel"
-    v-bind="$attrs"
-    type="checkbox"
-    :class="getCheckBoxClasses()"
-    @blur="handleBlur"
-  />
+  <div class="flex items-center">
+    <input
+      v-model="localModel"
+      v-bind="$attrs"
+      type="checkbox"
+      :class="getCheckBoxClasses()"
+      @blur="handleBlur"
+    />
+    <slot name="label" :label="label">
+      <label :for="id" :class="classes.label.value">{{ label }}</label>
+    </slot>
+  </div>
 </template>
 
 <script>
@@ -20,15 +25,19 @@ import { sharedStyleProps, sharedFormProps } from "../shared-props";
 export default {
   props: {
     modelValue: { type: [Array, Boolean, Object], default: undefined },
+    label: { type: String, default: "" },
     styleCheckbox: { type: [String, Array], default: "" },
+    styleLabel: { type: [String, Array], default: "" },
     ...sharedFormProps(null),
     ...sharedStyleProps("checkbox"),
   },
+  inheritAttrs: false,
   setup(props, { attrs, emit }) {
     let { classes, states } = useStyles("checkbox", props, {
       checkbox: {
         states: ["valid", "invalid", "disabled"],
       },
+      label: null,
     });
 
     let getCheckBoxClasses = () => {
@@ -41,28 +50,24 @@ export default {
       ];
     };
 
-    let { groupValue, updateValue, touch, state } = inject(
-      "checkbox-group",
-      { state: "" }
-    );
+    let { id } = attrs;
 
-    let localModel = useLocalModel(
-      props,
-      emit,
-      updateValue,
-      groupValue
-    );
+    let { groupValue, updateValue, touch, state } = inject("checkbox-group", {
+      state: "",
+    });
+
+    let localModel = useLocalModel(props, emit, updateValue, groupValue);
 
     let handleBlur = () => {
       if (touch) touch();
-    }
+    };
 
     return {
       classes,
-      states,
       getCheckBoxClasses,
       state,
       localModel,
+      id,
       handleBlur,
     };
   },

@@ -29,13 +29,17 @@ export default {
       return valid.value
     };
 
-    provide("form", {
-      addInput,
-    });
+    let reset = () => {
+      inputs.forEach((i) => i.reset())
+      valid.value = false
+      emit("update:form-status", valid.value);
+    }
 
     emit("update:form-status", valid.value);
 
-    expose({ validate });
+    provide("form", { addInput });
+
+    expose({ validate, reset });
 
     return {};
   },

@@ -17,7 +17,7 @@
             minLength: 5,
             alphanumeric: true,
           }"
-          @update:status="(data) => (usernameStatus = data)"
+          @update:status="(status) => (usernameStatus = status)"
         ></v-input>
 
         <v-input
@@ -34,7 +34,7 @@
             atLeastOneSpecial: true,
             atLeastOneDigit: true,
           }"
-          @update:status="(data) => (usernameStatus = data)"
+          @update:status="(status) => (passwordStatus = status)"
         ></v-input>
 
         <v-input
@@ -47,16 +47,22 @@
             required: true,
             email: true,
           }"
-          @update:status="(data) => (usernameStatus = data)"
+          @update:status="(status) => (emailStatus = status)"
         ></v-input>
       </v-form>
 
-      <v-button @click="form.validate()" class="self-end mt-20">
-        Validate
-      </v-button>
+      <div class="self-end mt-20">
+        <v-button style-button="secondary" @click="form.reset()" class="mr-4">
+          Reset
+        </v-button>
+        <v-button @click="form.validate()">Validate</v-button>
+      </div>
     </div>
     <pre class="m-0">
-      <code v-html="'form status: ' + stringifyObject(formStatus, true)"></code>
+      <code v-html="'username: ' + stringifyObject(usernameStatus, true, ['valid', 'validated'])"></code>
+      <code v-html="'password: ' + stringifyObject(passwordStatus, true, ['valid', 'validated'])"></code>
+      <code v-html="'email: ' + stringifyObject(emailStatus, true, ['valid', 'validated'])"></code>
+      <code v-html="'form: ' + stringifyObject(formStatus, true)"></code>
     </pre>
   </div>
 </template>

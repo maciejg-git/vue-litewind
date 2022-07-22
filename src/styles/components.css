@@ -833,6 +833,11 @@
         disabled
     }
 
+.checkbox--label {
+  @apply
+    ml-4
+}
+
 /* INPUT ROUNDED */
 
 .input-rounded {

@@ -49,10 +49,10 @@
         @update:status="(status) => (languagesStatus = status)"
       >
         <div v-for="l in languagesData" class="flex items-center my-2">
-          <v-checkbox :value="l" :id="'language-' + l"></v-checkbox>
-          <label :for="'language-' + l" class="ml-3">
-            {{ l }}
-          </label>
+          <v-checkbox :value="l" :id="'language-' + l" :label="l"></v-checkbox>
+          <!-- <label :for="'language-' + l" class="ml-3"> -->
+          <!--   {{ l }} -->
+          <!-- </label> -->
         </div>
       </v-checkbox-group>
     </div>

@@ -110,6 +110,8 @@ export default {
 
     // validate
 
+    let { addInput } = inject("form", {});
+
     let defaultStatus = {
       touched: false,
       dirty: false,
@@ -123,9 +125,14 @@ export default {
     let messages = ref({});
     let state = ref("");
 
-    let { addInput } = inject("form", {});
-
     let [validateOn, validateMode] = props.validate.split(" ");
+
+    let reset = () => {
+      status.value = { ...defaultStatus }
+      state.value = ""
+      localModel.value = ""
+      messages.value = {}
+    }
 
     let updateState = () => {
       if (
@@ -183,6 +190,8 @@ export default {
     };
 
     let updateValue = (v) => {
+      if (validateOn === 'on-blur' && !status.value.touched) return
+
       let { newStatus, newMessages } = getValidateStatus(v);
 
       status.value = newStatus;
@@ -246,12 +255,12 @@ export default {
 
       newStatus.wasInvalid =
         status.value.wasInvalid ||
-        (!newStatus.valid && (status.value.wasValid || touched || validated));
+        (!newStatus.valid && (status.value.wasValid || !!touched || !!validated));
 
       return { newStatus, newMessages };
     };
 
-    if (addInput) addInput({ status, formValidate });
+    if (addInput) addInput({ status, formValidate, reset });
 
     emit("update:status", status.value);
 

@@ -60,6 +60,12 @@ export default {
         default: "undefined",
         description: "Checkbox v-model",
       },
+      {
+        prop: "label",
+        type: ["String"],
+        default: "",
+        description: "Checkbox label",
+      },
       ...formProps(),
       ...styleProps("input"),
     ]);
@@ -68,6 +74,10 @@ export default {
       {
         prop: "style-checkbox",
         description: "Main input element",
+      },
+      {
+        prop: "style-label",
+        description: "Input label element",
       },
     ]);
 

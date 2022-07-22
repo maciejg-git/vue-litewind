@@ -1,33 +1,42 @@
 <template>
+  <div class="flex items-center">
   <input
     v-bind="$attrs"
     v-model="localModel"
     type="radio"
     :class="getRadioClasses()"
   />
+    <slot name="label" :label="label">
+      <label :for="id" :class="classes.label.value">{{ label }}</label>
+    </slot>
+  </div>
 </template>
 
 <script>
-import { computed } from "vue";
+// vue
+import { inject } from "vue";
+// composition
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
+// props
 import { sharedStyleProps } from "../shared-props";
 
 export default {
   props: {
     modelValue: { type: [Array, Boolean, String], default: undefined },
-    state: { type: [String, Boolean], default: "" },
+    label: { type: String, default: "" },
     styleRadio: { type: [String, Array], default: "" },
+    styleLabel: { type: [String, Array], default: "" },
     ...sharedStyleProps("radio"),
   },
+  inheritAttrs: false,
   setup(props, { attrs, emit }) {
     let { classes, states } = useStyles("radio", props, {
       radio: {
         states: ["valid", "invalid", "disabled"],
       },
+      label: null,
     });
-
-    let localModel = useLocalModel(props, emit);
 
     let getRadioClasses = () => {
       return [
@@ -39,15 +48,18 @@ export default {
       ];
     };
 
-    let state = computed(() =>
-      props.state === true
-        ? "valid"
-        : props.state === false
-        ? "invalid"
-        : props.state === null
-        ? ""
-        : props.state
+    let { id } = attrs
+
+    let { groupValue, updateValue, touch, state } = inject(
+      "radio-group",
+      { state: "" }
     );
+
+    let localModel = useLocalModel(props, emit, updateValue, groupValue);
+
+    let handleBlur = () => {
+      if (touch) touch();
+    }
 
     return {
       classes,
@@ -55,6 +67,8 @@ export default {
       getRadioClasses,
       state,
       localModel,
+      id,
+      handleBlur,
     };
   },
 };

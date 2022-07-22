@@ -1,9 +1,8 @@
 <template>
-  <div v-for="l in languages" class="flex items-center my-2">
+  <div v-for="l in languagesData" class="flex items-center my-2">
     <v-radio
-      v-model="languagesModel"
+      v-model="language"
       :value="l"
-      :state="languagesState()"
       :id="'language-' + l"
     ></v-radio>
     <label :for="'language-' + l" class="ml-3">
@@ -11,20 +10,9 @@
     </label>
   </div>
 
-  <v-form-text
-    :state="languagesState()"
-    visible-states="invalid"
-  >
-    Please select the language.
-  </v-form-text>
-
-  <v-button @click="validate()" style-button="default" class="mt-5">
-    Send
-  </v-button>
-
   <div class="mt-5">
     <span class="font-semibold">Language:</span>
-    {{ languagesModel }}
+    {{ language }}
   </div>
 </template>
 
@@ -33,7 +21,9 @@ import { ref } from "vue";
 
 export default {
   setup() {
-    let languages = ref([
+    let language = ref("");
+
+    let languagesData = ref([
       "english",
       "swedish",
       "korean",
@@ -42,27 +32,9 @@ export default {
       "japanese",
     ]);
 
-    let languagesModel = ref("");
-    let languagesValidated = ref(false);
-
-    let validate = () => {
-      languagesValidated.value = true;
-    };
-
-    let languagesState = () => {
-      return languagesValidated.value
-        ? languagesModel.value
-          ? "valid"
-          : "invalid"
-        : "";
-    };
-
     return {
-      languages,
-      validate,
-      languagesState,
-      languagesModel,
-      languagesValidated,
+      language,
+      languagesData,
     };
   },
 };

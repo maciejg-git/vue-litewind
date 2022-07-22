@@ -65,7 +65,7 @@ import { ref, reactive } from "vue";
 export default {
   setup() {
     let example = reactive({
-      model: true,
+      model: "",
       state: "",
     });
 

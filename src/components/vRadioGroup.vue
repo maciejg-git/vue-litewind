@@ -12,7 +12,7 @@ import { globalValidators } from "../validators";
 export default {
   props: {
     modelValue: {
-      type: [String, Number, Boolean, Array],
+      type: [String, Boolean],
       default: undefined,
     },
     rules: { type: Object, default: {} },
@@ -93,7 +93,7 @@ export default {
       return { newStatus, newMessages };
     };
 
-    provide("checkbox-group", {
+    provide("radio-group", {
       groupValue,
       updateValue,
       touch,
