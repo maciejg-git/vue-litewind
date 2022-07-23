@@ -128,18 +128,18 @@ export default {
     let [validateOn, validateMode] = props.validate.split(" ");
 
     let reset = () => {
-      status.value = { ...defaultStatus }
-      state.value = ""
-      localModel.value = ""
-      messages.value = {}
-    }
+      status.value = { ...defaultStatus };
+      state.value = "";
+      localModel.value = "";
+      messages.value = {};
+    };
 
     let updateState = () => {
-      if (
-        status.value.touched ||
-        status.value.validated ||
-        validateOn === "immediate"
-      ) {
+      // if (
+      //   validateOn === "immediate" ||
+      //   status.value.touched ||
+      //   status.value.validated
+      // ) {
         if (!status.value.valid) {
           if (validateMode === "silent") {
             if (status.value.wasValid || status.value.wasInvalid) {
@@ -159,7 +159,7 @@ export default {
             return "valid";
           }
         }
-      }
+      // }
       return state.value;
     };
 
@@ -190,7 +190,14 @@ export default {
     };
 
     let updateValue = (v) => {
-      if (validateOn === 'on-blur' && !status.value.touched) return
+      emit("update:modelValue", v);
+
+      if (
+        validateOn === "on-blur" &&
+        !status.value.touched &&
+        !status.value.validated
+      )
+        return;
 
       let { newStatus, newMessages } = getValidateStatus(v);
 
@@ -224,7 +231,9 @@ export default {
       state.value = updateFormState();
     };
 
-    watch(status, () => emit("update:status", status.value));
+    watch(status, () => emit("update:status", status.value), {
+      immediate: true,
+    });
 
     let getValidateStatus = (value, touched, validated) => {
       let newStatus = {
@@ -255,16 +264,17 @@ export default {
 
       newStatus.wasInvalid =
         status.value.wasInvalid ||
-        (!newStatus.valid && (status.value.wasValid || !!touched || !!validated));
+        (!newStatus.valid &&
+          (status.value.wasValid || !!touched || !!validated));
 
       return { newStatus, newMessages };
     };
 
     if (addInput) addInput({ status, formValidate, reset });
 
-    emit("update:status", status.value);
-
     let localModel = useLocalModel(props, emit, updateValue);
+
+    // handle template events
 
     let handleBlur = () => touch();
 

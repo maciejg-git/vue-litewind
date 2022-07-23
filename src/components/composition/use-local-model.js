@@ -1,13 +1,14 @@
 import { computed } from "vue";
 
-export default function useLocalModel(props, emit, updateValue, groupValue) {
+export default function useLocalModel(props, emit, updateValue, value) {
   return computed({
     get() {
-      return groupValue ? groupValue.value : props.modelValue
+      return value ? value.value : props.modelValue
     },
     set(value) {
       if (updateValue) {
         updateValue(value)
+        return
       }
       emit("update:modelValue", value);
     },

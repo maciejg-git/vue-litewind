@@ -785,6 +785,11 @@
         disabled
     }
 
+.radio--label {
+  @apply
+    ml-4
+}
+
 /* CHECKBOX */
 
 .checkbox {

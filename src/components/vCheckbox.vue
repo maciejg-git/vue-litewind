@@ -7,7 +7,7 @@
       :class="getCheckBoxClasses()"
       @blur="handleBlur"
     />
-    <slot name="label" :label="label">
+    <slot name="default" :label="label">
       <label :for="id" :class="classes.label.value">{{ label }}</label>
     </slot>
   </div>
@@ -52,11 +52,11 @@ export default {
 
     let { id } = attrs;
 
-    let { groupValue, updateValue, touch, state } = inject("checkbox-group", {
+    let { value, updateValue, touch, state } = inject("checkbox-group", {
       state: "",
     });
 
-    let localModel = useLocalModel(props, emit, updateValue, groupValue);
+    let localModel = useLocalModel(props, emit, updateValue, value);
 
     let handleBlur = () => {
       if (touch) touch();

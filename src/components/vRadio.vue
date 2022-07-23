@@ -5,8 +5,9 @@
     v-model="localModel"
     type="radio"
     :class="getRadioClasses()"
+    @blur="handleBlur"
   />
-    <slot name="label" :label="label">
+    <slot name="default" :label="label">
       <label :for="id" :class="classes.label.value">{{ label }}</label>
     </slot>
   </div>
@@ -19,7 +20,7 @@ import { inject } from "vue";
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
 // props
-import { sharedStyleProps } from "../shared-props";
+import { sharedStyleProps, sharedFormProps } from "../shared-props";
 
 export default {
   props: {
@@ -27,6 +28,7 @@ export default {
     label: { type: String, default: "" },
     styleRadio: { type: [String, Array], default: "" },
     styleLabel: { type: [String, Array], default: "" },
+    ...sharedFormProps(null),
     ...sharedStyleProps("radio"),
   },
   inheritAttrs: false,
@@ -50,12 +52,12 @@ export default {
 
     let { id } = attrs
 
-    let { groupValue, updateValue, touch, state } = inject(
+    let { value, updateValue, touch, state } = inject(
       "radio-group",
       { state: "" }
     );
 
-    let localModel = useLocalModel(props, emit, updateValue, groupValue);
+    let localModel = useLocalModel(props, emit, updateValue, value);
 
     let handleBlur = () => {
       if (touch) touch();

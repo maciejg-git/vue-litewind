@@ -25,7 +25,7 @@ export default {
       validated: false,
     };
 
-    let groupValue = ref(props.modelValue);
+    let value = ref(props.modelValue);
     let status = ref({ ...defaultStatus });
     let messages = ref({});
     let state = ref("");
@@ -43,7 +43,7 @@ export default {
     };
 
     let updateValue = (v) => {
-      groupValue.value = v;
+      value.value = v;
 
       let { newStatus, newMessages } = getValidateStatus(v);
 
@@ -94,7 +94,7 @@ export default {
     };
 
     provide("checkbox-group", {
-      groupValue,
+      value,
       updateValue,
       touch,
       state,

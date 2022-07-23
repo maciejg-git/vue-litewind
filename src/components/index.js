@@ -36,6 +36,7 @@ import vTree from "./vTree.vue"
 import vTreeNode from "./vTreeNode.vue"
 import vAutocomplete from "./vAutocomplete.vue"
 import vCheckboxGroup from "./vCheckboxGroup.vue"
+import vRadioGroup from "./vRadioGroup.vue"
 import vForm from "./vForm.vue"
 import vButtonCollapse from "./vButtonCollapse.vue"
 import vButtonDropdown from "./vButtonDropdown.vue"
@@ -83,6 +84,7 @@ export {
   vTreeNode,
   vTree,
   vCheckboxGroup,
+  vRadioGroup,
   vForm,
   vButtonCollapse,
   vButtonDropdown,
@@ -164,6 +166,7 @@ function install(app) {
   app.component("v-tree-node", vTreeNode);
   app.component("v-tree", vTree);
   app.component("v-checkbox-group", vCheckboxGroup);
+  app.component("v-radio-group", vRadioGroup);
   app.component("v-form", vForm);
   app.component("v-button-collapse", vButtonCollapse);
   app.component("v-button-dropdown", vButtonDropdown);
