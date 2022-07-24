@@ -115,7 +115,6 @@ export default {
     let defaultStatus = {
       touched: false,
       dirty: false,
-      // required: false,
       valid: false,
       validated: false,
       wasInvalid: false,
@@ -125,194 +124,103 @@ export default {
     let status = ref({ ...defaultStatus });
     let messages = ref({});
     let state = ref("");
-    let wasValid = ref(false)
-    let wasInvalid = ref(false)
+    let wasValid = ref(false);
+    let wasInvalid = ref(false);
 
     let [validateOn, validateMode] = props.validate.split(" ");
 
     let reset = () => {
       status.value = { ...defaultStatus };
       state.value = "";
-      emit("update:modelValue", '');
+      wasInvalid.value = false;
+      wasValid.value = false;
+      emit("update:modelValue", "");
       messages.value = {};
-      // [validateOn, validateMode] = props.validate.split(" ");
     };
 
     let updateState = () => {
-      // if (!status.value.dirty && !props.rules.required) 
-      // return state.value;
-
-      // if (!status.value.required) return 'invalid'
-
-      if (status.value.optional) return ''
-
-      // if (props.rules.required) {
-      //   if (!status.value.required) return 'invalid'
-      // } else {
-      //   if (localModel.value === "") return state.value
-      // }
-
-      // if (validateMode === "silent") return state.value;
+      if (status.value.optional) return "";
 
       if (!status.value.valid) {
-        if (validateMode === 'eager' || wasInvalid.value) {
+        if (validateMode === "eager" || wasInvalid.value) {
           return "invalid";
         }
       } else {
-        if (validateMode === 'eager' || wasInvalid.value) {
+        if (validateMode === "eager" || wasInvalid.value) {
           return "valid";
         }
       }
     };
 
-    let updateTouchState = () => {
-      if (!status.value.dirty && !props.rules.required) 
-      return state.value;
-
-      if (!status.value.valid) {
-        return "invalid";
-      } else {
-        if (validateMode === "eager") {
-          return "valid";
-        }
-      }
-      // if (status.value.dirty || props.rules.required) {
-      //   if (!status.value.valid) {
-      //     return "invalid";
-      //   } else {
-      //     if (validateMode === "eager") {
-      //       return "valid";
-      //     }
-      //   }
-      // }
-      // return state.value;
-    };
-
-    let updateFormState = () => {
-      if (status.value.dirty || props.rules.required) {
-        if (!status.value.valid) {
-          return "invalid";
-        } else {
-          if (validateMode === "eager") {
-            return "valid";
-          }
-        }
-      }
-      return state.value;
-    };
+    let validate = (value) => {
+      let { newStatus, newMessages } = getValidateStatus(value);
+      status.value = newStatus;
+      messages.value = newMessages;
+    }
 
     let updateValue = (v) => {
       emit("update:modelValue", v);
 
-      // if (validateOn === "on-blur") return;
+      validate(v);
 
-      let { newStatus, newMessages } = getValidateStatus(v);
-
-      status.value = newStatus;
-      messages.value = newMessages;
-
-      if (validateOn === 'on-blur' && !status.value.touched && !status.value.validated) {
-        return
+      if (
+        validateOn === "on-blur" &&
+        !status.value.touched &&
+        !status.value.validated
+      ) {
+        return;
       }
 
-      // if (validateOn === "immediate" || status.value.touched) {
-        if (status.value.valid) {
-          wasValid.value = true
-        }
-        if (!status.value.valid && wasValid.value) {
-          wasInvalid.value = true
-        }
+      if (status.value.valid) {
+        wasValid.value = true;
+      }
+      if (!status.value.valid && wasValid.value) {
+        wasInvalid.value = true;
+      }
 
-        state.value = updateState();
-      // }
-
-      // if (status.value.wasInvalid) validateMode = "eager";
-
-      // state.value = updateState();
+      state.value = updateState();
     };
 
     let touch = () => {
-      let { newStatus, newMessages } = getValidateStatus(
-        localModel.value,
-      );
-      status.value = newStatus;
-      messages.value = newMessages;
+      validate(localModel.value)
 
-      status.value.touched = true
+      status.value.touched = true;
 
       if (!status.value.valid) {
-        wasInvalid.value = true
+        wasInvalid.value = true;
       }
 
-      // validateOn = "immediate";
-
-      // if (status.value.valid) {
-      //   wasValid.value = true
-      // }
-      // if (!status.value.valid) {
-      //   wasInvalid = true
-      // }
-      // if (props.rules.required) {
-      //   if (!status.value.required) {
-      //     wasInvalid = true
-      //   } else {
-      //     if (!status.value.valid) {
-      //       wasInvalid = true
-      //     }
-      //   }
-      // } else {
-      //     if (!status.value.valid) {
-      //       wasInvalid = true
-      //     }
-      // }
-      // if (!status.value.valid) validateMode = "eager";
-
-      // state.value = updateTouchState();
       state.value = updateState();
     };
 
     let formValidate = () => {
-      let { newStatus, newMessages } = getValidateStatus(
-        localModel.value,
-        // false,
-        // true
-      );
+      validate(localModel.value)
 
-      status.value.validated = true
-
-      status.value = newStatus;
-      messages.value = newMessages;
+      status.value.validated = true;
 
       if (!status.value.valid) {
-        wasInvalid.value = true
+        wasInvalid.value = true;
       }
 
-      // validateOn = "immediate";
-      // if (!status.value.valid) validateMode = "eager";
-
       state.value = updateState();
-      // state.value = updateFormState();
     };
 
     watch(status, () => emit("update:status", status.value), {
       immediate: true,
     });
 
-    let getValidateStatus = (value, touched, validated) => {
+    let getValidateStatus = (value) => {
       let newStatus = {
         valid: true,
         optional: false,
-        touched: status.value.touched || !!touched,
-        validated: status.value.validated || !!validated,
+        touched: status.value.touched,
+        validated: status.value.validated,
         dirty: status.value.dirty || !!(value && !!value.length),
       };
 
       let newMessages = {};
 
       let res = null;
-
-      // newStatus.isRequired = !props.rules.required || globalValidators.required(value) === true
-      // newStatus.isRequired = !props.rules.required && globalValidators.required(value) !== true
 
       for (let [key, v] of Object.entries(props.rules)) {
         if (globalValidators[key]) {
@@ -327,19 +235,7 @@ export default {
         newStatus.valid = newStatus.valid && newStatus[key];
       }
 
-      // if (!props.rules.required && value === '') newStatus.optional = true
-      newStatus.optional = !props.rules.required && value === ''
-
-      // newStatus.wasValid = status.value.wasValid || newStatus.valid;
-      //
-      // newStatus.wasInvalid =
-      //   status.value.wasInvalid ||
-      //   (!newStatus.valid &&
-      //     status.value.wasValid);
-      // newStatus.wasInvalid =
-      //   status.value.wasInvalid ||
-      //   (!newStatus.valid &&
-      //     (status.value.wasValid || !!touched || !!validated));
+      newStatus.optional = !props.rules.required && value === "";
 
       return { newStatus, newMessages };
     };
