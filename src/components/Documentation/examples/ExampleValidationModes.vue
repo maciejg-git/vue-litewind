@@ -8,14 +8,17 @@
         class="w-full"
         v-model="username"
         :rules="rules"
+        validate-on="blur"
+        validate-mode="silent"
         @update:status="(data) => (usernameStatus = data)"
       ></v-input>
     </div>
 
     <pre class="m-0">
-      <div class="font-semibold text-lg mb-5">
-        Mode: "on-blur silent"
-      </div>
+      <ul class="font-semibold mb-5">
+        <li>validate-on: "blur"</li>
+        <li>validate-mode: "silent""</li>
+      </ul>
       <code v-html="'model: ' + stringifyObject(username)"></code>
       <code v-html="'rules: ' + stringifyObject(rules)"></code>
       <code v-html="'status: ' + stringifyObject(usernameStatus, true)"></code>
@@ -33,15 +36,17 @@
         class="w-full"
         v-model="username2"
         :rules="rules"
-        validate="on-blur eager"
+        validate-on="blur"
+        validate-mode="eager"
         @update:status="(data) => (usernameStatus2 = data)"
       ></v-input>
     </div>
 
     <pre class="m-0">
-      <div class="font-semibold text-lg mb-5">
-        Mode: "on-blur eager"
-      </div>
+      <ul class="font-semibold mb-5">
+        <li>validate-on: "blur"</li>
+        <li>validate-mode: "eager""</li>
+      </ul>
       <code v-html="'model: ' + stringifyObject(username2)"></code>
       <code v-html="'rules: ' + stringifyObject(rules)"></code>
       <code v-html="'status: ' + stringifyObject(usernameStatus2, true)"></code>
@@ -59,15 +64,17 @@
         class="w-full"
         v-model="username3"
         :rules="rules"
-        validate="immediate silent"
+        validate-on="immediate"
+        validate-mode="silent"
         @update:status="(data) => (usernameStatus3 = data)"
       ></v-input>
     </div>
 
     <pre class="m-0">
-      <div class="font-semibold text-lg mb-5">
-        Mode: "immediate silent"
-      </div>
+      <ul class="font-semibold mb-5">
+        <li>validate-on: "immediate"</li>
+        <li>validate-mode: "silent""</li>
+      </ul>
       <code v-html="'model: ' + stringifyObject(username3)"></code>
       <code v-html="'rules: ' + stringifyObject(rules)"></code>
       <code v-html="'status: ' + stringifyObject(usernameStatus3, true)"></code>
@@ -85,15 +92,17 @@
         class="w-full"
         v-model="username4"
         :rules="rules"
-        validate="immediate eager"
+        validate-on="immediate"
+        validate-mode="eager"
         @update:status="(data) => (usernameStatus4 = data)"
       ></v-input>
     </div>
 
     <pre class="m-0">
-      <div class="font-semibold text-lg mb-5">
-        Mode: "immediate eager"
-      </div>
+      <ul class="font-semibold text-lg mb-5">
+        <li>validate-on: "immediate"</li>
+        <li>validate-mode: "eager""</li>
+      </ul>
       <code v-html="'model: ' + stringifyObject(username4)"></code>
       <code v-html="'rules: ' + stringifyObject(rules)"></code>
       <code v-html="'status: ' + stringifyObject(usernameStatus4, true)"></code>

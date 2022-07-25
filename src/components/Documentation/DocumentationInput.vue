@@ -17,7 +17,10 @@
 
     <h6>Slots</h6>
     <p></p>
-    <table-reference-basic :items="slots" reference="slot"></table-reference-basic>
+    <table-reference-basic
+      :items="slots"
+      reference="slot"
+    ></table-reference-basic>
   </section>
 
   <section>
@@ -32,9 +35,9 @@
 
 <script>
 import { ref } from "vue";
-import ExampleInput from "./examples/ExampleInput.vue"
-import exampleInputCode from "./examples/ExampleInput.vue?raw"
-import { styleProps, formProps } from "./shared-props"
+import ExampleInput from "./examples/ExampleInput.vue";
+import exampleInputCode from "./examples/ExampleInput.vue?raw";
+import { styleProps, formProps } from "./shared-props";
 
 export default {
   components: {
@@ -55,10 +58,18 @@ export default {
         description: "Rules for validation",
       },
       {
-        prop: "validate",
+        prop: "validate-on",
         type: ["String"],
-        default: "on-blur silent",
-        description: "Validation modes. See Form Validation for possible modes",
+        default: "blur",
+        description:
+          "Valid values are <code class='code-text'>blur</code> or <code class='code-text'>immediate</code>. See Form Validation for explanation and examples",
+      },
+      {
+        prop: "validate-mode",
+        type: ["String"],
+        default: "silent",
+        description:
+          "Valid values are <code class='code-text'>silent</code> or <code class='code-text'>eager</code>. See Form Validation for explanation and examples",
       },
       {
         prop: "block",
@@ -66,7 +77,7 @@ export default {
         default: "false",
         description: "Input v-model",
       },
-      ...formProps({ icon:true, clearable: true }),
+      ...formProps({ icon: true, clearable: true }),
       ...styleProps("input"),
     ]);
 
@@ -85,8 +96,7 @@ export default {
       },
     ]);
 
-    let events = ref([
-    ]);
+    let events = ref([]);
 
     let slots = ref([
       {
@@ -106,5 +116,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

@@ -188,6 +188,8 @@ export default {
     let isNewSelection = ref(true);
     let isVisible = ref(false);
 
+    let state = ref("")
+
     // show autocomplete menu
 
     let show = () => {
@@ -310,18 +312,6 @@ export default {
       selectedItem.value = "";
       localModel.value = "";
     };
-
-    // use state?
-
-    let state = computed(() =>
-      props.state === true
-        ? "valid"
-        : props.state === false
-        ? "invalid"
-        : props.state === null
-        ? ""
-        : props.state
-    );
 
     // handle template events
 

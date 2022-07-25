@@ -117,12 +117,16 @@
 
   <section>
     <h4>Example - validation modes</h4>
-    <p>Validation modes, only available on text inputs, allows control over when to display validation results and how to display them. Currently there are 4: 
+    <p><code class="code-text">validation-on</code> and <code class="code-text">validation-mode</code>, only available on text inputs, allows control over when to display validation results and how to display them:
     <ul>
-      <li class="my-2"><code class="code-text">"on-blur silent"</code> starts updating input state only after it loses focus. State of input is changed only for invalid values (default)</li>
-      <li class="my-2"><code class="code-text">"on-blur eager"</code> as above but also changes state if input is valid.</li>
-      <li class="my-2"><code class="code-text">"immediate silent"</code> starts updating state immediately after first input. Invalid values are ignored until value is at last once valid.</li>
-      <li class="my-2"><code class="code-text">"immediate eager"</code> as above but state is updated immedietely for invalid and valid values.</li>
+      <li class="my-2">
+        <code class="code-text">validate-on: "blur"</code> starts updating input state only after it loses focus. 
+        <code class="code-text">"immediate"</code> starts updating state immediately after first input
+      </li>
+      <li class="my-2">
+        <code class="code-text">validate-mode: "silent"</code> invalid values are ignored until value is at last once valid. 
+        <code class="code-text">"eager"</code> invalid and valid values always change state
+      </li>
     </ul>
     </p>
     <div class="example">

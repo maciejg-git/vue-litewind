@@ -1,8 +1,12 @@
 <template>
   <v-checkbox-group v-model="languages">
-    <div v-for="l in languagesData" class="my-2">
-      <v-checkbox :value="l" :id="'language-' + l" :label="l"></v-checkbox>
-    </div>
+    <v-checkbox
+      v-for="l in languagesData"
+      :value="l"
+      :id="'language-' + l"
+      :label="l"
+      class="my-2"
+    ></v-checkbox>
   </v-checkbox-group>
 
   <div class="mt-5">

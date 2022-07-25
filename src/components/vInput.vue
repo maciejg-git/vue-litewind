@@ -50,10 +50,11 @@
 <script>
 // vue
 import { ref, computed, watch, inject } from "vue";
-import vFormText from "./vFormText.vue";
 // composition
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
+// components
+import vFormText from "./vFormText.vue";
 // validators
 import { globalValidators } from "../validators";
 // props
@@ -66,8 +67,9 @@ export default {
       default: "",
     },
     block: { type: Boolean, default: false },
-    validate: { type: String, default: "on-blur silent" },
     rules: { type: Object, default: {} },
+    validateOn: { type: String, default: "blur" },
+    validateMode: { type: String, default: "silent" },
     state: { type: String, default: "" },
     styleInput: { type: [String, Array], default: "" },
     styleIcon: { type: [String, Array], default: "" },
@@ -117,17 +119,14 @@ export default {
       dirty: false,
       valid: false,
       validated: false,
-      wasInvalid: false,
-      wasValid: false,
     };
 
     let status = ref({ ...defaultStatus });
-    let messages = ref({});
     let state = ref("");
+    let messages = ref({});
     let wasValid = ref(false);
     let wasInvalid = ref(false);
-
-    let [validateOn, validateMode] = props.validate.split(" ");
+    let { validateOn, validateMode } = props
 
     let reset = () => {
       status.value = { ...defaultStatus };
@@ -142,14 +141,15 @@ export default {
       if (status.value.optional) return "";
 
       if (!status.value.valid) {
-        if (validateMode === "eager" || wasInvalid.value) {
+        if (validateMode === 'eager' || wasInvalid.value) {
           return "invalid";
         }
       } else {
-        if (validateMode === "eager" || wasInvalid.value) {
+        if (validateMode === 'eager' || wasInvalid.value) {
           return "valid";
         }
       }
+      return state.value
     };
 
     let validate = (value) => {
@@ -164,7 +164,7 @@ export default {
       validate(v);
 
       if (
-        validateOn === "on-blur" &&
+        validateOn === "blur" &&
         !status.value.touched &&
         !status.value.validated
       ) {
@@ -248,12 +248,15 @@ export default {
 
     let handleBlur = () => touch();
 
-    let handleClickClearButton = () => (localModel.value = "");
+    let handleClickClearButton = () => {
+      if (localModel.value.length) {
+        localModel.value = "";
+      }
+    }
 
     return {
       classes,
       wrapperClasses,
-      states,
       variants,
       getInputClasses,
       state,

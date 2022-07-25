@@ -4,7 +4,7 @@ export let validationMessages = {
   numeric: "Please enter only numbers",
   alphanumeric: "Please enter only letters or numbers",
   minLength: "Please enter at least %d characters",
-  maxLength: "Please enter at least %d characters",
+  maxLength: "Please enter up to %d characters",
   minElements: "Please select at least %d elements",
   maxElements: "Please select at least %d elements",
   minValue: "",

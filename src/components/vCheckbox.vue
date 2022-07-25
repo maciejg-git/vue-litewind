@@ -15,7 +15,7 @@
 
 <script>
 // vue
-import { inject } from "vue";
+import { ref, inject } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
@@ -53,7 +53,7 @@ export default {
     let { id } = attrs;
 
     let { value, updateValue, touch, state } = inject("checkbox-group", {
-      state: "",
+      state: ref(""),
     });
 
     let localModel = useLocalModel(props, emit, updateValue, value);

@@ -37,18 +37,15 @@
           @update:status="(status) => (passwordStatus = status)"
         ></v-input>
 
-        <v-input
-          type="text"
-          placeholder="Email"
-          block
-          class="w-full"
-          v-model="email"
+        <v-textarea
+          placeholder="Some text"
+          v-model="text"
           :rules="{
             required: true,
-            email: true,
+            maxLength: 30,
           }"
-          @update:status="(status) => (emailStatus = status)"
-        ></v-input>
+          @update:status="(status) => (textStatus = status)"
+        ></v-textarea>
       </v-form>
 
       <div class="self-end mt-20">
@@ -61,7 +58,7 @@
     <pre class="m-0">
       <code v-html="'username: ' + stringifyObject(usernameStatus, true, ['valid', 'validated'])"></code>
       <code v-html="'password: ' + stringifyObject(passwordStatus, true, ['valid', 'validated'])"></code>
-      <code v-html="'email: ' + stringifyObject(emailStatus, true, ['valid', 'validated'])"></code>
+      <code v-html="'text: ' + stringifyObject(textStatus, true, ['valid', 'validated'])"></code>
       <code v-html="'form: ' + stringifyObject(formStatus, true)"></code>
     </pre>
   </div>
@@ -77,11 +74,11 @@ export default {
     let username = ref("");
     let usernameStatus = ref({});
 
-    let email = ref("");
-    let emailStatus = ref({});
-
     let password = ref("");
     let passwordStatus = ref({});
+
+    let text = ref("");
+    let textStatus = ref({});
 
     let formStatus = ref({});
 
@@ -90,10 +87,10 @@ export default {
     return {
       username,
       usernameStatus,
-      email,
-      emailStatus,
       password,
       passwordStatus,
+      text,
+      textStatus,
       formStatus,
       form,
       stringifyObject,
