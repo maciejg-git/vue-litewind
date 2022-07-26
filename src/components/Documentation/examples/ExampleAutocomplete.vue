@@ -43,14 +43,6 @@
             <option value="">empty string</option>
           </v-select>
         </div>
-        <div>
-          <label for="state">state:</label>
-          <v-select id="state" v-model="example.state">
-            <option value="">normal (empty string)</option>
-            <option value="valid">valid</option>
-            <option value="invalid">invalid</option>
-          </v-select>
-        </div>
       </div>
     </v-tab>
     <v-tab>
@@ -81,7 +73,6 @@ export default {
       noLoader: false,
       clearable: false,
       transition: "fade",
-      state: "",
     });
 
     let query = (q) => {

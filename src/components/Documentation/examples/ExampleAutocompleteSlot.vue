@@ -12,13 +12,13 @@
     class="w-[420px]"
   >
     <template #item="{ item, inputValue, highlightMatch }">
-      <div class="flex justify-between">
-        <div v-html="highlightMatch(item['full_name'], inputValue)"></div>
-        <div class="text-xs">{{ item.department }}</div>
-      </div>
-      <span class="text-sm font-semibold text-text-400 dark:text-text-400">
-        {{ item.title }}
-      </span>
+        <div class="flex justify-between">
+          <div v-html="highlightMatch(item['full_name'], inputValue)"></div>
+          <div class="text-xs">{{ item.department }}</div>
+        </div>
+        <span class="text-sm font-semibold text-text-400 dark:text-text-400">
+          {{ item.title }}
+        </span>
     </template>
   </v-autocomplete>
 </template>

@@ -12,11 +12,7 @@
           block
           class="w-full"
           v-model="username"
-          :rules="{
-            required: true,
-            minLength: 5,
-            alphanumeric: true,
-          }"
+          :rules="usernameRules"
           @update:status="(status) => (usernameStatus = status)"
         ></v-input>
 
@@ -26,24 +22,14 @@
           block
           class="w-full"
           v-model="password"
-          :rules="{
-            required: true,
-            minLength: 8,
-            atLeastOneUppercase: true,
-            atLeastOneLowercase: true,
-            atLeastOneSpecial: true,
-            atLeastOneDigit: true,
-          }"
+          :rules="passwordRules"
           @update:status="(status) => (passwordStatus = status)"
         ></v-input>
 
         <v-textarea
           placeholder="Some text"
           v-model="text"
-          :rules="{
-            required: true,
-            maxLength: 30,
-          }"
+          :rules="textRules"
           @update:status="(status) => (textStatus = status)"
         ></v-textarea>
       </v-form>
@@ -73,12 +59,29 @@ export default {
   setup() {
     let username = ref("");
     let usernameStatus = ref({});
+    let usernameRules = {
+      required: true,
+      minLength: 5,
+      alphanumeric: true,
+    };
 
     let password = ref("");
     let passwordStatus = ref({});
+    let passwordRules = {
+      required: true,
+      minLength: 8,
+      atLeastOneUppercase: true,
+      atLeastOneLowercase: true,
+      atLeastOneSpecial: true,
+      atLeastOneDigit: true,
+    };
 
     let text = ref("");
     let textStatus = ref({});
+    let textRules = {
+      required: true,
+      maxLength: 30,
+    };
 
     let formStatus = ref({});
 
@@ -87,10 +90,13 @@ export default {
     return {
       username,
       usernameStatus,
+      usernameRules,
       password,
       passwordStatus,
+      passwordRules,
       text,
       textStatus,
+      textRules,
       formStatus,
       form,
       stringifyObject,

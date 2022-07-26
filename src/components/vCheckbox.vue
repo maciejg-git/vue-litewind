@@ -8,7 +8,7 @@
       @blur="handleBlur"
     />
     <slot name="default" :label="label">
-      <label :for="id" :class="classes.label.value">{{ label }}</label>
+      <label v-if="label" :for="id" :class="classes.label.value">{{ label }}</label>
     </slot>
   </div>
 </template>

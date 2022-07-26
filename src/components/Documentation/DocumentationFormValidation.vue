@@ -124,7 +124,7 @@
         <code class="code-text">"immediate"</code> starts updating state immediately after first input
       </li>
       <li class="my-2">
-        <code class="code-text">validate-mode: "silent"</code> invalid values are ignored until value is at last once valid. 
+        <code class="code-text">validate-mode: "silent"</code> invalid values are ignored until value is at last once valid.
         <code class="code-text">"eager"</code> invalid and valid values always change state
       </li>
     </ul>
@@ -132,8 +132,6 @@
     <div class="example">
       <example-validation-modes />
     </div>
-    <!-- <v-code :code="ExampleFormValidationCode" template language="html"></v-code> -->
-    <!-- <v-code :code="ExampleFormValidationCode" script language="js"></v-code> -->
   </section>
 
   <section>

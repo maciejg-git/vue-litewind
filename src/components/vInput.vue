@@ -11,29 +11,31 @@
         v-model="localModel"
         type="text"
         v-bind="$attrs"
-        :class="getInputClasses()"
+        :class="getInputClasses"
         @blur="handleBlur"
       />
 
-      <div v-if="clearable" class="absolute flex right-0 mr-3">
-        <button
-          class="focus:outline-none"
-          aria-label="Close"
-          @click="handleClickClearButton"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            :class="classes.clearButton.value"
-            width="16"
-            height="16"
-            fill="currentColor"
-            viewBox="0 0 16 16"
+      <div class="absolute flex items-center right-0 mr-2">
+          <v-spinner v-if="isLoading" type="svg" class="mr-2"></v-spinner>
+          <button
+            v-if="clearable"
+            class="focus:outline-none"
+            aria-label="Close"
+            @click="handleClickClearButton"
           >
-            <path
-              d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"
-            />
-          </svg>
-        </button>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              :class="classes.clearButton.value"
+              width="16"
+              height="16"
+              fill="currentColor"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"
+              />
+            </svg>
+          </button>
       </div>
     </div>
     <slot name="form-text">
@@ -71,6 +73,7 @@ export default {
     validateOn: { type: String, default: "blur" },
     validateMode: { type: String, default: "silent" },
     state: { type: String, default: "" },
+    isLoading: { type: Boolean, default: false },
     styleInput: { type: [String, Array], default: "" },
     styleIcon: { type: [String, Array], default: "" },
     styleClearButton: { type: [String, Array], default: "" },
@@ -86,7 +89,7 @@ export default {
     let { classes, states, variants } = useStyles("input", props, {
       input: {
         states: ["valid", "invalid", "disabled"],
-        variants: ["icon-variant"],
+        variants: ["icon-variant", "clearable-variant"],
       },
       clearButton: {
         name: "clear-button",
@@ -94,7 +97,7 @@ export default {
       icon: null,
     });
 
-    let getInputClasses = () => {
+    let getInputClasses = computed(() => {
       return [
         classes.input.value,
         state && states.input.value && states.input.value[state.value],
@@ -104,7 +107,7 @@ export default {
         props.icon ? variants.input.value["icon-variant"] : "",
         props.clearable ? variants.input.value["clearable-variant"] : "",
       ];
-    };
+    });
 
     let wrapperClasses = computed(() => {
       return props.block ? "block" : "inline-block";
@@ -252,6 +255,7 @@ export default {
       if (localModel.value.length) {
         localModel.value = "";
       }
+      emit("input:clear")
     }
 
     return {

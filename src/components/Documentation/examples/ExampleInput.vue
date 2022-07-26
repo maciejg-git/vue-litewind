@@ -8,6 +8,7 @@
     :type="example.type"
     :clearable="example.clearable"
     :state="example.state"
+    :isLoading="example.isLoading"
     placeholder="Type something..."
   />
 
@@ -21,6 +22,7 @@
       :type="example.type"
       :clearable="example.clearable"
       :state="example.state"
+      :isLoading="example.isLoading"
       icon="b-exclamation-circle"
       placeholder="Type something..."
     />
@@ -32,6 +34,7 @@
       :type="example.type"
       :clearable="example.clearable"
       :state="example.state"
+      :isLoading="example.isLoading"
       icon="b-exclamation-circle"
       placeholder="Type something..."
     >
@@ -55,6 +58,7 @@
       :type="example.type"
       :clearable="example.clearable"
       :state="example.state"
+      :isLoading="example.isLoading"
       placeholder="Type something..."
     />
 
@@ -66,6 +70,7 @@
       :type="example.type"
       :clearable="example.clearable"
       :state="example.state"
+      :isLoading="example.isLoading"
       placeholder="Type something..."
     />
   </div>
@@ -106,6 +111,13 @@
             <option value="invalid">invalid</option>
           </v-select>
         </div>
+        <div>
+          <label for="is-loading">is-loading:</label>
+          <v-select-prop id="is-loading" v-model="example.isLoading">
+            <option :value="true">true</option>
+            <option :value="false">false</option>
+          </v-select-prop>
+        </div>
       </div>
     </v-tab>
     <v-tab>
@@ -130,6 +142,7 @@ export default {
       model: "",
       type: "text",
       clearable: false,
+      isLoading: false,
       state: "",
     });
 

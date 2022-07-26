@@ -622,6 +622,10 @@
     dark:hover:bg-dark-700
     dark:focus:bg-primary-500
 }
+    .autocomplete--item--dense {
+      @apply
+        py-2 !important
+    }
     .autocomplete--item--disabled-state {
       @apply
         disabled

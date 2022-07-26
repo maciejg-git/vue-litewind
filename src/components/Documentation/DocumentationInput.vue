@@ -11,9 +11,9 @@
     <p></p>
     <table-reference-basic :items="styles"></table-reference-basic>
 
-    <!-- <h6>Events</h6> -->
-    <!-- <p></p> -->
-    <!-- <table-reference-basic :items="events"></table-reference-basic> -->
+    <h6>Events</h6>
+    <p></p>
+    <table-reference-basic :items="events" reference="event"></table-reference-basic>
 
     <h6>Slots</h6>
     <p></p>
@@ -72,6 +72,12 @@ export default {
           "Valid values are <code class='code-text'>silent</code> or <code class='code-text'>eager</code>. See Form Validation for explanation and examples",
       },
       {
+        prop: "is-loading",
+        type: ["Boolean"],
+        default: "false",
+        description: "If true displays spinner on the right side of input",
+      },
+      {
         prop: "block",
         type: ["Boolean"],
         default: "false",
@@ -96,7 +102,16 @@ export default {
       },
     ]);
 
-    let events = ref([]);
+    let events = ref([
+      {
+        event: "update:status",
+        description: "Emitted after validating input. Event data contains new status",
+      },
+      {
+        event: "input:clear",
+        description: "Emitted after clicking clear button",
+      },
+    ]);
 
     let slots = ref([
       {

@@ -1,34 +1,16 @@
 <template>
-  <div class="inline-flex relative items-center">
-    <slot name="icon">
-      <v-icon
-        v-if="icon"
-        :name="icon"
-        class="absolute"
-        :class="classes.icon.value"
-      ></v-icon>
-    </slot>
-
-    <input
-      v-model="localText"
-      v-bind="$attrs"
-      type="text"
-      ref="reference"
-      class="block w-full"
-      :class="getInputClasses()"
-      @input="handleInput"
-      @focus="handleClickInput"
-      @blur="handleBlur"
-    />
-    <div class="absolute flex right-0 mr-2">
-      <v-spinner v-if="!noLoader" v-show="isLoading" type="svg"></v-spinner>
-      <v-close-button
-        v-if="clearable"
-        class="ml-2"
-        @click="handleClickClearButton"
-      ></v-close-button>
-    </div>
-  </div>
+  <v-input
+    v-model="localText"
+    :icon="icon"
+    v-bind="$attrs"
+    type="text"
+    ref="reference"
+    :isLoading="!noLoader && isLoading"
+    :clearable="clearable"
+    @input="handleInput"
+    @focus="handleFocusInput"
+    @blur="handleBlurInput"
+  />
 
   <teleport to="body">
     <transition :name="transition" @after-leave="onPopperTransitionLeave">
@@ -49,6 +31,7 @@
             :key="item"
             :class="getItemClass(item)"
             @click="selectItem(item)"
+            tabindex="-1"
           >
             <slot
               name="item"
@@ -74,7 +57,6 @@ import { ref, computed, watch, toRefs } from "vue";
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
 import usePopper from "./composition/use-popper.js";
-import useClickOutside from "./composition/use-click-outside";
 // components
 import vSpinner from "./vSpinner.vue";
 import vCloseButton from "./vCloseButton.vue";
@@ -128,6 +110,7 @@ export default {
     "state:closed",
     "validate",
   ],
+  inheritAttrs: false,
   setup(props, { attrs, emit }) {
     let { classes, states, variants } = useStyles("autocomplete", props, {
       autocomplete: {
@@ -180,9 +163,6 @@ export default {
       { resizePopper: true }
     );
 
-    let { onClickOutside } = useClickOutside();
-    let stopClickOutside = null
-
     let selectedItem = ref(null);
     let localText = ref("");
     let isNewSelection = ref(true);
@@ -195,7 +175,6 @@ export default {
     let show = () => {
       isNewSelection.value = true;
       showPopper();
-      stopClickOutside = onClickOutside(popper, cancelInput, reference);
     };
 
     // those watchers controls autocomplete menu visibility
@@ -203,12 +182,12 @@ export default {
     watch(
       () => props.isLoading,
       (value) => {
-        !isPopperVisible.value && isVisible.value && !value && show();
+        if (!isPopperVisible.value && isVisible.value && !value) show();
       }
     );
 
     watch(isVisible, (value) => {
-      !isPopperVisible.value && value && !props.noFilter && show();
+      if (!isPopperVisible.value && value && !props.noFilter) show();
     });
 
     // get text and value of item
@@ -253,7 +232,7 @@ export default {
     let page = ref(0);
 
     let itemsPagination = computed(() => {
-      if (props.itemsPerPage === 0 || props.noPagination)
+      if (props.itemsPerPage === 0 || props.noPagination) 
         return itemsFiltered.value;
 
       return itemsFiltered.value.slice(
@@ -294,11 +273,10 @@ export default {
       localText.value = getItemText(selectedItem.value);
     };
 
-    function cancelInput() {
+    let cancelInput = () => {
       if (isVisible.value) isVisible.value = false;
       revert();
       hidePopper();
-      if (stopClickOutside) stopClickOutside = stopClickOutside()
     }
 
     let selectItem = (item) => {
@@ -320,9 +298,15 @@ export default {
       emit("update:page", page.value);
     };
 
-    let handleClickInput = () => {
+    let handleFocusInput = () => {
       emit("state:focus");
       if (!isVisible.value) isVisible.value = true;
+    };
+
+    let handleBlurInput = (ev) => {
+      if (!popper.value) return
+      let isMenuItem = popper.value.contains(ev.relatedTarget)
+      if (!isMenuItem) cancelInput()
     };
 
     let handleClickClearButton = () => clearInput();
@@ -352,7 +336,8 @@ export default {
       onPopperTransitionLeave,
       page,
       highlightMatch,
-      handleClickInput,
+      handleFocusInput,
+      handleBlurInput,
       handleClickClearButton,
       handleInput,
       handlePagination,
