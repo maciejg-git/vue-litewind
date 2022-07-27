@@ -224,6 +224,7 @@ export default {
     let select = (value, isFolderSelect) => {
       if (!isSelectable() || value === isSelected.value) return;
 
+      // toggle selection
       isSelected.value = value !== undefined ? value : !isSelected.value;
 
       if (isSelected.value) {

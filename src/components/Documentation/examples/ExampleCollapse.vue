@@ -81,7 +81,7 @@
 
 <script>
 import { reactive } from "vue";
-import { text } from "../../../const";
+import { text } from "../data/data.js";
 
 export default {
   setup() {

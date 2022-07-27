@@ -44,6 +44,26 @@ export default {
         default: "undefined",
         description: "Textarea v-model",
       },
+      {
+        prop: "rules",
+        type: ["Object"],
+        default: "{}",
+        description: "Rules for validation",
+      },
+      {
+        prop: "validate-on",
+        type: ["String"],
+        default: "blur",
+        description:
+          "Valid values are <code class='code-text'>blur</code> or <code class='code-text'>immediate</code>. See Form Validation for explanation and examples",
+      },
+      {
+        prop: "validate-mode",
+        type: ["String"],
+        default: "silent",
+        description:
+          "Valid values are <code class='code-text'>silent</code> or <code class='code-text'>eager</code>. See Form Validation for explanation and examples",
+      },
       ...formProps(),
       ...styleProps("textarea"),
     ]);

@@ -3,14 +3,14 @@
     v-model="example.model"
     :items="example.items"
     icon="b-exclamation-circle"
-    style-dropdown="shadow"
+    style-menu="shadow"
     class="w-[420px]"
   ></v-autocomplete>
 </template>
 
 <script>
 import { reactive } from "vue";
-import { languages } from "../../../const";
+import { languages } from "../data/data.js";
 
 export default {
   setup() {

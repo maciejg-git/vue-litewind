@@ -118,7 +118,7 @@ export default {
         prop: "items-per-page",
         type: ["Number"],
         default: "10",
-        description: "Amounts of items to display per page, 0 = all items on single page",
+        description: "Amounts of items to display per page, 0 = all items on single page. Ignored if <code class='code-text'>no-pagination</code> is used",
       },
       {
         prop: "transition",
@@ -177,7 +177,7 @@ export default {
       {
         slot: "item",
         description:
-          "Slot for item customization. Slot props: text, value, item, inputValue, highlightMatch (function)",
+          "Slot for item customization. Slot props: <code class='code-text'>text</code>, <code class='code-text'>value</code>, <code class='code-text'>item</code>, <code class='code-text'>inputValue</code>, <code class='code-text'>highlightMatch(string, match)</code>",
       },
     ]);
 

@@ -55,6 +55,15 @@ let schedule = async (fn, ms, ...args) => {
   return fn(...args);
 };
 
+// highlight
+
+let highlightMatch = (string, match, classes) => {
+  return string.replace(
+    new RegExp(`(${match})`, "i"),
+    `<span class='${classes}'>$1</span>`
+  );
+};
+
 export {
   noop,
   formatCase,
@@ -63,11 +72,12 @@ export {
   isDate,
   isRegexp,
   isNumber,
+  isObject,
+  isString,
+  isFunction,
   pad,
   getNumberRange,
   undefNullToStr,
   schedule,
-  isObject,
-  isString,
-  isFunction,
+  highlightMatch,
 };

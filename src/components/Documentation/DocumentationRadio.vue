@@ -59,7 +59,7 @@ export default {
       {
         prop: "label",
         type: ["String"],
-        default: "",
+        default: "empty string",
         description: "Radio label",
       },
       ...formProps(),

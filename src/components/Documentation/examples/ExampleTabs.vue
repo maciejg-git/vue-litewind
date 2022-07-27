@@ -88,7 +88,7 @@
 
 <script>
 import { ref, reactive } from "vue";
-import { text } from "../../../const.js";
+import { text } from "../data/data.js";
 
 export default {
   setup() {

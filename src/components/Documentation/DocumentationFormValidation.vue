@@ -137,7 +137,7 @@
   <section>
     <h4>Example - form validation</h4>
     <p>
-     In order to validate entire form wrap inputs with v-form component and use exposed <code class="code-text">validate</code> function. This function updates state of every input according to validation results and return true if all are valid. Additioanlly it emits <code class="code-word">update:form-state</code> with new form state after each validation.
+     In order to validate entire form wrap inputs with v-form component and use exposed <code class="code-text">validate</code> function. This function updates state of every input according to validation results and return true if all are valid. Additioanlly it emits <code class="code-word">update:form-state</code> with new form state after each validation. To reset all inputs within <code class="code-text">v-form</code> use exposed <code class="code-text">reset</code> function.
     </p>
     <div class="example">
       <example-validation-form />

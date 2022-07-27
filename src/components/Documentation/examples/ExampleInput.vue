@@ -8,6 +8,7 @@
     :type="example.type"
     :clearable="example.clearable"
     :state="example.state"
+    :use-loader="example.useLoader"
     :isLoading="example.isLoading"
     placeholder="Type something..."
   />
@@ -22,6 +23,7 @@
       :type="example.type"
       :clearable="example.clearable"
       :state="example.state"
+      :use-loader="example.useLoader"
       :isLoading="example.isLoading"
       icon="b-exclamation-circle"
       placeholder="Type something..."
@@ -34,6 +36,7 @@
       :type="example.type"
       :clearable="example.clearable"
       :state="example.state"
+      :use-loader="example.useLoader"
       :isLoading="example.isLoading"
       icon="b-exclamation-circle"
       placeholder="Type something..."
@@ -41,7 +44,7 @@
       <template #icon>
         <v-icon
           name="b-exclamation-circle"
-          class="absolute h-6 w-6 text-gray-400 dark:text-gray-400 ml-2 mr-2"
+          class="h-6 w-6 text-gray-400 dark:text-gray-400 mr-2"
         ></v-icon>
       </template>
     </v-input>
@@ -58,6 +61,7 @@
       :type="example.type"
       :clearable="example.clearable"
       :state="example.state"
+      :use-loader="example.useLoader"
       :isLoading="example.isLoading"
       placeholder="Type something..."
     />
@@ -70,6 +74,7 @@
       :type="example.type"
       :clearable="example.clearable"
       :state="example.state"
+      :use-loader="example.useLoader"
       :isLoading="example.isLoading"
       placeholder="Type something..."
     />
@@ -104,12 +109,11 @@
           </v-select-prop>
         </div>
         <div>
-          <label for="state">state:</label>
-          <v-select id="state" v-model="example.state">
-            <option value="">normal (empty string)</option>
-            <option value="valid">valid</option>
-            <option value="invalid">invalid</option>
-          </v-select>
+          <label for="use-loader">use-loader:</label>
+          <v-select-prop id="use-loader" v-model="example.useLoader">
+            <option :value="true">true</option>
+            <option :value="false">false</option>
+          </v-select-prop>
         </div>
         <div>
           <label for="is-loading">is-loading:</label>
@@ -117,6 +121,14 @@
             <option :value="true">true</option>
             <option :value="false">false</option>
           </v-select-prop>
+        </div>
+        <div>
+          <label for="state">state:</label>
+          <v-select id="state" v-model="example.state">
+            <option value="">normal (empty string)</option>
+            <option value="valid">valid</option>
+            <option value="invalid">invalid</option>
+          </v-select>
         </div>
       </div>
     </v-tab>
@@ -142,6 +154,7 @@ export default {
       model: "",
       type: "text",
       clearable: false,
+      useLoader: false,
       isLoading: false,
       state: "",
     });

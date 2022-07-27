@@ -90,7 +90,7 @@ export default {
 
     onMounted(() => {
       let level = props.autoOpenAll ? 9999 : props.autoOpenRoot ? 0 : null;
-      level !== null && openAllLevel(level);
+      if (level !== null) openAllLevel(level);
     });
 
     provide("control-tree", {

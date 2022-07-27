@@ -1,20 +1,20 @@
 <template>
-    <v-autocomplete
-      v-model="example.model"
-      v-model:input-value="example.inputValue"
-      :items="example.items"
-      :is-loading="example.isLoading"
-      style-menu="shadow"
-      no-filter
-      :no-loader="example.noLoader"
-      :clearable="example.clearable"
-      :transition="example.transition"
-      :state="example.state"
-      @input:value="query($event)"
-      v-on="handleExampleEvents"
-      class="w-[420px]"
-    ></v-autocomplete>
-  <!-- CUT START -->
+  <v-autocomplete
+    v-model="example.model"
+    v-model:input-value="example.inputValue"
+    no-filter
+    :items="example.items"
+    :is-loading="example.isLoading"
+    :no-loader="example.noLoader"
+    :clearable="example.clearable"
+    :transition="example.transition"
+    :state="example.state"
+    style-menu="shadow"
+    class="w-[420px]"
+    @input:value="query($event)"
+    v-on="handleExampleEvents"
+  ></v-autocomplete>
+<!-- CUT START -->
   <v-tabs base="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="flex flex-col gap-y-2 mt-5">
@@ -55,16 +55,15 @@
       <event-viewer :events="events" />
     </v-tab>
   </v-tabs>
-  <!-- CUT END -->
+<!-- CUT END -->
 </template>
 
 <script>
 import { ref, reactive } from "vue";
-import { states } from "../../../const";
+import { states } from "../data/data.js";
 
 export default {
-  components: {
-  },
+  components: {},
   setup() {
     let example = reactive({
       model: "",

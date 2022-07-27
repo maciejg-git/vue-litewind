@@ -1,0 +1,497 @@
+.disabled {
+  @apply 
+    opacity-50
+}
+
+.match {
+  @apply
+    bg-secondary-100
+    dark:bg-dark-600
+}
+
+/* FORMTEXT */
+
+.form-text {
+  @apply
+    text-sm
+    mt-1
+    text-text-600
+    dark:text-text-400
+}
+    .form-text--valid-state {
+      @apply
+        text-success-600
+        dark:text-success-500
+    }
+    .form-text--invalid-state {
+      @apply
+        text-danger-600
+        dark:text-danger-500
+    }
+
+/* AUTOCOMPLETE */
+
+.autocomplete--menu {
+  @apply
+    border
+    rounded-md
+    bg-white
+    border-secondary-200
+    dark:text-text-400
+    dark:bg-dark-800
+    dark:border-dark-700
+}
+    .autocomplete--menu--shadow {
+      @apply
+        shadow-md
+        dark:shadow-lg
+        dark:shadow-black/30
+    }
+
+.autocomplete--item {
+  @apply
+    w-full
+    text-left
+    focus:outline-none
+    cursor-pointer
+    px-6
+    py-4
+    text-text-700
+    focus:text-white
+    hover:bg-secondary-100
+    focus:bg-primary-500
+    dark:text-text-300
+    dark:focus:text-white
+    dark:hover:bg-dark-700
+    dark:focus:bg-primary-500
+}
+    .autocomplete--item--dense {
+      @apply
+        py-2 !important
+    }
+    .autocomplete--item--disabled-state {
+      @apply
+        disabled
+        pointer-events-none
+    }
+
+.autocomplete--match {
+  @apply
+    bg-secondary-100
+    dark:bg-dark-600
+}
+
+/* SELECT */
+
+.select {
+  @apply
+    rounded
+    border
+    focus:outline-none
+    focus:ring
+    outline-none
+    overflow-y-auto
+    bg-white
+    border-secondary-300
+    focus:border-secondary-400
+    focus:ring-primary-200
+    dark:text-text-300
+    dark:bg-dark-700
+    dark:border-dark-500
+    dark:focus:ring-primary-300
+}
+    .select--valid-state {
+      @apply
+        text-success-600
+        border-success-300
+        focus:ring-success-200
+        dark:text-success-600
+        dark:border-success-400
+        dark:focus:ring-success-300
+    }
+    .select--invalid-state {
+      @apply
+        text-danger-600
+        border-danger-300
+        focus:ring-danger-200
+        dark:text-danger-600
+        dark:border-danger-400
+        dark:focus:ring-danger-300
+    }
+    .select--disabled-state {
+      @apply
+        disabled
+    }
+    .select--icon-variant {
+      @apply
+        pl-10
+    }
+    .select--clearable-variant {
+      @apply
+        pr-10
+    }
+
+.select--icon {
+  @apply
+    w-6
+    h-6
+    ml-2
+    text-text-400
+    dark:text-gray-400
+}
+    .select--icon--valid {
+      @apply
+        text-success-500
+        dark:text-success-500
+    }
+    .select--icon--invalid {
+      @apply
+        text-danger-500
+        dark:text-danger-500
+    }
+
+.select--clear-button {
+  @apply
+    w-4
+    h-4
+    text-text-500
+    dark:text-text-300
+}
+
+/* RANGE */
+
+.range {
+  @apply
+    rounded
+    focus:outline-none
+    focus:ring
+    outline-none
+    border-secondary-300
+    focus:border-secondary-400
+    focus:ring-primary-200
+}
+    .range--valid-state {
+      @apply
+        border-success-300
+        focus:ring-success-200
+    }
+    .range--invalid-state {
+      @apply
+        border-danger-300
+        focus:ring-danger-200
+    }
+    .range--disabled-state {
+      @apply
+        disabled
+    }
+
+/* RADIO */
+
+.radio {
+  @apply
+    scale-110
+    border
+    focus:ring
+    focus:ring-offset-0
+    focus:outline-none
+    transform
+    outline-none
+    transition-shadow
+    duration-150
+    text-primary-500
+    bg-white
+    border-secondary-300
+    focus:ring-primary-200
+    dark:text-primary-500
+    dark:bg-dark-800
+    dark:checked:bg-current
+    dark:checked:border-current
+    dark:border-dark-700
+    dark:focus:ring-primary-200
+}
+    .radio--valid-state {
+      @apply
+        text-success-500
+        border-success-300
+        focus:ring-success-200
+        dark:text-success-500
+        dark:border-success-400
+        dark:focus:ring-success-300
+    }
+    .radio--invalid-state {
+      @apply
+        text-danger-500
+        border-danger-300
+        focus:ring-danger-200
+        dark:text-danger-500
+        dark:border-danger-400
+        dark:focus:ring-danger-300
+    }
+    .radio--disabled-state {
+      @apply
+        disabled
+    }
+
+.radio--label {
+  @apply
+    ml-4
+}
+
+/* CHECKBOX */
+
+.checkbox {
+  @apply
+    rounded
+    border
+    focus:ring
+    focus:ring-offset-0
+    focus:outline-none
+    transform
+    scale-110
+    outline-none
+    transition-all
+    duration-150
+    text-primary-500
+    bg-white
+    border-secondary-300
+    focus:ring-primary-200
+    dark:text-primary-500
+    dark:bg-dark-800
+    dark:checked:bg-current
+    dark:checked:border-current
+    dark:border-dark-700
+    dark:focus:ring-primary-200
+}
+    .checkbox--valid-state {
+      @apply
+        text-success-500
+        border-success-300
+        focus:ring-success-200
+        dark:text-success-500
+        dark:border-success-400
+        dark:focus:ring-success-300
+    }
+    .checkbox--invalid-state {
+      @apply
+        text-danger-500
+        border-danger-300
+        focus:ring-danger-200
+        dark:text-danger-500
+        dark:border-danger-400
+        dark:focus:ring-danger-300
+    }
+    .checkbox--disabled-state {
+      @apply
+        disabled
+    }
+
+.checkbox--label {
+  @apply
+    ml-4
+}
+
+/* INPUT ROUNDED */
+
+.input-rounded {
+  @apply
+    rounded-full
+    border-0
+    focus:outline-none
+    focus-within:ring
+    outline-none
+    transition-shadow
+    duration-200
+    pl-4
+    bg-dark-100
+    border-secondary-300
+    focus-within:ring-primary-200
+    dark:text-dark-300
+    dark:bg-dark-700
+    dark:border-dark-500
+    dark:focus-within:ring-primary-300
+}
+    .input-rounded--valid-state {
+      @apply
+        border-success-300
+        focus-within:ring-success-200
+        dark:border-success-300
+    }
+    .input-rounded--invalid-state {
+      @apply
+        border-danger-300
+        focus-within:ring-danger-200
+        dark:border-danger-300
+    }
+    .input-rounded--disabled-state {
+      @apply
+        disabled
+    }
+
+.input-rounded--icon {
+  @apply
+    w-6
+    h-6
+    ml-2
+    text-text-400
+    dark:text-gray-400
+}
+
+.input-rounded--clear-button {
+  @apply
+    w-4
+    h-4
+    text-text-500
+    dark:text-text-300
+}
+
+/* INPUT UNDERLINED */
+
+.input-underline {
+  @apply
+    border-0 
+    border-b-2 
+    focus-within:ring-0 
+    px-0.5
+    bg-transparent
+    focus-within:border-black
+    border-secondary-200
+    dark:text-dark-300
+    dark:border-dark-500
+    
+}
+    .input-underline--valid-state {
+      @apply
+        border-success-300
+        dark:border-success-300
+    }
+    .input-underline--invalid-state {
+      @apply
+        border-danger-300
+        dark:border-danger-300
+    }
+    .input-underline--disabled-state {
+      @apply
+        disabled
+    }
+
+.input-underline--icon {
+  @apply
+    w-6
+    h-6
+    ml-2
+    text-text-400
+    dark:text-gray-400
+}
+
+.input-underline--clear-button {
+  @apply
+    w-4
+    h-4
+    text-text-500
+    dark:text-text-300
+}
+
+
+/* INPUT */
+
+.input {
+  @apply
+    rounded
+    border
+    focus:outline-none
+    focus-within:ring
+    outline-none
+    transition-shadow
+    duration-200
+    bg-white
+    border-secondary-300
+    focus-within:border-secondary-400
+    focus-within:ring-primary-200
+    dark:text-text-300
+    dark:bg-dark-700
+    dark:border-dark-500
+    dark:focus-within:ring-primary-300
+}
+    .input--valid-state {
+      @apply
+        text-success-600
+        border-success-300
+        focus-within:ring-success-200
+        dark:text-success-600
+        dark:border-success-400
+        dark:focus-within:ring-success-300
+    }
+    .input--invalid-state {
+      @apply
+        text-danger-600
+        border-danger-300
+        focus-within:ring-danger-200
+        dark:text-danger-600
+        dark:border-danger-400
+        dark:focus-within:ring-danger-300
+    }
+    .input--disabled-state {
+      @apply
+        disabled
+    }
+
+.input--icon {
+  @apply
+    w-6
+    h-6
+    /* ml-2 */
+    text-text-400
+    dark:text-gray-400
+}
+
+.input--clear-button {
+  @apply
+    w-4
+    h-4
+    text-text-500
+    dark:text-text-300
+}
+
+/* TEXTAREA */
+
+.textarea {
+  @apply
+    rounded
+    border
+    focus:outline-none
+    focus:ring
+    outline-none
+    py-1
+    px-3
+    bg-white
+    border-secondary-300
+    focus:border-secondary-400
+    focus:ring-primary-200
+    dark:text-text-300
+    dark:bg-dark-700
+    dark:border-dark-500
+    dark:focus:ring-primary-300
+}
+    .textarea--valid-state {
+      @apply
+        text-success-600
+        border-success-300
+        focus:ring-success-200
+        dark:text-success-600
+        dark:border-success-400
+        dark:focus:ring-success-300
+    }
+    .textarea--invalid-state {
+      @apply
+        text-danger-600
+        border-danger-300
+        focus:ring-danger-200
+        dark:text-danger-600
+        dark:border-danger-400
+        dark:focus:ring-danger-300
+    }
+    .textarea--disabled-state {
+      @apply
+        disabled
+    }
+

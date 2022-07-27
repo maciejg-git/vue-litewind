@@ -1,12 +1,13 @@
 <template>
   <v-input
     v-model="localText"
-    :icon="icon"
     v-bind="$attrs"
     type="text"
     ref="reference"
-    :isLoading="!noLoader && isLoading"
+    :icon="icon"
+    :isLoading="isLoading"
     :clearable="clearable"
+    :useLoader="!noLoader"
     @input="handleInput"
     @focus="handleFocusInput"
     @blur="handleBlurInput"
@@ -17,7 +18,7 @@
       <div v-if="isPopperVisible" ref="popper" class="fixed-dropdown">
         <div
           :class="classes.menu.value"
-          v-detect-scroll-bottom="handlePagination"
+          v-detect-scroll-bottom="handleScrollBottom"
         >
           <div
             v-if="!itemsPagination.length && !isLoading"
@@ -30,7 +31,7 @@
             v-for="item in itemsPagination"
             :key="item"
             :class="getItemClass(item)"
-            @click="selectItem(item)"
+            @click="handleClickItem(item)"
             tabindex="-1"
           >
             <slot
@@ -57,13 +58,10 @@ import { ref, computed, watch, toRefs } from "vue";
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
 import usePopper from "./composition/use-popper.js";
-// components
-import vSpinner from "./vSpinner.vue";
-import vCloseButton from "./vCloseButton.vue";
 // directives
 import detectScrollBottom from "../directives/detect-scroll-bottom";
 // tools
-import { isString } from "../tools";
+import { isString, highlightMatch } from "../tools";
 // props
 import {
   sharedPopperProps,
@@ -83,20 +81,13 @@ export default {
     noFilter: { type: Boolean, default: false },
     noPagination: { type: Boolean, default: false },
     noLoader: { type: Boolean, default: false },
-    validate: { type: Object, default: {} },
     itemsPerPage: { type: Number, default: 10 },
     transition: { type: String, default: "fade" },
-    styleAutocomplete: { type: [String, Array], default: "" },
     styleMenu: { type: [String, Array], default: "" },
     styleItem: { type: [String, Array], default: "" },
     styleMatch: { type: [String, Array], default: "" },
-    styleIcon: { type: [String, Array], default: "" },
     ...sharedFormProps(null, { icon: true, clearable: true }),
     ...sharedStyleProps("autocomplete"),
-  },
-  components: {
-    vSpinner,
-    vCloseButton,
   },
   directives: {
     detectScrollBottom,
@@ -108,15 +99,10 @@ export default {
     "input:value",
     "state:opened",
     "state:closed",
-    "validate",
   ],
   inheritAttrs: false,
   setup(props, { attrs, emit }) {
     let { classes, states, variants } = useStyles("autocomplete", props, {
-      autocomplete: {
-        states: ["valid", "invalid", "disabled"],
-        variants: ["icon-variant", "clearable-variant"],
-      },
       menu: {
         fixed: "fixed-autocomplete-menu",
       },
@@ -125,20 +111,7 @@ export default {
         states: ["active", "disabled"],
       },
       match: null,
-      icon: null,
     });
-
-    let getInputClasses = () => {
-      return [
-        classes.autocomplete.value,
-        states.autocomplete.value && states.autocomplete.value[state.value],
-        attrs.disabled === "" || attrs.disabled === true
-          ? states.autocomplete.disabled
-          : "",
-        props.icon ? variants.autocomplete.value["icon-variant"] : "",
-        props.clearable ? variants.autocomplete.value["clearable-variant"] : "",
-      ];
-    };
 
     let getItemClass = (item) => {
       return [
@@ -153,6 +126,7 @@ export default {
     const { offsetX, offsetY, noFlip, placement, modelValue } = toRefs(props);
     const {
       isPopperVisible,
+      isPopperChild,
       reference,
       popper,
       showPopper,
@@ -167,8 +141,6 @@ export default {
     let localText = ref("");
     let isNewSelection = ref(true);
     let isVisible = ref(false);
-
-    let state = ref("")
 
     // show autocomplete menu
 
@@ -202,8 +174,6 @@ export default {
       return isString(item) ? item : item[props.itemValue];
     };
 
-    // filter items
-
     let itemsFiltered = computed(() => {
       if (props.isLoading || props.noFilter) return props.items;
       if (isNewSelection.value) return props.items;
@@ -227,12 +197,10 @@ export default {
       });
     });
 
-    // paginate items
-
     let page = ref(0);
 
     let itemsPagination = computed(() => {
-      if (props.itemsPerPage === 0 || props.noPagination) 
+      if (props.itemsPerPage === 0 || props.noPagination)
         return itemsFiltered.value;
 
       return itemsFiltered.value.slice(
@@ -241,16 +209,11 @@ export default {
       );
     });
 
-    // matching text higlight
-
     let getHighligtedText = (item) => {
-      return highlightMatch(getItemText(item), localText.value);
-    };
-
-    let highlightMatch = (string, match) => {
-      return string.replace(
-        new RegExp(`(${match})`, "i"),
-        `<span class='${classes.match.value}'>$1</span>`
+      return highlightMatch(
+        getItemText(item),
+        localText.value,
+        classes.match.value
       );
     };
 
@@ -277,7 +240,7 @@ export default {
       if (isVisible.value) isVisible.value = false;
       revert();
       hidePopper();
-    }
+    };
 
     let selectItem = (item) => {
       if (isVisible.value) isVisible.value = false;
@@ -293,10 +256,12 @@ export default {
 
     // handle template events
 
-    let handlePagination = () => {
+    let handleScrollBottom = () => {
       page.value++;
       emit("update:page", page.value);
     };
+
+    let handleClickItem = (item) => selectItem(item);
 
     let handleFocusInput = () => {
       emit("state:focus");
@@ -304,9 +269,12 @@ export default {
     };
 
     let handleBlurInput = (ev) => {
-      if (!popper.value) return
-      let isMenuItem = popper.value.contains(ev.relatedTarget)
-      if (!isMenuItem) cancelInput()
+      if (!popper.value) {
+        revert();
+        isVisible.value = false;
+        return;
+      }
+      if (!isPopperChild(ev.relatedTarget)) cancelInput();
     };
 
     let handleClickClearButton = () => clearInput();
@@ -323,15 +291,11 @@ export default {
       variants,
       localText,
       localModel,
-      getInputClasses,
       itemsFiltered,
       itemsPagination,
-      selectItem,
       getItemText,
       getItemValue,
       getHighligtedText,
-      isNewSelection,
-      show,
       getItemClass,
       onPopperTransitionLeave,
       page,
@@ -340,7 +304,8 @@ export default {
       handleBlurInput,
       handleClickClearButton,
       handleInput,
-      handlePagination,
+      handleScrollBottom,
+      handleClickItem,
       isPopperVisible,
       reference,
       popper,

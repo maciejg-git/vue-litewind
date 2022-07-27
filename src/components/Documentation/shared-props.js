@@ -51,7 +51,7 @@ export let formProps = (options) => {
       type: ["String"],
       default: "empty string",
       description:
-        "Adds icon to input element. Valid value is the same as in v-icon components",
+        "Adds icon to input element. Valid value is the same as in <code class='code-text'>v-icon</code> components",
     });
 
   if (options.clearable === true)
@@ -69,7 +69,7 @@ export let formProps = (options) => {
       type: ["String"],
       default: "empty string",
       description:
-        "Overrides state of input validity. Supported values are 'valid', 'invalid' or 'empty string' for default state",
+        "Overrides state of input validity. Supported values are <code class='code-text'>'valid'</code>, <code class='code-text'>'invalid'</code> or <code class='code-text'>'empty string'</code> for default state",
     },
   ];
 };

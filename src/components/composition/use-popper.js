@@ -73,6 +73,10 @@ export default function usePopper(
 
   let onPopperTransitionLeave = () => destroyInstance();
 
+  let isPopperChild = (el) => {
+    return popper.value.contains(el)
+  }
+
   let setPopper = () => {
     let modifiers = [
       {
@@ -131,6 +135,7 @@ export default function usePopper(
 
   return {
     isPopperVisible,
+    isPopperChild,
     reference,
     popper,
     showPopper,

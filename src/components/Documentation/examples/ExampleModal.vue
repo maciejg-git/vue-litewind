@@ -235,7 +235,7 @@
 
 <script>
 import { ref, reactive } from "vue";
-import { longText } from "../../../const";
+import { longText } from "../data/data.js";
 
 export default {
   setup() {

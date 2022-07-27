@@ -1,8 +1,8 @@
 <template>
   <div class="relative" :class="wrapperClasses">
-    <div class="flex items-center">
+    <div class="form-input flex items-center" :class="getInputClasses">
       <slot name="icon">
-        <button v-if="icon" class="absolute" @click="handleIconClick">
+        <button v-if="icon" @click="handleIconClick" class="mr-2">
           <v-icon :name="icon" :class="classes.icon.value"></v-icon>
         </button>
       </slot>
@@ -11,31 +11,37 @@
         v-model="localModel"
         type="text"
         v-bind="$attrs"
-        :class="getInputClasses"
+        class="transparent-input"
         @blur="handleBlur"
       />
 
-      <div class="absolute flex items-center right-0 mr-2">
-          <v-spinner v-if="isLoading" type="svg" class="mr-2"></v-spinner>
-          <button
-            v-if="clearable"
-            class="focus:outline-none"
-            aria-label="Close"
-            @click="handleClickClearButton"
+      <div class="flex items-center">
+        <v-spinner
+          v-if="useLoader"
+          :class="{ visible: isLoading, invisible: !isLoading }"
+          type="svg"
+          style-spinner="small"
+          class="mr-0.5"
+        />
+        <button
+          v-if="clearable"
+          aria-label="Close"
+          class="focus:outline-none ml-2"
+          @click="handleClickClearButton"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            :class="classes.clearButton.value"
+            width="16"
+            height="16"
+            fill="currentColor"
+            viewBox="0 0 16 16"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              :class="classes.clearButton.value"
-              width="16"
-              height="16"
-              fill="currentColor"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"
-              />
-            </svg>
-          </button>
+            <path
+              d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"
+            />
+          </svg>
+        </button>
       </div>
     </div>
     <slot name="form-text">
@@ -73,6 +79,7 @@ export default {
     validateOn: { type: String, default: "blur" },
     validateMode: { type: String, default: "silent" },
     state: { type: String, default: "" },
+    useLoader: { type: Boolean, default: false },
     isLoading: { type: Boolean, default: false },
     styleInput: { type: [String, Array], default: "" },
     styleIcon: { type: [String, Array], default: "" },
@@ -89,7 +96,6 @@ export default {
     let { classes, states, variants } = useStyles("input", props, {
       input: {
         states: ["valid", "invalid", "disabled"],
-        variants: ["icon-variant", "clearable-variant"],
       },
       clearButton: {
         name: "clear-button",
@@ -104,8 +110,6 @@ export default {
         attrs.disabled === "" || attrs.disabled === true
           ? states.input.disabled
           : "",
-        props.icon ? variants.input.value["icon-variant"] : "",
-        props.clearable ? variants.input.value["clearable-variant"] : "",
       ];
     });
 
@@ -129,7 +133,7 @@ export default {
     let messages = ref({});
     let wasValid = ref(false);
     let wasInvalid = ref(false);
-    let { validateOn, validateMode } = props
+    let { validateOn, validateMode } = props;
 
     let reset = () => {
       status.value = { ...defaultStatus };
@@ -144,22 +148,22 @@ export default {
       if (status.value.optional) return "";
 
       if (!status.value.valid) {
-        if (validateMode === 'eager' || wasInvalid.value) {
+        if (validateMode === "eager" || wasInvalid.value) {
           return "invalid";
         }
       } else {
-        if (validateMode === 'eager' || wasInvalid.value) {
+        if (validateMode === "eager" || wasInvalid.value) {
           return "valid";
         }
       }
-      return state.value
+      return state.value;
     };
 
     let validate = (value) => {
       let { newStatus, newMessages } = getValidateStatus(value);
       status.value = newStatus;
       messages.value = newMessages;
-    }
+    };
 
     let updateValue = (v) => {
       emit("update:modelValue", v);
@@ -185,7 +189,7 @@ export default {
     };
 
     let touch = () => {
-      validate(localModel.value)
+      validate(localModel.value);
 
       status.value.touched = true;
 
@@ -197,7 +201,7 @@ export default {
     };
 
     let formValidate = () => {
-      validate(localModel.value)
+      validate(localModel.value);
 
       status.value.validated = true;
 
@@ -255,8 +259,8 @@ export default {
       if (localModel.value.length) {
         localModel.value = "";
       }
-      emit("input:clear")
-    }
+      emit("input:clear");
+    };
 
     return {
       classes,
@@ -274,4 +278,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.transparent-input {
+  @apply border-0 bg-transparent focus:outline-none focus:ring-0 outline-none p-0;
+}
+</style>
