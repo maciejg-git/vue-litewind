@@ -79,16 +79,16 @@ export default {
         description: "Disables secondary (Cancel) button",
       },
       {
-        prop: "primary-button-attrs",
-        type: ["String"],
+        prop: "primary-button",
+        type: ["Object"],
         default: "{ styleButton: 'primary' }",
-        description: "Attributes of primary v-button",
+        description: "Attributes and props of primary <code class='code-text'>v-button</code>",
       },
       {
-        prop: "secondary-button-attrs",
-        type: ["String"],
+        prop: "secondary-button",
+        type: ["Object"],
         default: "{ styleButton: 'secondary' }",
-        description: "Attributes of secondary v-button",
+        description: "Attributes and props of secondary <code class='code-text'>v-button</code>",
       },
       {
         prop: "primary-button-label",

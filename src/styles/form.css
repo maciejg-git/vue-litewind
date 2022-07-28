@@ -439,7 +439,6 @@
   @apply
     w-6
     h-6
-    /* ml-2 */
     text-text-400
     dark:text-gray-400
 }

@@ -1,0 +1,45 @@
+/* SPINNER */
+
+.spinner-container {
+  --spinner-border-speed: 0.75s;
+  --spinner-svg-speed: 1s;
+  @apply 
+    inline-block;
+}
+
+.spinner {
+  @apply
+    h-8
+    w-8
+    text-primary-500
+}
+    .spinner--primary {
+      @apply
+        text-primary-500
+    }
+    .spinner--secondary {
+      @apply
+        text-secondary-300
+    }
+    .spinner--warn {
+      @apply
+        text-warn-500
+    }
+    .spinner--success {
+      @apply
+        text-success-500
+    }
+    .spinner--light {
+      @apply
+        text-text-200
+    }
+    .spinner--large {
+      @apply
+        h-20
+        w-20
+    }
+    .spinner--small {
+      @apply
+        h-5
+        w-5
+    }

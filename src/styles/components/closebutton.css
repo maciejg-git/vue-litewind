@@ -1,0 +1,14 @@
+/* CLOSEBUTTON */
+
+.close-button {
+  @apply
+    w-5
+    h-5
+    text-text-500
+    dark:text-text-300
+}
+    .close-button--small {
+      @apply
+        w-4
+        h-4
+    }

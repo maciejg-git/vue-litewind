@@ -1,0 +1,19 @@
+/* FORMTEXT */
+
+.form-text {
+  @apply
+    text-sm
+    mt-1
+    text-text-600
+    dark:text-text-400
+}
+    .form-text--valid-state {
+      @apply
+        text-success-600
+        dark:text-success-500
+    }
+    .form-text--invalid-state {
+      @apply
+        text-danger-600
+        dark:text-danger-500
+    }

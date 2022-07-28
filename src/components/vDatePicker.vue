@@ -354,46 +354,9 @@ export default {
       rangeState.value++;
     };
 
-    // handle template input events
-    let handleDayClick = function (date, index) {
-      if (isDisabled(index)) return;
-      if (props.range) {
-        addRangeDate(date);
-        if (rangeState.value == 2) {
-          if (range.value[0] > range.value[1]) range.value.reverse();
-          if (!props.buttons) emitSelectionRange();
-        }
-      } else {
-        single.value = date;
-        if (!props.buttons) emitSelectionSingle();
-      }
-    };
-
     let getTransition = (d) => {
       return props.transition == "slide" ? "slide-" + d : props.transition;
     };
-
-    let handleButtonClick = (d, t) => {
-      transition.value = getTransition(d);
-
-      if (d === "next") {
-        if (t === "month") setNextMonth();
-        else setNextYear();
-      } else {
-        if (t === "month") setPrevMonth();
-        else setPrevYear();
-      }
-    };
-
-    let handlePrimaryButtonClick = () => {
-      if (props.range) {
-        if (rangeState.value == 2) emitSelectionRange();
-      } else {
-        emitSelectionSingle();
-      }
-    };
-
-    let handleSecondaryButtonClick = () => emit("input:cancel");
 
     // update current month and year
     let setNextMonth = () =>
@@ -438,6 +401,45 @@ export default {
     };
 
     let isToday = (date) => today.getTime() == date.getTime();
+
+    // handle template events
+
+    let handleDayClick = function (date, index) {
+      if (isDisabled(index)) return;
+      if (props.range) {
+        addRangeDate(date);
+        if (rangeState.value == 2) {
+          if (range.value[0] > range.value[1]) range.value.reverse();
+          if (!props.buttons) emitSelectionRange();
+        }
+      } else {
+        single.value = date;
+        if (!props.buttons) emitSelectionSingle();
+      }
+    };
+
+    let handleButtonClick = (d, t) => {
+      transition.value = getTransition(d);
+
+      if (d === "next") {
+        if (t === "month") setNextMonth();
+        else setNextYear();
+      } else {
+        if (t === "month") setPrevMonth();
+        else setPrevYear();
+      }
+    };
+
+    let handlePrimaryButtonClick = () => {
+      if (props.range) {
+        if (rangeState.value == 2) emitSelectionRange();
+      } else {
+        emitSelectionSingle();
+      }
+    };
+
+    let handleSecondaryButtonClick = () => emit("input:cancel");
+
 
     return {
       classes,

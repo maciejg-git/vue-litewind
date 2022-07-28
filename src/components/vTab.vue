@@ -21,7 +21,7 @@ export default {
     name: { type: String, default: undefined },
   },
   setup(props, { slots }) {
-    let tabs = inject("control-tab");
+    let { addTab, removeTab, transition } = inject("control-tab");
 
     let tab = { 
       isActive: ref(false), 
@@ -29,9 +29,9 @@ export default {
       slots
     }
 
-    onMounted(() => tabs.addTab(tab));
+    onMounted(() => addTab(tab));
 
-    onUnmounted(() => tabs.removeTab(tab));
+    onUnmounted(() => removeTab(tab));
 
     // transition
 
@@ -41,7 +41,7 @@ export default {
 
     return {
       tab,
-      transition: tabs.transition,
+      transition,
       beforeLeaveTransition,
     };
   },

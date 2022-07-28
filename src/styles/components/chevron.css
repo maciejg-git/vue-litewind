@@ -1,0 +1,11 @@
+/* CHEVRON */
+
+.chevron {
+  @apply
+    w-4
+    h-4
+}
+  .chevron--right {
+    @apply
+      ml-2
+  }

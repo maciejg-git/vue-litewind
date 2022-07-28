@@ -25,17 +25,17 @@
               <template v-if="h.sortable">
                 <v-icon
                   v-if="sortKey != h.key"
-                  :name="vSortIcon"
+                  :name="SortIcon"
                   class="sort-icon"
                 ></v-icon>
                 <v-icon
                   v-else-if="sortKey == h.key && sortAsc == 1"
-                  :name="vCaretUpIcon"
+                  :name="CaretUpIcon"
                   class="sort-icon-active"
                 ></v-icon>
                 <v-icon
                   v-else-if="sortKey == h.key && sortAsc == -1"
-                  :name="vCaretDownIcon"
+                  :name="CaretDownIcon"
                   class="sort-icon-active"
                 ></v-icon>
               </template>
@@ -99,10 +99,9 @@ import { ref, computed, watch } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 // components
-import vIcon from "./vIcon.vue";
-import vSortIcon from "./icons/sort-solid.js";
-import vCaretUpIcon from "./icons/caret-up-solid.js";
-import vCaretDownIcon from "./icons/caret-down-solid.js";
+import SortIcon from "./icons/sort-solid.js";
+import CaretUpIcon from "./icons/caret-up-solid.js";
+import CaretDownIcon from "./icons/caret-down-solid.js";
 // tools
 import {
   formatCase,
@@ -142,10 +141,9 @@ export default {
     ...sharedStyleProps("table"),
   },
   components: {
-    vIcon,
-    vSortIcon,
-    vCaretUpIcon,
-    vCaretDownIcon,
+    SortIcon,
+    CaretUpIcon,
+    CaretDownIcon,
   },
   setup(props, { slots, emit }) {
     let { classes, states } = useStyles("table", props, {
@@ -398,9 +396,9 @@ export default {
       headersCount,
       handleRowClick,
       handleHeaderClick,
-      vSortIcon,
-      vCaretUpIcon,
-      vCaretDownIcon,
+      SortIcon,
+      CaretUpIcon,
+      CaretDownIcon,
     };
   },
 };

@@ -173,7 +173,7 @@ export default {
         description: "Default icon for items if no icon is provided in items prop",
       },
       {
-        prop: "chevron-attrs",
+        prop: "chevron",
         type: ["Object"],
         default: "{}",
         description: "Props of <code class='code-text'>v-chevron</code> (open indicator) component. See documentation for valid values",

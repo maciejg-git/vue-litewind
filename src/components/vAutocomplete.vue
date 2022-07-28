@@ -11,11 +11,12 @@
     @input="handleInput"
     @focus="handleFocusInput"
     @blur="handleBlurInput"
+    @input:clear="handleClickClearButton"
   />
 
   <teleport to="body">
     <transition :name="transition" @after-leave="onPopperTransitionLeave">
-      <div v-if="isPopperVisible" ref="popper" class="fixed-dropdown">
+      <div v-if="isPopperVisible" ref="popper">
         <div
           :class="classes.menu.value"
           v-detect-scroll-bottom="handleScrollBottom"
@@ -39,7 +40,7 @@
               :text="getItemText(item)"
               :value="getItemValue(item)"
               :item="item"
-              :highlightMatch="highlightMatch"
+              :highlight="highlight"
               :inputValue="localText"
             >
               <span v-html="getHighligtedText(item)"></span>
@@ -217,6 +218,10 @@ export default {
       );
     };
 
+    let highlight = (string, match) => {
+      return highlightMatch(string, match, classes.match.value)
+    }
+
     // update local input text and model after selecting option
 
     let update = (item) => {
@@ -299,7 +304,7 @@ export default {
       getItemClass,
       onPopperTransitionLeave,
       page,
-      highlightMatch,
+      highlight,
       handleFocusInput,
       handleBlurInput,
       handleClickClearButton,

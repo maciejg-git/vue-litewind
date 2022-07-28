@@ -1,0 +1,74 @@
+/* LIST MATERIAL */
+
+.list-material {
+}
+    .list-material--round {
+      @apply
+        rounded-md
+    }
+    .list-material--borderless {
+      @apply
+        border-0
+    }
+
+.list-material--item {
+  @apply
+    border
+    shadow-md
+    transition-all
+    p-2
+    px-4
+    my-1
+    border-gray-100
+    hover:bg-gray-50
+    dark:border-dark-700
+    dark:shadow-black/20
+    dark:hover:bg-dark-700
+}
+    .list-material--item--active-state {
+      @apply
+        border-l-4
+        text-white
+        border-blue-600
+        bg-blue-500
+        hover:bg-blue-600
+        dark:border-blue-600
+        dark:hover:bg-blue-600
+    }
+
+/* LIST */
+
+.list {
+  @apply
+    border
+    divide-y
+    rounded-md
+    overflow-hidden
+    divide-secondary-200
+    dark:border-dark-700
+    dark:divide-dark-700
+}
+    .list--square {
+      @apply
+        rounded-none
+    }
+    .list--borderless {
+      @apply
+        border-0
+    }
+
+.list--item {
+  @apply
+    py-4
+    px-4
+    hover:bg-secondary-50
+    dark:hover:bg-dark-700
+}
+    .list--item--active-state {
+      @apply
+        text-white
+        bg-info-500
+        hover:bg-info-600
+        dark:bg-info-500
+        dark:hover:bg-info-600
+    }

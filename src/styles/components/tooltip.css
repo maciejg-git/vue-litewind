@@ -1,0 +1,17 @@
+/* TOOLTIP */
+
+.tooltip {
+  @apply
+    rounded-md
+    z-50
+    max-w-sm
+    text-text-100
+    bg-dark-700
+}
+
+.tooltip--content {
+  @apply
+    font-semibold
+    p-1
+    px-3
+}

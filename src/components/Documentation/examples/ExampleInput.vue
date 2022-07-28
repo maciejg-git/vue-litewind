@@ -11,7 +11,7 @@
     :use-loader="example.useLoader"
     :isLoading="example.isLoading"
     placeholder="Type something..."
-  />
+  ></v-input>
 
   <p class="my-6">Input with icon</p>
 
@@ -27,7 +27,7 @@
       :isLoading="example.isLoading"
       icon="b-exclamation-circle"
       placeholder="Type something..."
-    />
+    ></v-input>
 
     <!-- icon (slot) -->
 
@@ -64,7 +64,7 @@
       :use-loader="example.useLoader"
       :isLoading="example.isLoading"
       placeholder="Type something..."
-    />
+    ></v-input>
 
     <!-- rounded -->
 
@@ -77,9 +77,9 @@
       :use-loader="example.useLoader"
       :isLoading="example.isLoading"
       placeholder="Type something..."
-    />
+    ></v-input>
   </div>
-  <!-- CUT START -->
+<!-- CUT START -->
   <v-tabs base="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="flex flex-col gap-y-2 mt-5">
@@ -142,7 +142,7 @@
       <event-viewer :events="events" />
     </v-tab>
   </v-tabs>
-  <!-- CUT END -->
+<!-- CUT END -->
 </template>
 
 <script>

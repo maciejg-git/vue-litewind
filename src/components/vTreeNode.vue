@@ -12,7 +12,7 @@
             <v-chevron
               :switch="isOpen"
               initial="right"
-              v-bind="chevronAttrs"
+              v-bind="chevron"
               :class="{ disabled: isDisabled }"
             ></v-chevron>
           </v-button>
@@ -121,7 +121,7 @@ export default {
     selectIndependent: { type: Boolean, default: false },
     placeholderItemIcon: { type: [String, Object], default: undefined },
     placeholderFolderIcon: { type: [String, Object], default: undefined },
-    chevronAttrs: { type: Object, default: {} },
+    chevron: { type: Object, default: {} },
   },
   inheritAttrs: false,
   emits: ["children-state-changed"],
@@ -163,7 +163,7 @@ export default {
       );
     };
 
-    let prependSlotOrder = ["order-0", "order-2", "order-5"]
+    // let prependSlotOrder = ["order-0", "order-2", "order-5"]
 
     let itemLevel = toRef(props, "itemLevel");
 
@@ -224,7 +224,6 @@ export default {
     let select = (value, isFolderSelect) => {
       if (!isSelectable() || value === isSelected.value) return;
 
-      // toggle selection
       isSelected.value = value !== undefined ? value : !isSelected.value;
 
       if (isSelected.value) {
@@ -277,10 +276,7 @@ export default {
 
     return {
       classes,
-      states,
-      variants,
       getItemClasses,
-      selectedItems,
       itemLevel,
       transition,
       isOpen,

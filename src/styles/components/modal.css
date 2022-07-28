@@ -1,0 +1,60 @@
+/* MODAL */
+
+.modal {
+  @apply
+    shadow-lg
+    rounded-md
+    text-text-900
+    bg-white
+    dark:text-text-300
+    dark:bg-dark-800
+}
+    .modal--square {
+      @apply
+        rounded-none
+    }
+    .modal--no-shadow {
+      @apply
+        shadow-none
+    }
+
+.modal--header {
+  @apply
+    text-lg
+    leading-6
+    font-medium
+    px-6
+    py-6
+    text-text-900
+    bg-secondary-50
+    dark:text-text-300
+    dark:bg-dark-800
+}
+
+.modal--footer {
+  @apply
+    px-6
+    py-6
+}
+
+.modal--content {
+  @apply
+    px-6
+    py-5
+}
+    .modal--content--relaxed {
+      @apply
+        px-9
+        py-8
+    }
+    .modal--content--edge-to-edge {
+      @apply
+        px-0
+        py-0
+    }
+
+.modal--backdrop {
+  @apply
+    opacity-50
+    bg-black
+}

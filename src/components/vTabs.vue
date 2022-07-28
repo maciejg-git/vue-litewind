@@ -102,6 +102,7 @@ export default {
     };
 
     // handle template events
+
     let handleClickTab = (index) => activateTab(index);
 
     provide("control-tab", {

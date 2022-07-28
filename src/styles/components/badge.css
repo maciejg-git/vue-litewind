@@ -1,0 +1,59 @@
+/* BADGE */
+
+.badge {
+  @apply
+    rounded-md
+    font-bold
+    p-1
+    px-3
+    text-white
+    bg-primary-500
+}
+    .badge--circle {
+      @apply
+        rounded-full
+        border
+        w-4
+        h-4
+        px-0
+        py-0
+        border-white
+        dark:border-dark-800 !important
+    }
+    .badge--primary {
+      @apply
+        text-white
+        bg-primary-500
+    }
+    .badge--secondary {
+      @apply
+        text-white
+        bg-secondary-500
+    }
+    .badge--success {
+      @apply
+        text-success-800
+        bg-success-500
+    }
+    .badge--warn {
+      @apply
+        text-warn-800
+        bg-warn-500
+    }
+    .badge--danger {
+      @apply
+        text-white
+        bg-danger-500
+    }
+    .badge--small {
+      @apply
+        text-sm
+        p-1
+        px-2
+    }
+    .badge--tiny {
+      @apply
+        text-xs
+        p-0.5
+        px-2
+    }

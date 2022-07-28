@@ -1,0 +1,10 @@
+.disabled {
+  @apply 
+    opacity-50
+}
+
+.match {
+  @apply
+    bg-secondary-100
+    dark:bg-dark-600
+}

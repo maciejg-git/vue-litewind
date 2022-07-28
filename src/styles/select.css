@@ -1,0 +1,76 @@
+/* SELECT */
+
+.select {
+  @apply
+    rounded
+    border
+    focus:outline-none
+    focus:ring
+    outline-none
+    overflow-y-auto
+    bg-white
+    border-secondary-300
+    focus:border-secondary-400
+    focus:ring-primary-200
+    dark:text-text-300
+    dark:bg-dark-700
+    dark:border-dark-500
+    dark:focus:ring-primary-300
+}
+    .select--valid-state {
+      @apply
+        text-success-600
+        border-success-300
+        focus:ring-success-200
+        dark:text-success-600
+        dark:border-success-400
+        dark:focus:ring-success-300
+    }
+    .select--invalid-state {
+      @apply
+        text-danger-600
+        border-danger-300
+        focus:ring-danger-200
+        dark:text-danger-600
+        dark:border-danger-400
+        dark:focus:ring-danger-300
+    }
+    .select--disabled-state {
+      @apply
+        disabled
+    }
+    .select--icon-variant {
+      @apply
+        pl-10
+    }
+    .select--clearable-variant {
+      @apply
+        pr-10
+    }
+
+.select--icon {
+  @apply
+    w-6
+    h-6
+    ml-2
+    text-text-400
+    dark:text-gray-400
+}
+    .select--icon--valid {
+      @apply
+        text-success-500
+        dark:text-success-500
+    }
+    .select--icon--invalid {
+      @apply
+        text-danger-500
+        dark:text-danger-500
+    }
+
+.select--clear-button {
+  @apply
+    w-4
+    h-4
+    text-text-500
+    dark:text-text-300
+}

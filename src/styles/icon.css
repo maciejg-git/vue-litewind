@@ -1,0 +1,22 @@
+/* ICON */
+
+.v-icon {
+  @apply
+    w-4
+    h-4
+}
+  .v-icon--sm {
+    @apply
+      h-2
+      w-2
+  }
+  .v-icon--md {
+    @apply
+      h-6
+      w-6
+  }
+  .v-icon--lg {
+    @apply
+      h-8
+      w-8
+  }

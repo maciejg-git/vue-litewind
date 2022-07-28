@@ -55,7 +55,7 @@ export default {
         prop: "rules",
         type: ["Object"],
         default: "{}",
-        description: "Rules for validation",
+        description: "Rules for validation. See Form Validation for example",
       },
       {
         prop: "validate-on",
@@ -72,16 +72,28 @@ export default {
           "Valid values are <code class='code-text'>silent</code> or <code class='code-text'>eager</code>. See Form Validation for explanation and examples",
       },
       {
+        prop: "use-loading",
+        type: ["Boolean"],
+        default: "false",
+        description: "Set to true or false to enable or disable spinner in the input",
+      },
+      {
         prop: "is-loading",
         type: ["Boolean"],
         default: "false",
-        description: "If true displays spinner on the right side of input",
+        description: "If true displays spinner in the input",
+      },
+      {
+        prop: "spinner",
+        type: ["Boolean"],
+        default: "false",
+        description: "Props of input spinner",
       },
       {
         prop: "block",
         type: ["Boolean"],
         default: "false",
-        description: "Input v-model",
+        description: "Sets input display to block",
       },
       ...formProps({ icon: true, clearable: true }),
       ...styleProps("input"),
@@ -117,6 +129,10 @@ export default {
       {
         slot: "icon",
         description: "Slot for icon",
+      },
+      {
+        slot: "prepend",
+        description: "Slot for content prepending input",
       },
     ]);
 

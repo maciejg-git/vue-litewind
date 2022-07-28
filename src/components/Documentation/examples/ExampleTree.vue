@@ -2,7 +2,7 @@
   <v-tree
     v-bind="example"
     ref="treeRef"
-    :chevron-attrs="{ triangle: true }"
+    :chevron="{ triangle: true }"
     :placeholder-folder-icon="['mdi-folder', 'mdi-folder-open']"
     placeholder-item-icon="b-file-earmark"
     @input:click="handleClickItem"
@@ -13,16 +13,13 @@
         {{ item.badge }}
       </v-badge>
     </template>
-    <!-- <template #icon="{ item, isFolder }"> -->
-    <!-- <v-icon :name="isFolder ? 'mdi-folder' : 'b-star'"></v-icon> -->
-    <!-- </template> -->
   </v-tree>
 
-  <v-button @click="treeRef.openAllLevel(9999)" class="mr-4 mt-4">
+  <v-button style-button="small" class="mr-4 mt-8" @click="treeRef.openAllLevel(9999)" >
     Open all
   </v-button>
-  <v-button @click="treeRef.closeAll()">Close all</v-button>
-  <!-- CUT START -->
+  <v-button style-button="small" @click="treeRef.closeAll()">Close all</v-button>
+<!-- CUT START -->
   <v-tabs base="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="flex flex-col gap-y-2 mt-5">

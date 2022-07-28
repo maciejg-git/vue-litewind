@@ -1,11 +1,14 @@
 <template>
   <div class="relative" :class="wrapperClasses">
     <div class="form-input flex items-center" :class="getInputClasses">
+
       <slot name="icon">
         <button v-if="icon" @click="handleIconClick" class="mr-2">
           <v-icon :name="icon" :class="classes.icon.value"></v-icon>
         </button>
       </slot>
+
+      <slot name="prepend"></slot>
 
       <input
         v-model="localModel"
@@ -21,6 +24,7 @@
           :class="{ visible: isLoading, invisible: !isLoading }"
           type="svg"
           style-spinner="small"
+          v-bind="spinner"
           class="mr-0.5"
         />
         <button
@@ -70,17 +74,14 @@ import { sharedStyleProps, sharedFormProps } from "../shared-props";
 
 export default {
   props: {
-    modelValue: {
-      type: [String, Number, Boolean, Array, Object],
-      default: "",
-    },
+    modelValue: { type: [String, Number, Array], default: "" },
     block: { type: Boolean, default: false },
     rules: { type: Object, default: {} },
     validateOn: { type: String, default: "blur" },
     validateMode: { type: String, default: "silent" },
-    state: { type: String, default: "" },
     useLoader: { type: Boolean, default: false },
     isLoading: { type: Boolean, default: false },
+    spinner: { type: Object, default: {} },
     styleInput: { type: [String, Array], default: "" },
     styleIcon: { type: [String, Array], default: "" },
     styleClearButton: { type: [String, Array], default: "" },
@@ -190,7 +191,6 @@ export default {
 
     let touch = () => {
       validate(localModel.value);
-
       status.value.touched = true;
 
       if (!status.value.valid) {
@@ -202,7 +202,6 @@ export default {
 
     let formValidate = () => {
       validate(localModel.value);
-
       status.value.validated = true;
 
       if (!status.value.valid) {

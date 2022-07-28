@@ -24,7 +24,7 @@
               <v-close-button
                 v-if="noHeader && closeButtonInContent"
                 class="absolute top-6 right-6"
-                @click="closeModal"
+                @click="handleClickCloseButton"
               />
               <slot name="default"></slot>
             </main>
@@ -33,7 +33,7 @@
                 <v-button
                   v-if="!noSecondaryButton"
                   aria-label="Cancel button"
-                  v-bind="secondaryButtonAttrs"
+                  v-bind="secondaryButton"
                   class="mx-2"
                   @click="handleSecondaryButtonClick"
                 >
@@ -42,7 +42,7 @@
                 <v-button
                   v-if="!noPrimaryButton"
                   aria-label="OK button"
-                  v-bind="primaryButtonAttrs"
+                  v-bind="primaryButton"
                   class="mx-2"
                   @click="handlePrimaryButtonClick"
                 >
@@ -82,8 +82,8 @@ export default {
     title: { type: String, default: undefined },
     noPrimaryButton: { type: Boolean, default: false },
     noSecondaryButton: { type: Boolean, default: false },
-    primaryButtonAttrs: { type: Object, default: { styleButton: "primary" } },
-    secondaryButtonAttrs: { type: Object, default: { styleButton: "secondary" } },
+    primaryButton: { type: Object, default: { styleButton: "primary" } },
+    secondaryButton: { type: Object, default: { styleButton: "secondary" } },
     primaryButtonLabel: { type: String, default: "Accept" },
     secondaryButtonLabel: { type: String, default: "Close" },
     primaryButtonClose: { type: Boolean, default: false },
@@ -190,6 +190,8 @@ export default {
 
     let closeModal = () => emit("update:modelValue", false);
 
+    // handle template events
+
     let handleBackdropClick = () => {
       if (props.staticBackdrop) {
         emit("input:static-backdrop-click");
@@ -197,6 +199,8 @@ export default {
       }
       closeModal();
     };
+
+    let handleClickCloseButton = () => closeModal()
 
     let handlePrimaryButtonClick = () => {
       if (props.primaryButtonClose) closeModal();
@@ -215,6 +219,7 @@ export default {
       resetScrollbar,
       closeModal,
       handleBackdropClick,
+      handleClickCloseButton,
       handlePrimaryButtonClick,
       handleSecondaryButtonClick,
       handleKeydown,
@@ -224,12 +229,8 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-.modal-z-31 {
-  z-index: 31;
-}
-
 .fixed-main {
-  @apply fixed inset-0 modal-z-31 overflow-y-auto;
+  @apply fixed inset-0 z-[31] overflow-y-auto;
 }
 .fixed-container {
   @apply flex relative min-h-full mx-auto py-6 px-6 md:px-0 pointer-events-none;

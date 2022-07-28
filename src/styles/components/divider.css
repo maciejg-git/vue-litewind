@@ -1,0 +1,6 @@
+/* DIVIDER */
+
+.divider {
+  @apply
+    dark:border-dark-700
+}
