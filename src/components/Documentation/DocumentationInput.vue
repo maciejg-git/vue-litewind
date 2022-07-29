@@ -134,6 +134,10 @@ export default {
         slot: "prepend",
         description: "Slot for content prepending input",
       },
+      {
+        slot: "append",
+        description: "Slot for content appending input",
+      },
     ]);
 
     return {

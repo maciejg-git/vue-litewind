@@ -1,3 +1,5 @@
+@import 'form-shared.css';
+
 /* AUTOCOMPLETE */
 
 .autocomplete--menu {
@@ -46,6 +48,5 @@
 
 .autocomplete--match {
   @apply
-    bg-secondary-100
-    dark:bg-dark-600
+    match
 }

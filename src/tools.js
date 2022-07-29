@@ -59,7 +59,7 @@ let schedule = async (fn, ms, ...args) => {
 
 let highlightMatch = (string, match, classes) => {
   return string.replace(
-    new RegExp(`(${match})`, "i"),
+    new RegExp(`(${match.replace(/[.*+\-?^${}()|[\]\\]/g, "\\$&")})`, "i"),
     `<span class='${classes}'>$1</span>`
   );
 };

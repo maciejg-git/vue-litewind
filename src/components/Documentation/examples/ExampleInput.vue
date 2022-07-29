@@ -50,6 +50,42 @@
     </v-input>
   </div>
 
+  <p class="my-6">Prepend and append slots</p>
+
+  <div class="flex gap-x-10">
+    <!-- icon (prop) -->
+
+    <v-input
+      v-model="example.model"
+      :type="example.type"
+      :clearable="example.clearable"
+      :state="example.state"
+      :use-loader="example.useLoader"
+      :isLoading="example.isLoading"
+      placeholder="Type something..."
+    >
+      <template #prepend>
+        <div class="mr-2">http://</div>
+      </template>
+    </v-input>
+
+    <!-- icon (slot) -->
+
+    <v-input
+      v-model="example.model"
+      :type="example.type"
+      :clearable="example.clearable"
+      :state="example.state"
+      :use-loader="example.useLoader"
+      :isLoading="example.isLoading"
+      placeholder="Type something..."
+    >
+      <template #append>
+        <div class="ml-2">.com</div>
+      </template>
+    </v-input>
+  </div>
+
   <p class="my-6">Styled inputs</p>
 
   <!-- underlined -->
@@ -79,7 +115,7 @@
       placeholder="Type something..."
     ></v-input>
   </div>
-<!-- CUT START -->
+  <!-- CUT START -->
   <v-tabs base="tabs-material" class="mt-10">
     <v-tab name="Props">
       <div class="flex flex-col gap-y-2 mt-5">
@@ -142,7 +178,7 @@
       <event-viewer :events="events" />
     </v-tab>
   </v-tabs>
-<!-- CUT END -->
+  <!-- CUT END -->
 </template>
 
 <script>

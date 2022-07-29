@@ -13,6 +13,7 @@ import { plugin } from "./components/index.js";
 import "tailwindcss/tailwind.css";
 import "./styles/components.css"
 import "./styles/form.css"
+import "./styles/icon.css"
 import "./components/Documentation/Documentation.css"
 // tools
 import registerIcon from "./register-icon"

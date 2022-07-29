@@ -1,0 +1,141 @@
+@import 'form-shared.css';
+
+/* INPUT */
+
+.input {
+  @apply
+    rounded
+    border
+    focus-within:ring
+    transition-shadow
+    duration-200
+    bg-white
+    border-secondary-300
+    focus-within:border-secondary-400
+    focus-within:ring-primary-200
+    dark:text-text-300
+    dark:bg-dark-700
+    dark:border-dark-500
+    dark:focus-within:ring-primary-300
+}
+    .input--valid-state {
+      @apply
+        valid
+    }
+    .input--invalid-state {
+      @apply
+        invalid
+    }
+    .input--disabled-state {
+      @apply
+        disabled
+    }
+
+.input--icon {
+  @apply
+    w-6
+    h-6
+    text-text-400
+    dark:text-gray-400
+}
+
+.input--clear-button {
+  @apply
+    w-4
+    h-4
+    text-text-500
+    dark:text-text-300
+}
+
+/* INPUT ROUNDED */
+
+.input-rounded {
+  @apply
+    rounded-full
+    border-0
+    focus-within:ring
+    transition-shadow
+    duration-200
+    pl-4
+    bg-dark-100
+    border-secondary-300
+    focus-within:ring-primary-200
+    dark:text-dark-300
+    dark:bg-dark-700
+    dark:border-dark-500
+    dark:focus-within:ring-primary-300
+}
+    .input-rounded--valid-state {
+      @apply
+        valid
+    }
+    .input-rounded--invalid-state {
+      @apply
+        invalid
+    }
+    .input-rounded--disabled-state {
+      @apply
+        disabled
+    }
+
+.input-rounded--icon {
+  @apply
+    w-6
+    h-6
+    ml-2
+    text-text-400
+    dark:text-gray-400
+}
+
+.input-rounded--clear-button {
+  @apply
+    w-4
+    h-4
+    text-text-500
+    dark:text-text-300
+}
+
+/* INPUT UNDERLINED */
+
+.input-underline {
+  @apply
+    border-0 
+    border-b-2 
+    focus-within:ring-0 
+    px-0.5
+    bg-transparent
+    focus-within:border-black
+    border-secondary-200
+    dark:text-dark-300
+    dark:border-dark-500
+    
+}
+    .input-underline--valid-state {
+      @apply
+        valid
+    }
+    .input-underline--invalid-state {
+      @apply
+        invalid
+    }
+    .input-underline--disabled-state {
+      @apply
+        disabled
+    }
+
+.input-underline--icon {
+  @apply
+    w-6
+    h-6
+    ml-2
+    text-text-400
+    dark:text-gray-400
+}
+
+.input-underline--clear-button {
+  @apply
+    w-4
+    h-4
+    text-text-500
+    dark:text-text-300
+}

@@ -1,3 +1,5 @@
+@import 'form-shared.css';
+
 /* TEXTAREA */
 
 .textarea {
@@ -20,21 +22,11 @@
 }
     .textarea--valid-state {
       @apply
-        text-success-600
-        border-success-300
-        focus:ring-success-200
-        dark:text-success-600
-        dark:border-success-400
-        dark:focus:ring-success-300
+        valid
     }
     .textarea--invalid-state {
       @apply
-        text-danger-600
-        border-danger-300
-        focus:ring-danger-200
-        dark:text-danger-600
-        dark:border-danger-400
-        dark:focus:ring-danger-300
+        invalid
     }
     .textarea--disabled-state {
       @apply

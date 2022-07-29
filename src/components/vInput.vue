@@ -18,6 +18,8 @@
         @blur="handleBlur"
       />
 
+      <slot name="append"></slot>
+
       <div class="flex items-center">
         <v-spinner
           v-if="useLoader"
@@ -25,7 +27,7 @@
           type="svg"
           style-spinner="small"
           v-bind="spinner"
-          class="mr-0.5"
+          class="mx-0.5"
         />
         <button
           v-if="clearable"
@@ -91,7 +93,7 @@ export default {
   components: {
     vFormText,
   },
-  emits: ["update:modelValue", "update:status"],
+  emits: ["update:modelValue", "update:status", "update:state"],
   inheritAttrs: false,
   setup(props, { attrs, emit }) {
     let { classes, states, variants } = useStyles("input", props, {
@@ -212,6 +214,10 @@ export default {
     };
 
     watch(status, () => emit("update:status", status.value), {
+      immediate: true,
+    });
+
+    watch(state, () => emit("update:state", state.value), {
       immediate: true,
     });
 

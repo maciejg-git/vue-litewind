@@ -1,0 +1,30 @@
+.valid {
+  @apply
+    text-success-600
+    border-success-300
+    focus-within:ring-success-200
+    dark:text-success-600
+    dark:border-success-400
+    dark:focus-within:ring-success-300
+}
+
+.invalid {
+  @apply
+    text-danger-600
+    border-danger-300
+    focus-within:ring-danger-200
+    dark:text-danger-600
+    dark:border-danger-400
+    dark:focus-within:ring-danger-300
+}
+
+.disabled {
+  @apply 
+    opacity-50
+}
+
+.match {
+  @apply
+    bg-secondary-100
+    dark:bg-dark-600
+}
