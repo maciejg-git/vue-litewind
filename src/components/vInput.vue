@@ -1,7 +1,6 @@
 <template>
   <div class="relative" :class="wrapperClasses">
     <div class="form-input flex items-center" :class="getInputClasses">
-
       <slot name="icon">
         <button v-if="icon" @click="handleIconClick" class="mr-2">
           <v-icon :name="icon" :class="classes.icon.value"></v-icon>
@@ -148,6 +147,7 @@ export default {
     };
 
     let updateState = () => {
+      if (props.state !== null) return props.state;
       if (status.value.optional) return "";
 
       if (!status.value.valid) {
@@ -161,6 +161,12 @@ export default {
       }
       return state.value;
     };
+
+    watch(
+      () => props.state,
+      (newState) => (state.value = newState),
+      { immediate: true },
+    );
 
     let validate = (value) => {
       let { newStatus, newMessages } = getValidateStatus(value);

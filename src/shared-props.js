@@ -42,6 +42,6 @@ export const sharedFormProps = (d, options) => {
 
   return {
     ...props,
-    state: { type: String, default: d.state || "" },
+    state: { type: String, default: d.state || null },
   };
 };

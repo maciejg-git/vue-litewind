@@ -18,6 +18,14 @@
     dark:focus-within:ring-danger-300
 }
 
+.input--icon {
+  @apply
+    w-6
+    h-6
+    text-text-400
+    dark:text-gray-400
+}
+
 .disabled {
   @apply 
     opacity-50
