@@ -1,62 +1,64 @@
 /* PROGRESS */
 
-.progress {
-  @apply
-    rounded
-    overflow-hidden
-    h-4
-    bg-secondary-100
-    dark:bg-dark-700
-}
-    .progress--rounded {
-      @apply
-        rounded-full
-    }
-    .progress--transparent {
-      @apply
-        bg-transparent
-        dark:bg-transparent
-    }
-    .progress--tiny {
-      @apply
-        h-1
-    }
+.default {
+  &.progress {
+    @apply
+      rounded
+      overflow-hidden
+      h-4
+      bg-secondary-100
+      dark:bg-dark-700
+  }
+      &.progress--rounded {
+        @apply
+          rounded-full
+      }
+      &.progress--transparent {
+        @apply
+          bg-transparent
+          dark:bg-transparent
+      }
+      &.progress--tiny {
+        @apply
+          h-1
+      }
 
-.progress--progress-bar {
-  --progress-bar-timing: linear;
-  --progress-bar-speed: 1.5s;
-  --progress-bar-width: 50%;
-  --progress-bar-direction: normal;
-  @apply
-    bg-primary-500
-    dark:bg-primary-500
-}
-    .progress--progress-bar--rounded {
-      @apply
-        rounded-full
-    }
-    .progress--progress-bar--red {
-      @apply
-        bg-danger-500
-        dark:bg-danger-500
-    }
-    .progress--progress-bar--gradient {
-      @apply
-        bg-gradient-to-r
-        from-yellow-400
-        via-orange-500
-        to-red-500
-    }
-    .progress--progress-bar--alternate {
-      --progress-bar-timing: ease-in-out;
-      --progress-bar-speed: 1.4s;
-      --progress-bar-width: 50%;
-      --progress-bar-direction: alternate;
-    }
+  &.progress--progress-bar {
+    --progress-bar-timing: linear;
+    --progress-bar-speed: 1.5s;
+    --progress-bar-width: 50%;
+    --progress-bar-direction: normal;
+    @apply
+      bg-primary-500
+      dark:bg-primary-500
+  }
+      &.progress--progress-bar--rounded {
+        @apply
+          rounded-full
+      }
+      &.progress--progress-bar--red {
+        @apply
+          bg-danger-500
+          dark:bg-danger-500
+      }
+      &.progress--progress-bar--gradient {
+        @apply
+          bg-gradient-to-r
+          from-yellow-400
+          via-orange-500
+          to-red-500
+      }
+      &.progress--progress-bar--alternate {
+        --progress-bar-timing: ease-in-out;
+        --progress-bar-speed: 1.4s;
+        --progress-bar-width: 50%;
+        --progress-bar-direction: alternate;
+      }
 
-.progress--label {
-  @apply
-    text-xs
-    font-bold
-    text-white
+  &.progress--label {
+    @apply
+      text-xs
+      font-bold
+      text-white
+  }
 }

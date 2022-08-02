@@ -1,59 +1,63 @@
 /* CARD */
 
-.card {
-  @apply
-    border
-    rounded-md
-    bg-white
-    border-secondary-200
-    dark:bg-dark-800
-    dark:border-dark-700
-}
-    .card--menu {
-      @apply
-        py-2
-    }
-    .card--shadow {
-      @apply
-        shadow-md
-        dark:shadow-lg
-        dark:shadow-black/30
-    }
-    .card--square {
-      @apply
-        rounded-none
-    }
-    .card--borderless {
-      @apply
-        border-0
-    }
-    .card--hoverable {
-      @apply
-        hover:shadow-lg
-        transition-all
-        hover:scale-105
-    }
-    .card--rounded-extra {
-      @apply
-        rounded-lg
-    }
+.default {
+  &.card {
+    @apply
+      border
+      rounded-md
+      bg-white
+      border-secondary-200
+      dark:bg-dark-800
+      dark:border-dark-700
+  }
+      &.card--menu {
+        @apply
+          py-2
+      }
+      &.card--shadow {
+        @apply
+          shadow-md
+          dark:shadow-lg
+          dark:shadow-black/30
+      }
+      &.card--square {
+        @apply
+          rounded-none
+      }
+      &.card--borderless {
+        @apply
+          border-0
+      }
+      &.card--hoverable {
+        @apply
+          hover:shadow-lg
+          transition-all
+          hover:scale-105
+      }
+      &.card--rounded-extra {
+        @apply
+          rounded-lg
+      }
+  }
 
 /* CARD FLAT */
 
-.card-flat {
-  @apply
-    shadow
-    overflow-hidden
-    bg-white
-    dark:bg-dark-700
-}
-    .card-flat--rounded {
-      @apply
-        rounded
-    }
-    .card-flat--shadow {
-      @apply
-        shadow-md
-        dark:shadow-lg
-        dark:shadow-black/30
-    }
+.flat {
+  &.card {
+    @apply
+      shadow
+      overflow-hidden
+      bg-white
+      dark:bg-dark-700
+  }
+      &.card--rounded {
+        @apply
+          rounded
+      }
+      &.card--shadow {
+        @apply
+          shadow-md
+          dark:shadow-lg
+          dark:shadow-black/30
+      }
+  }

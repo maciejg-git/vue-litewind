@@ -93,7 +93,7 @@
   <div class="flex gap-x-10">
     <v-input
       v-model="example.model"
-      base="input-underline"
+      base="underlined"
       :type="example.type"
       :clearable="example.clearable"
       :state="example.state"
@@ -106,7 +106,7 @@
 
     <v-input
       v-model="example.model"
-      base="input-rounded"
+      base="rounded"
       :type="example.type"
       :clearable="example.clearable"
       :state="example.state"
@@ -116,7 +116,7 @@
     ></v-input>
   </div>
   <!-- CUT START -->
-  <v-tabs base="tabs-material" class="mt-10">
+  <v-tabs base="material" class="mt-10">
     <v-tab name="Props">
       <div class="flex flex-col gap-y-2 mt-5">
         <div>

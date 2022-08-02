@@ -1,129 +1,131 @@
 /* DROPDOWN */
 
-.dropdown--item {
-  @apply
-    w-full
-    text-left
-    text-sm
-    focus:outline-none
-    pr-4
-    px-6
-    py-3
-    my-1
-    text-text-700
-    focus:text-white
-    hover:bg-secondary-100
-    focus:bg-primary-500
-    dark:text-text-300
-    dark:focus:text-white
-    dark:hover:bg-dark-700
-    dark:focus:bg-primary-500
-}
-    .dropdown--item--active-state {
-      @apply
-        text-white
-        bg-primary-500
-        hover:bg-primary-600
-        dark:text-white
-        dark:bg-primary-500
-        dark:hover:bg-primary-600
-    }
-    .dropdown--item--disabled-state {
-      @apply
-        disabled
-        pointer-events-none
-    }
+.default {
+  &.dropdown--item {
+    @apply
+      w-full
+      text-left
+      text-sm
+      focus:outline-none
+      pr-4
+      px-6
+      py-3
+      my-1
+      text-text-700
+      focus:text-white
+      hover:bg-secondary-100
+      focus:bg-primary-500
+      dark:text-text-300
+      dark:focus:text-white
+      dark:hover:bg-dark-700
+      dark:focus:bg-primary-500
+  }
+      &.dropdown--item--active-state {
+        @apply
+          text-white
+          bg-primary-500
+          hover:bg-primary-600
+          dark:text-white
+          dark:bg-primary-500
+          dark:hover:bg-primary-600
+      }
+      &.dropdown--item--disabled-state {
+        @apply
+          disabled
+          pointer-events-none
+      }
 
-.dropdown--header {
-  @apply
-    text-left
-    font-semibold
-    text-sm
-    uppercase
-    px-6
-    py-2
-    text-text-700
-    dark:text-text-300
-}
+  &.dropdown--header {
+    @apply
+      text-left
+      font-semibold
+      text-sm
+      uppercase
+      px-6
+      py-2
+      text-text-700
+      dark:text-text-300
+  }
 
-/* DROPDOWN RELAXED */
+  /* DROPDOWN RELAXED */
 
-.dropdown-relaxed--item {
-  @apply
-    w-11/12
-    focus:outline-none
-    rounded
-    text-sm
-    text-left
-    mx-auto
-    px-4 
-    py-4
-    my-1
-    text-text-700
-    focus:text-white
-    hover:bg-secondary-100
-    focus:bg-primary-500
-    dark:text-text-300
-    dark:focus:text-white
-    dark:hover:bg-dark-700
-    dark:focus:bg-primary-500
-}
-    .dropdown-relaxed--item--active-state {
-      @apply
-        text-white
-        bg-primary-500
-        hover:bg-primary-600
-        dark:text-white
-        dark:bg-primary-500
-        dark:hover:bg-primary-600
-    }
-    .dropdown-relaxed--item--disabled-state {
-      @apply
-        disabled
-        pointer-events-none
-    }
+  &.dropdown-relaxed--item {
+    @apply
+      w-11/12
+      focus:outline-none
+      rounded
+      text-sm
+      text-left
+      mx-auto
+      px-4 
+      py-4
+      my-1
+      text-text-700
+      focus:text-white
+      hover:bg-secondary-100
+      focus:bg-primary-500
+      dark:text-text-300
+      dark:focus:text-white
+      dark:hover:bg-dark-700
+      dark:focus:bg-primary-500
+  }
+      &.dropdown-relaxed--item--active-state {
+        @apply
+          text-white
+          bg-primary-500
+          hover:bg-primary-600
+          dark:text-white
+          dark:bg-primary-500
+          dark:hover:bg-primary-600
+      }
+      &.dropdown-relaxed--item--disabled-state {
+        @apply
+          disabled
+          pointer-events-none
+      }
 
-.dropdown-relaxed--header {
-  @apply
-    w-11/12
-    text-left
-    font-semibold
-    text-sm
-    mx-auto
-    uppercase
-    px-4
-    py-2
-    my-1
-    text-text-700
-    dark:text-text-300
-}
+  &.dropdown-relaxed--header {
+    @apply
+      w-11/12
+      text-left
+      font-semibold
+      text-sm
+      mx-auto
+      uppercase
+      px-4
+      py-2
+      my-1
+      text-text-700
+      dark:text-text-300
+  }
 
-/* DROPDOWN FLAT */
+  /* DROPDOWN FLAT */
 
-.dropdown-flat--item {
-  @apply
-    text-left
-    w-full
-    focus:outline-none
-    px-5
-    py-3
-    text-text-700
-    focus:text-white
-    hover:bg-secondary-100
-    focus:bg-primary-400
-    dark:text-text-300
-    dark:bg-dark-700
-    dark:focus:text-white
-    dark:hover:bg-dark-600
-    dark:focus:bg-primary-400
-}
+  &.dropdown-flat--item {
+    @apply
+      text-left
+      w-full
+      focus:outline-none
+      px-5
+      py-3
+      text-text-700
+      focus:text-white
+      hover:bg-secondary-100
+      focus:bg-primary-400
+      dark:text-text-300
+      dark:bg-dark-700
+      dark:focus:text-white
+      dark:hover:bg-dark-600
+      dark:focus:bg-primary-400
+  }
 
-.dropdown-flat--header {
-  @apply
-    text-left
-    font-semibold
-    px-5
-    py-4
-    text-text-600
-    dark:text-text-300
+  &.dropdown-flat--header {
+    @apply
+      text-left
+      font-semibold
+      px-5
+      py-4
+      text-text-600
+      dark:text-text-300
+  }
 }

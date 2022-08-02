@@ -23,7 +23,7 @@ export const sharedPopperProps = (d) => {
 
 export const sharedStyleProps = (base) => {
   return {
-    base: { type: String, default: base },
+    base: { type: String, default: "default" },
     variant: { type: [String, Boolean], default: "" },
   };
 };

@@ -1,32 +1,18 @@
-@import 'form-shared.css';
+@import 'form-base.css';
 
 /* TEXTAREA */
 
 .textarea {
   @apply
-    rounded
-    border
-    focus:outline-none
-    focus:ring
-    outline-none
-    py-1
-    px-3
-    bg-white
-    border-secondary-300
-    focus:border-secondary-400
-    focus:ring-primary-200
-    dark:text-text-300
-    dark:bg-dark-700
-    dark:border-dark-500
-    dark:focus:ring-primary-300
+    form--base
 }
     .textarea--valid-state {
       @apply
-        valid
+        form--valid
     }
     .textarea--invalid-state {
       @apply
-        invalid
+        form--invalid
     }
     .textarea--disabled-state {
       @apply

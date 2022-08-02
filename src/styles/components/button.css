@@ -2,120 +2,124 @@
 
 /* BUTTON PLAIN */
 
-.button-plain {
-  @apply 
-    focus:outline-none
-    text-text-600
-    dark:text-text-300
-}
-  .button-plain--bold {
-    @apply
-      font-semibold
+.plain {
+  &.button {
+    @apply 
+      focus:outline-none
+      text-text-600
+      dark:text-text-300
   }
+    &.button--bold {
+      @apply
+        font-semibold
+    }
+}
 
 /* BUTTON */
 
-.button {
-  @apply
-    rounded
-    text-sm
-    sm:text-base
-    font-medium
-    transition-shadow
-    duration-150
-    focus:outline-none
-    focus:ring-4
-    px-4
-    py-2
-    text-text-100
-    bg-primary-500
-    border-primary-700
-    hover:bg-primary-600
-    focus:ring-primary-200
-}
-    .button--primary {
-      @apply
-        bg-primary-500
-        hover:bg-primary-600
-        border-primary-700
-        focus:ring-primary-200
-    }
-    .button--secondary {
-      @apply
-        bg-secondary-500
-        hover:bg-secondary-600
-        border-secondary-700
-        focus:ring-secondary-200
-    }
-    .button--warn {
-      @apply
-        text-text-800
-        bg-warn-500
-        hover:bg-warn-600
-        border-warn-600
-        focus:ring-warn-200
-    }
-    .button--success {
-      @apply
-        bg-success-500
-        hover:bg-success-600
-        border-success-600
-        focus:ring-success-200
-    }
-    .button--danger {
-      @apply
-        bg-danger-500
-        hover:bg-danger-600
-        border-danger-600
-        focus:ring-danger-200
-    }
-    .button--pink {
-      @apply
-        bg-pink-500
-        hover:bg-pink-600
-        focus:ring-pink-200
-    }
-    .button--large {
-      @apply
-        py-2.5
-    }
-    .button--small {
-      @apply
-        py-1
-    }
-    .button--tiny {
-      @apply
-        py-0.5
-        text-sm
-    }
-    .button--raised {
-      @apply
-        border-b-4
-        rounded-md
-    }
-    .button--square {
-      @apply
-        rounded-none
-    }
-    .button--circle {
-      @apply
-        rounded-full
-        p-4 !important
-    }
-    .button--equal {
-      @apply
-        p-2 !important
-    }
-    .button--pill {
-      @apply
-        rounded-full
-    }
-    .button--uppercase {
-      @apply
-        uppercase
-    }
-    .button--disabled-state {
-      @apply
-        disabled
-        pointer-events-none
-    }
+.default {
+  &.button {
+    @apply
+      rounded
+      text-sm
+      sm:text-base
+      font-medium
+      transition-shadow
+      duration-150
+      focus:outline-none
+      focus:ring-4
+      px-4
+      py-2
+      text-text-100
+      bg-primary-500
+      border-primary-700
+      hover:bg-primary-600
+      focus:ring-primary-200
+  }
+      &.button--primary {
+        @apply
+          bg-primary-500
+          hover:bg-primary-600
+          border-primary-700
+          focus:ring-primary-200
+      }
+      &.button--secondary {
+        @apply
+          bg-secondary-500
+          hover:bg-secondary-600
+          border-secondary-700
+          focus:ring-secondary-200
+      }
+      &.button--warn {
+        @apply
+          text-text-800
+          bg-warn-500
+          hover:bg-warn-600
+          border-warn-600
+          focus:ring-warn-200
+      }
+      &.button--success {
+        @apply
+          bg-success-500
+          hover:bg-success-600
+          border-success-600
+          focus:ring-success-200
+      }
+      &.button--danger {
+        @apply
+          bg-danger-500
+          hover:bg-danger-600
+          border-danger-600
+          focus:ring-danger-200
+      }
+      &.button--pink {
+        @apply
+          bg-pink-500
+          hover:bg-pink-600
+          focus:ring-pink-200
+      }
+      &.button--large {
+        @apply
+          py-2.5
+      }
+      &.button--small {
+        @apply
+          py-1
+      }
+      &.button--tiny {
+        @apply
+          py-0.5
+          text-sm
+      }
+      &.button--raised {
+        @apply
+          border-b-4
+          rounded-md
+      }
+      &.button--square {
+        @apply
+          rounded-none
+      }
+      &.button--circle {
+        @apply
+          rounded-full
+          p-4 !important
+      }
+      &.button--equal {
+        @apply
+          p-2 !important
+      }
+      &.button--pill {
+        @apply
+          rounded-full
+      }
+      &.button--uppercase {
+        @apply
+          uppercase
+      }
+      &.button--disabled-state {
+        @apply
+          disabled
+          pointer-events-none
+      }
+  }

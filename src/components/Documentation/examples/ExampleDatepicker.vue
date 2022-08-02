@@ -20,7 +20,7 @@
   </v-card>
   <!-- CUT START -->
   <div class="flex-grow mt-4 lg:ml-20 lg:mt-0">
-    <v-tabs base="tabs-material">
+    <v-tabs base="material">
       <v-tab name="Props">
         <div class="flex flex-col gap-y-2 mt-5">
           <div>

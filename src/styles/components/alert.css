@@ -1,81 +1,83 @@
 /* ALERT */
 
-.alert {
-  @apply
-    border
-    border-l-4
-    rounded
-    font-semibold
-    p-4
-}
-    .alert--info {
-      @apply
-        text-info-900
-        bg-info-300
-        border-info-400
-        dark:text-text-200
-        dark:bg-info-500
-        dark:border-info-600
-    }
-    .alert--danger {
-      @apply
-        text-danger-900
-        bg-danger-300
-        border-danger-400
-        dark:text-text-200
-        dark:bg-danger-500
-        dark:border-danger-600
-    }
-    .alert--warn {
-      @apply
-        text-warn-900
-        bg-warn-300
-        border-warn-400
-        dark:text-warn-900
-        dark:bg-warn-500
-        dark:border-warn-600
-    }
-    .alert--success {
-      @apply
-        text-success-900
-        bg-success-300
-        border-success-400
-        dark:text-success-900
-        dark:bg-success-500
-        dark:border-success-600
-    }
-    .alert--light {
-      @apply
-        text-secondary-600
-        bg-secondary-50
-        border-secondary-200
-    }
-    .alert--outline {
-      @apply
-        text-text-800
-        dark:text-text-300
-        bg-white 
-        dark:bg-dark-700 !important
-    }
-    .alert--borderless {
-      @apply 
-        border-0 
-        border-l-8 !important
-    }
-    .alert--shadowed {
-      @apply
-        shadow-lg
-        shadow-black/20
-    }
-    .alert--dense {
-      @apply
-        px-4
-        py-1
-    }
+.default {
+  &.alert {
+    @apply
+      border
+      border-l-4
+      rounded
+      font-semibold
+      p-4
+  }
+      &.alert--info {
+        @apply
+          text-info-900
+          bg-info-300
+          border-info-400
+          dark:text-text-200
+          dark:bg-info-500
+          dark:border-info-600
+      }
+      &.alert--danger {
+        @apply
+          text-danger-900
+          bg-danger-300
+          border-danger-400
+          dark:text-text-200
+          dark:bg-danger-500
+          dark:border-danger-600
+      }
+      &.alert--warn {
+        @apply
+          text-warn-900
+          bg-warn-300
+          border-warn-400
+          dark:text-warn-900
+          dark:bg-warn-500
+          dark:border-warn-600
+      }
+      &.alert--success {
+        @apply
+          text-success-900
+          bg-success-300
+          border-success-400
+          dark:text-success-900
+          dark:bg-success-500
+          dark:border-success-600
+      }
+      &.alert--light {
+        @apply
+          text-secondary-600
+          bg-secondary-50
+          border-secondary-200
+      }
+      &.alert--outline {
+        @apply
+          text-text-800
+          dark:text-text-300
+          bg-white 
+          dark:bg-dark-700 !important
+      }
+      &.alert--borderless {
+        @apply 
+          border-0 
+          border-l-8 !important
+      }
+      &.alert--shadowed {
+        @apply
+          shadow-lg
+          shadow-black/20
+      }
+      &.alert--dense {
+        @apply
+          px-4
+          py-1
+      }
 
-.alert--icon {
-  @apply
-    w-6
-    h-6
-    mr-2
+  &.alert--icon {
+    @apply
+      w-6
+      h-6
+      mr-2
+  }
 }

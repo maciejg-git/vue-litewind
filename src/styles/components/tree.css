@@ -6,26 +6,28 @@
     ml-8
 }
 
-.tree--folder {
-  @apply
-    tree-item-fixed;
-  @apply
-    font-bold
-}
-    .tree--folder--root-variant {
-      @apply
-        ml-0
-    }
+.default {
+  &.tree--folder {
+    @apply
+      tree-item-fixed;
+    @apply
+      font-bold
+  }
+      &.tree--folder--root-variant {
+        @apply
+          ml-0
+      }
 
-.tree--item {
-  @apply
-    tree-item-fixed;
-  @apply
-    font-normal
-}
+  &.tree--item {
+    @apply
+      tree-item-fixed;
+    @apply
+      font-normal
+  }
 
-.tree--icon {
-  @apply
-    w-5
-    h-5
+  &.tree--icon {
+    @apply
+      w-5
+      h-5
+  }
 }

@@ -1,44 +1,39 @@
-@import 'form-shared.css';
+@import 'form-base.css';
 
 /* CHECKBOX */
 
-.checkbox {
-  @apply
-    rounded
-    border
-    focus:ring
-    focus:ring-offset-0
-    focus:outline-none
-    transform
-    scale-110
-    outline-none
-    transition-all
-    duration-150
-    text-primary-500
-    bg-white
-    border-secondary-300
-    focus:ring-primary-200
-    dark:text-primary-500
-    dark:bg-dark-800
-    dark:checked:bg-current
-    dark:checked:border-current
-    dark:border-dark-700
-    dark:focus:ring-primary-200
-}
-    .checkbox--valid-state {
-      @apply
-        valid
-    }
-    .checkbox--invalid-state {
-      @apply
-        invalid
-    }
-    .checkbox--disabled-state {
-      @apply
-        disabled
-    }
+.default {
+  &.checkbox {
+    @apply
+      form--base
+      focus:ring-offset-0
+      transform
+      scale-110
+      transition-all
+      duration-150
+      text-primary-500
+      dark:text-primary-500
+      dark:bg-dark-800
+      dark:checked:bg-current
+      dark:checked:border-current
+      dark:border-dark-700
+      dark:focus:ring-primary-200
+  }
+      &.checkbox--valid-state {
+        @apply
+          form--valid
+      }
+      &.checkbox--invalid-state {
+        @apply
+          form--invalid
+      }
+      &.checkbox--disabled-state {
+        @apply
+          disabled
+      }
 
-.checkbox--label {
-  @apply
-    ml-4
+  &.checkbox--label {
+    @apply
+      ml-4
+  }
 }

@@ -1,19 +1,19 @@
-@import 'form-base.css';
+@import 'form-underline-base.css';
 
-/* INPUT */
+/* INPUT UNDERLINED */
 
-.default {
+.underlined {
   &.input {
     @apply
-      form--base
+      form-underline--base
   }
       &.input--valid-state {
         @apply
-          form--valid
+          form-underline--valid
       }
       &.input--invalid-state {
         @apply
-          form--invalid
+          form-underline--invalid
       }
       &.input--disabled-state {
         @apply
@@ -22,7 +22,7 @@
 
   &.input--icon {
     @apply
-      form--icon
+      form-underline--icon
   }
 
   &.input--clear-button {

@@ -1,4 +1,23 @@
-.valid {
+.form--base {
+  @apply
+    rounded
+    border
+    focus:outline-none
+    focus-within:ring
+    outline-none
+    transition-shadow
+    duration-200
+    bg-white
+    border-secondary-300
+    focus-within:border-secondary-400
+    focus-within:ring-primary-200
+    dark:text-text-300
+    dark:bg-dark-700
+    dark:border-dark-500
+    dark:focus-within:ring-primary-300
+}
+
+.form--valid {
   @apply
     text-success-600
     border-success-300
@@ -8,7 +27,7 @@
     dark:focus-within:ring-success-300
 }
 
-.invalid {
+.form--invalid {
   @apply
     text-danger-600
     border-danger-300
@@ -18,7 +37,7 @@
     dark:focus-within:ring-danger-300
 }
 
-.input--icon {
+.form--icon {
   @apply
     w-6
     h-6

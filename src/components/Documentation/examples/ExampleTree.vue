@@ -20,7 +20,7 @@
   </v-button>
   <v-button style-button="small" @click="treeRef.closeAll()">Close all</v-button>
 <!-- CUT START -->
-  <v-tabs base="tabs-material" class="mt-10">
+  <v-tabs base="material" class="mt-10">
     <v-tab name="Props">
       <div class="flex flex-col gap-y-2 mt-5">
         <div>
