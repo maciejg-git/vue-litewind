@@ -1,5 +1,5 @@
 <template>
-  <div class="spinner-container">
+  <div :class="classes.container.value">
     <div v-if="icon">
       <v-icon :class="classes.spinner.value" :name="icon" />
     </div>
@@ -50,6 +50,7 @@ export default {
       spinner: {
         fixed: "spinner-animation",
       },
+      container: null,
     });
 
     return {

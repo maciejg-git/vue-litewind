@@ -31,9 +31,9 @@
     <div class="mt-5">
       <label for="style">Tabs style:</label>
       <v-select id="style" v-model="example.base">
-        <option value="tabs">browser</option>
-        <option value="tabs-material">material</option>
-        <option value="tabs-rounded">rounded</option>
+        <option value="default">default</option>
+        <option value="material">material</option>
+        <option value="rounded">rounded</option>
       </v-select>
     </div>
     <v-button @click="addTab">Add tab</v-button>
@@ -97,7 +97,7 @@ export default {
       center: false,
       right: false,
       transition: "fade",
-      base: "tabs",
+      base: "default",
     });
 
     let tabs = ref([]);

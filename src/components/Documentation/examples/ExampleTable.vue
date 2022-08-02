@@ -7,7 +7,6 @@
     @input:selection="handleSelection"
     class="min-w-full"
   >
-    <template #prepend-id></template>
     <template #cell:status="{ item }">
       <v-icon
         v-if="item.status"

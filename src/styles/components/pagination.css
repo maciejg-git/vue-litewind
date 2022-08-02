@@ -8,7 +8,7 @@
     rounded
     w-12
     h-10
-    mx-0&.5
+    mx-0.5
     hover:bg-secondary-50
     border-secondary-300
     dark:text-text-300
@@ -70,7 +70,7 @@
       pagination-side-controls-fixed;
     @apply  
       rounded-r-md
-      ml-0&.5
+      ml-0.5
   }
 
   &.pagination--prev {
@@ -78,6 +78,6 @@
       pagination-side-controls-fixed;
     @apply  
       rounded-l-md
-      mr-0&.5
+      mr-0.5
   }
 }

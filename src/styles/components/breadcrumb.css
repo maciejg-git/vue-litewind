@@ -1,30 +1,32 @@
 /* BREADCRUMB */
 
-.breadcrumb {
-  @apply
-    underline
-    text-text-500
-    dark:text-text-300
-}
+.default {
+  &.breadcrumb {
+    @apply
+      underline
+      text-text-500
+      dark:text-text-300
+  }
 
-.breadcrumb--separator {
-  @apply
-    mx-2
-    text-text-500 
-    dark:text-text-300
-}
+  &.breadcrumb--separator {
+    @apply
+      mx-2
+      text-text-500 
+      dark:text-text-300
+  }
 
-.breadcrumb--icon {
-  @apply
-    w-6
-    h-6
-    ml-2
-    text-text-400
-    dark:text-gray-400
-}
+  &.breadcrumb--icon {
+    @apply
+      w-6
+      h-6
+      ml-2
+      text-text-400
+      dark:text-gray-400
+  }
 
-.breadcrumb--active {
-  @apply
-    text-text-700 
-    dark:text-text-400
+  &.breadcrumb--active {
+    @apply
+      text-text-700 
+      dark:text-text-400
+  }
 }

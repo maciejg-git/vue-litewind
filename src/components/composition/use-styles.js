@@ -82,9 +82,9 @@ let getComponentClasses = (props, p, el, element, name) => {
     }
     // get base element classes
     c.push([name, element].filter(Boolean).join("--"));
-    return [props.base, el && el.fixed, ...c, el && el.prop && el.prop.value].filter(
-      Boolean
-    );
+    let fixedClasses = el && el.fixed
+    let propClasses = el && el.prop && el.prop.value
+    return [props.base, fixedClasses, ...c, propClasses].filter(Boolean);
   });
 };
 

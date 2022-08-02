@@ -24,6 +24,15 @@
   </section>
 
   <section>
+    <h4>Example - simple input</h4>
+    <div class="example">
+      <example-input-simple></example-input-simple>
+    </div>
+    <v-code :code="exampleInputSimpleCode" template language="html"></v-code>
+    <v-code :code="exampleInputSimpleCode" script language="js"></v-code>
+  </section>
+
+  <section>
     <h4>Example</h4>
     <div class="example">
       <example-input></example-input>
@@ -36,12 +45,15 @@
 <script>
 import { ref } from "vue";
 import ExampleInput from "./examples/ExampleInput.vue";
+import ExampleInputSimple from "./examples/ExampleInputSimple.vue";
 import exampleInputCode from "./examples/ExampleInput.vue?raw";
+import exampleInputSimpleCode from "./examples/ExampleInputSimple.vue?raw";
 import { styleProps, formProps } from "./shared-props";
 
 export default {
   components: {
     ExampleInput,
+    ExampleInputSimple,
   },
   setup(props) {
     let reference = ref([
@@ -81,7 +93,13 @@ export default {
         prop: "is-loading",
         type: ["Boolean"],
         default: "false",
-        description: "If true displays spinner in the input",
+        description: "If true displays spinner in the input. Spinner should be first enabled in <code class='code-text'>use-loading</code> prop",
+      },
+      {
+        prop: "single-line-message",
+        type: ["Boolean"],
+        default: "false",
+        description: "Limits the number of displayed errors to one at time. Order of messages is the same as order of rules in <code class='code-text'>rules</code> prop",
       },
       {
         prop: "spinner",
@@ -146,6 +164,7 @@ export default {
       events,
       slots,
       exampleInputCode,
+      exampleInputSimpleCode,
     };
   },
 };

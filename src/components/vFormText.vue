@@ -32,7 +32,7 @@ export default {
     status: { type: Object, default: {} },
     inline: { type: Boolean, default: false },
     messages: { type: Object, default: {} },
-    singleLine: { type: Boolean, default: false },
+    singleLineMessage: { type: Boolean, default: false },
     styleFormText: { type: [String, Array], default: "" },
     ...sharedStyleProps("form-text"),
   },
@@ -53,7 +53,7 @@ export default {
         if (props.status.required === false) {
           return [props.messages.required];
         } else {
-          if (props.singleLine) {
+          if (props.singleLineMessage) {
             return [Object.values(props.messages)[0]];
           }
           return props.messages;

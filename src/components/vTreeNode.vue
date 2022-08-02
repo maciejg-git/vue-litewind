@@ -20,7 +20,7 @@
         <!-- checkbox -->
         <transition name="fade-m">
           <div v-if="showCheckboxes" class="flex items-center mr-2 order-1">
-            <v-checkbox
+            <v-checkbox-simple
               :checked="isSelected"
               @change="handleItemSelected"
               :disabled="isDisabled && !allowSelectDisabled"

@@ -1,7 +1,7 @@
 /* SPINNER */
 
 .default {
-  &.spinner-container {
+  &.spinner--container {
     --spinner-border-speed: 0.75s;
     --spinner-svg-speed: 1s;
     @apply 

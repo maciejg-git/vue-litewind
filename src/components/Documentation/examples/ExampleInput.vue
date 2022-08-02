@@ -1,18 +1,4 @@
 <template>
-  <!-- simple input -->
-
-  <p class="my-6">Simple input</p>
-
-  <v-input
-    v-model="example.model"
-    :type="example.type"
-    :clearable="example.clearable"
-    :state="example.state"
-    :use-loader="example.useLoader"
-    :isLoading="example.isLoading"
-    placeholder="Type something..."
-  ></v-input>
-
   <p class="my-6">Input with icon</p>
 
   <div class="flex gap-x-10">
@@ -20,26 +6,20 @@
 
     <v-input
       v-model="example.model"
-      :type="example.type"
-      :clearable="example.clearable"
-      :state="example.state"
-      :use-loader="example.useLoader"
-      :isLoading="example.isLoading"
+      v-bind="example"
       icon="b-exclamation-circle"
       placeholder="Type something..."
+      @input:clear="handleClickClear"
     ></v-input>
 
     <!-- icon (slot) -->
 
     <v-input
       v-model="example.model"
-      :type="example.type"
-      :clearable="example.clearable"
-      :state="example.state"
-      :use-loader="example.useLoader"
-      :isLoading="example.isLoading"
+      v-bind="example"
       icon="b-exclamation-circle"
       placeholder="Type something..."
+      @input:clear="handleClickClear"
     >
       <template #icon>
         <v-icon
@@ -57,12 +37,9 @@
 
     <v-input
       v-model="example.model"
-      :type="example.type"
-      :clearable="example.clearable"
-      :state="example.state"
-      :use-loader="example.useLoader"
-      :isLoading="example.isLoading"
+      v-bind="example"
       placeholder="Type something..."
+      @input:clear="handleClickClear"
     >
       <template #prepend>
         <div class="mr-2">http://</div>
@@ -73,12 +50,9 @@
 
     <v-input
       v-model="example.model"
-      :type="example.type"
-      :clearable="example.clearable"
-      :state="example.state"
-      :use-loader="example.useLoader"
-      :isLoading="example.isLoading"
+      v-bind="example"
       placeholder="Type something..."
+      @input:clear="handleClickClear"
     >
       <template #append>
         <div class="ml-2">.com</div>
@@ -93,29 +67,23 @@
   <div class="flex gap-x-10">
     <v-input
       v-model="example.model"
+      v-bind="example"
       base="underlined"
-      :type="example.type"
-      :clearable="example.clearable"
-      :state="example.state"
-      :use-loader="example.useLoader"
-      :isLoading="example.isLoading"
       placeholder="Type something..."
+      @input:clear="handleClickClear"
     ></v-input>
 
     <!-- rounded -->
 
     <v-input
       v-model="example.model"
-      base="rounded"
-      :type="example.type"
-      :clearable="example.clearable"
-      :state="example.state"
-      :use-loader="example.useLoader"
-      :isLoading="example.isLoading"
+      v-bind="example"
+      base="round"
       placeholder="Type something..."
+      @input:clear="handleClickClear"
     ></v-input>
   </div>
-  <!-- CUT START -->
+<!-- CUT START -->
   <v-tabs base="material" class="mt-10">
     <v-tab name="Props">
       <div class="flex flex-col gap-y-2 mt-5">
@@ -172,14 +140,19 @@
     <v-tab>
       <template #name>
         Events
-        <v-badge style-badge="secondary tiny" class="ml-2">
+        <v-badge
+          style-badge="secondary tiny"
+          class="ml-2"
+          update-animation="scale-up"
+          :update-key="events.length"
+        >
           {{ events.length }}
         </v-badge>
       </template>
       <event-viewer :events="events" />
     </v-tab>
   </v-tabs>
-  <!-- CUT END -->
+<!-- CUT END -->
 </template>
 
 <script>
@@ -198,9 +171,14 @@ export default {
 
     let events = ref([]);
 
+    let handleClickClear = (ev) => {
+      events.value.unshift({ ev: "input:clear", data: ev });
+    };
+
     return {
       example,
       events,
+      handleClickClear,
     };
   },
 };

@@ -54,6 +54,7 @@
         :messages="messages"
         :state="state"
         :status="status"
+        :single-line-message="singleLineMessage"
         class="absolute"
       ></v-form-text>
     </slot>
@@ -82,6 +83,7 @@ export default {
     validateMode: { type: String, default: "silent" },
     useLoader: { type: Boolean, default: false },
     isLoading: { type: Boolean, default: false },
+    singleLineMessage: { type: Boolean, default: false },
     spinner: { type: Object, default: {} },
     styleInput: { type: [String, Array], default: "" },
     styleIcon: { type: [String, Array], default: "" },
@@ -92,7 +94,7 @@ export default {
   components: {
     vFormText,
   },
-  emits: ["update:modelValue", "update:status", "update:state"],
+  emits: ["update:modelValue", "update:status", "update:state", "input:clear"],
   inheritAttrs: false,
   setup(props, { attrs, emit }) {
     let { classes, states, variants } = useStyles("input", props, {

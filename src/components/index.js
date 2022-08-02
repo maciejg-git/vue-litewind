@@ -40,6 +40,7 @@ import vRadioGroup from "./vRadioGroup.vue"
 import vForm from "./vForm.vue"
 import vButtonCollapse from "./vButtonCollapse.vue"
 import vButtonDropdown from "./vButtonDropdown.vue"
+import vCheckboxSimple from "./vCheckboxSimple.vue"
 
 import tooltip from "../directives/tooltip.js";
 
@@ -88,6 +89,7 @@ export {
   vForm,
   vButtonCollapse,
   vButtonDropdown,
+  vCheckboxSimple,
 
   tooltip,
 
@@ -170,6 +172,7 @@ function install(app) {
   app.component("v-form", vForm);
   app.component("v-button-collapse", vButtonCollapse);
   app.component("v-button-dropdown", vButtonDropdown);
+  app.component("v-checkbox-simple", vCheckboxSimple);
 
   app.directive("tooltip", tooltip);
 }

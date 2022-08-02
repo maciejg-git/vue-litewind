@@ -4,6 +4,7 @@
       <v-input
         v-model="password"
         :rules="passwordRules"
+        single-line-message
         type="text"
         placeholder="Password"
         block
@@ -29,11 +30,11 @@ export default {
     let passwordStatus = ref({});
     let passwordRules = {
       required: true,
-      minLength: 8,
       atLeastOneUppercase: true,
       atLeastOneLowercase: true,
       atLeastOneSpecial: true,
       atLeastOneDigit: true,
+      minLength: 8,
     };
     return {
       password,

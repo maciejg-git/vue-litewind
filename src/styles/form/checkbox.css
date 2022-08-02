@@ -5,7 +5,8 @@
 .default {
   &.checkbox {
     @apply
-      form--base
+      form--base;
+    @apply
       focus:ring-offset-0
       transform
       scale-110
