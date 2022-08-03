@@ -76,7 +76,12 @@
     <v-tab>
       <template #name>
         Events
-        <v-badge style-badge="secondary tiny" class="ml-2">
+        <v-badge
+          style-badge="secondary tiny"
+          class="ml-2"
+          update-animation="scale-up"
+          :update-key="events.length"
+        >
           {{ events.length }}
         </v-badge>
       </template>

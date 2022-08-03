@@ -47,6 +47,14 @@
             />
           </svg>
         </button>
+        <button
+          v-if="showIndicator"
+          aria-label="Close"
+          class="focus:outline-none ml-2"
+          @click="handleClickIndicator"
+        >
+        <v-chevron initial="down" rotate-180 :switch="indicatorSwitch" />
+        </button>
       </div>
     </div>
     <slot name="form-text">
@@ -84,6 +92,8 @@ export default {
     useLoader: { type: Boolean, default: false },
     isLoading: { type: Boolean, default: false },
     singleLineMessage: { type: Boolean, default: false },
+    showIndicator: { type: Boolean, default: false },
+    indicatorSwitch: { type: Boolean, default: false },
     spinner: { type: Object, default: {} },
     styleInput: { type: [String, Array], default: "" },
     styleIcon: { type: [String, Array], default: "" },

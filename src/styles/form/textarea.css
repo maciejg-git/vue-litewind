@@ -2,19 +2,21 @@
 
 /* TEXTAREA */
 
-.textarea {
-  @apply
-    form--base
-}
-    .textarea--valid-state {
-      @apply
-        form--valid
-    }
-    .textarea--invalid-state {
-      @apply
-        form--invalid
-    }
-    .textarea--disabled-state {
-      @apply
-        disabled
-    }
+.default {
+  &.textarea {
+    @apply
+      form--base
+  }
+      &.textarea--valid-state {
+        @apply
+          form--valid
+      }
+      &.textarea--invalid-state {
+        @apply
+          form--invalid
+      }
+      &.textarea--disabled-state {
+        @apply
+          disabled
+      }
+  }

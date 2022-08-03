@@ -17,6 +17,13 @@
   </section>
 
   <section>
+    <h4>Notes</h4>
+    <p>
+      <code class="code-text">v-checkbox-simple</code> is a lighter, simpler checkbox that can be used in lists, tables etc. Simple checkbox only has <code class="code-text">style-checkbox</code> and <code class="code-text">base</code> prop. :checked and @changed can be used if neccessary instead of v-model.
+    </p>
+  </section>
+
+  <section>
     <h4>Example</h4>
     <div class="example">
       <example-checkbox></example-checkbox>
@@ -27,6 +34,9 @@
 
   <section>
     <h4>Checkbox group</h4>
+    <p>
+    Checkboxes can be optionally wrapped with <code class="code-text">v-checkbox-group</code> component to create group. Grouped checkboxes allow setting single model and add validation with rules props
+    </p>
     <div class="example">
       <example-checkbox-group></example-checkbox-group>
       <v-code

@@ -4,7 +4,6 @@
       <v-input
         v-model="password"
         :rules="passwordRules"
-        single-line-message
         type="text"
         placeholder="Password"
         block

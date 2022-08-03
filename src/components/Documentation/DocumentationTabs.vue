@@ -106,7 +106,7 @@ export default {
         type: ["Boolean"],
         default: "false",
         description:
-          "Transition animation to use when swtiching tab content. Valid values are 'fade' or empty string (no transition)",
+          "Transition animation to use when swtiching tab content. Valid values are <code class='code-text'>'fade'</code>, <code class='code-text'>'fade-top-slide'</code>, <code class='code-text'>'fade-side-slide'</code> or empty string (no transition)",
       },
       ...styleProps("tabs"),
     ]);
@@ -140,14 +140,12 @@ export default {
       {
         component: "v-tab",
         description: `Tab content component <br>
-        <p class="font-semibold py-2">Props</p>
-        <span class="font-semibold">name</span>: label of tab displayed on tab bar
+        <p class="font-semibold py-2">Props:</p>
+        <code class="code-text">name</code>: label of tab displayed on tab bar
+        <p class="font-semibold py-2">Slots:</p>
+        <code class="code-text">default</code>: slot for tab content
         <br>
-        <span class="font-semibold">active</span>: if true tab is active
-        <p class="font-semibold py-2">Slots</p>
-        <span class="font-semibold">default</span>: Slot for content of tab
-        <br>
-        <span class="font-semibold">name</span>: Slot for customizing label on tab bar. Useful for formatting or adding icons
+        <code class="code-text">name</code>: slot for tab label on the tab bar. Useful for formatting, adding icons and buttons etc
         `,
       },
     ]);

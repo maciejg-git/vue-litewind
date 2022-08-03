@@ -177,7 +177,7 @@ export default {
       {
         slot: "item",
         description:
-          "Slot for item customization. Slot props: <code class='code-text'>text</code>, <code class='code-text'>value</code>, <code class='code-text'>item</code>, <code class='code-text'>inputValue</code>, <code class='code-text'>highlightMatch(string, match)</code>",
+          "Slot for item customization. Slot props: <code class='code-text'>text</code>, <code class='code-text'>value</code>, <code class='code-text'>item</code>, <code class='code-text'>inputValue</code>, <code class='code-text'>highlight(string, match)</code>",
       },
     ]);
 
