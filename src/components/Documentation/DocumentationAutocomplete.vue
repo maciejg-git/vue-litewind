@@ -39,7 +39,7 @@
   </section>
 
   <section>
-    <h4>Example - customized items</h4>
+    <h4>Example - item slot</h4>
     <div class="example">
       <example-autocomplete-slot></example-autocomplete-slot>
     </div>

@@ -60,7 +60,7 @@
     </v-input>
   </div>
 
-  <p class="my-6">Styled inputs</p>
+  <p class="my-6">Alternative style input</p>
 
   <!-- underlined -->
 
