@@ -1,4 +1,5 @@
 @import 'form-base.css';
+@import 'form-underline-base.css';
 
 /* TEXTAREA */
 
@@ -14,6 +15,25 @@
       &.textarea--invalid-state {
         @apply
           form--invalid
+      }
+      &.textarea--disabled-state {
+        @apply
+          disabled
+      }
+  }
+
+.underlined {
+  &.textarea {
+    @apply
+      form-underline--base
+  }
+      &.textarea--valid-state {
+        @apply
+          form-underline--valid
+      }
+      &.textarea--invalid-state {
+        @apply
+          form-underline--invalid
       }
       &.textarea--disabled-state {
         @apply

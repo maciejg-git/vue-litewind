@@ -107,7 +107,7 @@ export default {
   emits: ["update:modelValue", "update:status", "update:state", "input:clear"],
   inheritAttrs: false,
   setup(props, { attrs, emit }) {
-    let { classes, states, variants } = useStyles("input", props, {
+    let { classes, states } = useStyles("input", props, {
       input: {
         states: ["valid", "invalid", "disabled"],
       },
@@ -288,7 +288,6 @@ export default {
     return {
       classes,
       wrapperClasses,
-      variants,
       getInputClasses,
       state,
       localModel,

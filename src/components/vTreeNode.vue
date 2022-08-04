@@ -128,7 +128,6 @@ export default {
   setup(props, { emit, slots, expose }) {
     let {
       classes,
-      states,
       variants,
       forNode,
       selectedItems,

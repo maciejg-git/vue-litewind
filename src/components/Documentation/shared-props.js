@@ -69,7 +69,7 @@ export let formProps = (options) => {
       type: ["String"],
       default: "empty string",
       description:
-        "Overrides state of input validity. Supported values are <code class='code-text'>'valid'</code>, <code class='code-text'>'invalid'</code> or <code class='code-text'>'empty string'</code> for default state",
+        "Overrides state of input validity. Supported values are <code class='code-text'>'valid'</code>, <code class='code-text'>'invalid'</code>, <code class='code-text'>empty string</code> for default state or <code class='code-text'>null</code> for component controlled state",
     },
   ];
 };

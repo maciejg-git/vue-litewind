@@ -1,12 +1,13 @@
 <template>
-  <div class="relative">
-    <textarea
-      v-model="localModel"
-      v-bind="$attrs"
-      class="block w-full"
-      :class="getTextareaClasses()"
-      @blur="handleBlur"
-    ></textarea>
+  <div class="relative w-min" :class="wrapperClasses">
+    <div class="form-textarea" :class="getTextareaClasses">
+      <textarea
+        v-model="localModel"
+        v-bind="$attrs"
+        class="transparent-textarea"
+        @blur="handleBlur"
+      ></textarea>
+    </div>
     <slot name="form-text">
       <v-form-text
         :messages="messages"
@@ -34,12 +35,13 @@ import { sharedStyleProps, sharedFormProps } from "../shared-props";
 export default {
   props: {
     modelValue: { type: String, default: undefined },
+    block: { type: Boolean, default: false },
     rules: { type: Object, default: {} },
     validateOn: { type: String, default: "blur" },
     validateMode: { type: String, default: "silent" },
     styleTextarea: { type: [String, Array], default: "" },
     ...sharedFormProps(null),
-    ...sharedStyleProps("textarea"),
+    ...sharedStyleProps(),
   },
   components: {
     vFormText,
@@ -52,7 +54,7 @@ export default {
       },
     });
 
-    let getTextareaClasses = () => {
+    let getTextareaClasses = computed(() => {
       return [
         classes.textarea.value,
         states.textarea.value && states.textarea.value[state.value],
@@ -60,7 +62,11 @@ export default {
           ? states.textarea.disabled
           : "",
       ];
-    };
+    });
+
+    let wrapperClasses = computed(() => {
+      return props.block ? "block" : "inline-block";
+    });
 
     // validate
 
@@ -90,6 +96,7 @@ export default {
     };
 
     let updateState = () => {
+      if (props.state !== null) return props.state;
       if (status.value.optional) return "";
 
       if (!status.value.valid) {
@@ -103,6 +110,12 @@ export default {
       }
       return state.value
     };
+
+    watch(
+      () => props.state,
+      (newState) => (state.value = newState),
+      { immediate: true },
+    );
 
     let validate = (value) => {
       let { newStatus, newMessages } = getValidateStatus(value);
@@ -202,6 +215,7 @@ export default {
 
     return {
       classes,
+      wrapperClasses,
       state,
       localModel,
       getTextareaClasses,
@@ -213,4 +227,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.transparent-textarea {
+  @apply block border-0 bg-transparent focus:outline-none focus:ring-0 outline-none p-0;
+}
+</style>

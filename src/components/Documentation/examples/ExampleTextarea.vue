@@ -2,10 +2,18 @@
   <v-textarea
     v-model="example.model"
     :state="example.state"
-    base="textarea"
-    cols="40"
-    rows="10"
-    placeholder="Textarea example"
+    placeholder="Type something..."
+    class="w-[400px] h-[120px]"
+  />
+
+  <p class="my-6">Alternative style textarea</p>
+
+  <v-textarea
+    v-model="example.model"
+    base="underlined"
+    :state="example.state"
+    placeholder="Type something..."
+    class="w-[400px] h-[120px]"
   />
 <!-- CUT START -->
   <v-tabs base="material" class="mt-10">
@@ -18,6 +26,7 @@
         <div>
           <label for="state">state:</label>
           <v-select id="state" v-model="example.state">
+            <option :value=null>component controlled (null)</option>
             <option value="">normal (empty string)</option>
             <option value="valid">valid</option>
             <option value="invalid">invalid</option>

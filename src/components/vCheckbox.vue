@@ -15,7 +15,7 @@
 
 <script>
 // vue
-import { ref, inject } from "vue";
+import { ref, watch, inject } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
@@ -29,7 +29,7 @@ export default {
     styleCheckbox: { type: [String, Array], default: "" },
     styleLabel: { type: [String, Array], default: "" },
     ...sharedFormProps(null),
-    ...sharedStyleProps("checkbox"),
+    ...sharedStyleProps(),
   },
   inheritAttrs: false,
   setup(props, { attrs, emit }) {
@@ -55,6 +55,12 @@ export default {
     let { value, updateValue, touch, state } = inject("checkbox-group", {
       state: ref(""),
     });
+
+    watch(
+      () => props.state,
+      (newState) => (state.value = newState),
+      { immediate: true },
+    );
 
     let localModel = useLocalModel(props, emit, updateValue, value);
 

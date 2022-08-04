@@ -1,5 +1,5 @@
 // vue
-import { createApp } from "vue";
+import { createApp, defineAsyncComponent } from "vue";
 import router from "./router";
 // components
 import App from "./App.vue";
@@ -8,7 +8,7 @@ import TableReferenceBasic from "./components/Documentation/TableReferenceBasic.
 import vCode from "./components/Documentation/components/vCode.vue"
 import EventViewer from "./components/Documentation/components/EventViewer.vue"
 import vSelectProp from "./components/Documentation/components/vSelectProp.vue"
-import { plugin } from "./components/index.js";
+import { componentPlugin, formPlugin } from "./components/index.js";
 // styles
 import "tailwindcss/tailwind.css";
 import "./styles/components.css"
@@ -33,6 +33,19 @@ Object.entries(icons).forEach(([path, definition]) => {
   registerIcon(app, definition.default)
 })
 
+const examples = import.meta.glob('./components/Documentation/examples/*.vue')
+for (const path in examples) {
+  let file = path.replace(/^.*[\\\/]/, '')
+  file = file.substring(0, file.lastIndexOf('.'))
+  app.component(file, defineAsyncComponent(examples[path]))
+}
+
+// const code = import.meta.glob('./components/Documentation/examples/*.vue', { as: 'raw' })
+// for (const path in code) {
+//   let file = path.replace(/^.*[\\\/]/, '')
+//   file = file.substring(0, file.lastIndexOf('.'))
+// }
+
 app.provide("icon-types", {
   valid: "b-check-lg",
   invalid: "b-exclamation-triangle",
@@ -46,5 +59,6 @@ app.provide("icon-types", {
 })
 
 app.use(router);
-app.use(plugin);
+app.use(componentPlugin);
+app.use(formPlugin);
 app.mount("#app");

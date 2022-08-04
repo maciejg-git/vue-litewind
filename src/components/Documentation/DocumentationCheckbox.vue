@@ -19,7 +19,7 @@
   <section>
     <h4>Notes</h4>
     <p>
-      <code class="code-text">v-checkbox-simple</code> is a lighter, simpler checkbox that can be used in lists, tables etc. Simple checkbox only has <code class="code-text">style-checkbox</code> and <code class="code-text">base</code> prop. :checked and @changed can be used if neccessary instead of v-model.
+      <code class="code-text">v-checkbox-simple</code> is a lighter, simpler checkbox variant that can be used in lists, tables etc. Simple checkbox only has <code class="code-text">style-checkbox</code> and <code class="code-text">base</code> prop. It does not allow <code class="code-text">v-model</code> but <code class="code-text">:checked</code> prop and <code class="code-text">@changed</code> event can be used instead.
     </p>
   </section>
 
@@ -35,7 +35,7 @@
   <section>
     <h4>Checkbox group</h4>
     <p>
-    Checkboxes can be optionally wrapped with <code class="code-text">v-checkbox-group</code> component to create group. Grouped checkboxes allow setting single model and add validation with rules props
+    Checkboxes can be optionally wrapped with <code class="code-text">v-checkbox-group</code> component to create group with single <code class="code-text">v-model</code>.
     </p>
     <div class="example">
       <example-checkbox-group></example-checkbox-group>

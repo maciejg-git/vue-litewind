@@ -14,6 +14,7 @@
         <div>
           <label for="state">state:</label>
           <v-select id="state" v-model="example.state">
+            <option :value=null>component controlled (null)</option>
             <option value="">normal (empty string)</option>
             <option value="valid">valid</option>
             <option value="invalid">invalid</option>

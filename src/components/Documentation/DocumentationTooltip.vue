@@ -60,21 +60,41 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <example-tooltip></example-tooltip>
+      <example-tooltip-simple></example-tooltip-simple>
     </div>
-    <v-code :code="exampleTooltipCode" template language="html"></v-code>
+    <v-code :code="exampleTooltipSimpleCode" template language="html"></v-code>
+
+    <div class="example">
+      <example-tooltip-placement></example-tooltip-placement>
+    </div>
+    <v-code :code="exampleTooltipPlacementCode" template language="html"></v-code>
+
+    <div class="example">
+      <example-tooltip-delay></example-tooltip-delay>
+    </div>
+    <v-code :code="exampleTooltipDelayCode" template language="html"></v-code>
+
+    <div class="example">
+      <example-tooltip-content></example-tooltip-content>
+    </div>
+    <v-code :code="exampleTooltipContentCode" template language="html"></v-code>
+
+    <div class="example">
+      <example-tooltip-animation></example-tooltip-animation>
+    </div>
+    <v-code :code="exampleTooltipAnimationCode" template language="html"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
-import ExampleTooltip from "./examples/ExampleTooltip.vue";
-import exampleTooltipCode from "./examples/ExampleTooltip.vue?raw";
+import exampleTooltipSimpleCode from "./examples/ExampleTooltipSimple.vue?raw";
+import exampleTooltipPlacementCode from "./examples/ExampleTooltipPlacement.vue?raw";
+import exampleTooltipDelayCode from "./examples/ExampleTooltipDelay.vue?raw";
+import exampleTooltipContentCode from "./examples/ExampleTooltipContent.vue?raw";
+import exampleTooltipAnimationCode from "./examples/ExampleTooltipAnimation.vue?raw";
 
 export default {
-  components: {
-    ExampleTooltip,
-  },
   setup() {
     let reference = ref([
       {
@@ -146,7 +166,11 @@ export default {
       referenceDefinition,
       referenceValue,
       referenceValueDefinition,
-      exampleTooltipCode,
+      exampleTooltipSimpleCode,
+      exampleTooltipPlacementCode,
+      exampleTooltipDelayCode,
+      exampleTooltipContentCode,
+      exampleTooltipAnimationCode,
     };
   },
 };

@@ -21,7 +21,7 @@ export const sharedPopperProps = (d) => {
 
 // style props
 
-export const sharedStyleProps = (base) => {
+export const sharedStyleProps = () => {
   return {
     base: { type: String, default: "default" },
     variant: { type: [String, Boolean], default: "" },

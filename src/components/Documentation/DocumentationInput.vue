@@ -44,17 +44,11 @@
 
 <script>
 import { ref } from "vue";
-import ExampleInput from "./examples/ExampleInput.vue";
-import ExampleInputSimple from "./examples/ExampleInputSimple.vue";
 import exampleInputCode from "./examples/ExampleInput.vue?raw";
 import exampleInputSimpleCode from "./examples/ExampleInputSimple.vue?raw";
 import { styleProps, formProps } from "./shared-props";
 
 export default {
-  components: {
-    ExampleInput,
-    ExampleInputSimple,
-  },
   setup(props) {
     let reference = ref([
       {

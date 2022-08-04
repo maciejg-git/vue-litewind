@@ -48,7 +48,7 @@ export default {
         prop: "rules",
         type: ["Object"],
         default: "{}",
-        description: "Rules for validation",
+        description: "Rules for validation. See Form Validation for example",
       },
       {
         prop: "validate-on",
