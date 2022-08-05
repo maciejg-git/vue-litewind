@@ -45,16 +45,10 @@
 
 <script>
 import { ref } from "vue";
-import ExampleCollapse from "./examples/ExampleCollapse.vue";
-import ExampleCollapseAccordion from "./examples/ExampleCollapseAccordion.vue";
 import exampleCollapseCode from "./examples/ExampleCollapse.vue?raw";
 import exampleCollapseAccordionCode from "./examples/ExampleCollapseAccordion.vue?raw";
 
 export default {
-  components: {
-    ExampleCollapse,
-    ExampleCollapseAccordion,
-  },
   setup() {
     let reference = ref([
       {

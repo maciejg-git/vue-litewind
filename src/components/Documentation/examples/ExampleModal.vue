@@ -58,7 +58,7 @@
       <div>
         <div class="mb-2">
           <label for="title" class="mr-2">title:</label>
-          <v-input type="text" id="title" v-model="example.title"></v-input>
+          <v-input type="text" id="title" inline v-model="example.title"></v-input>
         </div>
         <div class="mb-2">
           <label for="no-primary-button" class="mr-2">no-primary-button:</label>
@@ -83,6 +83,7 @@
           <v-input
             type="text"
             id="primary-button-label"
+            inline
             v-model="example.primaryButtonLabel"
           ></v-input>
         </div>
@@ -93,6 +94,7 @@
           <v-input
             type="text"
             id="secondary-button-label"
+            inline
             v-model="example.secondaryButtonLabel"
           ></v-input>
         </div>

@@ -31,14 +31,10 @@
 
 <script>
 import { ref } from "vue";
-import ExampleBreadcrumb from "./examples/ExampleBreadcrumb.vue"
 import exampleBreadcrumbCode from "./examples/ExampleBreadcrumb.vue?raw"
 import { styleProps } from "./shared-props"
 
 export default {
-  components: {
-    ExampleBreadcrumb,
-  },
   setup(props) {
     let reference = ref([
       {
@@ -50,10 +46,10 @@ export default {
       {
         prop: "separator",
         type: ["String"],
-        default: "/",
+        default: "'/'",
         description: "Character or string that seperates links",
       },
-      ...styleProps("breadcrumb"),
+      ...styleProps(),
     ]);
 
     let styles = ref([

@@ -12,7 +12,7 @@
         @mouseleave="allowHiding"
         class="fixed-dropdown"
       >
-        <slot name="default" :hide="hidePopper" v-bind="contextData"></slot>
+        <slot name="default" :hide="hide" v-bind="contextData"></slot>
       </div>
     </transition>
   </teleport>
@@ -138,7 +138,7 @@ export default {
 
     return {
       popper,
-      hidePopper,
+      hide,
       isPopperVisible,
       onPopperTransitionLeave,
       preventHiding,

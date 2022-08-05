@@ -50,20 +50,12 @@
 
 <script>
 import { ref } from "vue";
-import ExampleAutocompleteSimple from "./examples/ExampleAutocompleteSimple.vue"
 import ExampleAutocompleteSimpleCode from "./examples/ExampleAutocompleteSimple.vue?raw"
-import ExampleAutocomplete from "./examples/ExampleAutocomplete.vue"
 import ExampleAutocompleteCode from "./examples/ExampleAutocomplete.vue?raw"
-import ExampleAutocompleteSlot from "./examples/ExampleAutocompleteSlot.vue"
 import ExampleAutocompleteSlotCode from "./examples/ExampleAutocompleteSlot.vue?raw"
 import { popperProps, styleProps, formProps } from "./shared-props"
 
 export default {
-  components: {
-    ExampleAutocompleteSimple,
-    ExampleAutocomplete,
-    ExampleAutocompleteSlot,
-  },
   setup(props) {
     let reference = ref([
       {
@@ -81,13 +73,13 @@ export default {
       {
         prop: "item-text",
         type: ["String"],
-        default: "text",
+        default: "'text'",
         description: "Set property of items’s text value",
       },
       {
         prop: "item-value",
         type: ["String"],
-        default: "value",
+        default: "'value'",
         description: "Set property of items’s value",
       },
       {
@@ -128,7 +120,7 @@ export default {
       },
       ...popperProps,
       ...formProps({ icon: true, clearable: true }),
-      ...styleProps("autocomplete"),
+      ...styleProps(),
     ]);
 
     let styles = ref([

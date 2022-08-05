@@ -8,6 +8,7 @@
     :isLoading="isLoading"
     :clearable="clearable"
     :useLoader="!noLoader"
+    show-indicator
     @input="handleInput"
     @focus="handleFocusInput"
     @blur="handleBlurInput"

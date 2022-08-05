@@ -25,7 +25,7 @@
     <v-tab name="Props">
       <div class="mb-2 mt-5">
         <label for="model" class="font-semibold">v-model:</label>
-        <v-input type="text" id="model" v-model="isOpen"></v-input>
+        <v-input type="text" id="model" inline v-model="isOpen"></v-input>
       </div>
       <div class="mb-2">
         <label for="close-button">close-button:</label>
@@ -43,7 +43,7 @@
       </div>
       <div class="mb-2">
         <label for="width">width:</label>
-        <v-input type="text" id="width" v-model="example.width"></v-input>
+        <v-input type="text" id="width" inline v-model="example.width"></v-input>
       </div>
       <div class="mb-2">
         <label for="no-header">no-header:</label>

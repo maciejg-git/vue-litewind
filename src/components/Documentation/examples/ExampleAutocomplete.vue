@@ -3,6 +3,7 @@
     v-model="example.model"
     v-model:input-value="example.inputValue"
     no-filter
+    inline
     :items="example.items"
     :is-loading="example.isLoading"
     :no-loader="example.noLoader"
@@ -20,7 +21,7 @@
       <div class="flex flex-col gap-y-2 mt-5">
         <div>
           <label for="model" class="font-semibold">v-model:</label>
-          <v-input type="text" id="model" v-model="example.model"></v-input>
+          <v-input type="text" id="model" inline v-model="example.model"></v-input>
         </div>
         <div>
           <label for="noloader">no-loader:</label>

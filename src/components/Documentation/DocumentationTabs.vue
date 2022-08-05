@@ -70,17 +70,11 @@
 
 <script>
 import { ref } from "vue";
-import ExampleTabs from "./examples/ExampleTabs.vue";
-import ExampleTabsSimple from "./examples/ExampleTabsSimple.vue";
 import exampleTabsCode from "./examples/ExampleTabs.vue?raw";
 import exampleTabsSimpleCode from "./examples/ExampleTabsSimple.vue?raw";
 import { styleProps } from "./shared-props";
 
 export default {
-  components: {
-    ExampleTabs,
-    ExampleTabsSimple,
-  },
   setup(props) {
     let reference = ref([
       {
@@ -108,7 +102,7 @@ export default {
         description:
           "Transition animation to use when swtiching tab content. Valid values are <code class='code-text'>'fade'</code>, <code class='code-text'>'fade-top-slide'</code>, <code class='code-text'>'fade-side-slide'</code> or empty string (no transition)",
       },
-      ...styleProps("tabs"),
+      ...styleProps(),
     ]);
 
     let styles = ref([

@@ -33,14 +33,10 @@
 
 <script>
 import { ref } from "vue";
-import ExamplePagination from "./examples/ExamplePagination.vue";
 import examplePaginationCode from "./examples/ExamplePagination.vue?raw";
 import { styleProps } from "./shared-props"
 
 export default {
-  components: {
-    ExamplePagination,
-  },
   setup(props) {
     let reference = ref([
       {
@@ -70,7 +66,7 @@ export default {
         description:
           "Maximum number of pages to display. This prop must have value of 3 or more",
       },
-      ...styleProps("pagination"),
+      ...styleProps(),
     ]);
 
     let styles = ref([

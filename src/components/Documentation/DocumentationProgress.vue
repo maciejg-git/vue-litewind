@@ -61,17 +61,11 @@
 
 <script>
 import { ref } from "vue";
-import ExampleProgress from "./examples/ExampleProgress.vue"
-import ExampleProgressIndeterminate from "./examples/ExampleProgressIndeterminate.vue"
 import exampleProgressCode from "./examples/ExampleProgress.vue?raw"
 import exampleProgressIndeterminateCode from "./examples/ExampleProgressIndeterminate.vue?raw"
 import { styleProps } from "./shared-props"
 
 export default {
-  components: {
-    ExampleProgress,
-    ExampleProgressIndeterminate,
-  },
   setup() {
     let reference = ref([
       {
@@ -113,7 +107,7 @@ export default {
         description:
           "Renders indeterminate progress bar. <span class='font-semibold'>Note</span>: value, max, label, precision and transition props are ignored if indeterminate is true. You can switch between indeterminate or determinate by flicking this prop on and off",
       },
-      ...styleProps("progress"),
+      ...styleProps(),
     ]);
 
     let styles = ref([

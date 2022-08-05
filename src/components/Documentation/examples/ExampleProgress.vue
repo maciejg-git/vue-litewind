@@ -44,6 +44,7 @@
           <v-input
             type="text"
             id="value"
+            inline
             v-model.number="example.value"
           ></v-input>
           <v-button
@@ -63,13 +64,14 @@
         </div>
         <div>
           <label for="max">max:</label>
-          <v-input type="text" id="max" v-model.number="example.max"></v-input>
+          <v-input type="text" id="max" inline v-model.number="example.max"></v-input>
         </div>
         <div>
           <label for="precision">precision:</label>
           <v-input
             type="text"
             id="precision"
+            inline
             v-model.number="example.precision"
           ></v-input>
         </div>

@@ -1,5 +1,5 @@
 <template>
-  <button class="focus:outline-none" aria-label="Close">
+  <button class="flex items-center focus:outline-none" aria-label="Close">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       :class="classes.closeButton.value"

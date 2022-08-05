@@ -23,20 +23,16 @@
 
 <script>
 import { ref } from "vue";
-import ExampleSpinner from "./examples/ExampleSpinner.vue"
 import exampleSpinnerCode from "./examples/ExampleSpinner.vue?raw"
 import { styleProps } from "./shared-props"
 
 export default {
-  components: {
-    ExampleSpinner,
-  },
   setup(props) {
     let reference = ref([
       {
         prop: "type",
         type: ["String"],
-        default: "border",
+        default: "'border'",
         description: "Valid values are <code class='code-text'>'border'</code> for border spinner or <code class='code-text'>'svg'</code> for SVG spinner.",
       },
       {
@@ -45,7 +41,7 @@ export default {
         default: "undefined",
         description: "Icon to use instead of border or SVG spinner",
       },
-      ...styleProps("spinner"),
+      ...styleProps(),
     ]);
 
     let styles = ref([

@@ -58,20 +58,12 @@
 
 <script>
 import { ref } from "vue";
-import ExampleDropdown from "./examples/ExampleDropdown.vue"
 import exampleDropdownCode from "./examples/ExampleDropdown.vue?raw"
-import ExampleDropdownSimple from "./examples/ExampleDropdownSimple.vue"
 import exampleDropdownSimpleCode from "./examples/ExampleDropdownSimple.vue?raw"
-import ExampleDropdownContext from "./examples/ExampleDropdownContext.vue"
 import ExampleDropdownContextCode from "./examples/ExampleDropdownContext.vue?raw"
 import { popperProps, styleProps } from "./shared-props"
 
 export default {
-  components: {
-    ExampleDropdown,
-    ExampleDropdownSimple,
-    ExampleDropdownContext,
-  },
   setup(props) {
     let reference = ref([
       {
@@ -96,7 +88,7 @@ export default {
           "Sets animation effect when showing or hiding dropdown. Valid values are: 'fade-f', 'fade-m' and 'fade-s'. Empty string disables animations.",
       },
       ...popperProps,
-      ...styleProps("dropdown"),
+      ...styleProps(),
     ]);
 
     let styles = ref([

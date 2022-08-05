@@ -1,3 +1,5 @@
+// components
+
 import vButton from "./vButton.vue";
 import vTable from "./vTable.vue";
 import vTabs from "./vTabs.vue";
@@ -21,19 +23,32 @@ import vSpinner from "./vSpinner.vue";
 import vProgress from "./vProgress.vue";
 import vNavbar from "./vNavbar.vue";
 import vAlert from "./vAlert.vue";
-import vInput from "./vInput.vue";
-import vTextarea from "./vTextarea.vue";
-import vSelect from "./vSelect.vue";
-import vRadio from "./vRadio.vue";
-import vCheckbox from "./vCheckbox.vue";
-import vRange from "./vRange.vue";
 import vBreadcrumb from "./vBreadcrumb.vue";
-import vFormText from "./vFormText.vue";
 import vAccordion from "./vAccordion.vue";
 import vIcon from "./vIcon.vue";
 import vChevron from "./vChevron.vue";
+import vTree from "./vTree.vue";
+import vTreeNode from "./vTreeNode.vue";
 import vButtonCollapse from "./vButtonCollapse.vue";
 import vButtonDropdown from "./vButtonDropdown.vue";
+
+// form
+
+import vForm from "./vForm.vue";
+import vInput from "./vInput.vue";
+import vTextarea from "./vTextarea.vue";
+import vSelect from "./vSelect.vue";
+import vRadioGroup from "./vRadioGroup.vue";
+import vRadio from "./vRadio.vue";
+import vCheckboxGroup from "./vCheckboxGroup.vue";
+import vCheckbox from "./vCheckbox.vue";
+import vCheckboxSimple from "./vCheckboxSimple.vue";
+import vRange from "./vRange.vue";
+import vFormText from "./vFormText.vue";
+import vAutocomplete from "./vAutocomplete.vue";
+
+// directives
+
 import tooltip from "../directives/tooltip.js";
 
 function plugin(component, ...args) {
@@ -62,18 +77,14 @@ function directive(directive, ...args) {
   };
 }
 
+// components
+
 const buttonPlugin = plugin(["v-button", vButton]);
 const tablePlugin = plugin(["v-table", vTable]);
-const inputPlugin = plugin(["v-input", vInput]);
-const selectPlugin = plugin(["v-select", vSelect]);
-const textareaPlugin = plugin(["v-textarea", vTextarea]);
-const checkboxPlugin = plugin(["v-checkbox", vCheckbox]);
 const spinnerPlugin = plugin(["v-spinner", vSpinner]);
 const sidepanelPlugin = plugin(["v-sidepanel", vSidepanel]);
 const breadcrumbPlugin = plugin(["v-breadcrumb", vBreadcrumb]);
-const radioPlugin = plugin(["v-radio", vRadio]);
 const datepickerPlugin = plugin(["v-datepicker", vDatePicker]);
-const rangePlugin = plugin(["v-range", vRange]);
 const badgePlugin = plugin(["v-badge", vBadge]);
 const cardPlugin = plugin(["v-card", vCard]);
 const tabsPlugin = plugin(["v-tabs", vTabs], ["v-tab", vTab]);
@@ -87,35 +98,51 @@ const dropdownPlugin = plugin(
   ["v-dropdown", vDropdown],
   ["v-dropdown-menu-item", vDropdownMenuItem],
   ["v-dropdown-header", vDropdownHeader],
-  ["v-button-dropdown", vButtonDropdown],
+  ["v-button-dropdown", vButtonDropdown]
 );
 const collapsePlugin = plugin(
   ["v-collapse", vCollapse],
   ["v-accordion", vAccordion],
-  ["v-button-collapse", vButtonCollapse],
+  ["v-button-collapse", vButtonCollapse]
 );
 const popoverPlugin = plugin(["v-popover", vPopover]);
 const closebuttonPlugin = plugin(["v-close-button", vCloseButton]);
 const dividerPlugin = plugin(["v-divider", vDivider]);
 const iconPlugin = plugin(["v-icon", vIcon]);
-const formtextPlugin = plugin(["v-form-text", vFormText]);
 const chevronPlugin = plugin(["v-chevron", vChevron]);
+const treePlugin = plugin(["v-tree", vTree], ["v-tree-node", vTreeNode]);
+
+// form
+
+const inputPlugin = plugin(["v-input", vInput], ["v-form", vForm]);
+const selectPlugin = plugin(["v-select", vSelect], ["v-form", vForm]);
+const textareaPlugin = plugin(["v-textarea", vTextarea], ["v-form", vForm]);
+const checkboxPlugin = plugin(
+  ["v-checkbox-group", vCheckboxGroup],
+  ["v-checkbox", vCheckbox],
+  ["v-checkbox-simple", vCheckboxSimple],
+  ["v-form", vForm]
+);
+const radioPlugin = plugin(["v-radio-group", vRadioGroup], ["v-radio", vRadio]);
+const rangePlugin = plugin(["v-range", vRange], ["v-form", vForm]);
+const formtextPlugin = plugin(["v-form-text", vFormText], ["v-form", vForm]);
+const autocompletePlugin = plugin(
+  ["v-autocomplete", vAutocomplete],
+  ["v-form", vForm]
+);
+
+// directives
+
 const tooltipPlugin = directive("tooltip", tooltip);
 
 export {
   buttonPlugin,
   tablePlugin,
-  inputPlugin,
-  selectPlugin,
-  textareaPlugin,
-  checkboxPlugin,
   spinnerPlugin,
   tabsPlugin,
   sidepanelPlugin,
   breadcrumbPlugin,
-  radioPlugin,
   datepickerPlugin,
-  rangePlugin,
   badgePlugin,
   cardPlugin,
   modalPlugin,
@@ -132,5 +159,13 @@ export {
   iconPlugin,
   formtextPlugin,
   chevronPlugin,
+  treePlugin,
+  inputPlugin,
+  selectPlugin,
+  textareaPlugin,
+  checkboxPlugin,
+  radioPlugin,
+  rangePlugin,
+  autocompletePlugin,
   tooltipPlugin,
 };

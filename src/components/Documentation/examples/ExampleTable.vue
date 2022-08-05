@@ -77,11 +77,11 @@
       <div class="flex flex-col gap-y-2 mt-5">
         <div>
           <label for="locale">filter:</label>
-          <v-input type="text" v-model="example.filter" clearable></v-input>
+          <v-input type="text" inline v-model="example.filter" clearable></v-input>
         </div>
         <div>
           <label for="locale">locale:</label>
-          <v-input type="text" id="locale" v-model="example.locale"></v-input>
+          <v-input type="text" inline id="locale" v-model="example.locale"></v-input>
         </div>
         <div>
           <label for="busy">state:</label>

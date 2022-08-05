@@ -45,17 +45,11 @@
 
 <script>
 import { ref } from "vue";
-import ExampleTree from "./examples/ExampleTree.vue"
-import ExampleTreeSimple from "./examples/ExampleTreeSimple.vue"
 import ExampleTreeCode from "./examples/ExampleTree.vue?raw"
 import ExampleTreeSimpleCode from "./examples/ExampleTreeSimple.vue?raw"
 import { styleProps } from "./shared-props"
 
 export default {
-  components: {
-    ExampleTree,
-    ExampleTreeSimple,
-  },
   setup(props) {
     let reference = ref([
       {
@@ -67,32 +61,32 @@ export default {
       {
         prop: "item-name",
         type: ["String"],
-        default: "name",
+        default: "'name'",
         description: "Name of the property that hold name of item",
       },
       {
         prop: "item-children",
         type: ["String"],
-        default: "children",
+        default: "'children'",
         description: "Name of the property that hold name of array of children",
       },
       {
         prop: "item-icon",
         type: ["String"],
-        default: "icon",
+        default: "'icon'",
         description: "Name of the property that hold name of item's icon. Valid name is the same as for v-icon name prop",
       },
       {
         prop: "item-key",
         type: ["String"],
-        default: "id",
-        description: "Name of the <span class='font-bold'>required</span> property that hold unique value for every item.",
+        default: "'id'",
+        description: "Name of the required property that hold unique value for every item.",
       },
       {
         prop: "item-disabled",
         type: ["String"],
-        default: "disabled",
-        description: "Name of the property for disabled items. Disabling folders also disable all of their children items",
+        default: "'disabled'",
+        description: "Name of the property for disabled items. Disabling folder also disable all of their children items",
       },
       {
         prop: "filter",
@@ -127,8 +121,8 @@ export default {
       {
         prop: "allow-open-disabled",
         type: ["Boolean"],
-        default: "true",
-        description: "If true disabled items can be opened",
+        default: "false",
+        description: "If true disabled folders items can be opened",
       },
       {
         prop: "select-return-keys",
@@ -146,19 +140,19 @@ export default {
         prop: "show-indicators",
         type: ["Boolean"],
         default: "true",
-        description: "Whether to display open indicators",
+        description: "Displays open indicators",
       },
       {
         prop: "show-icons",
         type: ["Boolean"],
         default: "true",
-        description: "Whether to display icons",
+        description: "Displays icons if icon or placeholder icon is set",
       },
       {
         prop: "show-checkboxes",
         type: ["Boolean"],
         default: "false",
-        description: "Whether to display checkboxes",
+        description: "Displays checkboxes",
       },
       {
         prop: "placeholder-folder-icon",
@@ -176,7 +170,7 @@ export default {
         prop: "chevron",
         type: ["Object"],
         default: "{}",
-        description: "Props of <code class='code-text'>v-chevron</code> (open indicator) component. See documentation for valid values",
+        description: "Attributes of <code class='code-text'>v-chevron</code> (open indicator) component. See documentation for valid values",
       },
       {
         prop: "transition",

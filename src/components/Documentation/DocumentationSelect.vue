@@ -32,14 +32,10 @@
 
 <script>
 import { ref, reactive, onMounted } from "vue";
-import ExampleSelect from "./examples/ExampleSelect.vue"
 import exampleSelectCode from "./examples/ExampleSelect.vue?raw"
 import { styleProps, formProps } from "./shared-props"
 
 export default {
-  components: {
-    ExampleSelect,
-  },
   setup(props) {
     let reference = ref([
       {
@@ -56,7 +52,7 @@ export default {
           "Array of options to display in select element. Each option is <code class='code-text'>Object</code> with <code class='code-text'>value</code> and <code class='code-text'>label</code> properties. This prop is optional, you can use default slot to add options instead",
       },
       ...formProps({ icon: true }),
-      ...styleProps("select"),
+      ...styleProps(),
     ]);
 
     let styles = ref([

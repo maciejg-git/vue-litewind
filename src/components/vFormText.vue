@@ -5,16 +5,13 @@
       states.formText.value && states.formText.value.invalid,
     ]"
   >
-    <slot name="default" :state="state">
-      <transition-group name="fade-group">
-        <div v-for="m in formText" :key="m">
-          <slot name="prepend-message"></slot>
-          <slot name="message" :message="m">
-            {{ m }}
-          </slot>
-        </div>
-      </transition-group>
-    </slot>
+    <transition-group name="fade-group">
+      <div v-for="(message, key) in formText" :key="message">
+        <slot name="message" v-bind="{ message, key }">
+          {{ message }}
+        </slot>
+      </div>
+    </transition-group>
   </div>
 </template>
 
@@ -29,12 +26,11 @@ import { sharedStyleProps } from "../shared-props";
 export default {
   props: {
     state: { type: [String, Boolean], default: "" },
-    status: { type: Object, default: {} },
     inline: { type: Boolean, default: false },
     messages: { type: Object, default: {} },
     singleLineMessage: { type: Boolean, default: false },
     styleFormText: { type: [String, Array], default: "" },
-    ...sharedStyleProps("form-text"),
+    ...sharedStyleProps(),
   },
   setup(props) {
     let { classes, states } = useStyles("form-text", props, {
@@ -50,11 +46,12 @@ export default {
 
     let formText = computed(() => {
       if (props.state === "invalid") {
-        if (props.status.required === false) {
-          return [props.messages.required];
+        if (props.messages.required) {
+          return { required: props.messages.required };
         } else {
           if (props.singleLineMessage) {
-            return [Object.values(props.messages)[0]];
+            let [k, v] = Object.entries(props.messages)[0];
+            return { k: v };
           }
           return props.messages;
         }

@@ -93,7 +93,7 @@
         </div>
         <div>
           <label for="title">title</label>
-          <v-input type="text" id="title" v-model="example.title"></v-input>
+          <v-input type="text" id="title" inline v-model="example.title"></v-input>
         </div>
         <div>
           <label for="transition">transition:</label>

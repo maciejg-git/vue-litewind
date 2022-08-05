@@ -28,14 +28,10 @@
 
 <script>
 import { ref } from "vue";
-import ExampleRange from "./examples/ExampleRange.vue"
 import exampleRangeCode from "./examples/ExampleRange.vue?raw"
 import { styleProps, formProps } from "./shared-props"
 
 export default {
-  components: {
-    ExampleRange,
-  },
   setup(props) {
     let reference = ref([
       {
@@ -45,7 +41,7 @@ export default {
         description: "Range v-model",
       },
       ...formProps(),
-      ...styleProps("input"),
+      ...styleProps(),
     ]);
 
     let styles = ref([

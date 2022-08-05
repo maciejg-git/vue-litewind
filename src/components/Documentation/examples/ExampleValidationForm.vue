@@ -7,29 +7,30 @@
         @update:form-status="(status) => (formStatus = status)"
       >
         <v-input
-          type="text"
-          placeholder="Username"
-          block
-          class="w-full"
           v-model="username"
+          type="text"
           :rules="usernameRules"
+          block
+          placeholder="Username"
+          class="w-full"
           @update:status="(status) => (usernameStatus = status)"
         ></v-input>
 
         <v-input
-          type="text"
-          placeholder="Password"
-          block
-          class="w-full"
           v-model="password"
+          type="text"
           :rules="passwordRules"
+          block
+          placeholder="Password"
+          class="w-full"
           @update:status="(status) => (passwordStatus = status)"
         ></v-input>
 
         <v-textarea
-          placeholder="Some text"
           v-model="text"
           :rules="textRules"
+          placeholder="Some text"
+          rows="3"
           @update:status="(status) => (textStatus = status)"
         ></v-textarea>
       </v-form>

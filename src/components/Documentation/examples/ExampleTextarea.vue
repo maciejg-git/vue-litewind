@@ -2,6 +2,7 @@
   <v-textarea
     v-model="example.model"
     :state="example.state"
+    inline
     placeholder="Type something..."
     class="w-[400px] h-[120px]"
   />
@@ -12,6 +13,7 @@
     v-model="example.model"
     base="underlined"
     :state="example.state"
+    inline
     placeholder="Type something..."
     class="w-[400px] h-[120px]"
   />

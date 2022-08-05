@@ -41,17 +41,11 @@
 
 <script>
 import { ref } from "vue";
-import ExampleModal from "./examples/ExampleModal.vue"
-import ExampleModalSimple from "./examples/ExampleModalSimple.vue"
 import exampleModalCode from "./examples/ExampleModal.vue?raw"
 import exampleModalSimpleCode from "./examples/ExampleModalSimple.vue?raw"
 import { styleProps } from "./shared-props"
 
 export default {
-  components: {
-    ExampleModal,
-    ExampleModalSimple,
-  },
   setup() {
     let reference = ref([
       {
@@ -93,13 +87,13 @@ export default {
       {
         prop: "primary-button-label",
         type: ["String"],
-        default: "OK",
+        default: "'OK'",
         description: "Label of primary button",
       },
       {
         prop: "secondary-button-label",
         type: ["String"],
-        default: "Cancel",
+        default: "'Cancel'",
         description: "Label of secondary button",
       },
       {
@@ -159,13 +153,13 @@ export default {
       {
         prop: "position",
         type: ["String"],
-        default: "top",
+        default: "'top'",
         description: "Modal position. Valid values are: 'top' or 'center'",
       },
       {
         prop: "size",
         type: ["String"],
-        default: "md",
+        default: "'md'",
         description: "Modal size. Valid values are: 'sm', 'md', 'lg', 'xl' or 'fit' ",
       },
       {
@@ -175,7 +169,7 @@ export default {
         description:
           "Sets animation effect when showing or hiding modal. Valid values are: 'fade-[speed]', 'fade-slide-[speed]' or 'fade-scale-[speed]' where speed is 'f', 'm' or 's' for example 'fade-m' or 'fade-slide-f'. Empty string disables animations.",
       },
-      ...styleProps("modal"),
+      ...styleProps(),
     ]);
 
     let styles = ref([

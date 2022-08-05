@@ -28,14 +28,10 @@
 
 <script>
 import { ref } from "vue";
-import ExampleTextarea from "./examples/ExampleTextarea.vue"
 import exampleTextareaCode from "./examples/ExampleTextarea.vue?raw"
 import { styleProps, formProps } from "./shared-props"
 
 export default {
-  components: {
-    ExampleTextarea,
-  },
   setup(props) {
     let reference = ref([
       {
@@ -53,19 +49,19 @@ export default {
       {
         prop: "validate-on",
         type: ["String"],
-        default: "blur",
+        default: "'blur'",
         description:
           "Valid values are <code class='code-text'>blur</code> or <code class='code-text'>immediate</code>. See Form Validation for explanation and examples",
       },
       {
         prop: "validate-mode",
         type: ["String"],
-        default: "silent",
+        default: "'silent'",
         description:
           "Valid values are <code class='code-text'>silent</code> or <code class='code-text'>eager</code>. See Form Validation for explanation and examples",
       },
       ...formProps(),
-      ...styleProps("textarea"),
+      ...styleProps(),
     ]);
 
     let styles = ref([

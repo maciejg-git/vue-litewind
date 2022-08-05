@@ -66,20 +66,12 @@
 
 <script>
 import { ref } from "vue";
-import ExampleDatepicker from "./examples/ExampleDatepicker.vue"
-import ExampleDatepickerModel from "./examples/ExampleDatepickerModel.vue"
-import ExampleDatepickerDropdown from "./examples/ExampleDatepickerDropdown.vue"
 import exampleDatepickerCode from "./examples/ExampleDatepicker.vue?raw"
 import exampleDatepickerModelCode from "./examples/ExampleDatepickerModel.vue?raw"
 import exampleDatepickerDropdownCode from "./examples/ExampleDatepickerDropdown.vue?raw"
 import { styleProps } from "./shared-props"
 
 export default {
-  components: {
-    ExampleDatepicker,
-    ExampleDatepickerModel,
-    ExampleDatepickerDropdown,
-  },
   setup() {
     let reference = ref([
       {
@@ -97,7 +89,7 @@ export default {
       {
         prop: "locale",
         type: ["String"],
-        default: "en-GB",
+        default: "'en-GB'",
         description:
           "This prop is only used to display names of months and weekdays and to format date emitted by input:formatted event. It does not modify format of v-model date which is always YYYY-MM-DD",
       },
@@ -150,13 +142,13 @@ export default {
       {
         prop: "secondary-button-label",
         type: ["String"],
-        default: "OK",
+        default: "'OK'",
         description: "Secondary (cancel) button label",
       },
       {
         prop: "primary-button-label",
         type: ["String"],
-        default: "Cancel",
+        default: "'Cancel'",
         description: "Primary (accept) button label",
       },
       {
@@ -178,7 +170,7 @@ export default {
         description:
           "Transition when switching months or years. Valid values are 'fade', 'slide' or empty string for no transition",
       },
-      ...styleProps("datepicker"),
+      ...styleProps(),
     ]);
 
     let styles = ref([

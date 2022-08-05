@@ -1,10 +1,11 @@
 <template>
-  <div class="relative w-min" :class="wrapperClasses">
-    <div class="form-textarea" :class="getTextareaClasses">
+  <div class="relative" :class="wrapperClasses">
+    <div class="form-textarea block" :class="getTextareaClasses">
       <textarea
         v-model="localModel"
         v-bind="$attrs"
         class="transparent-textarea"
+        :class="{'w-full': !inline}"
         @blur="handleBlur"
       ></textarea>
     </div>
@@ -35,7 +36,7 @@ import { sharedStyleProps, sharedFormProps } from "../shared-props";
 export default {
   props: {
     modelValue: { type: String, default: undefined },
-    block: { type: Boolean, default: false },
+    inline: { type: Boolean, default: false },
     rules: { type: Object, default: {} },
     validateOn: { type: String, default: "blur" },
     validateMode: { type: String, default: "silent" },
@@ -65,7 +66,7 @@ export default {
     });
 
     let wrapperClasses = computed(() => {
-      return props.block ? "block" : "inline-block";
+      return props.inline ? "inline-block" : "block";
     });
 
     // validate

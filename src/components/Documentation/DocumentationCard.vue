@@ -28,14 +28,10 @@
 
 <script>
 import { ref } from "vue";
-import ExampleCard from "./examples/ExampleCard.vue"
 import exampleCardCode from "./examples/ExampleCard.vue?raw"
 import { styleProps } from "./shared-props"
 
 export default {
-  components: {
-    ExampleCard,
-  },
   setup(props) {
     let reference = ref([
       {
@@ -44,7 +40,7 @@ export default {
         default: "undefined",
         description: "Width of the card",
       },
-      ...styleProps("card"),
+      ...styleProps(),
     ]);
 
     let styles = ref([

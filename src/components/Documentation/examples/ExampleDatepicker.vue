@@ -25,7 +25,7 @@
         <div class="flex flex-col gap-y-2 mt-5">
           <div>
             <label for="model" class="font-semibold">v-model:</label>
-            <v-input type="text" id="model" v-model="example.date"></v-input>
+            <v-input type="text" id="model" inline v-model="example.date"></v-input>
           </div>
           <div>
             <label for="range">range:</label>
@@ -36,7 +36,7 @@
           </div>
           <div>
             <label for="locale">locale:</label>
-            <v-input type="text" id="locale" v-model="example.locale"></v-input>
+            <v-input type="text" id="locale" inline v-model="example.locale"></v-input>
           </div>
           <div>
             <label for="monday-first-weekday">monday-first-weekday:</label>
@@ -60,6 +60,7 @@
             <v-input
               type="text"
               id="primary-button-label"
+              inline
               v-model="example.primaryButtonLabel"
             ></v-input>
           </div>
@@ -68,6 +69,7 @@
             <v-input
               type="text"
               id="secondary-button-label"
+              inline
               v-model="example.secondaryButtonLabel"
             ></v-input>
           </div>

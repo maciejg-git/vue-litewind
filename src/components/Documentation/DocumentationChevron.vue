@@ -29,20 +29,16 @@
 
 <script>
 import { ref } from "vue";
-import ExampleChevron from "./examples/ExampleChevron.vue"
 import exampleChevronCode from "./examples/ExampleChevron.vue?raw"
 import { styleProps } from "./shared-props"
 
 export default {
-  components: {
-    ExampleChevron,
-  },
   setup(props) {
     let reference = ref([
       {
         prop: "initial",
         type: ["String"],
-        default: "down",
+        default: "'down'",
         description: "Initial direction of chevron/triangle. Valid values are: 'down', 'left' ,'right' and 'up'",
       },
       {
@@ -77,7 +73,7 @@ export default {
         description:
           "Name of the icon to use instead of default chevron/triangle",
       },
-      ...styleProps("chevron"),
+      ...styleProps(),
     ]);
 
     let styles = ref([

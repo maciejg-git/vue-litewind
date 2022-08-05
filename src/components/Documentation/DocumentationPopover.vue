@@ -28,20 +28,16 @@
 
 <script>
 import { ref } from "vue";
-import ExamplePopover from "./examples/ExamplePopover.vue"
 import examplePopoverCode from "./examples/ExamplePopover.vue?raw"
 import { popperProps, styleProps } from "./shared-props"
 
 export default {
-  components: {
-    ExamplePopover,
-  },
   setup(props) {
     let reference = ref([
       {
         prop: "trigger",
         type: ["String"],
-        default: "click",
+        default: "'click'",
         description:
           "Type of trigger that show or hides popover. Valid triggers are 'click', 'hover' and 'focus'",
       },
@@ -70,7 +66,7 @@ export default {
         description: "If true clicking outside of popover closes it",
       },
       ...popperProps,
-      ...styleProps("popover"),
+      ...styleProps(),
     ]);
 
     let styles = ref([

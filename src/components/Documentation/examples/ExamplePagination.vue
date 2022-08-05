@@ -11,13 +11,14 @@
       <div class="flex flex-col gap-y-2 mt-5">
         <div>
           <label for="model" class="font-semibold">v-model:</label>
-          <v-input type="text" id="model" v-model="example.page"></v-input>
+          <v-input type="text" id="model" inline v-model="example.page"></v-input>
         </div>
         <div>
           <label for="items-count">items-count:</label>
           <v-input
             type="text"
             id="items-count"
+            inline
             v-model.number="example.itemsCount"
           ></v-input>
         </div>
@@ -26,6 +27,7 @@
           <v-input
             type="text"
             id="items-per-page"
+            inline
             v-model.number="example.itemsPerPage"
           ></v-input>
         </div>
@@ -34,6 +36,7 @@
           <v-input
             type="text"
             id="max-pages"
+            inline
             v-model.number="example.maxPages"
           ></v-input>
         </div>

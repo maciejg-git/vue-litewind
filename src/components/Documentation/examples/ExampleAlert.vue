@@ -69,7 +69,7 @@
       <div class="flex flex-col gap-y-2 mt-5">
         <div>
           <label for="model" class="font-semibold">v-model:</label>
-          <v-input type="text" id="model" v-model="example.isVisible"></v-input>
+          <v-input type="text" id="model" inline v-model="example.isVisible"></v-input>
         </div>
         <div>
           <label for="dismissable">dismissable:</label>
@@ -83,6 +83,7 @@
           <v-input
             type="text"
             id="auto-dismiss-delay"
+            inline
             v-model="example.autoDismissDelay"
           ></v-input>
         </div>

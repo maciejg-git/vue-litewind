@@ -66,14 +66,14 @@ export default {
       {
         prop: "validate-on",
         type: ["String"],
-        default: "blur",
+        default: "'blur'",
         description:
           "Valid values are <code class='code-text'>blur</code> or <code class='code-text'>immediate</code>. See Form Validation for explanation and examples",
       },
       {
         prop: "validate-mode",
         type: ["String"],
-        default: "silent",
+        default: "'silent'",
         description:
           "Valid values are <code class='code-text'>silent</code> or <code class='code-text'>eager</code>. See Form Validation for explanation and examples",
       },
@@ -99,7 +99,7 @@ export default {
         prop: "spinner",
         type: ["Boolean"],
         default: "false",
-        description: "Props of input spinner",
+        description: "Attributes of input <code class='code-text'>v-spinner</code> (loader)",
       },
       {
         prop: "block",
@@ -108,7 +108,7 @@ export default {
         description: "Sets input display to block",
       },
       ...formProps({ icon: true, clearable: true }),
-      ...styleProps("input"),
+      ...styleProps(),
     ]);
 
     let styles = ref([

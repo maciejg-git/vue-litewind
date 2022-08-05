@@ -152,24 +152,12 @@
 </template>
 
 <script>
-import ExampleValidationUsername from "./examples/ExampleValidationUsername.vue"
-import ExampleValidationPassword from "./examples/ExampleValidationPassword.vue"
-import ExampleValidationCheckbox from "./examples/ExampleValidationCheckbox.vue"
-import ExampleValidationForm from "./examples/ExampleValidationForm.vue"
-import ExampleValidationModes from "./examples/ExampleValidationModes.vue"
 import ExampleValidationUsernameCode from "./examples/ExampleValidationUsername.vue?raw"
 import ExampleValidationPasswordCode from "./examples/ExampleValidationPassword.vue?raw"
 import ExampleValidationCheckboxCode from "./examples/ExampleValidationUsername.vue?raw"
 import ExampleValidationFormCode from "./examples/ExampleValidationForm.vue?raw"
 
 export default {
-  components: {
-    ExampleValidationUsername,
-    ExampleValidationPassword,
-    ExampleValidationCheckbox,
-    ExampleValidationForm,
-    ExampleValidationModes,
-  },
   setup(props) {
     return {
       ExampleValidationUsernameCode,

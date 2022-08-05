@@ -112,17 +112,11 @@
 
 <script>
 import { ref } from "vue";
-import ExampleTable from "./examples/ExampleTable.vue"
-import ExampleTableSimple from "./examples/ExampleTableSimple.vue"
 import exampleTableCode from "./examples/ExampleTable.vue?raw"
 import exampleTableSimpleCode from "./examples/ExampleTableSimple.vue?raw"
 import { styleProps } from "./shared-props"
 
 export default {
-  components: {
-    ExampleTable,
-    ExampleTableSimple,
-  },
   setup() {
     let reference = ref([
       {
@@ -154,7 +148,7 @@ export default {
       {
         prop: "locale",
         type: ["String"],
-        default: "en-GB",
+        default: "'en-GB'",
         description: "Locale used to compare and sort strings",
       },
       {
@@ -194,17 +188,17 @@ export default {
       {
         prop: "empty-text",
         type: ["String"],
-        default: "Empty table",
+        default: "'Empty table'",
         description: "Text displayed if table is empty",
       },
       {
         prop: "empty-filtered-text",
         type: ["String"],
-        default: "No records for current filter",
+        default: "'No records for current filter'",
         description:
           "Text displayed if table is empty after filtering out all items",
       },
-      ...styleProps("table"),
+      ...styleProps(),
     ]);
 
     let styles = ref([

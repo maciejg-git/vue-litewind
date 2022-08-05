@@ -32,14 +32,10 @@
 
 <script>
 import { ref } from "vue";
-import ExampleSidepanel from "./examples/ExampleSidepanel.vue"
 import exampleSidepanelCode from "./examples/ExampleSidepanel.vue?raw"
 import { styleProps } from "./shared-props"
 
 export default {
-  components: {
-    ExampleSidepanel,
-  },
   setup(props) {
     let reference = ref([
       {
@@ -64,7 +60,7 @@ export default {
       {
         prop: "width",
         type: ["String"],
-        default: "320px",
+        default: "'320px'",
         description: "Width of sidepanel",
       },
       {
@@ -80,7 +76,7 @@ export default {
         description:
           "Sets animation effect when showing or hiding sidepanel. Valid values are: 'fade-slide-f', 'fade-slide-m' and 'fade-slide-s'. Empty string disables animations.",
       },
-      ...styleProps("sidepanel"),
+      ...styleProps(),
     ]);
 
     let styles = ref([

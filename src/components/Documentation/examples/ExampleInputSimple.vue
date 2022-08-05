@@ -2,6 +2,7 @@
   <v-input
     v-model="model"
     type="text"
+    inline
     placeholder="Type something..."
   ></v-input>
 </template>

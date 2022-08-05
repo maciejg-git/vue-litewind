@@ -37,17 +37,11 @@
 
 <script>
 import { ref } from "vue";
-import ExampleRadio from "./examples/ExampleRadio.vue"
-import ExampleRadioGroup from "./examples/ExampleRadioGroup.vue"
 import exampleRadioCode from "./examples/ExampleRadio.vue?raw"
 import exampleRadioGroupCode from "./examples/ExampleRadioGroup.vue?raw"
 import { styleProps, formProps } from "./shared-props"
 
 export default {
-  components: {
-    ExampleRadio,
-    ExampleRadioGroup,
-  },
   setup() {
     let reference = ref([
       {
@@ -63,7 +57,7 @@ export default {
         description: "Radio label",
       },
       ...formProps(),
-      ...styleProps("input"),
+      ...styleProps(),
     ]);
 
     let styles = ref([

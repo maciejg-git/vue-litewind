@@ -12,7 +12,7 @@
       <div class="flex flex-col gap-y-2 mt-5">
         <div>
           <label for="model" class="font-semibold">v-model:</label>
-          <v-input type="text" id="model" v-model="example.model"></v-input>
+          <v-input type="text" id="model" inline v-model="example.model"></v-input>
         </div>
         <div>
           <label for="state">state:</label>

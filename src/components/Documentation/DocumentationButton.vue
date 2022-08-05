@@ -27,20 +27,16 @@
 
 <script>
 import { ref } from "vue";
-import ExampleButton from "./examples/ExampleButton.vue"
 import exampleButtonCode from "./examples/ExampleButton.vue?raw"
 import { styleProps } from "./shared-props"
 
 export default {
-  components: {
-    ExampleButton,
-  },
   setup(props) {
     let reference = ref([
       {
         prop: "tag",
         type: ["String"],
-        default: "button",
+        default: "'button'",
         description: "Tag of button element. Valid values are: 'button' or 'a'",
       },
       {
@@ -55,7 +51,7 @@ export default {
         default: "false",
         description: "Displays button as full width block",
       },
-      ...styleProps("button"),
+      ...styleProps(),
     ]);
 
     let styles = ref([

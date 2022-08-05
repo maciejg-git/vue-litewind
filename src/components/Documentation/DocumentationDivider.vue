@@ -23,17 +23,13 @@
 
 <script>
 import { ref } from "vue";
-import ExampleDivider from "./examples/ExampleDivider.vue"
 import exampleDividerCode from "./examples/ExampleDivider.vue?raw"
 import { styleProps } from "./shared-props"
 
 export default {
-  components: {
-    ExampleDivider,
-  },
   setup(props) {
     let reference = ref([
-      ...styleProps("table"),
+      ...styleProps(),
     ]);
 
     let styles = ref([

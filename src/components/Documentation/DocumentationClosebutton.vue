@@ -28,7 +28,7 @@ import { styleProps } from "./shared-props"
 export default {
   setup(props) {
     let reference = ref([
-      ...styleProps("closebutton"),
+      ...styleProps(),
     ]);
 
     let styles = ref([

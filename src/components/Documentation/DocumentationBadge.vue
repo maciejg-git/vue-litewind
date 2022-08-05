@@ -27,14 +27,10 @@
 
 <script>
 import { ref } from "vue";
-import ExampleBadge from "./examples/ExampleBadge.vue"
 import exampleBadgeCode from "./examples/ExampleBadge.vue?raw"
 import { styleProps } from "./shared-props"
 
 export default {
-  components: {
-    ExampleBadge,
-  },
   setup() {
     let reference = ref([
       {
@@ -58,7 +54,7 @@ export default {
         description:
           "Update this prop to unique key every time contents of default slot changes (required to rerender component and play animation)",
       },
-      ...styleProps("badge"),
+      ...styleProps(),
     ]);
 
     let styles = ref([

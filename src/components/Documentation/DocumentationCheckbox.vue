@@ -51,17 +51,11 @@
 
 <script>
 import { ref } from "vue";
-import ExampleCheckbox from "./examples/ExampleCheckbox.vue";
-import ExampleCheckboxGroup from "./examples/ExampleCheckboxGroup.vue";
 import exampleCheckboxCode from "./examples/ExampleCheckbox.vue?raw";
 import exampleCheckboxGroupCode from "./examples/ExampleCheckboxGroup.vue?raw";
 import { styleProps, formProps } from "./shared-props"
 
 export default {
-  components: {
-    ExampleCheckbox,
-    ExampleCheckboxGroup,
-  },
   setup() {
     let reference = ref([
       {
@@ -77,7 +71,7 @@ export default {
         description: "Checkbox label",
       },
       ...formProps(),
-      ...styleProps("input"),
+      ...styleProps(),
     ]);
 
     let styles = ref([

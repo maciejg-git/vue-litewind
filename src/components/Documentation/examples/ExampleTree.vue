@@ -28,6 +28,7 @@
           <v-input
             type="text"
             id="filter"
+            inline
             v-model="example.filter"
             clearable
           ></v-input>

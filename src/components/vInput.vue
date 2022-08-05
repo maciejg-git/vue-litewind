@@ -14,6 +14,7 @@
         type="text"
         v-bind="$attrs"
         class="transparent-input"
+        :class="{ 'w-full': !inline }"
         @blur="handleBlur"
       />
 
@@ -28,32 +29,20 @@
           v-bind="spinner"
           class="mx-0.5"
         />
-        <button
+        <v-close-button
           v-if="clearable"
+          style-close-button="small"
           aria-label="Close"
-          class="focus:outline-none ml-2"
+          class="ml-2"
           @click="handleClickClearButton"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            :class="classes.clearButton.value"
-            width="16"
-            height="16"
-            fill="currentColor"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"
-            />
-          </svg>
-        </button>
+        ></v-close-button>
         <button
           v-if="showIndicator"
           aria-label="Close"
           class="focus:outline-none ml-2"
           @click="handleClickIndicator"
         >
-        <v-chevron initial="down" rotate-180 :switch="indicatorSwitch" />
+          <v-chevron initial="down" rotate-180 :switch="indicatorSwitch" />
         </button>
       </div>
     </div>
@@ -61,10 +50,13 @@
       <v-form-text
         :messages="messages"
         :state="state"
-        :status="status"
         :single-line-message="singleLineMessage"
         class="absolute"
-      ></v-form-text>
+      >
+        <template #message="message">
+          <slot name="message" v-bind="message"></slot>
+        </template>
+      </v-form-text>
     </slot>
   </div>
 </template>
@@ -85,7 +77,7 @@ import { sharedStyleProps, sharedFormProps } from "../shared-props";
 export default {
   props: {
     modelValue: { type: [String, Number, Array], default: "" },
-    block: { type: Boolean, default: false },
+    inline: { type: Boolean, default: false },
     rules: { type: Object, default: {} },
     validateOn: { type: String, default: "blur" },
     validateMode: { type: String, default: "silent" },
@@ -128,7 +120,7 @@ export default {
     });
 
     let wrapperClasses = computed(() => {
-      return props.block ? "block" : "inline-block";
+      return props.inline ? "inline-block" : "block";
     });
 
     // validate
@@ -177,7 +169,7 @@ export default {
     watch(
       () => props.state,
       (newState) => (state.value = newState),
-      { immediate: true },
+      { immediate: true }
     );
 
     let validate = (value) => {
@@ -302,6 +294,6 @@ export default {
 
 <style scoped>
 .transparent-input {
-  @apply border-0 bg-transparent focus:outline-none focus:ring-0 outline-none p-0;
+  @apply block border-0 bg-transparent focus:outline-none focus:ring-0 outline-none p-0;
 }
 </style>

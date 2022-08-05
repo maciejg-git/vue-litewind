@@ -1,18 +1,18 @@
 /* LIST MATERIAL */
 
-.default {
-  &.list-material {
+.material {
+  &.list {
   }
-      &.list-material--round {
+      &.list--round {
         @apply
           rounded-md
       }
-      &.list-material--borderless {
+      &.list--borderless {
         @apply
           border-0
       }
 
-  &.list-material--item {
+  &.list--item {
     @apply
       border
       shadow-md
@@ -26,7 +26,7 @@
       dark:shadow-black/20
       dark:hover:bg-dark-700
   }
-      &.list-material--item--active-state {
+      &.list--item--active-state {
         @apply
           border-l-4
           text-white
@@ -36,9 +36,11 @@
           dark:border-blue-600
           dark:hover:bg-blue-600
       }
+    }
 
   /* LIST */
 
+.default {
   &.list {
     @apply
       border
@@ -73,4 +75,4 @@
           dark:bg-info-500
           dark:hover:bg-info-600
       }
-  }
+    }
