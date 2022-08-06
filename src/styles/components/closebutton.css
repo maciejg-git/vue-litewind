@@ -1,6 +1,9 @@
 /* CLOSEBUTTON */
 
 .default {
+  &.close-button--wrapper {
+  }
+
   &.close-button {
     @apply
       w-5
@@ -12,5 +15,28 @@
         @apply
           w-4
           h-4
+      }
+  }
+
+.round {
+  &.close-button--wrapper {
+    @apply
+      rounded-full
+      p-1
+      bg-secondary-400
+      dark:bg-dark-400
+  }
+
+  &.close-button {
+    @apply
+      w-4
+      h-4
+      text-text-500
+      dark:text-text-700
+  }
+      &.close-button--small {
+        @apply
+          w-3
+          h-3
       }
   }

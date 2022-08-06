@@ -15,14 +15,17 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <v-close-button />
+      <div class="flex gap-x-4">
+        <v-close-button />
+        <v-close-button base="round" />
+      </div>
     </div>
     <v-code :code="code" template language="html"></v-code>
   </section>
 </template>
 
 <script>
-import { ref, reactive } from "vue";
+import { ref } from "vue";
 import { styleProps } from "./shared-props"
 
 export default {
@@ -33,13 +36,18 @@ export default {
 
     let styles = ref([
       {
+        prop: "style-wrapper",
+        description: "Wrapper button element",
+      },
+      {
         prop: "style-close-button",
-        description: "Button element",
+        description: "Icon element",
       },
     ]);
 
     let code = `<template>
   <v-close-button />
+  <v-close-button base="round" />
 </template>`
 
     return {

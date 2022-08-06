@@ -60,6 +60,12 @@ export default {
         description:
           "Valid values are <code class='code-text'>silent</code> or <code class='code-text'>eager</code>. See Form Validation for explanation and examples",
       },
+      {
+        prop: "inline",
+        type: ["Boolean"],
+        default: "false",
+        description: "Sets textarea display to inline",
+      },
       ...formProps(),
       ...styleProps(),
     ]);

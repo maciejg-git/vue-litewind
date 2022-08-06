@@ -98,14 +98,26 @@ export default {
       {
         prop: "spinner",
         type: ["Boolean"],
-        default: "false",
-        description: "Attributes of input <code class='code-text'>v-spinner</code> (loader)",
+        default: "Object",
+        description: "Attributes of input <code class='code-text'>v-spinner</code> component (loader)",
       },
       {
-        prop: "block",
+        prop: "close-button",
+        type: ["Boolean"],
+        default: "Object",
+        description: "Attributes of input <code class='code-text'>v-close-button</code> component (clear button)",
+      },
+      {
+        prop: "chevron",
+        type: ["Boolean"],
+        default: "Object",
+        description: "Attributes of input <code class='code-text'>v-chevron</code> component (indicator)",
+      },
+      {
+        prop: "inline",
         type: ["Boolean"],
         default: "false",
-        description: "Sets input display to block",
+        description: "Sets input display to inline",
       },
       ...formProps({ icon: true, clearable: true }),
       ...styleProps(),
@@ -149,6 +161,10 @@ export default {
       {
         slot: "append",
         description: "Slot for content appending input",
+      },
+      {
+        slot: "message",
+        description: "This slot can be used to customize validation messages. <p class='mt-4'>Slot props: <code class='code-word'>message</code>, <code class='code-word'>key</code></p>",
       },
     ]);
 

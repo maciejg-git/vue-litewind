@@ -59,7 +59,7 @@ export let formProps = (options) => {
       prop: "clearable",
       type: ["Boolean"],
       default: "false",
-      description: "Makes input clearable",
+      description: "Adds 'X' button that clears input",
     });
 
   return [

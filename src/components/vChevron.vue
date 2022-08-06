@@ -48,7 +48,7 @@ export default {
         classes.chevron.value,
         [
           "transform",
-          props.rotate180 ? "duration-300" : "duration-150",
+          props.rotate180 ? "duration-200" : "duration-100",
           getRotation(),
         ],
       ];

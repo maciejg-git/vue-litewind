@@ -32,6 +32,7 @@
         <v-close-button
           v-if="clearable"
           style-close-button="small"
+          v-bind="closeButton"
           aria-label="Close"
           class="ml-2"
           @click="handleClickClearButton"
@@ -42,7 +43,12 @@
           class="focus:outline-none ml-2"
           @click="handleClickIndicator"
         >
-          <v-chevron initial="down" rotate-180 :switch="indicatorSwitch" />
+          <v-chevron
+            initial="down"
+            rotate-180
+            :switch="indicatorSwitch"
+            v-bind="chevron"
+          />
         </button>
       </div>
     </div>
@@ -87,9 +93,10 @@ export default {
     showIndicator: { type: Boolean, default: false },
     indicatorSwitch: { type: Boolean, default: false },
     spinner: { type: Object, default: {} },
+    closeButton: { type: Object, default: {} },
+    chevron: { type: Object, default: {} },
     styleInput: { type: [String, Array], default: "" },
     styleIcon: { type: [String, Array], default: "" },
-    styleClearButton: { type: [String, Array], default: "" },
     ...sharedFormProps(null, { icon: true, clearable: true }),
     ...sharedStyleProps("input"),
   },
@@ -102,9 +109,6 @@ export default {
     let { classes, states } = useStyles("input", props, {
       input: {
         states: ["valid", "invalid", "disabled"],
-      },
-      clearButton: {
-        name: "clear-button",
       },
       icon: null,
     });

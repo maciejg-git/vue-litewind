@@ -24,12 +24,4 @@
     @apply
       form--icon
   }
-
-  &.input--clear-button {
-    @apply
-      w-4
-      h-4
-      text-text-500
-      dark:text-text-300
-  }
 }

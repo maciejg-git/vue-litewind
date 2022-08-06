@@ -1,5 +1,5 @@
 <template>
-  <button class="flex items-center focus:outline-none" aria-label="Close">
+  <button class="flex items-center focus:outline-none" :class="classes.wrapper.value" aria-label="Close">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       :class="classes.closeButton.value"
@@ -23,6 +23,7 @@ import { sharedStyleProps } from "../shared-props"
 
 export default {
   props: {
+    styleWrapper: { type: String, default: "" },
     styleCloseButton: { type: String, default: "" },
     ...sharedStyleProps("close-button"),
   },
@@ -31,6 +32,7 @@ export default {
       closeButton: {
         name: "close-button",
       },
+      wrapper: null,
     });
 
     return {

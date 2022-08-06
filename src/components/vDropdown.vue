@@ -1,5 +1,5 @@
 <template>
-  <slot name="reference" v-bind="referenceSlotProps"></slot>
+  <slot name="reference" v-bind="referenceSlotProps" :is-open="isPopperVisible"></slot>
 
   <teleport to="body">
     <transition :name="transition" @after-leave="onPopperTransitionLeave">

@@ -9,6 +9,8 @@
     :clearable="clearable"
     :useLoader="!noLoader"
     show-indicator
+    :indicator-switch="isPopperVisible"
+    :chevron="chevron"
     @input="handleInput"
     @focus="handleFocusInput"
     @blur="handleBlurInput"
@@ -83,6 +85,7 @@ export default {
     noFilter: { type: Boolean, default: false },
     noPagination: { type: Boolean, default: false },
     noLoader: { type: Boolean, default: false },
+    chevron: { type: Object, default: {} },
     itemsPerPage: { type: Number, default: 10 },
     transition: { type: String, default: "fade" },
     styleMenu: { type: [String, Array], default: "" },
