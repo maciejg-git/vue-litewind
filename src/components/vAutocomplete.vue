@@ -13,7 +13,8 @@
     :chevron="chevron"
     @input="handleInput"
     @focus="handleFocusInput"
-    @blur="handleBlurInput"
+    @input:blur="handleBlurInput"
+    @click:indicator="handleClickIndicator"
     @input:clear="handleClickClearButton"
   />
 
@@ -286,6 +287,15 @@ export default {
       if (!isPopperChild(ev.relatedTarget)) cancelInput();
     };
 
+    let handleClickIndicator = (input) => {
+      if (isVisible.value) {
+        isVisible.value = false;
+        hidePopper()
+        return
+      }
+      if (input) input.focus()
+    }
+
     let handleClickClearButton = () => clearInput();
 
     let handleInput = () => {
@@ -311,6 +321,7 @@ export default {
       highlight,
       handleFocusInput,
       handleBlurInput,
+      handleClickIndicator,
       handleClickClearButton,
       handleInput,
       handleScrollBottom,

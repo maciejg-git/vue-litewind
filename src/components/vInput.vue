@@ -1,16 +1,17 @@
 <template>
   <div class="relative" :class="wrapperClasses">
-    <div class="form-input flex items-center" :class="getInputClasses">
+    <div ref="wrapper" class="form-input flex items-center" :class="getInputClasses">
       <slot name="icon">
-        <button v-if="icon" @click="handleIconClick" class="mr-2">
+        <div v-if="icon" @click="handleIconClick" class="mr-2">
           <v-icon :name="icon" :class="classes.icon.value"></v-icon>
-        </button>
+        </div>
       </slot>
 
       <slot name="prepend"></slot>
 
       <input
         v-model="localModel"
+        ref="inputRef"
         type="text"
         v-bind="$attrs"
         class="transparent-input"
@@ -37,9 +38,10 @@
           class="ml-2"
           @click="handleClickClearButton"
         ></v-close-button>
-        <button
+        <div
           v-if="showIndicator"
           aria-label="Close"
+          tabindex="-1"
           class="focus:outline-none ml-2"
           @click="handleClickIndicator"
         >
@@ -49,7 +51,7 @@
             :switch="indicatorSwitch"
             v-bind="chevron"
           />
-        </button>
+        </div>
       </div>
     </div>
     <slot name="form-text">
@@ -98,7 +100,7 @@ export default {
     styleInput: { type: [String, Array], default: "" },
     styleIcon: { type: [String, Array], default: "" },
     ...sharedFormProps(null, { icon: true, clearable: true }),
-    ...sharedStyleProps("input"),
+    ...sharedStyleProps(),
   },
   components: {
     vFormText,
@@ -126,6 +128,9 @@ export default {
     let wrapperClasses = computed(() => {
       return props.inline ? "inline-block" : "block";
     });
+
+    let inputRef = ref(null)
+    let wrapper = ref(null)
 
     // validate
 
@@ -272,7 +277,19 @@ export default {
 
     // handle template events
 
-    let handleBlur = () => touch();
+    let handleBlur = (ev) => {
+      touch();
+
+      let target = wrapper.value.contains(ev.relatedTarget)
+
+      if (!target) {
+        emit("input:blur", ev)
+      } 
+    }
+
+    let handleClickIndicator = (ev) => {
+      emit("click:indicator", inputRef.value)
+    }
 
     let handleClickClearButton = () => {
       if (localModel.value.length) {
@@ -285,11 +302,14 @@ export default {
       classes,
       wrapperClasses,
       getInputClasses,
+      inputRef,
       state,
+      wrapper,
       localModel,
       status,
       messages,
       handleBlur,
+      handleClickIndicator,
       handleClickClearButton,
     };
   },
