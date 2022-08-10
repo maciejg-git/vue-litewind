@@ -10,10 +10,10 @@ import EventViewer from "./components/Documentation/components/EventViewer.vue"
 import vSelectProp from "./components/Documentation/components/vSelectProp.vue"
 import { componentPlugin, formPlugin } from "./components/index.js";
 // styles
-import "tailwindcss/tailwind.css";
 import "./styles/components.css"
 import "./styles/form.css"
 import "./styles/icon.css"
+import "tailwindcss/tailwind.css";
 import "./components/Documentation/Documentation.css"
 // tools
 import registerIcon from "./register-icon"

@@ -49,7 +49,8 @@
 
   /* DROPDOWN RELAXED */
 
-  &.dropdown-relaxed--item {
+.relaxed {
+  &.dropdown--item {
     @apply
       w-11/12
       focus:outline-none
@@ -69,7 +70,7 @@
       dark:hover:bg-dark-700
       dark:focus:bg-primary-500
   }
-      &.dropdown-relaxed--item--active-state {
+      &.dropdown--item--active-state {
         @apply
           text-white
           bg-primary-500
@@ -78,13 +79,13 @@
           dark:bg-primary-500
           dark:hover:bg-primary-600
       }
-      &.dropdown-relaxed--item--disabled-state {
+      &.dropdown--item--disabled-state {
         @apply
           disabled
           pointer-events-none
       }
 
-  &.dropdown-relaxed--header {
+  &.dropdown--header {
     @apply
       w-11/12
       text-left
@@ -98,10 +99,12 @@
       text-text-700
       dark:text-text-300
   }
+}
 
   /* DROPDOWN FLAT */
 
-  &.dropdown-flat--item {
+.flat {
+  &.dropdown--item {
     @apply
       text-left
       w-full
@@ -119,7 +122,7 @@
       dark:focus:bg-primary-400
   }
 
-  &.dropdown-flat--header {
+  &.dropdown--header {
     @apply
       text-left
       font-semibold
@@ -128,4 +131,5 @@
       text-text-600
       dark:text-text-300
   }
+}
 }

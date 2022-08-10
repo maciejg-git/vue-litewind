@@ -18,7 +18,11 @@
                   {{ title }}
                 </span>
               </slot>
-              <v-close-button v-if="!noCloseButton" @click="closeModal" />
+              <v-close-button
+                v-if="!noCloseButton"
+                v-bind="closeButton"
+                @click="closeModal"
+              />
             </header>
             <main :class="classes.content.value">
               <v-close-button
@@ -72,9 +76,9 @@ import vCloseButton from "./vCloseButton.vue";
 // directives
 import focus from "../directives/focus";
 // props
-import { sharedStyleProps } from "../shared-props"
+import { sharedStyleProps } from "../shared-props";
 // style
-import "../styles/transitions.css"
+import "../styles/transitions.css";
 
 export default {
   props: {
@@ -96,6 +100,7 @@ export default {
     noFooter: { type: Boolean, default: false },
     position: { type: String, default: "top" },
     size: { type: String, default: "md" },
+    closeButton: { type: Object, default: {} },
     transition: { type: String, default: "fade-slide-m" },
     styleModal: { type: String, default: "" },
     styleHeader: { type: String, default: "" },
@@ -200,7 +205,7 @@ export default {
       closeModal();
     };
 
-    let handleClickCloseButton = () => closeModal()
+    let handleClickCloseButton = () => closeModal();
 
     let handlePrimaryButtonClick = () => {
       if (props.primaryButtonClose) closeModal();

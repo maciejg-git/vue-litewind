@@ -90,7 +90,7 @@
     </ul>
     </p>
     <p>
-      Default messages returned by global validators can be changed by importing <code class="code-text">validationMessages</code> object. Messages can include <code class="code-text">%d</code> token that will be replaced with validator argument.
+      Default messages returned by global validators can be changed by importing <code class="code-text">setValidationMessage(validator, message)</code> function. If validator supports argument (for example <code class="code-text">maxLength</code>) <code class="code-text">%d</code> token can be used in message in place of that argument.
     </p>
   </section>
 

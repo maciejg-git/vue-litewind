@@ -40,7 +40,7 @@
 
   <v-dropdown
     v-bind="example"
-    base="dropdown-relaxed"
+    base="relaxed"
     @state:opened="events.unshift({ ev: 'state:opened', data: $event })"
     @state:closed="events.unshift({ ev: 'state:closed', data: $event })"
   >

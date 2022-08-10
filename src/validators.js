@@ -17,6 +17,10 @@ export let validationMessages = {
   sameAs: ""
 };
 
+export let setValidationMessage = (validator, message) => {
+  validationMessages[validator] = message
+}
+
 export let globalValidators = {
   required: (value) => {
     if (Array.isArray(value)) return !!value.length || validationMessages.required;

@@ -47,7 +47,7 @@
 
   <section id="example">
     <h4>Example - context dropdown</h4>
-    <p>To make context dropdown skip reference slot and call <code class="code-text">showContextDropdown($event, { contextData })</code> function to show menu. Context data is available in slot props of default slot:</p>
+    <p>To make dropdown component exposes <code class="code-text">showContextDropdown($event, { contextData })</code> function.</p>
     <div class="example">
       <example-dropdown-context></example-dropdown-context>
     </div>

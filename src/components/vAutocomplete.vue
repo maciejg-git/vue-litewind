@@ -29,7 +29,7 @@
             v-if="!itemsPagination.length && !isLoading"
             :class="classes.item.value"
           >
-            No data available
+          {{ emptyDataMessage }}
           </div>
           <div
             v-else
@@ -86,6 +86,7 @@ export default {
     noFilter: { type: Boolean, default: false },
     noPagination: { type: Boolean, default: false },
     noLoader: { type: Boolean, default: false },
+    emptyDataMessage: { type: String, default: "No data available" },
     chevron: { type: Object, default: {} },
     itemsPerPage: { type: Number, default: 10 },
     transition: { type: String, default: "fade" },
@@ -146,11 +147,11 @@ export default {
     let selectedItem = ref(null);
     let localText = ref("");
     let isNewSelection = ref(true);
-    let isVisible = ref(false);
 
     // show autocomplete menu
 
     let show = () => {
+      if (!props.items.length) return
       isNewSelection.value = true;
       showPopper();
     };
@@ -158,15 +159,13 @@ export default {
     // those watchers controls autocomplete menu visibility
 
     watch(
-      () => props.isLoading,
+      () => props.items,
       (value) => {
-        if (!isPopperVisible.value && isVisible.value && !value) show();
+        if (!isPopperVisible.value && props.noFilter && value) {
+          show();
+        }
       }
     );
-
-    watch(isVisible, (value) => {
-      if (!isPopperVisible.value && value && !props.noFilter) show();
-    });
 
     // get text and value of item
 
@@ -247,13 +246,11 @@ export default {
     };
 
     let cancelInput = () => {
-      if (isVisible.value) isVisible.value = false;
       revert();
       hidePopper();
     };
 
     let selectItem = (item) => {
-      if (isVisible.value) isVisible.value = false;
       update(item);
       hidePopper();
     };
@@ -266,6 +263,31 @@ export default {
 
     // handle template events
 
+    let handleFocusInput = () => {
+      show()
+    };
+
+    let handleInput = () => {
+      isNewSelection.value = false;
+      emit("input:value", localText.value);
+    };
+
+    let handleBlurInput = (ev) => {
+      if (!popper.value) {
+        revert();
+        return;
+      }
+      if (!isPopperChild(ev.relatedTarget)) cancelInput();
+    };
+
+    let handleClickIndicator = (input) => {
+      if (isPopperVisible.value) {
+        hidePopper()
+        return
+      }
+      input.focus()
+    }
+
     let handleScrollBottom = () => {
       page.value++;
       emit("update:page", page.value);
@@ -273,36 +295,7 @@ export default {
 
     let handleClickItem = (item) => selectItem(item);
 
-    let handleFocusInput = () => {
-      emit("state:focus");
-      if (!isVisible.value) isVisible.value = true;
-    };
-
-    let handleBlurInput = (ev) => {
-      if (!popper.value) {
-        revert();
-        isVisible.value = false;
-        return;
-      }
-      if (!isPopperChild(ev.relatedTarget)) cancelInput();
-    };
-
-    let handleClickIndicator = (input) => {
-      if (isVisible.value) {
-        isVisible.value = false;
-        hidePopper()
-        return
-      }
-      if (input) input.focus()
-    }
-
     let handleClickClearButton = () => clearInput();
-
-    let handleInput = () => {
-      if (!isVisible.value) isVisible.value = true;
-      isNewSelection.value = false;
-      emit("input:value", localText.value);
-    };
 
     return {
       classes,

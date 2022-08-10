@@ -1,5 +1,5 @@
 <template>
-  <p class="my-6">Input with icon</p>
+  <p class="my-6">Input with icon (prop and slot)</p>
 
   <div class="flex gap-x-10">
     <!-- icon (prop) -->

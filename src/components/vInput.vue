@@ -254,15 +254,23 @@ export default {
       let res = null;
 
       for (let [key, v] of Object.entries(props.rules)) {
-        if (globalValidators[key]) {
-          res = globalValidators[key](value, v);
-          newStatus[key] = res === true;
-          if (res !== true) newMessages[key] = res;
-        } else if (typeof props.rules[key] === "function") {
-          res = props.rules[key](value);
+        let validator = globalValidators[key] || typeof props.rules[key] === "function" && props.rules[key]
+
+        if (validator) {
+          res = validator(value, v)
           newStatus[key] = res === true;
           if (res !== true) newMessages[key] = res;
         }
+
+        // if (globalValidators[key]) {
+        //   res = globalValidators[key](value, v);
+        //   newStatus[key] = res === true;
+        //   if (res !== true) newMessages[key] = res;
+        // } else if (typeof props.rules[key] === "function") {
+        //   res = props.rules[key](value);
+        //   newStatus[key] = res === true;
+        //   if (res !== true) newMessages[key] = res;
+        // }
         newStatus.valid = newStatus.valid && newStatus[key];
       }
 
@@ -271,7 +279,9 @@ export default {
       return { newStatus, newMessages };
     };
 
-    if (addInput) addInput({ status, formValidate, reset });
+    if (addInput) {
+      addInput({ status, formValidate, reset });
+    }
 
     let localModel = useLocalModel(props, emit, updateValue);
 
@@ -287,7 +297,7 @@ export default {
       } 
     }
 
-    let handleClickIndicator = (ev) => {
+    let handleClickIndicator = () => {
       emit("click:indicator", inputRef.value)
     }
 

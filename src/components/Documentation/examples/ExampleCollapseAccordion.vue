@@ -43,7 +43,7 @@
   <p class="mt-8 mb-4">Accordion - controlled from reference slot</p>
 
   <v-accordion class="my-2">
-    <v-card base="card-flat">
+    <v-card base="flat">
       <v-collapse>
         <template #reference="{ isOpen, onTrigger }">
           <v-button-collapse
@@ -62,7 +62,7 @@
       </v-collapse>
     </v-card>
 
-    <v-card base="card-flat" class="my-2">
+    <v-card base="flat" class="my-2">
       <v-collapse>
         <template #reference="{ isOpen, onTrigger }">
           <v-button-collapse
@@ -81,7 +81,7 @@
       </v-collapse>
     </v-card>
 
-    <v-card base="card-flat" class="my-2">
+    <v-card base="flat" class="my-2">
       <v-collapse>
         <template #reference="{ isOpen, onTrigger }">
           <v-button-collapse

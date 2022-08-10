@@ -98,7 +98,7 @@ export default {
         prop: "no-pagination",
         type: ["Boolean"],
         default: "false",
-        description: "Do no use internal pagination.  Useful when data is being paginated server side",
+        description: "Do no use internal pagination. Useful when data is being paginated server side",
       },
       {
         prop: "no-loader",
@@ -111,6 +111,12 @@ export default {
         type: ["Number"],
         default: "10",
         description: "Amounts of items to display per page, 0 = all items on single page. Ignored if <code class='code-text'>no-pagination</code> is used",
+      },
+      {
+        prop: "empty-data-message",
+        type: ["String"],
+        default: "No data available",
+        description: "Message to display inside menu when <code class='code-text'>items</code> array is empty",
       },
       {
         prop: "transition",

@@ -76,13 +76,13 @@ export default {
         prop: "primary-button",
         type: ["Object"],
         default: "{ styleButton: 'primary' }",
-        description: "Attributes and props of primary <code class='code-text'>v-button</code>",
+        description: "Attributes of primary <code class='code-text'>v-button</code> component. See documentation for valid values",
       },
       {
         prop: "secondary-button",
         type: ["Object"],
         default: "{ styleButton: 'secondary' }",
-        description: "Attributes and props of secondary <code class='code-text'>v-button</code>",
+        description: "Attributes of secondary <code class='code-text'>v-button</code> component. See documentation for valid values",
       },
       {
         prop: "primary-button-label",
@@ -161,6 +161,12 @@ export default {
         type: ["String"],
         default: "'md'",
         description: "Modal size. Valid values are: 'sm', 'md', 'lg', 'xl' or 'fit' ",
+      },
+      {
+        prop: "close-button",
+        type: ["String"],
+        default: "{}",
+        description: "Attributes of <code class='code-text'>v-close-button</code> component. See documentation for valid values",
       },
       {
         prop: "transition",
