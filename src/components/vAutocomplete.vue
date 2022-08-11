@@ -277,14 +277,16 @@ export default {
         revert();
         return;
       }
+
       if (!isPopperChild(ev.relatedTarget)) cancelInput();
     };
 
     let handleClickIndicator = (input) => {
       if (isPopperVisible.value) {
-        hidePopper()
+        cancelInput()
         return
       }
+
       input.focus()
     }
 

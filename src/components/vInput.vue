@@ -1,6 +1,10 @@
 <template>
   <div class="relative" :class="wrapperClasses">
-    <div ref="wrapper" class="form-input flex items-center" :class="getInputClasses">
+    <div
+      ref="wrapper"
+      class="form-input flex items-center"
+      :class="getInputClasses"
+    >
       <slot name="icon">
         <div v-if="icon" @click="handleIconClick" class="mr-2">
           <v-icon :name="icon" :class="classes.icon.value"></v-icon>
@@ -44,6 +48,7 @@
           tabindex="-1"
           class="focus:outline-none ml-2"
           @click="handleClickIndicator"
+          @focus="blur"
         >
           <v-chevron
             initial="down"
@@ -79,6 +84,8 @@ import useLocalModel from "./composition/use-local-model";
 import vFormText from "./vFormText.vue";
 // validators
 import { globalValidators } from "../validators";
+// tools
+import { isFunction } from "../tools";
 // props
 import { sharedStyleProps, sharedFormProps } from "../shared-props";
 
@@ -129,8 +136,10 @@ export default {
       return props.inline ? "inline-block" : "block";
     });
 
-    let inputRef = ref(null)
-    let wrapper = ref(null)
+    let inputRef = ref(null);
+    let wrapper = ref(null);
+
+    let blur = (ev) => ev.target.blur();
 
     // validate
 
@@ -188,8 +197,6 @@ export default {
     };
 
     let updateValue = (v) => {
-      emit("update:modelValue", v);
-
       validate(v);
 
       if (
@@ -208,6 +215,8 @@ export default {
       }
 
       state.value = updateState();
+
+      emitValidationStatus()
     };
 
     let touch = () => {
@@ -219,6 +228,8 @@ export default {
       }
 
       state.value = updateState();
+
+      emitValidationStatus()
     };
 
     let formValidate = () => {
@@ -230,54 +241,48 @@ export default {
       }
 
       state.value = updateState();
+
+      emitValidationStatus()
     };
-
-    watch(status, () => emit("update:status", status.value), {
-      immediate: true,
-    });
-
-    watch(state, () => emit("update:state", state.value), {
-      immediate: true,
-    });
 
     let getValidateStatus = (value) => {
       let newStatus = {
-        valid: true,
-        optional: false,
         touched: status.value.touched,
         validated: status.value.validated,
         dirty: status.value.dirty || !!(value && !!value.length),
       };
 
       let newMessages = {};
-
       let res = null;
+      let rules = Object.entries(props.rules)
 
-      for (let [key, v] of Object.entries(props.rules)) {
-        let validator = globalValidators[key] || typeof props.rules[key] === "function" && props.rules[key]
+      newStatus.valid = rules.reduce((valid, [key, v]) => {
+        let validator =
+          globalValidators[key] ||
+          (isFunction(props.rules[key]) && props.rules[key]);
 
         if (validator) {
-          res = validator(value, v)
-          newStatus[key] = res === true;
-          if (res !== true) newMessages[key] = res;
+          res = validator(value, v);
+          if (res === true) {
+            newStatus[key] = true;
+          } else {
+            newStatus[key] = false;
+            newMessages[key] = res;
+          }
         }
-
-        // if (globalValidators[key]) {
-        //   res = globalValidators[key](value, v);
-        //   newStatus[key] = res === true;
-        //   if (res !== true) newMessages[key] = res;
-        // } else if (typeof props.rules[key] === "function") {
-        //   res = props.rules[key](value);
-        //   newStatus[key] = res === true;
-        //   if (res !== true) newMessages[key] = res;
-        // }
-        newStatus.valid = newStatus.valid && newStatus[key];
-      }
+        
+        return valid && newStatus[key]
+      }, true)
 
       newStatus.optional = !props.rules.required && value === "";
 
       return { newStatus, newMessages };
     };
+
+    let emitValidationStatus = () => {
+      emit("update:status", status.value);
+      emit("update:state", state.value);
+    }
 
     if (addInput) {
       addInput({ status, formValidate, reset });
@@ -285,26 +290,29 @@ export default {
 
     let localModel = useLocalModel(props, emit, updateValue);
 
+    emitValidationStatus()
+
     // handle template events
 
     let handleBlur = (ev) => {
       touch();
 
-      let target = wrapper.value.contains(ev.relatedTarget)
+      if (wrapper.value.contains(ev.relatedTarget)) {
+        return;
+      }
 
-      if (!target) {
-        emit("input:blur", ev)
-      } 
-    }
+      emit("input:blur", ev);
+    };
 
     let handleClickIndicator = () => {
-      emit("click:indicator", inputRef.value)
-    }
+      emit("click:indicator", inputRef.value);
+    };
 
     let handleClickClearButton = () => {
       if (localModel.value.length) {
         localModel.value = "";
       }
+
       emit("input:clear");
     };
 
@@ -318,6 +326,7 @@ export default {
       localModel,
       status,
       messages,
+      blur,
       handleBlur,
       handleClickIndicator,
       handleClickClearButton,

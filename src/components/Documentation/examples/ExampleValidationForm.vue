@@ -4,7 +4,6 @@
       <v-form
         ref="form"
         class="flex flex-col gap-y-32"
-        @update:form-status="(status) => (formStatus = status)"
       >
         <v-input
           v-model="username"
@@ -39,7 +38,7 @@
         <v-button style-button="secondary" @click="form.reset()" class="mr-4">
           Reset
         </v-button>
-        <v-button @click="form.validate()">Validate</v-button>
+        <v-button @click="validate()">Validate</v-button>
       </div>
     </div>
     <pre class="m-0">
@@ -84,9 +83,13 @@ export default {
       maxLength: 30,
     };
 
-    let formStatus = ref({});
+    let formStatus = ref(false);
 
     let form = ref(null);
+
+    let validate = () => {
+      formStatus.value = form.value.validate()
+    }
 
     return {
       username,
@@ -100,6 +103,7 @@ export default {
       textRules,
       formStatus,
       form,
+      validate,
       stringifyObject,
     };
   },

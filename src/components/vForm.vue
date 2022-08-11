@@ -24,18 +24,13 @@ export default {
 
       valid.value = inputs.every((i) => i.status.value.valid);
 
-      emit("update:form-status", valid.value);
-
       return valid.value
     };
 
     let reset = () => {
       inputs.forEach((i) => i.reset())
       valid.value = false
-      emit("update:form-status", valid.value);
     }
-
-    emit("update:form-status", valid.value);
 
     provide("form", { addInput });
 
