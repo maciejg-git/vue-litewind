@@ -26,6 +26,7 @@
   <!-- combined indeterminate and deteminate progress -->
 
   <div class="my-6">Combined indeterminate and deteminate example</div>
+
   <v-card style-card="shadow" width="400px">
     <div class="flex justify-center p-4">
       <span v-if="example.indeterminate">Checking for updates...</span>

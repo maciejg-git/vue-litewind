@@ -15,7 +15,7 @@ export default {
 
     let valid = ref(false);
 
-    let addInput = (input) => {
+    let addFormInput = (input) => {
       inputs.push(input);
     };
 
@@ -32,7 +32,7 @@ export default {
       valid.value = false
     }
 
-    provide("form", { addInput });
+    provide("form", { addFormInput });
 
     expose({ validate, reset });
 

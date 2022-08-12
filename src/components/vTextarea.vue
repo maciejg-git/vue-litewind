@@ -71,8 +71,6 @@ export default {
 
     // validate
 
-    let { addInput } = inject("form", {});
-
     let defaultStatus = {
       touched: false,
       dirty: false,
@@ -96,20 +94,17 @@ export default {
       messages.value = {};
     };
 
+    let canUpdateState = () => {
+      return validateMode === "eager" || wasInvalid.value;
+    };
+
     let updateState = () => {
       if (props.state !== null) return props.state;
       if (status.value.optional) return "";
 
-      if (!status.value.valid) {
-        if (validateMode === 'eager' || wasInvalid.value) {
-          return "invalid";
-        }
-      } else {
-        if (validateMode === 'eager' || wasInvalid.value) {
-          return "valid";
-        }
-      }
-      return state.value
+      if (!canUpdateState()) return state.value;
+
+      return status.value.valid ? "valid" : "invalid"
     };
 
     watch(
@@ -125,8 +120,6 @@ export default {
     }
 
     let updateValue = (v) => {
-      emit("update:modelValue", v);
-
       validate(v);
 
       if (
@@ -145,68 +138,86 @@ export default {
       }
 
       state.value = updateState();
+
+      emitValidationStatus();
     };
 
     let touch = () => {
-      validate(localModel.value)
-
+      validate(localModel.value);
       status.value.touched = true;
 
-      if (!status.value.valid) {
+      if (status.value.valid) {
+        wasValid.value = true;
+      } else {
         wasInvalid.value = true;
       }
 
       state.value = updateState();
+
+      emitValidationStatus();
     };
 
     let formValidate = () => {
-      validate(localModel.value)
-
+      validate(localModel.value);
       status.value.validated = true;
 
-      if (!status.value.valid) {
+      if (status.value.valid) {
+        wasValid.value = true;
+      } else {
         wasInvalid.value = true;
       }
 
       state.value = updateState();
-    };
 
-    watch(status, () => emit("update:status", status.value), {
-      immediate: true,
-    });
+      emitValidationStatus();
+    };
 
     let getValidateStatus = (value) => {
       let newStatus = {
-        valid: true,
-        optional: false,
         touched: status.value.touched,
         validated: status.value.validated,
         dirty: status.value.dirty || !!(value && !!value.length),
       };
 
       let newMessages = {};
+      let rules = Object.entries(props.rules);
 
-      let res = null;
+      newStatus.valid = rules.reduce((valid, [key, v]) => {
+        let validator =
+          globalValidators[key] ||
+          (isFunction(props.rules[key]) && props.rules[key]);
 
-      for (let [key, v] of Object.entries(props.rules)) {
-        if (globalValidators[key]) {
-          res = globalValidators[key](value, v);
-          newStatus[key] = res === true;
-          if (res !== true) newMessages[key] = res;
-        } else if (typeof props.rules[key] === "function") {
-          res = props.rules[key](value);
-          newStatus[key] = res === true;
-          if (res !== true) newMessages[key] = res;
+        if (!validator) return true;
+
+        let res = validator(value, v);
+
+        if (res === true) {
+          newStatus[key] = true;
+        } else {
+          newStatus[key] = false;
+          newMessages[key] = res;
         }
-        newStatus.valid = newStatus.valid && newStatus[key];
-      }
+
+        return valid && newStatus[key];
+      }, true);
 
       newStatus.optional = !props.rules.required && value === "";
 
       return { newStatus, newMessages };
     };
 
-    if (addInput) addInput({ status, formValidate, reset });
+    let emitValidationStatus = () => {
+      emit("update:status", status.value);
+      emit("update:state", state.value);
+    };
+
+    emitValidationStatus();
+
+    let { addFormInput } = inject("form", {});
+
+    if (addFormInput) {
+      addFormInput({ status, formValidate, reset });
+    }
 
     let localModel = useLocalModel(props, emit, updateValue);
 

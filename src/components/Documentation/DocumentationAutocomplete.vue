@@ -40,6 +40,9 @@
 
   <section>
     <h4>Example - item slot</h4>
+    <p>
+      You can customize menu items by using item slot.
+    </p>
     <div class="example">
       <example-autocomplete-slot></example-autocomplete-slot>
     </div>

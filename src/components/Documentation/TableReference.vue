@@ -21,6 +21,9 @@
     <template #cell:description="{ value }">
       <span v-html="value"></span>
     </template>
+    <template #cell:prop="{ value }">
+      <code v-html="value"></code>
+    </template>
   </v-table>
 </template>
 

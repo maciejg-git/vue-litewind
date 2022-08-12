@@ -20,10 +20,12 @@
     @apply
       p-5
   }
+}
 
   /* POPOVER PLAIN */
 
-  &.popover-plain {
+.plain {
+  &.popover {
     @apply
       overflow-hidden
       shadow-lg
@@ -34,7 +36,7 @@
       dark:shadow-black/30
   }
 
-  &.popover-plain--content {
+  &.popover--content {
     @apply
       p-7
   }

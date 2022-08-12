@@ -6,6 +6,21 @@
     :definition="definition"
     class="min-w-full"
   >
+    <template #cell:function="{ value }">
+        <code v-html="value"></code>
+    </template>
+    <template #cell:slot="{ value }">
+        <code v-html="value"></code>
+    </template>
+    <template #cell:event="{ value }">
+        <code v-html="value"></code>
+    </template>
+    <template #cell:prop="{ value }">
+        <code v-html="value"></code>
+    </template>
+    <template #cell:component="{ value }">
+        <code v-html="value"></code>
+    </template>
     <template #cell:description="{ value, item }">
       <slot :name="'description-' + item.prop" :value="value">
         <span v-html="value"></span>

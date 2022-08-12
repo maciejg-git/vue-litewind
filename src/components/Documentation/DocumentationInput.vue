@@ -97,21 +97,27 @@ export default {
       },
       {
         prop: "spinner",
-        type: ["Boolean"],
-        default: "Object",
+        type: ["Object"],
+        default: "{}",
         description: "Attributes of input <code class='code-text'>v-spinner</code> component (loader)",
       },
       {
         prop: "close-button",
-        type: ["Boolean"],
-        default: "Object",
+        type: ["Object"],
+        default: "{}",
         description: "Attributes of input <code class='code-text'>v-close-button</code> component (clear button)",
       },
       {
         prop: "chevron",
-        type: ["Boolean"],
-        default: "Object",
+        type: ["Object"],
+        default: "{}",
         description: "Attributes of input <code class='code-text'>v-chevron</code> component (indicator)",
+      },
+      {
+        prop: "form-text",
+        type: ["Object"],
+        default: "{ class: 'absolute' }",
+        description: "Attributes of <code class='code-text'>v-form-text</code> component (validation messages)",
       },
       {
         prop: "inline",

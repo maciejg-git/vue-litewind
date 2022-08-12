@@ -63,6 +63,8 @@ import { ref, computed, watch, toRefs } from "vue";
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
 import usePopper from "./composition/use-popper.js";
+// components
+import vInput from "./vInput.vue"
 // directives
 import detectScrollBottom from "../directives/detect-scroll-bottom";
 // tools
@@ -95,6 +97,9 @@ export default {
     styleMatch: { type: [String, Array], default: "" },
     ...sharedFormProps(null, { icon: true, clearable: true }),
     ...sharedStyleProps("autocomplete"),
+  },
+  components: {
+    vInput,
   },
   directives: {
     detectScrollBottom,
@@ -152,6 +157,7 @@ export default {
 
     let show = () => {
       if (!props.items.length) return
+
       isNewSelection.value = true;
       showPopper();
     };
@@ -205,8 +211,9 @@ export default {
     let page = ref(0);
 
     let itemsPagination = computed(() => {
-      if (props.itemsPerPage === 0 || props.noPagination)
+      if (props.itemsPerPage === 0 || props.noPagination) {
         return itemsFiltered.value;
+      }
 
       return itemsFiltered.value.slice(
         0,
@@ -278,7 +285,9 @@ export default {
         return;
       }
 
-      if (!isPopperChild(ev.relatedTarget)) cancelInput();
+      if (!isPopperChild(ev.relatedTarget)) {
+        cancelInput();
+      }
     };
 
     let handleClickIndicator = (input) => {
@@ -290,14 +299,22 @@ export default {
       input.focus()
     }
 
+    let handleClickClearButton = (input) => {
+      clearInput();
+
+      if (isPopperVisible.value) {
+        input.focus()
+      }
+    }
+
     let handleScrollBottom = () => {
       page.value++;
       emit("update:page", page.value);
     };
 
-    let handleClickItem = (item) => selectItem(item);
-
-    let handleClickClearButton = () => clearInput();
+    let handleClickItem = (item) => {
+      selectItem(item);
+    }
 
     return {
       classes,

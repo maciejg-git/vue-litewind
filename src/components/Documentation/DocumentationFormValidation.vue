@@ -141,7 +141,7 @@
   <section>
     <h4>Example - form validation</h4>
     <p>
-     In order to validate entire form wrap inputs with <code class="code-text">v-form</code> component. <code class="code-text">v-form</code> exposes two functions: <code class="code-text">validate</code> and <code class="code-text">reset</code>. <code class="code-text">validate</code> function validates every input according to its rules and return true if all are valid. To reset all inputs within <code class="code-text">v-form</code> use exposed <code class="code-text">reset</code> function.
+     In order to validate entire form wrap inputs with <code class="code-text">v-form</code> component which exposes two functions: <code class="code-text">validate()</code> and <code class="code-text">reset()</code>. Calling <code class="code-text">validate()</code> function validates every input according to its rules and return <code class="code-text">true</code> if all are valid (<code class="code-text">false</code> if any input is invalid). To reset all inputs within <code class="code-text">v-form</code> use exposed <code class="code-text">reset()</code> function.
     </p>
     <div class="example">
       <example-validation-form />

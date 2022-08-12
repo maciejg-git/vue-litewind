@@ -18,17 +18,20 @@ export default function usePopper(
   let isPopperVisible = ref(false);
   let instance = null;
   let popper = ref(null);
-  let localReference = ref(null)
+  let localReference = ref(null);
 
   // reference can be element or template ref
   let reference = computed({
     get() {
-      return (localReference.value && localReference.value.$el) || localReference.value
+      return (
+        (localReference.value && localReference.value.$el) ||
+        localReference.value
+      );
     },
-    set (value) {
-      localReference.value = value
-    }
-  })
+    set(value) {
+      localReference.value = value;
+    },
+  });
 
   let showPopper = async function () {
     if (isPopperVisible.value) return;
@@ -74,8 +77,8 @@ export default function usePopper(
   let onPopperTransitionLeave = () => destroyInstance();
 
   let isPopperChild = (el) => {
-    return popper.value.contains(el)
-  }
+    return popper.value.contains(el);
+  };
 
   let setPopper = () => {
     let modifiers = [

@@ -35,7 +35,7 @@
 
   <p class="my-4">Tooltip popover</p>
 
-  <v-popover v-bind="example" title="Header" base="popover-plain">
+  <v-popover v-bind="example" title="Header" base="plain">
     <template #reference="{ reference, onTrigger }">
       <v-button :ref="reference" v-on="onTrigger">
         Show tooltip popover
