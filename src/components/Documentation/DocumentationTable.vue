@@ -146,6 +146,10 @@ export default {
           "Use this String to filter items. Filtering always emits <code class='code-word'>update:page</code> with value 1 and resets any active selection",
       },
       {
+        colspan: true,
+        name: "table",
+      },
+      {
         prop: "locale",
         type: ["String"],
         default: "'en-GB'",

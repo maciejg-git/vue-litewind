@@ -1,5 +1,6 @@
 <template>
   <div class="relative" :class="wrapperClasses">
+    <label for="" v-if="label">{{ label }}</label>
     <div class="form-textarea block" :class="getTextareaClasses">
       <textarea
         v-model="localModel"
@@ -40,6 +41,7 @@ export default {
     rules: { type: Object, default: {} },
     validateOn: { type: String, default: "blur" },
     validateMode: { type: String, default: "silent" },
+    label: { type: String, default: "" },
     styleTextarea: { type: [String, Array], default: "" },
     ...sharedFormProps(null),
     ...sharedStyleProps(),
@@ -187,7 +189,7 @@ export default {
           globalValidators[key] ||
           (isFunction(props.rules[key]) && props.rules[key]);
 
-        if (!validator) return true;
+        if (!validator) return valid;
 
         let res = validator(value, v);
 
@@ -209,6 +211,7 @@ export default {
     let emitValidationStatus = () => {
       emit("update:status", status.value);
       emit("update:state", state.value);
+      emit("update:messages", messages.value);
     };
 
     emitValidationStatus();

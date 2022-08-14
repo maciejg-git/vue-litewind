@@ -1,4 +1,4 @@
-export let validationMessages = {
+let validationMessages = {
   required: "This field is required",
   alpha: "Please enter only letters",
   numeric: "Please enter only numbers",

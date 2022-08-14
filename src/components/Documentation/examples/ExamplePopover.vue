@@ -27,7 +27,7 @@
         <label for="password">Password</label>
         <v-input type="password" id="password" placeholder="Enter password"></v-input>
       </div>
-      <v-button style-button="small" class="ml-auto mt-6">Login</v-button>
+      <v-button style-button="small" class="ml-auto mt-2">Login</v-button>
     </div>
   </v-popover>
 

@@ -14,7 +14,7 @@
             />
           </header>
           <div :class="classes.content.value">
-            <slot name="default"></slot>
+            <slot name="default" :hide="hide" v-bind="contextData"></slot>
           </div>
         </div>
       </div>
@@ -24,7 +24,7 @@
 
 <script>
 // vue
-import { toRefs, watch } from "vue";
+import { ref, toRefs, watch } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
@@ -46,7 +46,7 @@ export default {
     styleContent: { type: String, default: "" },
     ...sharedStyleProps("popover"),
   },
-  setup(props, { emit }) {
+  setup(props, { slots, emit, expose }) {
     let { classes } = useStyles("popover", props, {
       popover: null,
       content: null,
@@ -62,6 +62,7 @@ export default {
       showPopper,
       hidePopper,
       onPopperTransitionLeave,
+      updateVirtualElement,
     } = usePopper({ placement, offsetX, offsetY, noFlip, emit });
 
     // click outside
@@ -86,6 +87,19 @@ export default {
 
     let referenceSlotProps = { reference, onTrigger }
 
+    // context popover
+
+    let contextData = ref(null);
+
+    let showContextPopover = (ev, data) => {
+      if (slots.reference) return;
+      updateVirtualElement(ev);
+      show();
+      contextData.value = data;
+    };
+
+    expose({ showContextPopover })
+
     return {
       classes,
       popper,
@@ -93,6 +107,7 @@ export default {
       hide,
       onPopperTransitionLeave,
       referenceSlotProps,
+      contextData,
       reference,
       onTrigger,
     };

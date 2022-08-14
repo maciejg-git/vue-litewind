@@ -80,7 +80,10 @@
           :class="[...classes.row.value]"
           @click="handleRowClick(i)"
         >
-          <template v-for="k in definition">
+          <td v-if="item.colspan" :colspan="headersCount">
+            <slot name="colspan" :item="item"></slot>
+          </td>
+          <template v-else v-for="k in definition">
             <td v-if="k.visible !== false" :class="getCellClass(k, i, item)">
               <slot :name="'cell:' + k.key" :value="item[k.key]" :item="item">
                 {{ getKeyValue(item, k) }}

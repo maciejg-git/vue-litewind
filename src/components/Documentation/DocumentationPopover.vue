@@ -14,6 +14,10 @@
     <h6>Slots</h6>
     <p></p>
     <table-reference-basic :items="slots" reference="slot"></table-reference-basic>
+
+    <h6>Functions</h6>
+    <p></p>
+    <table-reference-basic :items="functions" reference="function"></table-reference-basic>
   </section>
 
   <section>
@@ -91,10 +95,18 @@ export default {
       },
     ]);
 
+    let functions = ref([
+      {
+        function: "showContextPopover($event, contextData: Object)",
+        description: "Shows context popover. Context data is available in slot props of default slot",
+      },
+    ]);
+
     return {
       reference,
       styles,
       slots,
+      functions,
       examplePopoverCode,
     };
   },

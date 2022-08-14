@@ -1,6 +1,6 @@
 <template>
   <div class="my-5">
-    <v-input v-model="username" type="text" class="mr-4" />
+    <v-input v-model="username" type="text" inline class="w-[420px]" />
   </div>
   <!-- CUT START -->
   <v-tabs base="material" class="mt-5">
@@ -36,6 +36,7 @@ export default {
     let username = ref("")
 
     return {
+      username,
     };
   },
 };

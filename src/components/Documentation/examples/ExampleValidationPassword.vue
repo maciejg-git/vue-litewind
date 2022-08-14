@@ -35,6 +35,7 @@ export default {
       atLeastOneDigit: true,
       minLength: 8,
     };
+
     return {
       password,
       passwordStatus,

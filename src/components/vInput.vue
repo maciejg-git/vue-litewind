@@ -1,5 +1,6 @@
 <template>
   <div class="relative" :class="wrapperClasses">
+    <label for="" v-if="label">{{ label }}</label>
     <div
       ref="wrapperRef"
       class="form-input flex items-center"
@@ -60,18 +61,17 @@
         </div>
       </div>
     </div>
-    <slot name="form-text">
-      <v-form-text
-        :messages="messages"
-        :state="state"
-        :single-line-message="singleLineMessage"
-        v-bind="formText"
-      >
-        <template #message="message">
-          <slot name="message" v-bind="message"></slot>
-        </template>
-      </v-form-text>
-    </slot>
+    <v-form-text
+      v-if="!noMessages"
+      :messages="messages"
+      :state="state"
+      :single-line-message="singleLineMessage"
+      v-bind="formText"
+    >
+      <template #message="message">
+        <slot name="message" v-bind="message"></slot>
+      </template>
+    </v-form-text>
   </div>
 </template>
 
@@ -104,6 +104,8 @@ export default {
     singleLineMessage: { type: Boolean, default: false },
     showIndicator: { type: Boolean, default: false },
     indicatorSwitch: { type: Boolean, default: false },
+    label: { type: String, default: "" },
+    noMessages: { type: Boolean, default: false },
     spinner: { type: Object, default: {} },
     closeButton: { type: Object, default: {} },
     chevron: { type: Object, default: {} },
@@ -266,7 +268,7 @@ export default {
           globalValidators[key] ||
           (isFunction(props.rules[key]) && props.rules[key]);
 
-        if (!validator) return true;
+        if (!validator) return valid;
 
         let res = validator(value, v);
 
@@ -288,11 +290,12 @@ export default {
     let emitValidationStatus = () => {
       emit("update:status", status.value);
       emit("update:state", state.value);
+      emit("update:messages", messages.value);
     };
 
     emitValidationStatus();
 
-    //form validation
+    // form validation
 
     let { addFormInput } = inject("form", {});
 

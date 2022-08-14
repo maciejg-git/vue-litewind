@@ -96,6 +96,12 @@ export default {
         description: "Limits the number of displayed errors to one at time. Order of messages is the same as order of rules in <code class='code-text'>rules</code> prop",
       },
       {
+        prop: "no-messages",
+        type: ["Boolean"],
+        default: "false",
+        description: "If true validation messages are not displayed",
+      },
+      {
         prop: "spinner",
         type: ["Object"],
         default: "{}",
@@ -158,6 +164,10 @@ export default {
       {
         event: "update:state",
         description: "Emitted after updating validation status. Event data contains new state",
+      },
+      {
+        event: "update:messages",
+        description: "Emitted after validating input. Event data contains new messages",
       },
       {
         event: "click:icon",

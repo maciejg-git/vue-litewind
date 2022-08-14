@@ -45,7 +45,7 @@ import vAutocomplete from "./vAutocomplete.vue"
 
 import tooltip from "../directives/tooltip.js";
 
-import { validationMessages } from "../validators"
+import { setValidationMessage } from "../validators"
 
 export {
   vButton,
@@ -95,7 +95,7 @@ export {
 
   tooltip,
 
-  validationMessages,
+  setValidationMessage,
 };
 
 export { 

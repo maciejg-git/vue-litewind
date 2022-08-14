@@ -3,6 +3,13 @@
   <p></p>
 
   <section>
+    <h4>Notes</h4>
+    <p>
+      <code class="code-text">v-form-text</code> is used by form components to display validation messages. See Form Validation for examples.
+    </p>
+  </section>
+
+  <section>
     <h4>Reference</h4>
     <p></p>
     <table-reference :items="reference"></table-reference>
@@ -14,15 +21,6 @@
     <h6>Slots</h6>
     <p></p>
     <table-reference-basic :items="slots" reference="slot"></table-reference-basic>
-  </section>
-
-  <section>
-    <h4>Example</h4>
-    <div class="example">
-      <example-form-text></example-form-text>
-    </div>
-    <v-code :code="exampleFormTextCode" template language="html"></v-code>
-    <v-code :code="exampleFormTextCode" script language="js"></v-code>
   </section>
 </template>
 
@@ -43,7 +41,7 @@ export default {
         type: ["String"],
         default: "empty string",
         description:
-          "Current state. Most useful if form text uses the same state as input.",
+          "Current state of input",
       },
       {
         prop: "inline",
@@ -52,20 +50,27 @@ export default {
         description: "Inline-flex version of the form text. Default is flex.",
       },
       {
-        prop: "visible-states",
-        type: ["String"],
-        default: "default,invalid,valid",
-        description:
-          "List of coma seperated states. If state is one of those states then form text is visible",
-      },
-      {
         prop: "messages",
         type: ["Object"],
         default: "{}",
         description:
-          "Object with messages to display depending on current state. To display those messages default slot must not be used",
+          "Object with messages to display depending on current state.",
       },
-      ...styleProps("form-text"),
+      {
+        prop: "single-line-message",
+        type: ["Object"],
+        default: "{}",
+        description:
+          "Limits the number of displayed errors to one at time",
+      },
+      {
+        prop: "transition",
+        type: ["String"],
+        default: "'fade-scale'",
+        description:
+          "Transition when showing message. Valid values are <code class='code-text'>'fade-scale'</code> or <code class='code-text'>empty string</code>",
+      },
+      ...styleProps(),
     ]);
 
     let styles = ref([
@@ -77,14 +82,9 @@ export default {
 
     let slots = ref([
       {
-        slot: "default",
+        slot: "message",
         description:
-          "Slot for the text. <p class='mt-4'>Slot props: <code class='code-word'>state</code></p>",
-      },
-      {
-        slot: "prepend-message",
-        description:
-          "Slot for the content in front of a message, for example for an icon. <p class='mt-4'>Slot props: <code class='code-word'>state</code></p>",
+          "Slot for message",
       },
     ]);
 

@@ -149,6 +149,16 @@
     <v-code :code="ExampleValidationFormCode" template language="html"></v-code>
     <v-code :code="ExampleValidationFormCode" script language="js"></v-code>
   </section>
+
+  <section>
+    <h4>Example - single line messages</h4>
+    <p>
+      In order to display single line validation message use <code class="code-text">single-line-message</code> prop.
+    </p>
+    <div class="example">
+      <example-validation-single-line-message />
+    </div>
+  </section>
 </template>
 
 <script>

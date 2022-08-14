@@ -77,8 +77,7 @@ export default {
 
       state.value = updateState();
 
-      emit("update:status", status.value);
-      emit("update:modelValue", v);
+      emitValidationStatus();
     };
 
     let touch = () => {
@@ -90,39 +89,55 @@ export default {
 
       status.value.validated = true;
 
-      if (!status.value.valid) {
+      if (status.value.valid) {
+        wasValid.value = true;
+      } else {
         wasInvalid.value = true;
       }
 
       state.value = updateState();
+
+      emitValidationStatus();
     };
 
     let getValidateStatus = (value) => {
       let newStatus = {
-        valid: true,
         touched: status.value.touched,
         validated: status.value.validated,
         dirty: status.value.dirty || !!(value && !!value.length),
       };
 
       let newMessages = {};
+      let rules = Object.entries(props.rules);
 
-      let res = null;
+      newStatus.valid = rules.reduce((valid, [key, v]) => {
+        let validator =
+          globalValidators[key] ||
+          (isFunction(props.rules[key]) && props.rules[key]);
 
-      for (let [key, v] of Object.entries(props.rules)) {
-        if (globalValidators[key]) {
-          res = globalValidators[key](value, v);
-          newStatus[key] = res === true;
-          if (res !== true) newMessages[key] = res;
-        } else if (typeof props.rules[key] === "function") {
-          res = props.rules[key](value);
-          newStatus[key] = res === true;
-          if (res !== true) newMessages[key] = res;
+        if (!validator) return valid;
+
+        let res = validator(value, v);
+
+        if (res === true) {
+          newStatus[key] = true;
+        } else {
+          newStatus[key] = false;
+          newMessages[key] = res;
         }
-        newStatus.valid = newStatus.valid && newStatus[key];
-      }
+
+        return valid && newStatus[key];
+      }, true);
+
+      newStatus.optional = !props.rules.required && value === "";
 
       return { newStatus, newMessages };
+    };
+
+    let emitValidationStatus = () => {
+      emit("update:status", status.value);
+      emit("update:state", state.value);
+      emit("update:messages", messages.value);
     };
 
     if (addInput) addInput({ status, formValidate, reset });

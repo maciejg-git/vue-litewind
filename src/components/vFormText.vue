@@ -83,4 +83,19 @@ export default {
 .fade-scale-leave-active {
   display: none;
 }
+
+.fade-slide-down-move,
+.fade-slide-down-enter-active,
+.fade-slide-down-leave-active {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  transform-origin: top;
+}
+.fade-slide-down-enter-from,
+.fade-slide-down-leave-to {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.fade-slide-down-leave-active {
+  display: none;
+}
 </style>

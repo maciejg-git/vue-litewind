@@ -118,10 +118,10 @@ let formComponents = [
     label: "Range",
     name: "range",
   },
-  // {
-  //   label: "Form text",
-  //   name: "formtext",
-  // },
+  {
+    label: "Form text",
+    name: "formtext",
+  },
   {
     label: "Autocomplete",
     name: "autocomplete",
