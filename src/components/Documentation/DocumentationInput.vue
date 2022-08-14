@@ -126,6 +126,12 @@ export default {
         description: "Sets input display to inline",
       },
       ...formProps({ icon: true, clearable: true }),
+      {
+        prop: "custom-clearable",
+        type: ["Boolean"],
+        default: "false",
+        description: "Adds 'X' button that only emits <code class='code-word'>click:clear-button</code> event. It does not modify model value",
+      },
       ...styleProps(),
     ]);
 
@@ -150,8 +156,24 @@ export default {
         description: "Emitted after validating input. Event data contains new status",
       },
       {
-        event: "input:clear",
+        event: "update:state",
+        description: "Emitted after updating validation status. Event data contains new state",
+      },
+      {
+        event: "click:icon",
+        description: "Emitted after clicking input icon",
+      },
+      {
+        event: "click:indicator",
+        description: "Emitted after clicking input indicator",
+      },
+      {
+        event: "click:clear-button",
         description: "Emitted after clicking clear button",
+      },
+      {
+        event: "input:blur",
+        description: "This event is the same as blur but it does not fire if input is focused out by clicking any element (icon, clear button etc) inside <code class='code-text'>v-input</code> component. Regular blur can be used if needed",
       },
     ]);
 

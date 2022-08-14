@@ -5,7 +5,7 @@
       states.formText.value && states.formText.value.invalid,
     ]"
   >
-    <transition-group name="fade-group">
+    <transition-group :name="transition">
       <div v-for="(message, key) in formText" :key="message">
         <slot name="message" v-bind="{ message, key }">
           {{ message }}
@@ -29,6 +29,7 @@ export default {
     inline: { type: Boolean, default: false },
     messages: { type: Object, default: {} },
     singleLineMessage: { type: Boolean, default: false },
+    transition: { type: String, default: "fade-scale" },
     styleFormText: { type: [String, Array], default: "" },
     ...sharedStyleProps(),
   },
@@ -68,25 +69,18 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.2s ease;
+.fade-scale-move,
+.fade-scale-enter-active,
+.fade-scale-leave-active {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  transform-origin: top;
 }
-.fade-enter-from,
-.fade-leave-to {
+.fade-scale-enter-from,
+.fade-scale-leave-to {
   opacity: 0;
+  transform: scaleY(0.2);
 }
-
-.fade-group-move,
-.fade-group-enter-active,
-.fade-group-leave-active {
-  transition: opacity 0.2s ease;
-}
-.fade-group-enter-from,
-.fade-group-leave-to {
-  opacity: 0;
-}
-.fade-group-leave-active {
-  display: absolute;
+.fade-scale-leave-active {
+  display: none;
 }
 </style>

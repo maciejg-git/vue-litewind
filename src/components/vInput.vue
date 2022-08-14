@@ -6,7 +6,7 @@
       :class="getInputClasses"
     >
       <slot name="icon">
-        <div v-if="icon" @click="handleIconClick" class="mr-2">
+        <div v-if="icon" @click="handleClickIcon" class="mr-2">
           <v-icon :name="icon" :class="classes.icon.value"></v-icon>
         </div>
       </slot>
@@ -35,7 +35,7 @@
           class="mx-0.5"
         />
         <v-close-button
-          v-if="clearable"
+          v-if="clearable || customClearable"
           style-close-button="small"
           v-bind="closeButton"
           aria-label="Close"
@@ -111,6 +111,7 @@ export default {
     styleInput: { type: [String, Array], default: "" },
     styleIcon: { type: [String, Array], default: "" },
     ...sharedFormProps(null, { icon: true, clearable: true }),
+    customClearable: { type: Boolean, default: false },
     ...sharedStyleProps(),
   },
   components: {
@@ -118,7 +119,7 @@ export default {
     vChevron,
     vCloseButton,
   },
-  emits: ["update:modelValue", "update:status", "update:state", "input:clear"],
+  emits: ["update:modelValue", "update:status", "update:state", "input:blur", "click:clear-button", "click:icon", "click:indicator"],
   inheritAttrs: false,
   setup(props, { attrs, emit }) {
     let { classes, states } = useStyles("input", props, {
@@ -291,6 +292,8 @@ export default {
 
     emitValidationStatus();
 
+    //form validation
+
     let { addFormInput } = inject("form", {});
 
     if (addFormInput) {
@@ -315,12 +318,19 @@ export default {
       emit("click:indicator", inputRef.value);
     };
 
+    let handleClickIcon = () => {
+      emit("click:icon", inputRef.value);
+    };
+
     let handleClickClearButton = () => {
-      if (localModel.value.length) {
+      if (props.clearable && localModel.value.length) {
         localModel.value = "";
+        return
       }
 
-      emit("input:clear", inputRef.value);
+      if (props.customClearable) {
+        emit("click:clear-button", inputRef.value);
+      }
     };
 
     return {
@@ -336,6 +346,7 @@ export default {
       blur,
       handleBlur,
       handleClickIndicator,
+      handleClickIcon,
       handleClickClearButton,
     };
   },

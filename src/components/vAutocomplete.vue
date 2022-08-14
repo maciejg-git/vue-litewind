@@ -6,7 +6,7 @@
     ref="reference"
     :icon="icon"
     :isLoading="isLoading"
-    :clearable="clearable"
+    :custom-clearable="clearable"
     :useLoader="!noLoader"
     show-indicator
     :indicator-switch="isPopperVisible"
@@ -15,7 +15,7 @@
     @focus="handleFocusInput"
     @input:blur="handleBlurInput"
     @click:indicator="handleClickIndicator"
-    @input:clear="handleClickClearButton"
+    @click:clear-button="handleClickClearButton"
   />
 
   <teleport to="body">
@@ -159,10 +159,11 @@ export default {
       if (!props.items.length) return
 
       isNewSelection.value = true;
+
       showPopper();
     };
 
-    // those watchers controls autocomplete menu visibility
+    // show menu if items prop changes
 
     watch(
       () => props.items,
@@ -233,16 +234,11 @@ export default {
       return highlightMatch(string, match, classes.match.value)
     }
 
-    // update local input text and model after selecting option
-
     let update = (item) => {
       selectedItem.value = item;
       localText.value = getItemText(item);
       localModel.value = getItemValue(item);
     };
-
-    // revert to previous value for example after closing
-    // dropdown menu without selecting option
 
     let revert = () => {
       if (!selectedItem.value) {
@@ -280,17 +276,14 @@ export default {
     };
 
     let handleBlurInput = (ev) => {
-      if (!popper.value) {
-        revert();
-        return;
-      }
-
       if (!isPopperChild(ev.relatedTarget)) {
         cancelInput();
       }
     };
 
     let handleClickIndicator = (input) => {
+      if (props.isLoading) return
+
       if (isPopperVisible.value) {
         cancelInput()
         return

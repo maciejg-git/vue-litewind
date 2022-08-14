@@ -54,13 +54,14 @@ export let formProps = (options) => {
         "Adds icon to input element. Valid value is the same as in <code class='code-text'>v-icon</code> components",
     });
 
-  if (options.clearable === true)
+  if (options.clearable === true) {
     props.push({
       prop: "clearable",
       type: ["Boolean"],
       default: "false",
-      description: "Adds 'X' button that clears input",
+      description: "Adds 'X' button that sets model to empty string",
     });
+  }
 
   return [
     ...props,

@@ -76,7 +76,7 @@ export default {
     });
 
     let query = (q) => {
-      if (q === "") return;
+      if (q === "") return example.items;
       example.isLoading = true;
       setTimeout(() => {
         example.items = states.filter((e) => {

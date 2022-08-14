@@ -9,7 +9,7 @@
       v-bind="example"
       icon="b-exclamation-circle"
       placeholder="Type something..."
-      @input:clear="handleClickClear"
+      @click:clear-button="handleClickClear"
     ></v-input>
 
     <!-- icon (slot) -->
@@ -19,7 +19,7 @@
       v-bind="example"
       icon="b-exclamation-circle"
       placeholder="Type something..."
-      @input:clear="handleClickClear"
+      @click:clear-button="handleClickClear"
     >
       <template #icon>
         <v-icon
@@ -33,26 +33,23 @@
   <p class="my-6">Prepend and append slots</p>
 
   <div class="flex gap-x-10">
-    <!-- icon (prop) -->
 
     <v-input
       v-model="example.model"
       v-bind="example"
       placeholder="Type something..."
-      @input:clear="handleClickClear"
+      @click:clear-button="handleClickClear"
     >
       <template #prepend>
         <div class="mr-2">http://</div>
       </template>
     </v-input>
 
-    <!-- icon (slot) -->
-
     <v-input
       v-model="example.model"
       v-bind="example"
       placeholder="Type something..."
-      @input:clear="handleClickClear"
+      @click:clear-button="handleClickClear"
     >
       <template #append>
         <div class="ml-2">.com</div>
@@ -70,7 +67,7 @@
       v-bind="example"
       base="underlined"
       placeholder="Type something..."
-      @input:clear="handleClickClear"
+      @click:clear-button="handleClickClear"
     ></v-input>
 
     <!-- rounded -->
@@ -80,7 +77,7 @@
       v-bind="example"
       base="round"
       placeholder="Type something..."
-      @input:clear="handleClickClear"
+      @click:clear-button="handleClickClear"
     ></v-input>
   </div>
 <!-- CUT START -->
@@ -172,7 +169,8 @@ export default {
     let events = ref([]);
 
     let handleClickClear = (ev) => {
-      events.value.unshift({ ev: "input:clear", data: ev });
+      example.model = ""
+      events.value.unshift({ ev: "click:clear-button", data: ev });
     };
 
     return {

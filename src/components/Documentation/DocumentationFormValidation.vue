@@ -5,7 +5,7 @@
   <section>
     <h4>Usage</h4>
     <p>
-    <code class="code-text">rules</code> prop allows to add validation to form components. <code class="code-text">rules</code> is an object where each prop is a name of global validator or user defined function with tested value as argument. User functions should return <code class="code-text">true</code> for valid result or the <code class="code-text">string</code> message if the result is invalid. Global validators include: 
+    <code class="code-text">rules</code> prop allows validation of form components. <code class="code-text">rules</code> is an object where each prop is a name of global validator or user defined function with tested value as argument. User functions should return <code class="code-text">true</code> for valid result or the <code class="code-text">string</code> message if the result is invalid. Global validators include: 
     <ul>
       <li>
         <code class="code-text">
@@ -90,7 +90,7 @@
     </ul>
     </p>
     <p>
-      Default messages returned by global validators can be changed by importing <code class="code-text">setValidationMessage(validator, message)</code> function. If validator supports argument (for example <code class="code-text">maxLength</code>) <code class="code-text">%d</code> token can be used in message in place of that argument.
+      Default messages of global validators can be changed by <code class="code-text">setValidationMessage(validator, message)</code> function. If validator has argument (for example <code class="code-text">maxLength</code>) <code class="code-text">%d</code> token can be used in message in place of that argument.
     </p>
   </section>
 
@@ -117,16 +117,16 @@
 
   <section>
     <h4>Example - validation modes</h4>
-    <p><code class="code-text">validation-on</code> and <code class="code-text">validation-mode</code>, only available on text inputs, allows control over when to display validation results and how to display them:
+    <p><code class="code-text">validation-on</code> and <code class="code-text">validation-mode</code>, only available on text inputs, allows control over when to start validation and how to update state according to validation results:
     <ul>
       <li class="my-2">
-        <code class="code-text">validate-on: "blur"</code> - starts updating input state only after it loses focus (default)
+        <code class="code-text">validate-on: "blur"</code> - starts updating input state only after it loses focus (<code class="code-text">default</code>)
       </li>
       <li class="my-2">
         <code class="code-text">validate-on: "immediate"</code> - starts updating state immediately after first input
       </li>
       <li class="my-2">
-        <code class="code-text">validate-mode: "silent"</code> - invalid values are ignored until value is at last once valid (default)
+        <code class="code-text">validate-mode: "silent"</code> - invalid values are ignored until value is at last once valid (<code class="code-text">default</code>)
       </li>
       <li class="my-2">
         <code class="code-text">validate-mode: "eager"</code> - invalid and valid values always change state
