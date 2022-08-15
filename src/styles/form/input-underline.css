@@ -24,4 +24,9 @@
     @apply
       form-underline--icon
   }
+
+  &.input--label {
+    @apply
+      form-underline--label
+  }
 }

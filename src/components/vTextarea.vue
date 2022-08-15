@@ -1,6 +1,10 @@
 <template>
   <div class="relative" :class="wrapperClasses">
-    <label for="" v-if="label">{{ label }}</label>
+    <label for="" v-if="label" :class="classes.label.value">
+      <slot name="label" :label="label">
+        {{ label }}
+      </slot>
+    </label>
     <div class="form-textarea block" :class="getTextareaClasses">
       <textarea
         v-model="localModel"
@@ -14,9 +18,13 @@
       <v-form-text
         :messages="messages"
         :state="state"
-        :status="status"
-        class="absolute"
-      ></v-form-text>
+        :single-line-message="singleLineMessage"
+        v-bind="formText"
+      >
+        <template #message="message">
+          <slot name="message" v-bind="message"></slot>
+        </template>
+      </v-form-text>
     </slot>
   </div>
 </template>
@@ -41,8 +49,11 @@ export default {
     rules: { type: Object, default: {} },
     validateOn: { type: String, default: "blur" },
     validateMode: { type: String, default: "silent" },
+    singleLineMessage: { type: Boolean, default: false },
     label: { type: String, default: "" },
+    formText: { type: Object, default: { class: "absolute" } },
     styleTextarea: { type: [String, Array], default: "" },
+    styleLabel: { type: [String, Array], default: "" },
     ...sharedFormProps(null),
     ...sharedStyleProps(),
   },
@@ -54,6 +65,9 @@ export default {
     let { classes, states } = useStyles("textarea", props, {
       textarea: {
         states: ["valid", "invalid", "disabled"],
+      },
+      label: {
+        fixed: "inline-block",
       },
     });
 

@@ -20,7 +20,12 @@
         @apply
           disabled
       }
+
+  &.textarea--label {
+    @apply
+      form--label
   }
+}
 
 .underlined {
   &.textarea {
@@ -39,4 +44,9 @@
         @apply
           disabled
       }
+
+  &.textarea--label {
+    @apply
+      form-underline--label
   }
+}

@@ -60,26 +60,31 @@
   <section>
     <h4>Example</h4>
     <div class="example">
+      <p class="my-6">Default tooltip:</p>
       <example-tooltip-simple></example-tooltip-simple>
     </div>
     <v-code :code="exampleTooltipSimpleCode" template language="html"></v-code>
 
     <div class="example">
+      <p class="my-6">Tooltip placement:</p>
       <example-tooltip-placement></example-tooltip-placement>
     </div>
     <v-code :code="exampleTooltipPlacementCode" template language="html"></v-code>
 
     <div class="example">
+      <p class="my-6">Tooltip delay:</p>
       <example-tooltip-delay></example-tooltip-delay>
     </div>
     <v-code :code="exampleTooltipDelayCode" template language="html"></v-code>
 
     <div class="example">
+      <p class="my-6">Tooltip content source:</p>
       <example-tooltip-content></example-tooltip-content>
     </div>
     <v-code :code="exampleTooltipContentCode" template language="html"></v-code>
 
     <div class="example">
+      <p class="my-6">Tooltip animation:</p>
       <example-tooltip-animation></example-tooltip-animation>
     </div>
     <v-code :code="exampleTooltipAnimationCode" template language="html"></v-code>

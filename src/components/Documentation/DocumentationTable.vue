@@ -108,12 +108,25 @@
     <v-code :code="exampleTableCode" template language="html"></v-code>
     <v-code :code="exampleTableCode" script language="js"></v-code>
   </section>
+
+  <section>
+    <h4>Example - colspan item property</h4>
+    <p>
+    Item can have special property <code class="code-text">colspan: {}</code>. Properties of this object are rendered as full row below item. To render them use <code class="code-text">colspan</code> slot.
+    </p>
+    <div class="example">
+      <example-table-colspan></example-table-colspan>
+    </div>
+    <v-code :code="exampleTableColspanCode" template language="html"></v-code>
+    <v-code :code="exampleTableColspanCode" script language="js"></v-code>
+  </section>
 </template>
 
 <script>
 import { ref } from "vue";
 import exampleTableCode from "./examples/ExampleTable.vue?raw"
 import exampleTableSimpleCode from "./examples/ExampleTableSimple.vue?raw"
+import exampleTableColspanCode from "./examples/ExampleTableColspan.vue?raw"
 import { styleProps } from "./shared-props"
 
 export default {
@@ -130,13 +143,13 @@ export default {
         prop: "definition",
         type: ["Array"],
         default: "undefined",
-        description: `Table definition is an optional <code class='code-text'>Array</code> of <code class='code-text'>Objects</code> that defines look and behavior of the table.`,
+        description: "Table definition is an optional <code class='code-text'>Array</code> of <code class='code-text'>Objects</code> that defines look and behavior of the table.",
       },
       {
         prop: "primary-key",
         type: ["String"],
         default: "undefined",
-        description: `This props should be name of the property that is unique for every record. It is used as value for :key attribute`,
+        description: "This props should be name of the property that is unique for every record. It is used as value for <code class='code-text'>key</code> attribute",
       },
       {
         prop: "filter",
@@ -144,10 +157,6 @@ export default {
         default: "empty string",
         description:
           "Use this String to filter items. Filtering always emits <code class='code-word'>update:page</code> with value 1 and resets any active selection",
-      },
-      {
-        colspan: true,
-        name: "table",
       },
       {
         prop: "locale",
@@ -167,7 +176,7 @@ export default {
         type: ["String"],
         default: "empty string",
         description:
-          "Enables or disables selection of rows. Valid values are 'single' (allows selection of single row only), 'multiple' (allows multiple rows to be selected) or empty string (disables selection). After new row is selected or unselected event <code class='code-word'>input:selection</code> is emmited that conatins array of all selected records. <span class='font-semibold'>Filtering</span>, <span class='font-semibold'>sorting</span>, <span class='font-semibold'>changing current page</span> or <span class='font-semibold'>modifying selection-mode prop</span> resets current selection by emmiting empty array",
+          "Enables or disables selection of rows. Valid values are <code class='code-text'>'single'</code> (allows selection of single row only), <code class='code-text'>'multiple'</code> (allows multiple rows to be selected) or <code class='code-text'>empty string</code> (disables selection). After new row is selected or unselected event <code class='code-word'>input:selection</code> is emmited with array of all selected records. <span class='font-semibold'>Filtering</span>, <span class='font-semibold'>sorting</span>, <span class='font-semibold'>changing current page</span> or <span class='font-semibold'>modifying selection-mode prop</span> resets current selection by emmiting empty array",
       },
       {
         prop: "page",
@@ -372,6 +381,7 @@ export default {
       referencePropDefinition,
       exampleTableCode,
       exampleTableSimpleCode,
+      exampleTableColspanCode,
     };
   },
 };

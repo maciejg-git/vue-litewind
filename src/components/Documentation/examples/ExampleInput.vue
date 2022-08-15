@@ -30,7 +30,7 @@
     </v-input>
   </div>
 
-  <p class="my-6">Prepend and append slots</p>
+  <p class="my-6 mt-12">Prepend and append slots</p>
 
   <div class="flex gap-x-10">
 
@@ -57,7 +57,7 @@
     </v-input>
   </div>
 
-  <p class="my-6">Alternative style input</p>
+  <p class="my-6 mt-12">Alternative style input</p>
 
   <!-- underlined -->
 
@@ -101,6 +101,10 @@
             <option value="color">color</option>
             <option value="date">date</option>
           </v-select>
+        </div>
+        <div>
+          <label for="label">label:</label>
+          <v-input type="text" id="label" inline v-model="example.label"></v-input>
         </div>
         <div>
           <label for="clearable">clearable:</label>
@@ -160,6 +164,7 @@ export default {
     let example = reactive({
       model: "",
       type: "text",
+      label: "",
       clearable: false,
       useLoader: false,
       isLoading: false,

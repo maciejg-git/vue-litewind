@@ -1,6 +1,10 @@
 <template>
   <div class="relative" :class="wrapperClasses">
-    <label for="" v-if="label">{{ label }}</label>
+    <label for="" v-if="label" :class="classes.label.value">
+      <slot name="label" :label="label">
+        {{ label }}
+      </slot>
+    </label>
     <div
       ref="wrapperRef"
       class="form-input flex items-center"
@@ -112,6 +116,7 @@ export default {
     formText: { type: Object, default: { class: "absolute" } },
     styleInput: { type: [String, Array], default: "" },
     styleIcon: { type: [String, Array], default: "" },
+    styleLabel: { type: [String, Array], default: "" },
     ...sharedFormProps(null, { icon: true, clearable: true }),
     customClearable: { type: Boolean, default: false },
     ...sharedStyleProps(),
@@ -121,7 +126,15 @@ export default {
     vChevron,
     vCloseButton,
   },
-  emits: ["update:modelValue", "update:status", "update:state", "input:blur", "click:clear-button", "click:icon", "click:indicator"],
+  emits: [
+    "update:modelValue",
+    "update:status",
+    "update:state",
+    "input:blur",
+    "click:clear-button",
+    "click:icon",
+    "click:indicator",
+  ],
   inheritAttrs: false,
   setup(props, { attrs, emit }) {
     let { classes, states } = useStyles("input", props, {
@@ -129,6 +142,9 @@ export default {
         states: ["valid", "invalid", "disabled"],
       },
       icon: null,
+      label: {
+        fixed: "inline-block",
+      },
     });
 
     let getInputClasses = computed(() => {
@@ -185,7 +201,7 @@ export default {
 
       if (!canUpdateState()) return state.value;
 
-      return status.value.valid ? "valid" : "invalid"
+      return status.value.valid ? "valid" : "invalid";
     };
 
     watch(
@@ -328,7 +344,7 @@ export default {
     let handleClickClearButton = () => {
       if (props.clearable && localModel.value.length) {
         localModel.value = "";
-        return
+        return;
       }
 
       if (props.customClearable) {

@@ -24,4 +24,9 @@
     @apply
       form--icon
   }
+
+  &.input--label {
+    @apply
+      form--label
+  }
 }

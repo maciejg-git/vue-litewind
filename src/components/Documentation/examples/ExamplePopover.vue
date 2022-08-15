@@ -20,12 +20,10 @@
     </template>
     <div class="flex flex-col gap-y-4 w-[250px]">
       <div class="flex flex-col gap-y-1">
-        <label for="login">Email</label>
-        <v-input type="text" id="login" placeholder="Enter email"></v-input>
+        <v-input type="text" label="Email" id="login" placeholder="Enter email"></v-input>
       </div>
       <div class="flex flex-col gap-y-1">
-        <label for="password">Password</label>
-        <v-input type="password" id="password" placeholder="Enter password"></v-input>
+        <v-input type="password" label="Password" id="password" placeholder="Enter password"></v-input>
       </div>
       <v-button style-button="small" class="ml-auto mt-2">Login</v-button>
     </div>

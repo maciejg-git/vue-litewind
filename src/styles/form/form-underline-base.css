@@ -39,6 +39,12 @@
     dark:text-gray-400
 }
 
+.form-underline--label {
+  @apply
+    text-sm
+    pb-1
+}
+
 .disabled {
   @apply 
     opacity-50

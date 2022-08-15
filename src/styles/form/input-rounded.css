@@ -40,4 +40,10 @@
       text-text-400
       dark:text-gray-400
   }
+
+  &.input--label {
+    @apply
+      text-sm
+      pb-1
+  }
 }

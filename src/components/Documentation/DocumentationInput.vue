@@ -78,6 +78,12 @@ export default {
           "Valid values are <code class='code-text'>silent</code> or <code class='code-text'>eager</code>. See Form Validation for explanation and examples",
       },
       {
+        prop: "label",
+        type: ["String"],
+        default: "empty string",
+        description: "Label on top of the input. This label is for simple forms as position cannot be changed",
+      },
+      {
         prop: "use-loading",
         type: ["Boolean"],
         default: "false",
@@ -193,6 +199,10 @@ export default {
         description: "Slot for icon",
       },
       {
+        slot: "label",
+        description: "Slot for label. <p class='mt-4'>Slot props: <code class='code-text'>label</code> (from <code class='code-text'>label</code> prop)</p>",
+      },
+      {
         slot: "prepend",
         description: "Slot for content prepending input",
       },
@@ -202,7 +212,7 @@ export default {
       },
       {
         slot: "message",
-        description: "This slot can be used to customize validation messages. <p class='mt-4'>Slot props: <code class='code-word'>message</code>, <code class='code-word'>key</code></p>",
+        description: "This slot can be used to customize validation messages. <p class='mt-4'>Slot props: <code class='code-text'>message</code>, <code class='code-text'>key</code></p>",
       },
     ]);
 

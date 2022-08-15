@@ -14,6 +14,13 @@
     <!-- <h6>Events</h6> -->
     <!-- <p></p> -->
     <!-- <table-reference-basic :items="events"></table-reference-basic> -->
+
+    <h6>Slots</h6>
+    <p></p>
+    <table-reference-basic
+      :items="slots"
+      reference="slot"
+    ></table-reference-basic>
   </section>
 
   <section>
@@ -61,6 +68,12 @@ export default {
           "Valid values are <code class='code-text'>silent</code> or <code class='code-text'>eager</code>. See Form Validation for explanation and examples",
       },
       {
+        prop: "label",
+        type: ["String"],
+        default: "empty string",
+        description: "Label on top of the textarea. This label is for simple forms as position cannot be changed",
+      },
+      {
         prop: "inline",
         type: ["Boolean"],
         default: "false",
@@ -80,10 +93,22 @@ export default {
     let events = ref([
     ]);
 
+    let slots = ref([
+      {
+        slot: "label",
+        description: "Slot for label. <p class='mt-4'>Slot props: <code class='code-text'>label</code> (from <code class='code-text'>label</code> prop)</p>",
+      },
+      {
+        slot: "message",
+        description: "This slot can be used to customize validation messages. <p class='mt-4'>Slot props: <code class='code-text'>message</code>, <code class='code-text'>key</code></p>",
+      },
+    ])
+
     return {
       reference,
       styles,
       events,
+      slots,
       exampleTextareaCode,
     };
   },

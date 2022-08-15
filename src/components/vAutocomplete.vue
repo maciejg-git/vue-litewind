@@ -276,6 +276,10 @@ export default {
     };
 
     let handleBlurInput = (ev) => {
+      if (!isPopperVisible.value) {
+        return
+      }
+
       if (!isPopperChild(ev.relatedTarget)) {
         cancelInput();
       }

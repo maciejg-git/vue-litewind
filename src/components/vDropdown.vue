@@ -41,7 +41,7 @@ export default {
     transition: { type: String, default: "fade-m" },
     styleItem: { type: String, default: "" },
     styleHeader: { type: String, default: "" },
-    ...sharedStyleProps("dropdown"),
+    ...sharedStyleProps(),
   },
   emits: ["state:opened", "state:closed", "update:modelValue"],
   setup(props, { slots, emit, expose }) {

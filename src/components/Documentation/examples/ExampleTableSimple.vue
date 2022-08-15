@@ -12,7 +12,6 @@ export default {
       data: data.slice(0, 5),
     });
 
-    data[0].colspan = true
     return {
       example,
     };

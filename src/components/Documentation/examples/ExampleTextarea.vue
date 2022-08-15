@@ -1,6 +1,7 @@
 <template>
   <v-textarea
     v-model="example.model"
+    :label="example.label"
     :state="example.state"
     inline
     placeholder="Type something..."
@@ -12,6 +13,7 @@
   <v-textarea
     v-model="example.model"
     base="underlined"
+    :label="example.label"
     :state="example.state"
     inline
     placeholder="Type something..."
@@ -23,7 +25,11 @@
       <div class="flex flex-col gap-y-2 mt-5">
         <div>
           <label for="model" class="font-semibold">v-model:</label>
-          <v-input type="text" id="model" v-model="example.model"></v-input>
+          <v-input type="text" id="model" inline v-model="example.model"></v-input>
+        </div>
+        <div>
+          <label for="label">label:</label>
+          <v-input type="text" id="label" inline v-model="example.label"></v-input>
         </div>
         <div>
           <label for="state">state:</label>
@@ -56,6 +62,7 @@ export default {
   setup() {
     let example = reactive({
       model: "",
+      label: "Textarea label",
       state: "",
     });
 

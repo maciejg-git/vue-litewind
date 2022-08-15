@@ -2,12 +2,20 @@
   <v-input
     v-model="password"
     :rules="passwordRules"
-    single-line-message
     inline
     type="text"
     placeholder="Password"
     class="w-[420px]"
-  ></v-input>
+    :form-text="{ class: 'relative' }"
+  >
+    <template #message="{ message }">
+      <span
+        class="inline-block font-semibold rounded bg-secondary-100 dark:bg-dark-700 p-1 my-1"
+      >
+        {{ message }}
+      </span>
+    </template>
+  </v-input>
 </template>
 
 <script>

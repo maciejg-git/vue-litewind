@@ -74,23 +74,28 @@
         </tr>
       </template>
       <template v-else>
-        <tr
-          v-for="(item, i) in itemsPagination"
-          :key="item[primaryKey] || i"
-          :class="[...classes.row.value]"
-          @click="handleRowClick(i)"
-        >
-          <td v-if="item.colspan" :colspan="headersCount">
-            <slot name="colspan" :item="item"></slot>
-          </td>
-          <template v-else v-for="k in definition">
-            <td v-if="k.visible !== false" :class="getCellClass(k, i, item)">
-              <slot :name="'cell:' + k.key" :value="item[k.key]" :item="item">
-                {{ getKeyValue(item, k) }}
-              </slot>
+        <template v-for="(item, i) in itemsPagination" :key="item[primaryKey] || i">
+          <tr
+            :class="[...classes.row.value]"
+            @click="handleRowClick(i)"
+          >
+            <template v-for="k in definition">
+              <td v-if="k.visible !== false" :class="getCellClass(k, i, item)">
+                <slot :name="'cell:' + k.key" :value="item[k.key]" :item="item">
+                  {{ getKeyValue(item, k) }}
+                </slot>
+              </td>
+            </template>
+          </tr>
+          <tr
+            v-if="item.colspan"
+            :class="[...classes.row.value]"
+          >
+            <td :colspan="headersCount">
+              <slot name="colspan" :item="item"></slot>
             </td>
-          </template>
-        </tr>
+          </tr>
+        </template>
       </template>
     </tbody>
   </table>
@@ -311,7 +316,8 @@ export default {
     let getDefinition = () => {
       if (!props.items || !props.items.length) return [];
 
-      return Object.keys(props.items[0]).map((item) => {
+      return Object.keys(props.items[0]).filter((i) => i !== 'colspan')
+        .map((item) => {
         return { key: item };
       });
     };

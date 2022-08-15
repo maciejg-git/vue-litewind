@@ -92,6 +92,7 @@
     <p>
       Default messages of global validators can be changed by <code class="code-text">setValidationMessage(validator, message)</code> function. If validator has argument (for example <code class="code-text">maxLength</code>) <code class="code-text">%d</code> token can be used in message in place of that argument.
     </p>
+    <v-code :code="ExampleValidationSetValidationMessageCode" language="js"></v-code>
   </section>
 
   <section>
@@ -159,6 +160,18 @@
       <example-validation-single-line-message />
     </div>
   </section>
+
+  <section>
+    <h4>Example - message slot</h4>
+    <p>
+      In order to customize validation messages use <code class="code-text">message</code> slot.
+    </p>
+    <div class="example">
+      <example-validation-message-slot />
+    </div>
+    <v-code :code="ExampleValidationMessageSlotCode" template language="html"></v-code>
+    <v-code :code="ExampleValidationMessageSlotCode" script language="js"></v-code>
+  </section>
 </template>
 
 <script>
@@ -166,6 +179,8 @@ import ExampleValidationUsernameCode from "./examples/ExampleValidationUsername.
 import ExampleValidationPasswordCode from "./examples/ExampleValidationPassword.vue?raw"
 import ExampleValidationCheckboxCode from "./examples/ExampleValidationUsername.vue?raw"
 import ExampleValidationFormCode from "./examples/ExampleValidationForm.vue?raw"
+import ExampleValidationSetValidationMessageCode from "./examples/ExampleValidationSetValidationMessage.js?raw"
+import ExampleValidationMessageSlotCode from "./examples/ExampleValidationMessageSlot.vue?raw"
 
 export default {
   setup(props) {
@@ -174,6 +189,8 @@ export default {
       ExampleValidationPasswordCode,
       ExampleValidationCheckboxCode,
       ExampleValidationFormCode,
+      ExampleValidationSetValidationMessageCode,
+      ExampleValidationMessageSlotCode,
     };
   },
 };

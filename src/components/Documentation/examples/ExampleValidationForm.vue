@@ -8,9 +8,9 @@
         <v-input
           v-model="username"
           type="text"
+          label="Username"
           :rules="usernameRules"
           block
-          placeholder="Username"
           class="w-full"
           @update:status="(status) => (usernameStatus = status)"
         ></v-input>
@@ -18,9 +18,9 @@
         <v-input
           v-model="password"
           type="text"
+          label="Password"
           :rules="passwordRules"
           block
-          placeholder="Password"
           class="w-full"
           @update:status="(status) => (passwordStatus = status)"
         ></v-input>
