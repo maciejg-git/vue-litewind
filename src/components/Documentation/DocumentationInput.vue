@@ -157,8 +157,8 @@ export default {
         description: "Icon element if icon prop is true",
       },
       {
-        prop: "style-clear-button",
-        description: "Clear input button if clearable prop is true",
+        prop: "style-label",
+        description: "Label element if label prop is set",
       },
     ]);
 

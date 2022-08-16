@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="[classes.datepicker.value, 'overflow-hidden']"
+    :class="[classes.datepicker.value]"
     :style="{ width: width }"
   >
     <div class="grid grid-cols-6 grid-flow-col my-2">
@@ -41,49 +41,53 @@
         {{ day }}
       </div>
     </div>
-    <transition :name="transition" mode="out-in">
-      <div
-        :key="monthNames[month] + year"
-        class="grid grid-cols-7 mb-2 relative"
-      >
-        <template v-if="adjacentMonths">
-          <div v-for="(day, index) in daysList.prevMonthDays" :key="index">
-            <div :class="classes.adjacentMonthDay.value">
-              {{ day }}
+    <div class="overflow-hidden">
+      <transition :name="transition" mode="out-in">
+        <div
+          :key="monthNames[month] + year"
+          class="grid grid-cols-7 mb-2 relative"
+        >
+          <template v-if="adjacentMonths">
+            <div v-for="(day, index) in daysList.prevMonthDays" :key="index">
+              <div :class="classes.adjacentMonthDay.value">
+                {{ day }}
+              </div>
             </div>
+          </template>
+          <div v-for="(d, index) in daysList.days" :key="index">
+            <a
+              v-if="d"
+              role="button"
+              :class="getDayClass(d.date)"
+              @click="handleDayClick(d.date, index)"
+              @mouseenter="mouseOverRange = d.date"
+            >
+              <slot name="day" v-bind="d">
+                {{ d.day }}
+              </slot>
+            </a>
           </div>
-        </template>
-        <div v-for="(d, index) in daysList.days" :key="index">
-          <a
-            v-if="d"
-            role="button"
-            :class="getDayClass(d.date)"
-            @click="handleDayClick(d.date, index)"
-            @mouseenter="mouseOverRange = d.date"
-          >
-            {{ d.day }}
-          </a>
+          <template v-if="adjacentMonths">
+            <div v-for="(day, index) in daysList.nextMonthDays" :key="index">
+              <div :class="classes.adjacentMonthDay.value">
+                {{ day }}
+              </div>
+            </div>
+          </template>
         </div>
-        <template v-if="adjacentMonths">
-          <div v-for="(day, index) in daysList.nextMonthDays" :key="index">
-            <div :class="classes.adjacentMonthDay.value">
-              {{ day }}
-            </div>
-          </div>
-        </template>
-      </div>
-    </transition>
+      </transition>
+    </div>
     <div :class="classes.footer.value">
       {{ todayFormatted }}
     </div>
     <div v-if="buttons" class="flex justify-between pt-2">
       <v-button
-        v-bind="secondaryButtonAttrs"
+        v-bind="secondaryButton"
         @click="handleSecondaryButtonClick"
       >
         {{ secondaryButtonLabel }}
       </v-button>
-      <v-button v-bind="primaryButtonAttrs" @click="handlePrimaryButtonClick">
+      <v-button v-bind="primaryButton" @click="handlePrimaryButtonClick">
         {{ primaryButtonLabel }}
       </v-button>
     </div>
@@ -109,7 +113,7 @@ import { sharedStyleProps } from "../shared-props";
 
 export default {
   props: {
-    modelValue: [String, Array],
+    modelValue: { type: [String, Array], default: undefined },
     locale: { type: String, default: "" },
     mondayFirstWeekday: { type: Boolean, default: false },
     range: { type: Boolean, default: false },
@@ -122,20 +126,20 @@ export default {
         day: "numeric",
       }),
     },
-    disabled: Array,
+    disabled: { type: Array, default: [] },
     width: { type: String, default: undefined },
     adjacentMonths: { type: Boolean, default: false },
     rangeHoverHighlight: { type: Boolean, default: true },
     buttons: { type: Boolean, default: false },
     secondaryButtonLabel: { type: String, default: "Cancel" },
     primaryButtonLabel: { type: String, default: "OK" },
-    primaryButtonAttrs: {
+    primaryButton: {
       type: Object,
-      default: { styleButton: "default primary small" },
+      default: { styleButton: "primary small" },
     },
-    secondaryButtonAttrs: {
+    secondaryButton: {
       type: Object,
-      default: { styleButton: "default secondary small" },
+      default: { styleButton: "secondary small" },
     },
     transition: { type: String, default: "fade" },
     styleDatepicker: { type: String, default: "" },
@@ -300,6 +304,10 @@ export default {
       { immediate: true }
     );
 
+    watch(() => props.range, () => {
+      reset()
+    })
+
     // generate days to display for current month
     let daysList = computed(() => {
       let day = getFirstDay(year.value, month.value);
@@ -346,6 +354,12 @@ export default {
       );
       emitSelection(dateToString(single.value), formatted);
     };
+
+    let reset = () => {
+      emit("update:modelValue", "")
+      range.value = []
+      single.value = ""
+    }
 
     // add date in range mode and update state
     let addRangeDate = (d) => {

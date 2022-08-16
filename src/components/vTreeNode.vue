@@ -88,7 +88,7 @@
           :disabled="isDisabled"
           @children-state-changed="handleChildrenSelected"
         >
-          <template v-for="(name, slot) of slots" #[slot]="i">
+          <template v-for="(name, slot) of $slots" #[slot]="i">
             <slot :name="slot" v-bind="i"></slot>
           </template>
         </v-tree-node>
@@ -125,7 +125,7 @@ export default {
   },
   inheritAttrs: false,
   emits: ["children-state-changed"],
-  setup(props, { emit, slots, expose }) {
+  setup(props, { emit, expose }) {
     let {
       classes,
       variants,
@@ -285,7 +285,6 @@ export default {
       isFilteredOut,
       nodeList,
       getIcon,
-      slots,
       toggle,
       handleItemClick,
       handleChildrenSelected,

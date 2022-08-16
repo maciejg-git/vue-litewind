@@ -25,10 +25,10 @@
   <div class="mt-4 lg:ml-10 lg:mt-0">
     <div class="mb-2">
       <label for="dropdown-buttons">buttons:</label>
-      <v-select id="dropdown-buttons" v-model="example.buttons">
+      <v-select-prop id="dropdown-buttons" v-model="example.buttons">
         <option :value="true">true</option>
         <option :value="false">false</option>
-      </v-select>
+      </v-select-prop>
     </div>
   </div>
 <!-- CUT END -->

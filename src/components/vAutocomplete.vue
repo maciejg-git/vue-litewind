@@ -16,7 +16,14 @@
     @input:blur="handleBlurInput"
     @click:indicator="handleClickIndicator"
     @click:clear-button="handleClickClearButton"
-  />
+  >
+    <template
+      v-for="(name, slot) of $slots"
+      #[slot]="slotProps"
+    >
+      <slot :name="slot" v-bind="slotProps"></slot>
+    </template>
+  </v-input>
 
   <teleport to="body">
     <transition :name="transition" @after-leave="onPopperTransitionLeave">
@@ -29,7 +36,7 @@
             v-if="!itemsPagination.length && !isLoading"
             :class="classes.item.value"
           >
-          {{ emptyDataMessage }}
+            {{ emptyDataMessage }}
           </div>
           <div
             v-else
@@ -64,7 +71,7 @@ import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
 import usePopper from "./composition/use-popper.js";
 // components
-import vInput from "./vInput.vue"
+import vInput from "./vInput.vue";
 // directives
 import detectScrollBottom from "../directives/detect-scroll-bottom";
 // tools
@@ -156,7 +163,7 @@ export default {
     // show autocomplete menu
 
     let show = () => {
-      if (!props.items.length) return
+      if (!props.items.length) return;
 
       isNewSelection.value = true;
 
@@ -231,8 +238,8 @@ export default {
     };
 
     let highlight = (string, match) => {
-      return highlightMatch(string, match, classes.match.value)
-    }
+      return highlightMatch(string, match, classes.match.value);
+    };
 
     let update = (item) => {
       selectedItem.value = item;
@@ -267,7 +274,7 @@ export default {
     // handle template events
 
     let handleFocusInput = () => {
-      show()
+      show();
     };
 
     let handleInput = () => {
@@ -277,7 +284,7 @@ export default {
 
     let handleBlurInput = (ev) => {
       if (!isPopperVisible.value) {
-        return
+        return;
       }
 
       if (!isPopperChild(ev.relatedTarget)) {
@@ -286,23 +293,23 @@ export default {
     };
 
     let handleClickIndicator = (input) => {
-      if (props.isLoading) return
+      if (props.isLoading) return;
 
       if (isPopperVisible.value) {
-        cancelInput()
-        return
+        cancelInput();
+        return;
       }
 
-      input.focus()
-    }
+      input.focus();
+    };
 
     let handleClickClearButton = (input) => {
       clearInput();
 
       if (isPopperVisible.value) {
-        input.focus()
+        input.focus();
       }
-    }
+    };
 
     let handleScrollBottom = () => {
       page.value++;
@@ -311,7 +318,7 @@ export default {
 
     let handleClickItem = (item) => {
       selectItem(item);
-    }
+    };
 
     return {
       classes,

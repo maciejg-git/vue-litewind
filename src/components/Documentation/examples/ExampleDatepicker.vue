@@ -16,7 +16,14 @@
       "
       @state:done="events.unshift({ ev: 'state:done', data: $event })"
       @input:cancel="events.unshift({ ev: 'input:cancel', data: $event })"
-    />
+    >
+    <!-- <template #day="{ day }"> -->
+    <!--   <div class="relative"> -->
+    <!--     {{ day }} -->
+    <!--   <v-badge style-badge="circle-small danger tiny" class="absolute top-full right-1/2 transform translate-x-1/2"></v-badge> -->
+    <!--   </div> -->
+    <!-- </template> -->
+    </v-date-picker>
   </v-card>
   <!-- CUT START -->
   <div class="flex-grow mt-4 lg:ml-20 lg:mt-0">

@@ -41,9 +41,9 @@ export default {
       {
         prop: "trigger",
         type: ["String"],
-        default: "'click'",
+        default: "click",
         description:
-          "Type of trigger that show or hides popover. Valid triggers are 'click', 'hover' and 'focus'",
+          "How to trigger dropdown. Valid triggers are <code class='code-text'>'click'</code>, <code class='code-text'>'focus'</code> and <code class='code-text'>'hover'</code>",
       },
       {
         prop: "no-header",

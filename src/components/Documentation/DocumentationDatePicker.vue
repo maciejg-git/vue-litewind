@@ -14,6 +14,10 @@
     <h6>Events</h6>
     <p></p>
     <table-reference-basic :items="events" reference="event"></table-reference-basic>
+
+    <h6>Slots</h6>
+    <p></p>
+    <table-reference-basic :items="slots" reference="slot"></table-reference-basic>
   </section>
 
   <section>
@@ -84,7 +88,7 @@ export default {
         prop: "range",
         type: ["Boolean"],
         default: "false",
-        description: "Allows selection of date ranges",
+        description: "Allows selection of date ranges. Changing this prop resets current selection",
       },
       {
         prop: "locale",
@@ -214,10 +218,19 @@ export default {
       },
     ]);
 
+    let slots = ref([
+      {
+        slot: "day",
+        description:
+          "Slot for customizing datepickers day",
+      },
+    ]);
+
     return {
       reference,
       styles,
       events,
+      slots,
       exampleDatepickerCode,
       exampleDatepickerModelCode,
       exampleDatepickerDropdownCode,

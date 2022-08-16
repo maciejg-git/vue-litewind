@@ -21,6 +21,17 @@
           border-white
           dark:border-dark-800 !important
       }
+      &.badge--circle-small {
+        @apply
+          rounded-full
+          border
+          w-2
+          h-2
+          px-0
+          py-0
+          border-white
+          dark:border-dark-800 !important
+      }
       &.badge--primary {
         @apply
           text-white

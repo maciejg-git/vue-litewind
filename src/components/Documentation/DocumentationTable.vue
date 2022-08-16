@@ -110,6 +110,11 @@
   </section>
 
   <section>
+    <h4>Example</h4>
+    <v-example name="ExampleTable"></v-example>
+  </section>
+
+  <section>
     <h4>Example - colspan item property</h4>
     <p>
     Item can have special property <code class="code-text">colspan: {}</code>. Properties of this object are rendered as full row below item. To render them use <code class="code-text">colspan</code> slot.

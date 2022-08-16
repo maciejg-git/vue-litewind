@@ -72,8 +72,11 @@
       :single-line-message="singleLineMessage"
       v-bind="formText"
     >
-      <template #message="message">
-        <slot name="message" v-bind="message"></slot>
+      <template
+        v-for="(name, slot) of $slots"
+        #[slot]="slotProps"
+      >
+        <slot :name="slot" v-bind="slotProps"></slot>
       </template>
     </v-form-text>
   </div>

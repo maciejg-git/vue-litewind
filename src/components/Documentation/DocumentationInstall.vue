@@ -63,16 +63,22 @@ module.exports = {
     </v-code>
 
     <p>
-      Import two css files:
+      Import css files:
       <code class="code-text">style.css</code> contains fixed classes,
-      <code class="code-text">components.css</code> contains customizable classes for components. You can import it directly or copy from <code class="code-text">'node_modules/vue-wind/dist/'</code> to the directory of your application for customization.
+      <code class="code-text">components.css</code> and <code class="code-text">form.css</code> contains customizable classes for components and forms. You can import it directly or copy from <code class="code-text">'node_modules/vue-wind/dist/'</code> to the directory of application for customization. You can also import or copy css files seperately for each component for smaller build.
     </p>
 
     <v-code language="javascript">
       {{ `// main.js
 
-// copy components.css to src directory of your project and modify it to your liking
 import "./components.css";
+import "./form.css";
+
+// or
+
+import "./button.css";
+import "./table.css";
+import "./input.css";
 
 // import fixed styles, order of imports is important
 import "vue-wind/dist/style.css" `}}
@@ -87,11 +93,12 @@ import "vue-wind/dist/style.css" `}}
 
 // register all components
 
-import { install } from "vue-wind";
+import { componentPlugin, formPlugin } from "vue-wind";
 
 let app = createApp(App);
 
-app.use(install); `}}
+app.use(componentPlugin); `}}
+app.use(formPlugin); `}}
     </v-code>
 
 
@@ -116,18 +123,18 @@ app.use(selectPlugin); `}}
       <code class="code-text">tailwind.config.js</code> for color definitions,
         </li>
         <li>
-      <code class="code-text">components.css</code> to customize base classes and variants for components,
+      css file of component (button.css, table.css etc) to customize base classes and variants for components,
         </li>
         <li>
-      and following component props that allow selection of active base and variant classes:
+      and following component props that allow selection of active classes:
         </li>
       </ul>
       <ul>
         <li class="my-2">
-          <code class="code-text">base</code> - changes base name for styling. The default value is component name ("button", "dropdown", "modal" etc...). This can be useful to make new version of appearance with different set of variants.
+          <code class="code-text">base</code> - changes base name for styling. The default value is component <code class="code-text">'default'</code>. This can be useful to make new version of appearance with different set of variants.
         </li>
         <li class="my-2">
-          <code class="code-text">style-[element]</code> - adds list of variants to elements of component. Variant can be applied conditionaly by putting "identifier:" in front of any variant. Active conditional variant can be chosen with <code class="code-text">variant</code> prop set to identifier. Identifier can be any word and does not have any relation to css. Boolean, null and undefined values of variant prop are automatically converted to strings.
+          <code class="code-text">style-[element]</code> - adds list of variants to elements of component. Variant can be applied conditionaly by putting "identifier:" in front of any variant. Active conditional variant can be chosen with <code class="code-text">variant</code> prop set to identifier. Identifier can be any word and does not have any relation to css. <code class="code-text">Boolean</code>, <code class="code-text">null</code> and <code class="code-text">undefined</code> values of variant prop are automatically converted to strings.
         </li> 
       </ul>
       </p>

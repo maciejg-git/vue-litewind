@@ -8,6 +8,7 @@ import TableReferenceBasic from "./components/Documentation/TableReferenceBasic.
 import vCode from "./components/Documentation/components/vCode.vue"
 import EventViewer from "./components/Documentation/components/EventViewer.vue"
 import vSelectProp from "./components/Documentation/components/vSelectProp.vue"
+import vExample from "./components/Documentation/examples/vExample.vue"
 import { componentPlugin, formPlugin } from "./components/index.js";
 // styles
 import "./styles/components.css"
@@ -26,6 +27,7 @@ app.component("TableReferenceBasic", TableReferenceBasic)
 app.component("vCode", vCode)
 app.component("EventViewer", EventViewer)
 app.component("vSelectProp", vSelectProp)
+app.component("vExample", vExample)
 
 // icons
 const icons = import.meta.globEager('./components/Documentation/icons/*.js')
@@ -33,18 +35,12 @@ Object.entries(icons).forEach(([path, definition]) => {
   registerIcon(app, definition.default)
 })
 
-const examples = import.meta.glob('./components/Documentation/examples/*.vue')
+const examples = import.meta.glob('./components/Documentation/examples/Example*.vue')
 for (const path in examples) {
   let file = path.replace(/^.*[\\\/]/, '')
   file = file.substring(0, file.lastIndexOf('.'))
   app.component(file, defineAsyncComponent(examples[path]))
 }
-
-// const code = import.meta.glob('./components/Documentation/examples/*.vue', { as: 'raw' })
-// for (const path in code) {
-//   let file = path.replace(/^.*[\\\/]/, '')
-//   file = file.substring(0, file.lastIndexOf('.'))
-// }
 
 app.provide("icon-types", {
   valid: "b-check-lg",

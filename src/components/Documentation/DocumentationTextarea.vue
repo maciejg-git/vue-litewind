@@ -88,6 +88,10 @@ export default {
         prop: "style-textarea",
         description: "Main textarea element",
       },
+      {
+        prop: "style-label",
+        description: "Label element if label prop is set",
+      },
     ]);
 
     let events = ref([

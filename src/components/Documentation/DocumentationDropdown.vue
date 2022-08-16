@@ -74,6 +74,13 @@ export default {
           "Set it to true/false to programatically show or hide dropdown content. Model is optional if dropdown is activated from reference slot",
       },
       {
+        prop: "trigger",
+        type: ["String"],
+        default: "click",
+        description:
+          "How to trigger dropdown. Valid triggers are <code class='code-text'>'click'</code>, <code class='code-text'>'focus'</code> and <code class='code-text'>'hover'</code>",
+      },
+      {
         prop: "auto-close-menu",
         type: ["Boolean"],
         default: "false",

@@ -134,16 +134,12 @@ export default {
 
     let styles = ref([
       {
-        prop: "style-autocomplete",
-        description: "Input element",
-      },
-      {
-        prop: "style-dropdown",
-        description: "Dropdown element",
+        prop: "style-menu",
+        description: "Menu element",
       },
       {
         prop: "style-item",
-        description: "Dropdown item element",
+        description: "Menu item element",
       },
       {
         prop: "style-match",
