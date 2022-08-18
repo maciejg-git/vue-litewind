@@ -23,16 +23,13 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <example-list></example-list>
+      <example name="ExampleList"></example>
     </div>
-    <v-code :code="exampleListCode" template language="html"></v-code>
-    <v-code :code="exampleListCode" script language="js"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
-import exampleListCode from "./examples/ExampleList.vue?raw"
 import { styleProps } from "./shared-props"
 
 export default {
@@ -83,7 +80,6 @@ export default {
       styles,
       slots,
       components,
-      exampleListCode,
     };
   },
 };

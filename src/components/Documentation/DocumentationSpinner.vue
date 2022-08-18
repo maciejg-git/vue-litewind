@@ -15,15 +15,13 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <example-spinner></example-spinner>
+      <example name="ExampleSpinner" :script="false"></example>
     </div>
-    <v-code :code="exampleSpinnerCode" template language="html"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
-import exampleSpinnerCode from "./examples/ExampleSpinner.vue?raw"
 import { styleProps } from "./shared-props"
 
 export default {
@@ -54,7 +52,6 @@ export default {
     return {
       reference,
       styles,
-      exampleSpinnerCode,
     };
   },
 };

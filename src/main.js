@@ -8,8 +8,8 @@ import TableReferenceBasic from "./components/Documentation/TableReferenceBasic.
 import vCode from "./components/Documentation/components/vCode.vue"
 import EventViewer from "./components/Documentation/components/EventViewer.vue"
 import vSelectProp from "./components/Documentation/components/vSelectProp.vue"
-import vExample from "./components/Documentation/examples/vExample.vue"
-import { componentPlugin, formPlugin } from "./components/index.js";
+import Example from "./components/Documentation/Example.vue"
+import { componentPlugin } from "./index.js";
 // styles
 import "./styles/components.css"
 import "./styles/form.css"
@@ -27,7 +27,7 @@ app.component("TableReferenceBasic", TableReferenceBasic)
 app.component("vCode", vCode)
 app.component("EventViewer", EventViewer)
 app.component("vSelectProp", vSelectProp)
-app.component("vExample", vExample)
+app.component("Example", Example)
 
 // icons
 const icons = import.meta.globEager('./components/Documentation/icons/*.js')
@@ -56,5 +56,5 @@ app.provide("icon-types", {
 
 app.use(router);
 app.use(componentPlugin);
-app.use(formPlugin);
+// app.use(formPlugin);
 app.mount("#app");

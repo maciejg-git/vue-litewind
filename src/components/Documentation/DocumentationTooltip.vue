@@ -61,43 +61,33 @@
     <h4>Example</h4>
     <div class="example">
       <p class="my-6">Default tooltip:</p>
-      <example-tooltip-simple></example-tooltip-simple>
+      <example name="ExampleTooltipSimple"></example>
     </div>
-    <v-code :code="exampleTooltipSimpleCode" template language="html"></v-code>
 
     <div class="example">
       <p class="my-6">Tooltip placement:</p>
-      <example-tooltip-placement></example-tooltip-placement>
+      <example name="ExampleTooltipPlacement"></example>
     </div>
-    <v-code :code="exampleTooltipPlacementCode" template language="html"></v-code>
 
     <div class="example">
       <p class="my-6">Tooltip delay:</p>
-      <example-tooltip-delay></example-tooltip-delay>
+      <example name="ExampleTooltipDelay"></example>
     </div>
-    <v-code :code="exampleTooltipDelayCode" template language="html"></v-code>
 
     <div class="example">
       <p class="my-6">Tooltip content source:</p>
-      <example-tooltip-content></example-tooltip-content>
+      <example name="ExampleTooltipContent"></example>
     </div>
-    <v-code :code="exampleTooltipContentCode" template language="html"></v-code>
 
     <div class="example">
       <p class="my-6">Tooltip animation:</p>
-      <example-tooltip-animation></example-tooltip-animation>
+      <example name="ExampleTooltipAnimation"></example>
     </div>
-    <v-code :code="exampleTooltipAnimationCode" template language="html"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
-import exampleTooltipSimpleCode from "./examples/ExampleTooltipSimple.vue?raw";
-import exampleTooltipPlacementCode from "./examples/ExampleTooltipPlacement.vue?raw";
-import exampleTooltipDelayCode from "./examples/ExampleTooltipDelay.vue?raw";
-import exampleTooltipContentCode from "./examples/ExampleTooltipContent.vue?raw";
-import exampleTooltipAnimationCode from "./examples/ExampleTooltipAnimation.vue?raw";
 
 export default {
   setup() {
@@ -171,11 +161,6 @@ export default {
       referenceDefinition,
       referenceValue,
       referenceValueDefinition,
-      exampleTooltipSimpleCode,
-      exampleTooltipPlacementCode,
-      exampleTooltipDelayCode,
-      exampleTooltipContentCode,
-      exampleTooltipAnimationCode,
     };
   },
 };

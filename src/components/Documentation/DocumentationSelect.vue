@@ -23,16 +23,13 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <example-select></example-select>
+      <example name="ExampleSelect"></example>
     </div>
-    <v-code :code="exampleSelectCode" template language="html"></v-code>
-    <v-code :code="exampleSelectCode" script language="js"></v-code>
   </section>
 </template>
 
 <script>
 import { ref, reactive, onMounted } from "vue";
-import exampleSelectCode from "./examples/ExampleSelect.vue?raw"
 import { styleProps, formProps } from "./shared-props"
 
 export default {
@@ -89,7 +86,6 @@ export default {
       styles,
       events,
       slots,
-      exampleSelectCode,
     };
   },
 };

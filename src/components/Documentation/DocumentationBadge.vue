@@ -19,15 +19,13 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <example-badge></example-badge>
+      <example name="ExampleBadge"></example>
     </div>
-    <v-code :code="exampleBadgeCode" template language="html"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
-import exampleBadgeCode from "./examples/ExampleBadge.vue?raw"
 import { styleProps } from "./shared-props"
 
 export default {
@@ -75,7 +73,6 @@ export default {
       reference,
       styles,
       slots,
-      exampleBadgeCode,
     };
   },
 };

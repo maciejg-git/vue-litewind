@@ -23,26 +23,20 @@
   <section>
     <h4>Example - simple modal</h4>
     <div class="example md:flex">
-      <example-modal-simple></example-modal-simple>
+      <example name="ExampleModalSimple"></example>
     </div>
-    <v-code :code="exampleModalSimpleCode" template language="html"></v-code>
-    <v-code :code="exampleModalSimpleCode" script language="js"></v-code>
   </section>
 
   <section>
     <h4>Example</h4>
     <div class="example md:flex">
-      <example-modal></example-modal>
+      <example name="ExampleModal"></example>
     </div>
-    <v-code :code="exampleModalCode" template language="html"></v-code>
-    <v-code :code="exampleModalCode" script language="js"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
-import exampleModalCode from "./examples/ExampleModal.vue?raw"
-import exampleModalSimpleCode from "./examples/ExampleModalSimple.vue?raw"
 import { styleProps } from "./shared-props"
 
 export default {
@@ -235,8 +229,6 @@ export default {
       styles,
       events,
       slots,
-      exampleModalCode,
-      exampleModalSimpleCode,
     };
   },
 };

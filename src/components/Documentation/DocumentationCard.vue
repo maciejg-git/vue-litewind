@@ -19,16 +19,13 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <example-card></example-card>
+      <example name="ExampleCard"></example>
     </div>
-    <v-code :code="exampleCardCode" template language="html"></v-code>
-    <v-code :code="exampleCardCode" script language="html"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
-import exampleCardCode from "./examples/ExampleCard.vue?raw"
 import { styleProps } from "./shared-props"
 
 export default {
@@ -61,7 +58,6 @@ export default {
       reference,
       styles,
       slots,
-      exampleCardCode,
     };
   },
 };

@@ -53,25 +53,20 @@
   <section>
     <h4>Example - simple tabs</h4>
     <div class="example">
-      <example-tabs-simple></example-tabs-simple>
+      <example name="ExampleTabsSimple" :script="false"></example>
     </div>
-    <v-code :code="exampleTabsSimpleCode" template language="html"></v-code>
   </section>
 
   <section>
     <h4>Example</h4>
     <div class="example">
-      <example-tabs></example-tabs>
+      <example name="ExampleTabs"></example>
     </div>
-    <v-code :code="exampleTabsCode" template language="html"></v-code>
-    <v-code :code="exampleTabsCode" script language="js"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
-import exampleTabsCode from "./examples/ExampleTabs.vue?raw";
-import exampleTabsSimpleCode from "./examples/ExampleTabsSimple.vue?raw";
 import { styleProps } from "./shared-props";
 
 export default {
@@ -150,8 +145,6 @@ export default {
       events,
       slots,
       components,
-      exampleTabsCode,
-      exampleTabsSimpleCode,
     };
   },
 };

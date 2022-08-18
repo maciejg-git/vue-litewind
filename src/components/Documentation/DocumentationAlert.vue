@@ -19,16 +19,13 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <example-alert></example-alert>
+      <example name="ExampleAlert"></example>
     </div>
-    <v-code :code="exampleAlertCode" template language="html"></v-code>
-    <v-code :code="exampleAlertCode" script language="js"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
-import exampleAlertCode from "./examples/ExampleAlert.vue?raw"
 import { styleProps } from "./shared-props"
 
 export default {
@@ -90,7 +87,6 @@ export default {
       reference,
       styles,
       slots,
-      exampleAlertCode,
     };
   },
 };

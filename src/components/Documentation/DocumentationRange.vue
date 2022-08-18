@@ -19,16 +19,13 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <example-range></example-range>
+      <example name="ExampleRange"></example>
     </div>
-    <v-code :code="exampleRangeCode" template language="html"></v-code>
-    <v-code :code="exampleRangeCode" script language="js"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
-import exampleRangeCode from "./examples/ExampleRange.vue?raw"
 import { styleProps, formProps } from "./shared-props"
 
 export default {
@@ -58,7 +55,6 @@ export default {
       reference,
       styles,
       events,
-      exampleRangeCode,
     };
   },
 };

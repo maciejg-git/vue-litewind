@@ -31,36 +31,28 @@
   <section id="example">
     <h4>Example - simple dropdown</h4>
     <div class="example">
-      <example-dropdown-simple></example-dropdown-simple>
+      <example name="ExampleDropdownSimple" :script="false"></example>
     </div>
-    <v-code :code="exampleDropdownSimpleCode" template language="html"></v-code>
   </section>
 
   <section id="example">
     <h4>Example</h4>
     <div class="example">
-      <example-dropdown></example-dropdown>
+      <example name="ExampleDropdown"></example>
     </div>
-    <v-code :code="exampleDropdownCode" template language="html"></v-code>
-    <v-code :code="exampleDropdownCode" script language="js"></v-code>
   </section>
 
   <section id="example">
     <h4>Example - context dropdown</h4>
     <p>To make dropdown component exposes <code class="code-text">showContextDropdown($event, { contextData })</code> function.</p>
     <div class="example">
-      <example-dropdown-context></example-dropdown-context>
+      <example name="ExampleDropdownContext"></example>
     </div>
-    <v-code :code="ExampleDropdownContextCode" template language="html"></v-code>
-    <v-code :code="ExampleDropdownContextCode" script language="js"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
-import exampleDropdownCode from "./examples/ExampleDropdown.vue?raw"
-import exampleDropdownSimpleCode from "./examples/ExampleDropdownSimple.vue?raw"
-import ExampleDropdownContextCode from "./examples/ExampleDropdownContext.vue?raw"
 import { popperProps, styleProps } from "./shared-props"
 
 export default {
@@ -157,9 +149,6 @@ export default {
       slots,
       functions,
       components,
-      exampleDropdownCode,
-      exampleDropdownSimpleCode,
-      ExampleDropdownContextCode,
     };
   },
 };

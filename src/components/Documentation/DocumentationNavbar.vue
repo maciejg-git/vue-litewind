@@ -19,15 +19,13 @@
   <section>
     <h4>Example</h4>
     <div class="example relative">
-      <example-navbar></example-navbar>
+      <example name="ExampleNavbar" :script="false"></example>
     </div>
-    <v-code :code="exampleNavbarCode" template language="html"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
-import exampleNavbarCode from "./examples/ExampleNavbar.vue?raw"
 import { styleProps } from "./shared-props"
 
 export default {
@@ -75,7 +73,6 @@ export default {
       reference,
       styles,
       slots,
-      exampleNavbarCode,
     };
   },
 };

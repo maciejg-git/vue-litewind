@@ -94,24 +94,15 @@
   <section>
     <h4>Example - simple table</h4>
     <div class="example">
-      <example-table-simple></example-table-simple>
+      <example name="ExampleTableSimple"></example>
     </div>
-    <v-code :code="exampleTableSimpleCode" template language="html"></v-code>
-    <v-code :code="exampleTableSimpleCode" script language="js"></v-code>
   </section>
 
   <section>
     <h4>Example</h4>
     <div class="example">
-      <example-table></example-table>
+      <example name="ExampleTable"></example>
     </div>
-    <v-code :code="exampleTableCode" template language="html"></v-code>
-    <v-code :code="exampleTableCode" script language="js"></v-code>
-  </section>
-
-  <section>
-    <h4>Example</h4>
-    <v-example name="ExampleTable"></v-example>
   </section>
 
   <section>
@@ -120,18 +111,13 @@
     Item can have special property <code class="code-text">colspan: {}</code>. Properties of this object are rendered as full row below item. To render them use <code class="code-text">colspan</code> slot.
     </p>
     <div class="example">
-      <example-table-colspan></example-table-colspan>
+      <example name="ExampleTableColspan"></example>
     </div>
-    <v-code :code="exampleTableColspanCode" template language="html"></v-code>
-    <v-code :code="exampleTableColspanCode" script language="js"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
-import exampleTableCode from "./examples/ExampleTable.vue?raw"
-import exampleTableSimpleCode from "./examples/ExampleTableSimple.vue?raw"
-import exampleTableColspanCode from "./examples/ExampleTableColspan.vue?raw"
 import { styleProps } from "./shared-props"
 
 export default {
@@ -181,7 +167,7 @@ export default {
         type: ["String"],
         default: "empty string",
         description:
-          "Enables or disables selection of rows. Valid values are <code class='code-text'>'single'</code> (allows selection of single row only), <code class='code-text'>'multiple'</code> (allows multiple rows to be selected) or <code class='code-text'>empty string</code> (disables selection). After new row is selected or unselected event <code class='code-word'>input:selection</code> is emmited with array of all selected records. <span class='font-semibold'>Filtering</span>, <span class='font-semibold'>sorting</span>, <span class='font-semibold'>changing current page</span> or <span class='font-semibold'>modifying selection-mode prop</span> resets current selection by emmiting empty array",
+        "Enables or disables selection of rows. Valid values are <code class='code-text'>'single'</code> (allows selection of single row only), <code class='code-text'>'multiple'</code> (allows multiple rows to be selected) or <code class='code-text'>empty string</code> (disables selection). After new row is selected or unselected event <code class='code-word'>input:selection</code> is emmited with array of all selected records. <br><br><span class='font-semibold'>Filtering</span>, <span class='font-semibold'>sorting</span>, <span class='font-semibold'>changing current page</span> or <span class='font-semibold'>modifying selection-mode prop</span> resets current selection by emmiting empty array",
       },
       {
         prop: "page",
@@ -384,9 +370,6 @@ export default {
       slots,
       referenceProp,
       referencePropDefinition,
-      exampleTableCode,
-      exampleTableSimpleCode,
-      exampleTableColspanCode,
     };
   },
 };

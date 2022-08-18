@@ -19,10 +19,8 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <example-collapse></example-collapse>
+      <example name="ExampleCollapse"></example>
     </div>
-    <v-code :code="exampleCollapseCode" template language="html"></v-code>
-    <v-code :code="exampleCollapseCode" script language="js"></v-code>
   </section>
 
   <section>
@@ -32,21 +30,13 @@
         Turn collapse components to accordion by wrapping them with <code class="code-text">v-accordion</code>
         component. In accordion mode only one collapse element can be opened.
       </p>
-      <example-collapse-accordion></example-collapse-accordion>
+      <example name="ExampleCollapseAccordion"></example>
     </div>
-    <v-code
-      :code="exampleCollapseAccordionCode"
-      template
-      language="html"
-    ></v-code>
-    <v-code :code="exampleCollapseAccordionCode" script language="js"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
-import exampleCollapseCode from "./examples/ExampleCollapse.vue?raw";
-import exampleCollapseAccordionCode from "./examples/ExampleCollapseAccordion.vue?raw";
 
 export default {
   setup() {
@@ -78,8 +68,6 @@ export default {
       reference,
       slots,
       components,
-      exampleCollapseCode,
-      exampleCollapseAccordionCode,
     };
   },
 };

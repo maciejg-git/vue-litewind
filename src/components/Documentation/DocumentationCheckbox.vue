@@ -26,10 +26,8 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <example-checkbox></example-checkbox>
+      <example name="ExampleCheckbox"></example>
     </div>
-    <v-code :code="exampleCheckboxCode" template language="html"></v-code>
-    <v-code :code="exampleCheckboxCode" script language="js"></v-code>
   </section>
 
   <section>
@@ -38,21 +36,13 @@
     Checkboxes can be optionally wrapped with <code class="code-text">v-checkbox-group</code> component to create group with single <code class="code-text">v-model</code>.
     </p>
     <div class="example">
-      <example-checkbox-group></example-checkbox-group>
-      <v-code
-        :code="exampleCheckboxGroupCode"
-        template
-        language="html"
-      ></v-code>
-      <v-code :code="exampleCheckboxGroupCode" script language="js"></v-code>
+      <example name="ExampleCheckboxGroup"></example>
     </div>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
-import exampleCheckboxCode from "./examples/ExampleCheckbox.vue?raw";
-import exampleCheckboxGroupCode from "./examples/ExampleCheckboxGroup.vue?raw";
 import { styleProps, formProps } from "./shared-props"
 
 export default {
@@ -92,8 +82,6 @@ export default {
       reference,
       styles,
       events,
-      exampleCheckboxCode,
-      exampleCheckboxGroupCode,
     };
   },
 };

@@ -19,15 +19,13 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <example-button></example-button>
+      <example name="ExampleButton" :script="false"></example>
     </div>
-    <v-code :code="exampleButtonCode" template language="html"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
-import exampleButtonCode from "./examples/ExampleButton.vue?raw"
 import { styleProps } from "./shared-props"
 
 export default {
@@ -72,7 +70,6 @@ export default {
       reference,
       styles,
       slots,
-      exampleButtonCode,
     };
   },
 };

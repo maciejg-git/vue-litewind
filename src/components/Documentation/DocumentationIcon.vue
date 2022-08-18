@@ -20,9 +20,8 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <example-icon></example-icon>
+      <example name="ExampleIcon" :script="false"></example>
     </div>
-    <v-code :code="exampleIconCode" template language="html"></v-code>
   </section>
 
   <section>
@@ -42,7 +41,6 @@
 <script>
 import { ref } from "vue";
 import ExampleIcon from "./examples/ExampleIcon.vue";
-import exampleIconCode from "./examples/ExampleIcon.vue?raw";
 import exampleIconMainCode from "./examples/ExampleIconMain.js?raw";
 
 export default {
@@ -81,7 +79,6 @@ export default {
 
     return {
       reference,
-      exampleIconCode,
       exampleIconMainCode,
     };
   },

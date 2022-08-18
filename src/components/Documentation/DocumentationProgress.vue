@@ -19,17 +19,12 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <example-progress></example-progress>
+      <example name="ExampleProgress"></example>
     </div>
-    <v-code :code="exampleProgressCode" template language="html"></v-code>
-    <v-code :code="exampleProgressCode" script language="js"></v-code>
   </section>
 
   <section>
     <h4>Example - indeterminate</h4>
-    <div class="example">
-      <example-progress-indeterminate></example-progress-indeterminate>
-    </div>
     <p>Width, speed, timing function and direction of indeterminate progress bar can be customized with css variables:
     <ul>
       <li>
@@ -54,15 +49,14 @@
       </li>
     </ul>
     </p>
-    <v-code :code="exampleProgressIndeterminateCode" template language="html"></v-code>
-    <v-code :code="exampleProgressIndeterminateCode" script language="js"></v-code>
+    <div class="example">
+      <example name="ExampleProgressIndeterminate"></example>
+    </div>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
-import exampleProgressCode from "./examples/ExampleProgress.vue?raw"
-import exampleProgressIndeterminateCode from "./examples/ExampleProgressIndeterminate.vue?raw"
 import { styleProps } from "./shared-props"
 
 export default {
@@ -136,8 +130,6 @@ export default {
       reference,
       styles,
       slots,
-      exampleProgressCode,
-      exampleProgressIndeterminateCode,
     };
   },
 };

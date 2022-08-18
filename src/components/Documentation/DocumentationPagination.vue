@@ -24,16 +24,13 @@
       .
     </p>
     <div class="example">
-      <example-pagination></example-pagination>
+      <example name="ExamplePagination"></example>
     </div>
-    <v-code :code="examplePaginationCode" template language="html"></v-code>
-    <v-code :code="examplePaginationCode" script language="js"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
-import examplePaginationCode from "./examples/ExamplePagination.vue?raw";
 import { styleProps } from "./shared-props"
 
 export default {
@@ -99,7 +96,6 @@ export default {
       reference,
       styles,
       events,
-      examplePaginationCode,
     };
   },
 };

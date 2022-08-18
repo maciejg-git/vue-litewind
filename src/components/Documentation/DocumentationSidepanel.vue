@@ -23,16 +23,13 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <example-sidepanel></example-sidepanel>
+      <example name="ExampleSidepanel"></example>
     </div>
-    <v-code :code="exampleSidepanelCode" template language="html"></v-code>
-    <v-code :code="exampleSidepanelCode" script language="js"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
-import exampleSidepanelCode from "./examples/ExampleSidepanel.vue?raw"
 import { styleProps } from "./shared-props"
 
 export default {
@@ -105,7 +102,6 @@ export default {
       styles,
       events,
       slots,
-      exampleSidepanelCode,
     };
   },
 };

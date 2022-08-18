@@ -27,26 +27,20 @@
   <section>
     <h4>Example - simple tree</h4>
     <div class="example">
-      <example-tree-simple></example-tree-simple>
+      <example name="ExampleTreeSimple"></example>
     </div>
-    <v-code :code="ExampleTreeSimpleCode" template language="html"></v-code>
-    <v-code :code="ExampleTreeSimpleCode" script language="js"></v-code>
   </section>
 
   <section>
     <h4>Example</h4>
     <div class="example">
-      <example-tree></example-tree>
+      <example name="ExampleTree"></example>
     </div>
-    <v-code :code="ExampleTreeCode" template language="html"></v-code>
-    <v-code :code="ExampleTreeCode" script language="js"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
-import ExampleTreeCode from "./examples/ExampleTree.vue?raw"
-import ExampleTreeSimpleCode from "./examples/ExampleTreeSimple.vue?raw"
 import { styleProps } from "./shared-props"
 
 export default {
@@ -254,8 +248,6 @@ export default {
       events,
       slots,
       functions,
-      ExampleTreeCode,
-      ExampleTreeSimpleCode,
     };
   },
 };

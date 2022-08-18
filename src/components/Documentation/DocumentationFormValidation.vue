@@ -98,22 +98,16 @@
   <section>
     <h4>Example - simple validation</h4>
     <div class="example">
-      <example-validation-username></example-validation-username>
+      <example name="ExampleValidationUsername"></example>
     </div>
-    <v-code :code="ExampleValidationUsernameCode" template language="html"></v-code>
-    <v-code :code="ExampleValidationUsernameCode" script language="js"></v-code>
 
     <div class="example">
-      <example-validation-password></example-validation-password>
+      <example name="ExampleValidationPassword"></example>
     </div>
-    <v-code :code="ExampleValidationPasswordCode" template language="html"></v-code>
-    <v-code :code="ExampleValidationPasswordCode" script language="js"></v-code>
 
     <div class="example">
-      <example-validation-checkbox></example-validation-checkbox>
+      <example name="ExampleValidationCheckbox"></example>
     </div>
-    <v-code :code="ExampleValidationCheckboxCode" template language="html"></v-code>
-    <v-code :code="ExampleValidationCheckboxCode" script language="js"></v-code>
   </section>
 
   <section>
@@ -135,7 +129,7 @@
     </ul>
     </p>
     <div class="example">
-      <example-validation-modes />
+      <example name="ExampleValidationModes" :script="false" :template="false"></example>
     </div>
   </section>
 
@@ -145,10 +139,8 @@
      In order to validate entire form wrap inputs with <code class="code-text">v-form</code> component which exposes two functions: <code class="code-text">validate()</code> and <code class="code-text">reset()</code>. Calling <code class="code-text">validate()</code> function validates every input according to its rules and return <code class="code-text">true</code> if all are valid (<code class="code-text">false</code> if any input is invalid). To reset all inputs within <code class="code-text">v-form</code> use exposed <code class="code-text">reset()</code> function.
     </p>
     <div class="example">
-      <example-validation-form />
+      <example name="ExampleValidationForm"></example>
     </div>
-    <v-code :code="ExampleValidationFormCode" template language="html"></v-code>
-    <v-code :code="ExampleValidationFormCode" script language="js"></v-code>
   </section>
 
   <section>
@@ -157,7 +149,7 @@
       In order to display single line validation message use <code class="code-text">single-line-message</code> prop.
     </p>
     <div class="example">
-      <example-validation-single-line-message />
+      <example name="ExampleValidationSingleLineMessage" :script="false"></example>
     </div>
   </section>
 
@@ -167,30 +159,15 @@
       In order to customize validation messages use <code class="code-text">message</code> slot.
     </p>
     <div class="example">
-      <example-validation-message-slot />
+      <example name="ExampleValidationMessageSlot"></example>
     </div>
-    <v-code :code="ExampleValidationMessageSlotCode" template language="html"></v-code>
-    <v-code :code="ExampleValidationMessageSlotCode" script language="js"></v-code>
   </section>
 </template>
 
 <script>
-import ExampleValidationUsernameCode from "./examples/ExampleValidationUsername.vue?raw"
-import ExampleValidationPasswordCode from "./examples/ExampleValidationPassword.vue?raw"
-import ExampleValidationCheckboxCode from "./examples/ExampleValidationUsername.vue?raw"
-import ExampleValidationFormCode from "./examples/ExampleValidationForm.vue?raw"
-import ExampleValidationSetValidationMessageCode from "./examples/ExampleValidationSetValidationMessage.js?raw"
-import ExampleValidationMessageSlotCode from "./examples/ExampleValidationMessageSlot.vue?raw"
-
 export default {
   setup(props) {
     return {
-      ExampleValidationUsernameCode,
-      ExampleValidationPasswordCode,
-      ExampleValidationCheckboxCode,
-      ExampleValidationFormCode,
-      ExampleValidationSetValidationMessageCode,
-      ExampleValidationMessageSlotCode,
     };
   },
 };

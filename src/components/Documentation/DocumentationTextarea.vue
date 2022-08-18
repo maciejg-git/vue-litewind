@@ -26,16 +26,13 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <example-textarea></example-textarea>
+      <example name="ExampleTextarea"></example>
     </div>
-    <v-code :code="exampleTextareaCode" template language="html"></v-code>
-    <v-code :code="exampleTextareaCode" script language="js"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
-import exampleTextareaCode from "./examples/ExampleTextarea.vue?raw"
 import { styleProps, formProps } from "./shared-props"
 
 export default {
@@ -113,7 +110,6 @@ export default {
       styles,
       events,
       slots,
-      exampleTextareaCode,
     };
   },
 };

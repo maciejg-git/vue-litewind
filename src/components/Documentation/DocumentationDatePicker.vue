@@ -42,37 +42,28 @@
       format.
     </p>
     <div class="example">
-      <example-datepicker-model></example-datepicker-model>
+      <example name="ExampleDatepickerModel"></example>
     </div>
-    <v-code :code="exampleDatepickerModelCode" template language="html"></v-code>
-    <v-code :code="exampleDatepickerModelCode" script language="js"></v-code>
   </section>
   <section>
     <h4>Example</h4>
     <p></p>
-    <div class="example lg:flex">
-      <example-datepicker></example-datepicker>
+    <div class="example">
+      <example name="ExampleDatepicker"></example>
     </div>
-    <v-code :code="exampleDatepickerCode" template language="html"></v-code>
-    <v-code :code="exampleDatepickerCode" script language="js"></v-code>
   </section>
 
   <section>
     <h4 id="dropdown">Datepicker in dropdown</h4>
     <p></p>
     <div class="example md:flex">
-      <example-datepicker-dropdown></example-datepicker-dropdown>
+      <example name="ExampleDatepickerDropdown"></example>
     </div>
-    <v-code :code="exampleDatepickerDropdownCode" template language="html"></v-code>
-    <v-code :code="exampleDatepickerDropdownCode" script language="js"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
-import exampleDatepickerCode from "./examples/ExampleDatepicker.vue?raw"
-import exampleDatepickerModelCode from "./examples/ExampleDatepickerModel.vue?raw"
-import exampleDatepickerDropdownCode from "./examples/ExampleDatepickerDropdown.vue?raw"
 import { styleProps } from "./shared-props"
 
 export default {
@@ -231,9 +222,6 @@ export default {
       styles,
       events,
       slots,
-      exampleDatepickerCode,
-      exampleDatepickerModelCode,
-      exampleDatepickerDropdownCode,
     };
   },
 };

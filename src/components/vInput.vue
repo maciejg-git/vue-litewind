@@ -132,6 +132,7 @@ export default {
   emits: [
     "update:modelValue",
     "update:status",
+    "update:messages",
     "update:state",
     "input:blur",
     "click:clear-button",

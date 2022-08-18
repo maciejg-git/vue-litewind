@@ -22,16 +22,13 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <example-breadcrumb />
+      <example name="ExampleBreadcrumb"></example>
     </div>
-    <v-code :code="exampleBreadcrumbCode" template language="html"></v-code>
-    <v-code :code="exampleBreadcrumbCode" script language="js"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
-import exampleBreadcrumbCode from "./examples/ExampleBreadcrumb.vue?raw"
 import { styleProps } from "./shared-props"
 
 export default {
@@ -86,7 +83,6 @@ export default {
       reference,
       styles,
       examplePath,
-      exampleBreadcrumbCode,
     };
   },
 };

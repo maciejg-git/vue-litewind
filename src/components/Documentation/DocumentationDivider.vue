@@ -15,15 +15,13 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <example-divider></example-divider>
+      <example name="ExampleDivider" :script="false"></example>
     </div>
-    <v-code :code="exampleDividerCode" template language="html"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
-import exampleDividerCode from "./examples/ExampleDivider.vue?raw"
 import { styleProps } from "./shared-props"
 
 export default {
@@ -42,7 +40,6 @@ export default {
     return {
       reference,
       styles,
-      exampleDividerCode,
     };
   },
 };

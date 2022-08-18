@@ -20,9 +20,7 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <example-chevron></example-chevron>
-    <v-code :code="exampleChevronCode" template language="html"></v-code>
-    <v-code :code="exampleChevronCode" script language="js"></v-code>
+      <example name="ExampleChevron"></example>
     </div>
   </section>
 </template>
@@ -86,7 +84,6 @@ export default {
     return {
       reference,
       styles,
-      exampleChevronCode,
     };
   },
 };

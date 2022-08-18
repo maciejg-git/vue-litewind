@@ -19,26 +19,20 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <example-radio></example-radio>
+      <example name="ExampleRadio"></example>
     </div>
-    <v-code :code="exampleRadioCode" template language="html"></v-code>
-    <v-code :code="exampleRadioCode" script language="js"></v-code>
   </section>
 
   <section>
     <h4>Radio group</h4>
     <div class="example">
-      <example-radio-group></example-radio-group>
+      <example name="ExampleRadioGroup"></example>
     </div>
-    <v-code :code="exampleRadioGroupCode" template language="html"></v-code>
-    <v-code :code="exampleRadioGroupCode" script language="js"></v-code>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
-import exampleRadioCode from "./examples/ExampleRadio.vue?raw"
-import exampleRadioGroupCode from "./examples/ExampleRadioGroup.vue?raw"
 import { styleProps, formProps } from "./shared-props"
 
 export default {
@@ -78,8 +72,6 @@ export default {
       reference,
       styles,
       events,
-      exampleRadioCode,
-      exampleRadioGroupCode,
     };
   },
 };
