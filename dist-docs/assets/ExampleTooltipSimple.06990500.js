@@ -1,0 +1,1 @@
+import{_ as o,s,h as c,w as i,d as n,o as r,e as _,u as a}from"./index.55f63345.js";const l={},p=_(" Hover me ");function d(u,v){const t=n("v-button"),e=a("tooltip");return s((r(),c(t,null,{default:i(()=>[p]),_:1})),[[e,"This is tooltip",void 0,{oY5:!0}]])}const f=o(l,[["render",d]]);export{f as default};

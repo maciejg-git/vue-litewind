@@ -1,0 +1,1 @@
+import{_ as t,r,h as c,d as n,o as l}from"./index.55f63345.js";const p={setup(){return{example:r({path:[{label:"Home",to:"/",icon:"b-house-fill"},{label:"Documentation",to:"/documentation"},{label:"Breadcrumb"}]})}}};function s(e,m,u,a,_,b){const o=n("v-breadcrumb");return l(),c(o,{path:a.example.path},null,8,["path"])}const i=t(p,[["render",s]]);export{i as default};

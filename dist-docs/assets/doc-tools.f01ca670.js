@@ -1,0 +1,1 @@
+let n=(e,t,a)=>{let s=JSON.stringify(e,a,"&#9;");return t?s.replace(/(false)/gi,"<span class='text-danger-400 font-semibold'>$1</span>").replace(/(true)/gi,"<span class='text-success-400 font-semibold'>$1</span>"):s};export{n as s};
