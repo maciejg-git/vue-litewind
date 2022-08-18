@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-center gap-y-2 w-full md:w-1/2">
+  <div class="flex gap-x-4 w-full">
     <v-button @click="state.isVisible = !state.isVisible">
       Show modal
     </v-button>
@@ -11,7 +11,7 @@
     </v-button>
   </div>
 <!-- CUT START -->
-  <div class="flex flex-col gap-y-2 mt-4 md:ml-14 md:mt-0">
+<div class="flex flex-col gap-y-2 mt-10">
     <div>
       <label for="position">position:</label>
       <v-select id="position" v-model="example.position">
@@ -43,7 +43,7 @@
         <option value="fade-scale-s">fade-scale-s</option>
       </v-select>
     </div>
-  </div>
+    </div>
 <!-- CUT END -->
 
   <!-- modal -->

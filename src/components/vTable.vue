@@ -146,7 +146,7 @@ export default {
     styleRow: { type: String, default: "" },
     styleCell: { type: String, default: "" },
     styleCaption: { type: String, default: "" },
-    ...sharedStyleProps("table"),
+    ...sharedStyleProps(),
   },
   components: {
     SortIcon,

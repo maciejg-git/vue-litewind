@@ -22,14 +22,14 @@
 
   <section>
     <h4>Example - simple modal</h4>
-    <div class="example md:flex">
+    <div class="example">
       <example name="ExampleModalSimple"></example>
     </div>
   </section>
 
   <section>
     <h4>Example</h4>
-    <div class="example md:flex">
+    <div class="example">
       <example name="ExampleModal"></example>
     </div>
   </section>

@@ -10,6 +10,7 @@ import EventViewer from "./components/Documentation/components/EventViewer.vue"
 import vSelectProp from "./components/Documentation/components/vSelectProp.vue"
 import Example from "./components/Documentation/Example.vue"
 import { componentPlugin } from "./index.js";
+import { components } from "./index"
 // styles
 import "./styles/components.css"
 import "./styles/form.css"
@@ -55,6 +56,8 @@ app.provide("icon-types", {
 })
 
 app.use(router);
-app.use(componentPlugin);
+app.use(componentPlugin, {
+  components,
+});
 // app.use(formPlugin);
 app.mount("#app");

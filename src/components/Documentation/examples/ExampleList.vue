@@ -23,8 +23,8 @@
   <div class="mt-5">
     <label for="style">List style:</label>
     <v-select id="style" v-model="example.base">
-      <option value="list">bootstrap</option>
-      <option value="list-material">material</option>
+      <option value="default">bootstrap</option>
+      <option value="material">material</option>
     </v-select>
   </div>
   <v-tabs base="material" class="mt-10">
@@ -53,7 +53,7 @@ export default {
     let example = reactive({
       users: company.slice(0, 5).map((i) => ({ ...i, active: false })),
       tag: "div",
-      base: "list",
+      base: "default",
     });
 
     return {

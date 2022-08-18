@@ -61,27 +61,27 @@
     <h4>Example</h4>
     <div class="example">
       <p class="my-6">Default tooltip:</p>
-      <example name="ExampleTooltipSimple"></example>
+      <example name="ExampleTooltipSimple" :script="false"></example>
     </div>
 
     <div class="example">
       <p class="my-6">Tooltip placement:</p>
-      <example name="ExampleTooltipPlacement"></example>
+      <example name="ExampleTooltipPlacement" :script="false"></example>
     </div>
 
     <div class="example">
       <p class="my-6">Tooltip delay:</p>
-      <example name="ExampleTooltipDelay"></example>
+      <example name="ExampleTooltipDelay" :script="false"></example>
     </div>
 
     <div class="example">
       <p class="my-6">Tooltip content source:</p>
-      <example name="ExampleTooltipContent"></example>
+      <example name="ExampleTooltipContent" :script="false"></example>
     </div>
 
     <div class="example">
       <p class="my-6">Tooltip animation:</p>
-      <example name="ExampleTooltipAnimation"></example>
+      <example name="ExampleTooltipAnimation" :script="false"></example>
     </div>
   </section>
 </template>
