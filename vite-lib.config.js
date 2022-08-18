@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [vue()],
   build: {
     lib: {
-      entry: path.resolve(__dirname, "src/components/index.js"),
+      entry: path.resolve(__dirname, "src/index.js"),
       name: "MyLib",
     },
     rollupOptions: {
