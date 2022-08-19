@@ -92,7 +92,7 @@
     <p>
       Default messages of global validators can be changed by <code class="code-text">setValidationMessage(validator, message)</code> function. If validator has argument (for example <code class="code-text">maxLength</code>) <code class="code-text">%d</code> token can be used in message in place of that argument.
     </p>
-    <v-code :code="ExampleValidationSetValidationMessageCode" language="js"></v-code>
+    <v-code :code="ExampleValidationSetValidationMessage" language="js"></v-code>
   </section>
 
   <section>
@@ -165,9 +165,12 @@
 </template>
 
 <script>
+import ExampleValidationSetValidationMessage from "./examples/ExampleValidationSetValidationMessage.js?raw"
+
 export default {
   setup(props) {
     return {
+      ExampleValidationSetValidationMessage,
     };
   },
 };

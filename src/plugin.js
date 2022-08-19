@@ -1,10 +1,11 @@
 import { default as tooltip } from "./directives/tooltip"
 
 const defaultOptions = {
-  defaultProps: {},
+  globalProps: {},
+  componentProps: {},
 }
 
-let globalOptions = null
+let globalOptions = {}
 
 let componentPlugin = {
   install(app, options) {

@@ -1,23 +1,18 @@
 <template>
   <h3>Date Picker</h3>
-  <p></p>
 
   <section>
     <h5>Reference</h5>
-    <p></p>
-    <table-reference :items="reference"></table-reference>
+    <table-reference :items="reference" />
 
     <h6>Styling props</h6>
-    <p></p>
-    <table-reference-basic :items="styles"></table-reference-basic>
+    <table-reference-basic :items="styles" />
 
     <h6>Events</h6>
-    <p></p>
-    <table-reference-basic :items="events" reference="event"></table-reference-basic>
+    <table-reference-basic :items="events" reference="event" />
 
     <h6>Slots</h6>
-    <p></p>
-    <table-reference-basic :items="slots" reference="slot"></table-reference-basic>
+    <table-reference-basic :items="slots" reference="slot" />
   </section>
 
   <section>
@@ -47,17 +42,22 @@
   </section>
   <section>
     <h4>Example</h4>
-    <p></p>
     <div class="example">
       <example name="ExampleDatepicker"></example>
     </div>
   </section>
 
   <section>
-    <h4 id="dropdown">Datepicker in dropdown</h4>
-    <p></p>
-    <div class="example md:flex">
+    <h4>Example - datepicker in dropdown</h4>
+    <div class="example">
       <example name="ExampleDatepickerDropdown"></example>
+    </div>
+  </section>
+
+  <section>
+    <h4>Example - datepicker slots</h4>
+    <div class="example">
+      <example name="ExampleDatepickerSlot"></example>
     </div>
   </section>
 </template>

@@ -72,10 +72,7 @@
       :single-line-message="singleLineMessage"
       v-bind="formText"
     >
-      <template
-        v-for="(name, slot) of $slots"
-        #[slot]="slotProps"
-      >
+      <template v-for="(name, slot) of $slots" #[slot]="slotProps">
         <slot :name="slot" v-bind="slotProps"></slot>
       </template>
     </v-form-text>
@@ -98,6 +95,7 @@ import { globalValidators } from "../validators";
 import { isFunction } from "../tools";
 // props
 import { sharedStyleProps, sharedFormProps } from "../shared-props";
+import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
@@ -108,7 +106,10 @@ export default {
     validateMode: { type: String, default: "silent" },
     useLoader: { type: Boolean, default: false },
     isLoading: { type: Boolean, default: false },
-    singleLineMessage: { type: Boolean, default: false },
+    singleLineMessage: {
+      type: Boolean,
+      default: defaultProps("input", "singleLineMessage", false),
+    },
     showIndicator: { type: Boolean, default: false },
     indicatorSwitch: { type: Boolean, default: false },
     label: { type: String, default: "" },

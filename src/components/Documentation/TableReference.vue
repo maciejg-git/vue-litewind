@@ -19,7 +19,7 @@
       <code class="text-sm">{{ value }}</code>
     </template>
     <template #cell:description="{ value }">
-      <span v-html="value"></span>
+      <span v-html="template(value)"></span>
     </template>
     <template #cell:prop="{ value }">
       <code v-html="value"></code>
@@ -48,9 +48,17 @@ export default {
         key: "description",
       },
     ]);
+
+    let template = (string) => {
+      return string.replace(
+        new RegExp(`('[^']*')|(\\bv-\\w+)`, "ig"),
+        `<code class="code-text">$1$2</code>`
+      );
+    };
     
     return {
-      definition
+      definition,
+      template
     }
   },
 }

@@ -93,12 +93,14 @@ import "vue-wind/dist/style.css" `}}
 
 // register all components
 
-import { componentPlugin, formPlugin } from "vue-wind";
+import { componentPlugin } from "vue-wind";
+import { components} from "vue-wind";
 
 let app = createApp(App);
 
-app.use(componentPlugin); `}}
-app.use(formPlugin); `}}
+app.use(componentPlugin, {
+  components,
+}); `}}
     </v-code>
 
 
@@ -107,12 +109,17 @@ app.use(formPlugin); `}}
 
 // register selected components
 
-import { buttonPlugin, selectPlugin } from "vue-wind";
+import { componentPlugin } from "vue-wind";
+import { vButton, vSelect } from "vue-wind";
 
 let app = createApp(App);
 
-app.use(buttonPlugin);
-app.use(selectPlugin); `}}
+app.use(componentPlugin, {
+  components: {
+    vButton,
+    vSelect,
+  }
+}); `}}
     </v-code>
 
     <h5>Styling components</h5>

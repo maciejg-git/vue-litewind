@@ -1,11 +1,9 @@
 <template>
   <h3>Icon</h3>
-  <p></p>
 
   <section>
     <h4>Reference</h4>
-    <p></p>
-    <table-reference :items="reference"></table-reference>
+    <table-reference :items="reference" />
   </section>
 
   <section>
@@ -40,13 +38,9 @@
 
 <script>
 import { ref } from "vue";
-import ExampleIcon from "./examples/ExampleIcon.vue";
 import exampleIconMainCode from "./examples/ExampleIconMain.js?raw";
 
 export default {
-  components: {
-    ExampleIcon,
-  },
   setup() {
     let reference = ref([
       {
@@ -86,5 +80,4 @@ export default {
 </script>
 
 <style scoped>
-@import "./Documentation.css";
 </style>

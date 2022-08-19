@@ -4,28 +4,22 @@
 
   <section>
     <h4>Reference</h4>
-    <p></p>
-    <table-reference :items="reference"></table-reference>
+    <table-reference :items="reference" />
 
     <h6>Styling props</h6>
-    <p></p>
-    <table-reference-basic :items="styles"></table-reference-basic>
+    <table-reference-basic :items="styles" />
 
     <h6>Events</h6>
-    <p></p>
-    <table-reference-basic :items="events" reference="event"></table-reference-basic>
+    <table-reference-basic :items="events" reference="event" />
 
     <h6>Slots</h6>
-    <p></p>
-    <table-reference-basic :items="slots" reference="slot"></table-reference-basic>
+    <table-reference-basic :items="slots" reference="slot" />
 
     <h6>Components</h6>
-    <p></p>
-    <table-reference-basic :items="components" reference="component"></table-reference-basic>
+    <table-reference-basic :items="components" reference="component" />
 
     <h6>Functions</h6>
-    <p></p>
-    <table-reference-basic :items="functions" reference="function"></table-reference-basic>
+    <table-reference-basic :items="functions" reference="function" />
   </section>
 
   <section id="example">
@@ -44,7 +38,13 @@
 
   <section id="example">
     <h4>Example - context dropdown</h4>
-    <p>To make dropdown component exposes <code class="code-text">showContextDropdown($event, { contextData })</code> function.</p>
+    <p>
+      To make dropdown component exposes
+      <code class="code-text">
+        showContextDropdown($event, { contextData })
+      </code>
+      function.
+    </p>
     <div class="example">
       <example name="ExampleDropdownContext"></example>
     </div>
@@ -53,7 +53,7 @@
 
 <script>
 import { ref } from "vue";
-import { popperProps, styleProps } from "./shared-props"
+import { popperProps, styleProps } from "./shared-props";
 
 export default {
   setup(props) {
@@ -115,7 +115,8 @@ export default {
     let slots = ref([
       {
         slot: "reference",
-        description: "Slot for button that activates dropdown. Dropdown is positioned relative to element in this slot.",
+        description:
+          "Slot for button that activates dropdown. Dropdown is positioned relative to element in this slot.",
       },
       {
         slot: "default",
@@ -131,14 +132,16 @@ export default {
       },
       {
         component: "v-button-dropdown",
-        description: "Optional version of <code class='code-text'>v-button</code> that has reactive indicator build in. It uses the same props as normal <code class='code-text'>v-button</code> as well as triangle and icon props of <code class='code-text'>v-chevron</code>",
+        description:
+          "Optional version of <code class='code-text'>v-button</code> that has reactive indicator build in. It uses the same props as normal <code class='code-text'>v-button</code> as well as triangle and icon props of <code class='code-text'>v-chevron</code>",
       },
     ]);
 
     let functions = ref([
       {
         function: "showContextDropdown($event, contextData: Object)",
-        description: "Shows context menu. Context data is available in slot props of default slot",
+        description:
+          "Shows context menu. Context data is available in slot props of default slot",
       },
     ]);
 
@@ -154,5 +157,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

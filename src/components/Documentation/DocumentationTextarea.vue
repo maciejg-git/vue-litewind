@@ -1,26 +1,22 @@
 <template>
   <h3>Textarea</h3>
-  <p></p>
 
   <section>
     <h4>Reference</h4>
-    <p></p>
-    <table-reference :items="reference"></table-reference>
+    <table-reference :items="reference" />
 
     <h6>Styling props</h6>
-    <p></p>
-    <table-reference-basic :items="styles"></table-reference-basic>
+    <table-reference-basic :items="styles" />
 
     <!-- <h6>Events</h6> -->
     <!-- <p></p> -->
     <!-- <table-reference-basic :items="events"></table-reference-basic> -->
 
     <h6>Slots</h6>
-    <p></p>
     <table-reference-basic
       :items="slots"
       reference="slot"
-    ></table-reference-basic>
+    />
   </section>
 
   <section>

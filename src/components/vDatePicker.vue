@@ -60,7 +60,7 @@
               role="button"
               :class="getDayClass(d.date)"
               @click="handleDayClick(d.date, index)"
-              @mouseenter="mouseOverRange = d.date"
+              @mouseenter="handleMouseOverDay(d)"
             >
               <slot name="day" v-bind="d">
                 {{ d.day }}
@@ -128,7 +128,7 @@ export default {
     },
     disabled: { type: Array, default: [] },
     width: { type: String, default: undefined },
-    adjacentMonths: { type: Boolean, default: false },
+    adjacentMonths: { type: Boolean, default: true },
     rangeHoverHighlight: { type: Boolean, default: true },
     buttons: { type: Boolean, default: false },
     secondaryButtonLabel: { type: String, default: "Cancel" },
@@ -363,7 +363,10 @@ export default {
 
     // add date in range mode and update state
     let addRangeDate = (d) => {
-      if (rangeState.value == 2) rangeState.value = 0;
+      if (rangeState.value == 2) {
+        rangeState.value = 0;
+        mouseOverRange.value = false;
+      }
       range.value[rangeState.value] = new Date(d.getTime());
       rangeState.value++;
     };
@@ -444,6 +447,11 @@ export default {
       }
     };
 
+    let handleMouseOverDay = (d) => {
+      if (rangeState.value === 1)
+      mouseOverRange.value = d.date
+    }
+
     let handlePrimaryButtonClick = () => {
       if (props.range) {
         if (rangeState.value == 2) emitSelectionRange();
@@ -470,6 +478,7 @@ export default {
       handleDayClick,
       handleButtonClick,
       handlePrimaryButtonClick,
+      handleMouseOverDay,
       handleSecondaryButtonClick,
       transition,
     };

@@ -3,19 +3,15 @@
 
   <section>
     <h4>Reference</h4>
-    <p></p>
     <table-reference :items="reference" />
 
     <h6>Styling props</h6>
-    <p></p>
     <table-reference-basic :items="styles" />
 
     <h6>Events</h6>
-    <p></p>
     <table-reference-basic :items="events" reference="event" />
 
     <h6>Slots</h6>
-    <p></p>
     <table-reference-basic
       :items="slots"
       reference="slot"
