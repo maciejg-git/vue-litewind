@@ -77,6 +77,7 @@ import vCloseButton from "./vCloseButton.vue";
 import focus from "../directives/focus";
 // props
 import { sharedStyleProps } from "../shared-props";
+import { defaultProps } from "../defaultProps";
 // style
 import "../styles/transitions.css";
 
@@ -88,25 +89,64 @@ export default {
     noSecondaryButton: { type: Boolean, default: false },
     primaryButton: { type: Object, default: { styleButton: "primary" } },
     secondaryButton: { type: Object, default: { styleButton: "secondary" } },
-    primaryButtonLabel: { type: String, default: "Accept" },
-    secondaryButtonLabel: { type: String, default: "Close" },
+    primaryButtonLabel: {
+      type: String,
+      default: defaultProps("modal", "primaryButtonLabel", "Accept"),
+    },
+    secondaryButtonLabel: {
+      type: String,
+      default: defaultProps("modal", "secondaryButtonLabel", "Close"),
+    },
     primaryButtonClose: { type: Boolean, default: false },
     secondaryButtonClose: { type: Boolean, default: false },
-    justifyButtons: { type: String, default: "end" },
+    justifyButtons: {
+      type: String,
+      default: defaultProps("modal", "justifyButtons", "end"),
+    },
     noCloseButton: { type: Boolean, default: false },
     closeButtonInContent: { type: Boolean, default: false },
     staticBackdrop: { type: Boolean, default: false },
-    noHeader: { type: Boolean, default: false },
-    noFooter: { type: Boolean, default: false },
-    position: { type: String, default: "top" },
-    size: { type: String, default: "md" },
-    closeButton: { type: Object, default: {} },
-    transition: { type: String, default: "fade-slide-m" },
-    styleModal: { type: String, default: "" },
-    styleHeader: { type: String, default: "" },
-    styleFooter: { type: String, default: "" },
-    styleContent: { type: String, default: "" },
-    styleBackdrop: { type: String, default: "" },
+    noHeader: {
+      type: Boolean,
+      default: defaultProps("modal", "noHeader", false),
+    },
+    noFooter: {
+      type: Boolean,
+      default: defaultProps("modal", "noFooter", false),
+    },
+    position: {
+      type: String,
+      default: defaultProps("modal", "position", "top"),
+    },
+    size: { type: String, default: defaultProps("modal", "size", "md") },
+    closeButton: {
+      type: Object,
+      default: defaultProps("modal", "closeButton", {}),
+    },
+    transition: {
+      type: String,
+      default: defaultProps("modal", "transition", "fade-slide-m"),
+    },
+    styleModal: {
+      type: String,
+      default: defaultProps("modal", "styleModal", ""),
+    },
+    styleHeader: {
+      type: String,
+      default: defaultProps("modal", "styleHeader", ""),
+    },
+    styleFooter: {
+      type: String,
+      default: defaultProps("modal", "styleFooter", ""),
+    },
+    styleContent: {
+      type: String,
+      default: defaultProps("modal", "styleContent", ""),
+    },
+    styleBackdrop: {
+      type: String,
+      default: defaultProps("modal", "styleBackdrop", ""),
+    },
     ...sharedStyleProps("modal"),
   },
   components: {

@@ -89,7 +89,7 @@ export default {
         type: ["Boolean"],
         default: "false",
         description:
-          "Transition animation to use when swtiching tab content. Valid values are <code class='code-text'>'fade'</code>, <code class='code-text'>'fade-top-slide'</code>, <code class='code-text'>'fade-side-slide'</code> or empty string (no transition)",
+          "Transition animation to use when swtiching tab content. Valid values are 'fade', 'fade-top-slide', 'fade-side-slide' or `empty string` (no transition)",
       },
       ...styleProps(),
     ]);

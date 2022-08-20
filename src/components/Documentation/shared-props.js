@@ -4,21 +4,21 @@ export let popperProps = [
     type: ["String"],
     default: "bottom-start",
     description:
-      "Initial placement of dropdown content. See valid values in <a href='https://popper.js.org/docs/v2/constructors/' class='link'>Popperjs documentation</a>",
+      "Initial placement of dropdown content. See valid values in Popperjs documentation",
   },
   {
     prop: "offsetX",
     type: ["Number"],
     default: "0",
     description:
-      "Offset of dropdown relative to reference element. See how to use this offset <a href='https://popper.js.org/docs/v2/modifiers/offset/' class='link'>here</a>",
+      "Offset of dropdown relative to reference element. See how to use this offset here",
   },
   {
     prop: "offsetY",
     type: ["Number"],
     default: "0",
     description:
-      "Offset of dropdown relative to reference element. See how to use this offset <a href='https://popper.js.org/docs/v2/modifiers/offset/' class='link'>here</a>",
+      "Offset of dropdown relative to reference element. See how to use this offset here",
   },
   {
     prop: "no-flip",
@@ -51,7 +51,7 @@ export let formProps = (options) => {
       type: ["String"],
       default: "empty string",
       description:
-        "Adds icon to input element. Valid value is the same as in <code class='code-text'>v-icon</code> components",
+        "Adds icon to input element. Valid value is the same as in v-icon components",
     });
 
   if (options.clearable === true) {
@@ -70,7 +70,7 @@ export let formProps = (options) => {
       type: ["String"],
       default: "empty string",
       description:
-        "Overrides state of input validity. Supported values are <code class='code-text'>'valid'</code>, <code class='code-text'>'invalid'</code>, <code class='code-text'>empty string</code> for default state or <code class='code-text'>null</code> for component controlled state",
+        "Overrides state of input validity. Supported values are 'valid', 'invalid', `empty string` for default state or `null` for component controlled state",
     },
   ];
 };

@@ -1,5 +1,9 @@
 <template>
-  <button class="flex items-center focus:outline-none" :class="classes.wrapper.value" aria-label="Close">
+  <button
+    class="flex items-center focus:outline-none"
+    :class="classes.wrapper.value"
+    aria-label="Close"
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       :class="classes.closeButton.value"
@@ -19,13 +23,20 @@
 // composition
 import useStyles from "./composition/use-styles";
 // props
-import { sharedStyleProps } from "../shared-props"
+import { sharedStyleProps } from "../shared-props";
+import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
-    styleWrapper: { type: String, default: "" },
-    styleCloseButton: { type: String, default: "" },
-    ...sharedStyleProps("close-button"),
+    styleWrapper: {
+      type: String,
+      default: defaultProps("closeButton", "styleWrapper", ""),
+    },
+    styleCloseButton: {
+      type: String,
+      default: defaultProps("closeButton", "styleCloseButton", ""),
+    },
+    ...sharedStyleProps("closeButton"),
   },
   setup(props) {
     let { classes } = useStyles("close-button", props, {

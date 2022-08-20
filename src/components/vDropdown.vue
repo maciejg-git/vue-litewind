@@ -1,5 +1,5 @@
 <template>
-  <slot name="reference" v-bind="referenceSlotProps" :is-open="isPopperVisible"></slot>
+  <slot v-if="!triggerById" name="reference" v-bind="referenceSlotProps" :is-open="isPopperVisible"></slot>
 
   <teleport to="body">
     <transition :name="transition" @after-leave="onPopperTransitionLeave">
@@ -30,6 +30,7 @@ import useTrigger from "./composition/use-trigger";
 import { sharedPopperProps, sharedStyleProps } from "../shared-props";
 // style
 import "../styles/transitions.css";
+import { addId } from "../identifiers"
 
 export default {
   inheritAttrs: true,
@@ -38,10 +39,11 @@ export default {
     ...sharedPopperProps(),
     autoCloseMenu: { type: Boolean, default: false },
     trigger: { type: String, default: "click" },
+    triggerById: { type: String, default: "" },
     transition: { type: String, default: "fade-m" },
     styleItem: { type: String, default: "" },
     styleHeader: { type: String, default: "" },
-    ...sharedStyleProps(),
+    ...sharedStyleProps("dropdown"),
   },
   emits: ["state:opened", "state:closed", "update:modelValue"],
   setup(props, { slots, emit, expose }) {
@@ -75,6 +77,17 @@ export default {
 
     let { onClickOutside } = useClickOutside();
     let stopClickOutside = null;
+
+    let addOnTriggerEvents = (el) => {
+      for (let event in onTrigger) {
+        el.addEventListener(event, onTrigger[event])
+      }
+      reference.value = el
+    }
+
+    if (props.triggerById) {
+      addId(props.triggerById, null, addOnTriggerEvents)
+    }
 
     // delay closing menu if using hover trigger
     let hideTimeout = null;

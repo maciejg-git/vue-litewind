@@ -1,6 +1,5 @@
 <template>
   <h3>Form Validation</h3>
-  <p></p>
 
   <section>
     <h4>Usage</h4>

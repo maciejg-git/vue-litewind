@@ -25,11 +25,12 @@ import { sharedStyleProps, sharedFormProps } from "../shared-props";
 export default {
   props: {
     modelValue: { type: [Array, Boolean, Object], default: undefined },
+    rules: { type: Object, default: {} },
     label: { type: String, default: "" },
     styleCheckbox: { type: [String, Array], default: "" },
     styleLabel: { type: [String, Array], default: "" },
     ...sharedFormProps(null),
-    ...sharedStyleProps(),
+    ...sharedStyleProps("checkbox"),
   },
   inheritAttrs: false,
   setup(props, { attrs, emit }) {

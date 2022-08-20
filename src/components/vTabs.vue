@@ -25,16 +25,26 @@ import { ref, toRef, onMounted, computed, provide, h, toRaw } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 // props
-import { sharedStyleProps } from "../shared-props"
+import { sharedStyleProps } from "../shared-props";
+import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
     fill: { type: Boolean, default: false },
     center: { type: Boolean, default: false },
     right: { type: Boolean, default: false },
-    transition: { type: String, default: "fade" },
-    styleTabBar: { type: [String, Array], default: "" },
-    styleTab: { type: [String, Array], default: "" },
+    transition: {
+      type: String,
+      default: defaultProps("tabs", "transition", "fade"),
+    },
+    styleTabBar: {
+      type: [String, Array],
+      default: defaultProps("tabs", "styleTabBar", ""),
+    },
+    styleTab: {
+      type: [String, Array],
+      default: defaultProps("tabs", "styleTab", ""),
+    },
     ...sharedStyleProps("tabs"),
   },
   components: {
@@ -92,7 +102,7 @@ export default {
 
     // this is called by v-tab child after unmounting
     let removeTab = (tab) => {
-      let index = getTab(tab)
+      let index = getTab(tab);
 
       if (index === -1) return;
 

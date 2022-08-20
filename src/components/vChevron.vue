@@ -1,9 +1,5 @@
 <template>
-    <v-icon
-      :name="icon"
-      :class="getClass()"
-      v-bind="$attrs"
-    ></v-icon>
+  <v-icon :name="icon" :class="getClass()" v-bind="$attrs"></v-icon>
 </template>
 
 <script>
@@ -23,16 +19,23 @@ import vCaretUpFillIcon from "./icons/caret-up-fill.js";
 import vCaretDownFillIcon from "./icons/caret-down-fill.js";
 // props
 import { sharedStyleProps } from "../shared-props";
+import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
     initial: { type: String, default: "down" },
     rotate180: { type: Boolean, default: false },
-    triangle: { type: Boolean, default: false },
+    triangle: {
+      type: Boolean,
+      default: defaultProps("chevron", "triangle", false),
+    },
     counterClockwise: { type: Boolean, default: false },
     switch: { type: Boolean, default: false },
     icon: { type: String, default: "" },
-    styleChevron: { type: String, default: "" },
+    styleChevron: {
+      type: String,
+      default: defaultProps("chevron", "styleChevron", ""),
+    },
     ...sharedStyleProps("chevron"),
   },
   components: {
@@ -55,8 +58,12 @@ export default {
     };
 
     let icon = computed(() => {
-      return props.icon ? props.icon : (props.triangle ? chevron.triangle[initial.value] : chevron.chevron[initial.value])
-    })
+      return props.icon
+        ? props.icon
+        : props.triangle
+        ? chevron.triangle[initial.value]
+        : chevron.chevron[initial.value];
+    });
 
     let chevron = {
       chevron: {

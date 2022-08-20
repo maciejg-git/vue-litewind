@@ -13,6 +13,7 @@ import { computed } from "vue";
 import useStyles from "./composition/use-styles";
 // props
 import { sharedStyleProps } from "../shared-props"
+import "../styles/transitions.css"
 
 export default {
   props: {

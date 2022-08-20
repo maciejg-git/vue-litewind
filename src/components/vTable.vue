@@ -74,11 +74,11 @@
         </tr>
       </template>
       <template v-else>
-        <template v-for="(item, i) in itemsPagination" :key="item[primaryKey] || i">
-          <tr
-            :class="[...classes.row.value]"
-            @click="handleRowClick(i)"
-          >
+        <template
+          v-for="(item, i) in itemsPagination"
+          :key="item[primaryKey] || i"
+        >
+          <tr :class="[...classes.row.value]" @click="handleRowClick(i)">
             <template v-for="k in definition">
               <td v-if="k.visible !== false" :class="getCellClass(k, i, item)">
                 <slot :name="'cell:' + k.key" :value="item[k.key]" :item="item">
@@ -87,10 +87,7 @@
               </td>
             </template>
           </tr>
-          <tr
-            v-if="item.colspan"
-            :class="[...classes.row.value]"
-          >
+          <tr v-if="item.colspan" :class="[...classes.row.value]">
             <td :colspan="headersCount">
               <slot name="colspan" :item="item"></slot>
             </td>
@@ -120,6 +117,7 @@ import {
 } from "../tools.js";
 // props
 import { sharedStyleProps } from "../shared-props";
+import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
@@ -127,26 +125,53 @@ export default {
     items: { type: Array, default: undefined },
     filter: { type: [String, RegExp], default: "" },
     page: { type: Number, default: 1 },
-    itemsPerPage: { type: Number, default: 0 },
+    itemsPerPage: {
+      type: Number,
+      default: defaultProps("table", "itemsPerPage", 0),
+    },
     primaryKey: { type: String, default: undefined },
-    captionTop: { type: Boolean, default: false },
-    emptyText: { type: String, default: "Empty table" },
+    captionTop: {
+      type: Boolean,
+      default: defaultProps("table", "captionTop", false),
+    },
+    emptyText: {
+      type: String,
+      default: defaultProps("table", "emptyText", "Empty table"),
+    },
     emptyFilteredText: {
       type: String,
-      default: "No records for current filter",
+      default: defaultProps(
+        "table",
+        "emptyFilteredText",
+        "No records for current filter"
+      ),
     },
-    locale: { type: String, default: "en" },
+    locale: { type: String, default: defaultProps("table", "locale", "en-GB") },
     busy: { type: Boolean, default: false },
     selectionMode: { type: String, default: "" },
     state: { type: String, default: "" },
-    headerRows: { type: Array, default: [] },
-    styleTable: { type: String, default: "" },
-    styleHeaderRow: { type: String, default: "" },
-    styleHeaderCell: { type: String, default: "" },
-    styleRow: { type: String, default: "" },
-    styleCell: { type: String, default: "" },
-    styleCaption: { type: String, default: "" },
-    ...sharedStyleProps(),
+    styleTable: {
+      type: String,
+      default: defaultProps("table", "styleTable", ""),
+    },
+    styleHeaderRow: {
+      type: String,
+      default: defaultProps("table", "styleHeaderRow", ""),
+    },
+    styleHeaderCell: {
+      type: String,
+      default: defaultProps("table", "styleHeaderCell", ""),
+    },
+    styleRow: { type: String, default: defaultProps("table", "styleRow", "") },
+    styleCell: {
+      type: String,
+      default: defaultProps("table", "styleCell", ""),
+    },
+    styleCaption: {
+      type: String,
+      default: defaultProps("table", "styleCaption", ""),
+    },
+    ...sharedStyleProps("table"),
   },
   components: {
     SortIcon,
@@ -316,10 +341,11 @@ export default {
     let getDefinition = () => {
       if (!props.items || !props.items.length) return [];
 
-      return Object.keys(props.items[0]).filter((i) => i !== 'colspan')
+      return Object.keys(props.items[0])
+        .filter((i) => i !== "colspan")
         .map((item) => {
-        return { key: item };
-      });
+          return { key: item };
+        });
     };
 
     let validateDefinition = () => {

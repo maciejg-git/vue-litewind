@@ -57,14 +57,14 @@ export default {
         type: ["String"],
         default: "'blur'",
         description:
-          "Valid values are <code class='code-text'>blur</code> or <code class='code-text'>immediate</code>. See Form Validation for explanation and examples",
+          "Valid values are 'blur' or 'immediate'. See Form Validation for explanation and examples",
       },
       {
         prop: "validate-mode",
         type: ["String"],
         default: "'silent'",
         description:
-          "Valid values are <code class='code-text'>silent</code> or <code class='code-text'>eager</code>. See Form Validation for explanation and examples",
+          "Valid values are 'silent' or 'eager'. See Form Validation for explanation and examples",
       },
       {
         prop: "label",
@@ -76,49 +76,49 @@ export default {
         prop: "use-loading",
         type: ["Boolean"],
         default: "false",
-        description: "Set to true or false to enable or disable spinner in the input",
+        description: "Set to `true` or `false` to enable or disable spinner in the input",
       },
       {
         prop: "is-loading",
         type: ["Boolean"],
         default: "false",
-        description: "If true displays spinner in the input. Spinner should be first enabled in <code class='code-text'>use-loading</code> prop",
+        description: "If true displays spinner in the input. Spinner should be first enabled in `use-loading` prop",
       },
       {
         prop: "single-line-message",
         type: ["Boolean"],
         default: "false",
-        description: "Limits the number of displayed errors to one at time. Order of messages is the same as order of rules in <code class='code-text'>rules</code> prop",
+        description: "Limits the number of displayed errors to one at time. Order of messages is the same as order of `rules` in rules prop",
       },
       {
         prop: "no-messages",
         type: ["Boolean"],
         default: "false",
-        description: "If true validation messages are not displayed",
+        description: "If `true` validation messages are not displayed",
       },
       {
         prop: "spinner",
         type: ["Object"],
         default: "{}",
-        description: "Attributes of input <code class='code-text'>v-spinner</code> component (loader)",
+        description: "Attributes of input v-spinner component (loader)",
       },
       {
         prop: "close-button",
         type: ["Object"],
         default: "{}",
-        description: "Attributes of input <code class='code-text'>v-close-button</code> component (clear button)",
+        description: "Attributes of input v-close-button component (clear button)",
       },
       {
         prop: "chevron",
         type: ["Object"],
         default: "{}",
-        description: "Attributes of input <code class='code-text'>v-chevron</code> component (indicator)",
+        description: "Attributes of input v-chevron component (indicator)",
       },
       {
         prop: "form-text",
         type: ["Object"],
         default: "{ class: 'absolute' }",
-        description: "Attributes of <code class='code-text'>v-form-text</code> component (validation messages)",
+        description: "Attributes of v-form-text component (validation messages)",
       },
       {
         prop: "inline",
@@ -131,7 +131,7 @@ export default {
         prop: "custom-clearable",
         type: ["Boolean"],
         default: "false",
-        description: "Adds 'X' button that only emits <code class='code-word'>click:clear-button</code> event. It does not modify model value",
+        description: "Adds 'X' button that only emits @click:clear-button event. It does not modify model value",
       },
       ...styleProps(),
     ]);
@@ -178,7 +178,7 @@ export default {
       },
       {
         event: "input:blur",
-        description: "This event is the same as blur but it does not fire if input is focused out by clicking any element (icon, clear button etc) inside <code class='code-text'>v-input</code> component. Regular blur can be used if needed",
+        description: "This event is the same as blur but it does not fire if input is focused out by clicking any element (icon, clear button etc) inside v-input component. Regular blur can be used if needed",
       },
     ]);
 
@@ -189,7 +189,7 @@ export default {
       },
       {
         slot: "label",
-        description: "Slot for label. <p class='mt-4'>Slot props: <code class='code-text'>label</code> (from <code class='code-text'>label</code> prop)</p>",
+        description: "Slot for label. Slot props: `label` (from label prop)",
       },
       {
         slot: "prepend",
@@ -201,7 +201,7 @@ export default {
       },
       {
         slot: "message",
-        description: "This slot can be used to customize validation messages. <p class='mt-4'>Slot props: <code class='code-text'>message</code>, <code class='code-text'>key</code></p>",
+        description: "This slot can be used to customize validation messages. Slot props: `message`, `key`",
       },
     ]);
 

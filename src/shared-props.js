@@ -1,4 +1,5 @@
 import { correctPlacement } from "./const.js";
+import { defaultProps } from "./defaultProps";
 
 // popper props
 
@@ -21,9 +22,9 @@ export const sharedPopperProps = (d) => {
 
 // style props
 
-export const sharedStyleProps = () => {
+export const sharedStyleProps = (component) => {
   return {
-    base: { type: String, default: "default" },
+    base: { type: String, default: defaultProps(component, "base", "default") },
     variant: { type: [String, Boolean], default: "" },
   };
 };

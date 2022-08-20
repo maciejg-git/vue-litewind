@@ -10,8 +10,6 @@
 </template>
 
 <script>
-import "../styles/transitions.css"
-
 export default {
   props: {
     name: { type: String, default: "" },

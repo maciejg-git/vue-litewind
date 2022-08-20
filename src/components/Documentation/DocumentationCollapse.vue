@@ -42,7 +42,7 @@ export default {
         type: ["Boolean"],
         default: "undefined",
         description:
-          "Setting v-model to <code class='code-text'>true</code> shows collapsible element, <code class='code-text'>false </code>value hides it",
+          "Setting v-model to `true` shows collapsible element, `false` value hides it",
       },
     ]);
 
@@ -56,7 +56,7 @@ export default {
     let components = ref([
       {
         component: "v-button-collapse",
-        description: "Optional version of <code class='code-text'>v-button</code> that has indicator build in and automatically toggles attached <code class='code-text'>v-model</code> on click. It uses the same props as <code class='code-text'>v-button</code> as well as props of <code class='code-text'>v-chevron</code>. Use <code class='code-text'>v-button-collapse</code> for minimal setup or normal <code class='code-text'>v-button</code> for more customizing options.",
+        description: "Optional version of v-button that has indicator build in and automatically toggles attached v-model on click. It uses the same props as v-button as well as props of v-chevron. Use v-button-collapse for minimal setup or normal v-button for more customizing options.",
       },
     ]);
 

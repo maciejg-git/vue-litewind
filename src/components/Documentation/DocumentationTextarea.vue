@@ -51,14 +51,14 @@ export default {
         type: ["String"],
         default: "'blur'",
         description:
-          "Valid values are <code class='code-text'>blur</code> or <code class='code-text'>immediate</code>. See Form Validation for explanation and examples",
+          "Valid values are 'blur' or 'immediate'. See Form Validation for explanation and examples",
       },
       {
         prop: "validate-mode",
         type: ["String"],
         default: "'silent'",
         description:
-          "Valid values are <code class='code-text'>silent</code> or <code class='code-text'>eager</code>. See Form Validation for explanation and examples",
+          "Valid values are 'silent' or 'eager'. See Form Validation for explanation and examples",
       },
       {
         prop: "label",
@@ -83,7 +83,7 @@ export default {
       },
       {
         prop: "style-label",
-        description: "Label element if label prop is set",
+        description: "Label element if `label` prop is set",
       },
     ]);
 
@@ -93,11 +93,11 @@ export default {
     let slots = ref([
       {
         slot: "label",
-        description: "Slot for label. <p class='mt-4'>Slot props: <code class='code-text'>label</code> (from <code class='code-text'>label</code> prop)</p>",
+        description: "Slot for label. Slot props: `label` (from label prop)",
       },
       {
         slot: "message",
-        description: "This slot can be used to customize validation messages. <p class='mt-4'>Slot props: <code class='code-text'>message</code>, <code class='code-text'>key</code></p>",
+        description: "This slot can be used to customize validation messages. Slot props: `message`, `key`",
       },
     ])
 

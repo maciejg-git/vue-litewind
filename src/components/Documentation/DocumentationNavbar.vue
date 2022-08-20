@@ -32,21 +32,21 @@ export default {
         type: ["Boolean"],
         default: "false",
         description:
-          "If true navbar position is set to fixed. If both <code class='code-text'>fixed</code> and <code class='code-text'>sticky</code> are false then navbar is positioned as relative",
+          "If `true` navbar position is set to fixed. If both fixed and sticky are `false` then navbar is positioned as relative",
       },
       {
         prop: "sticky",
         type: ["Boolean"],
         default: "false",
         description:
-          "If true navbar position is set to sticky. If both <code class='code-text'>fixed</code> and <code class='code-text'>sticky</code> are false then navbar is positioned as relative",
+          "If `true` navbar position is set to sticky. If both fixed and sticky are `false` then navbar is positioned as relative",
       },
       {
         prop: "bottom",
         type: ["Boolean"],
         default: "false",
         description:
-          "Places navbar on the bottom. <span class='font-semibold'>Note</span>: fixed must be also set to true",
+          "Places navbar on the bottom. Note: `fixed` must be also set to true",
       },
       ...styleProps(),
     ]);

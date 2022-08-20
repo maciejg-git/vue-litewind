@@ -1,5 +1,9 @@
 <template>
-  <nav :class="classes.paginationBar.value" role="navigation" aria-label="Pagination navigation">
+  <nav
+    :class="classes.paginationBar.value"
+    role="navigation"
+    aria-label="Pagination navigation"
+  >
     <a
       href=""
       role="button"
@@ -45,6 +49,7 @@ import ChevronRight from "./icons/chevron-right.js";
 import { clamp, getNumberRange, isNumber } from "../tools.js";
 // props
 import { sharedStyleProps } from "../shared-props";
+import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
@@ -52,11 +57,26 @@ export default {
     itemsCount: { type: Number, default: undefined },
     itemsPerPage: { type: Number, default: undefined },
     maxPages: { type: Number, default: undefined },
-    stylePaginationBar: { type: [String, Array], default: "default" },
-    stylePage: { type: [String, Array], default: "" },
-    styleDots: { type: [String, Array], default: "" },
-    styleNext: { type: [String, Array], default: "" },
-    stylePrev: { type: [String, Array], default: "" },
+    stylePaginationBar: {
+      type: String,
+      default: defaultProps("pagination", "stylePaginationBar", ""),
+    },
+    stylePage: {
+      type: String,
+      default: defaultProps("pagination", "stylePage", ""),
+    },
+    styleDots: {
+      type: String,
+      default: defaultProps("pagination", "styleDots", ""),
+    },
+    styleNext: {
+      type: String,
+      default: defaultProps("pagination", "styleNext", ""),
+    },
+    stylePrev: {
+      type: String,
+      default: defaultProps("pagination", "stylePrev", ""),
+    },
     ...sharedStyleProps("pagination"),
   },
   components: {
@@ -84,7 +104,7 @@ export default {
       },
     });
 
-    let isCurrent = (page) => currentPage.value === page
+    let isCurrent = (page) => currentPage.value === page;
 
     let getPageClass = (page) => {
       if (page === "...") return classes.dots.value;

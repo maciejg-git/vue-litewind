@@ -10,25 +10,25 @@ import { provide, toRef } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 // props
-import { sharedStyleProps } from "../shared-props"
+import { sharedStyleProps } from "../shared-props";
 
 export default {
   props: {
     width: { type: String, default: undefined },
-    tag: { type: String, default: "div" },
-    styleList: { type: String, default: "" },
-    styleItem: { type: [String, Array], default: "" },
-    ...sharedStyleProps(),
+    tag: { type: String, default: defaultProps("list", "tag", "div") },
+    styleList: { type: String, default: defaultProps("list", "styleList", "") },
+    styleItem: { type: String, default: defaultProps("list", "styleItem", "") },
+    ...sharedStyleProps("list"),
   },
   setup(props) {
     let { classes, states } = useStyles("list", props, {
       list: {
-        fixed: "fixed-list"
+        fixed: "fixed-list",
       },
       item: {
         states: ["active"],
       },
-    })
+    });
 
     provide("classes", classes);
     provide("states", states);
@@ -43,6 +43,6 @@ export default {
 
 <style scoped>
 .fixed-list {
-  @apply flex flex-col
+  @apply flex flex-col;
 }
 </style>

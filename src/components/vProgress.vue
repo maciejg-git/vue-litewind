@@ -19,13 +19,14 @@
 
 <script>
 // vue
-import { ref, computed } from "vue";
+import { computed } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 // tools
 import { clamp, isNumber } from "../tools";
 // props
 import { sharedStyleProps } from "../shared-props";
+import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
@@ -47,9 +48,9 @@ export default {
     precision: { type: Number, default: 2 },
     indeterminate: { type: Boolean, default: false },
     transition: { type: Boolean, default: true },
-    styleProgress: { type: [String, Array], default: "" },
-    styleProgressBar: { type: [String, Array], default: "" },
-    styleLabel: { type: [String, Array], default: "" },
+    styleProgress: { type: [String, Array], default: defaultProps("progress", "styleProgress", "") },
+    styleProgressBar: { type: [String, Array], default: defaultProps("progress", "styleProgressBar", "") },
+    styleLabel: { type: [String, Array], default: defaultProps("progress", "styleLabel", "") },
     ...sharedStyleProps("progress"),
   },
   setup(props) {

@@ -65,13 +65,13 @@ export default {
         prop: "primary-button",
         type: ["Object"],
         default: "{ styleButton: 'primary' }",
-        description: "Attributes of primary <code class='code-text'>v-button</code> component. See documentation for valid values",
+        description: "Attributes of primary v-button component. See documentation for valid values",
       },
       {
         prop: "secondary-button",
         type: ["Object"],
         default: "{ styleButton: 'secondary' }",
-        description: "Attributes of secondary <code class='code-text'>v-button</code> component. See documentation for valid values",
+        description: "Attributes of secondary v-button component. See documentation for valid values",
       },
       {
         prop: "primary-button-label",
@@ -90,14 +90,14 @@ export default {
         type: ["Boolean"],
         default: "false",
         description:
-          "If true clicking primary button emits <code class='code-word'>input:secondaryButtonClick</code> event and closes modal. If false modal is not closed after emitting event",
+          "If true clicking primary button emits @input:secondaryButtonClick event and closes modal. If false modal is not closed after emitting event",
       },
       {
         prop: "secondary-button-close",
         type: ["Boolean"],
         default: "false",
         description:
-          "If true clicking primary button emits <code class='code-word'>input:primaryButtonClick</code> event and closes modal. If false modal is not closed after emitting event",
+          "If true clicking primary button emits @input:primaryButtonClick event and closes modal. If false modal is not closed after emitting event",
       },
       {
         prop: "justify-buttons",
@@ -130,14 +130,14 @@ export default {
         type: ["Boolean"],
         default: "false",
         description:
-          "Do not render header if true",
+          "Do not render header if `true`",
       },
       {
         prop: "no-footer",
         type: ["Boolean"],
         default: "false",
         description:
-          "Do not render footer if true",
+          "Do not render footer if `true`",
       },
       {
         prop: "position",
@@ -155,7 +155,7 @@ export default {
         prop: "close-button",
         type: ["String"],
         default: "{}",
-        description: "Attributes of <code class='code-text'>v-close-button</code> component. See documentation for valid values",
+        description: "Attributes of v-close-button component. See documentation for valid values",
       },
       {
         prop: "transition",
@@ -198,7 +198,7 @@ export default {
       },
       {
         event: "input:static-backdrop-click",
-        description: "Emmited after clicking backdrop if static-backdrop prop is true",
+        description: "Emmited after clicking backdrop if `static-backdrop` prop is `true`",
       },
     ]);
 

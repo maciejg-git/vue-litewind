@@ -36,19 +36,19 @@ export default {
         type: ["Boolean"],
         default: "false",
         description:
-          "Controls the state of sidepanel. If true, sidepanel is open",
+          "Controls the state of sidepanel. If `true`, sidepanel is open",
       },
       {
-        prop: "close-button",
+        prop: "show-close-button",
         type: ["Boolean"],
         default: "true",
-        description: "If true shows a close button in top right corner",
+        description: "If `true` shows a close button in top right corner",
       },
       {
         prop: "sidebar-left",
         type: ["Boolean"],
         default: "false",
-        description: "If true displays sidepanel on the left",
+        description: "If `true` displays sidepanel on the left",
       },
       {
         prop: "width",
@@ -60,7 +60,13 @@ export default {
         prop: "no-header",
         type: ["Boolean"],
         default: "false",
-        description: "When true the header slot content and close button is not rendered",
+        description: "When `true` the header slot content and close button is not rendered",
+      },
+      {
+        prop: "close-button",
+        type: ["String"],
+        default: "{}",
+        description: "Attributes of v-close-button component. See documentation for valid values",
       },
       {
         prop: "transition",

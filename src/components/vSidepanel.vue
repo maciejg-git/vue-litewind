@@ -1,19 +1,21 @@
 <template>
-  <transition :name="sidebarLeft ? transition + '-left' : transition + '-right'">
+  <transition
+    :name="sidebarLeft ? transition + '-left' : transition + '-right'"
+  >
     <div
       v-show="isShow"
       :class="classes.sidepanel.value"
-      :style="{ 'width': width }"
+      :style="{ width: width }"
     >
       <div v-if="!noHeader" class="fixed-header">
         <div class="my-3 ml-5">
           <slot name="header"></slot>
         </div>
         <v-close-button
-          v-if="closeButton"
+          v-if="showCloseButton"
+          v-bind="closeButton"
           type="button"
           aria-label="Close"
-          :style-close-button="styleCloseButton"
           class="m-4"
           @click="handleClose"
         />
@@ -31,20 +33,39 @@ import useStyles from "./composition/use-styles";
 // components
 import vCloseButton from "./vCloseButton.vue";
 // props
-import { sharedStyleProps } from "../shared-props"
+import { sharedStyleProps } from "../shared-props";
+import { defaultProps } from "../defaultProps";
 // style
-import "../styles/transitions.css"
+import "../styles/transitions.css";
 
 export default {
   props: {
     modelValue: { type: Boolean, default: false },
-    closeButton: { type: Boolean, default: true },
+    showCloseButton: {
+      type: Boolean,
+      default: defaultProps("sidepanel", "showCloseButton", true),
+    },
     sidebarLeft: { type: Boolean, default: false },
-    width: { type: String, default: "320px" },
-    noHeader: { type: Boolean, default: false },
-    transition: { type: String, default: "fade-slide-m" },
-    styleSidepanel: { type: String, default: "" },
-    styleCloseButton: { type: String, default: "" },
+    width: {
+      type: String,
+      default: defaultProps("sidepanel", "width", "320px"),
+    },
+    noHeader: {
+      type: Boolean,
+      default: defaultProps("sidepanel", "noHeader", false),
+    },
+    closeButton: {
+      type: Object,
+      default: defaultProps("sidepanel", "closeButton", {}),
+    },
+    transition: {
+      type: String,
+      default: defaultProps("sidepanel", "transition", "fade-slide-m"),
+    },
+    styleSidepanel: {
+      type: String,
+      default: defaultProps("sidepanel", "styleSidepanel", ""),
+    },
     ...sharedStyleProps("sidepanel"),
   },
   components: {
@@ -54,14 +75,14 @@ export default {
     let { classes } = useStyles("sidepanel", props, {
       sidepanel: {
         fixed: "fixed-sidepanel",
-        prop: computed(() => props.sidebarLeft ? "left-0" : "right-0")
+        prop: computed(() => (props.sidebarLeft ? "left-0" : "right-0")),
       },
       closeButton: null,
-    })
+    });
 
-    let isShow = toRef(props, "modelValue")
+    let isShow = toRef(props, "modelValue");
 
-    let close = () => emit("update:modelValue", false)
+    let close = () => emit("update:modelValue", false);
 
     let handleClose = () => close();
 
@@ -77,10 +98,10 @@ export default {
 
 <style scoped lang="postcss">
 .fixed-sidepanel {
-  @apply fixed h-full top-0 z-20
+  @apply fixed h-full top-0 z-20;
 }
 .fixed-header {
-  @apply flex justify-between w-full
+  @apply flex justify-between w-full;
 }
 
 /* .fade-slide-right-enter-active, */

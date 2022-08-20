@@ -1,12 +1,13 @@
 <template>
   <transition name="fade">
-    <div v-if="modelValue" :class="[classes.alert.value]">
+    <div v-if="isStatic() || modelValue" :class="[classes.alert.value]">
       <div class="flex items-center">
         <v-icon v-if="icon" :name="icons[icon]" :class="classes.icon.value" />
         <slot name="icon"></slot>
         <slot name="default"></slot>
         <v-close-button
-          v-if="dismissable"
+          v-if="!isStatic() && dismissable"
+          v-bind="closeButton"
           @click="handleCloseButtonClick"
           style-close-button="small"
           class="ml-auto"
@@ -27,16 +28,30 @@ import BCheckLg from "./icons/check-lg";
 import BExclamationCircle from "./icons/exclamation-circle";
 import BInfoCircle from "./icons/info-circle";
 // props
-import { sharedStyleProps } from "../shared-props"
+import { sharedStyleProps } from "../shared-props";
+import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
-    modelValue: { type: Boolean, default: false },
+    modelValue: { type: Boolean, default: undefined },
     dismissable: { type: Boolean, default: true },
-    autoDismissDelay: { type: Number, default: 0 },
+    autoDismissDelay: {
+      type: Number,
+      default: defaultProps("alert", "autoDismissDelay", 0),
+    },
     icon: { type: String, default: "" },
-    styleAlert: { type: [String, Array], default: "" },
-    styleIcon: { type: [String, Array], default: "" },
+    closeButton: {
+      type: Object,
+      default: defaultProps("alert", "closeButton", {}),
+    },
+    styleAlert: {
+      type: [String, Array],
+      default: defaultProps("alert", "styleAlert", ""),
+    },
+    styleIcon: {
+      type: [String, Array],
+      default: defaultProps("alert", "styleIcon", ""),
+    },
     ...sharedStyleProps("alert"),
   },
   components: {
@@ -50,7 +65,7 @@ export default {
 
     let closeAlert = () => emit("update:modelValue", false);
 
-    // set auto dismiss timer if alarm is visible
+    // set auto dismiss timer if alert is visible
     watch(
       () => props.modelValue,
       (visible) => {
@@ -61,6 +76,10 @@ export default {
         }
       }
     );
+
+    let isStatic = () => {
+      return props.modelValue === undefined;
+    };
 
     // default icons
 
@@ -81,6 +100,7 @@ export default {
       classes,
       states,
       icons,
+      isStatic,
       handleCloseButtonClick,
     };
   },

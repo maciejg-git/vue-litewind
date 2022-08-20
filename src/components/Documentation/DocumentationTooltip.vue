@@ -1,6 +1,5 @@
 <template>
   <h3>Tooltip</h3>
-  <p></p>
 
   <section>
     <h4>Usage</h4>
@@ -22,7 +21,6 @@
 
   <section>
     <h4>Reference</h4>
-    <p></p>
     <v-table
       :items="reference"
       :definition="referenceDefinition"
@@ -43,7 +41,6 @@
       </template>
     </v-table>
 
-    <p></p>
     <v-table
       :items="referenceValue"
       :definition="referenceValueDefinition"

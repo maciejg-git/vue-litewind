@@ -1,4 +1,5 @@
 import { default as tooltip } from "./directives/tooltip"
+import { default as id } from "./directives/id"
 
 const defaultOptions = {
   globalProps: {},
@@ -21,6 +22,7 @@ let componentPlugin = {
     })
 
     app.directive("tooltip", tooltip);
+    app.directive("id", id);
   }
 }
 

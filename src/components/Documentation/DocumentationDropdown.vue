@@ -1,6 +1,5 @@
 <template>
   <h3>Dropdown</h3>
-  <p></p>
 
   <section>
     <h4>Reference</h4>
@@ -63,28 +62,28 @@ export default {
         type: ["Boolean"],
         default: "false",
         description:
-          "Set it to true/false to programatically show or hide dropdown content. Model is optional if dropdown is activated from reference slot",
+          "Set it to `true`/`false` to programatically show or hide dropdown content. Model is optional if dropdown is activated from reference slot",
       },
       {
         prop: "trigger",
         type: ["String"],
         default: "click",
         description:
-          "How to trigger dropdown. Valid triggers are <code class='code-text'>'click'</code>, <code class='code-text'>'focus'</code> and <code class='code-text'>'hover'</code>",
+          "How to trigger dropdown. Valid triggers are 'click', 'focus' and 'hover'",
       },
       {
         prop: "auto-close-menu",
         type: ["Boolean"],
         default: "false",
         description:
-          "If true clicking any dropdown menu item automatically closes dropdown",
+          "If `true` clicking any dropdown menu item automatically closes dropdown",
       },
       {
         prop: "transition",
         type: ["String"],
         default: "fade-m",
         description:
-          "Sets animation effect when showing or hiding dropdown. Valid values are: 'fade-f', 'fade-m' and 'fade-s'. Empty string disables animations.",
+          "Sets animation effect when showing or hiding dropdown. Valid values are: 'fade-f', 'fade-m' and 'fade-s'. `empty string` disables animations.",
       },
       ...popperProps,
       ...styleProps(),
@@ -121,7 +120,7 @@ export default {
       {
         slot: "default",
         description:
-          "Slot for dropdown content. <p class='mt-4'>Slot props: <code class='code-word'>hide()</code></p>",
+          "Slot for dropdown content. Slot props: `hide()`",
       },
     ]);
 
@@ -133,7 +132,7 @@ export default {
       {
         component: "v-button-dropdown",
         description:
-          "Optional version of <code class='code-text'>v-button</code> that has reactive indicator build in. It uses the same props as normal <code class='code-text'>v-button</code> as well as triangle and icon props of <code class='code-text'>v-chevron</code>",
+          "Optional version of v-button that has reactive indicator build in. It uses the same props as normal v-button as well as triangle and icon props of v-chevron",
       },
     ]);
 
@@ -141,7 +140,7 @@ export default {
       {
         function: "showContextDropdown($event, contextData: Object)",
         description:
-          "Shows context menu. Context data is available in slot props of default slot",
+          "Shows context menu. Context data is available in slot props of `default` slot",
       },
     ]);
 

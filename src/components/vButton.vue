@@ -13,8 +13,12 @@
 </template>
 
 <script>
+// vue
 import { computed } from "vue";
+// composition
 import useStyles from "./composition/use-styles";
+// props
+import { defaultProps } from "../defaultProps";
 import { sharedStyleProps } from "../shared-props";
 
 export default {
@@ -22,7 +26,10 @@ export default {
     disabled: { type: Boolean, default: false },
     tag: { type: String, default: "button" },
     block: { type: Boolean, default: false },
-    styleButton: { type: String, default: "" },
+    styleButton: {
+      type: String,
+      default: defaultProps("button", "styleButton", ""),
+    },
     ...sharedStyleProps("button"),
   },
   setup(props) {

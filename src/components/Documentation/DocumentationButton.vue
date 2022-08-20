@@ -1,6 +1,5 @@
 <template>
   <h3>Button</h3>
-  <p></p>
 
   <section>
     <h4>Reference</h4>
@@ -38,7 +37,7 @@ export default {
         prop: "disabled",
         type: ["Boolean"],
         default: "false",
-        description: "Displays button in disabled state",
+        description: "Displays button in `disabled` state",
       },
       {
         prop: "block",

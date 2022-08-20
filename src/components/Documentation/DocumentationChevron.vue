@@ -24,7 +24,6 @@
 
 <script>
 import { ref } from "vue";
-import exampleChevronCode from "./examples/ExampleChevron.vue?raw"
 import { styleProps } from "./shared-props"
 
 export default {
@@ -40,7 +39,7 @@ export default {
         prop: "rotate180",
         type: ["Boolean"],
         default: "false",
-        description: "If true rotates chevron 180 degrees. Default is 90 degree",
+        description: "If `true` rotates chevron 180 degrees. Default is 90 degree",
       },
       {
         prop: "triangle",

@@ -42,7 +42,7 @@ export default {
         type: ["Array"],
         default: "undefined",
         description:
-          "Array of options to display in select element. Each option is <code class='code-text'>Object</code> with <code class='code-text'>value</code> and <code class='code-text'>label</code> properties. This prop is optional, you can use default slot to add options instead",
+          "Array of options to display in select element. Each option is an `object` with `value` and `label` properties. This prop is optional, you can use default slot to add options instead",
       },
       ...formProps({ icon: true }),
       ...styleProps(),

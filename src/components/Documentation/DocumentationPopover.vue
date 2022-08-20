@@ -35,7 +35,7 @@ export default {
         type: ["String"],
         default: "click",
         description:
-          "How to trigger dropdown. Valid triggers are <code class='code-text'>'click'</code>, <code class='code-text'>'focus'</code> and <code class='code-text'>'hover'</code>",
+          "How to trigger dropdown. Valid triggers are 'click', 'focus' and 'hover'",
       },
       {
         prop: "no-header",
@@ -53,13 +53,13 @@ export default {
         prop: "transition",
         type: ["String"],
         default: "fade-m",
-        description: "Sets animation effect when showing or hiding popover. Valid values are: 'fade-f', 'fade-m' and 'fade-s'. Empty string disables animations.",
+        description: "Sets animation effect when showing or hiding popover. Valid values are: 'fade-f', 'fade-m' and 'fade-s'. `empty string` disables animations.",
       },
       {
         prop: "click-outside-close",
         type: ["Boolean"],
         default: "false",
-        description: "If true clicking outside of popover closes it",
+        description: "If `true` clicking outside of popover closes it",
       },
       ...popperProps,
       ...styleProps(),
@@ -90,7 +90,7 @@ export default {
     let functions = ref([
       {
         function: "showContextPopover($event, contextData: Object)",
-        description: "Shows context popover. Context data is available in slot props of default slot",
+        description: "Shows context popover. Context data is available in slot props of `default` slot",
       },
     ]);
 

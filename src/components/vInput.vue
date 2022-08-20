@@ -99,31 +99,85 @@ import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
-    modelValue: { type: [String, Number, Array], default: "" },
-    inline: { type: Boolean, default: false },
-    rules: { type: Object, default: {} },
-    validateOn: { type: String, default: "blur" },
-    validateMode: { type: String, default: "silent" },
-    useLoader: { type: Boolean, default: false },
-    isLoading: { type: Boolean, default: false },
+    modelValue: {
+      type: [String, Number, Array],
+      default: "",
+    },
+    inline: {
+      type: Boolean,
+      default: defaultProps("input", "inline", false),
+    },
+    rules: {
+      type: Object,
+      default: {},
+    },
+    validateOn: {
+      type: String,
+      default: "blur",
+    },
+    validateMode: {
+      type: String,
+      default: "silent",
+    },
+    useLoader: {
+      type: Boolean,
+      default: false,
+    },
+    isLoading: {
+      type: Boolean,
+      default: false,
+    },
     singleLineMessage: {
       type: Boolean,
       default: defaultProps("input", "singleLineMessage", false),
     },
-    showIndicator: { type: Boolean, default: false },
-    indicatorSwitch: { type: Boolean, default: false },
-    label: { type: String, default: "" },
-    noMessages: { type: Boolean, default: false },
-    spinner: { type: Object, default: {} },
-    closeButton: { type: Object, default: {} },
-    chevron: { type: Object, default: {} },
-    formText: { type: Object, default: { class: "absolute" } },
-    styleInput: { type: [String, Array], default: "" },
-    styleIcon: { type: [String, Array], default: "" },
-    styleLabel: { type: [String, Array], default: "" },
+    showIndicator: {
+      type: Boolean,
+      default: false,
+    },
+    indicatorSwitch: {
+      type: Boolean,
+      default: false,
+    },
+    label: {
+      type: String,
+      default: "",
+    },
+    noMessages: {
+      type: Boolean,
+      default: false,
+    },
+    spinner: {
+      type: Object,
+      default: defaultProps("input", "spinner", {}),
+    },
+    closeButton: {
+      type: Object,
+      default: defaultProps("input", "closeButton", {}),
+    },
+    chevron: { type: Object, default: defaultProps("input", "chevron", {}) },
+    formText: {
+      type: Object,
+      default: defaultProps("input", "formText", { class: "absolute" }),
+    },
+    styleInput: {
+      type: [String, Array],
+      default: defaultProps("input", "styleInput", ""),
+    },
+    styleIcon: {
+      type: [String, Array],
+      default: defaultProps("input", "styleIcon", ""),
+    },
+    styleLabel: {
+      type: [String, Array],
+      default: defaultProps("input", "styleLabel", ""),
+    },
     ...sharedFormProps(null, { icon: true, clearable: true }),
-    customClearable: { type: Boolean, default: false },
-    ...sharedStyleProps(),
+    customClearable: {
+      type: Boolean,
+      default: false,
+    },
+    ...sharedStyleProps("input"),
   },
   components: {
     vFormText,

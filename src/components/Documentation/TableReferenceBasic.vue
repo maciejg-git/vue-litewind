@@ -23,7 +23,7 @@
     </template>
     <template #cell:description="{ value, item }">
       <slot :name="'description-' + item.prop" :value="value">
-        <span v-html="value"></span>
+        <span v-html="template(value)"></span>
       </slot>
     </template>
   </v-table>
@@ -47,8 +47,19 @@ export default {
       },
     ]);
 
+    let template = (string) => {
+      return string.replace(
+        new RegExp("('[^']*')|(\\bv-\\w+)|`([^`]*)`", "ig"),
+        `<code class="code-text">$1$2$3</code>`
+      ).replace(
+        new RegExp("@(\\S*)", "ig"),
+        `<code class="code-word">$1</code>`
+      );
+    };
+
     return {
       definition,
+      template,
     };
   },
 };

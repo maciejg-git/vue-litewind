@@ -1,10 +1,8 @@
 <template>
   <h3>Installation</h3>
-  <p></p>
 
   <section>
     <h5>Installation</h5>
-    <p></p>
 
     <v-code language="javascript">
       npm i vue-wind
@@ -88,10 +86,10 @@ import "vue-wind/dist/style.css" `}}
       Register selected or all components in application entry file (for example main.js)
     </p>
 
+    <p> All components: </p>
+
     <v-code language="javascript">
       {{ `// main.js
-
-// register all components
 
 import { componentPlugin } from "vue-wind";
 import { components} from "vue-wind";
@@ -103,11 +101,10 @@ app.use(componentPlugin, {
 }); `}}
     </v-code>
 
+    <p> Selected components: </p>
 
     <v-code language="javascript">
       {{ `// main.js
-
-// register selected components
 
 import { componentPlugin } from "vue-wind";
 import { vButton, vSelect } from "vue-wind";
@@ -118,6 +115,58 @@ app.use(componentPlugin, {
   components: {
     vButton,
     vSelect,
+  }
+}); `}}
+    </v-code>
+
+    <p>
+      You can configure components globally by providing options as second argument of app.use:
+    </p>
+    <p>
+    <ul>
+      <li>
+        <code class="code-text">globalProps</code> sets default value for prop for all components 
+      </li>
+      <li>
+        <code class="code-text">componentProps</code> sets defaults for props per component. It has higher priority than <code class="code-text">globalProps</code> if both are set.
+      </li>
+    </ul>
+    </p>
+    <p>
+    <v-alert icon="warn" style-alert="shadowed borderless outline warn" class="mx-6">
+      Note that you can provide default value for some props only.
+    </v-alert>
+    <v-alert icon="info" style-alert="shadowed borderless outline info" class="mx-6 mt-4">
+      <div>
+        If the same prop is set on component and in options the order is:
+        <ul class="mt-2">
+          <li>- props set on components</li>
+          <li>- props from componentProps</li>
+          <li>- props from globalProps</li>
+          <li>- default props set by component</li>
+        </ul>
+      </div>
+    </v-alert>
+    </p>
+
+    <v-code language="javascript">
+      {{ `// main.js
+
+import { componentPlugin } from "vue-wind";
+import { components} from "vue-wind";
+
+let app = createApp(App);
+
+app.use(componentPlugin, {
+  components,
+  globalProps: {
+    base: ''
+  },
+  componentProps: {
+    input: {
+      inline: true,
+      singleLineMessage: true,
+    },
   }
 }); `}}
     </v-code>

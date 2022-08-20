@@ -129,13 +129,13 @@ export default {
         prop: "definition",
         type: ["Array"],
         default: "undefined",
-        description: "Table definition is an optional <code class='code-text'>Array</code> of <code class='code-text'>Objects</code> that defines look and behavior of the table.",
+        description: "Table definition is an optional `array` of `objects` that defines look and behavior of the table.",
       },
       {
         prop: "primary-key",
         type: ["String"],
         default: "undefined",
-        description: "This props should be name of the property that is unique for every record. It is used as value for <code class='code-text'>key</code> attribute",
+        description: "This props should be name of the property that is unique for every record. It is used as value for `key` attribute",
       },
       {
         prop: "filter",
@@ -162,7 +162,7 @@ export default {
         type: ["String"],
         default: "empty string",
         description:
-        "Enables or disables selection of rows. Valid values are <code class='code-text'>'single'</code> (allows selection of single row only), <code class='code-text'>'multiple'</code> (allows multiple rows to be selected) or <code class='code-text'>empty string</code> (disables selection). After new row is selected or unselected event <code class='code-word'>input:selection</code> is emmited with array of all selected records. <br><br><span class='font-semibold'>Filtering</span>, <span class='font-semibold'>sorting</span>, <span class='font-semibold'>changing current page</span> or <span class='font-semibold'>modifying selection-mode prop</span> resets current selection by emmiting empty array",
+        "Enables or disables selection of rows. Valid values are 'single' (allows selection of single row only), 'multiple' (allows multiple rows to be selected) or `empty string` (disables selection). After new row is selected or unselected event input:selection is emmited with array of all selected records. Filtering, sorting, changing current page or modifying selection-mode prop resets current selection by emmiting empty array",
       },
       {
         prop: "page",
@@ -176,13 +176,13 @@ export default {
         type: ["Number"],
         default: "0",
         description:
-          "Number of records (rows) on single page. Setting it to 0 disables pagination",
+          "Number of records (rows) on single page. Setting it to `0` disables pagination",
       },
       {
         prop: "caption-top",
         type: ["Boolean"],
         default: "false",
-        description: "If true display caption on top",
+        description: "If `true` display caption on top",
       },
       {
         prop: "empty-text",
@@ -251,7 +251,7 @@ export default {
       {
         slot: "cell:key",
         description:
-          "Slot for cell content. Useful for adding some html formatting, transforming value etc. Key is one of the keys of data record or additional key from definition array<p class='mt-4'>Slot props: <code class='code-word'>value</code>, <code class='code-word'>item</code></p>",
+          "Slot for cell content. Useful for adding some html formatting, transforming value etc. Key is one of the keys of data record or additional key from definition array. Slot props: `value`, `item`",
       },
       {
         slot: "caption",

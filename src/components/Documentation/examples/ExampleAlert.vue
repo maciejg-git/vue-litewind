@@ -1,15 +1,12 @@
 <template>
-  <!-- Simple alert -->
+  <!-- static alert -->
 
-  <p class="my-6">Simple alert</p>
+  <p class="my-6">Static alert</p>
 
   <v-alert
-    v-model="example.isVisible"
-    :dismissable="example.dismissable"
-    :auto-dismiss-delay="example.autoDismissDelay"
     :icon="example.variant"
     :variant="example.variant"
-    style-alert="info:info danger:danger warn:warn success:success invalid:danger valid:success"
+    style-alert="bold info:info danger:danger warn:warn success:success invalid:danger valid:success"
   >
     Alert
   </v-alert>
@@ -23,7 +20,7 @@
     :dismissable="example.dismissable"
     :auto-dismiss-delay="example.autoDismissDelay"
     :variant="example.variant"
-    style-alert="info:info danger:danger warn:warn success:success invalid:danger valid:success"
+    style-alert="bold info:info danger:danger warn:warn success:success invalid:danger valid:success"
   >
     <template #icon>
       <v-icon :icon-type="example.variant" class="w-6 h-6 mr-2"></v-icon>
@@ -41,7 +38,7 @@
     :auto-dismiss-delay="example.autoDismissDelay"
     :icon="example.variant"
     :variant="example.variant"
-    style-alert="borderless shadowed outline info:info danger:danger warn:warn success:success invalid:danger valid:success"
+    style-alert="bold borderless shadowed outline info:info danger:danger warn:warn success:success invalid:danger valid:success"
   >
     Alert
   </v-alert>

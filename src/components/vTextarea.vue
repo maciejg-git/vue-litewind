@@ -10,7 +10,7 @@
         v-model="localModel"
         v-bind="$attrs"
         class="transparent-textarea"
-        :class="{'w-full': !inline}"
+        :class="{ 'w-full': !inline }"
         @blur="handleBlur"
       ></textarea>
     </div>
@@ -41,21 +41,37 @@ import vFormText from "./vFormText.vue";
 import { globalValidators } from "../validators";
 // props
 import { sharedStyleProps, sharedFormProps } from "../shared-props";
+import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
     modelValue: { type: String, default: undefined },
-    inline: { type: Boolean, default: false },
+    inline: {
+      type: Boolean,
+      default: defaultProps("textarea", "inline", false),
+    },
     rules: { type: Object, default: {} },
     validateOn: { type: String, default: "blur" },
     validateMode: { type: String, default: "silent" },
-    singleLineMessage: { type: Boolean, default: false },
+    singleLineMessage: {
+      type: Boolean,
+      default: defaultProps("textarea", "singleLineMessage", false),
+    },
     label: { type: String, default: "" },
-    formText: { type: Object, default: { class: "absolute" } },
-    styleTextarea: { type: [String, Array], default: "" },
-    styleLabel: { type: [String, Array], default: "" },
+    formText: {
+      type: Object,
+      default: defaultProps("textarea", "formText", { class: "absolute" }),
+    },
+    styleTextarea: {
+      type: [String, Array],
+      default: defaultProps("textarea", "styleTextarea", ""),
+    },
+    styleLabel: {
+      type: [String, Array],
+      default: defaultProps("textarea", "styleLabel", ""),
+    },
     ...sharedFormProps(null),
-    ...sharedStyleProps(),
+    ...sharedStyleProps("textarea"),
   },
   components: {
     vFormText,
@@ -99,7 +115,7 @@ export default {
     let messages = ref({});
     let wasValid = ref(false);
     let wasInvalid = ref(false);
-    let { validateOn, validateMode } = props
+    let { validateOn, validateMode } = props;
 
     let reset = () => {
       status.value = { ...defaultStatus };
@@ -120,20 +136,20 @@ export default {
 
       if (!canUpdateState()) return state.value;
 
-      return status.value.valid ? "valid" : "invalid"
+      return status.value.valid ? "valid" : "invalid";
     };
 
     watch(
       () => props.state,
       (newState) => (state.value = newState),
-      { immediate: true },
+      { immediate: true }
     );
 
     let validate = (value) => {
       let { newStatus, newMessages } = getValidateStatus(value);
       status.value = newStatus;
       messages.value = newMessages;
-    }
+    };
 
     let updateValue = (v) => {
       validate(v);

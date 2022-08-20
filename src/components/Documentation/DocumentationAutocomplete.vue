@@ -57,7 +57,7 @@ export default {
         prop: "items",
         type: ["Array"],
         default: "undefined",
-        description: "Items to display. Can be array of strings or objects",
+        description: "Items to display. Can be `array` of `strings` or `objects`",
       },
       {
         prop: "item-text",
@@ -75,7 +75,7 @@ export default {
         prop: "is-loading",
         type: ["Boolean"],
         default: "false",
-        description: "Use it whenever asynchronously updating items prop. <span class='font-bold'>Required</span>.",
+        description: "Use it whenever asynchronously updating items prop. Required.",
       },
       {
         prop: "no-filter",
@@ -99,19 +99,19 @@ export default {
         prop: "items-per-page",
         type: ["Number"],
         default: "10",
-        description: "Amounts of items to display per page, 0 = all items on single page. Ignored if <code class='code-text'>no-pagination</code> is used",
+        description: "Amounts of items to display per page, 0 = all items on single page. Ignored if `no-pagination` is used",
       },
       {
         prop: "empty-data-message",
         type: ["String"],
         default: "No data available",
-        description: "Message to display inside menu when <code class='code-text'>items</code> array is empty",
+        description: "Message to display inside menu when `items` array is empty",
       },
       {
         prop: "transition",
         type: ["String"],
         default: "fade",
-        description: "By default showing or hiding dropdown uses fading animation. Set this prop to empty string to disable animation",
+        description: "`empty string` disables default fade animation of menu",
       },
       ...popperProps,
       ...formProps({ icon: true, clearable: true }),
@@ -160,7 +160,7 @@ export default {
       {
         slot: "item",
         description:
-          "Slot for item customization. Slot props: <code class='code-text'>text</code>, <code class='code-text'>value</code>, <code class='code-text'>item</code>, <code class='code-text'>inputValue</code>, <code class='code-text'>highlight(string, match)</code>",
+          "Slot for menu item. Slot props: `text`, `value`, `item`, `inputValue`, `highlight(string, match)`",
       },
     ]);
 

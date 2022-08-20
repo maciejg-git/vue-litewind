@@ -74,7 +74,7 @@ export default {
         prop: "item-disabled",
         type: ["String"],
         default: "'disabled'",
-        description: "Name of the property for disabled items. Disabling folder also disable all of their children items",
+        description: "Name of the property for disabled items. Disabling folder also disable all of its children",
       },
       {
         prop: "filter",
@@ -86,43 +86,43 @@ export default {
         prop: "auto-open-root",
         type: ["Boolean"],
         default: "false",
-        description: "If true mounts tree with root node opened",
+        description: "If `true` mounts tree with root node opened",
       },
       {
         prop: "auto-open-all",
         type: ["Boolean"],
         default: "false",
-        description: "If true mounts tree with all nodes opened",
+        description: "If `true` mounts tree with all nodes opened",
       },
       {
         prop: "open-on-click",
         type: ["Boolean"],
         default: "true",
-        description: "If true clicking on labels opens folders. Clicking indicators always opens folders",
+        description: "If `true` clicking on labels opens folders. Clicking indicators always opens folders",
       },
       {
         prop: "allow-select-disabled",
         type: ["Boolean"],
         default: "false",
-        description: "If true disabled items can be selected",
+        description: "If `true` disabled items can be selected",
       },
       {
         prop: "allow-open-disabled",
         type: ["Boolean"],
         default: "false",
-        description: "If true disabled folders items can be opened",
+        description: "If `true` disabled folders items can be opened",
       },
       {
         prop: "select-return-keys",
         type: ["Boolean"],
         default: "false",
-        description: "If true <code class='code-word'>input:selected</code> return array of item keys. If false (default) this event returns array of item objects",
+        description: "If `true` @input:selected return array of item keys. If `false` (default) this event returns `array` of item `objects`",
       },
       {
         prop: "independent-select",
         type: ["Boolean"],
         default: "false",
-        description: "If true folders and items can be selected independently. By default selecting folders selects all children items and selecting every children selects parent folder",
+        description: "If `true` folders and items can be selected independently. By default selecting folders selects all children items and selecting every children selects parent folder",
       },
       {
         prop: "show-indicators",
@@ -146,13 +146,13 @@ export default {
         prop: "placeholder-folder-icon",
         type: ["String", "Object", "Array"],
         default: "undefined",
-        description: "Default icon for folders if no icon is provided in items prop. If value is <code class='code-text'>array</code> then icons are respectively for closed and opened folders",
+        description: "Default icon for folders if no icon is provided in items prop. If value is `array` then icons are respectively for closed and opened folders",
       },
       {
         prop: "placeholder-item-icon",
         type: ["String", "Object"],
         default: "undefined",
-        description: "Default icon for items if no icon is provided in items prop",
+        description: "Default icon for items if no icon is provided in `items` prop",
       },
       {
         prop: "chevron",
@@ -164,7 +164,7 @@ export default {
         prop: "transition",
         type: ["String"],
         default: "fade-m",
-        description: "Sets animation effect when opening or closing folders. Valid values are: 'fade-f', 'fade-m', 'fade-s', 'fade-slide-f', 'fade-slide-m' and 'fade-slide-s'. Empty string disables animations.",
+        description: "Sets animation effect when opening or closing folders. Valid values are: 'fade-f', 'fade-m', 'fade-s', 'fade-slide-f', 'fade-slide-m' and 'fade-slide-s'. `empty string` disables animations.",
       },
       ...styleProps("tree"),
     ]);
@@ -187,7 +187,7 @@ export default {
     let events = ref([
       {
         event: "input:click",
-        description: "Fired when item is clicked (folders and items). Passes item as argument. Note that disabled items also trigger this event but those can be easly dismissed by checking <code class='code-text'>disabled</code> property",
+        description: "Fired when item is clicked (folders and items). Passes item as argument. Note that disabled items also trigger this event but those can be easly dismissed by checking 'disabled' property",
       },
       {
         event: "input:selected",

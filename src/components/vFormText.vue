@@ -31,7 +31,7 @@ export default {
     singleLineMessage: { type: Boolean, default: false },
     transition: { type: String, default: "fade-scale" },
     styleFormText: { type: [String, Array], default: "" },
-    ...sharedStyleProps(),
+    ...sharedStyleProps("formText"),
   },
   setup(props) {
     let { classes, states } = useStyles("form-text", props, {

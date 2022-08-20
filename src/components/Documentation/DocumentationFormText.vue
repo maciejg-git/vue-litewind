@@ -22,14 +22,9 @@
 
 <script>
 import { ref } from "vue";
-import ExampleFormText from "./examples/ExampleFormText.vue";
-import exampleFormTextCode from "./examples/ExampleFormText.vue?raw";
 import { styleProps } from "./shared-props"
 
 export default {
-  components: {
-    ExampleFormText,
-  },
   setup() {
     let reference = ref([
       {
@@ -64,7 +59,7 @@ export default {
         type: ["String"],
         default: "'fade-scale'",
         description:
-          "Transition when showing message. Valid values are <code class='code-text'>'fade-scale'</code> or <code class='code-text'>empty string</code>",
+          "Transition when showing message. Valid values are 'fade-scale' or `empty string`",
       },
       ...styleProps(),
     ]);
@@ -88,7 +83,6 @@ export default {
       reference,
       styles,
       slots,
-      exampleFormTextCode,
     };
   },
 };

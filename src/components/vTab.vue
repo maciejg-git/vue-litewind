@@ -13,8 +13,6 @@
 <script>
 // vue
 import { ref, onMounted, onUnmounted, inject, toRef } from "vue";
-// style
-import "../styles/transitions.css"
 
 export default {
   props: {

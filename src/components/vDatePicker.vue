@@ -110,12 +110,13 @@ import { pad, getNumberRange } from "../tools.js";
 import { locales } from "../const";
 // props
 import { sharedStyleProps } from "../shared-props";
+import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
     modelValue: { type: [String, Array], default: undefined },
-    locale: { type: String, default: "" },
-    mondayFirstWeekday: { type: Boolean, default: false },
+    locale: { type: String, default: defaultProps("datepicker", "locale", "en-GB") },
+    mondayFirstWeekday: { type: Boolean, default: defaultProps("datepicker", "mondayFirstWeekday", false) },
     range: { type: Boolean, default: false },
     format: {
       type: Object,
@@ -128,18 +129,18 @@ export default {
     },
     disabled: { type: Array, default: [] },
     width: { type: String, default: undefined },
-    adjacentMonths: { type: Boolean, default: true },
+    adjacentMonths: { type: Boolean, default: defaultProps("datepicker", "adjacentMonths", true) },
     rangeHoverHighlight: { type: Boolean, default: true },
-    buttons: { type: Boolean, default: false },
-    secondaryButtonLabel: { type: String, default: "Cancel" },
-    primaryButtonLabel: { type: String, default: "OK" },
+    buttons: { type: Boolean, default: defaultProps("datepicker", "buttons", false) },
+    secondaryButtonLabel: { type: String, default: defaultProps("datepicker", "secondaryButtonLabel", "Cancel") },
+    primaryButtonLabel: { type: String, default: defaultProps("datepicker", "primaryButtonLabel", "OK") },
     primaryButton: {
       type: Object,
-      default: { styleButton: "primary small" },
+      default: defaultProps("datepicker", "primaryButton", { styleButton: "primary small" }),
     },
     secondaryButton: {
       type: Object,
-      default: { styleButton: "secondary small" },
+      default: defaultProps("datepicker", "secondaryButton", { styleButton: "secondary small" }),
     },
     transition: { type: String, default: "fade" },
     styleDatepicker: { type: String, default: "" },

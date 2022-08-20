@@ -1,6 +1,5 @@
 <template>
   <h3>Alert</h3>
-  <p></p>
 
   <section>
     <h4>Reference</h4>
@@ -11,6 +10,13 @@
 
     <h6>Slots</h6>
     <table-reference-basic :items="slots" reference="slot" />
+  </section>
+
+  <section>
+    <h4>Example - simple alert</h4>
+    <div class="example">
+      <example name="ExampleAlertSimple"></example>
+    </div>
   </section>
 
   <section>
@@ -32,7 +38,7 @@ export default {
         prop: "v-model",
         type: ["Boolean"],
         default: "false",
-        description: "Visiblity state of alert",
+        description: "Visiblity state of alert. Skip v-model to make alert static",
       },
       {
         prop: "dissmisable",
@@ -46,7 +52,13 @@ export default {
         type: ["Number"],
         default: "0",
         description:
-          "Delay after which alert is closed (<code class='code-word'>v-model</code> is set to <code class='code-text'>false</code>)",
+          "Delay after which alert is closed (v-model is set to `false`)",
+      },
+      {
+        prop: "close-button",
+        type: ["String"],
+        default: "{}",
+        description: "Attributes of v-close-button component. See documentation for valid values",
       },
       {
         prop: "icon",

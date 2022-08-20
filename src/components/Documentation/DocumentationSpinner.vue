@@ -28,7 +28,7 @@ export default {
         prop: "type",
         type: ["String"],
         default: "'border'",
-        description: "Valid values are <code class='code-text'>'border'</code> for border spinner or <code class='code-text'>'svg'</code> for SVG spinner.",
+        description: "Valid values are 'border' for border spinner or 'svg' for SVG spinner.",
       },
       {
         prop: "icon",

@@ -6,7 +6,6 @@
       border
       border-l-4
       rounded
-      font-semibold
       p-4
   }
       &.alert--info {
@@ -63,10 +62,19 @@
           border-0 
           border-l-8 !important
       }
+      &.alert--transparent {
+        @apply 
+          bg-transparent
+          dark:bg-transparent
+      }
       &.alert--shadowed {
         @apply
           shadow-lg
           shadow-black/20
+      }
+      &.alert--bold {
+        @apply
+          font-semibold
       }
       &.alert--dense {
         @apply
@@ -78,6 +86,6 @@
     @apply
       w-6
       h-6
-      mr-2
+      mr-4
   }
 }
