@@ -12,6 +12,10 @@ export let addId = (id, el, callback) => {
   }
 
   if (identifiers[id].el && identifiers[id].callback) {
-    identifiers[id].callback(identifiers[id].el)
+    identifiers[id].callback.addOnTriggerEvents(identifiers[id].el)
   }
+}
+
+export let removeId = (id) => {
+
 }

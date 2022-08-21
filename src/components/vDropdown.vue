@@ -113,8 +113,12 @@ export default {
       reference.value = el;
     };
 
+    let removeOnTriggerEvents = () => {
+
+    }
+
     if (props.triggerById) {
-      addId(props.triggerById, null, addOnTriggerEvents);
+      addId(props.triggerById, null, { addOnTriggerEvents, removeOnTriggerEvents });
     }
 
     // delay closing menu if using hover trigger
