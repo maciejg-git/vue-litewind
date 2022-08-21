@@ -44,13 +44,34 @@ export default {
         return isNumber(+v);
       },
     },
-    label: { type: Boolean, default: true },
-    precision: { type: Number, default: 2 },
-    indeterminate: { type: Boolean, default: false },
-    transition: { type: Boolean, default: true },
-    styleProgress: { type: [String, Array], default: defaultProps("progress", "styleProgress", "") },
-    styleProgressBar: { type: [String, Array], default: defaultProps("progress", "styleProgressBar", "") },
-    styleLabel: { type: [String, Array], default: defaultProps("progress", "styleLabel", "") },
+    label: {
+      type: Boolean,
+      default: true,
+    },
+    precision: {
+      type: Number,
+      default: 2,
+    },
+    indeterminate: {
+      type: Boolean,
+      default: false,
+    },
+    transition: {
+      type: Boolean,
+      default: true,
+    },
+    styleProgress: {
+      type: [String, Array],
+      default: defaultProps("progress", "styleProgress", ""),
+    },
+    styleProgressBar: {
+      type: [String, Array],
+      default: defaultProps("progress", "styleProgressBar", ""),
+    },
+    styleLabel: {
+      type: [String, Array],
+      default: defaultProps("progress", "styleLabel", ""),
+    },
     ...sharedStyleProps("progress"),
   },
   setup(props) {

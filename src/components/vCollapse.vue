@@ -15,14 +15,22 @@
 import { ref, watch, onMounted, onUnmounted, inject } from "vue";
 // components
 import vTransition from "./vTransition.vue";
+// props
+import { defaultProps } from "../defaultProps";
 
 export default {
   components: {
     vTransition,
   },
   props: {
-    modelValue: { type: Boolean, default: false },
-    transition: { type: String, default: "fade-collapse-m" },
+    modelValue: {
+      type: Boolean,
+      default: false,
+    },
+    transition: {
+      type: String,
+      default: defaultProps("collapse", "transition", "fade-collapse-m"),
+    },
   },
   setup(props, { emit }) {
     let isOpen = ref(props.modelValue);

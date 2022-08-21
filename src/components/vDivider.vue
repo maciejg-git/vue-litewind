@@ -4,11 +4,14 @@
 
 <script>
 import useStyles from "./composition/use-styles";
-import { sharedStyleProps } from "../shared-props"
+import { sharedStyleProps } from "../shared-props";
 
 export default {
   props: {
-    styleDivider: { type: [String, Array], default: "" },
+    styleDivider: {
+      type: [String, Array],
+      default: "",
+    },
     ...sharedStyleProps("divider"),
   },
   setup(props) {

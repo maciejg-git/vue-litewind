@@ -22,15 +22,34 @@ import { computed } from "vue";
 import useStyles from "./composition/use-styles";
 // props
 import { sharedStyleProps } from "../shared-props";
+import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
-    state: { type: [String, Boolean], default: "" },
-    inline: { type: Boolean, default: false },
-    messages: { type: Object, default: {} },
-    singleLineMessage: { type: Boolean, default: false },
-    transition: { type: String, default: "fade-scale" },
-    styleFormText: { type: [String, Array], default: "" },
+    state: {
+      type: String,
+      default: "",
+    },
+    inline: {
+      type: Boolean,
+      default: false,
+    },
+    messages: {
+      type: Object,
+      default: {},
+    },
+    singleLineMessage: {
+      type: Boolean,
+      default: defaultProps("formtext", "singleLineMessage", false),
+    },
+    transition: {
+      type: String,
+      default: defaultProps("formtext", "transition", "fade-scale"),
+    },
+    styleFormText: {
+      type: String,
+      default: defaultProps("formtext", "styleFormText", ""),
+    },
     ...sharedStyleProps("formText"),
   },
   setup(props) {

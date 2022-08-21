@@ -23,9 +23,18 @@ import { sharedStyleProps } from "../shared-props";
 
 export default {
   props: {
-    disabled: { type: Boolean, default: false },
-    tag: { type: String, default: "button" },
-    block: { type: Boolean, default: false },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    tag: {
+      type: String,
+      default: "button",
+    },
+    block: {
+      type: Boolean,
+      default: false,
+    },
     styleButton: {
       type: String,
       default: defaultProps("button", "styleButton", ""),

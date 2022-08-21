@@ -33,13 +33,22 @@ import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
-    modelValue: { type: Boolean, default: undefined },
-    dismissable: { type: Boolean, default: true },
+    modelValue: {
+      type: Boolean,
+      default: undefined,
+    },
+    dismissable: {
+      type: Boolean,
+      default: true,
+    },
     autoDismissDelay: {
       type: Number,
       default: defaultProps("alert", "autoDismissDelay", 0),
     },
-    icon: { type: String, default: "" },
+    icon: {
+      type: String,
+      default: "",
+    },
     closeButton: {
       type: Object,
       default: defaultProps("alert", "closeButton", {}),

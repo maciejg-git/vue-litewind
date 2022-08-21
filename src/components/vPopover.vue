@@ -24,7 +24,9 @@
 
 <script>
 // vue
-import { ref, toRefs, watch } from "vue";
+import { ref, toRefs } from "vue";
+// components
+import vCloseButton from "./vCloseButton.vue"
 // composition
 import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
@@ -38,12 +40,18 @@ import "../styles/transitions.css";
 export default {
   props: {
     ...sharedPopperProps(),
-    trigger: { type: String, default: "click" },
+    trigger: {
+      type: String,
+      default: "click",
+    },
     noHeader: {
       type: Boolean,
       default: defaultProps("popover", "noHeader", false),
     },
-    title: { type: String, default: undefined },
+    title: {
+      type: String,
+      default: undefined,
+    },
     transition: {
       type: String,
       default: defaultProps("popover", "transition", "fade-m"),
@@ -57,6 +65,9 @@ export default {
       default: defaultProps("popover", "styleContent", ""),
     },
     ...sharedStyleProps("popover"),
+  },
+  components: {
+    vCloseButton,
   },
   setup(props, { slots, emit, expose }) {
     let { classes } = useStyles("popover", props, {

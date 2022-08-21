@@ -3,15 +3,35 @@
 
   <section>
     <h4>Reference</h4>
+    <p class="my-10">
+      This component also accepts props of
+      <code class="code-text">v-input</code>
+      . See documentation here.
+    </p>
     <table-reference :items="reference" />
 
     <h6>Styling props</h6>
+    <p class="my-10">
+      This component also accepts styling props of
+      <code class="code-text">v-input</code>
+      . See documentation here.
+    </p>
     <table-reference-basic :items="styles" />
 
     <h6>Events</h6>
+    <p class="my-10">
+      This component also emits events of
+      <code class="code-text">v-input</code>
+      . See documentation here.
+    </p>
     <table-reference-basic :items="events" reference="event" />
 
     <h6>Slots</h6>
+    <p class="my-10">
+      This component also supports slots of
+      <code class="code-text">v-input</code>
+      . See documentation here.
+    </p>
     <table-reference-basic :items="slots" reference="slot" />
   </section>
 
@@ -31,9 +51,7 @@
 
   <section>
     <h4>Example - item slot</h4>
-    <p>
-      You can customize menu items by using item slot.
-    </p>
+    <p>You can customize menu items by using item slot.</p>
     <div class="example">
       <example name="ExampleAutocompleteSlot"></example>
     </div>
@@ -42,7 +60,7 @@
 
 <script>
 import { ref } from "vue";
-import { popperProps, styleProps, formProps } from "./shared-props"
+import { popperProps, styleProps, formProps } from "./shared-props";
 
 export default {
   setup() {
@@ -57,7 +75,8 @@ export default {
         prop: "items",
         type: ["Array"],
         default: "undefined",
-        description: "Items to display. Can be `array` of `strings` or `objects`",
+        description:
+          "Items to display. Can be `array` of `strings` or `objects`",
       },
       {
         prop: "item-text",
@@ -75,37 +94,36 @@ export default {
         prop: "is-loading",
         type: ["Boolean"],
         default: "false",
-        description: "Use it whenever asynchronously updating items prop. Required.",
+        description:
+          "Use it whenever asynchronously updating items prop. Required.",
       },
       {
         prop: "no-filter",
         type: ["Boolean"],
         default: "false",
-        description: "Do not use internal filter. Useful when data is being filtered server side",
+        description:
+          "Do not use internal filter. Useful when data is being filtered server side",
       },
       {
         prop: "no-pagination",
         type: ["Boolean"],
         default: "false",
-        description: "Do no use internal pagination. Useful when data is being paginated server side",
-      },
-      {
-        prop: "no-loader",
-        type: ["Boolean"],
-        default: "false",
-        description: "Toggles display of loader",
+        description:
+          "Do no use internal pagination. Useful when data is being paginated server side",
       },
       {
         prop: "items-per-page",
         type: ["Number"],
         default: "10",
-        description: "Amounts of items to display per page, 0 = all items on single page. Ignored if `no-pagination` is used",
+        description:
+          "Amounts of items to display per page, 0 = all items on single page. Ignored if `no-pagination` is used",
       },
       {
         prop: "empty-data-message",
         type: ["String"],
         default: "No data available",
-        description: "Message to display inside menu when `items` array is empty",
+        description:
+          "Message to display inside menu when `items` array is empty",
       },
       {
         prop: "transition",
@@ -136,11 +154,8 @@ export default {
     let events = ref([
       {
         event: "update:page",
-        description: "Fired when next page is displayed (scroll reach end of dropdown menu)",
-      },
-      {
-        event: "state:focus",
-        description: "Input element recieved focus",
+        description:
+          "Fired when next page is displayed (scroll reach end of dropdown menu)",
       },
       {
         event: "input:value",
@@ -174,5 +189,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

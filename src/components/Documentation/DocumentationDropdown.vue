@@ -36,13 +36,20 @@
   </section>
 
   <section id="example">
+    <h4>Example - custom content</h4>
+    <div class="example">
+      <example name="ExampleDropdownCustomContent"></example>
+    </div>
+  </section>
+
+  <section id="example">
     <h4>Example - context dropdown</h4>
     <p>
-      To make dropdown component exposes
+      To make context menu use exposed
       <code class="code-text">
         showContextDropdown($event, { contextData })
       </code>
-      function.
+      function. First argument, mouse <code class="code-text">event</code>, allows computing position of menu. Second argument defines data that is provided in <code class="code-text">default</code> slot of dropdown component.
     </p>
     <div class="example">
       <example name="ExampleDropdownContext"></example>

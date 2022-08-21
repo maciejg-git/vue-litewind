@@ -164,7 +164,7 @@ h5 {
   @apply text-xl font-semibold mt-4;
 }
 h6 {
-  @apply text-lg font-semibold mt-4;
+  @apply text-lg font-semibold mt-6 mb-2;
 }
 
 a.active {

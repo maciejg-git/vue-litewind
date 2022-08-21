@@ -43,6 +43,7 @@
       uppercase
       px-6
       py-2
+      opacity-70
       text-text-700
       dark:text-text-300
   }
@@ -57,7 +58,6 @@
       rounded
       text-sm
       text-left
-      mx-auto
       px-4 
       py-4
       my-1
@@ -91,11 +91,11 @@
       text-left
       font-semibold
       text-sm
-      mx-auto
       uppercase
       px-4
-      py-2
+      py-4
       my-1
+      opacity-70
       text-text-700
       dark:text-text-300
   }

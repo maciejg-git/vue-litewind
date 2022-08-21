@@ -1,20 +1,35 @@
 <template>
-  <div class="flex items-center">
-    <v-checkbox v-model="example.model" :state="example.state" id="example" />
-    <label for="example" class="ml-3">Example checkbox</label>
-  </div>
+  <v-checkbox
+    v-model="example.model"
+    :state="example.state"
+    :label="example.label"
+  />
 <!-- CUT START -->
   <v-tabs base="material" class="mt-10">
     <v-tab name="Props">
       <div class="flex flex-col gap-y-2 mt-5">
         <div>
           <label for="model" class="font-semibold">v-model:</label>
-          <v-input type="text" id="model" inline v-model="example.model"></v-input>
+          <v-input
+            type="text"
+            id="model"
+            inline
+            v-model="example.model"
+          ></v-input>
+        </div>
+        <div>
+          <label for="model">v-model:</label>
+          <v-input
+            type="text"
+            id="model"
+            inline
+            v-model="example.label"
+          ></v-input>
         </div>
         <div>
           <label for="state">state:</label>
           <v-select id="state" v-model="example.state">
-            <option :value=null>component controlled (null)</option>
+            <option :value="null">component controlled (null)</option>
             <option value="">normal (empty string)</option>
             <option value="valid">valid</option>
             <option value="invalid">invalid</option>
@@ -42,6 +57,7 @@ export default {
   setup() {
     let example = reactive({
       model: true,
+      label: "Example checkbox",
       state: "",
     });
 

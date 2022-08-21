@@ -1,5 +1,10 @@
 <template>
-  <slot v-if="!triggerById" name="reference" v-bind="referenceSlotProps" :is-open="isPopperVisible"></slot>
+  <slot
+    v-if="!triggerById"
+    name="reference"
+    v-bind="referenceSlotProps"
+    :is-open="isPopperVisible"
+  ></slot>
 
   <teleport to="body">
     <transition :name="transition" @after-leave="onPopperTransitionLeave">
@@ -30,19 +35,42 @@ import useTrigger from "./composition/use-trigger";
 import { sharedPopperProps, sharedStyleProps } from "../shared-props";
 // style
 import "../styles/transitions.css";
-import { addId } from "../identifiers"
+import { defaultProps } from "../defaultProps";
+
+import { addId } from "../identifiers";
 
 export default {
   inheritAttrs: true,
   props: {
-    modelValue: { type: Boolean, default: false },
+    modelValue: {
+      type: Boolean,
+      default: false,
+    },
     ...sharedPopperProps(),
-    autoCloseMenu: { type: Boolean, default: false },
-    trigger: { type: String, default: "click" },
-    triggerById: { type: String, default: "" },
-    transition: { type: String, default: "fade-m" },
-    styleItem: { type: String, default: "" },
-    styleHeader: { type: String, default: "" },
+    autoCloseMenu: {
+      type: Boolean,
+      default: defaultProps("dropdown", "autoCloseMenu", false),
+    },
+    trigger: {
+      type: String,
+      default: "click",
+    },
+    triggerById: {
+      type: String,
+      default: "",
+    },
+    transition: {
+      type: String,
+      default: defaultProps("dropdown", "transition", "fade-m"),
+    },
+    styleItem: {
+      type: String,
+      default: defaultProps("dropdown", "styleItem", ""),
+    },
+    styleHeader: {
+      type: String,
+      default: defaultProps("dropdown", "styleHeader", ""),
+    },
     ...sharedStyleProps("dropdown"),
   },
   emits: ["state:opened", "state:closed", "update:modelValue"],
@@ -80,13 +108,13 @@ export default {
 
     let addOnTriggerEvents = (el) => {
       for (let event in onTrigger) {
-        el.addEventListener(event, onTrigger[event])
+        el.addEventListener(event, onTrigger[event]);
       }
-      reference.value = el
-    }
+      reference.value = el;
+    };
 
     if (props.triggerById) {
-      addId(props.triggerById, null, addOnTriggerEvents)
+      addId(props.triggerById, null, addOnTriggerEvents);
     }
 
     // delay closing menu if using hover trigger

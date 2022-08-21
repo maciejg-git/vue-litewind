@@ -23,19 +23,50 @@ import useStyles from "./composition/use-styles";
 import vTreeNode from "./vTreeNode.vue";
 // props
 import { sharedStyleProps } from "../shared-props";
+import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
-    items: { type: Object, default: [] },
-    filter: { type: String, default: "" },
-    openAll: { type: Boolean, default: false },
-    autoOpenRoot: { type: Boolean, default: false },
-    autoOpenAll: { type: Boolean, default: false },
-    selectReturnKeys: { type: Boolean, default: false },
-    transition: { type: String, default: "fade-m" },
-    styleFolder: { type: String, default: "" },
-    styleItem: { type: String, default: "" },
-    styleIcon: { type: String, default: "" },
+    items: {
+      type: Object,
+      default: [],
+    },
+    filter: {
+      type: String,
+      default: "",
+    },
+    openAll: {
+      type: Boolean,
+      default: false,
+    },
+    autoOpenRoot: {
+      type: Boolean,
+      default: defaultProps("tree", "autoOpenRoot", false),
+    },
+    autoOpenAll: {
+      type: Boolean,
+      default: false,
+    },
+    selectReturnKeys: {
+      type: Boolean,
+      default: defaultProps("tree", "selectReturnKeys", false),
+    },
+    transition: {
+      type: String,
+      default: defaultProps("tree", "transition", "fade-m"),
+    },
+    styleFolder: {
+      type: String,
+      default: defaultProps("tree", "styleFolder", ""),
+    },
+    styleItem: {
+      type: String,
+      default: defaultProps("tree", "styleItem", ""),
+    },
+    styleIcon: {
+      type: String,
+      default: defaultProps("tree", "styleIcon", ""),
+    },
     ...sharedStyleProps("tree"),
   },
   components: {

@@ -6,7 +6,7 @@
     inline
     :items="example.items"
     :is-loading="example.isLoading"
-    :no-loader="example.noLoader"
+    :use-loader="example.useLoader"
     :clearable="example.clearable"
     :transition="example.transition"
     :state="example.state"
@@ -24,8 +24,8 @@
           <v-input type="text" id="model" inline v-model="example.model"></v-input>
         </div>
         <div>
-          <label for="noloader">no-loader:</label>
-          <v-select-prop id="noloader" v-model="example.noLoader">
+          <label for="use-loader">use-loader:</label>
+          <v-select-prop id="use-loader" v-model="example.useLoader">
             <option :value="true">true</option>
             <option :value="false">false</option>
           </v-select-prop>
@@ -70,7 +70,7 @@ export default {
       model: "",
       items: [],
       isLoading: false,
-      noLoader: false,
+      useLoader: true,
       clearable: false,
       transition: "fade",
     });

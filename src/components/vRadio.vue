@@ -1,15 +1,18 @@
 <template>
   <div class="flex items-center">
-  <input
-    v-bind="$attrs"
-    v-model="localModel"
-    type="radio"
-    :class="getRadioClasses()"
-    @blur="handleBlur"
-  />
-    <slot name="default" :label="label">
-      <label :for="id" :class="classes.label.value">{{ label }}</label>
-    </slot>
+    <input
+      v-bind="$attrs"
+      v-model="localModel"
+      type="radio"
+      :id="id"
+      :class="getRadioClasses()"
+      @blur="handleBlur"
+    />
+    <label v-if="label" :for="id" :class="classes.label.value">
+      <slot name="default" :label="label">
+        {{ label }}
+      </slot>
+    </label>
   </div>
 </template>
 
@@ -19,15 +22,29 @@ import { inject } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
+import useUid from "./composition/use-uid";
 // props
 import { sharedStyleProps, sharedFormProps } from "../shared-props";
+import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
-    modelValue: { type: [Array, Boolean, String], default: undefined },
-    label: { type: String, default: "" },
-    styleRadio: { type: [String, Array], default: "" },
-    styleLabel: { type: [String, Array], default: "" },
+    modelValue: {
+      type: [Array, Boolean, String],
+      default: undefined,
+    },
+    label: {
+      type: String,
+      default: "",
+    },
+    styleRadio: {
+      type: String,
+      default: defaultProps("radio", "styleRadio", ""),
+    },
+    styleLabel: {
+      type: String,
+      default: defaultProps("radio", "styleLabel", ""),
+    },
     ...sharedFormProps(null),
     ...sharedStyleProps("radio"),
   },
@@ -50,18 +67,17 @@ export default {
       ];
     };
 
-    let { id } = attrs
+    let id = useUid("input", attrs);
 
-    let { value, updateValue, touch, state } = inject(
-      "radio-group",
-      { state: "" }
-    );
+    let { value, updateValue, touch, state } = inject("radio-group", {
+      state: "",
+    });
 
     let localModel = useLocalModel(props, emit, updateValue, value);
 
     let handleBlur = () => {
       if (touch) touch();
-    }
+    };
 
     return {
       classes,

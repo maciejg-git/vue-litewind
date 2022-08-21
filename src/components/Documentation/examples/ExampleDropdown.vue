@@ -50,7 +50,7 @@
         <v-chevron style-chevron="right" />
       </v-button>
     </template>
-    <v-card width="320px" style-card="shadow" class="flex flex-col py-1 ">
+    <v-card width="320px" style-card="shadow" class="flex flex-col items-center py-1">
       <v-dropdown-menu-item tag="button">
         Menu item
       </v-dropdown-menu-item>

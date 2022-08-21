@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Test from "../components/Test.vue";
 
 import Documentation from "../components/Documentation/Documentation.vue";
 
@@ -47,8 +46,7 @@ import DocumentationFormValidation from "../components/Documentation/Documentati
 const routes = [
   {
     path: "/",
-    component: Test,
-    // redirect: "/documentation/installation",
+    redirect: "/documentation/installation",
   },
   {
     path: "/documentation",

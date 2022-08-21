@@ -3,11 +3,11 @@
     v-bind="$attrs"
     type="checkbox"
     :class="[
-        classes.checkbox.value,
-        attrs.disabled === '' || attrs.disabled === true
-          ? states.checkbox.disabled
-          : '',
-      ]"
+      classes.checkbox.value,
+      attrs.disabled === '' || attrs.disabled === true
+        ? states.checkbox.disabled
+        : '',
+    ]"
   />
 </template>
 

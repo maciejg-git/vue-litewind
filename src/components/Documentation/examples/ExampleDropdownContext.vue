@@ -4,21 +4,17 @@
       v-for="(language, index) in languages"
       :key="language"
       class="border hover:bg-secondary-50 dark:hover:bg-dark-700 dark:border-dark-700 cursor-pointer p-2 mr-4"
-      @contextmenu.prevent="contextMenu.showContextDropdown($event, { language, index })"
+      @contextmenu.prevent="
+        contextMenu.showContextDropdown($event, { language, index })
+      "
     >
-      <!-- call showContextDropdown with data as argument -->
       {{ language }}
     </div>
   </div>
 
   Language: {{ currentLanguage }}
 
-  <v-dropdown 
-    ref="contextMenu" 
-    auto-close-menu 
-    v-slot="{ language, index }"
-  >
-    <!-- data from showContextDropdown is available as default slot props -->
+  <v-dropdown ref="contextMenu" auto-close-menu v-slot="{ language, index }">
     <v-card width="280px" style-card="menu shadow">
       <v-dropdown-menu-item @click="currentLanguage = language">
         Switch to {{ language }}

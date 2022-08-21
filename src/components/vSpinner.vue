@@ -33,13 +33,22 @@ import useStyles from "./composition/use-styles";
 // components
 import vIcon from "./vIcon.vue";
 // props
-import { sharedStyleProps } from "../shared-props"
+import { sharedStyleProps } from "../shared-props";
 
 export default {
   props: {
-    type: { type: String, default: "border" },
-    icon: { type: [String, Object], default: undefined },
-    styleSpinner: { type: String, default: "" },
+    type: {
+      type: String,
+      default: "border",
+    },
+    icon: {
+      type: [String, Object],
+      default: undefined,
+    },
+    styleSpinner: {
+      type: String,
+      default: "",
+    },
     ...sharedStyleProps("spinner"),
   },
   components: {

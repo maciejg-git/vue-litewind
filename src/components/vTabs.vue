@@ -30,9 +30,18 @@ import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
-    fill: { type: Boolean, default: false },
-    center: { type: Boolean, default: false },
-    right: { type: Boolean, default: false },
+    fill: {
+      type: Boolean,
+      default: false,
+    },
+    center: {
+      type: Boolean,
+      default: false,
+    },
+    right: {
+      type: Boolean,
+      default: false,
+    },
     transition: {
       type: String,
       default: defaultProps("tabs", "transition", "fade"),

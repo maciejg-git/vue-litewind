@@ -73,7 +73,7 @@ export default {
         prop: "v-model",
         type: ["Array", "String"],
         description:
-          "v-model is used to return date after selection. Date is in YYYY-MM-DD format",
+          "v-model is used to return date after selection. Date is in `YYYY-MM-DD` format",
       },
       {
         prop: "range",
@@ -86,14 +86,14 @@ export default {
         type: ["String"],
         default: "'en-GB'",
         description:
-          "This prop is only used to display names of months and weekdays and to format date emitted by input:formatted event. It does not modify format of v-model date which is always YYYY-MM-DD",
+          "This prop is only used to display names of months and weekdays and to format date emitted by input:formatted event. It does not modify format of v-model date which is always `YYYY-MM-DD`",
       },
       {
         prop: "format",
         type: ["Object"],
         default: "",
         description:
-          "Format of date emmited by <code class='code-word'>input:formatted</code> event. Read about how to use this object <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat' class='link'>here</a> (options paremeter)",
+          `Format of date emmited by @input:formatted event. Read about how to use this object <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat" class="link">here</a> (options paremeter)`,
       },
       {
         prop: "monday-first-weekday",
@@ -201,7 +201,7 @@ export default {
       {
         event: "state:done",
         description:
-          "Emmited after selecting date (and clicking primary button if buttons props is set to true)",
+          "Emmited after selecting date (and clicking primary button if `buttons` props is set to `true`)",
       },
       {
         event: "input:cancel",

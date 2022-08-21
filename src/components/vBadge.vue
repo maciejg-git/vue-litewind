@@ -12,15 +12,27 @@ import { computed } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 // props
-import { sharedStyleProps } from "../shared-props"
-import "../styles/transitions.css"
+import { sharedStyleProps } from "../shared-props";
+import "../styles/transitions.css";
 
 export default {
   props: {
-    position: { type: String, default: "" },
-    updateKey: { type: [String, Number], default: undefined },
-    updateAnimation: { type: String, default: "" },
-    styleBadge: { type: String, default: "" },
+    position: {
+      type: String,
+      default: "",
+    },
+    updateKey: {
+      type: [String, Number],
+      default: undefined,
+    },
+    updateAnimation: {
+      type: String,
+      default: "",
+    },
+    styleBadge: {
+      type: String,
+      default: "",
+    },
     ...sharedStyleProps("badge"),
   },
   setup(props) {

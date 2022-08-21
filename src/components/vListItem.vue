@@ -9,7 +9,10 @@ import { computed, inject } from "vue";
 
 export default {
   props: {
-    active: { type: Boolean, default: false },
+    active: {
+      type: Boolean,
+      default: false,
+    },
   },
   setup(props) {
     let classes = inject("classes");

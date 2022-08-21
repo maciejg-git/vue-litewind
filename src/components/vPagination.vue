@@ -53,10 +53,22 @@ import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
-    modelValue: { type: Number, default: undefined },
-    itemsCount: { type: Number, default: undefined },
-    itemsPerPage: { type: Number, default: undefined },
-    maxPages: { type: Number, default: undefined },
+    modelValue: {
+      type: Number,
+      default: undefined,
+    },
+    itemsCount: {
+      type: Number,
+      default: undefined,
+    },
+    itemsPerPage: {
+      type: Number,
+      default: undefined,
+    },
+    maxPages: {
+      type: Number,
+      default: undefined,
+    },
     stylePaginationBar: {
       type: String,
       default: defaultProps("pagination", "stylePaginationBar", ""),

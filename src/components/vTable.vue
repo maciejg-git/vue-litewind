@@ -121,15 +121,30 @@ import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
-    definition: { type: Array, default: undefined },
-    items: { type: Array, default: undefined },
-    filter: { type: [String, RegExp], default: "" },
-    page: { type: Number, default: 1 },
+    definition: {
+      type: Array,
+      default: undefined,
+    },
+    items: {
+      type: Array,
+      default: undefined,
+    },
+    filter: {
+      type: [String, RegExp],
+      default: "",
+    },
+    page: {
+      type: Number,
+      default: 1,
+    },
     itemsPerPage: {
       type: Number,
       default: defaultProps("table", "itemsPerPage", 0),
     },
-    primaryKey: { type: String, default: undefined },
+    primaryKey: {
+      type: String,
+      default: undefined,
+    },
     captionTop: {
       type: Boolean,
       default: defaultProps("table", "captionTop", false),
@@ -146,10 +161,22 @@ export default {
         "No records for current filter"
       ),
     },
-    locale: { type: String, default: defaultProps("table", "locale", "en-GB") },
-    busy: { type: Boolean, default: false },
-    selectionMode: { type: String, default: "" },
-    state: { type: String, default: "" },
+    locale: {
+      type: String,
+      default: defaultProps("table", "locale", "en-GB"),
+    },
+    busy: {
+      type: Boolean,
+      default: false,
+    },
+    selectionMode: {
+      type: String,
+      default: "",
+    },
+    state: {
+      type: String,
+      default: "",
+    },
     styleTable: {
       type: String,
       default: defaultProps("table", "styleTable", ""),
@@ -162,7 +189,10 @@ export default {
       type: String,
       default: defaultProps("table", "styleHeaderCell", ""),
     },
-    styleRow: { type: String, default: defaultProps("table", "styleRow", "") },
+    styleRow: {
+      type: String,
+      default: defaultProps("table", "styleRow", "")
+    },
     styleCell: {
       type: String,
       default: defaultProps("table", "styleCell", ""),

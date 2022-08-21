@@ -3,13 +3,16 @@
     <input
       v-model="localModel"
       v-bind="$attrs"
+      :id="id"
       type="checkbox"
       :class="getCheckBoxClasses()"
       @blur="handleBlur"
     />
-    <slot name="default" :label="label">
-      <label v-if="label" :for="id" :class="classes.label.value">{{ label }}</label>
-    </slot>
+    <label v-if="label" :for="id" :class="classes.label.value">
+      <slot name="default" :label="label">
+        {{ label }}
+      </slot>
+    </label>
   </div>
 </template>
 
@@ -19,16 +22,33 @@ import { ref, watch, inject } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
+import useUid from "./composition/use-uid";
 // props
 import { sharedStyleProps, sharedFormProps } from "../shared-props";
+import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
-    modelValue: { type: [Array, Boolean, Object], default: undefined },
-    rules: { type: Object, default: {} },
-    label: { type: String, default: "" },
-    styleCheckbox: { type: [String, Array], default: "" },
-    styleLabel: { type: [String, Array], default: "" },
+    modelValue: {
+      type: [Array, Boolean, Object],
+      default: undefined,
+    },
+    rules: {
+      type: Object,
+      default: {},
+    },
+    label: {
+      type: String,
+      default: "",
+    },
+    styleCheckbox: {
+      type: [String, Array],
+      default: defaultProps("checkbox", "styleCheckbox", ""),
+    },
+    styleLabel: {
+      type: [String, Array],
+      default: defaultProps("checkbox", "styleInput", ""),
+    },
     ...sharedFormProps(null),
     ...sharedStyleProps("checkbox"),
   },
@@ -51,7 +71,7 @@ export default {
       ];
     };
 
-    let { id } = attrs;
+    let id = useUid("checkbox", attrs);
 
     let { value, updateValue, touch, state } = inject("checkbox-group", {
       state: ref(""),
@@ -60,7 +80,7 @@ export default {
     watch(
       () => props.state,
       (newState) => (state.value = newState),
-      { immediate: true },
+      { immediate: true }
     );
 
     let localModel = useLocalModel(props, emit, updateValue, value);
@@ -72,9 +92,9 @@ export default {
     return {
       classes,
       getCheckBoxClasses,
+      id,
       state,
       localModel,
-      id,
       handleBlur,
     };
   },

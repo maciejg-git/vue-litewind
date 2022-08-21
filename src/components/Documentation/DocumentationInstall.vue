@@ -86,8 +86,8 @@ import "vue-wind/dist/style.css" `}}
       Register selected or all components in application entry file (for example main.js)
     </p>
 
-    <p> All components: </p>
-
+    <v-tabs base="material">
+      <v-tab name="All components">
     <v-code language="javascript">
       {{ `// main.js
 
@@ -101,8 +101,8 @@ app.use(componentPlugin, {
 }); `}}
     </v-code>
 
-    <p> Selected components: </p>
-
+      </v-tab>
+      <v-tab name="Selected components">
     <v-code language="javascript">
       {{ `// main.js
 
@@ -118,6 +118,9 @@ app.use(componentPlugin, {
   }
 }); `}}
     </v-code>
+
+      </v-tab>
+    </v-tabs>
 
     <p>
       You can configure components globally by providing options as second argument of app.use:
@@ -136,17 +139,15 @@ app.use(componentPlugin, {
     <v-alert icon="warn" style-alert="shadowed borderless outline warn" class="mx-6">
       Note that you can provide default value for some props only.
     </v-alert>
-    <v-alert icon="info" style-alert="shadowed borderless outline info" class="mx-6 mt-4">
-      <div>
-        If the same prop is set on component and in options the order is:
+      <p>
+        If the same prop is set on component and in options as <code class="code-text">globalProp</code> or <code class="code-text">componentProp</code> the order is:
         <ul class="mt-2">
-          <li>- props set on components</li>
+          <li>- props set on components (highest priority)</li>
           <li>- props from componentProps</li>
           <li>- props from globalProps</li>
           <li>- default props set by component</li>
         </ul>
-      </div>
-    </v-alert>
+      </p>
     </p>
 
     <v-code language="javascript">

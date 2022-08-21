@@ -54,7 +54,7 @@
         @apply
           text-text-800
           dark:text-text-300
-          bg-white 
+          bg-secondary-100
           dark:bg-dark-700 !important
       }
       &.alert--borderless {

@@ -1,8 +1,5 @@
 <template>
-  <div
-    :class="[classes.datepicker.value]"
-    :style="{ width: width }"
-  >
+  <div :class="[classes.datepicker.value]" :style="{ width: width }">
     <div class="grid grid-cols-6 grid-flow-col my-2">
       <button
         aria-label="Previous year"
@@ -81,10 +78,7 @@
       {{ todayFormatted }}
     </div>
     <div v-if="buttons" class="flex justify-between pt-2">
-      <v-button
-        v-bind="secondaryButton"
-        @click="handleSecondaryButtonClick"
-      >
+      <v-button v-bind="secondaryButton" @click="handleSecondaryButtonClick">
         {{ secondaryButtonLabel }}
       </v-button>
       <v-button v-bind="primaryButton" @click="handlePrimaryButtonClick">
@@ -114,10 +108,22 @@ import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
-    modelValue: { type: [String, Array], default: undefined },
-    locale: { type: String, default: defaultProps("datepicker", "locale", "en-GB") },
-    mondayFirstWeekday: { type: Boolean, default: defaultProps("datepicker", "mondayFirstWeekday", false) },
-    range: { type: Boolean, default: false },
+    modelValue: {
+      type: [String, Array],
+      default: undefined,
+    },
+    locale: {
+      type: String,
+      default: defaultProps("datepicker", "locale", "en-GB"),
+    },
+    mondayFirstWeekday: {
+      type: Boolean,
+      default: defaultProps("datepicker", "mondayFirstWeekday", false),
+    },
+    range: {
+      type: Boolean,
+      default: false,
+    },
     format: {
       type: Object,
       default: () => ({
@@ -127,29 +133,78 @@ export default {
         day: "numeric",
       }),
     },
-    disabled: { type: Array, default: [] },
-    width: { type: String, default: undefined },
-    adjacentMonths: { type: Boolean, default: defaultProps("datepicker", "adjacentMonths", true) },
-    rangeHoverHighlight: { type: Boolean, default: true },
-    buttons: { type: Boolean, default: defaultProps("datepicker", "buttons", false) },
-    secondaryButtonLabel: { type: String, default: defaultProps("datepicker", "secondaryButtonLabel", "Cancel") },
-    primaryButtonLabel: { type: String, default: defaultProps("datepicker", "primaryButtonLabel", "OK") },
+    disabled: {
+      type: Array,
+      default: [],
+    },
+    width: {
+      type: String,
+      default: undefined,
+    },
+    adjacentMonths: {
+      type: Boolean,
+      default: defaultProps("datepicker", "adjacentMonths", true),
+    },
+    rangeHoverHighlight: {
+      type: Boolean,
+      default: true,
+    },
+    buttons: {
+      type: Boolean,
+      default: defaultProps("datepicker", "buttons", false),
+    },
+    secondaryButtonLabel: {
+      type: String,
+      default: defaultProps("datepicker", "secondaryButtonLabel", "Cancel"),
+    },
+    primaryButtonLabel: {
+      type: String,
+      default: defaultProps("datepicker", "primaryButtonLabel", "OK"),
+    },
     primaryButton: {
       type: Object,
-      default: defaultProps("datepicker", "primaryButton", { styleButton: "primary small" }),
+      default: defaultProps("datepicker", "primaryButton", {
+        styleButton: "primary small",
+      }),
     },
     secondaryButton: {
       type: Object,
-      default: defaultProps("datepicker", "secondaryButton", { styleButton: "secondary small" }),
+      default: defaultProps("datepicker", "secondaryButton", {
+        styleButton: "secondary small",
+      }),
     },
-    transition: { type: String, default: "fade" },
-    styleDatepicker: { type: String, default: "" },
-    styleWeekdayBar: { type: String, default: "" },
-    styleWeekday: { type: String, default: "" },
-    styleButton: { type: String, default: "" },
-    styleDay: { type: String, default: "" },
-    styleAdjacentMonthDay: { type: String, default: "" },
-    styleFooter: { type: String, default: "" },
+    transition: {
+      type: String,
+      default: "fade",
+    },
+    styleDatepicker: {
+      type: String,
+      default: "",
+    },
+    styleWeekdayBar: {
+      type: String,
+      default: "",
+    },
+    styleWeekday: {
+      type: String,
+      default: "",
+    },
+    styleButton: {
+      type: String,
+      default: "",
+    },
+    styleDay: {
+      type: String,
+      default: "",
+    },
+    styleAdjacentMonthDay: {
+      type: String,
+      default: "",
+    },
+    styleFooter: {
+      type: String,
+      default: "",
+    },
     ...sharedStyleProps("datepicker"),
   },
   components: {
@@ -305,9 +360,12 @@ export default {
       { immediate: true }
     );
 
-    watch(() => props.range, () => {
-      reset()
-    })
+    watch(
+      () => props.range,
+      () => {
+        reset();
+      }
+    );
 
     // generate days to display for current month
     let daysList = computed(() => {
@@ -357,10 +415,10 @@ export default {
     };
 
     let reset = () => {
-      emit("update:modelValue", "")
-      range.value = []
-      single.value = ""
-    }
+      emit("update:modelValue", "");
+      range.value = [];
+      single.value = "";
+    };
 
     // add date in range mode and update state
     let addRangeDate = (d) => {
@@ -449,9 +507,8 @@ export default {
     };
 
     let handleMouseOverDay = (d) => {
-      if (rangeState.value === 1)
-      mouseOverRange.value = d.date
-    }
+      if (rangeState.value === 1) mouseOverRange.value = d.date;
+    };
 
     let handlePrimaryButtonClick = () => {
       if (props.range) {
@@ -462,7 +519,6 @@ export default {
     };
 
     let handleSecondaryButtonClick = () => emit("input:cancel");
-
 
     return {
       classes,

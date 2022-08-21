@@ -1,8 +1,5 @@
 <template>
-  <transition
-    :name="transition"
-    @beforeLeave="beforeLeaveTransition"
-  >
+  <transition :name="transition" @beforeLeave="beforeLeaveTransition">
     <div v-show="tab.isActive.value">
       <slot v-if="false" name="name"></slot>
       <slot name="default"></slot>
@@ -16,16 +13,19 @@ import { ref, onMounted, onUnmounted, inject, toRef } from "vue";
 
 export default {
   props: {
-    name: { type: String, default: undefined },
+    name: {
+      type: String,
+      default: undefined,
+    },
   },
   setup(props, { slots }) {
     let { addTab, removeTab, transition } = inject("control-tab");
 
-    let tab = { 
-      isActive: ref(false), 
+    let tab = {
+      isActive: ref(false),
       name: toRef(props, "name"),
-      slots
-    }
+      slots,
+    };
 
     onMounted(() => addTab(tab));
 
@@ -35,7 +35,7 @@ export default {
 
     let beforeLeaveTransition = (el) => {
       el.style.display = "none";
-    }
+    };
 
     return {
       tab,

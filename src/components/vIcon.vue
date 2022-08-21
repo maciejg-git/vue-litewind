@@ -1,7 +1,5 @@
 <template>
-  <component
-    :is="iconTypes[iconType] || name || icon || null"
-  ></component>
+  <component :is="iconTypes[iconType] || name || icon || null"></component>
 </template>
 
 <script>
@@ -9,12 +7,20 @@ import { inject } from "vue";
 
 export default {
   props: {
-    name: { type: [String, Object], default: "" },
-    icon: { type: [String, Object], default: "" },
-    transition: { type: String, default: "" },
-    iconType: { type: String, default: "" },
+    name: {
+      type: [String, Object],
+      default: "",
+    },
+    icon: {
+      type: [String, Object],
+      default: "",
+    },
+    iconType: {
+      type: String,
+      default: "",
+    },
   },
-  setup(props) {
+  setup() {
     let iconTypes = inject("icon-types", {});
 
     return {
@@ -24,4 +30,4 @@ export default {
 };
 </script>
 
-<style scoped lang="postcss"></style>
+<style></style>

@@ -83,12 +83,34 @@ import "../styles/transitions.css";
 
 export default {
   props: {
-    modelValue: { type: Boolean, default: undefined },
-    title: { type: String, default: undefined },
-    noPrimaryButton: { type: Boolean, default: false },
-    noSecondaryButton: { type: Boolean, default: false },
-    primaryButton: { type: Object, default: { styleButton: "primary" } },
-    secondaryButton: { type: Object, default: { styleButton: "secondary" } },
+    modelValue: {
+      type: Boolean,
+      default: undefined,
+    },
+    title: {
+      type: String,
+      default: undefined,
+    },
+    noPrimaryButton: {
+      type: Boolean,
+      default: false,
+    },
+    noSecondaryButton: {
+      type: Boolean,
+      default: false,
+    },
+    primaryButton: {
+      type: Object,
+      default: {
+        styleButton: "primary",
+      },
+    },
+    secondaryButton: {
+      type: Object,
+      default: {
+        styleButton: "secondary",
+      },
+    },
     primaryButtonLabel: {
       type: String,
       default: defaultProps("modal", "primaryButtonLabel", "Accept"),
@@ -97,15 +119,30 @@ export default {
       type: String,
       default: defaultProps("modal", "secondaryButtonLabel", "Close"),
     },
-    primaryButtonClose: { type: Boolean, default: false },
-    secondaryButtonClose: { type: Boolean, default: false },
+    primaryButtonClose: {
+      type: Boolean,
+      default: false,
+    },
+    secondaryButtonClose: {
+      type: Boolean,
+      default: false,
+    },
     justifyButtons: {
       type: String,
       default: defaultProps("modal", "justifyButtons", "end"),
     },
-    noCloseButton: { type: Boolean, default: false },
-    closeButtonInContent: { type: Boolean, default: false },
-    staticBackdrop: { type: Boolean, default: false },
+    noCloseButton: {
+      type: Boolean,
+      default: false,
+    },
+    closeButtonInContent: {
+      type: Boolean,
+      default: false,
+    },
+    staticBackdrop: {
+      type: Boolean,
+      default: false,
+    },
     noHeader: {
       type: Boolean,
       default: defaultProps("modal", "noHeader", false),
@@ -118,7 +155,10 @@ export default {
       type: String,
       default: defaultProps("modal", "position", "top"),
     },
-    size: { type: String, default: defaultProps("modal", "size", "md") },
+    size: {
+      type: String,
+      default: defaultProps("modal", "size", "md"),
+    },
     closeButton: {
       type: Object,
       default: defaultProps("modal", "closeButton", {}),

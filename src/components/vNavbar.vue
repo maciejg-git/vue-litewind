@@ -7,14 +7,26 @@
 <script>
 import { computed } from "vue";
 import useStyles from "./composition/use-styles";
-import { sharedStyleProps } from "../shared-props"
+import { sharedStyleProps } from "../shared-props";
 
 export default {
   props: {
-    fixed: { type: Boolean, default: false },
-    sticky: { type: Boolean, default: false },
-    bottom: { type: Boolean, default: false },
-    styleNavbar: { type: String, default: "" },
+    fixed: {
+      type: Boolean,
+      default: false,
+    },
+    sticky: {
+      type: Boolean,
+      default: false,
+    },
+    bottom: {
+      type: Boolean,
+      default: false,
+    },
+    styleNavbar: {
+      type: String,
+      default: "",
+    },
     ...sharedStyleProps("navbar"),
   },
   setup(props) {

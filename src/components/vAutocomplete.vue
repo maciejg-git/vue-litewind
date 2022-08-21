@@ -1,13 +1,12 @@
 <template>
   <v-input
     v-model="localText"
-    v-bind="$attrs"
+    v-bind="{ ...$attrs, ...input }"
     type="text"
     ref="reference"
     :icon="icon"
-    :isLoading="isLoading"
+    :use-loader="useLoader"
     :custom-clearable="clearable"
-    :useLoader="!noLoader"
     show-indicator
     :indicator-switch="isPopperVisible"
     :chevron="chevron"
@@ -17,10 +16,7 @@
     @click:indicator="handleClickIndicator"
     @click:clear-button="handleClickClearButton"
   >
-    <template
-      v-for="(name, slot) of $slots"
-      #[slot]="slotProps"
-    >
+    <template v-for="(name, slot) of $slots" #[slot]="slotProps">
       <slot :name="slot" v-bind="slotProps"></slot>
     </template>
   </v-input>
@@ -82,26 +78,81 @@ import {
   sharedStyleProps,
   sharedFormProps,
 } from "../shared-props";
+import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
-    modelValue: { type: [String, Object], default: undefined },
+    modelValue: {
+      type: [String, Object],
+      default: undefined,
+    },
+    // v-input props
+    useLoader: {
+      type: Boolean,
+      default: defaultProps("autocomplete", "useLoader", true),
+    },
+    // v-autocomplete props
     ...sharedPopperProps({ offsetY: 10 }),
-    items: { type: Array, default: [] },
-    itemText: { type: String, default: "text" },
-    itemValue: { type: String, default: "value" },
-    filterKeys: { type: Array, default: [] },
-    isLoading: { type: Boolean, default: false },
-    noFilter: { type: Boolean, default: false },
-    noPagination: { type: Boolean, default: false },
-    noLoader: { type: Boolean, default: false },
-    emptyDataMessage: { type: String, default: "No data available" },
-    chevron: { type: Object, default: {} },
-    itemsPerPage: { type: Number, default: 10 },
-    transition: { type: String, default: "fade" },
-    styleMenu: { type: [String, Array], default: "" },
-    styleItem: { type: [String, Array], default: "" },
-    styleMatch: { type: [String, Array], default: "" },
+    items: {
+      type: Array,
+      default: [],
+    },
+    itemText: {
+      type: String,
+      default: "text",
+    },
+    itemValue: {
+      type: String,
+      default: "value",
+    },
+    filterKeys: {
+      type: Array,
+      default: [],
+    },
+    noFilter: {
+      type: Boolean,
+      default: defaultProps("autocomplete", "noFilter", false),
+    },
+    noPagination: {
+      type: Boolean,
+      default: defaultProps("autocomplete", "noPagination", false),
+    },
+    emptyDataMessage: {
+      type: String,
+      default: defaultProps(
+        "autocomplete",
+        "emptyDataMessage",
+        "No data available"
+      ),
+    },
+    input: {
+      type: Object,
+      default: defaultProps("autocomplete", "input", {}),
+    },
+    chevron: {
+      type: Object,
+      default: defaultProps("autocomplete", "chevron", {}),
+    },
+    itemsPerPage: {
+      type: Number,
+      default: defaultProps("autocomplete", "itemsPerPage", 10),
+    },
+    transition: {
+      type: String,
+      default: defaultProps("autocomplete", "transition", "fade"),
+    },
+    styleMenu: {
+      type: String,
+      default: defaultProps("autocomplete", "styleMenu", ""),
+    },
+    styleItem: {
+      type: String,
+      default: defaultProps("autocomplete", "styleItem", ""),
+    },
+    styleMatch: {
+      type: String,
+      default: defaultProps("autocomplete", "styleMatch", ""),
+    },
     ...sharedFormProps(null, { icon: true, clearable: true }),
     ...sharedStyleProps("autocomplete"),
   },
@@ -114,13 +165,12 @@ export default {
   emits: [
     "update:modelValue",
     "update:page",
-    "state:focus",
     "input:value",
     "state:opened",
     "state:closed",
   ],
   inheritAttrs: false,
-  setup(props, { attrs, emit }) {
+  setup(props, { emit }) {
     let { classes, states, variants } = useStyles("autocomplete", props, {
       menu: {
         fixed: "fixed-autocomplete-menu",

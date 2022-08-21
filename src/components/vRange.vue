@@ -1,5 +1,10 @@
 <template>
-  <input v-bind="$attrs" v-model="localModel" type="range" :class="getRangeClasses()" />
+  <input
+    v-bind="$attrs"
+    v-model="localModel"
+    type="range"
+    :class="getRangeClasses()"
+  />
 </template>
 
 <script>
@@ -13,8 +18,14 @@ import { sharedStyleProps, sharedFormProps } from "../shared-props";
 
 export default {
   props: {
-    modelValue: { type: [String, Number], default: undefined },
-    styleRange: { type: [String, Array], default: "" },
+    modelValue: {
+      type: [String, Number],
+      default: undefined,
+    },
+    styleRange: {
+      type: [String, Array],
+      default: "",
+    },
     ...sharedFormProps(null),
     ...sharedStyleProps("range"),
   },

@@ -40,12 +40,18 @@ import "../styles/transitions.css";
 
 export default {
   props: {
-    modelValue: { type: Boolean, default: false },
+    modelValue: {
+      type: Boolean,
+      default: false,
+    },
     showCloseButton: {
       type: Boolean,
       default: defaultProps("sidepanel", "showCloseButton", true),
     },
-    sidebarLeft: { type: Boolean, default: false },
+    sidebarLeft: {
+      type: Boolean,
+      default: false,
+    },
     width: {
       type: String,
       default: defaultProps("sidepanel", "width", "320px"),

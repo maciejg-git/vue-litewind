@@ -34,6 +34,7 @@ import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
 // props
 import { sharedStyleProps, sharedFormProps } from "../shared-props";
+import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
@@ -41,10 +42,22 @@ export default {
       type: [String, Number, Array, Boolean, Object],
       default: undefined,
     },
-    block: { type: Boolean, default: false },
-    options: { type: Array, default: undefined },
-    styleSelect: { type: [String, Array], default: "" },
-    styleIcon: { type: [String, Array], default: "" },
+    block: {
+      type: Boolean,
+      default: false,
+    },
+    options: {
+      type: Array,
+      default: undefined,
+    },
+    styleSelect: {
+      type: String,
+      default: defaultProps("select", "styleSelect", ""),
+    },
+    styleIcon: {
+      type: String,
+      default: defaultProps("select", "styleIcon", ""),
+    },
     ...sharedFormProps(null, { icon: true }),
     ...sharedStyleProps("select"),
   },

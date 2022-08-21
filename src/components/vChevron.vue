@@ -23,15 +23,30 @@ import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
-    initial: { type: String, default: "down" },
-    rotate180: { type: Boolean, default: false },
+    initial: {
+      type: String,
+      default: "down",
+    },
+    rotate180: {
+      type: Boolean,
+      default: false,
+    },
     triangle: {
       type: Boolean,
       default: defaultProps("chevron", "triangle", false),
     },
-    counterClockwise: { type: Boolean, default: false },
-    switch: { type: Boolean, default: false },
-    icon: { type: String, default: "" },
+    counterClockwise: {
+      type: Boolean,
+      default: false,
+    },
+    switch: {
+      type: Boolean,
+      default: false,
+    },
+    icon: {
+      type: String,
+      default: "",
+    },
     styleChevron: {
       type: String,
       default: defaultProps("chevron", "styleChevron", ""),

@@ -100,40 +100,102 @@
 <script>
 // vue
 import { ref, computed, toRef, inject, onBeforeUpdate } from "vue";
+// components
+import vChevron from "./vChevron.vue"            
+import vIcon from "./vIcon.vue"            
+import vCheckboxSimple from "./vCheckboxSimple.vue"            
+// props
+import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
-    items: { type: Object, default: [] },
-    itemName: { type: String, default: "name" },
-    itemChildren: { type: String, default: "children" },
-    itemIcon: { type: String, default: "icon" },
-    itemDisabled: { type: String, default: "disabled" },
-    itemKey: { type: String, default: "id" },
-    itemLevel: { type: Number, default: 0 },
-    openOnClick: { type: Boolean, default: true },
-    disabled: { type: Boolean, default: false },
-    allowSelectDisabled: { type: Boolean, default: false },
-    allowOpenDisabled: { type: Boolean, default: false },
-    showIndicators: { type: Boolean, default: true },
-    showIcons: { type: Boolean, default: true },
-    showCheckboxes: { type: Boolean, default: false },
-    selectable: { type: Boolean, default: false },
-    selectIndependent: { type: Boolean, default: false },
-    placeholderItemIcon: { type: [String, Object], default: undefined },
-    placeholderFolderIcon: { type: [String, Object], default: undefined },
-    chevron: { type: Object, default: {} },
+    items: {
+      type: Object,
+      default: [],
+    },
+    itemName: {
+      type: String,
+      default: "name",
+    },
+    itemChildren: {
+      type: String,
+      default: "children",
+    },
+    itemIcon: {
+      type: String,
+      default: "icon",
+    },
+    itemDisabled: {
+      type: String,
+      default: "disabled",
+    },
+    itemKey: {
+      type: String,
+      default: "id",
+    },
+    itemLevel: {
+      type: Number,
+      default: 0,
+    },
+    openOnClick: {
+      type: Boolean,
+      default: defaultProps("tree", "openOnClick", true),
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    allowSelectDisabled: {
+      type: Boolean,
+      default: defaultProps("tree", "allowSelectDisabled", false),
+    },
+    allowOpenDisabled: {
+      type: Boolean,
+      default: defaultProps("tree", "allowOpenDisabled", false),
+    },
+    showIndicators: {
+      type: Boolean,
+      default: defaultProps("tree", "showIndicators", true),
+    },
+    showIcons: {
+      type: Boolean,
+      default: defaultProps("tree", "showIcons", true),
+    },
+    showCheckboxes: {
+      type: Boolean,
+      default: defaultProps("tree", "showIcons", false),
+    },
+    selectable: {
+      type: Boolean,
+      default: false,
+    },
+    selectIndependent: {
+      type: Boolean,
+      default: defaultProps("tree", "selectIndependent", false),
+    },
+    placeholderItemIcon: {
+      type: [String, Object],
+      default: defaultProps("tree", "placeholderItemIcon", undefined),
+    },
+    placeholderFolderIcon: {
+      type: [String, Object],
+      default: defaultProps("tree", "placeholderFolderIcon", undefined),
+    },
+    chevron: {
+      type: Object,
+      default: defaultProps("tree", "chevron", {}),
+    },
   },
-  inheritAttrs: false,
+  components: {
+    vCheckboxSimple,
+    vIcon,
+    vChevron,
+  },
   emits: ["children-state-changed"],
+  inheritAttrs: false,
   setup(props, { emit, expose }) {
-    let {
-      classes,
-      variants,
-      forNode,
-      selectedItems,
-      filter,
-      transition,
-    } = inject("control-tree");
+    let { classes, variants, forNode, selectedItems, filter, transition } =
+      inject("control-tree");
 
     let getItemClasses = () => {
       return isFolder.value
@@ -180,11 +242,11 @@ export default {
     });
 
     const isSelectable = () => {
-      return !isDisabled.value || props.allowSelectDisabled
+      return !isDisabled.value || props.allowSelectDisabled;
     };
 
     const isOpenable = () => {
-      return !isDisabled.value || props.allowOpenDisabled
+      return !isDisabled.value || props.allowOpenDisabled;
     };
 
     const isFolder = computed(() => {
@@ -226,7 +288,7 @@ export default {
       isSelected.value = value !== undefined ? value : !isSelected.value;
 
       if (isSelected.value) {
-        selectedItems.value.push(props.items)
+        selectedItems.value.push(props.items);
       } else {
         selectedItems.value = selectedItems.value.filter(
           (i) => i !== props.items
@@ -257,7 +319,7 @@ export default {
 
     let handleItemSelected = () => {
       select();
-      if (props.selectIndependent) return
+      if (props.selectIndependent) return;
       if (isFolder.value) selectChildren();
     };
 

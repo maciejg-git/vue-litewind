@@ -11,13 +11,26 @@ import { provide, toRef } from "vue";
 import useStyles from "./composition/use-styles";
 // props
 import { sharedStyleProps } from "../shared-props";
+import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
-    width: { type: String, default: undefined },
-    tag: { type: String, default: defaultProps("list", "tag", "div") },
-    styleList: { type: String, default: defaultProps("list", "styleList", "") },
-    styleItem: { type: String, default: defaultProps("list", "styleItem", "") },
+    width: {
+      type: String,
+      default: undefined
+    },
+    tag: {
+      type: String,
+      default: defaultProps("list", "tag", "div")
+    },
+    styleList: {
+      type: String,
+      default: defaultProps("list", "styleList", "")
+    },
+    styleItem: {
+      type: String,
+      default: defaultProps("list", "styleItem", "")
+    },
     ...sharedStyleProps("list"),
   },
   setup(props) {

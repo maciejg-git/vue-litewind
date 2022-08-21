@@ -1,6 +1,6 @@
 <template>
   <div class="relative" :class="wrapperClasses">
-    <label for="" v-if="label" :class="classes.label.value">
+    <label v-if="label" :for="id" :class="classes.label.value">
       <slot name="label" :label="label">
         {{ label }}
       </slot>
@@ -9,6 +9,7 @@
       <textarea
         v-model="localModel"
         v-bind="$attrs"
+        :id="id"
         class="transparent-textarea"
         :class="{ 'w-full': !inline }"
         @blur="handleBlur"
@@ -35,6 +36,7 @@ import { ref, computed, watch, inject } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
+import useUid from "./composition/use-uid";
 // components
 import vFormText from "./vFormText.vue";
 // validators
@@ -45,19 +47,34 @@ import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
-    modelValue: { type: String, default: undefined },
+    modelValue: {
+      type: String,
+      default: undefined,
+    },
     inline: {
       type: Boolean,
       default: defaultProps("textarea", "inline", false),
     },
-    rules: { type: Object, default: {} },
-    validateOn: { type: String, default: "blur" },
-    validateMode: { type: String, default: "silent" },
+    rules: {
+      type: Object,
+      default: {},
+    },
+    validateOn: {
+      type: String,
+      default: "blur",
+    },
+    validateMode: {
+      type: String,
+      default: "silent",
+    },
     singleLineMessage: {
       type: Boolean,
       default: defaultProps("textarea", "singleLineMessage", false),
     },
-    label: { type: String, default: "" },
+    label: {
+      type: String,
+      default: "",
+    },
     formText: {
       type: Object,
       default: defaultProps("textarea", "formText", { class: "absolute" }),
@@ -100,6 +117,8 @@ export default {
     let wrapperClasses = computed(() => {
       return props.inline ? "inline-block" : "block";
     });
+
+    let id = useUid("textarea", attrs)
 
     // validate
 
@@ -261,6 +280,7 @@ export default {
     return {
       classes,
       wrapperClasses,
+      id,
       state,
       localModel,
       getTextareaClasses,

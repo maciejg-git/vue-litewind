@@ -1,6 +1,6 @@
 <template>
   <div class="relative" :class="wrapperClasses">
-    <label for="" v-if="label" :class="classes.label.value">
+    <label v-if="label" :for="id" :class="classes.label.value">
       <slot name="label" :label="label">
         {{ label }}
       </slot>
@@ -21,6 +21,7 @@
       <input
         v-model="localModel"
         ref="inputRef"
+        :id="id"
         type="text"
         v-bind="$attrs"
         class="transparent-input"
@@ -85,10 +86,12 @@ import { ref, computed, watch, inject } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
+import useUid from "./composition/use-uid";
 // components
 import vFormText from "./vFormText.vue";
 import vChevron from "./vChevron.vue";
 import vCloseButton from "./vCloseButton.vue";
+import vSpinner from "./vSpinner.vue";
 // validators
 import { globalValidators } from "../validators";
 // tools
@@ -155,21 +158,24 @@ export default {
       type: Object,
       default: defaultProps("input", "closeButton", {}),
     },
-    chevron: { type: Object, default: defaultProps("input", "chevron", {}) },
+    chevron: {
+      type: Object,
+      default: defaultProps("input", "chevron", {}),
+    },
     formText: {
       type: Object,
       default: defaultProps("input", "formText", { class: "absolute" }),
     },
     styleInput: {
-      type: [String, Array],
+      type: String,
       default: defaultProps("input", "styleInput", ""),
     },
     styleIcon: {
-      type: [String, Array],
+      type: String,
       default: defaultProps("input", "styleIcon", ""),
     },
     styleLabel: {
-      type: [String, Array],
+      type: String,
       default: defaultProps("input", "styleLabel", ""),
     },
     ...sharedFormProps(null, { icon: true, clearable: true }),
@@ -183,6 +189,7 @@ export default {
     vFormText,
     vChevron,
     vCloseButton,
+    vSpinner,
   },
   emits: [
     "update:modelValue",
@@ -219,6 +226,8 @@ export default {
     let wrapperClasses = computed(() => {
       return props.inline ? "inline-block" : "block";
     });
+
+    let id = useUid("input", attrs)
 
     let inputRef = ref(null);
     let wrapperRef = ref(null);
@@ -415,9 +424,10 @@ export default {
       classes,
       wrapperClasses,
       getInputClasses,
-      inputRef,
-      state,
       wrapperRef,
+      inputRef,
+      id,
+      state,
       localModel,
       status,
       messages,
