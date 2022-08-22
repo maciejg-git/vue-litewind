@@ -1,8 +1,11 @@
-import { addId } from "../identifiers.js"
+import { addId, removeId } from "../identifiers.js"
 
 export default {
   mounted(el, binding) {
-    el.id = binding.value
-    addId(binding.value, el, null)
+    el.id = binding.arg || binding.value
+    addId(el.id, el, null)
   },
+  beforeUnmount(el) {
+    removeId(el.id, "trigger")
+  }
 };

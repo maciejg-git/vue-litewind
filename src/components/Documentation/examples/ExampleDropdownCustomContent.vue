@@ -15,40 +15,23 @@
         ></v-input>
       </div>
       <v-dropdown-menu-item v-for="item in menuItems" tag="button">
-        {{ item.label }}
+        {{ item }}
       </v-dropdown-menu-item>
     </v-card>
   </v-dropdown>
 </template>
 
 <script>
-import { ref, reactive, computed } from "vue";
+import { ref, computed } from "vue";
+import { languages } from "../data/data"
 
 export default {
   setup() {
     let filter = ref("");
 
-    let menuContent = [
-      {
-        label: "Second menu item",
-      },
-      {
-        label: "Menu header",
-      },
-      {
-        label: "Active menu item",
-      },
-      {
-        label: "Another menu item",
-      },
-      {
-        label: "Menu item",
-      },
-    ];
-
     let menuItems = computed(() => {
-      return menuContent.filter((i) => {
-        return i.label.indexOf(filter.value) !== -1;
+      return languages.filter((i) => {
+        return i.toLowerCase().indexOf(filter.value.toLowerCase()) !== -1;
       });
     });
 

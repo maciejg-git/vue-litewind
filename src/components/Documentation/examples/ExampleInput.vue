@@ -56,30 +56,6 @@
       </template>
     </v-input>
   </div>
-
-  <p class="my-6 mt-12">Alternative style input</p>
-
-  <!-- underlined -->
-
-  <div class="flex gap-x-10">
-    <v-input
-      v-model="example.model"
-      v-bind="example"
-      base="underlined"
-      placeholder="Type something..."
-      @click:clear-button="handleClickClear"
-    ></v-input>
-
-    <!-- rounded -->
-
-    <v-input
-      v-model="example.model"
-      v-bind="example"
-      base="round"
-      placeholder="Type something..."
-      @click:clear-button="handleClickClear"
-    ></v-input>
-  </div>
 <!-- CUT START -->
   <v-tabs base="material" class="mt-10">
     <v-tab name="Props">

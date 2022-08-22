@@ -18,10 +18,10 @@
           ></v-input>
         </div>
         <div>
-          <label for="model">v-model:</label>
+          <label for="label">label:</label>
           <v-input
             type="text"
-            id="model"
+            id="label"
             inline
             v-model="example.label"
           ></v-input>

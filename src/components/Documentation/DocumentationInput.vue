@@ -31,6 +31,13 @@
       <example name="ExampleInput"></example>
     </div>
   </section>
+
+  <section>
+    <h4>Example - alternative styles</h4>
+    <div class="example">
+      <example name="ExampleInputStyles" :script="false"></example>
+    </div>
+  </section>
 </template>
 
 <script>

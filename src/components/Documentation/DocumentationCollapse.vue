@@ -13,6 +13,14 @@
   </section>
 
   <section>
+    <h4>Notes</h4>
+    <p>
+    You can activate collapse in two ways: by using <code class="code-text">reference</code> slot or <code class="code-text">v-model</code>.
+    Slot is recommened as it takes minimal set up and can be done in template alone. <code class="code-text">v-model</code> can still be used to programatically toggle collapse.
+    </p>
+  </section>
+
+  <section>
     <h4>Example</h4>
     <div class="example">
       <example name="ExampleCollapse"></example>
@@ -50,6 +58,10 @@ export default {
       {
         slot: "default",
         description: "Slot for content that is collapsed",
+      },
+      {
+        slot: "reference",
+        description: "Slot for content that triggers collapse. Slot props: `isOpen`, `onTrigger`",
       },
     ]);
 

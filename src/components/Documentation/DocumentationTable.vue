@@ -22,11 +22,11 @@
     <code class="code-word">Array</code>
     <p>
       Table definition is an optional
-      <code class="code-text">Array</code>
+      <code class="code-text">array</code>
       of
-      <code class="code-text">Objects</code>
+      <code class="code-text">objects</code>
       that defines columns of the table. Each object represents one column, has
-      one required, unique key property and number of optional properties. If
+      one required, unique <code class="code-text">key</code> property and number of optional properties. If
       definition is not provided component makes one using first record of data.
       This may be enough for simple tables however to use features like sorting,
       filtering etc you need to provide definition array.
@@ -63,27 +63,7 @@
   },
 ]) `}}
     </v-code>
-    <v-table
-      :items="referenceProp"
-      :definition="referencePropDefinition"
-      style-table="fixed"
-      style-header-cell="bordered"
-      style-cell="bordered"
-    >
-      <template #cell:type="{ value }">
-        <div class="space-y-1">
-          <code v-for="v in value" class="code-word">
-            {{ v }}
-          </code>
-        </div>
-      </template>
-      <template #cell:default="{ value }">
-        <code class="text-sm">{{ value }}</code>
-      </template>
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
-    </v-table>
+    <table-reference :items="referenceProp" :definition="referencePropDefinition" />
   </section>
 
   <section>
@@ -256,17 +236,17 @@ export default {
       {
         slot: "caption",
         description:
-          "Slot for caption text. Position caption using caption-top prop",
+          "Slot for caption text. Position caption using `caption-top` prop",
       },
       {
         slot: "busy",
         description:
-          "Content of this slot replaces data records if table is busy",
+          "Content of this slot replaces data records if table is `busy`",
       },
       {
         slot: "empty-table-message",
         description:
-          "Slot for custom empty table message when item prop is empty table",
+          "Slot for custom empty table message when `items` prop is empty table",
       },
       {
         slot: "empty-filtered-table-message",
@@ -281,62 +261,62 @@ export default {
         type: ["String"],
         default: "undefined",
         description:
-          "<span class='font-semibold'>(required)</span> key is one of the properties of data from items prop or a new key. New keys apear as additional columns and their content can be set using slot or function f",
+          "<span class='font-semibold'>(required)</span> `key` is one of the properties of data from `items` prop or a new `key`. New `keys` apear as additional columns and their content can be set using slot or function `f`",
       },
       {
         prop: "label",
         type: ["String"],
         default: "undefined",
         description:
-          "Sets label for this column. If not present label is the same as key converted to Header Case",
+          "Sets label for this column. If not present label is the same as `key` converted to Header Case",
       },
       {
         prop: "sortable",
         type: ["Boolean"],
         default: "false",
         description:
-          "enables sorting of the column. By default records are sorted as strings and using locale prop to compare values. Number and dates are sorted as numbers and dates. <code class='code-text'>null</code>,<code class='code-text'>undefined</code> and <code class='code-text'>NaN</code> values are always first when sorting in ascending direction",
+          "Enables sorting of the column. By default records are sorted as `strings` and using `locale` prop to compare values. Numbers and dates are sorted as numbers and dates. `null`, `undefined` and `NaN` values are always first when sorting in ascending direction",
       },
       {
         prop: "filterable",
         type: ["Boolean"],
         default: "true",
         description:
-          "enables filtering of the column. After filtering following actions happens: event <span class='code-word'>update:filtered-count</span> is emmited, event <span class='code-word'>update:page</span> is emmited with value 1 and current selection is cleared by emmiting <span class='code-word'>input:selection</span> event with empty array",
+          "Enables filtering of the column. After filtering following actions happen: event @update:filtered-count is emmited, event @update:page is emmited with value `1` and current selection is cleared by emmiting @input:selection event with empty array",
       },
       {
         prop: "visible",
         type: ["Boolean"],
         default: "true",
-        description: "toggles visiblity of the column",
+        description: "Toggles visiblity of the column",
       },
       {
         prop: "class",
         type: ["Function"],
         default: "undefined",
         description:
-          "function that should return string of classes to apply to each cell in column. Takes 3 arguments: <code class='code-text'>key</code>, <code class='code-text'>value</code> and <code class='code-text'>item</code>",
+          "Function that should return string of classes to apply to each cell in column. Takes 3 arguments: `key`, `value` and `item`",
       },
       {
         prop: "f",
         type: ["Function"],
         default: "undefined",
         description:
-          "if defined this function is called for every cell in this column and the return value is set as content of the cell. Takes 3 arguments: <code class='code-text'>key</code>, <code class='code-text'>value</code> and <code class='code-text'>item</code>. This function cannot be used to add html to cell content",
+          "If defined this function is called for every cell in this column and the return value is set as content of the cell. Takes 3 arguments: `key`, `value` and `item`. This function cannot be used to add html to cell content",
       },
       {
         prop: "filterByFunction",
         type: ["Boolean"],
         default: "true",
         description:
-          "if true filter content of column using value from function f",
+          "If `true` filter content of column using value from function `f`",
       },
       {
         prop: "sortByFunction",
         type: ["Boolean"],
         default: "true",
         description:
-          "if true sort content of column using value returned from function f",
+          "If `true` sort content of column using value returned from function `f`",
       },
     ]);
 

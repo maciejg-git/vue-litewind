@@ -36,6 +36,13 @@
   </section>
 
   <section id="example">
+    <h4>Example - alternative styles</h4>
+    <div class="example">
+      <example name="ExampleDropdownStyles" :script="false"></example>
+    </div>
+  </section>
+
+  <section id="example">
     <h4>Example - custom content</h4>
     <div class="example">
       <example name="ExampleDropdownCustomContent"></example>

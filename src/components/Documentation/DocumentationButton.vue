@@ -15,14 +15,32 @@
   <section>
     <h4>Example</h4>
     <div class="example">
-      <example name="ExampleButton" :script="false"></example>
+      <example name="ExampleButtonSimple" :script="false"></example>
+    </div>
+    <div class="example">
+      <example name="ExampleButtonSize" :script="false"></example>
+    </div>
+    <div class="example">
+      <example name="ExampleButtonVariant" :script="false"></example>
+    </div>
+    <div class="example">
+      <example name="ExampleButtonStyle" :script="false"></example>
+    </div>
+    <div class="example">
+      <example name="ExampleButtonIcon" :script="false"></example>
+    </div>
+    <div class="example">
+      <example name="ExampleButtonBlock" :script="false"></example>
+    </div>
+    <div class="example">
+      <example name="ExampleButtonDisabled" :script="false"></example>
     </div>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
-import { styleProps } from "./shared-props"
+import { styleProps } from "./shared-props";
 
 export default {
   setup() {
@@ -71,5 +89,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

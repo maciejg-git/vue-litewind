@@ -47,6 +47,7 @@
       text-text-700
       dark:text-text-300
   }
+}
 
   /* DROPDOWN RELAXED */
 
@@ -121,6 +122,20 @@
       dark:hover:bg-dark-600
       dark:focus:bg-primary-400
   }
+      &.dropdown--item--active-state {
+        @apply
+          text-white
+          bg-primary-500
+          hover:bg-primary-600
+          dark:text-white
+          dark:bg-primary-500
+          dark:hover:bg-primary-600
+      }
+      &.dropdown--item--disabled-state {
+        @apply
+          disabled
+          pointer-events-none
+      }
 
   &.dropdown--header {
     @apply
@@ -128,8 +143,8 @@
       font-semibold
       px-5
       py-4
+      opacity-70
       text-text-600
       dark:text-text-300
   }
-}
 }

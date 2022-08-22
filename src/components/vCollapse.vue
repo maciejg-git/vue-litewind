@@ -82,4 +82,31 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.fade-collapse-f-enter-active,
+.fade-collapse-f-leave-active {
+  transition: height 0.2s ease, opacity 0.2s ease;
+  overflow: hidden;
+}
+
+.fade-collapse-m-enter-active,
+.fade-collapse-m-leave-active {
+  transition: height 0.3s ease, opacity 0.3s ease;
+  overflow: hidden;
+}
+
+.fade-collapse-s-enter-active,
+.fade-collapse-s-leave-active {
+  transition: height 0.35s ease, opacity 0.35s ease;
+  overflow: hidden;
+}
+
+.fade-collapse-f-enter-from,
+.fade-collapse-f-leave-active,
+.fade-collapse-m-enter-from,
+.fade-collapse-m-leave-active,
+.fade-collapse-s-enter-from,
+.fade-collapse-s-leave-active {
+  opacity: 0;
+}
+</style>

@@ -13,7 +13,6 @@ import { computed } from "vue";
 import useStyles from "./composition/use-styles";
 // props
 import { sharedStyleProps } from "../shared-props";
-import "../styles/transitions.css";
 
 export default {
   props: {
@@ -75,5 +74,41 @@ export default {
 }
 .fixed-absolute-bl {
   @apply absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2;
+}
+
+.scale-up-enter-active,
+.scale-up-leave-active {
+  transition: transform 0.20s ease;
+}
+.scale-up-enter-from,
+.scale-up-leave-to {
+  transform: scale(1.4);
+}
+
+.to-danger-enter-active,
+.to-danger-leave-active {
+  transition: background-color 0.40s ease;
+}
+.to-danger-enter-from,
+.to-danger-leave-to {
+  @apply bg-danger-500 dark:bg-danger-500
+}
+
+.to-success-enter-active,
+.to-success-leave-active {
+  transition: background-color 0.40s ease;
+}
+.to-success-enter-from,
+.to-success-leave-to {
+  @apply bg-success-500 dark:bg-success-500
+}
+
+.bounce-enter-active,
+.bounce-leave-active {
+  transition: transform 0.20s ease;
+}
+.bounce-enter-from,
+.bounce-leave-to {
+  transform: translateY(-35%);
 }
 </style>

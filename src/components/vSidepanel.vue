@@ -36,7 +36,6 @@ import vCloseButton from "./vCloseButton.vue";
 import { sharedStyleProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 // style
-import "../styles/transitions.css";
 
 export default {
   props: {
@@ -110,22 +109,63 @@ export default {
   @apply flex justify-between w-full;
 }
 
-/* .fade-slide-right-enter-active, */
-/* .fade-slide-right-leave-active { */
-/*   transition: opacity 0.3s ease, transform 0.4s ease; */
-/* } */
-/* .fade-slide-right-enter-from, */
-/* .fade-slide-right-leave-to { */
-/*   opacity: 0; */
-/*   transform: translateX(200px); */
-/* } */
-/* .fade-slide-left-enter-active, */
-/* .fade-slide-left-leave-active { */
-/*   transition: opacity 0.3s ease, transform 0.4s ease; */
-/* } */
-/* .fade-slide-left-enter-from, */
-/* .fade-slide-left-leave-to { */
-/*   opacity: 0; */
-/*   transform: translateX(-200px); */
-/* } */
+.fade-slide-f-right-enter-active,
+.fade-slide-f-right-leave-active {
+  transition: opacity 0.2s ease, transform 0.3s ease;
+}
+.fade-slide-f-right-enter-from,
+.fade-slide-f-right-leave-to {
+  opacity: 0;
+  transform: translateX(200px);
+}
+
+.fade-slide-m-right-enter-active,
+.fade-slide-m-right-leave-active {
+  transition: opacity 0.3s ease, transform 0.4s ease;
+}
+.fade-slide-m-right-enter-from,
+.fade-slide-m-right-leave-to {
+  opacity: 0;
+  transform: translateX(200px);
+}
+
+.fade-slide-s-right-enter-active,
+.fade-slide-s-right-leave-active {
+  transition: opacity 0.35s ease, transform 0.45s ease;
+}
+.fade-slide-s-right-enter-from,
+.fade-slide-s-right-leave-to {
+  opacity: 0;
+  transform: translateX(200px);
+}
+
+.fade-slide-f-left-enter-active,
+.fade-slide-f-left-leave-active {
+  transition: opacity 0.2s ease, transform 0.3s ease;
+}
+.fade-slide-f-left-enter-from,
+.fade-slide-f-left-leave-to {
+  opacity: 0;
+  transform: translateX(-200px);
+}
+
+.fade-slide-m-left-enter-active,
+.fade-slide-m-left-leave-active {
+  transition: opacity 0.3s ease, transform 0.4s ease;
+}
+.fade-slide-m-left-enter-from,
+.fade-slide-m-left-leave-to {
+  opacity: 0;
+  transform: translateX(-200px);
+}
+
+.fade-slide-s-left-enter-active,
+.fade-slide-s-left-leave-active {
+  transition: opacity 0.35s ease, transform 0.45s ease;
+}
+.fade-slide-s-left-enter-from,
+.fade-slide-s-left-leave-to {
+  opacity: 0;
+  transform: translateX(-200px);
+}
 </style>

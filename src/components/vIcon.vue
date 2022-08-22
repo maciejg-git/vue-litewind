@@ -1,5 +1,5 @@
 <template>
-  <component :is="iconTypes[iconType] || name || icon || null"></component>
+  <component :is="name || icon || iconTypes[iconType] || null"></component>
 </template>
 
 <script>

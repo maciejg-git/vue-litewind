@@ -25,7 +25,7 @@
 
 <script>
 // vue
-import { ref, provide, toRef, toRefs, watch } from "vue";
+import { ref, provide, toRef, toRefs, watch, onBeforeUnmount } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
@@ -37,7 +37,7 @@ import { sharedPopperProps, sharedStyleProps } from "../shared-props";
 import "../styles/transitions.css";
 import { defaultProps } from "../defaultProps";
 
-import { addId } from "../identifiers";
+import { addId, removeId } from "../identifiers";
 
 export default {
   inheritAttrs: true,
@@ -106,21 +106,6 @@ export default {
     let { onClickOutside } = useClickOutside();
     let stopClickOutside = null;
 
-    let addOnTriggerEvents = (el) => {
-      for (let event in onTrigger) {
-        el.addEventListener(event, onTrigger[event]);
-      }
-      reference.value = el;
-    };
-
-    let removeOnTriggerEvents = () => {
-
-    }
-
-    if (props.triggerById) {
-      addId(props.triggerById, null, { addOnTriggerEvents, removeOnTriggerEvents });
-    }
-
     // delay closing menu if using hover trigger
     let hideTimeout = null;
 
@@ -144,6 +129,8 @@ export default {
       }
     };
 
+    let scheduleHide = () => setTimeout(hidePopper, 100);
+
     let hide = () => {
       if (!isPopperVisible.value) return;
       if (props.trigger === "hover") {
@@ -156,9 +143,30 @@ export default {
 
     let onTrigger = useTrigger(trigger, show, hide);
 
-    let referenceSlotProps = { reference, onTrigger };
+    // trigger by id
 
-    let scheduleHide = () => setTimeout(hidePopper, 100);
+    if (props.triggerById) {
+      let addOnTriggerEvents = (el) => {
+        for (let event in onTrigger) {
+          el.addEventListener(event, onTrigger[event]);
+        }
+        reference.value = el;
+      };
+
+      let removeOnTriggerEvents = (el) => {
+        for (let event in onTrigger) {
+          el.removeEventListener(event, onTrigger[event]);
+        }
+        reference.value = null;
+      }
+
+      addId(props.triggerById, null, { addOnTriggerEvents, removeOnTriggerEvents });
+
+      onBeforeUnmount(() => removeId(props.triggerById, "listener"))
+    }
+
+
+    let referenceSlotProps = { reference, onTrigger };
 
     // context dropdown
 

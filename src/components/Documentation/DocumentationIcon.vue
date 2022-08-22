@@ -9,9 +9,7 @@
   <section>
     <h5>Icons source</h5>
     <p>
-      <code class="code-text">v-icon</code>
-      uses icon components. Check documentation on how to
-      install, import and use them.
+      <code class="code-text">v-icon</code> uses icon components (registered names or component objects).
     </p>
   </section>
 
@@ -25,12 +23,7 @@
   <section>
     <h5>Icon types</h5>
     <p>
-      Provide icon types via provide function in application entry file
-      (typically main.js) or anywhere in top level component. Icon type is
-      the object that allows mapping of icon name or icon component object to any name. It can be useful for
-      example to define easy to remember aliases for frequently used icons,
-      changing icons application wide, define icons for various states and bind
-      with states of components etc.
+      Provide <code class="code-text">icon-types</code> via provide function in application entry file or anywhere in top level component. <code class="code-text">icon-type</code> is the <code class="code-text">object</code> that maps icon names (registerd icon component) or icon component objects to any name. It can be useful for example to define easy to remember aliases for frequently used icons, changing icons application wide, define icons for various states of components etc.
     </p>
     <v-code :code="exampleIconMainCode" language="js"></v-code>
   </section>
@@ -48,7 +41,7 @@ export default {
         type: ["String", "Object"],
         default: "empty string",
         description:
-          "Name of the registered icon component or icon component object",
+          "Name of the registered icon component or icon component object. It has higher prorioty than `icon-type` if both are set",
       },
       {
         prop: "name",
@@ -61,13 +54,7 @@ export default {
         prop: "icon-type",
         type: ["String"],
         default: "empty string",
-        description: "Icon type provided via iconTypes",
-      },
-      {
-        prop: "no-icon-class",
-        type: ["Boolean"],
-        default: "false",
-        description: "If true default v-icon class is not added to icon",
+        description: "Icon type provided via `iconTypes`",
       },
     ]);
 

@@ -358,10 +358,6 @@ export let languages = [
   "korean",
   "italian",
   "polish",
-  "dutch",
-  "romanian",
-  "thai",
   "greek",
-  "czech",
   "swedish",
 ];
