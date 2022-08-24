@@ -32,8 +32,7 @@ import useClickOutside from "./composition/use-click-outside";
 import useTrigger from "./composition/use-trigger";
 // props
 import { sharedPopperProps, sharedStyleProps } from "../shared-props";
-// style
-import "../styles/transitions.css";
+// props
 import { defaultProps } from "../defaultProps";
 // trigger
 import { addListener, removeListener } from "../identifiers";
@@ -189,6 +188,10 @@ export default {
   },
 };
 </script>
+
+<style>
+@import "../styles/transitions.css";
+</style>
 
 <style scoped lang="postcss">
 .fixed-dropdown {

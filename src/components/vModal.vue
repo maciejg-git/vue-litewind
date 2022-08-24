@@ -78,8 +78,6 @@ import focus from "../directives/focus";
 // props
 import { sharedStyleProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
-// style
-import "../styles/transitions.css";
 
 export default {
   props: {
@@ -312,6 +310,10 @@ export default {
   },
 };
 </script>
+
+<style>
+@import "../styles/transitions.css";
+</style>
 
 <style scoped lang="postcss">
 .fixed-main {

@@ -21,7 +21,6 @@ import useTrigger from "./composition/use-trigger";
 // props
 import { sharedPopperProps, sharedStyleProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
-import "../styles/transitions.css";
 // trigger
 import { addListener, removeListener } from "../identifiers";
 
@@ -129,4 +128,6 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style>
+@import "../styles/transitions.css";
+</style>
