@@ -125,11 +125,16 @@ export default {
       trigger: "click",
     });
 
+    let dropdownButton = ref(true)
+    let dropdown = ref(true)
+
     let events = ref([]);
 
     return {
       example,
       events,
+      dropdown,
+      dropdownButton,
     };
   },
 };

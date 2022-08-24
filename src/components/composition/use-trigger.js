@@ -1,13 +1,13 @@
-import { watch } from "vue";
+import { reactive, watch } from "vue";
 
 export default function useTrigger(trigger, show, hide) {
-  let onTrigger = {
+  let onTrigger = reactive({
     click: null,
     mouseenter: null,
     mouseleave: null,
     focusin: null,
     focusout: null,
-  };
+  });
 
   watch(
     trigger,
@@ -35,5 +35,5 @@ export default function useTrigger(trigger, show, hide) {
     { immediate: true }
   );
 
-  return onTrigger;
+  return { onTrigger };
 }

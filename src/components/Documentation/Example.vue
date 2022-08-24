@@ -3,8 +3,16 @@
     <component :is="name"></component>
   </div>
 
-  <v-code v-if="template && code" :code="code" template language="html"></v-code>
-  <v-code v-if="script && code" :code="code" script language="js"></v-code>
+  <v-tabs v-if="code" base="material">
+    <v-tab v-if="template" name="Template">
+      <v-code :code="code" template language="html"></v-code>
+    </v-tab>
+    <v-tab v-if="script" name="Script">
+      <v-code :code="code" script language="js"></v-code>
+    </v-tab>
+  </v-tabs>
+  <!-- <v-code v-if="template &#38;&#38; code" :code="code" template language="html"></v-code> -->
+  <!-- <v-code v-if="script &#38;&#38; code" :code="code" script language="js"></v-code> -->
 </template>
 
 <script>

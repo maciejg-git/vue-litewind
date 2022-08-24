@@ -7,7 +7,7 @@
     <template #reference="{ reference, onTrigger }">
       <v-button :ref="reference" v-on="onTrigger">Show simple popover</v-button>
     </template>
-    This is popover.
+    <v-card style-card="popover shadow">This is popover.</v-card>
   </v-popover>
 
   <!-- form popover -->
@@ -18,39 +18,50 @@
     <template #reference="{ reference, onTrigger }">
       <v-button :ref="reference" v-on="onTrigger">Show form popover</v-button>
     </template>
-    <div class="flex flex-col gap-y-4 w-[250px]">
+    <v-card style-card="popover shadow" class="flex flex-col gap-y-4 w-[250px]">
       <div class="flex flex-col gap-y-1">
-        <v-input type="text" label="Email" id="login" placeholder="Enter email"></v-input>
+        <v-input
+          type="text"
+          label="Email"
+          id="login"
+          placeholder="Enter email"
+        ></v-input>
       </div>
       <div class="flex flex-col gap-y-1">
-        <v-input type="password" label="Password" id="password" placeholder="Enter password"></v-input>
+        <v-input
+          type="password"
+          label="Password"
+          id="password"
+          placeholder="Enter password"
+        ></v-input>
       </div>
       <v-button style-button="small" class="ml-auto mt-2">Login</v-button>
-    </div>
+    </v-card>
   </v-popover>
 
   <!-- tooltip popover -->
 
   <p class="my-4">Tooltip popover</p>
 
-  <v-popover v-bind="example" title="Header" base="plain">
+  <v-popover v-bind="example" title="Header">
     <template #reference="{ reference, onTrigger }">
       <v-button :ref="reference" v-on="onTrigger">
         Show tooltip popover
       </v-button>
     </template>
-    <div class="w-[280px]">
+    <v-card base="flat" class="w-[330px] p-7">
       Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       Lorem Ipsum has been the industry's standard dummy text ever since the
       1500s, when an unknown printer took a galley of type and scrambled it to
-      make a type specimen book. It has survived not only five centuries, but also
-      the leap into electronic typesetting, remaining essentially unchanged. It
-      was popularised in the 1960s with the release of Letraset sheets containing
-      Lorem Ipsum passages, and more recently with desktop publishing software
-      like Aldus PageMaker including versions of Lorem Ipsum.
-    </div>
+      make a type specimen book. It has survived not only five centuries, but
+      also the leap into electronic typesetting, remaining essentially
+      unchanged. It was popularised in the 1960s with the release of Letraset
+      sheets containing Lorem Ipsum passages, and more recently with desktop
+      publishing software like Aldus PageMaker including versions of Lorem
+      Ipsum.
+    </v-card>
   </v-popover>
-<!-- CUT START -->
+  <!-- CUT START -->
   <v-tabs base="material" class="mt-10">
     <v-tab name="Props">
       <div class="flex flex-col gap-y-2 mt-5">
@@ -83,15 +94,13 @@
           </v-select>
         </div>
         <div>
-          <label for="no-header">no-header:</label>
-          <v-select-prop id="no-header" v-model="example.noHeader">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
-          </v-select-prop>
-        </div>
-        <div>
           <label for="title">title</label>
-          <v-input type="text" id="title" inline v-model="example.title"></v-input>
+          <v-input
+            type="text"
+            id="title"
+            inline
+            v-model="example.title"
+          ></v-input>
         </div>
         <div>
           <label for="transition">transition:</label>
@@ -114,7 +123,7 @@
       <event-viewer :events="events" />
     </v-tab>
   </v-tabs>
-<!-- CUT END -->
+  <!-- CUT END -->
 </template>
 
 <script>

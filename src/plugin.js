@@ -1,5 +1,5 @@
 import { default as tooltip } from "./directives/tooltip"
-import { default as id } from "./directives/id"
+import vTrigger from "./components/vTrigger.vue"
 
 const defaultOptions = {
   globalProps: {},
@@ -21,8 +21,8 @@ let componentPlugin = {
       app.component(component[0], component[1]);
     })
 
+      app.component("vTrigger", vTrigger);
     app.directive("tooltip", tooltip);
-    app.directive("id", id);
   }
 }
 

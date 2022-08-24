@@ -5,7 +5,7 @@
         Filterable menu
       </v-button-dropdown>
     </template>
-    <v-card width="320px" style-card="menu shadow">
+    <v-card width="280px" style-card="menu shadow">
       <div class="px-4 py-1">
         <v-input
           v-model="filter"
@@ -14,7 +14,7 @@
           base="underlined"
         ></v-input>
       </div>
-      <v-dropdown-menu-item v-for="item in menuItems" tag="button">
+      <v-dropdown-menu-item v-for="item in menuItems" :key="item" tag="button">
         {{ item }}
       </v-dropdown-menu-item>
     </v-card>
@@ -23,7 +23,7 @@
 
 <script>
 import { ref, computed } from "vue";
-import { languages } from "../data/data"
+import { languages } from "../data/data";
 
 export default {
   setup() {

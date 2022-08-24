@@ -1,5 +1,5 @@
 <template>
-  <div class="relative" :class="wrapperClasses">
+  <div class="relative" :class="wrapperClasses" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
     <label v-if="label" :for="id" :class="classes.label.value">
       <slot name="label" :label="label">
         {{ label }}
@@ -10,13 +10,17 @@
       class="form-input flex items-center"
       :class="getInputClasses"
     >
-      <slot name="icon">
-        <div v-if="icon" @click="handleClickIcon" class="mr-2">
-          <v-icon :name="icon" :class="classes.icon.value"></v-icon>
-        </div>
-      </slot>
+    <div :class="{ invisible: !isElementVisible('icon') }">
+        <slot name="icon">
+          <div v-if="icon" @click="handleClickIcon" class="mr-2">
+            <v-icon :name="icon" :class="classes.icon.value"></v-icon>
+          </div>
+        </slot>
+      </div>
 
+    <div :class="{ invisible: !isElementVisible('prepend') }">
       <slot name="prepend"></slot>
+      </div>
 
       <input
         v-model="localModel"
@@ -29,7 +33,9 @@
         @blur="handleBlur"
       />
 
+    <div :class="{ invisible: !isElementVisible('append') }">
       <slot name="append"></slot>
+      </div>
 
       <div class="flex items-center">
         <v-spinner
@@ -46,6 +52,7 @@
           v-bind="closeButton"
           aria-label="Close"
           class="ml-2"
+          :class="{ invisible: !isElementVisible('clearButton') }"
           @click="handleClickClearButton"
           @focus="blur"
         ></v-close-button>
@@ -146,6 +153,15 @@ export default {
       type: String,
       default: "",
     },
+    showCondition: {
+      type: Object,
+      default: {
+        icon: "always",
+        clearButton: "always",
+        prepend: "always",
+        append: "always",
+      },
+    },
     noMessages: {
       type: Boolean,
       default: false,
@@ -232,7 +248,17 @@ export default {
     let inputRef = ref(null);
     let wrapperRef = ref(null);
 
+    let mouseOver = ref(false)
+
     let blur = (ev) => ev.target.blur();
+
+    let isElementVisible = (element) => {
+      let el = props.showCondition[element]
+
+      if (!el) return true
+
+      return el === 'always' || el === 'hover' && mouseOver.value || el === 'focus' && inputRef.value === document.activeElement || el === 'hasvalue' && localModel.value.length
+    }
 
     // validate
 
@@ -401,6 +427,10 @@ export default {
       emit("input:blur", ev);
     };
 
+    let handleMouseEnter = () => mouseOver.value = true
+
+    let handleMouseLeave = () => mouseOver.value = false
+
     let handleClickIndicator = () => {
       emit("click:indicator", inputRef.value);
     };
@@ -426,6 +456,7 @@ export default {
       getInputClasses,
       wrapperRef,
       inputRef,
+      isElementVisible,
       id,
       state,
       localModel,
@@ -433,6 +464,8 @@ export default {
       messages,
       blur,
       handleBlur,
+      handleMouseEnter,
+      handleMouseLeave,
       handleClickIndicator,
       handleClickIcon,
       handleClickClearButton,

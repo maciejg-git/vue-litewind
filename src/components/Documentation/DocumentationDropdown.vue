@@ -36,6 +36,16 @@
   </section>
 
   <section id="example">
+    <h4>Example - open by id</h4>
+    <p>
+    You can also control state of the dropdown menu by using v-trigger component. The for prop of the v-trigger should be the same as id of the dropdown. v-triggers can be put anywhere in application.
+    </p>
+    <div class="example">
+      <example name="ExampleDropdownTrigger" :script="false"></example>
+    </div>
+  </section>
+
+  <section id="example">
     <h4>Example - alternative styles</h4>
     <div class="example">
       <example name="ExampleDropdownStyles" :script="false"></example>

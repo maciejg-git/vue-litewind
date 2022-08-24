@@ -1,22 +1,10 @@
 <template>
-  <slot name="reference" v-bind="referenceSlotProps"></slot>
+  <slot name="reference" v-bind="referenceSlotProps" :is-open="isPopperVisible"></slot>
 
   <teleport to="body">
     <transition :name="transition" @after-leave="onPopperTransitionLeave">
       <div v-if="isPopperVisible" ref="popper">
-        <div :class="classes.popover.value">
-          <header v-if="!noHeader" class="flex font-semibold px-3 py-2">
-            {{ title }}
-            <v-close-button
-              style-close-button="small"
-              class="ml-auto"
-              @click="hide"
-            />
-          </header>
-          <div :class="classes.content.value">
-            <slot name="default" :hide="hide" v-bind="contextData"></slot>
-          </div>
-        </div>
+        <slot name="default" :hide="hide" v-bind="contextData"></slot>
       </div>
     </transition>
   </teleport>
@@ -24,9 +12,7 @@
 
 <script>
 // vue
-import { ref, toRefs } from "vue";
-// components
-import vCloseButton from "./vCloseButton.vue"
+import { ref, toRefs, onBeforeUnmount } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
@@ -36,6 +22,8 @@ import useTrigger from "./composition/use-trigger";
 import { sharedPopperProps, sharedStyleProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 import "../styles/transitions.css";
+// trigger
+import { addListener, removeListener } from "../identifiers";
 
 export default {
   props: {
@@ -56,23 +44,16 @@ export default {
       type: String,
       default: defaultProps("popover", "transition", "fade-m"),
     },
-    stylePopover: {
+    styleHeader: {
       type: String,
       default: defaultProps("popover", "stylePopover", ""),
     },
-    styleContent: {
-      type: String,
-      default: defaultProps("popover", "styleContent", ""),
-    },
     ...sharedStyleProps("popover"),
   },
-  components: {
-    vCloseButton,
-  },
-  setup(props, { slots, emit, expose }) {
+  inheritAttrs: false,
+  setup(props, { slots, emit, expose, attrs }) {
     let { classes } = useStyles("popover", props, {
-      popover: null,
-      content: null,
+      header: null,
     });
 
     const { offsetX, offsetY, noFlip, placement, trigger } = toRefs(props);
@@ -106,9 +87,19 @@ export default {
       if (stopClickOutside) stopClickOutside = stopClickOutside();
     };
 
-    let onTrigger = useTrigger(trigger, show, hide);
+    let { onTrigger } = useTrigger(trigger, show, hide);
 
     let referenceSlotProps = { reference, onTrigger };
+
+    // trigger by id
+
+    let { id } = attrs
+
+    if (id && !slots.reference) {
+      addListener(id, referenceSlotProps)
+
+      onBeforeUnmount(() => removeListener(id))
+    }
 
     // context popover
 

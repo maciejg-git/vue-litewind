@@ -21,6 +21,16 @@
       <example name="ExamplePopover"></example>
     </div>
   </section>
+
+  <section>
+    <h4>Example - open by id</h4>
+    <p>
+    You can also control state of the popover by using v-trigger component. The for prop of the v-trigger should be the same as id of the popover. The advantage of this method over reference slot is that v-triggers can be put anywhere in application.
+    </p>
+    <div class="example">
+      <example name="ExamplePopoverTrigger" :script="false"></example>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -36,12 +46,6 @@ export default {
         default: "click",
         description:
           "How to trigger dropdown. Valid triggers are 'click', 'focus' and 'hover'",
-      },
-      {
-        prop: "no-header",
-        type: ["Boolean"],
-        default: "false",
-        description: "Disabled popover header",
       },
       {
         prop: "title",

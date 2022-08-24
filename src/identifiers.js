@@ -1,38 +1,37 @@
-export let identifiers = {}
+import { shallowRef } from "vue";
 
-export let addId = (id, triggerElement, listenerCallback) => {
-  if (!identifiers[id]) {
-    identifiers[id] = {
-      el: null,
-      callback: null,
-    }
-  }
+let triggers = {};
 
-  let { el, callback } = identifiers[id]
+let newTrigger = () => {
+  return {
+    slotProps: shallowRef(null),
+  };
+};
 
-  if (triggerElement && !el) {
-    identifiers[id].el = triggerElement
-  }
-  if (listenerCallback && !callback) {
-    identifiers[id].callback = listenerCallback
-  }
+let isTriggerId = (id) => {
+  let { slotProps, callback } = triggers[id]
 
-  if (identifiers[id].el && identifiers[id].callback) {
-    identifiers[id].callback.addOnTriggerEvents(identifiers[id].el)
+  if (callback && slotProps.value) {
+    callback(slotProps);
   }
-}
+};
 
-export let removeId = (id, isRemoved) => {
-  if (!identifiers[id]) return
+export let addTrigger = (id, callback) => {
+  if (!triggers[id]) {
+    triggers[id] = newTrigger(id);
+  }
+  triggers[id].callback = callback;
+  isTriggerId(id);
+};
 
-  if (identifiers[id].callback) {
-    identifiers[id].callback.removeOnTriggerEvents(identifiers[id].el)
+export let addListener = (id, slotProps) => {
+  if (!triggers[id]) {
+    triggers[id] = newTrigger(id);
   }
+  triggers[id].slotProps.value = slotProps;
+  isTriggerId(id);
+};
 
-  if (isRemoved === "trigger") {
-    identifiers[id].el = null
-  }
-  if (isRemoved === "listener") {
-    identifiers[id].callback = null
-  }
-}
+export let removeListener = (id) => {
+  triggers[id].slotProps.value = { reference: null, onTrigger: {} };
+};

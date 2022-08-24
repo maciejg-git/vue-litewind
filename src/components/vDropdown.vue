@@ -1,6 +1,5 @@
 <template>
   <slot
-    v-if="!triggerById"
     name="reference"
     v-bind="referenceSlotProps"
     :is-open="isPopperVisible"
@@ -36,8 +35,8 @@ import { sharedPopperProps, sharedStyleProps } from "../shared-props";
 // style
 import "../styles/transitions.css";
 import { defaultProps } from "../defaultProps";
-
-import { addId, removeId } from "../identifiers";
+// trigger
+import { addListener, removeListener } from "../identifiers";
 
 export default {
   inheritAttrs: true,
@@ -74,7 +73,8 @@ export default {
     ...sharedStyleProps("dropdown"),
   },
   emits: ["state:opened", "state:closed", "update:modelValue"],
-  setup(props, { slots, emit, expose }) {
+  inheritAttrs: false,
+  setup(props, { slots, emit, expose, attrs }) {
     let { classes, states } = useStyles("dropdown", props, {
       item: {
         fixed: "fixed-item",
@@ -141,32 +141,19 @@ export default {
       if (stopClickOutside) stopClickOutside = stopClickOutside();
     };
 
-    let onTrigger = useTrigger(trigger, show, hide);
+    let { onTrigger } = useTrigger(trigger, show, hide);
+
+    let referenceSlotProps = { reference, onTrigger, isOpen: isPopperVisible };
 
     // trigger by id
 
-    if (props.triggerById) {
-      let addOnTriggerEvents = (el) => {
-        for (let event in onTrigger) {
-          el.addEventListener(event, onTrigger[event]);
-        }
-        reference.value = el;
-      };
+    let { id } = attrs
 
-      let removeOnTriggerEvents = (el) => {
-        for (let event in onTrigger) {
-          el.removeEventListener(event, onTrigger[event]);
-        }
-        reference.value = null;
-      }
+    if (id && !slots.reference) {
+      addListener(id, referenceSlotProps)
 
-      addId(props.triggerById, null, { addOnTriggerEvents, removeOnTriggerEvents });
-
-      onBeforeUnmount(() => removeId(props.triggerById, "listener"))
+      onBeforeUnmount(() => removeListener(id))
     }
-
-
-    let referenceSlotProps = { reference, onTrigger };
 
     // context dropdown
 
