@@ -1,43 +1,8 @@
-/* POPOVER */
-
 .default {
-  &.popover {
+  &.popover--header {
     @apply
-      border
-      rounded-md
-      overflow-hidden
-      shadow-md
-      dark:shadow-lg
-      dark:shadow-black/30
-      bg-white
-      border-secondary-300
-      dark:text-text-300
-      dark:bg-dark-800
-      dark:border-dark-700
-  }
-
-  &.popover--content {
-    @apply
-      p-5
-  }
-}
-
-  /* POPOVER PLAIN */
-
-.plain {
-  &.popover {
-    @apply
-      overflow-hidden
-      shadow-lg
-      bg-secondary-50
-      dark:text-text-300
-      dark:bg-dark-700
-      dark:shadow-lg
-      dark:shadow-black/30
-  }
-
-  &.popover--content {
-    @apply
-      p-7
+      font-semibold
+      py-2
+      px-3
   }
 }

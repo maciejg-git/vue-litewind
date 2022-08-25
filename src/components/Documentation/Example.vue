@@ -3,7 +3,7 @@
     <component :is="name"></component>
   </div>
 
-  <v-tabs v-if="code" base="material">
+  <v-tabs v-if="code && (template || script)" base="material">
     <v-tab v-if="template" name="Template">
       <v-code :code="code" template language="html"></v-code>
     </v-tab>

@@ -1,7 +1,5 @@
 @import '../shared.css';
 
-/* BUTTON PLAIN */
-
 .plain {
   &.button {
     @apply 
@@ -14,8 +12,6 @@
         font-semibold
     }
 }
-
-/* BUTTON */
 
 .default {
   &.button {

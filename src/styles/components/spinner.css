@@ -1,5 +1,3 @@
-/* SPINNER */
-
 .default {
   &.spinner--container {
     --spinner-border-speed: 0.75s;

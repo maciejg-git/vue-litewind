@@ -11,6 +11,7 @@ import vSelectProp from "./components/Documentation/components/vSelectProp.vue"
 import Example from "./components/Documentation/Example.vue"
 import { componentPlugin } from "./index.js";
 import { components } from "./index"
+import { directives } from "./index"
 // styles
 import "./styles/components.css"
 import "./styles/form.css"
@@ -58,6 +59,7 @@ app.provide("icon-types", {
 app.use(router);
 app.use(componentPlugin, {
   components,
+  directives,
 });
 // app.use(formPlugin);
 app.mount("#app");

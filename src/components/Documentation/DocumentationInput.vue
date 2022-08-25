@@ -80,6 +80,12 @@ export default {
         description: "Label on top of the input. This label is for simple forms as position cannot be changed",
       },
       {
+        prop: "visible-condition",
+        type: ["Object"],
+        default: "{}",
+        description: "This prop controls visibility of additional input elements (icon, clear button, prepend and append slots). You can show or hide them depending on conditions. Add any of the elements as keys and condition as its value. Valid conditions are `hover`, `focused` and `hasvalue`. By default every element is always visible",
+      },
+      {
         prop: "use-loading",
         type: ["Boolean"],
         default: "false",

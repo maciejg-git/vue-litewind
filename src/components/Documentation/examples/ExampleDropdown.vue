@@ -4,8 +4,8 @@
     @state:opened="events.unshift({ ev: 'state:opened', data: $event })"
     @state:closed="events.unshift({ ev: 'state:closed', data: $event })"
   >
-    <template #reference="{ reference, onTrigger }">
-      <v-button-dropdown :ref="reference" v-on="onTrigger" class="mr-4">
+    <template #reference="{ reference, onTrigger, isOpen }">
+      <v-button-dropdown :ref="reference" v-on="onTrigger" :switch="isOpen" class="mr-4">
         Dropdown menu
       </v-button-dropdown>
     </template>

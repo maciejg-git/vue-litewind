@@ -2,12 +2,13 @@
   <slot
     name="default"
     v-bind="referenceSlot"
-    :isOpen="referenceSlot.isOpen && referenceSlot.isOpen.value"
+    :isOpen="unref(referenceSlot.isOpen)"
   ></slot>
 </template>
 
 <script>
-import { addTrigger } from "../identifiers";
+import { unref } from "vue"
+import { addTrigger } from "../trigger";
 
 export default {
   props: {
@@ -22,6 +23,7 @@ export default {
 
     return {
       referenceSlot,
+      unref,
     };
   },
 };

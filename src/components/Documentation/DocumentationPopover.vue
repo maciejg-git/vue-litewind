@@ -11,6 +11,9 @@
     <h6>Slots</h6>
     <table-reference-basic :items="slots" reference="slot" />
 
+    <h6>Components</h6>
+    <table-reference-basic :items="components" reference="component" />
+
     <h6>Functions</h6>
     <table-reference-basic :items="functions" reference="function" />
   </section>
@@ -25,7 +28,7 @@
   <section>
     <h4>Example - open by id</h4>
     <p>
-    You can also control state of the popover by using v-trigger component. The for prop of the v-trigger should be the same as id of the popover. The advantage of this method over reference slot is that v-triggers can be put anywhere in application.
+    You can also control state of the popover by using <code class="code-text">v-trigger</code> component. The for prop of the <code class="code-text">v-trigger</code> should be the same as <code class="code-text">id</code> of the popover. The advantage of this method over reference slot is that <code class="code-text">v-triggers</code> can be put anywhere in application.
     </p>
     <div class="example">
       <example name="ExamplePopoverTrigger" :script="false"></example>
@@ -83,11 +86,18 @@ export default {
     let slots = ref([
       {
         slot: "activator",
-        description: "Slot for element that activates popover",
+        description: "Slot for element that activates dropdown. Dropdown is positioned relative to element in this slot. Slot props: `reference`, `onTrigger` and `isOpen`",
       },
       {
         slot: "default",
         description: "Slot for popover content",
+      },
+    ]);
+
+    let components = ref([
+      {
+        component: "v-popover-header",
+        description: "Header of the popover with close button. You can set title in `default` slot or use `title` prop of v-popover",
       },
     ]);
 
@@ -102,6 +112,7 @@ export default {
       reference,
       styles,
       slots,
+      components,
       functions,
     };
   },

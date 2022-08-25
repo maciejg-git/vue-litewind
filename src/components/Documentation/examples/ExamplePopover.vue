@@ -7,7 +7,12 @@
     <template #reference="{ reference, onTrigger }">
       <v-button :ref="reference" v-on="onTrigger">Show simple popover</v-button>
     </template>
-    <v-card style-card="popover shadow">This is popover.</v-card>
+    <v-card style-card="shadow" width="220px">
+      <v-popover-header />
+      <div class="p-5">
+        This is popover.
+      </div>
+    </v-card>
   </v-popover>
 
   <!-- form popover -->
@@ -18,24 +23,27 @@
     <template #reference="{ reference, onTrigger }">
       <v-button :ref="reference" v-on="onTrigger">Show form popover</v-button>
     </template>
-    <v-card style-card="popover shadow" class="flex flex-col gap-y-4 w-[250px]">
-      <div class="flex flex-col gap-y-1">
-        <v-input
-          type="text"
-          label="Email"
-          id="login"
-          placeholder="Enter email"
-        ></v-input>
+    <v-card style-card="shadow" class="w-[250px]">
+      <v-popover-header />
+      <div class="flex flex-col gap-y-4 p-5">
+        <div class="flex flex-col gap-y-1">
+          <v-input
+            type="text"
+            label="Email"
+            id="login"
+            placeholder="Enter email"
+          ></v-input>
+        </div>
+        <div class="flex flex-col gap-y-1">
+          <v-input
+            type="password"
+            label="Password"
+            id="password"
+            placeholder="Enter password"
+          ></v-input>
+        </div>
+        <v-button style-button="small" class="ml-auto mt-2">Login</v-button>
       </div>
-      <div class="flex flex-col gap-y-1">
-        <v-input
-          type="password"
-          label="Password"
-          id="password"
-          placeholder="Enter password"
-        ></v-input>
-      </div>
-      <v-button style-button="small" class="ml-auto mt-2">Login</v-button>
     </v-card>
   </v-popover>
 

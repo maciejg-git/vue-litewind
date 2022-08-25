@@ -2,7 +2,7 @@
 
   <!-- relaxed -->
 
-  <v-dropdown base="relaxed">
+  <v-dropdown base="relaxed" :offsetY="5">
     <template #reference="{ reference, onTrigger }">
       <v-button :ref="reference" v-on="onTrigger" class="mr-4">
         Dropdown menu (relaxed)
@@ -12,7 +12,7 @@
     <v-card
       width="320px"
       style-card="shadow"
-      class="flex flex-col items-center py-1"
+      class="flex flex-col items-center py-3"
     >
       <v-dropdown-menu-item tag="button">Menu item</v-dropdown-menu-item>
       <v-dropdown-menu-item tag="button">Second menu item</v-dropdown-menu-item>

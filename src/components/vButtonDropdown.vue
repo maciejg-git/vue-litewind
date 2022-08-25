@@ -5,6 +5,8 @@
       :initial="dropdownPlacement"
       :triangle="triangle"
       :icon="icon"
+      rotate180
+      :switch="switch"
       class="ml-2"
     />
   </v-button>
@@ -14,8 +16,18 @@
 import { computed, inject } from "vue";
 export default {
   props: {
-    triangle: { type: Boolean, default: false },
-    icon: { type: String, default: "" },
+    triangle: {
+      type: Boolean,
+      default: false 
+    },
+    icon: {
+      type: String,
+      default: ""
+    },
+    switch: {
+      type: Boolean,
+      default: false,
+    },
   },
   setup() {
     let { placement } = inject("control-dropdown", "down");

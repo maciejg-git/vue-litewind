@@ -1,7 +1,5 @@
 @import 'form-underline-base.css';
 
-/* INPUT UNDERLINED */
-
 .underlined {
   &.input {
     @apply

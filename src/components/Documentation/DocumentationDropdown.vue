@@ -38,7 +38,7 @@
   <section id="example">
     <h4>Example - open by id</h4>
     <p>
-    You can also control state of the dropdown menu by using v-trigger component. The for prop of the v-trigger should be the same as id of the dropdown. v-triggers can be put anywhere in application.
+    You can also control state of the dropdown menu by using <code class="code-text">v-trigger</code> component. The for prop of the <code class="code-text">v-trigger</code> should be the same as <code class="code-text">id</code> of the dropdown. The advantage of this method is that <code class="code-text">v-triggers</code> can be put anywhere in application.
     </p>
     <div class="example">
       <example name="ExampleDropdownTrigger" :script="false"></example>
@@ -86,7 +86,7 @@ export default {
         type: ["Boolean"],
         default: "false",
         description:
-          "Set it to `true`/`false` to programatically show or hide dropdown content. Model is optional if dropdown is activated from reference slot",
+          "Set it to `true`/`false` to programatically show or hide dropdown content. Model is optional if dropdown is activated from `reference` slot or v-trigger component",
       },
       {
         prop: "trigger",
@@ -139,7 +139,7 @@ export default {
       {
         slot: "reference",
         description:
-          "Slot for button that activates dropdown. Dropdown is positioned relative to element in this slot.",
+          "Slot for element that activates dropdown. Dropdown is positioned relative to element in this slot. Slot props: `reference`, `onTrigger` and `isOpen`",
       },
       {
         slot: "default",

@@ -4,9 +4,7 @@
       <v-dropdown-menu-item tag="button">Menu item</v-dropdown-menu-item>
       <v-dropdown-menu-item tag="button">Second menu item</v-dropdown-menu-item>
       <v-dropdown-header>Menu header</v-dropdown-header>
-      <v-dropdown-menu-item active tag="button">
-        Active menu item
-      </v-dropdown-menu-item>
+      <v-dropdown-menu-item tag="button">Active menu item</v-dropdown-menu-item>
       <v-dropdown-menu-item tag="button">
         Another menu item
       </v-dropdown-menu-item>
@@ -21,12 +19,7 @@
   <v-trigger for="dropdown" v-slot="{ reference, onTrigger, isOpen }">
     <v-button :ref="reference" v-on="onTrigger">
       Dropdown menu
-      <v-chevron
-        initial="down"
-        rotate180
-        :switch="isOpen"
-        class="ml-2"
-      ></v-chevron>
+      <v-chevron rotate180 :switch="isOpen" class="ml-2"></v-chevron>
     </v-button>
   </v-trigger>
 </template>

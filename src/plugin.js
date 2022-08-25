@@ -1,4 +1,3 @@
-import { default as tooltip } from "./directives/tooltip"
 import vTrigger from "./components/vTrigger.vue"
 
 const defaultOptions = {
@@ -21,8 +20,9 @@ let componentPlugin = {
       app.component(component[0], component[1]);
     })
 
-      app.component("vTrigger", vTrigger);
-    app.directive("tooltip", tooltip);
+    Object.entries(globalOptions.directives).forEach((directive) => {
+      app.directive(directive[0], directive[1])
+    })
   }
 }
 

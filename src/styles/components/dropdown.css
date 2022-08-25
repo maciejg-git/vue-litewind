@@ -1,5 +1,3 @@
-/* DROPDOWN */
-
 .default {
   &.dropdown--item {
     @apply
@@ -48,8 +46,6 @@
       dark:text-text-300
   }
 }
-
-  /* DROPDOWN RELAXED */
 
 .relaxed {
   &.dropdown--item {
@@ -101,8 +97,6 @@
       dark:text-text-300
   }
 }
-
-  /* DROPDOWN FLAT */
 
 .flat {
   &.dropdown--item {

@@ -92,12 +92,13 @@ import "vue-wind/dist/style.css" `}}
       {{ `// main.js
 
 import { componentPlugin } from "vue-wind";
-import { components} from "vue-wind";
+import { components, directives } from "vue-wind";
 
 let app = createApp(App);
 
 app.use(componentPlugin, {
   components,
+  directives,
 }); `}}
     </v-code>
 

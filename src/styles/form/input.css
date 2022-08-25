@@ -1,7 +1,5 @@
 @import 'form-base.css';
 
-/* INPUT */
-
 .default {
   &.input {
     @apply

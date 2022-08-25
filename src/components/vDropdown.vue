@@ -35,7 +35,7 @@ import { sharedPopperProps, sharedStyleProps } from "../shared-props";
 // props
 import { defaultProps } from "../defaultProps";
 // trigger
-import { addListener, removeListener } from "../identifiers";
+import { addListener, removeListener } from "../trigger";
 
 export default {
   inheritAttrs: true,

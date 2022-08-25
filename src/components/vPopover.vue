@@ -12,7 +12,7 @@
 
 <script>
 // vue
-import { ref, toRefs, onBeforeUnmount } from "vue";
+import { ref, toRef, toRefs, onBeforeUnmount, provide } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
@@ -22,7 +22,7 @@ import useTrigger from "./composition/use-trigger";
 import { sharedPopperProps, sharedStyleProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 // trigger
-import { addListener, removeListener } from "../identifiers";
+import { addListener, removeListener } from "../trigger";
 
 export default {
   props: {
@@ -110,6 +110,12 @@ export default {
       show();
       contextData.value = data;
     };
+
+    provide("control-popover", {
+      classes,
+      title: toRef(props, "title"),
+      hide,
+    })
 
     expose({ showContextPopover });
 

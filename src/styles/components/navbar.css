@@ -1,5 +1,3 @@
-/* NAVBAR */
-
 .default {
   &.navbar {
     @apply
@@ -11,4 +9,4 @@
         @apply
           border-t
       }
-  }
+}

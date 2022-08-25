@@ -153,14 +153,9 @@ export default {
       type: String,
       default: "",
     },
-    showCondition: {
+    visibleCondition: {
       type: Object,
-      default: {
-        icon: "always",
-        clearButton: "always",
-        prepend: "always",
-        append: "always",
-      },
+      default: defaultProps("input", "visibleCondition", {}),
     },
     noMessages: {
       type: Boolean,
@@ -240,7 +235,7 @@ export default {
     });
 
     let wrapperClasses = computed(() => {
-      return props.inline ? "inline-block" : "block";
+      return props.inline ? "inline-block align-middle" : "block";
     });
 
     let id = useUid("input", attrs)
@@ -253,11 +248,11 @@ export default {
     let blur = (ev) => ev.target.blur();
 
     let isElementVisible = (element) => {
-      let el = props.showCondition[element]
+      let el = props.visibleCondition[element]
 
       if (!el) return true
 
-      return el === 'always' || el === 'hover' && mouseOver.value || el === 'focus' && inputRef.value === document.activeElement || el === 'hasvalue' && localModel.value.length
+      return el === 'hover' && mouseOver.value || el === 'focus' && inputRef.value === document.activeElement || el === 'hasvalue' && localModel.value.length
     }
 
     // validate

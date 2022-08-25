@@ -1,17 +1,9 @@
-/* TREE */
-
-.tree-item-fixed {
-  @apply
-    my-3
-    ml-8
-}
-
 .default {
   &.tree--folder {
     @apply
-      tree-item-fixed;
-    @apply
       font-bold
+      my-3
+      ml-8
   }
       &.tree--folder--root-variant {
         @apply
@@ -20,9 +12,9 @@
 
   &.tree--item {
     @apply
-      tree-item-fixed;
-    @apply
       font-normal
+      my-3
+      ml-8
   }
 
   &.tree--icon {
