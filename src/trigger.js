@@ -4,14 +4,14 @@ let triggers = {};
 
 let newTrigger = () => {
   return {
-    slotProps: shallowRef(null),
+    slotProps: null,
   };
 };
 
 let isTriggerId = (id) => {
   let { slotProps, callback } = triggers[id]
 
-  if (callback && slotProps.value) {
+  if (callback && slotProps) {
     callback(slotProps);
   }
 };
@@ -28,10 +28,11 @@ export let addListener = (id, slotProps) => {
   if (!triggers[id]) {
     triggers[id] = newTrigger(id);
   }
-  triggers[id].slotProps.value = slotProps;
+  triggers[id].slotProps = slotProps;
   isTriggerId(id);
 };
 
 export let removeListener = (id) => {
-  triggers[id].slotProps.value = { reference: null, onTrigger: {} };
+  triggers[id].slotProps = { reference: null, onTrigger: {} };
+  triggers[id].callback(triggers[id].slotProps)
 };

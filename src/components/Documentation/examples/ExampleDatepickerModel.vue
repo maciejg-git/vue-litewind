@@ -4,7 +4,7 @@
 
   <div class="flex">
     <v-card style="width: 320px" class="p-2">
-      <v-date-picker v-model="example.single" adjacent-months />
+      <v-date-picker v-model="example.single" name="datepicker-flat" adjacent-months />
     </v-card>
     <span class="ml-10">v-model (single): {{ example.single }}</span>
   </div>

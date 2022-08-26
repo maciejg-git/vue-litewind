@@ -1,16 +1,16 @@
 <template>
-  <div class="relative" :class="wrapperClasses" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
+  <div
+    :class="wrapperClasses"
+    @mouseenter="handleMouseEnter"
+    @mouseleave="handleMouseLeave"
+  >
     <label v-if="label" :for="id" :class="classes.label.value">
       <slot name="label" :label="label">
         {{ label }}
       </slot>
     </label>
-    <div
-      ref="wrapperRef"
-      class="form-input flex items-center"
-      :class="getInputClasses"
-    >
-    <div :class="{ invisible: !isElementVisible('icon') }">
+    <div ref="wrapperRef" :class="getInputClasses">
+      <div :class="{ invisible: !isElementVisible('icon') }">
         <slot name="icon">
           <div v-if="icon" @click="handleClickIcon" class="mr-2">
             <v-icon :name="icon" :class="classes.icon.value"></v-icon>
@@ -18,8 +18,8 @@
         </slot>
       </div>
 
-    <div :class="{ invisible: !isElementVisible('prepend') }">
-      <slot name="prepend"></slot>
+      <div :class="{ invisible: !isElementVisible('prepend') }">
+        <slot name="prepend"></slot>
       </div>
 
       <input
@@ -33,8 +33,8 @@
         @blur="handleBlur"
       />
 
-    <div :class="{ invisible: !isElementVisible('append') }">
-      <slot name="append"></slot>
+      <div :class="{ invisible: !isElementVisible('append') }">
+        <slot name="append"></slot>
       </div>
 
       <div class="flex items-center">
@@ -226,6 +226,7 @@ export default {
 
     let getInputClasses = computed(() => {
       return [
+        "form-input flex items-center",
         classes.input.value,
         state && states.input.value && states.input.value[state.value],
         attrs.disabled === "" || attrs.disabled === true
@@ -238,22 +239,26 @@ export default {
       return props.inline ? "inline-block align-middle" : "block";
     });
 
-    let id = useUid("input", attrs)
+    let id = useUid("input", attrs);
 
     let inputRef = ref(null);
     let wrapperRef = ref(null);
 
-    let mouseOver = ref(false)
+    let mouseOver = ref(false);
 
     let blur = (ev) => ev.target.blur();
 
     let isElementVisible = (element) => {
-      let el = props.visibleCondition[element]
+      let el = props.visibleCondition[element];
 
-      if (!el) return true
+      if (!el) return true;
 
-      return el === 'hover' && mouseOver.value || el === 'focus' && inputRef.value === document.activeElement || el === 'hasvalue' && localModel.value.length
-    }
+      return (
+        (el === "hover" && mouseOver.value) ||
+        (el === "focus" && inputRef.value === document.activeElement) ||
+        (el === "hasvalue" && localModel.value.length)
+      );
+    };
 
     // validate
 
@@ -422,9 +427,9 @@ export default {
       emit("input:blur", ev);
     };
 
-    let handleMouseEnter = () => mouseOver.value = true
+    let handleMouseEnter = () => (mouseOver.value = true);
 
-    let handleMouseLeave = () => mouseOver.value = false
+    let handleMouseLeave = () => (mouseOver.value = false);
 
     let handleClickIndicator = () => {
       emit("click:indicator", inputRef.value);

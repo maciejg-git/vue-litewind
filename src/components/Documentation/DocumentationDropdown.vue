@@ -38,7 +38,7 @@
   <section id="example">
     <h4>Example - open by id</h4>
     <p>
-    You can also control state of the dropdown menu by using <code class="code-text">v-trigger</code> component. The for prop of the <code class="code-text">v-trigger</code> should be the same as <code class="code-text">id</code> of the dropdown. The advantage of this method is that <code class="code-text">v-triggers</code> can be put anywhere in application.
+    You can also control state of the dropdown menu by using <code class="code-text">v-trigger</code> component. The <code class="code-text">for</code> prop of the <code class="code-text">v-trigger</code> should be the same as <code class="code-text">id</code> of the dropdown. The advantage of this method is that <code class="code-text">v-triggers</code> can be put anywhere in application.
     </p>
     <div class="example">
       <example name="ExampleDropdownTrigger" :script="false"></example>

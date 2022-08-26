@@ -147,23 +147,23 @@ export default {
         description: "Primary (accept) button label",
       },
       {
-        prop: "secondary-button-attrs",
+        prop: "secondary-button",
         type: ["Object"],
-        default: "{ styleButton: 'default secondary small' }",
-        description: "Props of secondary button",
+        default: "{ styleButton: 'secondary small' }",
+        description: "Attributes of secondary v-button",
       },
       {
-        prop: "primary-button-attrs",
+        prop: "primary-button",
         type: ["Object"],
-        default: "{ styleButton: 'default primary small' }",
-        description: "Props of primary button",
+        default: "{ styleButton: 'primary small' }",
+        description: "Attributes of primary v-button",
       },
       {
         prop: "transition",
         type: ["String"],
         default: "fade",
         description:
-          "Transition when switching months or years. Valid values are 'fade', 'slide' or empty string for no transition",
+          "Transition when switching months or years. Valid values are 'fade', 'slide' or `empty string` for no transition",
       },
       ...styleProps(),
     ]);
@@ -196,7 +196,7 @@ export default {
       {
         event: "update:formatted",
         description:
-          "Emmited after selecting date along with update:modelValue. Date is in formatted using locale and format prop",
+          "Emmited after selecting date along with @update:modelValue. Date is formatted based on `locale` and `format` prop",
       },
       {
         event: "state:done",

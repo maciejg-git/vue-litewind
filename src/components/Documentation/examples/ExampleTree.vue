@@ -222,8 +222,6 @@ export default {
 
     let treeRef = ref(null);
 
-    let selectedItems = ref([]);
-
     let events = ref([]);
 
     let handleClickItem = (item) => {
@@ -236,7 +234,6 @@ export default {
 
     return {
       example,
-      selectedItems,
       treeRef,
       events,
       handleClickItem,

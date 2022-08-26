@@ -2,7 +2,7 @@
   &.alert {
     @apply
       border
-      border-l-4
+      border-l-8
       rounded
       p-4
   }
@@ -12,8 +12,8 @@
           bg-info-300
           border-info-400
           dark:text-text-200
-          dark:bg-info-500
-          dark:border-info-600
+          dark:bg-info-600
+          dark:border-info-500
       }
       &.alert--danger {
         @apply
@@ -21,8 +21,8 @@
           bg-danger-300
           border-danger-400
           dark:text-text-200
-          dark:bg-danger-500
-          dark:border-danger-600
+          dark:bg-danger-600
+          dark:border-danger-500
       }
       &.alert--warn {
         @apply
@@ -30,8 +30,8 @@
           bg-warn-300
           border-warn-400
           dark:text-warn-900
-          dark:bg-warn-500
-          dark:border-warn-600
+          dark:bg-warn-600
+          dark:border-warn-500
       }
       &.alert--success {
         @apply
@@ -39,8 +39,8 @@
           bg-success-300
           border-success-400
           dark:text-success-900
-          dark:bg-success-500
-          dark:border-success-600
+          dark:bg-success-600
+          dark:border-success-500
       }
       &.alert--light {
         @apply

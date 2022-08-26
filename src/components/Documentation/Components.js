@@ -91,6 +91,10 @@ let components = [
     label: "Tree",
     name: "tree",
   },
+  {
+    label: "Trigger",
+    name: "trigger",
+  }
 ]
 
 let formComponents = [

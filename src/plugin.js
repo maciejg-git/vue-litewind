@@ -1,11 +1,15 @@
-import vTrigger from "./components/vTrigger.vue"
-
 const defaultOptions = {
   globalProps: {},
   componentProps: {},
 }
 
 let globalOptions = {}
+
+let aliases = {
+  vDropdown: ["vDropdownContext", "vMenu"],
+  vModal: ["vDialog"],
+  vCloseButton: ["v-x"],
+}
 
 let componentPlugin = {
   install(app, options) {

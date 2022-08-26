@@ -37,6 +37,7 @@ import DocumentationTree from "../components/Documentation/DocumentationTree.vue
 import DocumentationClosebutton from "../components/Documentation/DocumentationClosebutton.vue";
 import DocumentationIcon from "../components/Documentation/DocumentationIcon.vue";
 import DocumentationDivider from "../components/Documentation/DocumentationDivider.vue";
+import DocumentationTrigger from "../components/Documentation/DocumentationTrigger.vue";
 
 import DocumentationTooltip from "../components/Documentation/DocumentationTooltip.vue";
 
@@ -194,6 +195,10 @@ const routes = [
       {
         path: "form-validation",
         component: DocumentationFormValidation,
+      },
+      {
+        path: "trigger",
+        component: DocumentationTrigger,
       },
 
       // directives

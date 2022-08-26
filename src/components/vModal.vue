@@ -2,7 +2,8 @@
   <teleport to="body">
     <transition :name="transition" @after-leave="resetScrollbar">
       <div
-        v-if="modelValue"
+        v-if="isOpen"
+        v-bind="$attrs"
         class="fixed-main"
         role="dialog"
         tabindex="0"
@@ -21,7 +22,7 @@
               <v-close-button
                 v-if="!noCloseButton"
                 v-bind="closeButton"
-                @click="closeModal"
+                @click="close"
               />
             </header>
             <main :class="classes.content.value">
@@ -60,14 +61,14 @@
     </transition>
 
     <transition name="fade-backdrop">
-      <div v-if="modelValue" :class="classes.backdrop.value"></div>
+      <div v-if="isOpen" :class="classes.backdrop.value"></div>
     </transition>
   </teleport>
 </template>
 
 <script>
 // vue
-import { computed, watch } from "vue";
+import { ref, computed, watch, onBeforeUnmount } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 // components
@@ -78,6 +79,8 @@ import focus from "../directives/focus";
 // props
 import { sharedStyleProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
+// trigger
+import { addListener, removeListener } from "../trigger";
 
 export default {
   props: {
@@ -199,7 +202,8 @@ export default {
     "input:secondaryButtonClick",
     "update:modelValue",
   ],
-  setup(props, { emit }) {
+  inheritAttrs: false,
+  setup(props, { emit, attrs }) {
     let { classes } = useStyles("modal", props, {
       modal: {
         fixed: "fixed-modal",
@@ -266,12 +270,38 @@ export default {
       document.body.style.paddingRight = null;
     };
 
+    let isOpen = ref(false)
+
     watch(
       () => props.modelValue,
-      (value) => value && removeScrollbar()
+      (value) => {
+        if (value) open()
+        else close()
+      }
     );
 
-    let closeModal = () => emit("update:modelValue", false);
+    let open = () => {
+      isOpen.value = true
+      removeScrollbar()
+      emit("update:modelValue", true);
+    }
+
+    let close = () => {
+      isOpen.value = false
+      emit("update:modelValue", false);
+    }
+
+    // trigger by id
+
+    let onTrigger = { click: open }
+
+    let { id } = attrs
+
+    if (id) {
+      addListener(id, { onTrigger })
+
+      onBeforeUnmount(() => removeListener(id))
+    }
 
     // handle template events
 
@@ -280,7 +310,7 @@ export default {
         emit("input:static-backdrop-click");
         return;
       }
-      closeModal();
+      close();
     };
 
     let handleClickCloseButton = () => closeModal();
@@ -300,7 +330,8 @@ export default {
     return {
       classes,
       resetScrollbar,
-      closeModal,
+      isOpen,
+      close,
       handleBackdropClick,
       handleClickCloseButton,
       handlePrimaryButtonClick,

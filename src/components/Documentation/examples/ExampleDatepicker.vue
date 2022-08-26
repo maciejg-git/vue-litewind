@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-between">
-    <v-card style="width: 320px" class="self-start p-2">
+    <v-card style-card="shadow" style="width: 340px" class="self-start p-2">
       <v-date-picker
         v-model="example.date"
         :range="example.range"

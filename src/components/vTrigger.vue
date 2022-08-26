@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { unref } from "vue"
+import { unref, shallowRef } from "vue"
 import { addTrigger } from "../trigger";
 
 export default {
@@ -15,10 +15,10 @@ export default {
     for: { type: String, default: undefined },
   },
   setup(props) {
-    let referenceSlot = { reference: null, onTrigger: {} };
+    let referenceSlot = shallowRef({ reference: null, onTrigger: {} })
 
     addTrigger(props.for, (slotProps) => {
-      referenceSlot = slotProps;
+      referenceSlot.value = slotProps;
     });
 
     return {

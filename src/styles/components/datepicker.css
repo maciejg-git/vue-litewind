@@ -92,3 +92,96 @@
       dark:bg-dark-700
   }
 }
+
+.datepicker-relaxed-day-fixed {
+  @apply
+    cursor-pointer
+    rounded
+    font-semibold
+    py-2
+    mx-1
+    my-1
+    dark:text-text-400
+}
+
+.relaxed {
+  &.datepicker {
+    @apply
+      text-center
+      text-text-800
+      bg-white
+      dark:text-text-300
+      dark:bg-dark-800
+  }
+
+  &.datepicker--button {
+    @apply
+      rounded
+      focus:ring-2
+      py-1
+      px-2
+      focus:ring-primary-200
+      dark:focus:ring-primary-400
+  }
+
+  &.datepicker--weekday-bar {
+    @apply
+       my-4
+  }
+
+  &.datepicker--weekday {
+    @apply
+      font-semibold 
+      dark:text-text-300
+  }
+
+  &.datepicker--day {
+    @apply
+      datepicker-relaxed-day-fixed;
+    @apply
+      hover:bg-secondary-100
+      dark:hover:bg-dark-700
+  }
+      &.datepicker--day--today {
+        @apply  
+          font-bold
+          text-primary-400
+          dark:text-primary-400 !important
+      }
+      &.datepicker--day--partially-selected-state {
+        @apply
+          font-semibold
+          text-text-500
+          bg-secondary-300
+          dark:bg-dark-700
+      }
+      &.datepicker--day--selected-state {
+        @apply
+          font-semibold
+          text-white
+          bg-primary-400
+          hover:bg-primary-600
+          dark:text-text-200
+          dark:bg-primary-500
+          dark:hover:bg-primary-700
+      }
+
+  &.datepicker--adjacent-month-day {
+    @apply
+      datepicker-relaxed-day-fixed;
+    @apply  
+      pointer-events-none
+      text-text-200
+      dark:text-text-700
+  }
+
+  &.datepicker--footer {
+    @apply
+      text-sm
+      font-semibold
+      py-1
+      bg-secondary-100
+      dark:text-text-300
+      dark:bg-dark-700
+  }
+}
