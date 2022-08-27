@@ -26,12 +26,17 @@
       <!-- stop propagation to avoid selecting row -->
       <v-button
         base="button-plain"
-        style-button="tiny"
         @click.stop="edit(item)"
         block
       >
         <v-icon name="mdi-account-edit"></v-icon>
       </v-button>
+    </template>
+
+    <template #busy>
+      <div class="flex justify-center my-5">
+        <v-spinner type="svg" style-spinner="large" />
+      </div>
     </template>
 
     <template #caption>Example caption</template>

@@ -15,8 +15,22 @@
   <section>
     <h4>Notes</h4>
     <p>
-    You can activate collapse in two ways: by using <code class="code-text">reference</code> slot or <code class="code-text">v-model</code>.
-    Slot is recommened as it takes minimal set up and can be done in template alone. <code class="code-text">v-model</code> can still be used to programatically toggle collapse.
+    <ul class="flex flex-col gap-y-7">
+      <li>
+        <header class="font-semibold text-lg mb-2">
+          <span>#</span>
+Collapse activation
+        </header>
+    You can activate collapse in two ways: by using <code class="code-text">reference</code> slot or <code class="code-text">v-model</code>. Slot is recommened as it takes minimal set up and can be done in template alone. <code class="code-text">v-model</code> can still be used to programatically toggle collapse.
+      </li>
+      <li>
+        <header class="font-semibold text-lg mb-2">
+          <span>#</span>
+          Accordion
+        </header>
+        You can group <code class="code-text">v-collapse</code> components to create accordion. See example below.
+      </li>
+      </ul>
     </p>
   </section>
 

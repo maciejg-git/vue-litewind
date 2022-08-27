@@ -28,8 +28,8 @@
         <v-input type="text" id="model" inline v-model="isOpen"></v-input>
       </div>
       <div class="mb-2">
-        <label for="close-button">close-button:</label>
-        <v-select-prop id="close-button" v-model="example.closeButton">
+        <label for="show-close-button">show-close-button:</label>
+        <v-select-prop id="show-close-button" v-model="example.showCloseButton">
           <option :value="true">true</option>
           <option :value="false">false</option>
         </v-select-prop>
@@ -72,7 +72,7 @@ import { ref, reactive } from "vue";
 export default {
   setup() {
     let example = reactive({
-      closeButton: true,
+      showCloseButton: true,
       sidebarLeft: false,
       width: "320px",
       noHeader: false,

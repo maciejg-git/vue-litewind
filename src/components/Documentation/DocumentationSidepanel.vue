@@ -22,6 +22,13 @@
       <example name="ExampleSidepanel"></example>
     </div>
   </section>
+
+  <section>
+    <h4>Example - open by id</h4>
+    <div class="example">
+      <example name="ExampleSidepanelTrigger" :script="false"></example>
+    </div>
+  </section>
 </template>
 
 <script>

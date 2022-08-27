@@ -3,7 +3,7 @@
     :name="sidebarLeft ? transition + '-left' : transition + '-right'"
   >
     <div
-      v-show="isShow"
+      v-show="isOpen"
       :class="classes.sidepanel.value"
       :style="{ width: width }"
     >
@@ -27,7 +27,7 @@
 
 <script>
 // vue
-import { computed, toRef } from "vue";
+import { ref, computed, watch, onBeforeUnmount } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 // components
@@ -35,7 +35,8 @@ import vCloseButton from "./vCloseButton.vue";
 // props
 import { sharedStyleProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
-// style
+// trigger
+import { registerListener, removeListener } from "../trigger";
 
 export default {
   props: {
@@ -76,7 +77,7 @@ export default {
   components: {
     vCloseButton,
   },
-  setup(props, { emit }) {
+  setup(props, { emit, attrs }) {
     let { classes } = useStyles("sidepanel", props, {
       sidepanel: {
         fixed: "fixed-sidepanel",
@@ -85,15 +86,49 @@ export default {
       closeButton: null,
     });
 
-    let isShow = toRef(props, "modelValue");
+    let isOpen = ref(false)
 
-    let close = () => emit("update:modelValue", false);
+    watch(() => props.modelValue,
+      (value) => {
+        if (value) open()
+        else close()
+      }
+    )
+
+    let open = () => {
+      isOpen.value = true
+      emit("update:modelValue", true)
+    }
+
+    let close = () => {
+      isOpen.value = false
+      emit("update:modelValue", false);
+    }
+
+    let toggle = () => {
+      if (!isOpen.value) open()
+      else close()
+    }
+
+    // trigger by id
+
+    let onTrigger = { click: toggle }
+
+    let { id } = attrs
+
+    if (id) {
+      registerListener(id, { onTrigger })
+
+      onBeforeUnmount(() => removeListener(id))
+    }
+
+    // handle template events
 
     let handleClose = () => close();
 
     return {
       classes,
-      isShow,
+      isOpen,
       close,
       handleClose,
     };

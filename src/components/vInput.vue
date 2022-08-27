@@ -31,6 +31,7 @@
         class="transparent-input"
         :class="{ 'w-full': !inline }"
         @blur="handleBlur"
+        @focus="handleFocus"
       />
 
       <div :class="{ invisible: !isElementVisible('append') }">
@@ -245,18 +246,19 @@ export default {
     let wrapperRef = ref(null);
 
     let mouseOver = ref(false);
+    let isFocused = ref(false);
 
     let blur = (ev) => ev.target.blur();
 
     let isElementVisible = (element) => {
-      let el = props.visibleCondition[element];
+      let condition = props.visibleCondition[element];
 
-      if (!el) return true;
+      if (!condition) return true;
 
       return (
-        (el === "hover" && mouseOver.value) ||
-        (el === "focus" && inputRef.value === document.activeElement) ||
-        (el === "hasvalue" && localModel.value.length)
+        (condition === "hover" && mouseOver.value) ||
+        (condition === "focus" && isFocused.value) ||
+        (condition === "hasvalue" && localModel.value.length)
       );
     };
 
@@ -420,12 +422,16 @@ export default {
     let handleBlur = (ev) => {
       touch();
 
+      isFocused.value = false;
+
       if (wrapperRef.value.contains(ev.relatedTarget)) {
         return;
       }
 
       emit("input:blur", ev);
     };
+
+    let handleFocus = () => (isFocused.value = true);
 
     let handleMouseEnter = () => (mouseOver.value = true);
 
@@ -463,6 +469,7 @@ export default {
       status,
       messages,
       blur,
+      handleFocus,
       handleBlur,
       handleMouseEnter,
       handleMouseLeave,

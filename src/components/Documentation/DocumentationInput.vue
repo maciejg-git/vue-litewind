@@ -38,6 +38,13 @@
       <example name="ExampleInputStyles" :script="false"></example>
     </div>
   </section>
+
+  <section>
+    <h4>Example - visiblity of icon, clear button etc</h4>
+    <div class="example">
+      <example name="ExampleInputFeatures"></example>
+    </div>
+  </section>
 </template>
 
 <script>

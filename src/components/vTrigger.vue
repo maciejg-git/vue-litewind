@@ -8,7 +8,7 @@
 
 <script>
 import { unref, shallowRef } from "vue"
-import { addTrigger } from "../trigger";
+import { registerTrigger } from "../trigger";
 
 export default {
   props: {
@@ -17,7 +17,7 @@ export default {
   setup(props) {
     let referenceSlot = shallowRef({ reference: null, onTrigger: {} })
 
-    addTrigger(props.for, (slotProps) => {
+    registerTrigger(props.for, (slotProps) => {
       referenceSlot.value = slotProps;
     });
 

@@ -5,12 +5,6 @@ const defaultOptions = {
 
 let globalOptions = {}
 
-let aliases = {
-  vDropdown: ["vDropdownContext", "vMenu"],
-  vModal: ["vDialog"],
-  vCloseButton: ["v-x"],
-}
-
 let componentPlugin = {
   install(app, options) {
     options = options || {}

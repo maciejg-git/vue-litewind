@@ -35,7 +35,7 @@ import { sharedPopperProps, sharedStyleProps } from "../shared-props";
 // props
 import { defaultProps } from "../defaultProps";
 // trigger
-import { addListener, removeListener } from "../trigger";
+import { registerListener, removeListener } from "../trigger";
 
 export default {
   inheritAttrs: true,
@@ -149,7 +149,7 @@ export default {
     let { id } = attrs
 
     if (id && !slots.reference) {
-      addListener(id, referenceSlotProps)
+      registerListener(id, referenceSlotProps)
 
       onBeforeUnmount(() => removeListener(id))
     }

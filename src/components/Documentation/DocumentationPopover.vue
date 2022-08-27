@@ -19,6 +19,42 @@
   </section>
 
   <section>
+    <h4>Notes</h4>
+    <p>
+    <ul class="flex flex-col gap-y-7">
+      <li>
+        <header class="font-semibold text-lg mb-2">
+          <span>#</span>
+          Popover activation
+        </header>
+    To control popover visibility you can use <code class="code-text">reference</code> slot or <code class="code-text">v-trigger</code> component. You can also set up optional <code class="code-text">v-model</code> or call exposed <code class="code-text">show</code> and <code class="code-text">hide</code> functions to control it programatically. <code class="code-text">reference</code> slot method is default and recommended.
+      </li>
+      <li>
+        <header class="font-semibold text-lg mb-2">
+          <span>#</span>
+          Popover content
+        </header>
+    Popover allows for any type of content inside. To make it flexible it does not have own default container, you can use <code class="code-text">v-card</code> with variants or utility classes to organize content.
+      </li>
+      <li>
+        <header class="font-semibold text-lg mb-2">
+          <span>#</span>
+          Teleport
+        </header>
+    Open popover is by default appended to the body element.
+      </li>
+      <li>
+        <header class="font-semibold text-lg mb-2">
+          <span>#</span>
+          Context popovers
+        </header>
+    You can set up context popover with <code class="code-text">v-popover</code>. See example below.
+      </li>
+    </ul>
+    </p>
+  </section>
+
+  <section>
     <h4>Example</h4>
     <div class="example">
       <example name="ExamplePopover"></example>

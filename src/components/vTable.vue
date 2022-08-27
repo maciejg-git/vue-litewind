@@ -46,12 +46,10 @@
     </thead>
 
     <tbody>
-      <template v-if="busy && slots.busy">
+      <template v-if="state === 'busy' && slots.busy">
         <tr>
           <td :colspan="headersCount">
-            <div class="flex justify-center">
-              <slot name="busy"></slot>
-            </div>
+            <slot name="busy"></slot>
           </td>
         </tr>
       </template>
@@ -164,10 +162,6 @@ export default {
     locale: {
       type: String,
       default: defaultProps("table", "locale", "en-GB"),
-    },
-    busy: {
-      type: Boolean,
-      default: false,
     },
     selectionMode: {
       type: String,

@@ -1,5 +1,3 @@
-import { shallowRef } from "vue";
-
 let triggers = {};
 
 let newTrigger = () => {
@@ -8,7 +6,7 @@ let newTrigger = () => {
   };
 };
 
-let isTriggerId = (id) => {
+let connectTrigger = (id) => {
   let { slotProps, callback } = triggers[id]
 
   if (callback && slotProps) {
@@ -16,20 +14,20 @@ let isTriggerId = (id) => {
   }
 };
 
-export let addTrigger = (id, callback) => {
+export let registerTrigger = (id, callback) => {
   if (!triggers[id]) {
     triggers[id] = newTrigger(id);
   }
   triggers[id].callback = callback;
-  isTriggerId(id);
+  connectTrigger(id);
 };
 
-export let addListener = (id, slotProps) => {
+export let registerListener = (id, slotProps) => {
   if (!triggers[id]) {
     triggers[id] = newTrigger(id);
   }
   triggers[id].slotProps = slotProps;
-  isTriggerId(id);
+  connectTrigger(id);
 };
 
 export let removeListener = (id) => {

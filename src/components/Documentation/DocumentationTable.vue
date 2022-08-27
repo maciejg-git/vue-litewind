@@ -16,7 +16,7 @@
   </section>
 
   <section>
-    <h4>Prop: definition</h4>
+    <h4 class="mb-2">Prop: definition</h4>
     <span class="font-bold">Type</span>
     :
     <code class="code-word">Array</code>

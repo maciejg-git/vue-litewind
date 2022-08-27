@@ -11,50 +11,52 @@
         @keydown.esc="handleKeydown"
         v-focus
       >
-        <div :class="classes.container.value">
+        <div :class="containerClasses">
           <div :class="classes.modal.value">
-            <header v-if="!noHeader" :class="classes.header.value">
-              <slot name="header">
-                <span>
-                  {{ title }}
-                </span>
-              </slot>
-              <v-close-button
-                v-if="!noCloseButton"
-                v-bind="closeButton"
-                @click="close"
-              />
-            </header>
-            <main :class="classes.content.value">
-              <v-close-button
-                v-if="noHeader && closeButtonInContent"
-                class="absolute top-6 right-6"
-                @click="handleClickCloseButton"
-              />
-              <slot name="default"></slot>
-            </main>
-            <footer v-if="!noFooter" :class="classes.footer.value">
-              <slot name="footer">
-                <v-button
-                  v-if="!noSecondaryButton"
-                  aria-label="Cancel button"
-                  v-bind="secondaryButton"
-                  class="mx-2"
-                  @click="handleSecondaryButtonClick"
-                >
-                  {{ secondaryButtonLabel }}
-                </v-button>
-                <v-button
-                  v-if="!noPrimaryButton"
-                  aria-label="OK button"
-                  v-bind="primaryButton"
-                  class="mx-2"
-                  @click="handlePrimaryButtonClick"
-                >
-                  {{ primaryButtonLabel }}
-                </v-button>
-              </slot>
-            </footer>
+            <slot name="modal">
+              <header v-if="!noHeader" :class="classes.header.value">
+                <slot name="header">
+                  <span>
+                    {{ title }}
+                  </span>
+                </slot>
+                <v-close-button
+                  v-if="!noCloseButton"
+                  v-bind="closeButton"
+                  @click="close"
+                />
+              </header>
+              <main :class="classes.content.value">
+                <v-close-button
+                  v-if="noHeader && closeButtonInContent"
+                  class="absolute top-6 right-6"
+                  @click="handleClickCloseButton"
+                />
+                <slot name="default"></slot>
+              </main>
+              <footer v-if="!noFooter" :class="classes.footer.value">
+                <slot name="footer">
+                  <v-button
+                    v-if="!noSecondaryButton"
+                    aria-label="Cancel button"
+                    v-bind="secondaryButton"
+                    class="mx-2"
+                    @click="handleSecondaryButtonClick"
+                  >
+                    {{ secondaryButtonLabel }}
+                  </v-button>
+                  <v-button
+                    v-if="!noPrimaryButton"
+                    aria-label="OK button"
+                    v-bind="primaryButton"
+                    class="mx-2"
+                    @click="handlePrimaryButtonClick"
+                  >
+                    {{ primaryButtonLabel }}
+                  </v-button>
+                </slot>
+              </footer>
+            </slot>
           </div>
         </div>
       </div>
@@ -80,7 +82,7 @@ import focus from "../directives/focus";
 import { sharedStyleProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 // trigger
-import { addListener, removeListener } from "../trigger";
+import { registerListener, removeListener } from "../trigger";
 
 export default {
   props: {
@@ -213,7 +215,7 @@ export default {
       },
       footer: {
         fixed: "fixed-footer",
-        prop: computed(() => classesFooter[props.justifyButtons]),
+        prop: computed(() => footerClasses[props.justifyButtons]),
       },
       content: null,
       backdrop: {
@@ -221,15 +223,15 @@ export default {
       },
     });
 
-    classes.container = computed(() => {
+    let containerClasses = computed(() => {
       return [
         "fixed-container",
-        classesSize[props.size],
-        classesPosition[props.position],
+        sizeClasses[props.size],
+        positionClasses[props.position],
       ];
     });
 
-    const classesFooter = {
+    const footerClasses = {
       start: "justify-start",
       end: "justify-end",
       center: "justify-center",
@@ -238,12 +240,12 @@ export default {
       evenly: "justify-evenly",
     };
 
-    const classesPosition = {
+    const positionClasses = {
       top: "items-start",
       center: "items-center",
     };
 
-    const classesSize = {
+    const sizeClasses = {
       sm: "md:w-4/12",
       md: "md:w-6/12",
       lg: "md:w-8/12",
@@ -253,6 +255,7 @@ export default {
 
     // remove scrollbar and add some padding to avoid shifting modal window
     // when opening
+
     let getScrollBarWidth = () => {
       return window.innerWidth - document.documentElement.clientWidth;
     };
@@ -270,37 +273,39 @@ export default {
       document.body.style.paddingRight = null;
     };
 
-    let isOpen = ref(false)
+    // control visibility
+
+    let isOpen = ref(false);
 
     watch(
       () => props.modelValue,
       (value) => {
-        if (value) open()
-        else close()
+        if (value) open();
+        else close();
       }
     );
 
     let open = () => {
-      isOpen.value = true
-      removeScrollbar()
+      isOpen.value = true;
+      removeScrollbar();
       emit("update:modelValue", true);
-    }
+    };
 
     let close = () => {
-      isOpen.value = false
+      isOpen.value = false;
       emit("update:modelValue", false);
-    }
+    };
 
     // trigger by id
 
-    let onTrigger = { click: open }
+    let onTrigger = { click: open };
 
-    let { id } = attrs
+    let { id } = attrs;
 
     if (id) {
-      addListener(id, { onTrigger })
+      registerListener(id, { onTrigger });
 
-      onBeforeUnmount(() => removeListener(id))
+      onBeforeUnmount(() => removeListener(id));
     }
 
     // handle template events
@@ -313,22 +318,23 @@ export default {
       close();
     };
 
-    let handleClickCloseButton = () => closeModal();
+    let handleClickCloseButton = () => close();
 
     let handlePrimaryButtonClick = () => {
-      if (props.primaryButtonClose) closeModal();
+      if (props.primaryButtonClose) close();
       emit("input:primary-button-click");
     };
 
     let handleSecondaryButtonClick = () => {
-      if (props.secondaryButtonClose) closeModal();
+      if (props.secondaryButtonClose) close();
       emit("input:secondary-button-click");
     };
 
-    let handleKeydown = () => closeModal();
+    let handleKeydown = () => close();
 
     return {
       classes,
+      containerClasses,
       resetScrollbar,
       isOpen,
       close,

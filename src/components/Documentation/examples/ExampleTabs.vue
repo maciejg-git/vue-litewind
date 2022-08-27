@@ -21,9 +21,7 @@
       {{ text[2] }}
     </v-tab>
     <v-tab v-for="(tab, i) in tabs" :name="tab.name" class="p-4">
-      <component :is="tab.component" v-bind="tab.props">
-        {{ tab.content }}
-      </component>
+      {{ tab.content }}
     </v-tab>
   </v-tabs>
   <!-- CUT START -->
@@ -110,10 +108,6 @@ export default {
     let addTab = () => {
       tabs.value.push({
         name: "Tab " + (tabs.value.length + 4),
-        component: "v-card",
-        props: {
-          class: "p-4",
-        },
         content: text[tabs.value.length % 3],
       });
     };

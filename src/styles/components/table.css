@@ -9,8 +9,7 @@
           table-fixed
       }
       &.table--busy-state {
-        @apply
-          disabled
+
       }
 
   &.table--header-row {

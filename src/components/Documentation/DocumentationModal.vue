@@ -16,6 +16,20 @@
   </section>
 
   <section>
+    <h4>Notes</h4>
+    <p>
+    <ul>
+      <li>
+    modal activation  - to control modal visibility you can use <code class="code-text">v-model</code> or <code class="code-text">v-trigger</code> component
+      </li>
+      <li>
+    teleport - open modal is by default appended to the body element
+      </li>
+    </ul>
+    </p>
+  </section>
+
+  <section>
     <h4>Example - simple modal</h4>
     <div class="example">
       <example name="ExampleModalSimple"></example>
