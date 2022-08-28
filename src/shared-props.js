@@ -3,20 +3,18 @@ import { defaultProps } from "./defaultProps";
 
 // popper props
 
-export const sharedPopperProps = (d) => {
-  d = d || {};
-
+export const sharedPopperProps = (component) => {
   return {
     placement: {
       type: String,
-      default: d.placement || "bottom-start",
+      default: defaultProps(component, "placement", "bottom-start"),
       validator: function (v) {
         return correctPlacement.includes(v);
       },
     },
-    offsetX: { type: Number, default: d.offsetX || 0 },
-    offsetY: { type: Number, default: d.offsetY || 0 },
-    noFlip: { type: Boolean, default: d.noFlip || false },
+    offsetX: { type: Number, default: defaultProps(component, "offsetX", 0) },
+    offsetY: { type: Number, default: defaultProps(component, "offsetY", 0) },
+    noFlip: { type: Boolean, default: defaultProps(component, "noFlip", false) },
   };
 };
 

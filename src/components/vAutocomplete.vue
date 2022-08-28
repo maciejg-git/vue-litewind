@@ -92,7 +92,7 @@ export default {
       default: defaultProps("autocomplete", "useLoader", true),
     },
     // v-autocomplete props
-    ...sharedPopperProps({ offsetY: 10 }),
+    ...sharedPopperProps("autocomplete"),
     items: {
       type: Array,
       default: [],

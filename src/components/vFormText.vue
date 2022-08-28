@@ -30,10 +30,6 @@ export default {
       type: String,
       default: "",
     },
-    inline: {
-      type: Boolean,
-      default: false,
-    },
     messages: {
       type: Object,
       default: {},
@@ -58,9 +54,6 @@ export default {
         name: "form-text",
         fixed: "fixed-form-text",
         states: ["valid", "invalid", "disabled"],
-        prop: computed(() =>
-          props.inline ? "inline-flex flex-col" : "flex flex-col"
-        ),
       },
     });
 

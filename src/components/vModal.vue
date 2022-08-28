@@ -27,11 +27,6 @@
                 />
               </header>
               <main :class="classes.content.value">
-                <v-close-button
-                  v-if="noHeader && closeButtonInContent"
-                  class="absolute top-6 right-6"
-                  @click="handleClickCloseButton"
-                />
                 <slot name="default"></slot>
               </main>
               <footer v-if="!noFooter" :class="classes.footer.value">
@@ -138,10 +133,6 @@ export default {
       type: Boolean,
       default: false,
     },
-    closeButtonInContent: {
-      type: Boolean,
-      default: false,
-    },
     staticBackdrop: {
       type: Boolean,
       default: false,
@@ -243,6 +234,7 @@ export default {
     const positionClasses = {
       top: "items-start",
       center: "items-center",
+      bottom: "items-end",
     };
 
     const sizeClasses = {

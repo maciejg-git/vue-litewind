@@ -17,6 +17,7 @@
       <v-select id="position" v-model="example.position">
         <option value="top">top</option>
         <option value="center">center</option>
+        <option value="bottom">bottom</option>
       </v-select>
     </div>
     <div>
@@ -180,6 +181,7 @@
           <v-select id="position-modal" v-model="example.position">
             <option value="top">top</option>
             <option value="center">center</option>
+            <option value="bottom">bottom</option>
           </v-select>
         </div>
         <div class="mb-2">
@@ -209,29 +211,34 @@
 
   <v-modal
     v-model="state.isVisibleImage"
-    no-header
-    no-footer
-    close-button-in-content
-    size="fit"
     :position="example.position"
     :transition="example.transition"
-    style-content="edge-to-edge"
+    size="fit"
+    style-modal="square"
   >
-    <img :src="'/assets/' + images[currentImage]" width="1000" alt="" />
-    <v-button
-      @click="prev()"
-      style-button="secondary"
-      class="absolute bottom-4 left-4 opacity-97 mix-blend-screen"
-    >
-      Previous
-    </v-button>
-    <v-button
-      @click="next()"
-      style-button="secondary"
-      class="absolute bottom-4 right-4 opacity-97 mix-blend-screen"
-    >
-      Next
-    </v-button>
+    <template #modal>
+      <div class="group">
+        <img :src="'/assets/' + images[currentImage]" width="1000" alt="" />
+        <v-close-button class="absolute top-5 right-5" />
+        <div class="absolute bottom-0 w-full flex justify-center gap-x-4 p-2">
+            <img v-for="(image, index) in images" :src="'/assets/' + image" width="110" alt="" :class="{ 'ring-4 ring-indigo-500': image === images[currentImage] }" class=" opacity-0 group-hover:opacity-100 transition-opacity shadow-md shadow-black/30 hover:scale-105" @click="currentImage = index" />
+        </div>
+          <v-button
+            @click="prev()"
+            style-button="secondary"
+            class="absolute bottom-5 left-5 opacity-0 group-hover:opacity-80"
+          >
+            Previous
+          </v-button>
+          <v-button
+            @click="next()"
+            style-button="secondary"
+            class="absolute bottom-5 right-5 opacity-0 group-hover:opacity-80"
+          >
+            Next
+          </v-button>
+      </div>
+    </template>
   </v-modal>
 </template>
 

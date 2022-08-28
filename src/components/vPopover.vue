@@ -26,7 +26,7 @@ import { registerListener, removeListener } from "../trigger";
 
 export default {
   props: {
-    ...sharedPopperProps(),
+    ...sharedPopperProps("popover"),
     trigger: {
       type: String,
       default: "click",

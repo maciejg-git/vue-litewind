@@ -44,7 +44,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    ...sharedPopperProps(),
+    ...sharedPopperProps("dropdown"),
     autoCloseMenu: {
       type: Boolean,
       default: defaultProps("dropdown", "autoCloseMenu", false),

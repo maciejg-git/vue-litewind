@@ -18,12 +18,20 @@
   <section>
     <h4>Notes</h4>
     <p>
-    <ul>
+    <ul class="flex flex-col gap-y-7">
       <li>
-    modal activation  - to control modal visibility you can use <code class="code-text">v-model</code> or <code class="code-text">v-trigger</code> component
+        <header class="font-semibold text-lg mb-2">
+          <span>#</span>
+          Modal activation
+        </header>
+        To control modal visibility you can use <code class="code-text">v-model</code> or <code class="code-text">v-trigger</code> component
       </li>
       <li>
-    teleport - open modal is by default appended to the body element
+        <header class="font-semibold text-lg mb-2">
+          <span>#</span>
+          Teleport
+        </header>
+        Open modal is by default appended to the body element
       </li>
     </ul>
     </p>
