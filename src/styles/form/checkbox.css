@@ -1,12 +1,15 @@
-@import 'form-base.css';
-
-/* CHECKBOX */
-
 .default {
   &.checkbox {
     @apply
-      form--base;
-    @apply
+      rounded
+      border
+      focus:outline-none
+      focus-within:ring
+      outline-none
+      bg-white
+      border-secondary-300
+      focus-within:border-secondary-400
+      focus-within:ring-primary-200
       focus:ring-offset-0
       transform
       scale-110
@@ -22,11 +25,21 @@
   }
       &.checkbox--valid-state {
         @apply
-          form--valid
+          text-success-600
+          border-success-300
+          focus-within:ring-success-200
+          dark:text-success-600
+          dark:border-success-400
+          dark:focus-within:ring-success-300
       }
       &.checkbox--invalid-state {
         @apply
-          form--invalid
+          text-danger-600
+          border-danger-300
+          focus-within:ring-danger-200
+          dark:text-danger-600
+          dark:border-danger-400
+          dark:focus-within:ring-danger-300
       }
       &.checkbox--disabled-state {
         @apply

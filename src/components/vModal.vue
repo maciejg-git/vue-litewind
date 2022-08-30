@@ -13,7 +13,7 @@
       >
         <div :class="containerClasses">
           <div :class="classes.modal.value">
-            <slot name="modal">
+            <slot name="modal" :close="close">
               <header v-if="!noHeader" :class="classes.header.value">
                 <slot name="header">
                   <span>

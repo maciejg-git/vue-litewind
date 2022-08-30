@@ -52,6 +52,13 @@
   </section>
 
   <section>
+    <h4>Example - modal slot</h4>
+    <div class="example">
+      <example name="ExampleModalSlots"></example>
+    </div>
+  </section>
+
+  <section>
     <h4>Example - open by id</h4>
     <p>
     You can also control state of the modal by using <code class="code-text">v-trigger</code> component. The for prop of the <code class="code-text">v-trigger</code> should be the same as <code class="code-text">id</code> of the modal. <code class="code-text">v-triggers</code> can be put anywhere in application.
@@ -143,12 +150,6 @@ export default {
         type: ["Boolean"],
         default: "false",
         description: "Disables 'X' button in modal header",
-      },
-      {
-        prop: "close-button-in-content",
-        type: ["Boolean"],
-        default: "false",
-        description: "Renders absolute positioned close button inside content container (instead of header). This can be useful if header is disabled or when showing images that span entire modal. See such example below.",
       },
       {
         prop: "static-backdrop",
@@ -248,6 +249,10 @@ export default {
         slot: "footer",
         description:
           "Modal footer content",
+      },
+      {
+        slot: "modal",
+        description: "Swaps the entire default content of v-modal. Slot props: `close()`",
       },
     ]);
 

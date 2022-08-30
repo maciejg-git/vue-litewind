@@ -12,6 +12,9 @@
         :adjacent-months="!!example.adjacentMonths"
         :range-hover-highlight="example.rangeHoverHighlight"
         :transition="example.transition"
+        style-day="card default rounded-lg border"
+        style-weekdday="weekday default text-sm"
+        style-datepicker="datepicker default text-text-300"
         @update:formatted="
           events.unshift({ ev: 'update:formatted', data: $event })
         "

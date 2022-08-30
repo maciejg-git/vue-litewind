@@ -1,6 +1,4 @@
-@import 'form-base.css';
-
-/* AUTOCOMPLETE */
+@import "../shared.css";
 
 .default {
   &.autocomplete--menu {

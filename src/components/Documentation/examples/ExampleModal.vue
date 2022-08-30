@@ -6,9 +6,6 @@
     <v-button @click="state.isVisibleLong = !state.isVisibleLong">
       Show long scrollable modal
     </v-button>
-    <v-button @click="state.isVisibleImage = !state.isVisibleImage">
-      Show image modal
-    </v-button>
   </div>
 <!-- CUT START -->
 <div class="flex flex-col gap-y-2 mt-10">
@@ -144,18 +141,6 @@
           </v-select-prop>
         </div>
         <div class="mb-2">
-          <label for="close-button-in-content" class="mr-2">
-            close-button-in-content:
-          </label>
-          <v-select-prop
-            id="close-button-in-content"
-            v-model="example.closeButtonInContent"
-          >
-            <option :value="true">true</option>
-            <option :value="false">false</option>
-          </v-select-prop>
-        </div>
-        <div class="mb-2">
           <label for="static-backdrop" class="mr-2">static-backdrop:</label>
           <v-select-prop id="static-backdrop" v-model="example.staticBackdrop">
             <option :value="true">true</option>
@@ -206,40 +191,6 @@
   >
     {{ longText[0] }}
   </v-modal>
-
-  <!-- image modal -->
-
-  <v-modal
-    v-model="state.isVisibleImage"
-    :position="example.position"
-    :transition="example.transition"
-    size="fit"
-    style-modal="square"
-  >
-    <template #modal>
-      <div class="group">
-        <img :src="'/assets/' + images[currentImage]" width="1000" alt="" />
-        <v-close-button class="absolute top-5 right-5" />
-        <div class="absolute bottom-0 w-full flex justify-center gap-x-4 p-2">
-            <img v-for="(image, index) in images" :src="'/assets/' + image" width="110" alt="" :class="{ 'ring-4 ring-indigo-500': image === images[currentImage] }" class=" opacity-0 group-hover:opacity-100 transition-opacity shadow-md shadow-black/30 hover:scale-105" @click="currentImage = index" />
-        </div>
-          <v-button
-            @click="prev()"
-            style-button="secondary"
-            class="absolute bottom-5 left-5 opacity-0 group-hover:opacity-80"
-          >
-            Previous
-          </v-button>
-          <v-button
-            @click="next()"
-            style-button="secondary"
-            class="absolute bottom-5 right-5 opacity-0 group-hover:opacity-80"
-          >
-            Next
-          </v-button>
-      </div>
-    </template>
-  </v-modal>
 </template>
 
 <script>
@@ -258,7 +209,6 @@ export default {
       secondaryButtonClose: true,
       justifyButtons: "end",
       noCloseButton: false,
-      closeButtonInContent: false,
       staticBackdrop: false,
       noHeader: false,
       noFooter: false,
