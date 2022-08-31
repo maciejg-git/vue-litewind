@@ -26,7 +26,7 @@
       focus:outline-none
       focus:ring-4
       px-4
-      py-2
+      py-2.5
       text-text-100
       bg-primary-500
       border-primary-700
@@ -50,22 +50,24 @@
       &.button--warn {
         @apply
           text-text-800
-          bg-warn-500
-          hover:bg-warn-600
+          bg-warn-400
+          hover:bg-warn-500
           border-warn-600
           focus:ring-warn-200
       }
       &.button--success {
         @apply
-          bg-success-500
-          hover:bg-success-600
+          text-text-800
+          bg-success-400
+          hover:bg-success-500
           border-success-600
           focus:ring-success-200
       }
       &.button--danger {
         @apply
-          bg-danger-500
-          hover:bg-danger-600
+          text-text-800
+          bg-danger-400
+          hover:bg-danger-500
           border-danger-600
           focus:ring-danger-200
       }
@@ -77,7 +79,7 @@
       }
       &.button--large {
         @apply
-          py-2.5
+          py-3.5
       }
       &.button--small {
         @apply

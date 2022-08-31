@@ -87,12 +87,18 @@ export default {
 
     onMounted(() => activateTab(0));
 
-    let getTab = (tab) => tabs.value.findIndex((t) => toRaw(t) === tab);
+    let getTab = (tab) => {
+      return tabs.value.findIndex((t) => toRaw(t) === tab);
+    }
 
-    let getTabName = (tab) => (tab.slots.name && tab.slots.name()) || tab.name;
+    let getTabName = (tab) => {
+      return (tab.slots.name && tab.slots.name()) || tab.name;
+    }
 
     let activateTab = (index) => {
-      if (index < 0 || tabs.value.length < index) return;
+      if (index < 0 || !tabs.value.length || tabs.value.length < index) {
+        return;
+      }
 
       let tab = tabs.value[index];
 

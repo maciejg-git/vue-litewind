@@ -42,7 +42,7 @@
 
   <!-- overlay card -->
 
-  <v-card width="360px" style-card="shadow hoverable" class="relative overflow-hidden">
+  <v-card width="360px" style-card="shadow hoverable" class="relative overflow-hidden my-10">
     <img :src="randomPhoto(360, 600)" alt="" class="opacity-100"/>
     <div class="absolute bottom-0 bg-gray-800 bg-opacity-80 text-gray-100">
       <header class="font-semibold text-lg pt-3 px-6">Example card</header>
@@ -53,6 +53,18 @@
         1500s, when an unknown printer took a galley of type and scrambled it to
         make a type specimen book.
       </div>
+    </div>
+  </v-card>
+
+  <v-card width="360px" style-card="borderless rounded-extra shadow" class="overflow-hidden">
+    <img :src="randomPhoto()" alt="" />
+    <header class="font-semibold text-lg mt-5 px-10">Example card</header>
+    <header class="text-gray-500 text-sm mt-2 px-10">Subtitle</header>
+    <div class="px-10 py-7">
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      Lorem Ipsum has been the industry's standard dummy text ever since the
+      1500s, when an unknown printer took a galley of type and scrambled it to
+      make a type specimen book.
     </div>
   </v-card>
 </template>

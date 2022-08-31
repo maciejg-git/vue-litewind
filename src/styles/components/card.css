@@ -39,7 +39,7 @@
       }
       &.card--rounded-extra {
         @apply
-          rounded-lg
+          rounded-xl
       }
   }
 
