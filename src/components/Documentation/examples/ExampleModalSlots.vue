@@ -13,21 +13,21 @@
             width="110"
             alt=""
             :class="{ 'ring-4 ring-indigo-500': image === images[currentImage] }"
-            class="opacity-0 group-hover:opacity-100 transition-opacity shadow-md shadow-black/30 hover:scale-105 cursor-pointer"
+            class="opacity-0 group-hover:opacity-100 transition-opacity shadow-md shadow-black/30 hover:scale-105 duration-300 cursor-pointer"
             @click="currentImage = index"
           />
         </div>
         <v-button
           @click="prev()"
           base="plain"
-          class="absolute -translate-y-1/2 top-1/2 left-5 text-white opacity-0 group-hover:opacity-80"
+          class="absolute -translate-y-1/2 top-1/2 left-5 duration-300 transition-opacity text-white opacity-0 group-hover:opacity-80"
         >
           <v-icon name="fa-chevron-left-solid" class="w-12 h-12"></v-icon>
         </v-button>
         <v-button
           @click="next()"
           base="plain"
-          class="absolute -translate-y-1/2 top-1/2 right-5 text-white opacity-0 group-hover:opacity-80"
+          class="absolute -translate-y-1/2 top-1/2 right-5 duration-300 transition-opacity text-white  opacity-0 group-hover:opacity-80"
         >
           <v-icon name="fa-chevron-right-solid" class="w-12 h-12"></v-icon>
         </v-button>

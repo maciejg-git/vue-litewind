@@ -4,7 +4,7 @@
       <li
         v-for="(tab, i) in tabs"
         :key="i"
-        :class="fill ? 'fixed-tab-wrapper' : ''"
+        :class="fill ? 'flex flex-auto' : ''"
       >
         <a
           href=""
@@ -66,13 +66,13 @@ export default {
     let { classes, states } = useStyles("tabs", props, {
       tabBar: {
         name: "tab-bar",
-        fixed: "fixed-tab-bar",
+        fixed: "flex flex-auto",
         prop: computed(() =>
           props.center ? "justify-center" : props.right ? "justify-end" : ""
         ),
       },
       tab: {
-        fixed: "fixed-tab",
+        fixed: "block",
         states: ["active"],
         prop: computed(() => (props.fill ? "w-full" : "")),
       },
@@ -150,13 +150,4 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-.fixed-tab-bar {
-  @apply flex flex-auto;
-}
-.fixed-tab {
-  @apply block;
-}
-.fixed-tab-wrapper {
-  @apply flex flex-auto;
-}
 </style>

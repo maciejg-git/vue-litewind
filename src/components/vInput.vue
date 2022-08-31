@@ -28,7 +28,7 @@
         :id="id"
         type="text"
         v-bind="$attrs"
-        class="transparent-input"
+        class="block border-0 bg-transparent focus:outline-none focus:ring-0 outline-none p-0"
         :class="{ 'w-full': !inline }"
         @blur="handleBlur"
         @focus="handleFocus"
@@ -482,7 +482,4 @@ export default {
 </script>
 
 <style scoped>
-.transparent-input {
-  @apply block border-0 bg-transparent focus:outline-none focus:ring-0 outline-none p-0;
-}
 </style>
