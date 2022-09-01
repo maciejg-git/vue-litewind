@@ -13,9 +13,30 @@
   </section>
 
   <section>
-    <h4>Example</h4>
+    <h4>Example - simple card</h4>
     <div class="example">
-      <example name="ExampleCard"></example>
+      <example name="ExampleCardSimple"></example>
+    </div>
+  </section>
+
+  <section>
+    <h4>Example - horizontal card</h4>
+    <div class="example">
+      <example name="ExampleCardHorizontal"></example>
+    </div>
+  </section>
+
+  <section>
+    <h4>Example - overlay card</h4>
+    <div class="example">
+      <example name="ExampleCardOverlay"></example>
+    </div>
+  </section>
+
+  <section>
+    <h4>Example - flat card</h4>
+    <div class="example">
+      <example name="ExampleCardRounded"></example>
     </div>
   </section>
 </template>

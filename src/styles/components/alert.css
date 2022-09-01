@@ -1,18 +1,17 @@
 .default {
   &.alert {
     @apply
-      border
-      border-l-8
-      rounded
-      p-4
+      rounded-md
+      p-5
+      shadow
   }
       &.alert--info {
         @apply
           text-info-900
           bg-info-300
           border-info-400
-          dark:text-text-200
-          dark:bg-info-600
+          dark:text-text-800
+          dark:bg-info-400
           dark:border-info-500
       }
       &.alert--danger {
@@ -20,8 +19,8 @@
           text-danger-900
           bg-danger-300
           border-danger-400
-          dark:text-text-200
-          dark:bg-danger-600
+          dark:text-text-800
+          dark:bg-danger-400
           dark:border-danger-500
       }
       &.alert--warn {
@@ -29,8 +28,8 @@
           text-warn-900
           bg-warn-300
           border-warn-400
-          dark:text-warn-900
-          dark:bg-warn-600
+          dark:text-text-800
+          dark:bg-warn-500
           dark:border-warn-500
       }
       &.alert--success {
@@ -38,15 +37,9 @@
           text-success-900
           bg-success-300
           border-success-400
-          dark:text-success-900
-          dark:bg-success-600
+          dark:text-text-800
+          dark:bg-success-400
           dark:border-success-500
-      }
-      &.alert--light {
-        @apply
-          text-secondary-600
-          bg-secondary-50
-          border-secondary-200
       }
       &.alert--outline {
         @apply
@@ -84,6 +77,6 @@
     @apply
       w-6
       h-6
-      mr-4
+      mr-2
   }
 }

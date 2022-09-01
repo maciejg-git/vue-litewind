@@ -37,16 +37,16 @@ export default {
   setup(props) {
     let { classes } = useStyles("badge", props, {
       badge: {
-        fixed: "fixed-badge",
+        fixed: "inline-flex items-center align-top",
         prop: computed(() => {
           return props.position == "top-right"
-            ? "fixed-absolute-tr"
+            ? "absolute top-0 right-0 -translate-y-1/2 translate-x-1/2"
             : props.position == "top-left"
-            ? "fixed-absolute-tl"
+            ? "absolute top-0 left-0 -translate-y-1/2 -translate-x-1/2"
             : props.position == "bottom-right"
-            ? "fixed-absolute-br"
+            ? "absolute bottom-0 right-0 translate-y-1/2 translate-x-1/2"
             : props.position == "bottom-left"
-            ? "fixed-absolute-bl"
+            ? "absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2"
             : "";
         }),
       },
@@ -60,22 +60,6 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-.fixed-badge {
-  @apply inline-flex items-center align-top;
-}
-.fixed-absolute-tr {
-  @apply absolute top-0 right-0 -translate-y-1/2 translate-x-1/2;
-}
-.fixed-absolute-tl {
-  @apply absolute top-0 left-0 -translate-y-1/2 -translate-x-1/2;
-}
-.fixed-absolute-br {
-  @apply absolute bottom-0 right-0 translate-y-1/2 translate-x-1/2;
-}
-.fixed-absolute-bl {
-  @apply absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2;
-}
-
 .scale-up-enter-active,
 .scale-up-leave-active {
   transition: transform 0.20s ease;

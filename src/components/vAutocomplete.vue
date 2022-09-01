@@ -173,7 +173,7 @@ export default {
   setup(props, { emit }) {
     let { classes, states, variants } = useStyles("autocomplete", props, {
       menu: {
-        fixed: "fixed-autocomplete-menu",
+        fixed: "max-h-[300px] overflow-y-auto overflow-x-hidden",
       },
       item: {
         fixed: "fixed-item",
@@ -401,9 +401,6 @@ export default {
 </script>
 
 <style scoped>
-.fixed-autocomplete-menu {
-  @apply max-h-[300px] overflow-y-auto overflow-x-hidden;
-}
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.2s ease;

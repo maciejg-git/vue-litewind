@@ -20,6 +20,7 @@
         <v-button
           @click="prev()"
           base="plain"
+          style-button="light"
           class="absolute -translate-y-1/2 top-1/2 left-5 duration-300 transition-opacity text-white opacity-0 group-hover:opacity-80"
         >
           <v-icon name="fa-chevron-left-solid" class="w-12 h-12"></v-icon>
@@ -27,6 +28,7 @@
         <v-button
           @click="next()"
           base="plain"
+          style-button="light"
           class="absolute -translate-y-1/2 top-1/2 right-5 duration-300 transition-opacity text-white  opacity-0 group-hover:opacity-80"
         >
           <v-icon name="fa-chevron-right-solid" class="w-12 h-12"></v-icon>

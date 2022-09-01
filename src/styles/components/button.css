@@ -11,6 +11,16 @@
       @apply
         font-semibold
     }
+    &.button--light {
+      @apply
+        text-text-100
+        dark:text-text-100
+    }
+    &.button--dark {
+      @apply
+        text-text-800
+        dark:text-text-800
+    }
 }
 
 .default {

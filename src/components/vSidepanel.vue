@@ -7,7 +7,7 @@
       :class="classes.sidepanel.value"
       :style="{ width: width }"
     >
-      <div v-if="!noHeader" class="fixed-header">
+      <div v-if="!noHeader" class="flex justify-between w-full">
         <div class="my-3 ml-5">
           <slot name="header"></slot>
         </div>
@@ -80,7 +80,7 @@ export default {
   setup(props, { emit, attrs }) {
     let { classes } = useStyles("sidepanel", props, {
       sidepanel: {
-        fixed: "fixed-sidepanel",
+        fixed: "fixed h-full top-0 z-20",
         prop: computed(() => (props.sidebarLeft ? "left-0" : "right-0")),
       },
       closeButton: null,
@@ -137,13 +137,6 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-.fixed-sidepanel {
-  @apply fixed h-full top-0 z-20;
-}
-.fixed-header {
-  @apply flex justify-between w-full;
-}
-
 .fade-slide-f-right-enter-active,
 .fade-slide-f-right-leave-active {
   transition: opacity 0.2s ease, transform 0.3s ease;

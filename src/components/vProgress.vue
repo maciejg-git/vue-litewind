@@ -77,11 +77,11 @@ export default {
   setup(props) {
     let { classes } = useStyles("progress", props, {
       progress: {
-        fixed: "fixed-progress",
+        fixed: "flex",
       },
       progressBar: {
         name: "progress-bar",
-        fixed: "fixed-progress-bar",
+        fixed: "flex justify-center items-center h-full",
         prop: computed(() => {
           return props.indeterminate
             ? "indeterminate"
@@ -113,12 +113,6 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-.fixed-progress {
-  @apply flex;
-}
-.fixed-progress-bar {
-  @apply flex justify-center items-center h-full;
-}
 .indeterminate {
   position: absolute;
   width: var(--progress-bar-width);

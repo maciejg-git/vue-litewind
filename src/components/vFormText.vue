@@ -52,7 +52,6 @@ export default {
     let { classes, states } = useStyles("form-text", props, {
       formText: {
         name: "form-text",
-        fixed: "fixed-form-text",
         states: ["valid", "invalid", "disabled"],
       },
     });

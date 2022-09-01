@@ -32,7 +32,7 @@ export default {
   setup(props) {
     let { classes } = useStyles("navbar", props, {
       navbar: {
-        fixed: "fixed-navbar",
+        fixed: "left-0 z-20",
         prop: computed(() => {
           return [
             props.fixed ? "fixed" : props.sticky ? "sticky" : "relative",
@@ -50,7 +50,4 @@ export default {
 </script>
 
 <style scoped>
-.fixed-navbar {
-  @apply left-0 z-20;
-}
 </style>

@@ -44,7 +44,7 @@ export default {
   setup(props) {
     let { classes, states } = useStyles("button", props, {
       button: {
-        fixed: "fixed-button",
+        fixed: "justify-center items-center",
         prop: computed(() => {
           return [props.block ? "flex" : "inline-flex"];
         }),
@@ -65,7 +65,4 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-.fixed-button {
-  @apply justify-center items-center;
-}
 </style>

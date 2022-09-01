@@ -219,14 +219,14 @@ export default {
       datepicker: null,
       weekdayBar: {
         name: "weekday-bar",
-        fixed: "fixed-weekday-bar",
+        fixed: "grid grid-cols-7",
       },
       weekday: null,
       button: {
-        fixed: "fixed-datepicker-button",
+        fixed: "flex flex-col justify-center leading-none focus:outline-none mx-auto",
       },
       day: {
-        fixed: "fixed-day",
+        fixed: "block",
         states: ["selected", "partially-selected"],
         variants: ["today"],
       },
@@ -544,16 +544,6 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-.fixed-datepicker-button {
-  @apply flex flex-col justify-center leading-none focus:outline-none mx-auto;
-}
-.fixed-weekday-bar {
-  @apply grid grid-cols-7;
-}
-.fixed-day {
-  @apply block;
-}
-
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.1s ease;

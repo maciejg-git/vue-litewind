@@ -36,7 +36,7 @@ export default {
   setup(props) {
     let { classes, states } = useStyles("list", props, {
       list: {
-        fixed: "fixed-list",
+        fixed: "flex flex-col",
       },
       item: {
         states: ["active"],
@@ -55,7 +55,4 @@ export default {
 </script>
 
 <style scoped>
-.fixed-list {
-  @apply flex flex-col;
-}
 </style>

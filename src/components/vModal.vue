@@ -4,7 +4,7 @@
       <div
         v-if="isOpen"
         v-bind="$attrs"
-        class="fixed-main"
+        class="fixed inset-0 z-[31] overflow-y-auto"
         role="dialog"
         tabindex="0"
         @click.self="handleBackdropClick"
@@ -199,24 +199,24 @@ export default {
   setup(props, { emit, attrs }) {
     let { classes } = useStyles("modal", props, {
       modal: {
-        fixed: "fixed-modal",
+        fixed: "flex-1 relative overflow-auto pointer-events-auto",
       },
       header: {
-        fixed: "fixed-header",
+        fixed: "flex items-center justify-between",
       },
       footer: {
-        fixed: "fixed-footer",
+        fixed: "flex",
         prop: computed(() => footerClasses[props.justifyButtons]),
       },
       content: null,
       backdrop: {
-        fixed: "fixed-backdrop",
+        fixed: "fixed inset-0 overflow-y-auto min-h-screen z-30",
       },
     });
 
     let containerClasses = computed(() => {
       return [
-        "fixed-container",
+        "flex relative min-h-full mx-auto py-6 px-6 md:px-0 pointer-events-none",
         sizeClasses[props.size],
         positionClasses[props.position],
       ];
@@ -345,25 +345,6 @@ export default {
 </style>
 
 <style scoped lang="postcss">
-.fixed-main {
-  @apply fixed inset-0 z-[31] overflow-y-auto;
-}
-.fixed-container {
-  @apply flex relative min-h-full mx-auto py-6 px-6 md:px-0 pointer-events-none;
-}
-.fixed-modal {
-  @apply flex-1 relative overflow-auto pointer-events-auto;
-}
-.fixed-footer {
-  @apply flex;
-}
-.fixed-header {
-  @apply flex items-center justify-between;
-}
-.fixed-backdrop {
-  @apply fixed inset-0 overflow-y-auto min-h-screen z-30;
-}
-
 .fade-backdrop-enter-active,
 .fade-backdrop-leave-active {
   transition: opacity 0.2s ease;

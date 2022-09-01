@@ -14,7 +14,7 @@
         tabindex="-1"
         @mouseenter="preventHiding"
         @mouseleave="allowHiding"
-        class="fixed-dropdown"
+        class="absolute z-50"
       >
         <slot name="default" :hide="hide" v-bind="contextData"></slot>
       </div>
@@ -76,7 +76,6 @@ export default {
   setup(props, { slots, emit, expose, attrs }) {
     let { classes, states } = useStyles("dropdown", props, {
       item: {
-        fixed: "fixed-item",
         states: ["active", "disabled"],
       },
       header: {
@@ -191,10 +190,4 @@ export default {
 
 <style>
 @import "../styles/transitions.css";
-</style>
-
-<style scoped lang="postcss">
-.fixed-dropdown {
-  @apply absolute z-50;
-}
 </style>

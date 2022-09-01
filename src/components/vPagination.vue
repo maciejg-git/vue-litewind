@@ -99,20 +99,20 @@ export default {
     let { classes, states } = useStyles("pagination", props, {
       paginationBar: {
         name: "pagination-bar",
-        fixed: "fixed-pagination-bar",
+        fixed: "relative z-0 flex flex-row w-min",
       },
       page: {
-        fixed: "fixed-page",
+        fixed: "z-10 cursor-pointer flex justify-center items-center transition-all",
         states: ["active"],
       },
       dots: {
-        fixed: "fixed-page",
+        fixed: "z-10 cursor-pointer flex justify-center items-center transition-all",
       },
       next: {
-        fixed: "fixed-control",
+        fixed: "flex flex-col justify-center items-center",
       },
       prev: {
-        fixed: "fixed-control",
+        fixed: "flex flex-col justify-center items-center",
       },
     });
 
@@ -226,13 +226,4 @@ export default {
 </script>
 
 <style scoped>
-.fixed-pagination-bar {
-  @apply relative z-0 flex flex-row w-min;
-}
-.fixed-page {
-  @apply z-10 cursor-pointer flex justify-center items-center transition-all;
-}
-.fixed-control {
-  @apply flex flex-col justify-center items-center;
-}
 </style>
