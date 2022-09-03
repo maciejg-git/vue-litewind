@@ -55,9 +55,9 @@
       <div class="mb-2">
         <label for="transition">transition:</label>
         <v-select id="transition" v-model="example.transition">
-          <option value="fade-slide-f">fade-slide-f</option>
-          <option value="fade-slide-m">fade-slide-m</option>
-          <option value="fade-slide-s">fade-slide-s</option>
+          <option value="fade-slide-100">fade-slide-100</option>
+          <option value="fade-slide-200">fade-slide-200</option>
+          <option value="fade-slide-300">fade-slide-300</option>
           <option value="">empty string</option>
         </v-select>
       </div>
@@ -76,7 +76,7 @@ export default {
       sidebarLeft: false,
       width: "320px",
       noHeader: false,
-      transition: "fade-slide-m",
+      transition: "fade-slide-300",
     });
 
     let isOpen = ref(false);

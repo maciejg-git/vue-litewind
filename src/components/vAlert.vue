@@ -1,8 +1,10 @@
 <template>
   <transition name="fade">
-    <div v-if="isStatic() || modelValue" :class="[classes.alert.value]">
+    <div v-if="isStatic() || modelValue" :class="classes.alert.value">
       <div class="flex items-center">
-        <v-icon v-if="icon" :name="icons[icon]" :class="classes.icon.value" />
+        <div class="self-start">
+          <v-icon v-if="icon" :name="icons[icon]" :class="classes.icon.value" />
+        </div>
         <slot name="icon"></slot>
         <slot name="default"></slot>
         <v-close-button
@@ -108,6 +110,7 @@ export default {
     return {
       classes,
       states,
+      transition,
       icons,
       isStatic,
       handleCloseButtonClick,
@@ -116,13 +119,7 @@ export default {
 };
 </script>
 
-<style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.2s ease;
-}
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
+<style>
+@import "../styles/transitions.css";
 </style>
+

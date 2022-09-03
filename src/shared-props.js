@@ -3,7 +3,7 @@ import { defaultProps } from "./defaultProps";
 
 // popper props
 
-export const sharedPopperProps = (component) => {
+const sharedPopperProps = (component) => {
   return {
     placement: {
       type: String,
@@ -20,7 +20,7 @@ export const sharedPopperProps = (component) => {
 
 // style props
 
-export const sharedStyleProps = (component) => {
+const sharedStyleProps = (component) => {
   return {
     base: { type: String, default: defaultProps(component, "base", "default") },
     variant: { type: [String, Boolean], default: "" },
@@ -29,7 +29,7 @@ export const sharedStyleProps = (component) => {
 
 // form props
 
-export const sharedFormProps = (d, options) => {
+const sharedFormProps = (d, options) => {
   d = d || {};
   options = options || {};
 
@@ -46,3 +46,9 @@ export const sharedFormProps = (d, options) => {
     state: { type: String, default: d.state || null },
   };
 };
+
+export {
+  sharedPopperProps,
+  sharedStyleProps,
+  sharedFormProps,
+}

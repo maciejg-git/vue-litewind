@@ -38,7 +38,20 @@
     :auto-dismiss-delay="example.autoDismissDelay"
     :icon="example.variant"
     :variant="example.variant"
-    style-alert="bold borderless shadowed outline info:info danger:danger warn:warn success:success invalid:danger valid:success"
+    style-alert="bold marked shadowed outline info:info danger:danger warn:warn success:success invalid:danger valid:success"
+  >
+    Alert
+  </v-alert>
+
+  <p class="my-6">Styled alert</p>
+
+  <v-alert
+    v-model="example.isVisible"
+    :dismissable="example.dismissable"
+    :auto-dismiss-delay="example.autoDismissDelay"
+    :icon="example.variant"
+    :variant="example.variant"
+    style-alert="bold light info:info danger:danger warn:warn success:success invalid:danger valid:success"
   >
     Alert
   </v-alert>

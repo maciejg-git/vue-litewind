@@ -1,3 +1,7 @@
+:root {
+  --dropdown-transition-duration: 0.7s;
+}
+
 .default {
   &.dropdown--item {
     @apply

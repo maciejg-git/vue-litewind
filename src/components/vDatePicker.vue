@@ -548,9 +548,7 @@ export default {
 .fade-leave-active {
   transition: opacity 0.1s ease;
 }
-.fade-enter-from {
-  opacity: 0;
-}
+.fade-enter-from,
 .fade-leave-to {
   opacity: 0;
 }

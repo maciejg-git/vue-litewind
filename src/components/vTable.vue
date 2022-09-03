@@ -26,17 +26,17 @@
                 <v-icon
                   v-if="sortKey != h.key"
                   :name="SortIcon"
-                  class="sort-icon"
+                  class="ml-3 opacity-30"
                 ></v-icon>
                 <v-icon
                   v-else-if="sortKey == h.key && sortAsc == 1"
                   :name="CaretUpIcon"
-                  class="sort-icon-active"
+                  class="ml-3 opacity-70"
                 ></v-icon>
                 <v-icon
                   v-else-if="sortKey == h.key && sortAsc == -1"
                   :name="CaretDownIcon"
-                  class="sort-icon-active"
+                  class="ml-3 opacity-70"
                 ></v-icon>
               </template>
             </div>
@@ -464,12 +464,6 @@ export default {
 </script>
 
 <style scoped>
-.sort-icon {
-  @apply ml-3 opacity-30;
-}
-.sort-icon-active {
-  @apply ml-3 opacity-70;
-}
 .caption-bottom {
   caption-side: bottom;
 }

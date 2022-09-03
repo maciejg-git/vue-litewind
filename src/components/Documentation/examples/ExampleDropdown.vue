@@ -89,9 +89,9 @@
         <div>
           <label for="transition">transition:</label>
           <v-select id="transition" v-model="example.transition">
-            <option value="fade-f">fade-f</option>
-            <option value="fade-m">fade-m</option>
-            <option value="fade-s">fade-s</option>
+            <option value="fade-100">fade-100</option>
+            <option value="fade-200">fade-200</option>
+            <option value="fade-300">fade-300</option>
             <option value="">empty string</option>
           </v-select>
         </div>
@@ -121,7 +121,7 @@ export default {
       offsetY: 5,
       noFlip: false,
       autoCloseMenu: false,
-      transition: "fade-m",
+      transition: "fade-200",
       trigger: "click",
     });
 

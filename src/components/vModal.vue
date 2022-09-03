@@ -1,10 +1,11 @@
 <template>
   <teleport to="body">
-    <transition :name="transition" @after-leave="resetScrollbar">
+    <transition :name="transition.name" @after-leave="resetScrollbar">
       <div
         v-if="isOpen"
         v-bind="$attrs"
         class="fixed inset-0 z-[31] overflow-y-auto"
+        :class="transition.duration"
         role="dialog"
         tabindex="0"
         @click.self="handleBackdropClick"
@@ -58,7 +59,7 @@
     </transition>
 
     <transition name="fade-backdrop">
-      <div v-if="isOpen" :class="classes.backdrop.value"></div>
+      <div v-if="isOpen" :class="[classes.backdrop.value, transition.duration]"></div>
     </transition>
   </teleport>
 </template>
@@ -68,6 +69,7 @@
 import { ref, computed, watch, onBeforeUnmount } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
+import useTransition from "./composition/use-transition";
 // components
 import vButton from "./vButton.vue";
 import vCloseButton from "./vCloseButton.vue";
@@ -159,7 +161,7 @@ export default {
     },
     transition: {
       type: String,
-      default: defaultProps("modal", "transition", "fade-slide-m"),
+      default: defaultProps("modal", "transition", "fade-slide-150"),
     },
     styleModal: {
       type: String,
@@ -245,6 +247,8 @@ export default {
       fit: "md:w-max",
     };
 
+    let transition = useTransition(props)
+
     // remove scrollbar and add some padding to avoid shifting modal window
     // when opening
 
@@ -327,6 +331,7 @@ export default {
     return {
       classes,
       containerClasses,
+      transition,
       resetScrollbar,
       isOpen,
       close,
@@ -347,7 +352,8 @@ export default {
 <style scoped lang="postcss">
 .fade-backdrop-enter-active,
 .fade-backdrop-leave-active {
-  transition: opacity 0.2s ease;
+  transition-property: opacity;
+  transition-timing-function: ease;
 }
 .fade-backdrop-enter-from,
 .fade-backdrop-leave-to {

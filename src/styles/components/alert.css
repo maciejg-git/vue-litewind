@@ -3,11 +3,10 @@
     @apply
       rounded-md
       p-5
-      shadow
   }
       &.alert--info {
         @apply
-          text-info-900
+          text-text-900
           bg-info-300
           border-info-400
           dark:text-text-800
@@ -16,7 +15,7 @@
       }
       &.alert--danger {
         @apply
-          text-danger-900
+          text-text-900
           bg-danger-300
           border-danger-400
           dark:text-text-800
@@ -25,16 +24,16 @@
       }
       &.alert--warn {
         @apply
-          text-warn-900
+          text-text-900
           bg-warn-300
           border-warn-400
           dark:text-text-800
-          dark:bg-warn-500
+          dark:bg-warn-400
           dark:border-warn-500
       }
       &.alert--success {
         @apply
-          text-success-900
+          text-text-900
           bg-success-300
           border-success-400
           dark:text-text-800
@@ -48,7 +47,7 @@
           bg-secondary-100
           dark:bg-dark-700 !important
       }
-      &.alert--borderless {
+      &.alert--marked {
         @apply 
           border-0 
           border-l-8 !important
@@ -62,6 +61,15 @@
         @apply
           shadow-lg
           shadow-black/20
+      }
+      &.alert--light {
+        @apply
+          border
+          rounded-lg
+          text-text-800
+          dark:text-text-300
+          bg-transparent
+          dark:bg-transparent
       }
       &.alert--bold {
         @apply

@@ -1,10 +1,10 @@
 <template>
   <transition
-    :name="sidebarLeft ? transition + '-left' : transition + '-right'"
+    :name="sidebarLeft ? transition.name + '-left' : transition.name + '-right'"
   >
     <div
       v-show="isOpen"
-      :class="classes.sidepanel.value"
+      :class="[classes.sidepanel.value, transition.duration]"
       :style="{ width: width }"
     >
       <div v-if="!noHeader" class="flex justify-between w-full">
@@ -30,6 +30,7 @@
 import { ref, computed, watch, onBeforeUnmount } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
+import useTransition from "./composition/use-transition";
 // components
 import vCloseButton from "./vCloseButton.vue";
 // props
@@ -66,7 +67,7 @@ export default {
     },
     transition: {
       type: String,
-      default: defaultProps("sidepanel", "transition", "fade-slide-m"),
+      default: defaultProps("sidepanel", "transition", "fade-slide-300"),
     },
     styleSidepanel: {
       type: String,
@@ -85,6 +86,9 @@ export default {
       },
       closeButton: null,
     });
+
+    let transition = useTransition(props)
+    console.log(transition)
 
     let isOpen = ref(false)
 
@@ -128,6 +132,7 @@ export default {
 
     return {
       classes,
+      transition,
       isOpen,
       close,
       handleClose,
@@ -137,62 +142,24 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-.fade-slide-f-right-enter-active,
-.fade-slide-f-right-leave-active {
-  transition: opacity 0.2s ease, transform 0.3s ease;
+.fade-slide-right-enter-active,
+.fade-slide-right-leave-active {
+  transition-property: opacity transform;
+  transition-timing-function: ease;
 }
-.fade-slide-f-right-enter-from,
-.fade-slide-f-right-leave-to {
+.fade-slide-right-enter-from,
+.fade-slide-right-leave-to {
   opacity: 0;
   transform: translateX(200px);
 }
 
-.fade-slide-m-right-enter-active,
-.fade-slide-m-right-leave-active {
-  transition: opacity 0.3s ease, transform 0.4s ease;
+.fade-slide-left-enter-active,
+.fade-slide-left-leave-active {
+  transition-property: opacity transform;
+  transition-timing-function: ease;
 }
-.fade-slide-m-right-enter-from,
-.fade-slide-m-right-leave-to {
-  opacity: 0;
-  transform: translateX(200px);
-}
-
-.fade-slide-s-right-enter-active,
-.fade-slide-s-right-leave-active {
-  transition: opacity 0.35s ease, transform 0.45s ease;
-}
-.fade-slide-s-right-enter-from,
-.fade-slide-s-right-leave-to {
-  opacity: 0;
-  transform: translateX(200px);
-}
-
-.fade-slide-f-left-enter-active,
-.fade-slide-f-left-leave-active {
-  transition: opacity 0.2s ease, transform 0.3s ease;
-}
-.fade-slide-f-left-enter-from,
-.fade-slide-f-left-leave-to {
-  opacity: 0;
-  transform: translateX(-200px);
-}
-
-.fade-slide-m-left-enter-active,
-.fade-slide-m-left-leave-active {
-  transition: opacity 0.3s ease, transform 0.4s ease;
-}
-.fade-slide-m-left-enter-from,
-.fade-slide-m-left-leave-to {
-  opacity: 0;
-  transform: translateX(-200px);
-}
-
-.fade-slide-s-left-enter-active,
-.fade-slide-s-left-leave-active {
-  transition: opacity 0.35s ease, transform 0.45s ease;
-}
-.fade-slide-s-left-enter-from,
-.fade-slide-s-left-leave-to {
+.fade-slide-left-enter-from,
+.fade-slide-left-leave-to {
   opacity: 0;
   transform: translateX(-200px);
 }

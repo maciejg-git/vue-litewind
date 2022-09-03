@@ -46,15 +46,10 @@
           px-9
           py-8
       }
-      &.modal--content--edge-to-edge {
-        @apply
-          px-0
-          py-0
-      }
+}
 
-  &.modal--backdrop {
-    @apply
-      opacity-50
-      bg-black
-  }
+.modal--backdrop {
+  @apply
+    opacity-50
+    bg-black
 }
