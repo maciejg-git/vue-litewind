@@ -129,7 +129,7 @@ export default {
         prop: "transition",
         type: ["String"],
         default: "fade",
-        description: "`empty string` disables default fade animation of menu",
+        description: "Sets animation effect when showing or hiding autocomplete menu. Valid values are: 'fade' or `empty string` to disable animations. Animation speed can be set in `--autocomplete-transition-duration` css variable.",
       },
       ...popperProps,
       ...formProps({ icon: true, clearable: true }),

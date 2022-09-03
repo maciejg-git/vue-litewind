@@ -67,9 +67,7 @@
         <div>
           <label for="transition">transition:</label>
           <v-select id="transition" v-model="example.transition">
-            <option value="fade-collapse-f">fade-collapse-f</option>
-            <option value="fade-collapse-m">fade-collapse-m</option>
-            <option value="fade-collapse-s">fade-collapse-s</option>
+            <option value="fade-collapse">fade-collapse</option>
             <option value="">none (empty string)</option>
           </v-select>
         </div>
@@ -87,7 +85,7 @@ export default {
   setup() {
     let example = reactive({
       isVisible: false,
-      transition: "fade-collapse-m",
+      transition: "fade-collapse",
     });
 
     return {

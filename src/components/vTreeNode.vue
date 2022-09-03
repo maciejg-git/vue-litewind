@@ -18,7 +18,7 @@
           </v-button>
         </div>
         <!-- checkbox -->
-        <transition name="fade-m">
+        <transition name="fade">
           <div v-if="showCheckboxes" class="flex items-center mr-2 order-1">
             <v-checkbox-simple
               :checked="isSelected"
@@ -357,4 +357,24 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity var(--tree-transition-duration) ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: opacity var(--tree-transition-duration) ease, transform var(--tree-transition-duration) ease;
+}
+.fade-slide-enter-from,
+.fade-slide-leave-to {
+  transform: translateY(-20px);
+  opacity: 0;
+}
+</style>

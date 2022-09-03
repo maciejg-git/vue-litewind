@@ -1,3 +1,7 @@
+:root {
+  --tree-transition-duration: 0.2s;
+}
+
 .default {
   &.tree--folder {
     @apply

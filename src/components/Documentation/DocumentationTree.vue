@@ -164,7 +164,7 @@ export default {
         prop: "transition",
         type: ["String"],
         default: "fade-m",
-        description: "Sets animation effect when opening or closing folders. Valid values are: 'fade-f', 'fade-m', 'fade-s', 'fade-slide-f', 'fade-slide-m' and 'fade-slide-s'. `empty string` disables animations.",
+        description: "Sets animation effect when opening or closing folders. Valid values are: 'fade', 'fade-slide', or `empty string` to disable animations.",
       },
       ...styleProps("tree"),
     ]);

@@ -1,3 +1,7 @@
+:root {
+  --popover-transition-duration: 0.2s;
+}
+
 .default {
   &.popover--header {
     @apply

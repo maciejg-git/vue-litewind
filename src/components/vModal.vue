@@ -1,11 +1,10 @@
 <template>
   <teleport to="body">
-    <transition :name="transition.name" @after-leave="resetScrollbar">
+    <transition :name="transition" @after-leave="resetScrollbar">
       <div
         v-if="isOpen"
         v-bind="$attrs"
         class="fixed inset-0 z-[31] overflow-y-auto"
-        :class="transition.duration"
         role="dialog"
         tabindex="0"
         @click.self="handleBackdropClick"
@@ -59,7 +58,7 @@
     </transition>
 
     <transition name="fade-backdrop">
-      <div v-if="isOpen" :class="[classes.backdrop.value, transition.duration]"></div>
+      <div v-if="isOpen" :class="classes.backdrop.value"></div>
     </transition>
   </teleport>
 </template>
@@ -69,7 +68,6 @@
 import { ref, computed, watch, onBeforeUnmount } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
-import useTransition from "./composition/use-transition";
 // components
 import vButton from "./vButton.vue";
 import vCloseButton from "./vCloseButton.vue";
@@ -161,7 +159,7 @@ export default {
     },
     transition: {
       type: String,
-      default: defaultProps("modal", "transition", "fade-slide-150"),
+      default: defaultProps("modal", "transition", "fade-slide"),
     },
     styleModal: {
       type: String,
@@ -247,8 +245,6 @@ export default {
       fit: "md:w-max",
     };
 
-    let transition = useTransition(props)
-
     // remove scrollbar and add some padding to avoid shifting modal window
     // when opening
 
@@ -331,7 +327,6 @@ export default {
     return {
       classes,
       containerClasses,
-      transition,
       resetScrollbar,
       isOpen,
       close,
@@ -345,15 +340,42 @@ export default {
 };
 </script>
 
-<style>
-@import "../styles/transitions.css";
-</style>
-
 <style scoped lang="postcss">
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity var(--modal-transition-duration) ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: opacity var(--modal-transition-duration) ease,
+    transform var(--modal-transition-duration) ease;
+}
+.fade-slide-enter-from,
+.fade-slide-leave-to {
+  transform: translateY(-20px);
+  opacity: 0;
+}
+
+.fade-scale-enter-active,
+.fade-scale-leave-active {
+  transition: opacity var(--modal-transition-duration) ease,
+    transform var(--modal-transition-duration) ease;
+}
+.fade-scale-enter-from,
+.fade-scale-leave-to {
+  transform: scale(0.96);
+  opacity: 0;
+}
+
 .fade-backdrop-enter-active,
 .fade-backdrop-leave-active {
-  transition-property: opacity;
-  transition-timing-function: ease;
+  transition: opacity var(--modal-transition-duration) ease;
 }
 .fade-backdrop-enter-from,
 .fade-backdrop-leave-to {

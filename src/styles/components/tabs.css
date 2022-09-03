@@ -1,3 +1,7 @@
+:root {
+  --tabs-transition-duration: 0.2s;
+}
+
 .material {
   &.tabs--tab {
     @apply

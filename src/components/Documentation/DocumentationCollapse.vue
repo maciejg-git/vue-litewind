@@ -66,6 +66,13 @@ export default {
         description:
           "Setting v-model to `true` shows collapsible element, `false` value hides it",
       },
+      {
+        prop: "transition",
+        type: ["String"],
+        default: "fade-collapse",
+        description:
+          "Sets animation effect when showing or hiding dropdown. Valid values are: 'fade-collapse' or `empty string` to disable animations. Animation speed can be set in `--collapse-transition-duration` css variable.",
+      },
     ]);
 
     let slots = ref([

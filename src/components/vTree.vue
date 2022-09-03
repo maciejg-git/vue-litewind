@@ -53,7 +53,7 @@ export default {
     },
     transition: {
       type: String,
-      default: defaultProps("tree", "transition", "fade-m"),
+      default: defaultProps("tree", "transition", "fade"),
     },
     styleFolder: {
       type: String,

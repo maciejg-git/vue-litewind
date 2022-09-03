@@ -6,7 +6,7 @@
   ></slot>
 
   <teleport to="body">
-    <transition name="fade" @after-leave="onPopperTransitionLeave">
+    <transition :name="transition" @after-leave="onPopperTransitionLeave">
       <div
         v-if="isPopperVisible"
         ref="popper"
@@ -30,7 +30,6 @@ import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
 import useClickOutside from "./composition/use-click-outside";
 import useTrigger from "./composition/use-trigger";
-import useTransition from "./composition/use-transition";
 // props
 import { sharedPopperProps, sharedStyleProps } from "../shared-props";
 // props
@@ -60,7 +59,7 @@ export default {
     },
     transition: {
       type: String,
-      default: defaultProps("dropdown", "transition", "fade-200"),
+      default: defaultProps("dropdown", "transition", "fade"),
     },
     styleItem: {
       type: String,
@@ -83,8 +82,6 @@ export default {
         fixed: "fixed-item",
       },
     });
-
-    let transition = useTransition(props)
 
     // watch model changes
     watch(
@@ -181,7 +178,6 @@ export default {
       popper,
       hide,
       isPopperVisible,
-      transition,
       onPopperTransitionLeave,
       preventHiding,
       allowHiding,
@@ -192,14 +188,10 @@ export default {
 };
 </script>
 
-<style>
-@import "../styles/transitions.css";
-</style>
-
 <style scoped>
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity var(--dropdown-transition-duration) ease;
+  transition: opacity var(--dropdown-transition-duration, 0.2s) ease;
 }
 
 .fade-enter-from,

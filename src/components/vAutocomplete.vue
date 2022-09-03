@@ -22,14 +22,14 @@
   </v-input>
 
   <teleport to="body">
-    <transition :name="transition.name" @after-leave="onPopperTransitionLeave">
-      <div v-if="isPopperVisible" ref="popper" :class="transition.duration">
+    <transition :name="transition" @after-leave="onPopperTransitionLeave">
+      <div v-if="isPopperVisible" ref="popper">
         <div
           :class="classes.menu.value"
           v-detect-scroll-bottom="handleScrollBottom"
         >
           <div
-            v-if="!itemsPagination.length && !$attrs.isLoading"
+            v-if="!itemsPagination.length && !isLoading"
             :class="classes.item.value"
           >
             {{ emptyDataMessage }}
@@ -66,7 +66,6 @@ import { ref, computed, watch, toRefs } from "vue";
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
 import usePopper from "./composition/use-popper.js";
-import useTransition from "./composition/use-transition";
 // components
 import vInput from "./vInput.vue";
 // directives
@@ -140,7 +139,7 @@ export default {
     },
     transition: {
       type: String,
-      default: defaultProps("autocomplete", "transition", "fade-200"),
+      default: defaultProps("autocomplete", "transition", "fade"),
     },
     styleMenu: {
       type: String,
@@ -190,8 +189,6 @@ export default {
           : classes.item.value,
       ];
     };
-
-    let transition = useTransition(props)
 
     let localModel = useLocalModel(props, emit);
 
@@ -377,7 +374,6 @@ export default {
       classes,
       states,
       variants,
-      transition,
       localText,
       localModel,
       itemsFiltered,
@@ -404,6 +400,13 @@ export default {
 };
 </script>
 
-<style>
-@import "../styles/transitions.css";
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity var(--autocomplete-transition-duration) ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>

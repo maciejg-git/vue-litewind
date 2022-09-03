@@ -80,7 +80,7 @@ export default {
         type: ["String"],
         default: "fade-slide-m",
         description:
-          "Sets animation effect when showing or hiding sidepanel. Valid values are: 'fade-slide-f', 'fade-slide-m' and 'fade-slide-s'. Empty string disables animations.",
+          "Sets animation effect when showing or hiding sidepanel. Valid values are: 'fade-slide' or `empty string` to disable animations. Animation speed can be set in `--sidepanel-transition-duration` css variable.",
       },
       ...styleProps(),
     ]);

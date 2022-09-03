@@ -1,10 +1,10 @@
 <template>
   <transition
-    :name="sidebarLeft ? transition.name + '-left' : transition.name + '-right'"
+    :name="sidebarLeft ? transition + '-left' : transition + '-right'"
   >
     <div
       v-show="isOpen"
-      :class="[classes.sidepanel.value, transition.duration]"
+      :class="classes.sidepanel.value"
       :style="{ width: width }"
     >
       <div v-if="!noHeader" class="flex justify-between w-full">
@@ -30,7 +30,6 @@
 import { ref, computed, watch, onBeforeUnmount } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
-import useTransition from "./composition/use-transition";
 // components
 import vCloseButton from "./vCloseButton.vue";
 // props
@@ -67,7 +66,7 @@ export default {
     },
     transition: {
       type: String,
-      default: defaultProps("sidepanel", "transition", "fade-slide-300"),
+      default: defaultProps("sidepanel", "transition", "fade-slide"),
     },
     styleSidepanel: {
       type: String,
@@ -86,9 +85,6 @@ export default {
       },
       closeButton: null,
     });
-
-    let transition = useTransition(props)
-    console.log(transition)
 
     let isOpen = ref(false)
 
@@ -132,7 +128,6 @@ export default {
 
     return {
       classes,
-      transition,
       isOpen,
       close,
       handleClose,
@@ -144,8 +139,7 @@ export default {
 <style scoped lang="postcss">
 .fade-slide-right-enter-active,
 .fade-slide-right-leave-active {
-  transition-property: opacity transform;
-  transition-timing-function: ease;
+  transition: opacity var(--sidepanel-transition-duration) ease, transform var(--sidepanel-transition-duration) ease;
 }
 .fade-slide-right-enter-from,
 .fade-slide-right-leave-to {
@@ -155,8 +149,7 @@ export default {
 
 .fade-slide-left-enter-active,
 .fade-slide-left-leave-active {
-  transition-property: opacity transform;
-  transition-timing-function: ease;
+  transition: opacity var(--sidepanel-transition-duration) ease, transform var(--sidepanel-transition-duration) ease;
 }
 .fade-slide-left-enter-from,
 .fade-slide-left-leave-to {

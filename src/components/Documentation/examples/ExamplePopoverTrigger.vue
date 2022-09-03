@@ -7,7 +7,7 @@
 
   <v-trigger for="popover" v-slot="{ reference, onTrigger }">
     <v-button :ref="reference" v-on="onTrigger">
-      Dropdown menu
+      Show popover
     </v-button>
   </v-trigger>
 </template>

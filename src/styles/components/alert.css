@@ -1,3 +1,7 @@
+:root {
+  --alert-transition-duration: 0.2s;
+}
+
 .default {
   &.alert {
     @apply

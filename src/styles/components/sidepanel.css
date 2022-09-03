@@ -1,3 +1,7 @@
+:root {
+  --sidepanel-transition-duration: 0.2s;
+}
+
 .default {
   &.sidepanel {
     @apply

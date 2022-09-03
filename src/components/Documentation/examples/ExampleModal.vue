@@ -30,15 +30,9 @@
     <div>
       <label for="transition">transition:</label>
       <v-select id="transition" v-model="example.transition">
-        <option value="fade-f">fade-f</option>
-        <option value="fade-m">fade-m</option>
-        <option value="fade-s">fade-s</option>
-        <option value="fade-slide-f">fade-slide-f</option>
-        <option value="fade-slide-m">fade-slide-m</option>
-        <option value="fade-slide-s">fade-slide-s</option>
-        <option value="fade-scale-f">fade-scale-f</option>
-        <option value="fade-scale-m">fade-scale-m</option>
-        <option value="fade-scale-s">fade-scale-s</option>
+        <option value="fade">fade</option>
+        <option value="fade-slide">fade-slide</option>
+        <option value="fade-scale">fade-scale</option>
       </v-select>
     </div>
     </div>
@@ -214,7 +208,7 @@ export default {
       noFooter: false,
       position: "top",
       size: "md",
-      transition: "fade-slide-m",
+      transition: "fade-slide",
     });
 
     let state = reactive({

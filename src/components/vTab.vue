@@ -54,7 +54,7 @@ export default {
 }
 
 .fade-enter-active {
-  transition: opacity 0.2s ease;
+  transition: opacity var(--tabs-transition-duration) ease;
 }
 .fade-enter-from,
 .fade-leave-to {
@@ -62,20 +62,22 @@ export default {
 }
 
 .fade-side-slide-enter-active {
-  transition: opacity 0.8s ease, transform 0.4s ease;
+  transition: opacity var(--tabs-transition-duration) ease,
+    transform var(--tabs-transition-duration) ease;
 }
 .fade-side-slide-enter-from,
 .fade-side-slide-leave-to {
   opacity: 0;
-  transform: translateX(15px)
+  transform: translateX(15px);
 }
 
 .fade-top-slide-enter-active {
-  transition: opacity 0.8s ease, transform 0.4s ease;
+  transition: opacity var(--tabs-transition-duration) ease,
+    transform var(--tabs-transition-duration) ease;
 }
 .fade-top-slide-enter-from,
 .fade-top-slide-leave-to {
   opacity: 0;
-  transform: translateY(15px)
+  transform: translateY(15px);
 }
 </style>

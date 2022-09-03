@@ -1,5 +1,9 @@
 @import "../shared.css";
 
+:root {
+  --autocomplete-transition-duration: 0.2s;
+}
+
 .default {
   &.autocomplete--menu {
     @apply

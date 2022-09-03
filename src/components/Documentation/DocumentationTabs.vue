@@ -89,7 +89,7 @@ export default {
         type: ["Boolean"],
         default: "false",
         description:
-          "Transition animation to use when swtiching tab content. Valid values are 'fade', 'fade-top-slide', 'fade-side-slide' or `empty string` (no transition)",
+          "Sets animation effect when changing tabs. Valid values are 'fade', 'fade-top-slide', 'fade-side-slide' or `empty string` to disabled animations. Animation speed can be set in `--tabs-transition-duration` css variable.",
       },
       ...styleProps(),
     ]);

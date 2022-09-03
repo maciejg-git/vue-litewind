@@ -104,12 +104,8 @@
         <div>
           <label for="transition">transition:</label>
           <v-select id="transition" v-model="example.transition">
-            <option value="fade-f">fade-f</option>
-            <option value="fade-m">fade-m</option>
-            <option value="fade-s">fade-s</option>
-            <option value="fade-slide-f">fade-slide-f</option>
-            <option value="fade-slide-m">fade-slide-m</option>
-            <option value="fade-slide-s">fade-slide-s</option>
+            <option value="fade">fade</option>
+            <option value="fade-slide">fade-slide</option>
             <option value="">empty string</option>
           </v-select>
         </div>
@@ -217,7 +213,7 @@ export default {
       selectIndependent: false,
       allowSelectDisabled: false,
       allowOpenDisabled: true,
-      transition: "fade-m",
+      transition: "fade",
     });
 
     let treeRef = ref(null);

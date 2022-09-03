@@ -110,7 +110,6 @@ export default {
     return {
       classes,
       states,
-      transition,
       icons,
       isStatic,
       handleCloseButtonClick,
@@ -119,7 +118,13 @@ export default {
 };
 </script>
 
-<style>
-@import "../styles/transitions.css";
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity var(--alert-transition-duration) ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>
-

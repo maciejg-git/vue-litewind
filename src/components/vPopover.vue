@@ -1,13 +1,9 @@
 <template>
-  <slot
-    name="reference"
-    v-bind="referenceSlotProps"
-    :is-open="isPopperVisible"
-  ></slot>
+  <slot name="reference" v-bind="referenceSlotProps" :is-open="isPopperVisible"></slot>
 
   <teleport to="body">
-    <transition :name="transition.name" @after-leave="onPopperTransitionLeave">
-      <div v-if="isPopperVisible" ref="popper" :class="transition.duration">
+    <transition :name="transition" @after-leave="onPopperTransitionLeave">
+      <div v-if="isPopperVisible" ref="popper">
         <slot name="default" :hide="hide" v-bind="contextData"></slot>
       </div>
     </transition>
@@ -22,7 +18,6 @@ import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
 import useClickOutside from "./composition/use-click-outside";
 import useTrigger from "./composition/use-trigger";
-import useTransition from "./composition/use-transition";
 // props
 import { sharedPopperProps, sharedStyleProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
@@ -46,7 +41,7 @@ export default {
     },
     transition: {
       type: String,
-      default: defaultProps("popover", "transition", "fade-200"),
+      default: defaultProps("popover", "transition", "fade"),
     },
     styleHeader: {
       type: String,
@@ -59,8 +54,6 @@ export default {
     let { classes } = useStyles("popover", props, {
       header: null,
     });
-
-    let transition = useTransition(props);
 
     const { offsetX, offsetY, noFlip, placement, trigger } = toRefs(props);
 
@@ -99,12 +92,12 @@ export default {
 
     // trigger by id
 
-    let { id } = attrs;
+    let { id } = attrs
 
     if (id && !slots.reference) {
-      registerListener(id, referenceSlotProps);
+      registerListener(id, referenceSlotProps)
 
-      onBeforeUnmount(() => removeListener(id));
+      onBeforeUnmount(() => removeListener(id))
     }
 
     // context popover
@@ -122,7 +115,7 @@ export default {
       classes,
       title: toRef(props, "title"),
       hide,
-    });
+    })
 
     expose({ showContextPopover });
 
@@ -130,7 +123,6 @@ export default {
       classes,
       popper,
       isPopperVisible,
-      transition,
       hide,
       onPopperTransitionLeave,
       referenceSlotProps,
@@ -142,6 +134,14 @@ export default {
 };
 </script>
 
-<style>
-@import "../styles/transitions.css";
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity var(--popover-transition-duration) ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>

@@ -198,7 +198,7 @@ export default {
         type: ["String"],
         default: "fade-slide-m",
         description:
-          "Sets animation effect when showing or hiding modal. Valid values are: 'fade-[speed]', 'fade-slide-[speed]' or 'fade-scale-[speed]' where speed is 'f', 'm' or 's' for example 'fade-m' or 'fade-slide-f'. Empty string disables animations.",
+          "Sets animation effect when showing or hiding modal. Valid values are: 'fade', 'fade-slide', 'fade-scale' or `empty string` to disable animations. Animation speed can be set in `--modal-transition-duration` css variable.",
       },
       ...styleProps(),
     ]);

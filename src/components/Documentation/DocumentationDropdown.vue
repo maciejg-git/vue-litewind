@@ -143,7 +143,7 @@ export default {
         type: ["String"],
         default: "fade-m",
         description:
-          "Sets animation effect when showing or hiding dropdown. Valid values are: 'fade-f', 'fade-m' and 'fade-s'. `empty string` disables animations.",
+          "Sets animation effect when showing or hiding dropdown. Valid values are: 'fade' or `empty string` to disable animations. Animation speed can be set in `--dropdown-transition-duration` css variable.",
       },
       ...popperProps,
       ...styleProps(),
