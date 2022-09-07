@@ -5,12 +5,12 @@
         {{ label }}
       </slot>
     </label>
-    <div class="form-textarea block" :class="getTextareaClasses">
+    <div class="tw-form-textarea-reset block" :class="getTextareaClasses">
       <textarea
         v-model="localModel"
         v-bind="$attrs"
         :id="id"
-        class="transparent-textarea"
+        class="block border-0 bg-transparent focus:outline-none focus:ring-0 outline-none p-0"
         :class="{ 'w-full': !inline }"
         @blur="handleBlur"
       ></textarea>
@@ -292,8 +292,8 @@ export default {
 };
 </script>
 
-<style scoped>
-.transparent-textarea {
-  @apply block border-0 bg-transparent focus:outline-none focus:ring-0 outline-none p-0;
+<style>
+.tw-form-textarea-reset {
+  @apply form-textarea
 }
 </style>

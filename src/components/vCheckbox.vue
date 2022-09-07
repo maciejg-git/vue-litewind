@@ -63,6 +63,7 @@ export default {
 
     let getCheckBoxClasses = () => {
       return [
+        "tw-form-checkbox-reset",
         classes.checkbox.value,
         states.checkbox.value && states.checkbox.value[state.value],
         attrs.disabled === "" || attrs.disabled === true
@@ -101,4 +102,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style>
+.tw-form-checkbox-reset {
+  @apply form-checkbox
+}
+</style>

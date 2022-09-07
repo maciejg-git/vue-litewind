@@ -56,10 +56,8 @@
         </div>
       </div>
     </transition>
-
-    <transition name="fade-backdrop">
-      <div v-if="isOpen" :class="classes.backdrop.value"></div>
-    </transition>
+    
+    <v-backdrop :isOpen="isOpen" />
   </teleport>
 </template>
 
@@ -370,15 +368,6 @@ export default {
 .fade-scale-enter-from,
 .fade-scale-leave-to {
   transform: scale(0.96);
-  opacity: 0;
-}
-
-.fade-backdrop-enter-active,
-.fade-backdrop-leave-active {
-  transition: opacity var(--modal-transition-duration) ease;
-}
-.fade-backdrop-enter-from,
-.fade-backdrop-leave-to {
   opacity: 0;
 }
 </style>

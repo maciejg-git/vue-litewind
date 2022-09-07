@@ -17,27 +17,16 @@
     </p>
 
     <p>
-      <span class="font-semibold dark:font-bold dark:text-text-500">[Option if using form components]</span>
-      Install
-      <a class="link" href="https://github.com/tailwindlabs/tailwindcss-forms">
-        @tailwindcss/forms
-      </a>
-      plugin that provides a basic reset for form styles that makes form
-      elements easy to override with utilities.
-    </p>
-
-    <v-code language="javascript">
-      npm i @tailwindcss/forms
-    </v-code>
-
-    <p>
-      Configure Tailwind: add dark mode option, extend color definitions and <span class="font-semibold dark:font-bold dark:text-text-500">(optional)</span> add forms plugin in tailwind.config.js:
+      Configure Tailwind: add vue-wind to content so tailwind can generate classes used by components internally, add dark mode option, extend color definitions:
     </p>
 
     <v-code language="javascript">
       {{ `const colors = require('tailwindcss/colors')
 
 module.exports = {
+  content: [
+    'node_modules/vue-wind'
+  ],
   darkMode: 'class',
   theme: {
     extend: {
@@ -54,9 +43,6 @@ module.exports = {
       }
     },
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-  ],
 } `}}
     </v-code>
 

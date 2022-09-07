@@ -227,7 +227,7 @@ export default {
 
     let getInputClasses = computed(() => {
       return [
-        "form-input flex items-center",
+        "tw-form-input-reset flex items-center",
         classes.input.value,
         state && states.input.value && states.input.value[state.value],
         attrs.disabled === "" || attrs.disabled === true
@@ -481,5 +481,8 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
+.tw-form-input-reset {
+  @apply form-input
+}
 </style>

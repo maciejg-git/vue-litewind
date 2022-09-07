@@ -78,6 +78,8 @@ export default {
       state.value = updateState();
 
       emitValidationStatus();
+
+      emit("update:modelValue", v)
     };
 
     let touch = () => {

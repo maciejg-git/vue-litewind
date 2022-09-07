@@ -1,11 +1,7 @@
+@import "backdrop.css";
+
 :root {
   --modal-transition-duration: 0.2s;
-}
-
-.modal--backdrop {
-  @apply
-    opacity-50
-    bg-black
 }
 
 .default {

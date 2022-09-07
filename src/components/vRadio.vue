@@ -59,6 +59,7 @@ export default {
 
     let getRadioClasses = () => {
       return [
+        "tw-form-radio-reset",
         classes.radio.value,
         states.radio.value && states.radio.value[state.value],
         attrs.disabled === "" || attrs.disabled === true
@@ -92,4 +93,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style>
+.tw-form-radio-reset {
+  @apply form-radio
+}
+</style>

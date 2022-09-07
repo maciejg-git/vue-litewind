@@ -3,7 +3,7 @@ import { createPopper } from "@popperjs/core";
 
 export default function usePopper(
   { placement, offsetX, offsetY, noFlip, emit },
-  { resizePopper = false, destroyOnRemove = false } = {}
+  { resizePopper = false } = {}
 ) {
   // resize modifier to make popper the same width as reference element
   const resize = {
@@ -64,7 +64,6 @@ export default function usePopper(
   // watch popper element and create new instance
   watch(popper, (value) => {
     if (value) setPopper();
-    else if (destroyOnRemove) destroyInstance();
   });
 
   let destroyInstance = () => {

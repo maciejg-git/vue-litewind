@@ -194,7 +194,7 @@ export default {
       },
       {
         event: "click:clear-button",
-        description: "Emitted after clicking clear button",
+        description: "Emitted after clicking clear button (if `custom-clearable` prop is set)",
       },
       {
         event: "input:blur",

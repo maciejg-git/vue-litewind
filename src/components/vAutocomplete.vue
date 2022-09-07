@@ -24,8 +24,8 @@
   <teleport to="body">
     <transition :name="transition" @after-leave="onPopperTransitionLeave">
       <div v-if="isPopperVisible" ref="popper">
-        <div
-          :class="classes.menu.value"
+        <v-card
+          class="max-h-[300px] overflow-y-auto overflow-x-hidden"
           v-detect-scroll-bottom="handleScrollBottom"
         >
           <div
@@ -50,10 +50,11 @@
               :highlight="highlight"
               :inputValue="localText"
             >
-              <span v-html="getHighligtedText(item)"></span>
+              <span v-if="noHighlight">{{ getItemText(item) }}</span>
+              <span v-else v-html="getHighligtedText(item)"></span>
             </slot>
           </div>
-        </div>
+        </v-card>
       </div>
     </transition>
   </teleport>
@@ -125,9 +126,17 @@ export default {
         "No data available"
       ),
     },
+    noHighlight: {
+      type: Boolean,
+      default: false,
+    },
     input: {
       type: Object,
       default: defaultProps("autocomplete", "input", {}),
+    },
+    card: {
+      type: Object,
+      default: defaultProps("autocomplete", "card", {}),
     },
     chevron: {
       type: Object,

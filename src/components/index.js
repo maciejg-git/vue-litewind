@@ -31,6 +31,7 @@ export { default as vTree } from "./vTree.vue"
 export { default as vTreeNode } from "./vTreeNode.vue"
 export { default as vButtonCollapse } from "./vButtonCollapse.vue"
 export { default as vButtonDropdown } from "./vButtonDropdown.vue"
+export { default as vBackdrop } from "./vBackdrop.vue"
 
 export { default as vForm } from "./vForm.vue"
 export { default as vInput } from "./vInput.vue"

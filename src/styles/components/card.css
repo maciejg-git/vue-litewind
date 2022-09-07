@@ -46,7 +46,6 @@
 .flat {
   &.card {
     @apply
-      overflow-hidden
       bg-white
       dark:text-text-300
       dark:bg-dark-700

@@ -6,5 +6,5 @@
 .match {
   @apply
     bg-secondary-100
-    dark:bg-dark-600
+    dark:bg-dark-500
 }
