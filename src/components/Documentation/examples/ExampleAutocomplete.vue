@@ -1,5 +1,5 @@
 <template>
-  <v-autocomplete
+  <v-select-autocomp
     v-model="example.model"
     v-model:input-value="example.inputValue"
     no-filter
@@ -11,11 +11,29 @@
     :transition="example.transition"
     :state="example.state"
     :dropdown="{ offsetY: 5 }"
+    autocomplete
     style-menu="shadow"
     class="w-[420px]"
     @input:value="query($event)"
     v-on="handleExampleEvents"
-  ></v-autocomplete>
+  ></v-select-autocomp>
+  <!-- <v-autocomplete -->
+  <!--   v-model="example.model" -->
+  <!--   v-model:input-value="example.inputValue" -->
+  <!--   no-filter -->
+  <!--   inline -->
+  <!--   :items="example.items" -->
+  <!--   :is-loading="example.isLoading" -->
+  <!--   :use-loader="example.useLoader" -->
+  <!--   :clearable="example.clearable" -->
+  <!--   :transition="example.transition" -->
+  <!--   :state="example.state" -->
+  <!--   :dropdown="{ offsetY: 5 }" -->
+  <!--   style-menu="shadow" -->
+  <!--   class="w-[420px]" -->
+  <!--   @input:value="query($event)" -->
+  <!--   v-on="handleExampleEvents" -->
+  <!-- ></v-autocomplete> -->
 <!-- CUT START -->
   <v-tabs base="material" class="mt-10">
     <v-tab name="Props">

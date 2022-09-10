@@ -10,7 +10,7 @@
     show-indicator
     :indicator-switch="isPopperVisible"
     :chevron="chevron"
-    :readonly="readonly"
+    :readonly="!autocomplete"
     @input="handleInput"
     @focus="handleFocusInput"
     @input:blur="handleBlurInput"
@@ -30,7 +30,7 @@
           v-detect-scroll-bottom="handleScrollBottom"
         >
           <div
-            v-if="!itemsPagination.length"
+            v-if="!itemsPagination.length && !isLoading"
             :class="classes.item.value"
           >
             {{ emptyDataMessage }}
@@ -50,7 +50,7 @@
               :item="item"
               :inputValue="localText"
             >
-              {{ getItemText(item) }}
+              <span>{{ getItemText(item) }}</span>
             </slot>
           </div>
         </v-card>
@@ -71,7 +71,7 @@ import vInput from "./vInput.vue";
 // directives
 import detectScrollBottom from "../directives/detect-scroll-bottom";
 // tools
-import { isString, isBoolean, highlightMatch } from "../tools";
+import { isString, isBoolean } from "../tools";
 // props
 import {
   sharedPopperProps,
@@ -83,7 +83,7 @@ import { defaultProps } from "../defaultProps";
 export default {
   props: {
     modelValue: {
-      type: [String, Object, Boolean],
+      type: [String, Object],
       default: undefined,
     },
     // v-input props
@@ -96,6 +96,10 @@ export default {
     items: {
       type: Array,
       default: [],
+    },
+    autocomplete: {
+      type: Boolean,
+      default: false,
     },
     itemText: {
       type: String,
@@ -129,10 +133,6 @@ export default {
       type: Boolean,
       default: false,
     },
-    readonly: {
-      type: Boolean,
-      default: true,
-    },
     input: {
       type: Object,
       default: defaultProps("autocomplete", "input", {}),
@@ -161,10 +161,6 @@ export default {
       type: String,
       default: defaultProps("autocomplete", "styleItem", ""),
     },
-    styleMatch: {
-      type: String,
-      default: defaultProps("autocomplete", "styleMatch", ""),
-    },
     ...sharedFormProps(null, { icon: true, clearable: true }),
     ...sharedStyleProps("autocomplete"),
   },
@@ -180,10 +176,9 @@ export default {
     "input:value",
     "state:opened",
     "state:closed",
-    "input",
   ],
   inheritAttrs: false,
-  setup(props, { emit, expose }) {
+  setup(props, { emit }) {
     let { classes, states, variants } = useStyles("autocomplete", props, {
       menu: {
         fixed: "max-h-[300px] overflow-y-auto overflow-x-hidden",
@@ -192,7 +187,6 @@ export default {
         fixed: "fixed-item",
         states: ["active", "disabled"],
       },
-      match: null,
     });
 
     let getItemClass = (item) => {
@@ -221,35 +215,73 @@ export default {
 
     let selectedItem = ref(null);
     let localText = ref("");
+    let isNewSelection = ref(true);
 
     // show autocomplete menu
 
     let show = () => {
       if (!props.items.length) return;
 
+      isNewSelection.value = true;
+
       showPopper();
     };
+
+    // show menu if items prop changes
+
+    watch(
+      () => props.items,
+      (value) => {
+        if (props.autocomplete && !isPopperVisible.value && props.noFilter) {
+          show();
+        }
+      }
+    );
 
     // get text and value of item
 
     let getItemText = (item, key) => {
       return isString(item) || isBoolean(item)
         ? item
-        : item[key !== undefined ? key : props.itemText];
+        : item[key || props.itemText];
     };
 
     let getItemValue = (item) => {
       return isString(item) || isBoolean(item) ? item : item[props.itemValue];
     };
 
+    let itemsFiltered = computed(() => {
+      if (!props.autocomplete) return props.items
+      if (props.isLoading || props.noFilter) return props.items;
+      if (isNewSelection.value) return props.items;
+
+      if (props.filterKeys.length) {
+        return props.items.filter((item) => {
+          return props.filterKeys.some((key) => {
+            let i = getItemText(item, key);
+            return (
+              i && i.toLowerCase().indexOf(localText.value.toLowerCase()) !== -1
+            );
+          });
+        });
+      }
+
+      return props.items.filter((item) => {
+        let i = getItemText(item);
+        return (
+          i && i.toLowerCase().indexOf(localText.value.toLowerCase()) !== -1
+        );
+      });
+    });
+
     let page = ref(0);
 
     let itemsPagination = computed(() => {
       if (props.itemsPerPage === 0 || props.noPagination) {
-        return props.items;
+        return itemsFiltered.value;
       }
 
-      return props.items.slice(
+      return itemsFiltered.value.slice(
         0,
         (page.value + 1) * props.itemsPerPage
       );
@@ -261,7 +293,18 @@ export default {
       localModel.value = getItemValue(item);
     };
 
+    let revert = () => {
+      if (!selectedItem.value) {
+        localText.value = "";
+        return;
+      }
+      localText.value = getItemText(selectedItem.value);
+    };
+
     let cancelInput = () => {
+      if (props.autocomplete) {
+        revert();
+      }
       hidePopper();
     };
 
@@ -276,14 +319,6 @@ export default {
       localModel.value = "";
     };
 
-    watch(
-      localModel,
-      (value) => {
-        update(value)
-      },
-      { immediate: true }
-    )
-
     // handle template events
 
     let handleFocusInput = () => {
@@ -291,7 +326,8 @@ export default {
     };
 
     let handleInput = () => {
-      emit("input", localText.value);
+      isNewSelection.value = false;
+      emit("input:value", localText.value);
     };
 
     let handleBlurInput = (ev) => {
@@ -332,14 +368,13 @@ export default {
       selectItem(item);
     };
 
-    expose({ show })
-
     return {
       classes,
       states,
       variants,
       localText,
       localModel,
+      itemsFiltered,
       itemsPagination,
       getItemText,
       getItemValue,

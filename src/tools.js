@@ -24,6 +24,8 @@ let isObject = (v) => typeof v === "object";
 
 let isString = (v) => typeof v === "string";
 
+let isBoolean = (v) => typeof v === "boolean";
+
 let isNumber = (v) => typeof v === "number" && !isNaN(v);
 
 let isFunction = (v) => typeof v === "function";
@@ -76,6 +78,7 @@ export {
   isNumber,
   isObject,
   isString,
+  isBoolean,
   isFunction,
   pad,
   getNumberRange,

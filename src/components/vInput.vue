@@ -240,27 +240,31 @@ export default {
       return props.inline ? "inline-block align-middle" : "block";
     });
 
-    let id = useUid("input", attrs);
-
-    let inputRef = ref(null);
-    let wrapperRef = ref(null);
-
-    let mouseOver = ref(false);
-    let isFocused = ref(false);
-
-    let blur = (ev) => ev.target.blur();
-
     let isElementVisible = (element) => {
       let condition = props.visibleCondition[element];
 
       if (!condition) return true;
 
       return (
-        (condition === "hover" && mouseOver.value) ||
+        (condition === "hover" && isMouseOver.value) ||
         (condition === "focus" && isFocused.value) ||
         (condition === "hasvalue" && localModel.value.length)
       );
     };
+
+    // input label
+
+    let id = useUid("input", attrs);
+
+    // template refs
+
+    let inputRef = ref(null);
+    let wrapperRef = ref(null);
+
+    let isMouseOver = ref(false);
+    let isFocused = ref(false);
+
+    let blur = (ev) => ev.target.blur();
 
     // validate
 
@@ -433,9 +437,9 @@ export default {
 
     let handleFocus = () => (isFocused.value = true);
 
-    let handleMouseEnter = () => (mouseOver.value = true);
+    let handleMouseEnter = () => (isMouseOver.value = true);
 
-    let handleMouseLeave = () => (mouseOver.value = false);
+    let handleMouseLeave = () => (isMouseOver.value = false);
 
     let handleClickIndicator = () => {
       emit("click:indicator", inputRef.value);

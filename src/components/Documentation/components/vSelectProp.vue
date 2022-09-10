@@ -1,7 +1,7 @@
 <template>
   <v-select
     v-model="localModel"
-    :items="[{text: 'true', value: true}, {text: 'false', value: false} ]"
+    :items="[true, false]"
     style-icon="true:valid false:invalid"
     :variant="localModel"
     :icon="localModel ? 'b-check-lg' : 'b-x'"
