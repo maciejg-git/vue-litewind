@@ -14,7 +14,7 @@
   >
     <template #item="{ item, inputValue, highlight }">
       <div class="flex justify-between">
-        <div v-html="highlight(item['full_name'], inputValue)"></div>
+        <div v-html="item['full_name']"></div>
         <div class="text-xs">{{ item.department }}</div>
       </div>
       <span class="text-sm font-semibold text-text-400 dark:text-text-400">

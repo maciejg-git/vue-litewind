@@ -1,13 +1,13 @@
 <template>
   <v-select
     v-model="localModel"
+    :items="[{text: 'true', value: true}, {text: 'false', value: false} ]"
     style-icon="true:valid false:invalid"
     :variant="localModel"
     :icon="localModel ? 'b-check-lg' : 'b-x'"
     @input:icon-click="localModel = !localModel"
+    inline
   >
-    <option :value="true">true</option>
-    <option :value="false">false</option>
   </v-select>
 </template>
 

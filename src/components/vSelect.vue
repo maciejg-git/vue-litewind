@@ -10,7 +10,7 @@
     show-indicator
     :indicator-switch="isPopperVisible"
     :chevron="chevron"
-    readonly
+    :readonly="readonly"
     @input="handleInput"
     @focus="handleFocusInput"
     @input:blur="handleBlurInput"
@@ -30,7 +30,7 @@
           v-detect-scroll-bottom="handleScrollBottom"
         >
           <div
-            v-if="!itemsPagination.length && !isLoading"
+            v-if="!itemsPagination.length"
             :class="classes.item.value"
           >
             {{ emptyDataMessage }}
@@ -48,11 +48,9 @@
               :text="getItemText(item)"
               :value="getItemValue(item)"
               :item="item"
-              :highlight="highlight"
               :inputValue="localText"
             >
-              <span v-if="noHighlight">{{ getItemText(item) }}</span>
-              <span v-else v-html="getHighligtedText(item)"></span>
+              {{ getItemText(item) }}
             </slot>
           </div>
         </v-card>
@@ -85,7 +83,7 @@ import { defaultProps } from "../defaultProps";
 export default {
   props: {
     modelValue: {
-      type: [String, Object],
+      type: [String, Object, Boolean],
       default: undefined,
     },
     // v-input props
@@ -130,6 +128,10 @@ export default {
     noHighlight: {
       type: Boolean,
       default: false,
+    },
+    readonly: {
+      type: Boolean,
+      default: true,
     },
     input: {
       type: Object,
@@ -178,9 +180,10 @@ export default {
     "input:value",
     "state:opened",
     "state:closed",
+    "input",
   ],
   inheritAttrs: false,
-  setup(props, { emit }) {
+  setup(props, { emit, expose }) {
     let { classes, states, variants } = useStyles("autocomplete", props, {
       menu: {
         fixed: "max-h-[300px] overflow-y-auto overflow-x-hidden",
@@ -218,28 +221,14 @@ export default {
 
     let selectedItem = ref(null);
     let localText = ref("");
-    let isNewSelection = ref(true);
 
     // show autocomplete menu
 
     let show = () => {
       if (!props.items.length) return;
 
-      isNewSelection.value = true;
-
       showPopper();
     };
-
-    // show menu if items prop changes
-
-    watch(
-      () => props.items,
-      (value) => {
-        if (props.autocomplete && !isPopperVisible.value && props.noFilter && value) {
-          show();
-        }
-      }
-    );
 
     // get text and value of item
 
@@ -253,54 +242,22 @@ export default {
       return isString(item) ? item : item[props.itemValue];
     };
 
-    let itemsFiltered = computed(() => {
-      if (!props.autocomplete) return props.items
-      if (props.isLoading || props.noFilter) return props.items;
-      if (isNewSelection.value) return props.items;
-
-      if (props.filterKeys.length) {
-        return props.items.filter((item) => {
-          return props.filterKeys.some((key) => {
-            let i = getItemText(item, key);
-            return (
-              i && i.toLowerCase().indexOf(localText.value.toLowerCase()) !== -1
-            );
-          });
-        });
-      }
-
-      return props.items.filter((item) => {
-        let i = getItemText(item);
-        return (
-          i && i.toLowerCase().indexOf(localText.value.toLowerCase()) !== -1
-        );
-      });
-    });
+    watch(localModel, () => {
+      localText.value = localModel.value
+    }, { immediate: true })
 
     let page = ref(0);
 
     let itemsPagination = computed(() => {
       if (props.itemsPerPage === 0 || props.noPagination) {
-        return itemsFiltered.value;
+        return props.items;
       }
 
-      return itemsFiltered.value.slice(
+      return props.items.slice(
         0,
         (page.value + 1) * props.itemsPerPage
       );
     });
-
-    let getHighligtedText = (item) => {
-      return highlightMatch(
-        getItemText(item),
-        localText.value,
-        classes.match.value
-      );
-    };
-
-    let highlight = (string, match) => {
-      return highlightMatch(string, match, classes.match.value);
-    };
 
     let update = (item) => {
       selectedItem.value = item;
@@ -308,16 +265,7 @@ export default {
       localModel.value = getItemValue(item);
     };
 
-    let revert = () => {
-      if (!selectedItem.value) {
-        localText.value = "";
-        return;
-      }
-      localText.value = getItemText(selectedItem.value);
-    };
-
     let cancelInput = () => {
-      revert();
       hidePopper();
     };
 
@@ -339,8 +287,7 @@ export default {
     };
 
     let handleInput = () => {
-      isNewSelection.value = false;
-      emit("input:value", localText.value);
+      emit("input", localText.value);
     };
 
     let handleBlurInput = (ev) => {
@@ -381,21 +328,20 @@ export default {
       selectItem(item);
     };
 
+    expose({ show })
+
     return {
       classes,
       states,
       variants,
       localText,
       localModel,
-      itemsFiltered,
       itemsPagination,
       getItemText,
       getItemValue,
-      getHighligtedText,
       getItemClass,
       onPopperTransitionLeave,
       page,
-      highlight,
       handleFocusInput,
       handleBlurInput,
       handleClickIndicator,

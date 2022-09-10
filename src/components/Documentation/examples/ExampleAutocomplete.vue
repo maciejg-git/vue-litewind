@@ -1,22 +1,4 @@
 <template>
-  <v-select
-    v-model="example.model"
-    v-model:input-value="example.inputValue"
-    no-filter
-    inline
-    :items="example.items"
-    :is-loading="example.isLoading"
-    :use-loader="example.useLoader"
-    :clearable="example.clearable"
-    :transition="example.transition"
-    :state="example.state"
-    :dropdown="{ offsetY: 5 }"
-    style-menu="shadow"
-    class="w-[420px]"
-    @input:value="query($event)"
-    v-on="handleExampleEvents"
-    >
-  </v-select>
   <v-autocomplete
     v-model="example.model"
     v-model:input-value="example.inputValue"
@@ -81,14 +63,13 @@
 <script>
 import { ref, reactive } from "vue";
 import { states } from "../data/data.js";
-import { languages } from "../data/data.js";
 
 export default {
   components: {},
   setup() {
     let example = reactive({
-      model: "polish",
-      items: languages,
+      model: "",
+      items: [],
       isLoading: false,
       useLoader: true,
       clearable: false,

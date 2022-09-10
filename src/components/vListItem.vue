@@ -15,9 +15,7 @@ export default {
     },
   },
   setup(props) {
-    let classes = inject("classes");
-    let states = inject("states");
-    let tag = inject("tag");
+    let { classes, states, tag } = inject("control-list");
 
     let tagHref = computed(() => (tag == "a" ? "#" : null));
 

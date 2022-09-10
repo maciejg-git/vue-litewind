@@ -14,7 +14,7 @@
 
   Language: {{ currentLanguage }}
 
-  <v-dropdown ref="contextMenu" auto-close-menu v-slot="{ language, index }">
+  <v-dropdown-context ref="contextMenu" auto-close-menu v-slot="{ language, index }">
     <v-card width="280px" style-card="menu shadow">
       <v-dropdown-menu-item @click="currentLanguage = language">
         Switch to {{ language }}
@@ -34,7 +34,7 @@
         Add french
       </v-dropdown-menu-item>
     </v-card>
-  </v-dropdown>
+  </v-dropdown-context>
 </template>
 
 <script>

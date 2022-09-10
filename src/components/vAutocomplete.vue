@@ -1,68 +1,21 @@
 <template>
-  <v-input
-    v-model="localText"
-    v-bind="{ ...$attrs, ...input }"
-    type="text"
-    ref="reference"
-    :icon="icon"
-    :use-loader="useLoader"
-    :custom-clearable="clearable"
-    show-indicator
-    :indicator-switch="isPopperVisible"
-    :chevron="chevron"
+  <v-select 
+    v-bind="$attrs"
+    ref="selectRef" 
+    v-model="localModel" 
+    :readonly="false" 
+    :items="itemsFiltered" 
     @input="handleInput"
-    @focus="handleFocusInput"
-    @input:blur="handleBlurInput"
-    @click:indicator="handleClickIndicator"
-    @click:clear-button="handleClickClearButton"
   >
     <template v-for="(name, slot) of $slots" #[slot]="slotProps">
       <slot :name="slot" v-bind="slotProps"></slot>
     </template>
-  </v-input>
-
-  <teleport to="body">
-    <transition :name="transition" @after-leave="onPopperTransitionLeave">
-      <div v-if="isPopperVisible" ref="popper">
-        <v-card
-          class="max-h-[300px] overflow-y-auto overflow-x-hidden"
-          v-detect-scroll-bottom="handleScrollBottom"
-        >
-          <div
-            v-if="!itemsPagination.length && !isLoading"
-            :class="classes.item.value"
-          >
-            {{ emptyDataMessage }}
-          </div>
-          <div
-            v-else
-            v-for="item in itemsPagination"
-            :key="item"
-            :class="getItemClass(item)"
-            @click="handleClickItem(item)"
-            tabindex="-1"
-          >
-            <slot
-              name="item"
-              :text="getItemText(item)"
-              :value="getItemValue(item)"
-              :item="item"
-              :highlight="highlight"
-              :inputValue="localText"
-            >
-              <span v-if="noHighlight">{{ getItemText(item) }}</span>
-              <span v-else v-html="getHighligtedText(item)"></span>
-            </slot>
-          </div>
-        </v-card>
-      </div>
-    </transition>
-  </teleport>
+  </v-select>
 </template>
 
 <script>
 // vue
-import { ref, computed, watch, toRefs } from "vue";
+import { ref, computed, watch, toRefs, nextTick } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
@@ -162,7 +115,6 @@ export default {
       type: String,
       default: defaultProps("autocomplete", "styleMatch", ""),
     },
-    ...sharedFormProps(null, { icon: true, clearable: true }),
     ...sharedStyleProps("autocomplete"),
   },
   components: {
@@ -180,40 +132,9 @@ export default {
   ],
   inheritAttrs: false,
   setup(props, { emit }) {
-    let { classes, states, variants } = useStyles("autocomplete", props, {
-      menu: {
-        fixed: "max-h-[300px] overflow-y-auto overflow-x-hidden",
-      },
-      item: {
-        fixed: "fixed-item",
-        states: ["active", "disabled"],
-      },
-      match: null,
-    });
-
-    let getItemClass = (item) => {
-      return [
-        item.disabled
-          ? [classes.item.value, states.item.value.disabled]
-          : classes.item.value,
-      ];
-    };
-
     let localModel = useLocalModel(props, emit);
 
-    const { offsetX, offsetY, noFlip, placement, modelValue } = toRefs(props);
-    const {
-      isPopperVisible,
-      isPopperChild,
-      reference,
-      popper,
-      showPopper,
-      hidePopper,
-      onPopperTransitionLeave,
-    } = usePopper(
-      { placement, offsetX, offsetY, noFlip, modelValue, emit },
-      { resizePopper: true }
-    );
+    let selectRef = ref(null)
 
     let selectedItem = ref(null);
     let localText = ref("");
@@ -221,36 +142,18 @@ export default {
 
     // show autocomplete menu
 
-    let show = () => {
-      if (!props.items.length) return;
-
-      isNewSelection.value = true;
-
-      showPopper();
-    };
-
-    // show menu if items prop changes
-
     watch(
       () => props.items,
       (value) => {
-        if (!isPopperVisible.value && props.noFilter && value) {
-          show();
+        if (props.noFilter && value) {
+          nextTick(() => {
+            selectRef.value.show();
+          })
         }
       }
     );
 
     // get text and value of item
-
-    let getItemText = (item, key) => {
-      return isString(item)
-        ? item
-        : item[key !== undefined ? key : props.itemText];
-    };
-
-    let getItemValue = (item) => {
-      return isString(item) ? item : item[props.itemValue];
-    };
 
     let itemsFiltered = computed(() => {
       if (props.isLoading || props.noFilter) return props.items;
@@ -275,18 +178,11 @@ export default {
       });
     });
 
-    let page = ref(0);
-
-    let itemsPagination = computed(() => {
-      if (props.itemsPerPage === 0 || props.noPagination) {
-        return itemsFiltered.value;
-      }
-
-      return itemsFiltered.value.slice(
-        0,
-        (page.value + 1) * props.itemsPerPage
-      );
-    });
+    let getItemText = (item, key) => {
+      return isString(item)
+        ? item
+        : item[key !== undefined ? key : props.itemText];
+    };
 
     let getHighligtedText = (item) => {
       return highlightMatch(
@@ -298,12 +194,6 @@ export default {
 
     let highlight = (string, match) => {
       return highlightMatch(string, match, classes.match.value);
-    };
-
-    let update = (item) => {
-      selectedItem.value = item;
-      localText.value = getItemText(item);
-      localModel.value = getItemValue(item);
     };
 
     let revert = () => {
@@ -319,11 +209,6 @@ export default {
       hidePopper();
     };
 
-    let selectItem = (item) => {
-      update(item);
-      hidePopper();
-    };
-
     let clearInput = () => {
       localText.value = "";
       selectedItem.value = "";
@@ -332,11 +217,8 @@ export default {
 
     // handle template events
 
-    let handleFocusInput = () => {
-      show();
-    };
-
-    let handleInput = () => {
+    let handleInput = (value) => {
+      localText.value = value
       isNewSelection.value = false;
       emit("input:value", localText.value);
     };
@@ -351,59 +233,15 @@ export default {
       }
     };
 
-    let handleClickIndicator = (input) => {
-      if (props.isLoading) return;
-
-      if (isPopperVisible.value) {
-        cancelInput();
-        return;
-      }
-
-      input.focus();
-    };
-
-    let handleClickClearButton = (input) => {
-      clearInput();
-
-      if (isPopperVisible.value) {
-        input.focus();
-      }
-    };
-
-    let handleScrollBottom = () => {
-      page.value++;
-      emit("update:page", page.value);
-    };
-
-    let handleClickItem = (item) => {
-      selectItem(item);
-    };
-
     return {
-      classes,
-      states,
-      variants,
+      selectRef,
       localText,
       localModel,
       itemsFiltered,
-      itemsPagination,
-      getItemText,
-      getItemValue,
       getHighligtedText,
-      getItemClass,
-      onPopperTransitionLeave,
-      page,
       highlight,
-      handleFocusInput,
       handleBlurInput,
-      handleClickIndicator,
-      handleClickClearButton,
       handleInput,
-      handleScrollBottom,
-      handleClickItem,
-      isPopperVisible,
-      reference,
-      popper,
     };
   },
 };

@@ -98,11 +98,11 @@
   <section>
     <h4>Example - context dropdown</h4>
     <p>
-      To make context menu use exposed
+      To make context menu use <code class="code-text">v-dropdown-context</code>. This component exposes
       <code class="code-text">
         showContextDropdown($event, { contextData })
       </code>
-      function. First argument, mouse <code class="code-text">event</code>, allows computing position of menu. Second argument defines data that is provided in <code class="code-text">default</code> slot of dropdown component.
+      function that controls visibility state of menu and sets context data. First argument, mouse <code class="code-text">event</code>, allows computing position of menu. Second argument defines data that is provided in <code class="code-text">default</code> slot of dropdown component.
     </p>
     <div class="example">
       <example name="ExampleDropdownContext"></example>

@@ -17,19 +17,19 @@ export default {
   props: {
     width: {
       type: String,
-      default: undefined
+      default: undefined,
     },
     tag: {
       type: String,
-      default: defaultProps("list", "tag", "div")
+      default: defaultProps("list", "tag", "div"),
     },
     styleList: {
       type: String,
-      default: defaultProps("list", "styleList", "")
+      default: defaultProps("list", "styleList", ""),
     },
     styleItem: {
       type: String,
-      default: defaultProps("list", "styleItem", "")
+      default: defaultProps("list", "styleItem", ""),
     },
     ...sharedStyleProps("list"),
   },
@@ -43,6 +43,7 @@ export default {
       },
     });
 
+    provide("control-list", { classes, states, tag: toRef(props, "tag") });
     provide("classes", classes);
     provide("states", states);
     provide("tag", toRef(props, "tag"));
@@ -54,5 +55,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
