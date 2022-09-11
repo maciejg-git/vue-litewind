@@ -60,6 +60,11 @@ app.use(router);
 app.use(componentPlugin, {
   components,
   directives,
+  componentProps: {
+    select: {
+      inline: true,
+    }
+  }
 });
 // app.use(formPlugin);
 app.mount("#app");

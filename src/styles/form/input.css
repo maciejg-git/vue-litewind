@@ -47,6 +47,16 @@
       text-text-400
       dark:text-gray-400
   }
+      &.input--icon--valid {
+        @apply
+          text-success-400
+          dark:text-success-400
+      }
+      &.input--icon--invalid {
+        @apply
+          text-danger-400
+          dark:text-danger-400
+      }
 
   &.input--label {
     @apply

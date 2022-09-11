@@ -3,9 +3,11 @@
     v-model="localModel"
     :items="[true, false]"
     style-icon="true:valid false:invalid"
-    :variant="localModel"
+    :input="{ variant: localModel }"
+    :card="{ styleCard: 'menu shadow' }"
     :icon="localModel ? 'b-check-lg' : 'b-x'"
-    @input:icon-click="localModel = !localModel"
+    @click:icon="localModel = !localModel"
+    :offsetY="5"
     inline
   >
   </v-select>

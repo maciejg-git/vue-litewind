@@ -36,9 +36,9 @@
   </section>
 
   <section>
-    <h4>Example - simple autocomplete</h4>
+    <h4>Example - simple select</h4>
     <div class="example">
-      <example name="ExampleAutocompleteSimple"></example>
+      <example name="ExampleSelectSimple"></example>
     </div>
   </section>
 

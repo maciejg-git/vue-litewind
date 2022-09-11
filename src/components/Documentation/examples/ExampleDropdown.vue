@@ -38,7 +38,7 @@
       <div class="flex flex-col gap-y-2 mt-5">
         <div>
           <label for="placement">placement:</label>
-          <v-select id="placement" v-model="example.placement">
+          <v-select id="placement" v-model="example.placement" :items="['auto','auto-start','auto-end','top','top-start','top-end','bottom','bottom-start','bottom-end','right','right-start','right-end','left','left-start','left-end']">
             <option value="auto">auto</option>
             <option value="auto-start">auto-start</option>
             <option value="auto-end">auto-end</option>

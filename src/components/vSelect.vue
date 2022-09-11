@@ -10,7 +10,8 @@
     show-indicator
     :indicator-switch="isPopperVisible"
     :chevron="chevron"
-    :readonly="readonly"
+    :readonly="!autocomplete"
+    :inline="inline"
     @input="handleInput"
     @focus="handleFocusInput"
     @input:blur="handleBlurInput"
@@ -26,11 +27,12 @@
     <transition :name="transition" @after-leave="onPopperTransitionLeave">
       <div v-if="isPopperVisible" ref="popper">
         <v-card
+          v-bind="card"
           class="max-h-[300px] overflow-y-auto overflow-x-hidden"
           v-detect-scroll-bottom="handleScrollBottom"
         >
           <div
-            v-if="!itemsPagination.length"
+            v-if="!itemsPagination.length && !isLoading"
             :class="classes.item.value"
           >
             {{ emptyDataMessage }}
@@ -71,7 +73,7 @@ import vInput from "./vInput.vue";
 // directives
 import detectScrollBottom from "../directives/detect-scroll-bottom";
 // tools
-import { isString, isBoolean, highlightMatch } from "../tools";
+import { isString, isBoolean, isObject } from "../tools";
 // props
 import {
   sharedPopperProps,
@@ -83,19 +85,26 @@ import { defaultProps } from "../defaultProps";
 export default {
   props: {
     modelValue: {
-      type: [String, Object, Boolean],
+      type: [String, Object],
       default: undefined,
     },
     // v-input props
     useLoader: {
       type: Boolean,
-      default: defaultProps("autocomplete", "useLoader", true),
+      default: defaultProps("select", "useLoader", true),
     },
-    // v-autocomplete props
-    ...sharedPopperProps("autocomplete"),
+    ...sharedPopperProps("select"),
     items: {
       type: Array,
       default: [],
+    },
+    inline: {
+      type: Boolean,
+      default: defaultProps("select", "inline", false),
+    },
+    autocomplete: {
+      type: Boolean,
+      default: false,
     },
     itemText: {
       type: String,
@@ -111,11 +120,11 @@ export default {
     },
     noFilter: {
       type: Boolean,
-      default: defaultProps("autocomplete", "noFilter", false),
+      default: defaultProps("select", "noFilter", false),
     },
     noPagination: {
       type: Boolean,
-      default: defaultProps("autocomplete", "noPagination", false),
+      default: defaultProps("select", "noPagination", false),
     },
     emptyDataMessage: {
       type: String,
@@ -125,48 +134,36 @@ export default {
         "No data available"
       ),
     },
-    noHighlight: {
-      type: Boolean,
-      default: false,
-    },
-    readonly: {
-      type: Boolean,
-      default: true,
-    },
     input: {
       type: Object,
-      default: defaultProps("autocomplete", "input", {}),
+      default: defaultProps("select", "input", {}),
     },
     card: {
       type: Object,
-      default: defaultProps("autocomplete", "card", {}),
+      default: defaultProps("select", "card", {}),
     },
     chevron: {
       type: Object,
-      default: defaultProps("autocomplete", "chevron", {}),
+      default: defaultProps("select", "chevron", {}),
     },
     itemsPerPage: {
       type: Number,
-      default: defaultProps("autocomplete", "itemsPerPage", 10),
+      default: defaultProps("select", "itemsPerPage", 10),
     },
     transition: {
       type: String,
-      default: defaultProps("autocomplete", "transition", "fade"),
+      default: defaultProps("select", "transition", "fade"),
     },
     styleMenu: {
       type: String,
-      default: defaultProps("autocomplete", "styleMenu", ""),
+      default: defaultProps("select", "styleMenu", ""),
     },
     styleItem: {
       type: String,
-      default: defaultProps("autocomplete", "styleItem", ""),
-    },
-    styleMatch: {
-      type: String,
-      default: defaultProps("autocomplete", "styleMatch", ""),
+      default: defaultProps("select", "styleItem", ""),
     },
     ...sharedFormProps(null, { icon: true, clearable: true }),
-    ...sharedStyleProps("autocomplete"),
+    ...sharedStyleProps("select"),
   },
   components: {
     vInput,
@@ -180,11 +177,10 @@ export default {
     "input:value",
     "state:opened",
     "state:closed",
-    "input",
   ],
   inheritAttrs: false,
-  setup(props, { emit, expose }) {
-    let { classes, states, variants } = useStyles("autocomplete", props, {
+  setup(props, { emit }) {
+    let { classes, states, variants } = useStyles("select", props, {
       menu: {
         fixed: "max-h-[300px] overflow-y-auto overflow-x-hidden",
       },
@@ -192,15 +188,13 @@ export default {
         fixed: "fixed-item",
         states: ["active", "disabled"],
       },
-      match: null,
     });
 
     let getItemClass = (item) => {
       return [
-        item.disabled
-          ? [classes.item.value, states.item.value.disabled]
-          : classes.item.value,
-      ];
+        classes.item.value,
+        item.disabled ? states.item.value.disabled : "",
+      ]
     };
 
     let localModel = useLocalModel(props, emit);
@@ -221,35 +215,77 @@ export default {
 
     let selectedItem = ref(null);
     let localText = ref("");
+    let isNewSelection = ref(true);
 
     // show autocomplete menu
 
     let show = () => {
       if (!props.items.length) return;
 
+      isNewSelection.value = true;
+
       showPopper();
     };
+
+    // show menu if items prop changes
+
+    watch(
+      () => props.items,
+      (value) => {
+        if (props.autocomplete && !isPopperVisible.value && props.noFilter) {
+          show();
+        }
+      }
+    );
 
     // get text and value of item
 
     let getItemText = (item, key) => {
-      return isString(item) || isBoolean(item)
-        ? item
-        : item[key !== undefined ? key : props.itemText];
+      if (isObject(item)) {
+        return item[key || props.itemText];
+      }
+      return item;
     };
 
     let getItemValue = (item) => {
-      return isString(item) || isBoolean(item) ? item : item[props.itemValue];
+      if (isObject(item)) {
+        return item[props.itemValue];
+      }
+      return item;
     };
+
+    let itemsFiltered = computed(() => {
+      if (!props.autocomplete) return props.items;
+      if (props.isLoading || props.noFilter) return props.items;
+      if (isNewSelection.value) return props.items;
+
+      if (props.filterKeys.length) {
+        return props.items.filter((item) => {
+          return props.filterKeys.some((key) => {
+            let i = getItemText(item, key);
+            return (
+              i && i.toLowerCase().indexOf(localText.value.toLowerCase()) !== -1
+            );
+          });
+        });
+      }
+
+      return props.items.filter((item) => {
+        let i = getItemText(item);
+        return (
+          i && i.toLowerCase().indexOf(localText.value.toLowerCase()) !== -1
+        );
+      });
+    });
 
     let page = ref(0);
 
     let itemsPagination = computed(() => {
       if (props.itemsPerPage === 0 || props.noPagination) {
-        return props.items;
+        return itemsFiltered.value;
       }
 
-      return props.items.slice(
+      return itemsFiltered.value.slice(
         0,
         (page.value + 1) * props.itemsPerPage
       );
@@ -261,7 +297,18 @@ export default {
       localModel.value = getItemValue(item);
     };
 
+    let revert = () => {
+      if (!selectedItem.value) {
+        localText.value = "";
+        return;
+      }
+      localText.value = getItemText(selectedItem.value);
+    };
+
     let cancelInput = () => {
+      if (props.autocomplete) {
+        revert();
+      }
       hidePopper();
     };
 
@@ -279,10 +326,10 @@ export default {
     watch(
       localModel,
       (value) => {
-        update(value)
+        update(value);
       },
       { immediate: true }
-    )
+    );
 
     // handle template events
 
@@ -291,7 +338,8 @@ export default {
     };
 
     let handleInput = () => {
-      emit("input", localText.value);
+      isNewSelection.value = false;
+      emit("input:value", localText.value);
     };
 
     let handleBlurInput = (ev) => {
@@ -332,14 +380,13 @@ export default {
       selectItem(item);
     };
 
-    expose({ show })
-
     return {
       classes,
       states,
       variants,
       localText,
       localModel,
+      itemsFiltered,
       itemsPagination,
       getItemText,
       getItemValue,

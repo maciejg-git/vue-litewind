@@ -33,7 +33,6 @@ export { default as vButtonCollapse } from "./vButtonCollapse.vue"
 export { default as vButtonDropdown } from "./vButtonDropdown.vue"
 export { default as vBackdrop } from "./vBackdrop.vue"
 export { default as vDropdownContext } from "./vDropdownContext.vue"
-export { default as vSelectAutocomp } from "./vSelectAutocomp.vue"
 
 export { default as vForm } from "./vForm.vue"
 export { default as vInput } from "./vInput.vue"

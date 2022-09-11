@@ -1,21 +1,4 @@
 <template>
-  <v-select-autocomp
-    v-model="example.model"
-    :items="example.items"
-    icon="b-exclamation-circle"
-    inline
-    style-menu="shadow"
-    class="w-[420px]"
-  ></v-select-autocomp>
-  <v-select-autocomp
-    v-model="example.model"
-    :items="example.items"
-    icon="b-exclamation-circle"
-    inline
-    autocomplete
-    style-menu="shadow"
-    class="w-[420px]"
-  ></v-select-autocomp>
   <v-autocomplete
     v-model="example.model"
     :items="example.items"
