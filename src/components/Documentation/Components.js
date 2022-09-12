@@ -103,16 +103,16 @@ let formComponents = [
     name: "input",
   },
   {
-    label: "Select",
-    name: "select",
-  },
-  {
     label: "Checkbox",
     name: "checkbox",
   },
   {
     label: "Radio",
     name: "radio",
+  },
+  {
+    label: "Select",
+    name: "select",
   },
   {
     label: "Textarea",
@@ -125,10 +125,6 @@ let formComponents = [
   {
     label: "Form text",
     name: "formtext",
-  },
-  {
-    label: "Autocomplete",
-    name: "autocomplete",
   },
 ]
 

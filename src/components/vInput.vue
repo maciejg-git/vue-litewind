@@ -111,7 +111,7 @@ import { defaultProps } from "../defaultProps";
 export default {
   props: {
     modelValue: {
-      type: [String, Number, Array],
+      type: [String, Number, Array, Boolean, Number],
       default: "",
     },
     inline: {

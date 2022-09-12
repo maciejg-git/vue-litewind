@@ -63,6 +63,14 @@ app.use(componentPlugin, {
   componentProps: {
     select: {
       inline: true,
+      offsetY: 5,
+      card: {
+        base: 'flat',
+        styleCard: 'menu shadow',
+      },
+      computed(base, name) {
+
+      }
     }
   }
 });

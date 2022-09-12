@@ -23,7 +23,6 @@ import DocumentationProgress from "../components/Documentation/DocumentationProg
 import DocumentationSidepanel from "../components/Documentation/DocumentationSidepanel.vue";
 import DocumentationAlert from "../components/Documentation/DocumentationAlert.vue";
 import DocumentationInput from "../components/Documentation/DocumentationInput.vue";
-import DocumentationSelect from "../components/Documentation/DocumentationSelect.vue";
 import DocumentationTextarea from "../components/Documentation/DocumentationTextarea.vue";
 import DocumentationRadio from "../components/Documentation/DocumentationRadio.vue";
 import DocumentationCheckbox from "../components/Documentation/DocumentationCheckbox.vue";
@@ -32,7 +31,7 @@ import DocumentationRange from "../components/Documentation/DocumentationRange.v
 import DocumentationBreadcrumb from "../components/Documentation/DocumentationBreadcrumb.vue";
 import DocumentationChevron from "../components/Documentation/DocumentationChevron.vue";
 import DocumentationFormText from "../components/Documentation/DocumentationFormText.vue";
-import DocumentationAutocomplete from "../components/Documentation/DocumentationAutocomplete.vue";
+import DocumentationSelect from "../components/Documentation/DocumentationSelect.vue";
 import DocumentationTree from "../components/Documentation/DocumentationTree.vue";
 import DocumentationClosebutton from "../components/Documentation/DocumentationClosebutton.vue";
 import DocumentationIcon from "../components/Documentation/DocumentationIcon.vue";
@@ -137,10 +136,6 @@ const routes = [
         component: DocumentationInput,
       },
       {
-        path: "select",
-        component: DocumentationSelect,
-      },
-      {
         path: "textarea",
         component: DocumentationTextarea,
       },
@@ -185,8 +180,8 @@ const routes = [
         component: DocumentationIcon,
       },
       {
-        path: "autocomplete",
-        component: DocumentationAutocomplete,
+        path: "select",
+        component: DocumentationSelect,
       },
       {
         path: "tree",

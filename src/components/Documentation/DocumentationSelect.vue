@@ -3,30 +3,64 @@
 
   <section>
     <h4>Reference</h4>
+    <p class="my-10">
+      This component also accepts props of
+      <code class="code-text">v-input</code>
+      . See documentation here.
+    </p>
     <table-reference :items="reference" />
 
     <h6>Styling props</h6>
+    <p class="my-10">
+      This component also accepts styling props of
+      <code class="code-text">v-input</code>
+      . See documentation here.
+    </p>
     <table-reference-basic :items="styles" />
 
-    <!-- <h6>Events</h6> -->
-    <!-- <p></p> -->
-    <!-- <table-reference-basic :items="events"></table-reference-basic> -->
+    <h6>Events</h6>
+    <p class="my-10">
+      This component also emits events of
+      <code class="code-text">v-input</code>
+      . See documentation here.
+    </p>
+    <table-reference-basic :items="events" reference="event" />
 
     <h6>Slots</h6>
+    <p class="my-10">
+      This component also supports slots of
+      <code class="code-text">v-input</code>
+      . See documentation here.
+    </p>
     <table-reference-basic :items="slots" reference="slot" />
   </section>
 
   <section>
-    <h4>Example</h4>
+    <h4>Example - simple select</h4>
     <div class="example">
-      <example name="ExampleSelect"></example>
+      <example name="ExampleSelectSimple"></example>
+    </div>
+  </section>
+
+  <section>
+    <h4>Example - remote source</h4>
+    <div class="example">
+      <example name="ExampleAutocomplete"></example>
+    </div>
+  </section>
+
+  <section>
+    <h4>Example - item slot</h4>
+    <p>You can customize menu items by using item slot.</p>
+    <div class="example">
+      <example name="ExampleAutocompleteSlot"></example>
     </div>
   </section>
 </template>
 
 <script>
 import { ref } from "vue";
-import { styleProps, formProps } from "./shared-props"
+import { popperProps, styleProps, formProps } from "./shared-props";
 
 export default {
   setup() {
@@ -35,45 +69,120 @@ export default {
         prop: "v-model",
         type: ["String"],
         default: "undefined",
-        description: "Select v-model",
+        description: "Autocomplete v-model",
       },
       {
-        prop: "options",
+        prop: "items",
         type: ["Array"],
         default: "undefined",
         description:
-          "Array of options to display in select element. Each option is an `object` with `value` and `label` properties. This prop is optional, you can use default slot to add options instead",
+          "Items to display. Can be `array` of `strings` or `objects`",
       },
-      ...formProps({ icon: true }),
+      {
+        prop: "item-text",
+        type: ["String"],
+        default: "'text'",
+        description: "Set property of items’s text value",
+      },
+      {
+        prop: "item-value",
+        type: ["String"],
+        default: "'value'",
+        description: "Set property of items’s value",
+      },
+      {
+        prop: "autocomplete",
+        type: ["Boolean"],
+        default: "false",
+        description:
+          "Allows filtering select items based on inputs value. You can also use v-autocomplete which is wrapper of v-select with this prop enabled by default",
+      },
+      {
+        prop: "is-loading",
+        type: ["Boolean"],
+        default: "false",
+        description:
+          "Use it whenever asynchronously updating items prop. Required.",
+      },
+      {
+        prop: "no-filter",
+        type: ["Boolean"],
+        default: "false",
+        description:
+          "Do not use internal filter in `autocomplete` mode. You should provide filtered items by updating `items` prop",
+      },
+      {
+        prop: "no-pagination",
+        type: ["Boolean"],
+        default: "false",
+        description:
+          "Do no use internal pagination. You can paginate items by updating `items` prop",
+      },
+      {
+        prop: "items-per-page",
+        type: ["Number"],
+        default: "10",
+        description:
+          "Amounts of items to display per page, 0 = all items on single page. Ignored if `no-pagination` is used",
+      },
+      {
+        prop: "empty-data-message",
+        type: ["String"],
+        default: "No data available",
+        description:
+          "Message to display inside menu when `items` array is empty",
+      },
+      {
+        prop: "transition",
+        type: ["String"],
+        default: "fade",
+        description: "Sets animation effect when showing or hiding autocomplete menu. Valid values are: 'fade' or `empty string` to disable animations. Animation speed can be set in `--autocomplete-transition-duration` css variable.",
+      },
+      ...popperProps,
+      ...formProps({ icon: true, clearable: true }),
       ...styleProps(),
     ]);
 
     let styles = ref([
       {
-        prop: "style-select",
-        description: "Main select element",
+        prop: "style-menu",
+        description: "Menu element",
       },
       {
-        prop: "style-icon",
-        description: "Icon element if icon prop is true",
+        prop: "style-item",
+        description: "Menu item element",
+      },
+      {
+        prop: "style-match",
+        description: "Highlight of matched text",
       },
     ]);
 
     let events = ref([
+      {
+        event: "update:page",
+        description:
+          "Fired when next page is displayed (scroll reach end of dropdown menu)",
+      },
+      {
+        event: "input:value",
+        description: "Fired when input value changes",
+      },
+      {
+        event: "state:opened",
+        description: "Dropdown menu opens",
+      },
+      {
+        event: "state:closed",
+        description: "Dropdown menu closes",
+      },
     ]);
 
     let slots = ref([
       {
-        slot: "options-prepend",
-        description: "Slot for additional options (added before options from options prop)",
-      },
-      {
-        slot: "default",
-        description: "Slot for additional options (added after options from options prop)",
-      },
-      {
-        slot: "icon",
-        description: "Slot for icon",
+        slot: "item",
+        description:
+          "Slot for menu item. Slot props: `text`, `value`, `item`, `inputValue`, `highlight(string, match)`",
       },
     ]);
 
@@ -87,5 +196,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

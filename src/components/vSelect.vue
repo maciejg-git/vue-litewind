@@ -73,7 +73,7 @@ import vInput from "./vInput.vue";
 // directives
 import detectScrollBottom from "../directives/detect-scroll-bottom";
 // tools
-import { isString, isBoolean, isObject } from "../tools";
+import { isObject } from "../tools";
 // props
 import {
   sharedPopperProps,
@@ -85,7 +85,7 @@ import { defaultProps } from "../defaultProps";
 export default {
   props: {
     modelValue: {
-      type: [String, Object],
+      type: [String, Object, Boolean, Number],
       default: undefined,
     },
     // v-input props
@@ -93,7 +93,6 @@ export default {
       type: Boolean,
       default: defaultProps("select", "useLoader", true),
     },
-    ...sharedPopperProps("select"),
     items: {
       type: Array,
       default: [],
@@ -129,7 +128,7 @@ export default {
     emptyDataMessage: {
       type: String,
       default: defaultProps(
-        "autocomplete",
+        "select",
         "emptyDataMessage",
         "No data available"
       ),
@@ -162,6 +161,7 @@ export default {
       type: String,
       default: defaultProps("select", "styleItem", ""),
     },
+    ...sharedPopperProps("select"),
     ...sharedFormProps(null, { icon: true, clearable: true }),
     ...sharedStyleProps("select"),
   },
@@ -254,6 +254,12 @@ export default {
       return item;
     };
 
+    let getItemByValue = (value) => {
+      return props.items.find((v) => {
+        return getItemValue(v) === value
+      })
+    }
+
     let itemsFiltered = computed(() => {
       if (!props.autocomplete) return props.items;
       if (props.isLoading || props.noFilter) return props.items;
@@ -326,7 +332,9 @@ export default {
     watch(
       localModel,
       (value) => {
-        update(value);
+        let item = getItemByValue(value)
+        localText.value = getItemText(item)
+        selectedItem.value = value
       },
       { immediate: true }
     );

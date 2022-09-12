@@ -1,12 +1,23 @@
 import { globalOptions } from "./plugin";
 
 export let defaultProps = (component, prop, def) => {
-  return () => {
+  return (props) => {
+    let componentProps = globalOptions.componentProps[component]
+
     if (
-      globalOptions.componentProps[component] &&
-      globalOptions.componentProps[component][prop] !== undefined
+      componentProps &&
+      componentProps[prop] !== undefined
     ) {
-      return globalOptions.componentProps[component][prop];
+      return componentProps[prop];
+    }
+    if (componentProps && componentProps.computed) {
+      let { base, name } = props
+
+      let computed = componentProps.computed(base, name)
+
+      if (computed && computed[prop] !== undefined) {
+        return computed[prop]
+      }
     }
     if (globalOptions.globalProps[prop] !== undefined) {
       return globalOptions.globalProps[prop];

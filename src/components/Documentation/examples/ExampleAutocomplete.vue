@@ -10,7 +10,6 @@
     :clearable="example.clearable"
     :transition="example.transition"
     :state="example.state"
-    :dropdown="{ offsetY: 5 }"
     style-menu="shadow"
     class="w-[420px]"
     @input:value="query($event)"
@@ -27,22 +26,19 @@
         <div>
           <label for="use-loader">use-loader:</label>
           <v-select-prop id="use-loader" v-model="example.useLoader">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
           </v-select-prop>
         </div>
         <div>
           <label for="clearable">clearable:</label>
           <v-select-prop id="clearable" v-model="example.clearable">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
           </v-select-prop>
         </div>
         <div>
           <label for="transition">transition:</label>
-          <v-select id="transition" v-model="example.transition">
-            <option value="fade">fade</option>
-            <option value="">empty string</option>
+          <v-select id="transition" v-model="example.transition" :items="[
+              'fade',
+              { text: 'empty string', value: '' },
+            ]">
           </v-select>
         </div>
       </div>

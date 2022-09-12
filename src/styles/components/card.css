@@ -60,4 +60,8 @@
           dark:shadow-lg
           dark:shadow-black/30
       }
+      &.card--menu {
+        @apply
+          py-2
+      }
   }

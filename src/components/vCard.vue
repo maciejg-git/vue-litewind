@@ -7,6 +7,7 @@
 <script>
 import useStyles from "./composition/use-styles";
 import { sharedStyleProps } from "../shared-props";
+import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
@@ -16,7 +17,7 @@ export default {
     },
     styleCard: {
       type: String,
-      default: "",
+      default: defaultProps("card", "styleCard", ""),
     },
     ...sharedStyleProps("card"),
   },

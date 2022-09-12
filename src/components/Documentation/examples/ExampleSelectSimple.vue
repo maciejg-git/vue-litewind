@@ -1,12 +1,12 @@
 <template>
-  <v-autocomplete
+  <v-select
     v-model="example.model"
     :items="example.items"
     icon="b-exclamation-circle"
     inline
     style-menu="shadow"
     class="w-[420px]"
-  ></v-autocomplete>
+  ></v-select>
 </template>
 
 <script>

@@ -4,7 +4,7 @@
     :items="[true, false]"
     style-icon="true:valid false:invalid"
     :input="{ variant: localModel }"
-    :card="{ styleCard: 'menu shadow' }"
+    :card="{ styleCard: 'menu shadow', base: 'flat' }"
     :icon="localModel ? 'b-check-lg' : 'b-x'"
     @click:icon="localModel = !localModel"
     :offsetY="5"
