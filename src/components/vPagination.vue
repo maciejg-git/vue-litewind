@@ -48,11 +48,12 @@ import ChevronRight from "./icons/chevron-right.js";
 // tools
 import { clamp, getNumberRange, isNumber } from "../tools.js";
 // props
-import { sharedStyleProps } from "../shared-props";
+import { sharedProps, sharedStyleProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
+    ...sharedProps(),
     modelValue: {
       type: Number,
       default: undefined,

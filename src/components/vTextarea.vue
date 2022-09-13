@@ -42,11 +42,12 @@ import vFormText from "./vFormText.vue";
 // validators
 import { globalValidators } from "../validators";
 // props
-import { sharedStyleProps, sharedFormProps } from "../shared-props";
+import { sharedProps, sharedStyleProps, sharedFormProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
+    ...sharedProps(),
     modelValue: {
       type: String,
       default: undefined,

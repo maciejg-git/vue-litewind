@@ -36,6 +36,21 @@
   </section>
 
   <section>
+    <h4>Notes</h4>
+    <p>
+    <ul class="flex flex-col gap-y-7">
+      <li>
+        <header class="font-semibold text-lg mb-2">
+          <span>#</span>
+          Autocomplete
+        </header>
+        Select allows autocomplete functionality to search for options. Enable autocomplete mode with <code class="code-text">autocomplete</code> prop or use <code class="code-text">v-autocomplete</code> component. In autocomplete mode <code class="code-text">no-filter</code> and <code class="code-text">is-loading</code> props can be used when requesting data from API.
+      </li>
+    </ul>
+    </p>
+  </section>
+
+  <section>
     <h4>Example - simple select</h4>
     <div class="example">
       <example name="ExampleSelectSimple"></example>

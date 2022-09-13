@@ -6,7 +6,10 @@
   ></slot>
 
   <teleport to="body">
-    <transition :name="transition" @after-leave="onPopperTransitionLeave">
+    <transition
+      :name="transition"
+      @after-leave="onPopperTransitionLeave"
+    >
       <div
         v-if="isPopperVisible"
         ref="popper"
@@ -16,7 +19,10 @@
         @mouseleave="allowHiding"
         class="absolute z-50"
       >
-        <slot name="default" :hide="hide"></slot>
+        <slot
+          name="default"
+          :hide="hide"
+        ></slot>
       </div>
     </transition>
   </teleport>
@@ -24,14 +30,18 @@
 
 <script>
 // vue
-import { ref, provide, toRef, toRefs, watch, onBeforeUnmount } from "vue";
+import { provide, toRef, toRefs, watch, onBeforeUnmount } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
 import useClickOutside from "./composition/use-click-outside";
 import useTrigger from "./composition/use-trigger";
 // props
-import { sharedPopperProps, sharedStyleProps } from "../shared-props";
+import {
+  sharedProps,
+  sharedPopperProps,
+  sharedStyleProps,
+} from "../shared-props";
 // props
 import { defaultProps } from "../defaultProps";
 // trigger
@@ -40,6 +50,7 @@ import { registerListener, removeListener } from "../trigger";
 export default {
   inheritAttrs: true,
   props: {
+    ...sharedProps(),
     modelValue: {
       type: Boolean,
       default: false,
@@ -144,12 +155,12 @@ export default {
 
     // trigger by id
 
-    let { id } = attrs
+    let { id } = attrs;
 
     if (id && !slots.reference) {
-      registerListener(id, referenceSlotProps)
+      registerListener(id, referenceSlotProps);
 
-      onBeforeUnmount(() => removeListener(id))
+      onBeforeUnmount(() => removeListener(id));
     }
 
     provide("control-dropdown", {

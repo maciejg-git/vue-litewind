@@ -18,11 +18,12 @@ import vCaretLeftFillIcon from "./icons/caret-left-fill.js";
 import vCaretUpFillIcon from "./icons/caret-up-fill.js";
 import vCaretDownFillIcon from "./icons/caret-down-fill.js";
 // props
-import { sharedStyleProps } from "../shared-props";
+import { sharedProps, sharedStyleProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
+    ...sharedProps(),
     initial: {
       type: String,
       default: "down",

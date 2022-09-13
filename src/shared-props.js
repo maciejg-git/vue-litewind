@@ -1,6 +1,12 @@
 import { correctPlacement } from "./const.js";
 import { defaultProps } from "./defaultProps";
 
+const sharedProps = () => {
+  return {
+    name: { type: String, default: "" },
+  };
+};
+
 // popper props
 
 const sharedPopperProps = (component) => {
@@ -12,9 +18,18 @@ const sharedPopperProps = (component) => {
         return correctPlacement.includes(v);
       },
     },
-    offsetX: { type: Number, default: defaultProps(component, "offsetX", 0) },
-    offsetY: { type: Number, default: defaultProps(component, "offsetY", 0) },
-    noFlip: { type: Boolean, default: defaultProps(component, "noFlip", false) },
+    offsetX: {
+      type: Number,
+      default: defaultProps(component, "offsetX", 0),
+    },
+    offsetY: {
+      type: Number,
+      default: defaultProps(component, "offsetY", 0),
+    },
+    noFlip: {
+      type: Boolean,
+      default: defaultProps(component, "noFlip", false),
+    },
   };
 };
 
@@ -22,8 +37,14 @@ const sharedPopperProps = (component) => {
 
 const sharedStyleProps = (component) => {
   return {
-    base: { type: String, default: defaultProps(component, "base", "default") },
-    variant: { type: [String, Boolean], default: "" },
+    base: {
+      type: String,
+      default: defaultProps(component, "base", "default"),
+    },
+    variant: {
+      type: [String, Boolean],
+      default: "",
+    },
   };
 };
 
@@ -35,10 +56,16 @@ const sharedFormProps = (d, options) => {
 
   let props = {};
   if (options.icon === true) {
-    props.icon = { type: String, default: d.icon || "" };
+    props.icon = {
+      type: String,
+      default: d.icon || "",
+    };
   }
   if (options.clearable === true) {
-    props.clearable = { type: Boolean, default: d.clearable || false };
+    props.clearable = {
+      type: Boolean,
+      default: d.clearable || false,
+    };
   }
 
   return {
@@ -47,8 +74,4 @@ const sharedFormProps = (d, options) => {
   };
 };
 
-export {
-  sharedPopperProps,
-  sharedStyleProps,
-  sharedFormProps,
-}
+export { sharedProps, sharedPopperProps, sharedStyleProps, sharedFormProps };

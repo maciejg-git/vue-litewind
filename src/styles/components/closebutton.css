@@ -11,8 +11,8 @@
   }
       &.close-button--small {
         @apply
-          w-4
-          h-4
+          w-2
+          h-2
       }
   }
 

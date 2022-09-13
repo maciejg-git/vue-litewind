@@ -5,6 +5,7 @@
 
 .match {
   @apply
+    font-semibold
     bg-secondary-100
-    dark:bg-dark-500
+    dark:bg-dark-600
 }

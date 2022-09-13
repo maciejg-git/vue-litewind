@@ -7,10 +7,11 @@
 <script>
 import { computed } from "vue";
 import useStyles from "./composition/use-styles";
-import { sharedStyleProps } from "../shared-props";
+import { sharedProps, sharedStyleProps } from "../shared-props";
 
 export default {
   props: {
+    ...sharedProps(),
     fixed: {
       type: Boolean,
       default: false,

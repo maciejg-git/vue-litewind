@@ -33,11 +33,12 @@ import { computed } from "vue";
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
 // props
-import { sharedStyleProps, sharedFormProps } from "../shared-props";
+import { sharedProps, sharedStyleProps, sharedFormProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
+    ...sharedProps(),
     modelValue: {
       type: [String, Number, Array, Boolean, Object],
       default: undefined,

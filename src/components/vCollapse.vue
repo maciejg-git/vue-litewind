@@ -16,6 +16,7 @@ import { ref, watch, onMounted, onUnmounted, inject } from "vue";
 // components
 import vTransition from "./vTransition.vue";
 // props
+import { sharedProps } from "../shared-props"
 import { defaultProps } from "../defaultProps";
 
 export default {
@@ -23,6 +24,7 @@ export default {
     vTransition,
   },
   props: {
+    ...sharedProps(),
     modelValue: {
       type: Boolean,
       default: false,

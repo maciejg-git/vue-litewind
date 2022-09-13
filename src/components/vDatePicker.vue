@@ -103,11 +103,12 @@ import ChevronLeft from "./icons/chevron-left.js";
 import { pad, getNumberRange } from "../tools.js";
 import { locales } from "../const";
 // props
-import { sharedStyleProps } from "../shared-props";
+import { sharedProps, sharedStyleProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
+    ...sharedProps(),
     modelValue: {
       type: [String, Array],
       default: undefined,

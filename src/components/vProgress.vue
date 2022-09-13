@@ -25,11 +25,12 @@ import useStyles from "./composition/use-styles";
 // tools
 import { clamp, isNumber } from "../tools";
 // props
-import { sharedStyleProps } from "../shared-props";
+import { sharedProps, sharedStyleProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
+    ...sharedProps(),
     value: {
       type: [Number, String],
       default: 0,

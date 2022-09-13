@@ -30,11 +30,12 @@ import BCheckLg from "./icons/check-lg";
 import BExclamationCircle from "./icons/exclamation-circle";
 import BInfoCircle from "./icons/info-circle";
 // props
-import { sharedStyleProps } from "../shared-props";
+import { sharedProps, sharedStyleProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
+    ...sharedProps(),
     modelValue: {
       type: Boolean,
       default: undefined,

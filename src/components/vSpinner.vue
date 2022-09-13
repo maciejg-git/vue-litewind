@@ -33,10 +33,11 @@ import useStyles from "./composition/use-styles";
 // components
 import vIcon from "./vIcon.vue";
 // props
-import { sharedStyleProps } from "../shared-props";
+import { sharedProps, sharedStyleProps } from "../shared-props";
 
 export default {
   props: {
+    ...sharedProps(),
     type: {
       type: String,
       default: "border",

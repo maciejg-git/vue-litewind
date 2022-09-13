@@ -25,11 +25,12 @@ import { ref, toRef, onMounted, computed, provide, h, toRaw } from "vue";
 // composition
 import useStyles from "./composition/use-styles";
 // props
-import { sharedStyleProps } from "../shared-props";
+import { sharedProps, sharedStyleProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
+    ...sharedProps(),
     fill: {
       type: Boolean,
       default: false,

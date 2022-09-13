@@ -33,13 +33,14 @@ import useStyles from "./composition/use-styles";
 // components
 import vCloseButton from "./vCloseButton.vue";
 // props
-import { sharedStyleProps } from "../shared-props";
+import { sharedProps, sharedStyleProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 // trigger
 import { registerListener, removeListener } from "../trigger";
 
 export default {
   props: {
+    ...sharedProps(),
     modelValue: {
       type: Boolean,
       default: false,

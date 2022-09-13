@@ -22,11 +22,12 @@ import useStyles from "./composition/use-styles";
 // components
 import vTreeNode from "./vTreeNode.vue";
 // props
-import { sharedStyleProps } from "../shared-props";
+import { sharedProps, sharedStyleProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
+    ...sharedProps(),
     items: {
       type: Object,
       default: [],

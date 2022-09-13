@@ -24,11 +24,12 @@ import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
 import useUid from "./composition/use-uid";
 // props
-import { sharedStyleProps, sharedFormProps } from "../shared-props";
+import { sharedProps, sharedStyleProps, sharedFormProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
+    ...sharedProps(),
     modelValue: {
       type: [Array, Boolean, String],
       default: undefined,

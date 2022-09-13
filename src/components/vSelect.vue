@@ -76,6 +76,7 @@ import detectScrollBottom from "../directives/detect-scroll-bottom";
 import { isObject } from "../tools";
 // props
 import {
+  sharedProps,
   sharedPopperProps,
   sharedStyleProps,
   sharedFormProps,
@@ -84,6 +85,7 @@ import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
+    ...sharedProps(),
     modelValue: {
       type: [String, Object, Boolean, Number],
       default: undefined,
@@ -93,6 +95,11 @@ export default {
       type: Boolean,
       default: defaultProps("select", "useLoader", true),
     },
+    isLoading: {
+      type: Boolean,
+      default: false,
+    },
+    // v-select props
     items: {
       type: Array,
       default: [],

@@ -105,11 +105,12 @@ import { globalValidators } from "../validators";
 // tools
 import { isFunction } from "../tools";
 // props
-import { sharedStyleProps, sharedFormProps } from "../shared-props";
+import { sharedProps, sharedStyleProps, sharedFormProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
+    ...sharedProps(),
     modelValue: {
       type: [String, Number, Array, Boolean, Number],
       default: "",

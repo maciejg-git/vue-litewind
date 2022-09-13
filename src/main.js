@@ -31,12 +31,13 @@ app.component("EventViewer", EventViewer)
 app.component("vSelectProp", vSelectProp)
 app.component("Example", Example)
 
-// icons
+// component icons
 const icons = import.meta.globEager('./components/Documentation/icons/*.js')
 Object.entries(icons).forEach(([path, definition]) => {
   registerIcon(app, definition.default)
 })
 
+// component examples
 const examples = import.meta.glob('./components/Documentation/examples/Example*.vue')
 for (const path in examples) {
   let file = path.replace(/^.*[\\\/]/, '')
@@ -61,11 +62,23 @@ app.use(componentPlugin, {
   components,
   directives,
   componentProps: {
+      card: {
+        base: 'flat',
+        styleCard: 'menu shadow',
+      },
+    input: {
+    },
     select: {
       inline: true,
       offsetY: 5,
+      input: {
+        base: 'default',
+        closeButton: {
+          styleCloseButton: 'small',
+        }
+      },
       card: {
-        base: 'flat',
+        base: 'default',
         styleCard: 'menu shadow',
       },
       computed(base, name) {

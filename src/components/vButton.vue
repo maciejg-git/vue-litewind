@@ -19,10 +19,11 @@ import { computed } from "vue";
 import useStyles from "./composition/use-styles";
 // props
 import { defaultProps } from "../defaultProps";
-import { sharedStyleProps } from "../shared-props";
+import { sharedProps, sharedStyleProps } from "../shared-props";
 
 export default {
   props: {
+    ...sharedProps(),
     disabled: {
       type: Boolean,
       default: false,

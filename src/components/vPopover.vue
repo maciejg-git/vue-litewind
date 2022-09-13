@@ -19,13 +19,14 @@ import usePopper from "./composition/use-popper.js";
 import useClickOutside from "./composition/use-click-outside";
 import useTrigger from "./composition/use-trigger";
 // props
-import { sharedPopperProps, sharedStyleProps } from "../shared-props";
+import { sharedProps, sharedPopperProps, sharedStyleProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 // trigger
 import { registerListener, removeListener } from "../trigger";
 
 export default {
   props: {
+    ...sharedProps(),
     ...sharedPopperProps("popover"),
     trigger: {
       type: String,
