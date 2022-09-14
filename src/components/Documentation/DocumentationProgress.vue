@@ -53,7 +53,7 @@
 
 <script>
 import { ref } from "vue";
-import { styleProps } from "./shared-props"
+import { sharedProps, styleProps } from "./shared-props"
 
 export default {
   setup() {
@@ -98,6 +98,7 @@ export default {
           "Renders indeterminate progress bar. <span class='font-semibold'>Note</span>: value, max, label, precision and transition props are ignored if indeterminate is true. You can switch between indeterminate or determinate by flicking this prop on and off",
       },
       ...styleProps(),
+      ...sharedProps(),
     ]);
 
     let styles = ref([

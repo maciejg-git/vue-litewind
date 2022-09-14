@@ -66,9 +66,13 @@
       <div class="flex flex-col gap-y-2 mt-5">
         <div>
           <label for="transition">transition:</label>
-          <v-select id="transition" v-model="example.transition">
-            <option value="fade-collapse">fade-collapse</option>
-            <option value="">none (empty string)</option>
+          <v-select id="transition" v-model="example.transition" :items="[
+            'fade-collapse',
+            {
+            text: 'empty string',
+            value: ''
+            }
+            ]">
           </v-select>
         </div>
       </div>

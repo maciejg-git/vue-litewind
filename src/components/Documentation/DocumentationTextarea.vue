@@ -29,7 +29,7 @@
 
 <script>
 import { ref } from "vue";
-import { styleProps, formProps } from "./shared-props"
+import { sharedProps, styleProps, formProps } from "./shared-props"
 
 export default {
   setup(props) {
@@ -74,6 +74,7 @@ export default {
       },
       ...formProps(),
       ...styleProps(),
+      ...sharedProps(),
     ]);
 
     let styles = ref([

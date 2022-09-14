@@ -93,7 +93,7 @@
 
 <script>
 import { ref } from "vue";
-import { styleProps } from "./shared-props"
+import { sharedProps, styleProps } from "./shared-props"
 
 export default {
   setup() {
@@ -178,6 +178,7 @@ export default {
           "Text displayed if table is empty after filtering out all items",
       },
       ...styleProps(),
+      ...sharedProps(),
     ]);
 
     let styles = ref([

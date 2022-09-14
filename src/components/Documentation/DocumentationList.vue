@@ -25,7 +25,7 @@
 
 <script>
 import { ref } from "vue";
-import { styleProps } from "./shared-props"
+import { sharedProps, styleProps } from "./shared-props"
 
 export default {
   setup(props) {
@@ -43,6 +43,7 @@ export default {
         description: "Defines tag to use in list item child component (for example 'div', 'a' or 'button')",
       },
       ...styleProps(),
+      ...sharedProps(),
     ]);
 
     let styles = ref([

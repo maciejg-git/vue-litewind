@@ -14,7 +14,7 @@
   >
     <template #item="{ item, inputValue }">
       <div class="flex justify-between">
-        <div v-html="highlightMatch(item['full_name'],inputValue, ['match'])"></div>
+        <div v-html="highlight(item['full_name'], inputValue)"></div>
         <div class="text-xs">{{ item.department }}</div>
       </div>
       <span class="text-sm font-semibold text-text-400 dark:text-text-400">
@@ -27,7 +27,7 @@
 <script>
 import { reactive } from "vue";
 import company from "../data/company.json";
-import { highlightMatch } from "../../../tools"
+import { highlight } from "../../../tools"
 
 export default {
   setup() {
@@ -55,7 +55,7 @@ export default {
     return {
       example,
       query,
-      highlightMatch,
+      highlight,
     };
   },
 };

@@ -35,7 +35,7 @@
 
 <script>
 import { ref } from "vue";
-import { styleProps } from "./shared-props"
+import { sharedProps, styleProps } from "./shared-props"
 
 export default {
   setup() {
@@ -167,6 +167,7 @@ export default {
         description: "Sets animation effect when opening or closing folders. Valid values are: 'fade', 'fade-slide', or `empty string` to disable animations.",
       },
       ...styleProps("tree"),
+      ...sharedProps(),
     ]);
 
     let styles = ref([

@@ -29,7 +29,7 @@
 
 <script>
 import { ref } from "vue";
-import { styleProps } from "./shared-props"
+import { sharedProps, styleProps } from "./shared-props"
 
 export default {
   setup() {
@@ -56,6 +56,7 @@ export default {
           "Update this prop to unique key every time contents of default slot changes (required to rerender component and play animation)",
       },
       ...styleProps(),
+      ...sharedProps(),
     ]);
 
     let styles = ref([

@@ -28,10 +28,9 @@
   <div class="flex justify-between items-center">
     <div class="mt-5">
       <label for="style">Tabs style:</label>
-      <v-select id="style" v-model="example.base">
-        <option value="default">default</option>
-        <option value="material">material</option>
-        <option value="rounded">rounded</option>
+      <v-select id="style" v-model="example.base" :items="[
+        'default', 'material', 'rounded'
+        ]">
       </v-select>
     </div>
     <v-button @click="addTab">Add tab</v-button>

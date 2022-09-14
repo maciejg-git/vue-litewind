@@ -26,7 +26,7 @@
 
 <script>
 import { ref } from "vue";
-import { styleProps } from "./shared-props"
+import { sharedProps, styleProps } from "./shared-props"
 
 export default {
   setup() {
@@ -44,6 +44,7 @@ export default {
         description: "Character or string that seperates links",
       },
       ...styleProps(),
+      ...sharedProps(),
     ]);
 
     let styles = ref([

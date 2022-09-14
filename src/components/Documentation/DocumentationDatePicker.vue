@@ -64,7 +64,7 @@
 
 <script>
 import { ref } from "vue";
-import { styleProps } from "./shared-props"
+import { sharedProps, styleProps } from "./shared-props"
 
 export default {
   setup() {
@@ -166,6 +166,7 @@ export default {
           "Transition when switching months or years. Valid values are 'fade', 'slide' or `empty string` for no transition",
       },
       ...styleProps(),
+      ...sharedProps(),
     ]);
 
     let styles = ref([

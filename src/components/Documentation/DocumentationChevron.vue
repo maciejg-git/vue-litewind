@@ -24,7 +24,7 @@
 
 <script>
 import { ref } from "vue";
-import { styleProps } from "./shared-props"
+import { sharedProps, styleProps } from "./shared-props"
 
 export default {
   setup(props) {
@@ -68,6 +68,7 @@ export default {
           "Name of the icon to use instead of default chevron/triangle",
       },
       ...styleProps(),
+      ...sharedProps(),
     ]);
 
     let styles = ref([

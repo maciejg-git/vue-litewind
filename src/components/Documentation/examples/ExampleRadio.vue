@@ -38,10 +38,18 @@
         </div>
         <div>
           <label for="state">state:</label>
-          <v-select id="state" v-model="example.state">
-            <option value="">normal (empty string)</option>
-            <option value="valid">valid</option>
-            <option value="invalid">invalid</option>
+          <v-select id="state" v-model="example.state" :items="[
+              {
+                text: 'component controlled (null)',
+                value: null,
+              },
+              {
+                text: 'empty string',
+                value: '',
+              },
+              'valid',
+              'invalid,'
+            ]">
           </v-select>
         </div>
       </div>

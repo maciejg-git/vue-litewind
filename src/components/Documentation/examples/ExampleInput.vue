@@ -66,16 +66,9 @@
         </div>
         <div>
           <label for="type">type:</label>
-          <v-select id="type" v-model="example.type">
-            <option value="text">text</option>
-            <option value="password">password</option>
-            <option value="email">email</option>
-            <option value="number">number</option>
-            <option value="search">search</option>
-            <option value="time">time</option>
-            <option value="url">url</option>
-            <option value="color">color</option>
-            <option value="date">date</option>
+          <v-select id="type" v-model="example.type" :items="[
+            'text', 'password', 'email', 'number', 'search', 'time', 'url', 'color', 'date'
+            ]">
           </v-select>
         </div>
         <div>
@@ -105,11 +98,18 @@
         </div>
         <div>
           <label for="state">state:</label>
-          <v-select id="state" v-model="example.state">
-            <option :value=null>component controlled (null)</option>
-            <option value="">normal (empty string)</option>
-            <option value="valid">valid</option>
-            <option value="invalid">invalid</option>
+          <v-select id="state" v-model="example.state" :items="[
+              {
+                text: 'component controlled (null)',
+                value: null,
+              },
+              {
+                text: 'empty string',
+                value: '',
+              },
+              'valid',
+              'invalid,'
+            ]">
           </v-select>
         </div>
       </div>

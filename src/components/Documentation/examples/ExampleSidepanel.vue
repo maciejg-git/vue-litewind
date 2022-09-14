@@ -54,9 +54,13 @@
       </div>
       <div class="mb-2">
         <label for="transition">transition:</label>
-        <v-select id="transition" v-model="example.transition">
-          <option value="fade-slide">fade-slide</option>
-          <option value="">empty string</option>
+        <v-select id="transition" v-model="example.transition" :items="[
+          'fade-slide',
+          {
+            text: 'empty string',
+            value: '',
+          }
+          ]">
         </v-select>
       </div>
     </v-tab>

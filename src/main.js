@@ -62,27 +62,12 @@ app.use(componentPlugin, {
   components,
   directives,
   componentProps: {
-      card: {
-        base: 'flat',
-        styleCard: 'menu shadow',
-      },
-    input: {
-    },
     select: {
       inline: true,
       offsetY: 5,
-      input: {
-        base: 'default',
-        closeButton: {
-          styleCloseButton: 'small',
-        }
-      },
       card: {
-        base: 'default',
+        base: 'flat',
         styleCard: 'menu shadow',
-      },
-      computed(base, name) {
-
       }
     }
   }

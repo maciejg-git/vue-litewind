@@ -1,25 +1,18 @@
 import { globalOptions } from "./plugin";
+import { isFunction } from "./tools"
 
 export let defaultProps = (component, prop, def) => {
   return (props) => {
     let componentProps = globalOptions.componentProps[component]
 
-      if (
-        componentProps &&
-        componentProps[prop] !== undefined
-      ) {
-        return componentProps[prop];
-      }
-      if (componentProps && componentProps.computed) {
+    if (componentProps && componentProps[prop]) {
+      if (isFunction(componentProps[prop])) {
         let { base, name } = props
 
-        let computed = componentProps.computed(base, name)
-
-        if (computed && computed[prop] !== undefined) {
-          return computed[prop]
-        }
+        return componentProps[prop](base, name)
       }
-
+      return componentProps[prop]
+    }
     // if (globalOptions.globalProps[prop] !== undefined) {
     //   return globalOptions.globalProps[prop];
     // }

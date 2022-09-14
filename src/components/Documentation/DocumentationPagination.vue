@@ -28,7 +28,7 @@
 
 <script>
 import { ref } from "vue";
-import { styleProps } from "./shared-props"
+import { sharedProps, styleProps } from "./shared-props"
 
 export default {
   setup() {
@@ -61,6 +61,7 @@ export default {
           "Maximum number of pages to display. This prop must have value of 3 or more",
       },
       ...styleProps(),
+      ...sharedProps(),
     ]);
 
     let styles = ref([

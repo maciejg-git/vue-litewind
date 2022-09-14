@@ -7,34 +7,27 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import useStyles from "./composition/use-styles";
 import { sharedProps, sharedStyleProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
-export default {
-  props: {
-    ...sharedProps(),
-    width: {
-      type: String,
-      default: undefined,
-    },
-    styleCard: {
-      type: String,
-      default: defaultProps("card", "styleCard", ""),
-    },
-    ...sharedStyleProps("card"),
+const props = defineProps({
+  ...sharedProps(),
+  width: {
+    type: String,
+    default: undefined,
   },
-  setup(props) {
-    let { classes } = useStyles("card", props, {
-      card: null,
-    });
+  styleCard: {
+    type: String,
+    default: defaultProps("card", "styleCard", ""),
+  },
+  ...sharedStyleProps("card"),
+});
 
-    return {
-      classes,
-    };
-  },
-};
+let { classes } = useStyles("card", props, {
+  card: null,
+});
 </script>
 
 <style scoped></style>

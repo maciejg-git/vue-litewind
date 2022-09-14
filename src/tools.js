@@ -59,12 +59,12 @@ let schedule = async (fn, ms, ...args) => {
 
 // highlight
 
-let highlightMatch = (string, match, classes) => {
-  let c = classes.join(" ")
+let highlight = (string, match, classes) => {
+  classes = classes || 'match'
 
   return string.replace(
     new RegExp(`(${match.replace(/[.*+\-?^${}()|[\]\\]/g, "\\$&")})`, "i"),
-    `<span class='${c}'>$1</span>`
+    `<span class='${classes}'>$1</span>`
   );
 };
 
@@ -84,5 +84,5 @@ export {
   getNumberRange,
   undefNullToStr,
   schedule,
-  highlightMatch,
+  highlight,
 };

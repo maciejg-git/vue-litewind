@@ -56,12 +56,9 @@
     </div>
     <div class="mt-4 lg:mt-0">
       <label for="items-per-page" class="mr-4">Items per page</label>
-      <v-select v-model.number="example.itemsPerPage" id="items-per-page">
-        <option value="0">0</option>
-        <option value="5">5</option>
-        <option value="10">10</option>
-        <option value="20">20</option>
-        <option value="50">50</option>
+      <v-select v-model.number="example.itemsPerPage" id="items-per-page" :items="[
+        0, 5, 10, 20, 50
+        ]">
       </v-select>
     </div>
   </div>

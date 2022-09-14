@@ -1,5 +1,5 @@
 <template>
-  <v-card width="320px" style-card="shadow hoverable" class="overflow-hidden">
+  <v-card width="320px" style-card="shadow hoverable" class="overflow-hidden" name="select-card">
     <img :src="randomPhoto()" alt="" />
     <header class="font-semibold text-lg pt-3 px-6">Example card</header>
     <header class="text-gray-500 text-sm py-1 px-6">Subtitle</header>

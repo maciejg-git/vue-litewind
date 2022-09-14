@@ -11,7 +11,7 @@
       &.alert--info {
         @apply
           text-text-900
-          bg-info-300
+          bg-info-400
           border-info-400
           dark:text-text-800
           dark:bg-info-400

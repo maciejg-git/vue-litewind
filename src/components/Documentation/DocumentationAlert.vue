@@ -29,7 +29,7 @@
 
 <script>
 import { ref } from "vue";
-import { styleProps } from "./shared-props"
+import { sharedProps, styleProps } from "./shared-props"
 
 export default {
   setup() {
@@ -68,6 +68,7 @@ export default {
           "Alert has few default icons for variants: 'success', 'warn', 'danger', 'info', 'valid', 'invalid'. Icon or default slot can be used for custom icons.",
       },
       ...styleProps(),
+      ...sharedProps(),
     ]);
 
     let styles = ref([

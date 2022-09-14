@@ -74,7 +74,7 @@
 
 <script>
 import { ref } from "vue";
-import { styleProps } from "./shared-props"
+import { sharedProps, styleProps } from "./shared-props"
 
 export default {
   setup() {
@@ -201,6 +201,7 @@ export default {
           "Sets animation effect when showing or hiding modal. Valid values are: 'fade', 'fade-slide', 'fade-scale' or `empty string` to disable animations. Animation speed can be set in `--modal-transition-duration` css variable.",
       },
       ...styleProps(),
+      ...sharedProps(),
     ]);
 
     let styles = ref([

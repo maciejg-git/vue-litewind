@@ -19,12 +19,13 @@
 
 <script>
 import { ref } from "vue";
-import { styleProps } from "./shared-props"
+import { sharedProps, styleProps } from "./shared-props"
 
 export default {
   setup() {
     let reference = ref([
       ...styleProps(),
+      ...sharedProps(),
     ]);
 
     let styles = ref([

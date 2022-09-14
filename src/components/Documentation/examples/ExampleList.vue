@@ -22,9 +22,9 @@
   <!-- CUT START -->
   <div class="mt-5">
     <label for="style">List style:</label>
-    <v-select id="style" v-model="example.base">
-      <option value="default">bootstrap</option>
-      <option value="material">material</option>
+    <v-select id="style" v-model="example.base" :items="[
+        'default', 'material'
+      ]">
     </v-select>
   </div>
   <v-tabs base="material" class="mt-10">
@@ -32,10 +32,9 @@
       <div class="flex flex-col gap-y-2 mt-5">
         <div>
           <label for="tag">tag:</label>
-          <v-select id="tag" v-model="example.tag">
-            <option value="div">div</option>
-            <option value="a">a</option>
-            <option value="button">button</option>
+          <v-select id="tag" v-model="example.tag" :items="[
+            'div', 'a', 'button'
+            ]">
           </v-select>
         </div>
       </div>

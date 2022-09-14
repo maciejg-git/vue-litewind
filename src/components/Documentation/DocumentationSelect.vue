@@ -75,7 +75,7 @@
 
 <script>
 import { ref } from "vue";
-import { popperProps, styleProps, formProps } from "./shared-props";
+import { sharedProps, popperProps, styleProps, formProps } from "./shared-props";
 
 export default {
   setup() {
@@ -156,6 +156,7 @@ export default {
       ...popperProps,
       ...formProps({ icon: true, clearable: true }),
       ...styleProps(),
+      ...sharedProps(),
     ]);
 
     let styles = ref([

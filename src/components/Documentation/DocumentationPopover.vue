@@ -74,7 +74,7 @@
 
 <script>
 import { ref } from "vue";
-import { popperProps, styleProps } from "./shared-props"
+import { sharedProps, popperProps, styleProps } from "./shared-props"
 
 export default {
   setup() {
@@ -106,6 +106,7 @@ export default {
       },
       ...popperProps,
       ...styleProps(),
+      ...sharedProps(),
     ]);
 
     let styles = ref([

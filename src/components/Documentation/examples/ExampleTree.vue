@@ -103,10 +103,14 @@
         </div>
         <div>
           <label for="transition">transition:</label>
-          <v-select id="transition" v-model="example.transition">
-            <option value="fade">fade</option>
-            <option value="fade-slide">fade-slide</option>
-            <option value="">empty string</option>
+          <v-select id="transition" v-model="example.transition" :items="[
+            'fade',
+            'fade-slide',
+            {
+              text: 'empty string',
+              value: '',
+            }
+            ]">
           </v-select>
         </div>
       </div>

@@ -59,13 +59,14 @@
   <div class="flex justify-between mt-5">
     <div>
       <label for="variant">Alert variant:</label>
-      <v-select id="variant" v-model="example.variant">
-        <option value="info">info</option>
-        <option value="danger">danger</option>
-        <option value="warn">warn</option>
-        <option value="success">success</option>
-        <option value="valid">valid</option>
-        <option value="invalid">invalid</option>
+      <v-select id="variant" v-model="example.variant" :items="[
+        'info',
+        'danger',
+        'warn',
+        'success',
+        'valid',
+        'invalid',
+        ]">
       </v-select>
     </div>
     <div class="flex gap-4">

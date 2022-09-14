@@ -43,7 +43,7 @@
 
 <script>
 import { ref } from "vue";
-import { styleProps } from "./shared-props"
+import { sharedProps, styleProps } from "./shared-props"
 
 export default {
   setup() {
@@ -55,6 +55,7 @@ export default {
         description: "Width of the card",
       },
       ...styleProps(),
+      ...sharedProps(),
     ]);
 
     let styles = ref([

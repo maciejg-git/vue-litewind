@@ -19,7 +19,7 @@
 
 <script>
 import { ref } from "vue";
-import { styleProps } from "./shared-props"
+import { sharedProps, styleProps } from "./shared-props"
 
 export default {
   setup() {
@@ -37,6 +37,7 @@ export default {
         description: "Icon to use instead of border or SVG spinner",
       },
       ...styleProps(),
+      ...sharedProps(),
     ]);
 
     let styles = ref([

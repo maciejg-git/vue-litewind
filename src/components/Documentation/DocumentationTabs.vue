@@ -61,7 +61,7 @@
 
 <script>
 import { ref } from "vue";
-import { styleProps } from "./shared-props";
+import { sharedProps, styleProps } from "./shared-props";
 
 export default {
   setup(props) {
@@ -92,6 +92,7 @@ export default {
           "Sets animation effect when changing tabs. Valid values are 'fade', 'fade-top-slide', 'fade-side-slide' or `empty string` to disabled animations. Animation speed can be set in `--tabs-transition-duration` css variable.",
       },
       ...styleProps(),
+      ...sharedProps(),
     ]);
 
     let styles = ref([

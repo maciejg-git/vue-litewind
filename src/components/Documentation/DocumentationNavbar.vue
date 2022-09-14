@@ -22,7 +22,7 @@
 
 <script>
 import { ref } from "vue";
-import { styleProps } from "./shared-props"
+import { sharedProps, styleProps } from "./shared-props"
 
 export default {
   setup() {
@@ -49,6 +49,7 @@ export default {
           "Places navbar on the bottom. Note: `fixed` must be also set to true",
       },
       ...styleProps(),
+      ...sharedProps(),
     ]);
 
     let styles = ref([

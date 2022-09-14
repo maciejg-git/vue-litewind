@@ -33,7 +33,7 @@
 
 <script>
 import { ref } from "vue";
-import { styleProps } from "./shared-props"
+import { sharedProps, styleProps } from "./shared-props"
 
 export default {
   setup() {
@@ -83,6 +83,7 @@ export default {
           "Sets animation effect when showing or hiding sidepanel. Valid values are: 'fade-slide' or `empty string` to disable animations. Animation speed can be set in `--sidepanel-transition-duration` css variable.",
       },
       ...styleProps(),
+      ...sharedProps(),
     ]);
 
     let styles = ref([

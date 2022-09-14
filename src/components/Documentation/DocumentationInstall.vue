@@ -110,31 +110,19 @@ app.use(componentPlugin, {
     </v-tabs>
 
     <p>
-      You can configure components globally by providing options as second argument of app.use:
+      You can configure components globally by providing options in second argument of app.use:
     </p>
     <p>
     <ul>
       <li>
-        <code class="code-text">globalProps</code> sets default value for prop for all components 
-      </li>
-      <li>
-        <code class="code-text">componentProps</code> sets defaults for props per component. It has higher priority than <code class="code-text">globalProps</code> if both are set.
+        <code class="code-text">componentProps</code> sets default values for props of components.
       </li>
     </ul>
     </p>
     <p>
-    <v-alert icon="warn" style-alert="shadowed borderless outline warn" class="mx-6">
+    <v-alert icon="warn" style-alert="shadowed marked outline warn" class="mx-6">
       Note that you can provide default value for some props only.
     </v-alert>
-      <p>
-        If the same prop is set on component and in options as <code class="code-text">globalProp</code> or <code class="code-text">componentProp</code> the order is:
-        <ul class="mt-2">
-          <li>- props set on components (highest priority)</li>
-          <li>- props from componentProps</li>
-          <li>- props from globalProps</li>
-          <li>- default props set by component</li>
-        </ul>
-      </p>
     </p>
 
     <v-code language="javascript">
@@ -147,9 +135,6 @@ let app = createApp(App);
 
 app.use(componentPlugin, {
   components,
-  globalProps: {
-    base: ''
-  },
   componentProps: {
     input: {
       inline: true,

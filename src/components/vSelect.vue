@@ -1,17 +1,16 @@
 <template>
   <v-input
     v-model="localText"
-    v-bind="{ ...$attrs, ...input }"
-    type="text"
     ref="reference"
     :icon="icon"
     :use-loader="useLoader"
+    :inline="inline"
+    v-bind="{ ...$attrs, ...input }"
     :custom-clearable="clearable"
+    :readonly="!autocomplete"
     show-indicator
     :indicator-switch="isPopperVisible"
-    :chevron="chevron"
-    :readonly="!autocomplete"
-    :inline="inline"
+    type="text"
     @input="handleInput"
     @focus="handleFocusInput"
     @input:blur="handleBlurInput"
@@ -111,14 +110,15 @@ export default {
       type: Boolean,
       default: false,
     },
+    inline: {
+      type: Boolean,
+      default: defaultProps("select", "inline", false),
+    },
+    ...sharedFormProps(null, { icon: true, clearable: true }),
     // v-select props
     items: {
       type: Array,
       default: [],
-    },
-    inline: {
-      type: Boolean,
-      default: defaultProps("select", "inline", false),
     },
     autocomplete: {
       type: Boolean,
@@ -156,10 +156,6 @@ export default {
       type: Object,
       default: defaultProps("select", "card", {}),
     },
-    chevron: {
-      type: Object,
-      default: defaultProps("select", "chevron", {}),
-    },
     itemsPerPage: {
       type: Number,
       default: defaultProps("select", "itemsPerPage", 10),
@@ -177,7 +173,6 @@ export default {
       default: defaultProps("select", "styleItem", ""),
     },
     ...sharedPopperProps("select"),
-    ...sharedFormProps(null, { icon: true, clearable: true }),
     ...sharedStyleProps("select"),
   },
   components: {

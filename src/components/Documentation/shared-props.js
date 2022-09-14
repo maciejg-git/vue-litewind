@@ -29,13 +29,24 @@ export let popperProps = [
   },
 ];
 
+export let sharedProps = () => {
+  return [
+    {
+      prop: "name",
+      type: ["String"],
+      default: "empty string",
+      description: "Name of the component",
+    },
+  ];
+};
+
 export let styleProps = () => {
   return [
     {
       prop: "base",
       type: ["String"],
       default: "'default'",
-      description: "Name of the component",
+      description: "Base name of the component for styling",
     },
   ];
 };
