@@ -1,5 +1,9 @@
 <template>
-  <v-icon :name="icon" :class="getClass()" v-bind="$attrs"></v-icon>
+  <v-icon
+    :name="icon"
+    :class="getClass()"
+    v-bind="$attrs"
+  ></v-icon>
 </template>
 
 <script>

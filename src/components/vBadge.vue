@@ -1,6 +1,12 @@
 <template>
-  <transition :name="updateAnimation" mode="out-in">
-    <span :class="classes.badge.value" :key="updateKey + ''">
+  <transition
+    :name="updateAnimation"
+    mode="out-in"
+  >
+    <span
+      :class="classes.badge.value"
+      :key="updateKey + ''"
+    >
       <slot name="default"></slot>
     </span>
   </transition>
@@ -63,7 +69,7 @@ export default {
 <style scoped lang="postcss">
 .scale-up-enter-active,
 .scale-up-leave-active {
-  transition: transform 0.20s ease;
+  transition: transform 0.2s ease;
 }
 .scale-up-enter-from,
 .scale-up-leave-to {
@@ -72,25 +78,25 @@ export default {
 
 .to-danger-enter-active,
 .to-danger-leave-active {
-  transition: background-color 0.40s ease;
+  transition: background-color 0.4s ease;
 }
 .to-danger-enter-from,
 .to-danger-leave-to {
-  @apply bg-danger-500 dark:bg-danger-500
+  @apply bg-danger-500 dark:bg-danger-500;
 }
 
 .to-success-enter-active,
 .to-success-leave-active {
-  transition: background-color 0.40s ease;
+  transition: background-color 0.4s ease;
 }
 .to-success-enter-from,
 .to-success-leave-to {
-  @apply bg-success-500 dark:bg-success-500
+  @apply bg-success-500 dark:bg-success-500;
 }
 
 .bounce-enter-active,
 .bounce-leave-active {
-  transition: transform 0.20s ease;
+  transition: transform 0.2s ease;
 }
 .bounce-enter-from,
 .bounce-leave-to {

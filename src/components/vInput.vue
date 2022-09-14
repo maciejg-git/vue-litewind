@@ -4,16 +4,33 @@
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
   >
-    <label v-if="label" :for="id" :class="classes.label.value">
-      <slot name="label" :label="label">
+    <label
+      v-if="label"
+      :for="id"
+      :class="classes.label.value"
+    >
+      <slot
+        name="label"
+        :label="label"
+      >
         {{ label }}
       </slot>
     </label>
-    <div ref="wrapperRef" :class="getInputClasses">
+    <div
+      ref="wrapperRef"
+      :class="getInputClasses"
+    >
       <div :class="{ invisible: !isElementVisible('icon') }">
         <slot name="icon">
-          <div v-if="icon" @click="handleClickIcon" class="mr-2">
-            <v-icon :name="icon" :class="classes.icon.value"></v-icon>
+          <div
+            v-if="icon"
+            @click="handleClickIcon"
+            class="mr-2"
+          >
+            <v-icon
+              :name="icon"
+              :class="classes.icon.value"
+            ></v-icon>
           </div>
         </slot>
       </div>
@@ -81,8 +98,14 @@
       :single-line-message="singleLineMessage"
       v-bind="formText"
     >
-      <template v-for="(name, slot) of $slots" #[slot]="slotProps">
-        <slot :name="slot" v-bind="slotProps"></slot>
+      <template
+        v-for="(name, slot) of $slots"
+        #[slot]="slotProps"
+      >
+        <slot
+          :name="slot"
+          v-bind="slotProps"
+        ></slot>
       </template>
     </v-form-text>
   </div>
@@ -105,7 +128,11 @@ import { globalValidators } from "../validators";
 // tools
 import { isFunction } from "../tools";
 // props
-import { sharedProps, sharedStyleProps, sharedFormProps } from "../shared-props";
+import {
+  sharedProps,
+  sharedStyleProps,
+  sharedFormProps,
+} from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
 export default {
@@ -488,6 +515,6 @@ export default {
 
 <style>
 .tw-form-input-reset {
-  @apply form-input
+  @apply form-input;
 }
 </style>

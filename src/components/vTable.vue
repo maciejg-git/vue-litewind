@@ -5,7 +5,10 @@
       state == 'busy' ? [states.table.value.busy, 'pointer-events-none'] : '',
     ]"
   >
-    <caption v-if="slots.caption" :class="classes.caption.value">
+    <caption
+      v-if="slots.caption"
+      :class="classes.caption.value"
+    >
       <slot name="caption"></slot>
     </caption>
 
@@ -55,7 +58,10 @@
       </template>
       <template v-else-if="!items.length">
         <tr>
-          <td :colspan="headersCount" class="text-center py-4">
+          <td
+            :colspan="headersCount"
+            class="text-center py-4"
+          >
             <slot name="empty-table-message">
               {{ emptyText }}
             </slot>
@@ -64,7 +70,10 @@
       </template>
       <template v-else-if="!itemsFiltered.length">
         <tr>
-          <td :colspan="headersCount" class="text-center py-4">
+          <td
+            :colspan="headersCount"
+            class="text-center py-4"
+          >
             <slot name="empty-filtered-table-message">
               {{ emptyFilteredText }}
             </slot>
@@ -76,18 +85,34 @@
           v-for="(item, i) in itemsPagination"
           :key="item[primaryKey] || i"
         >
-          <tr :class="[...classes.row.value]" @click="handleRowClick(i)">
+          <tr
+            :class="[...classes.row.value]"
+            @click="handleRowClick(i)"
+          >
             <template v-for="k in definition">
-              <td v-if="k.visible !== false" :class="getCellClass(k, i, item)">
-                <slot :name="'cell:' + k.key" :value="item[k.key]" :item="item">
+              <td
+                v-if="k.visible !== false"
+                :class="getCellClass(k, i, item)"
+              >
+                <slot
+                  :name="'cell:' + k.key"
+                  :value="item[k.key]"
+                  :item="item"
+                >
                   {{ getKeyValue(item, k) }}
                 </slot>
               </td>
             </template>
           </tr>
-          <tr v-if="item.colspan" :class="[...classes.row.value]">
+          <tr
+            v-if="item.colspan"
+            :class="[...classes.row.value]"
+          >
             <td :colspan="headersCount">
-              <slot name="colspan" :item="item"></slot>
+              <slot
+                name="colspan"
+                :item="item"
+              ></slot>
             </td>
           </tr>
         </template>
@@ -186,7 +211,7 @@ export default {
     },
     styleRow: {
       type: String,
-      default: defaultProps("table", "styleRow", "")
+      default: defaultProps("table", "styleRow", ""),
     },
     styleCell: {
       type: String,

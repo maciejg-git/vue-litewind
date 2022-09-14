@@ -18,14 +18,26 @@
     @click:indicator="handleClickIndicator"
     @click:clear-button="handleClickClearButton"
   >
-    <template v-for="(name, slot) of $slots" #[slot]="slotProps">
-      <slot :name="slot" v-bind="slotProps"></slot>
+    <template
+      v-for="(name, slot) of $slots"
+      #[slot]="slotProps"
+    >
+      <slot
+        :name="slot"
+        v-bind="slotProps"
+      ></slot>
     </template>
   </v-input>
 
   <teleport to="body">
-    <transition :name="transition" @after-leave="onPopperTransitionLeave">
-      <div v-if="isPopperVisible" ref="popper">
+    <transition
+      :name="transition"
+      @after-leave="onPopperTransitionLeave"
+    >
+      <div
+        v-if="isPopperVisible"
+        ref="popper"
+      >
         <v-card
           v-bind="card"
           class="max-h-[300px] overflow-y-auto overflow-x-hidden"
@@ -134,11 +146,7 @@ export default {
     },
     emptyDataMessage: {
       type: String,
-      default: defaultProps(
-        "select",
-        "emptyDataMessage",
-        "No data available"
-      ),
+      default: defaultProps("select", "emptyDataMessage", "No data available"),
     },
     input: {
       type: Object,
@@ -201,7 +209,7 @@ export default {
       return [
         classes.item.value,
         item.disabled ? states.item.value.disabled : "",
-      ]
+      ];
     };
 
     let localModel = useLocalModel(props, emit);
@@ -263,9 +271,9 @@ export default {
 
     let getItemByValue = (value) => {
       return props.items.find((v) => {
-        return getItemValue(v) === value
-      })
-    }
+        return getItemValue(v) === value;
+      });
+    };
 
     let itemsFiltered = computed(() => {
       if (!props.autocomplete) return props.items;
@@ -339,9 +347,9 @@ export default {
     watch(
       localModel,
       (value) => {
-        let item = getItemByValue(value)
-        localText.value = getItemText(item)
-        selectedItem.value = value
+        let item = getItemByValue(value);
+        localText.value = getItemText(item);
+        selectedItem.value = value;
       },
       { immediate: true }
     );

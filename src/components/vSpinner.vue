@@ -1,9 +1,15 @@
 <template>
   <div :class="classes.container.value">
     <div v-if="icon">
-      <v-icon :class="classes.spinner.value" :name="icon" />
+      <v-icon
+        :class="classes.spinner.value"
+        :name="icon"
+      />
     </div>
-    <div v-else-if="type === 'svg'" class="bg-transparent">
+    <div
+      v-else-if="type === 'svg'"
+      class="bg-transparent"
+    >
       <svg
         viewBox="25 25 50 50"
         fill="none"

@@ -8,8 +8,15 @@
       :class="getCheckBoxClasses()"
       @blur="handleBlur"
     />
-    <label v-if="label" :for="id" :class="classes.label.value">
-      <slot name="default" :label="label">
+    <label
+      v-if="label"
+      :for="id"
+      :class="classes.label.value"
+    >
+      <slot
+        name="default"
+        :label="label"
+      >
         {{ label }}
       </slot>
     </label>
@@ -24,7 +31,11 @@ import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
 import useUid from "./composition/use-uid";
 // props
-import { sharedProps, sharedStyleProps, sharedFormProps } from "../shared-props";
+import {
+  sharedProps,
+  sharedStyleProps,
+  sharedFormProps,
+} from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
 export default {
@@ -105,6 +116,6 @@ export default {
 
 <style>
 .tw-form-checkbox-reset {
-  @apply form-checkbox
+  @apply form-checkbox;
 }
 </style>

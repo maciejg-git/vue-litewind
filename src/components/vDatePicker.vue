@@ -1,5 +1,8 @@
 <template>
-  <div :class="[classes.datepicker.value]" :style="{ width: width }">
+  <div
+    :class="[classes.datepicker.value]"
+    :style="{ width: width }"
+  >
     <div class="grid grid-cols-6 grid-flow-col my-2">
       <button
         aria-label="Previous year"
@@ -34,24 +37,36 @@
       </button>
     </div>
     <div :class="classes.weekdayBar.value">
-      <div v-for="day in dayNames" :class="classes.weekday.value">
+      <div
+        v-for="day in dayNames"
+        :class="classes.weekday.value"
+      >
         {{ day }}
       </div>
     </div>
     <div class="overflow-hidden">
-      <transition :name="transition" mode="out-in">
+      <transition
+        :name="transition"
+        mode="out-in"
+      >
         <div
           :key="monthNames[month] + year"
           class="grid grid-cols-7 mb-2 relative"
         >
           <template v-if="adjacentMonths">
-            <div v-for="(day, index) in daysList.prevMonthDays" :key="index">
+            <div
+              v-for="(day, index) in daysList.prevMonthDays"
+              :key="index"
+            >
               <div :class="classes.adjacentMonthDay.value">
                 {{ day }}
               </div>
             </div>
           </template>
-          <div v-for="(d, index) in daysList.days" :key="index">
+          <div
+            v-for="(d, index) in daysList.days"
+            :key="index"
+          >
             <a
               v-if="d"
               role="button"
@@ -59,13 +74,19 @@
               @click="handleDayClick(d.date, index)"
               @mouseenter="handleMouseOverDay(d)"
             >
-              <slot name="day" v-bind="d">
+              <slot
+                name="day"
+                v-bind="d"
+              >
                 {{ d.day }}
               </slot>
             </a>
           </div>
           <template v-if="adjacentMonths">
-            <div v-for="(day, index) in daysList.nextMonthDays" :key="index">
+            <div
+              v-for="(day, index) in daysList.nextMonthDays"
+              :key="index"
+            >
               <div :class="classes.adjacentMonthDay.value">
                 {{ day }}
               </div>
@@ -77,11 +98,20 @@
     <div :class="classes.footer.value">
       {{ todayFormatted }}
     </div>
-    <div v-if="buttons" class="flex justify-between pt-2">
-      <v-button v-bind="secondaryButton" @click="handleSecondaryButtonClick">
+    <div
+      v-if="buttons"
+      class="flex justify-between pt-2"
+    >
+      <v-button
+        v-bind="secondaryButton"
+        @click="handleSecondaryButtonClick"
+      >
         {{ secondaryButtonLabel }}
       </v-button>
-      <v-button v-bind="primaryButton" @click="handlePrimaryButtonClick">
+      <v-button
+        v-bind="primaryButton"
+        @click="handlePrimaryButtonClick"
+      >
         {{ primaryButtonLabel }}
       </v-button>
     </div>
@@ -224,7 +254,8 @@ export default {
       },
       weekday: null,
       button: {
-        fixed: "flex flex-col justify-center leading-none focus:outline-none mx-auto",
+        fixed:
+          "flex flex-col justify-center leading-none focus:outline-none mx-auto",
       },
       day: {
         fixed: "block",

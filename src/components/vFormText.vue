@@ -6,8 +6,14 @@
     ]"
   >
     <transition-group :name="transition">
-      <div v-for="(message, key) in formText" :key="message">
-        <slot name="message" v-bind="{ message, key }">
+      <div
+        v-for="(message, key) in formText"
+        :key="message"
+      >
+        <slot
+          name="message"
+          v-bind="{ message, key }"
+        >
           {{ message }}
         </slot>
       </div>

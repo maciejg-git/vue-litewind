@@ -1,11 +1,24 @@
 <template>
-  <div class="relative" :class="wrapperClasses">
-    <label v-if="label" :for="id" :class="classes.label.value">
-      <slot name="label" :label="label">
+  <div
+    class="relative"
+    :class="wrapperClasses"
+  >
+    <label
+      v-if="label"
+      :for="id"
+      :class="classes.label.value"
+    >
+      <slot
+        name="label"
+        :label="label"
+      >
         {{ label }}
       </slot>
     </label>
-    <div class="tw-form-textarea-reset block" :class="getTextareaClasses">
+    <div
+      class="tw-form-textarea-reset block"
+      :class="getTextareaClasses"
+    >
       <textarea
         v-model="localModel"
         v-bind="$attrs"
@@ -23,7 +36,10 @@
         v-bind="formText"
       >
         <template #message="message">
-          <slot name="message" v-bind="message"></slot>
+          <slot
+            name="message"
+            v-bind="message"
+          ></slot>
         </template>
       </v-form-text>
     </slot>
@@ -42,7 +58,11 @@ import vFormText from "./vFormText.vue";
 // validators
 import { globalValidators } from "../validators";
 // props
-import { sharedProps, sharedStyleProps, sharedFormProps } from "../shared-props";
+import {
+  sharedProps,
+  sharedStyleProps,
+  sharedFormProps,
+} from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
 export default {
@@ -119,7 +139,7 @@ export default {
       return props.inline ? "inline-block" : "block";
     });
 
-    let id = useUid("textarea", attrs)
+    let id = useUid("textarea", attrs);
 
     // validate
 
@@ -295,6 +315,6 @@ export default {
 
 <style>
 .tw-form-textarea-reset {
-  @apply form-textarea
+  @apply form-textarea;
 }
 </style>

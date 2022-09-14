@@ -1,9 +1,16 @@
 <template>
   <transition name="fade">
-    <div v-if="isStatic() || modelValue" :class="classes.alert.value">
+    <div
+      v-if="isStatic() || modelValue"
+      :class="classes.alert.value"
+    >
       <div class="flex items-center">
         <div class="self-start">
-          <v-icon v-if="icon" :name="icons[icon]" :class="classes.icon.value" />
+          <v-icon
+            v-if="icon"
+            :name="icons[icon]"
+            :class="classes.icon.value"
+          />
         </div>
         <slot name="icon"></slot>
         <slot name="default"></slot>

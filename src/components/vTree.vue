@@ -7,8 +7,14 @@
       v-bind="$attrs"
       :items="i"
     >
-      <template v-for="(name, slot) of slots" #[slot]="items">
-        <slot :name="slot" v-bind="items"></slot>
+      <template
+        v-for="(name, slot) of slots"
+        #[slot]="items"
+      >
+        <slot
+          :name="slot"
+          v-bind="items"
+        ></slot>
       </template>
     </v-tree-node>
   </ul>

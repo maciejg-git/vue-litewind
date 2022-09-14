@@ -1,5 +1,9 @@
 <template>
-  <component :is="tag" :href="tagHref" :class="itemClass">
+  <component
+    :is="tag"
+    :href="tagHref"
+    :class="itemClass"
+  >
     <slot name="default"></slot>
   </component>
 </template>

@@ -1,9 +1,18 @@
 <template>
-  <li :class="getItemClasses()" v-if="!isFilteredOut">
-    <slot name="item" v-bind="{ item: items, isFolder, isOpen, toggle }">
+  <li
+    :class="getItemClasses()"
+    v-if="!isFilteredOut"
+  >
+    <slot
+      name="item"
+      v-bind="{ item: items, isFolder, isOpen, toggle }"
+    >
       <div class="flex items-center">
         <!-- indicator -->
-        <div v-if="showIndicators" class="w-5 mr-2 order-first">
+        <div
+          v-if="showIndicators"
+          class="w-5 mr-2 order-first"
+        >
           <v-button
             v-if="isFolder"
             base="button-plain"
@@ -19,7 +28,10 @@
         </div>
         <!-- checkbox -->
         <transition name="fade">
-          <div v-if="showCheckboxes" class="flex items-center mr-2 order-1">
+          <div
+            v-if="showCheckboxes"
+            class="flex items-center mr-2 order-1"
+          >
             <v-checkbox-simple
               :checked="isSelected"
               @change="handleItemSelected"
@@ -28,8 +40,14 @@
           </div>
         </transition>
         <!-- icon -->
-        <div v-if="showIcons" class="order-3">
-          <slot name="icon" v-bind="{ item: items, isFolder, isOpen }">
+        <div
+          v-if="showIcons"
+          class="order-3"
+        >
+          <slot
+            name="icon"
+            v-bind="{ item: items, isFolder, isOpen }"
+          >
             <div
               v-if="
                 items[itemIcon] || placeholderItemIcon || placeholderFolderIcon
@@ -59,7 +77,10 @@
             disabled: isDisabled,
           }"
         >
-          <slot name="name" v-bind="{ item: items, isFolder, isOpen }">
+          <slot
+            name="name"
+            v-bind="{ item: items, isFolder, isOpen }"
+          >
             {{ items[itemName] }}
           </slot>
         </div>
@@ -74,7 +95,10 @@
     </slot>
 
     <transition :name="transition">
-      <ul v-show="isOpen" v-if="isFolder">
+      <ul
+        v-show="isOpen"
+        v-if="isFolder"
+      >
         <v-tree-node
           v-for="i in items[itemChildren]"
           :key="i[itemKey]"
@@ -88,8 +112,14 @@
           :disabled="isDisabled"
           @children-state-changed="handleChildrenSelected"
         >
-          <template v-for="(name, slot) of $slots" #[slot]="i">
-            <slot :name="slot" v-bind="i"></slot>
+          <template
+            v-for="(name, slot) of $slots"
+            #[slot]="i"
+          >
+            <slot
+              :name="slot"
+              v-bind="i"
+            ></slot>
           </template>
         </v-tree-node>
       </ul>
@@ -101,9 +131,9 @@
 // vue
 import { ref, computed, toRef, inject, onBeforeUpdate } from "vue";
 // components
-import vChevron from "./vChevron.vue"            
-import vIcon from "./vIcon.vue"            
-import vCheckboxSimple from "./vCheckboxSimple.vue"            
+import vChevron from "./vChevron.vue";
+import vIcon from "./vIcon.vue";
+import vCheckboxSimple from "./vCheckboxSimple.vue";
 // props
 import { defaultProps } from "../defaultProps";
 
@@ -370,7 +400,8 @@ export default {
 
 .fade-slide-enter-active,
 .fade-slide-leave-active {
-  transition: opacity var(--tree-transition-duration) ease, transform var(--tree-transition-duration) ease;
+  transition: opacity var(--tree-transition-duration) ease,
+    transform var(--tree-transition-duration) ease;
 }
 .fade-slide-enter-from,
 .fade-slide-leave-to {

@@ -1,5 +1,8 @@
 <template>
-  <div :class="classes.list.value" :style="{ width: width }">
+  <div
+    :class="classes.list.value"
+    :style="{ width: width }"
+  >
     <slot name="default"></slot>
   </div>
 </template>

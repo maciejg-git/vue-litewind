@@ -1,10 +1,24 @@
 <template>
-  <slot name="reference" v-bind="referenceSlotProps" :is-open="isPopperVisible"></slot>
+  <slot
+    name="reference"
+    v-bind="referenceSlotProps"
+    :is-open="isPopperVisible"
+  ></slot>
 
   <teleport to="body">
-    <transition :name="transition" @after-leave="onPopperTransitionLeave">
-      <div v-if="isPopperVisible" ref="popper">
-        <slot name="default" :hide="hide" v-bind="contextData"></slot>
+    <transition
+      :name="transition"
+      @after-leave="onPopperTransitionLeave"
+    >
+      <div
+        v-if="isPopperVisible"
+        ref="popper"
+      >
+        <slot
+          name="default"
+          :hide="hide"
+          v-bind="contextData"
+        ></slot>
       </div>
     </transition>
   </teleport>
@@ -19,7 +33,11 @@ import usePopper from "./composition/use-popper.js";
 import useClickOutside from "./composition/use-click-outside";
 import useTrigger from "./composition/use-trigger";
 // props
-import { sharedProps, sharedPopperProps, sharedStyleProps } from "../shared-props";
+import {
+  sharedProps,
+  sharedPopperProps,
+  sharedStyleProps,
+} from "../shared-props";
 import { defaultProps } from "../defaultProps";
 // trigger
 import { registerListener, removeListener } from "../trigger";
@@ -93,12 +111,12 @@ export default {
 
     // trigger by id
 
-    let { id } = attrs
+    let { id } = attrs;
 
     if (id && !slots.reference) {
-      registerListener(id, referenceSlotProps)
+      registerListener(id, referenceSlotProps);
 
-      onBeforeUnmount(() => removeListener(id))
+      onBeforeUnmount(() => removeListener(id));
     }
 
     // context popover
@@ -116,7 +134,7 @@ export default {
       classes,
       title: toRef(props, "title"),
       hide,
-    })
+    });
 
     expose({ showContextPopover });
 

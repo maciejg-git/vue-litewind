@@ -1,6 +1,9 @@
 <template>
   <teleport to="body">
-    <transition :name="transition" @after-leave="resetScrollbar">
+    <transition
+      :name="transition"
+      @after-leave="resetScrollbar"
+    >
       <div
         v-if="isOpen"
         v-bind="$attrs"
@@ -13,8 +16,14 @@
       >
         <div :class="containerClasses">
           <div :class="classes.modal.value">
-            <slot name="modal" :close="close">
-              <header v-if="!noHeader" :class="classes.header.value">
+            <slot
+              name="modal"
+              :close="close"
+            >
+              <header
+                v-if="!noHeader"
+                :class="classes.header.value"
+              >
                 <slot name="header">
                   <span>
                     {{ title }}
@@ -29,7 +38,10 @@
               <main :class="classes.content.value">
                 <slot name="default"></slot>
               </main>
-              <footer v-if="!noFooter" :class="classes.footer.value">
+              <footer
+                v-if="!noFooter"
+                :class="classes.footer.value"
+              >
                 <slot name="footer">
                   <v-button
                     v-if="!noSecondaryButton"
@@ -56,7 +68,7 @@
         </div>
       </div>
     </transition>
-    
+
     <v-backdrop :isOpen="isOpen" />
   </teleport>
 </template>

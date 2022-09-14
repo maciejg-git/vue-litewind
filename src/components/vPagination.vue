@@ -103,11 +103,13 @@ export default {
         fixed: "relative z-0 flex flex-row w-min",
       },
       page: {
-        fixed: "z-10 cursor-pointer flex justify-center items-center transition-all",
+        fixed:
+          "z-10 cursor-pointer flex justify-center items-center transition-all",
         states: ["active"],
       },
       dots: {
-        fixed: "z-10 cursor-pointer flex justify-center items-center transition-all",
+        fixed:
+          "z-10 cursor-pointer flex justify-center items-center transition-all",
       },
       next: {
         fixed: "flex flex-col justify-center items-center",
@@ -226,5 +228,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

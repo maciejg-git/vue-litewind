@@ -7,7 +7,10 @@
       :class="classes.sidepanel.value"
       :style="{ width: width }"
     >
-      <div v-if="!noHeader" class="flex justify-between w-full">
+      <div
+        v-if="!noHeader"
+        class="flex justify-between w-full"
+      >
         <div class="my-3 ml-5">
           <slot name="header"></slot>
         </div>
@@ -20,7 +23,10 @@
           @click="handleClose"
         />
       </div>
-      <slot name="default" :close="close"></slot>
+      <slot
+        name="default"
+        :close="close"
+      ></slot>
     </div>
   </transition>
 </template>
@@ -87,40 +93,41 @@ export default {
       closeButton: null,
     });
 
-    let isOpen = ref(false)
+    let isOpen = ref(false);
 
-    watch(() => props.modelValue,
+    watch(
+      () => props.modelValue,
       (value) => {
-        if (value) open()
-        else close()
+        if (value) open();
+        else close();
       }
-    )
+    );
 
     let open = () => {
-      isOpen.value = true
-      emit("update:modelValue", true)
-    }
+      isOpen.value = true;
+      emit("update:modelValue", true);
+    };
 
     let close = () => {
-      isOpen.value = false
+      isOpen.value = false;
       emit("update:modelValue", false);
-    }
+    };
 
     let toggle = () => {
-      if (!isOpen.value) open()
-      else close()
-    }
+      if (!isOpen.value) open();
+      else close();
+    };
 
     // trigger by id
 
-    let onTrigger = { click: toggle }
+    let onTrigger = { click: toggle };
 
-    let { id } = attrs
+    let { id } = attrs;
 
     if (id) {
-      registerListener(id, { onTrigger })
+      registerListener(id, { onTrigger });
 
-      onBeforeUnmount(() => removeListener(id))
+      onBeforeUnmount(() => removeListener(id));
     }
 
     // handle template events
@@ -140,7 +147,8 @@ export default {
 <style scoped lang="postcss">
 .fade-slide-right-enter-active,
 .fade-slide-right-leave-active {
-  transition: opacity var(--sidepanel-transition-duration) ease, transform var(--sidepanel-transition-duration) ease;
+  transition: opacity var(--sidepanel-transition-duration) ease,
+    transform var(--sidepanel-transition-duration) ease;
 }
 .fade-slide-right-enter-from,
 .fade-slide-right-leave-to {
@@ -150,7 +158,8 @@ export default {
 
 .fade-slide-left-enter-active,
 .fade-slide-left-leave-active {
-  transition: opacity var(--sidepanel-transition-duration) ease, transform var(--sidepanel-transition-duration) ease;
+  transition: opacity var(--sidepanel-transition-duration) ease,
+    transform var(--sidepanel-transition-duration) ease;
 }
 .fade-slide-left-enter-from,
 .fade-slide-left-leave-to {

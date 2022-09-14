@@ -1,5 +1,9 @@
 <template>
-  <slot name="reference" :isOpen="isOpen" :onTrigger="onTrigger"></slot>
+  <slot
+    name="reference"
+    :isOpen="isOpen"
+    :onTrigger="onTrigger"
+  ></slot>
 
   <div class="overflow-hidden">
     <v-transition :name="transition">
@@ -16,7 +20,7 @@ import { ref, watch, onMounted, onUnmounted, inject } from "vue";
 // components
 import vTransition from "./vTransition.vue";
 // props
-import { sharedProps } from "../shared-props"
+import { sharedProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
 export default {
@@ -87,7 +91,8 @@ export default {
 <style scoped>
 .fade-collapse-enter-active,
 .fade-collapse-leave-active {
-  transition: height var(--collapse-transition-duration) ease, opacity var(--collapse-transition-duration) ease;
+  transition: height var(--collapse-transition-duration) ease,
+    opacity var(--collapse-transition-duration) ease;
   overflow: hidden;
 }
 
