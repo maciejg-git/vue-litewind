@@ -19,39 +19,30 @@
   </button>
 </template>
 
-<script>
-// composition
+<script setup>
 import useStyles from "./composition/use-styles";
-// props
 import { sharedProps, sharedStyleProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
-export default {
-  props: {
-    ...sharedProps(),
-    styleWrapper: {
-      type: String,
-      default: defaultProps("closeButton", "styleWrapper", ""),
-    },
-    styleCloseButton: {
-      type: String,
-      default: defaultProps("closeButton", "styleCloseButton", ""),
-    },
-    ...sharedStyleProps("closeButton"),
+const props = defineProps({
+  ...sharedProps(),
+  styleWrapper: {
+    type: String,
+    default: defaultProps("closeButton", "styleWrapper", ""),
   },
-  setup(props) {
-    let { classes } = useStyles("close-button", props, {
-      closeButton: {
-        name: "close-button",
-      },
-      wrapper: null,
-    });
+  styleCloseButton: {
+    type: String,
+    default: defaultProps("closeButton", "styleCloseButton", ""),
+  },
+  ...sharedStyleProps("closeButton"),
+});
 
-    return {
-      classes,
-    };
+let { classes } = useStyles("close-button", props, {
+  closeButton: {
+    name: "close-button",
   },
-};
+  wrapper: null,
+});
 </script>
 
 <style scoped></style>

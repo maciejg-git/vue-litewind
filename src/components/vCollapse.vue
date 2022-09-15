@@ -14,78 +14,66 @@
   </div>
 </template>
 
-<script>
-// vue
+<script setup>
 import { ref, watch, onMounted, onUnmounted, inject } from "vue";
-// components
 import vTransition from "./vTransition.vue";
-// props
 import { sharedProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
-export default {
-  components: {
-    vTransition,
+let props = defineProps({
+  ...sharedProps(),
+  modelValue: {
+    type: Boolean,
+    default: false,
   },
-  props: {
-    ...sharedProps(),
-    modelValue: {
-      type: Boolean,
-      default: false,
-    },
-    transition: {
-      type: String,
-      default: defaultProps("collapse", "transition", "fade-collapse"),
-    },
+  transition: {
+    type: String,
+    default: defaultProps("collapse", "transition", "fade-collapse"),
   },
-  setup(props, { emit }) {
-    let isOpen = ref(props.modelValue);
+});
 
-    watch(
-      () => props.modelValue,
-      (value) => (isOpen.value = value)
-    );
+const emit = defineEmits(["update:modelValue"]);
 
-    let uncollapse = () => {
-      isOpen.value = true;
-      emit("update:modelValue", true);
-    };
+let isOpen = ref(props.modelValue);
 
-    let collapse = () => {
-      isOpen.value = false;
-      emit("update:modelValue", false);
-    };
+watch(
+  () => props.modelValue,
+  (value) => (isOpen.value = value)
+);
 
-    let toggleCollapse = () => {
-      isOpen.value ? collapse() : uncollapse();
-    };
-
-    let onTrigger = {
-      click: toggleCollapse,
-    };
-
-    // accordion
-
-    let accordion = inject("accordion", null);
-
-    let c = { isOpen, collapse };
-
-    onMounted(() => {
-      if (accordion) {
-        watch(isOpen, () => accordion.update(c), {
-          immediate: true,
-        });
-      }
-    });
-
-    onUnmounted(() => accordion && accordion.remove(c));
-
-    return {
-      isOpen,
-      onTrigger,
-    };
-  },
+let uncollapse = () => {
+  isOpen.value = true;
+  emit("update:modelValue", true);
 };
+
+let collapse = () => {
+  isOpen.value = false;
+  emit("update:modelValue", false);
+};
+
+let toggleCollapse = () => {
+  isOpen.value ? collapse() : uncollapse();
+};
+
+let onTrigger = {
+  click: toggleCollapse,
+};
+
+// accordion
+
+let accordion = inject("accordion", null);
+
+let c = { isOpen, collapse };
+
+onMounted(() => {
+  if (accordion) {
+    watch(isOpen, () => accordion.update(c), {
+      immediate: true,
+    });
+  }
+});
+
+onUnmounted(() => accordion && accordion.remove(c));
 </script>
 
 <style scoped>

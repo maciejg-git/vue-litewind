@@ -36,29 +36,21 @@
         <div>
           <label for="open-on-click">open-on-click:</label>
           <v-select-prop id="open-on-click" v-model="example.openOnClick">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
           </v-select-prop>
         </div>
         <div>
           <label for="show-indicators">show-indicators:</label>
           <v-select-prop id="show-indicators" v-model="example.showIndicators">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
           </v-select-prop>
         </div>
         <div>
           <label for="show-icons">show-icons:</label>
           <v-select-prop id="show-icons" v-model="example.showIcons">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
           </v-select-prop>
         </div>
         <div>
           <label for="show-checkboxes">show-checkboxes:</label>
           <v-select-prop id="show-checkboxes" v-model="example.showCheckboxes">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
           </v-select-prop>
         </div>
         <div>
@@ -67,8 +59,6 @@
             id="select-return-keys"
             v-model="example.selectReturnKeys"
           >
-            <option :value="true">true</option>
-            <option :value="false">false</option>
           </v-select-prop>
         </div>
         <div>
@@ -77,8 +67,6 @@
             id="select-independent"
             v-model="example.selectIndependent"
           >
-            <option :value="true">true</option>
-            <option :value="false">false</option>
           </v-select-prop>
         </div>
         <div>
@@ -87,8 +75,6 @@
             id="allow-select-disabled"
             v-model="example.allowSelectDisabled"
           >
-            <option :value="true">true</option>
-            <option :value="false">false</option>
           </v-select-prop>
         </div>
         <div>
@@ -97,8 +83,6 @@
             id="allow-open-disabled"
             v-model="example.allowOpenDisabled"
           >
-            <option :value="true">true</option>
-            <option :value="false">false</option>
           </v-select-prop>
         </div>
         <div>

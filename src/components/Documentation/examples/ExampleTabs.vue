@@ -41,31 +41,29 @@
         <div>
           <label for="fill">fill:</label>
           <v-select-prop id="fill" v-model="example.fill">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
           </v-select-prop>
         </div>
         <div>
           <label for="center">center:</label>
           <v-select-prop id="center" v-model="example.center">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
           </v-select-prop>
         </div>
         <div>
           <label for="right">right:</label>
           <v-select-prop id="right" v-model="example.right">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
           </v-select-prop>
         </div>
         <div>
           <label for="transition">transition:</label>
-          <v-select id="transition" v-model="example.transition">
-            <option value="fade">fade</option>
-            <option value="fade-side-slide">fade-side-slide</option>
-            <option value="fade-top-slide">fade-top-slide</option>
-            <option value="">empty string (no transition)</option>
+          <v-select id="transition" v-model="example.transition" :items="[
+            'fade',
+            'fade-side-slide',
+            'fade-top-slide',
+            {
+              text: 'empty string',
+              value: '',
+            }
+            ]">
           </v-select>
         </div>
       </div>

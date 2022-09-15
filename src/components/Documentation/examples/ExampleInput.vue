@@ -33,7 +33,6 @@
   <p class="my-6 mt-12">Prepend and append slots</p>
 
   <div class="flex gap-x-10">
-
     <v-input
       v-model="example.model"
       v-bind="example"
@@ -56,51 +55,83 @@
       </template>
     </v-input>
   </div>
-<!-- CUT START -->
-  <v-tabs base="material" class="mt-10">
+  <!-- CUT START -->
+  <v-tabs
+    base="material"
+    class="mt-10"
+  >
     <v-tab name="Props">
       <div class="flex flex-col gap-y-2 mt-5">
         <div>
-          <label for="model" class="font-semibold">v-model:</label>
-          <v-input type="text" id="model" inline v-model="example.model"></v-input>
+          <label
+            for="model"
+            class="font-semibold"
+          >
+            v-model:
+          </label>
+          <v-input
+            type="text"
+            id="model"
+            inline
+            v-model="example.model"
+          ></v-input>
         </div>
         <div>
           <label for="type">type:</label>
-          <v-select id="type" v-model="example.type" :items="[
-            'text', 'password', 'email', 'number', 'search', 'time', 'url', 'color', 'date'
-            ]">
-          </v-select>
+          <v-select
+            id="type"
+            v-model="example.type"
+            :items="[
+              'text',
+              'password',
+              'email',
+              'number',
+              'search',
+              'time',
+              'url',
+              'color',
+              'date',
+            ]"
+          ></v-select>
         </div>
         <div>
           <label for="label">label:</label>
-          <v-input type="text" id="label" inline v-model="example.label"></v-input>
+          <v-input
+            type="text"
+            id="label"
+            inline
+            v-model="example.label"
+          ></v-input>
         </div>
         <div>
           <label for="clearable">clearable:</label>
-          <v-select-prop id="clearable" v-model="example.clearable">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
-          </v-select-prop>
+          <v-select-prop
+            id="clearable"
+            v-model="example.clearable"
+          ></v-select-prop>
         </div>
         <div>
           <label for="use-loader">use-loader:</label>
-          <v-select-prop id="use-loader" v-model="example.useLoader">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
-          </v-select-prop>
+          <v-select-prop
+            id="use-loader"
+            v-model="example.useLoader"
+          ></v-select-prop>
         </div>
         <div>
           <label for="is-loading">is-loading:</label>
-          <v-select-prop id="is-loading" v-model="example.isLoading">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
-          </v-select-prop>
+          <v-select-prop
+            id="is-loading"
+            v-model="example.isLoading"
+          ></v-select-prop>
         </div>
         <div>
           <label for="state">state:</label>
-          <v-select id="state" v-model="example.state" :items="[
+          <v-select
+            id="state"
+            v-model="example.state"
+            :items="[
               {
-                text: 'component controlled (null)',
+                text: 'null (component controlled)',
                 value: null,
               },
               {
@@ -108,9 +139,9 @@
                 value: '',
               },
               'valid',
-              'invalid,'
-            ]">
-          </v-select>
+              'invalid,',
+            ]"
+          ></v-select>
         </div>
       </div>
     </v-tab>
@@ -129,7 +160,7 @@
       <event-viewer :events="events" />
     </v-tab>
   </v-tabs>
-<!-- CUT END -->
+  <!-- CUT END -->
 </template>
 
 <script>
@@ -150,7 +181,7 @@ export default {
     let events = ref([]);
 
     let handleClickClear = (ev) => {
-      example.model = ""
+      example.model = "";
       events.value.unshift({ ev: "click:clear-button", data: ev });
     };
 

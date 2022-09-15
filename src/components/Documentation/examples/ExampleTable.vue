@@ -13,7 +13,10 @@
         name="mdi-checkbox-outline"
         class="text-success-400 dark:text-success-400"
       ></v-icon>
-      <v-icon v-else name="mdi-checkbox-blank-outline"></v-icon>
+      <v-icon
+        v-else
+        name="mdi-checkbox-blank-outline"
+      ></v-icon>
     </template>
 
     <template #cell:department="{ item }">
@@ -35,7 +38,10 @@
 
     <template #busy>
       <div class="flex justify-center my-5">
-        <v-spinner type="svg" style-spinner="large" />
+        <v-spinner
+          type="svg"
+          style-spinner="large"
+        />
       </div>
     </template>
 
@@ -55,11 +61,17 @@
       />
     </div>
     <div class="mt-4 lg:mt-0">
-      <label for="items-per-page" class="mr-4">Items per page</label>
-      <v-select v-model.number="example.itemsPerPage" id="items-per-page" :items="[
-        0, 5, 10, 20, 50
-        ]">
-      </v-select>
+      <label
+        for="items-per-page"
+        class="mr-4"
+      >
+        Items per page
+      </label>
+      <v-select
+        v-model.number="example.itemsPerPage"
+        id="items-per-page"
+        :items="[0, 5, 10, 20, 50]"
+      ></v-select>
     </div>
   </div>
 
@@ -71,41 +83,71 @@
     primaryButtonClose
     secondaryButtonClose
   >
-    <pre v-html="editModalContent" class="whitespace-pre my-0 ml-4"></pre>
+    <pre
+      v-html="editModalContent"
+      class="whitespace-pre my-0 ml-4"
+    ></pre>
   </v-modal>
   <!-- CUT START -->
-  <v-tabs base="material" class="mt-10">
+  <v-tabs
+    base="material"
+    class="mt-10"
+  >
     <v-tab name="Props">
       <div class="flex flex-col gap-y-2 mt-5">
         <div>
           <label for="locale">filter:</label>
-          <v-input type="text" inline v-model="example.filter" clearable></v-input>
+          <v-input
+            type="text"
+            inline
+            v-model="example.filter"
+            clearable
+          ></v-input>
         </div>
         <div>
           <label for="locale">locale:</label>
-          <v-input type="text" inline id="locale" v-model="example.locale"></v-input>
+          <v-input
+            type="text"
+            inline
+            id="locale"
+            v-model="example.locale"
+          ></v-input>
         </div>
         <div>
           <label for="busy">state:</label>
-          <v-select id="busy" v-model="example.state">
-            <option value="">empty string (normal state)</option>
-            <option value="busy">busy</option>
-          </v-select>
+          <v-select
+            id="busy"
+            v-model="example.state"
+            :items="[
+              {
+                text: 'empty string (normal state)',
+                value: '',
+              },
+              'busy',
+            ]"
+          ></v-select>
         </div>
         <div>
           <label for="selection-mode">selection-mode:</label>
-          <v-select id="selection-mode" v-model="example.selectionMode">
-            <option value="single">single</option>
-            <option value="multiple">multiple</option>
-            <option value="">empty string (selection disabled)</option>
-          </v-select>
+          <v-select
+            id="selection-mode"
+            v-model="example.selectionMode"
+            :items="[
+              'single',
+              'multiple',
+              {
+                text: 'empty string (selection disabled)',
+                value: '',
+              },
+            ]"
+          ></v-select>
         </div>
         <div>
           <label for="caption-top">caption-top:</label>
-          <v-select-prop id="caption-top" v-model="example.captionTop">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
-          </v-select-prop>
+          <v-select-prop
+            id="caption-top"
+            v-model="example.captionTop"
+          ></v-select-prop>
         </div>
       </div>
     </v-tab>

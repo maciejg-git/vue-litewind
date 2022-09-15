@@ -39,8 +39,6 @@
             <div>
               <label for="range">range:</label>
               <v-select-prop id="range" v-model="example.range">
-                <option :value="true">true</option>
-                <option :value="false">false</option>
               </v-select-prop>
             </div>
             <div>
@@ -58,15 +56,11 @@
                 id="monday-first-weekday"
                 v-model="example.mondayFirstWeekday"
               >
-                <option :value="true">true</option>
-                <option :value="false">false</option>
               </v-select-prop>
             </div>
             <div>
               <label for="buttons">buttons:</label>
               <v-select-prop id="buttons" v-model="example.buttons">
-                <option :value="true">true</option>
-                <option :value="false">false</option>
               </v-select-prop>
             </div>
             <div>
@@ -95,8 +89,6 @@
                 id="adjacent-months"
                 v-model="example.adjacentMonths"
               >
-                <option :value="true">true</option>
-                <option :value="false">false</option>
               </v-select-prop>
             </div>
             <div>
@@ -105,16 +97,18 @@
                 id="range-hover-highlight"
                 v-model="example.rangeHoverHighlight"
               >
-                <option :value="true">true</option>
-                <option :value="false">false</option>
               </v-select-prop>
             </div>
             <div>
               <label for="transition">transition:</label>
-              <v-select id="transition" v-model="example.transition">
-                <option value="fade">fade</option>
-                <option value="slide">slide</option>
-                <option value="">empty string (no transition)</option>
+              <v-select id="transition" v-model="example.transition" :items="[
+                'fade',
+                'slide',
+                {
+                  text: 'empty string',
+                  value: '',
+                }
+                ]">
               </v-select>
             </div>
           </div>

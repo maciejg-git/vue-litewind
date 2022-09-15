@@ -12,58 +12,48 @@
   </transition>
 </template>
 
-<script>
-// vue
+<script setup>
 import { computed } from "vue";
-// composition
 import useStyles from "./composition/use-styles";
-// props
 import { sharedProps, sharedStyleProps } from "../shared-props";
 
-export default {
-  props: {
-    ...sharedProps(),
-    position: {
-      type: String,
-      default: "",
-    },
-    updateKey: {
-      type: [String, Number],
-      default: undefined,
-    },
-    updateAnimation: {
-      type: String,
-      default: "",
-    },
-    styleBadge: {
-      type: String,
-      default: "",
-    },
-    ...sharedStyleProps("badge"),
+const props = defineProps({
+  ...sharedProps(),
+  position: {
+    type: String,
+    default: "",
   },
-  setup(props) {
-    let { classes } = useStyles("badge", props, {
-      badge: {
-        fixed: "inline-flex items-center align-top",
-        prop: computed(() => {
-          return props.position == "top-right"
-            ? "absolute top-0 right-0 -translate-y-1/2 translate-x-1/2"
-            : props.position == "top-left"
-            ? "absolute top-0 left-0 -translate-y-1/2 -translate-x-1/2"
-            : props.position == "bottom-right"
-            ? "absolute bottom-0 right-0 translate-y-1/2 translate-x-1/2"
-            : props.position == "bottom-left"
-            ? "absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2"
-            : "";
-        }),
-      },
-    });
+  updateKey: {
+    type: [String, Number],
+    default: undefined,
+  },
+  updateAnimation: {
+    type: String,
+    default: "",
+  },
+  styleBadge: {
+    type: String,
+    default: "",
+  },
+  ...sharedStyleProps("badge"),
+});
 
-    return {
-      classes,
-    };
+let { classes } = useStyles("badge", props, {
+  badge: {
+    fixed: "inline-flex items-center align-top",
+    prop: computed(() => {
+      return props.position == "top-right"
+        ? "absolute top-0 right-0 -translate-y-1/2 translate-x-1/2"
+        : props.position == "top-left"
+        ? "absolute top-0 left-0 -translate-y-1/2 -translate-x-1/2"
+        : props.position == "bottom-right"
+        ? "absolute bottom-0 right-0 translate-y-1/2 translate-x-1/2"
+        : props.position == "bottom-left"
+        ? "absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2"
+        : "";
+    }),
   },
-};
+});
 </script>
 
 <style scoped lang="postcss">

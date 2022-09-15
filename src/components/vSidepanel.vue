@@ -31,117 +31,103 @@
   </transition>
 </template>
 
-<script>
-// vue
-import { ref, computed, watch, onBeforeUnmount } from "vue";
-// composition
+<script setup>
+import { ref, computed, watch, onBeforeUnmount, useAttrs } from "vue";
 import useStyles from "./composition/use-styles";
-// components
 import vCloseButton from "./vCloseButton.vue";
-// props
 import { sharedProps, sharedStyleProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
-// trigger
 import { registerListener, removeListener } from "../trigger";
 
-export default {
-  props: {
-    ...sharedProps(),
-    modelValue: {
-      type: Boolean,
-      default: false,
-    },
-    showCloseButton: {
-      type: Boolean,
-      default: defaultProps("sidepanel", "showCloseButton", true),
-    },
-    sidebarLeft: {
-      type: Boolean,
-      default: false,
-    },
-    width: {
-      type: String,
-      default: defaultProps("sidepanel", "width", "320px"),
-    },
-    noHeader: {
-      type: Boolean,
-      default: defaultProps("sidepanel", "noHeader", false),
-    },
-    closeButton: {
-      type: Object,
-      default: defaultProps("sidepanel", "closeButton", {}),
-    },
-    transition: {
-      type: String,
-      default: defaultProps("sidepanel", "transition", "fade-slide"),
-    },
-    styleSidepanel: {
-      type: String,
-      default: defaultProps("sidepanel", "styleSidepanel", ""),
-    },
-    ...sharedStyleProps("sidepanel"),
+const props = defineProps({
+  ...sharedProps(),
+  modelValue: {
+    type: Boolean,
+    default: false,
   },
-  components: {
-    vCloseButton,
+  showCloseButton: {
+    type: Boolean,
+    default: defaultProps("sidepanel", "showCloseButton", true),
   },
-  setup(props, { emit, attrs }) {
-    let { classes } = useStyles("sidepanel", props, {
-      sidepanel: {
-        fixed: "fixed h-full top-0 z-20",
-        prop: computed(() => (props.sidebarLeft ? "left-0" : "right-0")),
-      },
-      closeButton: null,
-    });
-
-    let isOpen = ref(false);
-
-    watch(
-      () => props.modelValue,
-      (value) => {
-        if (value) open();
-        else close();
-      }
-    );
-
-    let open = () => {
-      isOpen.value = true;
-      emit("update:modelValue", true);
-    };
-
-    let close = () => {
-      isOpen.value = false;
-      emit("update:modelValue", false);
-    };
-
-    let toggle = () => {
-      if (!isOpen.value) open();
-      else close();
-    };
-
-    // trigger by id
-
-    let onTrigger = { click: toggle };
-
-    let { id } = attrs;
-
-    if (id) {
-      registerListener(id, { onTrigger });
-
-      onBeforeUnmount(() => removeListener(id));
-    }
-
-    // handle template events
-
-    let handleClose = () => close();
-
-    return {
-      classes,
-      isOpen,
-      close,
-      handleClose,
-    };
+  sidebarLeft: {
+    type: Boolean,
+    default: false,
   },
+  width: {
+    type: String,
+    default: defaultProps("sidepanel", "width", "320px"),
+  },
+  noHeader: {
+    type: Boolean,
+    default: defaultProps("sidepanel", "noHeader", false),
+  },
+  closeButton: {
+    type: Object,
+    default: defaultProps("sidepanel", "closeButton", {}),
+  },
+  transition: {
+    type: String,
+    default: defaultProps("sidepanel", "transition", "fade-slide"),
+  },
+  styleSidepanel: {
+    type: String,
+    default: defaultProps("sidepanel", "styleSidepanel", ""),
+  },
+  ...sharedStyleProps("sidepanel"),
+});
+
+let emit = defineEmits(["update:modelValue"]);
+
+let attrs = useAttrs();
+
+let { classes } = useStyles("sidepanel", props, {
+  sidepanel: {
+    fixed: "fixed h-full top-0 z-20",
+    prop: computed(() => (props.sidebarLeft ? "left-0" : "right-0")),
+  },
+  closeButton: null,
+});
+
+let isOpen = ref(false);
+
+watch(
+  () => props.modelValue,
+  (value) => {
+    if (value) open();
+    else close();
+  }
+);
+
+let open = () => {
+  isOpen.value = true;
+  emit("update:modelValue", true);
 };
+
+let close = () => {
+  isOpen.value = false;
+  emit("update:modelValue", false);
+};
+
+let toggle = () => {
+  if (!isOpen.value) open();
+  else close();
+};
+
+// trigger by id
+
+let onTrigger = { click: toggle };
+
+let { id } = attrs;
+
+if (id) {
+  registerListener(id, { onTrigger });
+
+  onBeforeUnmount(() => removeListener(id));
+}
+
+// handle template events
+
+let handleClose = () => close();
 </script>
 
 <style scoped lang="postcss">

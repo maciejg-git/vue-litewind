@@ -91,19 +91,19 @@ export default {
         type: ["Array"],
         default: "undefined",
         description:
-          "Items to display. Can be `array` of `strings` or `objects`",
+          "Items to display. Can be `array` of `strings` or `objects` or mixed. Objects should at least have `text` and `value` properties. If `objects` have additional properties you can display them using `item` slot",
       },
       {
         prop: "item-text",
         type: ["String"],
         default: "'text'",
-        description: "Set property of items’s text value",
+        description: "Set name of the property of items’s text value",
       },
       {
         prop: "item-value",
         type: ["String"],
         default: "'value'",
-        description: "Set property of items’s value",
+        description: "Set name of the property of items’s value",
       },
       {
         prop: "autocomplete",
@@ -118,6 +118,13 @@ export default {
         default: "false",
         description:
           "Use it whenever asynchronously updating items prop. Required.",
+      },
+      {
+        prop: "filter-keys",
+        type: ["Array"],
+        default: "[]",
+        description:
+          "By default text property is used to filter items. You can set different properties by adding them to this prop.",
       },
       {
         prop: "no-filter",
@@ -160,10 +167,6 @@ export default {
     ]);
 
     let styles = ref([
-      {
-        prop: "style-menu",
-        description: "Menu element",
-      },
       {
         prop: "style-item",
         description: "Menu item element",

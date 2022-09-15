@@ -33,47 +33,34 @@
   </div>
 </template>
 
-<script>
-// composition
+<script setup>
 import useStyles from "./composition/use-styles";
-// components
 import vIcon from "./vIcon.vue";
-// props
 import { sharedProps, sharedStyleProps } from "../shared-props";
 
-export default {
-  props: {
-    ...sharedProps(),
-    type: {
-      type: String,
-      default: "border",
-    },
-    icon: {
-      type: [String, Object],
-      default: undefined,
-    },
-    styleSpinner: {
-      type: String,
-      default: "",
-    },
-    ...sharedStyleProps("spinner"),
+const props = defineProps({
+  ...sharedProps(),
+  type: {
+    type: String,
+    default: "border",
   },
-  components: {
-    vIcon,
+  icon: {
+    type: [String, Object],
+    default: undefined,
   },
-  setup(props) {
-    let { classes } = useStyles("spinner", props, {
-      spinner: {
-        fixed: "spinner-animation",
-      },
-      container: null,
-    });
+  styleSpinner: {
+    type: String,
+    default: "",
+  },
+  ...sharedStyleProps("spinner"),
+});
 
-    return {
-      classes,
-    };
+let { classes } = useStyles("spinner", props, {
+  spinner: {
+    fixed: "spinner-animation",
   },
-};
+  container: null,
+});
 </script>
 
 <style scoped>

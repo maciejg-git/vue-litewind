@@ -24,13 +24,16 @@
 </template>
 
 <script>
-// vue
-import { ref, watch, inject } from "vue";
-// composition
+export default {
+  inheritAttrs: false,
+};
+</script>
+
+<script setup>
+import { ref, watch, inject, useAttrs } from "vue";
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
 import useUid from "./composition/use-uid";
-// props
 import {
   sharedProps,
   sharedStyleProps,
@@ -38,79 +41,70 @@ import {
 } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
-export default {
-  props: {
-    ...sharedProps(),
-    modelValue: {
-      type: [Array, Boolean, Object],
-      default: undefined,
-    },
-    rules: {
-      type: Object,
-      default: {},
-    },
-    label: {
-      type: String,
-      default: "",
-    },
-    styleCheckbox: {
-      type: [String, Array],
-      default: defaultProps("checkbox", "styleCheckbox", ""),
-    },
-    styleLabel: {
-      type: [String, Array],
-      default: defaultProps("checkbox", "styleInput", ""),
-    },
-    ...sharedFormProps(null),
-    ...sharedStyleProps("checkbox"),
+const props = defineProps({
+  ...sharedProps(),
+  modelValue: {
+    type: [Array, Boolean, Object],
+    default: undefined,
   },
-  inheritAttrs: false,
-  setup(props, { attrs, emit }) {
-    let { classes, states } = useStyles("checkbox", props, {
-      checkbox: {
-        states: ["valid", "invalid", "disabled"],
-      },
-      label: null,
-    });
-
-    let getCheckBoxClasses = () => {
-      return [
-        "tw-form-checkbox-reset",
-        classes.checkbox.value,
-        states.checkbox.value && states.checkbox.value[state.value],
-        attrs.disabled === "" || attrs.disabled === true
-          ? states.checkbox.disabled
-          : "",
-      ];
-    };
-
-    let id = useUid("checkbox", attrs);
-
-    let { value, updateValue, touch, state } = inject("checkbox-group", {
-      state: ref(""),
-    });
-
-    watch(
-      () => props.state,
-      (newState) => (state.value = newState),
-      { immediate: true }
-    );
-
-    let localModel = useLocalModel(props, emit, updateValue, value);
-
-    let handleBlur = () => {
-      if (touch) touch();
-    };
-
-    return {
-      classes,
-      getCheckBoxClasses,
-      id,
-      state,
-      localModel,
-      handleBlur,
-    };
+  rules: {
+    type: Object,
+    default: {},
   },
+  label: {
+    type: String,
+    default: "",
+  },
+  styleCheckbox: {
+    type: [String, Array],
+    default: defaultProps("checkbox", "styleCheckbox", ""),
+  },
+  styleLabel: {
+    type: [String, Array],
+    default: defaultProps("checkbox", "styleInput", ""),
+  },
+  ...sharedFormProps(null),
+  ...sharedStyleProps("checkbox"),
+});
+
+const emit = defineEmits(["update:modelValue"]);
+
+const attrs = useAttrs();
+
+let { classes, states } = useStyles("checkbox", props, {
+  checkbox: {
+    states: ["valid", "invalid", "disabled"],
+  },
+  label: null,
+});
+
+let getCheckBoxClasses = () => {
+  return [
+    "tw-form-checkbox-reset",
+    classes.checkbox.value,
+    states.checkbox.value && states.checkbox.value[state.value],
+    attrs.disabled === "" || attrs.disabled === true
+      ? states.checkbox.disabled
+      : "",
+  ];
+};
+
+let id = useUid("checkbox", attrs);
+
+let { value, updateValue, touch, state } = inject("checkbox-group", {
+  state: ref(""),
+});
+
+watch(
+  () => props.state,
+  (newState) => (state.value = newState),
+  { immediate: true }
+);
+
+let localModel = useLocalModel(props, emit, updateValue, value);
+
+let handleBlur = () => {
+  if (touch) touch();
 };
 </script>
 

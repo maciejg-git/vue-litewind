@@ -59,15 +59,11 @@
         <div>
           <label for="no-flip">no-flip:</label>
           <v-select-prop id="no-flip" v-model="example.noFlip">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
           </v-select-prop>
         </div>
         <div>
           <label for="auto-close-menu">auto-close-menu:</label>
           <v-select-prop id="auto-close-menu" v-model="example.autoCloseMenu">
-            <option :value="true">true</option>
-            <option :value="false">false</option>
           </v-select-prop>
         </div>
         <div>

@@ -47,17 +47,18 @@
 </template>
 
 <script>
-// vue
-import { ref, computed, watch, inject } from "vue";
-// composition
+export default {
+  inheritAttrs: false,
+};
+</script>
+
+<script setup>
+import { ref, computed, watch, inject, useAttrs } from "vue";
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
 import useUid from "./composition/use-uid";
-// components
 import vFormText from "./vFormText.vue";
-// validators
 import { globalValidators } from "../validators";
-// props
 import {
   sharedProps,
   sharedStyleProps,
@@ -65,252 +66,237 @@ import {
 } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
-export default {
-  props: {
-    ...sharedProps(),
-    modelValue: {
-      type: String,
-      default: undefined,
-    },
-    inline: {
-      type: Boolean,
-      default: defaultProps("textarea", "inline", false),
-    },
-    rules: {
-      type: Object,
-      default: {},
-    },
-    validateOn: {
-      type: String,
-      default: "blur",
-    },
-    validateMode: {
-      type: String,
-      default: "silent",
-    },
-    singleLineMessage: {
-      type: Boolean,
-      default: defaultProps("textarea", "singleLineMessage", false),
-    },
-    label: {
-      type: String,
-      default: "",
-    },
-    formText: {
-      type: Object,
-      default: defaultProps("textarea", "formText", { class: "absolute" }),
-    },
-    styleTextarea: {
-      type: [String, Array],
-      default: defaultProps("textarea", "styleTextarea", ""),
-    },
-    styleLabel: {
-      type: [String, Array],
-      default: defaultProps("textarea", "styleLabel", ""),
-    },
-    ...sharedFormProps(null),
-    ...sharedStyleProps("textarea"),
+const props = defineProps({
+  ...sharedProps(),
+  modelValue: {
+    type: String,
+    default: undefined,
   },
-  components: {
-    vFormText,
+  inline: {
+    type: Boolean,
+    default: defaultProps("textarea", "inline", false),
   },
-  inheritAttrs: false,
-  setup(props, { attrs, emit }) {
-    let { classes, states } = useStyles("textarea", props, {
-      textarea: {
-        states: ["valid", "invalid", "disabled"],
-      },
-      label: {
-        fixed: "inline-block",
-      },
-    });
+  rules: {
+    type: Object,
+    default: {},
+  },
+  validateOn: {
+    type: String,
+    default: "blur",
+  },
+  validateMode: {
+    type: String,
+    default: "silent",
+  },
+  singleLineMessage: {
+    type: Boolean,
+    default: defaultProps("textarea", "singleLineMessage", false),
+  },
+  label: {
+    type: String,
+    default: "",
+  },
+  formText: {
+    type: Object,
+    default: defaultProps("textarea", "formText", { class: "absolute" }),
+  },
+  styleTextarea: {
+    type: [String, Array],
+    default: defaultProps("textarea", "styleTextarea", ""),
+  },
+  styleLabel: {
+    type: [String, Array],
+    default: defaultProps("textarea", "styleLabel", ""),
+  },
+  ...sharedFormProps(null),
+  ...sharedStyleProps("textarea"),
+});
 
-    let getTextareaClasses = computed(() => {
-      return [
-        classes.textarea.value,
-        states.textarea.value && states.textarea.value[state.value],
-        attrs.disabled === "" || attrs.disabled === true
-          ? states.textarea.disabled
-          : "",
-      ];
-    });
+const emit = defineEmits(["update:modelValue"]);
 
-    let wrapperClasses = computed(() => {
-      return props.inline ? "inline-block" : "block";
-    });
+let attrs = useAttrs();
 
-    let id = useUid("textarea", attrs);
+let { classes, states } = useStyles("textarea", props, {
+  textarea: {
+    states: ["valid", "invalid", "disabled"],
+  },
+  label: {
+    fixed: "inline-block",
+  },
+});
 
-    // validate
+let getTextareaClasses = computed(() => {
+  return [
+    classes.textarea.value,
+    states.textarea.value && states.textarea.value[state.value],
+    attrs.disabled === "" || attrs.disabled === true
+      ? states.textarea.disabled
+      : "",
+  ];
+});
 
-    let defaultStatus = {
-      touched: false,
-      dirty: false,
-      valid: false,
-      validated: false,
-    };
+let wrapperClasses = computed(() => {
+  return props.inline ? "inline-block" : "block";
+});
 
-    let status = ref({ ...defaultStatus });
-    let state = ref("");
-    let messages = ref({});
-    let wasValid = ref(false);
-    let wasInvalid = ref(false);
-    let { validateOn, validateMode } = props;
+let id = useUid("textarea", attrs);
 
-    let reset = () => {
-      status.value = { ...defaultStatus };
-      state.value = "";
-      wasInvalid.value = false;
-      wasValid.value = false;
-      emit("update:modelValue", "");
-      messages.value = {};
-    };
+// validate
 
-    let canUpdateState = () => {
-      return validateMode === "eager" || wasInvalid.value;
-    };
+let defaultStatus = {
+  touched: false,
+  dirty: false,
+  valid: false,
+  validated: false,
+};
 
-    let updateState = () => {
-      if (props.state !== null) return props.state;
-      if (status.value.optional) return "";
+let status = ref({ ...defaultStatus });
+let state = ref("");
+let messages = ref({});
+let wasValid = ref(false);
+let wasInvalid = ref(false);
+let { validateOn, validateMode } = props;
 
-      if (!canUpdateState()) return state.value;
+let reset = () => {
+  status.value = { ...defaultStatus };
+  state.value = "";
+  wasInvalid.value = false;
+  wasValid.value = false;
+  emit("update:modelValue", "");
+  messages.value = {};
+};
 
-      return status.value.valid ? "valid" : "invalid";
-    };
+let canUpdateState = () => {
+  return validateMode === "eager" || wasInvalid.value;
+};
 
-    watch(
-      () => props.state,
-      (newState) => (state.value = newState),
-      { immediate: true }
-    );
+let updateState = () => {
+  if (props.state !== null) return props.state;
+  if (status.value.optional) return "";
 
-    let validate = (value) => {
-      let { newStatus, newMessages } = getValidateStatus(value);
-      status.value = newStatus;
-      messages.value = newMessages;
-    };
+  if (!canUpdateState()) return state.value;
 
-    let updateValue = (v) => {
-      validate(v);
+  return status.value.valid ? "valid" : "invalid";
+};
 
-      if (
-        validateOn === "blur" &&
-        !status.value.touched &&
-        !status.value.validated
-      ) {
-        return;
-      }
+watch(
+  () => props.state,
+  (newState) => (state.value = newState),
+  { immediate: true }
+);
 
-      if (status.value.valid) {
-        wasValid.value = true;
-      }
-      if (!status.value.valid && wasValid.value) {
-        wasInvalid.value = true;
-      }
+let validate = (value) => {
+  let { newStatus, newMessages } = getValidateStatus(value);
+  status.value = newStatus;
+  messages.value = newMessages;
+};
 
-      state.value = updateState();
+let updateValue = (v) => {
+  validate(v);
 
-      emitValidationStatus();
-    };
+  if (
+    validateOn === "blur" &&
+    !status.value.touched &&
+    !status.value.validated
+  ) {
+    return;
+  }
 
-    let touch = () => {
-      validate(localModel.value);
-      status.value.touched = true;
+  if (status.value.valid) {
+    wasValid.value = true;
+  }
+  if (!status.value.valid && wasValid.value) {
+    wasInvalid.value = true;
+  }
 
-      if (status.value.valid) {
-        wasValid.value = true;
-      } else {
-        wasInvalid.value = true;
-      }
+  state.value = updateState();
 
-      state.value = updateState();
+  emitValidationStatus();
+};
 
-      emitValidationStatus();
-    };
+let touch = () => {
+  validate(localModel.value);
+  status.value.touched = true;
 
-    let formValidate = () => {
-      validate(localModel.value);
-      status.value.validated = true;
+  if (status.value.valid) {
+    wasValid.value = true;
+  } else {
+    wasInvalid.value = true;
+  }
 
-      if (status.value.valid) {
-        wasValid.value = true;
-      } else {
-        wasInvalid.value = true;
-      }
+  state.value = updateState();
 
-      state.value = updateState();
+  emitValidationStatus();
+};
 
-      emitValidationStatus();
-    };
+let formValidate = () => {
+  validate(localModel.value);
+  status.value.validated = true;
 
-    let getValidateStatus = (value) => {
-      let newStatus = {
-        touched: status.value.touched,
-        validated: status.value.validated,
-        dirty: status.value.dirty || !!(value && !!value.length),
-      };
+  if (status.value.valid) {
+    wasValid.value = true;
+  } else {
+    wasInvalid.value = true;
+  }
 
-      let newMessages = {};
-      let rules = Object.entries(props.rules);
+  state.value = updateState();
 
-      newStatus.valid = rules.reduce((valid, [key, v]) => {
-        let validator =
-          globalValidators[key] ||
-          (isFunction(props.rules[key]) && props.rules[key]);
+  emitValidationStatus();
+};
 
-        if (!validator) return valid;
+let getValidateStatus = (value) => {
+  let newStatus = {
+    touched: status.value.touched,
+    validated: status.value.validated,
+    dirty: status.value.dirty || !!(value && !!value.length),
+  };
 
-        let res = validator(value, v);
+  let newMessages = {};
+  let rules = Object.entries(props.rules);
 
-        if (res === true) {
-          newStatus[key] = true;
-        } else {
-          newStatus[key] = false;
-          newMessages[key] = res;
-        }
+  newStatus.valid = rules.reduce((valid, [key, v]) => {
+    let validator =
+      globalValidators[key] ||
+      (isFunction(props.rules[key]) && props.rules[key]);
 
-        return valid && newStatus[key];
-      }, true);
+    if (!validator) return valid;
 
-      newStatus.optional = !props.rules.required && value === "";
+    let res = validator(value, v);
 
-      return { newStatus, newMessages };
-    };
-
-    let emitValidationStatus = () => {
-      emit("update:status", status.value);
-      emit("update:state", state.value);
-      emit("update:messages", messages.value);
-    };
-
-    emitValidationStatus();
-
-    let { addFormInput } = inject("form", {});
-
-    if (addFormInput) {
-      addFormInput({ status, formValidate, reset });
+    if (res === true) {
+      newStatus[key] = true;
+    } else {
+      newStatus[key] = false;
+      newMessages[key] = res;
     }
 
-    let localModel = useLocalModel(props, emit, updateValue);
+    return valid && newStatus[key];
+  }, true);
 
-    // handle template events
+  newStatus.optional = !props.rules.required && value === "";
 
-    let handleBlur = () => touch();
-
-    return {
-      classes,
-      wrapperClasses,
-      id,
-      state,
-      localModel,
-      getTextareaClasses,
-      status,
-      messages,
-      handleBlur,
-    };
-  },
+  return { newStatus, newMessages };
 };
+
+let emitValidationStatus = () => {
+  emit("update:status", status.value);
+  emit("update:state", state.value);
+  emit("update:messages", messages.value);
+};
+
+emitValidationStatus();
+
+let { addFormInput } = inject("form", {});
+
+if (addFormInput) {
+  addFormInput({ status, formValidate, reset });
+}
+
+let localModel = useLocalModel(props, emit, updateValue);
+
+// handle template events
+
+let handleBlur = () => touch();
 </script>
 
 <style>

@@ -1,7 +1,8 @@
 @import "../shared.css";
 
 :root {
-  --autocomplete-transition-duration: 0.2s;
+  --select-transition-duration: 0.2s;
+  --select-max-menu-height: 300px;
 }
 
 .default {

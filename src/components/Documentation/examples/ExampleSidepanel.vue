@@ -30,15 +30,11 @@
       <div class="mb-2">
         <label for="show-close-button">show-close-button:</label>
         <v-select-prop id="show-close-button" v-model="example.showCloseButton">
-          <option :value="true">true</option>
-          <option :value="false">false</option>
         </v-select-prop>
       </div>
       <div class="mb-2">
         <label for="sidebar-left">sidebar-left:</label>
         <v-select-prop id="sidebar-left" v-model="example.sidebarLeft">
-          <option :value="true">true</option>
-          <option :value="false">false</option>
         </v-select-prop>
       </div>
       <div class="mb-2">
@@ -48,8 +44,6 @@
       <div class="mb-2">
         <label for="no-header">no-header:</label>
         <v-select-prop id="no-header" v-model="example.noHeader">
-          <option :value="true">true</option>
-          <option :value="false">false</option>
         </v-select-prop>
       </div>
       <div class="mb-2">

@@ -21,69 +21,57 @@
   </div>
 </template>
 
-<script>
-// vue
+<script setup>
 import { computed } from "vue";
-// composition
 import useStyles from "./composition/use-styles";
-// props
 import { sharedProps, sharedStyleProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
-export default {
-  props: {
-    ...sharedProps(),
-    state: {
-      type: String,
-      default: "",
-    },
-    messages: {
-      type: Object,
-      default: {},
-    },
-    singleLineMessage: {
-      type: Boolean,
-      default: defaultProps("formtext", "singleLineMessage", false),
-    },
-    transition: {
-      type: String,
-      default: defaultProps("formtext", "transition", "fade-scale"),
-    },
-    styleFormText: {
-      type: String,
-      default: defaultProps("formtext", "styleFormText", ""),
-    },
-    ...sharedStyleProps("formText"),
+const props = defineProps({
+  ...sharedProps(),
+  state: {
+    type: String,
+    default: "",
   },
-  setup(props) {
-    let { classes, states } = useStyles("form-text", props, {
-      formText: {
-        name: "form-text",
-        states: ["valid", "invalid", "disabled"],
-      },
-    });
+  messages: {
+    type: Object,
+    default: {},
+  },
+  singleLineMessage: {
+    type: Boolean,
+    default: defaultProps("formtext", "singleLineMessage", false),
+  },
+  transition: {
+    type: String,
+    default: defaultProps("formtext", "transition", "fade-scale"),
+  },
+  styleFormText: {
+    type: String,
+    default: defaultProps("formtext", "styleFormText", ""),
+  },
+  ...sharedStyleProps("formText"),
+});
 
-    let formText = computed(() => {
-      if (props.state === "invalid") {
-        if (props.messages.required) {
-          return { required: props.messages.required };
-        } else {
-          if (props.singleLineMessage) {
-            let [k, v] = Object.entries(props.messages)[0];
-            return { k: v };
-          }
-          return props.messages;
-        }
+let { classes, states } = useStyles("form-text", props, {
+  formText: {
+    name: "form-text",
+    states: ["valid", "invalid", "disabled"],
+  },
+});
+
+let formText = computed(() => {
+  if (props.state === "invalid") {
+    if (props.messages.required) {
+      return { required: props.messages.required };
+    } else {
+      if (props.singleLineMessage) {
+        let [k, v] = Object.entries(props.messages)[0];
+        return { k: v };
       }
-    });
-
-    return {
-      classes,
-      states,
-      formText,
-    };
-  },
-};
+      return props.messages;
+    }
+  }
+});
 </script>
 
 <style scoped lang="postcss">

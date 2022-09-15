@@ -1,116 +1,116 @@
 <template>
   <div>
-    <div :class="classes.progress.value" class="relative">
+    <div
+      :class="classes.progress.value"
+      class="relative"
+    >
       <div
         v-if="!indeterminate"
         :class="classes.progressBar.value"
         :style="{ width: value + '%' }"
       >
-        <span v-if="label" :class="classes.label.value">
-          <slot name="default" :value="value" :max="max">
+        <span
+          v-if="label"
+          :class="classes.label.value"
+        >
+          <slot
+            name="default"
+            :value="value"
+            :max="max"
+          >
             {{ label }}
           </slot>
         </span>
       </div>
-      <div v-else :class="classes.progressBar.value"></div>
+      <div
+        v-else
+        :class="classes.progressBar.value"
+      ></div>
     </div>
   </div>
 </template>
 
-<script>
-// vue
+<script setup>
 import { computed } from "vue";
-// composition
 import useStyles from "./composition/use-styles";
-// tools
 import { clamp, isNumber } from "../tools";
-// props
 import { sharedProps, sharedStyleProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
-export default {
-  props: {
-    ...sharedProps(),
-    value: {
-      type: [Number, String],
-      default: 0,
-      validator(v) {
-        return isNumber(+v);
-      },
+const props = defineProps({
+  ...sharedProps(),
+  value: {
+    type: [Number, String],
+    default: 0,
+    validator(v) {
+      return isNumber(+v);
     },
-    max: {
-      type: [Number, String],
-      default: 100,
-      validator(v) {
-        return isNumber(+v);
-      },
-    },
-    label: {
-      type: Boolean,
-      default: true,
-    },
-    precision: {
-      type: Number,
-      default: 2,
-    },
-    indeterminate: {
-      type: Boolean,
-      default: false,
-    },
-    transition: {
-      type: Boolean,
-      default: true,
-    },
-    styleProgress: {
-      type: [String, Array],
-      default: defaultProps("progress", "styleProgress", ""),
-    },
-    styleProgressBar: {
-      type: [String, Array],
-      default: defaultProps("progress", "styleProgressBar", ""),
-    },
-    styleLabel: {
-      type: [String, Array],
-      default: defaultProps("progress", "styleLabel", ""),
-    },
-    ...sharedStyleProps("progress"),
   },
-  setup(props) {
-    let { classes } = useStyles("progress", props, {
-      progress: {
-        fixed: "flex",
-      },
-      progressBar: {
-        name: "progress-bar",
-        fixed: "flex justify-center items-center h-full",
-        prop: computed(() => {
-          return props.indeterminate
-            ? "indeterminate"
-            : props.transition
-            ? "transition-all duration-100"
-            : "";
-        }),
-      },
-      label: null,
-    });
-
-    let value = computed(() => {
-      return clamp((props.value / props.max) * 100, 0, props.max);
-    });
-
-    let precision = computed(() => clamp(props.precision, 0, 100));
-
-    let label = computed(
-      () => props.label && value.value.toFixed(precision.value) + " %"
-    );
-
-    return {
-      classes,
-      value,
-      label,
-    };
+  max: {
+    type: [Number, String],
+    default: 100,
+    validator(v) {
+      return isNumber(+v);
+    },
   },
-};
+  label: {
+    type: Boolean,
+    default: true,
+  },
+  precision: {
+    type: Number,
+    default: 2,
+  },
+  indeterminate: {
+    type: Boolean,
+    default: false,
+  },
+  transition: {
+    type: Boolean,
+    default: true,
+  },
+  styleProgress: {
+    type: [String, Array],
+    default: defaultProps("progress", "styleProgress", ""),
+  },
+  styleProgressBar: {
+    type: [String, Array],
+    default: defaultProps("progress", "styleProgressBar", ""),
+  },
+  styleLabel: {
+    type: [String, Array],
+    default: defaultProps("progress", "styleLabel", ""),
+  },
+  ...sharedStyleProps("progress"),
+});
+
+let { classes } = useStyles("progress", props, {
+  progress: {
+    fixed: "flex",
+  },
+  progressBar: {
+    name: "progress-bar",
+    fixed: "flex justify-center items-center h-full",
+    prop: computed(() => {
+      return props.indeterminate
+        ? "indeterminate"
+        : props.transition
+        ? "transition-all duration-100"
+        : "";
+    }),
+  },
+  label: null,
+});
+
+let value = computed(() => {
+  return clamp((props.value / props.max) * 100, 0, props.max);
+});
+
+let precision = computed(() => clamp(props.precision, 0, 100));
+
+let label = computed(
+  () => props.label && value.value.toFixed(precision.value) + " %"
+);
 </script>
 
 <style scoped lang="postcss">

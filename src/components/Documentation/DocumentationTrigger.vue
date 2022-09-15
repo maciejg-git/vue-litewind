@@ -6,7 +6,7 @@
       This component is used to trigger some actions on other components (for
       example opening dropdown or modal) by their
       <code class="code-text">id</code>
-      .
+      . See examples here.
     </p>
   </section>
 

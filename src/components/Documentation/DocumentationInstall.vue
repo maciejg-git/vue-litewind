@@ -115,7 +115,7 @@ app.use(componentPlugin, {
     <p>
     <ul>
       <li>
-        <code class="code-text">componentProps</code> sets default values for props of components.
+        <code class="code-text">componentProps</code> sets default values for props of components. The value can be function that takes <code class="code-text">base</code> and <code class="code-text">name</code> arguments (<code class="code-text">base</code> and <code class="code-text">name</code> props of component) and should return default value for the prop.
       </li>
     </ul>
     </p>

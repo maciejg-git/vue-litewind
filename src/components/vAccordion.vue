@@ -4,11 +4,9 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { provide } from "vue";
 
-export default {
-  setup() {
     let active = null;
 
     let update = (collapse) => {
@@ -28,6 +26,4 @@ export default {
     }
 
     provide("accordion", { update, remove });
-  },
-};
 </script>

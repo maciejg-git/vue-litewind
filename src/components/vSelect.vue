@@ -36,10 +36,11 @@
       <div
         v-if="isPopperVisible"
         ref="popper"
+        class="z-50"
       >
         <v-card
           v-bind="card"
-          class="max-h-[300px] overflow-y-auto overflow-x-hidden"
+          class="max-h-[var(--select-max-menu-height)] overflow-y-auto overflow-x-hidden"
           v-detect-scroll-bottom="handleScrollBottom"
         >
           <div
@@ -73,19 +74,19 @@
 </template>
 
 <script>
-// vue
+export default {
+  inheritAttrs: false,
+};
+</script>
+
+<script setup>
 import { ref, computed, watch, toRefs } from "vue";
-// composition
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
 import usePopper from "./composition/use-popper.js";
-// components
 import vInput from "./vInput.vue";
-// directives
-import detectScrollBottom from "../directives/detect-scroll-bottom";
-// tools
+import { default as vDetectScrollBottom } from "../directives/detect-scroll-bottom";
 import { isObject } from "../tools";
-// props
 import {
   sharedProps,
   sharedPopperProps,
@@ -94,342 +95,293 @@ import {
 } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
-export default {
-  props: {
-    ...sharedProps(),
-    modelValue: {
-      type: [String, Object, Boolean, Number],
-      default: undefined,
-    },
-    // v-input props
-    useLoader: {
-      type: Boolean,
-      default: defaultProps("select", "useLoader", true),
-    },
-    isLoading: {
-      type: Boolean,
-      default: false,
-    },
-    inline: {
-      type: Boolean,
-      default: defaultProps("select", "inline", false),
-    },
-    ...sharedFormProps(null, { icon: true, clearable: true }),
-    // v-select props
-    items: {
-      type: Array,
-      default: [],
-    },
-    autocomplete: {
-      type: Boolean,
-      default: false,
-    },
-    itemText: {
-      type: String,
-      default: "text",
-    },
-    itemValue: {
-      type: String,
-      default: "value",
-    },
-    filterKeys: {
-      type: Array,
-      default: [],
-    },
-    noFilter: {
-      type: Boolean,
-      default: defaultProps("select", "noFilter", false),
-    },
-    noPagination: {
-      type: Boolean,
-      default: defaultProps("select", "noPagination", false),
-    },
-    emptyDataMessage: {
-      type: String,
-      default: defaultProps("select", "emptyDataMessage", "No data available"),
-    },
-    input: {
-      type: Object,
-      default: defaultProps("select", "input", {}),
-    },
-    card: {
-      type: Object,
-      default: defaultProps("select", "card", {}),
-    },
-    itemsPerPage: {
-      type: Number,
-      default: defaultProps("select", "itemsPerPage", 10),
-    },
-    transition: {
-      type: String,
-      default: defaultProps("select", "transition", "fade"),
-    },
-    styleMenu: {
-      type: String,
-      default: defaultProps("select", "styleMenu", ""),
-    },
-    styleItem: {
-      type: String,
-      default: defaultProps("select", "styleItem", ""),
-    },
-    ...sharedPopperProps("select"),
-    ...sharedStyleProps("select"),
+let props = defineProps({
+  ...sharedProps(),
+  modelValue: {
+    type: [String, Object, Boolean, Number],
+    default: undefined,
   },
-  components: {
-    vInput,
+  // v-input props
+  useLoader: {
+    type: Boolean,
+    default: defaultProps("select", "useLoader", true),
   },
-  directives: {
-    detectScrollBottom,
+  isLoading: {
+    type: Boolean,
+    default: false,
   },
-  emits: [
-    "update:modelValue",
-    "update:page",
-    "input:value",
-    "state:opened",
-    "state:closed",
-  ],
-  inheritAttrs: false,
-  setup(props, { emit }) {
-    let { classes, states, variants } = useStyles("select", props, {
-      menu: {
-        fixed: "max-h-[300px] overflow-y-auto overflow-x-hidden",
-      },
-      item: {
-        fixed: "fixed-item",
-        states: ["active", "disabled"],
-      },
-    });
+  inline: {
+    type: Boolean,
+    default: defaultProps("select", "inline", false),
+  },
+  ...sharedFormProps(null, { icon: true, clearable: true }),
+  // v-select props
+  items: {
+    type: Array,
+    default: [],
+  },
+  autocomplete: {
+    type: Boolean,
+    default: false,
+  },
+  itemText: {
+    type: String,
+    default: "text",
+  },
+  itemValue: {
+    type: String,
+    default: "value",
+  },
+  filterKeys: {
+    type: Array,
+    default: [],
+  },
+  noFilter: {
+    type: Boolean,
+    default: defaultProps("select", "noFilter", false),
+  },
+  noPagination: {
+    type: Boolean,
+    default: defaultProps("select", "noPagination", false),
+  },
+  emptyDataMessage: {
+    type: String,
+    default: defaultProps("select", "emptyDataMessage", "No data available"),
+  },
+  input: {
+    type: Object,
+    default: defaultProps("select", "input", {}),
+  },
+  card: {
+    type: Object,
+    default: defaultProps("select", "card", {}),
+  },
+  itemsPerPage: {
+    type: Number,
+    default: defaultProps("select", "itemsPerPage", 10),
+  },
+  transition: {
+    type: String,
+    default: defaultProps("select", "transition", "fade"),
+  },
+  styleItem: {
+    type: String,
+    default: defaultProps("select", "styleItem", ""),
+  },
+  ...sharedPopperProps("select"),
+  ...sharedStyleProps("select"),
+});
 
-    let getItemClass = (item) => {
-      return [
-        classes.item.value,
-        item.disabled ? states.item.value.disabled : "",
-      ];
-    };
+const emit = defineEmits([
+  "update:modelValue",
+  "update:page",
+  "input:value",
+  "state:opened",
+  "state:closed",
+]);
 
-    let localModel = useLocalModel(props, emit);
+let { classes, states, variants } = useStyles("select", props, {
+  item: {
+    fixed: "fixed-item",
+    states: ["active", "disabled"],
+  },
+});
 
-    const { offsetX, offsetY, noFlip, placement, modelValue } = toRefs(props);
-    const {
-      isPopperVisible,
-      isPopperChild,
-      reference,
-      popper,
-      showPopper,
-      hidePopper,
-      onPopperTransitionLeave,
-    } = usePopper(
-      { placement, offsetX, offsetY, noFlip, modelValue, emit },
-      { resizePopper: true }
-    );
+let getItemClass = (item) => {
+  return [classes.item.value, item.disabled ? states.item.value.disabled : ""];
+};
 
-    let selectedItem = ref(null);
-    let localText = ref("");
-    let isNewSelection = ref(true);
+let localModel = useLocalModel(props, emit);
 
-    // show autocomplete menu
+const { offsetX, offsetY, noFlip, placement, modelValue } = toRefs(props);
+const {
+  isPopperVisible,
+  isPopperChild,
+  reference,
+  popper,
+  showPopper,
+  hidePopper,
+  onPopperTransitionLeave,
+} = usePopper(
+  { placement, offsetX, offsetY, noFlip, modelValue, emit },
+  { resizePopper: true }
+);
 
-    let show = () => {
-      if (!props.items.length) return;
+let selectedItem = ref(null);
+let localText = ref("");
+let isNewSelection = ref(true);
 
-      isNewSelection.value = true;
+// show autocomplete menu
 
-      showPopper();
-    };
+let show = () => {
+  if (!props.items.length) return;
 
-    // show menu if items prop changes
+  isNewSelection.value = true;
 
-    watch(
-      () => props.items,
-      (value) => {
-        if (props.autocomplete && !isPopperVisible.value && props.noFilter) {
-          show();
-        }
-      }
-    );
+  showPopper();
+};
 
-    // get text and value of item
+// show menu if items prop changes
 
-    let getItemText = (item, key) => {
-      if (isObject(item)) {
-        return item[key || props.itemText];
-      }
-      return item;
-    };
+watch(
+  () => props.items,
+  (value) => {
+    if (props.autocomplete && !isPopperVisible.value && props.noFilter) {
+      show();
+    }
+  }
+);
 
-    let getItemValue = (item) => {
-      if (isObject(item)) {
-        return item[props.itemValue];
-      }
-      return item;
-    };
+// get text and value of item
 
-    let getItemByValue = (value) => {
-      return props.items.find((v) => {
-        return getItemValue(v) === value;
-      });
-    };
+let getItemText = (item, key) => {
+  if (isObject(item)) {
+    return item[key || props.itemText];
+  }
+  return item;
+};
 
-    let itemsFiltered = computed(() => {
-      if (!props.autocomplete) return props.items;
-      if (props.isLoading || props.noFilter) return props.items;
-      if (isNewSelection.value) return props.items;
+let getItemValue = (item) => {
+  if (isObject(item)) {
+    return item[props.itemValue];
+  }
+  return item;
+};
 
-      if (props.filterKeys.length) {
-        return props.items.filter((item) => {
-          return props.filterKeys.some((key) => {
-            let i = getItemText(item, key);
-            return (
-              i && i.toLowerCase().indexOf(localText.value.toLowerCase()) !== -1
-            );
-          });
-        });
-      }
+let getItemByValue = (value) => {
+  return props.items.find((v) => {
+    return getItemValue(v) === value;
+  });
+};
 
-      return props.items.filter((item) => {
-        let i = getItemText(item);
+let itemsFiltered = computed(() => {
+  if (!props.autocomplete) return props.items;
+  if (props.isLoading || props.noFilter) return props.items;
+  if (isNewSelection.value) return props.items;
+
+  if (props.filterKeys.length) {
+    return props.items.filter((item) => {
+      return props.filterKeys.some((key) => {
+        let i = getItemText(item, key);
         return (
           i && i.toLowerCase().indexOf(localText.value.toLowerCase()) !== -1
         );
       });
     });
+  }
 
-    let page = ref(0);
+  return props.items.filter((item) => {
+    let i = getItemText(item);
+    return i && i.toLowerCase().indexOf(localText.value.toLowerCase()) !== -1;
+  });
+});
 
-    let itemsPagination = computed(() => {
-      if (props.itemsPerPage === 0 || props.noPagination) {
-        return itemsFiltered.value;
-      }
+let page = ref(0);
 
-      return itemsFiltered.value.slice(
-        0,
-        (page.value + 1) * props.itemsPerPage
-      );
-    });
+let itemsPagination = computed(() => {
+  if (props.itemsPerPage === 0 || props.noPagination) {
+    return itemsFiltered.value;
+  }
 
-    let update = (item) => {
-      selectedItem.value = item;
-      localText.value = getItemText(item);
-      localModel.value = getItemValue(item);
-    };
+  return itemsFiltered.value.slice(0, (page.value + 1) * props.itemsPerPage);
+});
 
-    let revert = () => {
-      if (!selectedItem.value) {
-        localText.value = "";
-        return;
-      }
-      localText.value = getItemText(selectedItem.value);
-    };
+let update = (item) => {
+  selectedItem.value = item;
+  localText.value = getItemText(item);
+  localModel.value = getItemValue(item);
+};
 
-    let cancelInput = () => {
-      if (props.autocomplete) {
-        revert();
-      }
-      hidePopper();
-    };
+let revert = () => {
+  if (!selectedItem.value) {
+    localText.value = "";
+    return;
+  }
+  localText.value = getItemText(selectedItem.value);
+};
 
-    let selectItem = (item) => {
-      update(item);
-      hidePopper();
-    };
+let cancelInput = () => {
+  if (props.autocomplete) {
+    revert();
+  }
+  hidePopper();
+};
 
-    let clearInput = () => {
-      localText.value = "";
-      selectedItem.value = "";
-      localModel.value = "";
-    };
+let selectItem = (item) => {
+  update(item);
+  hidePopper();
+};
 
-    watch(
-      localModel,
-      (value) => {
-        let item = getItemByValue(value);
-        localText.value = getItemText(item);
-        selectedItem.value = value;
-      },
-      { immediate: true }
-    );
+let clearInput = () => {
+  localText.value = "";
+  selectedItem.value = "";
+  localModel.value = "";
+};
 
-    // handle template events
-
-    let handleFocusInput = () => {
-      show();
-    };
-
-    let handleInput = () => {
-      isNewSelection.value = false;
-      emit("input:value", localText.value);
-    };
-
-    let handleBlurInput = (ev) => {
-      if (!isPopperVisible.value) {
-        return;
-      }
-
-      if (!isPopperChild(ev.relatedTarget)) {
-        cancelInput();
-      }
-    };
-
-    let handleClickIndicator = (input) => {
-      if (props.isLoading) return;
-
-      if (isPopperVisible.value) {
-        cancelInput();
-        return;
-      }
-
-      input.focus();
-    };
-
-    let handleClickClearButton = (input) => {
-      clearInput();
-
-      if (isPopperVisible.value) {
-        input.focus();
-      }
-    };
-
-    let handleScrollBottom = () => {
-      page.value++;
-      emit("update:page", page.value);
-    };
-
-    let handleClickItem = (item) => {
-      selectItem(item);
-    };
-
-    return {
-      classes,
-      states,
-      variants,
-      localText,
-      localModel,
-      itemsFiltered,
-      itemsPagination,
-      getItemText,
-      getItemValue,
-      getItemClass,
-      onPopperTransitionLeave,
-      page,
-      handleFocusInput,
-      handleBlurInput,
-      handleClickIndicator,
-      handleClickClearButton,
-      handleInput,
-      handleScrollBottom,
-      handleClickItem,
-      isPopperVisible,
-      reference,
-      popper,
-    };
+watch(
+  localModel,
+  (value) => {
+    let item = getItemByValue(value);
+    localText.value = getItemText(item);
+    selectedItem.value = value;
   },
+  { immediate: true }
+);
+
+// handle template events
+
+let handleFocusInput = () => {
+  show();
+};
+
+let handleInput = () => {
+  isNewSelection.value = false;
+  emit("input:value", localText.value);
+};
+
+let handleBlurInput = (ev) => {
+  if (!isPopperVisible.value) {
+    return;
+  }
+
+  if (!isPopperChild(ev.relatedTarget)) {
+    cancelInput();
+  }
+};
+
+let handleClickIndicator = (input) => {
+  if (props.isLoading) return;
+
+  if (isPopperVisible.value) {
+    cancelInput();
+    return;
+  }
+
+  input.focus();
+};
+
+let handleClickClearButton = (input) => {
+  clearInput();
+
+  if (isPopperVisible.value) {
+    input.focus();
+  }
+};
+
+let handleScrollBottom = () => {
+  page.value++;
+  emit("update:page", page.value);
+};
+
+let handleClickItem = (item) => {
+  selectItem(item);
 };
 </script>
 
 <style scoped>
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity var(--autocomplete-transition-duration) ease;
+  transition: opacity var(--select-transition-duration) ease;
 }
 .fade-enter-from,
 .fade-leave-to {

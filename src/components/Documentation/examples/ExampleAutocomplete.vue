@@ -1,6 +1,5 @@
 <template>
   <v-autocomplete
-      name="test"
     v-model="example.model"
     v-model:input-value="example.inputValue"
     no-filter

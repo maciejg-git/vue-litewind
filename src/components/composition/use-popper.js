@@ -40,13 +40,11 @@ export default function usePopper(
     await nextTick();
     // for v-show
     instance.update();
-    emit("state:opened");
   };
 
   let hidePopper = function () {
     if (!isPopperVisible.value) return;
     isPopperVisible.value = false;
-    emit("state:closed");
   };
 
   let togglePopper = function () {

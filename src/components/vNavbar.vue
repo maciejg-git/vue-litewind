@@ -4,50 +4,43 @@
   </nav>
 </template>
 
-<script>
+<script setup>
 import { computed } from "vue";
 import useStyles from "./composition/use-styles";
 import { sharedProps, sharedStyleProps } from "../shared-props";
 
-export default {
-  props: {
-    ...sharedProps(),
-    fixed: {
-      type: Boolean,
-      default: false,
-    },
-    sticky: {
-      type: Boolean,
-      default: false,
-    },
-    bottom: {
-      type: Boolean,
-      default: false,
-    },
-    styleNavbar: {
-      type: String,
-      default: "",
-    },
-    ...sharedStyleProps("navbar"),
+const props = defineProps({
+  ...sharedProps(),
+  fixed: {
+    type: Boolean,
+    default: false,
   },
-  setup(props) {
-    let { classes } = useStyles("navbar", props, {
-      navbar: {
-        fixed: "left-0 z-20",
-        prop: computed(() => {
-          return [
-            props.fixed ? "fixed" : props.sticky ? "sticky" : "relative",
-            props.bottom ? "bottom-0" : "top-0",
-          ];
-        }),
-      },
-    });
+  sticky: {
+    type: Boolean,
+    default: false,
+  },
+  bottom: {
+    type: Boolean,
+    default: false,
+  },
+  styleNavbar: {
+    type: String,
+    default: "",
+  },
+  ...sharedStyleProps("navbar"),
+});
 
-    return {
-      classes,
-    };
+let { classes } = useStyles("navbar", props, {
+  navbar: {
+    fixed: "left-0 z-20",
+    prop: computed(() => {
+      return [
+        props.fixed ? "fixed" : props.sticky ? "sticky" : "relative",
+        props.bottom ? "bottom-0" : "top-0",
+      ];
+    }),
   },
-};
+});
 </script>
 
 <style scoped></style>
