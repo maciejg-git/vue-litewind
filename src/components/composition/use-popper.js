@@ -2,7 +2,7 @@ import { ref, computed, watch, nextTick } from "vue";
 import { createPopper } from "@popperjs/core";
 
 export default function usePopper(
-  { placement, offsetX, offsetY, noFlip, emit },
+  { placement, offsetX, offsetY, noFlip },
   { resizePopper = false } = {}
 ) {
   // resize modifier to make popper the same width as reference element
@@ -36,10 +36,9 @@ export default function usePopper(
   let showPopper = async function () {
     if (isPopperVisible.value) return;
     isPopperVisible.value = true;
-    // for v-if
-    await nextTick();
-    // for v-show
-    instance.update();
+
+    // show v-show popper
+    if (popper.value) setPopper()
   };
 
   let hidePopper = function () {
@@ -59,19 +58,30 @@ export default function usePopper(
     }
   });
 
+  let isLocked = ref(false)
+
+  let lockPopper = () => {
+    isLocked.value = true
+  }
+
   // watch popper element and create new instance
   watch(popper, (value) => {
-    if (value) setPopper();
+    if (value) {
+      setPopper()
+      return
+    }
+    if (!isLocked.value) {
+      destroyPopperInstance()
+    }
   });
 
-  let destroyInstance = () => {
+  let destroyPopperInstance = () => {
     if (instance) {
       instance.destroy();
       instance = null;
+      isLocked.value = false
     }
   };
-
-  let onPopperTransitionLeave = () => destroyInstance();
 
   let isPopperChild = (el) => {
     return popper.value.contains(el);
@@ -142,7 +152,8 @@ export default function usePopper(
     hidePopper,
     togglePopper,
     setPopper,
-    onPopperTransitionLeave,
+    lockPopper,
+    destroyPopperInstance,
     virtualElement,
     updateVirtualElement,
   };

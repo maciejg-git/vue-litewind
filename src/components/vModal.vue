@@ -10,8 +10,8 @@
         class="fixed inset-0 z-[31] overflow-y-auto"
         role="dialog"
         tabindex="0"
-        @click.self="handleBackdropClick"
-        @keydown.esc="handleKeydown"
+        @click.self="handleClickBackdrop"
+        @keydown.esc="handleKeydown('esc')"
         v-focus
       >
         <div :class="containerClasses">
@@ -32,7 +32,7 @@
                 <v-close-button
                   v-if="!noCloseButton"
                   v-bind="closeButton"
-                  @click="close"
+                  @click="handleClickCloseButton"
                 />
               </header>
               <main :class="classes.content.value">
@@ -195,9 +195,10 @@ const props = defineProps({
 });
 
 const emit = defineEmits([
-  "input:primaryButtonClick",
-  "input:secondaryButtonClick",
+  "input:primary-button-click",
+  "input:secondary-button-click",
   "update:modelValue",
+  "input:static-backdrop-click",
 ]);
 
 const attrs = useAttrs();
@@ -307,7 +308,7 @@ if (id) {
 
 // handle template events
 
-let handleBackdropClick = () => {
+let handleClickBackdrop = () => {
   if (props.staticBackdrop) {
     emit("input:static-backdrop-click");
     return;
@@ -315,7 +316,9 @@ let handleBackdropClick = () => {
   close();
 };
 
-let handleClickCloseButton = () => close();
+let handleClickCloseButton = () => {
+  close();
+}
 
 let handlePrimaryButtonClick = () => {
   if (props.primaryButtonClose) close();
@@ -327,7 +330,9 @@ let handleSecondaryButtonClick = () => {
   emit("input:secondary-button-click");
 };
 
-let handleKeydown = () => close();
+let handleKeydown = (key) => {
+  close();
+}
 </script>
 
 <style scoped lang="postcss">

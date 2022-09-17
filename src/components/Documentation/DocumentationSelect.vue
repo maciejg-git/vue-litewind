@@ -4,7 +4,7 @@
   <section>
     <h4>Reference</h4>
     <p class="my-10">
-      This component also accepts props of
+      This component also allows props of
       <code class="code-text">v-input</code>
       . See documentation here.
     </p>
@@ -12,7 +12,7 @@
 
     <h6>Styling props</h6>
     <p class="my-10">
-      This component also accepts styling props of
+      This component also allows styling props of
       <code class="code-text">v-input</code>
       . See documentation here.
     </p>
@@ -28,7 +28,7 @@
 
     <h6>Slots</h6>
     <p class="my-10">
-      This component also supports slots of
+      This component also allows slots of
       <code class="code-text">v-input</code>
       . See documentation here.
     </p>
@@ -37,17 +37,15 @@
 
   <section>
     <h4>Notes</h4>
-    <p>
     <ul class="flex flex-col gap-y-7">
       <li>
         <header class="font-semibold text-lg mb-2">
           <span>#</span>
           Autocomplete
         </header>
-        Select allows autocomplete functionality to search for options. Enable autocomplete mode with <code class="code-text">autocomplete</code> prop or use <code class="code-text">v-autocomplete</code> component. In autocomplete mode <code class="code-text">no-filter</code> and <code class="code-text">is-loading</code> props can be used when requesting data from API.
+        Select allows autocomplete functionality to search for options. Enable autocomplete mode with <code class="code-text">autocomplete</code> prop or use <code class="code-text">v-autocomplete</code> component. In autocomplete mode <code class="code-text">no-filter</code>, <code class="code-text">no-pagination</code> and <code class="code-text">is-loading</code> props can be used when requesting data from API.
       </li>
     </ul>
-    </p>
   </section>
 
   <section>
@@ -201,7 +199,7 @@ export default {
       {
         slot: "item",
         description:
-          "Slot for menu item. Slot props: `text`, `value`, `item`, `inputValue`, `highlight(string, match)`",
+          "Slot for menu item. Slot props: `text`, `value`, `item`, `inputValue`",
       },
     ]);
 

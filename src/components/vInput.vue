@@ -61,13 +61,13 @@
           :class="{ visible: isLoading, invisible: !isLoading }"
           type="svg"
           style-spinner="small"
-          v-bind="spinner"
+          v-bind="_spinner"
           class="mx-0.5"
         />
         <v-close-button
           v-if="clearable || customClearable"
           style-close-button="small"
-          v-bind="closeButton"
+          v-bind="_closeButton"
           aria-label="Close"
           class="ml-2"
           :class="{ invisible: !isElementVisible('clearButton') }"
@@ -86,7 +86,7 @@
             initial="down"
             rotate-180
             :switch="indicatorSwitch"
-            v-bind="chevron"
+            v-bind="_chevron"
           />
         </div>
       </div>
@@ -96,7 +96,7 @@
       :messages="messages"
       :state="state"
       :single-line-message="singleLineMessage"
-      v-bind="formText"
+      v-bind="_formText"
     >
       <template
         v-for="(name, slot) of $slots"
@@ -190,19 +190,19 @@ export default {
       type: Boolean,
       default: false,
     },
-    spinner: {
+    _spinner: {
       type: Object,
       default: defaultProps("input", "spinner", {}),
     },
-    closeButton: {
+    _closeButton: {
       type: Object,
       default: defaultProps("input", "closeButton", {}),
     },
-    chevron: {
+    _chevron: {
       type: Object,
       default: defaultProps("input", "chevron", {}),
     },
-    formText: {
+    _formText: {
       type: Object,
       default: defaultProps("input", "formText", { class: "absolute" }),
     },

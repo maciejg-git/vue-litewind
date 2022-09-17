@@ -23,7 +23,6 @@
 
   <section>
     <h4>Notes</h4>
-    <p>
     <ul class="flex flex-col gap-y-7">
       <li>
         <header class="font-semibold text-lg mb-2">
@@ -54,7 +53,6 @@
         You can set up context menu with <code class="code-text">v-dropdown-context</code>. See example below.
       </li>
     </ul>
-    </p>
   </section>
 
   <section>
@@ -83,6 +81,7 @@
 
   <section>
     <h4>Example - alternative styles</h4>
+    Dropdown comes with some default alternative styles.
     <div class="example">
       <example name="ExampleDropdownStyles" :script="false"></example>
     </div>

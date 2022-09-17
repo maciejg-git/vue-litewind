@@ -1,10 +1,9 @@
 <template>
-  <div>
+  <div class="flex gap-x-7">
     <v-badge
       style-badge="small secondary"
       update-animation="scale-up"
       :update-key="example"
-      class="mr-10"
     >
       {{ example }}
     </v-badge>
@@ -13,7 +12,6 @@
       style-badge="small secondary"
       update-animation="bounce"
       :update-key="example"
-      class="mr-10"
     >
       {{ example }}
     </v-badge>
@@ -22,7 +20,6 @@
       style-badge="small secondary"
       update-animation="to-danger"
       :update-key="example"
-      class="mr-10"
     >
       {{ example }}
     </v-badge>
@@ -31,7 +28,6 @@
       style-badge="small secondary"
       update-animation="to-success"
       :update-key="example"
-      class="mr-10"
     >
       {{ example }}
     </v-badge>

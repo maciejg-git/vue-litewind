@@ -218,7 +218,11 @@ const props = defineProps({
   ...sharedStyleProps("table"),
 });
 
-let emit = defineEmits(["update:page"]);
+let emit = defineEmits([
+  "update:page",
+  "update:filtered-count",
+  "input:selection",
+]);
 
 let { classes, states } = useStyles("table", props, {
   table: {

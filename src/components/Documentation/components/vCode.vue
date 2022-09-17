@@ -15,14 +15,14 @@ import hljs from "highlight.js";
 export default {
   props: {
     code: { type: String, default: undefined },
-    language:{ type: String, default: undefined },
+    language: { type: String, default: undefined },
     template: { type: Boolean, default: false },
     script: { type: Boolean, default: false },
   },
   setup(props) {
     let code = props.code;
 
-    let codeEl = ref(null)
+    let codeEl = ref(null);
 
     if (props.template || props.script) {
       let templateRegexp = /^<template>([\s\S]*?)^<\/template>/gm;
@@ -33,8 +33,10 @@ export default {
         ? scriptRegexp
         : templateRegexp;
 
-      let cutTemplateRegexp = /^.*<!-- CUT START -->([\s\S]*?)<!-- CUT END -->\r\n/gm;
-      let cutScriptRegexp = /^.*\/\* CUT START \*\/([\s\S]*?)\/\* CUT END \*\/\r\n/gm;
+      let cutTemplateRegexp =
+        /^.*<!-- CUT START -->([\s\S]*?)<!-- CUT END -->\r\n/gm;
+      let cutScriptRegexp =
+        /^.*\/\* CUT START \*\/([\s\S]*?)\/\* CUT END \*\/\r\n/gm;
       let cutRegexp = props.template
         ? cutTemplateRegexp
         : props.script
@@ -46,14 +48,8 @@ export default {
     }
 
     onMounted(() => {
-      hljs.highlightElement(codeEl.value)
-    })
-
-    // watch(
-    //   [codeEl, () => props.code],
-    //   () => hljs.highlightElement(codeEl.value),
-    //   { flush: "post" }
-    // );
+      hljs.highlightElement(codeEl.value);
+    });
 
     return {
       codeEl,

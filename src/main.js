@@ -72,5 +72,4 @@ app.use(componentPlugin, {
     }
   }
 });
-// app.use(formPlugin);
 app.mount("#app");

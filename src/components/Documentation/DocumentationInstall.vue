@@ -168,45 +168,21 @@ app.use(componentPlugin, {
       </ul>
       </p>
 
-      <h5>Example</h5>
+      <section>
+        <h5>Example - styling</h5>
+        <div class="example">
+          <example name="ExampleInstallButton"></example>
+        </div>
+      </section>
 
-      <div class="example">
-        <example-install-button />
-      </div>
-
-    <v-code :code="ExampleInstallButtonCode" template language="html"></v-code>
-    <v-code :code="ExampleInstallButtonCode" script language="js"></v-code>
-
-      <h5>Example</h5>
-
-      <div class="example">
-        <example-install-select />
-      </div>
-
-    <v-code :code="ExampleInstallSelectCode" template language="html"></v-code>
-    <v-code :code="ExampleInstallSelectCode" script language="js"></v-code>
+      <section>
+        <h5>Example - styling</h5>
+        <div class="example">
+          <example name="ExampleInstallSelect"></example>
+        </div>
+      </section>
   </section>
 </template>
-
-<script>
-import ExampleInstallButton from "./examples/ExampleInstallButton.vue"
-import ExampleInstallSelect from "./examples/ExampleInstallSelect.vue"
-import ExampleInstallButtonCode from "./examples/ExampleInstallButton.vue?raw"
-import ExampleInstallSelectCode from "./examples/ExampleInstallSelect.vue?raw"
-
-export default {
-  components: {
-    ExampleInstallButton,
-    ExampleInstallSelect,
-  },
-  setup() {
-    return {
-      ExampleInstallButtonCode,
-      ExampleInstallSelectCode,
-    };
-  },
-};
-</script>
 
 <style scoped>
 </style>

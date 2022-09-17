@@ -233,7 +233,11 @@ const props = defineProps({
   ...sharedStyleProps("datepicker"),
 });
 
-const emit = defineEmits(["update:modelValue"]);
+const emit = defineEmits([
+  "update:modelValue",
+  "update:formatted",
+  "state:done",
+]);
 
 let { classes, states, variants } = useStyles("datepicker", props, {
   datepicker: null,

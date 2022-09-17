@@ -1,26 +1,29 @@
 <template>
   <v-select
     v-model="select"
-    style-icon="true:valid false:invalid"
-    :variant="select"
+    :items="[true, false]"
+    :input="{
+      icon: select ? 'b-check-lg' : 'b-x',
+      styleIcon: 'true:valid false:invalid',
+      variant: select,
+    }"
     :icon="select ? 'b-check-lg' : 'b-x'"
-    @input:icon-click="select = !select"
-  >
-    <option :value="true">true</option>
-    <option :value="false">false</option>
-  </v-select>
+    :offsetY="5"
+    inline
+    @click:icon="select = !select"
+  ></v-select>
 </template>
 
 <script>
-import { ref } from "vue"
+import { ref } from "vue";
 
 export default {
   setup(props, { emit }) {
-    let select = ref(false)
+    let select = ref(false);
 
     return {
-      select
-    }
-  }
+      select,
+    };
+  },
 };
 </script>

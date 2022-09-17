@@ -10,6 +10,7 @@
     :readonly="!autocomplete"
     show-indicator
     :indicator-switch="isPopperVisible"
+    :is-loading="isLoading"
     type="text"
     @input="handleInput"
     @focus="handleFocusInput"
@@ -31,7 +32,8 @@
   <teleport to="body">
     <transition
       :name="transition"
-      @after-leave="onPopperTransitionLeave"
+      @before-leave="lockPopper"
+      @after-leave="destroyPopperInstance"
     >
       <div
         v-if="isPopperVisible"
@@ -201,7 +203,8 @@ const {
   popper,
   showPopper,
   hidePopper,
-  onPopperTransitionLeave,
+  destroyPopperInstance,
+  lockPopper,
 } = usePopper(
   { placement, offsetX, offsetY, noFlip, modelValue, emit },
   { resizePopper: true }

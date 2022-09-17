@@ -20,7 +20,6 @@
 
   <section>
     <h4>Notes</h4>
-    <p>
     <ul class="flex flex-col gap-y-7">
       <li>
         <header class="font-semibold text-lg mb-2">
@@ -51,7 +50,6 @@
     You can set up context popover with <code class="code-text">v-popover</code>. See example below.
       </li>
     </ul>
-    </p>
   </section>
 
   <section>

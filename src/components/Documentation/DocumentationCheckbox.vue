@@ -15,9 +15,15 @@
 
   <section>
     <h4>Notes</h4>
-    <p>
-      <code class="code-text">v-checkbox-simple</code> is a lighter, simpler checkbox variant that can be used in lists, tables etc. Simple checkbox only has <code class="code-text">style-checkbox</code> and <code class="code-text">base</code> prop. It does not allow <code class="code-text">v-model</code> but <code class="code-text">:checked</code> prop and <code class="code-text">@changed</code> event can be used instead.
-    </p>
+    <ul class="flex flex-col gap-y-7">
+      <li>
+        <header class="font-semibold text-lg mb-2">
+          <span>#</span>
+        Simple checkbox
+        </header>
+        <code class="code-text">v-checkbox-simple</code> is a lighter, simpler checkbox variant that can be used in lists, tables etc. Simple checkbox only has <code class="code-text">style-checkbox</code> and <code class="code-text">base</code> prop. It does not allow <code class="code-text">v-model</code> but <code class="code-text">:checked</code> prop and <code class="code-text">@changed</code> event can be used instead.
+      </li>
+    </ul>
   </section>
 
   <section>

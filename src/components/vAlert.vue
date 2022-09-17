@@ -69,6 +69,8 @@ const props = defineProps({
   ...sharedStyleProps("alert"),
 });
 
+const emit = defineEmits(["update:modelValue"]);
+
 let { classes, states } = useStyles("alert", props, {
   alert: null,
   icon: null,

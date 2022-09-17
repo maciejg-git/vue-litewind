@@ -14,7 +14,6 @@
 
   <section>
     <h4>Notes</h4>
-    <p>
     <ul class="flex flex-col gap-y-7">
       <li>
         <header class="font-semibold text-lg mb-2">
@@ -31,7 +30,6 @@ Collapse activation
         You can group <code class="code-text">v-collapse</code> components to create accordion. See example below.
       </li>
       </ul>
-    </p>
   </section>
 
   <section>

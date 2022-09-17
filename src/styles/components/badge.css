@@ -42,12 +42,12 @@
       }
       &.badge--success {
         @apply
-          text-success-800
+          text-text-900
           bg-success-500
       }
       &.badge--warn {
         @apply
-          text-warn-800
+          text-text-900
           bg-warn-500
       }
       &.badge--danger {

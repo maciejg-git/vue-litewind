@@ -8,7 +8,8 @@
   <teleport to="body">
     <transition
       :name="transition"
-      @after-leave="onPopperTransitionLeave"
+      @before-leave="lockPopper"
+      @after-leave="destroyPopperInstance"
     >
       <div
         v-if="isPopperVisible"
@@ -119,7 +120,8 @@ const {
   popper,
   showPopper,
   hidePopper,
-  onPopperTransitionLeave,
+  destroyPopperInstance,
+  lockPopper,
 } = usePopper({ placement, offsetX, offsetY, noFlip, emit });
 
 let { onClickOutside } = useClickOutside();

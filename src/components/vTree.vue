@@ -8,7 +8,7 @@
       :items="i"
     >
       <template
-        v-for="(name, slot) of slots"
+        v-for="(name, slot) of $slots"
         #[slot]="items"
       >
         <slot

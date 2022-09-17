@@ -17,7 +17,6 @@
 
   <section>
     <h4>Notes</h4>
-    <p>
     <ul class="flex flex-col gap-y-7">
       <li>
         <header class="font-semibold text-lg mb-2">
@@ -34,7 +33,6 @@
         Open modal is by default appended to the body element
       </li>
     </ul>
-    </p>
   </section>
 
   <section>
