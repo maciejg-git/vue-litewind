@@ -1,6 +1,6 @@
 {
   "name": "vue-component-tailwind",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "type": "module",
   "main": "./dist/vue-component-tailwind.umd.cjs",
   "module": "./dist/vue-component-tailwind.js",
@@ -21,9 +21,7 @@
     "build-lib": "vite build --config vite-lib.config.js",
     "serve": "vite preview"
   },
-  "dependencies": {
-    "highlight.js": "^11.6.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@popperjs/core": "^2.11.6",
     "@tailwindcss/forms": "^0.5.2",
@@ -32,6 +30,7 @@
     "@vue/compiler-sfc": "^3.2.37",
     "autoprefixer": "^10.4.8",
     "happy-dom": "^2.55.0",
+    "highlight.js": "^11.6.0",
     "postcss": "^8.4.16",
     "postcss-nested": "^5.0.6",
     "tailwindcss": "^3.1.8",
