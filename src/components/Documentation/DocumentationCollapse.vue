@@ -86,8 +86,8 @@ export default {
 
     let components = ref([
       {
-        component: "v-button-collapse",
-        description: "Optional version of v-button that has indicator build in and automatically toggles attached v-model on click. It uses the same props as v-button as well as props of v-chevron. Use v-button-collapse for minimal setup or normal v-button for more customizing options.",
+        component: "v-button-chevron",
+        description: "Optional version of v-button that has indicator build in. It uses the same props as v-button. Use v-button-chevron for minimal setup or normal v-button for more customizing options.",
       },
     ]);
 

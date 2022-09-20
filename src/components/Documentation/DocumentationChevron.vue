@@ -36,10 +36,10 @@ export default {
         description: "Initial direction of chevron/triangle. Valid values are: 'down', 'left' ,'right' and 'up'",
       },
       {
-        prop: "rotate180",
+        prop: "rotate90",
         type: ["Boolean"],
         default: "false",
-        description: "If `true` rotates chevron 180 degrees. Default is 90 degree",
+        description: "If `true` rotates chevron 90 degrees. Default is 180 degrees",
       },
       {
         prop: "triangle",
@@ -48,10 +48,10 @@ export default {
         description: "Use filled triangle instead of chevron",
       },
       {
-        prop: "counter-clockwise",
+        prop: "clockwise",
         type: ["Boolean"],
         default: "false",
-        description: "Rotate chevron/triangle counter-clockwise",
+        description: "Rotate chevron/triangle clockwise. Default is counter clockwise",
       },
       {
         prop: "switch",

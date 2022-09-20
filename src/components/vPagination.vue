@@ -48,6 +48,7 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
+  ...sharedStyleProps("pagination"),
   modelValue: {
     type: Number,
     default: undefined,
@@ -84,7 +85,6 @@ const props = defineProps({
     type: String,
     default: defaultProps("pagination", "stylePrev", ""),
   },
-  ...sharedStyleProps("pagination"),
 });
 
 const emit = defineEmits(["update:modelValue"]);

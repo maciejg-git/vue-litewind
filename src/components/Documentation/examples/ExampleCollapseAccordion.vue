@@ -5,9 +5,14 @@
 
   <v-accordion class="my-2">
     <v-card>
-      <v-button-collapse v-model="accordion.isVisible" block class="w-full">
+      <v-button-chevron
+        :switch="accordion.isVisible"
+        block
+        :chevron="{ class: 'ml-auto' }"
+        @click="accordion.isVisible = !accordion.isVisible"
+      >
         Toggle collapse
-      </v-button-collapse>
+      </v-button-chevron>
       <v-collapse v-model="accordion.isVisible">
         <div class="p-8">
           {{ text[0] }}
@@ -16,9 +21,14 @@
     </v-card>
 
     <v-card class="my-2">
-      <v-button-collapse v-model="accordion.isVisible2" block class="w-full">
+      <v-button-chevron
+        :switch="accordion.isVisible2"
+        block
+        :chevron="{ class: 'ml-auto' }"
+        @click="accordion.isVisible2 = !accordion.isVisible2"
+      >
         Toggle collapse
-      </v-button-collapse>
+      </v-button-chevron>
       <v-collapse v-model="accordion.isVisible2">
         <div class="p-8">
           {{ text[1] }}
@@ -27,9 +37,14 @@
     </v-card>
 
     <v-card class="my-2">
-      <v-button-collapse v-model="accordion.isVisible3" block class="w-full">
+      <v-button-chevron
+        :switch="accordion.isVisible3"
+        block
+        :chevron="{ class: 'ml-auto' }"
+        @click="accordion.isVisible3 = !accordion.isVisible3"
+      >
         Toggle collapse
-      </v-button-collapse>
+      </v-button-chevron>
       <v-collapse v-model="accordion.isVisible3">
         <div class="p-8">
           {{ text[2] }}
@@ -46,15 +61,16 @@
     <v-card base="flat">
       <v-collapse>
         <template #reference="{ isOpen, onTrigger }">
-          <v-button-collapse
+          <v-button-chevron
             :switch="isOpen"
             base="button-plain"
             block
-            class="w-full p-3"
+            class="p-3"
+            :chevron="{ class: 'ml-auto' }"
             v-on="onTrigger"
           >
             Toggle collapse
-          </v-button-collapse>
+          </v-button-chevron>
         </template>
         <div class="p-8">
           {{ text[0] }}
@@ -62,18 +78,22 @@
       </v-collapse>
     </v-card>
 
-    <v-card base="flat" class="my-2">
+    <v-card
+      base="flat"
+      class="my-2"
+    >
       <v-collapse>
         <template #reference="{ isOpen, onTrigger }">
-          <v-button-collapse
+          <v-button-chevron
             :switch="isOpen"
             base="button-plain"
             block
-            class="w-full p-3"
+            class="p-3"
+            :chevron="{ class: 'ml-auto' }"
             v-on="onTrigger"
           >
             Toggle collapse
-          </v-button-collapse>
+          </v-button-chevron>
         </template>
         <div class="p-8">
           {{ text[1] }}
@@ -81,18 +101,22 @@
       </v-collapse>
     </v-card>
 
-    <v-card base="flat" class="my-2">
+    <v-card
+      base="flat"
+      class="my-2"
+    >
       <v-collapse>
         <template #reference="{ isOpen, onTrigger }">
-          <v-button-collapse
+          <v-button-chevron
             :switch="isOpen"
             base="button-plain"
             block
-            class="w-full p-3"
+            class="p-3"
+            :chevron="{ class: 'ml-auto' }"
             v-on="onTrigger"
           >
             Toggle collapse
-          </v-button-collapse>
+          </v-button-chevron>
         </template>
         <div class="p-8">
           {{ text[0] }}

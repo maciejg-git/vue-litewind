@@ -55,6 +55,7 @@ import { registerListener, removeListener } from "../trigger";
 
 const props = defineProps({
   ...sharedProps(),
+  ...sharedStyleProps("popover"),
   ...sharedPopperProps("popover"),
   trigger: {
     type: String,
@@ -76,7 +77,6 @@ const props = defineProps({
     type: String,
     default: defaultProps("popover", "stylePopover", ""),
   },
-  ...sharedStyleProps("popover"),
 });
 
 const attrs = useAttrs();

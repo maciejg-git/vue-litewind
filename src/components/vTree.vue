@@ -35,6 +35,7 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
+  ...sharedStyleProps("tree"),
   items: {
     type: Object,
     default: [],
@@ -75,7 +76,6 @@ const props = defineProps({
     type: String,
     default: defaultProps("tree", "styleIcon", ""),
   },
-  ...sharedStyleProps("tree"),
 });
 
 const emit = defineEmits(["input:selected"]);

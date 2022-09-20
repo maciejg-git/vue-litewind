@@ -4,16 +4,8 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { inject } from "vue";
 
-export default {
-  setup() {
-    let { classes } = inject("control-dropdown");
-
-    return {
-      classes,
-    };
-  },
-};
+let { classes } = inject("control-dropdown");
 </script>

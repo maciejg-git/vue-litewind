@@ -43,6 +43,7 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
+  ...sharedStyleProps("radio"),
   modelValue: {
     type: [Array, Boolean, String],
     default: undefined,
@@ -60,7 +61,6 @@ const props = defineProps({
     default: defaultProps("radio", "styleLabel", ""),
   },
   ...sharedFormProps(null),
-  ...sharedStyleProps("radio"),
 });
 
 const emit = defineEmits(["update:modelValue"]);

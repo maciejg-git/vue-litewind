@@ -43,6 +43,7 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
+  ...sharedStyleProps("checkbox"),
   modelValue: {
     type: [Array, Boolean, Object],
     default: undefined,
@@ -64,7 +65,6 @@ const props = defineProps({
     default: defaultProps("checkbox", "styleInput", ""),
   },
   ...sharedFormProps(null),
-  ...sharedStyleProps("checkbox"),
 });
 
 const emit = defineEmits(["update:modelValue"]);

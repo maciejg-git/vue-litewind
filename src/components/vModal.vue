@@ -10,12 +10,15 @@
         class="fixed inset-0 z-[31] overflow-y-auto"
         role="dialog"
         tabindex="0"
-        @click.self="handleClickBackdrop"
+        @click="handleClickBackdrop"
         @keydown.esc="handleKeydown('esc')"
         v-focus
       >
         <div :class="containerClasses">
-          <div :class="classes.modal.value">
+          <div
+            :class="classes.modal.value"
+            @click.stop
+          >
             <slot
               name="modal"
               :close="close"
@@ -91,6 +94,7 @@ import { registerListener, removeListener } from "../trigger";
 
 const props = defineProps({
   ...sharedProps(),
+  ...sharedStyleProps("modal"),
   modelValue: {
     type: Boolean,
     default: undefined,
@@ -191,7 +195,6 @@ const props = defineProps({
     type: String,
     default: defaultProps("modal", "styleBackdrop", ""),
   },
-  ...sharedStyleProps("modal"),
 });
 
 const emit = defineEmits([
@@ -205,7 +208,7 @@ const attrs = useAttrs();
 
 let { classes } = useStyles("modal", props, {
   modal: {
-    fixed: "flex-1 relative overflow-auto pointer-events-auto",
+    fixed: "flex-1 relative overflow-auto",
   },
   header: {
     fixed: "flex items-center justify-between",
@@ -222,7 +225,7 @@ let { classes } = useStyles("modal", props, {
 
 let containerClasses = computed(() => {
   return [
-    "flex relative min-h-full mx-auto py-6 px-6 md:px-0 pointer-events-none",
+    "flex relative min-h-full mx-auto py-6 px-6 md:px-0",
     sizeClasses[props.size],
     positionClasses[props.position],
   ];
@@ -318,7 +321,7 @@ let handleClickBackdrop = () => {
 
 let handleClickCloseButton = () => {
   close();
-}
+};
 
 let handlePrimaryButtonClick = () => {
   if (props.primaryButtonClose) close();
@@ -332,7 +335,7 @@ let handleSecondaryButtonClick = () => {
 
 let handleKeydown = (key) => {
   close();
-}
+};
 </script>
 
 <style scoped lang="postcss">

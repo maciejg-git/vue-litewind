@@ -39,6 +39,7 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
+  ...sharedStyleProps("progress"),
   value: {
     type: [Number, String],
     default: 0,
@@ -81,7 +82,6 @@ const props = defineProps({
     type: [String, Array],
     default: defaultProps("progress", "styleLabel", ""),
   },
-  ...sharedStyleProps("progress"),
 });
 
 let { classes } = useStyles("progress", props, {

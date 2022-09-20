@@ -6,25 +6,17 @@
   ></slot>
 </template>
 
-<script>
-import { unref, shallowRef } from "vue"
+<script setup>
+import { unref, shallowRef } from "vue";
 import { registerTrigger } from "../trigger";
 
-export default {
-  props: {
-    for: { type: String, default: undefined },
-  },
-  setup(props) {
-    let referenceSlot = shallowRef({ reference: null, onTrigger: {} })
+const props = defineProps({
+  for: { type: String, default: undefined },
+});
 
-    registerTrigger(props.for, (slotProps) => {
-      referenceSlot.value = slotProps;
-    });
+let referenceSlot = shallowRef({ reference: null, onTrigger: {} });
 
-    return {
-      referenceSlot,
-      unref,
-    };
-  },
-};
+registerTrigger(props.for, (slotProps) => {
+  referenceSlot.value = slotProps;
+});
 </script>

@@ -41,12 +41,12 @@
         <v-button @click="validate()">Validate</v-button>
       </div>
     </div>
-    <pre class="m-0">
-      <code v-html="'username: ' + stringifyObject(usernameStatus, true, ['valid', 'validated'])"></code>
-      <code v-html="'password: ' + stringifyObject(passwordStatus, true, ['valid', 'validated'])"></code>
-      <code v-html="'text: ' + stringifyObject(textStatus, true, ['valid', 'validated'])"></code>
-      <code v-html="'form: ' + stringifyObject(formStatus, true)"></code>
-    </pre>
+    <!-- <pre class="m-0"> -->
+    <!--   <code v-html="'username: ' + stringifyObject(usernameStatus, true, ['valid', 'validated'])"></code> -->
+    <!--   <code v-html="'password: ' + stringifyObject(passwordStatus, true, ['valid', 'validated'])"></code> -->
+    <!--   <code v-html="'text: ' + stringifyObject(textStatus, true, ['valid', 'validated'])"></code> -->
+    <!--   <code v-html="'form: ' + stringifyObject(formStatus, true)"></code> -->
+    <!-- </pre> -->
   </div>
 </template>
 

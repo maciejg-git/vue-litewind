@@ -99,6 +99,7 @@ import { defaultProps } from "../defaultProps";
 
 let props = defineProps({
   ...sharedProps(),
+  ...sharedStyleProps("select"),
   modelValue: {
     type: [String, Object, Boolean, Number],
     default: undefined,
@@ -171,7 +172,6 @@ let props = defineProps({
     default: defaultProps("select", "styleItem", ""),
   },
   ...sharedPopperProps("select"),
-  ...sharedStyleProps("select"),
 });
 
 const emit = defineEmits([

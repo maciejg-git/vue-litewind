@@ -115,6 +115,10 @@ export default {
 
     let slots = ref([
       {
+        slot: "tab-bar-append",
+        description: "Slot for additional content in the tab bar",
+      },
+      {
         slot: "default",
         description: "Slot for v-tab components",
       },

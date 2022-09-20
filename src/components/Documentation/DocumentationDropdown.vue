@@ -194,9 +194,9 @@ export default {
         description: "Menu header",
       },
       {
-        component: "v-button-dropdown",
+        component: "v-button-chevron",
         description:
-          "Optional version of v-button that has reactive indicator build in. It uses the same props as normal v-button as well as triangle and icon props of v-chevron",
+          "Optional version of v-button that has reactive indicator build in. It uses the same props as normal v-button.",
       },
     ]);
 

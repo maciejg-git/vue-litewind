@@ -26,6 +26,7 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
+  ...sharedStyleProps("closeButton"),
   styleWrapper: {
     type: String,
     default: defaultProps("closeButton", "styleWrapper", ""),
@@ -34,7 +35,6 @@ const props = defineProps({
     type: String,
     default: defaultProps("closeButton", "styleCloseButton", ""),
   },
-  ...sharedStyleProps("closeButton"),
 });
 
 let { classes } = useStyles("close-button", props, {

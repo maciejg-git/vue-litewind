@@ -1,31 +1,6 @@
-<template>
-  <div>
-    <slot name="default"></slot>
-  </div>
-</template>
-
-<script setup>
-// vue
-import { ref, provide, inject } from "vue";
-// validators
-import { globalValidators } from "../validators";
-
-const props = defineProps({
-  modelValue: {
-    type: [String, Number, Boolean, Array],
-    default: undefined,
-  },
-  rules: { type: Object, default: {} },
-});
-
-const emit = defineEmits([
-  "update:modelValue",
-  "update:status",
-  "update:state",
-  "update:messages",
-]);
-
-let { addInput } = inject("form", {});
+import { ref, watch } from "vue"
+import { globalValidators } from "../../validators"
+import { isFunction } from "../../tools"
 
 let defaultStatus = {
   touched: false,
@@ -34,34 +9,45 @@ let defaultStatus = {
   validated: false,
 };
 
-let value = ref(props.modelValue);
+export default function useValidation(rules, validateOn, validateMode, localModel, emitValidationStatus) {
 let status = ref({ ...defaultStatus });
-let messages = ref({});
 let state = ref("");
+let messages = ref({});
 let wasValid = ref(false);
 let wasInvalid = ref(false);
+// let { validateOn, validateMode } = props;
+
+watch(localModel, (value) => updateValue(value))
+
+emitValidationStatus()
 
 let reset = () => {
   status.value = { ...defaultStatus };
   state.value = "";
   wasInvalid.value = false;
   wasValid.value = false;
-  value.value = [];
+  emit("update:modelValue", "");
   messages.value = {};
 };
 
-let updateState = () => {
-  if (!status.value.valid) {
-    if (wasValid.value || wasInvalid.value) {
-      return "invalid";
-    }
-  } else {
-    if (wasInvalid.value) {
-      return "valid";
-    }
-  }
-  return state.value;
+let canUpdateState = () => {
+  return validateMode === "eager" || wasInvalid.value;
 };
+
+let updateState = () => {
+  // if (props.state !== null) return props.state;
+  if (status.value.optional) return "";
+
+  if (!canUpdateState()) return state.value;
+
+  return status.value.valid ? "valid" : "invalid";
+};
+
+// watch(
+//   () => props.state,
+//   (newState) => (state.value = newState),
+//   { immediate: true }
+// );
 
 let validate = (value) => {
   let { newStatus, newMessages } = getValidateStatus(value);
@@ -70,9 +56,15 @@ let validate = (value) => {
 };
 
 let updateValue = (v) => {
-  value.value = v;
-
   validate(v);
+
+  if (
+    validateOn === "blur" &&
+    !status.value.touched &&
+    !status.value.validated
+  ) {
+    return;
+  }
 
   if (status.value.valid) {
     wasValid.value = true;
@@ -84,17 +76,25 @@ let updateValue = (v) => {
   state.value = updateState();
 
   emitValidationStatus();
-
-  emit("update:modelValue", v);
 };
 
 let touch = () => {
+  validate(localModel.value);
   status.value.touched = true;
+
+  if (status.value.valid) {
+    wasValid.value = true;
+  } else {
+    wasInvalid.value = true;
+  }
+
+  state.value = updateState();
+
+  emitValidationStatus();
 };
 
 let formValidate = () => {
-  validate(value.value);
-
+  validate(localModel.value);
   status.value.validated = true;
 
   if (status.value.valid) {
@@ -116,12 +116,12 @@ let getValidateStatus = (value) => {
   };
 
   let newMessages = {};
-  let rules = Object.entries(props.rules);
+  let validationRules = Object.entries(rules);
 
-  newStatus.valid = rules.reduce((valid, [key, v]) => {
+  newStatus.valid = validationRules.reduce((valid, [key, v]) => {
     let validator =
       globalValidators[key] ||
-      (isFunction(props.rules[key]) && props.rules[key]);
+      (isFunction(rules[key]) && rules[key]);
 
     if (!validator) return valid;
 
@@ -137,22 +137,18 @@ let getValidateStatus = (value) => {
     return valid && newStatus[key];
   }, true);
 
-  newStatus.optional = !props.rules.required && value === "";
+  newStatus.optional = !rules.required && value === "";
 
   return { newStatus, newMessages };
 };
 
-let emitValidationStatus = () => {
-  emit("update:status", status.value);
-  emit("update:state", state.value);
-  emit("update:messages", messages.value);
-};
-
-if (addInput) addInput({ status, formValidate, reset });
-
-provide("checkbox-group", { value, updateValue, touch, state });
-
-emit("update:status", status.value);
-</script>
-
-<style scoped lang="postcss"></style>
+return {
+  status,
+  state,
+  messages,
+  updateValue,
+  touch,
+  formValidate,
+  reset,
+}
+}

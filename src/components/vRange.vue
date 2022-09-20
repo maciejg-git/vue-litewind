@@ -19,6 +19,7 @@ import { sharedProps, sharedStyleProps, sharedFormProps } from "../shared-props"
 export default {
   props: {
     ...sharedProps(),
+    ...sharedStyleProps("range"),
     modelValue: {
       type: [String, Number],
       default: undefined,
@@ -28,7 +29,6 @@ export default {
       default: "",
     },
     ...sharedFormProps(null),
-    ...sharedStyleProps("range"),
   },
   setup(props, { attrs, emit }) {
     let { classes, states } = useStyles("range", props, {

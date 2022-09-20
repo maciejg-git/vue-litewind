@@ -133,6 +133,7 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
+  ...sharedStyleProps("datepicker"),
   modelValue: {
     type: [String, Array],
     default: undefined,
@@ -230,7 +231,6 @@ const props = defineProps({
     type: String,
     default: "",
   },
-  ...sharedStyleProps("datepicker"),
 });
 
 const emit = defineEmits([

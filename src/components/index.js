@@ -1,6 +1,5 @@
 export { default as vButton } from "./vButton.vue"
-export { default as vButtonCollapse } from "./vButtonCollapse.vue"
-export { default as vButtonDropdown } from "./vButtonDropdown.vue"
+export { default as vButtonChevron } from "./vButtonChevron.vue"
 export { default as vTable } from "./vTable.vue"
 export { default as vTabs } from "./vTabs.vue"
 export { default as vTab } from "./vTab.vue"

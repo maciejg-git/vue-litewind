@@ -20,6 +20,7 @@ import { sharedProps, sharedStyleProps } from "../shared-props";
 
 const props = defineProps({
   ...sharedProps(),
+  ...sharedStyleProps("button"),
   disabled: {
     type: Boolean,
     default: false,
@@ -36,14 +37,13 @@ const props = defineProps({
     type: String,
     default: defaultProps("button", "styleButton", ""),
   },
-  ...sharedStyleProps("button"),
 });
 
 let { classes, states } = useStyles("button", props, {
   button: {
     fixed: "justify-center items-center",
     prop: computed(() => {
-      return [props.block ? "flex" : "inline-flex"];
+      return [props.block ? "flex w-full" : "inline-flex"];
     }),
     states: ["disabled"],
   },

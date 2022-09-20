@@ -40,6 +40,7 @@ import { sharedProps, sharedStyleProps } from "../shared-props";
 
 const props = defineProps({
   ...sharedProps(),
+  ...sharedStyleProps("spinner"),
   type: {
     type: String,
     default: "border",
@@ -52,7 +53,6 @@ const props = defineProps({
     type: String,
     default: "",
   },
-  ...sharedStyleProps("spinner"),
 });
 
 let { classes } = useStyles("spinner", props, {

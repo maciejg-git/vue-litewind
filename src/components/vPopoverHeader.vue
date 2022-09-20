@@ -1,5 +1,8 @@
 <template>
-  <div class="flex justify-between" :class="classes.header.value">
+  <div
+    class="flex justify-between"
+    :class="classes.header.value"
+  >
     <div>
       <slot name="default">
         {{ title }}
@@ -9,18 +12,8 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { inject } from "vue";
 
-export default {
-  setup() {
-    let { classes, title, hide } = inject("control-popover", {});
-
-    return {
-      classes,
-      title,
-      hide,
-    };
-  },
-};
+let { classes, title, hide } = inject("control-popover", {});
 </script>

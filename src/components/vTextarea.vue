@@ -68,6 +68,7 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
+  ...sharedStyleProps("textarea"),
   modelValue: {
     type: String,
     default: undefined,
@@ -109,7 +110,6 @@ const props = defineProps({
     default: defaultProps("textarea", "styleLabel", ""),
   },
   ...sharedFormProps(null),
-  ...sharedStyleProps("textarea"),
 });
 
 const emit = defineEmits(["update:modelValue"]);

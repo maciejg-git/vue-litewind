@@ -15,6 +15,7 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
+  ...sharedStyleProps("list"),
   width: {
     type: String,
     default: undefined,
@@ -31,7 +32,6 @@ const props = defineProps({
     type: String,
     default: defaultProps("list", "styleItem", ""),
   },
-  ...sharedStyleProps("list"),
 });
 
 let { classes, states } = useStyles("list", props, {

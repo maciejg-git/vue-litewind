@@ -59,6 +59,7 @@ import { registerListener, removeListener } from "../trigger";
 
 const props = defineProps({
   ...sharedProps(),
+  ...sharedStyleProps("dropdown"),
   modelValue: {
     type: Boolean,
     default: false,
@@ -88,7 +89,6 @@ const props = defineProps({
     type: String,
     default: defaultProps("dropdown", "styleHeader", ""),
   },
-  ...sharedStyleProps("dropdown"),
 });
 
 const emit = defineEmits(["state:opened", "state:closed", "update:modelValue"]);

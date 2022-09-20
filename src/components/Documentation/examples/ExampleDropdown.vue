@@ -5,9 +5,13 @@
     @state:closed="events.unshift({ ev: 'state:closed', data: $event })"
   >
     <template #reference="{ reference, onTrigger }">
-      <v-button-dropdown :ref="reference" v-on="onTrigger" class="mr-4">
+      <v-button-chevron
+        :ref="reference"
+        :chevron="{ class: 'ml-2' }"
+        v-on="onTrigger"
+      >
         Dropdown menu
-      </v-button-dropdown>
+      </v-button-chevron>
     </template>
     <v-card width="320px" style-card="menu shadow">
       <v-dropdown-menu-item tag="button">

@@ -1,9 +1,13 @@
 <template>
   <v-dropdown :offsetY="5">
     <template #reference="{ reference, onTrigger }">
-      <v-button-dropdown :ref="reference" v-on="onTrigger" class="mr-4">
+      <v-button-chevron
+        :ref="reference"
+        :chevron="{ class: 'ml-2' }"
+        v-on="onTrigger"
+      >
         Filterable menu
-      </v-button-dropdown>
+      </v-button-chevron>
     </template>
     <v-card width="280px" style-card="menu shadow">
       <div class="px-4 py-1">

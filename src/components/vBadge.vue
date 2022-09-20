@@ -19,6 +19,7 @@ import { sharedProps, sharedStyleProps } from "../shared-props";
 
 const props = defineProps({
   ...sharedProps(),
+  ...sharedStyleProps("badge"),
   position: {
     type: String,
     default: "",
@@ -35,7 +36,6 @@ const props = defineProps({
     type: String,
     default: "",
   },
-  ...sharedStyleProps("badge"),
 });
 
 let { classes } = useStyles("badge", props, {

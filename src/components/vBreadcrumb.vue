@@ -53,6 +53,7 @@ import { defaultProps } from "../defaultProps";
 
 let props = defineProps({
   ...sharedProps(),
+  ...sharedStyleProps("breadcrumb"),
   path: {
     type: Array,
     default: [],
@@ -73,7 +74,6 @@ let props = defineProps({
     type: String,
     default: defaultProps("breadcrumb", "styleActive", ""),
   },
-  ...sharedStyleProps("breadcrumb"),
 });
 
 let { classes } = useStyles("breadcrumb", props, {

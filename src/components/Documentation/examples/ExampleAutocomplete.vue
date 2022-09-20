@@ -10,7 +10,6 @@
     :transition="example.transition"
     :state="example.state"
     style-menu="shadow"
-    class="w-[420px]"
     @input:value="query($event)"
     v-on="handleExampleEvents"
   ></v-autocomplete>

@@ -14,6 +14,9 @@
           <render-vnode :vnodes="getTabName(tab)" />
         </a>
       </li>
+      <li v-if="$slots['tab-bar-append']">
+        <slot name="tab-bar-append"></slot>
+      </li>
     </ul>
     <slot name="default"></slot>
   </div>
@@ -27,6 +30,7 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
+  ...sharedStyleProps("tabs"),
   fill: {
     type: Boolean,
     default: false,
@@ -51,7 +55,6 @@ const props = defineProps({
     type: [String, Array],
     default: defaultProps("tabs", "styleTab", ""),
   },
-  ...sharedStyleProps("tabs"),
 });
 
 const emit = defineEmits(["input:changed-tab"]);
@@ -63,7 +66,7 @@ let renderVnode = (props) => {
 let { classes, states } = useStyles("tabs", props, {
   tabBar: {
     name: "tab-bar",
-    fixed: "flex flex-auto",
+    fixed: "flex flex-auto items-center",
     prop: computed(() =>
       props.center ? "justify-center" : props.right ? "justify-end" : ""
     ),

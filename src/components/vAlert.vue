@@ -38,6 +38,7 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
+  ...sharedStyleProps("alert"),
   modelValue: {
     type: Boolean,
     default: undefined,
@@ -66,7 +67,6 @@ const props = defineProps({
     type: [String, Array],
     default: defaultProps("alert", "styleIcon", ""),
   },
-  ...sharedStyleProps("alert"),
 });
 
 const emit = defineEmits(["update:modelValue"]);

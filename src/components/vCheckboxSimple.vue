@@ -1,42 +1,29 @@
 <template>
   <input
-    v-bind="$attrs"
     type="checkbox"
     :class="[
       classes.checkbox.value,
-      attrs.disabled === '' || attrs.disabled === true
+      $attrs.disabled === '' || $attrs.disabled === true
         ? states.checkbox.disabled
         : '',
     ]"
   />
 </template>
 
-<script>
-// composition
+<script setup>
 import useStyles from "./composition/use-styles";
-// props
 import { sharedProps, sharedStyleProps } from "../shared-props";
 
-export default {
-  props: {
-    ...sharedProps(),
-    ...sharedStyleProps("checkbox"),
-  },
-  inheritAttrs: false,
-  setup(props, { attrs }) {
-    let { classes, states } = useStyles("checkbox", props, {
-      checkbox: {
-        states: ["disabled"],
-      },
-    });
+const props = defineProps({
+  ...sharedProps(),
+  ...sharedStyleProps("checkbox"),
+});
 
-    return {
-      classes,
-      states,
-      attrs,
-    };
+let { classes, states } = useStyles("checkbox", props, {
+  checkbox: {
+    states: ["disabled"],
   },
-};
+});
 </script>
 
 <style scoped></style>

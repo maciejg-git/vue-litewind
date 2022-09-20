@@ -11,6 +11,7 @@ import { sharedProps, sharedStyleProps } from "../shared-props";
 
 const props = defineProps({
   ...sharedProps(),
+  ...sharedStyleProps("navbar"),
   fixed: {
     type: Boolean,
     default: false,
@@ -27,7 +28,6 @@ const props = defineProps({
     type: String,
     default: "",
   },
-  ...sharedStyleProps("navbar"),
 });
 
 let { classes } = useStyles("navbar", props, {

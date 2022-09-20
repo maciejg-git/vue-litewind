@@ -139,6 +139,7 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
+  ...sharedStyleProps("table"),
   definition: {
     type: Array,
     default: undefined,
@@ -215,7 +216,6 @@ const props = defineProps({
     type: String,
     default: defaultProps("table", "styleCaption", ""),
   },
-  ...sharedStyleProps("table"),
 });
 
 let emit = defineEmits([

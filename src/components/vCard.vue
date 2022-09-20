@@ -14,6 +14,7 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
+  ...sharedStyleProps("card"),
   width: {
     type: String,
     default: undefined,
@@ -22,7 +23,6 @@ const props = defineProps({
     type: String,
     default: defaultProps("card", "styleCard", ""),
   },
-  ...sharedStyleProps("card"),
 });
 
 let { classes } = useStyles("card", props, {

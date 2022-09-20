@@ -41,6 +41,7 @@ import { registerListener, removeListener } from "../trigger";
 
 const props = defineProps({
   ...sharedProps(),
+  ...sharedStyleProps("sidepanel"),
   modelValue: {
     type: Boolean,
     default: false,
@@ -73,7 +74,6 @@ const props = defineProps({
     type: String,
     default: defaultProps("sidepanel", "styleSidepanel", ""),
   },
-  ...sharedStyleProps("sidepanel"),
 });
 
 let emit = defineEmits(["update:modelValue"]);
