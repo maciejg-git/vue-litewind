@@ -41,19 +41,32 @@
 
       <div class="flex flex-wrap flex-1">
         <slot
-          v-if="multiValue"
           name="multi-value"
         >
-            <template v-if="multiValue === 'text'">
-              <span v-for="(item, index) in multiValueItems" class="mr-1">
-                {{ `${item}${index !== multiValueItems.length - 1 ? "," : ""}`}}
-              </span>
+        <template v-if="value && value.length">
+          <template v-if="isString(value)">
+            <template v-if="valueDisplay === 'text'">
+              {{ value }}
             </template>
-            <template v-else-if="multiValue === 'chips'">
-              <span v-for="item in multiValueItems" class="mr-2">
-                {{ item }}
-              </span>
-            </template>
+          </template>
+          <template v-else-if="Array.isArray(value)">
+              <template v-if="valueDisplay === 'text'">
+                <span v-for="(item, index) in value" class="mr-1">
+                  {{ `${item}${index !== value.length - 1 ? "," : ""}`}}
+                </span>
+              </template>
+          </template>
+        </template>
+            <!-- <template v-if="multiValueDisplay === 'text'"> -->
+            <!--   <span v-for="item in multiValue" class="mr-1"> -->
+            <!--     {{ item }} -->
+            <!--   </span> -->
+            <!-- </template> -->
+            <!-- <template v-else-if="multiValueDisplay === 'chips'"> -->
+            <!--   <span v-for="item in multiValue" class="mr-2"> -->
+            <!--     {{ item }} -->
+            <!--   </span> -->
+            <!-- </template> -->
         </slot>
         
         <input
@@ -145,7 +158,7 @@ import vChevron from "./vChevron.vue";
 import vCloseButton from "./vCloseButton.vue";
 import vSpinner from "./vSpinner.vue";
 import { globalValidators } from "../validators";
-import { isFunction } from "../tools";
+import { isFunction, isString } from "../tools";
 import {
   sharedProps,
   sharedStyleProps,
@@ -175,14 +188,22 @@ const props = defineProps({
     type: String,
     default: "silent",
   },
-  multiValue: {
+  value: {
+    type: [Array, String],
+    default: undefined,
+  },
+  valueDisplay: {
     type: String,
-    default: "",
+    default: 'text',
   },
-  multiValueItems: {
-    type: Array,
-    default: [],
-  },
+  // multiValue: {
+  //   type: String,
+  //   default: "",
+  // },
+  // multiValueItems: {
+  //   type: [Array, String],
+  //   default: undefined,
+  // },
   useLoader: {
     type: Boolean,
     default: false,
@@ -314,6 +335,18 @@ let isMouseOver = ref(false);
 let isFocused = ref(false);
 
 let blur = (ev) => ev.target.blur();
+
+// let multiValueItems = computed(() => {
+//   if (props.multiValue === 'single') {
+//     return props.multiValueItems
+//   } else if (props.multiValue === 'text') {
+//     return props.multiValueItems.map((i, index) => {
+//       return `${i}${index !== props.multiValueItems.length - 1 ? "," : ""}`
+//     })
+//   } else {
+//     return props.multiValueItems
+//   }
+// })
 
 // validate
 

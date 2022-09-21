@@ -2,6 +2,7 @@
   <v-input
     v-model="localText"
     ref="reference"
+    :value="selectedItems"
     :icon="icon"
     :use-loader="useLoader"
     :inline="inline"
@@ -109,6 +110,10 @@ let props = defineProps({
     type: Boolean,
     default: defaultProps("select", "useLoader", true),
   },
+  multiValue: {
+    type: Boolean,
+    default: false,
+  },
   isLoading: {
     type: Boolean,
     default: false,
@@ -211,6 +216,7 @@ const {
 );
 
 let selectedItem = ref(null);
+let selectedItems = ref([]);
 let localText = ref("");
 let isNewSelection = ref(true);
 
@@ -290,8 +296,19 @@ let itemsPagination = computed(() => {
 });
 
 let update = (item) => {
-  selectedItem.value = item;
-  localText.value = getItemText(item);
+  // selectedItem.value = item;
+  // localText.value = getItemText(item);
+  if (props.multiValue) {
+    let index = selectedItems.value.indexOf(item)
+    if (index !== -1) {
+      selectedItems.value.splice(index, 1)
+    } else {
+      selectedItems.value.push(item)
+    }
+    localModel.value = selectedItems.value.map((i) => getItemValue(i))
+    return
+  }
+  selectedItems.value = item
   localModel.value = getItemValue(item);
 };
 
@@ -321,15 +338,15 @@ let clearInput = () => {
   localModel.value = "";
 };
 
-watch(
-  localModel,
-  (value) => {
-    let item = getItemByValue(value);
-    localText.value = getItemText(item);
-    selectedItem.value = value;
-  },
-  { immediate: true }
-);
+// watch(
+//   localModel,
+//   (value) => {
+//     let item = getItemByValue(value);
+//     localText.value = getItemText(item);
+//     selectedItem.value = value;
+//   },
+//   { immediate: true }
+// );
 
 // handle template events
 
