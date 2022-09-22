@@ -43,30 +43,6 @@
         <slot
           name="multi-value"
         >
-        <template v-if="value && value.length">
-          <template v-if="isString(value)">
-            <template v-if="valueDisplay === 'text'">
-              {{ value }}
-            </template>
-          </template>
-          <template v-else-if="Array.isArray(value)">
-              <template v-if="valueDisplay === 'text'">
-                <span v-for="(item, index) in value" class="mr-1">
-                  {{ `${item}${index !== value.length - 1 ? "," : ""}`}}
-                </span>
-              </template>
-          </template>
-        </template>
-            <!-- <template v-if="multiValueDisplay === 'text'"> -->
-            <!--   <span v-for="item in multiValue" class="mr-1"> -->
-            <!--     {{ item }} -->
-            <!--   </span> -->
-            <!-- </template> -->
-            <!-- <template v-else-if="multiValueDisplay === 'chips'"> -->
-            <!--   <span v-for="item in multiValue" class="mr-2"> -->
-            <!--     {{ item }} -->
-            <!--   </span> -->
-            <!-- </template> -->
         </slot>
         
         <input
@@ -196,14 +172,6 @@ const props = defineProps({
     type: String,
     default: 'text',
   },
-  // multiValue: {
-  //   type: String,
-  //   default: "",
-  // },
-  // multiValueItems: {
-  //   type: [Array, String],
-  //   default: undefined,
-  // },
   useLoader: {
     type: Boolean,
     default: false,
@@ -335,18 +303,6 @@ let isMouseOver = ref(false);
 let isFocused = ref(false);
 
 let blur = (ev) => ev.target.blur();
-
-// let multiValueItems = computed(() => {
-//   if (props.multiValue === 'single') {
-//     return props.multiValueItems
-//   } else if (props.multiValue === 'text') {
-//     return props.multiValueItems.map((i, index) => {
-//       return `${i}${index !== props.multiValueItems.length - 1 ? "," : ""}`
-//     })
-//   } else {
-//     return props.multiValueItems
-//   }
-// })
 
 // validate
 

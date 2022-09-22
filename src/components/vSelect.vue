@@ -28,6 +28,18 @@
         v-bind="slotProps"
       ></slot>
     </template>
+      <template #multi-value>
+        <template v-if="!props.multiValue">
+          <span>{{ selectedItem }}</span>
+        </template>
+        <template v-else>
+          <template v-if="multiValueDisplay === 'text'">
+            <span v-for="(item, index) in selectedItems" class="ml-1">
+              {{ item }}{{ index !== selectedItems.length - 1 ? "," : "" }}
+            </span>
+          </template>
+        </template>
+      </template>
   </v-input>
 
   <teleport to="body">
@@ -113,6 +125,10 @@ let props = defineProps({
   multiValue: {
     type: Boolean,
     default: false,
+  },
+  multiValueDisplay: {
+    type: String,
+    default: "text",
   },
   isLoading: {
     type: Boolean,
@@ -216,7 +232,7 @@ const {
 );
 
 let selectedItem = ref(null);
-let selectedItems = ref([]);
+let selectedItems = ref(new Map());
 let localText = ref("");
 let isNewSelection = ref(true);
 
@@ -296,19 +312,25 @@ let itemsPagination = computed(() => {
 });
 
 let update = (item) => {
-  // selectedItem.value = item;
-  // localText.value = getItemText(item);
+  let value = getItemValue(item)
   if (props.multiValue) {
-    let index = selectedItems.value.indexOf(item)
-    if (index !== -1) {
-      selectedItems.value.splice(index, 1)
-    } else {
-      selectedItems.value.push(item)
+    if (selectedItems.value.has(value)) {
+      selectedItems.value.delete(value)
+      return
     }
-    localModel.value = selectedItems.value.map((i) => getItemValue(i))
+    selectedItems.value.set(value, item)
+    localModel.value = Array.from(selectedItems.value.keys())
     return
+    // let index = selectedItems.value.indexOf(item)
+    // if (index !== -1) {
+    //   selectedItems.value.splice(index, 1)
+    // } else {
+    //   selectedItems.value.push(item)
+    // }
+    // localModel.value = selectedItems.value.map((i) => getItemValue(i))
+    // return
   }
-  selectedItems.value = item
+  selectedItem.value = item
   localModel.value = getItemValue(item);
 };
 
