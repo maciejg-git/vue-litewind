@@ -6,7 +6,7 @@
       active
         ? [classes.item.value, states.item.value.active]
         : disabled
-        ? [classes.item.value, states.item.value.disabled]
+        ? [classes.item.value, 'disabled']
         : classes.item.value,
     ]"
     @click="autoCloseMenu && hide()"

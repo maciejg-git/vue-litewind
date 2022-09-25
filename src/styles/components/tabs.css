@@ -45,7 +45,7 @@
       mx-2
       hover:bg-secondary-50
       border-secondary-300
-      dark:text-text-400
+      dark:text-text-300/80
       dark:hover:bg-dark-700
   }
       &.tabs--tab--small {
@@ -88,7 +88,7 @@
       bg-secondary-100
       hover:bg-secondary-50
       border-secondary-300
-      dark:text-text-400
+      dark:text-text-300/80
       dark:bg-dark-900
       dark:hover:bg-dark-800
       dark:border-dark-600

@@ -69,7 +69,7 @@ let attrs = useAttrs();
 
 let { classes, states } = useStyles("radio", props, {
   radio: {
-    states: ["valid", "invalid", "disabled"],
+    states: ["valid", "invalid"],
   },
   label: null,
 });
@@ -80,7 +80,7 @@ let getRadioClasses = () => {
     classes.radio.value,
     states.radio.value && states.radio.value[state.value],
     attrs.disabled === "" || attrs.disabled === true
-      ? states.radio.disabled
+      ? 'disabled'
       : "",
   ];
 };

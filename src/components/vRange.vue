@@ -33,7 +33,7 @@ export default {
   setup(props, { attrs, emit }) {
     let { classes, states } = useStyles("range", props, {
       range: {
-        states: ["valid", "invalid", "disabled"],
+        states: ["valid", "invalid"],
       },
     });
 
@@ -42,7 +42,7 @@ export default {
         classes.range.value,
         states.range.value[state.value],
         attrs.disabled === "" || attrs.disabled === true
-          ? states.range.disabled
+          ? 'disabled'
           : "",
       ];
     };

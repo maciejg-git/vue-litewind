@@ -9,9 +9,9 @@
     @apply
       shadow-lg
       rounded-md
-      text-text-900
-      bg-white
+      text-text-800
       dark:text-text-300
+      bg-white
       dark:bg-dark-800
   }
       &.modal--square {
@@ -30,9 +30,9 @@
       font-medium
       px-6
       py-6
-      text-text-900
-      bg-secondary-50
+      text-text-800
       dark:text-text-300
+      bg-secondary-50
       dark:bg-dark-800
   }
 

@@ -142,7 +142,7 @@
                 value: '',
               },
               'valid',
-              'invalid,',
+              'invalid',
             ]"
           ></v-select>
         </div>

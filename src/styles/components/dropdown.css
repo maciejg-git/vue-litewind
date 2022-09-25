@@ -13,7 +13,7 @@
       px-6
       py-3
       my-1
-      text-text-700
+      text-text-800
       focus:text-white
       hover:bg-secondary-100
       focus:bg-primary-500
@@ -31,11 +31,6 @@
           dark:bg-primary-500
           dark:hover:bg-primary-600
       }
-      &.dropdown--item--disabled-state {
-        @apply
-          disabled
-          pointer-events-none
-      }
 
   &.dropdown--header {
     @apply
@@ -46,7 +41,7 @@
       px-6
       py-2
       opacity-70
-      text-text-700
+      text-text-800/80
       dark:text-text-300
   }
 }
@@ -62,7 +57,7 @@
       px-4 
       py-4
       my-1
-      text-text-700
+      text-text-800
       focus:text-white
       hover:bg-secondary-100
       focus:bg-primary-500
@@ -80,11 +75,6 @@
           dark:bg-primary-500
           dark:hover:bg-primary-600
       }
-      &.dropdown--item--disabled-state {
-        @apply
-          disabled
-          pointer-events-none
-      }
 
   &.dropdown--header {
     @apply
@@ -97,7 +87,7 @@
       py-4
       my-1
       opacity-70
-      text-text-700
+      text-text-800/80
       dark:text-text-300
   }
 }
@@ -110,7 +100,7 @@
       focus:outline-none
       px-5
       py-3
-      text-text-700
+      text-text-800
       focus:text-white
       hover:bg-secondary-100
       focus:bg-primary-400
@@ -128,11 +118,6 @@
           dark:text-white
           dark:bg-primary-500
           dark:hover:bg-primary-600
-      }
-      &.dropdown--item--disabled-state {
-        @apply
-          disabled
-          pointer-events-none
       }
 
   &.dropdown--header {

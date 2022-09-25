@@ -99,7 +99,7 @@ const slots = useSlots();
 
 let { classes, states } = useStyles("dropdown", props, {
   item: {
-    states: ["active", "disabled"],
+    states: ["active"],
   },
   header: {
     fixed: "fixed-item",

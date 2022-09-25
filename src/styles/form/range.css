@@ -20,7 +20,3 @@
         border-danger-300
         focus:ring-danger-200
     }
-    .range--disabled-state {
-      @apply
-        disabled
-    }

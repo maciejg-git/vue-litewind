@@ -39,10 +39,6 @@
           dark:border-danger-400
           dark:focus:ring-danger-300
       }
-      &.radio--disabled-state {
-        @apply
-          disabled
-      }
 
   &.radio--label {
     @apply

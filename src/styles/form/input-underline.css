@@ -29,10 +29,6 @@
           dark:border-danger-400
           dark:focus-within:ring-danger-300
       }
-      &.input--disabled-state {
-        @apply
-          disabled
-      }
 
   &.input--icon {
     @apply

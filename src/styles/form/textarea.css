@@ -35,10 +35,6 @@
           dark:border-danger-400
           dark:focus-within:ring-danger-300
       }
-      &.textarea--disabled-state {
-        @apply
-          disabled
-      }
 
   &.textarea--label {
     @apply
@@ -77,10 +73,6 @@
           dark:text-danger-600
           dark:border-danger-400
           dark:focus-within:ring-danger-300
-      }
-      &.textarea--disabled-state {
-        @apply
-          disabled
       }
 
   &.textarea--label {

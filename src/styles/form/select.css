@@ -1,8 +1,6 @@
-@import "../shared.css";
-
 :root {
   --select-transition-duration: 0.2s;
-  --select-max-menu-height: 300px;
+  --select-max-menu-height: 400px;
 }
 
 .default {
@@ -14,23 +12,27 @@
       cursor-pointer
       px-6
       py-4
-      text-text-700
-      focus:text-white
+      text-text-800
+      /* focus:text-white */
+      dark:text-text-300
+      /* dark:focus:text-white */
       hover:bg-secondary-100
-      focus:bg-primary-500
-      dark:text-text-200
-      dark:focus:text-white
+      /* focus:bg-primary-500 */
       dark:hover:bg-dark-600
-      dark:focus:bg-primary-500
+      /* dark:focus:bg-primary-500 */
   }
       &.select--item--dense {
         @apply
           py-2 !important
       }
-      &.select--item--disabled-state {
+      &.select--item--active-state {
         @apply
-          disabled
-          pointer-events-none
+          text-text-800
+          dark:text-text-800
+          bg-primary-500
+          hover:bg-primary-600
+          dark:bg-primary-400
+          dark:hover:bg-primary-600
       }
 
   &.select--match {

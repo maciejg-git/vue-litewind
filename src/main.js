@@ -13,8 +13,8 @@ import { componentPlugin } from "./index.js";
 import { components } from "./index"
 import { directives } from "./index"
 // styles
+import "./styles/shared.css"
 import "./styles/components.css"
-import "./styles/form.css"
 import "./styles/icon.css"
 import "tailwindcss/tailwind.css";
 import "./components/Documentation/Documentation.css"

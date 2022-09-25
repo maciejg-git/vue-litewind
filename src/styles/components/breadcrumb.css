@@ -19,12 +19,12 @@
       h-6
       ml-2
       text-text-400
-      dark:text-gray-400
+      dark:text-gray-300
   }
 
   &.breadcrumb--active {
     @apply
       text-text-700 
-      dark:text-text-400
+      dark:text-text-300
   }
 }

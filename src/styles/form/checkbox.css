@@ -41,10 +41,6 @@
           dark:border-danger-400
           dark:focus-within:ring-danger-300
       }
-      &.checkbox--disabled-state {
-        @apply
-          disabled
-      }
 
   &.checkbox--label {
     @apply

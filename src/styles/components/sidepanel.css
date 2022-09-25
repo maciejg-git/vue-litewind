@@ -8,8 +8,8 @@
       text-left
       shadow-lg
       shadow-black/40
-      bg-secondary-100
       dark:text-text-300
+      bg-secondary-100
       dark:bg-dark-700;
   }
 }

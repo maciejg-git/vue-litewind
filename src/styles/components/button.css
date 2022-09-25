@@ -1,5 +1,3 @@
-@import '../shared.css';
-
 .plain {
   &.button {
     @apply 
@@ -39,8 +37,8 @@
       py-2.5
       text-text-100
       bg-primary-500
-      border-primary-700
       hover:bg-primary-600
+      border-primary-700
       focus:ring-primary-200
   }
       &.button--primary {
@@ -125,10 +123,5 @@
       &.button--uppercase {
         @apply
           uppercase
-      }
-      &.button--disabled-state {
-        @apply
-          disabled
-          pointer-events-none
       }
   }

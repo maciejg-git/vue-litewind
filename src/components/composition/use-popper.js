@@ -34,6 +34,7 @@ export default function usePopper(
   });
 
   let showPopper = async function () {
+    console.log('show')
     if (isPopperVisible.value) return;
     isPopperVisible.value = true;
 
@@ -42,6 +43,7 @@ export default function usePopper(
   };
 
   let hidePopper = function () {
+    console.log('hide')
     if (!isPopperVisible.value) return;
     isPopperVisible.value = false;
   };
@@ -83,10 +85,6 @@ export default function usePopper(
     }
   };
 
-  let isPopperChild = (el) => {
-    return popper.value.contains(el);
-  };
-
   let setPopper = () => {
     let modifiers = [
       {
@@ -121,6 +119,10 @@ export default function usePopper(
     });
   };
 
+  let updateInstance = () => {
+    if (instance) instance.update()
+  }
+
   // optional virtual element as reference
   let getVirtualElement = ({ x, y }) => {
     return () => ({
@@ -145,8 +147,9 @@ export default function usePopper(
 
   return {
     isPopperVisible,
-    isPopperChild,
     reference,
+    instanceReference: localReference,
+    updateInstance,
     popper,
     showPopper,
     hidePopper,

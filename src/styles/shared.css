@@ -1,6 +1,13 @@
+html {
+  @apply
+    text-text-800
+    dark:text-text-300
+}
+
 .disabled {
   @apply 
     opacity-50
+    pointer-events-none
 }
 
 .match {

@@ -8,36 +8,32 @@
       outline-none
       transition-shadow
       duration-200
+      dark:text-text-300
       bg-white
+      dark:bg-dark-700
       border-secondary-300
       focus-within:border-secondary-400
-      focus-within:ring-primary-200
-      dark:text-text-300
-      dark:bg-dark-700
       dark:border-dark-500
+      focus-within:ring-primary-200
       dark:focus-within:ring-primary-300
   }
       &.input--valid-state {
         @apply
           text-success-600
-          border-success-300
-          focus-within:ring-success-200
           dark:text-success-600
+          border-success-300
           dark:border-success-400
+          focus-within:ring-success-200
           dark:focus-within:ring-success-300
       }
       &.input--invalid-state {
         @apply
           text-danger-600
-          border-danger-300
-          focus-within:ring-danger-200
           dark:text-danger-600
+          border-danger-300
           dark:border-danger-400
+          focus-within:ring-danger-200
           dark:focus-within:ring-danger-300
-      }
-      &.input--disabled-state {
-        @apply
-          disabled
       }
 
   &.input--icon {

@@ -10,38 +10,38 @@
   }
       &.alert--info {
         @apply
-          text-text-900
-          bg-info-400
-          border-info-400
+          text-text-800
           dark:text-text-800
+          bg-info-400
           dark:bg-info-400
+          border-info-400
           dark:border-info-500
       }
       &.alert--danger {
         @apply
-          text-text-900
-          bg-danger-300
-          border-danger-400
+          text-text-800
           dark:text-text-800
+          bg-danger-300
           dark:bg-danger-400
+          border-danger-400
           dark:border-danger-500
       }
       &.alert--warn {
         @apply
-          text-text-900
-          bg-warn-300
-          border-warn-400
+          text-text-800
           dark:text-text-800
+          bg-warn-300
           dark:bg-warn-400
+          border-warn-400
           dark:border-warn-500
       }
       &.alert--success {
         @apply
-          text-text-900
-          bg-success-300
-          border-success-400
+          text-text-800
           dark:text-text-800
+          bg-success-300
           dark:bg-success-400
+          border-success-400
           dark:border-success-500
       }
       &.alert--outline {
@@ -65,15 +65,6 @@
         @apply
           shadow-lg
           shadow-black/20
-      }
-      &.alert--light {
-        @apply
-          border
-          rounded-lg
-          text-text-800
-          dark:text-text-300
-          bg-transparent
-          dark:bg-transparent
       }
       &.alert--bold {
         @apply

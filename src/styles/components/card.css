@@ -5,8 +5,8 @@
       rounded-md
       dark:text-text-300
       bg-white
-      border-secondary-200
       dark:bg-dark-800
+      border-secondary-200
       dark:border-dark-700
   }
       &.card--menu {
@@ -46,8 +46,8 @@
 .flat {
   &.card {
     @apply
-      bg-white
       dark:text-text-300
+      bg-white
       dark:bg-dark-700
   }
       &.card--rounded {

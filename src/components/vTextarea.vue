@@ -118,7 +118,7 @@ let attrs = useAttrs();
 
 let { classes, states } = useStyles("textarea", props, {
   textarea: {
-    states: ["valid", "invalid", "disabled"],
+    states: ["valid", "invalid"],
   },
   label: {
     fixed: "inline-block",
@@ -130,7 +130,7 @@ let getTextareaClasses = computed(() => {
     classes.textarea.value,
     states.textarea.value && states.textarea.value[state.value],
     attrs.disabled === "" || attrs.disabled === true
-      ? states.textarea.disabled
+      ? 'disabled'
       : "",
   ];
 });

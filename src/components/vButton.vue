@@ -5,7 +5,7 @@
     type="button"
     :class="[
       classes.button.value,
-      disabled ? states.button.value.disabled : '',
+      disabled ? 'disabled' : '',
     ]"
   >
     <slot name="default"></slot>
@@ -39,13 +39,12 @@ const props = defineProps({
   },
 });
 
-let { classes, states } = useStyles("button", props, {
+let { classes } = useStyles("button", props, {
   button: {
     fixed: "justify-center items-center",
     prop: computed(() => {
       return [props.block ? "flex w-full" : "inline-flex"];
     }),
-    states: ["disabled"],
   },
 });
 

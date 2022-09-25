@@ -15,11 +15,10 @@ let state = ref("");
 let messages = ref({});
 let wasValid = ref(false);
 let wasInvalid = ref(false);
-// let { validateOn, validateMode } = props;
 
 watch(localModel, (value) => updateValue(value))
 
-emitValidationStatus()
+emitValidationStatus(status, state, messages)
 
 let reset = () => {
   status.value = { ...defaultStatus };
@@ -75,7 +74,7 @@ let updateValue = (v) => {
 
   state.value = updateState();
 
-  emitValidationStatus();
+  emitValidationStatus(status, state, messages);
 };
 
 let touch = () => {
@@ -90,7 +89,7 @@ let touch = () => {
 
   state.value = updateState();
 
-  emitValidationStatus();
+  emitValidationStatus(status, state, messages);
 };
 
 let formValidate = () => {
@@ -105,7 +104,7 @@ let formValidate = () => {
 
   state.value = updateState();
 
-  emitValidationStatus();
+  emitValidationStatus(status, state, messages);
 };
 
 let getValidateStatus = (value) => {

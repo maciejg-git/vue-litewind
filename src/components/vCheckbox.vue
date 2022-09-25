@@ -73,7 +73,7 @@ const attrs = useAttrs();
 
 let { classes, states } = useStyles("checkbox", props, {
   checkbox: {
-    states: ["valid", "invalid", "disabled"],
+    states: ["valid", "invalid"],
   },
   label: null,
 });
@@ -84,7 +84,7 @@ let getCheckBoxClasses = () => {
     classes.checkbox.value,
     states.checkbox.value && states.checkbox.value[state.value],
     attrs.disabled === "" || attrs.disabled === true
-      ? states.checkbox.disabled
+      ? 'disabled'
       : "",
   ];
 };

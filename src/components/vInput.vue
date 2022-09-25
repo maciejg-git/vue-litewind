@@ -3,6 +3,8 @@
     :class="wrapperClasses"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
+      @mousedown.prevent
+      @click="handleClickWrapper"
   >
     <label
       v-if="label"
@@ -77,7 +79,8 @@
           aria-label="Close"
           class="ml-2"
           :class="{ invisible: !isElementVisible('clearButton') }"
-          @click="handleClickClearButton"
+          @mousedown.prevent
+          @click.stop="handleClickClearButton"
           @focus="blur"
         ></v-close-button>
         <button
@@ -85,8 +88,8 @@
           aria-label="Close"
           tabindex="-1"
           class="focus:outline-none ml-2"
-          @click="handleClickIndicator"
-          @focus="blur"
+          @mousedown.prevent
+          @click.stop="handleClickIndicator"
         >
           <v-chevron
             initial="down"
@@ -255,7 +258,7 @@ let attrs = useAttrs();
 
 let { classes, states } = useStyles("input", props, {
   input: {
-    states: ["valid", "invalid", "disabled"],
+    states: ["valid", "invalid"],
   },
   icon: null,
   label: {
@@ -269,7 +272,7 @@ let getInputClasses = computed(() => {
     classes.input.value,
     state && states.input.value && states.input.value[state.value],
     attrs.disabled === "" || attrs.disabled === true
-      ? states.input.disabled
+      ? 'disabled'
       : "",
   ];
 });
@@ -302,7 +305,11 @@ let wrapperRef = ref(null);
 let isMouseOver = ref(false);
 let isFocused = ref(false);
 
-let blur = (ev) => ev.target.blur();
+let focus = () => inputRef.value.focus()
+
+let blur = () => inputRef.value.blur()
+
+// let blur = (ev) => ev.target.blur();
 
 // validate
 
@@ -334,12 +341,6 @@ let handleBlur = (ev) => {
   touch();
 
   isFocused.value = false;
-
-  if (wrapperRef.value.contains(ev.relatedTarget)) {
-    return;
-  }
-
-  emit("input:blur", ev);
 };
 
 let handleFocus = () => (isFocused.value = true);
@@ -348,13 +349,11 @@ let handleMouseEnter = () => (isMouseOver.value = true);
 
 let handleMouseLeave = () => (isMouseOver.value = false);
 
-let handleClickIndicator = () => {
-  emit("click:indicator", inputRef.value);
-};
+let handleClickWrapper = () => inputRef.value.focus()
 
-let handleClickIcon = () => {
-  emit("click:icon", inputRef.value);
-};
+let handleClickIndicator = () => emit("click:indicator");
+
+let handleClickIcon = () => emit("click:icon");
 
 let handleClickClearButton = () => {
   if (props.clearable && localModel.value.length) {
@@ -363,9 +362,11 @@ let handleClickClearButton = () => {
   }
 
   if (props.customClearable) {
-    emit("click:clear-button", inputRef.value);
+    emit("click:clear-button");
   }
 };
+
+defineExpose({ focus, blur })
 </script>
 
 <style>
