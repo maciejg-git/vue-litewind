@@ -3,6 +3,8 @@
     <v-select
       v-model="example.model"
       :items="example.items"
+      :inline="false"
+      multi-value
       style-menu="shadow"
     ></v-select>
   </div>

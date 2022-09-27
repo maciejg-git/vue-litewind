@@ -3,7 +3,7 @@
     :class="wrapperClasses"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
-      @mousedown.prevent
+      @mousedown="handleMousedown"
       @click="handleClickWrapper"
   >
     <label
@@ -79,7 +79,6 @@
           aria-label="Close"
           class="ml-2"
           :class="{ invisible: !isElementVisible('clearButton') }"
-          @mousedown.prevent
           @click.stop="handleClickClearButton"
           @focus="blur"
         ></v-close-button>
@@ -88,7 +87,6 @@
           aria-label="Close"
           tabindex="-1"
           class="focus:outline-none ml-2"
-          @mousedown.prevent
           @click.stop="handleClickIndicator"
         >
           <v-chevron
@@ -343,17 +341,36 @@ let handleBlur = (ev) => {
   isFocused.value = false;
 };
 
-let handleFocus = () => (isFocused.value = true);
+let handleFocus = () => {
+  isFocused.value = true;
+}
 
-let handleMouseEnter = () => (isMouseOver.value = true);
+let handleMouseEnter = () => {
+  isMouseOver.value = true;
+}
 
-let handleMouseLeave = () => (isMouseOver.value = false);
+let handleMouseLeave = () => {
+  isMouseOver.value = false;
+}
 
-let handleClickWrapper = () => inputRef.value.focus()
+let handleClickWrapper = () => {
+  inputRef.value.focus()
+}
 
-let handleClickIndicator = () => emit("click:indicator");
+let handleClickIndicator = () => {
+  emit("click:indicator");
+}
 
-let handleClickIcon = () => emit("click:icon");
+let handleClickIcon = () => {
+  emit("click:icon");
+}
+
+let handleMousedown = (ev) => {
+  if (ev.target === inputRef.value) {
+    return
+  }
+  ev.preventDefault()
+}
 
 let handleClickClearButton = () => {
   if (props.clearable && localModel.value.length) {

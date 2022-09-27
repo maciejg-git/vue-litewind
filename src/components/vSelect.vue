@@ -28,20 +28,22 @@
         v-bind="slotProps"
       ></slot>
     </template>
-      <template #multi-value>
-        <div @mousedown.prevent>
-          <template v-if="!props.multiValue">
-            <span>{{ getItemText(selectedItem) }}</span>
+    <template #multi-value>
+        <template v-if="!props.multiValue">
+          <span>{{ getItemText(selectedItem) }}</span>
+        </template>
+        <template v-else>
+          <template v-if="multiValueDisplay === 'text'">
+            <span
+              v-for="(item, index) in selectedItems"
+              class="ml-1 after:content-[','] last-of-type:after:content-none"
+              @mousedown.prevent
+            >
+              {{ item }}
+            </span>
           </template>
-          <template v-else>
-            <template v-if="multiValueDisplay === 'text'">
-              <span v-for="(item, index) in selectedItems" class="ml-1 after:content-[','] last-of-type:after:content-none" @mousedown.prevent>
-                {{ item }}
-              </span>
-            </template>
-          </template>
-        </div>
-      </template>
+        </template>
+    </template>
   </v-input>
 
   <teleport to="body">
@@ -216,9 +218,9 @@ let { classes, states } = useStyles("select", props, {
 
 let getItemClass = (item) => {
   return [
-    classes.item.value, 
+    classes.item.value,
     isSelected(item) ? states.item.value.active : "",
-    item.disabled ? 'disabled' : ""
+    item.disabled ? "disabled" : "",
   ];
 };
 
@@ -245,6 +247,8 @@ let selectedItems = ref([]);
 let localText = ref("");
 let isNewSelection = ref(true);
 
+let isSelfUpdate = false
+
 // show autocomplete menu
 
 let show = () => {
@@ -269,7 +273,7 @@ watch(
 // get text and value of item
 
 let getItemText = (item, key) => {
-  if (!item) return
+  if (item === undefined) return;
   if (isObject(item)) {
     return item[key || props.itemText];
   }
@@ -322,21 +326,22 @@ let itemsPagination = computed(() => {
 });
 
 let isSelected = (item) => {
-  return selectedItems.value.indexOf(item) !== -1
-}
+  return selectedItems.value.indexOf(item) !== -1;
+};
 
 let update = (item) => {
   if (props.multiValue) {
-    let index = selectedItems.value.indexOf(item)
+    let index = selectedItems.value.indexOf(item);
     if (index !== -1) {
-      selectedItems.value.splice(index, 1)
+      selectedItems.value.splice(index, 1);
     } else {
-      selectedItems.value.push(item)
+      selectedItems.value.push(item);
     }
-    localModel.value = selectedItems.value.map((i) => getItemValue(i))
-    return
+    isSelfUpdate = true
+    localModel.value = selectedItems.value.map((i) => getItemValue(i));
+    return;
   }
-  selectedItem.value = item
+  selectedItem.value = item;
   localModel.value = getItemValue(item);
 };
 
@@ -359,8 +364,8 @@ let selectItem = (item) => {
   update(item);
   if (!props.multiValue) {
     hidePopper();
-    instanceReference.value.blur()
-    return
+    instanceReference.value.blur();
+    return;
   }
 };
 
@@ -370,15 +375,27 @@ let clearInput = () => {
   localModel.value = "";
 };
 
-// watch(
-//   localModel,
-//   (value) => {
-//     let item = getItemByValue(value);
-//     localText.value = getItemText(item);
-//     selectedItem.value = value;
-//   },
-//   { immediate: true }
-// );
+watch(
+  localModel,
+  (value) => {
+    if (isSelfUpdate) {
+      isSelfUpdate = false
+      return
+    }
+    if (props.multiValue) {
+      selectedItems.value = value.map((selected) => {
+        return props.items.find((i) => {
+          return selected === getItemValue(i)
+        })
+      })
+      return
+    }
+    let item = getItemByValue(value);
+    console.log(item)
+    selectedItem.value = item;
+  },
+  { immediate: true, deep: true, flush: 'sync' }
+);
 
 // handle template events
 
@@ -396,7 +413,7 @@ let handleBlurInput = (ev) => {
     return;
   }
 
-    cancelInput();
+  cancelInput();
 };
 
 let handleClickIndicator = () => {
@@ -404,7 +421,7 @@ let handleClickIndicator = () => {
 
   if (isPopperVisible.value) {
     cancelInput();
-    instanceReference.value.blur()
+    instanceReference.value.blur();
     return;
   }
 
@@ -418,13 +435,6 @@ let handleClickClearButton = () => {
     instanceReference.value.focus();
   }
 };
-
-// let handleBlurItem = (ev) => {
-//   if (props.multiValue && isPopperChild(ev.relatedTarget)) {
-//     return
-//   } 
-//   hidePopper()
-// }
 
 let handleScrollBottom = () => {
   page.value++;

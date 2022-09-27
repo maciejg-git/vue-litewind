@@ -1,18 +1,21 @@
 <template>
-  <v-autocomplete
-    v-model="example.model"
-    v-model:input-value="example.inputValue"
-    no-filter
-    :items="example.items"
-    :is-loading="example.isLoading"
-    :use-loader="example.useLoader"
-    :clearable="example.clearable"
-    :transition="example.transition"
-    :state="example.state"
-    style-menu="shadow"
-    @input:value="query($event)"
-    v-on="handleExampleEvents"
-  ></v-autocomplete>
+  <div class="w-1/2">
+    <v-autocomplete
+      v-model="example.model"
+      v-model:input-value="example.inputValue"
+      no-filter
+      :items="example.items"
+      :is-loading="example.isLoading"
+      :use-loader="example.useLoader"
+      :clearable="example.clearable"
+      :transition="example.transition"
+      :state="example.state"
+      :inline="false"
+      style-menu="shadow"
+      @input:value="query($event)"
+      v-on="handleExampleEvents"
+    ></v-autocomplete>
+  </div>
 <!-- CUT START -->
   <v-tabs base="material" class="mt-10">
     <v-tab name="Props">

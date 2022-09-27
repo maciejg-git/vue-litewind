@@ -63,8 +63,8 @@ app.use(componentPlugin, {
   directives,
   componentProps: {
     select: {
-      // inline: true,
-      offsetY: 5,
+      inline: true,
+      offsetY: 8,
       card: {
         base: 'flat',
         styleCard: 'menu shadow',
