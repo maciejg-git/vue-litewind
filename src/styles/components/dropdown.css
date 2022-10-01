@@ -2,8 +2,8 @@
   --dropdown-transition-duration: 0.2s;
 }
 
-.default {
-  &.dropdown--item {
+.dropdown {
+  &__item {
     @apply
       w-full
       text-left
@@ -20,9 +20,9 @@
       dark:text-text-300
       dark:focus:text-white
       dark:hover:bg-dark-700
-      dark:focus:bg-primary-500
-  }
-      &.dropdown--item--active-state {
+      dark:focus:bg-primary-500;
+
+      &--active-state {
         @apply
           text-white
           bg-primary-500
@@ -31,8 +31,9 @@
           dark:bg-primary-500
           dark:hover:bg-primary-600
       }
+  }
 
-  &.dropdown--header {
+  &__header {
     @apply
       text-left
       font-semibold
@@ -47,7 +48,7 @@
 }
 
 .relaxed {
-  &.dropdown--item {
+  &__item {
     @apply
       w-11/12
       focus:outline-none
@@ -64,9 +65,9 @@
       dark:text-text-300
       dark:focus:text-white
       dark:hover:bg-dark-700
-      dark:focus:bg-primary-500
-  }
-      &.dropdown--item--active-state {
+      dark:focus:bg-primary-500;
+
+      &--active-state {
         @apply
           text-white
           bg-primary-500
@@ -75,8 +76,9 @@
           dark:bg-primary-500
           dark:hover:bg-primary-600
       }
+  }
 
-  &.dropdown--header {
+  &__header {
     @apply
       w-11/12
       text-left
@@ -93,7 +95,7 @@
 }
 
 .flat {
-  &.dropdown--item {
+  &__item {
     @apply
       text-left
       w-full
@@ -108,9 +110,9 @@
       dark:bg-dark-700
       dark:focus:text-white
       dark:hover:bg-dark-600
-      dark:focus:bg-primary-400
-  }
-      &.dropdown--item--active-state {
+      dark:focus:bg-primary-400;
+
+      &--active-state {
         @apply
           text-white
           bg-primary-500
@@ -119,8 +121,9 @@
           dark:bg-primary-500
           dark:hover:bg-primary-600
       }
+  }
 
-  &.dropdown--header {
+  &__header {
     @apply
       text-left
       font-semibold

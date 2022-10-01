@@ -4,6 +4,7 @@
       v-model="example.model"
       :items="example.items"
       :inline="false"
+      multi-value
       style-menu="shadow"
     ></v-select>
   </div>
@@ -16,7 +17,7 @@ import { languages } from "../data/data.js";
 export default {
   setup() {
     let example = reactive({
-      model: "",
+      model: [],
       items: languages,
     });
 

@@ -20,6 +20,8 @@
           >
             <v-chevron
               :switch="isOpen"
+              rotate90
+              clockwise
               initial="right"
               v-bind="chevron"
               :class="{ disabled: isDisabled }"
@@ -196,10 +198,6 @@ const props = defineProps({
   showCheckboxes: {
     type: Boolean,
     default: defaultProps("tree", "showIcons", false),
-  },
-  selectable: {
-    type: Boolean,
-    default: false,
   },
   selectIndependent: {
     type: Boolean,

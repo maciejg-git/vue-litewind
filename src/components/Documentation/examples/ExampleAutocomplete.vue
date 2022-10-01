@@ -4,6 +4,7 @@
       v-model="example.model"
       v-model:input-value="example.inputValue"
       no-filter
+      multi-value
       :items="example.items"
       :is-loading="example.isLoading"
       :use-loader="example.useLoader"
@@ -65,7 +66,7 @@ export default {
   components: {},
   setup() {
     let example = reactive({
-      model: "",
+      model: [],
       items: [],
       isLoading: false,
       useLoader: true,

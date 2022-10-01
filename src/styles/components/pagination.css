@@ -30,17 +30,17 @@
     dark:border-dark-700
 }
 
-.default {
-  &.pagination--pagination-bar {
+.pagination {
+  &__pagination-bar {
     @apply
       rounded-md
   }
 
-  &.pagination--page {
+  &__page {
     @apply
-      pagination-page-fixed
-  }
-      &.pagination--page--active-state {
+      pagination-page-fixed;
+
+      &--active-state {
         @apply  
           ring-2
           font-semibold
@@ -55,15 +55,16 @@
           dark:border-primary-500
           dark:ring-primary-100
       }
+  }
 
-  &.pagination--dots {
+  &__dots {
     @apply
       pagination-page-fixed;
     @apply
       tracking-wider
   }
 
-  &.pagination--next {
+  &__next {
     @apply
       pagination-side-controls-fixed;
     @apply  
@@ -71,7 +72,7 @@
       ml-0.5
   }
 
-  &.pagination--prev {
+  &__prev {
     @apply
       pagination-side-controls-fixed;
     @apply  

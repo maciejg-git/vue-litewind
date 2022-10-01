@@ -1,4 +1,4 @@
-import { ref, computed, watch, nextTick } from "vue";
+import { ref, computed, watch } from "vue";
 import { createPopper } from "@popperjs/core";
 
 export default function usePopper(
@@ -34,7 +34,6 @@ export default function usePopper(
   });
 
   let showPopper = async function () {
-    console.log('show')
     if (isPopperVisible.value) return;
     isPopperVisible.value = true;
 
@@ -43,7 +42,6 @@ export default function usePopper(
   };
 
   let hidePopper = function () {
-    console.log('hide')
     if (!isPopperVisible.value) return;
     isPopperVisible.value = false;
   };

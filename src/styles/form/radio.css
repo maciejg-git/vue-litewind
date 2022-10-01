@@ -1,5 +1,4 @@
-.default {
-  &.radio {
+  .radio {
     @apply
       scale-110
       border
@@ -19,9 +18,9 @@
       dark:checked:bg-current
       dark:checked:border-current
       dark:border-dark-700
-      dark:focus:ring-primary-200
-  }
-      &.radio--valid-state {
+      dark:focus:ring-primary-200;
+
+      &--valid-state {
         @apply
           text-success-500
           border-success-300
@@ -30,7 +29,7 @@
           dark:border-success-400
           dark:focus:ring-success-300
       }
-      &.radio--invalid-state {
+      &--invalid-state {
         @apply
           text-danger-500
           border-danger-300
@@ -40,8 +39,8 @@
           dark:focus:ring-danger-300
       }
 
-  &.radio--label {
+  &__label {
     @apply
       ml-4
   }
-}
+  }

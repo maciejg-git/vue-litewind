@@ -3,8 +3,8 @@
   --select-max-menu-height: 400px;
 }
 
-.default {
-  &.select--item {
+.select {
+  &--item {
     @apply
       w-full
       text-left
@@ -12,20 +12,17 @@
       cursor-pointer
       px-6
       py-4
+      transition-colors
       text-text-800
-      /* focus:text-white */
       dark:text-text-300
-      /* dark:focus:text-white */
       hover:bg-secondary-100
-      /* focus:bg-primary-500 */
-      dark:hover:bg-dark-600
-      /* dark:focus:bg-primary-500 */
-  }
-      &.select--item--dense {
+      dark:hover:bg-dark-600;
+
+      &--dense {
         @apply
           py-2 !important
       }
-      &.select--item--active-state {
+      &--active-state {
         @apply
           text-text-800
           dark:text-text-800
@@ -34,8 +31,9 @@
           dark:bg-primary-400
           dark:hover:bg-primary-600
       }
+  }
 
-  &.select--match {
+  &--match {
     @apply
       match
   }

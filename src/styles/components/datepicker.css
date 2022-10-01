@@ -10,17 +10,15 @@
     dark:text-text-300
 }
 
-.default {
-  &.datepicker {
+.datepicker {
     @apply
       text-center
       text-text-800
       dark:text-text-300
       bg-white
-      dark:bg-dark-800
-  }
+      dark:bg-dark-800;
 
-  &.datepicker--button {
+  &__button {
     @apply
       rounded
       focus:ring-2
@@ -30,32 +28,32 @@
       dark:focus:ring-primary-400
   }
 
-  &.datepicker--weekday-bar {
+  &__weekday-bar {
     @apply
        mb-2
   }
 
-  &.datepicker--weekday {
+  &__weekday {
     @apply
       text-sm 
       font-semibold 
       dark:text-text-300
   }
 
-  &.datepicker--day {
+  &__day {
     @apply
       datepicker-day-fixed;
     @apply
       hover:bg-secondary-100
-      dark:hover:bg-dark-700
-  }
-      &.datepicker--day--today {
+      dark:hover:bg-dark-700;
+
+      &--today {
         @apply  
           font-bold
           text-primary-400
           dark:text-primary-400 !important
       }
-      &.datepicker--day--partially-selected-state {
+      &--partially-selected-state {
         @apply
           font-semibold
           text-text-800
@@ -63,7 +61,7 @@
           bg-secondary-300
           dark:bg-dark-700
       }
-      &.datepicker--day--selected-state {
+      &--selected-state {
         @apply
           font-semibold
           text-white
@@ -73,8 +71,9 @@
           hover:bg-primary-600
           dark:hover:bg-primary-700
       }
+  }
 
-  &.datepicker--adjacent-month-day {
+  &__adjacent-month-day {
     @apply
       datepicker-day-fixed;
     @apply  
@@ -83,7 +82,7 @@
       dark:text-text-200/10
   }
 
-  &.datepicker--footer {
+  &__footer {
     @apply
       text-sm
       font-semibold

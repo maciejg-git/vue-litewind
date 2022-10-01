@@ -1,19 +1,17 @@
-.default {
-  &.breadcrumb {
+.breadcrumb {
     @apply
       underline
       text-text-500
-      dark:text-text-300
-  }
+      dark:text-text-300;
 
-  &.breadcrumb--separator {
+  &__separator {
     @apply
       mx-2
       text-text-500 
       dark:text-text-300
   }
 
-  &.breadcrumb--icon {
+  &__icon {
     @apply
       w-6
       h-6
@@ -22,7 +20,7 @@
       dark:text-gray-300
   }
 
-  &.breadcrumb--active {
+  &__active {
     @apply
       text-text-700 
       dark:text-text-300

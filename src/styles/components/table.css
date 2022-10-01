@@ -1,81 +1,82 @@
-.default {
-  &.table {
+  .table {
     @apply
       border-collapse
-      text-left
-  }
-      &.table--fixed-layout {
+      text-left;
+
+      &--fixed-layout {
         @apply
           table-fixed
       }
-      &.table--busy-state {
+      &--busy-state {
 
       }
 
-  &.table--header-row {
-  }
-
-  &.table--header-cell {
-    @apply
-      font-semibold
-      border-b
-      py-2
-      px-2
-      dark:text-text-200
-      border-secondary-300
-      dark:border-dark-700
-  }
-      &.table--header-cell--bordered {
-        @apply
-          border
-      }
-      &.table--header-cell--dark {
-        @apply
-          text-white
-          bg-secondary-700
-      }
-      &.table--header-cell--light {
-        @apply
-          bg-secondary-100
+      &__header-row {
       }
 
-  &.table--row {
-  }
-      &.table--row--striped {
+      &__header-cell {
         @apply
-          even:bg-secondary-50
+          font-semibold
+          border-b
+          py-2
+          px-2
+          dark:text-text-200
+          border-secondary-300
+          dark:border-dark-700;
+
+          &--bordered {
+            @apply
+              border
+          }
+          &--dark {
+            @apply
+              text-white
+              bg-secondary-700
+          }
+          &--light {
+            @apply
+              bg-secondary-100
+          }
       }
 
-  &.table--cell {
-    @apply
-      border-t
-      transition-colors
-      duration-200
-      py-2
-      px-2
-      pr-6
-      border-secondary-300
-      dark:border-dark-700 !important
-  }
-      &.table--cell--bordered {
+      &__row {
+          &--striped {
+            @apply
+              even:bg-secondary-50
+          }
+      }
+
+      &__cell {
         @apply
-          border
+          border-t
+          transition-colors
+          duration-200
           py-2
           px-2
           pr-6
           border-secondary-300
-      }
-      &.table--cell--selected-state {
-        @apply
-          bg-slate-300
-          dark:bg-slate-700
+          dark:border-dark-700 !important;
+
+          &--bordered {
+            @apply
+              border
+              py-2
+              px-2
+              pr-6
+              border-secondary-300
+          }
+          &--selected-state {
+            @apply
+              bg-slate-300
+              dark:bg-slate-700
+          }
       }
 
-  &.table--caption {
-    @apply
-      text-left
-      py-2
-      text-text-600
-      dark:text-text-300
+      &__caption {
+        @apply
+          text-left
+          py-2
+          text-text-600
+          dark:text-text-300
+      }
   }
-}

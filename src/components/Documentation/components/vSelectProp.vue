@@ -6,7 +6,7 @@
     :input="{ variant: localModel }"
     :card="{ styleCard: 'menu shadow', base: 'flat' }"
     :icon="localModel ? 'b-check-lg' : 'b-x'"
-    @click:icon="localModel = !localModel"
+    @click:icon="handleClickIcon"
     :offsetY="5"
     inline
   >
@@ -30,8 +30,14 @@ export default {
       }
     })
 
+    let handleClickIcon = (ev) => {
+      ev.stopPropagation()
+      localModel.value = !localModel.value
+    }
+
     return {
-      localModel
+      localModel,
+      handleClickIcon,
     }
   }
 };

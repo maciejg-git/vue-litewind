@@ -48,7 +48,7 @@ export default {
           "If false close button is not rendered and alert cannot be dissmised",
       },
       {
-        prop: "dismiss-delay",
+        prop: "auto-dismiss-delay",
         type: ["Number"],
         default: "0",
         description:

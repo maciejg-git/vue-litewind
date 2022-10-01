@@ -1,5 +1,4 @@
-.underlined {
-  &.input {
+  .underlined {
     @apply
       border-0 
       border-b-2 
@@ -9,9 +8,9 @@
       focus-within:border-black
       border-secondary-200
       dark:text-dark-300
-      dark:border-dark-500
-  }
-      &.input--valid-state {
+      dark:border-dark-500;
+
+      &--valid-state {
         @apply
           text-success-600
           border-success-300
@@ -20,7 +19,7 @@
           dark:border-success-400
           dark:focus-within:ring-success-300
       }
-      &.input--invalid-state {
+      &--invalid-state {
         @apply
           text-danger-600
           border-danger-300
@@ -30,7 +29,7 @@
           dark:focus-within:ring-danger-300
       }
 
-  &.input--icon {
+  &--icon {
     @apply
       w-6
       h-6
@@ -38,9 +37,9 @@
       dark:text-gray-400
   }
 
-  &.input--label {
+  &--label {
     @apply
       text-sm
       pb-1
   }
-}
+  }

@@ -61,10 +61,6 @@ const props = defineProps({
     type: String,
     default: "click",
   },
-  noHeader: {
-    type: Boolean,
-    default: defaultProps("popover", "noHeader", false),
-  },
   title: {
     type: String,
     default: undefined,

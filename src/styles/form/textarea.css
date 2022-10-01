@@ -1,5 +1,4 @@
-.default {
-  &.textarea {
+  .textarea {
     @apply
       rounded
       border
@@ -15,9 +14,9 @@
       dark:text-text-300
       dark:bg-dark-700
       dark:border-dark-500
-      dark:focus-within:ring-primary-300
-  }
-      &.textarea--valid-state {
+      dark:focus-within:ring-primary-300;
+
+      &--valid-state {
         @apply
           text-success-600
           border-success-300
@@ -26,7 +25,7 @@
           dark:border-success-400
           dark:focus-within:ring-success-300
       }
-      &.textarea--invalid-state {
+      &--invalid-state {
         @apply
           text-danger-600
           border-danger-300
@@ -36,15 +35,14 @@
           dark:focus-within:ring-danger-300
       }
 
-  &.textarea--label {
+  &__label {
     @apply
       text-sm
       pb-1
   }
-}
+  }
 
-.underlined {
-  &.textarea {
+  .underlined {
     @apply
       border-0 
       border-b-2 
@@ -54,9 +52,9 @@
       focus-within:border-black
       border-secondary-200
       dark:text-dark-300
-      dark:border-dark-500
-  }
-      &.textarea--valid-state {
+      dark:border-dark-500;
+
+      &--valid-state {
         @apply
           text-success-600
           border-success-300
@@ -65,7 +63,7 @@
           dark:border-success-400
           dark:focus-within:ring-success-300
       }
-      &.textarea--invalid-state {
+      &--invalid-state {
         @apply
           text-danger-600
           border-danger-300
@@ -75,9 +73,9 @@
           dark:focus-within:ring-danger-300
       }
 
-  &.textarea--label {
+  &__label {
     @apply
       text-sm
       pb-1
   }
-}
+  }

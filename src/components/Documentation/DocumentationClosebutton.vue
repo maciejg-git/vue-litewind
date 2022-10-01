@@ -14,7 +14,7 @@
     <div class="example">
       <div class="flex gap-x-4">
         <v-close-button />
-        <v-close-button base="round" />
+        <v-close-button base="round-close-button" />
       </div>
     </div>
     <v-code :code="code" template language="html"></v-code>

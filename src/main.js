@@ -64,10 +64,10 @@ app.use(componentPlugin, {
   componentProps: {
     select: {
       inline: true,
-      offsetY: 8,
+      offsetY: 5,
       card: {
         base: 'flat',
-        styleCard: 'menu shadow',
+        styleCard: 'menu shadow rounded',
       }
     }
   }

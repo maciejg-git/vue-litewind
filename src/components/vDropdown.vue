@@ -73,10 +73,6 @@ const props = defineProps({
     type: String,
     default: "click",
   },
-  triggerById: {
-    type: String,
-    default: "",
-  },
   transition: {
     type: String,
     default: defaultProps("dropdown", "transition", "fade"),

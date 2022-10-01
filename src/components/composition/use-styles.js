@@ -4,18 +4,21 @@ let getComponentClasses = (props, p, el, element, name) => {
   return computed(() => {
     let c = [];
     // get variant classes from component props
+    let baseEl = [props.base, element].filter(Boolean).join("__")
     if (props[p]) {
       c = props[p].split(" ").map((variant) => {
         let [v, c] = variant.split(":");
         if (c && v !== props.variant + "") return;
-        return [name, element, c || v].filter(Boolean).join("--");
+        return [baseEl, c || v].filter(Boolean).join("--");
       });
     }
     // get base element classes
-    c.push([name, element].filter(Boolean).join("--"));
+    // c.push([props.base, element].filter(Boolean).join("__"));
+    c.push(baseEl)
     let fixedClasses = el && el.fixed
     let propClasses = el && el.prop && el.prop.value
-    return [props.base, fixedClasses, ...c, propClasses].filter(Boolean);
+    // return [props.base, fixedClasses, ...c, propClasses].filter(Boolean);
+    return [fixedClasses, ...c, propClasses].filter(Boolean);
   });
 };
 
@@ -23,8 +26,9 @@ let getComponentStates = (props, el, element, name) => {
   let state = el && el.states;
   if (!state || !state.length) return;
   return computed(() => {
+    let baseEl = [props.base, element].filter(Boolean).join("__")
     return state.reduce((acc, i) => {
-      acc[i] = [name, element, i + "-state"].filter(Boolean).join("--");
+      acc[i] = [baseEl, i + "-state"].filter(Boolean).join("--");
       return acc;
     }, {});
   });

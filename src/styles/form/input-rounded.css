@@ -1,5 +1,4 @@
-.round {
-  &.input {
+  .round {
     @apply
       rounded-full
       border-0
@@ -13,9 +12,9 @@
       dark:text-dark-300
       dark:bg-dark-700
       dark:border-dark-500
-      dark:focus-within:ring-primary-300
-  }
-      &.input--valid-state {
+      dark:focus-within:ring-primary-300;
+
+      &--valid-state {
         @apply
           text-success-600
           border-success-300
@@ -24,7 +23,7 @@
           dark:border-success-400
           dark:focus-within:ring-success-300
       }
-      &.input--invalid-state {
+      &--invalid-state {
         @apply
           text-danger-600
           border-danger-300
@@ -34,7 +33,7 @@
           dark:focus-within:ring-danger-300
       }
 
-  &.input--icon {
+  &__icon {
     @apply
       w-6
       h-6
@@ -42,7 +41,7 @@
       dark:text-gray-400
   }
 
-  &.input--label {
+  &__label {
     @apply
       text-sm
       pb-1

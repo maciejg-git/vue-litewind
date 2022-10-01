@@ -2,7 +2,6 @@
   <v-input
     v-model="localText"
     ref="reference"
-    :value="selectedItems"
     :icon="icon"
     :use-loader="useLoader"
     :inline="inline"
@@ -30,16 +29,15 @@
     </template>
     <template #multi-value>
         <template v-if="!props.multiValue">
-          <span>{{ getItemText(selectedItem) }}</span>
+          <span class="last-of-type:mr-2">{{ getItemText(selectedItem) }}</span>
         </template>
         <template v-else>
           <template v-if="multiValueDisplay === 'text'">
             <span
               v-for="(item, index) in selectedItems"
-              class="ml-1 after:content-[','] last-of-type:after:content-none"
-              @mousedown.prevent
+              class="ml-1 after:content-[','] last-of-type:after:content-none last-of-type:mr-2"
             >
-              {{ item }}
+              {{ getItemText(item) }}
             </span>
           </template>
         </template>
@@ -75,7 +73,6 @@
             :class="getItemClass(item)"
             @mousedown.prevent
             @click="handleClickItem(item)"
-            @blur="handleBlurItem"
             tabindex="-1"
           >
             <slot
@@ -326,6 +323,9 @@ let itemsPagination = computed(() => {
 });
 
 let isSelected = (item) => {
+  if (!props.multiValue) {
+    return selectedItem.value === item
+  }
   return selectedItems.value.indexOf(item) !== -1;
 };
 
@@ -339,9 +339,11 @@ let update = (item) => {
     }
     isSelfUpdate = true
     localModel.value = selectedItems.value.map((i) => getItemValue(i));
+    updateInstance()
     return;
   }
   selectedItem.value = item;
+  isSelfUpdate = true
   localModel.value = getItemValue(item);
 };
 
@@ -372,7 +374,9 @@ let selectItem = (item) => {
 let clearInput = () => {
   localText.value = "";
   selectedItem.value = "";
-  localModel.value = "";
+  selectedItems.value = [];
+  isSelfUpdate = true
+  localModel.value = props.multiValue ? selectedItems.value : selectedItem.value;
 };
 
 watch(

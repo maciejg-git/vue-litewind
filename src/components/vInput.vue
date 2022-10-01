@@ -1,10 +1,9 @@
 <template>
   <div
     :class="wrapperClasses"
-    @mouseenter="handleMouseEnter"
-    @mouseleave="handleMouseLeave"
-      @mousedown="handleMousedown"
-      @click="handleClickWrapper"
+    :style="{ width: width }"
+    @mousedown="handleMousedown"
+    @click="handleClickWrapper"
   >
     <label
       v-if="label"
@@ -22,7 +21,6 @@
       ref="wrapperRef"
       :class="getInputClasses"
     >
-      <div :class="{ invisible: !isElementVisible('icon') }">
         <slot name="icon">
           <div
             v-if="icon"
@@ -35,18 +33,12 @@
             ></v-icon>
           </div>
         </slot>
-      </div>
 
-      <div :class="{ invisible: !isElementVisible('prepend') }">
         <slot name="prepend"></slot>
-      </div>
 
       <div class="flex flex-wrap flex-1">
-        <slot
-          name="multi-value"
-        >
-        </slot>
-        
+        <slot name="multi-value"></slot>
+
         <input
           v-model="localModel"
           ref="inputRef"
@@ -59,9 +51,7 @@
         />
       </div>
 
-      <div :class="{ invisible: !isElementVisible('append') }">
         <slot name="append"></slot>
-      </div>
 
       <div class="flex items-center">
         <v-spinner
@@ -72,16 +62,19 @@
           v-bind="spinner"
           class="mx-0.5"
         />
-        <v-close-button
-          v-if="clearable || customClearable"
-          style-close-button="small"
-          v-bind="closeButton"
-          aria-label="Close"
-          class="ml-2"
-          :class="{ invisible: !isElementVisible('clearButton') }"
-          @click.stop="handleClickClearButton"
-          @focus="blur"
-        ></v-close-button>
+        <div
+            v-if="clearable || customClearable"
+            :class="classes.closeButtonWrapper.value"
+          >
+          <v-close-button
+            style-close-button="small"
+            v-bind="closeButton"
+            aria-label="Close"
+            class="ml-2"
+            @click.stop="handleClickClearButton"
+            @focus="blur"
+          ></v-close-button>
+        </div>
         <button
           v-if="showIndicator"
           aria-label="Close"
@@ -125,17 +118,15 @@ export default {
 </script>
 
 <script setup>
-import { ref, computed, watch, inject, useAttrs, toRefs, toRef } from "vue";
+import { ref, computed, inject, useAttrs, toRef } from "vue";
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
 import useUid from "./composition/use-uid";
-import useValidation from "./composition/use-validation"
+import useValidation from "./composition/use-validation";
 import vFormText from "./vFormText.vue";
 import vChevron from "./vChevron.vue";
 import vCloseButton from "./vCloseButton.vue";
 import vSpinner from "./vSpinner.vue";
-import { globalValidators } from "../validators";
-import { isFunction, isString } from "../tools";
 import {
   sharedProps,
   sharedStyleProps,
@@ -165,14 +156,6 @@ const props = defineProps({
     type: String,
     default: "silent",
   },
-  value: {
-    type: [Array, String],
-    default: undefined,
-  },
-  valueDisplay: {
-    type: String,
-    default: 'text',
-  },
   useLoader: {
     type: Boolean,
     default: false,
@@ -193,13 +176,13 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  width: {
+    type: String,
+    default: defaultProps("input", "width", ""),
+  },
   label: {
     type: String,
     default: "",
-  },
-  visibleCondition: {
-    type: Object,
-    default: defaultProps("input", "visibleCondition", {}),
   },
   noMessages: {
     type: Boolean,
@@ -228,6 +211,10 @@ const props = defineProps({
   styleIcon: {
     type: String,
     default: defaultProps("input", "styleIcon", ""),
+  },
+  styleCloseButtonWrapper: {
+    type: String,
+    default: defaultProps("input", "styleLabel", ""),
   },
   styleLabel: {
     type: String,
@@ -262,6 +249,9 @@ let { classes, states } = useStyles("input", props, {
   label: {
     fixed: "inline-block",
   },
+  closeButtonWrapper: {
+    name: "close-button-wrapper",
+  },
 });
 
 let getInputClasses = computed(() => {
@@ -269,27 +259,13 @@ let getInputClasses = computed(() => {
     "tw-form-input-reset flex items-center",
     classes.input.value,
     state && states.input.value && states.input.value[state.value],
-    attrs.disabled === "" || attrs.disabled === true
-      ? 'disabled'
-      : "",
+    attrs.disabled === "" || attrs.disabled === true ? "disabled" : "",
   ];
 });
 
 let wrapperClasses = computed(() => {
-  return props.inline ? "inline-block align-middle" : "block flex-auto";
+  return props.inline ? "inline-block align-middle group" : "block flex-auto group";
 });
-
-let isElementVisible = (element) => {
-  let condition = props.visibleCondition[element];
-
-  if (!condition) return true;
-
-  return (
-    (condition === "hover" && isMouseOver.value) ||
-    (condition === "focus" && isFocused.value) ||
-    (condition === "hasvalue" && localModel.value.length)
-  );
-};
 
 // input label
 
@@ -303,9 +279,9 @@ let wrapperRef = ref(null);
 let isMouseOver = ref(false);
 let isFocused = ref(false);
 
-let focus = () => inputRef.value.focus()
+let focus = () => inputRef.value.focus();
 
-let blur = () => inputRef.value.blur()
+let blur = () => inputRef.value.blur();
 
 // let blur = (ev) => ev.target.blur();
 
@@ -321,11 +297,18 @@ let emitValidationStatus = (status, state, messages) => {
   emit("update:messages", messages);
 };
 
-let externalState = toRef(props, "state")
+let externalState = toRef(props, "state");
 
-let { rules, validateOn, validateMode } = props
+let { rules, validateOn, validateMode } = props;
 
-let { status, state, messages, touch, formValidate, reset } = useValidation(rules, validateOn, validateMode, localModel, emitValidationStatus)
+let { status, state, messages, touch, formValidate, reset } = useValidation(
+  rules,
+  validateOn,
+  validateMode,
+  localModel,
+  externalState,
+  emitValidationStatus
+);
 
 let { addFormInput } = inject("form", {});
 
@@ -335,7 +318,7 @@ if (addFormInput) {
 
 // handle template events
 
-let handleBlur = (ev) => {
+let handleBlur = () => {
   touch();
 
   isFocused.value = false;
@@ -343,47 +326,39 @@ let handleBlur = (ev) => {
 
 let handleFocus = () => {
   isFocused.value = true;
-}
-
-let handleMouseEnter = () => {
-  isMouseOver.value = true;
-}
-
-let handleMouseLeave = () => {
-  isMouseOver.value = false;
-}
+};
 
 let handleClickWrapper = () => {
-  inputRef.value.focus()
-}
+  inputRef.value.focus();
+};
 
 let handleClickIndicator = () => {
   emit("click:indicator");
-}
+};
 
-let handleClickIcon = () => {
-  emit("click:icon");
-}
+let handleClickIcon = (ev) => {
+  emit("click:icon", ev);
+};
 
 let handleMousedown = (ev) => {
   if (ev.target === inputRef.value) {
-    return
+    return;
   }
-  ev.preventDefault()
-}
+  ev.preventDefault();
+};
 
 let handleClickClearButton = () => {
-  if (props.clearable && localModel.value.length) {
-    localModel.value = "";
+  if (props.customClearable) {
+    emit("click:clear-button");
     return;
   }
 
-  if (props.customClearable) {
-    emit("click:clear-button");
+  if (localModel.value.length) {
+    localModel.value = "";
   }
 };
 
-defineExpose({ focus, blur })
+defineExpose({ focus, blur });
 </script>
 
 <style>

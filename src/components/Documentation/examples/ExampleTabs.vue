@@ -29,7 +29,7 @@
     <div class="mt-5">
       <label for="style">Tabs style:</label>
       <v-select id="style" v-model="example.base" :items="[
-        'default', 'material', 'rounded'
+        'tabs', 'material', 'rounded'
         ]">
       </v-select>
     </div>
@@ -97,7 +97,7 @@ export default {
       center: false,
       right: false,
       transition: "fade",
-      base: "default",
+      base: "tabs",
     });
 
     let tabs = ref([]);

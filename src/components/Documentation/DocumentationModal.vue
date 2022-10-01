@@ -177,7 +177,7 @@ export default {
         prop: "position",
         type: ["String"],
         default: "'top'",
-        description: "Modal position. Valid values are: 'top' or 'center'",
+        description: "Modal position. Valid values are: 'top', 'center' or 'bottom'",
       },
       {
         prop: "size",
@@ -210,6 +210,10 @@ export default {
       {
         prop: "style-header",
         description: "Style of modal header",
+      },
+      {
+        prop: "style-footer",
+        description: "Style of modal footer",
       },
       {
         prop: "style-content",

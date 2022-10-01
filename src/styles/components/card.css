@@ -1,5 +1,4 @@
-.default {
-  &.card {
+  .card {
     @apply
       border
       rounded-md
@@ -7,61 +6,60 @@
       bg-white
       dark:bg-dark-800
       border-secondary-200
-      dark:border-dark-700
-  }
-      &.card--menu {
+      dark:border-dark-700;
+
+      &--menu {
         @apply
           py-2
       }
-      &.card--popover {
+      &--popover {
         @apply
           p-5
       }
-      &.card--shadow {
+      &--shadow {
         @apply
           shadow-md
           dark:shadow-lg
           dark:shadow-black/30
       }
-      &.card--square {
+      &--square {
         @apply
           rounded-none
       }
-      &.card--borderless {
+      &--borderless {
         @apply
           border-0
       }
-      &.card--hoverable {
+      &--hoverable {
         @apply
           hover:shadow-lg
           transition-all
           hover:scale-105
       }
-      &.card--rounded-extra {
+      &--rounded-extra {
         @apply
           rounded-xl
       }
   }
 
-.flat {
-  &.card {
+  .flat {
     @apply
       dark:text-text-300
       bg-white
-      dark:bg-dark-700
-  }
-      &.card--rounded {
+      dark:bg-dark-800;
+
+      &--rounded {
         @apply
-          rounded
+          rounded-md
       }
-      &.card--shadow {
+      &--shadow {
         @apply
           shadow-md
           dark:shadow-lg
           dark:shadow-black/30
       }
-      &.card--menu {
+      &--menu {
         @apply
           py-2
       }
-  }
+    }

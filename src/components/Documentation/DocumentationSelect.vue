@@ -56,6 +56,13 @@
   </section>
 
   <section>
+    <h4>Example - multi value select</h4>
+    <div class="example">
+      <example name="ExampleSelectMultivalue"></example>
+    </div>
+  </section>
+
+  <section>
     <h4>Example - remote source</h4>
     <div class="example">
       <example name="ExampleAutocomplete"></example>
@@ -102,6 +109,20 @@ export default {
         type: ["String"],
         default: "'value'",
         description: "Set name of the property of items’s value",
+      },
+      {
+        prop: "multi-value",
+        type: ["Boolean"],
+        default: "false",
+        description:
+          "Allows selecting multiple values",
+      },
+      {
+        prop: "multi-value-display",
+        type: ["String"],
+        default: "text",
+        description:
+          "This props allows to choose how to display values in `multi-value` mode. Valid values are 'text' or 'chips'",
       },
       {
         prop: "autocomplete",

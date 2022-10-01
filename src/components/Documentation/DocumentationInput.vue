@@ -40,9 +40,9 @@
   </section>
 
   <section>
-    <h4>Example - visiblity of icon, clear button etc</h4>
+    <h4>Example - simple input</h4>
     <div class="example">
-      <example name="ExampleInputFeatures"></example>
+      <example name="ExampleInputStyling"></example>
     </div>
   </section>
 </template>
@@ -64,7 +64,7 @@ export default {
         prop: "rules",
         type: ["Object"],
         default: "{}",
-        description: "Rules for validation. See Form Validation for example",
+        description: "Rules for validation. See Form Validation for examples of rules",
       },
       {
         prop: "validate-on",
@@ -85,12 +85,6 @@ export default {
         type: ["String"],
         default: "empty string",
         description: "Label on top of the input. This label is for simple forms as position cannot be changed",
-      },
-      {
-        prop: "visible-condition",
-        type: ["Object"],
-        default: "{}",
-        description: "This prop controls visibility of additional input elements (icon, clear button, prepend and append slots). You can show or hide them depending on conditions. Add any of the elements as keys and condition as its value. Valid conditions are `hover`, `focused` and `hasvalue`. By default every element is always visible. For icon and clear button you need to first enable them by setting `icon` and `clearable` props",
       },
       {
         prop: "use-loading",
@@ -115,6 +109,24 @@ export default {
         type: ["Boolean"],
         default: "false",
         description: "If `true` validation messages are not displayed",
+      },
+      {
+        prop: "show-indicator",
+        type: ["Boolean"],
+        default: "false",
+        description: "Set to `true` or `false` to show open indicator. Useful for extending v-input for example adding dropdowns or popovers",
+      },
+      {
+        prop: "indicator-switch",
+        type: ["Boolean"],
+        default: "false",
+        description: "Set to `true` or `false` to set state of the open indicator. Useful for extending v-input for example adding dropdowns or popovers",
+      },
+      {
+        prop: "width",
+        type: ["String"],
+        default: "empty string",
+        description: "Sets the width for the component",
       },
       {
         prop: "spinner",

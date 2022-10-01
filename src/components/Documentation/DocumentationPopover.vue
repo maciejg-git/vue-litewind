@@ -96,12 +96,6 @@ export default {
         default: "fade-m",
         description: "Sets animation effect when showing or hiding popover. Valid values are: 'fade' or `empty string` to disable animations.",
       },
-      {
-        prop: "click-outside-close",
-        type: ["Boolean"],
-        default: "false",
-        description: "If `true` clicking outside of popover closes it",
-      },
       ...popperProps,
       ...styleProps(),
       ...sharedProps(),

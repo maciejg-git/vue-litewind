@@ -131,11 +131,11 @@ export default {
         description: "Locale used to compare and sort strings",
       },
       {
-        prop: "busy",
+        prop: "state",
         type: ["Boolean"],
         default: "false",
         description:
-          "When true renders table in busy (faded) state and disables all pointer events",
+          "State of table. Valid values are 'busy' or `empty string`. Busy state disables pointer events on table and renders contents of `busy` slot instead of table rows",
       },
       {
         prop: "selection-mode",

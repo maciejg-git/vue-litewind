@@ -1,5 +1,4 @@
-.default {
-  &.checkbox {
+  .checkbox {
     @apply
       rounded
       border
@@ -21,9 +20,9 @@
       dark:checked:bg-current
       dark:checked:border-current
       dark:border-dark-700
-      dark:focus:ring-primary-200
-  }
-      &.checkbox--valid-state {
+      dark:focus:ring-primary-200;
+
+      &--valid-state {
         @apply
           text-success-600
           border-success-300
@@ -32,7 +31,7 @@
           dark:border-success-400
           dark:focus-within:ring-success-300
       }
-      &.checkbox--invalid-state {
+      &--invalid-state {
         @apply
           text-danger-600
           border-danger-300
@@ -42,8 +41,8 @@
           dark:focus-within:ring-danger-300
       }
 
-  &.checkbox--label {
+  &__label {
     @apply
       ml-4
   }
-}
+  }

@@ -3,7 +3,7 @@
 }
 
 .material {
-  &.tabs--tab {
+  &__tab {
     @apply
       -mb-px
       p-3
@@ -13,16 +13,17 @@
       border-transparent
       duration-200
       hover:bg-secondary-50
-      hover:dark:bg-dark-700
-  }
-      &.tabs--tab--active-state {
+      hover:dark:bg-dark-700;
+
+      &--active-state {
         @apply
           shadow-none
           border-b-2
           border-primary-500
       }
+  }
 
-  &.tabs--tab-bar {
+  &__tab-bar {
     @apply
       border-b
       dark:border-dark-700
@@ -30,10 +31,10 @@
 }
 
 .rounded {
-  &.tabs--tab-bar {
+  &__tab-bar {
   }
 
-  &.tabs--tab {
+  &__tab {
     @apply
       rounded-md
       whitespace-nowrap
@@ -46,14 +47,14 @@
       hover:bg-secondary-50
       border-secondary-300
       dark:text-text-300/80
-      dark:hover:bg-dark-700
-  }
-      &.tabs--tab--small {
+      dark:hover:bg-dark-700;
+
+      &--small {
         @apply
           py-1
           px-2
       }
-      &.tabs--tab--active-state {
+      &--active-state {
         @apply
           shadow-none
           text-white
@@ -64,16 +65,17 @@
           dark:hover:bg-primary-500
       }
   }
+    }
 
-.default {
-  &.tabs--tab-bar {
+    .tabs {
+  &__tab-bar {
     @apply
       border-b
       pl-2
       dark:border-dark-600
   }
 
-  &.tabs--tab {
+  &__tab {
     @apply
       rounded-t-md
       whitespace-nowrap
@@ -91,15 +93,14 @@
       dark:text-text-300/80
       dark:bg-dark-900
       dark:hover:bg-dark-800
-      dark:border-dark-600
-      
-  }
-      &.tabs--tab--small {
+      dark:border-dark-600;
+
+      &--small {
         @apply
           py-1
           px-2
       }
-      &.tabs--tab--active-state {
+      &--active-state {
         @apply
           shadow-none
           bg-white
@@ -111,3 +112,4 @@
           dark:border-b-transparent
       }
   }
+    }

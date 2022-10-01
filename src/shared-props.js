@@ -39,7 +39,7 @@ const sharedStyleProps = (component) => {
   return {
     base: {
       type: String,
-      default: defaultProps(component, "base", "default"),
+      default: defaultProps(component, "base", component),
     },
     variant: {
       type: [String, Boolean],

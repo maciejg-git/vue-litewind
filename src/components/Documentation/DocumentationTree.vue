@@ -119,7 +119,7 @@ export default {
         description: "If `true` @input:selected return array of item keys. If `false` (default) this event returns `array` of item `objects`",
       },
       {
-        prop: "independent-select",
+        prop: "select-independent",
         type: ["Boolean"],
         default: "false",
         description: "If `true` folders and items can be selected independently. By default selecting folders selects all children items and selecting every children selects parent folder",

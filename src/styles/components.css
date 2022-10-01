@@ -21,11 +21,10 @@
 @import 'components/tabs.css';
 @import 'components/tooltip.css';
 @import 'components/tree.css';
-@import 'components/collapse.css'
+@import 'components/collapse.css';
 
 /* forms */
 
-@import 'form/autocomplete.css';
 @import 'form/checkbox.css';
 @import 'form/form-text.css';
 @import 'form/input.css';

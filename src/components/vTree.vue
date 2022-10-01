@@ -44,10 +44,6 @@ const props = defineProps({
     type: String,
     default: "",
   },
-  openAll: {
-    type: Boolean,
-    default: false,
-  },
   autoOpenRoot: {
     type: Boolean,
     default: defaultProps("tree", "autoOpenRoot", false),

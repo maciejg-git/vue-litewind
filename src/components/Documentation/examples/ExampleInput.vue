@@ -1,7 +1,7 @@
 <template>
   <p class="my-6">Input with icon (prop and slot)</p>
 
-  <div class="flex gap-x-10">
+  <div class="flex gap-x-8">
     <!-- icon (prop) -->
 
     <v-input
@@ -35,7 +35,7 @@
 
   <p class="my-6 mt-12">Prepend and append slots</p>
 
-  <div class="flex gap-x-10">
+  <div class="flex gap-x-8">
     <v-input
       v-model="example.model"
       v-bind="example"

@@ -2,8 +2,7 @@
   --sidepanel-transition-duration: 0.2s;
 }
 
-.default {
-  &.sidepanel {
+  .sidepanel {
     @apply
       text-left
       shadow-lg
@@ -12,4 +11,3 @@
       bg-secondary-100
       dark:bg-dark-700;
   }
-}

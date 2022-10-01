@@ -29,7 +29,7 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("formText"),
+  ...sharedStyleProps("form-text"),
   state: {
     type: String,
     default: "",

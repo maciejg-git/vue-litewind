@@ -1,5 +1,4 @@
-.default {
-  &.input {
+  .input {
     @apply
       rounded
       border
@@ -15,9 +14,9 @@
       focus-within:border-secondary-400
       dark:border-dark-500
       focus-within:ring-primary-200
-      dark:focus-within:ring-primary-300
-  }
-      &.input--valid-state {
+      dark:focus-within:ring-primary-300;
+
+      &--valid-state {
         @apply
           text-success-600
           dark:text-success-600
@@ -26,7 +25,7 @@
           focus-within:ring-success-200
           dark:focus-within:ring-success-300
       }
-      &.input--invalid-state {
+      &--invalid-state {
         @apply
           text-danger-600
           dark:text-danger-600
@@ -36,27 +35,34 @@
           dark:focus-within:ring-danger-300
       }
 
-  &.input--icon {
-    @apply
-      w-6
-      h-6
-      text-text-400
-      dark:text-gray-400
-  }
-      &.input--icon--valid {
+      &__icon {
         @apply
-          text-success-400
-          dark:text-success-400
-      }
-      &.input--icon--invalid {
-        @apply
-          text-danger-400
-          dark:text-danger-400
+          w-6
+          h-6
+          text-text-400
+          dark:text-gray-400;
+
+          &--valid {
+            @apply
+              text-success-400
+              dark:text-success-400
+          }
+          &--invalid {
+            @apply
+              text-danger-400
+              dark:text-danger-400
+          }
       }
 
-  &.input--label {
-    @apply
-      text-sm
-      pb-1
+      &__close-button-wrapper {
+        @apply
+          invisible
+          group-focus-within:visible
+      }
+
+      &__label {
+        @apply
+          text-sm
+          pb-1
+      }
   }
-}
