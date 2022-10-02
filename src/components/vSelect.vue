@@ -28,8 +28,10 @@
       ></slot>
     </template>
     <template #multi-value>
-        <template v-if="!props.multiValue">
+        <template v-if="!multiValue">
+          <template v-if="!isValueInInput">
           <span class="last-of-type:mr-2">{{ getItemText(selectedItem) }}</span>
+          </template>
         </template>
         <template v-else>
           <template v-if="multiValueDisplay === 'text'">
@@ -246,6 +248,12 @@ let isNewSelection = ref(true);
 
 let isSelfUpdate = false
 
+// let isValueInInput = computed(() => {
+//   return props.multiValue || !props.autocomplete || !isPopperVisible.value
+// })
+
+let isValueInInput = ref(false)
+
 // show autocomplete menu
 
 let show = () => {
@@ -348,24 +356,22 @@ let update = (item) => {
 };
 
 let revert = () => {
-  if (!selectedItem.value) {
-    localText.value = "";
-    return;
-  }
-  localText.value = getItemText(selectedItem.value);
+  localText.value = "";
 };
 
 let cancelInput = () => {
   if (props.autocomplete) {
     revert();
   }
+
+  if (isValueInInput.value) isValueInInput.value = false
+
   hidePopper();
 };
 
 let selectItem = (item) => {
   update(item);
   if (!props.multiValue) {
-    hidePopper();
     instanceReference.value.blur();
     return;
   }
@@ -405,6 +411,10 @@ watch(
 
 let handleFocusInput = () => {
   show();
+  if (!props.multiValue && props.autocomplete) {
+    isValueInInput.value = true
+    localText.value = getItemText(selectedItem.value)
+  }
 };
 
 let handleInput = () => {

@@ -63,9 +63,16 @@
   </section>
 
   <section>
-    <h4>Example - remote source</h4>
+    <h4>Example - autcomplete (remote source)</h4>
     <div class="example">
       <example name="ExampleAutocomplete"></example>
+    </div>
+  </section>
+
+  <section>
+    <h4>Example - multi value autocomplete</h4>
+    <div class="example">
+      <example name="ExampleAutocompleteMultivalue"></example>
     </div>
   </section>
 

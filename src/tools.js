@@ -20,7 +20,7 @@ let isDate = (d) => Object.prototype.toString.call(d) == "[object Date]";
 
 let isRegexp = (v) => Object.prototype.toString.call(v) === "[object RegExp]";
 
-let isObject = (v) => typeof v === "object";
+let isObject = (v) => typeof v === "object" && v !== null;
 
 let isString = (v) => typeof v === "string";
 
