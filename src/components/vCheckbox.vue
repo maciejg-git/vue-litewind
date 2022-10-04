@@ -109,7 +109,4 @@ let handleBlur = () => {
 </script>
 
 <style>
-.tw-form-checkbox-reset {
-  @apply form-checkbox;
-}
 </style>

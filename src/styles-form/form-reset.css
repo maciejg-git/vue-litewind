@@ -1,0 +1,15 @@
+.tw-form-checkbox-reset {
+  @apply form-checkbox;
+}
+
+.tw-form-input-reset {
+  @apply form-input;
+}
+
+.tw-form-textarea-reset {
+  @apply form-textarea;
+}
+
+.tw-form-radio-reset {
+  @apply form-radio;
+}

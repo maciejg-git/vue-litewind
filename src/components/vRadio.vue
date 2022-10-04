@@ -99,7 +99,4 @@ let handleBlur = () => {
 </script>
 
 <style>
-.tw-form-radio-reset {
-  @apply form-radio;
-}
 </style>

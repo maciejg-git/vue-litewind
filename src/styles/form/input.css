@@ -55,9 +55,6 @@
       }
 
       &__close-button-wrapper {
-        @apply
-          invisible
-          group-focus-within:visible
       }
 
       &__label {

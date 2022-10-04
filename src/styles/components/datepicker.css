@@ -11,12 +11,12 @@
 }
 
 .datepicker {
-    @apply
-      text-center
-      text-text-800
-      dark:text-text-300
-      bg-white
-      dark:bg-dark-800;
+  @apply
+    text-center
+    text-text-800
+    dark:text-text-300
+    bg-white
+    dark:bg-dark-800;
 
   &__button {
     @apply

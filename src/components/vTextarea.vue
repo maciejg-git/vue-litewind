@@ -300,7 +300,4 @@ let handleBlur = () => touch();
 </script>
 
 <style>
-.tw-form-textarea-reset {
-  @apply form-textarea;
-}
 </style>

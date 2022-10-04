@@ -13,10 +13,11 @@ import { componentPlugin } from "./index.js";
 import { components } from "./index"
 import { directives } from "./index"
 // styles
+import "tailwindcss/tailwind.css";
+import "./styles-form/form-reset.css"
 import "./styles/shared.css"
 import "./styles/components.css"
 import "./styles/icon.css"
-import "tailwindcss/tailwind.css";
 import "./components/Documentation/Documentation.css"
 // tools
 import registerIcon from "./register-icon"
