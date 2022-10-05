@@ -28,21 +28,21 @@
       ></slot>
     </template>
     <template #multi-value>
-        <template v-if="!multiValue">
-          <template v-if="!isValueInInput">
+      <template v-if="!multiValue">
+        <template v-if="!isValueInInput">
           <span class="last-of-type:mr-2">{{ getItemText(selectedItem) }}</span>
-          </template>
         </template>
-        <template v-else>
-          <template v-if="multiValueDisplay === 'text'">
-            <span
-              v-for="(item, index) in selectedItems"
-              class="ml-1 after:content-[','] last-of-type:after:content-none last-of-type:mr-2"
-            >
-              {{ getItemText(item) }}
-            </span>
-          </template>
+      </template>
+      <template v-else>
+        <template v-if="multiValueDisplay === 'text'">
+          <span
+            v-for="(item, index) in selectedItems"
+            class="ml-1 after:content-[','] last-of-type:after:content-none last-of-type:mr-2"
+          >
+            {{ getItemText(item) }}
+          </span>
         </template>
+      </template>
     </template>
   </v-input>
 
@@ -100,7 +100,7 @@ export default {
 </script>
 
 <script setup>
-import { ref, computed, watch, toRefs } from "vue";
+import { ref, computed, watch, toRefs, nextTick } from "vue";
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
 import usePopper from "./composition/use-popper.js";
@@ -229,7 +229,7 @@ const { offsetX, offsetY, noFlip, placement, modelValue } = toRefs(props);
 const {
   isPopperVisible,
   reference,
-  instanceReference,
+  referenceInstance,
   updateInstance,
   popper,
   showPopper,
@@ -246,13 +246,13 @@ let selectedItems = ref([]);
 let localText = ref("");
 let isNewSelection = ref(true);
 
-let isSelfUpdate = false
+let isSelfUpdate = false;
 
 // let isValueInInput = computed(() => {
 //   return props.multiValue || !props.autocomplete || !isPopperVisible.value
 // })
 
-let isValueInInput = ref(false)
+let isValueInInput = ref(false);
 
 // show autocomplete menu
 
@@ -278,7 +278,7 @@ watch(
 // get text and value of item
 
 let getItemText = (item, key) => {
-  if (item === undefined) return;
+  if (item === undefined) return localText.value;
   if (isObject(item)) {
     return item[key || props.itemText];
   }
@@ -332,7 +332,7 @@ let itemsPagination = computed(() => {
 
 let isSelected = (item) => {
   if (!props.multiValue) {
-    return selectedItem.value === item
+    return selectedItem.value === item;
   }
   return selectedItems.value.indexOf(item) !== -1;
 };
@@ -345,13 +345,13 @@ let update = (item) => {
     } else {
       selectedItems.value.push(item);
     }
-    isSelfUpdate = true
+    isSelfUpdate = true;
     localModel.value = selectedItems.value.map((i) => getItemValue(i));
-    updateInstance()
+    updateInstance();
     return;
   }
   selectedItem.value = item;
-  isSelfUpdate = true
+  isSelfUpdate = true;
   localModel.value = getItemValue(item);
 };
 
@@ -364,7 +364,7 @@ let cancelInput = () => {
     revert();
   }
 
-  if (isValueInInput.value) isValueInInput.value = false
+  if (isValueInInput.value) isValueInInput.value = false;
 
   hidePopper();
 };
@@ -372,7 +372,7 @@ let cancelInput = () => {
 let selectItem = (item) => {
   update(item);
   if (!props.multiValue) {
-    instanceReference.value.blur();
+    referenceInstance.value.blur();
     return;
   }
 };
@@ -381,39 +381,49 @@ let clearInput = () => {
   localText.value = "";
   selectedItem.value = "";
   selectedItems.value = [];
-  isSelfUpdate = true
-  localModel.value = props.multiValue ? selectedItems.value : selectedItem.value;
+  isSelfUpdate = true;
+  localModel.value = props.multiValue
+    ? selectedItems.value
+    : selectedItem.value;
 };
 
 watch(
   localModel,
   (value) => {
     if (isSelfUpdate) {
-      isSelfUpdate = false
-      return
+      isSelfUpdate = false;
+      return;
     }
     if (props.multiValue) {
       selectedItems.value = value.map((selected) => {
         return props.items.find((i) => {
-          return selected === getItemValue(i)
-        })
-      })
-      return
+          return selected === getItemValue(i);
+        });
+      });
+      return;
     }
     let item = getItemByValue(value);
-    console.log(item)
     selectedItem.value = item;
   },
-  { immediate: true, deep: true, flush: 'sync' }
+  { immediate: true, deep: true, flush: "sync" }
 );
 
 // handle template events
 
 let handleFocusInput = () => {
   show();
+
   if (!props.multiValue && props.autocomplete) {
-    isValueInInput.value = true
-    localText.value = getItemText(selectedItem.value)
+    isValueInInput.value = true;
+
+    localText.value = getItemText(selectedItem.value);
+
+    nextTick(() => {
+      referenceInstance.value.inputRef.setSelectionRange(
+        0,
+        localText.value.length
+      );
+    });
   }
 };
 
@@ -435,18 +445,18 @@ let handleClickIndicator = () => {
 
   if (isPopperVisible.value) {
     cancelInput();
-    instanceReference.value.blur();
+    referenceInstance.value.blur();
     return;
   }
 
-  instanceReference.value.focus();
+  referenceInstance.value.focus();
 };
 
 let handleClickClearButton = () => {
   clearInput();
 
   if (isPopperVisible.value) {
-    instanceReference.value.focus();
+    referenceInstance.value.focus();
   }
 };
 

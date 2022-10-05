@@ -2,6 +2,7 @@ node_modules
 .DS_Store
 dist
 dist-ssr
+dist-docs
 *.local
 lazygit.exe
 src/components/Test.vue

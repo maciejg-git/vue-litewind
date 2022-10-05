@@ -276,7 +276,6 @@ let id = useUid("input", attrs);
 let inputRef = ref(null);
 let wrapperRef = ref(null);
 
-let isMouseOver = ref(false);
 let isFocused = ref(false);
 
 let focus = () => inputRef.value.focus();
@@ -285,11 +284,9 @@ let blur = () => inputRef.value.blur();
 
 // let blur = (ev) => ev.target.blur();
 
-// validate
-
 let localModel = useLocalModel(props, emit);
 
-// form validation
+// validate
 
 let emitValidationStatus = (status, state, messages) => {
   emit("update:status", status);
@@ -358,7 +355,7 @@ let handleClickClearButton = () => {
   }
 };
 
-defineExpose({ focus, blur });
+defineExpose({ focus, blur, inputRef });
 </script>
 
 <style>

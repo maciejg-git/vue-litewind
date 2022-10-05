@@ -146,7 +146,7 @@ export default function usePopper(
   return {
     isPopperVisible,
     reference,
-    instanceReference: localReference,
+    referenceInstance: localReference,
     updateInstance,
     popper,
     showPopper,
