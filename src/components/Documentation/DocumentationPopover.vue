@@ -17,7 +17,7 @@
     <h6>Functions</h6>
     <table-reference-basic :items="functions" reference="function" />
   </section>
-
+<v-divider class="mt-10"></v-divider>
   <section>
     <h4>Notes</h4>
     <ul class="flex flex-col gap-y-7">
@@ -52,6 +52,7 @@
     </ul>
   </section>
 
+<v-divider class="mt-10"></v-divider>
   <section>
     <h4>Example</h4>
     <div class="example">
@@ -126,7 +127,7 @@ export default {
     let components = ref([
       {
         component: "v-popover-header",
-        description: "Header of the popover with close button. You can set title in `default` slot or use `title` prop of v-popover",
+        description: "Optional header of the popover with close button. Title can be set in `default` slot or in `title` prop of v-popover",
       },
     ]);
 

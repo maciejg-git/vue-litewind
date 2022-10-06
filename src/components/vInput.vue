@@ -282,7 +282,7 @@ let focus = () => inputRef.value.focus();
 
 let blur = () => inputRef.value.blur();
 
-// let blur = (ev) => ev.target.blur();
+let selectAll = () => inputRef.value.setSelectionRange(0, localModel.value.length)
 
 let localModel = useLocalModel(props, emit);
 
@@ -355,11 +355,8 @@ let handleClickClearButton = () => {
   }
 };
 
-defineExpose({ focus, blur, inputRef });
+defineExpose({ focus, blur, selectAll });
 </script>
 
 <style>
-.tw-form-input-reset {
-  @apply form-input;
-}
 </style>

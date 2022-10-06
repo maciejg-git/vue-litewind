@@ -65,9 +65,9 @@
           dark:hover:bg-primary-500
       }
   }
-    }
+}
 
-    .tabs {
+.tabs {
   &__tab-bar {
     @apply
       border-b
@@ -112,4 +112,4 @@
           dark:border-b-transparent
       }
   }
-    }
+}

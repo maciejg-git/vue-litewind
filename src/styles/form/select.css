@@ -12,6 +12,7 @@
       cursor-pointer
       px-6
       py-4
+      my-1
       transition-colors
       text-text-800
       dark:text-text-300
@@ -20,7 +21,7 @@
 
       &--dense {
         @apply
-          py-2 !important
+          py-2
       }
       &--active-state {
         @apply

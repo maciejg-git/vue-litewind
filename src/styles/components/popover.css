@@ -2,8 +2,8 @@
   --popover-transition-duration: 0.2s;
 }
 
-  .popover {
-  &--header {
+.popover {
+  &__header {
     @apply
       font-semibold
       py-2

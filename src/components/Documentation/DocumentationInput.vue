@@ -41,6 +41,7 @@
 
   <section>
     <h4>Example - simple input</h4>
+    <p>Input elements can be styled depending on the state of top wrapper element with tailwind <code class="code-text">group-*</code> modifiers. In the example clear button appears on hover and icon appears after input is focused.</p>
     <div class="example">
       <example name="ExampleInputStyling"></example>
     </div>

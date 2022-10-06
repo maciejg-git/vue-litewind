@@ -41,8 +41,8 @@
           dark:focus-within:ring-danger-300
       }
 
-  &__label {
-    @apply
-      ml-4
-  }
+      &__label {
+        @apply
+          ml-4
+      }
   }

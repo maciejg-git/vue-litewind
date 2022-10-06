@@ -248,10 +248,6 @@ let isNewSelection = ref(true);
 
 let isSelfUpdate = false;
 
-// let isValueInInput = computed(() => {
-//   return props.multiValue || !props.autocomplete || !isPopperVisible.value
-// })
-
 let isValueInInput = ref(false);
 
 // show autocomplete menu
@@ -419,10 +415,7 @@ let handleFocusInput = () => {
     localText.value = getItemText(selectedItem.value);
 
     nextTick(() => {
-      referenceInstance.value.inputRef.setSelectionRange(
-        0,
-        localText.value.length
-      );
+      referenceInstance.value.selectAll()
     });
   }
 };
