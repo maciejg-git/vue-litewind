@@ -15,9 +15,11 @@
     <table-reference-basic :items="slots" reference="slot" />
   </section>
 
+  <v-divider></v-divider>
+
   <section>
     <h4>Notes</h4>
-    <ul class="flex flex-col gap-y-7">
+    <ul class="flex flex-col gap-y-7 mt-6">
       <li>
         <header class="font-semibold text-lg mb-2">
           <span>#</span>
@@ -34,6 +36,8 @@
       </li>
     </ul>
   </section>
+
+  <v-divider></v-divider>
 
   <section>
     <h4>Example - simple modal</h4>

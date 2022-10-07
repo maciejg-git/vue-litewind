@@ -1,14 +1,18 @@
 h3 {
-  @apply text-4xl font-semibold mt-12;
+  @apply text-4xl font-semibold;
 }
 h4 {
-  @apply text-2xl font-semibold mt-20 mb-6;
+  @apply text-2xl font-semibold;
 }
 h5 {
-  @apply text-xl font-semibold mt-12;
+  @apply text-xl font-semibold;
 }
 h6 {
-  @apply text-lg font-semibold mt-12 mb-6;
+  @apply text-lg font-semibold;
+}
+
+section {
+  @apply my-12
 }
 
 p {

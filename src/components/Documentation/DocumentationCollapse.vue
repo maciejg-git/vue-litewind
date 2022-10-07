@@ -12,15 +12,17 @@
     <table-reference-basic :items="components" reference="component" />
   </section>
 
+  <v-divider></v-divider>
+
   <section>
     <h4>Notes</h4>
-    <ul class="flex flex-col gap-y-7">
+    <ul class="flex flex-col gap-y-7 mt-6">
       <li>
         <header class="font-semibold text-lg mb-2">
           <span>#</span>
-Collapse activation
+          Collapse activation
         </header>
-    You can activate collapse in two ways: by using <code class="code-text">reference</code> slot or <code class="code-text">v-model</code>. Slot is recommened as it takes minimal set up and can be done in template alone. <code class="code-text">v-model</code> can still be used to programatically toggle collapse.
+        You can activate collapse in two ways: by using <code class="code-text">reference</code> slot or <code class="code-text">v-model</code>. Slot is recommened as it takes minimal set up and can be done in template alone. <code class="code-text">v-model</code> can still be used to programatically toggle collapse.
       </li>
       <li>
         <header class="font-semibold text-lg mb-2">
@@ -29,8 +31,10 @@ Collapse activation
         </header>
         You can group <code class="code-text">v-collapse</code> components to create accordion. See example below.
       </li>
-      </ul>
+    </ul>
   </section>
+
+  <v-divider></v-divider>
 
   <section>
     <h4>Example</h4>

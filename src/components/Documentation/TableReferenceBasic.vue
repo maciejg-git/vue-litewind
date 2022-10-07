@@ -1,38 +1,42 @@
 <template>
-  <v-table
-    style-table="fixed"
-    style-header-cell="bordered"
-    style-cell="bordered"
-    :definition="definition"
-    class="min-w-full"
-  >
-    <template #cell:function="{ value }">
-        <code v-html="value"></code>
-    </template>
-    <template #cell:slot="{ value }">
-        <code v-html="value"></code>
-    </template>
-    <template #cell:event="{ value }">
-        <code v-html="value"></code>
-    </template>
-    <template #cell:prop="{ value }">
-        <code v-html="value"></code>
-    </template>
-    <template #cell:component="{ value }">
-        <code v-html="value"></code>
-    </template>
-    <template #cell:description="{ value, item }">
-      <slot :name="'description-' + item.prop" :value="value">
-        <span v-html="template(value)"></span>
-      </slot>
-    </template>
-  </v-table>
+  <div class="mt-6 mb-12">
+    <v-table
+      style-table="fixed"
+      style-header-cell="bordered"
+      style-cell="bordered"
+      :definition="definition"
+      class="min-w-full"
+      v-bind="$attrs"
+    >
+      <template #cell:function="{ value }">
+          <code v-html="value"></code>
+      </template>
+      <template #cell:slot="{ value }">
+          <code v-html="value"></code>
+      </template>
+      <template #cell:event="{ value }">
+          <code v-html="value"></code>
+      </template>
+      <template #cell:prop="{ value }">
+          <code v-html="value"></code>
+      </template>
+      <template #cell:component="{ value }">
+          <code v-html="value"></code>
+      </template>
+      <template #cell:description="{ value, item }">
+        <slot :name="'description-' + item.prop" :value="value">
+          <span v-html="template(value)"></span>
+        </slot>
+      </template>
+    </v-table>
+  </div>
 </template>
 
 <script>
 import { ref } from "vue";
 
 export default {
+  inheritAttrs: false,
   props: {
     reference: { type: String, default: "prop" },
   },

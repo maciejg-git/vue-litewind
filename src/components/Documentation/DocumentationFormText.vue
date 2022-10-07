@@ -3,7 +3,7 @@
 
   <section>
     <h4>Notes</h4>
-    <p>
+    <p class="mt-6">
       <code class="code-text">v-form-text</code> is used by form components to display validation messages. See Form Validation for examples.
     </p>
   </section>

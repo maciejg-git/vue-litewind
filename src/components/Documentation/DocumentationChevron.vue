@@ -11,7 +11,11 @@
 
   <section>
     <h4>Notes</h4>
-    <p><code class="code-text">v-chevron</code> rotates chevron/triangle or any icon depending on switch prop. It is used internally by dropdown, collapse etc</p>
+    <p class="mt-6">
+      <code class="code-text">v-chevron</code>
+      rotates chevron/triangle or any icon depending on switch prop. It is used
+      internally by dropdown, collapse etc
+    </p>
   </section>
 
   <section>
@@ -24,7 +28,7 @@
 
 <script>
 import { ref } from "vue";
-import { sharedProps, styleProps } from "./shared-props"
+import { sharedProps, styleProps } from "./shared-props";
 
 export default {
   setup(props) {
@@ -33,13 +37,15 @@ export default {
         prop: "initial",
         type: ["String"],
         default: "'down'",
-        description: "Initial direction of chevron/triangle. Valid values are: 'down', 'left' ,'right' and 'up'",
+        description:
+          "Initial direction of chevron/triangle. Valid values are: 'down', 'left' ,'right' and 'up'",
       },
       {
         prop: "rotate90",
         type: ["Boolean"],
         default: "false",
-        description: "If `true` rotates chevron 90 degrees. Default is 180 degrees",
+        description:
+          "If `true` rotates chevron 90 degrees. Default is 180 degrees",
       },
       {
         prop: "triangle",
@@ -51,7 +57,8 @@ export default {
         prop: "clockwise",
         type: ["Boolean"],
         default: "false",
-        description: "Rotate chevron/triangle clockwise. Default is counter clockwise",
+        description:
+          "Rotate chevron/triangle clockwise. Default is counter clockwise",
       },
       {
         prop: "switch",
@@ -86,5 +93,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

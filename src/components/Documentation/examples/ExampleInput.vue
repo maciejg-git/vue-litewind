@@ -1,9 +1,5 @@
 <template>
-  <p class="my-6">Input with icon (prop and slot)</p>
-
-  <div class="flex gap-x-8">
-    <!-- icon (prop) -->
-
+  <div class="flex w-1/2">
     <v-input
       v-model="example.model"
       v-bind="example"
@@ -13,50 +9,6 @@
       placeholder="Type something..."
       @click:clear-button="handleClickClear"
     ></v-input>
-
-    <!-- icon (slot) -->
-
-    <v-input
-      v-model="example.model"
-      v-bind="example"
-      :close-button="{ styleCloseButton: 'small' }"
-      icon="b-exclamation-circle"
-      placeholder="Type something..."
-      @click:clear-button="handleClickClear"
-    >
-      <template #icon>
-        <v-icon
-          name="b-exclamation-circle"
-          class="h-6 w-6 text-gray-400 dark:text-gray-400 mr-2"
-        ></v-icon>
-      </template>
-    </v-input>
-  </div>
-
-  <p class="my-6 mt-12">Prepend and append slots</p>
-
-  <div class="flex gap-x-8">
-    <v-input
-      v-model="example.model"
-      v-bind="example"
-      placeholder="Type something..."
-      @click:clear-button="handleClickClear"
-    >
-      <template #prepend>
-        <div class="mr-2">http://</div>
-      </template>
-    </v-input>
-
-    <v-input
-      v-model="example.model"
-      v-bind="example"
-      placeholder="Type something..."
-      @click:clear-button="handleClickClear"
-    >
-      <template #append>
-        <div class="ml-2">.com</div>
-      </template>
-    </v-input>
   </div>
   <!-- CUT START -->
   <v-tabs

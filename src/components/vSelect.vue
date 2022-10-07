@@ -30,17 +30,25 @@
     <template #multi-value>
       <template v-if="!multiValue">
         <template v-if="!isValueInInput">
-          <span class="last-of-type:mr-2">{{ getItemText(selectedItem) }}</span>
+          <span>{{ getItemText(selectedItem) }}</span>
         </template>
       </template>
       <template v-else>
         <template v-if="multiValueDisplay === 'text'">
-          <span
-            v-for="(item, index) in selectedItems"
-            class="ml-1 after:content-[','] last-of-type:after:content-none last-of-type:mr-2"
-          >
-            {{ getItemText(item) }}
-          </span>
+          <template v-for="(item, index) in selectedItems">
+            <template v-if="index < maxMultiValue">
+              <span
+                class="ml-1 after:content-[','] last-of-type:after:content-none last-of-type:mr-2"
+              >
+                {{ getItemText(item) }}
+              </span>
+            </template>
+          </template>
+          <slot 
+            v-if="selectedItems.length > maxMultiValue" 
+            name="max-multi-value" 
+            v-bind="{ selectedItems }"
+          ></slot>
         </template>
       </template>
     </template>
@@ -130,6 +138,10 @@ let props = defineProps({
   multiValue: {
     type: Boolean,
     default: false,
+  },
+  maxMultiValue: {
+    type: Number,
+    default: 9999,
   },
   multiValueDisplay: {
     type: String,
@@ -244,9 +256,8 @@ const {
 let selectedItem = ref(null);
 let selectedItems = ref([]);
 let localText = ref("");
-let isNewSelection = ref(true);
 
-let isSelfUpdate = false;
+let ignoreModelWatch = false;
 
 let isValueInInput = ref(false);
 
@@ -254,8 +265,6 @@ let isValueInInput = ref(false);
 
 let show = () => {
   if (!props.items.length) return;
-
-  isNewSelection.value = true;
 
   showPopper();
 };
@@ -297,7 +306,6 @@ let getItemByValue = (value) => {
 let itemsFiltered = computed(() => {
   if (!props.autocomplete) return props.items;
   if (props.isLoading || props.noFilter) return props.items;
-  if (isNewSelection.value) return props.items;
 
   if (props.filterKeys.length) {
     return props.items.filter((item) => {
@@ -341,13 +349,13 @@ let update = (item) => {
     } else {
       selectedItems.value.push(item);
     }
-    isSelfUpdate = true;
+    ignoreModelWatch = true;
     localModel.value = selectedItems.value.map((i) => getItemValue(i));
     updateInstance();
     return;
   }
   selectedItem.value = item;
-  isSelfUpdate = true;
+  ignoreModelWatch = true;
   localModel.value = getItemValue(item);
 };
 
@@ -377,7 +385,7 @@ let clearInput = () => {
   localText.value = "";
   selectedItem.value = "";
   selectedItems.value = [];
-  isSelfUpdate = true;
+  ignoreModelWatch = true;
   localModel.value = props.multiValue
     ? selectedItems.value
     : selectedItem.value;
@@ -386,8 +394,8 @@ let clearInput = () => {
 watch(
   localModel,
   (value) => {
-    if (isSelfUpdate) {
-      isSelfUpdate = false;
+    if (ignoreModelWatch) {
+      ignoreModelWatch = false;
       return;
     }
     if (props.multiValue) {
@@ -415,13 +423,12 @@ let handleFocusInput = () => {
     localText.value = getItemText(selectedItem.value);
 
     nextTick(() => {
-      referenceInstance.value.selectAll()
+      referenceInstance.value.selectAll();
     });
   }
 };
 
 let handleInput = () => {
-  isNewSelection.value = false;
   emit("input:value", localText.value);
 };
 
