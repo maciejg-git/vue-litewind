@@ -81,8 +81,8 @@
   </section>
 
   <section>
-    <h4>Example - item slot</h4>
-    <p>You can customize menu items by using item slot.</p>
+    <h4>Example - customized menu</h4>
+    <p>To customize menu items use <code class="code-text">item</code> slot</p>
     <div class="example">
       <example name="ExampleAutocompleteSlot"></example>
     </div>
