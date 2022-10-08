@@ -44,9 +44,9 @@
               </span>
             </template>
           </template>
-          <slot 
-            v-if="selectedItems.length > maxMultiValue" 
-            name="max-multi-value" 
+          <slot
+            v-if="selectedItems.length > maxMultiValue"
+            name="max-multi-value"
             v-bind="{ selectedItems }"
           ></slot>
         </template>
@@ -69,6 +69,7 @@
           v-bind="card"
           class="max-h-[var(--select-max-menu-height)] overflow-y-auto overflow-x-hidden"
           v-detect-scroll-bottom="handleScrollBottom"
+          @mousedown.prevent
         >
           <div
             v-if="!itemsPagination.length && !isLoading"
@@ -83,7 +84,7 @@
             :class="getItemClass(item)"
             @mousedown.prevent
             @click="handleClickItem(item)"
-            tabindex="-1"
+            tabindex="0"
           >
             <slot
               name="item"
@@ -261,11 +262,11 @@ let ignoreModelWatch = false;
 
 let isValueInInput = ref(false);
 
+let canShowMenu = ref(false)
+
 // show autocomplete menu
 
 let show = () => {
-  if (!props.items.length) return;
-
   showPopper();
 };
 
@@ -273,8 +274,8 @@ let show = () => {
 
 watch(
   () => props.items,
-  (value) => {
-    if (props.autocomplete && !isPopperVisible.value && props.noFilter) {
+  () => {
+    if (props.noFilter && referenceInstance.value.isFocused && canShowMenu.value) {
       show();
     }
   }
@@ -341,7 +342,7 @@ let isSelected = (item) => {
   return selectedItems.value.indexOf(item) !== -1;
 };
 
-let update = (item) => {
+let updateSelectedItems = (item) => {
   if (props.multiValue) {
     let index = selectedItems.value.indexOf(item);
     if (index !== -1) {
@@ -359,13 +360,9 @@ let update = (item) => {
   localModel.value = getItemValue(item);
 };
 
-let revert = () => {
-  localText.value = "";
-};
-
 let cancelInput = () => {
   if (props.autocomplete) {
-    revert();
+    localText.value = "";
   }
 
   if (isValueInInput.value) isValueInInput.value = false;
@@ -373,22 +370,12 @@ let cancelInput = () => {
   hidePopper();
 };
 
-let selectItem = (item) => {
-  update(item);
-  if (!props.multiValue) {
-    referenceInstance.value.blur();
-    return;
-  }
-};
-
 let clearInput = () => {
   localText.value = "";
   selectedItem.value = "";
   selectedItems.value = [];
   ignoreModelWatch = true;
-  localModel.value = props.multiValue
-    ? selectedItems.value
-    : selectedItem.value;
+  localModel.value = props.multiValue ? [] : "";
 };
 
 watch(
@@ -415,7 +402,12 @@ watch(
 // handle template events
 
 let handleFocusInput = () => {
-  show();
+  if (!props.autocomplete || props.items.length) {
+    canShowMenu.value = false
+    show();
+  }
+
+  canShowMenu.value = true
 
   if (!props.multiValue && props.autocomplete) {
     isValueInInput.value = true;
@@ -433,10 +425,6 @@ let handleInput = () => {
 };
 
 let handleBlurInput = (ev) => {
-  if (!isPopperVisible.value) {
-    return;
-  }
-
   cancelInput();
 };
 
@@ -466,7 +454,11 @@ let handleScrollBottom = () => {
 };
 
 let handleClickItem = (item) => {
-  selectItem(item);
+  updateSelectedItems(item);
+
+  if (!props.multiValue) {
+    referenceInstance.value.blur();
+  }
 };
 </script>
 

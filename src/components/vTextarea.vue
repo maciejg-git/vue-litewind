@@ -53,13 +53,12 @@ export default {
 </script>
 
 <script setup>
-import { ref, computed, watch, toRef, inject, useAttrs } from "vue";
+import { computed, watch, toRef, inject, useAttrs } from "vue";
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
 import useUid from "./composition/use-uid";
 import useValidation from "./composition/use-validation";
 import vFormText from "./vFormText.vue";
-import { globalValidators } from "../validators";
 import {
   sharedProps,
   sharedStyleProps,

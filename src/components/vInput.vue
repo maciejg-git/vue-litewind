@@ -21,20 +21,20 @@
       ref="wrapperRef"
       :class="getInputClasses"
     >
-        <slot name="icon">
-          <div
-            v-if="icon"
-            @click="handleClickIcon"
-            class="mr-2"
-          >
-            <v-icon
-              :name="icon"
-              :class="classes.icon.value"
-            ></v-icon>
-          </div>
-        </slot>
+      <slot name="icon">
+        <div
+          v-if="icon"
+          @click="handleClickIcon"
+          class="mr-2"
+        >
+          <v-icon
+            :name="icon"
+            :class="classes.icon.value"
+          ></v-icon>
+        </div>
+      </slot>
 
-        <slot name="prepend"></slot>
+      <slot name="prepend"></slot>
 
       <div class="flex flex-wrap flex-1">
         <slot name="multi-value"></slot>
@@ -51,7 +51,7 @@
         />
       </div>
 
-        <slot name="append"></slot>
+      <slot name="append"></slot>
 
       <div class="flex items-center">
         <v-spinner
@@ -63,9 +63,9 @@
           class="mx-0.5"
         />
         <div
-            v-if="clearable || customClearable"
-            :class="classes.closeButtonWrapper.value"
-          >
+          v-if="clearable || customClearable"
+          :class="classes.closeButtonWrapper.value"
+        >
           <v-close-button
             style-close-button="small"
             v-bind="closeButton"
@@ -264,7 +264,9 @@ let getInputClasses = computed(() => {
 });
 
 let wrapperClasses = computed(() => {
-  return props.inline ? "inline-block align-middle group" : "block flex-auto group";
+  return props.inline
+    ? "inline-block align-middle group"
+    : "block flex-auto group";
 });
 
 // input label
@@ -276,13 +278,15 @@ let id = useUid("input", attrs);
 let inputRef = ref(null);
 let wrapperRef = ref(null);
 
-let isFocused = ref(false);
-
 let focus = () => inputRef.value.focus();
 
 let blur = () => inputRef.value.blur();
 
-let selectAll = () => inputRef.value.setSelectionRange(0, localModel.value.length)
+let selectAll = () => {
+  inputRef.value.setSelectionRange(0, localModel.value.length);
+}
+
+let isFocused = ref(false)
 
 let localModel = useLocalModel(props, emit);
 
@@ -318,12 +322,12 @@ if (addFormInput) {
 let handleBlur = () => {
   touch();
 
-  isFocused.value = false;
+  isFocused.value = false
 };
 
 let handleFocus = () => {
-  isFocused.value = true;
-};
+  isFocused.value = true
+}
 
 let handleClickWrapper = () => {
   inputRef.value.focus();
@@ -355,8 +359,7 @@ let handleClickClearButton = () => {
   }
 };
 
-defineExpose({ focus, blur, selectAll });
+defineExpose({ focus, blur, selectAll, isFocused });
 </script>
 
-<style>
-</style>
+<style></style>

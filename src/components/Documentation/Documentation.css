@@ -1,14 +1,14 @@
 h3 {
-  @apply text-4xl font-semibold;
+  @apply text-4xl font-semibold dark:text-text-300;
 }
 h4 {
-  @apply text-2xl font-semibold;
+  @apply text-2xl font-semibold dark:text-text-300;
 }
 h5 {
-  @apply text-xl font-semibold;
+  @apply text-xl font-semibold dark:text-text-300;
 }
 h6 {
-  @apply text-lg font-semibold;
+  @apply text-lg font-semibold dark:text-text-300;
 }
 
 section {
