@@ -9,7 +9,13 @@
       :inline="false"
       style-menu="shadow"
       @input:value="query($event)"
-    ></v-autocomplete>
+    >
+    <template #multi-value-item="item">
+      <v-chip class="my-1 mr-2">
+        {{ item.text }}
+      </v-chip>
+    </template>
+    </v-autocomplete>
   </div>
 </template>
 

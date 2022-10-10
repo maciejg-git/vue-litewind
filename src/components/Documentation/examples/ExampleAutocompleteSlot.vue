@@ -12,12 +12,18 @@
       no-filter
       @input:value="query($event)"
     >
-      <template #item="{ item, inputValue }">
+      <template #item="{ item, inputValue, isSelected }">
         <div class="flex justify-between">
-          <div v-html="highlight(item['full_name'], inputValue)"></div>
+          <div
+            v-html="
+              isSelected
+                ? item['full_name']
+                : highlight(item['full_name'], inputValue)
+            "
+          ></div>
           <div class="text-xs">{{ item.department }}</div>
         </div>
-        <span class="text-sm font-semibold text-text-400 dark:text-text-400">
+        <span class="text-sm font-semibold">
           {{ item.title }}
         </span>
       </template>
@@ -28,7 +34,7 @@
 <script>
 import { reactive } from "vue";
 import company from "../data/company.json";
-import { highlight } from "../../../tools"
+import { highlight } from "../../../tools";
 
 export default {
   setup() {

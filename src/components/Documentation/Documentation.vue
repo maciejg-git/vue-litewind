@@ -103,7 +103,7 @@
       </ul>
     </div>
 
-    <div class="container w-full lg:max-w-screen-lg px-2 lg:px-12 mx-auto p-3">
+    <div class="container w-full lg:max-w-screen-lg px-2 lg:px-12 mx-auto p-3 mt-12">
       <router-view></router-view>
 
       <footer

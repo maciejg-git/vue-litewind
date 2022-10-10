@@ -34,22 +34,26 @@
         </template>
       </template>
       <template v-else>
-        <template v-if="multiValueDisplay === 'text'">
+        <div>
           <template v-for="(item, index) in selectedItems">
             <template v-if="index < maxMultiValue">
-              <span
-                class="ml-1 after:content-[','] last-of-type:after:content-none last-of-type:mr-2"
+              <slot
+                name="multi-value-item"
+                v-bind="item"
               >
-                {{ getItemText(item) }}
-              </span>
+                <span
+                  class="ml-1 after:content-[','] last-of-type:after:content-none last-of-type:mr-2"
+                >
+                  {{ getItemText(item) }}
+                </span>
+              </slot>
             </template>
           </template>
-          <slot
-            v-if="selectedItems.length > maxMultiValue"
-            name="max-multi-value"
-            v-bind="{ selectedItems }"
-          ></slot>
-        </template>
+        </div>
+        <slot
+          v-if="selectedItems.length > maxMultiValue"
+          name="max-multi-value"
+        ></slot>
       </template>
     </template>
   </v-input>
@@ -92,6 +96,7 @@
               :value="getItemValue(item)"
               :item="item"
               :inputValue="localText"
+              :isSelected="isSelected(item)"
             >
               {{ getItemText(item) }}
             </slot>
@@ -262,7 +267,7 @@ let ignoreModelWatch = false;
 
 let isValueInInput = ref(false);
 
-let canShowMenu = ref(false)
+let canShowMenu = ref(false);
 
 // show autocomplete menu
 
@@ -275,7 +280,11 @@ let show = () => {
 watch(
   () => props.items,
   () => {
-    if (props.noFilter && referenceInstance.value.isFocused && canShowMenu.value) {
+    if (
+      props.noFilter &&
+      referenceInstance.value.isFocused &&
+      canShowMenu.value
+    ) {
       show();
     }
   }
@@ -403,11 +412,11 @@ watch(
 
 let handleFocusInput = () => {
   if (!props.autocomplete || props.items.length) {
-    canShowMenu.value = false
+    canShowMenu.value = false;
     show();
   }
 
-  canShowMenu.value = true
+  canShowMenu.value = true;
 
   if (!props.multiValue && props.autocomplete) {
     isValueInInput.value = true;
