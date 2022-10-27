@@ -3,7 +3,9 @@ import { isFunction } from "./tools"
 
 export let defaultProps = (component, prop, def) => {
   return (props) => {
-    let componentProps = globalOptions.componentProps[component]
+    let name = props.name || component
+
+    let componentProps = globalOptions.componentProps[name]
 
     if (componentProps && componentProps[prop]) {
       if (isFunction(componentProps[prop])) {
@@ -13,9 +15,6 @@ export let defaultProps = (component, prop, def) => {
       }
       return componentProps[prop]
     }
-    // if (globalOptions.globalProps[prop] !== undefined) {
-    //   return globalOptions.globalProps[prop];
-    // }
     return def;
   };
 };

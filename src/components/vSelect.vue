@@ -15,6 +15,7 @@
     @input="handleInput"
     @focus="handleFocusInput"
     @blur="handleBlurInput"
+    @keydown="handleKeydown"
     @click:indicator="handleClickIndicator"
     @click:clear-button="handleClickClearButton"
   >
@@ -34,22 +35,20 @@
         </template>
       </template>
       <template v-else>
-        <div>
-          <template v-for="(item, index) in selectedItems">
-            <template v-if="index < maxMultiValue">
-              <slot
-                name="multi-value-item"
-                v-bind="item"
+        <template v-for="(item, index) in selectedItems">
+          <template v-if="index < maxMultiValue">
+            <slot
+              name="multi-value-item"
+              v-bind="item"
+            >
+              <span
+                class="ml-1 after:content-[','] last-of-type:after:content-none last-of-type:mr-2"
               >
-                <span
-                  class="ml-1 after:content-[','] last-of-type:after:content-none last-of-type:mr-2"
-                >
-                  {{ getItemText(item) }}
-                </span>
-              </slot>
-            </template>
+                {{ getItemText(item) }}
+              </span>
+            </slot>
           </template>
-        </div>
+        </template>
         <slot
           v-if="selectedItems.length > maxMultiValue"
           name="max-multi-value"
@@ -83,9 +82,9 @@
           </div>
           <div
             v-else
-            v-for="item in itemsPagination"
+            v-for="(item, index) in itemsPagination"
             :key="item"
-            :class="getItemClass(item)"
+            :class="getItemClass(item, index)"
             @mousedown.prevent
             @click="handleClickItem(item)"
             tabindex="0"
@@ -229,14 +228,15 @@ const emit = defineEmits([
 let { classes, states } = useStyles("select", props, {
   item: {
     fixed: "fixed-item",
-    states: ["active"],
+    states: ["selected", "highlighted"],
   },
 });
 
-let getItemClass = (item) => {
+let getItemClass = (item, index) => {
   return [
     classes.item.value,
-    isSelected(item) ? states.item.value.active : "",
+    isSelected(item) ? states.item.value.selected : "",
+    index === highlightedItemIndex.value ? states.item.value.highlighted : "",
     item.disabled ? "disabled" : "",
   ];
 };
@@ -268,6 +268,8 @@ let ignoreModelWatch = false;
 let isValueInInput = ref(false);
 
 let canShowMenu = ref(false);
+
+let highlightedItemIndex = ref(0)
 
 // show autocomplete menu
 
@@ -351,6 +353,17 @@ let isSelected = (item) => {
   return selectedItems.value.indexOf(item) !== -1;
 };
 
+let updateLocalModel = () => {
+  ignoreModelWatch = true;
+
+  if (props.multiValue) {
+    localModel.value = selectedItems.value.map((i) => getItemValue(i));
+    updateInstance();
+    return
+  }
+  localModel.value = getItemValue(selectedItem.value);
+}
+
 let updateSelectedItems = (item) => {
   if (props.multiValue) {
     let index = selectedItems.value.indexOf(item);
@@ -359,14 +372,11 @@ let updateSelectedItems = (item) => {
     } else {
       selectedItems.value.push(item);
     }
-    ignoreModelWatch = true;
-    localModel.value = selectedItems.value.map((i) => getItemValue(i));
-    updateInstance();
-    return;
+  } else {
+    selectedItem.value = item;
   }
-  selectedItem.value = item;
-  ignoreModelWatch = true;
-  localModel.value = getItemValue(item);
+
+  updateLocalModel()
 };
 
 let cancelInput = () => {
@@ -456,6 +466,24 @@ let handleClickClearButton = () => {
     referenceInstance.value.focus();
   }
 };
+
+let handleKeydown = (ev) => {
+  let key = ev.key
+
+  if (key === 'Backspace') {
+    if (props.multiValue && selectedItems.value.length && localText.value === '') {
+      selectedItems.value.pop()
+      updateLocalModel()
+    }
+  }
+  if (key === 'ArrowDown') {
+    // if (props.multiValue && selectedItems.value.length && localText.value === '') {
+    //   selectedItems.value.pop()
+    //   updateLocalModel()
+    // }
+    highlightedItemIndex.value += 1
+  }
+}
 
 let handleScrollBottom = () => {
   page.value++;

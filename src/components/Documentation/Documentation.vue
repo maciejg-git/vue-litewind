@@ -17,7 +17,7 @@
     </v-button>
   </v-navbar>
 
-  <div class="flex text-text-800 dark:bg-neutral-800 dark:text-text-300/90">
+  <div class="flex text-text-800 dark:bg-[#191919] dark:text-text-300/90">
     <div
       class="sidebar sticky lg:block flex-none overflow-auto border-r dark:border-dark-700 pb-20 top-16 p-3 w-64"
     >

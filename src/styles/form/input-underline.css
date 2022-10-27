@@ -29,7 +29,7 @@
           dark:focus-within:ring-danger-300
       }
 
-  &--icon {
+  &__icon {
     @apply
       w-6
       h-6
@@ -37,7 +37,7 @@
       dark:text-gray-400
   }
 
-  &--label {
+  &__label {
     @apply
       text-sm
       pb-1

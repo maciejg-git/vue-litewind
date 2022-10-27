@@ -45,7 +45,7 @@
           :id="id"
           type="text"
           v-bind="$attrs"
-          class="flex-1 min-w-[100px] border-0 bg-transparent focus:outline-none focus:ring-0 outline-none p-0"
+          class="flex-1 min-w-0 focus:min-w-[64px] border-0 bg-transparent focus:outline-none focus:ring-0 outline-none p-0"
           @blur="handleBlur"
           @focus="handleFocus"
         />
@@ -67,7 +67,6 @@
           :class="classes.closeButtonWrapper.value"
         >
           <v-close-button
-            style-close-button="small"
             v-bind="closeButton"
             aria-label="Close"
             class="ml-2"

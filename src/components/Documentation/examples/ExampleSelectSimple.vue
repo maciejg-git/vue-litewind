@@ -5,6 +5,7 @@
       :items="example.items"
       :inline="false"
       style-menu="shadow"
+      name="undelined-select"
     ></v-select>
   </div>
 </template>

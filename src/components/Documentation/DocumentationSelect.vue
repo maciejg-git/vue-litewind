@@ -74,7 +74,7 @@
   </section>
 
   <section>
-    <h4>Example - multi value autocomplete</h4>
+    <h4>Example - multi value autocomplete (with chips)</h4>
     <div class="example">
       <example name="ExampleAutocompleteMultivalue"></example>
     </div>

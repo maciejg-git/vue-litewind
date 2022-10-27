@@ -23,7 +23,7 @@
         @apply
           py-2
       }
-      &--active-state {
+      &--selected-state {
         @apply
           text-text-800
           dark:text-text-800
@@ -31,6 +31,10 @@
           hover:bg-primary-600
           dark:bg-primary-400
           dark:hover:bg-primary-500
+      }
+      &--highlighted-state {
+        @apply
+        opacity-30
       }
   }
 }

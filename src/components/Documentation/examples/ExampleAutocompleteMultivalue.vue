@@ -11,7 +11,7 @@
       @input:value="query($event)"
     >
     <template #multi-value-item="item">
-      <v-chip class="my-1 mr-2">
+      <v-chip class="my-1 mr-2" @click:close-button="remove(item.value)">
         {{ item.text }}
       </v-chip>
     </template>
@@ -45,9 +45,15 @@ export default {
       }, 500);
     };
 
+    let remove = (item) => {
+        const index = example.model.indexOf(item)
+        if (index >= 0) example.model.splice(index, 1)
+      }
+
     return {
       example,
       query,
+      remove,
     };
   },
 };
