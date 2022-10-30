@@ -30,11 +30,11 @@
           bg-primary-500
           hover:bg-primary-600
           dark:bg-primary-400
-          dark:hover:bg-primary-500
+          dark:hover:bg-primary-500;
       }
       &--highlighted-state {
         @apply
-        opacity-30
+          dark:bg-dark-600
       }
   }
 }

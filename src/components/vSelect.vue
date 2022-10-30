@@ -30,7 +30,7 @@
     </template>
     <template #multi-value>
       <template v-if="!multiValue">
-        <template v-if="!isValueInInput">
+        <template v-if="!isValueEditable">
           <span>{{ getItemText(selectedItem) }}</span>
         </template>
       </template>
@@ -72,6 +72,7 @@
           v-bind="card"
           class="max-h-[var(--select-max-menu-height)] overflow-y-auto overflow-x-hidden"
           v-detect-scroll-bottom="handleScrollBottom"
+          @vue:before-update="onUpdateMenu"
           @mousedown.prevent
         >
           <div
@@ -83,6 +84,7 @@
           <div
             v-else
             v-for="(item, index) in itemsPagination"
+            :ref="(i) => i && itemsRef.push(i)"
             :key="item"
             :class="getItemClass(item, index)"
             @mousedown.prevent
@@ -265,16 +267,27 @@ let localText = ref("");
 
 let ignoreModelWatch = false;
 
-let isValueInInput = ref(false);
+let isValueEditable = ref(false)
 
 let canShowMenu = ref(false);
 
-let highlightedItemIndex = ref(0)
+let highlightedItemIndex = ref(-1);
+
+watch(localText, () => {
+  highlightedItemIndex.value = -1;
+});
+
+let itemsRef = ref([]);
+
+let onUpdateMenu = () => {
+  itemsRef.value = [];
+};
 
 // show autocomplete menu
 
 let show = () => {
   showPopper();
+  highlightedItemIndex.value = -1;
 };
 
 // show menu if items prop changes
@@ -359,10 +372,10 @@ let updateLocalModel = () => {
   if (props.multiValue) {
     localModel.value = selectedItems.value.map((i) => getItemValue(i));
     updateInstance();
-    return
+    return;
   }
   localModel.value = getItemValue(selectedItem.value);
-}
+};
 
 let updateSelectedItems = (item) => {
   if (props.multiValue) {
@@ -376,7 +389,7 @@ let updateSelectedItems = (item) => {
     selectedItem.value = item;
   }
 
-  updateLocalModel()
+  updateLocalModel();
 };
 
 let cancelInput = () => {
@@ -384,7 +397,7 @@ let cancelInput = () => {
     localText.value = "";
   }
 
-  if (isValueInInput.value) isValueInInput.value = false;
+  isValueEditable.value = false
 
   hidePopper();
 };
@@ -412,8 +425,7 @@ watch(
       });
       return;
     }
-    let item = getItemByValue(value);
-    selectedItem.value = item;
+    selectedItem.value = getItemByValue(value);
   },
   { immediate: true, deep: true, flush: "sync" }
 );
@@ -421,15 +433,8 @@ watch(
 // handle template events
 
 let handleFocusInput = () => {
-  if (!props.autocomplete || props.items.length) {
-    canShowMenu.value = false;
-    show();
-  }
-
-  canShowMenu.value = true;
-
-  if (!props.multiValue && props.autocomplete) {
-    isValueInInput.value = true;
+  if (props.autocomplete && !props.multiValue) {
+    isValueEditable.value = true
 
     localText.value = getItemText(selectedItem.value);
 
@@ -437,6 +442,13 @@ let handleFocusInput = () => {
       referenceInstance.value.selectAll();
     });
   }
+
+  if (!props.autocomplete || props.items.length) {
+    show();
+    return
+  }
+
+  canShowMenu.value = true;
 };
 
 let handleInput = () => {
@@ -468,22 +480,63 @@ let handleClickClearButton = () => {
 };
 
 let handleKeydown = (ev) => {
-  let key = ev.key
+  let key = ev.key;
 
-  if (key === 'Backspace') {
-    if (props.multiValue && selectedItems.value.length && localText.value === '') {
-      selectedItems.value.pop()
-      updateLocalModel()
+  if (key === "Backspace") {
+    if (
+      props.multiValue &&
+      selectedItems.value.length &&
+      localText.value === ""
+    ) {
+      selectedItems.value.pop();
+      updateLocalModel();
     }
+    return;
   }
-  if (key === 'ArrowDown') {
-    // if (props.multiValue && selectedItems.value.length && localText.value === '') {
-    //   selectedItems.value.pop()
-    //   updateLocalModel()
-    // }
-    highlightedItemIndex.value += 1
+  if (key === "ArrowDown") {
+    if (
+      props.isLoading ||
+      highlightedItemIndex.value >= itemsRef.value.length - 1
+    )
+      return;
+
+    highlightedItemIndex.value += 1;
+
+    itemsRef.value[highlightedItemIndex.value].scrollIntoView({
+      block: "nearest",
+      inline: "start",
+    });
+
+    ev.preventDefault();
+    ev.stopPropagation();
+
+    return;
   }
-}
+  if (key === "ArrowUp") {
+    if (props.isLoading || highlightedItemIndex.value <= 0) return;
+
+    highlightedItemIndex.value -= 1;
+    itemsRef.value[highlightedItemIndex.value].scrollIntoView({
+      block: "nearest",
+      inline: "start",
+    });
+
+    ev.preventDefault();
+    ev.stopPropagation();
+
+    return;
+  }
+  if (key === "Enter") {
+    if (props.isLoading) return;
+
+    updateSelectedItems(itemsPagination.value[highlightedItemIndex.value]);
+
+    ev.preventDefault();
+    ev.stopPropagation();
+
+    return;
+  }
+};
 
 let handleScrollBottom = () => {
   page.value++;
