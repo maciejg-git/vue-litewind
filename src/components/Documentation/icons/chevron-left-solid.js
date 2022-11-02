@@ -3,7 +3,8 @@ export default {
   $_icon: {
     name: "ChevronLeft",
     vendor: "Fa",
-    type: "Solid",
+    license: "CC BY 4.0",
+    type: ["solid"],
     tags: ["chevron","left"],
   },
   render() {

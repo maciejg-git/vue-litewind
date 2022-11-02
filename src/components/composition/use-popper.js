@@ -117,7 +117,7 @@ export default function usePopper(
     });
   };
 
-  let updateInstance = () => {
+  let updatePopperInstance = () => {
     if (instance) instance.update()
   }
 
@@ -147,7 +147,7 @@ export default function usePopper(
     isPopperVisible,
     reference,
     referenceInstance: localReference,
-    updateInstance,
+    updatePopperInstance,
     popper,
     showPopper,
     hidePopper,

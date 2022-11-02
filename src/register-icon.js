@@ -28,6 +28,7 @@ export default function registerIcon(app, icons, options) {
   //   })
   //   .join("");
 
+  console.log(`${vendor}${icons.$_icon.name}${icons.$_icon.type}${suffix}`)
   app.component(`${vendor}${icons.$_icon.name}${icons.$_icon.type}${suffix}`, icons);
 }
 

@@ -42,7 +42,7 @@ export default {
           );
         });
         example.isLoading = false;
-      }, 500);
+      }, 5000);
     };
 
     let remove = (item) => {

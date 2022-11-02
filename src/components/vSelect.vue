@@ -29,12 +29,7 @@
       ></slot>
     </template>
     <template #multi-value>
-      <template v-if="!multiValue">
-        <template v-if="!isValueEditable">
-          <span>{{ getItemText(selectedItem) }}</span>
-        </template>
-      </template>
-      <template v-else>
+      <template v-if="multiValue">
         <template v-for="(item, index) in selectedItems">
           <template v-if="index < maxMultiValue">
             <slot
@@ -54,6 +49,9 @@
           name="max-multi-value"
         ></slot>
       </template>
+      <span v-else-if="isMultivalueVisible && selectedItem !== undefined">
+        {{ getItemText(selectedItem) }}
+      </span>
     </template>
   </v-input>
 
@@ -72,7 +70,7 @@
           v-bind="card"
           class="max-h-[var(--select-max-menu-height)] overflow-y-auto overflow-x-hidden"
           v-detect-scroll-bottom="handleScrollBottom"
-          @vue:before-update="onUpdateMenu"
+          @vue:before-update="handleUpdateMenu"
           @mousedown.prevent
         >
           <div
@@ -121,7 +119,6 @@ import useLocalModel from "./composition/use-local-model";
 import usePopper from "./composition/use-popper.js";
 import vInput from "./vInput.vue";
 import { default as vDetectScrollBottom } from "../directives/detect-scroll-bottom";
-import { isObject } from "../tools";
 import {
   sharedProps,
   sharedPopperProps,
@@ -250,7 +247,7 @@ const {
   isPopperVisible,
   reference,
   referenceInstance,
-  updateInstance,
+  updatePopperInstance,
   popper,
   showPopper,
   hidePopper,
@@ -267,21 +264,11 @@ let localText = ref("");
 
 let ignoreModelWatch = false;
 
-let isValueEditable = ref(false)
-
-let canShowMenu = ref(false);
+let isMultivalueVisible = ref(true);
 
 let highlightedItemIndex = ref(-1);
 
-watch(localText, () => {
-  highlightedItemIndex.value = -1;
-});
-
 let itemsRef = ref([]);
-
-let onUpdateMenu = () => {
-  itemsRef.value = [];
-};
 
 // show autocomplete menu
 
@@ -290,16 +277,10 @@ let show = () => {
   highlightedItemIndex.value = -1;
 };
 
-// show menu if items prop changes
-
 watch(
   () => props.items,
   () => {
-    if (
-      props.noFilter &&
-      referenceInstance.value.isFocused &&
-      canShowMenu.value
-    ) {
+    if (props.noFilter && referenceInstance.value.isFocused) {
       show();
     }
   }
@@ -308,18 +289,13 @@ watch(
 // get text and value of item
 
 let getItemText = (item, key) => {
-  if (item === undefined) return localText.value;
-  if (isObject(item)) {
-    return item[key || props.itemText];
-  }
-  return item;
+  let text = item[key || props.itemText];
+  return text !== undefined ? text : item;
 };
 
 let getItemValue = (item) => {
-  if (isObject(item)) {
-    return item[props.itemValue];
-  }
-  return item;
+  let value = item[props.itemValue];
+  return value !== undefined ? value : item;
 };
 
 let getItemByValue = (value) => {
@@ -371,7 +347,7 @@ let updateLocalModel = () => {
 
   if (props.multiValue) {
     localModel.value = selectedItems.value.map((i) => getItemValue(i));
-    updateInstance();
+    updatePopperInstance();
     return;
   }
   localModel.value = getItemValue(selectedItem.value);
@@ -397,7 +373,7 @@ let cancelInput = () => {
     localText.value = "";
   }
 
-  isValueEditable.value = false
+  isMultivalueVisible.value = true;
 
   hidePopper();
 };
@@ -434,24 +410,25 @@ watch(
 
 let handleFocusInput = () => {
   if (props.autocomplete && !props.multiValue) {
-    isValueEditable.value = true
+    isMultivalueVisible.value = false;
 
-    localText.value = getItemText(selectedItem.value);
+    if (selectedItem.value !== undefined) {
+      localText.value = getItemText(selectedItem.value);
 
-    nextTick(() => {
-      referenceInstance.value.selectAll();
-    });
+      nextTick(() => {
+        referenceInstance.value.selectAll();
+      });
+    }
   }
 
   if (!props.autocomplete || props.items.length) {
     show();
-    return
+    return;
   }
-
-  canShowMenu.value = true;
 };
 
 let handleInput = () => {
+  highlightedItemIndex.value = -1;
   emit("input:value", localText.value);
 };
 
@@ -504,7 +481,6 @@ let handleKeydown = (ev) => {
 
     itemsRef.value[highlightedItemIndex.value].scrollIntoView({
       block: "nearest",
-      inline: "start",
     });
 
     ev.preventDefault();
@@ -518,7 +494,6 @@ let handleKeydown = (ev) => {
     highlightedItemIndex.value -= 1;
     itemsRef.value[highlightedItemIndex.value].scrollIntoView({
       block: "nearest",
-      inline: "start",
     });
 
     ev.preventDefault();
@@ -537,6 +512,10 @@ let handleKeydown = (ev) => {
     return;
   }
 };
+
+let handleUpdateMenu = () => {
+  itemsRef.value = []
+}
 
 let handleScrollBottom = () => {
   page.value++;
