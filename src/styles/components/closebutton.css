@@ -7,8 +7,8 @@
 
     &--small {
       @apply
-        w-2
-        h-2
+        w-4
+        h-4
     }
 
     &__wrapper {

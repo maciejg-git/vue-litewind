@@ -86,7 +86,7 @@
             :key="item"
             :class="getItemClass(item, index)"
             @mousedown.prevent
-            @click="handleClickItem(item)"
+            @click="handleClickItem(item, index)"
             tabindex="0"
           >
             <slot
@@ -274,7 +274,6 @@ let itemsRef = ref([]);
 
 let show = () => {
   showPopper();
-  highlightedItemIndex.value = -1;
 };
 
 watch(
@@ -290,11 +289,13 @@ watch(
 
 let getItemText = (item, key) => {
   let text = item[key || props.itemText];
+
   return text !== undefined ? text : item;
 };
 
 let getItemValue = (item) => {
   let value = item[props.itemValue];
+
   return value !== undefined ? value : item;
 };
 
@@ -305,8 +306,9 @@ let getItemByValue = (value) => {
 };
 
 let itemsFiltered = computed(() => {
-  if (!props.autocomplete) return props.items;
-  if (props.isLoading || props.noFilter) return props.items;
+  if (!props.autocomplete || props.isLoading || props.noFilter) {
+    return props.items;
+  }
 
   if (props.filterKeys.length) {
     return props.items.filter((item) => {
@@ -336,10 +338,11 @@ let itemsPagination = computed(() => {
 });
 
 let isSelected = (item) => {
-  if (!props.multiValue) {
-    return selectedItem.value === item;
+  if (props.multiValue) {
+    return selectedItems.value.indexOf(item) !== -1;
   }
-  return selectedItems.value.indexOf(item) !== -1;
+
+  return selectedItem.value === item;
 };
 
 let updateLocalModel = () => {
@@ -350,6 +353,7 @@ let updateLocalModel = () => {
     updatePopperInstance();
     return;
   }
+
   localModel.value = getItemValue(selectedItem.value);
 };
 
@@ -423,7 +427,6 @@ let handleFocusInput = () => {
 
   if (!props.autocomplete || props.items.length) {
     show();
-    return;
   }
 };
 
@@ -522,8 +525,10 @@ let handleScrollBottom = () => {
   emit("update:page", page.value);
 };
 
-let handleClickItem = (item) => {
+let handleClickItem = (item, index) => {
   updateSelectedItems(item);
+
+  highlightedItemIndex.value = index
 
   if (!props.multiValue) {
     referenceInstance.value.blur();
