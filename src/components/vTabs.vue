@@ -113,7 +113,9 @@ let activateTab = (index) => {
 };
 
 // this is called by v-tab child after mounting
-let addTab = (tab) => tabs.value.push(tab);
+let addTab = (tab) => {
+  tabs.value.push(tab);
+}
 
 // this is called by v-tab child after unmounting
 let removeTab = (tab) => {

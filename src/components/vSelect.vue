@@ -83,7 +83,7 @@
             v-else
             v-for="(item, index) in itemsPagination"
             :ref="(i) => i && itemsRef.push(i)"
-            :key="item"
+            :key="getItemValue(item)"
             :class="getItemClass(item, index)"
             @mousedown.prevent
             @click="handleClickItem(item, index)"
