@@ -87,6 +87,7 @@ import { ref, computed, watch, onBeforeUnmount, useAttrs } from "vue";
 import useStyles from "./composition/use-styles";
 import vButton from "./vButton.vue";
 import vCloseButton from "./vCloseButton.vue";
+import vBackdrop from "./vBackdrop.vue";
 import { default as vFocus } from "../directives/focus";
 import { sharedProps, sharedStyleProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";

@@ -18,7 +18,7 @@ let getComponentClasses = (props, p, el, element, name) => {
     let fixedClasses = el && el.fixed
     let propClasses = el && el.prop && el.prop.value
     // return [props.base, fixedClasses, ...c, propClasses].filter(Boolean);
-    return [fixedClasses, ...c, propClasses].filter(Boolean);
+    return [fixedClasses, ...c, propClasses].filter(Boolean).join(' ');
   });
 };
 

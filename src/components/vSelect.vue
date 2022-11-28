@@ -70,7 +70,7 @@
           v-bind="card"
           class="max-h-[var(--select-max-menu-height)] overflow-y-auto overflow-x-hidden"
           v-detect-scroll-bottom="handleScrollBottom"
-          @vue:before-update="handleUpdateMenu"
+          @vue:before-update="onUpdateResetItemsRef"
           @mousedown.prevent
         >
           <div
@@ -113,7 +113,7 @@ export default {
 </script>
 
 <script setup>
-import { ref, computed, watch, toRefs, nextTick } from "vue";
+import { ref, computed, watch, toRefs, nextTick, onBeforeUpdate } from "vue";
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
 import usePopper from "./composition/use-popper.js";
@@ -226,18 +226,17 @@ const emit = defineEmits([
 
 let { classes, states } = useStyles("select", props, {
   item: {
-    fixed: "fixed-item",
     states: ["selected", "highlighted"],
   },
 });
 
 let getItemClass = (item, index) => {
-  return [
-    classes.item.value,
-    isSelected(item) ? states.item.value.selected : "",
-    index === highlightedItemIndex.value ? states.item.value.highlighted : "",
-    item.disabled ? "disabled" : "",
-  ];
+  return {
+    [classes.item.value]: true,
+    [states.item.value.selected]: isSelected(item),
+    [states.item.value.highlighted]: index === highlightedItemIndex.value,
+    disabled: item.disabled,
+  };
 };
 
 let localModel = useLocalModel(props, emit);
@@ -270,10 +269,22 @@ let highlightedItemIndex = ref(-1);
 
 let itemsRef = ref([]);
 
+let onUpdateResetItemsRef = () => {
+  itemsRef.value = [];
+};
+
+onBeforeUpdate(() => {
+  onUpdateResetItemsRef();
+});
+
 // show autocomplete menu
 
 let show = () => {
   showPopper();
+
+  nextTick(() => {
+    scrollToHighlighted();
+  });
 };
 
 watch(
@@ -410,6 +421,25 @@ watch(
   { immediate: true, deep: true, flush: "sync" }
 );
 
+let scrollToHighlighted = (direction) => {
+  if (highlightedItemIndex.value === -1) {
+    return;
+  }
+
+  let scrollToIndex =
+    direction === 1
+      ? (highlightedItemIndex.value < itemsRef.value.length - 1
+        ? highlightedItemIndex.value + 1
+        : highlightedItemIndex.value)
+      : highlightedItemIndex.value > 0
+      ? highlightedItemIndex.value - 1
+      : highlightedItemIndex.value;
+
+  itemsRef.value[scrollToIndex].scrollIntoView({
+    block: "nearest",
+  });
+};
+
 // handle template events
 
 let handleFocusInput = () => {
@@ -482,9 +512,7 @@ let handleKeydown = (ev) => {
 
     highlightedItemIndex.value += 1;
 
-    itemsRef.value[highlightedItemIndex.value].scrollIntoView({
-      block: "nearest",
-    });
+    scrollToHighlighted(1);
 
     ev.preventDefault();
     ev.stopPropagation();
@@ -495,9 +523,8 @@ let handleKeydown = (ev) => {
     if (props.isLoading || highlightedItemIndex.value <= 0) return;
 
     highlightedItemIndex.value -= 1;
-    itemsRef.value[highlightedItemIndex.value].scrollIntoView({
-      block: "nearest",
-    });
+
+    scrollToHighlighted(-1);
 
     ev.preventDefault();
     ev.stopPropagation();
@@ -512,13 +539,13 @@ let handleKeydown = (ev) => {
     ev.preventDefault();
     ev.stopPropagation();
 
+    if (!props.multiValue) {
+      referenceInstance.value.blur();
+    }
+
     return;
   }
 };
-
-let handleUpdateMenu = () => {
-  itemsRef.value = []
-}
 
 let handleScrollBottom = () => {
   page.value++;
@@ -528,7 +555,7 @@ let handleScrollBottom = () => {
 let handleClickItem = (item, index) => {
   updateSelectedItems(item);
 
-  highlightedItemIndex.value = index
+  highlightedItemIndex.value = index;
 
   if (!props.multiValue) {
     referenceInstance.value.blur();
