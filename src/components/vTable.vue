@@ -29,17 +29,17 @@
                 <v-icon
                   v-if="sortKey != h.key"
                   :name="SortIcon"
-                  class="ml-3 opacity-30"
+                  class="h-4 w-4 ml-3 opacity-30"
                 ></v-icon>
                 <v-icon
                   v-else-if="sortKey == h.key && sortAsc == 1"
                   :name="CaretUpIcon"
-                  class="ml-3 opacity-70"
+                  class="h-4 w-4 ml-3 opacity-70"
                 ></v-icon>
                 <v-icon
                   v-else-if="sortKey == h.key && sortAsc == -1"
                   :name="CaretDownIcon"
-                  class="ml-3 opacity-70"
+                  class="h-4 w-4 ml-3 opacity-70"
                 ></v-icon>
               </template>
             </div>
@@ -82,17 +82,17 @@
       </template>
       <template v-else>
         <template
-          v-for="(item, i) in itemsPagination"
-          :key="item[primaryKey] || i"
+          v-for="(item, index) in itemsPagination"
+          :key="item[primaryKey] || index"
         >
           <tr
             :class="[...classes.row.value]"
-            @click="handleRowClick(i)"
+            @click="handleRowClick(index)"
           >
             <template v-for="k in definition">
               <td
                 v-if="k.visible !== false"
-                :class="getCellClass(k, i, item)"
+                :class="getCellClass(k, index, item)"
               >
                 <slot
                   :name="'cell:' + k.key"
@@ -244,15 +244,13 @@ let { classes, states } = useStyles("table", props, {
   },
 });
 
-let getCellClass = (k, i, item) => {
-  if (itemsSelected.value[i]) {
-    return [classes.cell.value, states.cell.value.selected];
-  }
+let getCellClass = (k, index, item) => {
   return [
     classes.cell.value,
-    k.class && typeof k.class === "function"
-      ? k.class(k.key, item[k.key], item)
-      : "",
+    itemsSelected.value[index] && states.cell.value.selected,
+    k.class &&
+      typeof k.class === "function" &&
+      k.class(k.key, item[k.key], item),
   ];
 };
 

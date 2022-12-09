@@ -11,11 +11,12 @@
       <v-icon
         v-if="item.status"
         name="mdi-checkbox-outline"
-        class="text-success-400 dark:text-success-400"
+        class="h-6 w-6 text-success-400 dark:text-success-400"
       ></v-icon>
       <v-icon
         v-else
         name="mdi-checkbox-blank-outline"
+        class="h-6 w-6"
       ></v-icon>
     </template>
 

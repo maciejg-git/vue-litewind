@@ -107,7 +107,7 @@
       <router-view></router-view>
 
       <footer
-        class="flex min-h-[100px] border-t border-gray-300 bg-white dark:bg-dark-800 dark:border-dark-700 mt-10 py-4"
+        class="flex min-h-[100px] border-t border-gray-300 bg-white dark:bg-[#191919] dark:border-dark-700 mt-10 py-4"
       >
         <span class="ml-auto mr-4">
           <v-icon name="github" class="text-gray-500"></v-icon>

@@ -37,7 +37,7 @@ let { classes } = useStyles("navbar", props, {
       return [
         props.fixed ? "fixed" : props.sticky ? "sticky" : "relative",
         props.bottom ? "bottom-0" : "top-0",
-      ];
+      ].join(" ");
     }),
   },
 });

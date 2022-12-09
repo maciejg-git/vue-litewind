@@ -1,5 +1,5 @@
 <template>
-  <v-card style="height: 600px">
+  <v-card style="height: 600px" style-card="transparent">
     <v-navbar class="py-2 px-4">
       <div class="flex items-center">
         <span class="font-bold text-lg">Brand</span>

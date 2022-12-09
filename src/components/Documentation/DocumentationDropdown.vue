@@ -31,7 +31,7 @@
           <span>#</span>
           Dropdown activation
         </header>
-        To control dropdown visibility you can use <code class="code-text">reference</code> slot or <code class="code-text">v-trigger</code> component. You can also set up optional <code class="code-text">v-model</code> or call exposed <code class="code-text">show</code> and <code class="code-text">hide</code> functions to control it programatically. <code class="code-text">reference</code> slot method is default and recommended.
+        To control dropdown visibility you can use <code class="code-text">reference</code> slot (recommended method) or <code class="code-text">v-trigger</code> component. To control it programatically you can add optional <code class="code-text">v-model</code> or call exposed <code class="code-text">show()</code> and <code class="code-text">hide()</code> functions.
       </li>
       <li>
         <header class="font-semibold text-lg mb-2">

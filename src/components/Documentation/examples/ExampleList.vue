@@ -2,9 +2,7 @@
   <v-list width="500px" :tag="example.tag" :base="example.base">
     <v-list-item v-for="item in example.users" :active="item.active">
       <div class="flex gap-x-4">
-        <div>
           <v-checkbox type="checkbox" v-model="item.active" />
-        </div>
         <div>
           <div class="font-semibold">
             {{ item.full_name }}

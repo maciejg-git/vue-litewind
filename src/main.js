@@ -36,9 +36,6 @@ app.component("Example", Example)
 const icons = import.meta.globEager('./components/Documentation/icons/*.js')
 Object.entries(icons).forEach(([path, definition]) => {
   let { vendor, name, type } = definition.default.$_icon
-  type = type.map((i) => {
-    return i.charAt(0).toUpperCase() + i.slice(1)
-  })
   app.component(`${vendor}${name}${type.join("")}`, definition.default)
 })
 

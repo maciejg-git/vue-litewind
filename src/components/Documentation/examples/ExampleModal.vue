@@ -45,103 +45,60 @@
     <div class="flex justify-around">
       <div>
         <div class="mb-2">
-          <label
-            for="title"
-            class="mr-2"
-          >
-            title:
-          </label>
           <v-input
+            label="title"
             type="text"
             id="title"
-            inline
             v-model="example.title"
           ></v-input>
         </div>
         <div class="mb-2">
-          <label
-            for="no-primary-button"
-            class="mr-2"
-          >
-            no-primary-button:
-          </label>
           <v-select-prop
+            label="no-primary-button"
             id="no-primary-button"
             v-model="example.noPrimaryButton"
           ></v-select-prop>
         </div>
         <div class="mb-2">
-          <label
-            for="no-secondary-button"
-            class="mr-2"
-          >
-            no-secondary-button:
-          </label>
           <v-select-prop
+            label="no-secondary-button"
             id="no-secondary-button"
             v-model="example.noSecondaryButton"
           ></v-select-prop>
         </div>
         <div class="mb-2">
-          <label
-            for="primary-button-label"
-            class="mr-2"
-          >
-            primary-button-label:
-          </label>
           <v-input
+            label="primary-button-label"
             type="text"
             id="primary-button-label"
-            inline
             v-model="example.primaryButtonLabel"
           ></v-input>
         </div>
         <div class="mb-2">
-          <label
-            for="secondary-button-label"
-            class="mr-2"
-          >
-            secondary-button-label:
-          </label>
           <v-input
+            label="secondary-button-label"
             type="text"
             id="secondary-button-label"
-            inline
             v-model="example.secondaryButtonLabel"
           ></v-input>
         </div>
         <div class="mb-2">
-          <label
-            for="primary-button-close"
-            class="mr-2"
-          >
-            primary-button-close:
-          </label>
           <v-select-prop
+            label="primary-button-close"
             id="primary-button-close"
             v-model="example.primaryButtonClose"
           ></v-select-prop>
         </div>
         <div class="mb-2">
-          <label
-            for="secondary-button-close"
-            class="mr-2"
-          >
-            secondary-button-close:
-          </label>
           <v-select-prop
+            label="secondary-button-close"
             id="secondary-button-close"
             v-model="example.secondaryButtonClose"
           ></v-select-prop>
         </div>
         <div class="mb-2">
-          <label
-            for="justify-buttons"
-            class="mr-2"
-          >
-            justify-buttons:
-          </label>
           <v-select
+            label="justify-buttons"
             id="justify-buttons"
             v-model="example.justifyButtons"
             :items="['start', 'end', 'center', 'between', 'around', 'evenly']"
@@ -150,74 +107,44 @@
       </div>
       <div>
         <div class="mb-2">
-          <label
-            for="no-close-button"
-            class="mr-2"
-          >
-            no-close-button:
-          </label>
           <v-select-prop
+            label="no-close-button"
             id="no-close-button"
             v-model="example.noCloseButton"
           ></v-select-prop>
         </div>
         <div class="mb-2">
-          <label
-            for="static-backdrop"
-            class="mr-2"
-          >
-            static-backdrop:
-          </label>
           <v-select-prop
+            label="static-backdrop"
             id="static-backdrop"
             v-model="example.staticBackdrop"
           ></v-select-prop>
         </div>
         <div class="mb-2">
-          <label
-            for="no-header"
-            class="mr-2"
-          >
-            no-header:
-          </label>
           <v-select-prop
+            label="no-header"
             id="no-header"
             v-model="example.noHeader"
           ></v-select-prop>
         </div>
         <div class="mb-2">
-          <label
-            for="no-footer"
-            class="mr-2"
-          >
-            no-footer:
-          </label>
           <v-select-prop
+            label="no-footer"
             id="no-footer"
             v-model="example.noFooter"
           ></v-select-prop>
         </div>
         <div class="mb-2">
-          <label
-            for="position-modal"
-            class="mr-2"
-          >
-            position:
-          </label>
           <v-select
+            label="position"
             id="position-modal"
             v-model="example.position"
             :items="['top', 'center', 'bottom']"
           ></v-select>
         </div>
         <div class="mb-2">
-          <label
-            for="size-modal"
-            class="mr-2"
-          >
-            size:
-          </label>
           <v-select
+            label="size"
             id="size-modal"
             v-model="example.size"
             :items="['sm', 'md', 'lg', 'xl', 'fit']"

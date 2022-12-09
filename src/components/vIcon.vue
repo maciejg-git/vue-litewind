@@ -2,32 +2,25 @@
   <component :is="name || icon || iconTypes[iconType] || null"></component>
 </template>
 
-<script>
+<script setup>
 import { inject } from "vue";
 
-export default {
-  props: {
-    name: {
-      type: [String, Object],
-      default: "",
-    },
-    icon: {
-      type: [String, Object],
-      default: "",
-    },
-    iconType: {
-      type: String,
-      default: "",
-    },
+defineProps({
+  name: {
+    type: [String, Object],
+    default: "",
   },
-  setup() {
-    let iconTypes = inject("icon-types", {});
+  icon: {
+    type: [String, Object],
+    default: "",
+  },
+  iconType: {
+    type: String,
+    default: "",
+  },
+});
 
-    return {
-      iconTypes,
-    };
-  },
-};
+let iconTypes = inject("icon-types", {});
 </script>
 
 <style></style>

@@ -257,8 +257,9 @@ let getInputClasses = computed(() => {
   return [
     "tw-form-input-reset flex items-center",
     classes.input.value,
-    state && states.input.value && states.input.value[state.value],
-    attrs.disabled === "" || attrs.disabled === true ? "disabled" : "",
+    state.value === 'valid' && states.input.value.valid,
+    state.value === 'invalid' && states.input.value.invalid,
+    (attrs.disabled === "" || attrs.disabled === true) && "disabled"
   ];
 });
 

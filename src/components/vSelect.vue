@@ -231,12 +231,12 @@ let { classes, states } = useStyles("select", props, {
 });
 
 let getItemClass = (item, index) => {
-  return {
-    [classes.item.value]: true,
-    [states.item.value.selected]: isSelected(item),
-    [states.item.value.highlighted]: index === highlightedItemIndex.value,
-    disabled: item.disabled,
-  };
+  return [
+    classes.item.value,
+    isSelected(item) && states.item.value.selected,
+    index === highlightedItemIndex.value && states.item.value.highlighted,
+    item.disabled && "disabled",
+  ];
 };
 
 let localModel = useLocalModel(props, emit);

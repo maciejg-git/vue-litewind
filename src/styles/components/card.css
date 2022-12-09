@@ -40,6 +40,11 @@
         @apply
           rounded-xl
       }
+      &--transparent {
+        @apply
+          bg-transparent
+          dark:bg-transparent
+      }
   }
 
   .flat {
