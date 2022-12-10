@@ -42,7 +42,7 @@
   >
     <!-- forms -->
     <!-- CUT START -->
-    <div class="flex justify-around">
+    <div class="flex gap-x-4 justify-around">
       <div>
         <div class="mb-2">
           <v-input
@@ -185,7 +185,7 @@ export default {
       noHeader: false,
       noFooter: false,
       position: "top",
-      size: "md",
+      size: "sm",
       transition: "fade-slide",
     });
 

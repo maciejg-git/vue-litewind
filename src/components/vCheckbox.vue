@@ -82,10 +82,9 @@ let getCheckBoxClasses = () => {
   return [
     "tw-form-checkbox-reset",
     classes.checkbox.value,
-    states.checkbox.value && states.checkbox.value[state.value],
-    attrs.disabled === "" || attrs.disabled === true
-      ? 'disabled'
-      : "",
+    state.value === 'valid' && states.checkbox.value.valid,
+    state.value === 'invalid' && states.checkbox.value.invalid,
+    (attrs.disabled === "" || attrs.disabled === true) && "disabled"
   ];
 };
 

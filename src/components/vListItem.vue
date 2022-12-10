@@ -23,8 +23,10 @@ let { classes, states, tag } = inject("control-list");
 let tagHref = computed(() => (tag == "a" ? "#" : null));
 
 let itemClass = computed(() => {
-  if (props.active) return [classes.item.value, states.item.value.active];
-  else return classes.item.value;
+  return [
+    classes.item.value,
+    props.active && states.item.value.active,
+  ]
 });
 </script>
 

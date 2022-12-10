@@ -1,6 +1,6 @@
 <template>
   <li
-    :class="getItemClasses()"
+    :class="itemClasses"
     v-if="!isFilteredOut"
   >
     <slot
@@ -222,13 +222,14 @@ const emit = defineEmits(["children-state-changed"]);
 let { classes, variants, forNode, selectedItems, filter, transition } =
   inject("control-tree");
 
-let getItemClasses = () => {
-  return isFolder.value
-    ? itemLevel.value === 0
-      ? [classes.folder.value, variants.folder.value["root-variant"]]
-      : classes.folder.value
-    : classes.item.value;
-};
+let itemClasses = computed(() => {
+  return [
+    isFolder.value &&
+      itemLevel.value === 0 &&
+      variants.folder.value["root-variant"],
+    (isFolder.value && classes.folder.value) || classes.item.value,
+  ];
+});
 
 const getIcon = () => {
   let icon = props.items[props.itemIcon];

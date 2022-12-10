@@ -57,7 +57,7 @@ const sharedFormProps = (d, options) => {
   let props = {};
   if (options.icon === true) {
     props.icon = {
-      type: String,
+      type: [String, Object],
       default: d.icon || "",
     };
   }

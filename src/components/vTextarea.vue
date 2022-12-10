@@ -128,10 +128,9 @@ let { classes, states } = useStyles("textarea", props, {
 let getTextareaClasses = computed(() => {
   return [
     classes.textarea.value,
-    state && states.textarea.value[state.value],
-    attrs.disabled === "" || attrs.disabled === true
-      ? 'disabled'
-      : "",
+    state.value === "valid" && states.textarea.value.valid,
+    state.value === "invalid" && states.textarea.value.invalid,
+    (attrs.disabled === "" || attrs.disabled === true) && "disabled",
   ];
 });
 
@@ -175,5 +174,4 @@ if (addFormInput) {
 let handleBlur = () => touch();
 </script>
 
-<style>
-</style>
+<style></style>

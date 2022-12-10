@@ -216,7 +216,16 @@ let { classes } = useStyles("modal", props, {
   },
   footer: {
     fixed: "flex",
-    prop: computed(() => footerClasses[props.justifyButtons]),
+    prop: computed(() => {
+      return {
+        "justify-start": props.justifyButtons === "start",
+        "justify-end": props.justifyButtons === "end",
+        "justify-center": props.justifyButtons === "center",
+        "justify-between": props.justifyButtons === "between",
+        "justify-around": props.justifyButtons === "around",
+        "justify-evenly": props.justifyButtons === "evenly",
+      }
+    }),
   },
   content: null,
   backdrop: {
@@ -227,33 +236,18 @@ let { classes } = useStyles("modal", props, {
 let containerClasses = computed(() => {
   return [
     "flex relative min-h-full mx-auto py-6 px-6 md:px-0",
-    sizeClasses[props.size],
-    positionClasses[props.position],
+    {
+      "md:w-4/12": props.size === "sm",
+      "md:w-6/12": props.size === "md",
+      "md:w-8/12": props.size === "lg",
+      "md:w-10/12": props.size === "xl",
+      "md:w-max": props.size === "fit",
+      "items-start": props.position === "top",
+      "items-center": props.position === "center",
+      "items-end": props.position === "bottom",
+    },
   ];
 });
-
-const footerClasses = {
-  start: "justify-start",
-  end: "justify-end",
-  center: "justify-center",
-  between: "justify-between",
-  around: "justify-around",
-  evenly: "justify-evenly",
-};
-
-const positionClasses = {
-  top: "items-start",
-  center: "items-center",
-  bottom: "items-end",
-};
-
-const sizeClasses = {
-  sm: "md:w-4/12",
-  md: "md:w-6/12",
-  lg: "md:w-8/12",
-  xl: "md:w-10/12",
-  fit: "md:w-max",
-};
 
 // remove scrollbar and add some padding to avoid shifting modal window
 // when opening
@@ -264,6 +258,7 @@ let getScrollBarWidth = () => {
 
 let removeScrollbar = () => {
   let scrollbarWidth = getScrollBarWidth();
+
   if (scrollbarWidth > 0) {
     document.body.style.overflowY = "hidden";
     document.body.style.paddingRight = scrollbarWidth + "px";
