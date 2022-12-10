@@ -216,16 +216,7 @@ let { classes } = useStyles("modal", props, {
   },
   footer: {
     fixed: "flex",
-    prop: computed(() => {
-      return {
-        "justify-start": props.justifyButtons === "start",
-        "justify-end": props.justifyButtons === "end",
-        "justify-center": props.justifyButtons === "center",
-        "justify-between": props.justifyButtons === "between",
-        "justify-around": props.justifyButtons === "around",
-        "justify-evenly": props.justifyButtons === "evenly",
-      }
-    }),
+    prop: computed(() => footerClasses[props.justifyButtons]),
   },
   content: null,
   backdrop: {
@@ -245,9 +236,18 @@ let containerClasses = computed(() => {
       "items-start": props.position === "top",
       "items-center": props.position === "center",
       "items-end": props.position === "bottom",
-    },
+    }
   ];
 });
+
+const footerClasses = {
+  start: "justify-start",
+  end: "justify-end",
+  center: "justify-center",
+  between: "justify-between",
+  around: "justify-around",
+  evenly: "justify-evenly",
+};
 
 // remove scrollbar and add some padding to avoid shifting modal window
 // when opening
