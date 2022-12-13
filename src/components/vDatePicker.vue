@@ -262,24 +262,15 @@ let { classes, states, variants } = useStyles("datepicker", props, {
 });
 
 let getDayClass = (date) => {
-  // classes for range selection
-  if (
+  // if (isDisabled(date)) return "text-gray-400";
+  return [
+    classes.day.value,
     props.rangeHoverHighlight &&
     mouseOverRange.value &&
-    isRangeSelected(date)
-  ) {
-    return [
-      classes.day.value,
-      states.day.value["partially-selected"],
-      isToday(date) ? variants.day.value.today : "",
-    ];
-  }
-  if (isSelectedDay(date)) {
-    return [classes.day.value, states.day.value.selected];
-  }
-  if (isToday(date)) return [classes.day.value, variants.day.value.today];
-  // if (isDisabled(date)) return "text-gray-400";
-  return classes.day.value;
+    isRangeSelected(date) && states.day.value["partially-selected"],
+    isSelectedDay(date) && states.day.value.selected,
+    isToday(date) && variants.day.value.today,
+  ]
 };
 
 let transition = ref("");
@@ -474,9 +465,9 @@ let isSelectedDay = (date) => {
     return single.value && single.value.getTime() == date.getTime();
   } else {
     if (rangeState.value == 1) {
-      return range.value[0].getTime() == date.getTime();
-    } else if (rangeState.value == 2)
-      return range.value[0] <= date && date <= range.value[1];
+      return
+    }
+    return range.value[0] <= date && date <= range.value[1];
   }
 };
 
@@ -527,7 +518,7 @@ let handleButtonClick = (d, t) => {
 };
 
 let handleMouseOverDay = (d) => {
-  if (rangeState.value === 1) mouseOverRange.value = d.date;
+  mouseOverRange.value = d.date;
 };
 
 let handlePrimaryButtonClick = () => {

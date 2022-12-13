@@ -427,7 +427,7 @@ let scrollToHighlighted = (direction) => {
   }
 
   let scrollToIndex =
-    direction === 1
+    direction === 1 || direction === undefined
       ? (highlightedItemIndex.value < itemsRef.value.length - 1
         ? highlightedItemIndex.value + 1
         : highlightedItemIndex.value)
