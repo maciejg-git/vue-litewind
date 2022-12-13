@@ -51,7 +51,7 @@
         @apply  
           font-bold
           text-primary-400
-          dark:text-primary-400 !important
+          dark:text-primary-400
       }
       &--partially-selected-state {
         @apply
