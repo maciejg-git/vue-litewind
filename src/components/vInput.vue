@@ -232,7 +232,6 @@ const emit = defineEmits([
   "update:status",
   "update:messages",
   "update:state",
-  "input:blur",
   "click:clear-button",
   "click:icon",
   "click:indicator",

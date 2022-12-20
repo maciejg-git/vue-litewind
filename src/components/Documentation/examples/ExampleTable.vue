@@ -33,7 +33,7 @@
         @click.stop="edit(item)"
         block
       >
-        <v-icon name="mdi-account-edit"></v-icon>
+        <v-icon name="mdi-account-edit" class="w-6 h-6"></v-icon>
       </v-button>
     </template>
 

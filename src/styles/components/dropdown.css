@@ -129,8 +129,8 @@
       font-semibold
       px-5
       py-4
-      opacity-60
       text-text-600
-      dark:text-text-300
+      dark:text-text-300/70
+      dark:bg-dark-700
   }
 }

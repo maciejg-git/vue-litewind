@@ -85,7 +85,9 @@
 
   <section>
     <h4>Example - alternative styles</h4>
-    Dropdown comes with some default alternative styles.
+    <p>
+      Dropdown comes with some default alternative styles.
+    </p>
     <div class="example">
       <example name="ExampleDropdownStyles" :script="false"></example>
     </div>

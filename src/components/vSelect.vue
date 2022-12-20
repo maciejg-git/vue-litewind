@@ -30,16 +30,16 @@
     </template>
     <template #multi-value>
       <template v-if="multiValue">
-        <template v-for="(item, index) in selectedItems">
+        <template v-for="(value, index) in selectedItems">
           <template v-if="index < maxMultiValue">
             <slot
               name="multi-value-item"
-              v-bind="item"
+              v-bind="getItemByValue(value)"
             >
               <span
                 class="ml-1 after:content-[','] last-of-type:after:content-none last-of-type:mr-2"
               >
-                {{ getItemText(item) }}
+                {{ getItemText(getItemByValue(value)) }}
               </span>
             </slot>
           </template>
@@ -234,7 +234,7 @@ let getItemClass = (item, index) => {
   return [
     classes.item.value,
     isSelected(item) && states.item.value.selected,
-    index === highlightedItemIndex.value && states.item.value.highlighted,
+    // index === highlightedItemIndex.value && states.item.value.highlighted,
     item.disabled && "disabled",
   ];
 };
@@ -305,6 +305,8 @@ let getItemText = (item, key) => {
 };
 
 let getItemValue = (item) => {
+  if (item === undefined) return
+
   let value = item[props.itemValue];
 
   return value !== undefined ? value : item;
@@ -350,17 +352,20 @@ let itemsPagination = computed(() => {
 
 let isSelected = (item) => {
   if (props.multiValue) {
-    return selectedItems.value.indexOf(item) !== -1;
+    let value = getItemValue(item)
+
+    return selectedItems.value.indexOf(value) !== -1;
   }
 
-  return selectedItem.value === item;
+  return selectedItem.value === getItemValue(item);
 };
 
 let updateLocalModel = () => {
   ignoreModelWatch = true;
 
   if (props.multiValue) {
-    localModel.value = selectedItems.value.map((i) => getItemValue(i));
+    // localModel.value = selectedItems.value.map((i) => getItemValue(i));
+    localModel.value = [...selectedItems.value];
     updatePopperInstance();
     return;
   }
@@ -370,14 +375,17 @@ let updateLocalModel = () => {
 
 let updateSelectedItems = (item) => {
   if (props.multiValue) {
-    let index = selectedItems.value.indexOf(item);
+    let value = getItemValue(item)
+
+    let index = selectedItems.value.indexOf(value);
+
     if (index !== -1) {
       selectedItems.value.splice(index, 1);
     } else {
-      selectedItems.value.push(item);
+      selectedItems.value.push(value);
     }
   } else {
-    selectedItem.value = item;
+    selectedItem.value = getItemValue(item);
   }
 
   updateLocalModel();
@@ -409,14 +417,15 @@ watch(
       return;
     }
     if (props.multiValue) {
-      selectedItems.value = value.map((selected) => {
-        return props.items.find((i) => {
-          return selected === getItemValue(i);
+      selectedItems.value = value.filter((selectedValue) => {
+        let item = props.items.find((i) => {
+          return selectedValue === getItemValue(i);
         });
+        return getItemValue(item)
       });
       return;
     }
-    selectedItem.value = getItemByValue(value);
+    selectedItem.value = getItemValue(getItemByValue(value));
   },
   { immediate: true, deep: true, flush: "sync" }
 );
@@ -548,8 +557,13 @@ let handleKeydown = (ev) => {
 };
 
 let handleScrollBottom = () => {
-  page.value++;
   emit("update:page", page.value);
+
+  if (props.noPagination) {
+    return
+  }
+
+  page.value++;
 };
 
 let handleClickItem = (item, index) => {
