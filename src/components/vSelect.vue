@@ -261,8 +261,6 @@ let selectedItem = ref(null);
 let selectedItems = ref([]);
 let localText = ref("");
 
-let ignoreModelWatch = false;
-
 let isMultivalueVisible = ref(true);
 
 let highlightedItemIndex = ref(-1);
@@ -361,8 +359,6 @@ let isSelected = (item) => {
 };
 
 let updateLocalModel = () => {
-  ignoreModelWatch = true;
-
   if (props.multiValue) {
     // localModel.value = selectedItems.value.map((i) => getItemValue(i));
     localModel.value = [...selectedItems.value];
@@ -405,17 +401,12 @@ let clearInput = () => {
   localText.value = "";
   selectedItem.value = "";
   selectedItems.value = [];
-  ignoreModelWatch = true;
   localModel.value = props.multiValue ? [] : "";
 };
 
 watch(
   localModel,
   (value) => {
-    if (ignoreModelWatch) {
-      ignoreModelWatch = false;
-      return;
-    }
     if (props.multiValue) {
       selectedItems.value = value.filter((selectedValue) => {
         let item = props.items.find((i) => {
@@ -427,7 +418,7 @@ watch(
     }
     selectedItem.value = getItemValue(getItemByValue(value));
   },
-  { immediate: true, deep: true, flush: "sync" }
+  { immediate: true, deep: true }
 );
 
 let scrollToHighlighted = (direction) => {
