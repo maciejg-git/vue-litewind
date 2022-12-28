@@ -11,7 +11,7 @@
       @input:value="query($event)"
     >
     <template #multi-value-item="item">
-      <v-chip class="my-1 mr-2" @click:close-button="remove(item.value)">
+      <v-chip class="mr-2" @click:close-button="remove(item.value)">
         {{ item.text }}
       </v-chip>
     </template>

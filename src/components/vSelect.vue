@@ -49,8 +49,8 @@
           name="max-multi-value"
         ></slot>
       </template>
-      <span v-else-if="isMultivalueVisible && selectedItem !== undefined">
-        {{ getItemText(selectedItem) }}
+      <span v-else-if="(!autocomplete || (autocomplete && !isPopperVisible)) && selectedItem !== undefined">
+        {{ getItemText(getItemByValue(selectedItem)) }}
       </span>
     </template>
   </v-input>
@@ -261,8 +261,6 @@ let selectedItem = ref(null);
 let selectedItems = ref([]);
 let localText = ref("");
 
-let isMultivalueVisible = ref(true);
-
 let highlightedItemIndex = ref(-1);
 
 let itemsRef = ref([]);
@@ -392,8 +390,6 @@ let cancelInput = () => {
     localText.value = "";
   }
 
-  isMultivalueVisible.value = true;
-
   hidePopper();
 };
 
@@ -414,6 +410,9 @@ watch(
         });
         return getItemValue(item)
       });
+
+      updatePopperInstance();
+
       return;
     }
     selectedItem.value = getItemValue(getItemByValue(value));
@@ -444,7 +443,6 @@ let scrollToHighlighted = (direction) => {
 
 let handleFocusInput = () => {
   if (props.autocomplete && !props.multiValue) {
-    isMultivalueVisible.value = false;
 
     if (selectedItem.value !== undefined) {
       localText.value = getItemText(selectedItem.value);

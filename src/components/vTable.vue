@@ -369,7 +369,9 @@ let definitionDefaults = {
   sortByFunction: true,
 };
 
-let getDefinitionByKey = (k) => definition.value.find((i) => k === i.key);
+let getDefinitionByKey = (k) => {
+  return definition.value.find((i) => k === i.key);
+}
 
 let headersCount = computed(() => {
   return definition.value.filter((i) => i.visible !== false).length;
@@ -377,7 +379,7 @@ let headersCount = computed(() => {
 
 // if no definition is provided use first row of data to
 // generate local definition
-let getDefinition = () => {
+let generateDefinition = () => {
   if (!props.items || !props.items.length) return [];
 
   return Object.keys(props.items[0])
@@ -387,14 +389,14 @@ let getDefinition = () => {
     });
 };
 
-let validateDefinition = () => {
+let getDefinition = () => {
   if (!Array.isArray(props.definition)) return false;
-  return props.definition.every((i) => i.key);
+  return props.definition.every((i) => i.key) && props.definition;
 };
 
 // generate local definition
 let definition = computed(() => {
-  let d = (validateDefinition() && props.definition) || getDefinition();
+  let d = getDefinition() || generateDefinition();
 
   return d.map((i) => {
     return {
