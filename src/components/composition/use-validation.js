@@ -27,7 +27,9 @@ export default function useValidation(
 
   // validate
 
-  watch(localModel, (value) => onValueUpdated(value));
+  watch(localModel, (value) => {
+    onValueUpdated(value);
+  });
 
   let validate = (value) => {
     let newStatus = {

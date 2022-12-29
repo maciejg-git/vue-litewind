@@ -39,7 +39,7 @@
               <span
                 class="ml-1 after:content-[','] last-of-type:after:content-none last-of-type:mr-2"
               >
-                {{ getItemText(getItemByValue(value)) }}
+                {{ getItemTextByValue(value) }}
               </span>
             </slot>
           </template>
@@ -49,8 +49,12 @@
           name="max-multi-value"
         ></slot>
       </template>
-      <span v-else-if="(!autocomplete || (autocomplete && !isPopperVisible)) && selectedItem !== undefined">
-        {{ getItemText(getItemByValue(selectedItem)) }}
+      <span
+        v-else-if="
+          (!autocomplete || !isPopperVisible) && selectedItem !== undefined
+        "
+      >
+        {{ getItemTextByValue(selectedItem) }}
       </span>
     </template>
   </v-input>
@@ -295,17 +299,23 @@ watch(
 // get text and value of item
 
 let getItemText = (item, key) => {
+  if (item === undefined) return;
+
   let text = item[key || props.itemText];
 
   return text !== undefined ? text : item;
 };
 
 let getItemValue = (item) => {
-  if (item === undefined) return
+  if (item === undefined) return;
 
   let value = item[props.itemValue];
 
   return value !== undefined ? value : item;
+};
+
+let getItemTextByValue = (value) => {
+  return getItemText(getItemByValue(value));
 };
 
 let getItemByValue = (value) => {
@@ -348,7 +358,7 @@ let itemsPagination = computed(() => {
 
 let isSelected = (item) => {
   if (props.multiValue) {
-    let value = getItemValue(item)
+    let value = getItemValue(item);
 
     return selectedItems.value.indexOf(value) !== -1;
   }
@@ -369,7 +379,7 @@ let updateLocalModel = () => {
 
 let updateSelectedItems = (item) => {
   if (props.multiValue) {
-    let value = getItemValue(item)
+    let value = getItemValue(item);
 
     let index = selectedItems.value.indexOf(value);
 
@@ -408,7 +418,7 @@ watch(
         let item = props.items.find((i) => {
           return selectedValue === getItemValue(i);
         });
-        return getItemValue(item)
+        return getItemValue(item);
       });
 
       updatePopperInstance();
@@ -427,9 +437,9 @@ let scrollToHighlighted = (direction) => {
 
   let scrollToIndex =
     direction === 1 || direction === undefined
-      ? (highlightedItemIndex.value < itemsRef.value.length - 1
+      ? highlightedItemIndex.value < itemsRef.value.length - 1
         ? highlightedItemIndex.value + 1
-        : highlightedItemIndex.value)
+        : highlightedItemIndex.value
       : highlightedItemIndex.value > 0
       ? highlightedItemIndex.value - 1
       : highlightedItemIndex.value;
@@ -443,7 +453,6 @@ let scrollToHighlighted = (direction) => {
 
 let handleFocusInput = () => {
   if (props.autocomplete && !props.multiValue) {
-
     if (selectedItem.value !== undefined) {
       localText.value = getItemText(selectedItem.value);
 
@@ -549,7 +558,7 @@ let handleScrollBottom = () => {
   emit("update:page", page.value);
 
   if (props.noPagination) {
-    return
+    return;
   }
 
   page.value++;

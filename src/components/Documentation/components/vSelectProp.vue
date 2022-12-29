@@ -1,8 +1,8 @@
 <template>
   <v-select
     v-model="localModel"
-    :items="[true, false]"
-    style-icon="true:valid false:invalid"
+    :items="[{ text: 'true', value: 1}, { text: 'false', value: 0}]"
+    style-icon="1:valid 0:invalid"
     :input="{ variant: localModel }"
     :card="{ styleCard: 'menu shadow', base: 'flat' }"
     :icon="localModel ? 'b-check-lg' : 'b-x'"
@@ -23,10 +23,10 @@ export default {
   setup(props, { emit }) {
     let localModel = computed({
       get() {
-        return props.modelValue
+        return +props.modelValue
       },
       set(value) {
-        emit("update:modelValue", value)
+        emit("update:modelValue", !!value)
       }
     })
 
