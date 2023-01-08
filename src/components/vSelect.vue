@@ -74,7 +74,7 @@
           v-bind="card"
           class="max-h-[var(--select-max-menu-height)] overflow-y-auto overflow-x-hidden"
           v-detect-scroll-bottom="handleScrollBottom"
-          @vue:before-update="onUpdateResetItemsRef"
+          @vue:before-update="resetItemsRef"
           @mousedown.prevent
         >
           <div
@@ -267,14 +267,16 @@ let localText = ref("");
 
 let highlightedItemIndex = ref(-1);
 
+// menu items elements
+
 let itemsRef = ref([]);
 
-let onUpdateResetItemsRef = () => {
+let resetItemsRef = () => {
   itemsRef.value = [];
 };
 
 onBeforeUpdate(() => {
-  onUpdateResetItemsRef();
+  resetItemsRef();
 });
 
 // show autocomplete menu
@@ -324,6 +326,8 @@ let getItemByValue = (value) => {
   });
 };
 
+// computed filtered and paginated items
+
 let itemsFiltered = computed(() => {
   if (!props.autocomplete || props.isLoading || props.noFilter) {
     return props.items;
@@ -368,7 +372,6 @@ let isSelected = (item) => {
 
 let updateLocalModel = () => {
   if (props.multiValue) {
-    // localModel.value = selectedItems.value.map((i) => getItemValue(i));
     localModel.value = [...selectedItems.value];
     updatePopperInstance();
     return;
@@ -409,6 +412,8 @@ let clearInput = () => {
   selectedItems.value = [];
   localModel.value = props.multiValue ? [] : "";
 };
+
+// update selected items after model value change
 
 watch(
   localModel,

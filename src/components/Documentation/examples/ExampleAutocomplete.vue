@@ -11,6 +11,7 @@
       :transition="example.transition"
       :state="example.state"
       :inline="false"
+      multi-value
       style-menu="shadow"
       @input:value="query($event)"
       v-on="handleExampleEvents"

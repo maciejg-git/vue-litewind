@@ -147,80 +147,41 @@ const props = defineProps({
     type: Object,
     default: [],
   },
-  itemName: {
-    type: String,
-    default: "name",
-  },
-  itemChildren: {
-    type: String,
-    default: "children",
-  },
-  itemIcon: {
-    type: String,
-    default: "icon",
-  },
-  itemDisabled: {
-    type: String,
-    default: "disabled",
-  },
-  itemKey: {
-    type: String,
-    default: "id",
-  },
   itemLevel: {
     type: Number,
     default: 0,
-  },
-  openOnClick: {
-    type: Boolean,
-    default: defaultProps("tree", "openOnClick", true),
   },
   disabled: {
     type: Boolean,
     default: false,
   },
-  allowSelectDisabled: {
-    type: Boolean,
-    default: defaultProps("tree", "allowSelectDisabled", false),
-  },
-  allowOpenDisabled: {
-    type: Boolean,
-    default: defaultProps("tree", "allowOpenDisabled", false),
-  },
-  showIndicators: {
-    type: Boolean,
-    default: defaultProps("tree", "showIndicators", true),
-  },
-  showIcons: {
-    type: Boolean,
-    default: defaultProps("tree", "showIcons", true),
-  },
-  showCheckboxes: {
-    type: Boolean,
-    default: defaultProps("tree", "showIcons", false),
-  },
-  selectIndependent: {
-    type: Boolean,
-    default: defaultProps("tree", "selectIndependent", false),
-  },
-  placeholderItemIcon: {
-    type: [String, Object],
-    default: defaultProps("tree", "placeholderItemIcon", undefined),
-  },
-  placeholderFolderIcon: {
-    type: [String, Object],
-    default: defaultProps("tree", "placeholderFolderIcon", undefined),
-  },
-  chevron: {
-    type: Object,
-    default: defaultProps("tree", "chevron", {}),
-  },
 });
 
 const emit = defineEmits(["children-state-changed"]);
 
-let { classes, variants, forNode, selectedItems, filter, transition } =
-  inject("control-tree");
+let {
+  classes,
+  variants,
+  forNode,
+  selectedItems,
+  filter,
+  transition,
+  itemName,
+  itemChildren,
+  itemIcon,
+  itemDisabled,
+  itemKey,
+  showIcons,
+  showCheckboxes,
+  showIndicators,
+  selectIndependent,
+  openOnClick,
+  allowSelectDisabled,
+  allowOpenDisabled,
+  placeholderItemIcon,
+  placeholderFolderIcon,
+  chevron,
+} = inject("control-tree");
 
 let itemClasses = computed(() => {
   return [
@@ -232,22 +193,27 @@ let itemClasses = computed(() => {
 });
 
 const getIcon = () => {
-  let icon = props.items[props.itemIcon];
+  let icon = props.items[itemIcon.value];
 
   if (Array.isArray(icon)) {
     return isOpen.value ? icon[1] : icon[0];
   }
 
-  return (
-    icon ||
-    (isFolder.value
-      ? Array.isArray(props.placeholderFolderIcon)
-        ? isOpen.value
-          ? props.placeholderFolderIcon[1]
-          : props.placeholderFolderIcon[0]
-        : props.placeholderFolderIcon
-      : props.placeholderItemIcon)
-  );
+  if (icon) {
+    return icon;
+  }
+
+  if (isFolder.value) {
+    if (Array.isArray(placeholderFolderIcon.value)) {
+      return isOpen.value
+        ? placeholderFolderIcon.value[1]
+        : placeholderFolderIcon.value[0];
+    }
+
+    return placeholderFolderIcon.value;
+  }
+
+  return placeholderItemIcon.value;
 };
 
 // let prependSlotOrder = ["order-0", "order-2", "order-5"]
@@ -256,23 +222,26 @@ let itemLevel = toRef(props, "itemLevel");
 
 let nodeList = ref([]);
 
-onBeforeUpdate(() => (nodeList.value = []));
+onBeforeUpdate(() => {
+  nodeList.value = []
+});
 
 // check state of item
+
 const isOpen = ref(false);
 
 const isSelected = ref(false);
 
 const isDisabled = computed(() => {
-  return props.items[props.itemDisabled] || props.disabled;
+  return props.items[itemDisabled.value] || props.disabled;
 });
 
 const isSelectable = () => {
-  return !isDisabled.value || props.allowSelectDisabled;
+  return !isDisabled.value || allowSelectDisabled.value;
 };
 
 const isOpenable = () => {
-  return !isDisabled.value || props.allowOpenDisabled;
+  return !isDisabled.value || allowOpenDisabled.value;
 };
 
 const isFolder = computed(() => {
@@ -283,24 +252,35 @@ const isFilteredOut = computed(() => {
   if (!filter.value || isFolder.value) return false;
 
   return (
-    props.items[props.itemName]
+    props.items[itemName.value]
       .toLowerCase()
       .indexOf(filter.value.toLowerCase()) === -1
   );
 });
 
 // control state
+
 let open = () => {
-  if (!isOpenable()) return;
+  if (!isOpenable()) {
+    return;
+  }
+
   isOpen.value = true;
 };
 
-let close = () => (isOpen.value = false);
+let close = () => {
+  isOpen.value = false;
+};
 
-let toggle = () => (isOpen.value ? close() : open());
+let toggle = () => {
+  isOpen.value ? close() : open();
+};
 
 // item selection
-let isChildrenSelected = () => nodeList.value.every((i) => i.isSelected);
+
+let isEveryChildrenSelected = () => {
+  nodeList.value.every((i) => i.isSelected);
+}
 
 let selectChildren = () => {
   nodeList.value.forEach((i) =>
@@ -309,7 +289,9 @@ let selectChildren = () => {
 };
 
 let select = (value, isFolderSelect) => {
-  if (!isSelectable() || value === isSelected.value) return;
+  if (!isSelectable() || value === isSelected.value) {
+    return;
+  }
 
   isSelected.value = value !== undefined ? value : !isSelected.value;
 
@@ -319,7 +301,9 @@ let select = (value, isFolderSelect) => {
     selectedItems.value = selectedItems.value.filter((i) => i !== props.items);
   }
 
-  if (isFolderSelect === true || props.selectIndependent) return;
+  if (isFolderSelect === true || selectIndependent.value) {
+    return;
+  }
 
   emit("children-state-changed");
 };
@@ -327,12 +311,12 @@ let select = (value, isFolderSelect) => {
 // handle template events
 
 let handleItemClick = () => {
-  if (isFolder.value && props.openOnClick) toggle();
+  if (isFolder.value && openOnClick.value) toggle();
   emit("input:click", props.items);
 };
 
 let handleChildrenSelected = () => {
-  if (!isChildrenSelected()) {
+  if (!isEveryChildrenSelected()) {
     if (isSelected.value) select(false);
     return;
   }
@@ -343,7 +327,7 @@ let handleIndicatorClick = () => toggle();
 
 let handleItemSelected = () => {
   select();
-  if (props.selectIndependent) return;
+  if (selectIndependent.value) return;
   if (isFolder.value) selectChildren();
 };
 

@@ -40,6 +40,26 @@ const props = defineProps({
     type: Object,
     default: [],
   },
+  itemName: {
+    type: String,
+    default: "name",
+  },
+  itemChildren: {
+    type: String,
+    default: "children",
+  },
+  itemIcon: {
+    type: String,
+    default: "icon",
+  },
+  itemDisabled: {
+    type: String,
+    default: "disabled",
+  },
+  itemKey: {
+    type: String,
+    default: "id",
+  },
   filter: {
     type: String,
     default: "",
@@ -55,6 +75,46 @@ const props = defineProps({
   selectReturnKeys: {
     type: Boolean,
     default: defaultProps("tree", "selectReturnKeys", false),
+  },
+  selectIndependent: {
+    type: Boolean,
+    default: defaultProps("tree", "selectIndependent", false),
+  },
+  openOnClick: {
+    type: Boolean,
+    default: defaultProps("tree", "openOnClick", true),
+  },
+  allowSelectDisabled: {
+    type: Boolean,
+    default: defaultProps("tree", "allowSelectDisabled", false),
+  },
+  allowOpenDisabled: {
+    type: Boolean,
+    default: defaultProps("tree", "allowOpenDisabled", false),
+  },
+  showCheckboxes: {
+    type: Boolean,
+    default: defaultProps("tree", "showCheckboxes", false),
+  },
+  showIcons: {
+    type: Boolean,
+    default: defaultProps("tree", "showIcons", true),
+  },
+  showIndicators: {
+    type: Boolean,
+    default: defaultProps("tree", "showIndicators", true),
+  },
+  placeholderItemIcon: {
+    type: [String, Object],
+    default: defaultProps("tree", "placeholderItemIcon", undefined),
+  },
+  placeholderFolderIcon: {
+    type: [String, Object],
+    default: defaultProps("tree", "placeholderFolderIcon", undefined),
+  },
+  chevron: {
+    type: Object,
+    default: defaultProps("tree", "chevron", {}),
   },
   transition: {
     type: String,
@@ -104,7 +164,9 @@ watch(
 
 let nodeList = ref([]);
 
-onBeforeUpdate(() => (nodeList.value = []));
+onBeforeUpdate(() => {
+  nodeList.value = [];
+});
 
 let forNode = (node, callback) => {
   node.nodeList.forEach((node) => forNode(node, callback));
@@ -115,7 +177,9 @@ let forEachNode = (callback) => {
   nodeList.value.forEach((node) => forNode(node, callback));
 };
 
-let closeAll = () => forEachNode((i) => i.isFolder && i.close());
+let closeAll = () => {
+  forEachNode((i) => i.isFolder && i.close());
+};
 
 let openAllLevel = (level) => {
   forEachNode((i) => i.itemLevel <= level && i.isFolder && i.open());
@@ -134,6 +198,21 @@ provide("control-tree", {
   selectedItems,
   filter: toRef(props, "filter"),
   transition: toRef(props, "transition"),
+  itemName: toRef(props, "itemName"),
+  itemChildren: toRef(props, "itemChildren"),
+  itemIcon: toRef(props, "itemIcon"),
+  itemDisabled: toRef(props, "itemDisabled"),
+  itemKey: toRef(props, "itemKey"),
+  showIcons: toRef(props, "showIcons"),
+  showCheckboxes: toRef(props, "showCheckboxes"),
+  showIndicators: toRef(props, "showIndicators"),
+  selectIndependent: toRef(props, "selectIndependent"),
+  openOnClick: toRef(props, "openOnClick"),
+  allowSelectDisabled: toRef(props, "allowSelectDisabled"),
+  allowOpenDisabled: toRef(props, "allowOpenDisabled"),
+  placeholderItemIcon: toRef(props, "placeholderItemIcon"),
+  placeholderFolderIcon: toRef(props, "placeholderFolderIcon"),
+  chevron: toRef(props, "chevron"),
 });
 
 defineExpose({ openAllLevel, closeAll });
