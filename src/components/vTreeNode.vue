@@ -112,7 +112,7 @@
           }"
           :ref="(i) => i && nodeList.push(i)"
           :disabled="isDisabled"
-          @children-state-changed="handleChildrenSelected"
+          @children-selected="handleChildrenSelected"
         >
           <template
             v-for="(name, slot) of $slots"
@@ -140,7 +140,6 @@ import { ref, computed, toRef, inject, onBeforeUpdate } from "vue";
 import vChevron from "./vChevron.vue";
 import vIcon from "./vIcon.vue";
 import vCheckboxSimple from "./vCheckboxSimple.vue";
-import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   items: {
@@ -157,7 +156,7 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(["children-state-changed"]);
+const emit = defineEmits(["children-selected"]);
 
 let {
   classes,
@@ -279,7 +278,7 @@ let toggle = () => {
 // item selection
 
 let isEveryChildrenSelected = () => {
-  nodeList.value.every((i) => i.isSelected);
+  return nodeList.value.every((i) => i.isSelected);
 }
 
 let selectChildren = () => {
@@ -305,30 +304,41 @@ let select = (value, isFolderSelect) => {
     return;
   }
 
-  emit("children-state-changed");
+  emit("children-selected");
 };
 
 // handle template events
 
 let handleItemClick = () => {
-  if (isFolder.value && openOnClick.value) toggle();
+  if (isFolder.value && openOnClick.value) {
+    toggle();
+  }
+
   emit("input:click", props.items);
 };
 
 let handleChildrenSelected = () => {
   if (!isEveryChildrenSelected()) {
-    if (isSelected.value) select(false);
+    select(false);
+
     return;
   }
-  if (!isSelected.value) select(true);
+
+  select(true);
 };
 
-let handleIndicatorClick = () => toggle();
+let handleIndicatorClick = () => {
+  toggle();
+}
 
 let handleItemSelected = () => {
   select();
-  if (selectIndependent.value) return;
-  if (isFolder.value) selectChildren();
+
+  if (selectIndependent.value) {
+    return;
+  }
+
+  selectChildren();
 };
 
 defineExpose({
