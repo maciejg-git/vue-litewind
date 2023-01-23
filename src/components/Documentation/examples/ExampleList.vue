@@ -2,16 +2,15 @@
   <v-list width="500px" :tag="example.tag" :base="example.base">
     <v-list-item v-for="item in example.users" :active="item.active">
       <div class="flex gap-x-4">
-          <v-checkbox type="checkbox" v-model="item.active" />
         <div>
           <div class="font-semibold">
             {{ item.full_name }}
           </div>
-          <div class="text-text-400">
+          <div class="text-text-300">
             {{ item.title }}
           </div>
         </div>
-        <div class="text-sm text-gray-400 ml-auto">
+        <div class="text-sm text-gray-300 ml-auto">
           {{ item.department }}
         </div>
       </div>
@@ -52,6 +51,8 @@ export default {
       tag: "div",
       base: "list",
     });
+
+    example.users[2].active = true
 
     return {
       example,

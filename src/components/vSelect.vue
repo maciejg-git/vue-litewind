@@ -1,6 +1,7 @@
 <template>
   <v-input
     v-model="localText"
+    :external-model="localModel"
     ref="reference"
     :icon="icon"
     :use-loader="useLoader"
@@ -238,7 +239,7 @@ let getItemClass = (item, index) => {
   return [
     classes.item.value,
     isSelected(item) && states.item.value.selected,
-    // index === highlightedItemIndex.value && states.item.value.highlighted,
+    index === highlightedItemIndex.value && states.item.value.highlighted,
     item.disabled && "disabled",
   ];
 };
@@ -303,17 +304,13 @@ watch(
 let getItemText = (item, key) => {
   if (item === undefined) return;
 
-  let text = item[key || props.itemText];
-
-  return text !== undefined ? text : item;
+  return item[key || props.itemText] ?? item;
 };
 
 let getItemValue = (item) => {
   if (item === undefined) return;
 
-  let value = item[props.itemValue];
-
-  return value !== undefined ? value : item;
+  return item[props.itemValue] ?? item;
 };
 
 let getItemTextByValue = (value) => {

@@ -1,6 +1,7 @@
 import { ref, watch } from "vue";
 import { globalValidators } from "../../validators";
-import { isFunction } from "../../tools";
+
+let isFunction = (v) => typeof v === "function";
 
 let defaultStatus = {
   touched: false,
@@ -20,8 +21,6 @@ export default function useValidation(
   let status = ref({ ...defaultStatus });
   let state = ref("");
   let messages = ref({});
-  let wasValid = ref(false);
-  let wasInvalid = ref(false);
 
   emitValidationStatus(status, state, messages);
 
@@ -68,21 +67,6 @@ export default function useValidation(
   let onValueUpdated = (value) => {
     validate(value);
 
-    if (
-      validateOn === "blur" &&
-      !status.value.touched &&
-      !status.value.validated
-    ) {
-      return;
-    }
-
-    if (status.value.valid) {
-      wasValid.value = true;
-    }
-    if (!status.value.valid && wasValid.value) {
-      wasInvalid.value = true;
-    }
-
     state.value = updateState();
 
     emitValidationStatus(status, state, messages);
@@ -90,13 +74,8 @@ export default function useValidation(
 
   let touch = () => {
     validate(localModel.value);
-    status.value.touched = true;
 
-    if (status.value.valid) {
-      wasValid.value = true;
-    } else {
-      wasInvalid.value = true;
-    }
+    status.value.touched = true;
 
     state.value = updateState();
 
@@ -105,13 +84,8 @@ export default function useValidation(
 
   let formValidate = () => {
     validate(localModel.value);
-    status.value.validated = true;
 
-    if (status.value.valid) {
-      wasValid.value = true;
-    } else {
-      wasInvalid.value = true;
-    }
+    status.value.validated = true;
 
     state.value = updateState();
 
@@ -120,39 +94,47 @@ export default function useValidation(
 
   // update state
 
-  watch(
-    externalState,
-    (newState) => {
-      state.value = newState;
-    },
-    { immediate: true }
-  );
-
-  let canUpdateState = () => {
-    return validateMode === "eager" || wasInvalid.value;
-  };
-
   let updateState = () => {
     if (externalState.value !== null) {
       return externalState.value;
     }
+
     if (status.value.optional) {
       return "";
     }
-    if (!canUpdateState()) {
-      return state.value;
+
+    if (!status.value.dirty && !status.value.touched) {
+      return state.value
     }
 
-    return status.value.valid ? "valid" : "invalid";
+    if (validateOn === "blur" && !status.value.touched) {
+      return state.value
+    }
+
+    if (!status.value.valid) {
+      return "invalid"
+    } 
+
+    if (validateMode === "eager" || state.value !== "") {
+      return "valid"
+    }
+
+    return state.value
   };
+
+  watch(
+    externalState,
+    () => {
+      state.value = updateState();
+    },
+    { immediate: true }
+  );
 
   // reset
 
   let reset = () => {
     status.value = { ...defaultStatus };
     state.value = "";
-    wasInvalid.value = false;
-    wasValid.value = false;
     emit("update:modelValue", "");
     messages.value = {};
   };

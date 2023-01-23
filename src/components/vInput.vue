@@ -139,6 +139,10 @@ const props = defineProps({
     type: [String, Number, Array, Boolean, Number],
     default: "",
   },
+  externalModel: {
+    type: [String, Number, Array, Boolean, Number],
+    default: undefined,
+  },
   inline: {
     type: Boolean,
     default: defaultProps("input", "inline", false),
@@ -292,12 +296,14 @@ let localModel = useLocalModel(props, emit);
 // validate
 
 let emitValidationStatus = (status, state, messages) => {
-  emit("update:status", status);
-  emit("update:state", state);
-  emit("update:messages", messages);
+  emit("update:status", status.value);
+  emit("update:state", state.value);
+  emit("update:messages", messages.value);
 };
 
 let externalState = toRef(props, "state");
+
+let externalModel = toRef(props, "externalModel")
 
 let { rules, validateOn, validateMode } = props;
 
@@ -305,7 +311,7 @@ let { status, state, messages, touch, formValidate, reset } = useValidation(
   rules,
   validateOn,
   validateMode,
-  localModel,
+  externalModel.value !== undefined ? externalModel : localModel,
   externalState,
   emitValidationStatus
 );
