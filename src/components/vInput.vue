@@ -117,7 +117,7 @@ export default {
 </script>
 
 <script setup>
-import { ref, computed, inject, useAttrs, toRef } from "vue";
+import { ref, computed, inject, useAttrs, toRef, nextTick } from "vue";
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
 import useUid from "./composition/use-uid";
@@ -325,7 +325,9 @@ if (addFormInput) {
 // handle template events
 
 let handleBlur = () => {
-  touch();
+  nextTick(() => {
+    touch();
+  })
 
   isFocused.value = false
 };

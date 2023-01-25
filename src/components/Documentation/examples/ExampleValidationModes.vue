@@ -62,34 +62,6 @@
         placeholder="Username"
         block
         class="w-full"
-        v-model="username3"
-        :rules="rules"
-        validate-on="immediate"
-        validate-mode="silent"
-        @update:status="(data) => (usernameStatus3 = data)"
-      ></v-input>
-    </div>
-
-    <pre class="m-0">
-      <ul class="font-semibold mb-5">
-        <li>validate-on: "immediate"</li>
-        <li>validate-mode: "silent""</li>
-      </ul>
-      <code v-html="'model: ' + stringifyObject(username3)"></code>
-      <code v-html="'rules: ' + stringifyObject(rules)"></code>
-      <code v-html="'status: ' + stringifyObject(usernameStatus3, true)"></code>
-    </pre>
-  </div>
-
-  <v-divider class="my-10" />
-
-  <div class="flex gap-x-20">
-    <div class="basis-1/2">
-      <v-input
-        type="text"
-        placeholder="Username"
-        block
-        class="w-full"
         v-model="username4"
         :rules="rules"
         validate-on="immediate"

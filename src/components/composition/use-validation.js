@@ -26,9 +26,13 @@ export default function useValidation(
 
   // validate
 
-  watch(localModel, (value) => {
-    onValueUpdated(value);
-  });
+  watch(
+    localModel,
+    (value) => {
+      onValueUpdated(value);
+    },
+    { deep: true }
+  );
 
   let validate = (value) => {
     let newStatus = {
@@ -103,23 +107,35 @@ export default function useValidation(
       return "";
     }
 
-    if (!status.value.dirty && !status.value.touched) {
-      return state.value
+    if (
+      !status.value.dirty &&
+      !status.value.touched &&
+      !status.value.validated
+    ) {
+      return state.value;
     }
 
-    if (validateOn === "blur" && !status.value.touched) {
-      return state.value
+    if (validateOn === "form" && !status.value.validated) {
+      return state.value;
+    }
+
+    if (
+      validateOn === "blur" &&
+      !status.value.touched &&
+      !status.value.validated
+    ) {
+      return state.value;
     }
 
     if (!status.value.valid) {
-      return "invalid"
-    } 
-
-    if (validateMode === "eager" || state.value !== "") {
-      return "valid"
+      return "invalid";
     }
 
-    return state.value
+    if (validateMode === "eager" || state.value !== "") {
+      return "valid";
+    }
+
+    return state.value;
   };
 
   watch(

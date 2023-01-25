@@ -4,41 +4,33 @@
   </form>
 </template>
 
-<script>
-// vue
+<script setup>
 import { ref, provide } from "vue";
 
-export default {
-  props: {},
-  setup(props, { emit, expose }) {
-    let inputs = [];
+let inputs = [];
 
-    let valid = ref(false);
+let valid = ref(false);
 
-    let addFormInput = (input) => {
-      inputs.push(input);
-    };
-
-    let validate = () => {
-      inputs.forEach((i) => i.formValidate());
-
-      valid.value = inputs.every((i) => i.status.value.valid);
-
-      return valid.value
-    };
-
-    let reset = () => {
-      inputs.forEach((i) => i.reset())
-      valid.value = false
-    }
-
-    provide("form", { addFormInput });
-
-    expose({ validate, reset });
-
-    return {};
-  },
+let addFormInput = (input) => {
+  inputs.push(input);
 };
+
+let validate = () => {
+  inputs.forEach((i) => i.formValidate());
+
+  valid.value = inputs.every((i) => i.status.value.valid || i.status.value.optional);
+
+  return valid.value
+};
+
+let reset = () => {
+  inputs.forEach((i) => i.reset())
+  valid.value = false
+}
+
+provide("form", { addFormInput });
+
+defineExpose({ validate, reset });
 </script>
 
 <style scoped lang="postcss"></style>

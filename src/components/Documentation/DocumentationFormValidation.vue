@@ -114,16 +114,16 @@
     <p><code class="code-text">validation-on</code> and <code class="code-text">validation-mode</code>, only available on text inputs, allows control over when to start validation and how to update state according to validation results:
     <ul>
       <li class="my-2">
-        <code class="code-text">validate-on: "blur"</code> - starts updating input state only after it loses focus (<code class="code-text">default</code>)
+        <code class="code-text">validate-on: "blur"</code> - validate after input loses focus (<code class="code-text">default</code>)
       </li>
       <li class="my-2">
-        <code class="code-text">validate-on: "immediate"</code> - starts updating state immediately after first input
+        <code class="code-text">validate-on: "immediate"</code> - starts validating immediately after first input
       </li>
       <li class="my-2">
-        <code class="code-text">validate-mode: "silent"</code> - invalid values are ignored until value is at last once valid (<code class="code-text">default</code>)
+        <code class="code-text">validate-mode: "silent"</code> - valid values does not change input state unless it was invalid before (only for validate on blur) (<code class="code-text">default</code>)
       </li>
       <li class="my-2">
-        <code class="code-text">validate-mode: "eager"</code> - invalid and valid values always change state
+        <code class="code-text">validate-mode: "eager"</code> - invalid and valid values always change input state
       </li>
     </ul>
     </p>
