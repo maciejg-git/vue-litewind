@@ -150,6 +150,10 @@ let emitValidationStatus = (status, state, messages) => {
   emit("update:messages", messages);
 };
 
+let resetInput = () => {
+  localModel.value = ""
+}
+
 let externalState = toRef(props, "state");
 
 let { rules, validateOn, validateMode } = props;
