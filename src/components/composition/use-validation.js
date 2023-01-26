@@ -7,29 +7,41 @@ let defaultStatus = {
   touched: false,
   dirty: false,
   valid: false,
+  optional: false,
   validated: false,
 };
 
 export default function useValidation(
   rules,
-  validateOn,
-  validateMode,
   localModel,
   externalState,
-  emitValidationStatus
+  onUpdateState,
+  onReset,
+  opts
 ) {
   let status = ref({ ...defaultStatus });
+
   let state = ref("");
+
   let messages = ref({});
 
-  emitValidationStatus(status, state, messages);
+  let options = {
+    validateOn: opts.validateOn || "blur",
+    validateMode: opts.validateMode || "silent",
+  }
+
+  if (!isFunction(onUpdateState)) {
+    onUpdateState = () => {}
+  }
+
+  onUpdateState(status, state, messages);
 
   // validate
 
   watch(
     localModel,
     (value) => {
-      onValueUpdated(value);
+      onValueUpdated(value)
     },
     { deep: true }
   );
@@ -73,7 +85,7 @@ export default function useValidation(
 
     state.value = updateState();
 
-    emitValidationStatus(status, state, messages);
+    onUpdateState(status, state, messages);
   };
 
   let touch = () => {
@@ -83,7 +95,7 @@ export default function useValidation(
 
     state.value = updateState();
 
-    emitValidationStatus(status, state, messages);
+    onUpdateState(status, state, messages);
   };
 
   let formValidate = () => {
@@ -93,13 +105,11 @@ export default function useValidation(
 
     state.value = updateState();
 
-    emitValidationStatus(status, state, messages);
+    onUpdateState(status, state, messages);
   };
 
-  // update state
-
   let updateState = () => {
-    if (externalState.value !== null) {
+    if (externalState && externalState.value !== null) {
       return externalState.value;
     }
 
@@ -115,12 +125,12 @@ export default function useValidation(
       return state.value;
     }
 
-    if (validateOn === "form" && !status.value.validated) {
+    if (options.validateOn === "form" && !status.value.validated) {
       return state.value;
     }
 
     if (
-      validateOn === "blur" &&
+      options.validateOn === "blur" &&
       !status.value.touched &&
       !status.value.validated
     ) {
@@ -131,7 +141,7 @@ export default function useValidation(
       return "invalid";
     }
 
-    if (validateMode === "eager" || state.value !== "") {
+    if (options.validateMode === "eager" || state.value !== "") {
       return "valid";
     }
 
@@ -151,8 +161,8 @@ export default function useValidation(
   let reset = () => {
     status.value = { ...defaultStatus };
     state.value = "";
-    emit("update:modelValue", "");
     messages.value = {};
+    isFunction(onReset) && onReset()
   };
 
   return {
