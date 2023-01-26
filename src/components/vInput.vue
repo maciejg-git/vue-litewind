@@ -313,11 +313,14 @@ let { rules, validateOn, validateMode } = props;
 
 let { status, state, messages, touch, formValidate, reset } = useValidation(
   rules,
-  validateOn,
-  validateMode,
   externalModel.value !== undefined ? externalModel : localModel,
   externalState,
-  emitValidationStatus
+  emitValidationStatus,
+  resetInput,
+  { 
+    validateOn,
+    validateMode,
+  }
 );
 
 let { addFormInput } = inject("form", {});
