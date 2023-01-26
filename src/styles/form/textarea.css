@@ -12,8 +12,8 @@
     focus-within:border-secondary-400
     focus-within:ring-primary-200
     dark:text-text-300
-    dark:bg-dark-700
-    dark:border-dark-500
+    dark:bg-dark-800
+    dark:border-dark-600
     dark:focus-within:ring-primary-300;
 
     &--valid-state {
