@@ -1,4 +1,4 @@
-import { ref, watch } from "vue";
+import { ref, watch, unref } from "vue";
 import { globalValidators } from "../../validators";
 
 let isFunction = (v) => typeof v === "function";
@@ -89,7 +89,7 @@ export default function useValidation(
   };
 
   let touch = () => {
-    validate(localModel.value);
+    validate(unref(localModel));
 
     status.value.touched = true;
 
@@ -99,7 +99,7 @@ export default function useValidation(
   };
 
   let formValidate = () => {
-    validate(localModel.value);
+    validate(unref(localModel));
 
     status.value.validated = true;
 
@@ -163,6 +163,7 @@ export default function useValidation(
     state.value = "";
     messages.value = {};
     isFunction(onReset) && onReset()
+    onUpdateState(status, state, messages)
   };
 
   return {
