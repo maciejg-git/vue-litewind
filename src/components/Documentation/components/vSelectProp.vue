@@ -3,7 +3,7 @@
     v-model="localModel"
     :items="[{ text: 'true', value: 1}, { text: 'false', value: 0}]"
     style-icon="1:valid 0:invalid"
-    :input="{ variant: localModel }"
+    :input="{ variant: localModel + '' }"
     :card="{ styleCard: 'menu shadow', base: 'flat' }"
     :icon="localModel ? 'b-check-lg' : 'b-x'"
     @click:icon="handleClickIcon"
