@@ -18,6 +18,7 @@ import DocumentationDropdown from "../components/Documentation/DocumentationDrop
 import DocumentationPagination from "../components/Documentation/DocumentationPagination.vue";
 import DocumentationCard from "../components/Documentation/DocumentationCard.vue";
 import DocumentationButton from "../components/Documentation/DocumentationButton.vue";
+import DocumentationChip from "../components/Documentation/DocumentationChip.vue";
 import DocumentationPopover from "../components/Documentation/DocumentationPopover.vue";
 import DocumentationProgress from "../components/Documentation/DocumentationProgress.vue";
 import DocumentationSidepanel from "../components/Documentation/DocumentationSidepanel.vue";
@@ -114,6 +115,10 @@ const routes = [
       {
         path: "button",
         component: DocumentationButton,
+      },
+      {
+        path: "chip",
+        component: DocumentationChip,
       },
       {
         path: "popover",
