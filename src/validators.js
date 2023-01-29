@@ -24,7 +24,7 @@ export let setValidationMessage = (validator, message) => {
 export let globalValidators = {
   required: (value) => {
     if (Array.isArray(value)) return !!value.length || validationMessages.required;
-    return !!value || validationMessages.required;
+    return !!value && !!value.trim() || validationMessages.required;
   },
   minLength: (value, length) => {
     return value.length >= length || validationMessages.minLength.replace('%d', length);
@@ -38,13 +38,13 @@ export let globalValidators = {
   maxElements: (value, length) => {
     return value.length <= length || validationMessages.maxLength.replace('%d', length);
   },
-  alpha: (value, active) => {
+  alpha: (value) => {
     return /^[a-zA-Z]+$/.test(value) || validationMessages.alpha;
   },
-  numeric: (value, active) => {
+  numeric: (value) => {
     return /^[0-9]+$/.test(value) || validationMessages.numeric;
   },
-  alphanumeric: (value, active) => {
+  alphanumeric: (value) => {
     return /^[a-zA-Z0-9]+$/.test(value) || validationMessages.alphanumeric;
   },
   maxValue: (value, max) => {
