@@ -2,7 +2,6 @@
   <div class="w-1/2">
     <v-autocomplete
       v-model="example.model"
-      v-model:input-value="example.inputValue"
       :items="example.items"
       :is-loading="example.isLoading"
       item-text="full_name"
