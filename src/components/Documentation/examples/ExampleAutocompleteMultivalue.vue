@@ -1,21 +1,30 @@
 <template>
-  <div class="w-1/2">
-    <v-autocomplete
-      v-model="example.model"
-      no-filter
-      multi-value
-      :items="example.items"
-      :is-loading="example.isLoading"
-      :inline="false"
-      style-menu="shadow"
-      @input:value="query($event)"
-    >
-    <template #multi-value-item="item">
-      <v-chip class="my-1 mr-2" @click:close-button="remove(item.value)">
-        {{ item.text }}
-      </v-chip>
-    </template>
-    </v-autocomplete>
+  <div class="flex items-center">
+    <div class="w-1/2">
+      <v-autocomplete
+        v-model="example.model"
+        no-filter
+        multi-value
+        :items="example.items"
+        :is-loading="example.isLoading"
+        :inline="false"
+        style-menu="shadow"
+        @input:value="query($event)"
+      >
+        <template #multi-value-item="item">
+          <v-chip
+            class="my-1 mr-2"
+            @click:close-button="remove(item.value)"
+          >
+            {{ item.text }}
+          </v-chip>
+        </template>
+      </v-autocomplete>
+    </div>
+    <div class="w-1/2 ml-10">
+      <span class="font-semibold">v-model:</span>
+      {{ example.model }}
+    </div>
   </div>
 </template>
 
@@ -46,9 +55,9 @@ export default {
     };
 
     let remove = (item) => {
-        const index = example.model.indexOf(item)
-        if (index >= 0) example.model.splice(index, 1)
-      }
+      const index = example.model.indexOf(item);
+      if (index >= 0) example.model.splice(index, 1);
+    };
 
     return {
       example,

@@ -1,15 +1,21 @@
 <template>
-  <div class="w-1/2">
-    <v-autocomplete
-      v-model="example.model"
-      no-filter
-      :items="example.items"
-      :state="example.state"
-      :inline="false"
-      style-menu="shadow"
-      @input:value="query($event)"
-      v-on="handleExampleEvents"
-    ></v-autocomplete>
+  <div class="flex items-center">
+    <div class="w-1/2">
+      <v-autocomplete
+        v-model="example.model"
+        no-filter
+        :items="example.items"
+        :state="example.state"
+        :inline="false"
+        style-menu="shadow"
+        @input:value="query($event)"
+        v-on="handleExampleEvents"
+      ></v-autocomplete>
+    </div>
+    <div class="ml-10">
+      <span class="font-semibold">v-model:</span>
+      {{ example.model }}
+    </div>
   </div>
 </template>
 
