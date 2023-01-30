@@ -60,28 +60,28 @@
   </section>
 
   <section>
-    <h4>Example - simple multi value select</h4>
+    <h4>Example - simple select (multi value)</h4>
     <div class="example">
       <example name="ExampleSelectMultivalue"></example>
     </div>
   </section>
 
   <section>
-    <h4>Example - autcomplete (remote source)</h4>
+    <h4>Example - autocomplete</h4>
     <div class="example">
       <example name="ExampleAutocomplete"></example>
     </div>
   </section>
 
   <section>
-    <h4>Example - multi value autocomplete (with chips)</h4>
+    <h4>Example - autocomplete (multi value, with chips)</h4>
     <div class="example">
       <example name="ExampleAutocompleteMultivalue"></example>
     </div>
   </section>
 
   <section>
-    <h4>Example - customized menu</h4>
+    <h4>Example - autocomplete (customized menu)</h4>
     <p>To customize menu items use <code class="code-text">item</code> slot</p>
     <div class="example">
       <example name="ExampleAutocompleteSlot"></example>

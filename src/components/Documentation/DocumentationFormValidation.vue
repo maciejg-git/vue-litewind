@@ -120,6 +120,9 @@
         <code class="code-text">validate-on: "immediate"</code> - starts validating immediately after first input
       </li>
       <li class="my-2">
+        <code class="code-text">validate-on: "form"</code> - validate after calling <code class="code-text">validate</code> function of form component
+      </li>
+      <li class="my-2">
         <code class="code-text">validate-mode: "silent"</code> - valid values does not change input state unless it was invalid before (only for validate on blur) (<code class="code-text">default</code>)
       </li>
       <li class="my-2">

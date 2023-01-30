@@ -10,7 +10,6 @@
           type="text"
           label="Username"
           :rules="usernameRules"
-          validate-on="form"
           block
           class="w-full"
           @update:status="(status) => (usernameStatus = status)"

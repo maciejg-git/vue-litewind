@@ -35,12 +35,12 @@
           <template v-if="index < maxMultiValue">
             <slot
               name="multi-value-item"
-              v-bind="getItemByValue(value)"
+              v-bind="value"
             >
               <span
                 class="ml-1 after:content-[','] last-of-type:after:content-none last-of-type:mr-2"
               >
-                {{ getItemTextByValue(value) }}
+                {{ getItemText(value) }}
               </span>
             </slot>
           </template>
@@ -55,7 +55,7 @@
           (!autocomplete || !isPopperVisible) && selectedItem !== undefined
         "
       >
-        {{ getItemTextByValue(selectedItem) }}
+        {{ getItemText(selectedItem) }}
       </span>
     </template>
   </v-input>
@@ -359,17 +359,17 @@ let itemsPagination = computed(() => {
 
 let isSelected = (item) => {
   if (props.multiValue) {
-    let value = getItemValue(item);
+    // let value = getItemValue(item);
 
-    return selectedItems.value.indexOf(value) !== -1;
+    return selectedItems.value.indexOf(item) !== -1;
   }
 
-  return selectedItem.value === getItemValue(item);
+  return selectedItem.value === item;
 };
 
 let updateLocalModel = () => {
   if (props.multiValue) {
-    localModel.value = [...selectedItems.value];
+    localModel.value = selectedItems.value.map((i) => getItemValue(i));
     updatePopperInstance();
     return;
   }
@@ -379,17 +379,17 @@ let updateLocalModel = () => {
 
 let updateSelectedItems = (item) => {
   if (props.multiValue) {
-    let value = getItemValue(item);
+    // let value = getItemValue(item);
 
-    let index = selectedItems.value.indexOf(value);
+    let index = selectedItems.value.indexOf(item);
 
     if (index !== -1) {
       selectedItems.value.splice(index, 1);
     } else {
-      selectedItems.value.push(value);
+      selectedItems.value.push(item);
     }
   } else {
-    selectedItem.value = getItemValue(item);
+    selectedItem.value = item;
   }
 
   updateLocalModel();
@@ -416,18 +416,24 @@ watch(
   localModel,
   (value) => {
     if (props.multiValue) {
-      selectedItems.value = value.filter((selectedValue) => {
-        let item = props.items.find((i) => {
-          return selectedValue === getItemValue(i);
-        });
-        return getItemValue(item);
+      selectedItems.value = value.map((selectedValue) => {
+        return (
+          props.items.find((i) => {
+            return selectedValue === getItemValue(i);
+          }) ||
+          selectedItems.value.find((i) => {
+            return selectedValue === getItemValue(i);
+          })
+        );
       });
 
       updatePopperInstance();
 
       return;
     }
-    selectedItem.value = getItemValue(getItemByValue(value));
+
+    // single value select
+    selectedItem.value = getItemByValue(value);
   },
   { immediate: true, deep: true }
 );

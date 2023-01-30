@@ -16,6 +16,10 @@ let components = [
     name: "button",
   },
   {
+    label: "Chip",
+    name: "chip",
+  },
+  {
     label: "Card",
     name: "card",
   },

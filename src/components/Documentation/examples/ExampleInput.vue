@@ -3,8 +3,6 @@
     <v-input
       v-model="example.model"
       v-bind="example"
-      multi-value="text"
-      :multi-value-items="['test', 'test']"
       icon="b-exclamation-circle"
       placeholder="Type something..."
       @click:clear-button="handleClickClear"

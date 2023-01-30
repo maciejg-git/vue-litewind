@@ -18,15 +18,17 @@ let addFormInput = (input) => {
 let validate = () => {
   inputs.forEach((i) => i.formValidate());
 
-  valid.value = inputs.every((i) => i.status.value.valid || i.status.value.optional);
+  valid.value = inputs.every((i) => {
+    return i.status.value.valid || i.status.value.optional;
+  });
 
-  return valid.value
+  return valid.value;
 };
 
 let reset = () => {
-  inputs.forEach((i) => i.reset())
-  valid.value = false
-}
+  inputs.forEach((i) => i.reset());
+  valid.value = false;
+};
 
 provide("form", { addFormInput });
 
