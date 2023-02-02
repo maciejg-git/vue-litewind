@@ -86,7 +86,7 @@
           :key="item[primaryKey] || index"
         >
           <tr
-            :class="[...classes.row.value]"
+            :class="classes.row.value"
             @click="handleRowClick(index)"
           >
             <template v-for="k in definition">

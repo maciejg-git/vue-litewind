@@ -19,6 +19,7 @@
     @keydown="handleKeydown"
     @click:indicator="handleClickIndicator"
     @click:clear-button="handleClickClearButton"
+    role="combobox"
   >
     <template
       v-for="(name, slot) of $slots"
@@ -77,6 +78,7 @@
           v-detect-scroll-bottom="handleScrollBottom"
           @vue:before-update="resetItemsRef"
           @mousedown.prevent
+          role="listbox"
         >
           <div
             v-if="!itemsPagination.length && !isLoading"
@@ -313,10 +315,6 @@ let getItemValue = (item) => {
   return item[props.itemValue] ?? item;
 };
 
-let getItemTextByValue = (value) => {
-  return getItemText(getItemByValue(value));
-};
-
 let getItemByValue = (value) => {
   return props.items.find((v) => {
     return getItemValue(v) === value;
@@ -411,6 +409,7 @@ let clearInput = () => {
 };
 
 // update selected items after model value change
+// FIXME
 
 watch(
   localModel,
@@ -432,7 +431,6 @@ watch(
       return;
     }
 
-    // single value select
     selectedItem.value = getItemByValue(value);
   },
   { immediate: true, deep: true }

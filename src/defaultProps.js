@@ -5,7 +5,7 @@ export let defaultProps = (component, prop, def) => {
   return (props) => {
     let name = props.name || component
 
-    let componentProps = globalOptions.componentProps[name]
+    let componentProps = globalOptions.componentProps && globalOptions.componentProps[name]
 
     if (componentProps && componentProps[prop]) {
       if (isFunction(componentProps[prop])) {
