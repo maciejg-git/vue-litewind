@@ -17,11 +17,24 @@
     </p>
 
     <p>
-      Configure Tailwind: add vue-wind to content so tailwind can generate classes used by components internally, add dark mode option, extend color definitions:
+      Configure Tailwind: 
+      <ul class="list-disc list-inside ml-10 mt-4">
+        <li>
+          add vue-wind to content so tailwind can generate classes used by components internally, 
+        </li>
+        <li>
+          add dark mode option, 
+        </li>
+        <li>
+          extend color definitions:
+        </li>
+      </ul>
     </p>
 
     <v-code language="javascript">
-      {{ `const colors = require('tailwindcss/colors')
+      {{ `// tailwind.config.cjs
+
+const colors = require('tailwindcss/colors')
 
 module.exports = {
   content: [
@@ -110,7 +123,7 @@ app.use(componentPlugin, {
     </v-tabs>
 
     <p>
-      You can configure components globally by providing options in second argument of app.use:
+      <span class="font-bold">Optional</span>: you can configure components globally by providing options in second argument of app.use:
     </p>
     <p>
     <ul>
@@ -158,7 +171,7 @@ app.use(componentPlugin, {
       and following component props that allow selection of active classes:
         </li>
       </ul>
-      <ul>
+      <ul class="ml-10">
         <li class="my-2">
           <code class="code-text">base</code> - changes base name for styling. The default value is component <code class="code-text">'default'</code>. This can be useful to make new version of appearance with different set of variants.
         </li>

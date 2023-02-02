@@ -98,9 +98,9 @@ export default {
     let reference = ref([
       {
         prop: "v-model",
-        type: ["String"],
+        type: ["String", "Array"],
         default: "undefined",
-        description: "Autocomplete v-model",
+        description: "Select v-model. If items are objects model returns `value` property (or `array` of `values` if select is `multi-value`) instead of whole object",
       },
       {
         prop: "items",
