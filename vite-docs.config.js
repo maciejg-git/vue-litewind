@@ -7,4 +7,8 @@ export default defineConfig({
     outDir: "dist-docs",
     rollupOptions: {},
   },
+  test: {
+    globals: true,
+    environment: "happy-dom",
+  },
 });
