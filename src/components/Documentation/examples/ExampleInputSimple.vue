@@ -1,11 +1,12 @@
 <template>
-  <v-input
-    v-model="model"
-    type="text"
-    label="Username"
-    inline
-    placeholder="Type something..."
-  ></v-input>
+  <div class="w-1/2">
+    <v-input
+      v-model="model"
+      type="text"
+      label="Username"
+      placeholder="Type something..."
+    ></v-input>
+  </div>
 </template>
 
 <script>

@@ -24,6 +24,7 @@ export default function usePopper(
   let reference = computed({
     get() {
       return (
+        (localReference.value && localReference.value.reference) ||
         (localReference.value && localReference.value.$el) ||
         localReference.value
       );
@@ -38,7 +39,7 @@ export default function usePopper(
     isPopperVisible.value = true;
 
     // show v-show popper
-    if (popper.value) setPopper()
+    if (popper.value) setPopper();
   };
 
   let hidePopper = function () {
@@ -58,20 +59,20 @@ export default function usePopper(
     }
   });
 
-  let isLocked = ref(false)
+  let isLocked = ref(false);
 
   let lockPopper = () => {
-    isLocked.value = true
-  }
+    isLocked.value = true;
+  };
 
   // watch popper element and create new instance
   watch(popper, (value) => {
     if (value) {
-      setPopper()
-      return
+      setPopper();
+      return;
     }
     if (!isLocked.value) {
-      destroyPopperInstance()
+      destroyPopperInstance();
     }
   });
 
@@ -79,7 +80,7 @@ export default function usePopper(
     if (instance) {
       instance.destroy();
       instance = null;
-      isLocked.value = false
+      isLocked.value = false;
     }
   };
 
@@ -118,8 +119,8 @@ export default function usePopper(
   };
 
   let updatePopperInstance = () => {
-    if (instance) instance.update()
-  }
+    if (instance) instance.update();
+  };
 
   // optional virtual element as reference
   let getVirtualElement = ({ x, y }) => {

@@ -95,6 +95,7 @@
             @mousedown.prevent
             @click="handleClickItem(item, index)"
             tabindex="0"
+            role="option"
           >
             <slot
               name="item"
@@ -125,6 +126,7 @@ import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
 import usePopper from "./composition/use-popper.js";
 import vInput from "./vInput.vue";
+import vCard from "./vCard.vue";
 import { default as vDetectScrollBottom } from "../directives/detect-scroll-bottom";
 import {
   sharedProps,

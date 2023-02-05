@@ -1,25 +1,27 @@
 <template>
+  <label
+    v-if="label"
+    :for="id"
+    :class="classes.label.value"
+  >
+    <slot
+      name="label"
+      :label="label"
+    >
+      {{ label }}
+    </slot>
+  </label>
+
   <div
     :class="wrapperClasses"
     :style="{ width: width }"
     @mousedown="handleMousedown"
     @click="handleClickWrapper"
   >
-    <label
-      v-if="label"
-      :for="id"
-      :class="classes.label.value"
-    >
-      <slot
-        name="label"
-        :label="label"
-      >
-        {{ label }}
-      </slot>
-    </label>
     <div
       ref="wrapperRef"
       :class="getInputClasses"
+      :role="role"
     >
       <slot name="icon">
         <div
@@ -90,24 +92,25 @@
         </button>
       </div>
     </div>
-    <v-form-text
-      v-if="!noMessages"
-      :messages="messages"
-      :state="state"
-      :single-line-message="singleLineMessage"
-      v-bind="formText"
-    >
-      <template
-        v-for="(name, slot) of $slots"
-        #[slot]="slotProps"
-      >
-        <slot
-          :name="slot"
-          v-bind="slotProps"
-        ></slot>
-      </template>
-    </v-form-text>
   </div>
+
+  <v-form-text
+    v-if="!noMessages"
+    :messages="messages"
+    :state="state"
+    :single-line-message="singleLineMessage"
+    v-bind="formText"
+  >
+    <template
+      v-for="(name, slot) of $slots"
+      #[slot]="slotProps"
+    >
+      <slot
+        :name="slot"
+        v-bind="slotProps"
+      ></slot>
+    </template>
+  </v-form-text>
 </template>
 
 <script>
@@ -126,6 +129,7 @@ import vFormText from "./vFormText.vue";
 import vChevron from "./vChevron.vue";
 import vCloseButton from "./vCloseButton.vue";
 import vSpinner from "./vSpinner.vue";
+import vIcon from "./vIcon.vue";
 import {
   sharedProps,
   sharedStyleProps,
@@ -229,6 +233,10 @@ const props = defineProps({
     default: false,
   },
   ...sharedStyleProps("input"),
+  role: {
+    type: String,
+    default: undefined,
+  }
 });
 
 const emit = defineEmits([
@@ -260,9 +268,9 @@ let getInputClasses = computed(() => {
   return [
     "tw-form-input-reset flex items-center",
     classes.input.value,
-    state.value === 'valid' && states.input.value.valid,
-    state.value === 'invalid' && states.input.value.invalid,
-    (attrs.disabled === "" || attrs.disabled === true) && "disabled"
+    state.value === "valid" && states.input.value.valid,
+    state.value === "invalid" && states.input.value.invalid,
+    (attrs.disabled === "" || attrs.disabled === true) && "disabled",
   ];
 });
 
@@ -287,9 +295,9 @@ let blur = () => inputRef.value.blur();
 
 let selectAll = () => {
   inputRef.value.setSelectionRange(0, localModel.value.length);
-}
+};
 
-let isFocused = ref(false)
+let isFocused = ref(false);
 
 let localModel = useLocalModel(props, emit);
 
@@ -302,12 +310,12 @@ let emitValidationStatus = (status, state, messages) => {
 };
 
 let resetInput = () => {
-  localModel.value = ""
-}
+  localModel.value = "";
+};
 
 let externalState = toRef(props, "state");
 
-let externalModel = toRef(props, "externalModel")
+let externalModel = toRef(props, "externalModel");
 
 let { rules, validateOn, validateMode } = props;
 
@@ -317,7 +325,7 @@ let { status, state, messages, touch, formValidate, reset } = useValidation(
   externalState,
   emitValidationStatus,
   resetInput,
-  { 
+  {
     validateOn,
     validateMode,
   }
@@ -334,14 +342,14 @@ if (addFormInput) {
 let handleBlur = () => {
   nextTick(() => {
     touch();
-  })
+  });
 
-  isFocused.value = false
+  isFocused.value = false;
 };
 
 let handleFocus = () => {
-  isFocused.value = true
-}
+  isFocused.value = true;
+};
 
 let handleClickWrapper = () => {
   inputRef.value.focus();
@@ -373,7 +381,13 @@ let handleClickClearButton = () => {
   }
 };
 
-defineExpose({ focus, blur, selectAll, isFocused });
+defineExpose({
+  focus,
+  blur,
+  selectAll,
+  isFocused,
+  reference: wrapperRef,
+});
 </script>
 
 <style></style>
