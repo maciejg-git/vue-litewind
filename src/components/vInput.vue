@@ -28,6 +28,7 @@
           v-if="icon"
           @click="handleClickIcon"
           class="mr-2"
+          role="button"
         >
           <v-icon
             :name="icon"
@@ -95,11 +96,12 @@
   </div>
 
   <v-form-text
-    v-if="!noMessages"
+    v-if="!noMessages && Object.keys(messages).length"
     :messages="messages"
     :state="state"
     :single-line-message="singleLineMessage"
     v-bind="formText"
+    data-testid="error-messages"
   >
     <template
       v-for="(name, slot) of $slots"

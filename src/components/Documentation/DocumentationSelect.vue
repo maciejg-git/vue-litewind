@@ -129,13 +129,6 @@ export default {
           "Allows selecting multiple values",
       },
       {
-        prop: "multi-value-display",
-        type: ["String"],
-        default: "text",
-        description:
-          "This props allows to choose how to display values in `multi-value` mode. Valid values are 'text' or 'chips'",
-      },
-      {
         prop: "autocomplete",
         type: ["Boolean"],
         default: "false",

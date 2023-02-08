@@ -3,6 +3,7 @@
     <div
       v-if="isStatic() || modelValue"
       :class="classes.alert.value"
+      role="alert"
     >
       <div class="flex items-center">
         <div class="self-start">
@@ -30,6 +31,7 @@
 import { watch } from "vue";
 import useStyles from "./composition/use-styles";
 import vCloseButton from "./vCloseButton.vue";
+import vIcon from "./vIcon.vue";
 import BCheckLg from "./icons/check-lg";
 import BExclamationCircle from "./icons/exclamation-circle";
 import BInfoCircle from "./icons/info-circle";

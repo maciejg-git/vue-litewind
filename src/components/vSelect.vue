@@ -156,10 +156,6 @@ let props = defineProps({
     type: Number,
     default: 9999,
   },
-  multiValueDisplay: {
-    type: String,
-    default: "text",
-  },
   isLoading: {
     type: Boolean,
     default: false,
@@ -330,7 +326,7 @@ let itemsFiltered = computed(() => {
     return props.items;
   }
 
-  if (props.filterKeys.length) {
+  if (Array.isArray(props.filterKeys) && props.filterKeys.length) {
     return props.items.filter((item) => {
       return props.filterKeys.some((key) => {
         let i = getItemText(item, key);

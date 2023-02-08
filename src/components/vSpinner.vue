@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes.container.value">
+  <div :class="classes.container.value" data-testid="spinner">
     <div v-if="icon">
       <v-icon
         :class="classes.spinner.value"
