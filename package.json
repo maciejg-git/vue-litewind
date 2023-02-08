@@ -16,7 +16,7 @@
   },
   "scripts": {
     "dev": "vite --config vite-docs.config.js",
-    "test": "vitest --config vite-lib.config.js",
+    "test": "vitest --config vite-lib.config.js --reporter verbose",
     "build-docs": "vite build --config vite-docs.config.js",
     "build-lib": "vite build --config vite-lib.config.js",
     "serve": "vite preview"
@@ -25,6 +25,7 @@
   "devDependencies": {
     "@popperjs/core": "^2.11.6",
     "@tailwindcss/forms": "^0.5.2",
+    "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/user-event": "^14.4.3",
     "@testing-library/vue": "^6.6.1",
     "@vitejs/plugin-vue": "^3.2.0",
