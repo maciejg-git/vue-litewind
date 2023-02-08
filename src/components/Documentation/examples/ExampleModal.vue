@@ -57,6 +57,7 @@
             label="no-primary-button"
             id="no-primary-button"
             v-model="example.noPrimaryButton"
+            :inline="false"
           ></v-select-prop>
         </div>
         <div class="mb-2">
@@ -64,6 +65,7 @@
             label="no-secondary-button"
             id="no-secondary-button"
             v-model="example.noSecondaryButton"
+            :inline="false"
           ></v-select-prop>
         </div>
         <div class="mb-2">
@@ -87,6 +89,7 @@
             label="primary-button-close"
             id="primary-button-close"
             v-model="example.primaryButtonClose"
+            :inline="false"
           ></v-select-prop>
         </div>
         <div class="mb-2">
@@ -94,6 +97,7 @@
             label="secondary-button-close"
             id="secondary-button-close"
             v-model="example.secondaryButtonClose"
+            :inline="false"
           ></v-select-prop>
         </div>
         <div class="mb-2">
@@ -102,6 +106,7 @@
             id="justify-buttons"
             v-model="example.justifyButtons"
             :items="['start', 'end', 'center', 'between', 'around', 'evenly']"
+            :inline="false"
           ></v-select>
         </div>
       </div>
@@ -111,6 +116,7 @@
             label="no-close-button"
             id="no-close-button"
             v-model="example.noCloseButton"
+            :inline="false"
           ></v-select-prop>
         </div>
         <div class="mb-2">
@@ -118,6 +124,7 @@
             label="static-backdrop"
             id="static-backdrop"
             v-model="example.staticBackdrop"
+            :inline="false"
           ></v-select-prop>
         </div>
         <div class="mb-2">
@@ -125,6 +132,7 @@
             label="no-header"
             id="no-header"
             v-model="example.noHeader"
+            :inline="false"
           ></v-select-prop>
         </div>
         <div class="mb-2">
@@ -132,6 +140,7 @@
             label="no-footer"
             id="no-footer"
             v-model="example.noFooter"
+            :inline="false"
           ></v-select-prop>
         </div>
         <div class="mb-2">
@@ -140,6 +149,7 @@
             id="position-modal"
             v-model="example.position"
             :items="['top', 'center', 'bottom']"
+            :inline="false"
           ></v-select>
         </div>
         <div class="mb-2">
@@ -148,6 +158,7 @@
             id="size-modal"
             v-model="example.size"
             :items="['sm', 'md', 'lg', 'xl', 'fit']"
+            :inline="false"
           ></v-select>
         </div>
       </div>

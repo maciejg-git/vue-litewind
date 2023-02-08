@@ -6,6 +6,7 @@
       icon="b-exclamation-circle"
       placeholder="Type something..."
       @click:clear-button="handleClickClear"
+      @click:icon="handleClickIcon"
     ></v-input>
   </div>
   <!-- CUT START -->
@@ -138,10 +139,16 @@ export default {
       events.value.unshift({ ev: "click:clear-button", data: ev });
     };
 
+    let handleClickIcon = () => {
+      example.model = "";
+      events.value.unshift({ ev: "click:icon" });
+    };
+
     return {
       example,
       events,
       handleClickClear,
+      handleClickIcon,
     };
   },
 };

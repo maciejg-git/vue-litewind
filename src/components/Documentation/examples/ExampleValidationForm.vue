@@ -5,33 +5,39 @@
         ref="form"
         class="flex flex-col gap-y-32"
       >
-        <v-input
-          v-model="username"
-          type="text"
-          label="Username"
-          :rules="usernameRules"
-          block
-          class="w-full"
-          @update:status="(status) => (usernameStatus = status)"
-        ></v-input>
+        <div>
+          <v-input
+            v-model="username"
+            type="text"
+            label="Username"
+            :rules="usernameRules"
+            block
+            class="w-full"
+            @update:status="(status) => (usernameStatus = status)"
+          ></v-input>
+        </div>
 
-        <v-input
-          v-model="password"
-          type="text"
-          label="Password"
-          :rules="passwordRules"
-          block
-          class="w-full"
-          @update:status="(status) => (passwordStatus = status)"
-        ></v-input>
+        <div>
+          <v-input
+            v-model="password"
+            type="text"
+            label="Password"
+            :rules="passwordRules"
+            block
+            class="w-full"
+            @update:status="(status) => (passwordStatus = status)"
+          ></v-input>
+        </div>
 
-        <v-textarea
-          v-model="text"
-          :rules="textRules"
-          placeholder="Some text"
-          rows="3"
-          @update:status="(status) => (textStatus = status)"
-        ></v-textarea>
+        <div>
+          <v-textarea
+            v-model="text"
+            :rules="textRules"
+            placeholder="Some text"
+            rows="3"
+            @update:status="(status) => (textStatus = status)"
+          ></v-textarea>
+        </div>
       </v-form>
 
       <div class="self-end mt-20">
