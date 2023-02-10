@@ -1,7 +1,16 @@
 <template>
-  <transition :name="transition" @beforeLeave="beforeLeaveTransition">
-    <div v-show="tab.isActive.value">
-      <slot v-if="false" name="name"></slot>
+  <transition
+    :name="transition"
+    @beforeLeave="beforeLeaveTransition"
+  >
+    <div
+      v-show="tab.isActive.value"
+      role="tabpanel"
+    >
+      <slot
+        v-if="false"
+        name="name"
+      ></slot>
       <slot name="default"></slot>
     </div>
   </transition>

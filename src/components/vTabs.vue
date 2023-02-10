@@ -1,10 +1,14 @@
 <template>
   <div>
-    <ul :class="classes.tabBar.value">
+    <ul
+      :class="classes.tabBar.value"
+      role="tablist"
+    >
       <li
         v-for="(tab, i) in tabs"
         :key="i"
         :class="fill ? 'flex flex-auto' : ''"
+        role="tab"
       >
         <a
           href=""

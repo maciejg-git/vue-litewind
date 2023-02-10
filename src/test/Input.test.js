@@ -46,10 +46,31 @@ test("renders loader", async () => {
   expect(getByTestId("spinner")).toBeInTheDocument();
 });
 
-test("renders icon", async () => {
+test("renders icon (props)", async () => {
   const { container } = render(Input, {
     props: {
       icon: ExclamationCircle,
+    },
+  });
+
+  expect(container.querySelector("svg")).toBeInTheDocument();
+});
+
+test("renders icon (slot)", async () => {
+  const { container } = render(Input, {
+    props: {},
+    slots: {
+      icon: ExclamationCircle,
+    }
+  });
+
+  expect(container.querySelector("svg")).toBeInTheDocument();
+});
+
+test("renders clearable input", async () => {
+  const { container } = render(Input, {
+    props: {
+      clearable: true,
     },
   });
 

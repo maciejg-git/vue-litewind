@@ -1,9 +1,7 @@
 <template>
   <v-tabs
     v-bind="example"
-    @input:changed-tab="
-      events.unshift({ ev: 'input:changed-tab', data: $event })
-    "
+    @input:changed-tab="handleChangeTab"
   >
     <v-tab name="Tab" class="p-4">
       {{ text[0] }}
@@ -111,12 +109,17 @@ export default {
 
     let events = ref([]);
 
+    let handleChangeTab = (ev) => {
+      events.value.unshift({ ev: 'input:changed-tab', data: ev })
+    }
+
     return {
       example,
       text,
       events,
       tabs,
       addTab,
+      handleChangeTab,
     };
   },
 };
