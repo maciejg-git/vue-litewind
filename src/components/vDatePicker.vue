@@ -40,6 +40,7 @@
       <div
         v-for="day in dayNames"
         :class="classes.weekday.value"
+        data-testid="weekday"
       >
         {{ day }}
       </div>
@@ -73,6 +74,7 @@
               :class="getDayClass(d.date)"
               @click="handleDayClick(d.date, index)"
               @mouseenter="handleMouseOverDay(d)"
+              :data-testid="isToday(d.date) ? 'today' : null"
             >
               <slot
                 name="day"

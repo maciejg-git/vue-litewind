@@ -1,4 +1,4 @@
-import { render, fireEvent } from "@testing-library/vue";
+import { render, fireEvent, waitFor } from "@testing-library/vue";
 import "@testing-library/jest-dom"
 import Input from "../components/vInput.vue";
 import ExclamationCircle from "./exclamation-circle"
@@ -88,4 +88,20 @@ test("emits click:icon", async () => {
   await fireEvent.click(button)
 
   expect(emitted()).toHaveProperty("click:icon");
+});
+
+test("clears input", async () => {
+  const { getByRole } = render(Input, {
+    props: {
+      clearable: true,
+      modelValue: "a",
+    },
+  });
+
+  let button = getByRole("button")
+  await fireEvent.click(button)
+
+  waitFor(() => {
+    expect(getByRole("textbox")).toHaveDisplayValue("")
+  })
 });

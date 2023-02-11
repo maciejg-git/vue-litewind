@@ -22,6 +22,7 @@
       ref="wrapperRef"
       :class="getInputClasses"
       :role="role"
+      data-testid="wrapper"
     >
       <slot name="icon">
         <div

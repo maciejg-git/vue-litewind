@@ -148,13 +148,13 @@ export default function useValidation(
     return state.value;
   };
 
-  watch(
-    externalState,
-    () => {
-      state.value = updateState();
-    },
-    { immediate: true }
-  );
+  // watch(
+  //   externalState,
+  //   () => {
+  //     state.value = updateState();
+  //   },
+  //   { immediate: true }
+  // );
 
   // reset
 

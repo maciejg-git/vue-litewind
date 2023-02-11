@@ -1,4 +1,5 @@
 import { render, fireEvent } from "@testing-library/vue";
+import "@testing-library/jest-dom"
 import DatePicker from "../components/vDatePicker.vue";
 
 let date = new Date()
@@ -15,6 +16,16 @@ date = new Date()
 
 let prevMonth = new Date(date.setMonth(date.getMonth() - 1)).toDateString().split(" ")
 let prevMonthTest = `${prevMonth[1]} ${prevMonth[3]}`
+
+date = new Date()
+
+let nextYear = new Date(date.setFullYear(date.getFullYear() + 1)).toDateString().split(" ")
+let nextYearTest = `${nextYear[1]} ${nextYear[3]}`
+
+date = new Date()
+
+let prevYear = new Date(date.setFullYear(date.getFullYear() - 1)).toDateString().split(" ")
+let prevYearTest = `${prevYear[1]} ${prevYear[3]}`
 
 test("renders component", () => {
   const { getByRole, getByText } = render(DatePicker, {
@@ -40,7 +51,7 @@ test("previous month", async () => {
   await findByText(prevMonthTest);
 });
 
-test("previous month", async () => {
+test("next month", async () => {
   const { getByRole, findByText } = render(DatePicker, {
     props: {},
   });
@@ -50,17 +61,27 @@ test("previous month", async () => {
   await findByText(nextMonthTest);
 });
 
+test("previous year", async () => {
+  const { getByRole, findByText } = render(DatePicker, {
+    props: {},
+  });
+
+  const button = getByRole("button", { name: "Previous year" });
+  await fireEvent.click(button);
+  await findByText(prevYearTest);
+});
+
 test("next year", async () => {
-  const { getByRole } = render(DatePicker, {
+  const { getByRole, findByText } = render(DatePicker, {
     props: {},
   });
 
   const button = getByRole("button", { name: "Next year" });
   await fireEvent.click(button);
-  // await findByText("Apr 2023");
+  await findByText(nextYearTest);
 });
 
-test("renders buttons", async () => {
+test("renders buttons (buttons prop)", async () => {
   const { getByRole } = render(DatePicker, {
     props: {
       buttons: true,
@@ -69,6 +90,19 @@ test("renders buttons", async () => {
 
   getByRole("button", { name: "OK" });
   getByRole("button", { name: "Cancel" });
+});
+
+test("renders buttons (primary-button-label, secondary-button-label props)", async () => {
+  const { getByRole } = render(DatePicker, {
+    props: {
+      buttons: true,
+      primaryButtonLabel: "primary button",
+      secondaryButtonLabel: "secondary button",
+    },
+  });
+
+  getByRole("button", { name: "primary button" });
+  getByRole("button", { name: "secondary button" });
 });
 
 test("renders localized names", async () => {
@@ -80,4 +114,30 @@ test("renders localized names", async () => {
 
   getByText("pon.")
   getByText("wt.")
+});
+
+test("week starts on monday (monday-first-weekday prop)", async () => {
+  const { getAllByTestId, rerender } = render(DatePicker, {
+    props: {
+      mondayFirstWeekday: false,
+    },
+  });
+
+  let week = getAllByTestId("weekday")
+  expect(week[0]).toHaveTextContent("Sun")
+
+  await rerender({
+    mondayFirstWeekday: true,
+  })
+
+  week = getAllByTestId("weekday")
+  expect(week[0]).toHaveTextContent("Mon")
+});
+
+test("today is rendered", async () => {
+  const { getByTestId } = render(DatePicker, {
+    props: {},
+  });
+
+  expect(getByTestId("today")).toBeInTheDocument()
 });
