@@ -35,13 +35,12 @@ let { status, state, messages, touch, formValidate, reset } = useValidation(
   null,
   {
     validateOn: "form",
-    validateMode,
   }
 );
 
-let { addInput } = inject("form", {});
+let { addFormInput } = inject("form", {});
 
-if (addInput) addInput({ status, formValidate, reset });
+if (addFormInput) addFormInput({ status, formValidate, reset });
 
 let updateValue = (newValue) => {
   value.value = newValue

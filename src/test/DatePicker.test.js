@@ -1,11 +1,19 @@
-import { render, fireEvent } from "@testing-library/vue";
+import { render, fireEvent, prettyDOM } from "@testing-library/vue";
 import "@testing-library/jest-dom"
 import DatePicker from "../components/vDatePicker.vue";
 
+let pad = (d) => (d < 10 ? "0" + d : d);
+
 let date = new Date()
+date.setHours(0, 0, 0, 0)
 
 let today = date.toDateString().split(" ")
 let todayTest = `${date[1]} ${date[3]}`
+let todayArray = [date.getFullYear(), pad(date.getMonth() + 1), pad(date.getDate())]
+
+let exampleDate = [todayArray[0], todayArray[1], "01"].join("-")
+let exampleDateFrom = [todayArray[0], todayArray[1], "01"].join("-")
+let exampleDateTo = [todayArray[0], todayArray[1], "18"].join("-")
 
 date = new Date()
 
@@ -140,4 +148,56 @@ test("today is rendered", async () => {
   });
 
   expect(getByTestId("today")).toBeInTheDocument()
+});
+
+test("update v-model after selecting date (single mode)", async () => {
+  const { getByRole, emitted } = render(DatePicker, {
+    props: {},
+  });
+  
+  fireEvent.click(getByRole("button", { name: "1" }))
+
+  expect(emitted()).toHaveProperty("update:modelValue")
+  let modelValue = emitted('update:modelValue')
+  expect(modelValue[0][0]).toMatch(exampleDate)
+});
+
+test("update v-model prop (single mode)", async () => {
+  const { getByRole, getByText, emitted } = render(DatePicker, {
+    props: {
+      modelValue: exampleDate,
+    },
+  });
+  
+  expect(getByRole("button", { name: "1" }).className).toMatch(/selected/)
+});
+
+test("update v-model after selecting date (range mode)", async () => {
+  const { getByRole, emitted } = render(DatePicker, {
+    props: {
+      range: true,
+    },
+  });
+  
+  fireEvent.click(getByRole("button", { name: "1" }))
+  fireEvent.click(getByRole("button", { name: "18" }))
+
+  expect(emitted()).toHaveProperty("update:modelValue")
+  let modelValue = emitted('update:modelValue')
+  expect(Array.isArray(modelValue[0][0])).toBe(true)
+  expect(modelValue[0][0][0]).toMatch(exampleDateFrom)
+  expect(modelValue[0][0][1]).toMatch(exampleDateTo)
+});
+
+test("update v-model prop (range mode mode)", async () => {
+  const { getByRole } = render(DatePicker, {
+    props: {
+      modelValue: [exampleDateFrom, exampleDateTo],
+      range: true,
+    },
+  });
+  
+  Array(18).fill().map((v,i)=> i + 1).forEach((day) => {
+    expect(getByRole("button", { name: day }).className).toMatch(/selected/)
+  })
 });

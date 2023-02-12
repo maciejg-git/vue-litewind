@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul role="tree">
     <v-tree-node
       v-for="i in items"
       :key="i.key"

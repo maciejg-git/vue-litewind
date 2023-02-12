@@ -2,6 +2,8 @@
   <li
     :class="itemClasses"
     v-if="!isFilteredOut"
+    role="treeitem"
+    :aria-expanded="isOpen ? 'true' : 'false'"
   >
     <slot
       name="item"
@@ -78,6 +80,7 @@
             'cursor-pointer': isFolder && openOnClick,
             disabled: isDisabled,
           }"
+          role="button"
         >
           <slot
             name="name"
@@ -100,6 +103,7 @@
       <ul
         v-show="isOpen"
         v-if="isFolder"
+        role="group"
       >
         <v-tree-node
           v-for="i in items[itemChildren]"
@@ -140,6 +144,7 @@ import { ref, computed, toRef, inject, onBeforeUpdate } from "vue";
 import vChevron from "./vChevron.vue";
 import vIcon from "./vIcon.vue";
 import vCheckboxSimple from "./vCheckboxSimple.vue";
+import vButton from "./vButton.vue";
 
 const props = defineProps({
   items: {
