@@ -1,6 +1,7 @@
 import { render, fireEvent, prettyDOM, waitFor } from "@testing-library/vue";
 import "@testing-library/jest-dom";
 import Tree from "../components/vTree.vue";
+import ExclamationCircle from "./exclamation-circle"
 
 const items = [
   {
@@ -104,6 +105,22 @@ test("renders checkboxes (show-checkboxes prop)", async () => {
   });
 
   expect(queryByRole("tree")).toBeInTheDocument()
+  await waitFor(() => {
+    expect(getAllByRole("checkbox", { hidden: true }).length).toBe(17)
+  })
+});
+
+// FIXME
+test("renders placeholder icons (placeholder-item-icon prop)", async () => {
+  const { getAllByRole, queryByRole,debug } = render(Tree, {
+    props: {
+      items,
+      placeholderItemIcon: ExclamationCircle,
+    },
+  });
+
+  expect(queryByRole("tree")).toBeInTheDocument()
+  debug()
   await waitFor(() => {
     expect(getAllByRole("checkbox", { hidden: true }).length).toBe(17)
   })

@@ -8,7 +8,7 @@ test("renders component", () => {
     props: {},
   });
 
-  getByRole("textbox");
+  expect(getByRole("textbox")).toBeInTheDocument();
 });
 
 test("updates v-model value", async () => {
@@ -91,7 +91,7 @@ test("emits click:icon", async () => {
 });
 
 test("clears input", async () => {
-  const { getByRole } = render(Input, {
+  const { getByRole, emitted } = render(Input, {
     props: {
       clearable: true,
       modelValue: "a",
@@ -104,4 +104,5 @@ test("clears input", async () => {
   waitFor(() => {
     expect(getByRole("textbox")).toHaveDisplayValue("")
   })
+  expect(emitted('update:modelValue')[0][0]).toBe("")
 });
