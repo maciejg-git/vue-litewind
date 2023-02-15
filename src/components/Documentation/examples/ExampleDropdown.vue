@@ -13,80 +13,126 @@
         Dropdown menu
       </v-button-chevron>
     </template>
-    <v-card width="320px" style-card="menu shadow">
-      <v-dropdown-menu-item tag="button">
-        Menu item
-      </v-dropdown-menu-item>
-      <v-dropdown-menu-item tag="button">
-        Second menu item
-      </v-dropdown-menu-item>
-      <v-dropdown-header>
-        Menu header
-      </v-dropdown-header>
-      <v-dropdown-menu-item active tag="button">
+    <v-card
+      width="320px"
+      style-card="menu shadow"
+    >
+      <v-dropdown-menu-item tag="button">Menu item</v-dropdown-menu-item>
+      <v-dropdown-menu-item tag="button">Second menu item</v-dropdown-menu-item>
+      <v-dropdown-header>Menu header</v-dropdown-header>
+      <v-dropdown-menu-item
+        active
+        tag="button"
+      >
         Active menu item
       </v-dropdown-menu-item>
       <v-dropdown-menu-item tag="button">
         Another menu item
       </v-dropdown-menu-item>
       <v-divider />
-      <v-dropdown-menu-item disabled tag="button">
+      <v-dropdown-menu-item
+        disabled
+        tag="button"
+      >
         Disabled menu item
       </v-dropdown-menu-item>
       <v-dropdown-menu-item tag="button">Menu item</v-dropdown-menu-item>
     </v-card>
   </v-dropdown>
-<!-- CUT START -->
-  <v-tabs base="material" class="mt-10">
+  <!-- CUT START -->
+  <v-tabs
+    base="material"
+    class="mt-10"
+  >
     <v-tab name="Props">
       <div class="flex flex-col gap-y-2 mt-5">
         <div>
           <label for="placement">placement:</label>
-          <v-select id="placement" v-model="example.placement" :items="['auto','auto-start','auto-end','top','top-start','top-end','bottom','bottom-start','bottom-end','right','right-start','right-end','left','left-start','left-end']">
-          </v-select>
+          <v-select
+            id="placement"
+            v-model="example.placement"
+            :items="[
+              'auto',
+              'auto-start',
+              'auto-end',
+              'top',
+              'top-start',
+              'top-end',
+              'bottom',
+              'bottom-start',
+              'bottom-end',
+              'right',
+              'right-start',
+              'right-end',
+              'left',
+              'left-start',
+              'left-end',
+            ]"
+          ></v-select>
         </div>
         <div>
           <label for="trigger">trigger:</label>
-          <v-select id="trigger" v-model="example.trigger" :items="[
-            'click', 'focus', 'hover'
-            ]">
-          </v-select>
+          <v-select
+            id="trigger"
+            v-model="example.trigger"
+            :items="['click', 'focus', 'hover']"
+          ></v-select>
         </div>
         <div>
           <label for="offsetX">offsetX:</label>
-          <v-input type="text" id="offsetX" inline v-model.number="example.offsetX"></v-input>
+          <v-input
+            type="text"
+            id="offsetX"
+            inline
+            v-model.number="example.offsetX"
+          ></v-input>
         </div>
         <div>
           <label for="offsetY">offsetY:</label>
-          <v-input type="text" id="offsetY" inline v-model.number="example.offsetY"></v-input>
+          <v-input
+            type="text"
+            id="offsetY"
+            inline
+            v-model.number="example.offsetY"
+          ></v-input>
         </div>
         <div>
           <label for="no-flip">no-flip:</label>
-          <v-select-prop id="no-flip" v-model="example.noFlip">
-          </v-select-prop>
+          <v-select-prop
+            id="no-flip"
+            v-model="example.noFlip"
+          ></v-select-prop>
         </div>
         <div>
           <label for="auto-close-menu">auto-close-menu:</label>
-          <v-select-prop id="auto-close-menu" v-model="example.autoCloseMenu">
-          </v-select-prop>
+          <v-select-prop
+            id="auto-close-menu"
+            v-model="example.autoCloseMenu"
+          ></v-select-prop>
         </div>
         <div>
           <label for="transition">transition:</label>
-          <v-select id="transition" v-model="example.transition" :items="[
-            'fade',
-            {
-              text: 'empty string',
-              value: '',
-            }
-            ]">
-          </v-select>
+          <v-select
+            id="transition"
+            v-model="example.transition"
+            :items="[
+              'fade',
+              {
+                text: 'empty string',
+                value: '',
+              },
+            ]"
+          ></v-select>
         </div>
       </div>
     </v-tab>
     <v-tab name="Events">
       <template #name>
         Events
-        <v-badge style-badge="secondary tiny" class="ml-2">
+        <v-badge
+          style-badge="secondary tiny"
+          class="ml-2"
+        >
           {{ events.length }}
         </v-badge>
       </template>
@@ -111,8 +157,8 @@ export default {
       trigger: "click",
     });
 
-    let dropdownButton = ref(true)
-    let dropdown = ref(true)
+    let dropdownButton = ref(true);
+    let dropdown = ref(true);
 
     let events = ref([]);
 

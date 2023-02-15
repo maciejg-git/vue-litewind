@@ -34,6 +34,7 @@ import { ref, watch, inject, useAttrs } from "vue";
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
 import useUid from "./composition/use-uid";
+import useValidation from "./composition/use-validation"
 import {
   sharedProps,
   sharedStyleProps,
@@ -90,17 +91,31 @@ let getCheckBoxClasses = () => {
 
 let id = useUid("checkbox", attrs);
 
-let { value, updateValue, touch, state } = inject("checkbox-group", {
-  state: ref(""),
-});
-
-watch(
-  () => props.state,
-  (newState) => (state.value = newState),
-  { immediate: true }
-);
+let { value, updateValue } = inject("checkbox-group", {})
 
 let localModel = useLocalModel(props, emit, updateValue, value);
+
+let { rules } = props;
+
+let { status, state, messages, touch, formValidate, reset } = inject("checkbox-group-validation",
+  useValidation(
+  rules,
+  localModel,
+  null,
+  null,
+  null,
+  {
+    validateOn: "form",
+    validateMode: "silent",
+  }
+)
+);
+
+// watch(
+//   () => props.state,
+//   (newState) => (state.value = newState),
+//   { immediate: true }
+// );
 
 let handleBlur = () => {
   if (touch) touch();

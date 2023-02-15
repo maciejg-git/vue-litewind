@@ -102,12 +102,6 @@ let { classes, states } = useStyles("dropdown", props, {
   },
 });
 
-// watch model changes
-watch(
-  () => props.modelValue,
-  (value) => (value ? show() : hide())
-);
-
 // set up popper
 const { offsetX, offsetY, noFlip, placement, trigger } = toRefs(props);
 const {
@@ -161,6 +155,13 @@ let hide = () => {
 let { onTrigger } = useTrigger(trigger, show, hide);
 
 let referenceSlotProps = { reference, onTrigger, isOpen: isPopperVisible };
+
+// watch model changes
+watch(
+  () => props.modelValue,
+  (value) => (value ? show() : hide()),
+  { immediate: true }
+);
 
 // trigger by id
 

@@ -25,7 +25,7 @@ const emit = defineEmits([
 
 let value = ref(props.modelValue)
 
-let { rules, validateOn, validateMode } = props;
+let { rules } = props;
 
 let { status, state, messages, touch, formValidate, reset } = useValidation(
   rules,
@@ -35,8 +35,11 @@ let { status, state, messages, touch, formValidate, reset } = useValidation(
   null,
   {
     validateOn: "form",
+    validateMode: "silent",
   }
 );
+
+provide("checkbox-group-validation", { status, state, messages, touch, formValidate, reset });
 
 let { addFormInput } = inject("form", {});
 
@@ -47,7 +50,7 @@ let updateValue = (newValue) => {
   emit("update:modelValue", value.value)
 }
 
-provide("checkbox-group", { value, updateValue, touch, state });
+provide("checkbox-group", { value, updateValue });
 </script>
 
 <style scoped lang="postcss"></style>
