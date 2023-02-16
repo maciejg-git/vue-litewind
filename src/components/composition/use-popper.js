@@ -20,7 +20,7 @@ export default function usePopper(
   let popper = ref(null);
   let localReference = ref(null);
 
-  // reference can be element or template ref
+  // reference can be element, template ref or reference prop
   let reference = computed({
     get() {
       return (
@@ -38,7 +38,7 @@ export default function usePopper(
     if (isPopperVisible.value) return;
     isPopperVisible.value = true;
 
-    // show v-show popper
+    // show v-show popper, v-show popper would not trigger popper watch
     if (popper.value) setPopper();
   };
 
@@ -59,6 +59,7 @@ export default function usePopper(
     }
   });
 
+  // lock is used for component transitions
   let isLocked = ref(false);
 
   let lockPopper = () => {
@@ -122,7 +123,7 @@ export default function usePopper(
     if (instance) instance.update();
   };
 
-  // optional virtual element as reference
+  // optional virtual element can be used as reference
   let getVirtualElement = ({ x, y }) => {
     return () => ({
       width: 0,
@@ -138,7 +139,7 @@ export default function usePopper(
     getBoundingClientRect: getVirtualElement({ x: 0, y: 0 }),
   };
 
-  // call updateVirtualElement before showing or updating position of virtual popper
+  // call updateVirtualElement in your component before showing or updating position of virtual popper
   let updateVirtualElement = (value) => {
     virtualElement.getBoundingClientRect = getVirtualElement(value);
     if (instance) instance.update();

@@ -89,9 +89,7 @@ const props = defineProps({
 
 const emit = defineEmits(["state:opened", "state:closed", "update:modelValue"]);
 
-const attrs = useAttrs();
-
-const slots = useSlots();
+const [attrs, slots] = [useAttrs(), useSlots()]
 
 let { classes, states } = useStyles("dropdown", props, {
   item: {
@@ -140,7 +138,9 @@ let show = () => {
   }
 };
 
-let scheduleHide = () => setTimeout(hidePopper, 100);
+let scheduleHide = () => {
+  setTimeout(hidePopper, 100);
+}
 
 let hide = () => {
   if (!isPopperVisible.value) return;

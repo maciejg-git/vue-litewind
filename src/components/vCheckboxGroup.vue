@@ -25,14 +25,24 @@ const emit = defineEmits([
 
 let value = ref(props.modelValue)
 
+let emitValidationStatus = (status, state, messages) => {
+  emit("update:status", status.value);
+  emit("update:state", state.value);
+  emit("update:messages", messages.value);
+};
+
+let resetInput = () => {
+  localModel.value = [];
+};
+
 let { rules } = props;
 
 let { status, state, messages, touch, formValidate, reset } = useValidation(
   rules,
   value,
   null,
-  null,
-  null,
+  emitValidationStatus,
+  resetInput,
   {
     validateOn: "form",
     validateMode: "silent",
