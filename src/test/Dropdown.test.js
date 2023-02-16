@@ -1,5 +1,6 @@
-import { render, fireEvent, prettyDOM } from "@testing-library/vue";
+import { render, fireEvent, prettyDOM, waitFor } from "@testing-library/vue";
 import "@testing-library/jest-dom"
+import userEvent from "@testing-library/user-event"
 import Dropdown from "../components/vDropdown.vue";
 import DropdownMenuItem from "../components/vDropdownMenuItem.vue"
 import DropdownHeader from "../components/vDropdownHeader.vue"
@@ -40,7 +41,7 @@ test("renders component", async () => {
 });
 
 test("opens menu (v-model)", async () => {
-  const { getByRole, getByText } = render(Dropdown, {
+  const { getByText } = render(Dropdown, {
     props: {
       modelValue: true,
     },
@@ -52,3 +53,68 @@ test("opens menu (v-model)", async () => {
   expect(getByText("menu item2")).toBeInTheDocument()
   expect(getByText("menu item3")).toBeInTheDocument()
 });
+
+describe('should open on', () => {
+  test("click", async () => {
+    const { getByRole, getByText } = render(Dropdown, {
+      props: {
+        trigger: "click",
+      },
+      slots,
+      global,
+    });
+
+    let button = getByRole("button")
+    await fireEvent.click(button)
+    expect(getByText("menu item")).toBeInTheDocument()
+  });
+
+  test("focus (click)", async () => {
+    const { getByRole, getByText, queryByText } = render(Dropdown, {
+      props: {
+        trigger: "focus",
+      },
+      slots,
+      global,
+    });
+
+    let button = getByRole("button")
+    await userEvent.click(button)
+    expect(getByText("menu item")).toBeInTheDocument()
+    await userEvent.click(document.body)
+    expect(queryByText("menu item")).not.toBeInTheDocument()
+  });
+
+  test("focus (tab)", async () => {
+    const { getByText, queryByText } = render(Dropdown, {
+      props: {
+        trigger: "focus",
+      },
+      slots,
+      global,
+    });
+
+    await userEvent.tab()
+    expect(getByText("menu item")).toBeInTheDocument()
+    await userEvent.click(document.body)
+    expect(queryByText("menu item")).not.toBeInTheDocument()
+  });
+
+  test("hover", async () => {
+    const { getByRole, getByText, queryByText } = render(Dropdown, {
+      props: {
+        trigger: "hover",
+      },
+      slots,
+      global,
+    });
+
+    let button = getByRole("button")
+    await userEvent.hover(button)
+    expect(getByText("menu item")).toBeInTheDocument()
+    await userEvent.unhover(button)
+    await waitFor(() => {
+      expect(queryByText("menu item")).not.toBeInTheDocument()
+    })
+  });
+})
