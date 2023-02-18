@@ -1,7 +1,7 @@
 import { render, fireEvent, waitFor } from "@testing-library/vue";
 import "@testing-library/jest-dom"
 import Input from "../components/vInput.vue";
-import ExclamationCircle from "./exclamation-circle"
+import ExclamationCircle from "./icons/exclamation-circle"
 
 test("renders component", () => {
   const { getByRole } = render(Input, {

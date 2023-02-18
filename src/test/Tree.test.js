@@ -1,7 +1,7 @@
 import { render, fireEvent, prettyDOM, waitFor } from "@testing-library/vue";
 import "@testing-library/jest-dom";
 import Tree from "../components/vTree.vue";
-import ExclamationCircle from "./exclamation-circle"
+import ExclamationCircle from "./icons/exclamation-circle"
 
 const items = [
   {

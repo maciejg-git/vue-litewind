@@ -1,6 +1,6 @@
 import { render, fireEvent } from "@testing-library/vue";
 import "@testing-library/jest-dom";
-import Input from "../components/vInput.vue";
+import Input from "../../components/vInput.vue";
 
 let defaultStatus = {
   touched: false,

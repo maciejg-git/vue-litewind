@@ -1,4 +1,4 @@
-import useStyles from "../components/composition/use-styles";
+import useStyles from "../../components/composition/use-styles";
 import { ref, computed, reactive } from "vue"
 
 const elements = [

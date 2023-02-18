@@ -22,7 +22,7 @@ let global = {
 }
 
 let slots = {
-  reference: "<button :ref='reference' v-on='onTrigger'></button>",
+  reference: "<button :ref='reference' v-on='onTrigger'>trigger</button>",
   default: menu,
 }
 
@@ -81,8 +81,6 @@ describe('should open on', () => {
     let button = getByRole("button")
     await userEvent.click(button)
     expect(getByText("menu item")).toBeInTheDocument()
-    await userEvent.click(document.body)
-    expect(queryByText("menu item")).not.toBeInTheDocument()
   });
 
   test("focus (tab)", async () => {
@@ -96,11 +94,59 @@ describe('should open on', () => {
 
     await userEvent.tab()
     expect(getByText("menu item")).toBeInTheDocument()
+  });
+
+  test("hover", async () => {
+    const { getByRole, getByText, queryByText } = render(Dropdown, {
+      props: {
+        trigger: "hover",
+      },
+      slots,
+      global,
+    });
+
+    let button = getByRole("button")
+    await userEvent.hover(button)
+    expect(getByText("menu item")).toBeInTheDocument()
+  });
+})
+
+describe('should close on', () => {
+  test("click outside", async () => {
+    const { getByRole, getByText, queryByText } = render(Dropdown, {
+      props: {
+        trigger: "click",
+      },
+      slots,
+      global,
+    });
+
+    let button = getByRole("button")
+    await userEvent.click(button)
+    expect(getByText("menu item")).toBeInTheDocument()
+    await userEvent.click(document.body)
+    await waitFor(() => {
+      expect(queryByText("menu item")).not.toBeInTheDocument()
+    })
+  });
+
+  test("blur (focus trigger)", async () => {
+    const { getByRole, getByText, queryByText } = render(Dropdown, {
+      props: {
+        trigger: "focus",
+      },
+      slots,
+      global,
+    });
+
+    let button = getByRole("button")
+    await userEvent.click(button)
+    expect(getByText("menu item")).toBeInTheDocument()
     await userEvent.click(document.body)
     expect(queryByText("menu item")).not.toBeInTheDocument()
   });
 
-  test("hover", async () => {
+  test("unhover (hover trigger)", async () => {
     const { getByRole, getByText, queryByText } = render(Dropdown, {
       props: {
         trigger: "hover",
