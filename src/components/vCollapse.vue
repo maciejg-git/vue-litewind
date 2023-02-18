@@ -38,7 +38,9 @@ let isOpen = ref(props.modelValue);
 
 watch(
   () => props.modelValue,
-  (value) => (isOpen.value = value)
+  (value) => {
+    isOpen.value = value
+  }
 );
 
 let uncollapse = () => {

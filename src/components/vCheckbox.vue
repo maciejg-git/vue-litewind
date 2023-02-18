@@ -30,7 +30,7 @@ export default {
 </script>
 
 <script setup>
-import { ref, watch, inject, useAttrs } from "vue";
+import { ref, watch, inject, useAttrs, toRef } from "vue";
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
 import useUid from "./composition/use-uid";
@@ -68,7 +68,12 @@ const props = defineProps({
   ...sharedFormProps(null),
 });
 
-const emit = defineEmits(["update:modelValue"]);
+const emit = defineEmits([
+  "update:modelValue",
+  "update:status",
+  "update:state",
+  "update:messages"
+]);
 
 const attrs = useAttrs();
 
@@ -105,13 +110,15 @@ let resetInput = () => {
   localModel.value = false;
 };
 
+let externalState = toRef(props, "state");
+
 let { rules } = props;
 
 let { status, state, messages, touch, formValidate, reset } = inject("checkbox-group-validation",
   useValidation(
   rules,
   localModel,
-  null,
+  externalState,
   emitValidationStatus,
   resetInput,
   {
@@ -120,12 +127,6 @@ let { status, state, messages, touch, formValidate, reset } = inject("checkbox-g
   }
 )
 );
-
-// watch(
-//   () => props.state,
-//   (newState) => (state.value = newState),
-//   { immediate: true }
-// );
 
 let handleBlur = () => {
   if (touch) touch();

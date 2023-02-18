@@ -53,7 +53,7 @@ export default {
 
     let template = (string) => {
       return string.replace(
-        new RegExp("('[^']*')|(\\bv-\\w+)|`([^`]*)`", "ig"),
+        new RegExp("('[^']*')|(\\bv-\\w+\\S+)|`([^`]*)`", "ig"),
         `<code class="code-text">$1$2$3</code>`
       ).replace(
         new RegExp("@(\\S*)", "ig"),

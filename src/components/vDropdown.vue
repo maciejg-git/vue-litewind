@@ -44,6 +44,7 @@ import {
   onBeforeUnmount,
   useAttrs,
   useSlots,
+  nextTick,
 } from "vue";
 import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
@@ -134,7 +135,9 @@ let show = () => {
   if (props.trigger === "hover") clearTimeout(hideTimeout);
   showPopper();
   if (props.trigger === "click") {
-    stopClickOutside = onClickOutside(popper, hide, reference);
+    nextTick(() => {
+      stopClickOutside = onClickOutside(popper, hide, reference);
+    })
   }
 };
 

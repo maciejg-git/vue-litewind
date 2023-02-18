@@ -11,6 +11,9 @@
     <!-- <h6>Events</h6> -->
     <!-- <p></p> -->
     <!-- <table-reference-basic :items="events"></table-reference-basic> -->
+
+    <h6>Components</h6>
+    <table-reference-basic :items="components" reference="component" />
   </section>
 
   <section>
@@ -82,10 +85,22 @@ export default {
     let events = ref([
     ]);
 
+    let components = ref([
+      {
+        component: "v-checkbox-simple",
+        description: "v-checkbox-simple is a lighter, simpler checkbox variant that can be used in lists, tables etc.",
+      },
+      {
+        component: "v-checkbox-group",
+        description: "Checkboxes can be optionally wrapped with v-checkbox-group component to create group with single v-model and additional validation rules",
+      },
+    ]);
+
     return {
       reference,
       styles,
       events,
+      components,
     };
   },
 };
