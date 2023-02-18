@@ -1,6 +1,8 @@
-import { render, fireEvent } from "@testing-library/vue";
+import { render, fireEvent, waitFor } from "@testing-library/vue";
 import "@testing-library/jest-dom";
 import Input from "../../components/vInput.vue";
+import FormValidation from "../components/FormValidation.vue";
+import CheckboxGroupValidation from "../components/CheckboxGroupValidation.vue";
 
 let defaultStatus = {
   touched: false,
@@ -335,6 +337,68 @@ describe("state prop of input should override validation state", () => {
     await fireEvent.blur(textbox);
     expect(wrapper.className).not.toMatch(/-invalid/);
     expect(wrapper.className).not.toMatch(/-valid/);
+  });
+});
+
+test("form is correctly validated (v-form exposed validate)", async () => {
+  const { getByRole, queryAllByText } = render(FormValidation, {
+    props: {},
+  });
+
+  let button = getByRole("button", { name: "validate" });
+
+  await fireEvent.click(button);
+
+  await waitFor(() => {
+    expect(queryAllByText("This field is required")).toHaveLength(3);
+  });
+});
+
+test("form is correctly reset (v-form exposed reset)", async () => {
+  const { getByRole, getByLabelText, queryByText } = render(FormValidation, {
+    props: {},
+  });
+
+  let button = getByRole("button", { name: "validate" });
+  let resetButton = getByRole("button", { name: "reset" });
+  let username = getByLabelText("username");
+  let password = getByLabelText("password");
+
+  await fireEvent.update(username, "username")
+  await fireEvent.update(password, "password")
+
+  await fireEvent.click(button);
+
+  expect(username).toHaveDisplayValue("username");
+  expect(password).toHaveDisplayValue("password");
+
+  await waitFor(() => {
+    expect(queryByText("This field is required")).toBeInTheDocument();
+  });
+
+  await fireEvent.click(resetButton);
+
+  expect(username).toHaveDisplayValue("");
+  expect(password).toHaveDisplayValue("");
+
+  await waitFor(() => {
+    expect(queryByText("This field is required")).not.toBeInTheDocument();
+  });
+});
+
+test("checkbox group is correctly validated (v-checkbox-group exposed validate)", async () => {
+  const { getByRole, queryAllByText, queryAllByRole } = render(CheckboxGroupValidation, {
+    props: {},
+  });
+
+  let button = getByRole("button", { name: "validate" });
+
+  await fireEvent.click(button);
+
+  await waitFor(() => {
+    queryAllByRole("checkbox").forEach((input) => {
+      expect(input).toHaveClass("checkbox--invalid-state");
+    })
   });
 });
 
