@@ -30,11 +30,11 @@ export default {
 </script>
 
 <script setup>
-import { ref, watch, inject, useAttrs, toRef } from "vue";
+import { inject, useAttrs, toRef } from "vue";
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
 import useUid from "./composition/use-uid";
-import useValidation from "./composition/use-validation"
+import useValidation from "./composition/use-validation";
 import {
   sharedProps,
   sharedStyleProps,
@@ -52,6 +52,10 @@ const props = defineProps({
   rules: {
     type: Object,
     default: {},
+  },
+  validateMode: {
+    type: String,
+    default: "silent",
   },
   label: {
     type: String,
@@ -72,7 +76,7 @@ const emit = defineEmits([
   "update:modelValue",
   "update:status",
   "update:state",
-  "update:messages"
+  "update:messages",
 ]);
 
 const attrs = useAttrs();
@@ -88,17 +92,19 @@ let getCheckBoxClasses = () => {
   return [
     "tw-form-checkbox-reset",
     classes.checkbox.value,
-    state.value === 'valid' && states.checkbox.value.valid,
-    state.value === 'invalid' && states.checkbox.value.invalid,
-    (attrs.disabled === "" || attrs.disabled === true) && "disabled"
+    state.value === "valid" && states.checkbox.value.valid,
+    state.value === "invalid" && states.checkbox.value.invalid,
+    (attrs.disabled === "" || attrs.disabled === true) && "disabled",
   ];
 };
 
 let id = useUid("checkbox", attrs);
 
-let { value, updateValue } = inject("checkbox-group", {})
+let { value, updateValue } = inject("checkbox-group", {});
 
 let localModel = useLocalModel(props, emit, updateValue, value);
+
+// validation
 
 let emitValidationStatus = (status, state, messages) => {
   emit("update:status", status.value);
@@ -112,26 +118,28 @@ let resetInput = () => {
 
 let externalState = toRef(props, "state");
 
-let { rules } = props;
+let { rules, validateMode } = props;
 
-let { status, state, messages, touch, formValidate, reset } = inject("checkbox-group-validation",
+let { status, state, messages, touch, formValidate, reset } = inject(
+  "checkbox-group-validation",
   useValidation(
-  rules,
-  localModel,
-  externalState,
-  emitValidationStatus,
-  resetInput,
-  {
-    validateOn: "form",
-    validateMode: "silent",
-  }
-)
+    rules,
+    localModel,
+    externalState,
+    emitValidationStatus,
+    resetInput,
+    {
+      validateOn: "form",
+      validateMode,
+    }
+  )
 );
+
+// handle template events
 
 let handleBlur = () => {
   if (touch) touch();
 };
 </script>
 
-<style>
-</style>
+<style></style>

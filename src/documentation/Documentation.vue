@@ -121,11 +121,11 @@
 import { ref, onMounted } from "vue";
 // light style
 // import "../../styles/hljs/github.css";
-import "../../styles/hljs/google-light.css";
+import "../styles/hljs/google-light.css";
 // dark style
 // import "../../styles/hljs/tokyo-night-dark.css";
 // import "../../styles/hljs/vs2015.css";
-import "../../styles/hljs/oceanicnext.css";
+import "../styles/hljs/oceanicnext.css";
 import { components, formComponents } from "./Components";
 
 export default {

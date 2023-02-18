@@ -120,11 +120,15 @@ let stopClickOutside = null;
 let hideTimeout = null;
 
 let preventHiding = () => {
-  if (props.trigger === "hover") clearTimeout(hideTimeout);
+  if (props.trigger === "hover") {
+    clearTimeout(hideTimeout);
+  }
 };
 
 let allowHiding = () => {
-  if (props.trigger === "hover") hideTimeout = scheduleHide();
+  if (props.trigger === "hover") {
+    hideTimeout = scheduleHide();
+  }
 };
 
 // show and hide functions, hover trigger which adds short delay before
@@ -142,7 +146,7 @@ let show = () => {
 };
 
 let scheduleHide = () => {
-  setTimeout(hidePopper, 100);
+  return setTimeout(hidePopper, 100);
 }
 
 let hide = () => {

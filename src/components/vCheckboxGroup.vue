@@ -13,13 +13,17 @@ const props = defineProps({
     type: [String, Number, Boolean, Array],
     default: undefined,
   },
-  rules: { 
-    type: Object, 
-    default: {} 
+  rules: {
+    type: Object,
+    default: {},
   },
-  state: { 
+  state: {
     type: String,
-    default: null 
+    default: null,
+  },
+  validateMode: {
+    type: String,
+    default: "silent",
   },
 });
 
@@ -39,12 +43,12 @@ let emitValidationStatus = (status, state, messages) => {
 };
 
 let resetInput = () => {
-  localModel.value = [];
+  value.value = [];
 };
 
 let externalState = toRef(props, "state");
 
-let { rules } = props;
+let { rules, validateMode } = props;
 
 let { status, state, messages, touch, formValidate, reset } = useValidation(
   rules,
@@ -54,7 +58,7 @@ let { status, state, messages, touch, formValidate, reset } = useValidation(
   resetInput,
   {
     validateOn: "form",
-    validateMode: "silent",
+    validateMode,
   }
 );
 
@@ -78,7 +82,7 @@ let updateValue = (newValue) => {
 
 provide("checkbox-group", { value, updateValue });
 
-defineExpose({ validate: formValidate });
+defineExpose({ validate: formValidate, reset });
 </script>
 
 <style scoped lang="postcss"></style>

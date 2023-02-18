@@ -3,12 +3,12 @@ import { createApp, defineAsyncComponent } from "vue";
 import router from "./router";
 // components
 import App from "./App.vue";
-import TableReference from "./components/Documentation/TableReference.vue";
-import TableReferenceBasic from "./components/Documentation/TableReferenceBasic.vue";
-import vCode from "./components/Documentation/components/vCode.vue"
-import EventViewer from "./components/Documentation/components/EventViewer.vue"
-import vSelectProp from "./components/Documentation/components/vSelectProp.vue"
-import Example from "./components/Documentation/Example.vue"
+import TableReference from "./documentation/TableReference.vue";
+import TableReferenceBasic from "./documentation/TableReferenceBasic.vue";
+import vCode from "./documentation/components/vCode.vue"
+import EventViewer from "./documentation/components/EventViewer.vue"
+import vSelectProp from "./documentation/components/vSelectProp.vue"
+import Example from "./documentation/Example.vue"
 import { componentPlugin } from "./index.js";
 import { components } from "./index"
 import { directives } from "./index"
@@ -18,9 +18,7 @@ import "./styles-form/form-reset.css"
 import "./styles/shared.css"
 import "./styles/components.css"
 import "./styles/icon.css"
-import "./components/Documentation/Documentation.css"
-// tools
-import registerIcon from "./register-icon"
+import "./documentation/Documentation.css"
 
 let app = createApp(App);
 
@@ -40,7 +38,7 @@ Object.entries(icons).forEach(([path, definition]) => {
 })
 
 // component examples
-const examples = import.meta.glob('./components/Documentation/examples/Example*.vue')
+const examples = import.meta.glob('./documentation/examples/Example*.vue')
 for (const path in examples) {
   let file = path.replace(/^.*[\\\/]/, '')
   file = file.substring(0, file.lastIndexOf('.'))

@@ -124,6 +124,7 @@
 <script setup>
 import { ref, computed, watch } from "vue";
 import useStyles from "./composition/use-styles";
+import vIcon from "./vIcon.vue"
 import SortIcon from "./icons/sort-solid.js";
 import CaretUpIcon from "./icons/caret-up-solid.js";
 import CaretDownIcon from "./icons/caret-down-solid.js";
@@ -147,6 +148,7 @@ const props = defineProps({
   items: {
     type: Array,
     default: undefined,
+    required: true,
   },
   filter: {
     type: [String, RegExp],
@@ -163,6 +165,7 @@ const props = defineProps({
   primaryKey: {
     type: String,
     default: undefined,
+    required: true,
   },
   captionTop: {
     type: Boolean,

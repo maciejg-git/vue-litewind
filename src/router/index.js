@@ -1,48 +1,48 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-import Documentation from "../components/Documentation/Documentation.vue";
+import Documentation from "../documentation/Documentation.vue";
 
-import DocumentationInstall from "../components/Documentation/DocumentationInstall.vue";
+import DocumentationInstall from "../documentation/DocumentationInstall.vue";
 
-import DocumentationComponents from "../components/Documentation/DocumentationComponents.vue";
+import DocumentationComponents from "../documentation/DocumentationComponents.vue";
 
-import DocumentationTable from "../components/Documentation/DocumentationTable.vue";
-import DocumentationDatePicker from "../components/Documentation/DocumentationDatePicker.vue";
-import DocumentationList from "../components/Documentation/DocumentationList.vue";
-import DocumentationModal from "../components/Documentation/DocumentationModal.vue";
-import DocumentationTabs from "../components/Documentation/DocumentationTabs.vue";
-import DocumentationSpinner from "../components/Documentation/DocumentationSpinner.vue";
-import DocumentationCollapse from "../components/Documentation/DocumentationCollapse.vue";
-import DocumentationBadge from "../components/Documentation/DocumentationBadge.vue";
-import DocumentationDropdown from "../components/Documentation/DocumentationDropdown.vue";
-import DocumentationPagination from "../components/Documentation/DocumentationPagination.vue";
-import DocumentationCard from "../components/Documentation/DocumentationCard.vue";
-import DocumentationButton from "../components/Documentation/DocumentationButton.vue";
-import DocumentationChip from "../components/Documentation/DocumentationChip.vue";
-import DocumentationPopover from "../components/Documentation/DocumentationPopover.vue";
-import DocumentationProgress from "../components/Documentation/DocumentationProgress.vue";
-import DocumentationSidepanel from "../components/Documentation/DocumentationSidepanel.vue";
-import DocumentationAlert from "../components/Documentation/DocumentationAlert.vue";
-import DocumentationInput from "../components/Documentation/DocumentationInput.vue";
-import DocumentationTextarea from "../components/Documentation/DocumentationTextarea.vue";
-import DocumentationRadio from "../components/Documentation/DocumentationRadio.vue";
-import DocumentationCheckbox from "../components/Documentation/DocumentationCheckbox.vue";
-import DocumentationNavbar from "../components/Documentation/DocumentationNavbar.vue";
-import DocumentationRange from "../components/Documentation/DocumentationRange.vue";
-import DocumentationBreadcrumb from "../components/Documentation/DocumentationBreadcrumb.vue";
-import DocumentationChevron from "../components/Documentation/DocumentationChevron.vue";
-import DocumentationFormText from "../components/Documentation/DocumentationFormText.vue";
-import DocumentationSelect from "../components/Documentation/DocumentationSelect.vue";
-import DocumentationTree from "../components/Documentation/DocumentationTree.vue";
-import DocumentationClosebutton from "../components/Documentation/DocumentationClosebutton.vue";
-import DocumentationIcon from "../components/Documentation/DocumentationIcon.vue";
-import DocumentationDivider from "../components/Documentation/DocumentationDivider.vue";
-import DocumentationTrigger from "../components/Documentation/DocumentationTrigger.vue";
+import DocumentationTable from "../documentation/DocumentationTable.vue";
+import DocumentationDatePicker from "../documentation/DocumentationDatePicker.vue";
+import DocumentationList from "../documentation/DocumentationList.vue";
+import DocumentationModal from "../documentation/DocumentationModal.vue";
+import DocumentationTabs from "../documentation/DocumentationTabs.vue";
+import DocumentationSpinner from "../documentation/DocumentationSpinner.vue";
+import DocumentationCollapse from "../documentation/DocumentationCollapse.vue";
+import DocumentationBadge from "../documentation/DocumentationBadge.vue";
+import DocumentationDropdown from "../documentation/DocumentationDropdown.vue";
+import DocumentationPagination from "../documentation/DocumentationPagination.vue";
+import DocumentationCard from "../documentation/DocumentationCard.vue";
+import DocumentationButton from "../documentation/DocumentationButton.vue";
+import DocumentationChip from "../documentation/DocumentationChip.vue";
+import DocumentationPopover from "../documentation/DocumentationPopover.vue";
+import DocumentationProgress from "../documentation/DocumentationProgress.vue";
+import DocumentationSidepanel from "../documentation/DocumentationSidepanel.vue";
+import DocumentationAlert from "../documentation/DocumentationAlert.vue";
+import DocumentationInput from "../documentation/DocumentationInput.vue";
+import DocumentationTextarea from "../documentation/DocumentationTextarea.vue";
+import DocumentationRadio from "../documentation/DocumentationRadio.vue";
+import DocumentationCheckbox from "../documentation/DocumentationCheckbox.vue";
+import DocumentationNavbar from "../documentation/DocumentationNavbar.vue";
+import DocumentationRange from "../documentation/DocumentationRange.vue";
+import DocumentationBreadcrumb from "../documentation/DocumentationBreadcrumb.vue";
+import DocumentationChevron from "../documentation/DocumentationChevron.vue";
+import DocumentationFormText from "../documentation/DocumentationFormText.vue";
+import DocumentationSelect from "../documentation/DocumentationSelect.vue";
+import DocumentationTree from "../documentation/DocumentationTree.vue";
+import DocumentationClosebutton from "../documentation/DocumentationClosebutton.vue";
+import DocumentationIcon from "../documentation/DocumentationIcon.vue";
+import DocumentationDivider from "../documentation/DocumentationDivider.vue";
+import DocumentationTrigger from "../documentation/DocumentationTrigger.vue";
 
-import DocumentationTooltip from "../components/Documentation/DocumentationTooltip.vue";
+import DocumentationTooltip from "../documentation/DocumentationTooltip.vue";
 
-import DocumentationStyling from "../components/Documentation/DocumentationStyling.vue";
-import DocumentationFormValidation from "../components/Documentation/DocumentationFormValidation.vue";
+import DocumentationStyling from "../documentation/DocumentationStyling.vue";
+import DocumentationFormValidation from "../documentation/DocumentationFormValidation.vue";
 
 const routes = [
   {
