@@ -7,6 +7,7 @@
       :definition="definition"
       class="min-w-full"
       v-bind="$attrs"
+      primary-key="prop"
     >
       <template #cell:type="{ value }">
         <div class="space-y-1">

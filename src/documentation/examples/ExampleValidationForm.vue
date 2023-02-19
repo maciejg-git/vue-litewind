@@ -38,6 +38,12 @@
             @update:status="(status) => (textStatus = status)"
           ></v-textarea>
         </div>
+
+        <v-checkbox
+          v-model="checkbox"
+          :rules="checkboxRules"
+          label="Check this"
+          />
       </v-form>
 
       <div class="self-end mt-20">
@@ -89,6 +95,12 @@ export default {
       maxLength: 30,
     };
 
+    let checkbox = ref(false);
+    let checkboxStatus = ref({});
+    let checkboxRules = {
+      required: true,
+    };
+
     let formStatus = ref(false);
 
     let form = ref(null);
@@ -111,6 +123,9 @@ export default {
       form,
       validate,
       stringifyObject,
+      checkbox,
+      checkboxStatus,
+      checkboxRules,
     };
   },
 };

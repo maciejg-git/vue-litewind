@@ -1,5 +1,5 @@
 <template>
-  <v-table :items="example.data" class="w-full">
+  <v-table :items="example.data" :primary-key="example.primaryKey" class="w-full">
     <template #colspan="{ item }">
       <div class="dark:bg-dark-700 p-2 px-4 m-2">
         <div>
@@ -21,6 +21,7 @@ export default {
   setup() {
     let example = reactive({
       data: data.slice(0, 5),
+      primaryKey: "id",
     });
 
     example.data = example.data.map((i) => {

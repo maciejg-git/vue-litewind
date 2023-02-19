@@ -7,6 +7,7 @@
       :definition="definition"
       class="min-w-full"
       v-bind="$attrs"
+      :primary-key="reference"
     >
       <template #cell:function="{ value }">
           <code v-html="value"></code>

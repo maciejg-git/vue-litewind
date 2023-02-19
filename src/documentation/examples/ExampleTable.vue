@@ -215,6 +215,7 @@ export default {
     let example = reactive({
       items: data.slice(0, 60),
       itemsPerPage: 5,
+      primaryKey: "id",
       filter: "",
       busy: false,
       selectionMode: "single",

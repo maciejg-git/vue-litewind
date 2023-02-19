@@ -61,6 +61,12 @@ export default {
         description: "Checkbox v-model",
       },
       {
+        prop: "rules",
+        type: ["Object"],
+        default: "{}",
+        description: "Rules for validation. See Form Validation for examples of rules",
+      },
+      {
         prop: "label",
         type: ["String"],
         default: "empty string",

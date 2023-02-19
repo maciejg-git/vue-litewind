@@ -31,7 +31,7 @@ app.component("vSelectProp", vSelectProp)
 app.component("Example", Example)
 
 // component icons
-const icons = import.meta.globEager('./components/Documentation/icons/*.js')
+const icons = import.meta.globEager('./documentation/icons/*.js')
 Object.entries(icons).forEach(([path, definition]) => {
   let { vendor, name, type } = definition.default.$_icon
   app.component(`${vendor}${name}${type.join("")}`, definition.default)
