@@ -100,9 +100,12 @@ let getCheckBoxClasses = () => {
 
 let id = useUid("checkbox", attrs);
 
-let { value, updateValue } = inject("checkbox-group", {});
+let { groupModel, onUpdateGroupModel, isInGroup } = inject(
+  "v-checkbox-group",
+  {}
+);
 
-let localModel = useLocalModel(props, emit, updateValue, value);
+let localModel = useLocalModel(props, emit, groupModel, onUpdateGroupModel);
 
 // validation
 
@@ -120,8 +123,9 @@ let externalState = toRef(props, "state");
 
 let { rules, validateMode } = props;
 
+// try to inject checkbox group validation or fallback to checkbox validation
 let { status, state, messages, touch, formValidate, reset } = inject(
-  "checkbox-group-validation",
+  "v-checkbox-group-validation",
   useValidation(
     rules,
     localModel,
@@ -134,6 +138,12 @@ let { status, state, messages, touch, formValidate, reset } = inject(
     }
   )
 );
+
+if (!isInGroup) {
+  let { addFormInput } = inject("form", {});
+
+  if (addFormInput) addFormInput({ status, formValidate, reset });
+}
 
 // handle template events
 

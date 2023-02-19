@@ -20,7 +20,8 @@ export default function usePopper(
   let popper = ref(null);
   let localReference = ref(null);
 
-  // reference can be element, template ref or reference prop
+  // localReference can by any template ref (component or element)
+  // reference is always html element (components $el or exposed reference element)
   let reference = computed({
     get() {
       return (

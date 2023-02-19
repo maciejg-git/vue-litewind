@@ -90,7 +90,9 @@ const props = defineProps({
 
 const emit = defineEmits(["state:opened", "state:closed", "update:modelValue"]);
 
-const [attrs, slots] = [useAttrs(), useSlots()]
+const attrs = useAttrs();
+
+const slots = useSlots();
 
 let { classes, states } = useStyles("dropdown", props, {
   item: {
@@ -141,13 +143,13 @@ let show = () => {
   if (props.trigger === "click") {
     nextTick(() => {
       stopClickOutside = onClickOutside(popper, hide, reference);
-    })
+    });
   }
 };
 
 let scheduleHide = () => {
   return setTimeout(hidePopper, 100);
-}
+};
 
 let hide = () => {
   if (!isPopperVisible.value) return;
@@ -170,7 +172,7 @@ watch(
   { immediate: true }
 );
 
-// trigger by id
+// set up trigger by id
 
 let { id } = attrs;
 

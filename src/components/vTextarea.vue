@@ -145,14 +145,14 @@ let localModel = useLocalModel(props, emit);
 // validate
 
 let emitValidationStatus = (status, state, messages) => {
-  emit("update:status", status);
-  emit("update:state", state);
-  emit("update:messages", messages);
+  emit("update:status", status.value);
+  emit("update:state", state.value);
+  emit("update:messages", messages.value);
 };
 
 let resetInput = () => {
-  localModel.value = ""
-}
+  localModel.value = "";
+};
 
 let externalState = toRef(props, "state");
 
@@ -164,7 +164,7 @@ let { status, state, messages, touch, formValidate, reset } = useValidation(
   externalState,
   emitValidationStatus,
   resetInput,
-  { 
+  {
     validateOn,
     validateMode,
   }
@@ -178,7 +178,11 @@ if (addFormInput) {
 
 // handle template events
 
-let handleBlur = () => touch();
+let handleBlur = () => {
+  nextTick(() => {
+    touch();
+  });
+};
 </script>
 
 <style></style>

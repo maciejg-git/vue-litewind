@@ -200,7 +200,7 @@ const props = defineProps({
   },
   spinner: {
     type: Object,
-    default: defaultProps("input", "spinner", {}),
+    default: defaultProps("input", "spinner", { }),
   },
   closeButton: {
     type: Object,

@@ -34,7 +34,9 @@ const emit = defineEmits([
   "update:messages",
 ]);
 
-let value = ref(props.modelValue);
+let groupModel = ref(props.modelValue);
+
+// validation
 
 let emitValidationStatus = (status, state, messages) => {
   emit("update:status", status.value);
@@ -43,7 +45,7 @@ let emitValidationStatus = (status, state, messages) => {
 };
 
 let resetInput = () => {
-  value.value = [];
+  groupModel.value = [];
 };
 
 let externalState = toRef(props, "state");
@@ -52,7 +54,7 @@ let { rules, validateMode } = props;
 
 let { status, state, messages, touch, formValidate, reset } = useValidation(
   rules,
-  value,
+  groupModel,
   externalState,
   emitValidationStatus,
   resetInput,
@@ -62,7 +64,7 @@ let { status, state, messages, touch, formValidate, reset } = useValidation(
   }
 );
 
-provide("checkbox-group-validation", {
+provide("v-checkbox-group-validation", {
   status,
   state,
   messages,
@@ -75,12 +77,16 @@ let { addFormInput } = inject("form", {});
 
 if (addFormInput) addFormInput({ status, formValidate, reset });
 
-let updateValue = (newValue) => {
-  value.value = newValue;
-  emit("update:modelValue", value.value);
+let onUpdateGroupModel = (newValue) => {
+  groupModel.value = newValue;
+  emit("update:modelValue", groupModel.value);
 };
 
-provide("checkbox-group", { value, updateValue });
+provide("v-checkbox-group", {
+  groupModel,
+  onUpdateGroupModel,
+  isInGroup: true,
+});
 
 defineExpose({ validate: formValidate, reset });
 </script>

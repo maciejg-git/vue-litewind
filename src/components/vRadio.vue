@@ -91,7 +91,7 @@ let { value, updateValue, touch, state } = inject("radio-group", {
   state: "",
 });
 
-let localModel = useLocalModel(props, emit, updateValue, value);
+let localModel = useLocalModel(props, emit, value, updateValue);
 
 let handleBlur = () => {
   if (touch) touch();

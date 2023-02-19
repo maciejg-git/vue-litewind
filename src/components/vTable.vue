@@ -268,6 +268,54 @@ let getKeyValue = (i, k, skipFunction) => {
     : k.f(k.key, i[k.key], i);
 };
 
+// TABLE DEFINITION
+
+let definitionDefaults = {
+  sortable: false,
+  filterable: true,
+  visible: true,
+  filterByFunction: true,
+  sortByFunction: true,
+};
+
+let getDefinitionByKey = (k) => {
+  return definition.value.find((i) => k === i.key);
+}
+
+let headersCount = computed(() => {
+  return definition.value.filter((i) => i.visible !== false).length;
+});
+
+// if no definition is provided use first row of data to
+// generate local definition
+let generateDefinition = () => {
+  if (!props.items || !props.items.length) return [];
+
+  return Object.keys(props.items[0])
+    .filter((i) => i !== "colspan")
+    .map((item) => {
+      return { key: item };
+    });
+};
+
+let getDefinition = () => {
+  if (!Array.isArray(props.definition)) return false;
+  return props.definition.every((i) => i.key) && props.definition;
+};
+
+// generate local definition
+let definition = computed(() => {
+  let d = getDefinition() || generateDefinition();
+
+  return d.map((i) => {
+    return {
+      ...definitionDefaults,
+      ...i,
+      label: i.label || formatCase(i.key),
+    };
+  });
+});
+
 // sort
 
 let sortKey = ref("");
@@ -361,54 +409,6 @@ watch(
   () => props.itemsPerPage,
   () => emit("update:page", 1)
 );
-
-// TABLE DEFINITION
-
-let definitionDefaults = {
-  sortable: false,
-  filterable: true,
-  visible: true,
-  filterByFunction: true,
-  sortByFunction: true,
-};
-
-let getDefinitionByKey = (k) => {
-  return definition.value.find((i) => k === i.key);
-}
-
-let headersCount = computed(() => {
-  return definition.value.filter((i) => i.visible !== false).length;
-});
-
-// if no definition is provided use first row of data to
-// generate local definition
-let generateDefinition = () => {
-  if (!props.items || !props.items.length) return [];
-
-  return Object.keys(props.items[0])
-    .filter((i) => i !== "colspan")
-    .map((item) => {
-      return { key: item };
-    });
-};
-
-let getDefinition = () => {
-  if (!Array.isArray(props.definition)) return false;
-  return props.definition.every((i) => i.key) && props.definition;
-};
-
-// generate local definition
-let definition = computed(() => {
-  let d = getDefinition() || generateDefinition();
-
-  return d.map((i) => {
-    return {
-      ...definitionDefaults,
-      ...i,
-      label: i.label || formatCase(i.key),
-    };
-  });
-});
 
 // row selection
 let validSelectionModes = ["single", "multiple"];
