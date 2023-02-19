@@ -258,7 +258,8 @@ const {
   destroyPopperInstance,
   lockPopper,
 } = usePopper(
-  { placement, offsetX, offsetY, noFlip, modelValue, emit },
+  { placement, offsetX, offsetY, noFlip },
+  null,
   { resizePopper: true }
 );
 

@@ -113,7 +113,7 @@ const {
   hidePopper,
   destroyPopperInstance,
   lockPopper,
-} = usePopper({ placement, offsetX, offsetY, noFlip, emit });
+} = usePopper({ placement, offsetX, offsetY, noFlip });
 
 let { onClickOutside } = useClickOutside();
 let stopClickOutside = null;

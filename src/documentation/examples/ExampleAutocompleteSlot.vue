@@ -39,7 +39,7 @@
 <script>
 import { reactive } from "vue";
 import company from "../data/company.json";
-import { highlight } from "../../../tools";
+import { highlight } from "../../tools";
 
 export default {
   setup() {

@@ -1,10 +1,7 @@
-import { ref, computed, watch } from "vue";
+import { ref, computed, watch, unref, isRef } from "vue";
 import { createPopper } from "@popperjs/core";
 
-export default function usePopper(
-  { placement, offsetX, offsetY, noFlip },
-  { resizePopper = false } = {}
-) {
+export default function usePopper(opts, customOpts, { resizePopper = false } = {}) {
   // resize modifier to make popper the same width as reference element
   const resize = {
     name: "resize",
@@ -14,6 +11,8 @@ export default function usePopper(
       state.styles.popper.width = reference.value.clientWidth + "px";
     },
   };
+
+  let { placement = "auto", offsetX = 0, offsetY = 0, noFlip = false } = opts;
 
   let isPopperVisible = ref(false);
   let instance = null;
@@ -52,8 +51,12 @@ export default function usePopper(
     isPopperVisible.value ? hidePopper() : showPopper();
   };
 
+  let watchableOpts = [placement, offsetX, offsetY, noFlip].filter((opt) => {
+    return isRef(opt);
+  });
+
   // watch component props changes and update instance
-  watch([placement, offsetX, offsetY, noFlip], () => {
+  watch(watchableOpts, () => {
     if (instance && popper.value) {
       setPopper();
       instance.update();
@@ -73,6 +76,7 @@ export default function usePopper(
       setPopper();
       return;
     }
+
     if (!isLocked.value) {
       destroyPopperInstance();
     }
@@ -91,12 +95,12 @@ export default function usePopper(
       {
         name: "offset",
         options: {
-          offset: [offsetX.value, offsetY.value],
+          offset: [unref(offsetX), unref(offsetY)],
         },
       },
       {
         name: "flip",
-        enabled: !noFlip.value,
+        enabled: !unref(noFlip),
       },
       {
         name: "preventOverflow",
@@ -112,11 +116,12 @@ export default function usePopper(
         },
       },
       resize,
+      ...(customOpts || [])
     ];
 
     instance = createPopper(reference.value || virtualElement, popper.value, {
       modifiers,
-      placement: placement.value,
+      placement: unref(placement),
     });
   };
 
@@ -143,7 +148,10 @@ export default function usePopper(
   // call updateVirtualElement in your component before showing or updating position of virtual popper
   let updateVirtualElement = (value) => {
     virtualElement.getBoundingClientRect = getVirtualElement(value);
-    if (instance) instance.update();
+
+    if (instance) {
+      instance.update();
+    }
   };
 
   return {
@@ -155,10 +163,8 @@ export default function usePopper(
     showPopper,
     hidePopper,
     togglePopper,
-    setPopper,
     lockPopper,
     destroyPopperInstance,
-    virtualElement,
     updateVirtualElement,
   };
 }
