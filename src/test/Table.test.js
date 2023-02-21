@@ -71,7 +71,7 @@ test("renders component", () => {
 });
 
 test("renders component without definition prop", () => {
-  const { getByRole, getByText, getAllByRole } = render(Table, {
+  const { getAllByRole } = render(Table, {
     props: {
       ...props,
     },
@@ -82,7 +82,7 @@ test("renders component without definition prop", () => {
 });
 
 test("renders component with definition prop", () => {
-  const { getByRole, getByText, getAllByRole } = render(Table, {
+  const { getAllByRole } = render(Table, {
     props: {
       ...props,
       definition,
@@ -254,7 +254,7 @@ test("renders correct number of items per page", () => {
 });
 
 test("correctly changes page (page prop)", async () => {
-  const { getAllByRole, getByText, rerender } = render(Table, {
+  const { getAllByRole, rerender } = render(Table, {
     props: {
       ...props,
       itemsPerPage: 20,
@@ -285,4 +285,61 @@ test("correctly changes page (page prop)", async () => {
   rows = getAllByRole("row");
   expect(rows).toHaveLength(11);
   expect(within(rows[1]).getAllByRole("cell")[0]).toHaveTextContent("41");
+});
+
+test("correctly sorts column", async () => {
+  definition.forEach((i) => {
+    i.sortable = true
+  })
+
+  const { getAllByRole, getByRole } = render(Table, {
+    props: {
+      ...props,
+      definition,
+    },
+  });
+
+  // ascending
+  await fireEvent.click(getByRole("columnheader", { name: "First Name"}))
+  let rows = getAllByRole("row")
+  expect(within(rows[1]).getAllByRole("cell")[1]).toHaveTextContent("Abdul")
+  expect(within(rows[2]).getAllByRole("cell")[1]).toHaveTextContent("Adelbert")
+  expect(within(rows[3]).getAllByRole("cell")[1]).toHaveTextContent("Amie")
+  expect(within(rows[rows.length - 3]).getAllByRole("cell")[1]).toHaveTextContent("Town")
+  expect(within(rows[rows.length - 2]).getAllByRole("cell")[1]).toHaveTextContent("Umberto")
+  expect(within(rows[rows.length - 1]).getAllByRole("cell")[1]).toHaveTextContent("Yale")
+
+  // descending
+  await fireEvent.click(getByRole("columnheader", { name: "First Name"}))
+  rows = getAllByRole("row")
+  expect(within(rows[1]).getAllByRole("cell")[1]).toHaveTextContent("Yale")
+  expect(within(rows[2]).getAllByRole("cell")[1]).toHaveTextContent("Umberto")
+  expect(within(rows[3]).getAllByRole("cell")[1]).toHaveTextContent("Town")
+  expect(within(rows[rows.length - 3]).getAllByRole("cell")[1]).toHaveTextContent("Amie")
+  expect(within(rows[rows.length - 2]).getAllByRole("cell")[1]).toHaveTextContent("Adelbert")
+  expect(within(rows[rows.length - 1]).getAllByRole("cell")[1]).toHaveTextContent("Abdul")
+});
+
+test("should not sort if column is not sortable (sortable property)", async () => {
+  definition.forEach((i) => {
+    i.sortable = false
+  })
+
+  const { getAllByRole, getByRole } = render(Table, {
+    props: {
+      ...props,
+      definition,
+    },
+  });
+
+  let rows = getAllByRole("row")
+
+  await fireEvent.click(getByRole("columnheader", { name: "First Name"}))
+
+  expect(within(rows[1]).getAllByRole("cell")[1]).toHaveTextContent("Anthony")
+  expect(within(rows[2]).getAllByRole("cell")[1]).toHaveTextContent("Richard")
+  expect(within(rows[3]).getAllByRole("cell")[1]).toHaveTextContent("Chance")
+  expect(within(rows[rows.length - 3]).getAllByRole("cell")[1]).toHaveTextContent("Caron")
+  expect(within(rows[rows.length - 2]).getAllByRole("cell")[1]).toHaveTextContent("Antonie")
+  expect(within(rows[rows.length - 1]).getAllByRole("cell")[1]).toHaveTextContent("Abdul")
 });
