@@ -18,7 +18,6 @@
     <table-reference-basic :items="components" reference="component">
       <template #description-v-tab="{ value }">
         Tab content component
-        <br />
         <p class="font-semibold py-1">Props</p>
         <ul class="ml-4">
           <li>

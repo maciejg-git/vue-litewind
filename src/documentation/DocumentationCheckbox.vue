@@ -39,7 +39,7 @@
   <section>
     <h4>Checkbox group</h4>
     <p>
-    Checkboxes can be optionally wrapped with <code class="code-text">v-checkbox-group</code> component to create group with single <code class="code-text">v-model</code>. Group also allows more validation rules.
+    Checkboxes can be optionally wrapped with <code class="code-text">v-checkbox-group</code> to create group with single <code class="code-text">v-model</code>. Group also allows more validation options.
     </p>
     <div class="example">
       <example name="ExampleCheckboxGroup"></example>

@@ -4,21 +4,21 @@ export let popperProps = [
     type: ["String"],
     default: "bottom-start",
     description:
-      "Initial placement of dropdown content. See valid values in Popperjs documentation",
+      'Initial placement of dropdown content. See valid values in Popperjs <a href="https://popper.js.org/docs/v2/constructors/#options" class="link">documentation</a>',
   },
   {
     prop: "offsetX",
     type: ["Number"],
     default: "0",
     description:
-      "Offset of dropdown relative to reference element. See how to use this offset here",
+      'Offset of dropdown relative to reference element. See how to use this offset <a href="https://popper.js.org/docs/v2/modifiers/offset/" class="link">here</a>',
   },
   {
     prop: "offsetY",
     type: ["Number"],
     default: "0",
     description:
-      "Offset of dropdown relative to reference element. See how to use this offset here",
+      'Offset of dropdown relative to reference element. See how to use this offset <a href="https://popper.js.org/docs/v2/modifiers/offset/" class="link">here</a>',
   },
   {
     prop: "no-flip",

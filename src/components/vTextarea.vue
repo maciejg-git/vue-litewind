@@ -53,7 +53,7 @@ export default {
 </script>
 
 <script setup>
-import { computed, watch, toRef, inject, useAttrs } from "vue";
+import { computed, toRef, inject, useAttrs, nextTick } from "vue";
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
 import useUid from "./composition/use-uid";

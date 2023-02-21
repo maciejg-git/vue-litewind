@@ -31,7 +31,12 @@
           <span>#</span>
           Dropdown activation
         </header>
-        To control dropdown visibility you can use <code class="code-text">reference</code> slot (recommended method) or <code class="code-text">v-trigger</code> component. To control it programatically you can add optional <code class="code-text">v-model</code> or call exposed <code class="code-text">show()</code> and <code class="code-text">hide()</code> functions.
+        <p>
+          To control dropdown visibility you can use <code class="code-text">reference</code> slot (recommended method) or <code class="code-text">v-trigger</code> component. 
+        </p>
+        <p>
+          To control it programatically you can add optional <code class="code-text">v-model</code> or call exposed <code class="code-text">show()</code> and <code class="code-text">hide()</code> functions.
+        </p>
       </li>
       <li>
         <header class="font-semibold text-lg mb-2">
@@ -52,7 +57,7 @@
           <span>#</span>
           Context menus
         </header>
-        You can set up context menu with <code class="code-text">v-dropdown-context</code>. See example below.
+        You can set up context menu with <code class="code-text">v-dropdown-context</code>. See example below. See <a href="#ExampleDropdownContext" class="link">example</a>.
       </li>
     </ul>
   </section>
@@ -73,7 +78,7 @@
     </div>
   </section>
 
-  <section>
+  <section id="ExampleDropdownTrigger" class="scroll-mt-20">
     <h4>Example - open by id</h4>
     <p>
     You can also control state of the dropdown menu by using <code class="code-text">v-trigger</code> component. The <code class="code-text">for</code> prop of the <code class="code-text">v-trigger</code> should be the same as <code class="code-text">id</code> of the dropdown. The advantage of this method is that <code class="code-text">v-triggers</code> can be put anywhere in application. Read more about v-trigger here.
@@ -100,7 +105,7 @@
     </div>
   </section>
 
-  <section>
+  <section id="ExampleDropdownContext" class="scroll-mt-20">
     <h4>Example - context dropdown</h4>
     <p>
       To make context menu use <code class="code-text">v-dropdown-context</code>. This component exposes
@@ -127,7 +132,7 @@ export default {
         type: ["Boolean"],
         default: "false",
         description:
-          "Set it to `true`/`false` to programatically show or hide dropdown content. Model is optional if dropdown is activated from `reference` slot or v-trigger component",
+          "Set it to `true`/`false` to programatically show or hide dropdown content. Model is optional",
       },
       {
         prop: "trigger",

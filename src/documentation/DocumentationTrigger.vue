@@ -6,7 +6,9 @@
       This component is used to trigger some actions on other components (for
       example opening dropdown or modal) by their
       <code class="code-text">id</code>
-      . See examples here.
+      . See example
+      <a href="/documentation/dropdown#ExampleDropdownTrigger" class="link">dropdown</a>
+      , modal or sidepanel.
     </p>
   </section>
 
@@ -15,7 +17,10 @@
     <table-reference :items="reference" />
 
     <h6>Slots</h6>
-    <table-reference-basic :items="slots" reference="slot" />
+    <table-reference-basic
+      :items="slots"
+      reference="slot"
+    />
   </section>
 </template>
 

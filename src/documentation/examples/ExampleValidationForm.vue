@@ -3,7 +3,7 @@
     <div class="basis-1/2 flex flex-col">
       <v-form
         ref="form"
-        class="flex flex-col gap-y-32"
+        class="flex flex-col"
       >
         <div>
           <v-input
@@ -17,7 +17,7 @@
           ></v-input>
         </div>
 
-        <div>
+        <div class="mt-20">
           <v-input
             v-model="password"
             type="text"
@@ -29,7 +29,7 @@
           ></v-input>
         </div>
 
-        <div>
+        <div class="mt-32">
           <v-textarea
             v-model="text"
             :rules="textRules"
@@ -39,11 +39,13 @@
           ></v-textarea>
         </div>
 
-        <v-checkbox
-          v-model="checkbox"
-          :rules="checkboxRules"
-          label="Check this"
-          />
+        <div class="mt-10">
+          <v-checkbox
+            v-model="checkbox"
+            :rules="checkboxRules"
+            label="Check this"
+            />
+        </div>
       </v-form>
 
       <div class="self-end mt-20">

@@ -129,7 +129,6 @@
       px-5
       py-4
       text-text-600
-      dark:text-text-300/70
-      dark:bg-dark-700
+      dark:text-text-300/60
   }
 }

@@ -40,5 +40,5 @@ label {
   @apply mr-2;
 }
 a.link {
-  @apply underline text-blue-400;
+  @apply font-medium text-blue-600 dark:text-blue-500 hover:underline;
 }
