@@ -1,6 +1,6 @@
 <template>
   <v-trigger for="sidepanel" v-slot="{ onTrigger }">
-    <v-button v-on="onTrigger">Show modal</v-button>
+    <v-button v-on="onTrigger">Toggle sidepanel</v-button>
   </v-trigger>
 
   <v-sidepanel id="sidepanel">

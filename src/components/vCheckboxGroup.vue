@@ -90,5 +90,3 @@ provide("v-checkbox-group", {
 
 defineExpose({ validate: formValidate, reset });
 </script>
-
-<style scoped lang="postcss"></style>

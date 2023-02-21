@@ -111,7 +111,7 @@
 
   <section>
     <h4>Example - validation modes</h4>
-    <p><code class="code-text">validation-on</code> and <code class="code-text">validation-mode</code>, only available on text inputs, allows control over when to start validation and how to update state according to validation results:
+    <p><code class="code-text">validation-on</code> and <code class="code-text">validation-mode</code> allows control over when to start validation and how to update state according to validation results:
     <ul>
       <li class="my-2">
         <code class="code-text">validate-on: "blur"</code> - validate after input loses focus (<code class="code-text">default</code>)

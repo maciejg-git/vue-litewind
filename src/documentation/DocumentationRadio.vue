@@ -42,6 +42,19 @@ export default {
         description: "Radio v-model",
       },
       {
+        prop: "rules",
+        type: ["Object"],
+        default: "{}",
+        description: "Rules for validation. See Form Validation for examples of rules",
+      },
+      {
+        prop: "validate-on",
+        type: ["String"],
+        default: "'blur'",
+        description:
+          "Valid values are 'blur' or 'immediate'. See Form Validation for explanation and examples",
+      },
+      {
         prop: "label",
         type: ["String"],
         default: "empty string",

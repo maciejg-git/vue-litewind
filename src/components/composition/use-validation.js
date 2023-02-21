@@ -36,8 +36,6 @@ export default function useValidation(
 
   onUpdateState(status, state, messages);
 
-  // validate
-
   watch(
     localModel,
     (value) => {
@@ -74,7 +72,7 @@ export default function useValidation(
       return valid && newStatus[key];
     }, true);
 
-    newStatus.optional = !rules.required && value === "";
+    newStatus.optional = !rules.required && (value === "" || value === false);
 
     status.value = newStatus;
     messages.value = newMessages;
@@ -109,14 +107,18 @@ export default function useValidation(
   };
 
   let updateState = () => {
+    // external state is set, return it
     if (externalState && externalState.value !== null) {
       return externalState.value;
     }
 
+    // optional input (not required and empty) cannot be valid or invalid, 
+    // return defalut state
     if (status.value.optional) {
       return "";
     }
 
+    // input has not been yet interacted in any way, return current state
     if (
       !status.value.dirty &&
       !status.value.touched &&
@@ -125,10 +127,12 @@ export default function useValidation(
       return state.value;
     }
 
+    // input is validated manually, return current state
     if (options.validateOn === "form" && !status.value.validated) {
       return state.value;
     }
 
+    // input is validated on blur, return current state
     if (
       options.validateOn === "blur" &&
       !status.value.touched &&
@@ -137,24 +141,30 @@ export default function useValidation(
       return state.value;
     }
 
+    // input is validated immediately, has been touched or validated manually
+    // and can change state
+    // for invalid inputs always return invalid state
     if (!status.value.valid) {
       return "invalid";
     }
 
+    // for valid inputs return valid only in eager mode or when changing 
+    // from non default state
     if (options.validateMode === "eager" || state.value !== "") {
       return "valid";
     }
 
+    // return default state
     return state.value;
   };
 
-  // watch(
-  //   externalState,
-  //   () => {
-  //     state.value = updateState();
-  //   },
-  //   { immediate: true }
-  // );
+  watch(
+    externalState,
+    () => {
+      state.value = updateState();
+    },
+    { immediate: true }
+  );
 
   // reset
 

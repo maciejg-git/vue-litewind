@@ -246,7 +246,7 @@ let getItemClass = (item, index) => {
 
 let localModel = useLocalModel(props, emit);
 
-const { offsetX, offsetY, noFlip, placement, modelValue } = toRefs(props);
+const { offsetX, offsetY, noFlip, placement } = toRefs(props);
 const {
   isPopperVisible,
   reference,

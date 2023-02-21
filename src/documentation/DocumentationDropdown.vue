@@ -210,7 +210,7 @@ export default {
       {
         function: "showContextDropdown($event, contextData: Object)",
         description:
-          "Shows context menu. Context data is available in slot props of `default` slot",
+          "Shows context menu. Context data is available in slot props of `default` slot. Only available on v-dropdown-context",
       },
     ]);
 

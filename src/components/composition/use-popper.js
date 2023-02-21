@@ -1,7 +1,11 @@
 import { ref, computed, watch, unref, isRef } from "vue";
 import { createPopper } from "@popperjs/core";
 
-export default function usePopper(opts, customOpts, { resizePopper = false } = {}) {
+export default function usePopper(
+  options,
+  mods,
+  { resizePopper = false } = {}
+) {
   // resize modifier to make popper the same width as reference element
   const resize = {
     name: "resize",
@@ -12,7 +16,12 @@ export default function usePopper(opts, customOpts, { resizePopper = false } = {
     },
   };
 
-  let { placement = "auto", offsetX = 0, offsetY = 0, noFlip = false } = opts;
+  let {
+    placement = "auto",
+    offsetX = 0,
+    offsetY = 0,
+    noFlip = false,
+  } = options;
 
   let isPopperVisible = ref(false);
   let instance = null;
@@ -20,7 +29,7 @@ export default function usePopper(opts, customOpts, { resizePopper = false } = {
   let localReference = ref(null);
 
   // localReference can by any template ref (component or element)
-  // reference is always html element (components $el or exposed reference element)
+  // reference is always html element: components $el or exposed reference element
   let reference = computed({
     get() {
       return (
@@ -51,19 +60,19 @@ export default function usePopper(opts, customOpts, { resizePopper = false } = {
     isPopperVisible.value ? hidePopper() : showPopper();
   };
 
-  let watchableOpts = [placement, offsetX, offsetY, noFlip].filter((opt) => {
+  let watchableOptions = [placement, offsetX, offsetY, noFlip].filter((opt) => {
     return isRef(opt);
   });
 
   // watch component props changes and update instance
-  watch(watchableOpts, () => {
+  watch(watchableOptions, () => {
     if (instance && popper.value) {
       setPopper();
       instance.update();
     }
   });
 
-  // lock is used for component transitions
+  // lock is used for component transitions to prevent destring instance
   let isLocked = ref(false);
 
   let lockPopper = () => {
@@ -102,21 +111,8 @@ export default function usePopper(opts, customOpts, { resizePopper = false } = {
         name: "flip",
         enabled: !unref(noFlip),
       },
-      {
-        name: "preventOverflow",
-        options: {
-          // overflow hidden on cards
-          // mainAxis: false,
-        },
-      },
-      {
-        name: "arrow",
-        options: {
-          padding: 6,
-        },
-      },
       resize,
-      ...(customOpts || [])
+      ...(mods || []),
     ];
 
     instance = createPopper(reference.value || virtualElement, popper.value, {
@@ -129,7 +125,7 @@ export default function usePopper(opts, customOpts, { resizePopper = false } = {
     if (instance) instance.update();
   };
 
-  // optional virtual element can be used as reference
+  // optional virtual element can be used as reference instead of html element
   let getVirtualElement = ({ x, y }) => {
     return () => ({
       width: 0,

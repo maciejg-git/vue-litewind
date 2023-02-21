@@ -14,8 +14,15 @@
 
   Language: {{ currentLanguage }}
 
-  <v-dropdown-context ref="contextMenu" auto-close-menu v-slot="{ language, index }">
-    <v-card width="280px" style-card="menu shadow">
+  <v-dropdown-context
+    ref="contextMenu"
+    auto-close-menu
+    v-slot="{ language, index }"
+  >
+    <v-card
+      width="280px"
+      style-card="menu shadow"
+    >
       <v-dropdown-menu-item @click="currentLanguage = language">
         Switch to {{ language }}
       </v-dropdown-menu-item>

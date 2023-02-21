@@ -139,6 +139,8 @@ let { status, state, messages, touch, formValidate, reset } = inject(
   )
 );
 
+// handle v-form
+
 if (!isInGroup) {
   let { addFormInput } = inject("form", {});
 

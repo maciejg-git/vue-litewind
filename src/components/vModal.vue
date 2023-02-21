@@ -13,6 +13,7 @@
         @click="handleClickBackdrop"
         @keydown.esc="handleKeydown('esc')"
         v-focus
+        aria-modal="true"
       >
         <div :class="containerClasses">
           <div

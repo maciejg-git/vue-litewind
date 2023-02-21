@@ -334,6 +334,8 @@ let { status, state, messages, touch, formValidate, reset } = useValidation(
   }
 );
 
+// handle v-form
+
 let { addFormInput } = inject("form", {});
 
 if (addFormInput) {

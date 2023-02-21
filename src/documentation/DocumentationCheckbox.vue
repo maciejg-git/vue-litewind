@@ -39,7 +39,7 @@
   <section>
     <h4>Checkbox group</h4>
     <p>
-    Checkboxes can be optionally wrapped with <code class="code-text">v-checkbox-group</code> component to create group with single <code class="code-text">v-model</code>.
+    Checkboxes can be optionally wrapped with <code class="code-text">v-checkbox-group</code> component to create group with single <code class="code-text">v-model</code>. Group also allows more validation rules.
     </p>
     <div class="example">
       <example name="ExampleCheckboxGroup"></example>
@@ -65,6 +65,13 @@ export default {
         type: ["Object"],
         default: "{}",
         description: "Rules for validation. See Form Validation for examples of rules",
+      },
+      {
+        prop: "validate-mode",
+        type: ["String"],
+        default: "'silent'",
+        description:
+          "Valid values are 'silent' or 'eager'. See Form Validation for explanation and examples",
       },
       {
         prop: "label",
