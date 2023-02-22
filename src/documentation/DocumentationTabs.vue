@@ -16,30 +16,6 @@
 
     <h6>Components</h6>
     <table-reference-basic :items="components" reference="component">
-      <template #description-v-tab="{ value }">
-        Tab content component
-        <p class="font-semibold py-1">Props</p>
-        <ul class="ml-4">
-          <li>
-            <code class="code-text">name</code>
-            <div class="ml-4">label of tab displayed on tab bar</div>
-          </li>
-        </ul>
-        <p class="font-semibold py-1">Slots</p>
-        <ul class="ml-4">
-          <li>
-            <code class="code-text">default</code>
-            <div class="ml-4">Slot for content of tab</div>
-          </li>
-          <li>
-            <code class="code-text">name</code>
-            <div class="ml-4">
-              Slot for customizing label on tab bar. Useful for formatting or
-              adding icons
-            </div>
-          </li>
-        </ul>
-      </template>
     </table-reference-basic>
   </section>
 
@@ -126,13 +102,7 @@ export default {
     let components = ref([
       {
         component: "v-tab",
-        description: `Tab content component <br>
-        <p class="font-semibold py-2">Props:</p>
-        <code class="code-text">name</code>: label of tab displayed on tab bar
-        <p class="font-semibold py-2">Slots:</p>
-        <code class="code-text">default</code>: slot for tab content
-        <br>
-        <code class="code-text">name</code>: slot for tab label on the tab bar. Useful for formatting, adding icons and buttons etc
+        description: `
         `,
       },
     ]);

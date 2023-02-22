@@ -2,7 +2,7 @@
   <transition
     :name="sidebarLeft ? transition + '-left' : transition + '-right'"
   >
-    <div
+    <aside
       v-show="isOpen"
       :class="classes.sidepanel.value"
       :style="{ width: width }"
@@ -27,7 +27,7 @@
         name="default"
         :close="close"
       ></slot>
-    </div>
+    </aside>
   </transition>
 </template>
 
@@ -90,14 +90,6 @@ let { classes } = useStyles("sidepanel", props, {
 
 let isOpen = ref(false);
 
-watch(
-  () => props.modelValue,
-  (value) => {
-    if (value) open();
-    else close();
-  }
-);
-
 let open = () => {
   isOpen.value = true;
   emit("update:modelValue", true);
@@ -113,6 +105,18 @@ let toggle = () => {
   else close();
 };
 
+watch(
+  () => props.modelValue,
+  (value) => {
+    if (value) {
+      open();
+    } else {
+      close();
+    }
+  },
+  { immediate: true }
+);
+
 // trigger by id
 
 let onTrigger = { click: toggle };
@@ -127,7 +131,9 @@ if (id) {
 
 // handle template events
 
-let handleClose = () => close();
+let handleClose = () => {
+  close();
+}
 </script>
 
 <style scoped lang="postcss">

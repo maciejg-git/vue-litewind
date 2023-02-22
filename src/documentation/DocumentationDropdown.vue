@@ -15,7 +15,49 @@
     <table-reference-basic :items="slots" reference="slot" />
 
     <h6>Components</h6>
-    <table-reference-basic :items="components" reference="component" />
+    <table-reference-basic :items="components" reference="component">
+      <template #description-v-dropdown-menu-item>
+        Single menu item
+        <p class="font-semibold">
+          Props:
+        </p>
+        <ul class="ml-6 divide-y divide-secondary-500">
+          <li class="py-6">
+            <div class="flex">
+              <code>
+                tag
+              </code>
+              <code class="code-word ml-auto">String</code>
+            </div>
+            <span>
+              tag used to render menu item
+            </span>
+          </li>
+          <li class="py-6">
+            <div class="flex">
+              <code>
+                disabled
+              </code>
+              <code class="code-word ml-auto">Boolean</code>
+            </div>
+            <span>
+              renders disabled menu item
+            </span>
+          </li>
+          <li class="py-6">
+            <div class="flex">
+              <code>
+                active
+              </code>
+              <code class="code-word ml-auto">String</code>
+            </div>
+            <span>
+              renders active menu item
+            </span>
+          </li>
+        </ul>
+      </template>
+    </table-reference-basic>
 
     <h6>Functions</h6>
     <table-reference-basic :items="functions" reference="function" />

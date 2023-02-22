@@ -25,7 +25,7 @@
           <code v-html="value"></code>
       </template>
       <template #cell:description="{ value, item }">
-        <slot :name="'description-' + item.prop" :value="value">
+        <slot :name="'description-' + item[reference]" :value="value">
           <span v-html="template(value)"></span>
         </slot>
       </template>

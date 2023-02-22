@@ -63,7 +63,7 @@
     </div>
   </section>
 
-  <section>
+  <section id="ExampleModalTrigger" class="scroll-mt-20">
     <h4>Example - open by id</h4>
     <p>
     You can also control state of the modal by using <code class="code-text">v-trigger</code> component. The <code class="code-text">for</code> prop of the <code class="code-text">v-trigger</code> should be the same as <code class="code-text">id</code> of the modal. <code class="code-text">v-triggers</code> can be put anywhere in application.

@@ -8,7 +8,8 @@
       <code class="code-text">id</code>
       . See example
       <a href="/documentation/dropdown#ExampleDropdownTrigger" class="link">dropdown</a>
-      , modal or sidepanel.
+      , <a href="/documentation/modal#ExampleModalTrigger" class="link">modal</a>
+      or <a href="/documentation/sidepanel#ExampleSidepanelTrigger" class="link">sidepanel</a>.
     </p>
   </section>
 

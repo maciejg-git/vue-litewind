@@ -23,7 +23,7 @@
     </div>
   </section>
 
-  <section>
+  <section id="ExampleSidepanelTrigger" class="scroll-mt-20">
     <h4>Example - open by id</h4>
     <div class="example">
       <example name="ExampleSidepanelTrigger" :script="false"></example>
