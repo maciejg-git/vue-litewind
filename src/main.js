@@ -5,6 +5,7 @@ import router from "./router";
 import App from "./App.vue";
 import TableReference from "./documentation/TableReference.vue";
 import TableReferenceBasic from "./documentation/TableReferenceBasic.vue";
+import PropsList from "./documentation/PropsList.vue";
 import vCode from "./documentation/components/vCode.vue"
 import EventViewer from "./documentation/components/EventViewer.vue"
 import vSelectProp from "./documentation/components/vSelectProp.vue"
@@ -29,6 +30,7 @@ app.component("vCode", vCode)
 app.component("EventViewer", EventViewer)
 app.component("vSelectProp", vSelectProp)
 app.component("Example", Example)
+app.component("PropsList", PropsList)
 
 // component icons
 const icons = import.meta.globEager('./documentation/icons/*.js')
