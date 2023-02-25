@@ -7,14 +7,14 @@ let newTrigger = () => {
 };
 
 let connectTrigger = (id) => {
-  let { slotProps, callback } = triggers[id]
+  let { slotProps, callback } = triggers[id];
 
   if (callback && slotProps) {
     callback(slotProps);
   }
 };
 
-export let registerTrigger = (id, callback) => {
+let registerTrigger = (id, callback) => {
   if (!triggers[id]) {
     triggers[id] = newTrigger(id);
   }
@@ -22,7 +22,7 @@ export let registerTrigger = (id, callback) => {
   connectTrigger(id);
 };
 
-export let registerListener = (id, slotProps) => {
+let registerListener = (id, slotProps) => {
   if (!triggers[id]) {
     triggers[id] = newTrigger(id);
   }
@@ -30,7 +30,13 @@ export let registerListener = (id, slotProps) => {
   connectTrigger(id);
 };
 
-export let removeListener = (id) => {
-  triggers[id].slotProps = { reference: null, onTrigger: {} };
-  triggers[id].callback(triggers[id].slotProps)
+let removeTrigger = (id) => {
+  triggers[id].callback = null;
 };
+
+let removeListener = (id) => {
+  triggers[id].slotProps = { reference: null, onTrigger: {} };
+  triggers[id].callback && triggers[id].callback(triggers[id].slotProps);
+};
+
+export { registerTrigger, registerListener, removeListener, removeTrigger };
