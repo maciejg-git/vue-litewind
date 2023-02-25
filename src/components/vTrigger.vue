@@ -7,8 +7,8 @@
 </template>
 
 <script setup>
-import { unref, shallowRef } from "vue";
-import { registerTrigger } from "../trigger";
+import { unref, shallowRef, onUnmounted } from "vue";
+import { registerTrigger, removeTrigger } from "../trigger";
 
 const props = defineProps({
   for: { type: String, default: undefined },
@@ -19,4 +19,6 @@ let referenceSlot = shallowRef({ reference: null, onTrigger: {} });
 registerTrigger(props.for, (slotProps) => {
   referenceSlot.value = slotProps;
 });
+
+onUnmounted(() => removeTrigger(props.for))
 </script>
