@@ -19,7 +19,9 @@
         </div>
       </template>
       <template #cell:default="{ value }">
-        <code class="text-sm">{{ value }}</code>
+        <div class="w-[150px]">
+          <code class="text-sm">{{ value }}</code>
+        </div>
       </template>
       <template #cell:description="{ value }">
         <span v-html="template(value)"></span>

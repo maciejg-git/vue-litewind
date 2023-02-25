@@ -18,44 +18,7 @@
     <table-reference-basic :items="components" reference="component">
       <template #description-v-dropdown-menu-item>
         Single menu item
-        <p class="font-semibold">
-          Props:
-        </p>
-        <ul class="ml-6 divide-y divide-secondary-500">
-          <li class="py-6">
-            <div class="flex">
-              <code>
-                tag
-              </code>
-              <code class="code-word ml-auto">String</code>
-            </div>
-            <span>
-              tag used to render menu item
-            </span>
-          </li>
-          <li class="py-6">
-            <div class="flex">
-              <code>
-                disabled
-              </code>
-              <code class="code-word ml-auto">Boolean</code>
-            </div>
-            <span>
-              renders disabled menu item
-            </span>
-          </li>
-          <li class="py-6">
-            <div class="flex">
-              <code>
-                active
-              </code>
-              <code class="code-word ml-auto">String</code>
-            </div>
-            <span>
-              renders active menu item
-            </span>
-          </li>
-        </ul>
+        <props-list :items="referenceMenuItem"></props-list>
       </template>
     </table-reference-basic>
 
@@ -73,12 +36,8 @@
           <span>#</span>
           Dropdown activation
         </header>
-        <p>
           To control dropdown visibility you can use <code class="code-text">reference</code> slot (recommended method) or <code class="code-text">v-trigger</code> component. 
-        </p>
-        <p>
           To control it programatically you can add optional <code class="code-text">v-model</code> or call exposed <code class="code-text">show()</code> and <code class="code-text">hide()</code> functions.
-        </p>
       </li>
       <li>
         <header class="font-semibold text-lg mb-2">
@@ -261,6 +220,30 @@ export default {
       },
     ]);
 
+    let referenceMenuItem = ref([
+      {
+        prop: "tag",
+        type: ["String"],
+        default: "undefined",
+        description:
+          "Tag used to render menu item",
+      },
+      {
+        prop: "disabled",
+        type: ["Boolean"],
+        default: "false",
+        description:
+          "Renders disabled menu item",
+      },
+      {
+        prop: "active",
+        type: ["Boolean"],
+        default: "false",
+        description:
+          "Renders active menu item",
+      },
+    ]);
+
     return {
       reference,
       styles,
@@ -268,6 +251,7 @@ export default {
       slots,
       functions,
       components,
+      referenceMenuItem,
     };
   },
 };

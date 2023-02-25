@@ -36,7 +36,7 @@ export default {
       {
         prop: "close-button",
         type: ["Object"],
-        default: "{}",
+        default: "{ base: 'round-close-button', styleCloseButton: 'small' }",
         description: "Attributes of input v-close-button component",
       },
       ...styleProps(),
