@@ -12,7 +12,7 @@
       <slot name="caption"></slot>
     </caption>
 
-    <thead :class="classes.headerRow.value">
+    <thead v-if="!noHeader" :class="classes.headerRow.value">
       <tr>
         <template v-for="(h, i) in definition">
           <th
@@ -161,6 +161,10 @@ const props = defineProps({
   itemsPerPage: {
     type: Number,
     default: defaultProps("table", "itemsPerPage", 0),
+  },
+  noHeader: {
+    type: Boolean,
+    default: false,
   },
   primaryKey: {
     type: String,

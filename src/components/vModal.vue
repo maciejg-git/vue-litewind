@@ -18,6 +18,7 @@
         <div :class="containerClasses">
           <div
             :class="classes.modal.value"
+            ref="trapRef"
             @click.stop
           >
             <slot
@@ -86,6 +87,7 @@ export default {
 <script setup>
 import { ref, computed, watch, onBeforeUnmount, useAttrs } from "vue";
 import useStyles from "./composition/use-styles";
+import useFocusTrap from "./composition/use-focus-trap"
 import vButton from "./vButton.vue";
 import vCloseButton from "./vCloseButton.vue";
 import vBackdrop from "./vBackdrop.vue";
@@ -305,6 +307,11 @@ if (id) {
 
   onBeforeUnmount(() => removeListener(id));
 }
+
+// focus trap
+
+let trapRef = ref(null)
+useFocusTrap(trapRef)
 
 // handle template events
 

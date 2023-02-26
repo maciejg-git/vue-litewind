@@ -8,6 +8,7 @@
       class="min-w-full"
       v-bind="$attrs"
       :primary-key="reference"
+      :no-header="true"
     >
       <template #cell:function="{ value }">
           <code v-html="value"></code>
