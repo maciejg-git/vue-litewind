@@ -1,0 +1,12 @@
+{
+  "name": "vTrigger",
+  "props": {
+    "for": ""
+  },
+  "emits": {},
+  "slots": {
+    "default": ""
+  },
+  "functions": {},
+  "components": {}
+}

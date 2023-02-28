@@ -1,0 +1,81 @@
+{
+  "name": "vProgress",
+  "props": {
+    "base": {
+      "type": [
+        "String"
+      ],
+      "default": "progress"
+    },
+    "variant": {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": ""
+    },
+    "value": {
+      "type": [
+        "Number",
+        "String"
+      ],
+      "default": 0
+    },
+    "max": {
+      "type": [
+        "Number",
+        "String"
+      ],
+      "default": 100
+    },
+    "label": {
+      "type": [
+        "Boolean"
+      ],
+      "default": true
+    },
+    "precision": {
+      "type": [
+        "Number"
+      ],
+      "default": 2
+    },
+    "indeterminate": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "transition": {
+      "type": [
+        "Boolean"
+      ],
+      "default": true
+    },
+    "styleProgress": {
+      "type": [
+        "String",
+        "Array"
+      ],
+      "default": ""
+    },
+    "styleProgressBar": {
+      "type": [
+        "String",
+        "Array"
+      ],
+      "default": ""
+    },
+    "styleLabel": {
+      "type": [
+        "String",
+        "Array"
+      ],
+      "default": ""
+    }
+  },
+  "emits": [],
+  "slots": [
+    "default"
+  ]
+}

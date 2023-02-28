@@ -1,0 +1,15 @@
+{
+  "name": "vTrigger",
+  "props": {
+    "for": {
+      "type": [
+        "String"
+      ],
+      "default": "undefined"
+    }
+  },
+  "emits": [],
+  "slots": [
+    "default"
+  ]
+}

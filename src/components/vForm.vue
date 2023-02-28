@@ -1,5 +1,6 @@
 <template>
   <form>
+    <!-- @slot default -->
     <slot name="default"></slot>
   </form>
 </template>

@@ -13,7 +13,9 @@
             :class="classes.icon.value"
           />
         </div>
+      <!-- @slot icon -->
         <slot name="icon"></slot>
+      <!-- @slot default -->
         <slot name="default"></slot>
         <v-close-button
           v-if="!isStatic() && dismissable"

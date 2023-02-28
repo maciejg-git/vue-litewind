@@ -1,0 +1,17 @@
+{
+  "name": "vBreadcrumb",
+  "props": {
+    "name": "",
+    "base": "",
+    "variant": "",
+    "path": "",
+    "separator": "",
+    "styleBreadcrumb": "",
+    "styleSeparator": "",
+    "styleActive": ""
+  },
+  "emits": {},
+  "slots": {},
+  "functions": {},
+  "components": {}
+}

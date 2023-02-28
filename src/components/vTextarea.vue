@@ -1,49 +1,53 @@
 <template>
-  <div
-    class="relative"
-    :class="wrapperClasses"
+  <label
+    v-if="label"
+    :for="id"
+    :class="classes.label.value"
   >
-    <label
-      v-if="label"
-      :for="id"
-      :class="classes.label.value"
+    <!-- @slot label -->
+    <slot
+      name="label"
+      :label="label"
+    >
+      {{ label }}
+    </slot>
+  </label>
+
+  <div :class="wrapperClasses">
+    <div
+      :class="getTextareaClasses"
+      data-testid="wrapper"
+    >
+      <div class="flex flex-wrap flex-1">
+        <textarea
+          v-model="localModel"
+          v-bind="$attrs"
+          :id="id"
+          class="flex-1 border-0 bg-transparent focus:outline-none focus:ring-0 outline-none p-0"
+          @blur="handleBlur"
+        ></textarea>
+      </div>
+    </div>
+  </div>
+
+  <v-form-text
+    v-if="!noMessages && Object.keys(messages).length"
+    :messages="messages"
+    :state="state"
+    :single-line-message="singleLineMessage"
+    v-bind="formText"
+    data-testid="error-messages"
+  >
+    <template
+      v-for="(name, slot) of $slots"
+      #[slot]="slotProps"
     >
       <slot
-        name="label"
-        :label="label"
-      >
-        {{ label }}
-      </slot>
-    </label>
-    <div
-      class="tw-form-textarea-reset block"
-      :class="getTextareaClasses"
-    >
-      <textarea
-        v-model="localModel"
-        v-bind="$attrs"
-        :id="id"
-        class="block border-0 bg-transparent focus:outline-none focus:ring-0 outline-none p-0"
-        :class="{ 'w-full': !inline }"
-        @blur="handleBlur"
-      ></textarea>
-    </div>
-    <slot name="form-text">
-      <v-form-text
-        :messages="messages"
-        :state="state"
-        :single-line-message="singleLineMessage"
-        v-bind="formText"
-      >
-        <template #message="message">
-          <slot
-            name="message"
-            v-bind="message"
-          ></slot>
-        </template>
-      </v-form-text>
-    </slot>
-  </div>
+        :name="slot"
+        v-bind="slotProps"
+      ></slot>
+    </template>
+  </v-form-text>
 </template>
 
 <script>
@@ -97,6 +101,10 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  noMessages: {
+    type: Boolean,
+    default: false,
+  },
   formText: {
     type: Object,
     default: defaultProps("textarea", "formText", { class: "absolute" }),
@@ -112,7 +120,12 @@ const props = defineProps({
   ...sharedFormProps(null),
 });
 
-const emit = defineEmits(["update:modelValue"]);
+const emit = defineEmits([
+  "update:modelValue",
+  "update:status",
+  "update:messages",
+  "update:state",
+]);
 
 let attrs = useAttrs();
 
@@ -127,6 +140,7 @@ let { classes, states } = useStyles("textarea", props, {
 
 let getTextareaClasses = computed(() => {
   return [
+    "tw-form-textarea-reset flex items-center",
     classes.textarea.value,
     state.value === "valid" && states.textarea.value.valid,
     state.value === "invalid" && states.textarea.value.invalid,
@@ -135,7 +149,9 @@ let getTextareaClasses = computed(() => {
 });
 
 let wrapperClasses = computed(() => {
-  return props.inline ? "inline-block" : "block";
+  return props.inline
+    ? "inline-block align-middle group"
+    : "block flex-auto group";
 });
 
 let id = useUid("textarea", attrs);

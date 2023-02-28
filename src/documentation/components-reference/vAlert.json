@@ -1,0 +1,69 @@
+{
+  "name": "vAlert",
+  "props": {
+    "base": {
+      "type": [
+        "String"
+      ],
+      "default": "alert"
+    },
+    "variant": {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": ""
+    },
+    "modelValue": {
+      "type": [
+        "Boolean"
+      ],
+      "default": "undefined"
+    },
+    "dismissable": {
+      "type": [
+        "Boolean"
+      ],
+      "default": true
+    },
+    "autoDismissDelay": {
+      "type": [
+        "Number"
+      ],
+      "default": 0
+    },
+    "icon": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "closeButton": {
+      "type": [
+        "Object"
+      ],
+      "default": {}
+    },
+    "styleAlert": {
+      "type": [
+        "String",
+        "Array"
+      ],
+      "default": ""
+    },
+    "styleIcon": {
+      "type": [
+        "String",
+        "Array"
+      ],
+      "default": ""
+    }
+  },
+  "emits": [
+    "update:modelValue"
+  ],
+  "slots": [
+    "icon",
+    "default"
+  ]
+}

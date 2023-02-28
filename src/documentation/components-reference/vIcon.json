@@ -1,0 +1,27 @@
+{
+  "name": "vIcon",
+  "props": {
+    "name": {
+      "type": [
+        "String",
+        "Object"
+      ],
+      "default": ""
+    },
+    "icon": {
+      "type": [
+        "String",
+        "Object"
+      ],
+      "default": ""
+    },
+    "iconType": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    }
+  },
+  "emits": [],
+  "slots": []
+}

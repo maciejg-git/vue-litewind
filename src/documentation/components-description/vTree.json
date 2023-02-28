@@ -1,0 +1,38 @@
+{
+  "name": "vTree",
+  "props": {
+    "name": "",
+    "base": "",
+    "variant": "",
+    "items": "",
+    "itemName": "",
+    "itemChildren": "",
+    "itemIcon": "",
+    "itemDisabled": "",
+    "itemKey": "",
+    "filter": "",
+    "autoOpenRoot": "",
+    "autoOpenAll": "",
+    "selectReturnKeys": "",
+    "selectIndependent": "",
+    "openOnClick": "",
+    "allowSelectDisabled": "",
+    "allowOpenDisabled": "",
+    "showCheckboxes": "",
+    "showIcons": "",
+    "showIndicators": "",
+    "placeholderItemIcon": "",
+    "placeholderFolderIcon": "",
+    "chevron": "",
+    "transition": "",
+    "styleFolder": "",
+    "styleItem": "",
+    "styleIcon": ""
+  },
+  "emits": {
+    "input:selected": ""
+  },
+  "slots": {},
+  "functions": {},
+  "components": {}
+}

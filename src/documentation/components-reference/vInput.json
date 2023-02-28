@@ -1,0 +1,206 @@
+{
+  "name": "vInput",
+  "props": {
+    "modelValue": {
+      "type": [
+        "String",
+        "Number",
+        "Array",
+        "Boolean",
+        "Number"
+      ],
+      "default": ""
+    },
+    "externalModel": {
+      "type": [
+        "String",
+        "Number",
+        "Array",
+        "Boolean",
+        "Number"
+      ],
+      "default": "undefined"
+    },
+    "inline": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "rules": {
+      "type": [
+        "Object"
+      ],
+      "default": {}
+    },
+    "validateOn": {
+      "type": [
+        "String"
+      ],
+      "default": "blur"
+    },
+    "validateMode": {
+      "type": [
+        "String"
+      ],
+      "default": "silent"
+    },
+    "useLoader": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "isLoading": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "singleLineMessage": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "showIndicator": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "indicatorSwitch": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "width": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "label": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "noMessages": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "spinner": {
+      "type": [
+        "Object"
+      ],
+      "default": {}
+    },
+    "closeButton": {
+      "type": [
+        "Object"
+      ],
+      "default": {}
+    },
+    "chevron": {
+      "type": [
+        "Object"
+      ],
+      "default": {}
+    },
+    "formText": {
+      "type": [
+        "Object"
+      ],
+      "default": {
+        "class": "absolute"
+      }
+    },
+    "styleInput": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleIcon": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleCloseButtonWrapper": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleLabel": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "icon": {
+      "type": [
+        "String",
+        "Object"
+      ],
+      "default": ""
+    },
+    "clearable": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "state": {
+      "type": [
+        "String"
+      ],
+      "default": null
+    },
+    "customClearable": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "base": {
+      "type": [
+        "String"
+      ],
+      "default": "input"
+    },
+    "variant": {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": ""
+    },
+    "role": {
+      "type": [
+        "String"
+      ],
+      "default": "undefined"
+    }
+  },
+  "emits": [
+    "update:modelValue",
+    "update:status",
+    "update:messages",
+    "update:state",
+    "click:clear-button",
+    "click:icon",
+    "click:indicator"
+  ],
+  "slots": [
+    "label",
+    "icon",
+    "prepend",
+    "append"
+  ]
+}

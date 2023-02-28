@@ -1,0 +1,12 @@
+{
+  "name": "vListItem",
+  "props": {
+    "active": ""
+  },
+  "emits": {},
+  "slots": {
+    "default": ""
+  },
+  "functions": {},
+  "components": {}
+}

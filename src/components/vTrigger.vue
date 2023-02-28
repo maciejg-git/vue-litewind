@@ -1,4 +1,5 @@
 <template>
+  <!-- @slot default -->
   <slot
     name="default"
     v-bind="referenceSlot"

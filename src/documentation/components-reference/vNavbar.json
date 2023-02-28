@@ -1,0 +1,46 @@
+{
+  "name": "vNavbar",
+  "props": {
+    "base": {
+      "type": [
+        "String"
+      ],
+      "default": "navbar"
+    },
+    "variant": {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": ""
+    },
+    "fixed": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "sticky": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "bottom": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "styleNavbar": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    }
+  },
+  "emits": [],
+  "slots": [
+    "default"
+  ]
+}

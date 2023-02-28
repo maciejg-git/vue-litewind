@@ -1,0 +1,168 @@
+{
+  "name": "vTree",
+  "props": {
+    "base": {
+      "type": [
+        "String"
+      ],
+      "default": "tree"
+    },
+    "variant": {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": ""
+    },
+    "items": {
+      "type": [
+        "Object"
+      ],
+      "default": []
+    },
+    "itemName": {
+      "type": [
+        "String"
+      ],
+      "default": "name"
+    },
+    "itemChildren": {
+      "type": [
+        "String"
+      ],
+      "default": "children"
+    },
+    "itemIcon": {
+      "type": [
+        "String"
+      ],
+      "default": "icon"
+    },
+    "itemDisabled": {
+      "type": [
+        "String"
+      ],
+      "default": "disabled"
+    },
+    "itemKey": {
+      "type": [
+        "String"
+      ],
+      "default": "id"
+    },
+    "filter": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "autoOpenRoot": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "autoOpenAll": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "selectReturnKeys": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "selectIndependent": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "openOnClick": {
+      "type": [
+        "Boolean"
+      ],
+      "default": true
+    },
+    "allowSelectDisabled": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "allowOpenDisabled": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "showCheckboxes": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "showIcons": {
+      "type": [
+        "Boolean"
+      ],
+      "default": true
+    },
+    "showIndicators": {
+      "type": [
+        "Boolean"
+      ],
+      "default": true
+    },
+    "placeholderItemIcon": {
+      "type": [
+        "String",
+        "Object"
+      ],
+      "default": "undefined"
+    },
+    "placeholderFolderIcon": {
+      "type": [
+        "String",
+        "Object"
+      ],
+      "default": "undefined"
+    },
+    "chevron": {
+      "type": [
+        "Object"
+      ],
+      "default": {}
+    },
+    "transition": {
+      "type": [
+        "String"
+      ],
+      "default": "fade"
+    },
+    "styleFolder": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleItem": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleIcon": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    }
+  },
+  "emits": [
+    "input:selected"
+  ],
+  "slots": []
+}

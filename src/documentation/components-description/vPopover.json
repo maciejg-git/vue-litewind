@@ -1,0 +1,23 @@
+{
+  "name": "vPopover",
+  "props": {
+    "name": "",
+    "base": "",
+    "variant": "",
+    "placement": "",
+    "offsetX": "",
+    "offsetY": "",
+    "noFlip": "",
+    "trigger": "",
+    "title": "",
+    "transition": "",
+    "styleHeader": ""
+  },
+  "emits": {},
+  "slots": {
+    "reference": "",
+    "default": ""
+  },
+  "functions": {},
+  "components": {}
+}

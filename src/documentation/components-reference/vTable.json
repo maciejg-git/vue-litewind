@@ -1,0 +1,145 @@
+{
+  "name": "vTable",
+  "props": {
+    "base": {
+      "type": [
+        "String"
+      ],
+      "default": "table"
+    },
+    "variant": {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": ""
+    },
+    "definition": {
+      "type": [
+        "Array"
+      ],
+      "default": "undefined"
+    },
+    "items": {
+      "type": [
+        "Array"
+      ],
+      "default": "undefined",
+      "required": true
+    },
+    "filter": {
+      "type": [
+        "String",
+        "RegExp"
+      ],
+      "default": ""
+    },
+    "page": {
+      "type": [
+        "Number"
+      ],
+      "default": 1
+    },
+    "itemsPerPage": {
+      "type": [
+        "Number"
+      ],
+      "default": 0
+    },
+    "noHeader": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "primaryKey": {
+      "type": [
+        "String"
+      ],
+      "default": "undefined",
+      "required": true
+    },
+    "captionTop": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "emptyText": {
+      "type": [
+        "String"
+      ],
+      "default": "Empty table"
+    },
+    "emptyFilteredText": {
+      "type": [
+        "String"
+      ],
+      "default": "No records for current filter"
+    },
+    "locale": {
+      "type": [
+        "String"
+      ],
+      "default": "en-GB"
+    },
+    "selectionMode": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "state": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleTable": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleHeaderRow": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleHeaderCell": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleRow": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleCell": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleCaption": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    }
+  },
+  "emits": [
+    "update:page",
+    "update:filtered-count",
+    "input:selection"
+  ],
+  "slots": [
+    "caption",
+    "busy",
+    "colspan"
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "name": "vTabs",
+  "props": {
+    "base": {
+      "type": [
+        "String"
+      ],
+      "default": "tabs"
+    },
+    "variant": {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": ""
+    },
+    "fill": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "center": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "right": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "transition": {
+      "type": [
+        "String"
+      ],
+      "default": "fade"
+    },
+    "styleTabBar": {
+      "type": [
+        "String",
+        "Array"
+      ],
+      "default": ""
+    },
+    "styleTab": {
+      "type": [
+        "String",
+        "Array"
+      ],
+      "default": ""
+    }
+  },
+  "emits": [
+    "input:changed-tab"
+  ],
+  "slots": [
+    "default"
+  ]
+}

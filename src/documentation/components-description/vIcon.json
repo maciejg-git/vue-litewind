@@ -1,0 +1,12 @@
+{
+  "name": "vIcon",
+  "props": {
+    "name": "",
+    "icon": "",
+    "iconType": ""
+  },
+  "emits": {},
+  "slots": {},
+  "functions": {},
+  "components": {}
+}

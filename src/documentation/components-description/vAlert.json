@@ -1,0 +1,24 @@
+{
+  "name": "vAlert",
+  "props": {
+    "name": "",
+    "base": "",
+    "variant": "",
+    "modelValue": "",
+    "dismissable": "",
+    "autoDismissDelay": "",
+    "icon": "",
+    "closeButton": "",
+    "styleAlert": "",
+    "styleIcon": ""
+  },
+  "emits": {
+    "update:modelValue": ""
+  },
+  "slots": {
+    "icon": "",
+    "default": ""
+  },
+  "functions": {},
+  "components": {}
+}

@@ -1,0 +1,25 @@
+{
+  "name": "vSidepanel",
+  "props": {
+    "name": "",
+    "base": "",
+    "variant": "",
+    "modelValue": "",
+    "showCloseButton": "",
+    "sidebarLeft": "",
+    "width": "",
+    "noHeader": "",
+    "closeButton": "",
+    "transition": "",
+    "styleSidepanel": ""
+  },
+  "emits": {
+    "update:modelValue": ""
+  },
+  "slots": {
+    "header": "",
+    "default": ""
+  },
+  "functions": {},
+  "components": {}
+}

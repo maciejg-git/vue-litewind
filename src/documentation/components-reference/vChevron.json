@@ -1,0 +1,62 @@
+{
+  "name": "vChevron",
+  "props": {
+    "base": {
+      "type": [
+        "String"
+      ],
+      "default": "chevron"
+    },
+    "variant": {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": ""
+    },
+    "initial": {
+      "type": [
+        "String"
+      ],
+      "default": "down"
+    },
+    "rotate90": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "triangle": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "clockwise": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "switch": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "icon": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleChevron": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    }
+  },
+  "emits": [],
+  "slots": []
+}

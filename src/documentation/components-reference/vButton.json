@@ -1,0 +1,46 @@
+{
+  "name": "vButton",
+  "props": {
+    "base": {
+      "type": [
+        "String"
+      ],
+      "default": "button"
+    },
+    "variant": {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": ""
+    },
+    "disabled": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "tag": {
+      "type": [
+        "String"
+      ],
+      "default": "button"
+    },
+    "block": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "styleButton": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    }
+  },
+  "emits": [],
+  "slots": [
+    "default"
+  ]
+}

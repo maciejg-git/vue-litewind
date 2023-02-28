@@ -4,6 +4,7 @@
     :for="id"
     :class="classes.label.value"
   >
+    <!-- @slot label -->
     <slot
       name="label"
       :label="label"
@@ -24,6 +25,7 @@
       :role="role"
       data-testid="wrapper"
     >
+      <!-- @slot icon -->
       <slot name="icon">
         <div
           v-if="icon"
@@ -38,11 +40,12 @@
         </div>
       </slot>
 
+      <!-- @slot prepend -->
       <slot name="prepend"></slot>
 
       <div class="flex flex-wrap flex-1">
+        <!-- @slot multi-value -->
         <slot name="multi-value"></slot>
-
         <input
           v-model="localModel"
           ref="inputRef"
@@ -55,6 +58,7 @@
         />
       </div>
 
+      <!-- @slot append -->
       <slot name="append"></slot>
 
       <div class="flex items-center">
@@ -200,7 +204,7 @@ const props = defineProps({
   },
   spinner: {
     type: Object,
-    default: defaultProps("input", "spinner", { }),
+    default: defaultProps("input", "spinner", {}),
   },
   closeButton: {
     type: Object,
@@ -239,7 +243,7 @@ const props = defineProps({
   role: {
     type: String,
     default: undefined,
-  }
+  },
 });
 
 const emit = defineEmits([

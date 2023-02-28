@@ -5,6 +5,7 @@
     role="treeitem"
     :aria-expanded="isOpen ? 'true' : 'false'"
   >
+  <!-- @slot item -->
     <slot
       name="item"
       v-bind="{ item: items, isFolder, isOpen, toggle }"
@@ -48,6 +49,7 @@
           v-if="showIcons"
           class="order-3"
         >
+        <!-- @slot icon -->
           <slot
             name="icon"
             v-bind="{ item: items, isFolder, isOpen }"
@@ -67,6 +69,7 @@
         </div>
         <!-- prepend slot -->
         <div class="order-5">
+          <!-- @slot item-prepend -->
           <slot
             name="item-prepend"
             v-bind="{ item: items, isFolder, isOpen, toggle }"
@@ -82,6 +85,7 @@
           }"
           role="button"
         >
+        <!-- @slot name -->
           <slot
             name="name"
             v-bind="{ item: items, isFolder, isOpen }"
@@ -91,6 +95,7 @@
         </div>
         <!-- append slot -->
         <div class="order-last flex">
+          <!-- @slot item-append -->
           <slot
             name="item-append"
             v-bind="{ item: items, isFolder, isOpen, toggle }"

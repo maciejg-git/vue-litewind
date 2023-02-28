@@ -3,6 +3,7 @@
     :class="classes.list.value"
     :style="{ width: width }"
   >
+  <!-- @slot default -->
     <slot name="default"></slot>
   </div>
 </template>

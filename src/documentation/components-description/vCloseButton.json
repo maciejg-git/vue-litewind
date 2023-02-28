@@ -1,0 +1,14 @@
+{
+  "name": "vCloseButton",
+  "props": {
+    "name": "",
+    "base": "",
+    "variant": "",
+    "styleWrapper": "",
+    "styleCloseButton": ""
+  },
+  "emits": {},
+  "slots": {},
+  "functions": {},
+  "components": {}
+}

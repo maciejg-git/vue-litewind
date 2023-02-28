@@ -1,0 +1,18 @@
+{
+  "name": "vTreeNode",
+  "props": {
+    "items": "",
+    "itemLevel": "",
+    "disabled": ""
+  },
+  "emits": {
+    "children-selected": ""
+  },
+  "slots": {
+    "item": "",
+    "icon": "",
+    "name": ""
+  },
+  "functions": {},
+  "components": {}
+}

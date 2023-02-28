@@ -8,6 +8,7 @@
       disabled ? 'disabled' : '',
     ]"
   >
+  <!-- @slot default -->
     <slot name="default"></slot>
   </component>
 </template>

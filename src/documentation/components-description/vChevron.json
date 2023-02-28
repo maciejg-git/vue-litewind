@@ -1,0 +1,19 @@
+{
+  "name": "vChevron",
+  "props": {
+    "name": "",
+    "base": "",
+    "variant": "",
+    "initial": "",
+    "rotate90": "",
+    "triangle": "",
+    "clockwise": "",
+    "switch": "",
+    "icon": "",
+    "styleChevron": ""
+  },
+  "emits": {},
+  "slots": {},
+  "functions": {},
+  "components": {}
+}

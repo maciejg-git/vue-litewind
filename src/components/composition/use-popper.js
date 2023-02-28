@@ -1,4 +1,4 @@
-import { ref, computed, watch, unref, isRef, customRef } from "vue";
+import { ref, computed, watch, unref, isRef } from "vue";
 import { createPopper } from "@popperjs/core";
 
 export default function usePopper(
@@ -25,6 +25,7 @@ export default function usePopper(
 
   let isPopperVisible = ref(false);
   let instance = null;
+  let popper = ref(null);
   let localReference = ref(null);
 
   // localReference can by any template ref (component or element)
@@ -41,26 +42,6 @@ export default function usePopper(
       localReference.value = value;
     },
   });
-
-  let popper = customRef((track, trigger) => {
-    let popper = null
-
-    return {
-      get() {
-        track()
-        return popper
-      },
-      set(value) {
-        popper = value
-        if (value) {
-          setPopper();
-        } else if (!isLocked.value) {
-          destroyPopperInstance();
-        }
-        trigger()
-      }
-    }
-  })
 
   let showPopper = async function () {
     if (isPopperVisible.value) return;
@@ -97,6 +78,18 @@ export default function usePopper(
   let lockPopper = () => {
     isLocked.value = true;
   };
+
+  // watch popper element and create new instance
+  watch(popper, (value) => {
+    if (value) {
+      setPopper();
+      return;
+    }
+
+    if (!isLocked.value) {
+      destroyPopperInstance();
+    }
+  });
 
   let destroyPopperInstance = () => {
     if (instance) {

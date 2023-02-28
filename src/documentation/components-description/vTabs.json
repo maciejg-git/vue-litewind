@@ -1,0 +1,22 @@
+{
+  "name": "vTabs",
+  "props": {
+    "name": "",
+    "base": "",
+    "variant": "",
+    "fill": "",
+    "center": "",
+    "right": "",
+    "transition": "",
+    "styleTabBar": "",
+    "styleTab": ""
+  },
+  "emits": {
+    "input:changed-tab": ""
+  },
+  "slots": {
+    "default": ""
+  },
+  "functions": {},
+  "components": {}
+}

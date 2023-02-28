@@ -1,0 +1,87 @@
+{
+  "name": "vDropdown",
+  "props": {
+    "base": {
+      "type": [
+        "String"
+      ],
+      "default": "dropdown"
+    },
+    "variant": {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": ""
+    },
+    "modelValue": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "placement": {
+      "type": [
+        "String"
+      ],
+      "default": "bottom-start"
+    },
+    "offsetX": {
+      "type": [
+        "Number"
+      ],
+      "default": 0
+    },
+    "offsetY": {
+      "type": [
+        "Number"
+      ],
+      "default": 0
+    },
+    "noFlip": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "autoCloseMenu": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "trigger": {
+      "type": [
+        "String"
+      ],
+      "default": "click"
+    },
+    "transition": {
+      "type": [
+        "String"
+      ],
+      "default": "fade"
+    },
+    "styleItem": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleHeader": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    }
+  },
+  "emits": [
+    "state:opened",
+    "state:closed",
+    "update:modelValue"
+  ],
+  "slots": [
+    "reference",
+    "default"
+  ]
+}

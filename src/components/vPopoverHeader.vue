@@ -4,6 +4,7 @@
     :class="classes.header.value"
   >
     <div>
+      <!-- @slot default -->
       <slot name="default">
         {{ title }}
       </slot>

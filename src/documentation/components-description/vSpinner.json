@@ -1,0 +1,15 @@
+{
+  "name": "vSpinner",
+  "props": {
+    "name": "",
+    "base": "",
+    "variant": "",
+    "type": "",
+    "icon": "",
+    "styleSpinner": ""
+  },
+  "emits": {},
+  "slots": {},
+  "functions": {},
+  "components": {}
+}

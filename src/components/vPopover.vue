@@ -1,4 +1,5 @@
 <template>
+  <!-- @slot reference -->
   <slot
     name="reference"
     v-bind="referenceSlotProps"
@@ -15,6 +16,7 @@
         v-if="isPopperVisible"
         ref="popper"
       >
+      <!-- @slot default -->
         <slot
           name="default"
           :hide="hide"
@@ -97,7 +99,6 @@ const {
   updateVirtualElement,
 } = usePopper({ placement, offsetX, offsetY, noFlip });
 
-// click outside
 let { onClickOutside } = useClickOutside();
 let stopClickOutside = null;
 
@@ -117,7 +118,7 @@ let hide = () => {
 
 let { onTrigger } = useTrigger(trigger, show, hide);
 
-let referenceSlotProps = { reference, onTrigger };
+let referenceSlotProps = { reference, onTrigger, isOpen: isPopperVisible };
 
 // trigger by id
 

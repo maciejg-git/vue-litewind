@@ -1,0 +1,46 @@
+{
+  "name": "vModal",
+  "props": {
+    "name": "",
+    "base": "",
+    "variant": "",
+    "modelValue": "",
+    "title": "",
+    "noPrimaryButton": "",
+    "noSecondaryButton": "",
+    "primaryButton": "",
+    "secondaryButton": "",
+    "primaryButtonLabel": "",
+    "secondaryButtonLabel": "",
+    "primaryButtonClose": "",
+    "secondaryButtonClose": "",
+    "justifyButtons": "",
+    "noCloseButton": "",
+    "staticBackdrop": "",
+    "noHeader": "",
+    "noFooter": "",
+    "position": "",
+    "size": "",
+    "closeButton": "",
+    "transition": "",
+    "styleModal": "",
+    "styleHeader": "",
+    "styleFooter": "",
+    "styleContent": "",
+    "styleBackdrop": ""
+  },
+  "emits": {
+    "input:primary-button-click": "",
+    "input:secondary-button-click": "",
+    "update:modelValue": "",
+    "input:static-backdrop-click": ""
+  },
+  "slots": {
+    "modal": "",
+    "header": "",
+    "default": "",
+    "footer": ""
+  },
+  "functions": {},
+  "components": {}
+}

@@ -1,0 +1,34 @@
+{
+  "name": "vCard",
+  "props": {
+    "base": {
+      "type": [
+        "String"
+      ],
+      "default": "card"
+    },
+    "variant": {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": ""
+    },
+    "width": {
+      "type": [
+        "String"
+      ],
+      "default": "undefined"
+    },
+    "styleCard": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    }
+  },
+  "emits": [],
+  "slots": [
+    "default"
+  ]
+}

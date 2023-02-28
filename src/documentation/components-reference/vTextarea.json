@@ -1,0 +1,103 @@
+{
+  "name": "vTextarea",
+  "props": {
+    "base": {
+      "type": [
+        "String"
+      ],
+      "default": "textarea"
+    },
+    "variant": {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": ""
+    },
+    "modelValue": {
+      "type": [
+        "String"
+      ],
+      "default": "undefined"
+    },
+    "inline": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "rules": {
+      "type": [
+        "Object"
+      ],
+      "default": {}
+    },
+    "validateOn": {
+      "type": [
+        "String"
+      ],
+      "default": "blur"
+    },
+    "validateMode": {
+      "type": [
+        "String"
+      ],
+      "default": "silent"
+    },
+    "singleLineMessage": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "label": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "noMessages": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "formText": {
+      "type": [
+        "Object"
+      ],
+      "default": {
+        "class": "absolute"
+      }
+    },
+    "styleTextarea": {
+      "type": [
+        "String",
+        "Array"
+      ],
+      "default": ""
+    },
+    "styleLabel": {
+      "type": [
+        "String",
+        "Array"
+      ],
+      "default": ""
+    },
+    "state": {
+      "type": [
+        "String"
+      ],
+      "default": null
+    }
+  },
+  "emits": [
+    "update:modelValue",
+    "update:status",
+    "update:messages",
+    "update:state"
+  ],
+  "slots": [
+    "label"
+  ]
+}

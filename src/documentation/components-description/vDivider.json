@@ -1,0 +1,13 @@
+{
+  "name": "vDivider",
+  "props": {
+    "name": "",
+    "base": "",
+    "variant": "",
+    "styleDivider": ""
+  },
+  "emits": {},
+  "slots": {},
+  "functions": {},
+  "components": {}
+}

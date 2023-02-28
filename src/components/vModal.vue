@@ -21,6 +21,7 @@
             ref="trapRef"
             @click.stop
           >
+          <!-- @slot modal -->
             <slot
               name="modal"
               :close="close"
@@ -29,6 +30,7 @@
                 v-if="!noHeader"
                 :class="classes.header.value"
               >
+              <!-- @slot header -->
                 <slot name="header">
                   <span>
                     {{ title }}
@@ -41,12 +43,14 @@
                 />
               </header>
               <main :class="classes.content.value">
+                <!-- @slot default -->
                 <slot name="default"></slot>
               </main>
               <footer
                 v-if="!noFooter"
                 :class="classes.footer.value"
               >
+              <!-- @slot footer -->
                 <slot name="footer">
                   <v-button
                     v-if="!noSecondaryButton"

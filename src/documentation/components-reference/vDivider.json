@@ -1,0 +1,27 @@
+{
+  "name": "vDivider",
+  "props": {
+    "base": {
+      "type": [
+        "String"
+      ],
+      "default": "divider"
+    },
+    "variant": {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": ""
+    },
+    "styleDivider": {
+      "type": [
+        "String",
+        "Array"
+      ],
+      "default": ""
+    }
+  },
+  "emits": [],
+  "slots": []
+}

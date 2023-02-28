@@ -4,6 +4,7 @@
     :href="tagHref"
     :class="itemClass"
   >
+  <!-- @slot default -->
     <slot name="default"></slot>
   </component>
 </template>

@@ -34,6 +34,7 @@
       <template v-if="multiValue">
         <template v-for="(value, index) in selectedItems">
           <template v-if="index < maxMultiValue">
+            <!-- @slot multi-value-item -->
             <slot
               name="multi-value-item"
               v-bind="value"
@@ -46,6 +47,7 @@
             </slot>
           </template>
         </template>
+        <!-- @slot max-multi-value -->
         <slot
           v-if="selectedItems.length > maxMultiValue"
           name="max-multi-value"
@@ -97,6 +99,7 @@
             tabindex="0"
             role="option"
           >
+          <!-- @slot item -->
             <slot
               name="item"
               :text="getItemText(item)"

@@ -1,0 +1,188 @@
+{
+  "name": "vSelect",
+  "props": {
+    "base": {
+      "type": [
+        "String"
+      ],
+      "default": "select"
+    },
+    "variant": {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": ""
+    },
+    "modelValue": {
+      "type": [
+        "String",
+        "Object",
+        "Boolean",
+        "Number"
+      ],
+      "default": "undefined"
+    },
+    "useLoader": {
+      "type": [
+        "Boolean"
+      ],
+      "default": true
+    },
+    "multiValue": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "maxMultiValue": {
+      "type": [
+        "Number"
+      ],
+      "default": 9999
+    },
+    "isLoading": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "inline": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "icon": {
+      "type": [
+        "String",
+        "Object"
+      ],
+      "default": ""
+    },
+    "clearable": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "state": {
+      "type": [
+        "String"
+      ],
+      "default": null
+    },
+    "items": {
+      "type": [
+        "Array"
+      ],
+      "default": []
+    },
+    "autocomplete": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "itemText": {
+      "type": [
+        "String"
+      ],
+      "default": "text"
+    },
+    "itemValue": {
+      "type": [
+        "String"
+      ],
+      "default": "value"
+    },
+    "filterKeys": {
+      "type": [
+        "Array"
+      ],
+      "default": []
+    },
+    "noFilter": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "noPagination": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "emptyDataMessage": {
+      "type": [
+        "String"
+      ],
+      "default": "No data available"
+    },
+    "input": {
+      "type": [
+        "Object"
+      ],
+      "default": {}
+    },
+    "card": {
+      "type": [
+        "Object"
+      ],
+      "default": {}
+    },
+    "itemsPerPage": {
+      "type": [
+        "Number"
+      ],
+      "default": 10
+    },
+    "transition": {
+      "type": [
+        "String"
+      ],
+      "default": "fade"
+    },
+    "styleItem": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "placement": {
+      "type": [
+        "String"
+      ],
+      "default": "bottom-start"
+    },
+    "offsetX": {
+      "type": [
+        "Number"
+      ],
+      "default": 0
+    },
+    "offsetY": {
+      "type": [
+        "Number"
+      ],
+      "default": 0
+    },
+    "noFlip": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    }
+  },
+  "emits": [
+    "update:modelValue",
+    "update:page",
+    "input:value",
+    "state:opened",
+    "state:closed"
+  ],
+  "slots": [
+    "item"
+  ]
+}

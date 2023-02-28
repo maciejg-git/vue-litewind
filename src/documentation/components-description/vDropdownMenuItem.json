@@ -1,0 +1,14 @@
+{
+  "name": "vDropdownMenuItem",
+  "props": {
+    "tag": "",
+    "disabled": "",
+    "active": ""
+  },
+  "emits": {},
+  "slots": {
+    "default": ""
+  },
+  "functions": {},
+  "components": {}
+}

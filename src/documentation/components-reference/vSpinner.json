@@ -1,0 +1,39 @@
+{
+  "name": "vSpinner",
+  "props": {
+    "base": {
+      "type": [
+        "String"
+      ],
+      "default": "spinner"
+    },
+    "variant": {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": ""
+    },
+    "type": {
+      "type": [
+        "String"
+      ],
+      "default": "border"
+    },
+    "icon": {
+      "type": [
+        "String",
+        "Object"
+      ],
+      "default": "undefined"
+    },
+    "styleSpinner": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    }
+  },
+  "emits": [],
+  "slots": []
+}

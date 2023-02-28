@@ -1,5 +1,6 @@
 <template>
   <span :class="classes.chip.value">
+    <!-- @slot default -->
     <slot name="default"></slot>
     <v-close-button
       v-bind="closeButton"

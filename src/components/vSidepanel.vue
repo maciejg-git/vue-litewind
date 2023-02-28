@@ -12,6 +12,7 @@
         class="flex justify-between w-full"
       >
         <div class="my-3 ml-5">
+          <!-- @slot header -->
           <slot name="header"></slot>
         </div>
         <v-close-button
@@ -23,6 +24,7 @@
           @click="handleClose"
         />
       </div>
+      <!-- @slot default -->
       <slot
         name="default"
         :close="close"

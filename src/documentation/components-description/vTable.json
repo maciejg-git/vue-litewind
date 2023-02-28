@@ -1,0 +1,39 @@
+{
+  "name": "vTable",
+  "props": {
+    "name": "",
+    "base": "",
+    "variant": "",
+    "definition": "",
+    "items": "",
+    "filter": "",
+    "page": "",
+    "itemsPerPage": "",
+    "noHeader": "",
+    "primaryKey": "",
+    "captionTop": "",
+    "emptyText": "",
+    "emptyFilteredText": "",
+    "locale": "",
+    "selectionMode": "",
+    "state": "",
+    "styleTable": "",
+    "styleHeaderRow": "",
+    "styleHeaderCell": "",
+    "styleRow": "",
+    "styleCell": "",
+    "styleCaption": ""
+  },
+  "emits": {
+    "update:page": "",
+    "update:filtered-count": "",
+    "input:selection": ""
+  },
+  "slots": {
+    "caption": "",
+    "busy": "",
+    "colspan": ""
+  },
+  "functions": {},
+  "components": {}
+}

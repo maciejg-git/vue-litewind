@@ -1,0 +1,41 @@
+{
+  "name": "vCheckboxGroup",
+  "props": {
+    "modelValue": {
+      "type": [
+        "String",
+        "Number",
+        "Boolean",
+        "Array"
+      ],
+      "default": "undefined"
+    },
+    "rules": {
+      "type": [
+        "Object"
+      ],
+      "default": {}
+    },
+    "state": {
+      "type": [
+        "String"
+      ],
+      "default": null
+    },
+    "validateMode": {
+      "type": [
+        "String"
+      ],
+      "default": "silent"
+    }
+  },
+  "emits": [
+    "update:modelValue",
+    "update:status",
+    "update:state",
+    "update:messages"
+  ],
+  "slots": [
+    "default"
+  ]
+}

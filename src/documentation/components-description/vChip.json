@@ -1,0 +1,18 @@
+{
+  "name": "vChip",
+  "props": {
+    "name": "",
+    "base": "",
+    "variant": "",
+    "closeButton": "",
+    "styleChip": ""
+  },
+  "emits": {
+    "click:close-button": ""
+  },
+  "slots": {
+    "default": ""
+  },
+  "functions": {},
+  "components": {}
+}

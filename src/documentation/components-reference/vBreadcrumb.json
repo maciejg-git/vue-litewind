@@ -1,0 +1,50 @@
+{
+  "name": "vBreadcrumb",
+  "props": {
+    "base": {
+      "type": [
+        "String"
+      ],
+      "default": "breadcrumb"
+    },
+    "variant": {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": ""
+    },
+    "path": {
+      "type": [
+        "Array"
+      ],
+      "default": []
+    },
+    "separator": {
+      "type": [
+        "String"
+      ],
+      "default": "/"
+    },
+    "styleBreadcrumb": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleSeparator": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleActive": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    }
+  },
+  "emits": [],
+  "slots": []
+}

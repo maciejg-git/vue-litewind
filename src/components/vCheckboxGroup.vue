@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- @slot default -->
     <slot name="default"></slot>
   </div>
 </template>

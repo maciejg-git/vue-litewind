@@ -1,0 +1,29 @@
+{
+  "name": "vDropdown",
+  "props": {
+    "name": "",
+    "base": "",
+    "variant": "",
+    "modelValue": "",
+    "placement": "",
+    "offsetX": "",
+    "offsetY": "",
+    "noFlip": "",
+    "autoCloseMenu": "",
+    "trigger": "",
+    "transition": "",
+    "styleItem": "",
+    "styleHeader": ""
+  },
+  "emits": {
+    "state:opened": "",
+    "state:closed": "",
+    "update:modelValue": ""
+  },
+  "slots": {
+    "reference": "",
+    "default": ""
+  },
+  "functions": {},
+  "components": {}
+}

@@ -1,0 +1,24 @@
+{
+  "name": "vCollapse",
+  "props": {
+    "modelValue": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "transition": {
+      "type": [
+        "String"
+      ],
+      "default": "fade-collapse"
+    }
+  },
+  "emits": [
+    "update:modelValue"
+  ],
+  "slots": [
+    "reference",
+    "default"
+  ]
+}

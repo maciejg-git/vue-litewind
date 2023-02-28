@@ -11,6 +11,7 @@
     ]"
     @click="autoCloseMenu && hide()"
   >
+  <!-- @slot default -->
     <slot name="default"></slot>
   </component>
 </template>

@@ -7,10 +7,12 @@
       v-show="tab.isActive.value"
       role="tabpanel"
     >
+    <!-- @slot name -->
       <slot
         v-if="false"
         name="name"
       ></slot>
+      <!-- @slot default -->
       <slot name="default"></slot>
     </div>
   </transition>

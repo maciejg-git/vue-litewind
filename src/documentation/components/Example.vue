@@ -27,7 +27,7 @@ export default {
   setup(props) {
     let code = ref("")
 
-    import(`./examples/${props.name}.vue?raw`).then((i) => {
+    import(`../examples/${props.name}.vue?raw`).then((i) => {
       code.value = i.default
     })
 

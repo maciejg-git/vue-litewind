@@ -1,5 +1,6 @@
 <template>
   <div :class="classes.header.value">
+    <!-- @slot default -->
     <slot name="default"></slot>
   </div>
 </template>

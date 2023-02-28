@@ -18,10 +18,12 @@
           <render-vnode :vnodes="getTabName(tab)" />
         </a>
       </li>
+      <!-- @slot tab-bar-append -->
       <li v-if="$slots['tab-bar-append']">
         <slot name="tab-bar-append"></slot>
       </li>
     </ul>
+    <!-- @slot default -->
     <slot name="default"></slot>
   </div>
 </template>
@@ -64,7 +66,7 @@ const props = defineProps({
 const emit = defineEmits(["input:changed-tab"]);
 
 let renderVnode = (props) => {
-  return h("span", props.vnodes);
+  return h("span", null, props.vnodes);
 };
 
 let { classes, states } = useStyles("tabs", props, {

@@ -1,0 +1,15 @@
+{
+  "name": "vRange",
+  "props": {
+    "name": "",
+    "base": "",
+    "variant": "",
+    "modelValue": "",
+    "styleRange": "",
+    "state": ""
+  },
+  "emits": {},
+  "slots": {},
+  "functions": {},
+  "components": {}
+}

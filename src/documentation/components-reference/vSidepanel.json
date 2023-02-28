@@ -1,0 +1,73 @@
+{
+  "name": "vSidepanel",
+  "props": {
+    "base": {
+      "type": [
+        "String"
+      ],
+      "default": "sidepanel"
+    },
+    "variant": {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": ""
+    },
+    "modelValue": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "showCloseButton": {
+      "type": [
+        "Boolean"
+      ],
+      "default": true
+    },
+    "sidebarLeft": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "width": {
+      "type": [
+        "String"
+      ],
+      "default": "320px"
+    },
+    "noHeader": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "closeButton": {
+      "type": [
+        "Object"
+      ],
+      "default": {}
+    },
+    "transition": {
+      "type": [
+        "String"
+      ],
+      "default": "fade-slide"
+    },
+    "styleSidepanel": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    }
+  },
+  "emits": [
+    "update:modelValue"
+  ],
+  "slots": [
+    "header",
+    "default"
+  ]
+}

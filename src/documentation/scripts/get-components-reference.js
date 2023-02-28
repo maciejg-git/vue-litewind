@@ -12,11 +12,24 @@ for (let component in components) {
   let filename = `${component}.json`
   let reference = {}
   let description = {
+    name: "",
     props: {},
     emits: {},
     slots: {},
+    functions: {},
+    components: {},
+  }
+  const slotRegexp = /<!--\s*@slot\s+(\w+)\s*-->/g;
+  
+  let replacer = (k, v) => {
+    if (v === undefined) {
+      return "undefined"
+    }
+    return v
   }
 
+  // props
+  
   if (props) {
     for (let prop in props) {
       if (props[prop].type) {
@@ -30,16 +43,32 @@ for (let component in components) {
       }
       description.props[prop] = ""
     }
+
+    // slots
+
+    let vueFile = await readFile(`${pathComponents}${component}.vue`, "utf8")
+
+    let slots = [...vueFile.matchAll(slotRegexp)].map(i => i[1])
+
+    // reference and description files
+
+    reference.name = component
     reference.props = props
-
     reference.emits = emits || []
+    reference.slots = slots || []
 
+    description.name = component
     description.emits = reference.emits.reduce((acc, i) => {
       acc[i] = ""
       return acc
     }, {})
 
-    await writeFile(`${pathComponentsReference}${filename}`, JSON.stringify(reference, (k, v) => v === undefined ? "undefined" : v, 2))
+    description.slots = reference.slots.reduce((acc, i) => {
+      acc[i] = ""
+      return acc
+    }, {})
+
+    await writeFile(`${pathComponentsReference}${filename}`, JSON.stringify(reference, replacer, 2))
     // await writeFile(`${pathComponentsDescription}${filename}`, JSON.stringify(description, null, 2))
   }
 }

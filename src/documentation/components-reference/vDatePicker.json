@@ -1,0 +1,168 @@
+{
+  "name": "vDatePicker",
+  "props": {
+    "base": {
+      "type": [
+        "String"
+      ],
+      "default": "datepicker"
+    },
+    "variant": {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": ""
+    },
+    "modelValue": {
+      "type": [
+        "String",
+        "Array"
+      ],
+      "default": "undefined"
+    },
+    "locale": {
+      "type": [
+        "String"
+      ],
+      "default": "en-GB"
+    },
+    "mondayFirstWeekday": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "range": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "format": {
+      "type": [
+        "Object"
+      ],
+      "default": {
+        "weekday": "long",
+        "year": "numeric",
+        "month": "long",
+        "day": "numeric"
+      }
+    },
+    "disabled": {
+      "type": [
+        "Array"
+      ],
+      "default": []
+    },
+    "width": {
+      "type": [
+        "String"
+      ],
+      "default": "undefined"
+    },
+    "adjacentMonths": {
+      "type": [
+        "Boolean"
+      ],
+      "default": true
+    },
+    "rangeHoverHighlight": {
+      "type": [
+        "Boolean"
+      ],
+      "default": true
+    },
+    "buttons": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "secondaryButtonLabel": {
+      "type": [
+        "String"
+      ],
+      "default": "Cancel"
+    },
+    "primaryButtonLabel": {
+      "type": [
+        "String"
+      ],
+      "default": "OK"
+    },
+    "primaryButton": {
+      "type": [
+        "Object"
+      ],
+      "default": {
+        "styleButton": "primary small"
+      }
+    },
+    "secondaryButton": {
+      "type": [
+        "Object"
+      ],
+      "default": {
+        "styleButton": "secondary small"
+      }
+    },
+    "transition": {
+      "type": [
+        "String"
+      ],
+      "default": "fade"
+    },
+    "styleDatepicker": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleWeekdayBar": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleWeekday": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleButton": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleDay": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleAdjacentMonthDay": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleFooter": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    }
+  },
+  "emits": [
+    "update:modelValue",
+    "update:formatted",
+    "state:done"
+  ],
+  "slots": [
+    "day"
+  ]
+}

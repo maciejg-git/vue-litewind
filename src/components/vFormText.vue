@@ -10,6 +10,7 @@
         v-for="(message, key) in formText"
         :key="message"
       >
+      <!-- @slot message -->
         <slot
           name="message"
           v-bind="{ message, key }"

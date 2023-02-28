@@ -1,0 +1,23 @@
+{
+  "name": "vPagination",
+  "props": {
+    "name": "",
+    "base": "",
+    "variant": "",
+    "modelValue": "",
+    "itemsCount": "",
+    "itemsPerPage": "",
+    "maxPages": "",
+    "stylePaginationBar": "",
+    "stylePage": "",
+    "styleDots": "",
+    "styleNext": "",
+    "stylePrev": ""
+  },
+  "emits": {
+    "update:modelValue": ""
+  },
+  "slots": {},
+  "functions": {},
+  "components": {}
+}

@@ -1,0 +1,20 @@
+{
+  "name": "vCheckboxSimple",
+  "props": {
+    "base": {
+      "type": [
+        "String"
+      ],
+      "default": "checkbox"
+    },
+    "variant": {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": ""
+    }
+  },
+  "emits": [],
+  "slots": []
+}

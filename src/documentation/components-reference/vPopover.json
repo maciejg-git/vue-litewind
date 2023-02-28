@@ -1,0 +1,71 @@
+{
+  "name": "vPopover",
+  "props": {
+    "base": {
+      "type": [
+        "String"
+      ],
+      "default": "popover"
+    },
+    "variant": {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": ""
+    },
+    "placement": {
+      "type": [
+        "String"
+      ],
+      "default": "bottom-start"
+    },
+    "offsetX": {
+      "type": [
+        "Number"
+      ],
+      "default": 0
+    },
+    "offsetY": {
+      "type": [
+        "Number"
+      ],
+      "default": 0
+    },
+    "noFlip": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "trigger": {
+      "type": [
+        "String"
+      ],
+      "default": "click"
+    },
+    "title": {
+      "type": [
+        "String"
+      ],
+      "default": "undefined"
+    },
+    "transition": {
+      "type": [
+        "String"
+      ],
+      "default": "fade"
+    },
+    "styleHeader": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    }
+  },
+  "emits": [],
+  "slots": [
+    "reference",
+    "default"
+  ]
+}

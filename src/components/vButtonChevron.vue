@@ -1,5 +1,6 @@
 <template>
   <v-button>
+    <!-- @slot default -->
     <slot name="default"></slot>
     <v-chevron
       :switch="switch"

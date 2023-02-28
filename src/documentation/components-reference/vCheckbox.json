@@ -1,0 +1,73 @@
+{
+  "name": "vCheckbox",
+  "props": {
+    "base": {
+      "type": [
+        "String"
+      ],
+      "default": "checkbox"
+    },
+    "variant": {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": ""
+    },
+    "modelValue": {
+      "type": [
+        "Array",
+        "Boolean",
+        "Object"
+      ],
+      "default": "undefined"
+    },
+    "rules": {
+      "type": [
+        "Object"
+      ],
+      "default": {}
+    },
+    "validateMode": {
+      "type": [
+        "String"
+      ],
+      "default": "silent"
+    },
+    "label": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleCheckbox": {
+      "type": [
+        "String",
+        "Array"
+      ],
+      "default": ""
+    },
+    "styleLabel": {
+      "type": [
+        "String",
+        "Array"
+      ],
+      "default": ""
+    },
+    "state": {
+      "type": [
+        "String"
+      ],
+      "default": null
+    }
+  },
+  "emits": [
+    "update:modelValue",
+    "update:status",
+    "update:state",
+    "update:messages"
+  ],
+  "slots": [
+    "default"
+  ]
+}

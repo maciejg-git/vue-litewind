@@ -1,0 +1,76 @@
+{
+  "name": "vPagination",
+  "props": {
+    "base": {
+      "type": [
+        "String"
+      ],
+      "default": "pagination"
+    },
+    "variant": {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": ""
+    },
+    "modelValue": {
+      "type": [
+        "Number"
+      ],
+      "default": "undefined"
+    },
+    "itemsCount": {
+      "type": [
+        "Number"
+      ],
+      "default": "undefined"
+    },
+    "itemsPerPage": {
+      "type": [
+        "Number"
+      ],
+      "default": "undefined"
+    },
+    "maxPages": {
+      "type": [
+        "Number"
+      ],
+      "default": "undefined"
+    },
+    "stylePaginationBar": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "stylePage": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleDots": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleNext": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "stylePrev": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    }
+  },
+  "emits": [
+    "update:modelValue"
+  ],
+  "slots": []
+}

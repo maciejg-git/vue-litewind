@@ -1,0 +1,27 @@
+{
+  "name": "vDropdownMenuItem",
+  "props": {
+    "tag": {
+      "type": [
+        "String"
+      ],
+      "default": "button"
+    },
+    "disabled": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "active": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    }
+  },
+  "emits": [],
+  "slots": [
+    "default"
+  ]
+}

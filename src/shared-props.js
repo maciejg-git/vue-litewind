@@ -2,9 +2,7 @@ import { correctPlacement } from "./const.js";
 import { defaultProps } from "./defaultProps";
 
 const sharedProps = () => {
-  return {
-    name: { type: String, default: "" },
-  };
+  return {};
 };
 
 // popper props

@@ -9,6 +9,7 @@
       v-if="$slots.caption"
       :class="classes.caption.value"
     >
+      <!-- @slot caption -->
       <slot name="caption"></slot>
     </caption>
 
@@ -52,6 +53,7 @@
       <template v-if="state === 'busy' && $slots.busy">
         <tr>
           <td :colspan="headersCount">
+            <!-- @slot busy -->
             <slot name="busy"></slot>
           </td>
         </tr>
@@ -62,6 +64,7 @@
             :colspan="headersCount"
             class="text-center py-4"
           >
+          <!-- @slot empty-table-message -->
             <slot name="empty-table-message">
               {{ emptyText }}
             </slot>
@@ -74,6 +77,7 @@
             :colspan="headersCount"
             class="text-center py-4"
           >
+          <!-- @slot empty-filtered-table-message -->
             <slot name="empty-filtered-table-message">
               {{ emptyFilteredText }}
             </slot>
@@ -94,6 +98,7 @@
                 v-if="k.visible !== false"
                 :class="getCellClass(k, index, item)"
               >
+              <!-- @slot cell:[key] -->
                 <slot
                   :name="'cell:' + k.key"
                   :value="item[k.key]"
@@ -109,6 +114,7 @@
             :class="[...classes.row.value]"
           >
             <td :colspan="headersCount">
+              <!-- @slot colspan -->
               <slot
                 name="colspan"
                 :item="item"
@@ -292,7 +298,7 @@ let headersCount = computed(() => {
 
 // if no definition is provided use first row of data to
 // generate local definition
-let generateDefinition = () => {
+let generateDefinitionFromData = () => {
   if (!props.items || !props.items.length) return [];
 
   return Object.keys(props.items[0])
@@ -309,7 +315,7 @@ let getDefinition = () => {
 
 // generate local definition
 let definition = computed(() => {
-  let d = getDefinition() || generateDefinition();
+  let d = getDefinition() || generateDefinitionFromData();
 
   return d.map((i) => {
     return {
@@ -423,7 +429,9 @@ let isValidSelectionMode = () => {
 
 let itemsSelected = ref({});
 
-let selectRow = (i) => (itemsSelected.value[i] = itemsPagination.value[i]);
+let selectRow = (i) => {
+  itemsSelected.value[i] = itemsPagination.value[i];
+}
 
 let unselectRow = (i) => delete itemsSelected.value[i];
 

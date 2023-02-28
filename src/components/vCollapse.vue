@@ -1,4 +1,5 @@
 <template>
+  <!-- @slot reference -->
   <slot
     name="reference"
     :isOpen="isOpen"
@@ -8,6 +9,7 @@
   <div class="overflow-hidden">
     <v-transition :name="transition">
       <div v-show="isOpen">
+        <!-- @slot default -->
         <slot name="default"></slot>
       </div>
     </v-transition>

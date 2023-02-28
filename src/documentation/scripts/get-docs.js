@@ -21,11 +21,14 @@ while (references.length) {
     if (i[1].prop === "model-value") {
       i[1].prop = "v-model"
     }
+
     i[1].description = description.props[i[0]]
+
     if (i[1].default === "") {
       i[1].default = "empty string"
     }
-    acc[index] = i[1]
+
+    acc.push(i[1])
     return acc
   }, [])
 
@@ -36,6 +39,14 @@ while (references.length) {
     }
   })
 
-  console.log(comp)
+  let slots = reference.slots.map((i) => {
+    return {
+      slot: i,
+      description: description.slots[i],
+    }
+  })
+
+  console.log(reference.name)
+  // console.log(comp)
   console.log(props)
 }

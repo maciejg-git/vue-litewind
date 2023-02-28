@@ -1,0 +1,23 @@
+{
+  "name": "vProgress",
+  "props": {
+    "name": "",
+    "base": "",
+    "variant": "",
+    "value": "",
+    "max": "",
+    "label": "",
+    "precision": "",
+    "indeterminate": "",
+    "transition": "",
+    "styleProgress": "",
+    "styleProgressBar": "",
+    "styleLabel": ""
+  },
+  "emits": {},
+  "slots": {
+    "default": ""
+  },
+  "functions": {},
+  "components": {}
+}

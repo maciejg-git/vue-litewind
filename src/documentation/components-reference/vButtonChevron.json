@@ -1,0 +1,27 @@
+{
+  "name": "vButtonChevron",
+  "props": {
+    "switch": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "initial": {
+      "type": [
+        "String"
+      ],
+      "default": "down"
+    },
+    "chevron": {
+      "type": [
+        "Object"
+      ],
+      "default": {}
+    }
+  },
+  "emits": [],
+  "slots": [
+    "default"
+  ]
+}

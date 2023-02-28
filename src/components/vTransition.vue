@@ -5,6 +5,7 @@
     @afterEnter="afterEnterTransition"
     @leave="leaveTransition"
   >
+  <!-- @slot default -->
     <slot name="default"></slot>
   </transition>
 </template>

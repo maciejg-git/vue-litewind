@@ -3,13 +3,13 @@ import { createApp, defineAsyncComponent } from "vue";
 import router from "./router";
 // components
 import App from "./App.vue";
-import TableReference from "./documentation/TableReference.vue";
-import TableReferenceBasic from "./documentation/TableReferenceBasic.vue";
-import PropsList from "./documentation/PropsList.vue";
+import TableReference from "./documentation/components/TableReference.vue";
+import TableReferenceBasic from "./documentation/components/TableReferenceBasic.vue";
+import PropsList from "./documentation/components/PropsList.vue";
 import vCode from "./documentation/components/vCode.vue"
 import EventViewer from "./documentation/components/EventViewer.vue"
 import vSelectProp from "./documentation/components/vSelectProp.vue"
-import Example from "./documentation/Example.vue"
+import Example from "./documentation/components/Example.vue"
 import { componentPlugin } from "./index.js";
 import { components } from "./index"
 import { directives } from "./index"

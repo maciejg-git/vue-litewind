@@ -1,0 +1,46 @@
+{
+  "name": "vList",
+  "props": {
+    "base": {
+      "type": [
+        "String"
+      ],
+      "default": "list"
+    },
+    "variant": {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": ""
+    },
+    "width": {
+      "type": [
+        "String"
+      ],
+      "default": "undefined"
+    },
+    "tag": {
+      "type": [
+        "String"
+      ],
+      "default": "div"
+    },
+    "styleList": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleItem": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    }
+  },
+  "emits": [],
+  "slots": [
+    "default"
+  ]
+}

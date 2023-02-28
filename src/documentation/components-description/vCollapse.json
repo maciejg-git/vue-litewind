@@ -1,0 +1,17 @@
+{
+  "name": "vCollapse",
+  "props": {
+    "name": "",
+    "modelValue": "",
+    "transition": ""
+  },
+  "emits": {
+    "update:modelValue": ""
+  },
+  "slots": {
+    "reference": "",
+    "default": ""
+  },
+  "functions": {},
+  "components": {}
+}

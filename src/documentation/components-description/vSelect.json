@@ -1,0 +1,46 @@
+{
+  "name": "vSelect",
+  "props": {
+    "name": "",
+    "base": "",
+    "variant": "",
+    "modelValue": "",
+    "useLoader": "",
+    "multiValue": "",
+    "maxMultiValue": "",
+    "isLoading": "",
+    "inline": "",
+    "icon": "",
+    "clearable": "",
+    "state": "",
+    "items": "",
+    "autocomplete": "",
+    "itemText": "",
+    "itemValue": "",
+    "filterKeys": "",
+    "noFilter": "",
+    "noPagination": "",
+    "emptyDataMessage": "",
+    "input": "",
+    "card": "",
+    "itemsPerPage": "",
+    "transition": "",
+    "styleItem": "",
+    "placement": "",
+    "offsetX": "",
+    "offsetY": "",
+    "noFlip": ""
+  },
+  "emits": {
+    "update:modelValue": "",
+    "update:page": "",
+    "input:value": "",
+    "state:opened": "",
+    "state:closed": ""
+  },
+  "slots": {
+    "item": ""
+  },
+  "functions": {},
+  "components": {}
+}

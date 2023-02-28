@@ -1,4 +1,5 @@
 <template>
+  <!-- @slot reference -->
   <slot
     name="reference"
     v-bind="referenceSlotProps"
@@ -20,6 +21,7 @@
         @mouseleave="allowHiding"
         class="absolute z-50"
       >
+      <!-- @slot default -->
         <slot
           name="default"
           :hide="hide"

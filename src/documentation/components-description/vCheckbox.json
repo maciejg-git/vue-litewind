@@ -1,0 +1,26 @@
+{
+  "name": "vCheckbox",
+  "props": {
+    "name": "",
+    "base": "",
+    "variant": "",
+    "modelValue": "",
+    "rules": "",
+    "validateMode": "",
+    "label": "",
+    "styleCheckbox": "",
+    "styleLabel": "",
+    "state": ""
+  },
+  "emits": {
+    "update:modelValue": "",
+    "update:status": "",
+    "update:state": "",
+    "update:messages": ""
+  },
+  "slots": {
+    "default": ""
+  },
+  "functions": {},
+  "components": {}
+}

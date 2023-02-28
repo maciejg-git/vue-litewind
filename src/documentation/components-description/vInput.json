@@ -1,0 +1,52 @@
+{
+  "name": "vInput",
+  "props": {
+    "name": "",
+    "modelValue": "",
+    "externalModel": "",
+    "inline": "",
+    "rules": "",
+    "validateOn": "",
+    "validateMode": "",
+    "useLoader": "",
+    "isLoading": "",
+    "singleLineMessage": "",
+    "showIndicator": "",
+    "indicatorSwitch": "",
+    "width": "",
+    "label": "",
+    "noMessages": "",
+    "spinner": "",
+    "closeButton": "",
+    "chevron": "",
+    "formText": "",
+    "styleInput": "",
+    "styleIcon": "",
+    "styleCloseButtonWrapper": "",
+    "styleLabel": "",
+    "icon": "",
+    "clearable": "",
+    "state": "",
+    "customClearable": "",
+    "base": "",
+    "variant": "",
+    "role": ""
+  },
+  "emits": {
+    "update:modelValue": "",
+    "update:status": "",
+    "update:messages": "",
+    "update:state": "",
+    "click:clear-button": "",
+    "click:icon": "",
+    "click:indicator": ""
+  },
+  "slots": {
+    "label": "",
+    "icon": "",
+    "prepend": "",
+    "append": ""
+  },
+  "functions": {},
+  "components": {}
+}

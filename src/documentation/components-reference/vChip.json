@@ -1,0 +1,39 @@
+{
+  "name": "vChip",
+  "props": {
+    "base": {
+      "type": [
+        "String"
+      ],
+      "default": "chip"
+    },
+    "variant": {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": ""
+    },
+    "closeButton": {
+      "type": [
+        "Object"
+      ],
+      "default": {
+        "base": "round-close-button",
+        "styleCloseButton": "small"
+      }
+    },
+    "styleChip": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    }
+  },
+  "emits": [
+    "click:close-button"
+  ],
+  "slots": [
+    "default"
+  ]
+}

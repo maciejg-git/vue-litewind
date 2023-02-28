@@ -1,5 +1,6 @@
 <template>
   <nav :class="classes.navbar.value">
+    <!-- @slot default -->
     <slot name="default"></slot>
   </nav>
 </template>

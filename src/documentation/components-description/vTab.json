@@ -1,0 +1,13 @@
+{
+  "name": "vTab",
+  "props": {
+    "name": ""
+  },
+  "emits": {},
+  "slots": {
+    "name": "",
+    "default": ""
+  },
+  "functions": {},
+  "components": {}
+}

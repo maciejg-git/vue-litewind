@@ -1,0 +1,32 @@
+{
+  "name": "vCloseButton",
+  "props": {
+    "base": {
+      "type": [
+        "String"
+      ],
+      "default": "close-button"
+    },
+    "variant": {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": ""
+    },
+    "styleWrapper": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleCloseButton": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    }
+  },
+  "emits": [],
+  "slots": []
+}

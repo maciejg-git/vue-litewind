@@ -1,0 +1,40 @@
+{
+  "name": "vDatePicker",
+  "props": {
+    "name": "",
+    "base": "",
+    "variant": "",
+    "modelValue": "",
+    "locale": "",
+    "mondayFirstWeekday": "",
+    "range": "",
+    "format": "",
+    "disabled": "",
+    "width": "",
+    "adjacentMonths": "",
+    "rangeHoverHighlight": "",
+    "buttons": "",
+    "secondaryButtonLabel": "",
+    "primaryButtonLabel": "",
+    "primaryButton": "",
+    "secondaryButton": "",
+    "transition": "",
+    "styleDatepicker": "",
+    "styleWeekdayBar": "",
+    "styleWeekday": "",
+    "styleButton": "",
+    "styleDay": "",
+    "styleAdjacentMonthDay": "",
+    "styleFooter": ""
+  },
+  "emits": {
+    "update:modelValue": "",
+    "update:formatted": "",
+    "state:done": ""
+  },
+  "slots": {
+    "day": ""
+  },
+  "functions": {},
+  "components": {}
+}

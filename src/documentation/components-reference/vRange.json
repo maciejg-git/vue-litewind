@@ -1,0 +1,40 @@
+{
+  "name": "vRange",
+  "props": {
+    "base": {
+      "type": [
+        "String"
+      ],
+      "default": "range"
+    },
+    "variant": {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": ""
+    },
+    "modelValue": {
+      "type": [
+        "String",
+        "Number"
+      ],
+      "default": "undefined"
+    },
+    "styleRange": {
+      "type": [
+        "String",
+        "Array"
+      ],
+      "default": ""
+    },
+    "state": {
+      "type": [
+        "String"
+      ],
+      "default": null
+    }
+  },
+  "emits": [],
+  "slots": []
+}

@@ -1,0 +1,27 @@
+{
+  "name": "vTextarea",
+  "props": {
+    "name": "",
+    "base": "",
+    "variant": "",
+    "modelValue": "",
+    "inline": "",
+    "rules": "",
+    "validateOn": "",
+    "validateMode": "",
+    "singleLineMessage": "",
+    "label": "",
+    "formText": "",
+    "styleTextarea": "",
+    "styleLabel": "",
+    "state": ""
+  },
+  "emits": {
+    "update:modelValue": ""
+  },
+  "slots": {
+    "label": ""
+  },
+  "functions": {},
+  "components": {}
+}

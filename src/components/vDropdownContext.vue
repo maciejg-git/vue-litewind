@@ -11,6 +11,7 @@
         tabindex="-1"
         class="absolute z-50"
       >
+      <!-- @slot default -->
         <slot
           name="default"
           :hide="hide"
@@ -72,12 +73,6 @@ let { classes, states } = useStyles("dropdown", props, {
   },
 });
 
-// watch model changes
-watch(
-  () => props.modelValue,
-  (value) => (value ? show() : hide())
-);
-
 // set up popper
 const { offsetX, offsetY, noFlip, placement } = toRefs(props);
 const {
@@ -94,19 +89,23 @@ let stopClickOutside = null;
 
 let show = () => {
   if (isPopperVisible.value) return;
-
   showPopper();
-
   stopClickOutside = onClickOutside(popper, hide);
 };
 
 let hide = () => {
   if (!isPopperVisible.value) return;
-
   hidePopper();
-
   if (stopClickOutside) stopClickOutside = stopClickOutside();
 };
+
+// watch model changes
+watch(
+  () => props.modelValue,
+  (value) => (value ? show() : hide())
+);
+
+// context menu
 
 let contextData = ref(null);
 

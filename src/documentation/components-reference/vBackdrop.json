@@ -1,0 +1,13 @@
+{
+  "name": "vBackdrop",
+  "props": {
+    "isOpen": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    }
+  },
+  "emits": [],
+  "slots": []
+}

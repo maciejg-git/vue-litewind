@@ -1,0 +1,16 @@
+{
+  "name": "vCard",
+  "props": {
+    "name": "",
+    "base": "",
+    "variant": "",
+    "width": "",
+    "styleCard": ""
+  },
+  "emits": {},
+  "slots": {
+    "default": ""
+  },
+  "functions": {},
+  "components": {}
+}

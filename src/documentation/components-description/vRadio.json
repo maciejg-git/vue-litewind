@@ -1,0 +1,26 @@
+{
+  "name": "vRadio",
+  "props": {
+    "name": "",
+    "base": "",
+    "variant": "",
+    "modelValue": "",
+    "rules": "",
+    "validateMode": "",
+    "label": "",
+    "styleRadio": "",
+    "styleLabel": "",
+    "state": ""
+  },
+  "emits": {
+    "update:modelValue": "",
+    "update:status": "",
+    "update:state": "",
+    "update:messages": ""
+  },
+  "slots": {
+    "default": ""
+  },
+  "functions": {},
+  "components": {}
+}

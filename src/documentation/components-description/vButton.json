@@ -1,0 +1,18 @@
+{
+  "name": "vButton",
+  "props": {
+    "name": "",
+    "base": "",
+    "variant": "",
+    "disabled": "",
+    "tag": "",
+    "block": "",
+    "styleButton": ""
+  },
+  "emits": {},
+  "slots": {
+    "default": ""
+  },
+  "functions": {},
+  "components": {}
+}

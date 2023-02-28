@@ -1,0 +1,16 @@
+{
+  "name": "vTab",
+  "props": {
+    "name": {
+      "type": [
+        "String"
+      ],
+      "default": "undefined"
+    }
+  },
+  "emits": [],
+  "slots": [
+    "name",
+    "default"
+  ]
+}

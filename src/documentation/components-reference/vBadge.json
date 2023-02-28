@@ -1,0 +1,47 @@
+{
+  "name": "vBadge",
+  "props": {
+    "base": {
+      "type": [
+        "String"
+      ],
+      "default": "badge"
+    },
+    "variant": {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": ""
+    },
+    "position": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "updateKey": {
+      "type": [
+        "String",
+        "Number"
+      ],
+      "default": "undefined"
+    },
+    "updateAnimation": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleBadge": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    }
+  },
+  "emits": [],
+  "slots": [
+    "default"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "vRadioGroup",
+  "props": {
+    "modelValue": "",
+    "rules": "",
+    "state": "",
+    "validateMode": ""
+  },
+  "emits": {
+    "update:modelValue": "",
+    "update:status": "",
+    "update:state": "",
+    "update:messages": ""
+  },
+  "slots": {
+    "default": ""
+  },
+  "functions": {},
+  "components": {}
+}

@@ -76,6 +76,7 @@
               @mouseenter="handleMouseOverDay(d)"
               :data-testid="isToday(d.date) ? 'today' : null"
             >
+            <!-- @slot day -->
               <slot
                 name="day"
                 v-bind="d"
