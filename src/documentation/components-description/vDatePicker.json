@@ -1,7 +1,6 @@
 {
   "name": "vDatePicker",
   "props": {
-    "name": "",
     "base": "",
     "variant": "",
     "modelValue": "",

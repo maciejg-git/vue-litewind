@@ -1,7 +1,6 @@
 {
   "name": "vProgress",
   "props": {
-    "name": "",
     "base": "",
     "variant": "",
     "value": "",

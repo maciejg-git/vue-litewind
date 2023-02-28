@@ -1,7 +1,6 @@
 {
   "name": "vSidepanel",
   "props": {
-    "name": "",
     "base": "",
     "variant": "",
     "modelValue": "",

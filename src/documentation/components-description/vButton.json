@@ -1,7 +1,6 @@
 {
   "name": "vButton",
   "props": {
-    "name": "",
     "base": "",
     "variant": "",
     "disabled": "",

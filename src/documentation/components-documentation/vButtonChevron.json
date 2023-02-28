@@ -1,0 +1,37 @@
+{
+  "props": [
+    {
+      "type": [
+        "Object"
+      ],
+      "default": {},
+      "prop": "chevron",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "down",
+      "prop": "initial",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "switch",
+      "description": ""
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "slot": "default",
+      "description": ""
+    }
+  ],
+  "functions": [],
+  "components": []
+}

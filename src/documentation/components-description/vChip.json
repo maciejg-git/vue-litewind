@@ -1,7 +1,6 @@
 {
   "name": "vChip",
   "props": {
-    "name": "",
     "base": "",
     "variant": "",
     "closeButton": "",

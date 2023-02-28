@@ -1,0 +1,298 @@
+{
+  "props": [
+    {
+      "type": [
+        "String",
+        "Number",
+        "Array",
+        "Boolean",
+        "Number"
+      ],
+      "default": "empty string",
+      "prop": "v-model",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "input",
+      "prop": "base",
+      "description": ""
+    },
+    {
+      "type": [
+        "Object"
+      ],
+      "default": {},
+      "prop": "chevron",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "clearable",
+      "description": ""
+    },
+    {
+      "type": [
+        "Object"
+      ],
+      "default": {},
+      "prop": "close-button",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "custom-clearable",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Number",
+        "Array",
+        "Boolean",
+        "Number"
+      ],
+      "default": "undefined",
+      "prop": "external-model",
+      "description": ""
+    },
+    {
+      "type": [
+        "Object"
+      ],
+      "default": {
+        "class": "absolute"
+      },
+      "prop": "form-text",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Object"
+      ],
+      "default": "empty string",
+      "prop": "icon",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "indicator-switch",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "inline",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "is-loading",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "label",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "no-messages",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "undefined",
+      "prop": "role",
+      "description": ""
+    },
+    {
+      "type": [
+        "Object"
+      ],
+      "default": {},
+      "prop": "rules",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "show-indicator",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "single-line-message",
+      "description": ""
+    },
+    {
+      "type": [
+        "Object"
+      ],
+      "default": {},
+      "prop": "spinner",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": null,
+      "prop": "state",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-close-button-wrapper",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-icon",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-input",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-label",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "use-loader",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "silent",
+      "prop": "validate-mode",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "blur",
+      "prop": "validate-on",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": "empty string",
+      "prop": "variant",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "width",
+      "description": ""
+    }
+  ],
+  "events": [
+    {
+      "event": "update:modelValue",
+      "description": ""
+    },
+    {
+      "event": "update:status",
+      "description": ""
+    },
+    {
+      "event": "update:messages",
+      "description": ""
+    },
+    {
+      "event": "update:state",
+      "description": ""
+    },
+    {
+      "event": "click:clear-button",
+      "description": ""
+    },
+    {
+      "event": "click:icon",
+      "description": ""
+    },
+    {
+      "event": "click:indicator",
+      "description": ""
+    }
+  ],
+  "slots": [
+    {
+      "slot": "label",
+      "description": ""
+    },
+    {
+      "slot": "icon",
+      "description": ""
+    },
+    {
+      "slot": "prepend",
+      "description": ""
+    },
+    {
+      "slot": "append",
+      "description": ""
+    }
+  ],
+  "functions": [],
+  "components": []
+}

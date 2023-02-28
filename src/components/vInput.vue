@@ -287,11 +287,7 @@ let wrapperClasses = computed(() => {
     : "block flex-auto group";
 });
 
-// input label
-
 let id = useUid("input", attrs);
-
-// template refs
 
 let inputRef = ref(null);
 let wrapperRef = ref(null);

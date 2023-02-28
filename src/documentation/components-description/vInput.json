@@ -1,7 +1,6 @@
 {
   "name": "vInput",
   "props": {
-    "name": "",
     "modelValue": "",
     "externalModel": "",
     "inline": "",

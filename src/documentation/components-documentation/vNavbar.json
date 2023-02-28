@@ -1,0 +1,62 @@
+{
+  "props": [
+    {
+      "type": [
+        "String"
+      ],
+      "default": "navbar",
+      "prop": "base",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "bottom",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "fixed",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "sticky",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-navbar",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": "empty string",
+      "prop": "variant",
+      "description": ""
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "slot": "default",
+      "description": ""
+    }
+  ],
+  "functions": [],
+  "components": []
+}

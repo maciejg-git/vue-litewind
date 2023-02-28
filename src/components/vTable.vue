@@ -13,7 +13,10 @@
       <slot name="caption"></slot>
     </caption>
 
-    <thead v-if="!noHeader" :class="classes.headerRow.value">
+    <thead
+      v-if="!noHeader"
+      :class="classes.headerRow.value"
+    >
       <tr>
         <template v-for="(h, i) in definition">
           <th
@@ -64,7 +67,7 @@
             :colspan="headersCount"
             class="text-center py-4"
           >
-          <!-- @slot empty-table-message -->
+            <!-- @slot empty-table-message -->
             <slot name="empty-table-message">
               {{ emptyText }}
             </slot>
@@ -77,7 +80,7 @@
             :colspan="headersCount"
             class="text-center py-4"
           >
-          <!-- @slot empty-filtered-table-message -->
+            <!-- @slot empty-filtered-table-message -->
             <slot name="empty-filtered-table-message">
               {{ emptyFilteredText }}
             </slot>
@@ -98,7 +101,7 @@
                 v-if="k.visible !== false"
                 :class="getCellClass(k, index, item)"
               >
-              <!-- @slot cell:[key] -->
+                <!-- @slot cell:[key] -->
                 <slot
                   :name="'cell:' + k.key"
                   :value="item[k.key]"
@@ -130,7 +133,7 @@
 <script setup>
 import { ref, computed, watch } from "vue";
 import useStyles from "./composition/use-styles";
-import vIcon from "./vIcon.vue"
+import vIcon from "./vIcon.vue";
 import SortIcon from "./icons/sort-solid.js";
 import CaretUpIcon from "./icons/caret-up-solid.js";
 import CaretDownIcon from "./icons/caret-down-solid.js";
@@ -290,14 +293,14 @@ let definitionDefaults = {
 
 let getDefinitionByKey = (k) => {
   return definition.value.find((i) => k === i.key);
-}
+};
 
 let headersCount = computed(() => {
   return definition.value.filter((i) => i.visible !== false).length;
 });
 
 // if no definition is provided use first row of data to
-// generate local definition
+// generate default definition
 let generateDefinitionFromData = () => {
   if (!props.items || !props.items.length) return [];
 
@@ -308,14 +311,15 @@ let generateDefinitionFromData = () => {
     });
 };
 
-let getDefinition = () => {
+// if user definition is valid return it
+let getUserDefinition = () => {
   if (!Array.isArray(props.definition)) return false;
   return props.definition.every((i) => i.key) && props.definition;
 };
 
 // generate local definition
 let definition = computed(() => {
-  let d = getDefinition() || generateDefinitionFromData();
+  let d = getUserDefinition() || generateDefinitionFromData();
 
   return d.map((i) => {
     return {
@@ -431,7 +435,7 @@ let itemsSelected = ref({});
 
 let selectRow = (i) => {
   itemsSelected.value[i] = itemsPagination.value[i];
-}
+};
 
 let unselectRow = (i) => delete itemsSelected.value[i];
 

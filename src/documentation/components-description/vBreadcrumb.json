@@ -1,7 +1,6 @@
 {
   "name": "vBreadcrumb",
   "props": {
-    "name": "",
     "base": "",
     "variant": "",
     "path": "",

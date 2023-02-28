@@ -1,7 +1,6 @@
 {
   "name": "vCard",
   "props": {
-    "name": "",
     "base": "",
     "variant": "",
     "width": "",

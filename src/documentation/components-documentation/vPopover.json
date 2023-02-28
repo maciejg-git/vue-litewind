@@ -1,0 +1,98 @@
+{
+  "props": [
+    {
+      "type": [
+        "String"
+      ],
+      "default": "popover",
+      "prop": "base",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "no-flip",
+      "description": ""
+    },
+    {
+      "type": [
+        "Number"
+      ],
+      "default": 0,
+      "prop": "offset-x",
+      "description": ""
+    },
+    {
+      "type": [
+        "Number"
+      ],
+      "default": 0,
+      "prop": "offset-y",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "bottom-start",
+      "prop": "placement",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-header",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "undefined",
+      "prop": "title",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "fade",
+      "prop": "transition",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "click",
+      "prop": "trigger",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": "empty string",
+      "prop": "variant",
+      "description": ""
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "slot": "reference",
+      "description": ""
+    },
+    {
+      "slot": "default",
+      "description": ""
+    }
+  ],
+  "functions": [],
+  "components": []
+}

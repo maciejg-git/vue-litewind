@@ -1,7 +1,6 @@
 {
   "name": "vList",
   "props": {
-    "name": "",
     "base": "",
     "variant": "",
     "width": "",

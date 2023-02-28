@@ -1,0 +1,62 @@
+{
+  "props": [
+    {
+      "type": [
+        "String"
+      ],
+      "default": "list",
+      "prop": "base",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-item",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-list",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "div",
+      "prop": "tag",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": "empty string",
+      "prop": "variant",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "undefined",
+      "prop": "width",
+      "description": ""
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "slot": "default",
+      "description": ""
+    }
+  ],
+  "functions": [],
+  "components": []
+}

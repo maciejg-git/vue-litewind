@@ -1,0 +1,210 @@
+{
+  "props": [
+    {
+      "type": [
+        "String"
+      ],
+      "default": "table",
+      "prop": "base",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "caption-top",
+      "description": "If `true` display caption on top"
+    },
+    {
+      "type": [
+        "Array"
+      ],
+      "default": "undefined",
+      "prop": "definition",
+      "description": "Table definition is an optional `array` of `objects` that defines look and behavior of the table."
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "No records for current filter",
+      "prop": "empty-filtered-text",
+      "description": "Text displayed if table is empty after filtering out all items"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "Empty table",
+      "prop": "empty-text",
+      "description": "Text displayed if table is empty"
+    },
+    {
+      "type": [
+        "String",
+        "RegExp"
+      ],
+      "default": "empty string",
+      "prop": "filter",
+      "description": "Use this String to filter items. Filtering always emits update:page with value 1 and resets any active selection"
+    },
+    {
+      "type": [
+        "Array"
+      ],
+      "default": "undefined",
+      "required": true,
+      "prop": "items",
+      "description": "Data to display in table. Each element of Array is an Object. Single Object is one record (row) of data"
+    },
+    {
+      "type": [
+        "Number"
+      ],
+      "default": 0,
+      "prop": "items-per-page",
+      "description": "Number of records (rows) on single page. Setting it to `0` disables pagination"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "en-GB",
+      "prop": "locale",
+      "description": "Locale used to compare and sort strings"
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "no-header",
+      "description": "If `true` does not display table headers"
+    },
+    {
+      "type": [
+        "Number"
+      ],
+      "default": 1,
+      "prop": "page",
+      "description": "Current page number. Changing page resets current selection"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "undefined",
+      "required": true,
+      "prop": "primary-key",
+      "description": "This props should be name of the property that is unique for every record. It is used as value for `key` attribute"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "selection-mode",
+      "description": "Enables or disables selection of rows. Valid values are 'single' (allows selection of single row only), 'multiple' (allows multiple rows to be selected) or `empty string` (disables selection). After new row is selected or unselected event input:selection is emmited with array of all selected records. Filtering, sorting, changing current page or modifying selection-mode prop resets current selection by emmiting empty array"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "state",
+      "description": "State of table. Valid values are 'busy' or `empty string`. Busy state disables pointer events on table and renders contents of `busy` slot instead of table rows"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-caption",
+      "description": "Table caption."
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-cell",
+      "description": "Table cell"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-header-cell",
+      "description": "Header cell"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-header-row",
+      "description": "Header row"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-row",
+      "description": "Table row"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-table",
+      "description": "Main table element"
+    },
+    {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": "empty string",
+      "prop": "variant",
+      "description": ""
+    }
+  ],
+  "events": [
+    {
+      "event": "update:page",
+      "description": "Emmited after filtering. Useful for updating pagination"
+    },
+    {
+      "event": "update:filtered-count",
+      "description": "Emmited after filtering. Useful for updating pagination"
+    },
+    {
+      "event": "input:selection",
+      "description": "Emmited after selecting rows. Event data contains array of selected records"
+    }
+  ],
+  "slots": [
+    {
+      "slot": "caption",
+      "description": "Slot for caption text. Position caption using `caption-top` prop"
+    },
+    {
+      "slot": "busy",
+      "description": "Content of this slot replaces data records if table is `busy`"
+    },
+    {
+      "slot": "cell:[key]",
+      "description": "Slot for cell content. Useful for adding some html formatting, transforming value etc. Key is one of the keys of data record or additional key from definition array. Slot props: `value`, `item`"
+    },
+    {
+      "slot": "colspan",
+      "description": ""
+    }
+  ],
+  "functions": [],
+  "components": []
+}

@@ -1,0 +1,37 @@
+{
+  "props": [
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "active",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "disabled",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "button",
+      "prop": "tag",
+      "description": ""
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "slot": "default",
+      "description": ""
+    }
+  ],
+  "functions": [],
+  "components": []
+}

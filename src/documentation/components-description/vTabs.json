@@ -1,7 +1,6 @@
 {
   "name": "vTabs",
   "props": {
-    "name": "",
     "base": "",
     "variant": "",
     "fill": "",

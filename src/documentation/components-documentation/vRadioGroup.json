@@ -1,0 +1,63 @@
+{
+  "props": [
+    {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": "undefined",
+      "prop": "v-model",
+      "description": ""
+    },
+    {
+      "type": [
+        "Object"
+      ],
+      "default": {},
+      "prop": "rules",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": null,
+      "prop": "state",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "silent",
+      "prop": "validate-mode",
+      "description": ""
+    }
+  ],
+  "events": [
+    {
+      "event": "update:modelValue",
+      "description": ""
+    },
+    {
+      "event": "update:status",
+      "description": ""
+    },
+    {
+      "event": "update:state",
+      "description": ""
+    },
+    {
+      "event": "update:messages",
+      "description": ""
+    }
+  ],
+  "slots": [
+    {
+      "slot": "default",
+      "description": ""
+    }
+  ],
+  "functions": [],
+  "components": []
+}

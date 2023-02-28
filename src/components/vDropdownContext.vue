@@ -11,7 +11,7 @@
         tabindex="-1"
         class="absolute z-50"
       >
-      <!-- @slot default -->
+        <!-- @slot default -->
         <slot
           name="default"
           :hide="hide"
@@ -33,7 +33,11 @@ import { ref, provide, toRef, toRefs, watch } from "vue";
 import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
 import useClickOutside from "./composition/use-click-outside";
-import { sharedProps, sharedPopperProps, sharedStyleProps } from "../shared-props";
+import {
+  sharedProps,
+  sharedPopperProps,
+  sharedStyleProps,
+} from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
@@ -66,7 +70,7 @@ const emit = defineEmits(["state:opened", "state:closed", "update:modelValue"]);
 
 let { classes, states } = useStyles("dropdown", props, {
   item: {
-    states: ["active", "disabled"],
+    states: ["active"],
   },
   header: {
     fixed: "fixed-item",

@@ -1,7 +1,6 @@
 {
   "name": "vDivider",
   "props": {
-    "name": "",
     "base": "",
     "variant": "",
     "styleDivider": ""

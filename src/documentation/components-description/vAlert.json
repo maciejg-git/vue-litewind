@@ -1,7 +1,6 @@
 {
   "name": "vAlert",
   "props": {
-    "name": "",
     "base": "",
     "variant": "",
     "modelValue": "",

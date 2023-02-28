@@ -1,7 +1,6 @@
 {
   "name": "vNavbar",
   "props": {
-    "name": "",
     "base": "",
     "variant": "",
     "fixed": "",

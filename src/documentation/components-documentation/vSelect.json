@@ -1,0 +1,263 @@
+{
+  "props": [
+    {
+      "type": [
+        "String",
+        "Object",
+        "Boolean",
+        "Number"
+      ],
+      "default": "undefined",
+      "prop": "v-model",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "autocomplete",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "select",
+      "prop": "base",
+      "description": ""
+    },
+    {
+      "type": [
+        "Object"
+      ],
+      "default": {},
+      "prop": "card",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "clearable",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "No data available",
+      "prop": "empty-data-message",
+      "description": ""
+    },
+    {
+      "type": [
+        "Array"
+      ],
+      "default": [],
+      "prop": "filter-keys",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Object"
+      ],
+      "default": "empty string",
+      "prop": "icon",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "inline",
+      "description": ""
+    },
+    {
+      "type": [
+        "Object"
+      ],
+      "default": {},
+      "prop": "input",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "is-loading",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "text",
+      "prop": "item-text",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "value",
+      "prop": "item-value",
+      "description": ""
+    },
+    {
+      "type": [
+        "Array"
+      ],
+      "default": [],
+      "prop": "items",
+      "description": ""
+    },
+    {
+      "type": [
+        "Number"
+      ],
+      "default": 10,
+      "prop": "items-per-page",
+      "description": ""
+    },
+    {
+      "type": [
+        "Number"
+      ],
+      "default": 9999,
+      "prop": "max-multi-value",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "multi-value",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "no-filter",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "no-flip",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "no-pagination",
+      "description": ""
+    },
+    {
+      "type": [
+        "Number"
+      ],
+      "default": 0,
+      "prop": "offset-x",
+      "description": ""
+    },
+    {
+      "type": [
+        "Number"
+      ],
+      "default": 0,
+      "prop": "offset-y",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "bottom-start",
+      "prop": "placement",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": null,
+      "prop": "state",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-item",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "fade",
+      "prop": "transition",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": true,
+      "prop": "use-loader",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": "empty string",
+      "prop": "variant",
+      "description": ""
+    }
+  ],
+  "events": [
+    {
+      "event": "update:modelValue",
+      "description": ""
+    },
+    {
+      "event": "update:page",
+      "description": ""
+    },
+    {
+      "event": "input:value",
+      "description": ""
+    },
+    {
+      "event": "state:opened",
+      "description": ""
+    },
+    {
+      "event": "state:closed",
+      "description": ""
+    }
+  ],
+  "slots": [
+    {
+      "slot": "item",
+      "description": ""
+    }
+  ],
+  "functions": [],
+  "components": []
+}

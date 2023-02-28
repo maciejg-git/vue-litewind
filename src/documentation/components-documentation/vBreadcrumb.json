@@ -1,0 +1,65 @@
+{
+  "props": [
+    {
+      "type": [
+        "String"
+      ],
+      "default": "breadcrumb",
+      "prop": "base",
+      "description": ""
+    },
+    {
+      "type": [
+        "Array"
+      ],
+      "default": [],
+      "prop": "path",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "/",
+      "prop": "separator",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-active",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-breadcrumb",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-separator",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": "empty string",
+      "prop": "variant",
+      "description": ""
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "functions": [],
+  "components": []
+}

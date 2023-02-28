@@ -1,0 +1,21 @@
+{
+  "props": [
+    {
+      "type": [
+        "String"
+      ],
+      "default": "undefined",
+      "prop": "for",
+      "description": ""
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "slot": "default",
+      "description": ""
+    }
+  ],
+  "functions": [],
+  "components": []
+}

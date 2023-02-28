@@ -1,7 +1,6 @@
 {
   "name": "vCollapse",
   "props": {
-    "name": "",
     "modelValue": "",
     "transition": ""
   },

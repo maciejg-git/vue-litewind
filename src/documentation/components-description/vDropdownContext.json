@@ -1,7 +1,6 @@
 {
   "name": "vDropdownContext",
   "props": {
-    "name": "",
     "base": "",
     "variant": "",
     "modelValue": "",

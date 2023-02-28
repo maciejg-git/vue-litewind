@@ -1,0 +1,16 @@
+{
+  "props": [
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "is-open",
+      "description": ""
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "functions": [],
+  "components": []
+}

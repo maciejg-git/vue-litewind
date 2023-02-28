@@ -1,0 +1,34 @@
+{
+  "props": [
+    {
+      "type": [
+        "String"
+      ],
+      "default": "divider",
+      "prop": "base",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Array"
+      ],
+      "default": "empty string",
+      "prop": "style-divider",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": "empty string",
+      "prop": "variant",
+      "description": ""
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "functions": [],
+  "components": []
+}

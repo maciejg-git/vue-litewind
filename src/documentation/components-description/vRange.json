@@ -1,7 +1,6 @@
 {
   "name": "vRange",
   "props": {
-    "name": "",
     "base": "",
     "variant": "",
     "modelValue": "",

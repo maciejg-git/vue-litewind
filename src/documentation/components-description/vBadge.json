@@ -1,7 +1,6 @@
 {
   "name": "vBadge",
   "props": {
-    "name": "",
     "base": "",
     "variant": "",
     "position": "",

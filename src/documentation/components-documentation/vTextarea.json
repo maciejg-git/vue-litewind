@@ -1,0 +1,147 @@
+{
+  "props": [
+    {
+      "type": [
+        "String"
+      ],
+      "default": "undefined",
+      "prop": "v-model",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "textarea",
+      "prop": "base",
+      "description": ""
+    },
+    {
+      "type": [
+        "Object"
+      ],
+      "default": {
+        "class": "absolute"
+      },
+      "prop": "form-text",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "inline",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "label",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "no-messages",
+      "description": ""
+    },
+    {
+      "type": [
+        "Object"
+      ],
+      "default": {},
+      "prop": "rules",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "single-line-message",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": null,
+      "prop": "state",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Array"
+      ],
+      "default": "empty string",
+      "prop": "style-label",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Array"
+      ],
+      "default": "empty string",
+      "prop": "style-textarea",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "silent",
+      "prop": "validate-mode",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "blur",
+      "prop": "validate-on",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": "empty string",
+      "prop": "variant",
+      "description": ""
+    }
+  ],
+  "events": [
+    {
+      "event": "update:modelValue",
+      "description": ""
+    },
+    {
+      "event": "update:status",
+      "description": ""
+    },
+    {
+      "event": "update:messages",
+      "description": ""
+    },
+    {
+      "event": "update:state",
+      "description": ""
+    }
+  ],
+  "slots": [
+    {
+      "slot": "label",
+      "description": ""
+    }
+  ],
+  "functions": [],
+  "components": []
+}

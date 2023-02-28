@@ -1,0 +1,50 @@
+{
+  "props": [
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "disabled",
+      "description": ""
+    },
+    {
+      "type": [
+        "Number"
+      ],
+      "default": 0,
+      "prop": "item-level",
+      "description": ""
+    },
+    {
+      "type": [
+        "Object"
+      ],
+      "default": [],
+      "prop": "items",
+      "description": ""
+    }
+  ],
+  "events": [
+    {
+      "event": "children-selected",
+      "description": ""
+    }
+  ],
+  "slots": [
+    {
+      "slot": "item",
+      "description": ""
+    },
+    {
+      "slot": "icon",
+      "description": ""
+    },
+    {
+      "slot": "name",
+      "description": ""
+    }
+  ],
+  "functions": [],
+  "components": []
+}

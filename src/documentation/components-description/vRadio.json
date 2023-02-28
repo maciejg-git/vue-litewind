@@ -1,7 +1,6 @@
 {
   "name": "vRadio",
   "props": {
-    "name": "",
     "base": "",
     "variant": "",
     "modelValue": "",

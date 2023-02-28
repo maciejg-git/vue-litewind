@@ -1,0 +1,25 @@
+{
+  "props": [
+    {
+      "type": [
+        "String"
+      ],
+      "default": "checkbox",
+      "prop": "base",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": "empty string",
+      "prop": "variant",
+      "description": ""
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "functions": [],
+  "components": []
+}

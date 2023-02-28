@@ -1,0 +1,85 @@
+{
+  "props": [
+    {
+      "type": [
+        "String"
+      ],
+      "default": "tabs",
+      "prop": "base",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "center",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "fill",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "right",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Array"
+      ],
+      "default": "empty string",
+      "prop": "style-tab",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Array"
+      ],
+      "default": "empty string",
+      "prop": "style-tab-bar",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "fade",
+      "prop": "transition",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": "empty string",
+      "prop": "variant",
+      "description": ""
+    }
+  ],
+  "events": [
+    {
+      "event": "input:changed-tab",
+      "description": ""
+    }
+  ],
+  "slots": [
+    {
+      "slot": "default",
+      "description": ""
+    }
+  ],
+  "functions": [],
+  "components": []
+}

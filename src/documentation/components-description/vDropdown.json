@@ -1,7 +1,6 @@
 {
   "name": "vDropdown",
   "props": {
-    "name": "",
     "base": "",
     "variant": "",
     "modelValue": "",

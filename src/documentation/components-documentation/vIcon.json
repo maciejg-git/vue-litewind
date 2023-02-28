@@ -1,0 +1,34 @@
+{
+  "props": [
+    {
+      "type": [
+        "String",
+        "Object"
+      ],
+      "default": "empty string",
+      "prop": "icon",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "icon-type",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Object"
+      ],
+      "default": "empty string",
+      "prop": "name",
+      "description": ""
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "functions": [],
+  "components": []
+}

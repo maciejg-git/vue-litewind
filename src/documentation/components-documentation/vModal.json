@@ -1,0 +1,255 @@
+{
+  "props": [
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": "undefined",
+      "prop": "v-model",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "modal",
+      "prop": "base",
+      "description": ""
+    },
+    {
+      "type": [
+        "Object"
+      ],
+      "default": {},
+      "prop": "close-button",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "end",
+      "prop": "justify-buttons",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "no-close-button",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "no-footer",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "no-header",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "no-primary-button",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "no-secondary-button",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "top",
+      "prop": "position",
+      "description": ""
+    },
+    {
+      "type": [
+        "Object"
+      ],
+      "default": {
+        "styleButton": "primary"
+      },
+      "prop": "primary-button",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "primary-button-close",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "Accept",
+      "prop": "primary-button-label",
+      "description": ""
+    },
+    {
+      "type": [
+        "Object"
+      ],
+      "default": {
+        "styleButton": "secondary"
+      },
+      "prop": "secondary-button",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "secondary-button-close",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "Close",
+      "prop": "secondary-button-label",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "md",
+      "prop": "size",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "static-backdrop",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-backdrop",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-content",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-footer",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-header",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-modal",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "undefined",
+      "prop": "title",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "fade-slide",
+      "prop": "transition",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": "empty string",
+      "prop": "variant",
+      "description": ""
+    }
+  ],
+  "events": [
+    {
+      "event": "input:primary-button-click",
+      "description": ""
+    },
+    {
+      "event": "input:secondary-button-click",
+      "description": ""
+    },
+    {
+      "event": "update:modelValue",
+      "description": ""
+    },
+    {
+      "event": "input:static-backdrop-click",
+      "description": ""
+    }
+  ],
+  "slots": [
+    {
+      "slot": "modal",
+      "description": ""
+    },
+    {
+      "slot": "header",
+      "description": ""
+    },
+    {
+      "slot": "default",
+      "description": ""
+    },
+    {
+      "slot": "footer",
+      "description": ""
+    }
+  ],
+  "functions": [],
+  "components": []
+}

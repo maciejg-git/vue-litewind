@@ -1,0 +1,102 @@
+{
+  "props": [
+    {
+      "type": [
+        "Number"
+      ],
+      "default": "undefined",
+      "prop": "v-model",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "pagination",
+      "prop": "base",
+      "description": ""
+    },
+    {
+      "type": [
+        "Number"
+      ],
+      "default": "undefined",
+      "prop": "items-count",
+      "description": ""
+    },
+    {
+      "type": [
+        "Number"
+      ],
+      "default": "undefined",
+      "prop": "items-per-page",
+      "description": ""
+    },
+    {
+      "type": [
+        "Number"
+      ],
+      "default": "undefined",
+      "prop": "max-pages",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-dots",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-next",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-page",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-pagination-bar",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-prev",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": "empty string",
+      "prop": "variant",
+      "description": ""
+    }
+  ],
+  "events": [
+    {
+      "event": "update:modelValue",
+      "description": ""
+    }
+  ],
+  "slots": [],
+  "functions": [],
+  "components": []
+}

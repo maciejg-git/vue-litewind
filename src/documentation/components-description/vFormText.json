@@ -1,7 +1,6 @@
 {
   "name": "vFormText",
   "props": {
-    "name": "",
     "base": "",
     "variant": "",
     "state": "",

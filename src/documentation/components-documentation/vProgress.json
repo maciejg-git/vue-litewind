@@ -1,0 +1,107 @@
+{
+  "props": [
+    {
+      "type": [
+        "String"
+      ],
+      "default": "progress",
+      "prop": "base",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "indeterminate",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": true,
+      "prop": "label",
+      "description": ""
+    },
+    {
+      "type": [
+        "Number",
+        "String"
+      ],
+      "default": 100,
+      "prop": "max",
+      "description": ""
+    },
+    {
+      "type": [
+        "Number"
+      ],
+      "default": 2,
+      "prop": "precision",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Array"
+      ],
+      "default": "empty string",
+      "prop": "style-label",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Array"
+      ],
+      "default": "empty string",
+      "prop": "style-progress",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Array"
+      ],
+      "default": "empty string",
+      "prop": "style-progress-bar",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": true,
+      "prop": "transition",
+      "description": ""
+    },
+    {
+      "type": [
+        "Number",
+        "String"
+      ],
+      "default": 0,
+      "prop": "value",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": "empty string",
+      "prop": "variant",
+      "description": ""
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "slot": "default",
+      "description": ""
+    }
+  ],
+  "functions": [],
+  "components": []
+}

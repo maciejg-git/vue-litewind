@@ -1,0 +1,224 @@
+{
+  "props": [
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "allow-open-disabled",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "allow-select-disabled",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "auto-open-all",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "auto-open-root",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "tree",
+      "prop": "base",
+      "description": ""
+    },
+    {
+      "type": [
+        "Object"
+      ],
+      "default": {},
+      "prop": "chevron",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "filter",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "children",
+      "prop": "item-children",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "disabled",
+      "prop": "item-disabled",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "icon",
+      "prop": "item-icon",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "id",
+      "prop": "item-key",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "name",
+      "prop": "item-name",
+      "description": ""
+    },
+    {
+      "type": [
+        "Object"
+      ],
+      "default": [],
+      "prop": "items",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": true,
+      "prop": "open-on-click",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Object"
+      ],
+      "default": "undefined",
+      "prop": "placeholder-folder-icon",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Object"
+      ],
+      "default": "undefined",
+      "prop": "placeholder-item-icon",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "select-independent",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "select-return-keys",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "show-checkboxes",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": true,
+      "prop": "show-icons",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": true,
+      "prop": "show-indicators",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-folder",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-icon",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-item",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "fade",
+      "prop": "transition",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": "empty string",
+      "prop": "variant",
+      "description": ""
+    }
+  ],
+  "events": [
+    {
+      "event": "input:selected",
+      "description": ""
+    }
+  ],
+  "slots": [],
+  "functions": [],
+  "components": []
+}

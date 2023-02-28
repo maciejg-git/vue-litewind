@@ -1,0 +1,54 @@
+{
+  "props": [
+    {
+      "type": [
+        "String"
+      ],
+      "default": "chip",
+      "prop": "base",
+      "description": ""
+    },
+    {
+      "type": [
+        "Object"
+      ],
+      "default": {
+        "base": "round-close-button",
+        "styleCloseButton": "small"
+      },
+      "prop": "close-button",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-chip",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": "empty string",
+      "prop": "variant",
+      "description": ""
+    }
+  ],
+  "events": [
+    {
+      "event": "click:close-button",
+      "description": ""
+    }
+  ],
+  "slots": [
+    {
+      "slot": "default",
+      "description": ""
+    }
+  ],
+  "functions": [],
+  "components": []
+}

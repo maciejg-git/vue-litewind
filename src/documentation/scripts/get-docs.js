@@ -16,6 +16,8 @@ while (references.length) {
   let reference = JSON.parse(comp)
   let description = JSON.parse(desc)
 
+  // props
+
   let props = Object.entries(reference.props).reduce((acc, i, index) => {
     i[1].prop = _.kebabCase(i[0])
     if (i[1].prop === "model-value") {
@@ -32,12 +34,25 @@ while (references.length) {
     return acc
   }, [])
 
-  let emits = reference.emits.map((i) => {
+  props = props.sort((a, b) => {
+    if (a.prop > b.prop) return 1
+    if (a.prop < b.prop) return -1
+    return 0
+  })
+
+  let index = props.findIndex((i) => i.prop === 'v-model')
+  if (index > 0) props.splice(0, 0, props.splice(index, 1)[0])
+
+  // events
+
+  let events = reference.emits.map((i) => {
     return {
       event: i,
       description: description.emits[i],
     }
   })
+
+  // slots
 
   let slots = reference.slots.map((i) => {
     return {
@@ -46,7 +61,25 @@ while (references.length) {
     }
   })
 
-  console.log(reference.name)
-  // console.log(comp)
-  console.log(props)
+  // functions
+
+  let functions = Object.entries(description.functions).map(([k, v]) => {
+    return {
+      function: k,
+      description: v,
+    }
+  })
+
+  // components
+
+  let components = Object.entries(description.components).map(([k, v]) => {
+    return {
+      component: k,
+      description: v,
+    }
+  })
+
+  let file = JSON.stringify({ props, events, slots, functions, components }, null, 2)
+
+  await writeFile(`../components-documentation/${reference.name}.json`, file, "utf8")
 }

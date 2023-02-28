@@ -1,7 +1,6 @@
 {
   "name": "vCloseButton",
   "props": {
-    "name": "",
     "base": "",
     "variant": "",
     "styleWrapper": "",

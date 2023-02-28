@@ -1,0 +1,103 @@
+{
+  "props": [
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "v-model",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "sidepanel",
+      "prop": "base",
+      "description": ""
+    },
+    {
+      "type": [
+        "Object"
+      ],
+      "default": {},
+      "prop": "close-button",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "no-header",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": true,
+      "prop": "show-close-button",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "sidebar-left",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-sidepanel",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "fade-slide",
+      "prop": "transition",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": "empty string",
+      "prop": "variant",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "320px",
+      "prop": "width",
+      "description": ""
+    }
+  ],
+  "events": [
+    {
+      "event": "update:modelValue",
+      "description": ""
+    }
+  ],
+  "slots": [
+    {
+      "slot": "header",
+      "description": ""
+    },
+    {
+      "slot": "default",
+      "description": ""
+    }
+  ],
+  "functions": [],
+  "components": []
+}

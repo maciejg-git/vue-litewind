@@ -1,7 +1,6 @@
 {
   "name": "vPopover",
   "props": {
-    "name": "",
     "base": "",
     "variant": "",
     "placement": "",

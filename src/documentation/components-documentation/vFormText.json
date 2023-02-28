@@ -1,0 +1,70 @@
+{
+  "props": [
+    {
+      "type": [
+        "String"
+      ],
+      "default": "form-text",
+      "prop": "base",
+      "description": ""
+    },
+    {
+      "type": [
+        "Object"
+      ],
+      "default": {},
+      "prop": "messages",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "single-line-message",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "state",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-form-text",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "fade-scale",
+      "prop": "transition",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": "empty string",
+      "prop": "variant",
+      "description": ""
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "slot": "message",
+      "description": ""
+    }
+  ],
+  "functions": [],
+  "components": []
+}

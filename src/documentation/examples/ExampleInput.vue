@@ -140,7 +140,6 @@ export default {
     };
 
     let handleClickIcon = () => {
-      example.model = "";
       events.value.unshift({ ev: "click:icon" });
     };
 

@@ -1,0 +1,115 @@
+{
+  "props": [
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "v-model",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "auto-close-menu",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "dropdown",
+      "prop": "base",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "no-flip",
+      "description": ""
+    },
+    {
+      "type": [
+        "Number"
+      ],
+      "default": 0,
+      "prop": "offset-x",
+      "description": ""
+    },
+    {
+      "type": [
+        "Number"
+      ],
+      "default": 0,
+      "prop": "offset-y",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "bottom-start",
+      "prop": "placement",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-header",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-item",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "fade",
+      "prop": "transition",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": "empty string",
+      "prop": "variant",
+      "description": ""
+    }
+  ],
+  "events": [
+    {
+      "event": "state:opened",
+      "description": ""
+    },
+    {
+      "event": "state:closed",
+      "description": ""
+    },
+    {
+      "event": "update:modelValue",
+      "description": ""
+    }
+  ],
+  "slots": [
+    {
+      "slot": "default",
+      "description": ""
+    }
+  ],
+  "functions": [],
+  "components": []
+}

@@ -1,0 +1,97 @@
+{
+  "props": [
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": "undefined",
+      "prop": "v-model",
+      "description": ""
+    },
+    {
+      "type": [
+        "Number"
+      ],
+      "default": 0,
+      "prop": "auto-dismiss-delay",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "alert",
+      "prop": "base",
+      "description": ""
+    },
+    {
+      "type": [
+        "Object"
+      ],
+      "default": {},
+      "prop": "close-button",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": true,
+      "prop": "dismissable",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "icon",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Array"
+      ],
+      "default": "empty string",
+      "prop": "style-alert",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Array"
+      ],
+      "default": "empty string",
+      "prop": "style-icon",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": "empty string",
+      "prop": "variant",
+      "description": ""
+    }
+  ],
+  "events": [
+    {
+      "event": "update:modelValue",
+      "description": ""
+    }
+  ],
+  "slots": [
+    {
+      "slot": "icon",
+      "description": ""
+    },
+    {
+      "slot": "default",
+      "description": ""
+    }
+  ],
+  "functions": [],
+  "components": []
+}

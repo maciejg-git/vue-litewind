@@ -1,0 +1,46 @@
+{
+  "props": [
+    {
+      "type": [
+        "String"
+      ],
+      "default": "card",
+      "prop": "base",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-card",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": "empty string",
+      "prop": "variant",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "undefined",
+      "prop": "width",
+      "description": ""
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "slot": "default",
+      "description": ""
+    }
+  ],
+  "functions": [],
+  "components": []
+}

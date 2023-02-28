@@ -1,0 +1,229 @@
+{
+  "props": [
+    {
+      "type": [
+        "String",
+        "Array"
+      ],
+      "default": "undefined",
+      "prop": "v-model",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": true,
+      "prop": "adjacent-months",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "datepicker",
+      "prop": "base",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "buttons",
+      "description": ""
+    },
+    {
+      "type": [
+        "Array"
+      ],
+      "default": [],
+      "prop": "disabled",
+      "description": ""
+    },
+    {
+      "type": [
+        "Object"
+      ],
+      "default": {
+        "weekday": "long",
+        "year": "numeric",
+        "month": "long",
+        "day": "numeric"
+      },
+      "prop": "format",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "en-GB",
+      "prop": "locale",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "monday-first-weekday",
+      "description": ""
+    },
+    {
+      "type": [
+        "Object"
+      ],
+      "default": {
+        "styleButton": "primary small"
+      },
+      "prop": "primary-button",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "OK",
+      "prop": "primary-button-label",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "range",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": true,
+      "prop": "range-hover-highlight",
+      "description": ""
+    },
+    {
+      "type": [
+        "Object"
+      ],
+      "default": {
+        "styleButton": "secondary small"
+      },
+      "prop": "secondary-button",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "Cancel",
+      "prop": "secondary-button-label",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-adjacent-month-day",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-button",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-datepicker",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-day",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-footer",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-weekday",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-weekday-bar",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "fade",
+      "prop": "transition",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": "empty string",
+      "prop": "variant",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "undefined",
+      "prop": "width",
+      "description": ""
+    }
+  ],
+  "events": [
+    {
+      "event": "update:modelValue",
+      "description": ""
+    },
+    {
+      "event": "update:formatted",
+      "description": ""
+    },
+    {
+      "event": "state:done",
+      "description": ""
+    }
+  ],
+  "slots": [
+    {
+      "slot": "day",
+      "description": ""
+    }
+  ],
+  "functions": [],
+  "components": []
+}

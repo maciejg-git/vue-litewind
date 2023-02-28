@@ -140,6 +140,7 @@
   "slots": [
     "caption",
     "busy",
+    "cell:[key]",
     "colspan"
   ]
 }

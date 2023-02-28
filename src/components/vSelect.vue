@@ -30,11 +30,11 @@
         v-bind="slotProps"
       ></slot>
     </template>
+    <!-- @slot multi-value-item -->
     <template #multi-value>
       <template v-if="multiValue">
         <template v-for="(value, index) in selectedItems">
           <template v-if="index < maxMultiValue">
-            <!-- @slot multi-value-item -->
             <slot
               name="multi-value-item"
               v-bind="value"
@@ -99,7 +99,7 @@
             tabindex="0"
             role="option"
           >
-          <!-- @slot item -->
+            <!-- @slot item -->
             <slot
               name="item"
               :text="getItemText(item)"
@@ -260,11 +260,9 @@ const {
   hidePopper,
   destroyPopperInstance,
   lockPopper,
-} = usePopper(
-  { placement, offsetX, offsetY, noFlip },
-  null,
-  { resizePopper: true }
-);
+} = usePopper({ placement, offsetX, offsetY, noFlip }, null, {
+  resizePopper: true,
+});
 
 let selectedItem = ref(null);
 let selectedItems = ref([]);

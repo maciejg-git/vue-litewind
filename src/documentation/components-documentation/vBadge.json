@@ -1,0 +1,63 @@
+{
+  "props": [
+    {
+      "type": [
+        "String"
+      ],
+      "default": "badge",
+      "prop": "base",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "position",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-badge",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "update-animation",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Number"
+      ],
+      "default": "undefined",
+      "prop": "update-key",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": "empty string",
+      "prop": "variant",
+      "description": ""
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "slot": "default",
+      "description": ""
+    }
+  ],
+  "functions": [],
+  "components": []
+}

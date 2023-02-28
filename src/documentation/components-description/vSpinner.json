@@ -1,7 +1,6 @@
 {
   "name": "vSpinner",
   "props": {
-    "name": "",
     "base": "",
     "variant": "",
     "type": "",

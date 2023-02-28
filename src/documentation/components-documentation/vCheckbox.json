@@ -1,0 +1,107 @@
+{
+  "props": [
+    {
+      "type": [
+        "Array",
+        "Boolean",
+        "Object"
+      ],
+      "default": "undefined",
+      "prop": "v-model",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "checkbox",
+      "prop": "base",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "label",
+      "description": ""
+    },
+    {
+      "type": [
+        "Object"
+      ],
+      "default": {},
+      "prop": "rules",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": null,
+      "prop": "state",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Array"
+      ],
+      "default": "empty string",
+      "prop": "style-checkbox",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Array"
+      ],
+      "default": "empty string",
+      "prop": "style-label",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "silent",
+      "prop": "validate-mode",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": "empty string",
+      "prop": "variant",
+      "description": ""
+    }
+  ],
+  "events": [
+    {
+      "event": "update:modelValue",
+      "description": ""
+    },
+    {
+      "event": "update:status",
+      "description": ""
+    },
+    {
+      "event": "update:state",
+      "description": ""
+    },
+    {
+      "event": "update:messages",
+      "description": ""
+    }
+  ],
+  "slots": [
+    {
+      "slot": "default",
+      "description": ""
+    }
+  ],
+  "functions": [],
+  "components": []
+}

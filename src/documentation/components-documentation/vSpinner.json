@@ -1,0 +1,50 @@
+{
+  "props": [
+    {
+      "type": [
+        "String"
+      ],
+      "default": "spinner",
+      "prop": "base",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Object"
+      ],
+      "default": "undefined",
+      "prop": "icon",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "style-spinner",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "border",
+      "prop": "type",
+      "description": ""
+    },
+    {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": "empty string",
+      "prop": "variant",
+      "description": ""
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "functions": [],
+  "components": []
+}

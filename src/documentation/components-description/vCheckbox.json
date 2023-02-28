@@ -1,7 +1,6 @@
 {
   "name": "vCheckbox",
   "props": {
-    "name": "",
     "base": "",
     "variant": "",
     "modelValue": "",

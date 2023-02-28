@@ -1,7 +1,6 @@
 {
   "name": "vModal",
   "props": {
-    "name": "",
     "base": "",
     "variant": "",
     "modelValue": "",

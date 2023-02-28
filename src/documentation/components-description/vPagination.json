@@ -1,7 +1,6 @@
 {
   "name": "vPagination",
   "props": {
-    "name": "",
     "base": "",
     "variant": "",
     "modelValue": "",
