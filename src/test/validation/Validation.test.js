@@ -167,9 +167,9 @@ describe("should emit", () => {
       },
     });
 
-    expect(emitted("update:status")[0][0]).toEqual(defaultStatus);
-    expect(emitted("update:state")[0][0]).toMatch("");
-    expect(emitted("update:messages")[0][0]).toEqual({});
+    expect(emitted("validation:status")[0][0]).toEqual(defaultStatus);
+    expect(emitted("validation:state")[0][0]).toMatch("");
+    expect(emitted("validation:messages")[0][0]).toEqual({});
   });
 
   test("status, state and messages on touch", async () => {
@@ -184,7 +184,7 @@ describe("should emit", () => {
     let textbox = getByRole("textbox");
     await fireEvent.click(textbox);
     await fireEvent.blur(textbox);
-    expect(emitted("update:status")[1][0]).toEqual({
+    expect(emitted("validation:status")[1][0]).toEqual({
       touched: true,
       validated: false,
       dirty: false,
@@ -192,8 +192,8 @@ describe("should emit", () => {
       valid: false,
       optional: false,
     });
-    expect(emitted("update:state")[1][0]).toMatch("invalid");
-    expect(emitted("update:messages")[1][0]).toEqual({
+    expect(emitted("validation:state")[1][0]).toMatch("invalid");
+    expect(emitted("validation:messages")[1][0]).toEqual({
       required: "This field is required",
     });
   });
@@ -212,7 +212,7 @@ describe("should update status properties", () => {
     let textbox = getByRole("textbox");
     await fireEvent.click(textbox);
     await fireEvent.blur(textbox);
-    expect(emitted("update:status")[1][0]).toMatchObject({
+    expect(emitted("validation:status")[1][0]).toMatchObject({
       touched: true,
     });
   });
@@ -240,7 +240,7 @@ describe("should update status properties", () => {
 
     await fireEvent.blur(textbox);
 
-    expect(emitted("update:status")[1][0]).toMatchObject({
+    expect(emitted("validation:status")[1][0]).toMatchObject({
       dirty: true,
     });
   });
@@ -255,7 +255,7 @@ describe("should update status properties", () => {
     let textbox = getByRole("textbox");
     await fireEvent.click(textbox);
     await fireEvent.blur(textbox);
-    expect(emitted("update:status")[1][0]).toMatchObject({
+    expect(emitted("validation:status")[1][0]).toMatchObject({
       optional: true,
     });
   });
@@ -284,7 +284,7 @@ describe("should update status properties", () => {
 
     await fireEvent.blur(textbox);
 
-    expect(emitted("update:status")[1][0]).toMatchObject({
+    expect(emitted("validation:status")[1][0]).toMatchObject({
       valid: true,
     });
   });
