@@ -162,7 +162,14 @@
     }
   },
   "emits": [
-    "input:selected"
+    "input:selected",
+    "input:click"
   ],
-  "slots": []
+  "slots": [
+    "item",
+    "icon",
+    "item-prepend",
+    "name",
+    "item-append"
+  ]
 }

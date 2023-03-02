@@ -183,6 +183,8 @@
     "state:closed"
   ],
   "slots": [
-    "item"
+    "multi-value-item",
+    "max-multi-value",
+    "menu-item"
   ]
 }

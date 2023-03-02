@@ -190,9 +190,9 @@
   },
   "emits": [
     "update:modelValue",
-    "update:status",
-    "update:messages",
-    "update:state",
+    "validation:status",
+    "validation:messages",
+    "validation:state",
     "click:clear-button",
     "click:icon",
     "click:indicator"
@@ -201,6 +201,7 @@
     "label",
     "icon",
     "prepend",
+    "multi-value",
     "append"
   ]
 }

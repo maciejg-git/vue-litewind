@@ -93,9 +93,9 @@
   },
   "emits": [
     "update:modelValue",
-    "update:status",
-    "update:messages",
-    "update:state"
+    "validation:status",
+    "validation:messages",
+    "validation:state"
   ],
   "slots": [
     "label"

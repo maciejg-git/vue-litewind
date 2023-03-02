@@ -26,6 +26,8 @@
   "slots": [
     "item",
     "icon",
-    "name"
+    "item-prepend",
+    "name",
+    "item-append"
   ]
 }

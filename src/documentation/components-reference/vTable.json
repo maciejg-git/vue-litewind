@@ -140,6 +140,8 @@
   "slots": [
     "caption",
     "busy",
+    "empty-table-message",
+    "empty-filtered-table-message",
     "cell:[key]",
     "colspan"
   ]

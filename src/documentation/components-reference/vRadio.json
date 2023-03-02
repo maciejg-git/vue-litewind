@@ -61,11 +61,11 @@
   },
   "emits": [
     "update:modelValue",
-    "update:status",
-    "update:state",
-    "update:messages"
+    "validation:status",
+    "validation:state",
+    "validation:messages"
   ],
   "slots": [
-    "default"
+    "label"
   ]
 }

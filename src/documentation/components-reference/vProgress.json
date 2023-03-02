@@ -76,6 +76,6 @@
   },
   "emits": [],
   "slots": [
-    "default"
+    "label"
   ]
 }

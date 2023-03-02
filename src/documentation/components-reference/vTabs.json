@@ -57,6 +57,7 @@
     "input:changed-tab"
   ],
   "slots": [
+    "tab-bar-append",
     "default"
   ]
 }
