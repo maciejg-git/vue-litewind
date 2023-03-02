@@ -1,15 +1,15 @@
 {
   "name": "vCollapse",
   "props": {
-    "modelValue": "",
-    "transition": ""
+    "modelValue": "Setting v-model to true shows collapsible element, false value hides it",
+    "transition": "Sets animation effect when showing or hiding dropdown. Valid values are: 'fade-collapse' or `empty string` to disable animations. Animation speed can be set in `--collapse-transition-duration` css variable."
   },
   "emits": {
     "update:modelValue": ""
   },
   "slots": {
-    "reference": "",
-    "default": ""
+    "reference": "Slot for content that triggers collapse. Slot props: `isOpen`, `onTrigger`",
+    "default": "Slot for content that is collapsed"
   },
   "functions": {},
   "components": {}

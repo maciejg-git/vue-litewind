@@ -3,21 +3,21 @@
   "props": {
     "base": "",
     "variant": "",
-    "modelValue": "",
-    "showCloseButton": "",
-    "sidebarLeft": "",
-    "width": "",
-    "noHeader": "",
-    "closeButton": "",
-    "transition": "",
-    "styleSidepanel": ""
+    "modelValue": "Controls the state of sidepanel. If `true`, sidepanel is open",
+    "showCloseButton": "If `true` shows a close button in top right corner",
+    "sidebarLeft": "If `true` displays sidepanel on the left",
+    "width": "Width of sidepanel",
+    "noHeader": "When `true` the header slot content and close button is not rendered",
+    "closeButton": "Attributes of v-close-button component. See documentation for valid values",
+    "transition": "Sets animation effect when showing or hiding sidepanel. Valid values are: 'fade-slide' or `empty string` to disable animations. Animation speed can be set in `--sidepanel-transition-duration` css variable.",
+    "styleSidepanel": "Main sidepanel element"
   },
   "emits": {
     "update:modelValue": ""
   },
   "slots": {
-    "header": "",
-    "default": ""
+    "header": "Slot for header content",
+    "default": "Slot for sidepanel content"
   },
   "functions": {},
   "components": {}

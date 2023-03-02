@@ -1,12 +1,12 @@
 {
   "name": "vTab",
   "props": {
-    "name": ""
+    "name": "Name of tab on tab bar"
   },
   "emits": {},
   "slots": {
-    "name": "",
-    "default": ""
+    "name": "Slot for customized name of the tab on tab bar",
+    "default": "Slot for tab content"
   },
   "functions": {},
   "components": {}

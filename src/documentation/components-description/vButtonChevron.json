@@ -1,9 +1,9 @@
 {
   "name": "vButtonChevron",
   "props": {
-    "switch": "",
-    "initial": "",
-    "chevron": ""
+    "switch": "Switch prop of v-chevron",
+    "initial": "Initial prop of v-chevron",
+    "chevron": "Attributes of v-chevron component"
   },
   "emits": {},
   "slots": {

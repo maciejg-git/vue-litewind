@@ -3,22 +3,22 @@
   "props": {
     "base": "",
     "variant": "",
-    "modelValue": "",
+    "modelValue": "Checkbox v-model",
     "rules": "",
     "validateMode": "",
-    "label": "",
-    "styleCheckbox": "",
-    "styleLabel": "",
+    "label": "Checkbox label",
+    "styleCheckbox": "Main input element",
+    "styleLabel": "Input label element",
     "state": ""
   },
   "emits": {
     "update:modelValue": "",
-    "update:status": "",
-    "update:state": "",
-    "update:messages": ""
+    "validation:status": "",
+    "validation:state": "",
+    "validation:messages": ""
   },
   "slots": {
-    "default": ""
+    "label": "Slot for checkbox label"
   },
   "functions": {},
   "components": {}

@@ -3,15 +3,15 @@
   "props": {
     "base": "",
     "variant": "",
-    "modelValue": "",
-    "itemsCount": "",
-    "itemsPerPage": "",
-    "maxPages": "",
-    "stylePaginationBar": "",
-    "stylePage": "",
-    "styleDots": "",
-    "styleNext": "",
-    "stylePrev": ""
+    "modelValue": "Current page",
+    "itemsCount": "Total number of items. Pagination uses this value to compute the number of pages to render. It is usually provided by another component that uses pagination for navigation",
+    "itemsPerPage": "Number of items per page. Pagination uses this value to compute the number of pages to render. It is usually provided by another component that uses pagination for navigation. `0` disables pagination (displays only 1 page)",
+    "maxPages": "Maximum number of pages to display. This prop must have value of 3 or more",
+    "stylePaginationBar": "Main pagination bar element",
+    "stylePage": "Style of single page button",
+    "styleDots": "Style of dots separating pages",
+    "styleNext": "Style of next page button",
+    "stylePrev": "Style of next page button"
   },
   "emits": {
     "update:modelValue": ""

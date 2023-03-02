@@ -3,27 +3,27 @@
   "props": {
     "base": "",
     "variant": "",
-    "modelValue": "",
-    "inline": "",
+    "modelValue": "Textarea v-model",
+    "inline": "Sets textarea display to inline",
     "rules": "",
     "validateOn": "",
     "validateMode": "",
-    "singleLineMessage": "",
-    "label": "",
-    "noMessages": "",
-    "formText": "",
-    "styleTextarea": "",
-    "styleLabel": "",
+    "singleLineMessage": "Limits the number of displayed errors to one at time. Order of messages is the same as order of `rules` in rules prop",
+    "label": "Label on top of the textarea. This label is for simple forms as position cannot be changed",
+    "noMessages": "If `true` validation messages are not displayed",
+    "formText": "Attributes of v-form-text component",
+    "styleTextarea": "Main textarea element",
+    "styleLabel": "Label element if `label` prop is set",
     "state": ""
   },
   "emits": {
     "update:modelValue": "",
-    "update:status": "",
-    "update:messages": "",
-    "update:state": ""
+    "validation:status": "",
+    "validation:messages": "",
+    "validation:state": ""
   },
   "slots": {
-    "label": ""
+    "label": "Slot for label. Slot props: `label` (from label prop)"
   },
   "functions": {},
   "components": {}

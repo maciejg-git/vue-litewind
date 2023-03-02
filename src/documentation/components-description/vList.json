@@ -3,14 +3,14 @@
   "props": {
     "base": "",
     "variant": "",
-    "width": "",
-    "tag": "",
-    "styleList": "",
-    "styleItem": ""
+    "width": "Component width",
+    "tag": "Defines tag to use in list item child component (for example 'div', 'a' or 'button')",
+    "styleList": "Defines tag to use in list item child component (for example 'div', 'a' or 'button')",
+    "styleItem": "List item style"
   },
   "emits": {},
   "slots": {
-    "default": ""
+    "default": "Slot for v-list-item components"
   },
   "functions": {},
   "components": {}

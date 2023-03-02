@@ -3,12 +3,12 @@
   "props": {
     "base": "",
     "variant": "",
-    "width": "",
-    "styleCard": ""
+    "width": "Width of the card",
+    "styleCard": "Main card element"
   },
   "emits": {},
   "slots": {
-    "default": ""
+    "default": "Slot for card content"
   },
   "functions": {},
   "components": {}

@@ -3,14 +3,14 @@
   "props": {
     "base": "",
     "variant": "",
-    "fixed": "",
-    "sticky": "",
-    "bottom": "",
-    "styleNavbar": ""
+    "fixed": "If `true` navbar position is set to fixed. If both fixed and sticky are `false` then navbar is positioned as relative",
+    "sticky": "If `true` navbar position is set to sticky. If both fixed and sticky are `false` then navbar is positioned as relative",
+    "bottom": "Places navbar on the bottom. Note: `fixed` must be also set to true",
+    "styleNavbar": "Main navbar element"
   },
   "emits": {},
   "slots": {
-    "default": ""
+    "default": "Slot for navbar content"
   },
   "functions": {},
   "components": {}

@@ -3,8 +3,8 @@
   "props": {
     "base": "",
     "variant": "",
-    "styleWrapper": "",
-    "styleCloseButton": ""
+    "styleWrapper": "Wrapper button element",
+    "styleCloseButton": "Icon element"
   },
   "emits": {},
   "slots": {},

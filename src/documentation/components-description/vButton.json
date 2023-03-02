@@ -3,14 +3,14 @@
   "props": {
     "base": "",
     "variant": "",
-    "disabled": "",
-    "tag": "",
-    "block": "",
-    "styleButton": ""
+    "disabled": "Displays button in `disabled` state",
+    "tag": "Tag of button element. Valid values are: 'button' or 'a'",
+    "block": "Displays button as full width block",
+    "styleButton": "Main button element"
   },
   "emits": {},
   "slots": {
-    "default": ""
+    "default": "Slot for button content"
   },
   "functions": {},
   "components": {}

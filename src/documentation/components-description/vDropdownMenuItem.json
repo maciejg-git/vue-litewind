@@ -1,13 +1,13 @@
 {
   "name": "vDropdownMenuItem",
   "props": {
-    "tag": "",
-    "disabled": "",
-    "active": ""
+    "tag": "Tag used to render menu item",
+    "disabled": "Renders disabled menu item",
+    "active": "Renders active menu item"
   },
   "emits": {},
   "slots": {
-    "default": ""
+    "default": "Slot for menu item content"
   },
   "functions": {},
   "components": {}

@@ -3,25 +3,25 @@
   "props": {
     "base": "",
     "variant": "",
-    "modelValue": "",
+    "modelValue": "Set it to `true`/`false` to programatically show or hide dropdown content. Model is optional",
     "placement": "",
     "offsetX": "",
     "offsetY": "",
     "noFlip": "",
-    "autoCloseMenu": "",
-    "trigger": "",
-    "transition": "",
-    "styleItem": "",
-    "styleHeader": ""
+    "autoCloseMenu": "If `true` clicking any dropdown menu item automatically closes dropdown",
+    "trigger": "How to trigger dropdown. Valid triggers are 'click', 'focus' and 'hover'",
+    "transition": "Sets animation effect when showing or hiding dropdown. Valid values are: 'fade' or `empty string` to disable animations. Animation speed can be set in `--dropdown-transition-duration` css variable.",
+    "styleItem": "Style of menu item",
+    "styleHeader": "Style of menu header"
   },
   "emits": {
-    "state:opened": "",
-    "state:closed": "",
-    "update:modelValue": ""
+    "state:opened": "Emitted after dropdown is opened",
+    "state:closed": "Emitted after dropdown is closed",
+    "update:modelValue": "Emitted after model change"
   },
   "slots": {
-    "reference": "",
-    "default": ""
+    "reference": "Slot for element that activates dropdown. Dropdown is positioned relative to element that has `ref` set to `reference`. Slot props: `reference`, `onTrigger` and `isOpen`",
+    "default": "Slot for dropdown content. Slot props: `hide()`"
   },
   "functions": {},
   "components": {}

@@ -3,11 +3,11 @@
   "props": {
     "base": "",
     "variant": "",
-    "path": "",
-    "separator": "",
-    "styleBreadcrumb": "",
-    "styleSeparator": "",
-    "styleActive": ""
+    "path": "Path of links to render",
+    "separator": "Character or string that seperates links",
+    "styleBreadcrumb": "Breadcrumb link",
+    "styleSeparator": "Breadcrumb separator",
+    "styleActive": "Active link in path"
   },
   "emits": {},
   "slots": {},

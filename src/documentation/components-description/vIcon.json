@@ -1,9 +1,9 @@
 {
   "name": "vIcon",
   "props": {
-    "name": "",
-    "icon": "",
-    "iconType": ""
+    "name": "Same as icon prop",
+    "icon": "Name of the registered icon component or icon component object. It has higher prorioty than `icon-type` if both are set",
+    "iconType": "Icon type provided via `iconTypes`"
   },
   "emits": {},
   "slots": {},

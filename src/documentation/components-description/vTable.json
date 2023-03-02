@@ -31,6 +31,8 @@
   "slots": {
     "caption": "Slot for caption text. Position caption using `caption-top` prop",
     "busy": "Content of this slot replaces data records if table is `busy`",
+    "empty-table-message": "Slot for custom empty table message when `items` prop is empty table",
+    "empty-filtered-table-message": "Slot for custom empty filtered table message when table is empty after filtering",
     "cell:[key]": "Slot for cell content. Useful for adding some html formatting, transforming value etc. Key is one of the keys of data record or additional key from definition array. Slot props: `value`, `item`",
     "colspan": ""
   },

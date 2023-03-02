@@ -7,15 +7,15 @@
     "offsetX": "",
     "offsetY": "",
     "noFlip": "",
-    "trigger": "",
-    "title": "",
-    "transition": "",
-    "styleHeader": ""
+    "trigger": "How to trigger dropdown. Valid triggers are 'click', 'focus' and 'hover'",
+    "title": "Title displayed in popover header",
+    "transition": "Sets animation effect when showing or hiding popover. Valid values are: 'fade' or `empty string` to disable animations.",
+    "styleHeader": "Style of the header element"
   },
   "emits": {},
   "slots": {
-    "reference": "",
-    "default": ""
+    "reference": "Slot for element that activates dropdown. Dropdown is positioned relative to element in this slot. Slot props: `reference`, `onTrigger` and `isOpen`",
+    "default": "Slot for popover content"
   },
   "functions": {},
   "components": {}

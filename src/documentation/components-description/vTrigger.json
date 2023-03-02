@@ -1,11 +1,11 @@
 {
   "name": "vTrigger",
   "props": {
-    "for": ""
+    "for": "Id of the component for that trigger"
   },
   "emits": {},
   "slots": {
-    "default": ""
+    "default": "Slot for element that triggers events. Slot props: `reference`, `onTrigger` and `isOpen`"
   },
   "functions": {},
   "components": {}

@@ -3,20 +3,20 @@
   "props": {
     "base": "",
     "variant": "",
-    "modelValue": "",
-    "dismissable": "",
-    "autoDismissDelay": "",
-    "icon": "",
-    "closeButton": "",
-    "styleAlert": "",
-    "styleIcon": ""
+    "modelValue": "Visiblity state of alert. Skip v-model to make alert static",
+    "dismissable": "If false close button is not rendered and alert cannot be dissmised",
+    "autoDismissDelay": "Delay after which alert is closed",
+    "icon": "Alert has few default icons for variants: 'success', 'warn', 'danger', 'info', 'valid', 'invalid'. Icon or default slot can be used for custom icons.",
+    "closeButton": "Attributes of v-close-button component. See documentation for valid values",
+    "styleAlert": "Main alert element",
+    "styleIcon": "Default icon element (does not apply to icons in slot)"
   },
   "emits": {
     "update:modelValue": ""
   },
   "slots": {
-    "icon": "",
-    "default": ""
+    "icon": "Slot for icon prepending message",
+    "default": "Slot for alert content"
   },
   "functions": {},
   "components": {}

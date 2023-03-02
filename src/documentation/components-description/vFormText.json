@@ -3,15 +3,15 @@
   "props": {
     "base": "",
     "variant": "",
-    "state": "",
-    "messages": "",
-    "singleLineMessage": "",
-    "transition": "",
-    "styleFormText": ""
+    "state": "Current state of input",
+    "messages": "Object with messages to display depending on current state.",
+    "singleLineMessage": "Limits the number of displayed errors to one at time",
+    "transition": "Transition when showing message. Valid values are 'fade-scale' or `empty string`",
+    "styleFormText": "Text element"
   },
   "emits": {},
   "slots": {
-    "message": ""
+    "message": "Slot for message"
   },
   "functions": {},
   "components": {}

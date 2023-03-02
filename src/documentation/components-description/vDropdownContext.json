@@ -3,23 +3,23 @@
   "props": {
     "base": "",
     "variant": "",
-    "modelValue": "",
+    "modelValue": "Set it to `true`/`false` to programatically show or hide dropdown content. Model is optional",
     "placement": "",
     "offsetX": "",
     "offsetY": "",
     "noFlip": "",
-    "autoCloseMenu": "",
-    "transition": "",
-    "styleItem": "",
-    "styleHeader": ""
+    "autoCloseMenu": "If `true` clicking any dropdown menu item automatically closes dropdown",
+    "transition": "Sets animation effect when showing or hiding dropdown. Valid values are: 'fade' or `empty string` to disable animations. Animation speed can be set in `--dropdown-transition-duration` css variable.",
+    "styleItem": "Style of menu item",
+    "styleHeader": "Style of menu item"
   },
   "emits": {
-    "state:opened": "",
-    "state:closed": "",
+    "state:opened": "Emitted after dropdown is opened",
+    "state:closed": "Emitted after dropdown is closed",
     "update:modelValue": ""
   },
   "slots": {
-    "default": ""
+    "default": "Slot for dropdown content. Slot props: `hide()`"
   },
   "functions": {},
   "components": {}

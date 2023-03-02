@@ -4,7 +4,7 @@
     "base": "",
     "variant": "",
     "modelValue": "",
-    "styleRange": "",
+    "styleRange": "Main input element",
     "state": ""
   },
   "emits": {},

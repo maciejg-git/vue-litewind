@@ -5,7 +5,7 @@
   },
   "emits": {},
   "slots": {
-    "default": ""
+    "default": "Slot for list item content"
   },
   "functions": {},
   "components": {}
