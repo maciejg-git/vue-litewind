@@ -1,12 +1,13 @@
 {
+  "name": "vNavbar",
   "props": [
     {
       "type": [
         "String"
       ],
-      "default": "navbar",
+      "default": "\"navbar\"",
       "prop": "base",
-      "description": ""
+      "description": "Base name of the component for styling"
     },
     {
       "type": [
@@ -14,7 +15,7 @@
       ],
       "default": false,
       "prop": "bottom",
-      "description": ""
+      "description": "Places navbar on the bottom. Note: `fixed` must be also set to true"
     },
     {
       "type": [
@@ -22,7 +23,7 @@
       ],
       "default": false,
       "prop": "fixed",
-      "description": ""
+      "description": "If `true` navbar position is set to fixed. If both fixed and sticky are `false` then navbar is positioned as relative"
     },
     {
       "type": [
@@ -30,7 +31,7 @@
       ],
       "default": false,
       "prop": "sticky",
-      "description": ""
+      "description": "If `true` navbar position is set to sticky. If both fixed and sticky are `false` then navbar is positioned as relative"
     },
     {
       "type": [
@@ -38,7 +39,7 @@
       ],
       "default": "empty string",
       "prop": "style-navbar",
-      "description": ""
+      "description": "Main navbar element"
     },
     {
       "type": [
@@ -47,14 +48,14 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": ""
+      "description": "Variant of the component styles"
     }
   ],
   "events": [],
   "slots": [
     {
       "slot": "default",
-      "description": ""
+      "description": "Slot for navbar content"
     }
   ],
   "functions": [],

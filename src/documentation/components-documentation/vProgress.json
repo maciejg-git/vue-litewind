@@ -1,12 +1,13 @@
 {
+  "name": "vProgress",
   "props": [
     {
       "type": [
         "String"
       ],
-      "default": "progress",
+      "default": "\"progress\"",
       "prop": "base",
-      "description": ""
+      "description": "Base name of the component for styling"
     },
     {
       "type": [
@@ -14,7 +15,7 @@
       ],
       "default": false,
       "prop": "indeterminate",
-      "description": ""
+      "description": "Renders indeterminate progress bar. <span class='font-semibold'>Note</span>: value, max, label, precision and transition props are ignored if indeterminate is true. You can switch between indeterminate or determinate by flicking this prop on and off"
     },
     {
       "type": [
@@ -22,7 +23,7 @@
       ],
       "default": true,
       "prop": "label",
-      "description": ""
+      "description": "Display value on progress bar if true. Label can be customized via label slot"
     },
     {
       "type": [
@@ -31,7 +32,7 @@
       ],
       "default": 100,
       "prop": "max",
-      "description": ""
+      "description": "Maximum value of progress"
     },
     {
       "type": [
@@ -39,7 +40,7 @@
       ],
       "default": 2,
       "prop": "precision",
-      "description": ""
+      "description": "Number of digits after dot in progress value, minimum = 0, maximum = 100"
     },
     {
       "type": [
@@ -48,7 +49,7 @@
       ],
       "default": "empty string",
       "prop": "style-label",
-      "description": ""
+      "description": "Label on progress bar"
     },
     {
       "type": [
@@ -57,7 +58,7 @@
       ],
       "default": "empty string",
       "prop": "style-progress",
-      "description": ""
+      "description": "Main progress element"
     },
     {
       "type": [
@@ -66,7 +67,7 @@
       ],
       "default": "empty string",
       "prop": "style-progress-bar",
-      "description": ""
+      "description": "Progress bar element"
     },
     {
       "type": [
@@ -74,7 +75,7 @@
       ],
       "default": true,
       "prop": "transition",
-      "description": ""
+      "description": "Add smooth animation when value change"
     },
     {
       "type": [
@@ -83,7 +84,7 @@
       ],
       "default": 0,
       "prop": "value",
-      "description": ""
+      "description": "Current progress"
     },
     {
       "type": [
@@ -92,14 +93,14 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": ""
+      "description": "Variant of the component styles"
     }
   ],
   "events": [],
   "slots": [
     {
-      "slot": "default",
-      "description": ""
+      "slot": "label",
+      "description": "Slot for custom label"
     }
   ],
   "functions": [],

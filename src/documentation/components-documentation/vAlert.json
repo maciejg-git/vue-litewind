@@ -1,4 +1,5 @@
 {
+  "name": "vAlert",
   "props": [
     {
       "type": [
@@ -6,7 +7,7 @@
       ],
       "default": "undefined",
       "prop": "v-model",
-      "description": ""
+      "description": "Visiblity state of alert. Skip v-model to make alert static"
     },
     {
       "type": [
@@ -14,15 +15,15 @@
       ],
       "default": 0,
       "prop": "auto-dismiss-delay",
-      "description": ""
+      "description": "Delay after which alert is closed"
     },
     {
       "type": [
         "String"
       ],
-      "default": "alert",
+      "default": "\"alert\"",
       "prop": "base",
-      "description": ""
+      "description": "Base name of the component for styling"
     },
     {
       "type": [
@@ -30,7 +31,7 @@
       ],
       "default": {},
       "prop": "close-button",
-      "description": ""
+      "description": "Attributes of v-close-button component. See documentation for valid values"
     },
     {
       "type": [
@@ -38,7 +39,7 @@
       ],
       "default": true,
       "prop": "dismissable",
-      "description": ""
+      "description": "If false close button is not rendered and alert cannot be dissmised"
     },
     {
       "type": [
@@ -46,7 +47,7 @@
       ],
       "default": "empty string",
       "prop": "icon",
-      "description": ""
+      "description": "Alert has few default icons for variants: 'success', 'warn', 'danger', 'info', 'valid', 'invalid'. Icon or default slot can be used for custom icons."
     },
     {
       "type": [
@@ -55,7 +56,7 @@
       ],
       "default": "empty string",
       "prop": "style-alert",
-      "description": ""
+      "description": "Main alert element"
     },
     {
       "type": [
@@ -64,7 +65,7 @@
       ],
       "default": "empty string",
       "prop": "style-icon",
-      "description": ""
+      "description": "Default icon element (does not apply to icons in slot)"
     },
     {
       "type": [
@@ -73,23 +74,23 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": ""
+      "description": "Variant of the component styles"
     }
   ],
   "events": [
     {
       "event": "update:modelValue",
-      "description": ""
+      "description": "Updates v-model of component"
     }
   ],
   "slots": [
     {
       "slot": "icon",
-      "description": ""
+      "description": "Slot for icon prepending message"
     },
     {
       "slot": "default",
-      "description": ""
+      "description": "Slot for alert content"
     }
   ],
   "functions": [],

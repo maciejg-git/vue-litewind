@@ -1,4 +1,5 @@
 {
+  "name": "vRadio",
   "props": [
     {
       "type": [
@@ -8,15 +9,15 @@
       ],
       "default": "undefined",
       "prop": "v-model",
-      "description": ""
+      "description": "Radio v-model"
     },
     {
       "type": [
         "String"
       ],
-      "default": "radio",
+      "default": "\"radio\"",
       "prop": "base",
-      "description": ""
+      "description": "Base name of the component for styling"
     },
     {
       "type": [
@@ -24,7 +25,7 @@
       ],
       "default": "empty string",
       "prop": "label",
-      "description": ""
+      "description": "Radio label"
     },
     {
       "type": [
@@ -32,15 +33,15 @@
       ],
       "default": {},
       "prop": "rules",
-      "description": ""
+      "description": "Rules for validation. See Form Validation for examples of rules"
     },
     {
       "type": [
         "String"
       ],
-      "default": null,
+      "default": "null",
       "prop": "state",
-      "description": ""
+      "description": "Overrides state of input validity. Supported values are 'valid', 'invalid', `empty string` for default state or `null` for component controlled state"
     },
     {
       "type": [
@@ -48,7 +49,7 @@
       ],
       "default": "empty string",
       "prop": "style-label",
-      "description": ""
+      "description": "Input label element"
     },
     {
       "type": [
@@ -56,15 +57,15 @@
       ],
       "default": "empty string",
       "prop": "style-radio",
-      "description": ""
+      "description": "Main input element"
     },
     {
       "type": [
         "String"
       ],
-      "default": "silent",
+      "default": "\"silent\"",
       "prop": "validate-mode",
-      "description": ""
+      "description": "Valid values are 'silent' or 'eager'. See Form Validation for explanation and examples"
     },
     {
       "type": [
@@ -73,31 +74,31 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": ""
+      "description": "Variant of the component styles"
     }
   ],
   "events": [
     {
       "event": "update:modelValue",
-      "description": ""
+      "description": "Updates v-model of component"
     },
     {
-      "event": "update:status",
-      "description": ""
+      "event": "validation:status",
+      "description": "Emmited after input validation. Event data contain `object` with validation result details"
     },
     {
-      "event": "update:state",
-      "description": ""
+      "event": "validation:state",
+      "description": "Emmited after input validation. Event data contains validation state"
     },
     {
-      "event": "update:messages",
-      "description": ""
+      "event": "validation:messages",
+      "description": "Emmited after input validation. Event data contains validation messages or errors"
     }
   ],
   "slots": [
     {
-      "slot": "default",
-      "description": ""
+      "slot": "label",
+      "description": "Slot for radio label"
     }
   ],
   "functions": [],

@@ -1,4 +1,5 @@
 {
+  "name": "vIcon",
   "props": [
     {
       "type": [
@@ -7,7 +8,7 @@
       ],
       "default": "empty string",
       "prop": "icon",
-      "description": ""
+      "description": "Name of the registered icon component or icon component object. It has higher prorioty than `icon-type` if both are set"
     },
     {
       "type": [
@@ -15,7 +16,7 @@
       ],
       "default": "empty string",
       "prop": "icon-type",
-      "description": ""
+      "description": "Icon type provided via `iconTypes`"
     },
     {
       "type": [
@@ -24,7 +25,7 @@
       ],
       "default": "empty string",
       "prop": "name",
-      "description": ""
+      "description": "Same as icon prop"
     }
   ],
   "events": [],

@@ -1,4 +1,5 @@
 {
+  "name": "vSidepanel",
   "props": [
     {
       "type": [
@@ -6,15 +7,15 @@
       ],
       "default": false,
       "prop": "v-model",
-      "description": ""
+      "description": "Controls the state of sidepanel. If `true`, sidepanel is open"
     },
     {
       "type": [
         "String"
       ],
-      "default": "sidepanel",
+      "default": "\"sidepanel\"",
       "prop": "base",
-      "description": ""
+      "description": "Base name of the component for styling"
     },
     {
       "type": [
@@ -22,7 +23,7 @@
       ],
       "default": {},
       "prop": "close-button",
-      "description": ""
+      "description": "Attributes of v-close-button component. See documentation for valid values"
     },
     {
       "type": [
@@ -30,7 +31,7 @@
       ],
       "default": false,
       "prop": "no-header",
-      "description": ""
+      "description": "When `true` the header slot content and close button is not rendered"
     },
     {
       "type": [
@@ -38,7 +39,7 @@
       ],
       "default": true,
       "prop": "show-close-button",
-      "description": ""
+      "description": "If `true` shows a close button in top right corner"
     },
     {
       "type": [
@@ -46,7 +47,7 @@
       ],
       "default": false,
       "prop": "sidebar-left",
-      "description": ""
+      "description": "If `true` displays sidepanel on the left"
     },
     {
       "type": [
@@ -54,15 +55,15 @@
       ],
       "default": "empty string",
       "prop": "style-sidepanel",
-      "description": ""
+      "description": "Main sidepanel element"
     },
     {
       "type": [
         "String"
       ],
-      "default": "fade-slide",
+      "default": "\"fade-slide\"",
       "prop": "transition",
-      "description": ""
+      "description": "Sets animation effect when showing or hiding sidepanel. Valid values are: 'fade-slide' or `empty string` to disable animations. Animation speed can be set in `--sidepanel-transition-duration` css variable."
     },
     {
       "type": [
@@ -71,31 +72,31 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": ""
+      "description": "Variant of the component styles"
     },
     {
       "type": [
         "String"
       ],
-      "default": "320px",
+      "default": "\"320px\"",
       "prop": "width",
-      "description": ""
+      "description": "Width of sidepanel"
     }
   ],
   "events": [
     {
       "event": "update:modelValue",
-      "description": ""
+      "description": "Updates v-model of component"
     }
   ],
   "slots": [
     {
       "slot": "header",
-      "description": ""
+      "description": "Slot for header content"
     },
     {
       "slot": "default",
-      "description": ""
+      "description": "Slot for sidepanel content"
     }
   ],
   "functions": [],

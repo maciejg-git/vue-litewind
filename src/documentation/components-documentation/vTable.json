@@ -1,12 +1,13 @@
 {
+  "name": "vTable",
   "props": [
     {
       "type": [
         "String"
       ],
-      "default": "table",
+      "default": "\"table\"",
       "prop": "base",
-      "description": ""
+      "description": "Base name of the component for styling"
     },
     {
       "type": [
@@ -28,7 +29,7 @@
       "type": [
         "String"
       ],
-      "default": "No records for current filter",
+      "default": "\"No records for current filter\"",
       "prop": "empty-filtered-text",
       "description": "Text displayed if table is empty after filtering out all items"
     },
@@ -36,7 +37,7 @@
       "type": [
         "String"
       ],
-      "default": "Empty table",
+      "default": "\"Empty table\"",
       "prop": "empty-text",
       "description": "Text displayed if table is empty"
     },
@@ -70,7 +71,7 @@
       "type": [
         "String"
       ],
-      "default": "en-GB",
+      "default": "\"en-GB\"",
       "prop": "locale",
       "description": "Locale used to compare and sort strings"
     },
@@ -170,7 +171,7 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": ""
+      "description": "Variant of the component styles"
     }
   ],
   "events": [
@@ -195,6 +196,14 @@
     {
       "slot": "busy",
       "description": "Content of this slot replaces data records if table is `busy`"
+    },
+    {
+      "slot": "empty-table-message",
+      "description": "Slot for custom empty table message when `items` prop is empty table"
+    },
+    {
+      "slot": "empty-filtered-table-message",
+      "description": "Slot for custom empty filtered table message when table is empty after filtering"
     },
     {
       "slot": "cell:[key]",

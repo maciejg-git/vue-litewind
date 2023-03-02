@@ -1,4 +1,5 @@
 {
+  "name": "vTree",
   "props": [
     {
       "type": [
@@ -6,7 +7,7 @@
       ],
       "default": false,
       "prop": "allow-open-disabled",
-      "description": ""
+      "description": "If `true` disabled folders items can be opened"
     },
     {
       "type": [
@@ -14,7 +15,7 @@
       ],
       "default": false,
       "prop": "allow-select-disabled",
-      "description": ""
+      "description": "If `true` disabled items can be selected"
     },
     {
       "type": [
@@ -22,7 +23,7 @@
       ],
       "default": false,
       "prop": "auto-open-all",
-      "description": ""
+      "description": "If `true` mounts tree with all nodes opened"
     },
     {
       "type": [
@@ -30,15 +31,15 @@
       ],
       "default": false,
       "prop": "auto-open-root",
-      "description": ""
+      "description": "If `true` mounts tree with root node opened"
     },
     {
       "type": [
         "String"
       ],
-      "default": "tree",
+      "default": "\"tree\"",
       "prop": "base",
-      "description": ""
+      "description": "Base name of the component for styling"
     },
     {
       "type": [
@@ -46,7 +47,7 @@
       ],
       "default": {},
       "prop": "chevron",
-      "description": ""
+      "description": "Attributes of v-chevron (open indicator) component. See documentation for valid values"
     },
     {
       "type": [
@@ -54,47 +55,47 @@
       ],
       "default": "empty string",
       "prop": "filter",
-      "description": ""
+      "description": "String used to filter items"
     },
     {
       "type": [
         "String"
       ],
-      "default": "children",
+      "default": "\"children\"",
       "prop": "item-children",
-      "description": ""
+      "description": "Name of the property that hold name of array of children"
     },
     {
       "type": [
         "String"
       ],
-      "default": "disabled",
+      "default": "\"disabled\"",
       "prop": "item-disabled",
-      "description": ""
+      "description": "Name of the property for disabled items. Disabling folder also disable all of its children"
     },
     {
       "type": [
         "String"
       ],
-      "default": "icon",
+      "default": "\"icon\"",
       "prop": "item-icon",
-      "description": ""
+      "description": "Name of the property that hold name of item's icon. Valid name is the same as for v-icon name prop"
     },
     {
       "type": [
         "String"
       ],
-      "default": "id",
+      "default": "\"id\"",
       "prop": "item-key",
-      "description": ""
+      "description": "Name of the required property that hold unique value for every item."
     },
     {
       "type": [
         "String"
       ],
-      "default": "name",
+      "default": "\"name\"",
       "prop": "item-name",
-      "description": ""
+      "description": "Name of the property that hold name of item"
     },
     {
       "type": [
@@ -102,7 +103,7 @@
       ],
       "default": [],
       "prop": "items",
-      "description": ""
+      "description": "Array of tree items"
     },
     {
       "type": [
@@ -110,7 +111,7 @@
       ],
       "default": true,
       "prop": "open-on-click",
-      "description": ""
+      "description": "If `true` clicking on labels opens folders. Clicking indicators always opens folders"
     },
     {
       "type": [
@@ -119,7 +120,7 @@
       ],
       "default": "undefined",
       "prop": "placeholder-folder-icon",
-      "description": ""
+      "description": "Default icon for folders if no icon is provided in items prop. If value is `array` then icons are respectively for closed and opened folders"
     },
     {
       "type": [
@@ -128,7 +129,7 @@
       ],
       "default": "undefined",
       "prop": "placeholder-item-icon",
-      "description": ""
+      "description": "Default icon for items if no icon is provided in `items` prop"
     },
     {
       "type": [
@@ -136,7 +137,7 @@
       ],
       "default": false,
       "prop": "select-independent",
-      "description": ""
+      "description": "If `true` folders and items can be selected independently. By default selecting folders selects all children items and selecting every children selects parent folder"
     },
     {
       "type": [
@@ -144,7 +145,7 @@
       ],
       "default": false,
       "prop": "select-return-keys",
-      "description": ""
+      "description": "If `true` @input:selected return array of item keys. If `false` (default) this event returns `array` of item `objects`"
     },
     {
       "type": [
@@ -152,7 +153,7 @@
       ],
       "default": false,
       "prop": "show-checkboxes",
-      "description": ""
+      "description": "Displays checkboxes"
     },
     {
       "type": [
@@ -160,7 +161,7 @@
       ],
       "default": true,
       "prop": "show-icons",
-      "description": ""
+      "description": "Displays icons if icon or placeholder icon is set"
     },
     {
       "type": [
@@ -168,7 +169,7 @@
       ],
       "default": true,
       "prop": "show-indicators",
-      "description": ""
+      "description": "Displays open indicators"
     },
     {
       "type": [
@@ -176,7 +177,7 @@
       ],
       "default": "empty string",
       "prop": "style-folder",
-      "description": ""
+      "description": "Folder element"
     },
     {
       "type": [
@@ -184,7 +185,7 @@
       ],
       "default": "empty string",
       "prop": "style-icon",
-      "description": ""
+      "description": "Icon element"
     },
     {
       "type": [
@@ -192,15 +193,15 @@
       ],
       "default": "empty string",
       "prop": "style-item",
-      "description": ""
+      "description": "Item element"
     },
     {
       "type": [
         "String"
       ],
-      "default": "fade",
+      "default": "\"fade\"",
       "prop": "transition",
-      "description": ""
+      "description": "Sets animation effect when opening or closing folders. Valid values are: 'fade', 'fade-slide', or `empty string` to disable animations."
     },
     {
       "type": [
@@ -209,16 +210,50 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": ""
+      "description": "Variant of the component styles"
     }
   ],
   "events": [
     {
       "event": "input:selected",
-      "description": ""
+      "description": "Fired when item is selected. Passes array of selected items"
+    },
+    {
+      "event": "input:click",
+      "description": "Fired when item is clicked"
     }
   ],
-  "slots": [],
-  "functions": [],
+  "slots": [
+    {
+      "slot": "item",
+      "description": "Slot for complete customization of appearance of items. Other slots are unavailable when using this slot"
+    },
+    {
+      "slot": "icon",
+      "description": "Slot for items icon"
+    },
+    {
+      "slot": "item-prepend",
+      "description": "Slot for content that prepends item name"
+    },
+    {
+      "slot": "name",
+      "description": "Slot for items name"
+    },
+    {
+      "slot": "item-append",
+      "description": "Slot for content that is appended to item name"
+    }
+  ],
+  "functions": [
+    {
+      "function": "function",
+      "description": "openAllLevel(level: Number)"
+    },
+    {
+      "function": "description",
+      "description": "Opens all nodes on level (0 for root, any high number to open all nodes)"
+    }
+  ],
   "components": []
 }

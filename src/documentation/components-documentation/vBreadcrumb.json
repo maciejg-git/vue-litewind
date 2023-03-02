@@ -1,12 +1,13 @@
 {
+  "name": "vBreadcrumb",
   "props": [
     {
       "type": [
         "String"
       ],
-      "default": "breadcrumb",
+      "default": "\"breadcrumb\"",
       "prop": "base",
-      "description": ""
+      "description": "Base name of the component for styling"
     },
     {
       "type": [
@@ -14,15 +15,15 @@
       ],
       "default": [],
       "prop": "path",
-      "description": ""
+      "description": "Path of links to render"
     },
     {
       "type": [
         "String"
       ],
-      "default": "/",
+      "default": "\"/\"",
       "prop": "separator",
-      "description": ""
+      "description": "Character or string that seperates links"
     },
     {
       "type": [
@@ -30,7 +31,7 @@
       ],
       "default": "empty string",
       "prop": "style-active",
-      "description": ""
+      "description": "Active link in path"
     },
     {
       "type": [
@@ -38,7 +39,7 @@
       ],
       "default": "empty string",
       "prop": "style-breadcrumb",
-      "description": ""
+      "description": "Breadcrumb link"
     },
     {
       "type": [
@@ -46,7 +47,7 @@
       ],
       "default": "empty string",
       "prop": "style-separator",
-      "description": ""
+      "description": "Breadcrumb separator"
     },
     {
       "type": [
@@ -55,7 +56,7 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": ""
+      "description": "Variant of the component styles"
     }
   ],
   "events": [],

@@ -1,4 +1,5 @@
 {
+  "name": "vModal",
   "props": [
     {
       "type": [
@@ -6,15 +7,15 @@
       ],
       "default": "undefined",
       "prop": "v-model",
-      "description": ""
+      "description": "Set v-model to true to show modal or false to hide it. Model is optional if dropdown is activated from v-trigger component"
     },
     {
       "type": [
         "String"
       ],
-      "default": "modal",
+      "default": "\"modal\"",
       "prop": "base",
-      "description": ""
+      "description": "Base name of the component for styling"
     },
     {
       "type": [
@@ -22,15 +23,15 @@
       ],
       "default": {},
       "prop": "close-button",
-      "description": ""
+      "description": "Attributes of v-close-button component. See documentation for valid values"
     },
     {
       "type": [
         "String"
       ],
-      "default": "end",
+      "default": "\"end\"",
       "prop": "justify-buttons",
-      "description": ""
+      "description": "Use this prop to place buttons in footer. Valid values are: 'start', 'end', 'center', 'between', 'around', 'evenly'"
     },
     {
       "type": [
@@ -38,7 +39,7 @@
       ],
       "default": false,
       "prop": "no-close-button",
-      "description": ""
+      "description": "Disables 'X' button in modal header"
     },
     {
       "type": [
@@ -46,7 +47,7 @@
       ],
       "default": false,
       "prop": "no-footer",
-      "description": ""
+      "description": "Do not render footer if `true`"
     },
     {
       "type": [
@@ -54,7 +55,7 @@
       ],
       "default": false,
       "prop": "no-header",
-      "description": ""
+      "description": "If true modal dialog cannot be closed by clicking outside of it"
     },
     {
       "type": [
@@ -62,7 +63,7 @@
       ],
       "default": false,
       "prop": "no-primary-button",
-      "description": ""
+      "description": "Disables primary (OK) button"
     },
     {
       "type": [
@@ -70,15 +71,15 @@
       ],
       "default": false,
       "prop": "no-secondary-button",
-      "description": ""
+      "description": "Disables secondary (Cancel) button"
     },
     {
       "type": [
         "String"
       ],
-      "default": "top",
+      "default": "\"top\"",
       "prop": "position",
-      "description": ""
+      "description": "Modal position. Valid values are: 'top', 'center' or 'bottom'"
     },
     {
       "type": [
@@ -88,7 +89,7 @@
         "styleButton": "primary"
       },
       "prop": "primary-button",
-      "description": ""
+      "description": "Attributes of primary v-button component. See documentation for valid values"
     },
     {
       "type": [
@@ -96,15 +97,15 @@
       ],
       "default": false,
       "prop": "primary-button-close",
-      "description": ""
+      "description": "If true clicking primary button emits @input:secondaryButtonClick event and closes modal. If false modal is not closed after emitting event"
     },
     {
       "type": [
         "String"
       ],
-      "default": "Accept",
+      "default": "\"Accept\"",
       "prop": "primary-button-label",
-      "description": ""
+      "description": "Label of primary button"
     },
     {
       "type": [
@@ -114,7 +115,7 @@
         "styleButton": "secondary"
       },
       "prop": "secondary-button",
-      "description": ""
+      "description": "Attributes of secondary v-button component. See documentation for valid values"
     },
     {
       "type": [
@@ -122,23 +123,23 @@
       ],
       "default": false,
       "prop": "secondary-button-close",
-      "description": ""
+      "description": "If true clicking primary button emits @input:primaryButtonClick event and closes modal. If false modal is not closed after emitting event"
     },
     {
       "type": [
         "String"
       ],
-      "default": "Close",
+      "default": "\"Close\"",
       "prop": "secondary-button-label",
-      "description": ""
+      "description": "Label of secondary button"
     },
     {
       "type": [
         "String"
       ],
-      "default": "md",
+      "default": "\"md\"",
       "prop": "size",
-      "description": ""
+      "description": "Modal size. Valid values are: 'sm', 'md', 'lg', 'xl' or 'fit' "
     },
     {
       "type": [
@@ -146,7 +147,7 @@
       ],
       "default": false,
       "prop": "static-backdrop",
-      "description": ""
+      "description": "If true modal dialog cannot be closed by clicking outside of it"
     },
     {
       "type": [
@@ -154,7 +155,7 @@
       ],
       "default": "empty string",
       "prop": "style-backdrop",
-      "description": ""
+      "description": "Style of backdrop. Useful mainly for setting tint and opactity for modal background"
     },
     {
       "type": [
@@ -162,7 +163,7 @@
       ],
       "default": "empty string",
       "prop": "style-content",
-      "description": ""
+      "description": "Content part of modal window"
     },
     {
       "type": [
@@ -170,7 +171,7 @@
       ],
       "default": "empty string",
       "prop": "style-footer",
-      "description": ""
+      "description": "Style of modal footer"
     },
     {
       "type": [
@@ -178,7 +179,7 @@
       ],
       "default": "empty string",
       "prop": "style-header",
-      "description": ""
+      "description": "Style of modal header"
     },
     {
       "type": [
@@ -186,7 +187,7 @@
       ],
       "default": "empty string",
       "prop": "style-modal",
-      "description": ""
+      "description": "Style of modal window"
     },
     {
       "type": [
@@ -194,15 +195,15 @@
       ],
       "default": "undefined",
       "prop": "title",
-      "description": ""
+      "description": "Title displayed in modal header"
     },
     {
       "type": [
         "String"
       ],
-      "default": "fade-slide",
+      "default": "\"fade-slide\"",
       "prop": "transition",
-      "description": ""
+      "description": "Sets animation effect when showing or hiding modal. Valid values are: 'fade', 'fade-slide', 'fade-scale' or `empty string` to disable animations. Animation speed can be set in `--modal-transition-duration` css variable."
     },
     {
       "type": [
@@ -211,43 +212,43 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": ""
+      "description": "Variant of the component styles"
     }
   ],
   "events": [
     {
       "event": "input:primary-button-click",
-      "description": ""
+      "description": "Emmited after clicking primary button"
     },
     {
       "event": "input:secondary-button-click",
-      "description": ""
+      "description": "Emmited after clicking secondary button"
     },
     {
       "event": "update:modelValue",
-      "description": ""
+      "description": "Updates v-model of component"
     },
     {
       "event": "input:static-backdrop-click",
-      "description": ""
+      "description": "Emmited after clicking backdrop if `static-backdrop` prop is `true`"
     }
   ],
   "slots": [
     {
       "slot": "modal",
-      "description": ""
+      "description": "Swaps the entire default content of v-modal. Slot props: `close()`"
     },
     {
       "slot": "header",
-      "description": ""
+      "description": "Modal header content"
     },
     {
       "slot": "default",
-      "description": ""
+      "description": "Modal content"
     },
     {
       "slot": "footer",
-      "description": ""
+      "description": "Modal footer content"
     }
   ],
   "functions": [],

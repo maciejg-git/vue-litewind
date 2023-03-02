@@ -1,12 +1,13 @@
 {
+  "name": "vButton",
   "props": [
     {
       "type": [
         "String"
       ],
-      "default": "button",
+      "default": "\"button\"",
       "prop": "base",
-      "description": ""
+      "description": "Base name of the component for styling"
     },
     {
       "type": [
@@ -14,7 +15,7 @@
       ],
       "default": false,
       "prop": "block",
-      "description": ""
+      "description": "Displays button as full width block"
     },
     {
       "type": [
@@ -22,7 +23,7 @@
       ],
       "default": false,
       "prop": "disabled",
-      "description": ""
+      "description": "Displays button in `disabled` state"
     },
     {
       "type": [
@@ -30,15 +31,15 @@
       ],
       "default": "empty string",
       "prop": "style-button",
-      "description": ""
+      "description": "Main button element"
     },
     {
       "type": [
         "String"
       ],
-      "default": "button",
+      "default": "\"button\"",
       "prop": "tag",
-      "description": ""
+      "description": "Tag of button element. Valid values are: 'button' or 'a'"
     },
     {
       "type": [
@@ -47,14 +48,14 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": ""
+      "description": "Variant of the component styles"
     }
   ],
   "events": [],
   "slots": [
     {
       "slot": "default",
-      "description": ""
+      "description": "Slot for button content"
     }
   ],
   "functions": [],

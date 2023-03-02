@@ -1,12 +1,13 @@
 {
+  "name": "vChevron",
   "props": [
     {
       "type": [
         "String"
       ],
-      "default": "chevron",
+      "default": "\"chevron\"",
       "prop": "base",
-      "description": ""
+      "description": "Base name of the component for styling"
     },
     {
       "type": [
@@ -14,7 +15,7 @@
       ],
       "default": false,
       "prop": "clockwise",
-      "description": ""
+      "description": "Rotate chevron/triangle clockwise. Default is counter clockwise"
     },
     {
       "type": [
@@ -22,15 +23,15 @@
       ],
       "default": "empty string",
       "prop": "icon",
-      "description": ""
+      "description": "Name of the icon to use instead of default chevron/triangle"
     },
     {
       "type": [
         "String"
       ],
-      "default": "down",
+      "default": "\"down\"",
       "prop": "initial",
-      "description": ""
+      "description": "Initial direction of chevron/triangle. Valid values are: 'down', 'left' ,'right' and 'up'"
     },
     {
       "type": [
@@ -38,7 +39,7 @@
       ],
       "default": false,
       "prop": "rotate-90",
-      "description": ""
+      "description": "If `true` rotates chevron 90 degrees. Default is 180 degrees"
     },
     {
       "type": [
@@ -46,7 +47,7 @@
       ],
       "default": "empty string",
       "prop": "style-chevron",
-      "description": ""
+      "description": "Chevron element"
     },
     {
       "type": [
@@ -54,7 +55,7 @@
       ],
       "default": false,
       "prop": "switch",
-      "description": ""
+      "description": "Flick this to rotate chevron/triangle to initial/rotated position"
     },
     {
       "type": [
@@ -62,7 +63,7 @@
       ],
       "default": false,
       "prop": "triangle",
-      "description": ""
+      "description": "Use filled triangle instead of chevron"
     },
     {
       "type": [
@@ -71,7 +72,7 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": ""
+      "description": "Variant of the component styles"
     }
   ],
   "events": [],

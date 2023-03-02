@@ -1,4 +1,5 @@
 {
+  "name": "vDropdownMenuItem",
   "props": [
     {
       "type": [
@@ -6,7 +7,7 @@
       ],
       "default": false,
       "prop": "active",
-      "description": ""
+      "description": "Renders active menu item"
     },
     {
       "type": [
@@ -14,22 +15,22 @@
       ],
       "default": false,
       "prop": "disabled",
-      "description": ""
+      "description": "Renders disabled menu item"
     },
     {
       "type": [
         "String"
       ],
-      "default": "button",
+      "default": "\"button\"",
       "prop": "tag",
-      "description": ""
+      "description": "Tag used to render menu item"
     }
   ],
   "events": [],
   "slots": [
     {
       "slot": "default",
-      "description": ""
+      "description": "Slot for menu item content"
     }
   ],
   "functions": [],

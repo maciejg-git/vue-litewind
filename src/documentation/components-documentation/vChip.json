@@ -1,12 +1,13 @@
 {
+  "name": "vChip",
   "props": [
     {
       "type": [
         "String"
       ],
-      "default": "chip",
+      "default": "\"chip\"",
       "prop": "base",
-      "description": ""
+      "description": "Base name of the component for styling"
     },
     {
       "type": [
@@ -17,7 +18,7 @@
         "styleCloseButton": "small"
       },
       "prop": "close-button",
-      "description": ""
+      "description": "Attributes of input v-close-button component"
     },
     {
       "type": [
@@ -25,7 +26,7 @@
       ],
       "default": "empty string",
       "prop": "style-chip",
-      "description": ""
+      "description": "Main chip element"
     },
     {
       "type": [
@@ -34,7 +35,7 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": ""
+      "description": "Variant of the component styles"
     }
   ],
   "events": [
@@ -46,7 +47,7 @@
   "slots": [
     {
       "slot": "default",
-      "description": ""
+      "description": "Slot for chip content"
     }
   ],
   "functions": [],

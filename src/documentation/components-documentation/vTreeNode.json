@@ -1,4 +1,5 @@
 {
+  "name": "vTreeNode",
   "props": [
     {
       "type": [
@@ -41,7 +42,15 @@
       "description": ""
     },
     {
+      "slot": "item-prepend",
+      "description": ""
+    },
+    {
       "slot": "name",
+      "description": ""
+    },
+    {
+      "slot": "item-append",
       "description": ""
     }
   ],

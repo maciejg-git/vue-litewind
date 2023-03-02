@@ -1,12 +1,13 @@
 {
+  "name": "vList",
   "props": [
     {
       "type": [
         "String"
       ],
-      "default": "list",
+      "default": "\"list\"",
       "prop": "base",
-      "description": ""
+      "description": "Base name of the component for styling"
     },
     {
       "type": [
@@ -14,7 +15,7 @@
       ],
       "default": "empty string",
       "prop": "style-item",
-      "description": ""
+      "description": "List item style"
     },
     {
       "type": [
@@ -22,15 +23,15 @@
       ],
       "default": "empty string",
       "prop": "style-list",
-      "description": ""
+      "description": "Defines tag to use in list item child component (for example 'div', 'a' or 'button')"
     },
     {
       "type": [
         "String"
       ],
-      "default": "div",
+      "default": "\"div\"",
       "prop": "tag",
-      "description": ""
+      "description": "Defines tag to use in list item child component (for example 'div', 'a' or 'button')"
     },
     {
       "type": [
@@ -39,7 +40,7 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": ""
+      "description": "Variant of the component styles"
     },
     {
       "type": [
@@ -47,14 +48,14 @@
       ],
       "default": "undefined",
       "prop": "width",
-      "description": ""
+      "description": "Component width"
     }
   ],
   "events": [],
   "slots": [
     {
       "slot": "default",
-      "description": ""
+      "description": "Slot for v-list-item components"
     }
   ],
   "functions": [],

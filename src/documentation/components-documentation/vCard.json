@@ -1,12 +1,13 @@
 {
+  "name": "vCard",
   "props": [
     {
       "type": [
         "String"
       ],
-      "default": "card",
+      "default": "\"card\"",
       "prop": "base",
-      "description": ""
+      "description": "Base name of the component for styling"
     },
     {
       "type": [
@@ -14,7 +15,7 @@
       ],
       "default": "empty string",
       "prop": "style-card",
-      "description": ""
+      "description": "Main card element"
     },
     {
       "type": [
@@ -23,7 +24,7 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": ""
+      "description": "Variant of the component styles"
     },
     {
       "type": [
@@ -31,14 +32,14 @@
       ],
       "default": "undefined",
       "prop": "width",
-      "description": ""
+      "description": "Width of the card"
     }
   ],
   "events": [],
   "slots": [
     {
       "slot": "default",
-      "description": ""
+      "description": "Slot for card content"
     }
   ],
   "functions": [],

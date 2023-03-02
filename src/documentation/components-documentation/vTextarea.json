@@ -1,4 +1,5 @@
 {
+  "name": "vTextarea",
   "props": [
     {
       "type": [
@@ -6,15 +7,15 @@
       ],
       "default": "undefined",
       "prop": "v-model",
-      "description": ""
+      "description": "Textarea v-model"
     },
     {
       "type": [
         "String"
       ],
-      "default": "textarea",
+      "default": "\"textarea\"",
       "prop": "base",
-      "description": ""
+      "description": "Base name of the component for styling"
     },
     {
       "type": [
@@ -24,7 +25,7 @@
         "class": "absolute"
       },
       "prop": "form-text",
-      "description": ""
+      "description": "Attributes of v-form-text component"
     },
     {
       "type": [
@@ -32,7 +33,7 @@
       ],
       "default": false,
       "prop": "inline",
-      "description": ""
+      "description": "Sets textarea display to inline"
     },
     {
       "type": [
@@ -40,7 +41,7 @@
       ],
       "default": "empty string",
       "prop": "label",
-      "description": ""
+      "description": "Label on top of the textarea. This label is for simple forms as position cannot be changed"
     },
     {
       "type": [
@@ -48,7 +49,7 @@
       ],
       "default": false,
       "prop": "no-messages",
-      "description": ""
+      "description": "If `true` validation messages are not displayed"
     },
     {
       "type": [
@@ -56,7 +57,7 @@
       ],
       "default": {},
       "prop": "rules",
-      "description": ""
+      "description": "Rules for validation. See Form Validation for examples of rules"
     },
     {
       "type": [
@@ -64,15 +65,15 @@
       ],
       "default": false,
       "prop": "single-line-message",
-      "description": ""
+      "description": "Limits the number of displayed errors to one at time. Order of messages is the same as order of `rules` in rules prop"
     },
     {
       "type": [
         "String"
       ],
-      "default": null,
+      "default": "null",
       "prop": "state",
-      "description": ""
+      "description": "Overrides state of input validity. Supported values are 'valid', 'invalid', `empty string` for default state or `null` for component controlled state"
     },
     {
       "type": [
@@ -81,7 +82,7 @@
       ],
       "default": "empty string",
       "prop": "style-label",
-      "description": ""
+      "description": "Label element if `label` prop is set"
     },
     {
       "type": [
@@ -90,23 +91,23 @@
       ],
       "default": "empty string",
       "prop": "style-textarea",
-      "description": ""
+      "description": "Main textarea element"
     },
     {
       "type": [
         "String"
       ],
-      "default": "silent",
+      "default": "\"silent\"",
       "prop": "validate-mode",
-      "description": ""
+      "description": "Valid values are 'silent' or 'eager'. See Form Validation for explanation and examples"
     },
     {
       "type": [
         "String"
       ],
-      "default": "blur",
+      "default": "\"blur\"",
       "prop": "validate-on",
-      "description": ""
+      "description": "Valid values are 'blur' or 'immediate'. See Form Validation for explanation and examples"
     },
     {
       "type": [
@@ -115,31 +116,31 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": ""
+      "description": "Variant of the component styles"
     }
   ],
   "events": [
     {
       "event": "update:modelValue",
-      "description": ""
+      "description": "Updates v-model of component"
     },
     {
-      "event": "update:status",
-      "description": ""
+      "event": "validation:status",
+      "description": "Emmited after input validation. Event data contain `object` with validation result details"
     },
     {
-      "event": "update:messages",
-      "description": ""
+      "event": "validation:messages",
+      "description": "Emmited after input validation. Event data contains validation messages or errors"
     },
     {
-      "event": "update:state",
-      "description": ""
+      "event": "validation:state",
+      "description": "Emmited after input validation. Event data contains validation state"
     }
   ],
   "slots": [
     {
       "slot": "label",
-      "description": ""
+      "description": "Slot for label. Slot props: `label` (from label prop)"
     }
   ],
   "functions": [],

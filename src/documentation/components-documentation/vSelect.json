@@ -1,4 +1,5 @@
 {
+  "name": "vSelect",
   "props": [
     {
       "type": [
@@ -9,7 +10,7 @@
       ],
       "default": "undefined",
       "prop": "v-model",
-      "description": ""
+      "description": "Select v-model. If items are objects model returns `value` property (or `array` of `values` if select is `multi-value`) instead of whole object"
     },
     {
       "type": [
@@ -17,15 +18,15 @@
       ],
       "default": false,
       "prop": "autocomplete",
-      "description": ""
+      "description": "Allows filtering select items based on inputs value. You can also use v-autocomplete which is wrapper of v-select with this prop enabled by default"
     },
     {
       "type": [
         "String"
       ],
-      "default": "select",
+      "default": "\"select\"",
       "prop": "base",
-      "description": ""
+      "description": "Base name of the component for styling"
     },
     {
       "type": [
@@ -47,9 +48,9 @@
       "type": [
         "String"
       ],
-      "default": "No data available",
+      "default": "\"No data available\"",
       "prop": "empty-data-message",
-      "description": ""
+      "description": "Message to display inside menu when `items` array is empty"
     },
     {
       "type": [
@@ -57,7 +58,7 @@
       ],
       "default": [],
       "prop": "filter-keys",
-      "description": ""
+      "description": "By default text property is used to filter items. You can set different properties by adding them to this prop."
     },
     {
       "type": [
@@ -90,23 +91,23 @@
       ],
       "default": false,
       "prop": "is-loading",
-      "description": ""
+      "description": "Use it whenever asynchronously updating items prop. Required."
     },
     {
       "type": [
         "String"
       ],
-      "default": "text",
+      "default": "\"text\"",
       "prop": "item-text",
-      "description": ""
+      "description": "Set name of the property of items’s text value"
     },
     {
       "type": [
         "String"
       ],
-      "default": "value",
+      "default": "\"value\"",
       "prop": "item-value",
-      "description": ""
+      "description": "Set name of the property of items’s value"
     },
     {
       "type": [
@@ -114,7 +115,7 @@
       ],
       "default": [],
       "prop": "items",
-      "description": ""
+      "description": "Items to display. Can be `array` of `strings` or `objects` or mixed. Objects should at least have `text` and `value` properties. If `objects` have additional properties you can display them using `item` slot"
     },
     {
       "type": [
@@ -122,7 +123,7 @@
       ],
       "default": 10,
       "prop": "items-per-page",
-      "description": ""
+      "description": "Amounts of items to display per page, 0 = all items on single page. Ignored if `no-pagination` is used"
     },
     {
       "type": [
@@ -138,7 +139,7 @@
       ],
       "default": false,
       "prop": "multi-value",
-      "description": ""
+      "description": "Allows selecting multiple values"
     },
     {
       "type": [
@@ -146,7 +147,7 @@
       ],
       "default": false,
       "prop": "no-filter",
-      "description": ""
+      "description": "Do not use internal filter in `autocomplete` mode. You should provide filtered items by updating `items` prop"
     },
     {
       "type": [
@@ -154,7 +155,7 @@
       ],
       "default": false,
       "prop": "no-flip",
-      "description": ""
+      "description": "Allows fliping dropdown to opposite placement if outside of current view"
     },
     {
       "type": [
@@ -162,7 +163,7 @@
       ],
       "default": false,
       "prop": "no-pagination",
-      "description": ""
+      "description": "Do no use internal pagination. You can paginate items by updating `items` prop"
     },
     {
       "type": [
@@ -170,7 +171,7 @@
       ],
       "default": 0,
       "prop": "offset-x",
-      "description": ""
+      "description": "Offset of dropdown relative to reference element. See how to use this offset here"
     },
     {
       "type": [
@@ -178,23 +179,23 @@
       ],
       "default": 0,
       "prop": "offset-y",
-      "description": ""
+      "description": "Offset of dropdown relative to reference element. See how to use this offset here"
     },
     {
       "type": [
         "String"
       ],
-      "default": "bottom-start",
+      "default": "\"bottom-start\"",
       "prop": "placement",
-      "description": ""
+      "description": "Initial placement of dropdown content. See valid values in Popperjs documentation"
     },
     {
       "type": [
         "String"
       ],
-      "default": null,
+      "default": "null",
       "prop": "state",
-      "description": ""
+      "description": "Overrides state of input validity. Supported values are 'valid', 'invalid', `empty string` for default state or `null` for component controlled state"
     },
     {
       "type": [
@@ -202,15 +203,15 @@
       ],
       "default": "empty string",
       "prop": "style-item",
-      "description": ""
+      "description": "Menu item element"
     },
     {
       "type": [
         "String"
       ],
-      "default": "fade",
+      "default": "\"fade\"",
       "prop": "transition",
-      "description": ""
+      "description": "Sets animation effect when showing or hiding autocomplete menu. Valid values are: 'fade' or `empty string` to disable animations. Animation speed can be set in `--autocomplete-transition-duration` css variable."
     },
     {
       "type": [
@@ -227,35 +228,43 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": ""
+      "description": "Variant of the component styles"
     }
   ],
   "events": [
     {
       "event": "update:modelValue",
-      "description": ""
+      "description": "Updates v-model of component"
     },
     {
       "event": "update:page",
-      "description": ""
+      "description": "Fired when next page is displayed (scroll reach end of dropdown menu)"
     },
     {
       "event": "input:value",
-      "description": ""
+      "description": "Fired when input value changes"
     },
     {
       "event": "state:opened",
-      "description": ""
+      "description": "Dropdown menu opens"
     },
     {
       "event": "state:closed",
-      "description": ""
+      "description": "Dropdown menu closes"
     }
   ],
   "slots": [
     {
-      "slot": "item",
+      "slot": "multi-value-item",
       "description": ""
+    },
+    {
+      "slot": "max-multi-value",
+      "description": ""
+    },
+    {
+      "slot": "menu-item",
+      "description": "Slot for menu item. Slot props: `text`, `value`, `item`, `inputValue`"
     }
   ],
   "functions": [],

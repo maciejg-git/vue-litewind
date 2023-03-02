@@ -1,4 +1,5 @@
 {
+  "name": "vCheckboxGroup",
   "props": [
     {
       "type": [
@@ -17,47 +18,47 @@
       ],
       "default": {},
       "prop": "rules",
-      "description": ""
+      "description": "Rules for validation. See Form Validation for examples of rules"
     },
     {
       "type": [
         "String"
       ],
-      "default": null,
+      "default": "null",
       "prop": "state",
-      "description": ""
+      "description": "Overrides state of input validity. Supported values are 'valid', 'invalid', `empty string` for default state or `null` for component controlled state"
     },
     {
       "type": [
         "String"
       ],
-      "default": "silent",
+      "default": "\"silent\"",
       "prop": "validate-mode",
-      "description": ""
+      "description": "Valid values are 'silent' or 'eager'. See Form Validation for explanation and examples"
     }
   ],
   "events": [
     {
       "event": "update:modelValue",
-      "description": ""
+      "description": "Updates v-model of component"
     },
     {
-      "event": "update:status",
-      "description": ""
+      "event": "validation:status",
+      "description": "Emmited after input validation. Event data contain `object` with validation result details"
     },
     {
-      "event": "update:state",
-      "description": ""
+      "event": "validation:state",
+      "description": "Emmited after input validation. Event data contains validation state"
     },
     {
-      "event": "update:messages",
-      "description": ""
+      "event": "validation:messages",
+      "description": "Emmited after input validation. Event data contains validation messages or errors"
     }
   ],
   "slots": [
     {
       "slot": "default",
-      "description": ""
+      "description": "Slot for v-checkbox components"
     }
   ],
   "functions": [],

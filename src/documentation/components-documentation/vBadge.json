@@ -1,12 +1,13 @@
 {
+  "name": "vBadge",
   "props": [
     {
       "type": [
         "String"
       ],
-      "default": "badge",
+      "default": "\"badge\"",
       "prop": "base",
-      "description": ""
+      "description": "Base name of the component for styling"
     },
     {
       "type": [
@@ -14,7 +15,7 @@
       ],
       "default": "empty string",
       "prop": "position",
-      "description": ""
+      "description": "Position of badge. Valid values are 'top-right', 'top-left', 'bottom-right', 'bottom-left'. If position is set to any of those values badge is positioned as absolute in the corner of parent element (parent element must be positioned as relative). If you need finer control over position skip position prop altogether and use utility/classes/style to set absolute position within parent."
     },
     {
       "type": [
@@ -22,7 +23,7 @@
       ],
       "default": "empty string",
       "prop": "style-badge",
-      "description": ""
+      "description": "Main badge element"
     },
     {
       "type": [
@@ -30,7 +31,7 @@
       ],
       "default": "empty string",
       "prop": "update-animation",
-      "description": ""
+      "description": "Animation to play when updating content of badge. Valid values are: 'scale-up', 'bounce', 'to-danger' and 'to-success'"
     },
     {
       "type": [
@@ -39,7 +40,7 @@
       ],
       "default": "undefined",
       "prop": "update-key",
-      "description": ""
+      "description": "Update this prop to unique key every time contents of default slot changes (required to rerender component and play animation)"
     },
     {
       "type": [
@@ -48,14 +49,14 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": ""
+      "description": "Variant of the component styles"
     }
   ],
   "events": [],
   "slots": [
     {
       "slot": "default",
-      "description": ""
+      "description": "Slot for badge content"
     }
   ],
   "functions": [],

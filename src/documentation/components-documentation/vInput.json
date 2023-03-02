@@ -1,4 +1,5 @@
 {
+  "name": "vInput",
   "props": [
     {
       "type": [
@@ -10,15 +11,15 @@
       ],
       "default": "empty string",
       "prop": "v-model",
-      "description": ""
+      "description": "Input v-model"
     },
     {
       "type": [
         "String"
       ],
-      "default": "input",
+      "default": "\"input\"",
       "prop": "base",
-      "description": ""
+      "description": "Base name of the component for styling"
     },
     {
       "type": [
@@ -26,7 +27,7 @@
       ],
       "default": {},
       "prop": "chevron",
-      "description": ""
+      "description": "Attributes of input v-chevron component (indicator)"
     },
     {
       "type": [
@@ -34,7 +35,7 @@
       ],
       "default": false,
       "prop": "clearable",
-      "description": ""
+      "description": "Adds 'X' button that sets model to empty string"
     },
     {
       "type": [
@@ -42,7 +43,7 @@
       ],
       "default": {},
       "prop": "close-button",
-      "description": ""
+      "description": "Attributes of input v-close-button component (clear button)"
     },
     {
       "type": [
@@ -50,19 +51,7 @@
       ],
       "default": false,
       "prop": "custom-clearable",
-      "description": ""
-    },
-    {
-      "type": [
-        "String",
-        "Number",
-        "Array",
-        "Boolean",
-        "Number"
-      ],
-      "default": "undefined",
-      "prop": "external-model",
-      "description": ""
+      "description": "Adds 'X' button that only emits @click:clear-button event. It does not modify model value"
     },
     {
       "type": [
@@ -72,7 +61,7 @@
         "class": "absolute"
       },
       "prop": "form-text",
-      "description": ""
+      "description": "Attributes of v-form-text component (validation messages)"
     },
     {
       "type": [
@@ -81,7 +70,7 @@
       ],
       "default": "empty string",
       "prop": "icon",
-      "description": ""
+      "description": "Adds icon to input element. Valid value is the same as in v-icon components"
     },
     {
       "type": [
@@ -89,7 +78,7 @@
       ],
       "default": false,
       "prop": "indicator-switch",
-      "description": ""
+      "description": "Set to `true` or `false` to set state of the open indicator. Useful for extending v-input for example adding dropdowns or popovers"
     },
     {
       "type": [
@@ -97,7 +86,7 @@
       ],
       "default": false,
       "prop": "inline",
-      "description": ""
+      "description": "Sets input display to inline"
     },
     {
       "type": [
@@ -105,7 +94,7 @@
       ],
       "default": false,
       "prop": "is-loading",
-      "description": ""
+      "description": "If true displays spinner in the input. Spinner should be first enabled in `use-loading` prop"
     },
     {
       "type": [
@@ -113,7 +102,7 @@
       ],
       "default": "empty string",
       "prop": "label",
-      "description": ""
+      "description": "Label on top of the input. This label is for simple forms as position cannot be changed"
     },
     {
       "type": [
@@ -121,7 +110,7 @@
       ],
       "default": false,
       "prop": "no-messages",
-      "description": ""
+      "description": "If `true` validation messages are not displayed"
     },
     {
       "type": [
@@ -137,7 +126,7 @@
       ],
       "default": {},
       "prop": "rules",
-      "description": ""
+      "description": "Rules for validation. See Form Validation for examples of rules"
     },
     {
       "type": [
@@ -145,7 +134,7 @@
       ],
       "default": false,
       "prop": "show-indicator",
-      "description": ""
+      "description": "Set to `true` or `false` to show open indicator. Useful for extending v-input for example adding dropdowns or popovers"
     },
     {
       "type": [
@@ -153,7 +142,7 @@
       ],
       "default": false,
       "prop": "single-line-message",
-      "description": ""
+      "description": "Limits the number of displayed errors to one at time. Order of messages is the same as order of `rules` in rules prop"
     },
     {
       "type": [
@@ -161,15 +150,15 @@
       ],
       "default": {},
       "prop": "spinner",
-      "description": ""
+      "description": "Attributes of input v-spinner component (loader)"
     },
     {
       "type": [
         "String"
       ],
-      "default": null,
+      "default": "null",
       "prop": "state",
-      "description": ""
+      "description": "Overrides state of input validity. Supported values are 'valid', 'invalid', `empty string` for default state or `null` for component controlled state"
     },
     {
       "type": [
@@ -185,7 +174,7 @@
       ],
       "default": "empty string",
       "prop": "style-icon",
-      "description": ""
+      "description": "Icon element if icon prop is true"
     },
     {
       "type": [
@@ -193,7 +182,7 @@
       ],
       "default": "empty string",
       "prop": "style-input",
-      "description": ""
+      "description": "Main input element"
     },
     {
       "type": [
@@ -201,7 +190,7 @@
       ],
       "default": "empty string",
       "prop": "style-label",
-      "description": ""
+      "description": "Label element if label prop is set"
     },
     {
       "type": [
@@ -209,23 +198,23 @@
       ],
       "default": false,
       "prop": "use-loader",
-      "description": ""
+      "description": "Set to `true` or `false` to enable or disable spinner in the input"
     },
     {
       "type": [
         "String"
       ],
-      "default": "silent",
+      "default": "\"silent\"",
       "prop": "validate-mode",
-      "description": ""
+      "description": "Valid values are 'silent' or 'eager'. See Form Validation for explanation and examples"
     },
     {
       "type": [
         "String"
       ],
-      "default": "blur",
+      "default": "\"blur\"",
       "prop": "validate-on",
-      "description": ""
+      "description": "Valid values are 'blur' or 'immediate'. See Form Validation for explanation and examples"
     },
     {
       "type": [
@@ -234,7 +223,7 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": ""
+      "description": "Variant of the component styles"
     },
     {
       "type": [
@@ -248,49 +237,49 @@
   "events": [
     {
       "event": "update:modelValue",
-      "description": ""
+      "description": "Updates v-model of component"
     },
     {
-      "event": "update:status",
-      "description": ""
+      "event": "validation:status",
+      "description": "Emmited after input validation. Event data contain `object` with validation result details"
     },
     {
-      "event": "update:messages",
-      "description": ""
+      "event": "validation:messages",
+      "description": "Emmited after input validation. Event data contains validation messages or errors"
     },
     {
-      "event": "update:state",
-      "description": ""
+      "event": "validation:state",
+      "description": "Emmited after input validation. Event data contains validation state"
     },
     {
       "event": "click:clear-button",
-      "description": ""
+      "description": "Emitted after clicking clear button (if `custom-clearable` prop is set)"
     },
     {
       "event": "click:icon",
-      "description": ""
+      "description": "Emitted after clicking input icon"
     },
     {
       "event": "click:indicator",
-      "description": ""
+      "description": "Emitted after clicking input indicator"
     }
   ],
   "slots": [
     {
       "slot": "label",
-      "description": ""
+      "description": "Slot for label. Slot props: `label` (from label prop)"
     },
     {
       "slot": "icon",
-      "description": ""
+      "description": "Slot for icon"
     },
     {
       "slot": "prepend",
-      "description": ""
+      "description": "Slot for content prepending input"
     },
     {
       "slot": "append",
-      "description": ""
+      "description": "Slot for content appending input"
     }
   ],
   "functions": [],

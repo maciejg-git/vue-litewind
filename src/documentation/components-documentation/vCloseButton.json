@@ -1,12 +1,13 @@
 {
+  "name": "vCloseButton",
   "props": [
     {
       "type": [
         "String"
       ],
-      "default": "close-button",
+      "default": "\"close-button\"",
       "prop": "base",
-      "description": ""
+      "description": "Base name of the component for styling"
     },
     {
       "type": [
@@ -14,7 +15,7 @@
       ],
       "default": "empty string",
       "prop": "style-close-button",
-      "description": ""
+      "description": "Icon element"
     },
     {
       "type": [
@@ -22,7 +23,7 @@
       ],
       "default": "empty string",
       "prop": "style-wrapper",
-      "description": ""
+      "description": "Wrapper button element"
     },
     {
       "type": [
@@ -31,7 +32,7 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": ""
+      "description": "Variant of the component styles"
     }
   ],
   "events": [],

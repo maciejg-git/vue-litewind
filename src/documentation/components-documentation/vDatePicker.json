@@ -1,4 +1,5 @@
 {
+  "name": "vDatePicker",
   "props": [
     {
       "type": [
@@ -7,7 +8,7 @@
       ],
       "default": "undefined",
       "prop": "v-model",
-      "description": ""
+      "description": "v-model is used to return date after selection. Date is in `YYYY-MM-DD` format"
     },
     {
       "type": [
@@ -15,15 +16,15 @@
       ],
       "default": true,
       "prop": "adjacent-months",
-      "description": ""
+      "description": "Display days from previous and next month. Those days are unselectable"
     },
     {
       "type": [
         "String"
       ],
-      "default": "datepicker",
+      "default": "\"datepicker\"",
       "prop": "base",
-      "description": ""
+      "description": "Base name of the component for styling"
     },
     {
       "type": [
@@ -31,7 +32,7 @@
       ],
       "default": false,
       "prop": "buttons",
-      "description": ""
+      "description": "Adds 'accept' and 'cancel' buttons. If this prop is false then v-model is updated immedietely after clicking on the day. If it is true then v-model is updated after clicking 'accept' button"
     },
     {
       "type": [
@@ -52,15 +53,15 @@
         "day": "numeric"
       },
       "prop": "format",
-      "description": ""
+      "description": "Format of date emmited by @input:formatted event. Read about how to use this object here (options paremeter)"
     },
     {
       "type": [
         "String"
       ],
-      "default": "en-GB",
+      "default": "\"en-GB\"",
       "prop": "locale",
-      "description": ""
+      "description": "This prop is only used to display names of months and weekdays and to format date emitted by input:formatted event. It does not modify format of v-model date which is always `YYYY-MM-DD`"
     },
     {
       "type": [
@@ -68,7 +69,7 @@
       ],
       "default": false,
       "prop": "monday-first-weekday",
-      "description": ""
+      "description": "Week starts on Monday"
     },
     {
       "type": [
@@ -78,15 +79,15 @@
         "styleButton": "primary small"
       },
       "prop": "primary-button",
-      "description": ""
+      "description": "Attributes of primary v-button"
     },
     {
       "type": [
         "String"
       ],
-      "default": "OK",
+      "default": "\"OK\"",
       "prop": "primary-button-label",
-      "description": ""
+      "description": "Primary (accept) button label"
     },
     {
       "type": [
@@ -94,7 +95,7 @@
       ],
       "default": false,
       "prop": "range",
-      "description": ""
+      "description": "Allows selection of date ranges. Changing this prop resets current selection"
     },
     {
       "type": [
@@ -102,7 +103,7 @@
       ],
       "default": true,
       "prop": "range-hover-highlight",
-      "description": ""
+      "description": "Enables highlighing days in range when hovering over days during selection"
     },
     {
       "type": [
@@ -112,15 +113,15 @@
         "styleButton": "secondary small"
       },
       "prop": "secondary-button",
-      "description": ""
+      "description": "Attributes of secondary v-button"
     },
     {
       "type": [
         "String"
       ],
-      "default": "Cancel",
+      "default": "\"Cancel\"",
       "prop": "secondary-button-label",
-      "description": ""
+      "description": "Secondary (cancel) button label"
     },
     {
       "type": [
@@ -128,7 +129,7 @@
       ],
       "default": "empty string",
       "prop": "style-adjacent-month-day",
-      "description": ""
+      "description": "Days from adjacent months"
     },
     {
       "type": [
@@ -136,7 +137,7 @@
       ],
       "default": "empty string",
       "prop": "style-button",
-      "description": ""
+      "description": "Next and previous month/year buttons"
     },
     {
       "type": [
@@ -144,7 +145,7 @@
       ],
       "default": "empty string",
       "prop": "style-datepicker",
-      "description": ""
+      "description": "Main component wrapper"
     },
     {
       "type": [
@@ -152,7 +153,7 @@
       ],
       "default": "empty string",
       "prop": "style-day",
-      "description": ""
+      "description": "Single day"
     },
     {
       "type": [
@@ -160,7 +161,7 @@
       ],
       "default": "empty string",
       "prop": "style-footer",
-      "description": ""
+      "description": "Footer with today date"
     },
     {
       "type": [
@@ -182,9 +183,9 @@
       "type": [
         "String"
       ],
-      "default": "fade",
+      "default": "\"fade\"",
       "prop": "transition",
-      "description": ""
+      "description": "Transition when switching months or years. Valid values are 'fade', 'slide' or `empty string` for no transition"
     },
     {
       "type": [
@@ -193,7 +194,7 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": ""
+      "description": "Variant of the component styles"
     },
     {
       "type": [
@@ -201,27 +202,31 @@
       ],
       "default": "undefined",
       "prop": "width",
-      "description": ""
+      "description": "Component width"
     }
   ],
   "events": [
     {
       "event": "update:modelValue",
-      "description": ""
+      "description": "Updates v-model of component"
     },
     {
       "event": "update:formatted",
-      "description": ""
+      "description": "Emmited after selecting date along with @update:modelValue. Date is formatted based on `locale` and `format` prop"
     },
     {
       "event": "state:done",
-      "description": ""
+      "description": "Emmited after selecting date (and clicking primary button if `buttons` props is set to `true`)"
+    },
+    {
+      "event": "input:cancel",
+      "description": "Emmited after clicking secondary button"
     }
   ],
   "slots": [
     {
       "slot": "day",
-      "description": ""
+      "description": "Emmited after clicking secondary button"
     }
   ],
   "functions": [],

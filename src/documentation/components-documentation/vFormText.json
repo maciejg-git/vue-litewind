@@ -1,12 +1,13 @@
 {
+  "name": "vFormText",
   "props": [
     {
       "type": [
         "String"
       ],
-      "default": "form-text",
+      "default": "\"form-text\"",
       "prop": "base",
-      "description": ""
+      "description": "Base name of the component for styling"
     },
     {
       "type": [
@@ -14,7 +15,7 @@
       ],
       "default": {},
       "prop": "messages",
-      "description": ""
+      "description": "Object with messages to display depending on current state."
     },
     {
       "type": [
@@ -22,7 +23,7 @@
       ],
       "default": false,
       "prop": "single-line-message",
-      "description": ""
+      "description": "Limits the number of displayed errors to one at time"
     },
     {
       "type": [
@@ -30,7 +31,7 @@
       ],
       "default": "empty string",
       "prop": "state",
-      "description": ""
+      "description": "Current state of input"
     },
     {
       "type": [
@@ -38,15 +39,15 @@
       ],
       "default": "empty string",
       "prop": "style-form-text",
-      "description": ""
+      "description": "Text element"
     },
     {
       "type": [
         "String"
       ],
-      "default": "fade-scale",
+      "default": "\"fade-scale\"",
       "prop": "transition",
-      "description": ""
+      "description": "Transition when showing message. Valid values are 'fade-scale' or `empty string`"
     },
     {
       "type": [
@@ -55,14 +56,14 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": ""
+      "description": "Variant of the component styles"
     }
   ],
   "events": [],
   "slots": [
     {
       "slot": "message",
-      "description": ""
+      "description": "Slot for message"
     }
   ],
   "functions": [],

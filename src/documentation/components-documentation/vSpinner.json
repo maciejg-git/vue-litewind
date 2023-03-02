@@ -1,12 +1,13 @@
 {
+  "name": "vSpinner",
   "props": [
     {
       "type": [
         "String"
       ],
-      "default": "spinner",
+      "default": "\"spinner\"",
       "prop": "base",
-      "description": ""
+      "description": "Base name of the component for styling"
     },
     {
       "type": [
@@ -15,7 +16,7 @@
       ],
       "default": "undefined",
       "prop": "icon",
-      "description": ""
+      "description": "Icon to use instead of border or SVG spinner"
     },
     {
       "type": [
@@ -23,15 +24,15 @@
       ],
       "default": "empty string",
       "prop": "style-spinner",
-      "description": ""
+      "description": "Main spinner element"
     },
     {
       "type": [
         "String"
       ],
-      "default": "border",
+      "default": "\"border\"",
       "prop": "type",
-      "description": ""
+      "description": "Valid values are 'border' for border spinner or 'svg' for SVG spinner."
     },
     {
       "type": [
@@ -40,7 +41,7 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": ""
+      "description": "Variant of the component styles"
     }
   ],
   "events": [],

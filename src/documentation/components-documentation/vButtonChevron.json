@@ -1,4 +1,5 @@
 {
+  "name": "vButtonChevron",
   "props": [
     {
       "type": [
@@ -6,15 +7,15 @@
       ],
       "default": {},
       "prop": "chevron",
-      "description": ""
+      "description": "Attributes of v-chevron component"
     },
     {
       "type": [
         "String"
       ],
-      "default": "down",
+      "default": "\"down\"",
       "prop": "initial",
-      "description": ""
+      "description": "Initial prop of v-chevron"
     },
     {
       "type": [
@@ -22,7 +23,7 @@
       ],
       "default": false,
       "prop": "switch",
-      "description": ""
+      "description": "Switch prop of v-chevron"
     }
   ],
   "events": [],

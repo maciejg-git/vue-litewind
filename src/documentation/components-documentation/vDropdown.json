@@ -1,4 +1,5 @@
 {
+  "name": "vDropdown",
   "props": [
     {
       "type": [
@@ -6,7 +7,7 @@
       ],
       "default": false,
       "prop": "v-model",
-      "description": ""
+      "description": "Set it to `true`/`false` to programatically show or hide dropdown content. Model is optional"
     },
     {
       "type": [
@@ -14,15 +15,15 @@
       ],
       "default": false,
       "prop": "auto-close-menu",
-      "description": ""
+      "description": "If `true` clicking any dropdown menu item automatically closes dropdown"
     },
     {
       "type": [
         "String"
       ],
-      "default": "dropdown",
+      "default": "\"dropdown\"",
       "prop": "base",
-      "description": ""
+      "description": "Base name of the component for styling"
     },
     {
       "type": [
@@ -30,7 +31,7 @@
       ],
       "default": false,
       "prop": "no-flip",
-      "description": ""
+      "description": "Allows fliping dropdown to opposite placement if outside of current view"
     },
     {
       "type": [
@@ -38,7 +39,7 @@
       ],
       "default": 0,
       "prop": "offset-x",
-      "description": ""
+      "description": "Offset of dropdown relative to reference element. See how to use this offset here"
     },
     {
       "type": [
@@ -46,15 +47,15 @@
       ],
       "default": 0,
       "prop": "offset-y",
-      "description": ""
+      "description": "Offset of dropdown relative to reference element. See how to use this offset here"
     },
     {
       "type": [
         "String"
       ],
-      "default": "bottom-start",
+      "default": "\"bottom-start\"",
       "prop": "placement",
-      "description": ""
+      "description": "Initial placement of dropdown content. See valid values in Popperjs documentation"
     },
     {
       "type": [
@@ -62,7 +63,7 @@
       ],
       "default": "empty string",
       "prop": "style-header",
-      "description": ""
+      "description": "Style of menu header"
     },
     {
       "type": [
@@ -70,23 +71,23 @@
       ],
       "default": "empty string",
       "prop": "style-item",
-      "description": ""
+      "description": "Style of menu item"
     },
     {
       "type": [
         "String"
       ],
-      "default": "fade",
+      "default": "\"fade\"",
       "prop": "transition",
-      "description": ""
+      "description": "Sets animation effect when showing or hiding dropdown. Valid values are: 'fade' or `empty string` to disable animations. Animation speed can be set in `--dropdown-transition-duration` css variable."
     },
     {
       "type": [
         "String"
       ],
-      "default": "click",
+      "default": "\"click\"",
       "prop": "trigger",
-      "description": ""
+      "description": "How to trigger dropdown. Valid triggers are 'click', 'focus' and 'hover'"
     },
     {
       "type": [
@@ -95,31 +96,31 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": ""
+      "description": "Variant of the component styles"
     }
   ],
   "events": [
     {
       "event": "state:opened",
-      "description": ""
+      "description": "Emitted after dropdown is opened"
     },
     {
       "event": "state:closed",
-      "description": ""
+      "description": "Emitted after dropdown is closed"
     },
     {
       "event": "update:modelValue",
-      "description": ""
+      "description": "Emitted after model change"
     }
   ],
   "slots": [
     {
       "slot": "reference",
-      "description": ""
+      "description": "Slot for element that activates dropdown. Dropdown is positioned relative to element that has `ref` set to `reference`. Slot props: `reference`, `onTrigger` and `isOpen`"
     },
     {
       "slot": "default",
-      "description": ""
+      "description": "Slot for dropdown content. Slot props: `hide()`"
     }
   ],
   "functions": [],

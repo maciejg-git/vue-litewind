@@ -1,12 +1,13 @@
 {
+  "name": "vCheckboxSimple",
   "props": [
     {
       "type": [
         "String"
       ],
-      "default": "checkbox",
+      "default": "\"checkbox\"",
       "prop": "base",
-      "description": ""
+      "description": "Base name of the component for styling"
     },
     {
       "type": [
@@ -15,7 +16,7 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": ""
+      "description": "Variant of the component styles"
     }
   ],
   "events": [],

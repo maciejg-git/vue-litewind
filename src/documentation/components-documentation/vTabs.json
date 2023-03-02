@@ -1,12 +1,13 @@
 {
+  "name": "vTabs",
   "props": [
     {
       "type": [
         "String"
       ],
-      "default": "tabs",
+      "default": "\"tabs\"",
       "prop": "base",
-      "description": ""
+      "description": "Base name of the component for styling"
     },
     {
       "type": [
@@ -14,7 +15,7 @@
       ],
       "default": false,
       "prop": "center",
-      "description": ""
+      "description": "Centers tabs"
     },
     {
       "type": [
@@ -22,7 +23,7 @@
       ],
       "default": false,
       "prop": "fill",
-      "description": ""
+      "description": "Tabs fill full width of tab bar"
     },
     {
       "type": [
@@ -30,7 +31,7 @@
       ],
       "default": false,
       "prop": "right",
-      "description": ""
+      "description": "Puts tabs on the right"
     },
     {
       "type": [
@@ -39,7 +40,7 @@
       ],
       "default": "empty string",
       "prop": "style-tab",
-      "description": ""
+      "description": "Single tab style"
     },
     {
       "type": [
@@ -48,15 +49,15 @@
       ],
       "default": "empty string",
       "prop": "style-tab-bar",
-      "description": ""
+      "description": "Tab bar style"
     },
     {
       "type": [
         "String"
       ],
-      "default": "fade",
+      "default": "\"fade\"",
       "prop": "transition",
-      "description": ""
+      "description": "Sets animation effect when changing tabs. Valid values are 'fade', 'fade-top-slide', 'fade-side-slide' or `empty string` to disabled animations. Animation speed can be set in `--tabs-transition-duration` css variable."
     },
     {
       "type": [
@@ -65,19 +66,23 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": ""
+      "description": "Variant of the component styles"
     }
   ],
   "events": [
     {
       "event": "input:changed-tab",
-      "description": ""
+      "description": "Emitted when another tab is activated"
     }
   ],
   "slots": [
     {
+      "slot": "tab-bar-append",
+      "description": "Slot for additional content in the tab bar"
+    },
+    {
       "slot": "default",
-      "description": ""
+      "description": "Slot for v-tab components"
     }
   ],
   "functions": [],
