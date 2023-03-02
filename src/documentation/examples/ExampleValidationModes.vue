@@ -10,7 +10,7 @@
         :rules="rules"
         validate-on="blur"
         validate-mode="silent"
-        @update:status="(data) => (usernameStatus = data)"
+        @validation:status="(data) => (usernameStatus = data)"
       ></v-input>
     </div>
 
@@ -38,7 +38,7 @@
         :rules="rules"
         validate-on="blur"
         validate-mode="eager"
-        @update:status="(data) => (usernameStatus2 = data)"
+        @validation:status="(data) => (usernameStatus2 = data)"
       ></v-input>
     </div>
 
@@ -66,7 +66,7 @@
         :rules="rules"
         validate-on="immediate"
         validate-mode="eager"
-        @update:status="(data) => (usernameStatus4 = data)"
+        @validation:status="(data) => (usernameStatus4 = data)"
       ></v-input>
     </div>
 

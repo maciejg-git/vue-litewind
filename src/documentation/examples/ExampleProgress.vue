@@ -11,7 +11,7 @@
     style-progress-bar="red rounded"
     class="mt-4"
   >
-    <template #default="{ value, max }">
+    <template #label="{ value, max }">
       {{ value.toFixed() }} / {{ max }}
     </template>
   </v-progress>

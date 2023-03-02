@@ -5,7 +5,7 @@
         v-model="languages"
         :rules="languagesRules"
         ref="group"
-        @update:status="(status) => (languagesStatus = status)"
+        @validation:status="(status) => (languagesStatus = status)"
       >
         <div v-for="l in languagesData" class="my-2">
           <v-checkbox :value="l" :id="'language-' + l" :label="l"></v-checkbox>

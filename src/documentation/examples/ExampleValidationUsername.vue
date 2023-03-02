@@ -8,7 +8,7 @@
         placeholder="Username"
         block
         class="w-full"
-        @update:status="(status) => (usernameStatus = status)"
+        @validation:status="(status) => (usernameStatus = status)"
       ></v-input>
     </div>
     <pre class="m-0">

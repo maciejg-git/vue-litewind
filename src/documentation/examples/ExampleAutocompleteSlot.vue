@@ -12,7 +12,7 @@
         no-filter
         @input:value="query($event)"
       >
-        <template #item="{ item, inputValue, isSelected }">
+        <template #menu-item="{ item, inputValue, isSelected }">
           <div class="flex justify-between">
             <div
               v-html="

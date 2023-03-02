@@ -13,7 +13,7 @@
             :rules="usernameRules"
             block
             class="w-full"
-            @update:status="(status) => (usernameStatus = status)"
+            @validation:status="(status) => (usernameStatus = status)"
           ></v-input>
         </div>
 
@@ -25,7 +25,7 @@
             :rules="passwordRules"
             block
             class="w-full"
-            @update:status="(status) => (passwordStatus = status)"
+            @validation:status="(status) => (passwordStatus = status)"
           ></v-input>
         </div>
 
@@ -35,7 +35,7 @@
             :rules="textRules"
             placeholder="Some text"
             rows="3"
-            @update:status="(status) => (textStatus = status)"
+            @validation:status="(status) => (textStatus = status)"
           ></v-textarea>
         </div>
 
