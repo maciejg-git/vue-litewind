@@ -3,10 +3,7 @@
 
   <section>
     <h4>Reference</h4>
-    <table-reference :items="reference" />
-
-    <h6>Styling props</h6>
-    <table-reference-basic :items="styles" />
+    <table-reference :items="reference.props" />
   </section>
 
   <section>
@@ -18,26 +15,15 @@
 </template>
 
 <script>
-import { ref } from "vue";
-import { sharedProps, styleProps } from "./shared-props"
+import { ref, reactive } from "vue";
+import componentDocumentation from "./components-documentation/vDivider.json"
 
 export default {
   setup() {
-    let reference = ref([
-      ...styleProps(),
-      ...sharedProps(),
-    ]);
-
-    let styles = ref([
-      {
-        prop: "style-divider",
-        description: "Main divider element",
-      },
-    ]);
+    let reference = reactive(componentDocumentation)
 
     return {
       reference,
-      styles,
     };
   },
 };

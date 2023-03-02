@@ -3,7 +3,7 @@
 
   <section>
     <h4>Reference</h4>
-    <table-reference :items="reference" />
+    <table-reference :items="reference.props" />
   </section>
 
   <section>
@@ -30,33 +30,13 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, reactive } from "vue";
+import componentDocumentation from "./components-documentation/vIcon.json"
 import exampleIconMainCode from "./examples/ExampleIconMain.js?raw";
 
 export default {
   setup() {
-    let reference = ref([
-      {
-        prop: "icon",
-        type: ["String", "Object"],
-        default: "empty string",
-        description:
-          "Name of the registered icon component or icon component object. It has higher prorioty than `icon-type` if both are set",
-      },
-      {
-        prop: "name",
-        type: ["String", "Object"],
-        default: "empty string",
-        description:
-          "Same as icon prop",
-      },
-      {
-        prop: "icon-type",
-        type: ["String"],
-        default: "empty string",
-        description: "Icon type provided via `iconTypes`",
-      },
-    ]);
+    let reference = reactive(componentDocumentation)
 
     return {
       reference,

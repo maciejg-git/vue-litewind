@@ -3,13 +3,10 @@
 
   <section>
     <h4>Reference</h4>
-    <table-reference :items="reference" />
-
-    <h6>Styling props</h6>
-    <table-reference-basic :items="styles" />
+    <table-reference :items="reference.props" />
 
     <h6>Slots</h6>
-    <table-reference-basic :items="slots" reference="slot" />
+    <table-reference-basic :items="reference.slots" reference="slot" />
   </section>
 
   <section>
@@ -21,46 +18,15 @@
 </template>
 
 <script>
-import { ref } from "vue";
-import { sharedProps, styleProps } from "./shared-props";
+import { ref, reactive } from "vue";
+import componentDocumentation from "./components-documentation/vChip.json"
 
 export default {
   setup() {
-    let reference = ref([
-      {
-        prop: "disabled",
-        type: ["Boolean"],
-        default: "false",
-        description: "Displays button in `disabled` state",
-      },
-      {
-        prop: "close-button",
-        type: ["Object"],
-        default: "{ base: 'round-close-button', styleCloseButton: 'small' }",
-        description: "Attributes of input v-close-button component",
-      },
-      ...styleProps(),
-      ...sharedProps(),
-    ]);
-
-    let styles = ref([
-      {
-        prop: "style-chip",
-        description: "Main chip element",
-      },
-    ]);
-
-    let slots = ref([
-      {
-        slot: "default",
-        description: "Slot for chip content",
-      },
-    ]);
-
+    let reference = reactive(componentDocumentation)
+    
     return {
       reference,
-      styles,
-      slots,
     };
   },
 };

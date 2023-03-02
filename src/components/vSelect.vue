@@ -99,9 +99,9 @@
             tabindex="0"
             role="option"
           >
-            <!-- @slot item -->
+            <!-- @slot menu-item -->
             <slot
-              name="item"
+              name="menu-item"
               :text="getItemText(item)"
               :value="getItemValue(item)"
               :item="item"

@@ -3,16 +3,13 @@
 
   <section>
     <h4>Reference</h4>
-    <table-reference :items="reference" />
-
-    <h6>Styling props</h6>
-    <table-reference-basic :items="styles" />
+    <table-reference :items="reference.props" />
 
     <h6>Events</h6>
-    <table-reference-basic :items="events" reference="event" />
+    <table-reference-basic :items="reference.events" reference="event" />
 
     <h6>Slots</h6>
-    <table-reference-basic :items="slots" reference="slot" />
+    <table-reference-basic :items="reference.slots" reference="slot" />
   </section>
 
   <section>
@@ -92,169 +89,12 @@
 </template>
 
 <script>
-import { ref } from "vue";
-import { sharedProps, styleProps } from "./shared-props"
+import { ref, reactive } from "vue";
+import componentDocumentation from "./components-documentation/vTable.json"
 
 export default {
   setup() {
-    let reference = ref([
-      {
-        prop: "items",
-        type: ["Array"],
-        default: "undefined",
-        description:
-          "Data to display in table. Each element of Array is an Object. Single Object is one record (row) of data",
-      },
-      {
-        prop: "definition",
-        type: ["Array"],
-        default: "undefined",
-        description: "Table definition is an optional `array` of `objects` that defines look and behavior of the table.",
-      },
-      {
-        prop: "primary-key",
-        type: ["String"],
-        default: "undefined",
-        description: "This props should be name of the property that is unique for every record. It is used as value for `key` attribute",
-      },
-      {
-        prop: "filter",
-        type: ["String"],
-        default: "empty string",
-        description:
-          "Use this String to filter items. Filtering always emits <code class='code-word'>update:page</code> with value 1 and resets any active selection",
-      },
-      {
-        prop: "locale",
-        type: ["String"],
-        default: "'en-GB'",
-        description: "Locale used to compare and sort strings",
-      },
-      {
-        prop: "state",
-        type: ["Boolean"],
-        default: "false",
-        description:
-          "State of table. Valid values are 'busy' or `empty string`. Busy state disables pointer events on table and renders contents of `busy` slot instead of table rows",
-      },
-      {
-        prop: "selection-mode",
-        type: ["String"],
-        default: "empty string",
-        description:
-        "Enables or disables selection of rows. Valid values are 'single' (allows selection of single row only), 'multiple' (allows multiple rows to be selected) or `empty string` (disables selection). After new row is selected or unselected event input:selection is emmited with array of all selected records. Filtering, sorting, changing current page or modifying selection-mode prop resets current selection by emmiting empty array",
-      },
-      {
-        prop: "page",
-        type: ["v-model", "Number"],
-        default: "1",
-        description:
-          "Current page number. Changing page resets current selection",
-      },
-      {
-        prop: "items-per-page",
-        type: ["Number"],
-        default: "0",
-        description:
-          "Number of records (rows) on single page. Setting it to `0` disables pagination",
-      },
-      {
-        prop: "caption-top",
-        type: ["Boolean"],
-        default: "false",
-        description: "If `true` display caption on top",
-      },
-      {
-        prop: "empty-text",
-        type: ["String"],
-        default: "'Empty table'",
-        description: "Text displayed if table is empty",
-      },
-      {
-        prop: "empty-filtered-text",
-        type: ["String"],
-        default: "'No records for current filter'",
-        description:
-          "Text displayed if table is empty after filtering out all items",
-      },
-      ...styleProps(),
-      ...sharedProps(),
-    ]);
-
-    let styles = ref([
-      {
-        prop: "style-table",
-        description: "Main table element",
-      },
-      {
-        prop: "style-header-row",
-        description: "Header row",
-      },
-      {
-        prop: "style-header-cell",
-        description: "Header cell",
-      },
-      {
-        prop: "style-row",
-        description: "Table row",
-      },
-      {
-        prop: "style-cell",
-        description: "Table cell",
-      },
-      {
-        prop: "style-selected",
-        description: "Selected table cell",
-      },
-      {
-        prop: "style-caption",
-        description: "Table caption.",
-      },
-    ]);
-
-    let events = ref([
-      {
-        event: "update:page",
-        description: "Emmited after filtering. Useful for updating pagination",
-      },
-      {
-        event: "update:filtered-count",
-        description: "Emmited after filtering. Useful for updating pagination",
-      },
-      {
-        event: "input:selection",
-        description:
-          "Emmited after selecting rows. Event data contains array of selected records",
-      },
-    ]);
-
-    let slots = ref([
-      {
-        slot: "cell:key",
-        description:
-          "Slot for cell content. Useful for adding some html formatting, transforming value etc. Key is one of the keys of data record or additional key from definition array. Slot props: `value`, `item`",
-      },
-      {
-        slot: "caption",
-        description:
-          "Slot for caption text. Position caption using `caption-top` prop",
-      },
-      {
-        slot: "busy",
-        description:
-          "Content of this slot replaces data records if table is `busy`",
-      },
-      {
-        slot: "empty-table-message",
-        description:
-          "Slot for custom empty table message when `items` prop is empty table",
-      },
-      {
-        slot: "empty-filtered-table-message",
-        description:
-          "Slot for custom empty filtered table message when table is empty after filtering",
-      },
-    ]);
+    let reference = reactive(componentDocumentation)
 
     let referenceProp = ref([
       {
@@ -341,9 +181,6 @@ export default {
 
     return {
       reference,
-      styles,
-      events,
-      slots,
       referenceProp,
       referencePropDefinition,
     };

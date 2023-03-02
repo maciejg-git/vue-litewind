@@ -3,10 +3,7 @@
 
   <section>
     <h4>Reference</h4>
-    <table-reference :items="reference" />
-
-    <h6>Styling props</h6>
-    <table-reference-basic :items="styles" />
+    <table-reference :items="reference.props" />
 
     <!-- <h6>Events</h6> -->
     <!-- <p></p> -->
@@ -14,7 +11,7 @@
 
     <h6>Slots</h6>
     <table-reference-basic
-      :items="slots"
+      :items="reference.slots"
       reference="slot"
     />
   </section>
@@ -28,85 +25,15 @@
 </template>
 
 <script>
-import { ref } from "vue";
-import { sharedProps, styleProps, formProps } from "./shared-props"
+import { ref, reactive } from "vue";
+import componentDocumentation from "./components-documentation/vTextarea.json"
 
 export default {
   setup(props) {
-    let reference = ref([
-      {
-        prop: "v-model",
-        type: ["String"],
-        default: "undefined",
-        description: "Textarea v-model",
-      },
-      {
-        prop: "rules",
-        type: ["Object"],
-        default: "{}",
-        description: "Rules for validation. See Form Validation for example",
-      },
-      {
-        prop: "validate-on",
-        type: ["String"],
-        default: "'blur'",
-        description:
-          "Valid values are 'blur' or 'immediate'. See Form Validation for explanation and examples",
-      },
-      {
-        prop: "validate-mode",
-        type: ["String"],
-        default: "'silent'",
-        description:
-          "Valid values are 'silent' or 'eager'. See Form Validation for explanation and examples",
-      },
-      {
-        prop: "label",
-        type: ["String"],
-        default: "empty string",
-        description: "Label on top of the textarea. This label is for simple forms as position cannot be changed",
-      },
-      {
-        prop: "inline",
-        type: ["Boolean"],
-        default: "false",
-        description: "Sets textarea display to inline",
-      },
-      ...formProps(),
-      ...styleProps(),
-      ...sharedProps(),
-    ]);
-
-    let styles = ref([
-      {
-        prop: "style-textarea",
-        description: "Main textarea element",
-      },
-      {
-        prop: "style-label",
-        description: "Label element if `label` prop is set",
-      },
-    ]);
-
-    let events = ref([
-    ]);
-
-    let slots = ref([
-      {
-        slot: "label",
-        description: "Slot for label. Slot props: `label` (from label prop)",
-      },
-      {
-        slot: "message",
-        description: "This slot can be used to customize validation messages. Slot props: `message`, `key`",
-      },
-    ])
-
+    let reference = reactive(componentDocumentation)
+    
     return {
       reference,
-      styles,
-      events,
-      slots,
     };
   },
 };

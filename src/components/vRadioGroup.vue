@@ -30,9 +30,9 @@ const props = defineProps({
 
 const emit = defineEmits([
   "update:modelValue",
-  "update:status",
-  "update:state",
-  "update:messages",
+  "validation:status",
+  "validation:state",
+  "validation:messages",
 ]);
 
 let groupModel = ref(props.modelValue);
@@ -40,9 +40,9 @@ let groupModel = ref(props.modelValue);
 // validation
 
 let emitValidationStatus = (status, state, messages) => {
-  emit("update:status", status.value);
-  emit("update:state", state.value);
-  emit("update:messages", messages.value);
+  emit("validation:status", status.value);
+  emit("validation:state", state.value);
+  emit("validation:messages", messages.value);
 };
 
 let resetInput = () => {

@@ -3,10 +3,7 @@
 
   <section>
     <h4>Reference</h4>
-    <table-reference :items="reference" />
-
-    <h6>Styling props</h6>
-    <table-reference-basic :items="styles" />
+    <table-reference :items="reference.props" />
 
     <!-- <h6>Events</h6> -->
     <!-- <p></p> -->
@@ -27,73 +24,15 @@
 </template>
 
 <script>
-import { ref } from "vue";
-import { sharedProps, styleProps } from "./shared-props"
+import { ref, reactive } from "vue";
+import componentDocumentation from "./components-documentation/vPagination.json"
 
 export default {
   setup() {
-    let reference = ref([
-      {
-        prop: "v-model",
-        type: ["Number"],
-        default: "undefined",
-        description: "Current page",
-      },
-      {
-        prop: "items-per-page",
-        type: ["Number"],
-        default: "undefined",
-        description:
-          "Number of items per page. Pagination uses this value to compute the number of pages to render. It is usually provided by another component that uses pagination for navigation. 0 disables pagination (displays only 1 page)",
-      },
-      {
-        prop: "items-count",
-        type: ["Number"],
-        default: "undefined",
-        description:
-          "Total number of items. Pagination uses this value to compute the number of pages to render. It is usually provided by another component that uses pagination for navigation",
-      },
-      {
-        prop: "max-pages",
-        type: ["Number"],
-        default: "undefined",
-        description:
-          "Maximum number of pages to display. This prop must have value of 3 or more",
-      },
-      ...styleProps(),
-      ...sharedProps(),
-    ]);
-
-    let styles = ref([
-      {
-        prop: "style-pagination-bar",
-        description: "Main table element",
-      },
-      {
-        prop: "style-page",
-        description: "Style of single page button",
-      },
-      {
-        prop: "style-dots",
-        description: "Style of dots separating pages",
-      },
-      {
-        prop: "style-next",
-        description: "Style of next page button",
-      },
-      {
-        prop: "style-prev",
-        description: "Style of previous page button",
-      },
-    ]);
-
-    let events = ref([
-    ]);
+    let reference = reactive(componentDocumentation)
 
     return {
       reference,
-      styles,
-      events,
     };
   },
 };

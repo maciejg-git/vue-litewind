@@ -1,56 +1,124 @@
-import { readFile } from "fs/promises"
-import { writeFile } from "fs/promises"
-import fg from "fast-glob"
-import _ from "lodash"
+// this script genrates v-table compatibile array from components
+// reference and descripton. Arrays are stored in json and imported
+// in respective Documentation*.vue files.
 
-let referencePath = "../components-reference/"
-let descriptionPath = "../components-description/"
+import { readFile } from "fs/promises";
+import { writeFile } from "fs/promises";
+import fg from "fast-glob";
+import _ from "lodash";
+import chalk from "chalk";
+import sharedDescriptions from "../shared-descriptions.json" assert { type: "json" };
 
-let references = fg.sync("**", { cwd: referencePath })
-let descriptions = fg.sync("**", { cwd: descriptionPath })
+let referencePath = "../components-reference/";
+let descriptionPath = "../components-description/";
+
+let references = fg.sync("**", { cwd: referencePath });
+let descriptions = fg.sync("**", { cwd: descriptionPath });
+
+let getDefault = (value) => {
+  if (value === "undefined") {
+    return value;
+  }
+  if (value === null) {
+    return "null";
+  }
+  if (value === "") {
+    return "empty string";
+  }
+  if (typeof value === "string") {
+    return `"${value}"`;
+  }
+  return value;
+};
+
+let getSharedDescription = (type, value) => {
+  if (type === "props") {
+    return (
+      sharedDescriptions.props.popper[value] ||
+      sharedDescriptions.props.style[value] ||
+      sharedDescriptions.props.form[value] ||
+      ""
+    );
+  }
+  if (type === "events") {
+    return (
+      sharedDescriptions.events[value] ||
+      ""
+    );
+  }
+};
+
+let verifyDocs = ({ name, props, events, slots, functions, components }) => {
+  props.forEach((i) => {
+    if (i.description === "" || i.description === undefined) {
+      console.warn(
+        `${chalk.red(name)} [props]: Missing description for ${i.prop} (${i.description === undefined ? "not found" : "empty" })`
+      );
+    }
+  });
+  events.forEach((i) => {
+    if (i.description === "" || i.description === undefined) {
+      console.warn(
+        `${chalk.red(name)} [events]: Missing description for ${i.event} (${i.description === undefined ? "not found" : "empty" })`
+      );
+    }
+  });
+  slots.forEach((i) => {
+    if (i.description === "" || i.description === undefined) {
+      console.warn(
+        `${chalk.red(name)} [slots]: Missing description for ${i.slot} (${i.description === undefined ? "not found" : "empty" })`
+      );
+    }
+  });
+};
 
 while (references.length) {
-  let comp = await readFile(referencePath + references.shift(), 'utf8')
-  let desc = await readFile(descriptionPath + descriptions.shift(), 'utf8')
+  let comp = await readFile(referencePath + references.shift(), "utf8");
+  let desc = await readFile(descriptionPath + descriptions.shift(), "utf8");
 
-  let reference = JSON.parse(comp)
-  let description = JSON.parse(desc)
+  let reference = JSON.parse(comp);
+  let description = JSON.parse(desc);
+
+  // name
+
+  let name = reference.name;
 
   // props
 
-  let props = Object.entries(reference.props).reduce((acc, i, index) => {
-    i[1].prop = _.kebabCase(i[0])
-    if (i[1].prop === "model-value") {
-      i[1].prop = "v-model"
+  let props = Object.entries(reference.props).map(([k, v]) => {
+    v.prop = _.kebabCase(k);
+    if (v.prop === "model-value") {
+      v.prop = "v-model";
     }
 
-    i[1].description = description.props[i[0]]
+    v.description = description.props[k] || getSharedDescription("props", k);
 
-    if (i[1].default === "") {
-      i[1].default = "empty string"
-    }
+    v.default = getDefault(v.default);
 
-    acc.push(i[1])
-    return acc
-  }, [])
+    return v;
+  });
 
-  props = props.sort((a, b) => {
-    if (a.prop > b.prop) return 1
-    if (a.prop < b.prop) return -1
-    return 0
+  props = props.filter((i) => {
+    return !i.description.startsWith("[hidden]")
   })
 
-  let index = props.findIndex((i) => i.prop === 'v-model')
-  if (index > 0) props.splice(0, 0, props.splice(index, 1)[0])
+  props = props.sort((a, b) => {
+    if (a.prop > b.prop) return 1;
+    if (a.prop < b.prop) return -1;
+    return 0;
+  });
+
+  let index = props.findIndex((i) => i.prop === "v-model");
+  if (index > 0) props.splice(0, 0, props.splice(index, 1)[0]);
 
   // events
 
   let events = reference.emits.map((i) => {
     return {
       event: i,
-      description: description.emits[i],
-    }
-  })
+      description: description.emits[i] || getSharedDescription("events", i),
+    };
+  });
 
   // slots
 
@@ -58,7 +126,11 @@ while (references.length) {
     return {
       slot: i,
       description: description.slots[i],
-    }
+    };
+  });
+
+  slots = slots.filter((i) => {
+    return !i.description.startsWith("[hidden]")
   })
 
   // functions
@@ -67,8 +139,8 @@ while (references.length) {
     return {
       function: k,
       description: v,
-    }
-  })
+    };
+  });
 
   // components
 
@@ -76,10 +148,20 @@ while (references.length) {
     return {
       component: k,
       description: v,
-    }
-  })
+    };
+  });
 
-  let file = JSON.stringify({ props, events, slots, functions, components }, null, 2)
+  verifyDocs({ name, props, events, slots, functions, components });
 
-  await writeFile(`../components-documentation/${reference.name}.json`, file, "utf8")
+  let file = JSON.stringify(
+    { name, props, events, slots, functions, components },
+    null,
+    2
+  );
+
+  await writeFile(
+    `../components-documentation/${reference.name}.json`,
+    file,
+    "utf8"
+  );
 }

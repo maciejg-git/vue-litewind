@@ -3,13 +3,10 @@
 
   <section>
     <h4>Reference</h4>
-    <table-reference :items="reference" />
-
-    <h6>Styling props</h6>
-    <table-reference-basic :items="styles" />
+    <table-reference :items="reference.props" />
 
     <h6>Slots</h6>
-    <table-reference-basic :items="slots" reference="slot" />
+    <table-reference-basic :items="reference.slots" reference="slot" />
   </section>
 
   <section>
@@ -39,52 +36,15 @@
 </template>
 
 <script>
-import { ref } from "vue";
-import { sharedProps, styleProps } from "./shared-props";
+import { ref, reactive } from "vue";
+import componentDocumentation from "./components-documentation/vButton.json"
 
 export default {
   setup() {
-    let reference = ref([
-      {
-        prop: "tag",
-        type: ["String"],
-        default: "'button'",
-        description: "Tag of button element. Valid values are: 'button' or 'a'",
-      },
-      {
-        prop: "disabled",
-        type: ["Boolean"],
-        default: "false",
-        description: "Displays button in `disabled` state",
-      },
-      {
-        prop: "block",
-        type: ["Boolean"],
-        default: "false",
-        description: "Displays button as full width block",
-      },
-      ...styleProps(),
-      ...sharedProps(),
-    ]);
-
-    let styles = ref([
-      {
-        prop: "style-button",
-        description: "Main button element",
-      },
-    ]);
-
-    let slots = ref([
-      {
-        slot: "default",
-        description: "Slot for button content",
-      },
-    ]);
+    let reference = reactive(componentDocumentation)
 
     return {
       reference,
-      styles,
-      slots,
     };
   },
 };

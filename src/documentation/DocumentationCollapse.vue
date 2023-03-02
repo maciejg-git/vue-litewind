@@ -3,10 +3,10 @@
 
   <section>
     <h4>Reference</h4>
-    <table-reference :items="reference" />
+    <table-reference :items="reference.props" />
 
     <h6>Slots</h6>
-    <table-reference-basic :items="slots" reference="slot" />
+    <table-reference-basic :items="reference.slots" reference="slot" />
 
     <h6>Components</h6>
     <table-reference-basic :items="components" reference="component" />
@@ -56,37 +56,12 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, reactive } from "vue";
+import componentDocumentation from "./components-documentation/vCollapse.json"
 
 export default {
   setup() {
-    let reference = ref([
-      {
-        prop: "v-model",
-        type: ["Boolean"],
-        default: "undefined",
-        description:
-          "Setting v-model to `true` shows collapsible element, `false` value hides it",
-      },
-      {
-        prop: "transition",
-        type: ["String"],
-        default: "fade-collapse",
-        description:
-          "Sets animation effect when showing or hiding dropdown. Valid values are: 'fade-collapse' or `empty string` to disable animations. Animation speed can be set in `--collapse-transition-duration` css variable.",
-      },
-    ]);
-
-    let slots = ref([
-      {
-        slot: "default",
-        description: "Slot for content that is collapsed",
-      },
-      {
-        slot: "reference",
-        description: "Slot for content that triggers collapse. Slot props: `isOpen`, `onTrigger`",
-      },
-    ]);
+    let reference = reactive(componentDocumentation)
 
     let components = ref([
       {
@@ -97,7 +72,6 @@ export default {
 
     return {
       reference,
-      slots,
       components,
     };
   },

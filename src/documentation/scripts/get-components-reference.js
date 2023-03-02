@@ -1,5 +1,10 @@
+// this script uses build dist to get updated reference for props and emits.
+// Slots are collected from vue source files.
+// Results are saved as json file and used to generate updated documentation 
+
 import * as components from "../../../dist/vue-component-tailwind.js";
 import { readFile, writeFile } from "fs/promises";
+import { existsSync } from "fs";
 
 let pathComponents = "../../components/";
 let pathComponentsReference = "../components-reference/";
@@ -18,7 +23,7 @@ for (let component in components) {
     functions: {},
     components: {},
   };
-  const slotRegexp = /<!--\s*@slot\s+([a-zA-Z\[\]:]+)\s*-->/g;
+  const slotRegexp = /<!--\s*@slot\s+([a-zA-Z\[\]:-]+)\s*-->/g;
 
   let replacer = (k, v) => {
     if (v === undefined) {
@@ -71,6 +76,11 @@ for (let component in components) {
       `${pathComponentsReference}${filename}`,
       JSON.stringify(reference, replacer, 2)
     );
-    // await writeFile(`${pathComponentsDescription}${filename}`, JSON.stringify(description, null, 2))
+    if (!existsSync(`${pathComponentsDescription}${filename}`)) {
+      await writeFile(
+        `${pathComponentsDescription}${filename}`,
+        JSON.stringify(description, null, 2)
+      );
+    }
   }
 }

@@ -7,6 +7,11 @@
       v-bind="$attrs"
       :items="i"
     >
+      <!-- @slot item -->
+      <!-- @slot icon -->
+      <!-- @slot item-prepend -->
+      <!-- @slot name -->
+      <!-- @slot item-append -->
       <template
         v-for="(name, slot) of $slots"
         #[slot]="items"
@@ -134,7 +139,7 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(["input:selected"]);
+const emit = defineEmits(["input:selected", "input:click"]);
 
 let { classes, states, variants } = useStyles("tree", props, {
   folder: {
@@ -213,6 +218,7 @@ provide("control-tree", {
   placeholderItemIcon: toRef(props, "placeholderItemIcon"),
   placeholderFolderIcon: toRef(props, "placeholderFolderIcon"),
   chevron: toRef(props, "chevron"),
+  parentEmit: emit,
 });
 
 defineExpose({ openAllLevel, closeAll });

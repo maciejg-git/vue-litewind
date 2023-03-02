@@ -8,15 +8,7 @@
       <code class="code-text">v-input</code>
       . See documentation here.
     </p>
-    <table-reference :items="reference" />
-
-    <h6>Styling props</h6>
-    <p class="my-10">
-      This component also allows styling props of
-      <code class="code-text">v-input</code>
-      . See documentation here.
-    </p>
-    <table-reference-basic :items="styles" />
+    <table-reference :items="reference.props" />
 
     <h6>Events</h6>
     <p class="my-10">
@@ -24,7 +16,7 @@
       <code class="code-text">v-input</code>
       . See documentation here.
     </p>
-    <table-reference-basic :items="events" reference="event" />
+    <table-reference-basic :items="reference.events" reference="event" />
 
     <h6>Slots</h6>
     <p class="my-10">
@@ -32,7 +24,7 @@
       <code class="code-text">v-input</code>
       . See documentation here.
     </p>
-    <table-reference-basic :items="slots" reference="slot" />
+    <table-reference-basic :items="reference.slots" reference="slot" />
   </section>
 
   <v-divider></v-divider>
@@ -90,149 +82,15 @@
 </template>
 
 <script>
-import { ref } from "vue";
-import { sharedProps, popperProps, styleProps, formProps } from "./shared-props";
+import { ref, reactive } from "vue";
+import componentDocumentation from "./components-documentation/vSelect.json"
 
 export default {
   setup() {
-    let reference = ref([
-      {
-        prop: "v-model",
-        type: ["String", "Array"],
-        default: "undefined",
-        description: "Select v-model. If items are objects model returns `value` property (or `array` of `values` if select is `multi-value`) instead of whole object",
-      },
-      {
-        prop: "items",
-        type: ["Array"],
-        default: "undefined",
-        description:
-          "Items to display. Can be `array` of `strings` or `objects` or mixed. Objects should at least have `text` and `value` properties. If `objects` have additional properties you can display them using `item` slot",
-      },
-      {
-        prop: "item-text",
-        type: ["String"],
-        default: "'text'",
-        description: "Set name of the property of items’s text value",
-      },
-      {
-        prop: "item-value",
-        type: ["String"],
-        default: "'value'",
-        description: "Set name of the property of items’s value",
-      },
-      {
-        prop: "multi-value",
-        type: ["Boolean"],
-        default: "false",
-        description:
-          "Allows selecting multiple values",
-      },
-      {
-        prop: "autocomplete",
-        type: ["Boolean"],
-        default: "false",
-        description:
-          "Allows filtering select items based on inputs value. You can also use v-autocomplete which is wrapper of v-select with this prop enabled by default",
-      },
-      {
-        prop: "is-loading",
-        type: ["Boolean"],
-        default: "false",
-        description:
-          "Use it whenever asynchronously updating items prop. Required.",
-      },
-      {
-        prop: "filter-keys",
-        type: ["Array"],
-        default: "[]",
-        description:
-          "By default text property is used to filter items. You can set different properties by adding them to this prop.",
-      },
-      {
-        prop: "no-filter",
-        type: ["Boolean"],
-        default: "false",
-        description:
-          "Do not use internal filter in `autocomplete` mode. You should provide filtered items by updating `items` prop",
-      },
-      {
-        prop: "no-pagination",
-        type: ["Boolean"],
-        default: "false",
-        description:
-          "Do no use internal pagination. You can paginate items by updating `items` prop",
-      },
-      {
-        prop: "items-per-page",
-        type: ["Number"],
-        default: "10",
-        description:
-          "Amounts of items to display per page, 0 = all items on single page. Ignored if `no-pagination` is used",
-      },
-      {
-        prop: "empty-data-message",
-        type: ["String"],
-        default: "No data available",
-        description:
-          "Message to display inside menu when `items` array is empty",
-      },
-      {
-        prop: "transition",
-        type: ["String"],
-        default: "fade",
-        description: "Sets animation effect when showing or hiding autocomplete menu. Valid values are: 'fade' or `empty string` to disable animations. Animation speed can be set in `--autocomplete-transition-duration` css variable.",
-      },
-      ...popperProps,
-      ...formProps({ icon: true, clearable: true }),
-      ...styleProps(),
-      ...sharedProps(),
-    ]);
-
-    let styles = ref([
-      {
-        prop: "style-item",
-        description: "Menu item element",
-      },
-      {
-        prop: "style-match",
-        description: "Highlight of matched text",
-      },
-    ]);
-
-    let events = ref([
-      {
-        event: "update:page",
-        description:
-          "Fired when next page is displayed (scroll reach end of dropdown menu)",
-      },
-      {
-        event: "input:value",
-        description: "Fired when input value changes",
-      },
-      {
-        event: "state:opened",
-        description: "Dropdown menu opens",
-      },
-      {
-        event: "state:closed",
-        description: "Dropdown menu closes",
-      },
-    ]);
-
-    let slots = ref([
-      {
-        slot: "item",
-        description:
-          "Slot for menu item. Slot props: `text`, `value`, `item`, `inputValue`",
-      },
-    ]);
-
+    let reference = reactive(componentDocumentation)
+    
     return {
       reference,
-      styles,
-      events,
-      slots,
     };
   },
 };

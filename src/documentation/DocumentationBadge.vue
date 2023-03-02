@@ -3,13 +3,10 @@
 
   <section>
     <h4>Reference</h4>
-    <table-reference :items="reference" />
-
-    <h6>Styling props</h6>
-    <table-reference-basic :items="styles" />
+    <table-reference :items="reference.props" />
 
     <h6>Slots</h6>
-    <table-reference-basic :items="slots" reference="slot" />
+    <table-reference-basic :items="reference.slots" reference="slot" />
   </section>
 
   <section>
@@ -28,55 +25,15 @@
 </template>
 
 <script>
-import { ref } from "vue";
-import { sharedProps, styleProps } from "./shared-props"
+import { ref, reactive } from "vue";
+import componentDocumentation from "./components-documentation/vBadge.json"
 
 export default {
   setup() {
-    let reference = ref([
-      {
-        prop: "position",
-        type: ["String"],
-        default: "empty string",
-        description:
-          "Position of badge. Valid values are 'top-right', 'top-left', 'bottom-right', 'bottom-left'. If position is set to any of those values badge is positioned as absolute in the corner of parent element (parent element must be positioned as relative). If you need finer control over position skip position prop altogether and use utility/classes/style to set absolute position within parent.",
-      },
-      {
-        prop: "update-animation",
-        type: ["String"],
-        default: "empty string",
-        description:
-          "Animation to play when updating content of badge. Valid values are: 'scale-up', 'bounce', 'to-danger' and 'to-success'",
-      },
-      {
-        prop: "update-key",
-        type: ["String"],
-        default: "undefined",
-        description:
-          "Update this prop to unique key every time contents of default slot changes (required to rerender component and play animation)",
-      },
-      ...styleProps(),
-      ...sharedProps(),
-    ]);
-
-    let styles = ref([
-      {
-        prop: "style-badge",
-        description: "Main badge element",
-      },
-    ]);
-
-    let slots = ref([
-      {
-        slot: "default",
-        description: "Slot for badge content",
-      },
-    ]);
+    let reference = reactive(componentDocumentation)
 
     return {
       reference,
-      styles,
-      slots,
     };
   },
 };

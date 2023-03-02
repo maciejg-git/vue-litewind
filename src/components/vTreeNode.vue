@@ -190,6 +190,7 @@ let {
   placeholderItemIcon,
   placeholderFolderIcon,
   chevron,
+  parentEmit,
 } = inject("control-tree");
 
 let itemClasses = computed(() => {
@@ -324,7 +325,7 @@ let handleItemClick = () => {
     toggle();
   }
 
-  emit("input:click", props.items);
+  parentEmit("input:click", props.items)
 };
 
 let handleChildrenSelected = () => {

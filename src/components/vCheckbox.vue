@@ -13,9 +13,9 @@
       :for="id"
       :class="classes.label.value"
     >
-    <!-- @slot default -->
+    <!-- @slot label -->
       <slot
-        name="default"
+        name="label"
         :label="label"
       >
         {{ label }}
@@ -75,9 +75,9 @@ const props = defineProps({
 
 const emit = defineEmits([
   "update:modelValue",
-  "update:status",
-  "update:state",
-  "update:messages",
+  "validation:status",
+  "validation:state",
+  "validation:messages",
 ]);
 
 const attrs = useAttrs();
@@ -111,9 +111,9 @@ let localModel = useLocalModel(props, emit, groupModel, onUpdateGroupModel);
 // validation
 
 let emitValidationStatus = (status, state, messages) => {
-  emit("update:status", status.value);
-  emit("update:state", state.value);
-  emit("update:messages", messages.value);
+  emit("validation:status", status.value);
+  emit("validation:state", state.value);
+  emit("validation:messages", messages.value);
 };
 
 let resetInput = () => {

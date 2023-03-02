@@ -13,9 +13,9 @@
           v-if="label"
           :class="classes.label.value"
         >
-        <!-- @slot default -->
+        <!-- @slot label -->
           <slot
-            name="default"
+            name="label"
             :value="value"
             :max="max"
           >

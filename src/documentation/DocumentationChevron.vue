@@ -3,10 +3,7 @@
 
   <section>
     <h4>Reference</h4>
-    <table-reference :items="reference" />
-
-    <h6>Styling props</h6>
-    <table-reference-basic :items="styles" />
+    <table-reference :items="reference.props" />
   </section>
 
   <section>
@@ -27,67 +24,15 @@
 </template>
 
 <script>
-import { ref } from "vue";
-import { sharedProps, styleProps } from "./shared-props";
+import { ref, reactive } from "vue";
+import componentDocumentation from "./components-documentation/vChevron.json"
 
 export default {
   setup(props) {
-    let reference = ref([
-      {
-        prop: "initial",
-        type: ["String"],
-        default: "'down'",
-        description:
-          "Initial direction of chevron/triangle. Valid values are: 'down', 'left' ,'right' and 'up'",
-      },
-      {
-        prop: "rotate90",
-        type: ["Boolean"],
-        default: "false",
-        description:
-          "If `true` rotates chevron 90 degrees. Default is 180 degrees",
-      },
-      {
-        prop: "triangle",
-        type: ["Boolean"],
-        default: "false",
-        description: "Use filled triangle instead of chevron",
-      },
-      {
-        prop: "clockwise",
-        type: ["Boolean"],
-        default: "false",
-        description:
-          "Rotate chevron/triangle clockwise. Default is counter clockwise",
-      },
-      {
-        prop: "switch",
-        type: ["Boolean"],
-        default: "false",
-        description:
-          "Flick this to rotate chevron/triangle to initial/rotated position",
-      },
-      {
-        prop: "icon",
-        type: ["String"],
-        default: "empty string",
-        description:
-          "Name of the icon to use instead of default chevron/triangle",
-      },
-      ...styleProps(),
-      ...sharedProps(),
-    ]);
-
-    let styles = ref([
-      {
-        prop: "style-chevron",
-        description: "Chevron element",
-      },
-    ]);
+    let reference = reactive(componentDocumentation)
 
     return {
       reference,
-      styles,
     };
   },
 };

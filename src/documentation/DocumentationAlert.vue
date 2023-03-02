@@ -3,13 +3,10 @@
 
   <section>
     <h4>Reference</h4>
-    <table-reference :items="reference" />
-
-    <h6>Styling props</h6>
-    <table-reference-basic :items="styles" />
+    <table-reference :items="reference.props" />
 
     <h6>Slots</h6>
-    <table-reference-basic :items="slots" reference="slot" />
+    <table-reference-basic :items="reference.slots" reference="slot" />
   </section>
 
   <section>
@@ -28,75 +25,15 @@
 </template>
 
 <script>
-import { ref } from "vue";
-import { sharedProps, styleProps } from "./shared-props"
+import { ref, reactive } from "vue";
+import componentDocumentation from "./components-documentation/vAlert.json"
 
 export default {
   setup() {
-    let reference = ref([
-      {
-        prop: "v-model",
-        type: ["Boolean"],
-        default: "false",
-        description: "Visiblity state of alert. Skip v-model to make alert static",
-      },
-      {
-        prop: "dissmisable",
-        type: ["Boolean"],
-        default: "true",
-        description:
-          "If false close button is not rendered and alert cannot be dissmised",
-      },
-      {
-        prop: "auto-dismiss-delay",
-        type: ["Number"],
-        default: "0",
-        description:
-          "Delay after which alert is closed (v-model is set to `false`)",
-      },
-      {
-        prop: "close-button",
-        type: ["String"],
-        default: "{}",
-        description: "Attributes of v-close-button component. See documentation for valid values",
-      },
-      {
-        prop: "icon",
-        type: ["String"],
-        default: "empty string",
-        description:
-          "Alert has few default icons for variants: 'success', 'warn', 'danger', 'info', 'valid', 'invalid'. Icon or default slot can be used for custom icons.",
-      },
-      ...styleProps(),
-      ...sharedProps(),
-    ]);
-
-    let styles = ref([
-      {
-        prop: "style-alert",
-        description: "Main alert element",
-      },
-      {
-        prop: "style-icon",
-        description: "Default icon element (does not apply to icons in slot)",
-      },
-    ]);
-
-    let slots = ref([
-      {
-        slot: "default",
-        description: "Slot for alert content",
-      },
-      {
-        slot: "icon",
-        description: "Slot for icon prepending message",
-      },
-    ]);
+    let reference = reactive(componentDocumentation)
 
     return {
       reference,
-      styles,
-      slots,
     };
   },
 };

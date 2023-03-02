@@ -3,13 +3,10 @@
 
   <section>
     <h4>Reference</h4>
-    <table-reference :items="reference" />
-
-    <h6>Styling props</h6>
-    <table-reference-basic :items="styles" />
+    <table-reference :items="reference.props" />
 
     <h6>Slots</h6>
-    <table-reference-basic :items="slots" reference="slot" />
+    <table-reference-basic :items="reference.slots" reference="slot" />
 
     <h6>Components</h6>
     <table-reference-basic :items="components" reference="component" />
@@ -24,45 +21,12 @@
 </template>
 
 <script>
-import { ref } from "vue";
-import { sharedProps, styleProps } from "./shared-props"
+import { ref, reactive } from "vue";
+import componentDocumentation from "./components-documentation/vList.json"
 
 export default {
   setup(props) {
-    let reference = ref([
-      {
-        prop: "width",
-        type: ["String"],
-        default: "undefined",
-        description: "Component width",
-      },
-      {
-        prop: "tag",
-        type: ["String"],
-        default: "'div'",
-        description: "Defines tag to use in list item child component (for example 'div', 'a' or 'button')",
-      },
-      ...styleProps(),
-      ...sharedProps(),
-    ]);
-
-    let styles = ref([
-      {
-        prop: "style-list",
-        description: "Main list element",
-      },
-      {
-        prop: "style-item",
-        description: "List item style",
-      },
-    ]);
-
-    let slots = ref([
-      {
-        slot: "default",
-        description: "Slot for v-list-item components",
-      },
-    ]);
+    let reference = reactive(componentDocumentation)
 
     let components = ref([
       {
@@ -73,8 +37,6 @@ export default {
 
     return {
       reference,
-      styles,
-      slots,
       components,
     };
   },

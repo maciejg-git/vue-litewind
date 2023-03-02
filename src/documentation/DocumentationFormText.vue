@@ -10,79 +10,23 @@
 
   <section>
     <h4>Reference</h4>
-    <table-reference :items="reference" />
-
-    <h6>Styling props</h6>
-    <table-reference-basic :items="styles" />
+    <table-reference :items="reference.props" />
 
     <h6>Slots</h6>
-    <table-reference-basic :items="slots" reference="slot" />
+    <table-reference-basic :items="reference.slots" reference="slot" />
   </section>
 </template>
 
 <script>
-import { ref } from "vue";
-import { styleProps } from "./shared-props"
+import { ref, reactive } from "vue";
+import componentDocumentation from "./components-documentation/vFormText.json"
 
 export default {
   setup() {
-    let reference = ref([
-      {
-        prop: "state",
-        type: ["String"],
-        default: "empty string",
-        description:
-          "Current state of input",
-      },
-      {
-        prop: "inline",
-        type: ["Boolean"],
-        default: "false",
-        description: "Inline-flex version of the form text. Default is flex.",
-      },
-      {
-        prop: "messages",
-        type: ["Object"],
-        default: "{}",
-        description:
-          "Object with messages to display depending on current state.",
-      },
-      {
-        prop: "single-line-message",
-        type: ["Object"],
-        default: "{}",
-        description:
-          "Limits the number of displayed errors to one at time",
-      },
-      {
-        prop: "transition",
-        type: ["String"],
-        default: "'fade-scale'",
-        description:
-          "Transition when showing message. Valid values are 'fade-scale' or `empty string`",
-      },
-      ...styleProps(),
-    ]);
-
-    let styles = ref([
-      {
-        prop: "style-form-text",
-        description: "Text element",
-      },
-    ]);
-
-    let slots = ref([
-      {
-        slot: "message",
-        description:
-          "Slot for message",
-      },
-    ]);
-
+    let reference = reactive(componentDocumentation)
+    
     return {
       reference,
-      styles,
-      slots,
     };
   },
 };

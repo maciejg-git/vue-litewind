@@ -3,16 +3,13 @@
 
   <section>
     <h4>Reference</h4>
-    <table-reference :items="reference" />
-
-    <h6>Styling props</h6>
-    <table-reference-basic :items="styles" />
+    <table-reference :items="reference.props" />
 
     <h6>Events</h6>
-    <table-reference-basic :items="events" reference="event" />
+    <table-reference-basic :items="reference.events" reference="event" />
 
     <h6>Slots</h6>
-    <table-reference-basic :items="slots" reference="slot" />
+    <table-reference-basic :items="reference.slots" reference="slot" />
   </section>
 
   <v-divider></v-divider>
@@ -75,202 +72,15 @@
 </template>
 
 <script>
-import { ref } from "vue";
-import { sharedProps, styleProps } from "./shared-props"
+import { ref, reactive } from "vue";
+import componentDocumentation from "./components-documentation/vModal.json"
 
 export default {
   setup() {
-    let reference = ref([
-      {
-        prop: "v-model",
-        type: ["Boolean"],
-        default: "false",
-        description: "Set v-model to true to show modal or false to hide it. Model is optional if dropdown is activated from v-trigger component",
-      },
-      {
-        prop: "title",
-        type: ["String"],
-        default: "false",
-        description: "Title displayed in modal header",
-      },
-      {
-        prop: "no-primary-button",
-        type: ["Boolean"],
-        default: "false",
-        description: "Disables primary (OK) button",
-      },
-      {
-        prop: "no-secondary-button",
-        type: ["Boolean"],
-        default: "false",
-        description: "Disables secondary (Cancel) button",
-      },
-      {
-        prop: "primary-button",
-        type: ["Object"],
-        default: "{ styleButton: 'primary' }",
-        description: "Attributes of primary v-button component. See documentation for valid values",
-      },
-      {
-        prop: "secondary-button",
-        type: ["Object"],
-        default: "{ styleButton: 'secondary' }",
-        description: "Attributes of secondary v-button component. See documentation for valid values",
-      },
-      {
-        prop: "primary-button-label",
-        type: ["String"],
-        default: "'OK'",
-        description: "Label of primary button",
-      },
-      {
-        prop: "secondary-button-label",
-        type: ["String"],
-        default: "'Cancel'",
-        description: "Label of secondary button",
-      },
-      {
-        prop: "primary-button-close",
-        type: ["Boolean"],
-        default: "false",
-        description:
-          "If true clicking primary button emits @input:secondaryButtonClick event and closes modal. If false modal is not closed after emitting event",
-      },
-      {
-        prop: "secondary-button-close",
-        type: ["Boolean"],
-        default: "false",
-        description:
-          "If true clicking primary button emits @input:primaryButtonClick event and closes modal. If false modal is not closed after emitting event",
-      },
-      {
-        prop: "justify-buttons",
-        type: ["String"],
-        default: "false",
-        description:
-          "Use this prop to place buttons in footer. Valid values are: 'start', 'end', 'center', 'between', 'around', 'evenly'",
-      },
-      {
-        prop: "no-close-button",
-        type: ["Boolean"],
-        default: "false",
-        description: "Disables 'X' button in modal header",
-      },
-      {
-        prop: "static-backdrop",
-        type: ["Boolean"],
-        default: "false",
-        description:
-          "If true modal dialog cannot be closed by clicking outside of it",
-      },
-      {
-        prop: "no-header",
-        type: ["Boolean"],
-        default: "false",
-        description:
-          "Do not render header if `true`",
-      },
-      {
-        prop: "no-footer",
-        type: ["Boolean"],
-        default: "false",
-        description:
-          "Do not render footer if `true`",
-      },
-      {
-        prop: "position",
-        type: ["String"],
-        default: "'top'",
-        description: "Modal position. Valid values are: 'top', 'center' or 'bottom'",
-      },
-      {
-        prop: "size",
-        type: ["String"],
-        default: "'md'",
-        description: "Modal size. Valid values are: 'sm', 'md', 'lg', 'xl' or 'fit' ",
-      },
-      {
-        prop: "close-button",
-        type: ["String"],
-        default: "{}",
-        description: "Attributes of v-close-button component. See documentation for valid values",
-      },
-      {
-        prop: "transition",
-        type: ["String"],
-        default: "fade-slide-m",
-        description:
-          "Sets animation effect when showing or hiding modal. Valid values are: 'fade', 'fade-slide', 'fade-scale' or `empty string` to disable animations. Animation speed can be set in `--modal-transition-duration` css variable.",
-      },
-      ...styleProps(),
-      ...sharedProps(),
-    ]);
-
-    let styles = ref([
-      {
-        prop: "style-modal",
-        description: "Style of modal window",
-      },
-      {
-        prop: "style-header",
-        description: "Style of modal header",
-      },
-      {
-        prop: "style-footer",
-        description: "Style of modal footer",
-      },
-      {
-        prop: "style-content",
-        description: "Content part of modal window",
-      },
-      {
-        prop: "style-backdrop",
-        description:
-          "Style of backdrop. Useful mainly for setting tint and opactity for modal background",
-      },
-    ]);
-
-    let events = ref([
-      {
-        event: "input:primary-button-click",
-        description: "Emmited after clicking primary button",
-      },
-      {
-        event: "input:secondary-button-click",
-        description: "Emmited after clicking secondary button",
-      },
-      {
-        event: "input:static-backdrop-click",
-        description: "Emmited after clicking backdrop if `static-backdrop` prop is `true`",
-      },
-    ]);
-
-    let slots = ref([
-      {
-        slot: "default",
-        description: "Modal content",
-      },
-      {
-        slot: "header",
-        description:
-          "Modal header content",
-      },
-      {
-        slot: "footer",
-        description:
-          "Modal footer content",
-      },
-      {
-        slot: "modal",
-        description: "Swaps the entire default content of v-modal. Slot props: `close()`",
-      },
-    ]);
-
+    let reference = reactive(componentDocumentation)
+    
     return {
       reference,
-      styles,
-      events,
-      slots,
     };
   },
 };

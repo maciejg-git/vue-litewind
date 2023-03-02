@@ -3,16 +3,13 @@
 
   <section>
     <h5>Reference</h5>
-    <table-reference :items="reference" />
-
-    <h6>Styling props</h6>
-    <table-reference-basic :items="styles" />
+    <table-reference :items="reference.props" />
 
     <h6>Events</h6>
-    <table-reference-basic :items="events" reference="event" />
+    <table-reference-basic :items="reference.events" reference="event" />
 
     <h6>Slots</h6>
-    <table-reference-basic :items="slots" reference="slot" />
+    <table-reference-basic :items="reference.slots" reference="slot" />
   </section>
 
   <section>
@@ -63,166 +60,15 @@
 </template>
 
 <script>
-import { ref } from "vue";
-import { sharedProps, styleProps } from "./shared-props"
+import { ref, reactive } from "vue";
+import componentDocumentation from "./components-documentation/vDatePicker.json"
 
 export default {
   setup() {
-    let reference = ref([
-      {
-        prop: "v-model",
-        type: ["Array", "String"],
-        description:
-          "v-model is used to return date after selection. Date is in `YYYY-MM-DD` format",
-      },
-      {
-        prop: "range",
-        type: ["Boolean"],
-        default: "false",
-        description: "Allows selection of date ranges. Changing this prop resets current selection",
-      },
-      {
-        prop: "locale",
-        type: ["String"],
-        default: "'en-GB'",
-        description:
-          "This prop is only used to display names of months and weekdays and to format date emitted by input:formatted event. It does not modify format of v-model date which is always `YYYY-MM-DD`",
-      },
-      {
-        prop: "format",
-        type: ["Object"],
-        default: "",
-        description:
-          `Format of date emmited by @input:formatted event. Read about how to use this object <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat" class="link">here</a> (options paremeter)`,
-      },
-      {
-        prop: "monday-first-weekday",
-        type: ["Boolean"],
-        default: "false",
-        description: "Week starts on Monday",
-      },
-      // {
-      //   prop: "disabled",
-      //   type: ["Array"],
-      //   default: "undefined",
-      //   description: "Disables selection of days",
-      // },
-      {
-        prop: "width",
-        type: ["String"],
-        default: "undefined",
-        description: "Component width",
-      },
-      {
-        prop: "adjacent-months",
-        type: ["Boolean"],
-        default: "false",
-        description:
-          "Display days from previous and next month. Those days are unselectable",
-      },
-      {
-        prop: "range-hover-selection",
-        type: ["Boolean"],
-        default: "false",
-        description:
-          "Enables highlighing days in range when hovering over days during selection",
-      },
-      {
-        prop: "buttons",
-        type: ["Boolean"],
-        default: "false",
-        description:
-          "Adds 'accept' and 'cancel' buttons. If this prop is false then v-model is updated immedietely after clicking on the day. If it is true then v-model is updated after clicking 'accept' button",
-      },
-      {
-        prop: "secondary-button-label",
-        type: ["String"],
-        default: "'OK'",
-        description: "Secondary (cancel) button label",
-      },
-      {
-        prop: "primary-button-label",
-        type: ["String"],
-        default: "'Cancel'",
-        description: "Primary (accept) button label",
-      },
-      {
-        prop: "secondary-button",
-        type: ["Object"],
-        default: "{ styleButton: 'secondary small' }",
-        description: "Attributes of secondary v-button",
-      },
-      {
-        prop: "primary-button",
-        type: ["Object"],
-        default: "{ styleButton: 'primary small' }",
-        description: "Attributes of primary v-button",
-      },
-      {
-        prop: "transition",
-        type: ["String"],
-        default: "fade",
-        description:
-          "Transition when switching months or years. Valid values are 'fade', 'slide' or `empty string` for no transition",
-      },
-      ...styleProps(),
-      ...sharedProps(),
-    ]);
-
-    let styles = ref([
-      {
-        prop: "style-datepicker",
-        description: "Main component wrapper",
-      },
-      {
-        prop: "style-button",
-        description: "Next and previous month/year buttons",
-      },
-      {
-        prop: "style-day",
-        description: "Single day",
-      },
-      {
-        prop: "style-adjacent-month-day",
-        description:
-          "Days from adjacent months",
-      },
-      {
-        prop: "style-footer",
-        description: "Footer with today date",
-      },
-    ]);
-
-    let events = ref([
-      {
-        event: "update:formatted",
-        description:
-          "Emmited after selecting date along with @update:modelValue. Date is formatted based on `locale` and `format` prop",
-      },
-      {
-        event: "state:done",
-        description:
-          "Emmited after selecting date (and clicking primary button if `buttons` props is set to `true`)",
-      },
-      {
-        event: "input:cancel",
-        description: "Emmited after clicking secondary button",
-      },
-    ]);
-
-    let slots = ref([
-      {
-        slot: "day",
-        description:
-          "Slot for customizing datepickers day",
-      },
-    ]);
-
+    let reference = reactive(componentDocumentation)
+    
     return {
       reference,
-      styles,
-      events,
-      slots,
     };
   },
 };

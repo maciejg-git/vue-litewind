@@ -240,6 +240,7 @@ const emit = defineEmits([
   "update:modelValue",
   "update:formatted",
   "state:done",
+  "input:cancel",
 ]);
 
 let { classes, states, variants } = useStyles("datepicker", props, {

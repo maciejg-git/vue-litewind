@@ -122,9 +122,9 @@ const props = defineProps({
 
 const emit = defineEmits([
   "update:modelValue",
-  "update:status",
-  "update:messages",
-  "update:state",
+  "validation:status",
+  "validation:messages",
+  "validation:state",
 ]);
 
 let attrs = useAttrs();
@@ -161,9 +161,9 @@ let localModel = useLocalModel(props, emit);
 // validate
 
 let emitValidationStatus = (status, state, messages) => {
-  emit("update:status", status.value);
-  emit("update:state", state.value);
-  emit("update:messages", messages.value);
+  emit("validation:status", status.value);
+  emit("validation:state", state.value);
+  emit("validation:messages", messages.value);
 };
 
 let resetInput = () => {

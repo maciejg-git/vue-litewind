@@ -3,10 +3,7 @@
 
   <section>
     <h4>Reference</h4>
-    <table-reference :items="reference" />
-
-    <h6>Styling props</h6>
-    <table-reference-basic :items="styles" />
+    <table-reference :items="reference.props" />
   </section>
 
   <section>
@@ -25,42 +22,12 @@
 </template>
 
 <script>
-import { ref } from "vue";
-import { sharedProps, styleProps } from "./shared-props"
+import { ref, reactive } from "vue";
+import componentDocumentation from "./components-documentation/vBreadcrumb.json"
 
 export default {
   setup() {
-    let reference = ref([
-      {
-        prop: "path",
-        type: ["Array"],
-        default: "undefined",
-        description: "Path of links to render",
-      },
-      {
-        prop: "separator",
-        type: ["String"],
-        default: "'/'",
-        description: "Character or string that seperates links",
-      },
-      ...styleProps(),
-      ...sharedProps(),
-    ]);
-
-    let styles = ref([
-      {
-        prop: "style-breadcrumb",
-        description: "Breadcrumb link",
-      },
-      {
-        prop: "style-separator",
-        description: "Breadcrumb separator",
-      },
-      {
-        prop: "style-active",
-        description: "Active link in path",
-      },
-    ]);
+    let reference = reactive(componentDocumentation)
 
     let examplePath = 
 `let path = [
@@ -79,7 +46,6 @@ export default {
 
     return {
       reference,
-      styles,
       examplePath,
     };
   },

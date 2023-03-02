@@ -15,41 +15,26 @@
 
   <section>
     <h4>Reference</h4>
-    <table-reference :items="reference" />
+    <table-reference :items="reference.props" />
 
     <h6>Slots</h6>
     <table-reference-basic
-      :items="slots"
+      :items="reference.slots"
       reference="slot"
     />
   </section>
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, reactive } from "vue";
+import componentDocumentation from "./components-documentation/vTrigger.json"
 
 export default {
   setup(props) {
-    let reference = ref([
-      {
-        prop: "for",
-        type: ["String"],
-        default: "undefined",
-        description: "Id of the component for that trigger",
-      },
-    ]);
-
-    let slots = ref([
-      {
-        slot: "default",
-        description:
-          "Slot for element that triggers events. Slot props: `reference`, `onTrigger` and `isOpen`",
-      },
-    ]);
+    let reference = reactive(componentDocumentation)
 
     return {
       reference,
-      slots,
     };
   },
 };

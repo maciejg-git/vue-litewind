@@ -3,13 +3,10 @@
 
   <section>
     <h4>Reference</h4>
-    <table-reference :items="reference" />
-
-    <h6>Styling props</h6>
-    <table-reference-basic :items="styles" />
+    <table-reference :items="reference.props" />
 
     <h6>Slots</h6>
-    <table-reference-basic :items="slots" reference="slot" />
+    <table-reference-basic :items="reference.slots" reference="slot" />
 
     <h6>Components</h6>
     <table-reference-basic :items="components" reference="component" />
@@ -75,57 +72,12 @@
 </template>
 
 <script>
-import { ref } from "vue";
-import { sharedProps, popperProps, styleProps } from "./shared-props"
+import { ref, reactive } from "vue";
+import componentDocumentation from "./components-documentation/vPopover.json"
 
 export default {
   setup() {
-    let reference = ref([
-      {
-        prop: "trigger",
-        type: ["String"],
-        default: "click",
-        description:
-          "How to trigger dropdown. Valid triggers are 'click', 'focus' and 'hover'",
-      },
-      {
-        prop: "title",
-        type: ["String"],
-        default: "undefined",
-        description: "Title displayed in popover header",
-      },
-      {
-        prop: "transition",
-        type: ["String"],
-        default: "fade-m",
-        description: "Sets animation effect when showing or hiding popover. Valid values are: 'fade' or `empty string` to disable animations.",
-      },
-      ...popperProps,
-      ...styleProps(),
-      ...sharedProps(),
-    ]);
-
-    let styles = ref([
-      {
-        prop: "style-popover",
-        description: "Main popover element",
-      },
-      {
-        prop: "style-content",
-        description: "Content of popover",
-      },
-    ]);
-
-    let slots = ref([
-      {
-        slot: "activator",
-        description: "Slot for element that activates dropdown. Dropdown is positioned relative to element in this slot. Slot props: `reference`, `onTrigger` and `isOpen`",
-      },
-      {
-        slot: "default",
-        description: "Slot for popover content",
-      },
-    ]);
+    let reference = reactive(componentDocumentation)
 
     let components = ref([
       {
@@ -143,8 +95,6 @@ export default {
 
     return {
       reference,
-      styles,
-      slots,
       components,
       functions,
     };

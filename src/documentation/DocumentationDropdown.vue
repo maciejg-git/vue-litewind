@@ -3,16 +3,13 @@
 
   <section>
     <h4>Reference</h4>
-    <table-reference :items="reference" />
-
-    <h6>Styling props</h6>
-    <table-reference-basic :items="styles" />
+    <table-reference :items="reference.props" />
 
     <h6>Events</h6>
-    <table-reference-basic :items="events" reference="event" />
+    <table-reference-basic :items="reference.events" reference="event" />
 
     <h6>Slots</h6>
-    <table-reference-basic :items="slots" reference="slot" />
+    <table-reference-basic :items="reference.slots" reference="slot" />
 
     <h6>Components</h6>
     <table-reference-basic :items="components" reference="component">
@@ -122,79 +119,12 @@
 </template>
 
 <script>
-import { ref } from "vue";
-import { sharedProps, popperProps, styleProps } from "./shared-props";
+import { ref, reactive } from "vue";
+import componentDocumentation from "./components-documentation/vDropdown.json"
 
 export default {
   setup(props) {
-    let reference = ref([
-      {
-        prop: "modelValue",
-        type: ["Boolean"],
-        default: "false",
-        description:
-          "Set it to `true`/`false` to programatically show or hide dropdown content. Model is optional",
-      },
-      {
-        prop: "trigger",
-        type: ["String"],
-        default: "click",
-        description:
-          "How to trigger dropdown. Valid triggers are 'click', 'focus' and 'hover'",
-      },
-      {
-        prop: "auto-close-menu",
-        type: ["Boolean"],
-        default: "false",
-        description:
-          "If `true` clicking any dropdown menu item automatically closes dropdown",
-      },
-      {
-        prop: "transition",
-        type: ["String"],
-        default: "fade-m",
-        description:
-          "Sets animation effect when showing or hiding dropdown. Valid values are: 'fade' or `empty string` to disable animations. Animation speed can be set in `--dropdown-transition-duration` css variable.",
-      },
-      ...popperProps,
-      ...styleProps(),
-      ...sharedProps(),
-    ]);
-
-    let styles = ref([
-      {
-        prop: "style-menu-item",
-        description: "Style of menu item",
-      },
-      {
-        prop: "style-menu-item-header",
-        description: "Style of menu header",
-      },
-    ]);
-
-    let events = ref([
-      {
-        event: "state:opened",
-        description: "Emitted after dropdown is opened",
-      },
-      {
-        event: "state:closed",
-        description: "Emitted after dropdown is closed",
-      },
-    ]);
-
-    let slots = ref([
-      {
-        slot: "reference",
-        description:
-          "Slot for element that activates dropdown. Dropdown is positioned relative to element that has `ref` set to `reference`. Slot props: `reference`, `onTrigger` and `isOpen`",
-      },
-      {
-        slot: "default",
-        description:
-          "Slot for dropdown content. Slot props: `hide()`",
-      },
-    ]);
+    let reference = reactive(componentDocumentation)
 
     let components = ref([
       {
@@ -246,9 +176,6 @@ export default {
 
     return {
       reference,
-      styles,
-      events,
-      slots,
       functions,
       components,
       referenceMenuItem,

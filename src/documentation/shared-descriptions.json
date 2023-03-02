@@ -1,0 +1,26 @@
+{
+  "props": {
+    "popper": {
+      "placement": "Initial placement of dropdown content. See valid values in Popperjs documentation",
+      "offsetX": "Offset of dropdown relative to reference element. See how to use this offset here",
+      "offsetY": "Offset of dropdown relative to reference element. See how to use this offset here",
+      "noFlip": "Allows fliping dropdown to opposite placement if outside of current view"
+    },
+    "style": {
+      "base": "Base name of the component for styling",
+      "variant": "Variant of the component styles"
+    },
+    "form": {
+      "rules": "Rules for validation. See Form Validation for examples of rules",
+      "validateOn": "Valid values are 'blur' or 'immediate'. See Form Validation for explanation and examples",
+      "validateMode": "Valid values are 'silent' or 'eager'. See Form Validation for explanation and examples",
+      "state": "Overrides state of input validity. Supported values are 'valid', 'invalid', `empty string` for default state or `null` for component controlled state"
+    }
+  },
+  "events": {
+    "validation:state": "Emmited after input validation. Event data contains validation state",
+    "validation:status": "Emmited after input validation. Event data contain `object` with validation result details",
+    "validation:messages": "Emmited after input validation. Event data contains validation messages or errors",
+    "update:modelValue": "Updates v-model of component"
+  }
+}

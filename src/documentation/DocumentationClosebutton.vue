@@ -3,10 +3,7 @@
 
   <section>
     <h4>Reference</h4>
-    <table-reference :items="reference" />
-
-    <h6>Styling props</h6>
-    <table-reference-basic :items="styles" />
+    <table-reference :items="reference.props" />
   </section>
 
   <section>
@@ -22,26 +19,12 @@
 </template>
 
 <script>
-import { ref } from "vue";
-import { sharedProps, styleProps } from "./shared-props"
+import { ref, reactive } from "vue";
+import componentDocumentation from "./components-documentation/vCloseButton.json"
 
 export default {
   setup(props) {
-    let reference = ref([
-      ...styleProps(),
-      ...sharedProps(),
-    ]);
-
-    let styles = ref([
-      {
-        prop: "style-wrapper",
-        description: "Wrapper button element",
-      },
-      {
-        prop: "style-close-button",
-        description: "Icon element",
-      },
-    ]);
+    let reference = reactive(componentDocumentation)
 
     let code = `<template>
   <v-close-button />
@@ -50,7 +33,6 @@ export default {
 
     return {
       reference,
-      styles,
       code,
     };
   },

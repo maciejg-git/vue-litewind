@@ -59,7 +59,7 @@ const props = defineProps({
   },
   itemsPerPage: {
     type: Number,
-    default: undefined,
+    default: 0,
   },
   maxPages: {
     type: Number,
