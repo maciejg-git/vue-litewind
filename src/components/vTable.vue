@@ -317,7 +317,9 @@ let getUserDefinition = () => {
   return props.definition.every((i) => i.key) && props.definition;
 };
 
-// generate local definition
+// get user definition or generated definition and fill missing properties
+// with defaults. This definition is used by component to display
+// data, filter, sort etc
 let definition = computed(() => {
   let d = getUserDefinition() || generateDefinitionFromData();
 

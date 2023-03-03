@@ -8,6 +8,7 @@
       href=""
       role="button"
       aria-label="Previous page"
+      :aria-disabled="isOnFirstPage()"
       :class="getPrevButtonClass()"
       @click.prevent="handleClickPrev"
     >
@@ -29,6 +30,7 @@
       href=""
       role="button"
       aria-label="Next page"
+      :aria-disabled="isOnLastPage()"
       :class="getNextButtonClass()"
       @click.prevent="handleClickNext"
     >
@@ -124,20 +126,28 @@ let getPageClass = (page) => {
 let getPrevButtonClass = () => {
   return [
     classes.prev.value,
-    currentPage.value == 1 ? "pointer-events-none opacity-50" : "",
+    isOnFirstPage() ? "pointer-events-none opacity-50" : "",
   ];
 };
 
 let getNextButtonClass = () => {
   return [
     classes.next.value,
-    currentPage.value == pagesCount.value
+    isOnLastPage()
       ? "pointer-events-none opacity-50"
       : "",
   ];
 };
 
 let currentPage = ref(1);
+
+let isOnFirstPage = () => {
+  return currentPage.value === 1
+}
+
+let isOnLastPage = () => {
+  return currentPage.value === pagesCount.value
+}
 
 // calculate total number of pages
 let pagesCount = computed(() => {

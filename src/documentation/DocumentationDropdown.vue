@@ -14,8 +14,7 @@
     <h6>Components</h6>
     <table-reference-basic :items="components" reference="component">
       <template #description-v-dropdown-menu-item>
-        Single menu item
-        <props-list :items="referenceMenuItem"></props-list>
+        <props-list :items="referenceMenuItem.props" reference="prop"></props-list>
       </template>
     </table-reference-basic>
 
@@ -121,6 +120,7 @@
 <script>
 import { ref, reactive } from "vue";
 import componentDocumentation from "./components-documentation/vDropdown.json"
+import menuItemDocumentation from "./components-documentation/vDropdownMenuItem.json"
 
 export default {
   setup(props) {
@@ -150,29 +150,7 @@ export default {
       },
     ]);
 
-    let referenceMenuItem = ref([
-      {
-        prop: "tag",
-        type: ["String"],
-        default: "undefined",
-        description:
-          "Tag used to render menu item",
-      },
-      {
-        prop: "disabled",
-        type: ["Boolean"],
-        default: "false",
-        description:
-          "Renders disabled menu item",
-      },
-      {
-        prop: "active",
-        type: ["Boolean"],
-        default: "false",
-        description:
-          "Renders active menu item",
-      },
-    ]);
+    let referenceMenuItem = reactive(menuItemDocumentation)
 
     return {
       reference,

@@ -73,15 +73,17 @@ let verifyDocs = ({ name, props, events, slots, functions, components }) => {
 };
 
 while (references.length) {
-  let comp = await readFile(referencePath + references.shift(), "utf8");
-  let desc = await readFile(descriptionPath + descriptions.shift(), "utf8");
+  let r = await readFile(referencePath + references.shift(), "utf8");
+  let d = await readFile(descriptionPath + descriptions.shift(), "utf8");
 
-  let reference = JSON.parse(comp);
-  let description = JSON.parse(desc);
+  let reference = JSON.parse(r);
+  let description = JSON.parse(d);
 
   // name
 
   let name = reference.name;
+
+  let desc = description.description || ""
 
   // props
 
@@ -154,7 +156,7 @@ while (references.length) {
   verifyDocs({ name, props, events, slots, functions, components });
 
   let file = JSON.stringify(
-    { name, props, events, slots, functions, components },
+    { name, description: desc, props, events, slots, functions, components },
     null,
     2
   );

@@ -15,12 +15,14 @@
       <div
         v-if="isPopperVisible"
         ref="popper"
+        @mouseenter="preventHiding"
+        @mouseleave="allowHiding"
+        class="absolute z-50"
       >
       <!-- @slot default -->
         <slot
           name="default"
           :hide="hide"
-          v-bind="contextData"
         ></slot>
       </div>
     </transition>
@@ -35,13 +37,13 @@ export default {
 
 <script setup>
 import {
-  ref,
   toRef,
   toRefs,
   onBeforeUnmount,
   provide,
   useAttrs,
   useSlots,
+  nextTick,
 } from "vue";
 import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
@@ -96,22 +98,46 @@ const {
   hidePopper,
   destroyPopperInstance,
   lockPopper,
-  updateVirtualElement,
 } = usePopper({ placement, offsetX, offsetY, noFlip });
 
 let { onClickOutside } = useClickOutside();
 let stopClickOutside = null;
 
+let hideTimeout = null;
+
+let preventHiding = () => {
+  if (props.trigger === "hover") {
+    clearTimeout(hideTimeout);
+  }
+};
+
+let allowHiding = () => {
+  if (props.trigger === "hover") {
+    hideTimeout = scheduleHide();
+  }
+};
+
 let show = () => {
   if (isPopperVisible.value) return;
+  if (props.trigger === "hover") clearTimeout(hideTimeout);
   showPopper();
   if (props.trigger === "click") {
-    stopClickOutside = onClickOutside(popper, hide, reference);
+    nextTick(() => {
+      stopClickOutside = onClickOutside(popper, hide, reference);
+    });
   }
+};
+
+let scheduleHide = () => {
+  return setTimeout(hidePopper, 100);
 };
 
 let hide = () => {
   if (!isPopperVisible.value) return;
+  if (props.trigger === "hover") {
+    hideTimeout = scheduleHide();
+    return;
+  }
   hidePopper();
   if (stopClickOutside) stopClickOutside = stopClickOutside();
 };
@@ -130,25 +156,10 @@ if (id && !slots.reference) {
   onBeforeUnmount(() => removeListener(id));
 }
 
-// context popover
-
-let contextData = ref(null);
-
-let showContextPopover = (ev, data) => {
-  if (slots.reference) return;
-  updateVirtualElement(ev);
-  show();
-  contextData.value = data;
-};
-
 provide("control-popover", {
   classes,
   title: toRef(props, "title"),
   hide,
-});
-
-defineExpose({
-  showContextPopover,
 });
 </script>
 

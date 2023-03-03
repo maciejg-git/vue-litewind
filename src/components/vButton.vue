@@ -3,12 +3,9 @@
     :is="tag"
     :href="tagHref"
     type="button"
-    :class="[
-      classes.button.value,
-      disabled ? 'disabled' : '',
-    ]"
+    :class="[classes.button.value, disabled ? 'disabled' : '']"
   >
-  <!-- @slot default -->
+    <!-- @slot default -->
     <slot name="default"></slot>
   </component>
 </template>

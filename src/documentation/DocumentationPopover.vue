@@ -41,13 +41,6 @@
         </header>
         Open popover is by default appended to the body element.
       </li>
-      <li>
-        <header class="font-semibold text-lg mb-2">
-          <span>#</span>
-          Context popovers
-        </header>
-        You can set up context popover with <code class="code-text">v-popover</code>. See example below.
-      </li>
     </ul>
   </section>
 

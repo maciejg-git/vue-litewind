@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-import { ref, provide, nextTick } from "vue";
+import { ref, provide } from "vue";
 
 let inputs = [];
 

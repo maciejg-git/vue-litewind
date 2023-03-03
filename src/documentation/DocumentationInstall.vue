@@ -20,13 +20,13 @@
       Configure Tailwind: 
       <ul class="list-disc list-inside ml-10 mt-4">
         <li>
-          add vue-wind to content so tailwind can generate classes used by components internally, 
+          add vue-wind to <code class="code-text">content</code> so tailwind can generate classes used by components internally, 
         </li>
         <li>
-          add dark mode option, 
+          add dark mode <code class="code-text">class</code> option, 
         </li>
         <li>
-          extend color definitions:
+          extend <code class="code-text">colors</code> definitions. You can chose any colors for primary, secondary etc:
         </li>
       </ul>
     </p>
@@ -38,7 +38,10 @@ const colors = require('tailwindcss/colors')
 
 module.exports = {
   content: [
-    'node_modules/vue-wind'
+    'node_modules/vue-wind',
+    './src/**/*.html',
+    './src/**/*.vue',
+    './src/**/*.js',
   ],
   darkMode: 'class',
   theme: {
@@ -82,7 +85,7 @@ import "vue-wind/dist/style.css" `}}
     </v-code>
 
     <p>
-      Register selected or all components in application entry file (for example main.js)
+      You can register single or all components in application entry file (for example main.js)
     </p>
 
     <v-tabs base="material">
@@ -123,18 +126,12 @@ app.use(componentPlugin, {
     </v-tabs>
 
     <p>
-      <span class="font-bold">Optional</span>: you can configure components globally by providing options in second argument of app.use:
-    </p>
-    <p>
-    <ul>
-      <li>
-        <code class="code-text">componentProps</code> sets default values for props of components. The value can be function that takes <code class="code-text">base</code> and <code class="code-text">name</code> arguments (<code class="code-text">base</code> and <code class="code-text">name</code> props of component) and should return default value for the prop.
-      </li>
-    </ul>
+      <span class="font-bold">Optional</span>: while registering components (single or all) you can set default values for props globally in second argument of <code class="code-text">app.use</code>:
+        <code class="code-text">componentProps</code> object. The value for prop can also be function that takes <code class="code-text">base</code> and <code class="code-text">name</code> arguments (<code class="code-text">base</code> and <code class="code-text">name</code> props of component) and should return default value for the prop.
     </p>
     <p>
     <v-alert icon="warn" style-alert="shadowed marked outline warn" class="mx-6">
-      Note that you can provide default value for some props only.
+      Note that you can set default value for some props only.
     </v-alert>
     </p>
 

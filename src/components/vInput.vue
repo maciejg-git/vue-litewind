@@ -109,7 +109,7 @@
     data-testid="error-messages"
   >
     <template
-      v-for="(name, slot) of $slots"
+      v-for="(_, slot) of $slots"
       #[slot]="slotProps"
     >
       <slot

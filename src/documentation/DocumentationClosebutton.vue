@@ -28,7 +28,7 @@ export default {
 
     let code = `<template>
   <v-close-button />
-  <v-close-button base="round" />
+  <v-close-button base="round-close-button" />
 </template>`
 
     return {
