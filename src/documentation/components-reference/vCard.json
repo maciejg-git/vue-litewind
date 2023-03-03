@@ -1,6 +1,12 @@
 {
   "name": "vCard",
   "props": {
+    "name": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
     "base": {
       "type": [
         "String"

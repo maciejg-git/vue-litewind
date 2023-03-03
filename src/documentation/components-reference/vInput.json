@@ -1,6 +1,12 @@
 {
   "name": "vInput",
   "props": {
+    "name": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
     "modelValue": {
       "type": [
         "String",

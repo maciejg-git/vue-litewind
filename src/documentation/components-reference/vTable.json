@@ -1,6 +1,12 @@
 {
   "name": "vTable",
   "props": {
+    "name": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
     "base": {
       "type": [
         "String"

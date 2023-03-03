@@ -1,6 +1,12 @@
 {
   "name": "vCheckbox",
   "props": {
+    "name": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
     "base": {
       "type": [
         "String"

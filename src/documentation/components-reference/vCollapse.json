@@ -1,6 +1,12 @@
 {
   "name": "vCollapse",
   "props": {
+    "name": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
     "modelValue": {
       "type": [
         "Boolean"
