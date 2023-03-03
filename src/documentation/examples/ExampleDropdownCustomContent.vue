@@ -9,16 +9,27 @@
         Filterable menu
       </v-button-chevron>
     </template>
-    <v-card width="280px" style-card="menu shadow">
+
+    <v-card
+      width="280px"
+      style-card="menu shadow"
+    >
       <div class="px-4 py-1">
         <v-input
           v-model="filter"
-          class="text-sm"
           placeholder="Filter"
           base="underlined"
+          :close-button="{
+            styleCloseButton: 'small',
+          }"
+          clearable
         ></v-input>
       </div>
-      <v-dropdown-menu-item v-for="item in menuItems" :key="item" tag="button">
+      <v-dropdown-menu-item
+        v-for="item in menuItems"
+        :key="item"
+        tag="button"
+      >
         {{ item }}
       </v-dropdown-menu-item>
     </v-card>

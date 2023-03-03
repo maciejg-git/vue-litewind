@@ -1,11 +1,14 @@
 <template>
-  <v-card style="width: 320px" class="self-start p-2">
+  <v-card
+    style="width: 320px"
+    class="self-start p-2"
+  >
     <v-date-picker v-model="example.date">
       <template #day="{ day }">
         <div class="relative">
           {{ day }}
           <v-badge
-            v-if="isMarked(day)"
+            v-if="markedDays[day]"
             style-badge="circle-small danger tiny"
             class="absolute top-full right-1/2 transform translate-x-1/2"
           ></v-badge>
@@ -16,7 +19,7 @@
 </template>
 
 <script>
-import { ref, reactive } from "vue";
+import { reactive } from "vue";
 
 export default {
   setup() {
@@ -24,13 +27,13 @@ export default {
       date: "",
     });
 
-    let isMarked = (day) => {
-      return Math.floor(Math.random() * 2);
-    };
+    let markedDays = [...Array(31)].map((i) => {
+      return Math.floor(Math.random() * 2)
+    });
 
     return {
       example,
-      isMarked,
+      markedDays,
     };
   },
 };
