@@ -1,5 +1,6 @@
 {
   "name": "vAlert",
+  "description": "",
   "props": [
     {
       "type": [
@@ -48,6 +49,14 @@
       "default": "empty string",
       "prop": "icon",
       "description": "Alert has few default icons for variants: 'success', 'warn', 'danger', 'info', 'valid', 'invalid'. Icon or default slot can be used for custom icons."
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "name",
+      "description": "Name of the component"
     },
     {
       "type": [

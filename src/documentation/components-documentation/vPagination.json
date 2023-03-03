@@ -1,5 +1,6 @@
 {
   "name": "vPagination",
+  "description": "",
   "props": [
     {
       "type": [
@@ -40,6 +41,14 @@
       "default": "undefined",
       "prop": "max-pages",
       "description": "Maximum number of pages to display. This prop must have value of 3 or more"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "name",
+      "description": "Name of the component"
     },
     {
       "type": [

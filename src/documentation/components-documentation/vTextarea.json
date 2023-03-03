@@ -1,5 +1,6 @@
 {
   "name": "vTextarea",
+  "description": "",
   "props": [
     {
       "type": [
@@ -42,6 +43,14 @@
       "default": "empty string",
       "prop": "label",
       "description": "Label on top of the textarea. This label is for simple forms as position cannot be changed"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "name",
+      "description": "Name of the component"
     },
     {
       "type": [

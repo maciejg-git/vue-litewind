@@ -1,5 +1,6 @@
 {
   "name": "vDropdownContext",
+  "description": "",
   "props": [
     {
       "type": [
@@ -24,6 +25,14 @@
       "default": "\"dropdown\"",
       "prop": "base",
       "description": "Base name of the component for styling"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "name",
+      "description": "Name of the component"
     },
     {
       "type": [

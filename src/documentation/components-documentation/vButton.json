@@ -1,5 +1,6 @@
 {
   "name": "vButton",
+  "description": "",
   "props": [
     {
       "type": [
@@ -24,6 +25,14 @@
       "default": false,
       "prop": "disabled",
       "description": "Displays button in `disabled` state"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "name",
+      "description": "Name of the component"
     },
     {
       "type": [

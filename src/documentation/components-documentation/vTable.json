@@ -1,5 +1,6 @@
 {
   "name": "vTable",
+  "description": "",
   "props": [
     {
       "type": [
@@ -74,6 +75,14 @@
       "default": "\"en-GB\"",
       "prop": "locale",
       "description": "Locale used to compare and sort strings"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "name",
+      "description": "Name of the component"
     },
     {
       "type": [

@@ -1,5 +1,6 @@
 {
   "name": "vSidepanel",
+  "description": "",
   "props": [
     {
       "type": [
@@ -24,6 +25,14 @@
       "default": {},
       "prop": "close-button",
       "description": "Attributes of v-close-button component. See documentation for valid values"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "name",
+      "description": "Name of the component"
     },
     {
       "type": [

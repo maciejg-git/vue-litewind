@@ -1,5 +1,6 @@
 {
   "name": "vCollapse",
+  "description": "",
   "props": [
     {
       "type": [
@@ -8,6 +9,14 @@
       "default": false,
       "prop": "v-model",
       "description": "Setting v-model to true shows collapsible element, false value hides it"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "name",
+      "description": "Name of the component"
     },
     {
       "type": [

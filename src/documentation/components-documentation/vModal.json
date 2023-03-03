@@ -1,5 +1,6 @@
 {
   "name": "vModal",
+  "description": "",
   "props": [
     {
       "type": [
@@ -32,6 +33,14 @@
       "default": "\"end\"",
       "prop": "justify-buttons",
       "description": "Use this prop to place buttons in footer. Valid values are: 'start', 'end', 'center', 'between', 'around', 'evenly'"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "name",
+      "description": "Name of the component"
     },
     {
       "type": [

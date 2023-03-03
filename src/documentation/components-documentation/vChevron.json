@@ -1,5 +1,6 @@
 {
   "name": "vChevron",
+  "description": "",
   "props": [
     {
       "type": [
@@ -32,6 +33,14 @@
       "default": "\"down\"",
       "prop": "initial",
       "description": "Initial direction of chevron/triangle. Valid values are: 'down', 'left' ,'right' and 'up'"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "name",
+      "description": "Name of the component"
     },
     {
       "type": [

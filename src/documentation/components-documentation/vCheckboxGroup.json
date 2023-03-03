@@ -1,5 +1,6 @@
 {
   "name": "vCheckboxGroup",
+  "description": "",
   "props": [
     {
       "type": [

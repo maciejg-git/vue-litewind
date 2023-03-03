@@ -1,5 +1,6 @@
 {
   "name": "vTabs",
+  "description": "",
   "props": [
     {
       "type": [
@@ -24,6 +25,14 @@
       "default": false,
       "prop": "fill",
       "description": "Tabs fill full width of tab bar"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "name",
+      "description": "Name of the component"
     },
     {
       "type": [

@@ -1,5 +1,6 @@
 {
   "name": "vTree",
+  "description": "",
   "props": [
     {
       "type": [
@@ -104,6 +105,14 @@
       "default": [],
       "prop": "items",
       "description": "Array of tree items"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "name",
+      "description": "Name of the component"
     },
     {
       "type": [

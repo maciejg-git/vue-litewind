@@ -1,5 +1,6 @@
 {
   "name": "vDatePicker",
+  "description": "",
   "props": [
     {
       "type": [
@@ -70,6 +71,14 @@
       "default": false,
       "prop": "monday-first-weekday",
       "description": "Week starts on Monday"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "name",
+      "description": "Name of the component"
     },
     {
       "type": [

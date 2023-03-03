@@ -1,5 +1,6 @@
 {
   "name": "vRadio",
+  "description": "",
   "props": [
     {
       "type": [
@@ -26,6 +27,14 @@
       "default": "empty string",
       "prop": "label",
       "description": "Radio label"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "name",
+      "description": "Name of the component"
     },
     {
       "type": [

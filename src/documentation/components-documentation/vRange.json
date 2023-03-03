@@ -1,5 +1,6 @@
 {
   "name": "vRange",
+  "description": "",
   "props": [
     {
       "type": [
@@ -17,6 +18,14 @@
       "default": "\"range\"",
       "prop": "base",
       "description": "Base name of the component for styling"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "name",
+      "description": "Name of the component"
     },
     {
       "type": [

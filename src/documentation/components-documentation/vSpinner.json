@@ -1,5 +1,6 @@
 {
   "name": "vSpinner",
+  "description": "",
   "props": [
     {
       "type": [
@@ -17,6 +18,14 @@
       "default": "undefined",
       "prop": "icon",
       "description": "Icon to use instead of border or SVG spinner"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "name",
+      "description": "Name of the component"
     },
     {
       "type": [

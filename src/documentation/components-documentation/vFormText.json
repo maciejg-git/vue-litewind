@@ -1,5 +1,6 @@
 {
   "name": "vFormText",
+  "description": "",
   "props": [
     {
       "type": [
@@ -16,6 +17,14 @@
       "default": {},
       "prop": "messages",
       "description": "Object with messages to display depending on current state."
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "name",
+      "description": "Name of the component"
     },
     {
       "type": [

@@ -1,5 +1,6 @@
 {
   "name": "vProgress",
+  "description": "",
   "props": [
     {
       "type": [
@@ -33,6 +34,14 @@
       "default": 100,
       "prop": "max",
       "description": "Maximum value of progress"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "name",
+      "description": "Name of the component"
     },
     {
       "type": [

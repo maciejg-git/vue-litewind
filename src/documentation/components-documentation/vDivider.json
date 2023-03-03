@@ -1,5 +1,6 @@
 {
   "name": "vDivider",
+  "description": "",
   "props": [
     {
       "type": [
@@ -8,6 +9,14 @@
       "default": "\"divider\"",
       "prop": "base",
       "description": "Base name of the component for styling"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "name",
+      "description": "Name of the component"
     },
     {
       "type": [

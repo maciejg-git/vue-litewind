@@ -1,5 +1,6 @@
 {
   "name": "vSelect",
+  "description": "",
   "props": [
     {
       "type": [
@@ -140,6 +141,14 @@
       "default": false,
       "prop": "multi-value",
       "description": "Allows selecting multiple values"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "name",
+      "description": "Name of the component"
     },
     {
       "type": [
