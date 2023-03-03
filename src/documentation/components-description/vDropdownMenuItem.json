@@ -1,5 +1,6 @@
 {
   "name": "vDropdownMenuItem",
+  "description": "Single menu item",
   "props": {
     "tag": "Tag used to render menu item",
     "disabled": "Renders disabled menu item",
