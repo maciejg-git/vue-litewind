@@ -13,7 +13,7 @@
     },
     "form": {
       "rules": "Rules for validation. See Form Validation for examples of rules",
-      "validateOn": "Valid values are 'blur' or 'immediate'. See Form Validation for explanation and examples",
+      "validateOn": "Valid values are 'blur', 'immediate' or 'form'. See Form Validation for explanation and examples",
       "validateMode": "Valid values are 'silent' or 'eager'. See Form Validation for explanation and examples",
       "state": "Overrides state of input validity. Supported values are 'valid', 'invalid', `empty string` for default state or `null` for component controlled state"
     }

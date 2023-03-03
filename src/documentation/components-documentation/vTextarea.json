@@ -116,7 +116,7 @@
       ],
       "default": "\"blur\"",
       "prop": "validate-on",
-      "description": "Valid values are 'blur' or 'immediate'. See Form Validation for explanation and examples"
+      "description": "Valid values are 'blur', 'immediate' or 'form'. See Form Validation for explanation and examples"
     },
     {
       "type": [
