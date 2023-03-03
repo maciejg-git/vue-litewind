@@ -53,6 +53,12 @@
           text-primary-400
           dark:text-primary-400
       }
+      &--marked {
+        @apply  
+          font-bold
+          text-danger-400
+          dark:text-danger-400
+      }
       &--partially-selected-state {
         @apply
           font-semibold
