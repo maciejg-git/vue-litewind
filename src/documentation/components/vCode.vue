@@ -47,11 +47,9 @@ export default {
       code = code[0].replace(cutRegexp, "");
     }
 
-    onMounted(() => {
-      nextTick(() => {
-        hljs.highlightElement(codeEl.value);
-      })
-    });
+    // onMounted(() => {
+    //   hljs.highlightElement(codeEl.value);
+    // });
 
     return {
       codeEl,
