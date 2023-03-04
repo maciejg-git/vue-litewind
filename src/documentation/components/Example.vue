@@ -3,12 +3,12 @@
     <component :is="name"></component>
   </div>
 
-  <v-tabs v-if="code && (template || script)" base="material">
+  <v-tabs v-if="(templateCode || scriptCode) && (template || script)" base="material">
     <v-tab v-if="template" name="Template">
-      <v-code :code="code" template language="html"></v-code>
+      <v-code :code="templateCode" template language="html"></v-code>
     </v-tab>
     <v-tab v-if="script" name="Script">
-      <v-code :code="code" script language="js"></v-code>
+      <v-code :code="scriptCode" script language="js"></v-code>
     </v-tab>
   </v-tabs>
   <!-- <v-code v-if="template &#38;&#38; code" :code="code" template language="html"></v-code> -->
@@ -26,13 +26,27 @@ export default {
   },
   setup(props) {
     let code = ref("")
+    let templateCode = ref("")
+    let scriptCode = ref("")
+    let templateRegexp = /^<template>([\s\S]*?)^<\/template>/gm;
+    let scriptRegexp = /^<script>([\s\S]*?)^<\/script>/gm;
+      let cutTemplateRegexp =
+        /^.*<!-- CUT START -->([\s\S]*?)<!-- CUT END -->\r\n/gm;
+      let cutScriptRegexp =
+        /^.*\/\* CUT START \*\/([\s\S]*?)\/\* CUT END \*\/\r\n/gm;
 
     import(`../examples/${props.name}.vue?raw`).then((i) => {
-      code.value = i.default
+      templateCode.value = i.default.match(templateRegexp)[0]
+      scriptCode.value = i.default.match(scriptRegexp)[0]
+      templateCode.value = templateCode.value.replace(cutTemplateRegexp, "")
+      scriptCode.value = scriptCode.value.replace(cutScriptRegexp, "")
+      // code.value = i.default
     })
 
     return {
-      code
+      code,
+      templateCode,
+      scriptCode
     }
   },
 }
