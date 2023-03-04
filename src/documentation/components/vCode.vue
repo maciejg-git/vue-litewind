@@ -45,10 +45,14 @@ export default {
 
       code = props.code.match(regexp);
       code = code[0].replace(cutRegexp, "");
+
+      nextTick(() => {
+        hljs.highlightElement(codeEl.value);
+      })
     }
 
     // onMounted(() => {
-    //   hljs.highlightElement(codeEl.value);
+      // hljs.highlightElement(codeEl.value);
     // });
 
     return {
