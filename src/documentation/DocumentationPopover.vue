@@ -10,9 +10,6 @@
 
     <h6>Components</h6>
     <table-reference-basic :items="components" reference="component" />
-
-    <h6>Functions</h6>
-    <table-reference-basic :items="functions" reference="function" />
   </section>
 
   <v-divider></v-divider>
@@ -79,17 +76,9 @@ export default {
       },
     ]);
 
-    let functions = ref([
-      {
-        function: "showContextPopover($event, contextData: Object)",
-        description: "Shows context popover. Context data is available in slot props of `default` slot",
-      },
-    ]);
-
     return {
       reference,
       components,
-      functions,
     };
   },
 };

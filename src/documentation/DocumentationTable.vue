@@ -1,15 +1,22 @@
 <template>
   <h3>Table</h3>
+  <links-github-header component="vTable" />
 
   <section>
     <h4>Reference</h4>
     <table-reference :items="reference.props" />
 
     <h6>Events</h6>
-    <table-reference-basic :items="reference.events" reference="event" />
+    <table-reference-basic
+      :items="reference.events"
+      reference="event"
+    />
 
     <h6>Slots</h6>
-    <table-reference-basic :items="reference.slots" reference="slot" />
+    <table-reference-basic
+      :items="reference.slots"
+      reference="slot"
+    />
   </section>
 
   <section>
@@ -23,13 +30,16 @@
       of
       <code class="code-text">objects</code>
       that defines columns of the table. Each object represents one column, has
-      one required, unique <code class="code-text">key</code> property and number of optional properties. If
-      definition is not provided component makes one using first record of data.
-      This may be enough for simple tables however to use features like sorting,
-      filtering etc you need to provide definition array.
+      one required, unique
+      <code class="code-text">key</code>
+      property and number of optional properties. If definition is not provided
+      component makes one using first record of data. This may be enough for
+      simple tables however to use features like sorting, filtering etc you need
+      to provide definition array.
     </p>
     <v-code language="javascript">
-{{ `let definition: ref([
+      {{
+        `let definition: ref([
   {
     key: "id",
     visible: false,
@@ -58,17 +68,15 @@
   {
     key: "edit",
   },
-]) `}}
+]) `
+      }}
     </v-code>
-    <table-reference :items="referenceProp" :definition="referencePropDefinition" />
+    <table-reference
+      :items="referenceProp"
+      :definition="referencePropDefinition"
+    />
   </section>
 
-  <section>
-    <h4>Example - simple table</h4>
-    <div class="example">
-      <example name="ExampleTableSimple"></example>
-    </div>
-  </section>
 
   <section>
     <h4>Example</h4>
@@ -80,7 +88,12 @@
   <section>
     <h4>Example - colspan item property</h4>
     <p>
-    Item can have special property <code class="code-text">colspan: {}</code>. Properties of this object are rendered as full row below item. To render them use <code class="code-text">colspan</code> slot.
+      Item can have special property
+      <code class="code-text">colspan: {}</code>
+      . Properties of this object are rendered as full row below item. To render
+      them use
+      <code class="code-text">colspan</code>
+      slot.
     </p>
     <div class="example">
       <example name="ExampleTableColspan"></example>
@@ -90,11 +103,11 @@
 
 <script>
 import { ref, reactive } from "vue";
-import componentDocumentation from "./components-documentation/vTable.json"
+import componentDocumentation from "./components-documentation/vTable.json";
 
 export default {
   setup() {
-    let reference = reactive(componentDocumentation)
+    let reference = reactive(componentDocumentation);
 
     let referenceProp = ref([
       {
@@ -188,5 +201,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

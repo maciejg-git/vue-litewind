@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { ref, onMounted, watch } from "vue";
+import { ref, onMounted, watch, nextTick } from "vue";
 import hljs from "highlight.js";
 
 export default {
@@ -48,7 +48,9 @@ export default {
     }
 
     onMounted(() => {
-      hljs.highlightElement(codeEl.value);
+      nextTick(() => {
+        hljs.highlightElement(codeEl.value);
+      })
     });
 
     return {

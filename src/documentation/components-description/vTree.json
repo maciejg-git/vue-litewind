@@ -40,8 +40,8 @@
     "item-append": "Slot for content that is appended to item name"
   },
   "functions": {
-    "function": "openAllLevel(level: Number)",
-    "description": "Opens all nodes on level (0 for root, any high number to open all nodes)"
+    "openAllLevel(level: Number)": "Opens all nodes on level (0 for root, any high number to open all nodes)",
+    "closeAll()": "Closes all nodes"
   },
   "components": {}
 }

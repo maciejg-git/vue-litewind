@@ -15,6 +15,7 @@
       <div
         v-if="isPopperVisible"
         ref="popper"
+        :aria-expanded="!!popper"
         @mouseenter="preventHiding"
         @mouseleave="allowHiding"
         class="absolute z-50"

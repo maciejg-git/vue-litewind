@@ -12,7 +12,7 @@
     <table-reference-basic :items="reference.slots" reference="slot" />
 
     <h6>Functions</h6>
-    <table-reference-basic :items="functions" reference="function" />
+    <table-reference-basic :items="reference.functions" reference="function" />
   </section>
 
   <section>
@@ -38,22 +38,8 @@ export default {
   setup() {
     let reference = reactive(componentDocumentation)
 
-    let functions = ref([
-      {
-        function: "openAllLevel(level: Number)",
-        description:
-          "Opens all nodes on level (0 for root, any high number to open all nodes)",
-      },
-      {
-        function: "closeAll()",
-        description:
-          "Closes all nodes",
-      },
-    ]);
-
     return {
       reference,
-      functions,
     };
   },
 };

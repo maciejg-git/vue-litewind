@@ -256,12 +256,12 @@
   ],
   "functions": [
     {
-      "function": "function",
-      "description": "openAllLevel(level: Number)"
+      "function": "openAllLevel(level: Number)",
+      "description": "Opens all nodes on level (0 for root, any high number to open all nodes)"
     },
     {
-      "function": "description",
-      "description": "Opens all nodes on level (0 for root, any high number to open all nodes)"
+      "function": "closeAll()",
+      "description": "Closes all nodes"
     }
   ],
   "components": []

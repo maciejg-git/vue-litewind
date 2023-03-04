@@ -318,8 +318,7 @@ let getUserDefinition = () => {
 };
 
 // get user definition or generated definition and fill missing properties
-// with defaults. This definition is used by component to display
-// data, filter, sort etc
+// with defaults. This definition is used by component.
 let definition = computed(() => {
   let d = getUserDefinition() || generateDefinitionFromData();
 

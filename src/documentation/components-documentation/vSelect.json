@@ -35,7 +35,7 @@
       ],
       "default": {},
       "prop": "card",
-      "description": ""
+      "description": "Attributes of v-card component used as container for select menu"
     },
     {
       "type": [
@@ -132,7 +132,7 @@
       ],
       "default": 9999,
       "prop": "max-multi-value",
-      "description": ""
+      "description": "Maximum number of rendered items for multi value select/autocomplete. If there is more items `max-multi-value` slot can be used to show additional information"
     },
     {
       "type": [

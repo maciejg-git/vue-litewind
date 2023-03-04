@@ -66,7 +66,7 @@
 
 <script>
 import { ref } from "vue";
-import { stringifyObject } from "../doc-tools";
+import { stringifyObject } from "../tools";
 
 export default {
   components: {},

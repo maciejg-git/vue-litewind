@@ -23,6 +23,8 @@
     "reference": "Slot for element that activates dropdown. Dropdown is positioned relative to element that has `ref` set to `reference`. Slot props: `reference`, `onTrigger` and `isOpen`",
     "default": "Slot for dropdown content. Slot props: `hide()`"
   },
-  "functions": {},
+  "functions": {
+    "showContextDropdown($event, contextData: Object)": "Shows context menu. Context data is available in slot props of `default` slot. Only available on v-dropdown-context"
+  },
   "components": {}
 }

@@ -40,7 +40,7 @@ test("renders component", async () => {
   expect(getByText("menu item3")).toBeInTheDocument()
 });
 
-test("opens menu (v-model)", async () => {
+test("renders opened (v-model)", async () => {
   const { getByText } = render(Dropdown, {
     props: {
       modelValue: true,

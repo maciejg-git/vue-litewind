@@ -19,7 +19,7 @@
     </table-reference-basic>
 
     <h6>Functions</h6>
-    <table-reference-basic :items="functions" reference="function" />
+    <table-reference-basic :items="reference.functions" reference="function" />
   </section>
 
   <v-divider></v-divider>
@@ -142,19 +142,10 @@ export default {
       },
     ]);
 
-    let functions = ref([
-      {
-        function: "showContextDropdown($event, contextData: Object)",
-        description:
-          "Shows context menu. Context data is available in slot props of `default` slot. Only available on v-dropdown-context",
-      },
-    ]);
-
     let referenceMenuItem = reactive(menuItemDocumentation)
 
     return {
       reference,
-      functions,
       components,
       referenceMenuItem,
     };

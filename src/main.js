@@ -6,6 +6,7 @@ import App from "./App.vue";
 import TableReference from "./documentation/components/TableReference.vue";
 import TableReferenceBasic from "./documentation/components/TableReferenceBasic.vue";
 import PropsList from "./documentation/components/PropsList.vue";
+import LinksGithubHeader from "./documentation/components/LinksGithubHeader.vue"
 import vCode from "./documentation/components/vCode.vue"
 import EventViewer from "./documentation/components/EventViewer.vue"
 import vSelectProp from "./documentation/components/vSelectProp.vue"
@@ -31,6 +32,7 @@ app.component("EventViewer", EventViewer)
 app.component("vSelectProp", vSelectProp)
 app.component("Example", Example)
 app.component("PropsList", PropsList)
+app.component("LinksGithubHeader", LinksGithubHeader)
 
 // component icons
 const icons = import.meta.globEager('./documentation/icons/*.js')
