@@ -41,7 +41,6 @@ import DocumentationTrigger from "../documentation/DocumentationTrigger.vue";
 
 import DocumentationTooltip from "../documentation/DocumentationTooltip.vue";
 
-import DocumentationStyling from "../documentation/DocumentationStyling.vue";
 import DocumentationFormValidation from "../documentation/DocumentationFormValidation.vue";
 
 const routes = [
@@ -56,10 +55,6 @@ const routes = [
       {
         path: "installation",
         component: DocumentationInstall,
-      },
-      {
-        path: "styling",
-        component: DocumentationStyling,
       },
       {
         path: "components",

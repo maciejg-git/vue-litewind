@@ -17,7 +17,7 @@
 
 <script>
 import { reactive } from "vue";
-import { languages } from "../data/data.js";
+import { languages } from "../example-data/data.js";
 
 export default {
   setup() {

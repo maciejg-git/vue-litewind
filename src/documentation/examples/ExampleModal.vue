@@ -178,7 +178,7 @@
 
 <script>
 import { ref, reactive } from "vue";
-import { longText } from "../data/data.js";
+import { longText } from "../example-data/data.js";
 
 export default {
   setup() {

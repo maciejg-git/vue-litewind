@@ -130,7 +130,7 @@
 
 <script>
 import { reactive } from "vue";
-import { text } from "../data/data.js";
+import { text } from "../example-data/data.js";
 
 export default {
   setup() {

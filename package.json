@@ -20,7 +20,7 @@
     "build-docs": "vite build --config vite-docs.config.js",
     "build-lib": "vite build --config vite-lib.config.js",
     "update-docs": "cd src/documentation/scripts && node ./get-components-reference.js && node ./get-docs.js",
-    "serve": "vite preview"
+    "serve": "vite preview --config vite-docs.config.js dist-docs"
   },
   "dependencies": {},
   "devDependencies": {

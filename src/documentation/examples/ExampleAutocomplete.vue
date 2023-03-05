@@ -21,7 +21,7 @@
 
 <script>
 import { ref, reactive } from "vue";
-import { states } from "../data/data.js";
+import { states } from "../example-data/data.js";
 
 export default {
   components: {},

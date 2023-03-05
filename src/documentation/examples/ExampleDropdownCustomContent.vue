@@ -38,7 +38,7 @@
 
 <script>
 import { ref, computed } from "vue";
-import { languages } from "../data/data";
+import { languages } from "../example-data/data.js";
 
 export default {
   setup() {

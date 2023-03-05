@@ -173,7 +173,7 @@
 <script>
 import { ref, reactive } from "vue";
 /* CUT START */
-import data from "../data/company-complete.json";
+import data from "../example-data/company-complete.json";
 /* CUT END */
 
 export default {

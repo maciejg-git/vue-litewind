@@ -42,7 +42,7 @@
 
 <script>
 import { reactive } from "vue";
-import company from "../data/company.json";
+import company from "../example-data/company.json";
 
 export default {
   setup() {

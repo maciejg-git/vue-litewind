@@ -31,9 +31,9 @@ export default {
     let templateRegexp = /^<template>([\s\S]*?)^<\/template>/gm;
     let scriptRegexp = /^<script>([\s\S]*?)^<\/script>/gm;
       let cutTemplateRegexp =
-        /^.*<!-- CUT START -->([\s\S]*?)<!-- CUT END -->\r\n/gm;
+        /^.*<!-- CUT START -->([\s\S]*?)<!-- CUT END -->/gm;
       let cutScriptRegexp =
-        /^.*\/\* CUT START \*\/([\s\S]*?)\/\* CUT END \*\/\r\n/gm;
+        /^.*\/\* CUT START \*\/([\s\S]*?)\/\* CUT END \*\//gm;
 
     import(`../examples/${props.name}.vue?raw`).then((i) => {
       templateCode.value = i.default.match(templateRegexp)[0]
