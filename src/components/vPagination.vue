@@ -182,13 +182,15 @@ let pages = computed(() => {
   first = clamp(first, 1, pagesCount.value - maxPages + 1);
   // generate following pages
   let p = getNumberRange(first, maxPages);
-  // add dots pages if needed
+  // add first, last and dots pages if needed
   if (maxPages >= 5) {
     if (p[0] != 1) {
-      p.splice(0, 2, 1, "...");
+      p[0] = 1
+      p[1] = "..."
     }
-    if (p[maxPages - 1] != pagesCount.value) {
-      p.splice(maxPages - 2, 2, "...", pagesCount.value);
+    if (p[p.length - 1] != pagesCount.value) {
+      p[p.length - 1] = pagesCount.value
+      p[p.length - 2] = "..."
     }
   }
   return p;

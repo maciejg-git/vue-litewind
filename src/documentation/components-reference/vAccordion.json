@@ -1,0 +1,8 @@
+{
+  "name": "vAccordion",
+  "props": [],
+  "emits": [],
+  "slots": [
+    "default"
+  ]
+}

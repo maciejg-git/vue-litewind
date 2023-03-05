@@ -1,0 +1,8 @@
+{
+  "name": "vForm",
+  "props": [],
+  "emits": [],
+  "slots": [
+    "default"
+  ]
+}

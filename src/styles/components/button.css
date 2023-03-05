@@ -1,4 +1,4 @@
-.plain {
+.plain-button {
   @apply 
     focus:outline-none
     text-text-600

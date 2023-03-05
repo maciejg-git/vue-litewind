@@ -21,7 +21,7 @@
     </div>
   </v-sidepanel>
 <!-- CUT START -->
-  <v-tabs base="material" class="mt-10">
+  <v-tabs base="material-tabs" class="mt-10">
     <v-tab name="Props">
       <div class="mb-2 mt-5">
         <label for="model" class="font-semibold">v-model:</label>

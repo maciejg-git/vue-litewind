@@ -1,0 +1,14 @@
+{
+  "name": "vDropdownHeader",
+  "description": "Menu header",
+  "props": [],
+  "events": [],
+  "slots": [
+    {
+      "slot": "default",
+      "description": ""
+    }
+  ],
+  "functions": [],
+  "components": []
+}

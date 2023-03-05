@@ -27,13 +27,13 @@
     <div class="mt-5">
       <label for="style">Tabs style:</label>
       <v-select id="style" v-model="example.base" :items="[
-        'tabs', 'material', 'rounded'
+        'tabs', 'material-tabs', 'rounded-tabs'
         ]">
       </v-select>
     </div>
     <v-button @click="addTab">Add tab</v-button>
   </div>
-  <v-tabs base="material" class="mt-10">
+  <v-tabs base="material-tabs" class="mt-10">
     <v-tab name="Props">
       <div class="flex flex-col gap-y-2 mt-5">
         <div>

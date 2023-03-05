@@ -36,7 +36,7 @@
     class="fixed top-0 left-0 w-full z-50"
   ></v-progress>
   <!-- CUT START -->
-  <v-tabs base="material" class="mt-10">
+  <v-tabs base="material-tabs" class="mt-10">
     <v-tab name="Props">
       <div class="flex flex-col gap-y-2 mt-5">
         <div>

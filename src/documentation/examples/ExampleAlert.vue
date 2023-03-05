@@ -78,7 +78,7 @@
     </div>
   </div>
   <v-tabs
-    base="material"
+    base="material-tabs"
     class="mt-5"
   >
     <v-tab name="Props">

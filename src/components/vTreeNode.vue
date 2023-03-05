@@ -18,7 +18,7 @@
         >
           <v-button
             v-if="isFolder"
-            base="button-plain"
+            base="plain-button"
             @click="handleIndicatorClick"
           >
             <v-chevron

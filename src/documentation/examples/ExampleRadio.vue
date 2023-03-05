@@ -29,7 +29,7 @@
     <label for="option3" class="ml-3">option 3</label>
   </div>
 <!-- CUT START -->
-  <v-tabs base="material" class="mt-10">
+  <v-tabs base="material-tabs" class="mt-10">
     <v-tab name="Props">
       <div class="flex flex-col gap-y-2 mt-5">
         <div>

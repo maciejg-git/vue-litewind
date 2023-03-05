@@ -14,7 +14,7 @@
   <div class="w-1/2">
     <v-textarea
       v-model="example.model"
-      base="underlined"
+      base="underlined-textarea"
       :label="example.label"
       :state="example.state"
       placeholder="Type something..."
@@ -23,7 +23,7 @@
   </div>
   <!-- CUT START -->
   <v-tabs
-    base="material"
+    base="material-tabs"
     class="mt-10"
   >
     <v-tab name="Props">

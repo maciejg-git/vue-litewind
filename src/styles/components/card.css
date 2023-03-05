@@ -47,7 +47,7 @@
       }
   }
 
-  .flat {
+  .flat-card {
     @apply
       dark:text-text-300
       bg-white

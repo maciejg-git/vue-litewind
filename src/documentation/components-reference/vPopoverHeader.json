@@ -1,0 +1,8 @@
+{
+  "name": "vPopoverHeader",
+  "props": [],
+  "emits": [],
+  "slots": [
+    "default"
+  ]
+}

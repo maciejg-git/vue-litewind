@@ -2,7 +2,7 @@
   --tabs-transition-duration: 0.2s;
 }
 
-.material {
+.material-tabs {
   &__tab {
     @apply
       -mb-px
@@ -30,7 +30,7 @@
   }
 }
 
-.rounded {
+.rounded-tabs {
   &__tab-bar {
   }
 

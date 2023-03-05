@@ -42,7 +42,7 @@
     }
 }
 
-.underlined {
+.underlined-textarea {
   @apply
     border-0 
     border-b-2 

@@ -1,0 +1,14 @@
+{
+  "name": "vForm",
+  "description": "",
+  "props": [],
+  "events": [],
+  "slots": [
+    {
+      "slot": "default",
+      "description": ""
+    }
+  ],
+  "functions": [],
+  "components": []
+}

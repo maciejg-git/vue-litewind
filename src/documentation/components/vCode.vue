@@ -20,32 +20,7 @@ export default {
     script: { type: Boolean, default: false },
   },
   setup(props) {
-    // let code = props.code;
-
     let codeEl = ref(null);
-
-    // if (props.template || props.script) {
-    //   let templateRegexp = /^<template>([\s\S]*?)^<\/template>/gm;
-    //   let scriptRegexp = /^<script>([\s\S]*?)^<\/script>/gm;
-    //   let regexp = props.template
-    //     ? templateRegexp
-    //     : props.script
-    //     ? scriptRegexp
-    //     : templateRegexp;
-    //
-    //   let cutTemplateRegexp =
-    //     /^.*<!-- CUT START -->([\s\S]*?)<!-- CUT END -->\r\n/gm;
-    //   let cutScriptRegexp =
-    //     /^.*\/\* CUT START \*\/([\s\S]*?)\/\* CUT END \*\/\r\n/gm;
-    //   let cutRegexp = props.template
-    //     ? cutTemplateRegexp
-    //     : props.script
-    //     ? cutScriptRegexp
-    //     : cutTemplateRegexp;
-    //
-    //   code = props.code.match(regexp);
-    //   code = code[0].replace(cutRegexp, "");
-    // }
 
     onMounted(() => {
       hljs.highlightElement(codeEl.value);

@@ -70,7 +70,7 @@ app.use(componentPlugin, {
       inline: true,
       offsetY: 5,
       card: {
-        base: 'flat',
+        base: 'flat-card',
         styleCard: 'menu shadow rounded',
       }
     }

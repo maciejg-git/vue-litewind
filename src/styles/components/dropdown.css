@@ -47,7 +47,7 @@
   }
 }
 
-.relaxed {
+.relaxed-dropdown {
   &__item {
     @apply
       w-11/12
@@ -94,7 +94,7 @@
   }
 }
 
-.flat {
+.flat-dropdown {
   &__item {
     @apply
       text-left

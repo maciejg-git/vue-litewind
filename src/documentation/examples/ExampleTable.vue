@@ -29,7 +29,7 @@
     <template #cell:edit="{ item }">
       <!-- stop propagation to avoid selecting row -->
       <v-button
-        base="button-plain"
+        base="plain-button"
         @click.stop="edit(item)"
         block
       >
@@ -91,7 +91,7 @@
   </v-modal>
   <!-- CUT START -->
   <v-tabs
-    base="material"
+    base="material-tabs"
     class="mt-10"
   >
     <v-tab name="Props">
@@ -172,9 +172,7 @@
 
 <script>
 import { ref, reactive } from "vue";
-/* CUT START */
 import data from "../example-data/company-complete.json";
-/* CUT END */
 
 export default {
   setup() {

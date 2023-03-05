@@ -52,9 +52,8 @@ export default function useValidation(
     };
 
     let newMessages = {};
-    let validationRules = Object.entries(rules);
 
-    newStatus.valid = validationRules.reduce((valid, [key, v]) => {
+    newStatus.valid = Object.entries(rules).reduce((valid, [key, v]) => {
       let validator =
         globalValidators[key] || (isFunction(rules[key]) && rules[key]);
 

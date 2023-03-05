@@ -100,9 +100,7 @@ let { classes, states } = useStyles("dropdown", props, {
   item: {
     states: ["active"],
   },
-  header: {
-    fixed: "fixed-item",
-  },
+  header: null,
 });
 
 // set up popper

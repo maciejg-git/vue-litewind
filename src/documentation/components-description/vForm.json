@@ -1,0 +1,10 @@
+{
+  "name": "vForm",
+  "props": {},
+  "emits": {},
+  "slots": {
+    "default": ""
+  },
+  "functions": {},
+  "components": {}
+}

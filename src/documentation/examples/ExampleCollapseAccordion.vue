@@ -58,12 +58,15 @@
   <p class="mt-8 mb-4">Accordion - controlled from reference slot</p>
 
   <v-accordion class="my-2">
-    <v-card base="flat" style-card="shadow">
+    <v-card
+      base="flat-card"
+      style-card="shadow"
+    >
       <v-collapse>
         <template #reference="{ isOpen, onTrigger }">
           <v-button-chevron
             :switch="isOpen"
-            base="button-plain"
+            base="plain-button"
             block
             class="p-3"
             :chevron="{ class: 'ml-auto' }"
@@ -79,7 +82,7 @@
     </v-card>
 
     <v-card
-      base="flat"
+      base="flat-card"
       style-card="shadow"
       class="my-2"
     >
@@ -87,7 +90,7 @@
         <template #reference="{ isOpen, onTrigger }">
           <v-button-chevron
             :switch="isOpen"
-            base="button-plain"
+            base="plain-button"
             block
             class="p-3"
             :chevron="{ class: 'ml-auto' }"
@@ -103,7 +106,7 @@
     </v-card>
 
     <v-card
-      base="flat"
+      base="flat-card"
       style-card="shadow"
       class="my-2"
     >
@@ -111,7 +114,7 @@
         <template #reference="{ isOpen, onTrigger }">
           <v-button-chevron
             :switch="isOpen"
-            base="button-plain"
+            base="plain-button"
             block
             class="p-3"
             :chevron="{ class: 'ml-auto' }"

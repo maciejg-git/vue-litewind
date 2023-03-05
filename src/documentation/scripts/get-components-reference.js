@@ -34,6 +34,7 @@ for (let component in components) {
 
   // props
 
+  if (component[0] === "v") {
   if (props) {
     for (let prop in props) {
       if (props[prop].type) {
@@ -47,6 +48,7 @@ for (let component in components) {
       }
       description.props[prop] = "";
     }
+  }
 
     // slots
 
@@ -57,7 +59,7 @@ for (let component in components) {
     // reference and description files
 
     reference.name = component;
-    reference.props = props;
+    reference.props = props || [];
     reference.emits = emits || [];
     reference.slots = slots || [];
 

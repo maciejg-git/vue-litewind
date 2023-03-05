@@ -26,5 +26,9 @@
   "functions": {
     "showContextDropdown($event, contextData: Object)": "Shows context menu. Context data is available in slot props of `default` slot. Only available on v-dropdown-context"
   },
-  "components": {}
+  "components": {
+    "v-dropdown-menu-item": "",
+    "v-dropdown-header": "",
+    "v-button-chevron": ""
+  }
 }

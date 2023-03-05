@@ -16,7 +16,7 @@
         scrambled it to make a type specimen book.
       </div>
       <v-divider class="w-11/12 mx-auto mt-auto" />
-      <v-button base="button-plain" class="ml-auto font-semibold underline m-3 mr-6">
+      <v-button base="plain-button" class="ml-auto font-semibold underline m-3 mr-6">
         Show more
       </v-button>
     </div>

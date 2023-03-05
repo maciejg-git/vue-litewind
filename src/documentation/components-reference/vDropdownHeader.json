@@ -1,0 +1,8 @@
+{
+  "name": "vDropdownHeader",
+  "props": [],
+  "emits": [],
+  "slots": [
+    "default"
+  ]
+}

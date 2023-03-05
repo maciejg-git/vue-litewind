@@ -57,7 +57,7 @@
         Show tooltip popover
       </v-button>
     </template>
-    <v-card base="flat" style-card="shadow" class="w-[330px] p-7">
+    <v-card base="flat-card" style-card="shadow" class="w-[330px] p-7">
       Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       Lorem Ipsum has been the industry's standard dummy text ever since the
       1500s, when an unknown printer took a galley of type and scrambled it to
@@ -70,7 +70,7 @@
     </v-card>
   </v-popover>
   <!-- CUT START -->
-  <v-tabs base="material" class="mt-10">
+  <v-tabs base="material-tabs" class="mt-10">
     <v-tab name="Props">
       <div class="flex flex-col gap-y-2 mt-5">
         <div>

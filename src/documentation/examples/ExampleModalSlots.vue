@@ -19,7 +19,7 @@
         </div>
         <v-button
           @click="prev()"
-          base="plain"
+          base="plain-button"
           style-button="light"
           class="absolute -translate-y-1/2 top-1/2 left-5 duration-300 transition-opacity text-white opacity-0 group-hover:opacity-80"
         >
@@ -27,7 +27,7 @@
         </v-button>
         <v-button
           @click="next()"
-          base="plain"
+          base="plain-button"
           style-button="light"
           class="absolute -translate-y-1/2 top-1/2 right-5 duration-300 transition-opacity text-white  opacity-0 group-hover:opacity-80"
         >

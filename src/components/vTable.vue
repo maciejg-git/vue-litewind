@@ -372,6 +372,7 @@ let getFilterRegexp = () => {
 
   if (isRegexp(f)) return f;
 
+  // escape special characters
   return new RegExp(f.replace(/[.*+\-?^${}()|[\]\\]/g, "\\$&"), "i");
 };
 
@@ -449,7 +450,7 @@ watch(itemsSelected.value, () => {
   emit("input:selection", Object.values(itemsSelected.value));
 });
 
-// reset selection if some variables changes
+// reset selection if selectionMode, items or sorting changes
 watch([() => props.selectionMode, itemsPagination, sortKey, sortAsc], () =>
   resetSelection()
 );

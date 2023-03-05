@@ -1,5 +1,8 @@
 <template>
-  <v-card style="height: 600px" style-card="transparent">
+  <v-card
+    style="height: 600px"
+    style-card="transparent"
+  >
     <v-navbar class="py-2 px-4">
       <div class="flex items-center">
         <span class="font-bold text-lg">Brand</span>
@@ -7,18 +10,25 @@
           <li><div class="py-2">Home</div></li>
           <li><div class="py-2">About</div></li>
           <li>
-            <v-dropdown trigger="hover" :offset-y="2" base="flat">
+            <v-dropdown
+              trigger="hover"
+              :offset-y="2"
+              base="flat-dropdown"
+            >
               <template #reference="{ reference, onTrigger }">
                 <v-button
                   :ref="reference"
                   v-on="onTrigger"
-                  base="button-plain"
+                  base="plain-button"
                   class="py-2"
                 >
                   Dropdown
                 </v-button>
               </template>
-              <v-card width="420px" base="flat">
+              <v-card
+                width="420px"
+                base="flat-card"
+              >
                 <v-dropdown-menu-item tag="button">
                   <header class="font-semibold">Get started</header>
                   <span class="text-sm">

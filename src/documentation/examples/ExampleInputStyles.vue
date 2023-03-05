@@ -4,7 +4,7 @@
   <div class="flex gap-x-10">
     <v-input
       v-model="example"
-      base="underlined"
+      base="underlined-input"
       placeholder="Type something..."
     ></v-input>
 

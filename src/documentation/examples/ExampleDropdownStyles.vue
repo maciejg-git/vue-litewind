@@ -2,7 +2,7 @@
   <!-- relaxed -->
 
   <v-dropdown
-    base="relaxed"
+    base="relaxed-dropdown"
     :offsetY="5"
   >
     <template #reference="{ reference, onTrigger }">
@@ -52,7 +52,7 @@
   <!-- flat -->
 
   <v-dropdown
-    base="flat"
+    base="flat-dropdown"
     :offsetY="5"
   >
     <template #reference="{ reference, onTrigger }">
@@ -67,7 +67,7 @@
     </template>
     <v-card
       width="320px"
-      base="flat"
+      base="flat-card"
     >
       <v-dropdown-menu-item tag="button">
         Menu item

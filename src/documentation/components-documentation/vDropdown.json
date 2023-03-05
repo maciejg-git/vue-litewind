@@ -138,5 +138,18 @@
       "description": "Shows context menu. Context data is available in slot props of `default` slot. Only available on v-dropdown-context"
     }
   ],
-  "components": []
+  "components": [
+    {
+      "component": "v-dropdown-menu-item",
+      "description": ""
+    },
+    {
+      "component": "v-dropdown-header",
+      "description": ""
+    },
+    {
+      "component": "v-button-chevron",
+      "description": ""
+    }
+  ]
 }
