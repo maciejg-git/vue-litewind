@@ -6,13 +6,16 @@ export default function usePopper(
   mods,
   { resizePopper = false } = {}
 ) {
-  // resize modifier to make popper the same width as reference element
   const resize = {
     name: "resize",
     enabled: resizePopper,
-    phase: "main",
-    fn({ state }) {
-      state.styles.popper.width = reference.value.clientWidth + "px";
+    phase: "beforeWrite",
+    requires: ["computeStyles"],
+    fn: ({ state }) => {
+      state.styles.popper.width = `${state.rects.reference.width}px`;
+    },
+    effect: ({ state }) => {
+      state.elements.popper.style.width = `${state.elements.reference.offsetWidth}px`;
     },
   };
 
@@ -47,7 +50,7 @@ export default function usePopper(
     if (isPopperVisible.value) return;
     isPopperVisible.value = true;
 
-    // show v-show popper, v-show popper would not trigger popper watch
+    // show v-show popper, v-show popper does not trigger popper watch
     if (popper.value) setPopper();
   };
 
@@ -59,18 +62,6 @@ export default function usePopper(
   let togglePopper = function () {
     isPopperVisible.value ? hidePopper() : showPopper();
   };
-
-  let watchableOptions = [placement, offsetX, offsetY, noFlip].filter((opt) => {
-    return isRef(opt);
-  });
-
-  // watch component props changes and update instance
-  watch(watchableOptions, () => {
-    if (instance && popper.value) {
-      setPopper();
-      instance.update();
-    }
-  });
 
   // lock is used for component transitions to prevent destring instance
   let isLocked = ref(false);
@@ -91,38 +82,50 @@ export default function usePopper(
     }
   });
 
+  let popperOptions = computed(() => {
+    return {
+      modifiers: [
+        {
+          name: "offset",
+          options: {
+            offset: [unref(offsetX), unref(offsetY)],
+          },
+        },
+        {
+          name: "flip",
+          enabled: !unref(noFlip),
+        },
+        resize,
+        ...(mods || []),
+      ],
+      placement: unref(placement),
+    };
+  });
+
+  watch(popperOptions, () => {
+    if (instance && popper.value) {
+      instance.setOptions(popperOptions.value);
+    }
+  });
+
+  let setPopper = () => {
+    instance = createPopper(
+      reference.value || virtualElement,
+      popper.value,
+      popperOptions.value
+    );
+  };
+
+  let updatePopperInstance = () => {
+    if (instance) instance.update();
+  };
+
   let destroyPopperInstance = () => {
     if (instance) {
       instance.destroy();
       instance = null;
       isLocked.value = false;
     }
-  };
-
-  let setPopper = () => {
-    let modifiers = [
-      {
-        name: "offset",
-        options: {
-          offset: [unref(offsetX), unref(offsetY)],
-        },
-      },
-      {
-        name: "flip",
-        enabled: !unref(noFlip),
-      },
-      resize,
-      ...(mods || []),
-    ];
-
-    instance = createPopper(reference.value || virtualElement, popper.value, {
-      modifiers,
-      placement: unref(placement),
-    });
-  };
-
-  let updatePopperInstance = () => {
-    if (instance) instance.update();
   };
 
   // optional virtual element can be used as reference instead of html element
