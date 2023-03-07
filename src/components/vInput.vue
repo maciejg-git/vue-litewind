@@ -368,6 +368,7 @@ let handleClickIcon = (ev) => {
   emit("click:icon", ev);
 };
 
+// prevent focus but allow inputRef to allow selection
 let handleMousedown = (ev) => {
   if (ev.target === inputRef.value) {
     return;

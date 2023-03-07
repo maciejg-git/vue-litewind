@@ -263,15 +263,7 @@ const {
   lockPopper,
 } = usePopper(
   { placement, offsetX, offsetY, noFlip },
-  [
-    {
-      name: "preventOverflow",
-      options: {
-        mainAxis: false, // true by default
-        altAxis: false, // true by default
-      },
-    },
-  ],
+  null,
   {
     resizePopper: true,
   }

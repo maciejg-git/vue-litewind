@@ -1,5 +1,6 @@
 import { render, fireEvent } from "@testing-library/vue";
-import userEvent from "@testing-library/user-event"
+import "@testing-library/jest-dom";
+import userEvent from "@testing-library/user-event";
 import Select from "../components/vSelect.vue";
 
 const states = [
@@ -35,7 +36,7 @@ const states = [
     text: "Connecticut",
     value: "Connecticut",
   },
-]
+];
 
 const statesWithLabel = [
   {
@@ -70,7 +71,7 @@ const statesWithLabel = [
     label: "Connecticut",
     value: "Connecticut",
   },
-]
+];
 
 test("renders component", () => {
   const { getByRole } = render(Select, {
@@ -80,52 +81,53 @@ test("renders component", () => {
   getByRole("combobox");
 });
 
-test("opens select dropdown with no items (click)", async () => {
-  const { getByRole } = render(Select, {
-    props: {},
+describe("opens select menu", () => {
+  test("opens select dropdown with no items (click)", async () => {
+    const { getByRole } = render(Select, {
+      props: {},
+    });
+
+    let select = getByRole("combobox");
+    await fireEvent.click(select);
+    expect(getByRole("listbox")).toBeInTheDocument();
   });
 
-  let select = getByRole("combobox");
-  await fireEvent.click(select)
-  getByRole("listbox")
-});
+  test("opens select dropdown with no items (focus)", async () => {
+    const { getByRole } = render(Select, {
+      props: {},
+    });
 
-test("opens select dropdown with no items (focus)", async () => {
-  const { getByRole } = render(Select, {
-    props: {},
+    let select = getByRole("combobox");
+    await userEvent.tab(select);
+    expect(getByRole("listbox")).toBeInTheDocument();
   });
 
-  let select = getByRole("combobox");
-  await userEvent.tab(select)
-  getByRole("listbox")
-});
+  test("does not open autocomplete dropdown with no items", async () => {
+    const { getByRole, queryByRole } = render(Select, {
+      props: {
+        autocomplete: true,
+      },
+    });
 
-test("does not open autocomplete dropdown with no items", async () => {
-  const { getByRole, queryByRole } = render(Select, {
-    props: {
-      autocomplete: true,
-    },
+    let select = getByRole("combobox");
+    await fireEvent.click(select);
+    expect(queryByRole("listbox")).toBeNull();
   });
 
-  let select = getByRole("combobox");
-  await fireEvent.click(select)
-  expect(queryByRole("listbox")).toBeNull()
-});
+  test("opens autocomplete on input update", async () => {
+    const { getByRole, findByRole } = render(Select, {
+      props: {
+        items: states,
+        autocomplete: true,
+      },
+    });
 
-test("opens autocomplete on input update", async () => {
-  const { getByRole, findByRole } = render(Select, {
-    props: {
-      items: states,
-      autocomplete: true,
-    },
+    let select = getByRole("combobox");
+    await fireEvent.click(select);
+    let input = select.querySelector("input");
+    await fireEvent.update(input, "a");
+    await findByRole("listbox");
   });
-
-  let select = getByRole("combobox");
-  await fireEvent.click(select)
-  let input = select.querySelector("input")
-  await fireEvent.update(input, "a")
-  await findByRole("listbox")
-
 });
 
 test("renders options", async () => {
@@ -136,8 +138,8 @@ test("renders options", async () => {
   });
 
   let select = getByRole("combobox");
-  await fireEvent.click(select)
-  expect(getAllByRole("option").length).toBe(8)
+  await fireEvent.click(select);
+  expect(getAllByRole("option").length).toBe(8);
 });
 
 test("filters options", async () => {
@@ -149,10 +151,10 @@ test("filters options", async () => {
   });
 
   let select = getByRole("combobox");
-  await fireEvent.click(select)
-  let input = select.querySelector("input")
-  await fireEvent.update(input, "c")
-  expect((await findAllByRole("option")).length).toBe(4)
+  await fireEvent.click(select);
+  let input = select.querySelector("input");
+  await fireEvent.update(input, "c");
+  expect((await findAllByRole("option")).length).toBe(4);
 });
 
 test("filters options (filter-keys prop)", async () => {
@@ -165,10 +167,10 @@ test("filters options (filter-keys prop)", async () => {
   });
 
   let select = getByRole("combobox");
-  await fireEvent.click(select)
-  let input = select.querySelector("input")
-  await fireEvent.update(input, "c")
-  expect((await findAllByRole("option")).length).toBe(4)
+  await fireEvent.click(select);
+  let input = select.querySelector("input");
+  await fireEvent.update(input, "c");
+  expect((await findAllByRole("option")).length).toBe(4);
 });
 
 test("does not filter options (no-filter prop)", async () => {
@@ -181,37 +183,39 @@ test("does not filter options (no-filter prop)", async () => {
   });
 
   let select = getByRole("combobox");
-  await fireEvent.click(select)
-  let input = select.querySelector("input")
-  await fireEvent.update(input, "c")
-  expect((await findAllByRole("option")).length).toBe(8)
+  await fireEvent.click(select);
+  let input = select.querySelector("input");
+  await fireEvent.update(input, "c");
+  expect((await findAllByRole("option")).length).toBe(8);
 });
 
-test("paginates options", async () => {
-  const { getByRole, getAllByRole, } = render(Select, {
-    props: {
-      items: states,
-      itemsPerPage: 2,
-    },
+describe("pagination", () => {
+  test("paginates options", async () => {
+    const { getByRole, getAllByRole } = render(Select, {
+      props: {
+        items: states,
+        itemsPerPage: 2,
+      },
+    });
+
+    let select = getByRole("combobox");
+    await fireEvent.click(select);
+    expect(getAllByRole("option").length).toBe(2);
   });
 
-  let select = getByRole("combobox");
-  await fireEvent.click(select)
-  expect(getAllByRole("option").length).toBe(2)
-});
+  test("does not paginate options (no-pagination prop)", async () => {
+    const { getByRole, getAllByRole } = render(Select, {
+      props: {
+        items: states,
+        itemsPerPage: 2,
+        noPagination: true,
+      },
+    });
 
-test("does not paginate options (no-pagination prop)", async () => {
-  const { getByRole, getAllByRole, } = render(Select, {
-    props: {
-      items: states,
-      itemsPerPage: 2,
-      noPagination: true,
-    },
+    let select = getByRole("combobox");
+    await fireEvent.click(select);
+    expect(getAllByRole("option").length).toBe(8);
   });
-
-  let select = getByRole("combobox");
-  await fireEvent.click(select)
-  expect(getAllByRole("option").length).toBe(8)
 });
 
 test("closes menu after selecting option in single mode", async () => {
@@ -222,10 +226,10 @@ test("closes menu after selecting option in single mode", async () => {
   });
 
   let select = getByRole("combobox");
-  await fireEvent.click(select)
-  let option = getAllByRole("option")
-  await fireEvent.click(option[0])
-  expect(queryByRole("listbox")).toBeNull()
+  await fireEvent.click(select);
+  let option = getAllByRole("option");
+  await fireEvent.click(option[0]);
+  expect(queryByRole("listbox")).toBeNull();
 });
 
 test("does no close menu after selecting option in multi value mode", async () => {
@@ -236,10 +240,10 @@ test("does no close menu after selecting option in multi value mode", async () =
   });
 
   let select = getByRole("combobox");
-  await fireEvent.click(select)
-  let option = getAllByRole("option")
-  await fireEvent.click(option[0])
-  queryByRole("listbox")
+  await fireEvent.click(select);
+  let option = getAllByRole("option");
+  await fireEvent.click(option[0]);
+  queryByRole("listbox");
 });
 
 test("selects item in single mode", async () => {
@@ -250,22 +254,22 @@ test("selects item in single mode", async () => {
   });
 
   let select = getByRole("combobox");
-  await fireEvent.click(select)
-  let option = getAllByRole("option")
-  await fireEvent.click(option[0])
-  queryByText("Alabama")
+  await fireEvent.click(select);
+  let option = getAllByRole("option");
+  await fireEvent.click(option[0]);
+  queryByText("Alabama");
 });
 
 test("shows no items message", async () => {
   const { getByRole, getByText } = render(Select, {
     props: {
-      emptyDataMessage: "empty"
+      emptyDataMessage: "empty",
     },
   });
 
   let select = getByRole("combobox");
-  await fireEvent.click(select)
-  getByText("empty")
+  await fireEvent.click(select);
+  getByText("empty");
 });
 
 test("opens autocomplete on items update", async () => {
@@ -278,14 +282,13 @@ test("opens autocomplete on items update", async () => {
   });
 
   let select = getByRole("combobox");
-  await fireEvent.click(select)
-  let input = select.querySelector("input")
-  await fireEvent.update(input, "a")
+  await fireEvent.click(select);
+  let input = select.querySelector("input");
+  await fireEvent.update(input, "a");
   await rerender({
     items: states,
-  })
-  await findByRole("listbox")
-
+  });
+  await findByRole("listbox");
 });
 
 // click outside
