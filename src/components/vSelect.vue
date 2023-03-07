@@ -75,6 +75,7 @@
         class="z-50"
       >
         <v-card
+          ref="cardRef"
           v-bind="card"
           class="max-h-[var(--select-max-menu-height)] overflow-y-auto overflow-x-hidden"
           v-detect-scroll-bottom="handleScrollBottom"
@@ -260,15 +261,29 @@ const {
   hidePopper,
   destroyPopperInstance,
   lockPopper,
-} = usePopper({ placement, offsetX, offsetY, noFlip }, null, {
-  resizePopper: true,
-});
+} = usePopper(
+  { placement, offsetX, offsetY, noFlip },
+  [
+    {
+      name: "preventOverflow",
+      options: {
+        mainAxis: false, // true by default
+        altAxis: false, // true by default
+      },
+    },
+  ],
+  {
+    resizePopper: true,
+  }
+);
 
 let selectedItem = ref(null);
 let selectedItems = ref([]);
 let localText = ref("");
 
 let highlightedItemIndex = ref(-1);
+
+let cardRef = ref(null)
 
 // menu items elements
 
@@ -297,6 +312,9 @@ watch(
   () => {
     if (props.noFilter && referenceInstance.value.isFocused) {
       show();
+    }
+    if (popper.value) {
+      scrollToTop()
     }
   }
 );
@@ -454,6 +472,10 @@ let scrollToHighlighted = (direction) => {
     block: "nearest",
   });
 };
+
+let scrollToTop = () => {
+  cardRef.value.$el.scrollTop = 0
+}
 
 // handle template events
 

@@ -58,7 +58,6 @@
         :items-count="example.itemsCount"
         :items-per-page="example.itemsPerPage"
         :max-pages="7"
-        icons
       />
     </div>
     <div class="mt-4 lg:mt-0">

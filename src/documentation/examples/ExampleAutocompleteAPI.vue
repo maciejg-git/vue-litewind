@@ -1,17 +1,20 @@
 <template>
   <div class="flex items-center">
     <div class="w-1/2">
-      <v-autocomplete
+      <v-select
         v-model="example.model"
         no-filter
+        item-text="fullTitle"
+        item-value="id"
         :items="example.items"
         :state="example.state"
         :inline="false"
         :is-loading="example.isLoading"
         style-menu="shadow"
-        @input:value="query($event)"
+        @input:value="debouncedQuery($event)"
         v-on="handleExampleEvents"
-      ></v-autocomplete>
+        autocomplete
+      ></v-select>
     </div>
     <div class="ml-10">
       <span class="font-semibold">v-model:</span>
@@ -22,7 +25,7 @@
 
 <script>
 import { ref, reactive } from "vue";
-import { states } from "../example-data/data.js";
+import { debounce } from "../../tools.js"
 
 export default {
   components: {},
@@ -32,18 +35,29 @@ export default {
       items: [],
     });
 
+    const url = "https://gutendex.com/books/";
+
     let query = (q) => {
       if (q === "") return example.items;
+
       example.isLoading = true;
-      setTimeout(() => {
-        example.items = states.filter((e) => {
-          return (
-            (e.text || "").toLowerCase().indexOf((q || "").toLowerCase()) > -1
-          );
+
+      fetch(`${url}?search=${q}`)
+        .then((response) => response.json())
+        .then((data) => {
+          example.items = data.results.map((i) => {
+            i.fullTitle = `${i.title} - ${i.authors
+              .map((i) => i.name)
+              .join(", ")}`;
+            return i;
+          });
+        })
+        .finally(() => {
+          example.isLoading = false;
         });
-        example.isLoading = false;
-      }, 500);
     };
+
+    let debouncedQuery = debounce(query, 300);
 
     let events = ref([]);
 
@@ -65,6 +79,8 @@ export default {
       query,
       events,
       handleExampleEvents,
+      debounce,
+      debouncedQuery,
     };
   },
 };

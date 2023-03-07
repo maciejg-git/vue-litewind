@@ -13,7 +13,7 @@
       :for="id"
       :class="classes.label.value"
     >
-    <!-- @slot label -->
+      <!-- @slot label -->
       <slot
         name="label"
         :label="label"

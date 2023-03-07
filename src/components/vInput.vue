@@ -15,7 +15,7 @@
 
   <div
     :class="wrapperClasses"
-    :style="{ width: width }"
+    :style="{ width: width + 'px' }"
     @mousedown="handleMousedown"
     @click="handleClickWrapper"
   >

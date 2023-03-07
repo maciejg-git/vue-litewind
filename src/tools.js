@@ -57,6 +57,16 @@ let schedule = async (fn, ms, ...args) => {
   return fn(...args);
 };
 
+const debounce = (func, delay) => {
+  let debounceTimer;
+  return function () {
+    const context = this;
+    const args = arguments;
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => func.apply(context, args), delay);
+  };
+};
+
 // highlight
 
 let highlight = (string, match, classes) => {
@@ -84,5 +94,6 @@ export {
   getNumberRange,
   undefNullToStr,
   schedule,
+  debounce,
   highlight,
 };

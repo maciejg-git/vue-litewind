@@ -74,6 +74,13 @@
   </section>
 
   <section>
+    <h4>Example - autocomplete (API)</h4>
+    <div class="example">
+      <example name="ExampleAutocompleteAPI"></example>
+    </div>
+  </section>
+
+  <section>
     <h4>Example - autocomplete (customized menu)</h4>
     <p>To customize menu items use <code class="code-text">item</code> slot</p>
     <div class="example">

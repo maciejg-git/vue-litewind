@@ -12,7 +12,7 @@
     "singleLineMessage": "Limits the number of displayed errors to one at time. Order of messages is the same as order of `rules` in rules prop",
     "showIndicator": "Set to `true` or `false` to show open indicator. Useful for extending v-input for example adding dropdowns or popovers",
     "indicatorSwitch": "Set to `true` or `false` to set state of the open indicator. Useful for extending v-input for example adding dropdowns or popovers",
-    "width": "",
+    "width": "Width of the component in px",
     "label": "Label on top of the input. This label is for simple forms as position cannot be changed",
     "noMessages": "If `true` validation messages are not displayed",
     "spinner": "Attributes of input v-spinner component (loader)",
