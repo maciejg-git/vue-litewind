@@ -50,7 +50,7 @@
   "events": [
     {
       "event": "click:close-button",
-      "description": ""
+      "description": "Emmited after clicking chip close button"
     }
   ],
   "slots": [

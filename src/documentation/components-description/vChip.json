@@ -7,7 +7,7 @@
     "styleChip": "Main chip element"
   },
   "emits": {
-    "click:close-button": ""
+    "click:close-button": "Emmited after clicking chip close button"
   },
   "slots": {
     "default": "Slot for chip content"

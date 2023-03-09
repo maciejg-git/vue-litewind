@@ -178,7 +178,7 @@
       ],
       "default": "empty string",
       "prop": "style-weekday",
-      "description": ""
+      "description": "Single weekday name"
     },
     {
       "type": [
@@ -186,7 +186,7 @@
       ],
       "default": "empty string",
       "prop": "style-weekday-bar",
-      "description": ""
+      "description": "Weekday names bar"
     },
     {
       "type": [

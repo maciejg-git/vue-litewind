@@ -240,7 +240,7 @@
       ],
       "default": "empty string",
       "prop": "width",
-      "description": ""
+      "description": "Width of the component in px"
     }
   ],
   "events": [
