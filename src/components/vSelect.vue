@@ -55,7 +55,7 @@
       </template>
       <span
         v-else-if="
-          (!autocomplete || !isPopperVisible) && selectedItem !== undefined
+          (!autocomplete || !isFocused) && selectedItem !== undefined
         "
       >
         {{ getItemText(selectedItem) }}
@@ -269,6 +269,8 @@ const {
   }
 );
 
+let isFocused = ref(false)
+
 let selectedItem = ref(null);
 let selectedItems = ref([]);
 let localText = ref("");
@@ -302,7 +304,9 @@ let show = () => {
 watch(
   () => props.items,
   () => {
-    if (props.noFilter && referenceInstance.value.isFocused) {
+    page.value = 0
+
+    if (props.noFilter && isFocused.value) {
       show();
     }
     if (popper.value) {
@@ -485,6 +489,8 @@ let handleFocusInput = () => {
   if (!props.autocomplete || props.items.length) {
     show();
   }
+
+  isFocused.value = true
 };
 
 let handleInput = () => {
@@ -494,6 +500,8 @@ let handleInput = () => {
 
 let handleBlurInput = (ev) => {
   cancelInput();
+
+  isFocused.value = false
 };
 
 let handleClickIndicator = () => {

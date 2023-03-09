@@ -54,7 +54,6 @@
           v-bind="$attrs"
           class="flex-1 min-w-0 focus:min-w-[64px] border-0 bg-transparent focus:outline-none focus:ring-0 outline-none p-0"
           @blur="handleBlur"
-          @focus="handleFocus"
         />
       </div>
 
@@ -300,8 +299,6 @@ let selectAll = () => {
   inputRef.value.setSelectionRange(0, localModel.value.length);
 };
 
-let isFocused = ref(false);
-
 let localModel = useLocalModel(props, emit);
 
 // validate
@@ -348,12 +345,6 @@ let handleBlur = () => {
   nextTick(() => {
     touch();
   });
-
-  isFocused.value = false;
-};
-
-let handleFocus = () => {
-  isFocused.value = true;
 };
 
 let handleClickWrapper = () => {
@@ -391,7 +382,6 @@ defineExpose({
   focus,
   blur,
   selectAll,
-  isFocused,
   reference: wrapperRef,
 });
 </script>
