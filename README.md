@@ -1,6 +1,6 @@
 # Vue-wind
 
-Component collection for Vue 3 applications. 
+Components collection for Vue 3 applications. 
 
 Vue-wind uses **Tailwindc CSS** as CSS framework and **popper.js** (included) for positioning.
 
@@ -11,39 +11,43 @@ npm -i vue-wind
 [Documentation and examples](https://vue-wind.netlify.app/documentation/installation)
 
 Components:
+
 * Alert
+* Autocomplete
 * Badge
 * Breadcrumb
 * Button
 * Card
-* Close button
-* Divider
+* Checkbox (checkbox group)
 * Chevron
-* Collapse (+ accordion)
-* Dropdown (+ context menu)
+* Close button
+* Collapse (accordion)
 * Date Picker
-* Input
-* Autocomplete
-* Icon
-* Select
-* Checkbox
-* Radio
-* Textarea
+* Divider
+* Dropdown (context menu)
+* Form
 * Form Text
-* Range
+* Input
+* Icon
 * List
 * Modal
 * Navbar
 * Pagination
 * Popover
+* Radio (radio group)
 * Progress
+* Range
+* Select
 * Spinner
 * Sidepanel
 * Tabs
 * Table
+* Textarea
 * Tooltip (directive)
+* Tree
 
 TODO:
 * aria support
 * kayboard navigation
+* additional tests
 
