@@ -4,9 +4,8 @@
       <v-select
         v-model="example.model"
         no-filter
-        item-text="name"
-        item-value="changeuuid"
-        icon="mdi-radio-tower"
+        item-text="fullTitle"
+        item-value="id"
         :items="example.items"
         :state="example.state"
         :inline="false"
@@ -22,34 +21,11 @@
       {{ example.model }}
     </div>
   </div>
-
-  <ul
-    v-if="current"
-    class="mt-6"
-  >
-    <li>
-      <span class="font-semibold">
-        {{ current.name }}
-      </span>
-    </li>
-    <li>
-      {{ current.url }}
-    </li>
-    <li class="mt-4">
-      {{ current.country }}
-    </li>
-    <li class="mt-4">
-      <span class="font-semibold">
-        Tags:
-      </span>
-      {{ current.tags }}
-    </li>
-  </ul>
 </template>
 
 <script>
-import { ref, reactive, computed } from "vue";
-import { debounce } from "../../tools.js";
+import { ref, reactive } from "vue";
+import { debounce } from "../../tools.js"
 
 export default {
   components: {},
@@ -59,22 +35,22 @@ export default {
       items: [],
     });
 
-    const urlStations =
-      "http://de1.api.radio-browser.info/json/stations/byname/";
-
-    let current = computed(() => {
-      return example.items.find((i) => i.changeuuid === example.model);
-    });
+    const url = "https://gutendex.com/books/";
 
     let query = (q) => {
       if (q === "") return example.items;
 
       example.isLoading = true;
 
-      fetch(`${urlStations}${q}`)
+      fetch(`${url}?search=${q}`)
         .then((response) => response.json())
         .then((data) => {
-          example.items = data;
+          example.items = data.results.map((i) => {
+            i.fullTitle = `${i.title} - ${i.authors
+              .map((i) => i.name)
+              .join(", ")}`;
+            return i;
+          });
         })
         .finally(() => {
           example.isLoading = false;
@@ -105,7 +81,6 @@ export default {
       handleExampleEvents,
       debounce,
       debouncedQuery,
-      current,
     };
   },
 };
