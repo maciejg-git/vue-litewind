@@ -1,29 +1,32 @@
 <template>
   <v-select
     v-model="select"
-    :items="[true, false]"
+    :items="[
+      { text: 'true', value: true },
+      { text: 'false', value: false },
+    ]"
     :input="{
-      icon: select ? 'b-check-lg' : 'b-x',
       styleIcon: 'true:valid false:invalid',
+      icon: select ? 'b-check-lg' : 'b-x',
       variant: select,
     }"
-    :icon="select ? 'b-check-lg' : 'b-x'"
+    :card="{
+      styleCard: 'menu shadow',
+      base: 'flat-card',
+    }"
+    @click:icon="handleClickIcon"
     :offsetY="5"
     inline
-    @click:icon="select = !select"
   ></v-select>
 </template>
 
-<script>
+<script setup>
 import { ref } from "vue";
 
-export default {
-  setup(props, { emit }) {
-    let select = ref(false);
+let select = ref(false);
 
-    return {
-      select,
-    };
-  },
+let handleClickIcon = (ev) => {
+  ev.stopPropagation();
+  select.value = !select.value;
 };
 </script>

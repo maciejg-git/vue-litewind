@@ -23,28 +23,30 @@
     </div>
   </div>
 
-  <ul
+  <v-card
     v-if="current"
-    class="mt-6"
+    base="flat-card"
+    style-card="rounded"
+    class="p-4 mt-6"
   >
-    <li>
-      <span class="font-semibold">
-        {{ current.name }}
-      </span>
-    </li>
-    <li>
-      {{ current.url }}
-    </li>
-    <li class="mt-4">
-      {{ current.country }}
-    </li>
-    <li class="mt-4">
-      <span class="font-semibold">
-        Tags:
-      </span>
-      {{ current.tags }}
-    </li>
-  </ul>
+    <ul>
+      <li>
+        <span class="font-semibold">
+          {{ current.name }}
+        </span>
+      </li>
+      <li>
+        {{ current.url }}
+      </li>
+      <li class="mt-4">
+        {{ current.country }}
+      </li>
+      <li class="mt-4">
+        <span class="font-semibold">Tags:</span>
+        {{ current.tags }}
+      </li>
+    </ul>
+  </v-card>
 </template>
 
 <script>
