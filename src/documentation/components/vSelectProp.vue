@@ -1,44 +1,36 @@
 <template>
   <v-select
-    v-model="localModel"
-    :items="[{ text: 'true', value: 1}, { text: 'false', value: 0}]"
-    style-icon="1:valid 0:invalid"
-    :input="{ variant: localModel + '' }"
+    :modelValue="modelValue"
+    @update:modelValue="updateValue"
+    :items="[
+      { text: 'true', value: true },
+      { text: 'false', value: false },
+    ]"
+    :input="{
+      styleIcon: 'true:valid false:invalid',
+      icon: modelValue ? 'b-check-lg' : 'b-x',
+      variant: modelValue,
+    }"
     :card="{ styleCard: 'menu shadow', base: 'flat-card' }"
-    :icon="localModel ? 'b-check-lg' : 'b-x'"
     @click:icon="handleClickIcon"
     :offsetY="5"
     inline
-  >
-  </v-select>
+  ></v-select>
 </template>
 
-<script>
-import { computed } from "vue"
+<script setup>
+let props = defineProps({
+  modelValue: { type: Boolean, default: undefined },
+});
 
-export default {
-  props: {
-    modelValue: { type: Boolean, default: undefined },
-  },
-  setup(props, { emit }) {
-    let localModel = computed({
-      get() {
-        return +props.modelValue
-      },
-      set(value) {
-        emit("update:modelValue", !!value)
-      }
-    })
+let emit = defineEmits(["update:modelValue"]);
 
-    let handleClickIcon = (ev) => {
-      ev.stopPropagation()
-      localModel.value = !localModel.value
-    }
+let updateValue = (value) => {
+  emit("update:modelValue", value);
+};
 
-    return {
-      localModel,
-      handleClickIcon,
-    }
-  }
+let handleClickIcon = (ev) => {
+  ev.stopPropagation();
+  emit("update:modelValue", !props.modelValue);
 };
 </script>
