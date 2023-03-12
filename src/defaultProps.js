@@ -9,9 +9,9 @@ export let defaultProps = (component, prop, def) => {
 
     if (componentProps && componentProps[prop]) {
       if (isFunction(componentProps[prop])) {
-        let { base, name } = props
+        let { base } = props
 
-        return componentProps[prop](base, name)
+        return componentProps[prop](base)
       }
       return componentProps[prop]
     }
