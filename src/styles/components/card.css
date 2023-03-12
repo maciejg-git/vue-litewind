@@ -50,7 +50,7 @@
   .flat-card {
     @apply
       dark:text-text-300
-      bg-white
+      bg-secondary-100
       dark:bg-dark-800;
 
       &--rounded {
