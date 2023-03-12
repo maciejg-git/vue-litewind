@@ -42,7 +42,7 @@ export default {
     let templateCode = ref("");
     let scriptCode = ref("");
     let templateRegexp = /^<template>([\s\S]*?)^<\/template>/gm;
-    let scriptRegexp = /^<script>([\s\S]*?)^<\/script>/gm;
+    let scriptRegexp = /^<script(?: setup)?>([\s\S]*?)^<\/script>/gm;
     let cutTemplateRegexp = /^.*<!-- CUT START -->([\s\S]*?)<!-- CUT END -->/gm;
     let cutScriptRegexp = /^.*\/\* CUT START \*\/([\s\S]*?)\/\* CUT END \*\//gm;
 
