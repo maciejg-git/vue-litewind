@@ -70,7 +70,7 @@ const props = defineProps({
     type: [String, Array],
     default: defaultProps("checkbox", "styleInput", ""),
   },
-  ...sharedFormProps(null),
+  ...sharedFormProps("checkbox", null),
 });
 
 const emit = defineEmits([

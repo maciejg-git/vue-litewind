@@ -117,7 +117,7 @@ const props = defineProps({
     type: [String, Array],
     default: defaultProps("textarea", "styleLabel", ""),
   },
-  ...sharedFormProps(null),
+  ...sharedFormProps("textarea", null),
 });
 
 const emit = defineEmits([

@@ -168,7 +168,7 @@ let props = defineProps({
     type: Boolean,
     default: defaultProps("select", "inline", false),
   },
-  ...sharedFormProps(null, { icon: true, clearable: true }),
+  ...sharedFormProps("select", null, { icon: true, clearable: true }),
   // v-select props
   items: {
     type: Array,
@@ -254,7 +254,7 @@ const { offsetX, offsetY, noFlip, placement } = toRefs(props);
 const {
   isPopperVisible,
   reference,
-  referenceInstance,
+  rawReference,
   updatePopperInstance,
   popper,
   showPopper,
@@ -481,7 +481,7 @@ let handleFocusInput = () => {
       localText.value = getItemText(selectedItem.value);
 
       nextTick(() => {
-        referenceInstance.value.selectAll();
+        rawReference.value.selectAll();
       });
     }
   }
@@ -509,18 +509,18 @@ let handleClickIndicator = () => {
 
   if (isPopperVisible.value) {
     cancelInput();
-    referenceInstance.value.blur();
+    rawReference.value.blur();
     return;
   }
 
-  referenceInstance.value.focus();
+  rawReference.value.focus();
 };
 
 let handleClickClearButton = () => {
   clearInput();
 
   if (isPopperVisible.value) {
-    referenceInstance.value.focus();
+    rawReference.value.focus();
   }
 };
 
@@ -575,7 +575,7 @@ let handleKeydown = (ev) => {
     ev.stopPropagation();
 
     if (!props.multiValue) {
-      referenceInstance.value.blur();
+      rawReference.value.blur();
     }
 
     return;
@@ -598,7 +598,7 @@ let handleClickItem = (item, index) => {
   highlightedItemIndex.value = index;
 
   if (!props.multiValue) {
-    referenceInstance.value.blur();
+    rawReference.value.blur();
   }
 };
 </script>

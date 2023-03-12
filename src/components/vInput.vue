@@ -145,6 +145,7 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
+  ...sharedStyleProps("input"),
   modelValue: {
     type: [String, Number, Array, Boolean, Number],
     default: "",
@@ -233,12 +234,11 @@ const props = defineProps({
     type: String,
     default: defaultProps("input", "styleLabel", ""),
   },
-  ...sharedFormProps(null, { icon: true, clearable: true }),
+  ...sharedFormProps("input", null, { icon: true, clearable: true }),
   customClearable: {
     type: Boolean,
     default: false,
   },
-  ...sharedStyleProps("input"),
   role: {
     type: String,
     default: undefined,
