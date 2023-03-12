@@ -50,7 +50,7 @@ const sharedStyleProps = (component) => {
 
 // form props
 
-const sharedFormProps = (d, options) => {
+const sharedFormProps = (component, d, options) => {
   d = d || {};
   options = options || {};
 
@@ -64,7 +64,7 @@ const sharedFormProps = (d, options) => {
   if (options.clearable === true) {
     props.clearable = {
       type: Boolean,
-      default: d.clearable || false,
+      default: defaultProps(component, "clearable", d.clearable),
     };
   }
 
