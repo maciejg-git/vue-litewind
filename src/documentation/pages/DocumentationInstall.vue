@@ -127,7 +127,7 @@ app.use(componentPlugin, {
 
     <p>
       <span class="font-bold">Optional</span>: while registering components (single or all) you can set default values for props globally in second argument of <code class="code-text">app.use</code>:
-        <code class="code-text">componentProps</code> object. The value for prop can also be function that takes <code class="code-text">base</code> and <code class="code-text">name</code> arguments (<code class="code-text">base</code> and <code class="code-text">name</code> props of component) and should return default value for the prop.
+        <code class="code-text">componentProps</code> object. If component has <code class="code-text">name</code> prop that name will be used instead of default name. The value for prop can also be function that takes <code class="code-text">base</code> argument (<code class="code-text">base</code> prop of component) and should return default value for the prop. Functions and <code class="code-text">name</code> prop can be useful for creating versions of component with different set of defaults. Note that components can internally use other components and those default props will also apply to them. You can set defaults for those components only by nesting them under their parent components.
     </p>
     <p>
     <v-alert icon="warn" style-alert="shadowed marked outline warn" class="mx-6">
@@ -135,6 +135,8 @@ app.use(componentPlugin, {
     </v-alert>
     </p>
 
+    <v-tabs base="material-tabs">
+      <v-tab name="Simple example">
     <v-code language="javascript">
       {{ `// main.js
 
@@ -153,6 +155,48 @@ app.use(componentPlugin, {
   }
 }); `}}
     </v-code>
+      </v-tab>
+      <v-tab name="Functions">
+    <v-code language="javascript">
+      {{ `// main.js
+
+import { componentPlugin } from "vue-wind";
+import { components} from "vue-wind";
+
+let app = createApp(App);
+
+app.use(componentPlugin, {
+  components,
+  componentProps: {
+    input: {
+      inline: true,
+      singleLineMessage: true,
+    },
+  }
+}); `}}
+    </v-code>
+      </v-tab>
+      <v-tab name="Nested defaults">
+    <v-code language="javascript">
+      {{ `// main.js
+
+import { componentPlugin } from "vue-wind";
+import { components} from "vue-wind";
+
+let app = createApp(App);
+
+app.use(componentPlugin, {
+  components,
+  componentProps: {
+    input: {
+      inline: true,
+      singleLineMessage: true,
+    },
+  }
+}); `}}
+    </v-code>
+      </v-tab>
+    </v-tabs>
 
     <h5>Styling components</h5>
       <p>
@@ -162,7 +206,7 @@ app.use(componentPlugin, {
       <code class="code-text">tailwind.config.js</code> for color definitions,
         </li>
         <li>
-      css file of component (button.css, table.css etc) to customize base classes and variants for components,
+      css file of component to customize base classes and variants for components,
         </li>
         <li>
       and following component props that allow selection of active classes:
@@ -170,7 +214,7 @@ app.use(componentPlugin, {
       </ul>
       <ul class="ml-10">
         <li class="my-2">
-          <code class="code-text">base</code> - changes base name for styling. The default value is component <code class="code-text">'default'</code>. This can be useful to make new version of appearance with different set of variants.
+          <code class="code-text">base</code> - changes base name for styling. The default value is component name. This can be useful to make new version of appearance with different set of variants.
         </li>
         <li class="my-2">
           <code class="code-text">style-[element]</code> - adds list of variants to elements of component. Variant can be applied conditionaly by putting "identifier:" in front of any variant. Active conditional variant can be chosen with <code class="code-text">variant</code> prop set to identifier. Identifier can be any word and does not have any relation to css. <code class="code-text">Boolean</code>, <code class="code-text">null</code> and <code class="code-text">undefined</code> values of variant prop are automatically converted to strings.

@@ -61,20 +61,26 @@
 
   <section>
     <h4>Example - autocomplete</h4>
+    <p>
+    This example uses <code class="code-text">no-filter</code> prop and simple mock of API request. It does not perform local autocompletion, instead <code class="code-text">items</code> prop can be replaced or updated with new set of items after input event.
+    </p>
     <div class="example">
       <example name="ExampleAutocomplete"></example>
     </div>
   </section>
 
   <section>
-    <h4>Example - autocomplete (multi value, with chips)</h4>
+    <h4>Example - autocomplete (multi value with chips)</h4>
+    <p>
+    Example of multi value autocomplete that has <code class="code-text">v-chip</code> components as selected values.
+    </p>
     <div class="example">
       <example name="ExampleAutocompleteMultivalue"></example>
     </div>
   </section>
 
   <section>
-    <h4>Example - autocomplete (API)</h4>
+    <h4>Example - autocomplete (radio browser API)</h4>
     <div class="example">
       <example name="ExampleAutocompleteAPI"></example>
     </div>
