@@ -1,6 +1,7 @@
 <template>
   <div class="flex items-center gap-4">
     <v-button>Default button</v-button>
+    <v-button base="plain-button">Plain button</v-button>
     <v-button style-button="success">Success button</v-button>
     <v-button style-button="primary small">Small button</v-button>
     <v-button style-button="secondary tiny uppercase">Tiny button</v-button>
