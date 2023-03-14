@@ -175,15 +175,15 @@ let externalState = toRef(props, "state");
 let { rules, validateOn, validateMode } = props;
 
 let { status, state, messages, touch, formValidate, reset } = useValidation(
-  rules,
   localModel,
-  externalState,
-  emitValidationStatus,
-  resetInput,
+  rules,
   {
     validateOn,
     validateMode,
-  }
+  },
+  externalState,
+  emitValidationStatus,
+  resetInput,
 );
 
 // handle v-form

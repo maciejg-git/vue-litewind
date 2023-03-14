@@ -3,18 +3,18 @@
   <slot
     name="reference"
     v-bind="referenceSlotProps"
-    :is-open="isPopperVisible"
+    :is-open="isFloatingVisible"
   ></slot>
 
   <teleport to="body">
     <transition
       :name="transition"
-      @before-leave="lockPopper"
-      @after-leave="destroyPopperInstance"
     >
+    <!-- @before-leave="lockPopper" -->
+    <!-- @after-leave="destroyPopperInstance" -->
       <div
-        v-if="isPopperVisible"
-        ref="popper"
+        v-if="isFloatingVisible"
+        ref="floating"
         role="listbox"
         tabindex="-1"
         @mouseenter="preventHiding"
@@ -59,6 +59,7 @@ import {
 } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 import { registerListener, removeListener } from "../trigger";
+import useFloating from "./composition/use-floating"
 
 const props = defineProps({
   ...sharedProps(),
@@ -103,17 +104,26 @@ let { classes, states } = useStyles("dropdown", props, {
   header: null,
 });
 
-// set up popper
-const { offsetX, offsetY, noFlip, placement, trigger } = toRefs(props);
+const { offsetX, offsetY, flip, placement, trigger } = toRefs(props);
 const {
-  isPopperVisible,
+  isFloatingVisible,
   reference,
-  popper,
+  floating,
   showPopper,
   hidePopper,
-  destroyPopperInstance,
-  lockPopper,
-} = usePopper({ placement, offsetX, offsetY, noFlip });
+} = useFloating({ placement, offsetX, offsetY, flip, autoPlacement: false })
+
+// set up popper
+// const { offsetX, offsetY, noFlip, placement, trigger } = toRefs(props);
+// const {
+//   isPopperVisible,
+//   reference,
+//   popper,
+//   showPopper,
+//   hidePopper,
+//   destroyPopperInstance,
+//   lockPopper,
+// } = usePopper({ placement, offsetX, offsetY, noFlip });
 
 let { onClickOutside } = useClickOutside();
 let stopClickOutside = null;
@@ -137,12 +147,12 @@ let allowHiding = () => {
 // close
 
 let show = () => {
-  if (isPopperVisible.value) return;
+  if (isFloatingVisible.value) return;
   if (props.trigger === "hover") clearTimeout(hideTimeout);
   showPopper();
   if (props.trigger === "click") {
     nextTick(() => {
-      stopClickOutside = onClickOutside(popper, hide, reference);
+      stopClickOutside = onClickOutside(floating, hide, reference);
     });
   }
 };
@@ -152,7 +162,7 @@ let scheduleHide = () => {
 };
 
 let hide = () => {
-  if (!isPopperVisible.value) return;
+  if (!isFloatingVisible.value) return;
   if (props.trigger === "hover") {
     hideTimeout = scheduleHide();
     return;
@@ -163,7 +173,7 @@ let hide = () => {
 
 let { onTrigger } = useTrigger(trigger, show, hide);
 
-let referenceSlotProps = { reference, onTrigger, isOpen: isPopperVisible };
+let referenceSlotProps = { reference, onTrigger, isOpen: isFloatingVisible };
 
 // watch model changes
 watch(

@@ -54,15 +54,15 @@ let externalState = toRef(props, "state");
 let { rules, validateMode } = props;
 
 let { status, state, messages, touch, formValidate, reset } = useValidation(
-  rules,
   groupModel,
-  externalState,
-  emitValidationStatus,
-  resetInput,
+  rules,
   {
     validateOn: "form",
     validateMode,
-  }
+  },
+  externalState,
+  emitValidationStatus,
+  resetInput,
 );
 
 provide("v-radio-group-validation", {

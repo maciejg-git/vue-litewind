@@ -26,9 +26,9 @@ const sharedPopperProps = (component) => {
       type: Number,
       default: defaultProps(component, "offsetY", 0),
     },
-    noFlip: {
+    flip: {
       type: Boolean,
-      default: defaultProps(component, "noFlip", false),
+      default: defaultProps(component, "flip", false),
     },
   };
 };

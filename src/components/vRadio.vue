@@ -128,15 +128,15 @@ let { rules, validateMode } = props;
 let { status, state, messages, touch, formValidate, reset } = inject(
   "v-radio-group-validation",
   useValidation(
-    rules,
     localModel,
-    externalState,
-    emitValidationStatus,
-    resetInput,
+    rules,
     {
       validateOn: "form",
       validateMode,
-    }
+    },
+    externalState,
+    emitValidationStatus,
+    resetInput,
   )
 );
 

@@ -2,11 +2,11 @@
   <teleport to="body">
     <transition
       :name="transition"
-      @after-leave="destroyPopperInstance"
     >
+      <!-- @after-leave="destroyPopperInstance" -->
       <div
-        v-if="isPopperVisible"
-        ref="popper"
+        v-if="isFloatingVisible"
+        ref="floating"
         role="listbox"
         tabindex="-1"
         class="absolute z-50"
@@ -39,6 +39,7 @@ import {
   sharedStyleProps,
 } from "../shared-props";
 import { defaultProps } from "../defaultProps";
+import useFloating from "./composition/use-floating"
 
 const props = defineProps({
   ...sharedProps(),
@@ -77,28 +78,37 @@ let { classes, states } = useStyles("dropdown", props, {
   },
 });
 
-// set up popper
-const { offsetX, offsetY, noFlip, placement } = toRefs(props);
+const { offsetX, offsetY, flip, placement } = toRefs(props);
 const {
-  isPopperVisible,
-  popper,
+  isFloatingVisible,
+  floating,
   showPopper,
   hidePopper,
-  destroyPopperInstance,
   updateVirtualElement,
-} = usePopper({ placement, offsetX, offsetY, noFlip });
+} = useFloating({ placement, offsetX, offsetY, flip, autoPlacement: false })
+
+// set up popper
+// const { offsetX, offsetY, noFlip, placement } = toRefs(props);
+// const {
+//   isPopperVisible,
+//   popper,
+//   showPopper,
+//   hidePopper,
+//   destroyPopperInstance,
+//   updateVirtualElement,
+// } = usePopper({ placement, offsetX, offsetY, noFlip });
 
 let { onClickOutside } = useClickOutside();
 let stopClickOutside = null;
 
 let show = () => {
-  if (isPopperVisible.value) return;
+  if (isFloatingVisible.value) return;
   showPopper();
-  stopClickOutside = onClickOutside(popper, hide);
+  stopClickOutside = onClickOutside(floating, hide);
 };
 
 let hide = () => {
-  if (!isPopperVisible.value) return;
+  if (!isFloatingVisible.value) return;
   hidePopper();
   if (stopClickOutside) stopClickOutside = stopClickOutside();
 };

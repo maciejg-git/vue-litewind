@@ -106,10 +106,10 @@
           ></v-input>
         </div>
         <div>
-          <label for="no-flip">no-flip:</label>
+          <label for="flip">flip:</label>
           <v-select-prop
-            id="no-flip"
-            v-model="example.noFlip"
+            id="flip"
+            v-model="example.flip"
           ></v-select-prop>
         </div>
         <div>
@@ -160,7 +160,7 @@ export default {
       placement: "bottom-start",
       offsetX: 0,
       offsetY: 5,
-      noFlip: false,
+      flip: false,
       autoCloseMenu: false,
       transition: "fade",
       trigger: "click",

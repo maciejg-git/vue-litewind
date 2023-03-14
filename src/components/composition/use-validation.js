@@ -12,12 +12,12 @@ let defaultStatus = {
 };
 
 export default function useValidation(
-  rules,
   localModel,
+  rules,
+  opts,
   externalState,
   onUpdateState,
   onReset,
-  opts
 ) {
   let status = ref({ ...defaultStatus });
 
@@ -26,8 +26,8 @@ export default function useValidation(
   let messages = ref({});
 
   let options = {
-    validateOn: opts.validateOn || "blur",
-    validateMode: opts.validateMode || "silent",
+    validateOn: opts?.validateOn || "blur",
+    validateMode: opts?.validateMode || "silent",
   }
 
   if (!isFunction(onUpdateState)) {
@@ -157,13 +157,15 @@ export default function useValidation(
     return state.value;
   };
 
-  watch(
-    externalState,
-    () => {
-      state.value = updateState();
-    },
-    { immediate: true }
-  );
+  if (externalState !== undefined) {
+    watch(
+      externalState,
+      () => {
+        state.value = updateState();
+      },
+      { immediate: true }
+    );
+  }
 
   // reset
 
