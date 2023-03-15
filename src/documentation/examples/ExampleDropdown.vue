@@ -4,11 +4,12 @@
     @state:opened="events.unshift({ ev: 'state:opened', data: $event })"
     @state:closed="events.unshift({ ev: 'state:closed', data: $event })"
   >
-    <template #reference="{ reference, onTrigger }">
+    <template #reference="{ reference, onTrigger, isOpen }">
       <v-button-chevron
         :ref="reference"
         :chevron="{ class: 'ml-2' }"
         v-on="onTrigger"
+        :switch="isOpen"
       >
         Dropdown menu
       </v-button-chevron>

@@ -31,7 +31,6 @@ export default {
 <script setup>
 import { ref, provide, toRef, toRefs, watch } from "vue";
 import useStyles from "./composition/use-styles";
-import usePopper from "./composition/use-popper.js";
 import useClickOutside from "./composition/use-click-outside";
 import {
   sharedProps,
@@ -78,25 +77,14 @@ let { classes, states } = useStyles("dropdown", props, {
   },
 });
 
-const { offsetX, offsetY, flip, placement } = toRefs(props);
+const { offsetX, offsetY, flip, placement, autoPlacement } = toRefs(props);
 const {
   isFloatingVisible,
   floating,
   showPopper,
   hidePopper,
   updateVirtualElement,
-} = useFloating({ placement, offsetX, offsetY, flip, autoPlacement: false })
-
-// set up popper
-// const { offsetX, offsetY, noFlip, placement } = toRefs(props);
-// const {
-//   isPopperVisible,
-//   popper,
-//   showPopper,
-//   hidePopper,
-//   destroyPopperInstance,
-//   updateVirtualElement,
-// } = usePopper({ placement, offsetX, offsetY, noFlip });
+} = useFloating({ placement, offsetX, offsetY, flip, autoPlacement })
 
 let { onClickOutside } = useClickOutside();
 let stopClickOutside = null;

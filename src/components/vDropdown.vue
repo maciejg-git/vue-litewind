@@ -10,8 +10,6 @@
     <transition
       :name="transition"
     >
-    <!-- @before-leave="lockPopper" -->
-    <!-- @after-leave="destroyPopperInstance" -->
       <div
         v-if="isFloatingVisible"
         ref="floating"
@@ -49,7 +47,6 @@ import {
   nextTick,
 } from "vue";
 import useStyles from "./composition/use-styles";
-import usePopper from "./composition/use-popper.js";
 import useClickOutside from "./composition/use-click-outside";
 import useTrigger from "./composition/use-trigger-events";
 import {
@@ -66,7 +63,7 @@ const props = defineProps({
   ...sharedStyleProps("dropdown"),
   modelValue: {
     type: Boolean,
-    default: false,
+    default: undefined,
   },
   ...sharedPopperProps("dropdown"),
   autoCloseMenu: {
@@ -104,26 +101,14 @@ let { classes, states } = useStyles("dropdown", props, {
   header: null,
 });
 
-const { offsetX, offsetY, flip, placement, trigger } = toRefs(props);
+const { offsetX, offsetY, flip, placement, autoPlacement, trigger } = toRefs(props);
 const {
   isFloatingVisible,
   reference,
   floating,
   showPopper,
   hidePopper,
-} = useFloating({ placement, offsetX, offsetY, flip, autoPlacement: false })
-
-// set up popper
-// const { offsetX, offsetY, noFlip, placement, trigger } = toRefs(props);
-// const {
-//   isPopperVisible,
-//   reference,
-//   popper,
-//   showPopper,
-//   hidePopper,
-//   destroyPopperInstance,
-//   lockPopper,
-// } = usePopper({ placement, offsetX, offsetY, noFlip });
+} = useFloating({ placement, offsetX, offsetY, flip, autoPlacement })
 
 let { onClickOutside } = useClickOutside();
 let stopClickOutside = null;
@@ -178,7 +163,10 @@ let referenceSlotProps = { reference, onTrigger, isOpen: isFloatingVisible };
 // watch model changes
 watch(
   () => props.modelValue,
-  (value) => (value ? show() : hide()),
+  (value) => {
+    if (value === undefined) return
+    value ? show() : hide()
+  },
   { immediate: true }
 );
 

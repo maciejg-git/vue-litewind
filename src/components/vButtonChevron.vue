@@ -4,6 +4,7 @@
     <slot name="default"></slot>
     <v-chevron
       :switch="switch"
+      :initial="initial"
       v-bind="chevron"
     />
   </v-button>
@@ -20,7 +21,7 @@ export default {
     },
     initial: {
       type: String,
-      default: "down",
+      default: "bottom",
     },
     chevron: {
       type: Object,

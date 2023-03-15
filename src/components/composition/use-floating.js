@@ -1,16 +1,20 @@
-import { ref, computed, watch, unref, nextTick, reactive } from "vue"
-import {computePosition, offset, autoUpdate, autoPlacement, flip} from '@floating-ui/dom';
+import { ref, computed, watch, unref, nextTick } from "vue";
+import {
+  computePosition,
+  autoPlacement,
+  flip,
+  offset,
+  autoUpdate,
+} from "@floating-ui/dom";
 
-let defaultStyles = {
-  position: "absolute",
-  width: "max-content",
+let defaultStyle = {
+  placement: "absolute",
+  width: "min-content",
   top: 0,
   left: 0,
-}
+};
 
-export default function usePopper(
-  opts
-) {
+export default function useFloating(opts) {
   let options = {
     placement: "bottom-start",
     offsetX: 0,
@@ -18,15 +22,13 @@ export default function usePopper(
     flip: false,
     autoPlacement: false,
     ...opts,
-  }
+  };
 
   let isFloatingVisible = ref(false);
-  let floating = ref(null);
   let localReference = ref(null);
-  let destroyFloating = null
+  let floating = ref(null);
+  let destroyFloating = null;
 
-  // localReference can by any template ref (component or element)
-  // reference is always html element: components $el or exposed reference element
   let reference = computed({
     get() {
       return (
@@ -40,71 +42,72 @@ export default function usePopper(
     },
   });
 
-  let showPopper = function () {
+  let showPopper = () => {
     if (isFloatingVisible.value) return;
     isFloatingVisible.value = true;
 
-    // show v-show popper, v-show popper does not trigger popper watch
     if (floating.value) setAutoUpdateFloating();
   };
 
-  let hidePopper = function () {
+  let hidePopper = () => {
     if (!isFloatingVisible.value) return;
     isFloatingVisible.value = false;
 
-    // v-show popper
     nextTick(() => {
-      floating.value && destroyFloating()
-    })
+      floating.value && destroyFloating();
+    });
   };
 
-  let togglePopper = function () {
+  let togglePopper = () => {
     isFloatingVisible.value ? hidePopper() : showPopper();
   };
 
-  let initPopper = () => {
-    Object.assign(floating.value.style, defaultStyles)
-  }
+  let initFloating = () => {
+    Object.assign(floating.value.style, defaultStyle);
+  };
 
   let setAutoUpdateFloating = () => {
     destroyFloating = autoUpdate(
       reference.value || virtualElement,
       floating.value,
-      setFloating,
-    )
-  }
+      setFloating
+    );
+  };
 
   let setFloating = async () => {
-    let {x, y} = await computePosition(reference.value || virtualElement, floating.value, {
-      placement: unref(options.placement),
-      middleware: [
-        offset({
-          mainAxis: unref(options.offsetY),
-          crossAxis: unref(options.offsetX),
-        }),
-        unref(options.autoPlacement) && autoPlacement(),
-        unref(options.flip) && flip(),
-      ]
-    })
-      Object.assign(floating.value.style, {
+    let { x, y } = await computePosition(
+      reference.value || virtualElement,
+      floating.value,
+      {
+        placement: unref(options.placement),
+        middleware: [
+          offset({
+            mainAxis: unref(options.offsetY),
+            crossAxis: unref(options.offsetX),
+          }),
+          unref(options.flip) && flip(),
+          unref(options.autoPlacement) && autoPlacement(),
+        ],
+      }
+    );
+    Object.assign(floating.value.style, {
       left: `${x}px`,
       top: `${y}px`,
     });
-  }
+  };
 
   watch(floating, (value) => {
     if (value) {
-      initPopper()
-      setAutoUpdateFloating()
+      initFloating();
+      setAutoUpdateFloating();
       return;
     }
 
-    destroyFloating()
-    destroyFloating = null
+    destroyFloating();
+    destroyFloating = null;
   });
 
-  // optional virtual element can be used as reference instead of html element
-  let getVirtualElement = ({ x, y }) => {
+  let generateGetBoundingClientRect = ({ x, y }) => {
     return () => ({
       width: 0,
       height: 0,
@@ -116,18 +119,16 @@ export default function usePopper(
   };
 
   let virtualElement = {
-    getBoundingClientRect: getVirtualElement({ x: 0, y: 0 }),
+    getBoundingClientRect: generateGetBoundingClientRect({ x: 0, y: 0 }),
   };
 
-  // call updateVirtualElement in your component before showing or updating position of virtual popper
-  let updateVirtualElement = (value) => {
-    virtualElement.getBoundingClientRect = getVirtualElement(value);
+  let updateVirtualElement = (event) => {
+    virtualElement.getBoundingClientRect = generateGetBoundingClientRect(event);
   };
 
   return {
     isFloatingVisible,
     reference,
-    rawReference: localReference,
     floating,
     showPopper,
     hidePopper,

@@ -26,6 +26,16 @@ let slots = {
   default: menu,
 }
 
+class ResizeObserver {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+}
+
+beforeEach(() => {
+  window.ResizeObserver = ResizeObserver;
+})
+
 test("renders component", async () => {
   const { getByRole, getByText } = render(Dropdown, {
     props: {},
@@ -34,7 +44,7 @@ test("renders component", async () => {
   });
 
   let button = getByRole("button")
-  await fireEvent.click(button)
+  await userEvent.click(button)
   expect(getByText("menu item")).toBeInTheDocument()
   expect(getByText("menu item2")).toBeInTheDocument()
   expect(getByText("menu item3")).toBeInTheDocument()
@@ -65,7 +75,7 @@ describe('should open on', () => {
     });
 
     let button = getByRole("button")
-    await fireEvent.click(button)
+    await userEvent.click(button)
     expect(getByText("menu item")).toBeInTheDocument()
   });
 

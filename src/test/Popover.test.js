@@ -1,7 +1,7 @@
 import { render, fireEvent, prettyDOM, waitFor } from "@testing-library/vue";
 import "@testing-library/jest-dom"
 import userEvent from "@testing-library/user-event"
-import Popover from "../components/vDropdown.vue";
+import Popover from "../components/vPopover.vue";
 
 let global = {
   stubs: {},
@@ -11,6 +11,16 @@ let slots = {
   reference: "<button :ref='reference' v-on='onTrigger'>trigger</button>",
   default: "popover content",
 }
+
+class ResizeObserver {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+}
+
+beforeEach(() => {
+  window.ResizeObserver = ResizeObserver;
+})
 
 test("renders component", async () => {
   const { getByRole, getByText } = render(Popover, {

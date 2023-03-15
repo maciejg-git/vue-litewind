@@ -80,22 +80,22 @@ let chevron = {
   chevron: {
     right: vChevronRightIcon,
     left: vChevronLeftIcon,
-    up: vChevronUpIcon,
-    down: vChevronDownIcon,
+    top: vChevronUpIcon,
+    bottom: vChevronDownIcon,
   },
   triangle: {
     right: vCaretRightFillIcon,
     left: vCaretLeftFillIcon,
-    up: vCaretUpFillIcon,
-    down: vCaretDownFillIcon,
+    top: vCaretUpFillIcon,
+    bottom: vCaretDownFillIcon,
   },
 };
 
-let validInitial = ["down", "left", "right", "up"];
+let validInitial = ["bottom", "left", "right", "top"];
 
 let initial = computed(() => {
   return (
-    (validInitial.some((i) => i === props.initial) && props.initial) || "down"
+    (validInitial.some((i) => i === props.initial) && props.initial) || "bottom"
   );
 });
 
