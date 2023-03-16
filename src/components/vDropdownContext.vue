@@ -83,6 +83,7 @@ const {
   floating,
   showPopper,
   hidePopper,
+  updateFloating,
   updateVirtualElement,
 } = useFloating({ placement, offsetX, offsetY, flip, autoPlacement })
 
@@ -114,6 +115,7 @@ let contextData = ref(null);
 let showContextDropdown = (ev, data) => {
   updateVirtualElement(ev);
   show();
+  updateFloating()
   contextData.value = data;
 };
 

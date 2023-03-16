@@ -54,7 +54,7 @@ describe('should open on', () => {
       global,
     });
 
-    await fireEvent.click(getByRole("button"))
+    await userEvent.click(getByRole("button"))
   expect(getByText("popover content")).toBeInTheDocument()
   });
 

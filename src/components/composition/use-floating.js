@@ -1,4 +1,4 @@
-import { ref, computed, watch, unref, nextTick } from "vue";
+import { ref, computed, watch, unref, nextTick, isRef } from "vue";
 import {
   computePosition,
   autoPlacement,
@@ -25,27 +25,21 @@ export default function useFloating(opts) {
   };
 
   let isFloatingVisible = ref(false);
-  let localReference = ref(null);
+  let reference = ref(null)
   let floating = ref(null);
   let destroyFloating = null;
 
-  let reference = computed({
-    get() {
-      return (
-        (localReference.value && localReference.value.reference) ||
-        (localReference.value && localReference.value.$el) ||
-        localReference.value
-      );
-    },
-    set(value) {
-      localReference.value = value;
-    },
-  });
+  let localReference = computed(() => {
+    return (reference.value && reference.value.reference) ||
+        (reference.value && reference.value.$el) ||
+        reference.value || virtualElement
+  })
 
   let showPopper = () => {
     if (isFloatingVisible.value) return;
     isFloatingVisible.value = true;
 
+    // v-show floating
     if (floating.value) setAutoUpdateFloating();
   };
 
@@ -53,6 +47,7 @@ export default function useFloating(opts) {
     if (!isFloatingVisible.value) return;
     isFloatingVisible.value = false;
 
+    // v-show floating
     nextTick(() => {
       floating.value && destroyFloating();
     });
@@ -68,15 +63,15 @@ export default function useFloating(opts) {
 
   let setAutoUpdateFloating = () => {
     destroyFloating = autoUpdate(
-      reference.value || virtualElement,
+      localReference.value,
       floating.value,
-      setFloating
+      updateFloating,
     );
   };
 
-  let setFloating = async () => {
+  let updateFloating = async () => {
     let { x, y } = await computePosition(
-      reference.value || virtualElement,
+      localReference.value,
       floating.value,
       {
         placement: unref(options.placement),
@@ -95,6 +90,10 @@ export default function useFloating(opts) {
       top: `${y}px`,
     });
   };
+
+  let watchableOptions = Object.values(options).filter((i) => isRef(i))
+
+  watch(watchableOptions, updateFloating)
 
   watch(floating, (value) => {
     if (value) {
@@ -130,6 +129,7 @@ export default function useFloating(opts) {
     isFloatingVisible,
     reference,
     floating,
+    updateFloating,
     showPopper,
     hidePopper,
     togglePopper,
