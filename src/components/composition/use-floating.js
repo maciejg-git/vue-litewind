@@ -5,13 +5,25 @@ import {
   flip,
   offset,
   autoUpdate,
+  inline,
 } from "@floating-ui/dom";
 
 let defaultStyle = {
-  placement: "absolute",
+  position: "absolute",
   width: "min-content",
   top: 0,
   left: 0,
+};
+
+let resizeFloatToReferenceWidth = {
+  name: "resizeFloatToReferenceWidth",
+  fn({ elements }) {
+    return {
+      data: {
+        width: elements.reference.offsetWidth,
+      },
+    };
+  },
 };
 
 export default function useFloating(opts) {
@@ -21,29 +33,36 @@ export default function useFloating(opts) {
     offsetY: 0,
     flip: false,
     autoPlacement: false,
+    inline: false,
     ...opts,
   };
 
   let isFloatingVisible = ref(false);
-  let reference = ref(null)
+  let reference = ref(null);
   let floating = ref(null);
   let destroyFloating = null;
 
   let localReference = computed(() => {
-    return (reference.value && reference.value.reference) ||
-        (reference.value && reference.value.$el) ||
-        reference.value || virtualElement
-  })
+    return (
+      (reference.value && reference.value.reference) ||
+      (reference.value && reference.value.$el) ||
+      reference.value ||
+      virtualElement
+    );
+  });
 
-  let showPopper = () => {
+  let showFloating = () => {
     if (isFloatingVisible.value) return;
     isFloatingVisible.value = true;
 
     // v-show floating
-    if (floating.value) setAutoUpdateFloating();
+    if (floating.value) {
+      initFloating();
+      setAutoUpdateFloating();
+    }
   };
 
-  let hidePopper = () => {
+  let hideFloating = () => {
     if (!isFloatingVisible.value) return;
     isFloatingVisible.value = false;
 
@@ -53,8 +72,8 @@ export default function useFloating(opts) {
     });
   };
 
-  let togglePopper = () => {
-    isFloatingVisible.value ? hidePopper() : showPopper();
+  let toggleFloating = () => {
+    isFloatingVisible.value ? hideFloating() : showFloating();
   };
 
   let initFloating = () => {
@@ -62,15 +81,19 @@ export default function useFloating(opts) {
   };
 
   let setAutoUpdateFloating = () => {
+    if (!reference.value || !floating.value) return;
+
     destroyFloating = autoUpdate(
       localReference.value,
       floating.value,
-      updateFloating,
+      updateFloating
     );
   };
 
   let updateFloating = async () => {
-    let { x, y } = await computePosition(
+    if (!reference.value || !floating.value) return;
+
+    let { x, y, middlewareData } = await computePosition(
       localReference.value,
       floating.value,
       {
@@ -80,20 +103,32 @@ export default function useFloating(opts) {
             mainAxis: unref(options.offsetY),
             crossAxis: unref(options.offsetX),
           }),
+          unref(options.inline) && inline(),
           unref(options.flip) && flip(),
           unref(options.autoPlacement) && autoPlacement(),
+          unref(options.resize) && resizeFloatToReferenceWidth,
         ],
       }
     );
+
+    if (!floating.value) return;
+
     Object.assign(floating.value.style, {
       left: `${x}px`,
       top: `${y}px`,
     });
+    if (middlewareData.resizeFloatToReferenceWidth) {
+      Object.assign(floating.value.style, {
+        width: `${middlewareData.resizeFloatToReferenceWidth.width}px`,
+      });
+    }
   };
 
-  let watchableOptions = Object.values(options).filter((i) => isRef(i))
+  let watchableOptions = Object.values(options).filter((i) => isRef(i));
 
-  watch(watchableOptions, updateFloating)
+  watch(watchableOptions, () => {
+    if (floating.value) updateFloating();
+  });
 
   watch(floating, (value) => {
     if (value) {
@@ -130,9 +165,9 @@ export default function useFloating(opts) {
     reference,
     floating,
     updateFloating,
-    showPopper,
-    hidePopper,
-    togglePopper,
+    showFloating,
+    hideFloating,
+    toggleFloating,
     updateVirtualElement,
   };
 }
