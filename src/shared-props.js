@@ -28,7 +28,7 @@ const sharedPopperProps = (component) => {
     },
     flip: {
       type: Boolean,
-      default: defaultProps(component, "flip", false),
+      default: defaultProps(component, "flip", true),
     },
     autoPlacement: {
       type: Boolean,
