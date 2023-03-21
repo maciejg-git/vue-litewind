@@ -59,9 +59,11 @@ test("renders opened (v-model)", async () => {
     global,
   });
 
-  expect(getByText("menu item")).toBeInTheDocument()
-  expect(getByText("menu item2")).toBeInTheDocument()
-  expect(getByText("menu item3")).toBeInTheDocument()
+  await waitFor(() => {
+    expect(getByText("menu item")).toBeInTheDocument()
+    expect(getByText("menu item2")).toBeInTheDocument()
+    expect(getByText("menu item3")).toBeInTheDocument()
+  })
 });
 
 describe('should open on', () => {
