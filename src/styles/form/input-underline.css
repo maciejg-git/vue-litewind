@@ -34,7 +34,23 @@
         w-6
         h-6
         text-text-400
-        dark:text-gray-400
+        dark:text-gray-400;
+
+        &--if-focused {
+          @apply
+            hidden
+            group-focus-within:block
+        }
+        &--valid {
+          @apply
+            text-success-400
+            dark:text-success-400
+        }
+        &--invalid {
+          @apply
+            text-danger-400
+            dark:text-danger-400
+        }
     }
 
     &__label {
