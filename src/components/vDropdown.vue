@@ -49,6 +49,7 @@ import {
 import useStyles from "./composition/use-styles";
 import useClickOutside from "./composition/use-click-outside";
 import useTrigger from "./composition/use-trigger-events";
+import useFloating from "./composition/use-floating"
 import {
   sharedProps,
   sharedPopperProps,
@@ -56,7 +57,6 @@ import {
 } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 import { registerListener, removeListener } from "../trigger";
-import useFloating from "./composition/use-floating"
 
 const props = defineProps({
   ...sharedProps(),
@@ -106,8 +106,8 @@ const {
   isFloatingVisible,
   reference,
   floating,
-  showPopper,
-  hidePopper,
+  showFloating,
+  hideFloating,
 } = useFloating({ placement, offsetX, offsetY, flip, autoPlacement })
 
 let { onClickOutside } = useClickOutside();
@@ -134,7 +134,7 @@ let allowHiding = () => {
 let show = () => {
   if (isFloatingVisible.value) return;
   if (props.trigger === "hover") clearTimeout(hideTimeout);
-  showPopper();
+  showFloating();
   if (props.trigger === "click") {
     nextTick(() => {
       stopClickOutside = onClickOutside(floating, hide, reference);
@@ -143,7 +143,7 @@ let show = () => {
 };
 
 let scheduleHide = () => {
-  return setTimeout(hidePopper, 100);
+  return setTimeout(hideFloating, 100);
 };
 
 let hide = () => {
@@ -152,7 +152,7 @@ let hide = () => {
     hideTimeout = scheduleHide();
     return;
   }
-  hidePopper();
+  hideFloating();
   if (stopClickOutside) stopClickOutside = stopClickOutside();
 };
 

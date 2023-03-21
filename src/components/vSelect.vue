@@ -10,7 +10,7 @@
     :custom-clearable="clearable"
     :readonly="!autocomplete"
     show-indicator
-    :indicator-switch="isPopperVisible"
+    :indicator-switch="isFloatingVisible"
     :is-loading="isLoading"
     type="text"
     @input="handleInput"
@@ -54,9 +54,7 @@
         ></slot>
       </template>
       <span
-        v-else-if="
-          (!autocomplete || !isFocused) && selectedItem !== undefined
-        "
+        v-else-if="(!autocomplete || !isFocused) && selectedItem !== undefined"
       >
         {{ getItemText(selectedItem) }}
       </span>
@@ -64,14 +62,10 @@
   </v-input>
 
   <teleport to="body">
-    <transition
-      :name="transition"
-      @before-leave="lockPopper"
-      @after-leave="destroyPopperInstance"
-    >
+    <transition :name="transition">
       <div
-        v-if="isPopperVisible"
-        ref="popper"
+        v-if="isFloatingVisible"
+        ref="floating"
         class="z-50"
       >
         <v-card
@@ -128,7 +122,7 @@ export default {
 import { ref, computed, watch, toRefs, nextTick, onBeforeUpdate } from "vue";
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
-import usePopper from "./composition/use-popper.js";
+import useFloating from "./composition/use-floating";
 import vInput from "./vInput.vue";
 import vCard from "./vCard.vue";
 import { default as vDetectScrollBottom } from "../directives/detect-scroll-bottom";
@@ -250,26 +244,24 @@ let getItemClass = (item, index) => {
 
 let localModel = useLocalModel(props, emit);
 
-const { offsetX, offsetY, noFlip, placement } = toRefs(props);
+const { offsetX, offsetY, flip, placement, autoPlacement } = toRefs(props);
 const {
-  isPopperVisible,
+  isFloatingVisible,
   reference,
-  rawReference,
-  updatePopperInstance,
-  popper,
-  showPopper,
-  hidePopper,
-  destroyPopperInstance,
-  lockPopper,
-} = usePopper(
-  { placement, offsetX, offsetY, noFlip },
-  null,
-  {
-    resizePopper: true,
-  }
-);
+  floating,
+  showFloating,
+  hideFloating,
+  updateFloating,
+} = useFloating({
+  placement,
+  offsetX,
+  offsetY,
+  flip,
+  autoPlacement,
+  resize: true,
+});
 
-let isFocused = ref(false)
+let isFocused = ref(false);
 
 let selectedItem = ref(null);
 let selectedItems = ref([]);
@@ -277,7 +269,7 @@ let localText = ref("");
 
 let highlightedItemIndex = ref(-1);
 
-let cardRef = ref(null)
+let cardRef = ref(null);
 
 // menu items elements
 
@@ -294,7 +286,7 @@ onBeforeUpdate(() => {
 // show autocomplete menu
 
 let show = () => {
-  showPopper();
+  showFloating();
 
   nextTick(() => {
     scrollToHighlighted();
@@ -304,13 +296,13 @@ let show = () => {
 watch(
   () => props.items,
   () => {
-    page.value = 0
+    page.value = 0;
 
-    if (props.noFilter && isFocused.value) {
+    if (props.autocomplete && props.noFilter && isFocused.value) {
       show();
     }
-    if (popper.value) {
-      scrollToTop()
+    if (floating.value) {
+      scrollToTop();
     }
   }
 );
@@ -382,7 +374,7 @@ let isSelected = (item) => {
 let updateLocalModel = () => {
   if (props.multiValue) {
     localModel.value = selectedItems.value.map((i) => getItemValue(i));
-    updatePopperInstance();
+    updateFloating();
     return;
   }
 
@@ -412,7 +404,7 @@ let cancelInput = () => {
     localText.value = "";
   }
 
-  hidePopper();
+  hideFloating();
 };
 
 let clearInput = () => {
@@ -440,7 +432,7 @@ watch(
         );
       });
 
-      updatePopperInstance();
+      updateFloating();
 
       return;
     }
@@ -464,14 +456,16 @@ let scrollToHighlighted = (direction) => {
       ? highlightedItemIndex.value - 1
       : highlightedItemIndex.value;
 
-  itemsRef.value[scrollToIndex].scrollIntoView({
-    block: "nearest",
-  });
+  requestAnimationFrame(() => {
+    itemsRef.value[scrollToIndex].scrollIntoView({
+      block: "nearest",
+    });
+  })
 };
 
 let scrollToTop = () => {
-  cardRef.value.$el.scrollTop = 0
-}
+  cardRef.value.$el.scrollTop = 0;
+};
 
 // handle template events
 
@@ -481,7 +475,7 @@ let handleFocusInput = () => {
       localText.value = getItemText(selectedItem.value);
 
       nextTick(() => {
-        rawReference.value.selectAll();
+        reference.value.selectAll();
       });
     }
   }
@@ -490,7 +484,7 @@ let handleFocusInput = () => {
     show();
   }
 
-  isFocused.value = true
+  isFocused.value = true;
 };
 
 let handleInput = () => {
@@ -501,26 +495,26 @@ let handleInput = () => {
 let handleBlurInput = (ev) => {
   cancelInput();
 
-  isFocused.value = false
+  isFocused.value = false;
 };
 
 let handleClickIndicator = () => {
   if (props.isLoading) return;
 
-  if (isPopperVisible.value) {
+  if (isFloatingVisible.value) {
     cancelInput();
-    rawReference.value.blur();
+    reference.value.blur();
     return;
   }
 
-  rawReference.value.focus();
+  reference.value.focus();
 };
 
 let handleClickClearButton = () => {
   clearInput();
 
-  if (isPopperVisible.value) {
-    rawReference.value.focus();
+  if (isFloatingVisible.value) {
+    reference.value.focus();
   }
 };
 
@@ -575,7 +569,7 @@ let handleKeydown = (ev) => {
     ev.stopPropagation();
 
     if (!props.multiValue) {
-      rawReference.value.blur();
+      reference.value.blur();
     }
 
     return;
@@ -598,7 +592,7 @@ let handleClickItem = (item, index) => {
   highlightedItemIndex.value = index;
 
   if (!props.multiValue) {
-    rawReference.value.blur();
+    reference.value.blur();
   }
 };
 </script>

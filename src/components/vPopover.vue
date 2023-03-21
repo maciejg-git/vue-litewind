@@ -3,19 +3,17 @@
   <slot
     name="reference"
     v-bind="referenceSlotProps"
-    :is-open="isPopperVisible"
+    :is-open="isFloatingVisible"
   ></slot>
 
   <teleport to="body">
     <transition
       :name="transition"
-      @before-leave="lockPopper"
-      @after-leave="destroyPopperInstance"
     >
       <div
-        v-if="isPopperVisible"
-        ref="popper"
-        :aria-expanded="!!popper"
+        v-if="isFloatingVisible"
+        ref="floating"
+        :aria-expanded="!!floating"
         @mouseenter="preventHiding"
         @mouseleave="allowHiding"
         class="absolute z-50"
@@ -50,6 +48,7 @@ import useStyles from "./composition/use-styles";
 import usePopper from "./composition/use-popper.js";
 import useClickOutside from "./composition/use-click-outside";
 import useTrigger from "./composition/use-trigger-events";
+import useFloating from "./composition/use-floating"
 import {
   sharedProps,
   sharedPopperProps,
@@ -88,18 +87,15 @@ let { classes } = useStyles("popover", props, {
   header: null,
 });
 
-const { offsetX, offsetY, noFlip, placement, trigger } = toRefs(props);
+const { offsetX, offsetY, flip, placement, autoPlacement, trigger } = toRefs(props);
 
-// popper
 const {
-  isPopperVisible,
+  isFloatingVisible,
   reference,
-  popper,
-  showPopper,
-  hidePopper,
-  destroyPopperInstance,
-  lockPopper,
-} = usePopper({ placement, offsetX, offsetY, noFlip });
+  floating,
+  showFloating,
+  hideFloating,
+} = useFloating({ placement, offsetX, offsetY, flip, autoPlacement })
 
 let { onClickOutside } = useClickOutside();
 let stopClickOutside = null;
@@ -119,33 +115,33 @@ let allowHiding = () => {
 };
 
 let show = () => {
-  if (isPopperVisible.value) return;
+  if (isFloatingVisible.value) return;
   if (props.trigger === "hover") clearTimeout(hideTimeout);
-  showPopper();
+  showFloating();
   if (props.trigger === "click") {
     nextTick(() => {
-      stopClickOutside = onClickOutside(popper, hide, reference);
+      stopClickOutside = onClickOutside(floating, hide, reference);
     });
   }
 };
 
 let scheduleHide = () => {
-  return setTimeout(hidePopper, 100);
+  return setTimeout(hideFloating, 100);
 };
 
 let hide = () => {
-  if (!isPopperVisible.value) return;
+  if (!isFloatingVisible.value) return;
   if (props.trigger === "hover") {
     hideTimeout = scheduleHide();
     return;
   }
-  hidePopper();
+  hideFloating();
   if (stopClickOutside) stopClickOutside = stopClickOutside();
 };
 
 let { onTrigger } = useTrigger(trigger, show, hide);
 
-let referenceSlotProps = { reference, onTrigger, isOpen: isPopperVisible };
+let referenceSlotProps = { reference, onTrigger, isOpen: isFloatingVisible };
 
 // trigger by id
 
