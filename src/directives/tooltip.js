@@ -1,19 +1,25 @@
-import { createPopper } from "@popperjs/core";
 import { correctPlacement } from "../const.js";
+import {
+  computePosition,
+  autoPlacement,
+  flip,
+  offset,
+  autoUpdate,
+  inline,
+} from "@floating-ui/dom";
 
 let defaults = {
-  placement: "bottom-start",
+  placement: "bottom",
   delay: 50,
   offsetX: 0,
   offsetY: 0,
+  inline: false,
+  flip: true,
+  autoPlacement: false,
   transition: "fade",
 };
 
-let transitions = ["fade", "scale-fade", "scale", "noanim"];
-
-let delayRegexp = /^delay\d\d?\d?\d?$/;
-let offsetXRegexp = /^oX\d\d?\d?$/;
-let offsetYRegexp = /^oY\d\d?\d?$/;
+let transitions = ["fade", "scale-fade", ""];
 
 let removeHideTimers = (el) => {
   clearTimeout(el._v_tooltip.timerOut);
@@ -29,6 +35,8 @@ function show(ev) {
 
   removeHideTimers(el);
 
+  if (el._v_tooltip.isVisible) return;
+
   getTooltipFnContent(el);
 
   el._v_tooltip.timer = setTimeout(() => {
@@ -36,7 +44,8 @@ function show(ev) {
     requestAnimationFrame(() => {
       addTransition(el._v_tooltip, false);
     });
-    el._v_popper.update();
+    el._v_tooltip.destroyFloating = setAutoUpdateFloating(el);
+    el._v_tooltip.isVisible = true;
   }, el._v_tooltip.delay);
 }
 
@@ -45,49 +54,77 @@ function hide(ev) {
 
   removeShowTimer(el);
 
+  if (!el._v_tooltip.isVisible) return;
+
   el._v_tooltip.timerOut = setTimeout(() => {
     addTransition(el._v_tooltip, true);
     el._v_tooltip.timerRemove = setTimeout(
       () => {
         el._v_tooltip.wrapper.remove();
+        el._v_tooltip.destroyFloating();
+        el._v_tooltip.destroyFloating = null;
+        el._v_tooltip.isVisible = false;
       },
-      el._v_tooltip.transition === "noanim" ? 0 : 200
+      el._v_tooltip.transition === "" ? 0 : 200
     );
   }, el._v_tooltip.delay);
 }
 
 let getTooltipFnContent = (el) => {
-  if (el._v_tooltip.f) {
-    el._v_tooltip.tooltip.firstChild.innerText = el._v_tooltip.f();
+  if (typeof el._v_tooltip.text === "function") {
+    el._v_tooltip.tooltip.firstChild.innerText = el._v_tooltip.text();
   }
 };
 
-function setPopper(el, tooltip, options) {
-  return createPopper(el, tooltip, {
-    modifiers: [
-      {
-        name: "offset",
-        options: {
-          offset: [options.offsetX, options.offsetY],
-        },
-      },
-      {
-        name: "flip",
-      },
-    ],
-    placement: options.placement,
-  });
-}
+let setAutoUpdateFloating = (el) => {
+  return autoUpdate(
+    el,
+    el._v_tooltip.wrapper,
+    updateFloating(el, el._v_tooltip.wrapper, el._v_tooltip)
+  );
+};
+
+let updateFloating = (reference, floating, options) => {
+  return async () => {
+    let { x, y } = await computePosition(reference, floating, {
+      placement: options.placement,
+      middleware: [
+        offset({
+          mainAxis: options.offsetY,
+          crossAxis: options.offsetX,
+        }),
+        options.inline && inline(),
+        options.flip && flip(),
+        options.autoPlacement && autoPlacement(),
+      ],
+    });
+
+    if (!floating) return;
+
+    Object.assign(floating.style, {
+      left: `${x}px`,
+      top: `${y}px`,
+    });
+  };
+};
 
 function createTooltipElement() {
   let el = document.createElement("div");
+
+  Object.assign(el.style, {
+    position: "absolute",
+    top: 0,
+    left: 0,
+  });
+
   el.innerHTML =
     "<div class='tooltip'><div class='tooltip--content'></div></div>";
+
   return el;
 }
 
 function addTransition(m, v) {
-  if (m.transition == "noanim") return;
+  if (m.transition == "") return;
   if (m.transition == "fade" || m.transition == "scale-fade") {
     m.tooltip.style.opacity = v ? 0 : 1;
   }
@@ -97,64 +134,57 @@ function addTransition(m, v) {
 }
 
 function addFixedTransition(m) {
-  if (m.transition === "noanim") return;
+  if (m.transition === "") return;
   m.tooltip.style.transition = "opacity 0.2s ease, transform 0.2s";
 }
 
-function parseModifiers(modifiers) {
-  let m = {};
+let validateOptions = (options) => {
+  options.transition = transitions.includes(options.transition)
+    ? options.transition
+    : defaults.transition;
+  options.placement = correctPlacement.includes(options.placement)
+    ? options.placement
+    : defaults.placement;
+};
 
-  modifiers.forEach((modifier) => {
-    if (correctPlacement.includes(modifier)) {
-      m.placement = modifier;
-      return;
-    }
-    if (delayRegexp.test(modifier)) {
-      m.delay = +modifier.substring(5);
-      return;
-    }
-    if (offsetXRegexp.test(modifier)) {
-      m.offsetX = +modifier.substring(2);
-      return;
-    }
-    if (offsetYRegexp.test(modifier)) {
-      m.offsetY = +modifier.substring(2);
-      return;
-    }
-    if (transitions.includes(modifier)) {
-      m.transition = modifier;
-      return;
-    }
-  });
-
-  return {
-    ...defaults,
-    ...m,
-  };
-}
+let getOptions = (value) => {
+  if (typeof value === "object") {
+    return {
+      ...defaults,
+      ...value,
+    };
+  }
+  if (typeof value === "string" || typeof value === "function") {
+    return {
+      ...defaults,
+      text: value,
+    };
+  }
+  return defaults;
+};
 
 export default {
   mounted(el, binding) {
-    let m = parseModifiers(Object.keys(binding.modifiers));
+    let options = getOptions(binding.value);
+
+    validateOptions(options);
+
+    let wrapper = createTooltipElement();
 
     let t = {
-      wrapper: createTooltipElement(),
-      tooltip: null,
+      wrapper,
+      tooltip: wrapper.firstChild,
       timer: null,
       timerOut: null,
       timerRemove: null,
-      f: null,
-      ...m,
+      isVisible: false,
+      destroyFloating: null,
+      ...options,
     };
 
-    t.tooltip = t.wrapper.firstChild;
-    t.f = typeof binding.value == "function" ? binding.value : null;
-
-    el._v_popper = setPopper(el, t.wrapper, t);
-
-    if (binding.value && typeof binding.value == "string") {
-      t.tooltip.firstChild.innerText = binding.value;
-    } else {
+    if (typeof t.text === "string") {
+      t.tooltip.firstChild.innerText = t.text;
+    } else if (t.text === undefined) {
       t.tooltip.firstChild.innerText = el.getAttribute("data-title") || "";
     }
 
@@ -168,6 +198,9 @@ export default {
   },
   beforeUnmount(el) {
     if (el._v_tooltip) {
+      if (el._v_tooltip.destroyFloating) {
+        el._v_tooltip.destroyFloating();
+      }
       el._v_tooltip.wrapper.remove();
     }
   },
