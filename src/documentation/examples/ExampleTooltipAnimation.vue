@@ -1,17 +1,17 @@
 <template>
-  <v-button v-tooltip.bottom.delay100.oY5.fade="'This is fade tooltip'">
+  <v-button v-tooltip="{ offsetY: 5, transition:'fade', text: 'This is fade tooltip' }">
     Hover me (fade)
   </v-button>
 
   <v-button
-    v-tooltip.bottom.delay100.oY5.scale-fade="'This is scale-fade tooltip'"
+    v-tooltip="{ offsetY: 5, transition: 'scale-fade', text: 'This is scale-fade tooltip' }"
     class="ml-4"
   >
     Hover me (scale-fade)
   </v-button>
 
   <v-button
-    v-tooltip.bottom.delay100.oY5.noanim="'This is nofade tooltip'"
+    v-tooltip="{ offsetY: 5, transition: '', text: 'This is nofade tooltip' }"
     class="ml-4"
   >
     Hover me (no animation)

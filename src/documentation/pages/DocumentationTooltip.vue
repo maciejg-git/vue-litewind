@@ -4,54 +4,48 @@
   <section>
     <h4>Usage</h4>
     <p>
-      To show tooltip when hovering over html element use the following
-      directive:
+      To show tooltip when hovering over html element use the <code class="code-text">v-tooltip</code>
+      directive. There are three possible ways to set directive value: <code class="code-text">string</code>, <code class="code-text">function</code>  or <code class="code-text">object</code>:
     </p>
-    <code class="code-text ml-6">
-      v-tooltip.modifier1.modifier2='Tooltip text'
+    <code class="code-text">
+      <ul>
+        <li class="my-1">
+      v-tooltip="'Tooltip text'"
+        </li>
+        <li class="my-1">
+      v-tooltip="() => 'Tooltip text'"
+        </li>
+        <li class="my-1">
+      v-tooltip="{ text: 'Tooltip text' }"
+        </li>
+      </ul>
     </code>
     <p>
-      Tooltip text can be function:
+    If value is an object additional options can be set:
     </p>
-    <code class="code-text ml-6">
-      v-tooltip.modifier1.modifier2='() => "Tooltip text"'
-    </code>
-    <p>Modifiers can be in any order.</p>
+    <pre class="mt-[-1em]">
+      <code class="code-text">
+v-tooltip="{ 
+  placement: string,
+  offsetX: number,
+  offsetY: number,
+  flip: boolean,
+  delay: number,
+  autoPlacement: boolean,
+  transition: string,
+  inline: boolean,
+  text: string | function | undefined,
+}"
+      </code>
+    </pre>
   </section>
 
   <section>
-    <h4>Reference</h4>
-    <v-table
+    <h4>Tooltip options reference</h4>
+    <table-reference
       :items="reference"
-      :definition="referenceDefinition"
-      style-table="fixed"
-      style-header-cell="bordered"
-      style-cell="bordered"
     >
-      <template #cell:type="{ value }">
-        <code class="code-word mx-1">
-          {{ value }}
-        </code>
-      </template>
-      <template #cell:default="{ value }">
-        <code class="text-sm">{{ value }}</code>
-      </template>
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
-    </v-table>
-
-    <v-table
-      :items="referenceValue"
-      :definition="referenceValueDefinition"
-      style-table="fixed"
-      style-header-cell="bordered"
-      style-cell="bordered"
-    >
-      <template #cell:description="{ value }">
-        <span v-html="value"></span>
-      </template>
-    </v-table>
+    </table-reference>
   </section>
 
   <section>
@@ -90,47 +84,58 @@ export default {
   setup() {
     let reference = ref([
       {
-        modifier: "position",
-        default: "bottom-start",
+        prop: "placement",
+        type: ["String"],
+        default: "'bottom'",
         description:
-          "Position of the tooltip. Valid values are the same as placement values in Popperjs",
+          "Position of the tooltip. Valid values are the same as placement values in FloatingUI",
       },
       {
-        modifier: "delay[miliseconds]",
+        prop: "autoPlacement",
+        type: ["Boolean"],
+        default: false,
+        description:
+          "Calculates best placement for tooltip based on available space.",
+      },
+      {
+        prop: "flip",
+        type: ["Boolean"],
+        default: true,
+        description:
+          "Changes the placement of the tooltip in order to keep it in view",
+      },
+      {
+        prop: "delay",
+        type: ["Number"],
         default: "50",
         description: "Delay before showing and hiding tooltip",
       },
       {
-        modifier: "oX[pixels]",
+        prop: "offsetX",
+        type: ["Number"],
         default: "0",
         description:
-          "Offset of tooltip element relative to bound element. See how to use this offset <a href='https://popper.js.org/docs/v2/modifiers/offset/' class='link'>here</a>",
+          "Offset of tooltip element relative to bound element.",
       },
       {
-        modifier: "oY[pixels]",
+        prop: "offsetY",
+        type: ["Number"],
         default: "0",
         description:
-          "Offset of tooltip element relative to bound element. See how to use this offset <a href='https://popper.js.org/docs/v2/modifiers/offset/' class='link'>here</a>",
+          "Offset of tooltip element relative to bound element.",
       },
       {
-        modifier: "nofade",
-        default: "",
-        description: "Disables fade animation when showing or hiding tooltip",
-      },
-    ]);
-
-    let referenceDefinition = ref([
-      {
-        key: "modifier",
-        sortable: true,
-        class: () => "whitespace-nowrap",
+        prop: "transition",
+        type: ["String"],
+        default: "fade",
+        description: "Use animation when showing or hiding tooltip. Valid values are: 'fade', 'scale-fade' or empty string",
       },
       {
-        key: "default",
-        class: () => "whitespace-nowrap",
-      },
-      {
-        key: "description",
+        prop: "text",
+        type: ["String", "Function"],
+        default: "undefined",
+        description:
+          "Defines text to display inside tooltip. If text is `undefined` then `data-title` attribute of reference element is used as content for tooltip",
       },
     ]);
 
@@ -155,7 +160,6 @@ export default {
 
     return {
       reference,
-      referenceDefinition,
       referenceValue,
       referenceValueDefinition,
     };

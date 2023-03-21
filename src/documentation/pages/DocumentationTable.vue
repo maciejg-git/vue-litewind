@@ -115,7 +115,7 @@ export default {
         type: ["String"],
         default: "undefined",
         description:
-          "<span class='font-semibold'>(required)</span> `key` is one of the properties of data from `items` prop or a new `key`. New `keys` apear as additional columns and their content can be set using slot or function `f`",
+          "`key` is one of the properties of data from `items` prop or a new `key`. New `keys` apear as additional columns and their content can be set using slot or function `f`. This property is required.",
       },
       {
         prop: "label",
