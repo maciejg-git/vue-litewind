@@ -1,6 +1,6 @@
 # Vue-wind
 
-Components collection for Vue 3 applications. 
+Component collection for Vue 3 applications. 
 
 Vue-wind uses **Tailwindc CSS** as CSS framework and **popper.js** (included) for positioning.
 
