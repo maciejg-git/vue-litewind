@@ -62,9 +62,6 @@
             id="placement"
             v-model="example.placement"
             :items="[
-              'auto',
-              'auto-start',
-              'auto-end',
               'top',
               'top-start',
               'top-end',

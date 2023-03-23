@@ -80,9 +80,9 @@
   </section>
 
   <section>
-    <h4>Example - autocomplete (radio browser API)</h4>
+    <h4>Example - autocomplete (Wikipedia API)</h4>
     <div class="example">
-      <example name="ExampleAutocompleteAPI"></example>
+      <example name="ExampleAutocompleteAPIWiki"></example>
     </div>
   </section>
 

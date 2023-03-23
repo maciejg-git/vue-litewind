@@ -76,9 +76,6 @@
         <div>
           <label for="placement">placement:</label>
           <v-select id="placement" v-model="example.placement" :items="[
-            'auto',
-            'auto-start',
-            'auto-end',
             'top',
             'top-start',
             'top-end',

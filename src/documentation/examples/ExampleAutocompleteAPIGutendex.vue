@@ -12,7 +12,6 @@
         :is-loading="example.isLoading"
         style-menu="shadow"
         @input:value="debouncedQuery($event)"
-        v-on="handleExampleEvents"
         autocomplete
       ></v-select>
     </div>
@@ -59,26 +58,9 @@ export default {
 
     let debouncedQuery = debounce(query, 300);
 
-    let events = ref([]);
-
-    let handleExampleEvents = {
-      ["update:page"]: (event) =>
-        events.value.unshift({ ev: "update:page", data: event }),
-      ["state:focus"]: (event) =>
-        events.value.unshift({ ev: "state:focus", data: event }),
-      ["state:opened"]: (event) =>
-        events.value.unshift({ ev: "state:opened", data: event }),
-      ["state:closed"]: (event) =>
-        events.value.unshift({ ev: "state:closed", data: event }),
-      ["input:value"]: (event) =>
-        events.value.unshift({ ev: "input:value", data: event }),
-    };
-
     return {
       example,
       query,
-      events,
-      handleExampleEvents,
       debounce,
       debouncedQuery,
     };

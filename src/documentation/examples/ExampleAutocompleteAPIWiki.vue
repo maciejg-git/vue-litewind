@@ -4,9 +4,8 @@
       <v-select
         v-model="example.model"
         no-filter
-        item-text="name"
-        item-value="changeuuid"
-        icon="mdi-radio-tower"
+        item-text="title"
+        item-value="pageid"
         :items="example.items"
         :state="example.state"
         :inline="false"
@@ -31,18 +30,16 @@
     <ul>
       <li>
         <span class="font-semibold">
-          {{ current.name }}
+          {{ current.title }}
         </span>
       </li>
-      <li>
-        {{ current.url }}
-      </li>
       <li class="mt-4">
-        {{ current.country }}
-      </li>
-      <li class="mt-4">
-        <span class="font-semibold">Tags:</span>
-        {{ current.tags || "none" }}
+        <a
+          :href="`https://en.wikipedia.org/?curid=${current.pageid}`"
+          class="link"
+        >
+          {{ `https://en.wikipedia.org/?curid=${current.pageid}` }}
+        </a>
       </li>
     </ul>
   </v-card>
@@ -60,11 +57,11 @@ export default {
       items: [],
     });
 
-    const urlStations =
-      "http://de1.api.radio-browser.info/json/stations/byname/";
+    const urlWiki =
+      "https://en.wikipedia.org/w/api.php?action=query&format=json&list=prefixsearch&formatversion=2&origin=*&pssearch=";
 
     let current = computed(() => {
-      return example.items.find((i) => i.changeuuid === example.model);
+      return example.items.find((i) => i.pageid === example.model);
     });
 
     let query = (q) => {
@@ -72,10 +69,10 @@ export default {
 
       example.isLoading = true;
 
-      fetch(`${urlStations}${q}`)
+      fetch(`${urlWiki}${q}`)
         .then((response) => response.json())
         .then((data) => {
-          example.items = data;
+          example.items = data.query.prefixsearch;
         })
         .finally(() => {
           example.isLoading = false;
