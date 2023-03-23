@@ -21,53 +21,59 @@ let defaults = {
 
 let transitions = ["fade", "scale-fade", ""];
 
-let removeHideTimers = (el) => {
+let clearHideTimers = (el) => {
   clearTimeout(el._v_tooltip.timerOut);
   clearTimeout(el._v_tooltip.timerRemove);
 };
 
-let removeShowTimer = (el) => {
+let clearShowTimer = (el) => {
   clearTimeout(el._v_tooltip.timer);
 };
 
 function show(ev) {
   let el = ev.target;
+  let tooltip = el._v_tooltip;
 
-  removeHideTimers(el);
+  clearHideTimers(el);
 
-  if (el._v_tooltip.isVisible) return;
+  if (tooltip.isVisible) return;
 
   getTooltipFnContent(el);
 
-  el._v_tooltip.timer = setTimeout(() => {
-    document.body.appendChild(el._v_tooltip.wrapper);
+  tooltip.timer = setTimeout(() => {
+    document.body.appendChild(tooltip.wrapper);
+
     requestAnimationFrame(() => {
-      addTransition(el._v_tooltip, false);
+      addTransition(tooltip, false);
     });
-    el._v_tooltip.destroyFloating = setAutoUpdateFloating(el);
-    el._v_tooltip.isVisible = true;
-  }, el._v_tooltip.delay);
+
+    tooltip.destroyFloating = setAutoUpdateFloating(el);
+    tooltip.isVisible = true;
+  }, tooltip.delay);
 }
 
 function hide(ev) {
   let el = ev.target;
+  let tooltip = el._v_tooltip;
 
-  removeShowTimer(el);
+  clearShowTimer(el);
 
-  if (!el._v_tooltip.isVisible) return;
+  if (!tooltip.isVisible) return;
 
-  el._v_tooltip.timerOut = setTimeout(() => {
-    addTransition(el._v_tooltip, true);
-    el._v_tooltip.timerRemove = setTimeout(
+  tooltip.timerOut = setTimeout(() => {
+    addTransition(tooltip, true);
+
+    tooltip.timerRemove = setTimeout(
       () => {
-        el._v_tooltip.wrapper.remove();
-        el._v_tooltip.destroyFloating();
-        el._v_tooltip.destroyFloating = null;
-        el._v_tooltip.isVisible = false;
+        tooltip.wrapper.remove();
+        tooltip.destroyFloating();
+        tooltip.destroyFloating = null;
+        tooltip.isVisible = false;
       },
-      el._v_tooltip.transition === "" ? 0 : 200
+
+      tooltip.transition === "" ? 0 : 200
     );
-  }, el._v_tooltip.delay);
+  }, tooltip.delay);
 }
 
 let getTooltipFnContent = (el) => {
@@ -84,9 +90,9 @@ let setAutoUpdateFloating = (el) => {
   );
 };
 
-let updateFloating = (reference, floating, options) => {
+let updateFloating = (referenceEl, tooltipEl, options) => {
   return async () => {
-    let { x, y } = await computePosition(reference, floating, {
+    let { x, y } = await computePosition(referenceEl, tooltipEl, {
       placement: options.placement,
       middleware: [
         offset({
@@ -99,9 +105,9 @@ let updateFloating = (reference, floating, options) => {
       ],
     });
 
-    if (!floating) return;
+    if (!tooltipEl) return;
 
-    Object.assign(floating.style, {
+    Object.assign(tooltipEl.style, {
       left: `${x}px`,
       top: `${y}px`,
     });
@@ -125,18 +131,25 @@ function createTooltipElement() {
 
 function addTransition(m, v) {
   if (m.transition == "") return;
+
+  m.tooltip.style.transition = "opacity 0.2s ease, transform 0.2s";
+
   if (m.transition == "fade" || m.transition == "scale-fade") {
     m.tooltip.style.opacity = v ? 0 : 1;
   }
+
   if (m.transition == "scale-fade") {
     m.tooltip.style.transform = v ? "scale(0.9)" : "scale(1)";
   }
 }
 
-function addFixedTransition(m) {
-  if (m.transition === "") return;
-  m.tooltip.style.transition = "opacity 0.2s ease, transform 0.2s";
-}
+let setTooltipContentText = (el, t) => {
+  if (typeof t.text === "string") {
+    t.tooltip.firstChild.innerText = t.text;
+  } else if (t.text === undefined) {
+    t.tooltip.firstChild.innerText = el.getAttribute("data-title") || "";
+  }
+};
 
 let validateOptions = (options) => {
   options.transition = transitions.includes(options.transition)
@@ -160,7 +173,9 @@ let getOptions = (value) => {
       text: value,
     };
   }
-  return defaults;
+  return {
+    ...defaults,
+  };
 };
 
 export default {
@@ -182,13 +197,8 @@ export default {
       ...options,
     };
 
-    if (typeof t.text === "string") {
-      t.tooltip.firstChild.innerText = t.text;
-    } else if (t.text === undefined) {
-      t.tooltip.firstChild.innerText = el.getAttribute("data-title") || "";
-    }
+    setTooltipContentText(el, t);
 
-    addFixedTransition(t, true);
     addTransition(t, true);
 
     el._v_tooltip = t;
