@@ -264,7 +264,9 @@ const {
 let isFocused = ref(false);
 
 let selectedItem = ref(null);
+
 let selectedItems = ref([]);
+
 let localText = ref("");
 
 let highlightedItemIndex = ref(-1);
@@ -475,7 +477,7 @@ let handleFocusInput = () => {
       localText.value = getItemText(selectedItem.value);
 
       nextTick(() => {
-        reference.value.selectAll();
+        reference.value.selectInputText();
       });
     }
   }

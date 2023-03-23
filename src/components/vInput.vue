@@ -78,7 +78,6 @@
             aria-label="Close"
             class="ml-2"
             @click.stop="handleClickClearButton"
-            @focus="blur"
           ></v-close-button>
         </div>
         <button
@@ -289,13 +288,18 @@ let wrapperClasses = computed(() => {
 let id = useUid("input", attrs);
 
 let inputRef = ref(null);
+
 let wrapperRef = ref(null);
 
-let focus = () => inputRef.value.focus();
+let focus = () => {
+  inputRef.value.focus();
+}
 
-let blur = () => inputRef.value.blur();
+let blur = () => {
+  inputRef.value.blur();
+}
 
-let selectAll = () => {
+let selectInputText = () => {
   inputRef.value.setSelectionRange(0, localModel.value.length);
 };
 
@@ -320,7 +324,7 @@ let externalModel = toRef(props, "externalModel");
 let { rules, validateOn, validateMode } = props;
 
 let { status, state, messages, touch, formValidate, reset } = useValidation(
-  externalModel.value !== undefined ? externalModel : localModel,
+  externalModel ?? localModel,
   rules,
   {
     validateOn,
@@ -381,7 +385,8 @@ let handleClickClearButton = () => {
 defineExpose({
   focus,
   blur,
-  selectAll,
+  inputRef,
+  selectInputText,
   reference: wrapperRef,
 });
 </script>
