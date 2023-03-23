@@ -73,6 +73,16 @@ const statesWithLabel = [
   },
 ];
 
+class ResizeObserver {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+}
+
+beforeEach(() => {
+  window.ResizeObserver = ResizeObserver;
+})
+
 test("renders component", () => {
   const { getByRole } = render(Select, {
     props: {},
