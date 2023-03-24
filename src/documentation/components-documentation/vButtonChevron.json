@@ -14,7 +14,7 @@
       "type": [
         "String"
       ],
-      "default": "\"down\"",
+      "default": "\"bottom\"",
       "prop": "initial",
       "description": "Initial prop of v-chevron"
     },

@@ -11,7 +11,7 @@
       "type": [
         "String"
       ],
-      "default": "down"
+      "default": "bottom"
     },
     "chevron": {
       "type": [

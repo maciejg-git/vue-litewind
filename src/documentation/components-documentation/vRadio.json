@@ -48,14 +48,6 @@
       "type": [
         "String"
       ],
-      "default": "null",
-      "prop": "state",
-      "description": "Overrides state of input validity. Supported values are 'valid', 'invalid', `empty string` for default state or `null` for component controlled state"
-    },
-    {
-      "type": [
-        "String"
-      ],
       "default": "empty string",
       "prop": "style-label",
       "description": "Input label element"
@@ -75,6 +67,14 @@
       "default": "\"silent\"",
       "prop": "validate-mode",
       "description": "Valid values are 'silent' or 'eager'. See Form Validation for explanation and examples"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "null",
+      "prop": "validation-state",
+      "description": ""
     },
     {
       "type": [

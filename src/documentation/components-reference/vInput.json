@@ -7,6 +7,19 @@
       ],
       "default": ""
     },
+    "base": {
+      "type": [
+        "String"
+      ],
+      "default": "input"
+    },
+    "variant": {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": ""
+    },
     "modelValue": {
       "type": [
         "String",
@@ -160,9 +173,9 @@
       "type": [
         "Boolean"
       ],
-      "default": false
+      "default": "undefined"
     },
-    "state": {
+    "validationState": {
       "type": [
         "String"
       ],
@@ -173,19 +186,6 @@
         "Boolean"
       ],
       "default": false
-    },
-    "base": {
-      "type": [
-        "String"
-      ],
-      "default": "input"
-    },
-    "variant": {
-      "type": [
-        "String",
-        "Boolean"
-      ],
-      "default": ""
     },
     "role": {
       "type": [

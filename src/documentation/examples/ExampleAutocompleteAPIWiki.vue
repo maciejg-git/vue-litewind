@@ -33,7 +33,7 @@
           {{ current.title }}
         </span>
       </li>
-      <li class="mt-4">
+      <li class="my-4">
         <a
           :href="`https://en.wikipedia.org/?curid=${current.pageid}`"
           class="link"
@@ -42,6 +42,7 @@
         </a>
       </li>
     </ul>
+    <iframe v-if="current" :src="`https://en.wikipedia.org/?curid=${current.pageid}`" frameborder="0" class="w-full h-[600px]"></iframe>
   </v-card>
 </template>
 

@@ -5,6 +5,23 @@
   <section>
     <h4>Reference</h4>
     <table-reference :items="reference.props" />
+    <div v-for="prop in reference.props">
+      <div class="mt-2">
+        <code>{{ prop.prop }}</code>
+      </div>
+      <div class="ml-40 mb-2">
+        <div>
+          {{ prop.description }}
+        </div>
+        <div class="flex mt-4 justify-end items-center">
+          <code class="code-text mr-6">{{ prop.default }}</code>
+          <code v-for="type in prop.type" class="code-word">
+            {{ type }}
+          </code>
+        </div>
+      </div>
+      <v-divider></v-divider>
+    </div>
 
     <h6>Events</h6>
     <table-reference-basic

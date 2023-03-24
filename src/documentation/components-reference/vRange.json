@@ -34,7 +34,7 @@
       ],
       "default": ""
     },
-    "state": {
+    "validationState": {
       "type": [
         "String"
       ],

@@ -38,7 +38,13 @@
       ],
       "default": 0
     },
-    "noFlip": {
+    "flip": {
+      "type": [
+        "Boolean"
+      ],
+      "default": true
+    },
+    "autoPlacement": {
       "type": [
         "Boolean"
       ],

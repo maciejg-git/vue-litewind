@@ -20,6 +20,14 @@
     },
     {
       "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "auto-placement",
+      "description": ""
+    },
+    {
+      "type": [
         "String"
       ],
       "default": "\"dropdown\"",
@@ -28,19 +36,19 @@
     },
     {
       "type": [
+        "Boolean"
+      ],
+      "default": true,
+      "prop": "flip",
+      "description": ""
+    },
+    {
+      "type": [
         "String"
       ],
       "default": "empty string",
       "prop": "name",
       "description": "Name of the component"
-    },
-    {
-      "type": [
-        "Boolean"
-      ],
-      "default": false,
-      "prop": "no-flip",
-      "description": "Allows fliping dropdown to opposite placement if outside of current view"
     },
     {
       "type": [

@@ -10,7 +10,7 @@
     "noFlip": "",
     "autoCloseMenu": "If `true` clicking any dropdown menu item automatically closes dropdown",
     "trigger": "How to trigger dropdown. Valid triggers are 'click', 'focus' and 'hover'",
-    "transition": "Sets animation effect when showing or hiding dropdown. Valid values are: 'fade' or `empty string` to disable animations. Animation speed can be set in `--dropdown-transition-duration` css variable.",
+    "transition": "Sets animation effect when showing or hiding dropdown. Valid values are: 'fade', 'fade-slide', 'fade-scale' or `empty string` to disable animations. CSS variables: `--dropdown-transition-duration`, `--dropdown-transition-slide`, `--dropdown-transition-scale`",
     "styleItem": "Style of menu item",
     "styleHeader": "Style of menu header"
   },

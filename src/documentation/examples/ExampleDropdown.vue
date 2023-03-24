@@ -123,11 +123,13 @@
             id="transition"
             v-model="example.transition"
             :items="[
-              'fade',
               {
                 text: 'empty string',
                 value: '',
               },
+              'fade',
+              'fade-slide',
+              'fade-scale',
             ]"
           ></v-select>
         </div>

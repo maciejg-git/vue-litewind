@@ -6,7 +6,7 @@
       "type": [
         "Boolean"
       ],
-      "default": false,
+      "default": "undefined",
       "prop": "v-model",
       "description": "Set it to `true`/`false` to programatically show or hide dropdown content. Model is optional"
     },
@@ -20,6 +20,14 @@
     },
     {
       "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "auto-placement",
+      "description": ""
+    },
+    {
+      "type": [
         "String"
       ],
       "default": "\"dropdown\"",
@@ -28,19 +36,19 @@
     },
     {
       "type": [
+        "Boolean"
+      ],
+      "default": true,
+      "prop": "flip",
+      "description": ""
+    },
+    {
+      "type": [
         "String"
       ],
       "default": "empty string",
       "prop": "name",
       "description": "Name of the component"
-    },
-    {
-      "type": [
-        "Boolean"
-      ],
-      "default": false,
-      "prop": "no-flip",
-      "description": "Allows fliping dropdown to opposite placement if outside of current view"
     },
     {
       "type": [
@@ -88,7 +96,7 @@
       ],
       "default": "\"fade\"",
       "prop": "transition",
-      "description": "Sets animation effect when showing or hiding dropdown. Valid values are: 'fade' or `empty string` to disable animations. Animation speed can be set in `--dropdown-transition-duration` css variable."
+      "description": "Sets animation effect when showing or hiding dropdown. Valid values are: 'fade', 'fade-slide', 'fade-scale' or `empty string` to disable animations. CSS variables: `--dropdown-transition-duration`, `--dropdown-transition-slide`, `--dropdown-transition-scale`"
     },
     {
       "type": [

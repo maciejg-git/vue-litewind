@@ -9,7 +9,11 @@
         <a href="/documentation/installation">Docs</a>
       </div>
     </div>
-    <v-button base="plain-button" class="mr-2" @click="setDarkMode">
+    <v-button
+      base="plain-button"
+      class="mr-2"
+      @click="setDarkMode"
+    >
       <v-icon
         :name="darkMode ? 'b-sun' : 'b-moon'"
         class="v-icon--md text-dark-800 dark:text-dark-400"
@@ -19,101 +23,124 @@
 
   <div class="flex text-text-800 dark:bg-[#191919] dark:text-text-300/80">
     <div
-      class="sidebar sticky lg:block flex-none overflow-auto dark:border-dark-700 pb-20 top-16 p-3 w-64"
+      class="sidebar basis-1/5 hidden lg:flex sticky flex-none border-r overflow-auto dark:border-dark-700 pb-20 top-16 p-3"
     >
-      <!-- general -->
+      <div class="ml-auto">
+        <!-- general -->
 
-      <h6>
-        <router-link to="/documentation/components" class="transition-all">
-          Get started
-        </router-link>
-      </h6>
-      <ul class="list-unstyled ml-4">
-        <li>
+        <h6>
           <router-link
-            to="/documentation/installation"
-            active-class="active"
+            to="/documentation/components"
             class="transition-all"
           >
-            Installation
+            Get started
           </router-link>
-        </li>
-      </ul>
+        </h6>
+        <ul class="list-unstyled ml-4">
+          <li>
+            <router-link
+              to="/documentation/installation"
+              active-class="active"
+              class="transition-all"
+            >
+              Installation
+            </router-link>
+          </li>
+        </ul>
 
-      <!-- components -->
+        <!-- components -->
 
-      <h6>
-        <router-link to="/documentation/components" class="transition-all">
-          Components
-        </router-link>
-      </h6>
-      <ul class="list-unstyled ml-4">
-        <li v-for="(c, i) in components" :key="i">
+        <h6>
           <router-link
-            :to="'/documentation/' + c.name"
-            active-class="active"
+            to="/documentation/components"
             class="transition-all"
           >
-            {{ c.label }}
+            Components
           </router-link>
-        </li>
-      </ul>
+        </h6>
+        <ul class="list-unstyled ml-4">
+          <li
+            v-for="(c, i) in components"
+            :key="i"
+          >
+            <router-link
+              :to="'/documentation/' + c.name"
+              active-class="active"
+              class="transition-all"
+            >
+              {{ c.label }}
+            </router-link>
+          </li>
+        </ul>
 
-      <!-- form components -->
+        <!-- form components -->
 
-      <h6>
-        <router-link to="/documentation/form-components" class="transition-all">
-          Form Components
-        </router-link>
-      </h6>
-      <ul class="list-unstyled ml-4">
-        <li v-for="(c, i) in formComponents" :key="i">
+        <h6>
           <router-link
-            :to="'/documentation/' + c.name"
-            active-class="active"
+            to="/documentation/form-components"
             class="transition-all"
           >
-            {{ c.label }}
+            Form Components
           </router-link>
-        </li>
-        <li>
-          <router-link
-            to="/documentation/form-validation"
-            active-class="active"
-            class="transition-all"
+        </h6>
+        <ul class="list-unstyled ml-4">
+          <li
+            v-for="(c, i) in formComponents"
+            :key="i"
           >
-            Form Validation
-          </router-link>
-        </li>
-      </ul>
+            <router-link
+              :to="'/documentation/' + c.name"
+              active-class="active"
+              class="transition-all"
+            >
+              {{ c.label }}
+            </router-link>
+          </li>
+          <li>
+            <router-link
+              to="/documentation/form-validation"
+              active-class="active"
+              class="transition-all"
+            >
+              Form Validation
+            </router-link>
+          </li>
+        </ul>
 
-      <!-- directives -->
+        <!-- directives -->
 
-      <h6 class="mt-4">Directives</h6>
-      <ul class="list-unstyled ml-4">
-        <li>
-          <router-link
-            to="/documentation/tooltip"
-            active-class="active"
-            class="transition-all"
-          >
-            Tooltip
-          </router-link>
-        </li>
-      </ul>
+        <h6 class="mt-4">Directives</h6>
+        <ul class="list-unstyled ml-4">
+          <li>
+            <router-link
+              to="/documentation/tooltip"
+              active-class="active"
+              class="transition-all"
+            >
+              Tooltip
+            </router-link>
+          </li>
+        </ul>
+      </div>
     </div>
 
-    <div class="container w-full lg:max-w-screen-lg px-2 lg:px-12 mx-auto p-3 mt-12">
+    <div
+      class="w-full max-w-[1024px] lg:max-w-screen-lg px-2 lg:px-12 mx-auto p-3 mt-12"
+    >
       <router-view></router-view>
 
       <footer
         class="flex min-h-[100px] border-t border-gray-300 bg-white dark:bg-[#191919] dark:border-dark-700 mt-10 py-4"
       >
         <span class="ml-auto mr-4">
-          <v-icon name="github" class="text-gray-500"></v-icon>
+          <v-icon
+            name="github"
+            class="text-gray-500"
+          ></v-icon>
         </span>
       </footer>
     </div>
+    <div class="hidden xl:block basis-1/5 flex-none"></div>
   </div>
 </template>
 
