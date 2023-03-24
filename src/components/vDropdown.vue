@@ -76,7 +76,7 @@ const props = defineProps({
   },
   transition: {
     type: String,
-    default: defaultProps("dropdown", "transition", "fade"),
+    default: defaultProps("dropdown", "transition", "fade-scale"),
   },
   styleItem: {
     type: String,
@@ -198,5 +198,25 @@ provide("control-dropdown", {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: opacity var(--dropdown-transition-duration, 0.2s) ease, transform var(--dropdown-transition-duration, 0.2s) ease;
+}
+
+.fade-slide-enter-from,
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(var(--dropdown-transition-slide, -15px))
+}
+.fade-scale-enter-active,
+.fade-scale-leave-active {
+  transition: opacity var(--dropdown-transition-duration, 0.2s) ease, transform var(--dropdown-transition-duration, 0.2s) ease;
+}
+
+.fade-scale-enter-from,
+.fade-scale-leave-to {
+  opacity: 0;
+  transform: scaleY(var(--dropdown-transition-scale, 0.2))
 }
 </style>

@@ -6,6 +6,7 @@ import {
   offset,
   autoUpdate,
   inline,
+  size,
 } from "@floating-ui/dom";
 
 let defaultStyle = {
@@ -13,17 +14,6 @@ let defaultStyle = {
   width: "min-content",
   top: 0,
   left: 0,
-};
-
-let resizeFloatToReferenceWidth = {
-  name: "resizeFloatToReferenceWidth",
-  fn({ elements }) {
-    return {
-      data: {
-        width: elements.reference.offsetWidth,
-      },
-    };
-  },
 };
 
 export default function useFloating(opts) {
@@ -106,7 +96,13 @@ export default function useFloating(opts) {
           unref(options.inline) && inline(),
           unref(options.flip) && flip(),
           unref(options.autoPlacement) && autoPlacement(),
-          unref(options.resize) && resizeFloatToReferenceWidth,
+          unref(options.resize) && size({
+            apply({rects}) {
+              Object.assign(floating.value.style, {
+                width: `${rects.reference.width}px`,
+              })
+            }
+          })
         ],
       }
     );

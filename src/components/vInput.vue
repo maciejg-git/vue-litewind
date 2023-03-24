@@ -324,7 +324,7 @@ let externalModel = toRef(props, "externalModel");
 let { rules, validateOn, validateMode } = props;
 
 let { status, state, messages, touch, formValidate, reset } = useValidation(
-  externalModel ?? localModel,
+  externalModel.value !== undefined ? externalModel : localModel,
   rules,
   {
     validateOn,

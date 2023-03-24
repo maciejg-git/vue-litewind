@@ -7,6 +7,8 @@ export default function useClickOutside() {
 
       ref = unref(ref);
 
+      ref = (ref && ref.$el) || ref
+
       if (!el) return;
 
       if (el === ev.target || ev.composedPath().includes(el)) {
