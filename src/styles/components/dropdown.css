@@ -1,5 +1,7 @@
 :root {
   --dropdown-transition-duration: 0.2s;
+  --dropdown-transition-slide: -15px;
+  --dropdown-transition-scale: 0.2;
 }
 
 .dropdown {

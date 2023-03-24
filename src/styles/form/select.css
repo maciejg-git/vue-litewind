@@ -1,5 +1,7 @@
 :root {
   --select-transition-duration: 0.2s;
+  --select-transition-slide: -15px;
+  --select-transition-scale: 0.2;
   --select-max-menu-height: 400px;
 }
 
