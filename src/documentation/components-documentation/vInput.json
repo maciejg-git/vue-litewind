@@ -20,7 +20,7 @@
       ],
       "default": "\"input\"",
       "prop": "base",
-      "description": "Base name of the component for styling"
+      "description": "Base name used to style component"
     },
     {
       "type": [
@@ -223,7 +223,7 @@
       ],
       "default": "null",
       "prop": "validation-state",
-      "description": ""
+      "description": "Overrides state of input validity. Supported values are 'valid', 'invalid', `empty string` for default state or `null` for component controlled state"
     },
     {
       "type": [
@@ -232,7 +232,7 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": "Variant of the component styles"
+      "description": "Active variant of the elements style"
     },
     {
       "type": [

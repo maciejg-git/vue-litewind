@@ -8,7 +8,7 @@
       ],
       "default": "\"tabs\"",
       "prop": "base",
-      "description": "Base name of the component for styling"
+      "description": "Base name used to style component"
     },
     {
       "type": [
@@ -75,7 +75,7 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": "Variant of the component styles"
+      "description": "Active variant of the elements style"
     }
   ],
   "events": [

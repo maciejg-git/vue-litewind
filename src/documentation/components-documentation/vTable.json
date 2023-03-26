@@ -8,7 +8,7 @@
       ],
       "default": "\"table\"",
       "prop": "base",
-      "description": "Base name of the component for styling"
+      "description": "Base name used to style component"
     },
     {
       "type": [
@@ -24,7 +24,7 @@
       ],
       "default": "undefined",
       "prop": "definition",
-      "description": "Table definition is an optional `array` of `objects` that defines look and behavior of the table."
+      "description": "Table definition is an optional `array` of `objects` that defines look and behavior of the table. <a href='#table-definition' class='link'>See details below.</a>"
     },
     {
       "type": [
@@ -180,7 +180,7 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": "Variant of the component styles"
+      "description": "Active variant of the elements style"
     }
   ],
   "events": [

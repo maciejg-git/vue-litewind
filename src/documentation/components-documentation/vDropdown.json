@@ -24,7 +24,7 @@
       ],
       "default": false,
       "prop": "auto-placement",
-      "description": ""
+      "description": "Automatically calculates best placement for floating element"
     },
     {
       "type": [
@@ -32,7 +32,7 @@
       ],
       "default": "\"dropdown\"",
       "prop": "base",
-      "description": "Base name of the component for styling"
+      "description": "Base name used to style component"
     },
     {
       "type": [
@@ -40,7 +40,7 @@
       ],
       "default": true,
       "prop": "flip",
-      "description": ""
+      "description": "Allows fliping dropdown to opposite placement if outside of current view"
     },
     {
       "type": [
@@ -113,7 +113,7 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": "Variant of the component styles"
+      "description": "Active variant of the elements style"
     }
   ],
   "events": [

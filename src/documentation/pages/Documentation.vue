@@ -23,7 +23,7 @@
 
   <div class="flex text-text-800 dark:bg-[#191919] dark:text-text-300/80">
     <div
-      class="sidebar basis-1/5 hidden lg:flex sticky flex-none border-r overflow-auto dark:border-dark-700 pb-20 top-16 p-3"
+      class="sidebar basis-1/5 hidden lg:flex sticky flex-none border-r text-[0.9em] font-semibold overflow-auto dark:border-dark-700 pb-20 top-16 p-3"
     >
       <div class="ml-auto">
         <!-- general -->
@@ -121,6 +121,7 @@
             </router-link>
           </li>
         </ul>
+        <div class="min-h-[100px]"></div>
       </div>
     </div>
 

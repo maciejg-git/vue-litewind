@@ -3,7 +3,7 @@
   "props": {
     "base": "",
     "variant": "",
-    "definition": "Table definition is an optional `array` of `objects` that defines look and behavior of the table.",
+    "definition": "Table definition is an optional `array` of `objects` that defines look and behavior of the table. <a href='#table-definition' class='link'>See details below.</a>",
     "items": "Data to display in table. Each element of Array is an Object. Single Object is one record (row) of data",
     "filter": "Use this String to filter items. Filtering always emits update:page with value 1 and resets any active selection",
     "page": "Current page number. Changing page resets current selection",

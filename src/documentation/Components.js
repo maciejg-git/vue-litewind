@@ -98,7 +98,7 @@ let components = [
   {
     label: "Trigger",
     name: "trigger",
-  }
+  },
 ]
 
 let formComponents = [
@@ -113,6 +113,10 @@ let formComponents = [
   {
     label: "Radio",
     name: "radio",
+  },
+  {
+    label: "Autocomplete",
+    name: "autocomplete",
   },
   {
     label: "Select",

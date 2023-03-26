@@ -1,69 +1,44 @@
 <template>
-  <div class="mt-6 mb-12">
-    <v-table
-      style-table="fixed"
-      style-header-cell="bordered"
-      style-cell="bordered"
-      :definition="definition"
-      class="min-w-full"
-      v-bind="$attrs"
-      :primary-key="reference"
-      :no-header="true"
+  <div class="bg-[#1e1e1e] rounded-lg shadow p-4 mt-10 mb-10">
+    <div
+      v-for="(prop, index) in items"
+      class="group mt-4 first:mt-0"
     >
-      <template #cell:function="{ value }">
-        <code v-html="value"></code>
-      </template>
-      <template #cell:slot="{ value }">
-        <div class="min-w-[150px]">
-          <code v-html="value"></code>
-        </div>
-      </template>
-      <template #cell:event="{ value }">
-        <div class="min-w-[150px]">
-          <code v-html="value"></code>
-        </div>
-      </template>
-      <template #cell:prop="{ value }">
-        <div class="min-w-[150px]">
-          <code v-html="value"></code>
-        </div>
-      </template>
-      <template #cell:component="{ value }">
-        <div class="min-w-[150px]">
-          <code v-html="value"></code>
-        </div>
-      </template>
-      <template #cell:description="{ value, item }">
-        <slot
-          :name="'description-' + item[reference]"
-          :value="value"
+      <div class="flex items-center">
+        <code class="dark:text-text-300 group-hover:underline">
+          {{ prop[reference] }}
+        </code>
+        <code class="code-text mr-6 ml-auto">{{ prop.default }}</code>
+        <code
+          v-for="type in prop.type"
+          class="code-word"
         >
-          <span v-html="template(value)"></span>
-        </slot>
-      </template>
-    </v-table>
+          {{ type }}
+        </code>
+      </div>
+      <div
+        class="ml-[200px] mb-4 mt-2"
+        v-html="template(prop.description)"
+      ></div>
+      <v-divider v-if="index < items.length - 1"></v-divider>
+    </div>
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
-
 export default {
   inheritAttrs: false,
   props: {
-    reference: { type: String, default: "prop" },
+    reference: { 
+      type: String,
+      default: "prop" 
+    },
+    items: {
+      type: Array,
+      default: [],
+    },
   },
   setup(props) {
-    let definition = ref([
-      {
-        key: props.reference,
-        class: () => "w-1 whitespace-nowrap",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
     let template = (string) => {
       return string
         .replace(
@@ -77,7 +52,6 @@ export default {
     };
 
     return {
-      definition,
       template,
     };
   },

@@ -195,6 +195,10 @@ const routes = [
         path: "trigger",
         component: DocumentationTrigger,
       },
+      {
+        path: "autocomplete",
+        component: DocumentationSelect,
+      },
 
       // directives
 
@@ -210,6 +214,7 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
   scrollBehavior(to, from, savedPosition) {
+    if (to.path === from.path) return
     if (to.hash) {
       return new Promise((resolve, reject) => {
         setTimeout(() => {

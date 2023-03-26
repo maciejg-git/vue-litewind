@@ -1,76 +1,61 @@
 <template>
-  <div class="mb-12 mt-6">
-    <v-table
-      style-table="fixed"
-      style-header-cell="bordered"
-      style-cell="bordered"
-      :definition="definition"
-      class="min-w-full"
-      v-bind="$attrs"
-      primary-key="prop"
-      :no-header="true"
+  <div class="bg-[#1e1e1e] rounded-lg shadow p-4 mt-10 mb-10">
+    <div
+      v-for="(prop, index) in items"
+      class="group mt-4 first:mt-0"
     >
-      <template #cell:type="{ value }">
-        <div class="space-y-1">
-          <div v-for="v in value">
-            <code class="code-word">
-              {{ v }}
-            </code>
-          </div>
-        </div>
-      </template>
-      <template #cell:default="{ value }">
-        <div class="w-[150px]">
-          <code class="text-sm">{{ value }}</code>
-        </div>
-      </template>
-      <template #cell:description="{ value }">
-        <span v-html="template(value)"></span>
-      </template>
-      <template #cell:prop="{ value }">
-        <code v-html="value"></code>
-      </template>
-    </v-table>
+      <div class="flex items-center">
+        <code class="dark:text-text-300">
+          <span class="group-hover:underline">{{ prop.prop }}</span>
+          <span
+            v-if="prop.required"
+            class="text-xs text-danger-400"
+          >
+            (required)
+          </span>
+        </code>
+        <code class="code-text mr-6 ml-auto">{{ prop.default }}</code>
+        <code
+          v-for="type in prop.type"
+          class="code-word"
+        >
+          {{ type }}
+        </code>
+      </div>
+      <div
+        class="ml-[200px] mb-4 mt-2"
+        v-html="template(prop.description)"
+      ></div>
+      <v-divider v-if="index < items.length - 1"></v-divider>
+    </div>
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
-
 export default {
   inheritAttrs: false,
-  setup() {
-    let definition = ref([
-      {
-        key: "prop",
-        sortable: true,
-        class: () => "whitespace-nowrap",
-      },
-      {
-        key: "type",
-      },
-      {
-        key: "default",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
-    let template = (string) => {
-      return string.replace(
-        new RegExp("('[^']*')|(\\bv-\\w+\\S+)|`([^`]*)`", "ig"),
-        `<code class="code-text">$1$2$3</code>`
-      ).replace(
-        new RegExp("@(\\S*)", "ig"),
-        `<code class="code-word">$1</code>`
-      );
-    };
-    
-    return {
-      definition,
-      template
-    }
+  props: {
+    items: {
+      type: Array,
+      default: [],
+    },
   },
-}
+  setup(props) {
+    let template = (string) => {
+      return string
+        .replace(
+          new RegExp("(?<!<[^>]*)('[^']*')|(\\bv-\\w+\\S+)|`([^`]*)`", "ig"),
+          `<code class="code-text">$1$2$3</code>`
+        )
+        .replace(
+          new RegExp("@(\\S*)", "ig"),
+          `<code class="code-word">$1</code>`
+        );
+    };
+
+    return {
+      template,
+    };
+  },
+};
 </script>
