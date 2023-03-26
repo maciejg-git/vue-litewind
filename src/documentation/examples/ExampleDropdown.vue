@@ -19,15 +19,9 @@
       width="320px"
       style-card="menu shadow"
     >
-      <v-dropdown-menu-item tag="button">
-        Menu item
-      </v-dropdown-menu-item>
-      <v-dropdown-menu-item tag="button">
-        Second menu item
-      </v-dropdown-menu-item>
-      <v-dropdown-header>
-        Menu header
-      </v-dropdown-header>
+      <v-dropdown-menu-item tag="button">Menu item</v-dropdown-menu-item>
+      <v-dropdown-menu-item tag="button">Second menu item</v-dropdown-menu-item>
+      <v-dropdown-header>Menu header</v-dropdown-header>
       <v-dropdown-menu-item
         active
         tag="button"
@@ -44,9 +38,7 @@
       >
         Disabled menu item
       </v-dropdown-menu-item>
-      <v-dropdown-menu-item tag="button">
-        Menu item
-      </v-dropdown-menu-item>
+      <v-dropdown-menu-item tag="button">Menu item</v-dropdown-menu-item>
     </v-card>
   </v-dropdown>
   <!-- CUT START -->
@@ -151,32 +143,18 @@
   <!-- CUT END -->
 </template>
 
-<script>
+<script setup>
 import { ref, reactive } from "vue";
 
-export default {
-  setup() {
-    let example = reactive({
-      placement: "bottom-start",
-      offsetX: 0,
-      offsetY: 5,
-      flip: false,
-      autoCloseMenu: false,
-      transition: "fade",
-      trigger: "click",
-    });
+let example = reactive({
+  placement: "bottom-start",
+  offsetX: 0,
+  offsetY: 5,
+  flip: false,
+  autoCloseMenu: false,
+  transition: "fade-scale",
+  trigger: "click",
+});
 
-    let dropdownButton = ref(true);
-    let dropdown = ref(true);
-
-    let events = ref([]);
-
-    return {
-      example,
-      events,
-      dropdown,
-      dropdownButton,
-    };
-  },
-};
+let events = ref([]);
 </script>

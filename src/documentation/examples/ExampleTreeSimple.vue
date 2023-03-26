@@ -2,54 +2,46 @@
   <v-tree :items="items"></v-tree>
 </template>
 
-<script>
+<script setup>
 import { ref } from "vue";
 
-export default {
-  setup() {
-    const items = ref([
+const items = ref([
+  {
+    name: "Directory",
+    id: 17,
+    children: [
+      { name: "Some item", id: 1 },
+      { name: "Another item", id: 2 },
+      { name: "Third", id: 3 },
+      { name: "File" },
       {
-        name: "Directory",
-        id: 17,
+        name: "Sub directory",
+        id: 5,
         children: [
-          { name: "Some item", id: 1 },
-          { name: "Another item", id: 2 },
-          { name: "Third", id: 3 },
-          { name: "File"},
           {
-            name: "Sub directory",
-            id: 5,
+            name: "Another sub directory",
+            id: 6,
             children: [
-              {
-                name: "Another sub directory",
-                id: 6,
-                children: [
-                  { name: "Content", id: 7 },
-                  { name: "Another item", id: 8 },
-                ],
-              },
-              { name: "Fourth", id: 9 },
-              { name: "Another file", id: 10 },
-              { name: "Video file", id: 11 },
-              { name: "Secret item", id: 12 },
-              {
-                name: "More content here",
-                id: 13,
-                children: [
-                  { name: "Another video file", id: 14},
-                  { name: "Fifth", id: 15 },
-                ],
-              },
+              { name: "Content", id: 7 },
+              { name: "Another item", id: 8 },
             ],
           },
-          { name: "Sixth item", id: 16 },
+          { name: "Fourth", id: 9 },
+          { name: "Another file", id: 10 },
+          { name: "Video file", id: 11 },
+          { name: "Secret item", id: 12 },
+          {
+            name: "More content here",
+            id: 13,
+            children: [
+              { name: "Another video file", id: 14 },
+              { name: "Fifth", id: 15 },
+            ],
+          },
         ],
       },
-    ])
-
-    return {
-      items,
-    };
+      { name: "Sixth item", id: 16 },
+    ],
   },
-};
+]);
 </script>

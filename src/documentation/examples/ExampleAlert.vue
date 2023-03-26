@@ -119,23 +119,15 @@
   <!-- CUT END -->
 </template>
 
-<script>
+<script setup>
 import { reactive } from "vue";
 
-export default {
-  setup() {
-    let example = reactive({
-      isVisible: true,
-      isVisibleAbsolute: false,
-      dismissable: true,
-      autoDismissDelay: 0,
-      variant: "info",
-      icon: "info",
-    });
-
-    return {
-      example,
-    };
-  },
-};
+let example = reactive({
+  isVisible: true,
+  isVisibleAbsolute: false,
+  dismissable: true,
+  autoDismissDelay: 0,
+  variant: "info",
+  icon: "info",
+});
 </script>

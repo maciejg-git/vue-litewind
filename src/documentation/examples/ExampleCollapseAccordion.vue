@@ -131,22 +131,13 @@
   </v-accordion>
 </template>
 
-<script>
+<script setup>
 import { reactive } from "vue";
 import { text } from "../example-data/data.js";
 
-export default {
-  setup() {
-    let accordion = reactive({
-      isVisible: false,
-      isVisible2: false,
-      isVisible3: false,
-    });
-
-    return {
-      accordion,
-      text,
-    };
-  },
-};
+let accordion = reactive({
+  isVisible: false,
+  isVisible2: false,
+  isVisible3: false,
+});
 </script>

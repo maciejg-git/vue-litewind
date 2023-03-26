@@ -12,7 +12,10 @@
     </template>
 
     <template #default="{ hide }">
-      <v-card style-card="shadow" class="p-2">
+      <v-card
+        style-card="shadow"
+        class="p-2"
+      >
         <v-date-picker
           v-model="example.date"
           width="305px"
@@ -25,19 +28,11 @@
   </v-dropdown>
 </template>
 
-<script>
+<script setup>
 import { reactive } from "vue";
 
-export default {
-  setup() {
-    let example = reactive({
-      date: "",
-      buttons: false,
-    });
-
-    return {
-      example,
-    };
-  },
-};
+let example = reactive({
+  date: "",
+  buttons: false,
+});
 </script>

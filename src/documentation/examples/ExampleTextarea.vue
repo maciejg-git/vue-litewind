@@ -3,7 +3,7 @@
     <v-textarea
       v-model="example.model"
       :label="example.label"
-      :state="example.state"
+      :validationState="example.validationState"
       placeholder="Type something..."
       class="w-[400px] h-[120px]"
     />
@@ -52,10 +52,10 @@
           ></v-input>
         </div>
         <div>
-          <label for="state">state:</label>
+          <label for="validation-state">validation state:</label>
           <v-select
-            id="state"
-            v-model="example.state"
+            id="validation-state"
+            v-model="example.validationState"
             :items="[
               {
                 text: 'component controlled (null)',
@@ -66,7 +66,7 @@
                 value: '',
               },
               'valid',
-              'invalid,',
+              'invalid',
             ]"
           ></v-select>
         </div>
@@ -85,23 +85,14 @@
   <!-- CUT END -->
 </template>
 
-<script>
+<script setup>
 import { ref, reactive } from "vue";
 
-export default {
-  setup() {
-    let example = reactive({
-      model: "",
-      label: "Textarea label",
-      state: "",
-    });
+let example = reactive({
+  model: "",
+  label: "Textarea label",
+  validationState: "",
+});
 
-    let events = ref([]);
-
-    return {
-      example,
-      events,
-    };
-  },
-};
+let events = ref([]);
 </script>

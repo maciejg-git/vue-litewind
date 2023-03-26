@@ -79,10 +79,10 @@
           ></v-select-prop>
         </div>
         <div>
-          <label for="state">state:</label>
+          <label for="validation-state">validation state:</label>
           <v-select
-            id="state"
-            v-model="example.state"
+            id="validation-state"
+            v-model="example.validationState"
             :items="[
               {
                 text: 'null (component controlled)',
@@ -117,38 +117,27 @@
   <!-- CUT END -->
 </template>
 
-<script>
+<script setup>
 import { ref, reactive } from "vue";
 
-export default {
-  setup() {
-    let example = reactive({
-      model: "",
-      type: "text",
-      label: "",
-      clearable: false,
-      useLoader: false,
-      isLoading: false,
-      state: "",
-    });
+let example = reactive({
+  model: "",
+  type: "text",
+  label: "",
+  clearable: false,
+  useLoader: false,
+  isLoading: false,
+  validationState: "",
+});
 
-    let events = ref([]);
+let events = ref([]);
 
-    let handleClickClear = (ev) => {
-      example.model = "";
-      events.value.unshift({ ev: "click:clear-button", data: ev });
-    };
+let handleClickClear = (ev) => {
+  example.model = "";
+  events.value.unshift({ ev: "click:clear-button", data: ev });
+};
 
-    let handleClickIcon = () => {
-      events.value.unshift({ ev: "click:icon" });
-    };
-
-    return {
-      example,
-      events,
-      handleClickClear,
-      handleClickIcon,
-    };
-  },
+let handleClickIcon = () => {
+  events.value.unshift({ ev: "click:icon" });
 };
 </script>

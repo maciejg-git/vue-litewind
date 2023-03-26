@@ -36,24 +36,15 @@
   </v-dropdown>
 </template>
 
-<script>
+<script setup>
 import { ref, computed } from "vue";
 import { languages } from "../example-data/data.js";
 
-export default {
-  setup() {
-    let filter = ref("");
+let filter = ref("");
 
-    let menuItems = computed(() => {
-      return languages.filter((i) => {
-        return i.toLowerCase().indexOf(filter.value.toLowerCase()) !== -1;
-      });
-    });
-
-    return {
-      filter,
-      menuItems,
-    };
-  },
-};
+let menuItems = computed(() => {
+  return languages.filter((i) => {
+    return i.toLowerCase().indexOf(filter.value.toLowerCase()) !== -1;
+  });
+});
 </script>

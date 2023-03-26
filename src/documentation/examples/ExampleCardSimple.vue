@@ -1,6 +1,14 @@
 <template>
-  <v-card width="320px" style-card="shadow hoverable" class="overflow-hidden" name="select-card">
-    <img :src="randomPhoto()" alt="" />
+  <v-card
+    width="320px"
+    style-card="shadow hoverable"
+    class="overflow-hidden"
+    name="select-card"
+  >
+    <img
+      :src="randomPhoto()"
+      alt=""
+    />
     <header class="font-semibold text-lg pt-3 px-6">Example card</header>
     <header class="text-gray-500 text-sm py-1 px-6">Subtitle</header>
     <div class="p-6">
@@ -14,18 +22,9 @@
   </v-card>
 </template>
 
-<script>
-export default {
-  setup() {
-    let id = [1015, 1016, 1040, 1043, 1067, 155, 158, 179, 184, 191];
+<script setup>
+let id = [1015, 1016, 1040, 1043, 1067, 155, 158, 179, 184, 191];
 
-    let randomPhoto = (w = 360, h = 240) =>
-      `https://picsum.photos/id/${id[(Math.random() * 9).toFixed(0)]}/${w}/${h}`;
-
-    return {
-      id,
-      randomPhoto,
-    };
-  },
-};
+let randomPhoto = (w = 360, h = 240) =>
+  `https://picsum.photos/id/${id[(Math.random() * 9).toFixed(0)]}/${w}/${h}`;
 </script>

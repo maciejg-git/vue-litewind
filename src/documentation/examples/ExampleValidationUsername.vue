@@ -19,27 +19,16 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from "vue";
-import { stringifyObject } from "../tools"
+import { stringifyObject } from "../tools";
 
-export default {
-  setup() {
-    let username = ref("");
-    let usernameStatus = ref({});
-    let usernameRules = {
-      required: true,
-      minLength: 5,
-      alphanumeric: true,
-    };
-
-    return {
-      username,
-      usernameStatus,
-      usernameRules,
-      stringifyObject,
-    };
-  },
+let username = ref("");
+let usernameStatus = ref({});
+let usernameRules = {
+  required: true,
+  minLength: 5,
+  alphanumeric: true,
 };
 </script>
 

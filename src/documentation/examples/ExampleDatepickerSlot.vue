@@ -18,23 +18,14 @@
   </v-card>
 </template>
 
-<script>
+<script setup>
 import { reactive } from "vue";
 
-export default {
-  setup() {
-    let example = reactive({
-      date: "",
-    });
+let example = reactive({
+  date: "",
+});
 
-    let markedDays = [...Array(31)].map((i) => {
-      return Math.floor(Math.random() * 2)
-    });
-
-    return {
-      example,
-      markedDays,
-    };
-  },
-};
+let markedDays = [...Array(31)].map((i) => {
+  return Math.floor(Math.random() * 2);
+});
 </script>

@@ -18,16 +18,8 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from "vue";
 
-export default {
-  setup() {
-    let variant = ref("new");
-
-    return {
-      variant,
-    };
-  },
-};
+let variant = ref("new");
 </script>

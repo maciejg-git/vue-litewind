@@ -70,21 +70,12 @@
   <!-- CUT END -->
 </template>
 
-<script>
+<script setup>
 import { reactive } from "vue";
 import { text } from "../example-data/data.js";
 
-export default {
-  setup() {
-    let example = reactive({
-      isVisible: false,
-      transition: "fade-collapse",
-    });
-
-    return {
-      example,
-      text,
-    };
-  },
-};
+let example = reactive({
+  isVisible: false,
+  transition: "fade-collapse",
+});
 </script>

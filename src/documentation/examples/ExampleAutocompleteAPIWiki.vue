@@ -42,53 +42,45 @@
         </a>
       </li>
     </ul>
-    <iframe v-if="current" :src="`https://en.wikipedia.org/?curid=${current.pageid}`" frameborder="0" class="w-full h-[600px]"></iframe>
+    <iframe
+      v-if="current"
+      :src="`https://en.wikipedia.org/?curid=${current.pageid}`"
+      frameborder="0"
+      class="w-full h-[600px]"
+    ></iframe>
   </v-card>
 </template>
 
-<script>
+<script setup>
 import { ref, reactive, computed } from "vue";
 import { debounce } from "../../tools.js";
 
-export default {
-  components: {},
-  setup() {
-    let example = reactive({
-      model: [],
-      items: [],
+let example = reactive({
+  model: [],
+  items: [],
+});
+
+const urlWiki =
+  "https://en.wikipedia.org/w/api.php?action=query&format=json&list=prefixsearch&formatversion=2&origin=*&pssearch=";
+
+let current = computed(() => {
+  return example.items.find((i) => i.pageid === example.model);
+});
+
+let query = (q) => {
+  if (q === "") return example.items;
+
+  example.isLoading = true;
+
+  fetch(`${urlWiki}${q}`)
+    .then((response) => response.json())
+    .then((data) => {
+      example.items = data.query.prefixsearch;
+    })
+    .finally(() => {
+      example.isLoading = false;
     });
-
-    const urlWiki =
-      "https://en.wikipedia.org/w/api.php?action=query&format=json&list=prefixsearch&formatversion=2&origin=*&pssearch=";
-
-    let current = computed(() => {
-      return example.items.find((i) => i.pageid === example.model);
-    });
-
-    let query = (q) => {
-      if (q === "") return example.items;
-
-      example.isLoading = true;
-
-      fetch(`${urlWiki}${q}`)
-        .then((response) => response.json())
-        .then((data) => {
-          example.items = data.query.prefixsearch;
-        })
-        .finally(() => {
-          example.isLoading = false;
-        });
-    };
-
-    let debouncedQuery = debounce(query, 300);
-
-    return {
-      example,
-      query,
-      debounce,
-      debouncedQuery,
-      current,
-    };
-  },
 };
+
+let debouncedQuery = debounce(query, 300);
 </script>

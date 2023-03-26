@@ -15,26 +15,17 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from "vue";
 
-export default {
-  setup() {
-    let language = ref("");
+let language = ref("");
 
-    let languagesData = ref([
-      "english",
-      "swedish",
-      "korean",
-      "german",
-      "icelandic",
-      "japanese",
-    ]);
-
-    return {
-      language,
-      languagesData,
-    };
-  },
-};
+let languagesData = ref([
+  "english",
+  "swedish",
+  "korean",
+  "german",
+  "icelandic",
+  "japanese",
+]);
 </script>

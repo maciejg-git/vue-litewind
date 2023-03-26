@@ -20,67 +20,85 @@
       Ipsum.
     </div>
   </v-sidepanel>
-<!-- CUT START -->
-  <v-tabs base="material-tabs" class="mt-10">
+  <!-- CUT START -->
+  <v-tabs
+    base="material-tabs"
+    class="mt-10"
+  >
     <v-tab name="Props">
       <div class="mb-2 mt-5">
-        <label for="model" class="font-semibold">v-model:</label>
-        <v-input type="text" id="model" inline v-model="isOpen"></v-input>
+        <label
+          for="model"
+          class="font-semibold"
+        >
+          v-model:
+        </label>
+        <v-input
+          type="text"
+          id="model"
+          inline
+          v-model="isOpen"
+        ></v-input>
       </div>
       <div class="mb-2">
         <label for="show-close-button">show-close-button:</label>
-        <v-select-prop id="show-close-button" v-model="example.showCloseButton">
-        </v-select-prop>
+        <v-select-prop
+          id="show-close-button"
+          v-model="example.showCloseButton"
+        ></v-select-prop>
       </div>
       <div class="mb-2">
         <label for="sidebar-left">sidebar-left:</label>
-        <v-select-prop id="sidebar-left" v-model="example.sidebarLeft">
-        </v-select-prop>
+        <v-select-prop
+          id="sidebar-left"
+          v-model="example.sidebarLeft"
+        ></v-select-prop>
       </div>
       <div class="mb-2">
         <label for="width">width:</label>
-        <v-input type="text" id="width" inline v-model="example.width"></v-input>
+        <v-input
+          type="text"
+          id="width"
+          inline
+          v-model="example.width"
+        ></v-input>
       </div>
       <div class="mb-2">
         <label for="no-header">no-header:</label>
-        <v-select-prop id="no-header" v-model="example.noHeader">
-        </v-select-prop>
+        <v-select-prop
+          id="no-header"
+          v-model="example.noHeader"
+        ></v-select-prop>
       </div>
       <div class="mb-2">
         <label for="transition">transition:</label>
-        <v-select id="transition" v-model="example.transition" :items="[
-          'fade-slide',
-          {
-            text: 'empty string',
-            value: '',
-          }
-          ]">
-        </v-select>
+        <v-select
+          id="transition"
+          v-model="example.transition"
+          :items="[
+            'fade-slide',
+            {
+              text: 'empty string',
+              value: '',
+            },
+          ]"
+        ></v-select>
       </div>
     </v-tab>
   </v-tabs>
-<!-- CUT END -->
+  <!-- CUT END -->
 </template>
 
-<script>
+<script setup>
 import { ref, reactive } from "vue";
 
-export default {
-  setup() {
-    let example = reactive({
-      showCloseButton: true,
-      sidebarLeft: false,
-      width: "320px",
-      noHeader: false,
-      transition: "fade-slide",
-    });
+let example = reactive({
+  showCloseButton: true,
+  sidebarLeft: false,
+  width: "320px",
+  noHeader: false,
+  transition: "fade-slide",
+});
 
-    let isOpen = ref(false);
-
-    return {
-      example,
-      isOpen,
-    };
-  },
-};
+let isOpen = ref(false);
 </script>

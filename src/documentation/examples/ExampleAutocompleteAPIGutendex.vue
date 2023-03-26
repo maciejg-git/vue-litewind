@@ -22,48 +22,34 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref, reactive } from "vue";
-import { debounce } from "../../tools.js"
+import { debounce } from "../../tools.js";
 
-export default {
-  components: {},
-  setup() {
-    let example = reactive({
-      model: [],
-      items: [],
+let example = reactive({
+  model: [],
+  items: [],
+});
+
+const url = "https://gutendex.com/books/";
+
+let query = (q) => {
+  if (q === "") return example.items;
+
+  example.isLoading = true;
+
+  fetch(`${url}?search=${q}`)
+    .then((response) => response.json())
+    .then((data) => {
+      example.items = data.results.map((i) => {
+        i.fullTitle = `${i.title} - ${i.authors.map((i) => i.name).join(", ")}`;
+        return i;
+      });
+    })
+    .finally(() => {
+      example.isLoading = false;
     });
-
-    const url = "https://gutendex.com/books/";
-
-    let query = (q) => {
-      if (q === "") return example.items;
-
-      example.isLoading = true;
-
-      fetch(`${url}?search=${q}`)
-        .then((response) => response.json())
-        .then((data) => {
-          example.items = data.results.map((i) => {
-            i.fullTitle = `${i.title} - ${i.authors
-              .map((i) => i.name)
-              .join(", ")}`;
-            return i;
-          });
-        })
-        .finally(() => {
-          example.isLoading = false;
-        });
-    };
-
-    let debouncedQuery = debounce(query, 300);
-
-    return {
-      example,
-      query,
-      debounce,
-      debouncedQuery,
-    };
-  },
 };
+
+let debouncedQuery = debounce(query, 300);
 </script>

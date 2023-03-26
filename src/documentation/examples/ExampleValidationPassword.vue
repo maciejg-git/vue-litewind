@@ -19,30 +19,19 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from "vue";
-import { stringifyObject } from "../tools"
+import { stringifyObject } from "../tools";
 
-export default {
-  setup() {
-    let password = ref("");
-    let passwordStatus = ref({});
-    let passwordRules = {
-      required: true,
-      atLeastOneUppercase: true,
-      atLeastOneLowercase: true,
-      atLeastOneSpecial: true,
-      atLeastOneDigit: true,
-      minLength: 8,
-    };
-
-    return {
-      password,
-      passwordStatus,
-      passwordRules,
-      stringifyObject,
-    };
-  },
+let password = ref("");
+let passwordStatus = ref({});
+let passwordRules = {
+  required: true,
+  atLeastOneUppercase: true,
+  atLeastOneLowercase: true,
+  atLeastOneSpecial: true,
+  atLeastOneDigit: true,
+  minLength: 8,
 };
 </script>
 

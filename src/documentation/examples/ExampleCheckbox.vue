@@ -1,15 +1,23 @@
 <template>
   <v-checkbox
     v-model="example.model"
-    :state="example.state"
+    :validationState="example.validationState"
     :label="example.label"
   />
-<!-- CUT START -->
-  <v-tabs base="material-tabs" class="mt-10">
+  <!-- CUT START -->
+  <v-tabs
+    base="material-tabs"
+    class="mt-10"
+  >
     <v-tab name="Props">
       <div class="flex flex-col gap-y-2 mt-5">
         <div>
-          <label for="model" class="font-semibold">v-model:</label>
+          <label
+            for="model"
+            class="font-semibold"
+          >
+            v-model:
+          </label>
           <v-input
             type="text"
             id="model"
@@ -27,8 +35,11 @@
           ></v-input>
         </div>
         <div>
-          <label for="state">state:</label>
-          <v-select id="state" v-model="example.state" :items="[
+          <label for="validation-state">validation state:</label>
+          <v-select
+            id="validation-state"
+            v-model="example.validationState"
+            :items="[
               {
                 text: 'null (component controlled)',
                 value: null,
@@ -39,41 +50,35 @@
               },
               'valid',
               'invalid',
-            ]">
-          </v-select>
+            ]"
+          ></v-select>
         </div>
       </div>
     </v-tab>
     <v-tab>
       <template #name>
         Events
-        <v-badge style-badge="secondary tiny" class="ml-2">
+        <v-badge
+          style-badge="secondary tiny"
+          class="ml-2"
+        >
           {{ events.length }}
         </v-badge>
       </template>
       <event-viewer :events="events" />
     </v-tab>
   </v-tabs>
-<!-- CUT END -->
+  <!-- CUT END -->
 </template>
 
-<script>
+<script setup>
 import { ref, reactive } from "vue";
 
-export default {
-  setup() {
-    let example = reactive({
-      model: true,
-      label: "Example checkbox",
-      state: "",
-    });
+let example = reactive({
+  model: true,
+  label: "Example checkbox",
+  validationState: "",
+});
 
-    let events = ref([]);
-
-    return {
-      example,
-      events,
-    };
-  },
-};
+let events = ref([]);
 </script>

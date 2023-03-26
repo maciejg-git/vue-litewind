@@ -36,7 +36,10 @@
     class="fixed top-0 left-0 w-full z-50"
   ></v-progress>
   <!-- CUT START -->
-  <v-tabs base="material-tabs" class="mt-10">
+  <v-tabs
+    base="material-tabs"
+    class="mt-10"
+  >
     <v-tab name="Props">
       <div class="flex flex-col gap-y-2 mt-5">
         <div>
@@ -64,7 +67,12 @@
         </div>
         <div>
           <label for="max">max:</label>
-          <v-input type="text" id="max" inline v-model.number="example.max"></v-input>
+          <v-input
+            type="text"
+            id="max"
+            inline
+            v-model.number="example.max"
+          ></v-input>
         </div>
         <div>
           <label for="precision">precision:</label>
@@ -77,13 +85,17 @@
         </div>
         <div>
           <label for="label">label:</label>
-          <v-select-prop id="label" v-model="example.label">
-          </v-select-prop>
+          <v-select-prop
+            id="label"
+            v-model="example.label"
+          ></v-select-prop>
         </div>
         <div>
           <label for="transition">transition:</label>
-          <v-select-prop id="transition" v-model="example.transition">
-          </v-select-prop>
+          <v-select-prop
+            id="transition"
+            v-model="example.transition"
+          ></v-select-prop>
         </div>
       </div>
     </v-tab>
@@ -91,22 +103,14 @@
   <!-- CUT END -->
 </template>
 
-<script>
+<script setup>
 import { reactive } from "vue";
 
-export default {
-  setup() {
-    let example = reactive({
-      value: 20,
-      max: 100,
-      label: false,
-      precision: 2,
-      transition: true,
-    });
-
-    return {
-      example,
-    };
-  },
-};
+let example = reactive({
+  value: 20,
+  max: 100,
+  label: false,
+  precision: 2,
+  transition: true,
+});
 </script>

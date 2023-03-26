@@ -52,23 +52,15 @@
   <!-- CUT END -->
 </template>
 
-<script>
+<script setup>
 import { reactive } from "vue";
 import company from "../example-data/company.json";
 
-export default {
-  setup() {
-    let example = reactive({
-      users: company.slice(0, 5).map((i) => ({ ...i, active: false })),
-      tag: "div",
-      base: "list",
-    });
+let example = reactive({
+  users: company.slice(0, 5).map((i) => ({ ...i, active: false })),
+  tag: "div",
+  base: "list",
+});
 
-    example.users[2].active = true;
-
-    return {
-      example,
-    };
-  },
-};
+example.users[2].active = true;
 </script>

@@ -1,21 +1,17 @@
 <template>
-  <v-table :items="example.data" :primary-key="example.primaryKey" class="w-full"></v-table>
+  <v-table
+    :items="example.data"
+    :primary-key="example.primaryKey"
+    class="w-full"
+  ></v-table>
 </template>
 
-<script>
+<script setup>
 import { reactive } from "vue";
 import data from "../example-data/company-simple.json";
 
-export default {
-  setup() {
-    let example = reactive({
-      data: data.slice(0, 5),
-      primaryKey: "id",
-    });
-
-    return {
-      example,
-    };
-  },
-};
+let example = reactive({
+  data: data.slice(0, 5),
+  primaryKey: "id",
+});
 </script>

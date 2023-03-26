@@ -28,42 +28,29 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { reactive } from "vue";
 import { states } from "../example-data/data.js";
 
-export default {
-  components: {},
-  setup() {
-    let example = reactive({
-      model: [],
-      items: [],
-      isLoading: false,
+let example = reactive({
+  model: [],
+  items: [],
+  isLoading: false,
+});
+
+let query = (q) => {
+  if (q === "") return example.items;
+  example.isLoading = true;
+  setTimeout(() => {
+    example.items = states.filter((e) => {
+      return (e.text || "").toLowerCase().indexOf((q || "").toLowerCase()) > -1;
     });
+    example.isLoading = false;
+  }, 500);
+};
 
-    let query = (q) => {
-      if (q === "") return example.items;
-      example.isLoading = true;
-      setTimeout(() => {
-        example.items = states.filter((e) => {
-          return (
-            (e.text || "").toLowerCase().indexOf((q || "").toLowerCase()) > -1
-          );
-        });
-        example.isLoading = false;
-      }, 500);
-    };
-
-    let remove = (item) => {
-      const index = example.model.indexOf(item);
-      if (index >= 0) example.model.splice(index, 1);
-    };
-
-    return {
-      example,
-      query,
-      remove,
-    };
-  },
+let remove = (item) => {
+  const index = example.model.indexOf(item);
+  if (index >= 0) example.model.splice(index, 1);
 };
 </script>

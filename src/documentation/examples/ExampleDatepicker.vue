@@ -1,6 +1,10 @@
 <template>
   <div class="flex items-between">
-    <v-card style-card="shadow" style="width: 340px" class="self-start p-2">
+    <v-card
+      style-card="shadow"
+      style="width: 340px"
+      class="self-start p-2"
+    >
       <v-date-picker
         v-model="example.date"
         :range="example.range"
@@ -19,13 +23,18 @@
         @input:cancel="events.unshift({ ev: 'input:cancel', data: $event })"
       ></v-date-picker>
     </v-card>
-  <!-- CUT START -->
+    <!-- CUT START -->
     <div class="flex-grow mt-4 lg:ml-20 lg:mt-0">
       <v-tabs base="material-tabs">
         <v-tab name="Props">
           <div class="flex flex-col gap-y-2 mt-5">
             <div>
-              <label for="model" class="font-semibold">v-model:</label>
+              <label
+                for="model"
+                class="font-semibold"
+              >
+                v-model:
+              </label>
               <v-input
                 type="text"
                 id="model"
@@ -35,8 +44,10 @@
             </div>
             <div>
               <label for="range">range:</label>
-              <v-select-prop id="range" v-model="example.range">
-              </v-select-prop>
+              <v-select-prop
+                id="range"
+                v-model="example.range"
+              ></v-select-prop>
             </div>
             <div>
               <label for="locale">locale:</label>
@@ -52,13 +63,14 @@
               <v-select-prop
                 id="monday-first-weekday"
                 v-model="example.mondayFirstWeekday"
-              >
-              </v-select-prop>
+              ></v-select-prop>
             </div>
             <div>
               <label for="buttons">buttons:</label>
-              <v-select-prop id="buttons" v-model="example.buttons">
-              </v-select-prop>
+              <v-select-prop
+                id="buttons"
+                v-model="example.buttons"
+              ></v-select-prop>
             </div>
             <div>
               <label for="primary-button-label">primary-button-label:</label>
@@ -85,28 +97,29 @@
               <v-select-prop
                 id="adjacent-months"
                 v-model="example.adjacentMonths"
-              >
-              </v-select-prop>
+              ></v-select-prop>
             </div>
             <div>
               <label for="range-hover-highlight">range-hover-highlight:</label>
               <v-select-prop
                 id="range-hover-highlight"
                 v-model="example.rangeHoverHighlight"
-              >
-              </v-select-prop>
+              ></v-select-prop>
             </div>
             <div>
               <label for="transition">transition:</label>
-              <v-select id="transition" v-model="example.transition" :items="[
-                'fade',
-                'slide',
-                {
-                  text: 'empty string',
-                  value: '',
-                }
-                ]">
-              </v-select>
+              <v-select
+                id="transition"
+                v-model="example.transition"
+                :items="[
+                  'fade',
+                  'slide',
+                  {
+                    text: 'empty string',
+                    value: '',
+                  },
+                ]"
+              ></v-select>
             </div>
           </div>
         </v-tab>
@@ -126,40 +139,31 @@
         </v-tab>
       </v-tabs>
     </div>
-<!-- CUT END -->
+    <!-- CUT END -->
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref, reactive } from "vue";
 
-export default {
-  setup() {
-    let example = reactive({
-      date: "",
-      range: false,
-      locale: navigator.language,
-      buttons: true,
-      adjacentMonths: true,
-      secondaryButtonLabel: "Cancel",
-      primaryButtonLabel: "OK",
-      rangeHoverHighlight: true,
-      transition: "fade",
-      mondayFirstWeekday: true,
-      formattedEmitted: false,
-      doneEmitted: false,
-      cancelEmitted: false,
-      formatted: "",
-      done: false,
-      cancel: false,
-    });
+let example = reactive({
+  date: "",
+  range: false,
+  locale: navigator.language,
+  buttons: true,
+  adjacentMonths: true,
+  secondaryButtonLabel: "Cancel",
+  primaryButtonLabel: "OK",
+  rangeHoverHighlight: true,
+  transition: "fade",
+  mondayFirstWeekday: true,
+  formattedEmitted: false,
+  doneEmitted: false,
+  cancelEmitted: false,
+  formatted: "",
+  done: false,
+  cancel: false,
+});
 
-    let events = ref([]);
-
-    return {
-      example,
-      events,
-    };
-  },
-};
+let events = ref([]);
 </script>

@@ -31,19 +31,11 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { reactive } from "vue";
 
-export default {
-  setup() {
-    let example = reactive({
-      single: "",
-      range: "",
-    });
-
-    return {
-      example,
-    };
-  },
-};
+let example = reactive({
+  single: "",
+  range: "",
+});
 </script>

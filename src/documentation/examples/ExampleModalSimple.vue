@@ -11,16 +11,8 @@
   </v-modal>
 </template>
 
-<script>
+<script setup>
 import { ref } from "vue";
 
-export default {
-  setup() {
-    let isVisible = ref(false);
-
-    return {
-      isVisible,
-    };
-  },
-};
+let isVisible = ref(false);
 </script>

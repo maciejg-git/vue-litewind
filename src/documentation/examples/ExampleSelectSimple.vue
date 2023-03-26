@@ -15,20 +15,12 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { reactive } from "vue";
 import { languages } from "../example-data/data.js";
 
-export default {
-  setup() {
-    let example = reactive({
-      model: "",
-      items: languages,
-    });
-
-    return {
-      example,
-    };
-  },
-};
+let example = reactive({
+  model: "",
+  items: languages,
+});
 </script>

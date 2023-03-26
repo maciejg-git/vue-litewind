@@ -2,31 +2,23 @@
   <v-breadcrumb :path="example.path" />
 </template>
 
-<script>
+<script setup>
 import { reactive } from "vue";
 
-export default {
-  setup() {
-    let example = reactive({
-      path: [
-        {
-          label: "Home",
-          to: "/",
-          icon: "b-house-fill",
-        },
-        {
-          label: "Documentation",
-          to: "/documentation",
-        },
-        {
-          label: "Breadcrumb",
-        },
-      ],
-    });
-
-    return {
-      example,
-    };
-  },
-};
+let example = reactive({
+  path: [
+    {
+      label: "Home",
+      to: "/",
+      icon: "b-house-fill",
+    },
+    {
+      label: "Documentation",
+      to: "/documentation",
+    },
+    {
+      label: "Breadcrumb",
+    },
+  ],
+});
 </script>

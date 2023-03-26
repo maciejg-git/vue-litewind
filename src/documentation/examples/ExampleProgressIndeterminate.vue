@@ -13,7 +13,10 @@
 
   <!-- simple indeterminate progress -->
 
-  <v-card style-card="shadow" width="400px">
+  <v-card
+    style-card="shadow"
+    width="400px"
+  >
     <div class="flex justify-center p-4">Checking for updates...</div>
     <v-progress
       style-progress="tiny"
@@ -27,7 +30,10 @@
 
   <div class="my-6">Combined indeterminate and deteminate example</div>
 
-  <v-card style-card="shadow" width="400px">
+  <v-card
+    style-card="shadow"
+    width="400px"
+  >
     <div class="flex justify-center p-4">
       <span v-if="example.indeterminate">Checking for updates...</span>
       <span v-if="!example.indeterminate">Updating...</span>
@@ -43,33 +49,25 @@
   </v-card>
 </template>
 
-<script>
+<script setup>
 import { reactive, onMounted } from "vue";
 
-export default {
-  setup() {
-    let example = reactive({
-      value: 0,
-      label: false,
-      indeterminate: true,
-    });
+let example = reactive({
+  value: 0,
+  label: false,
+  indeterminate: true,
+});
 
-    onMounted(() => {
-      setInterval(() => {
-        example.indeterminate = !example.indeterminate;
-        example.value = 0;
-        let i = setInterval(() => {
-          example.value += 0.05;
-          if (example.value >= 100) {
-            clearInterval(i);
-          }
-        }, 2);
-      }, 6000);
-    });
-
-    return {
-      example,
-    };
-  },
-};
+onMounted(() => {
+  setInterval(() => {
+    example.indeterminate = !example.indeterminate;
+    example.value = 0;
+    let i = setInterval(() => {
+      example.value += 0.05;
+      if (example.value >= 100) {
+        clearInterval(i);
+      }
+    }, 2);
+  }, 6000);
+});
 </script>

@@ -44,32 +44,21 @@
   </v-dropdown-context>
 </template>
 
-<script>
+<script setup>
 import { ref } from "vue";
 
-export default {
-  setup() {
-    let contextMenu = ref(null);
+let contextMenu = ref(null);
 
-    let currentLanguage = ref("");
+let currentLanguage = ref("");
 
-    let languages = ref([
-      "english",
-      "swedish",
-      "korean",
-      "german",
-      "icelandic",
-      "japanese",
-    ]);
+let languages = ref([
+  "english",
+  "swedish",
+  "korean",
+  "german",
+  "icelandic",
+  "japanese",
+]);
 
-    let search = (data) => window.open("https://google.com/search?q=" + data);
-
-    return {
-      contextMenu,
-      languages,
-      currentLanguage,
-      search,
-    };
-  },
-};
+let search = (data) => window.open("https://google.com/search?q=" + data);
 </script>

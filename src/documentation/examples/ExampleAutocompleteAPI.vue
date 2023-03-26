@@ -48,49 +48,35 @@
   </v-card>
 </template>
 
-<script>
+<script setup>
 import { ref, reactive, computed } from "vue";
 import { debounce } from "../../tools.js";
 
-export default {
-  components: {},
-  setup() {
-    let example = reactive({
-      model: [],
-      items: [],
+let example = reactive({
+  model: [],
+  items: [],
+});
+
+const urlStations = "http://de1.api.radio-browser.info/json/stations/byname/";
+
+let current = computed(() => {
+  return example.items.find((i) => i.changeuuid === example.model);
+});
+
+let query = (q) => {
+  if (q === "") return example.items;
+
+  example.isLoading = true;
+
+  fetch(`${urlStations}${q}`)
+    .then((response) => response.json())
+    .then((data) => {
+      example.items = data;
+    })
+    .finally(() => {
+      example.isLoading = false;
     });
-
-    const urlStations =
-      "http://de1.api.radio-browser.info/json/stations/byname/";
-
-    let current = computed(() => {
-      return example.items.find((i) => i.changeuuid === example.model);
-    });
-
-    let query = (q) => {
-      if (q === "") return example.items;
-
-      example.isLoading = true;
-
-      fetch(`${urlStations}${q}`)
-        .then((response) => response.json())
-        .then((data) => {
-          example.items = data;
-        })
-        .finally(() => {
-          example.isLoading = false;
-        });
-    };
-
-    let debouncedQuery = debounce(query, 300);
-
-    return {
-      example,
-      query,
-      debounce,
-      debouncedQuery,
-      current,
-    };
-  },
 };
+
+let debouncedQuery = debounce(query, 300);
 </script>

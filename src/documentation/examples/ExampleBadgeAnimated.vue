@@ -40,16 +40,8 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from "vue";
 
-export default {
-  setup() {
-    let example = ref(4);
-
-    return {
-      example,
-    };
-  },
-};
+let example = ref(4);
 </script>

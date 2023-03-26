@@ -176,59 +176,45 @@
   </v-modal>
 </template>
 
-<script>
+<script setup>
 import { ref, reactive } from "vue";
 import { longText } from "../example-data/data.js";
 
-export default {
-  setup() {
-    let example = reactive({
-      title: "Example modal",
-      noPrimaryButton: false,
-      noSecondaryButton: false,
-      primaryButtonLabel: "OK",
-      secondaryButtonLabel: "Cancel",
-      primaryButtonClose: false,
-      secondaryButtonClose: true,
-      justifyButtons: "end",
-      noCloseButton: false,
-      staticBackdrop: false,
-      noHeader: false,
-      noFooter: false,
-      position: "top",
-      size: "sm",
-      transition: "fade-slide",
-    });
+let example = reactive({
+  title: "Example modal",
+  noPrimaryButton: false,
+  noSecondaryButton: false,
+  primaryButtonLabel: "OK",
+  secondaryButtonLabel: "Cancel",
+  primaryButtonClose: false,
+  secondaryButtonClose: true,
+  justifyButtons: "end",
+  noCloseButton: false,
+  staticBackdrop: false,
+  noHeader: false,
+  noFooter: false,
+  position: "top",
+  size: "sm",
+  transition: "fade-slide",
+});
 
-    let state = reactive({
-      isVisible: false,
-      isVisibleLong: false,
-      isVisibleImage: false,
-    });
+let state = reactive({
+  isVisible: false,
+  isVisibleLong: false,
+  isVisibleImage: false,
+});
 
-    let images = ["mononoke035.jpg", "mononoke033.jpg"];
+let images = ["mononoke035.jpg", "mononoke033.jpg"];
 
-    let currentImage = ref(0);
+let currentImage = ref(0);
 
-    let next = () => {
-      return (currentImage.value =
-        currentImage.value + 1 > 1 ? 0 : currentImage.value + 1);
-    };
+let next = () => {
+  return (currentImage.value =
+    currentImage.value + 1 > 1 ? 0 : currentImage.value + 1);
+};
 
-    let prev = () => {
-      return (currentImage.value =
-        currentImage.value - 1 < 0 ? 1 : currentImage.value - 1);
-    };
-
-    return {
-      example,
-      state,
-      longText,
-      images,
-      currentImage,
-      next,
-      prev,
-    };
-  },
+let prev = () => {
+  return (currentImage.value =
+    currentImage.value - 1 < 0 ? 1 : currentImage.value - 1);
 };
 </script>

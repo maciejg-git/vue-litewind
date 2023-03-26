@@ -44,12 +44,16 @@
             v-model="checkbox"
             :rules="checkboxRules"
             label="Check this"
-            />
+          />
         </div>
       </v-form>
 
       <div class="self-end mt-20">
-        <v-button style-button="secondary" @click="form.reset()" class="mr-4">
+        <v-button
+          style-button="secondary"
+          @click="form.reset()"
+          class="mr-4"
+        >
           Reset
         </v-button>
         <v-button @click="validate()">Validate</v-button>
@@ -64,72 +68,48 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from "vue";
 import { stringifyObject } from "../tools";
 
-export default {
-  components: {},
-  setup() {
-    let username = ref("");
-    let usernameStatus = ref({});
-    let usernameRules = {
-      required: true,
-      minLength: 5,
-      alphanumeric: true,
-    };
+let username = ref("");
+let usernameStatus = ref({});
+let usernameRules = {
+  required: true,
+  minLength: 5,
+  alphanumeric: true,
+};
 
-    let password = ref("");
-    let passwordStatus = ref({});
-    let passwordRules = {
-      required: true,
-      minLength: 8,
-      atLeastOneUppercase: true,
-      atLeastOneLowercase: true,
-      atLeastOneSpecial: true,
-      atLeastOneDigit: true,
-    };
+let password = ref("");
+let passwordStatus = ref({});
+let passwordRules = {
+  required: true,
+  minLength: 8,
+  atLeastOneUppercase: true,
+  atLeastOneLowercase: true,
+  atLeastOneSpecial: true,
+  atLeastOneDigit: true,
+};
 
-    let text = ref("");
-    let textStatus = ref({});
-    let textRules = {
-      required: true,
-      maxLength: 30,
-    };
+let text = ref("");
+let textStatus = ref({});
+let textRules = {
+  required: true,
+  maxLength: 30,
+};
 
-    let checkbox = ref(false);
-    let checkboxStatus = ref({});
-    let checkboxRules = {
-      required: true,
-    };
+let checkbox = ref(false);
+let checkboxStatus = ref({});
+let checkboxRules = {
+  required: true,
+};
 
-    let formStatus = ref(false);
+let formStatus = ref(false);
 
-    let form = ref(null);
+let form = ref(null);
 
-    let validate = () => {
-      formStatus.value = form.value.validate()
-    }
-
-    return {
-      username,
-      usernameStatus,
-      usernameRules,
-      password,
-      passwordStatus,
-      passwordRules,
-      text,
-      textStatus,
-      textRules,
-      formStatus,
-      form,
-      validate,
-      stringifyObject,
-      checkbox,
-      checkboxStatus,
-      checkboxRules,
-    };
-  },
+let validate = () => {
+  formStatus.value = form.value.validate();
 };
 </script>
 

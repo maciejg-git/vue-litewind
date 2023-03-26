@@ -10,28 +10,18 @@
   ></v-input>
 </template>
 
-<script>
+<script setup>
 import { ref } from "vue";
 
-export default {
-  setup() {
-    let password = ref("");
-    let passwordStatus = ref({});
-    let passwordRules = {
-      required: true,
-      atLeastOneUppercase: true,
-      atLeastOneLowercase: true,
-      atLeastOneSpecial: true,
-      atLeastOneDigit: true,
-      minLength: 8,
-    };
-
-    return {
-      password,
-      passwordStatus,
-      passwordRules,
-    };
-  },
+let password = ref("");
+let passwordStatus = ref({});
+let passwordRules = {
+  required: true,
+  atLeastOneUppercase: true,
+  atLeastOneLowercase: true,
+  atLeastOneSpecial: true,
+  atLeastOneDigit: true,
+  minLength: 8,
 };
 </script>
 

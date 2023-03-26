@@ -11,16 +11,8 @@
   ></v-input>
 </template>
 
-<script>
+<script setup>
 import { ref } from "vue";
 
-export default {
-  setup() {
-    let model = ref("");
-
-    return {
-      model,
-    };
-  },
-};
+let model = ref("");
 </script>

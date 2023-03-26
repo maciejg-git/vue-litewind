@@ -36,39 +36,28 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { reactive } from "vue";
 import company from "../example-data/company.json";
 import { highlight } from "../../tools";
 
-export default {
-  setup() {
-    let example = reactive({
-      model: "",
-      items: [],
-      isLoading: false,
+let example = reactive({
+  model: "",
+  items: [],
+  isLoading: false,
+});
+
+let query = (q) => {
+  if (q === "") return;
+  example.isLoading = true;
+  setTimeout(() => {
+    example.items = company.filter((e) => {
+      return (
+        (e["full_name"] || "").toLowerCase().indexOf((q || "").toLowerCase()) >
+        -1
+      );
     });
-
-    let query = (q) => {
-      if (q === "") return;
-      example.isLoading = true;
-      setTimeout(() => {
-        example.items = company.filter((e) => {
-          return (
-            (e["full_name"] || "")
-              .toLowerCase()
-              .indexOf((q || "").toLowerCase()) > -1
-          );
-        });
-        example.isLoading = false;
-      }, 500);
-    };
-
-    return {
-      example,
-      query,
-      highlight,
-    };
-  },
+    example.isLoading = false;
+  }, 500);
 };
 </script>

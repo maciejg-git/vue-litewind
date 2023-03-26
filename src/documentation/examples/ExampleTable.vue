@@ -33,7 +33,10 @@
         @click.stop="edit(item)"
         block
       >
-        <v-icon name="mdi-account-edit" class="w-6 h-6"></v-icon>
+        <v-icon
+          name="mdi-account-edit"
+          class="w-6 h-6"
+        ></v-icon>
       </v-button>
     </template>
 
@@ -169,94 +172,78 @@
   <!-- CUT END -->
 </template>
 
-<script>
+<script setup>
 import { ref, reactive } from "vue";
 import data from "../example-data/company-complete.json";
 
-export default {
-  setup() {
-    let definition = [
-      {
-        key: "id",
-        visible: false,
-      },
-      {
-        key: "status",
-        sortable: true,
-      },
-      {
-        key: "first_name",
-        sortable: true,
-      },
-      {
-        key: "last_name",
-        sortable: true,
-      },
-      {
-        key: "department",
-        sortable: true,
-      },
-      {
-        key: "title",
-        sortable: true,
-      },
-      {
-        key: "city",
-        sortable: true,
-      },
-      {
-        key: "edit",
-      },
-    ];
-
-    let example = reactive({
-      items: data.slice(0, 60),
-      itemsPerPage: 5,
-      primaryKey: "id",
-      filter: "",
-      busy: false,
-      selectionMode: "single",
-      captionTop: false,
-      locale: "en-GB",
-      state: "",
-      definition: definition,
-    });
-
-    let page = ref(1);
-    let editModalIsVisible = ref(false);
-    let editModalContent = ref("");
-
-    let edit = (content) => {
-      editModalContent.value = JSON.stringify(content, null, 2);
-      editModalIsVisible.value = true;
-    };
-
-    let events = ref([]);
-
-    let handleFilteredCount = (count) => {
-      example.itemsCount = count;
-      events.value.unshift({ ev: "update:filtered-count", data: count });
-    };
-
-    let handleSelection = (selection) => {
-      events.value.unshift({ ev: "input:selection", data: selection });
-    };
-
-    let handlePageChange = (page) => {
-      events.value.unshift({ ev: "update:page", data: page });
-    };
-
-    return {
-      example,
-      page,
-      events,
-      editModalIsVisible,
-      edit,
-      editModalContent,
-      handlePageChange,
-      handleFilteredCount,
-      handleSelection,
-    };
+let definition = [
+  {
+    key: "id",
+    visible: false,
   },
+  {
+    key: "status",
+    sortable: true,
+  },
+  {
+    key: "first_name",
+    sortable: true,
+  },
+  {
+    key: "last_name",
+    sortable: true,
+  },
+  {
+    key: "department",
+    sortable: true,
+  },
+  {
+    key: "title",
+    sortable: true,
+  },
+  {
+    key: "city",
+    sortable: true,
+  },
+  {
+    key: "edit",
+  },
+];
+
+let example = reactive({
+  items: data.slice(0, 60),
+  itemsPerPage: 5,
+  primaryKey: "id",
+  filter: "",
+  busy: false,
+  selectionMode: "single",
+  captionTop: false,
+  locale: "en-GB",
+  state: "",
+  definition: definition,
+});
+
+let page = ref(1);
+let editModalIsVisible = ref(false);
+let editModalContent = ref("");
+
+let edit = (content) => {
+  editModalContent.value = JSON.stringify(content, null, 2);
+  editModalIsVisible.value = true;
+};
+
+let events = ref([]);
+
+let handleFilteredCount = (count) => {
+  example.itemsCount = count;
+  events.value.unshift({ ev: "update:filtered-count", data: count });
+};
+
+let handleSelection = (selection) => {
+  events.value.unshift({ ev: "input:selection", data: selection });
+};
+
+let handlePageChange = (page) => {
+  events.value.unshift({ ev: "update:page", data: page });
 };
 </script>

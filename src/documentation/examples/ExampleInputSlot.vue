@@ -34,16 +34,8 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref, reactive } from "vue";
 
-export default {
-  setup() {
-    let model = ref("")
-
-    return {
-      model,
-    };
-  },
-};
+let model = ref("");
 </script>
