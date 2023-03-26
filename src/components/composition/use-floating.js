@@ -31,6 +31,7 @@ export default function useFloating(opts) {
   let reference = ref(null);
   let floating = ref(null);
   let destroyFloating = null;
+  let floatingPlacement = ref(null)
 
   let localReference = computed(() => {
     return (
@@ -83,7 +84,7 @@ export default function useFloating(opts) {
   let updateFloating = async () => {
     if (!reference.value || !floating.value) return;
 
-    let { x, y, middlewareData } = await computePosition(
+    let { x, y, middlewareData, placement } = await computePosition(
       localReference.value,
       floating.value,
       {
@@ -106,6 +107,8 @@ export default function useFloating(opts) {
         ],
       }
     );
+
+    floatingPlacement.value = placement
 
     if (!floating.value) return;
 
@@ -160,6 +163,7 @@ export default function useFloating(opts) {
     isFloatingVisible,
     reference,
     floating,
+    floatingPlacement,
     updateFloating,
     showFloating,
     hideFloating,
