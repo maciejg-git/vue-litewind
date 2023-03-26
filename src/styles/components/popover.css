@@ -1,5 +1,7 @@
 :root {
   --popover-transition-duration: 0.2s;
+  --popover-transition-slide: -15px;
+  --popover-transition-scale: 0.2;
 }
 
 .popover {
