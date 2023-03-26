@@ -210,7 +210,7 @@ let props = defineProps({
   },
   transition: {
     type: String,
-    default: defaultProps("select", "transition", "fade-slide"),
+    default: defaultProps("select", "transition", "fade-scale"),
   },
   styleItem: {
     type: String,
@@ -620,6 +620,7 @@ let handleClickItem = (item, index) => {
 }
 .fade-scale-enter-active,
 .fade-scale-leave-active {
+  transform-origin: top;
   transition: opacity var(--select-transition-duration, 0.2s) ease, transform var(--dropdown-transition-duration, 0.2s) ease;
 }
 

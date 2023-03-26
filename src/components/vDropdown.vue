@@ -15,6 +15,7 @@
         ref="floating"
         role="listbox"
         tabindex="-1"
+        v-bind="$attrs"
         @mouseenter="preventHiding"
         @mouseleave="allowHiding"
         class="absolute z-50"
@@ -108,6 +109,7 @@ const {
   floating,
   showFloating,
   hideFloating,
+  floatingPlacement
 } = useFloating({ placement, offsetX, offsetY, flip, autoPlacement })
 
 let { onClickOutside } = useClickOutside();
@@ -211,6 +213,7 @@ provide("control-dropdown", {
 }
 .fade-scale-enter-active,
 .fade-scale-leave-active {
+  transform-origin: top;
   transition: opacity var(--dropdown-transition-duration, 0.2s) ease, transform var(--dropdown-transition-duration, 0.2s) ease;
 }
 

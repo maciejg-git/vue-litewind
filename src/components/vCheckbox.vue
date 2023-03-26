@@ -120,7 +120,7 @@ let resetInput = () => {
   localModel.value = false;
 };
 
-let externalState = toRef(props, "state");
+let externalState = toRef(props, "validationState");
 
 let { rules, validateMode } = props;
 

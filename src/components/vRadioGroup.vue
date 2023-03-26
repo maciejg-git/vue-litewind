@@ -49,7 +49,7 @@ let resetInput = () => {
   groupModel.value = "";
 };
 
-let externalState = toRef(props, "state");
+let externalState = toRef(props, "validationState");
 
 let { rules, validateMode } = props;
 

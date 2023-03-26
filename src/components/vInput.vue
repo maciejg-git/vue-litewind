@@ -293,11 +293,11 @@ let wrapperRef = ref(null);
 
 let focus = () => {
   inputRef.value.focus();
-}
+};
 
 let blur = () => {
   inputRef.value.blur();
-}
+};
 
 let selectInputText = () => {
   inputRef.value.setSelectionRange(0, localModel.value.length);
@@ -317,14 +317,17 @@ let resetInput = () => {
   localModel.value = "";
 };
 
-let externalState = toRef(props, "state");
+let externalState = toRef(props, "validationState");
 
 let externalModel = toRef(props, "externalModel");
 
 let { rules, validateOn, validateMode } = props;
 
+let currentValidationModel =
+  externalModel.value !== undefined ? externalModel : localModel;
+
 let { status, state, messages, touch, formValidate, reset } = useValidation(
-  externalModel.value !== undefined ? externalModel : localModel,
+  currentValidationModel,
   rules,
   {
     validateOn,
@@ -332,7 +335,7 @@ let { status, state, messages, touch, formValidate, reset } = useValidation(
   },
   externalState,
   emitValidationStatus,
-  resetInput,
+  resetInput
 );
 
 // handle v-form

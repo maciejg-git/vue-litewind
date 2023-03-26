@@ -170,4 +170,25 @@ provide("control-popover", {
 .fade-leave-to {
   opacity: 0;
 }
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: opacity var(--popover-transition-duration, 0.2s) ease, transform var(--popover-transition-duration, 0.2s) ease;
+}
+
+.fade-slide-enter-from,
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(var(--popover-transition-slide, -15px))
+}
+.fade-scale-enter-active,
+.fade-scale-leave-active {
+  transform-origin: top;
+  transition: opacity var(--popover-transition-duration, 0.2s) ease, transform var(--popover-transition-duration, 0.2s) ease;
+}
+
+.fade-scale-enter-from,
+.fade-scale-leave-to {
+  opacity: 0;
+  transform: scaleY(var(--popover-transition-scale, 0.2))
+}
 </style>
