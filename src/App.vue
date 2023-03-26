@@ -12,6 +12,6 @@ export default {
 
 <style>
 body {
-  @apply h-screen dark:bg-dark-800
+  @apply h-screen dark:bg-[#191919]
 }
 </style>

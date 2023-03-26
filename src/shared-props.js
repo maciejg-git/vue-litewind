@@ -74,7 +74,7 @@ const sharedFormProps = (component, d, options) => {
 
   return {
     ...props,
-    state: { type: String, default: d.state || null },
+    validationState: { type: String, default: d.state || null },
   };
 };
 
