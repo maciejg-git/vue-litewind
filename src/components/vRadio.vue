@@ -13,7 +13,7 @@
       :for="id"
       :class="classes.label.value"
     >
-    <!-- @slot label -->
+      <!-- @slot label -->
       <slot
         name="label"
         :label="label"
@@ -39,6 +39,7 @@ import useValidation from "./composition/use-validation";
 import {
   sharedProps,
   sharedStyleProps,
+  sharedValidationProps,
   sharedFormProps,
 } from "../shared-props";
 import { defaultProps } from "../defaultProps";
@@ -50,14 +51,9 @@ const props = defineProps({
     type: [Array, Boolean, String],
     default: undefined,
   },
-  rules: {
-    type: Object,
-    default: {},
-  },
-  validateMode: {
-    type: String,
-    default: "silent",
-  },
+  ...sharedValidationProps("radio", {
+    validateMode: "silent",
+  }),
   label: {
     type: String,
     default: "",
@@ -93,18 +89,15 @@ let getRadioClasses = () => {
   return [
     "tw-form-radio-reset",
     classes.radio.value,
-    state.value === "valid" && states.radio.value.valid,
-    state.value === "invalid" && states.radio.value.invalid,
+    validation.state.value === "valid" && states.radio.value.valid,
+    validation.state.value === "invalid" && states.radio.value.invalid,
     (attrs.disabled === "" || attrs.disabled === true) && "disabled",
   ];
 };
 
 let id = useUid("input", attrs);
 
-let { groupModel, onUpdateGroupModel, isInGroup } = inject(
-  "v-radio-group",
-  {}
-);
+let { groupModel, onUpdateGroupModel, isInGroup } = inject("v-radio-group", {});
 
 let localModel = useLocalModel(props, emit, groupModel, onUpdateGroupModel);
 
@@ -125,35 +118,33 @@ let externalState = toRef(props, "validationState");
 let { rules, validateMode } = props;
 
 // try to inject checkbox group validation or fallback to checkbox validation
-let { status, state, messages, touch, formValidate, reset } = inject(
-  "v-radio-group-validation",
-  useValidation(
-    localModel,
+let validation =
+  inject("v-radio-group-validation", null) ||
+  useValidation({
+    value: localModel,
     rules,
-    {
+    options: {
       validateOn: "form",
       validateMode,
     },
     externalState,
-    emitValidationStatus,
-    resetInput,
-  )
-);
+    onUpdate: emitValidationStatus,
+    onReset: resetInput,
+  });
 
 // handle v-form
 
 if (!isInGroup) {
   let { addFormInput } = inject("form", {});
 
-  if (addFormInput) addFormInput({ status, formValidate, reset });
+  if (addFormInput) addFormInput(validation);
 }
 
 // handle template events
 
 let handleBlur = () => {
-  if (touch) touch();
+  if (validation.touch) validation.touch();
 };
 </script>
 
-<style>
-</style>
+<style></style>

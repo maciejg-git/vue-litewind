@@ -31,9 +31,9 @@
   </div>
 
   <v-form-text
-    v-if="!noMessages && Object.keys(messages).length"
-    :messages="messages"
-    :state="state"
+    v-if="!noMessages && Object.keys(validation.messages.value).length"
+    :messages="validation.messages.value"
+    :state="validation.state.value"
     :single-line-message="singleLineMessage"
     v-bind="formText"
     data-testid="error-messages"
@@ -66,6 +66,7 @@ import vFormText from "./vFormText.vue";
 import {
   sharedProps,
   sharedStyleProps,
+  sharedValidationProps,
   sharedFormProps,
 } from "../shared-props";
 import { defaultProps } from "../defaultProps";
@@ -81,18 +82,10 @@ const props = defineProps({
     type: Boolean,
     default: defaultProps("textarea", "inline", false),
   },
-  rules: {
-    type: Object,
-    default: {},
-  },
-  validateOn: {
-    type: String,
-    default: "blur",
-  },
-  validateMode: {
-    type: String,
-    default: "silent",
-  },
+  ...sharedValidationProps("textarea", {
+    validateOn: "blur",
+    validateMode: "silent",
+  }),
   singleLineMessage: {
     type: Boolean,
     default: defaultProps("textarea", "singleLineMessage", false),
@@ -142,8 +135,8 @@ let getTextareaClasses = computed(() => {
   return [
     "tw-form-textarea-reset flex items-center",
     classes.textarea.value,
-    state.value === "valid" && states.textarea.value.valid,
-    state.value === "invalid" && states.textarea.value.invalid,
+    validation.state.value === "valid" && states.textarea.value.valid,
+    validation.state.value === "invalid" && states.textarea.value.invalid,
     (attrs.disabled === "" || attrs.disabled === true) && "disabled",
   ];
 });
@@ -174,31 +167,31 @@ let externalState = toRef(props, "validationState");
 
 let { rules, validateOn, validateMode } = props;
 
-let { status, state, messages, touch, formValidate, reset } = useValidation(
-  localModel,
+let validation = useValidation({
+  value: localModel,
   rules,
-  {
+  options: {
     validateOn,
     validateMode,
   },
   externalState,
-  emitValidationStatus,
-  resetInput,
-);
+  onUpdate: emitValidationStatus,
+  onReset: resetInput,
+});
 
 // handle v-form
 
 let { addFormInput } = inject("form", {});
 
 if (addFormInput) {
-  addFormInput({ status, formValidate, reset });
+  addFormInput(validation);
 }
 
 // handle template events
 
 let handleBlur = () => {
   nextTick(() => {
-    touch();
+    validation.touch();
   });
 };
 </script>

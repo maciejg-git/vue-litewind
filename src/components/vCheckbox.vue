@@ -39,6 +39,7 @@ import useValidation from "./composition/use-validation";
 import {
   sharedProps,
   sharedStyleProps,
+  sharedValidationProps,
   sharedFormProps,
 } from "../shared-props";
 import { defaultProps } from "../defaultProps";
@@ -50,14 +51,9 @@ const props = defineProps({
     type: [Array, Boolean, Object],
     default: undefined,
   },
-  rules: {
-    type: Object,
-    default: {},
-  },
-  validateMode: {
-    type: String,
-    default: "silent",
-  },
+  ...sharedValidationProps("checkbox", {
+    validateMode: "silent",
+  }),
   label: {
     type: String,
     default: "",
@@ -93,8 +89,8 @@ let getCheckBoxClasses = () => {
   return [
     "tw-form-checkbox-reset",
     classes.checkbox.value,
-    state.value === "valid" && states.checkbox.value.valid,
-    state.value === "invalid" && states.checkbox.value.invalid,
+    validation.state.value === "valid" && states.checkbox.value.valid,
+    validation.state.value === "invalid" && states.checkbox.value.invalid,
     (attrs.disabled === "" || attrs.disabled === true) && "disabled",
   ];
 };
@@ -125,33 +121,32 @@ let externalState = toRef(props, "validationState");
 let { rules, validateMode } = props;
 
 // try to inject checkbox group validation or fallback to checkbox validation
-let { status, state, messages, touch, formValidate, reset } = inject(
-  "v-checkbox-group-validation",
-  useValidation(
-    localModel,
+let validation =
+  inject("v-checkbox-group-validation", useValidation({
+    value: localModel,
     rules,
-    {
+    options: {
       validateOn: "form",
       validateMode,
     },
     externalState,
-    emitValidationStatus,
-    resetInput,
-  )
-);
+    onUpdate: emitValidationStatus,
+    onReset: resetInput,
+  })) 
+  ;
 
 // handle v-form
 
 if (!isInGroup) {
   let { addFormInput } = inject("form", {});
 
-  if (addFormInput) addFormInput({ status, formValidate, reset });
+  if (addFormInput) addFormInput(validation);
 }
 
 // handle template events
 
 let handleBlur = () => {
-  if (touch) touch();
+  if (validation.touch) validation.touch();
 };
 </script>
 

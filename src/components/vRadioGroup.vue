@@ -8,24 +8,17 @@
 <script setup>
 import { ref, provide, inject, toRef } from "vue";
 import useValidation from "./composition/use-validation";
+import { sharedValidationProps, sharedFormProps } from "../shared-props";
 
 const props = defineProps({
   modelValue: {
     type: [String, Boolean],
     default: undefined,
   },
-  rules: {
-    type: Object,
-    default: {},
-  },
-  state: {
-    type: String,
-    default: null,
-  },
-  validateMode: {
-    type: String,
-    default: "silent",
-  },
+  ...sharedValidationProps("input", {
+    validateMode: "silent",
+  }),
+  ...sharedFormProps("radio-group", null),
 });
 
 const emit = defineEmits([
@@ -53,30 +46,24 @@ let externalState = toRef(props, "validationState");
 
 let { rules, validateMode } = props;
 
-let { status, state, messages, touch, formValidate, reset } = useValidation(
-  groupModel,
+let validation = useValidation({
+  name: "radio-group",
+  value: groupModel,
   rules,
-  {
+  options: {
     validateOn: "form",
     validateMode,
   },
   externalState,
-  emitValidationStatus,
-  resetInput,
-);
-
-provide("v-radio-group-validation", {
-  status,
-  state,
-  messages,
-  touch,
-  formValidate,
-  reset,
+  onUpdate: emitValidationStatus,
+  onReset: resetInput,
 });
+
+provide("v-radio-group-validation", validation);
 
 let { addFormInput } = inject("form", {});
 
-if (addFormInput) addFormInput({ status, formValidate, reset });
+if (addFormInput) addFormInput(validation);
 
 let onUpdateGroupModel = (newValue) => {
   groupModel.value = newValue;
@@ -89,5 +76,5 @@ provide("v-radio-group", {
   isInGroup: true,
 });
 
-defineExpose({ validate: formValidate, reset });
+defineExpose({ validate: validation.formValidate, reset: validation.reset });
 </script>
