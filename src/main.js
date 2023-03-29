@@ -1,6 +1,7 @@
 // vue
 import { createApp, defineAsyncComponent } from "vue";
 import router from "./router";
+import { createPinia } from 'pinia'
 // components
 import App from "./App.vue";
 import TableReference from "./documentation/components/TableReference.vue";
@@ -21,6 +22,8 @@ import "./styles/shared.css"
 import "./styles/components.css"
 import "./styles/icon.css"
 import "./documentation/Documentation.css"
+
+const pinia = createPinia()
 
 let app = createApp(App);
 
@@ -76,4 +79,7 @@ app.use(componentPlugin, {
     }
   }
 });
+
+app.use(pinia)
+
 app.mount("#app");
