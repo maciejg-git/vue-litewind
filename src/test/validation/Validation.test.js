@@ -297,7 +297,7 @@ describe("state prop of input should override validation state", () => {
         rules: {
           required: true,
         },
-        state: "valid",
+        validationState: "valid",
       },
     });
 
@@ -312,7 +312,7 @@ describe("state prop of input should override validation state", () => {
     const { getByRole, getByTestId } = render(Input, {
       props: {
         rules: {},
-        state: "invalid",
+        validationState: "invalid",
       },
     });
 
