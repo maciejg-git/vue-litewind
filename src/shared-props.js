@@ -33,7 +33,7 @@ const sharedPopperProps = (component) => {
     autoPlacement: {
       type: Boolean,
       default: defaultProps(component, "autoPlacement", false),
-    }
+    },
   };
 };
 
@@ -48,6 +48,33 @@ const sharedStyleProps = (component) => {
     variant: {
       type: [String, Boolean],
       default: "",
+    },
+  };
+};
+
+const sharedValidationProps = (component, options) => {
+  options = options || {};
+
+  let props = {}
+
+  if (options.validateOn) {
+    props.validateOn = {
+      type: String,
+      default: options.validateOn || "blur",
+    }
+  }
+  if (options.validateMode) {
+    props.validateMode = {
+      type: String,
+      default: options.validateMode || "silent",
+    }
+  }
+
+  return {
+    ...props,
+    rules: {
+      type: Object,
+      default: {},
     },
   };
 };
@@ -78,4 +105,10 @@ const sharedFormProps = (component, d, options) => {
   };
 };
 
-export { sharedProps, sharedPopperProps, sharedStyleProps, sharedFormProps };
+export {
+  sharedProps,
+  sharedPopperProps,
+  sharedStyleProps,
+  sharedValidationProps,
+  sharedFormProps,
+};
