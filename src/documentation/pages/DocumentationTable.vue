@@ -20,7 +20,7 @@
   </section>
 
   <section id="table-definition" class="scroll-mt-20">
-    <h4 class="mb-2">Prop: definition</h4>
+    <h4>Prop: definition</h4>
     <span class="font-bold">Type</span>
     :
     <code class="code-word">Array</code>
@@ -71,9 +71,13 @@
 ]) `
       }}
     </v-code>
+    <p>
+    Properties of definition object:
+    </p>
     <table-reference
       :items="referenceProp"
       :definition="referencePropDefinition"
+      :filterable="false"
     />
   </section>
 
@@ -114,6 +118,7 @@ export default {
         prop: "key",
         type: ["String"],
         default: "undefined",
+        required: true,
         description:
           "`key` is one of the properties of data from `items` prop or a new `key`. New `keys` apear as additional columns and their content can be set using slot or function `f`. This property is required.",
       },

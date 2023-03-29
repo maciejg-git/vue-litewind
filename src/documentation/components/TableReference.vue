@@ -1,5 +1,21 @@
 <template>
-  <div class="bg-[#1e1e1e] rounded-lg shadow p-4 mt-10 mb-10">
+  <div
+    v-if="filterable && items.length > 5"
+    class="flex mt-10"
+  >
+    <div class="w-full">
+      <v-input
+        v-model="store.filter"
+        placeholder="Filter"
+        base="underlined-input"
+        clearable
+      ></v-input>
+    </div>
+  </div>
+  <div
+    v-if="items.length"
+    class="bg-[#f4f4f4] dark:bg-[#1e1e1e] rounded-lg p-4 mt-4 mb-10"
+  >
     <div
       v-for="(prop, index) in items"
       class="group mt-4 first:mt-0"
@@ -32,6 +48,9 @@
 </template>
 
 <script>
+import { computed } from "vue";
+import { useStore } from "../../store.js";
+
 export default {
   inheritAttrs: false,
   props: {
@@ -39,8 +58,23 @@ export default {
       type: Array,
       default: [],
     },
+    filterable: {
+      type: Boolean,
+      default: true,
+    },
   },
   setup(props) {
+    let store = useStore();
+
+    let items = computed(() => {
+      return props.items.filter((i) => {
+        return (
+          i.prop.toLowerCase().indexOf(store.filter.toLowerCase()) > -1 ||
+          i.description.toLowerCase().indexOf(store.filter.toLowerCase()) > -1
+        );
+      });
+    });
+
     let template = (string) => {
       return string
         .replace(
@@ -54,6 +88,8 @@ export default {
     };
 
     return {
+      store,
+      items,
       template,
     };
   },

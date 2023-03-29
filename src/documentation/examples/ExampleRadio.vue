@@ -17,7 +17,7 @@
   <div class="flex items-center my-2">
     <v-radio
       v-model="example.model"
-      :state="example.state"
+      :validationState="example.validationState"
       value="option 2"
       id="option2"
     ></v-radio>
@@ -32,7 +32,7 @@
   <div class="flex items-center my-2">
     <v-radio
       v-model="example.model"
-      :state="example.state"
+      :validationState="example.validationState"
       value="option 3"
       id="option3"
     ></v-radio>
