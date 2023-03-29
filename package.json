@@ -22,7 +22,9 @@
     "update-docs": "cd src/documentation/scripts && node ./get-components-reference.js && node ./get-docs.js",
     "serve": "vite preview --config vite-docs.config.js dist-docs"
   },
-  "dependencies": {},
+  "dependencies": {
+    "pinia": "^2.0.33"
+  },
   "devDependencies": {
     "@floating-ui/dom": "^1.2.4",
     "@popperjs/core": "^2.11.6",
