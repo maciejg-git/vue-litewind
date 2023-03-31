@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-x-20">
+  <div class="flex flex-col md:flex-row md:gap-x-20">
     <div class="basis-1/2">
       <v-input
         v-model="password"
@@ -11,7 +11,7 @@
         @validation:status="(status) => (passwordStatus = status)"
       ></v-input>
     </div>
-    <pre class="m-0">
+    <pre class="m-0 mt-[100px] md:mt-0">
       <code v-html="'model: ' + stringifyObject(password)"></code>
       <code v-html="'rules: ' + stringifyObject(passwordRules)"></code>
       <code v-html="'status: ' + stringifyObject(passwordStatus, true)"></code>
@@ -34,13 +34,14 @@
       @blur="inputs.company.touch()"
     />
   </div>
-  <button @click="validate">validate</button>
+  <button @click="form.validate">validate</button>
 </template>
 
 <script setup>
 import { ref } from "vue";
 import { stringifyObject } from "../tools";
 import useValidation from "../../components/composition/use-validation";
+import useFormValidation from "../../components/composition/use-form-validation"
 
 let password = ref("");
 let passwordStatus = ref({});
@@ -55,7 +56,34 @@ let passwordRules = {
 let username = ref("");
 let company = ref("");
 
-let { inputs, validate, reset } = useValidation([
+// let { inputs, validate, reset } = useValidation([
+//   {
+//     name: "username",
+//     value: username,
+//     rules: {
+//       required: true,
+//       minLength: 5,
+//     },
+//     options: {
+//       validateOn: "form",
+//     }
+//   },
+//   {
+//     name: "company",
+//     value: company,
+//     rules: {
+//       required: true,
+//       maxLength: 5,
+//     },
+//     options: {
+//       validateOn: "form",
+//     }
+//   },
+// ]);
+
+let form = useFormValidation()
+
+let inputs = useValidation([
   {
     name: "username",
     value: username,
@@ -63,9 +91,6 @@ let { inputs, validate, reset } = useValidation([
       required: true,
       minLength: 5,
     },
-    options: {
-      validateOn: "form",
-    }
   },
   {
     name: "company",
@@ -74,11 +99,22 @@ let { inputs, validate, reset } = useValidation([
       required: true,
       maxLength: 5,
     },
+  },
+],
+  {
+    rules: {
+      required: true,
+      minLength: 5,
+    },
     options: {
       validateOn: "form",
-    }
-  },
-]);
+    },
+    form,
+    // rules: {
+      // alphanumeric: true
+    // }
+  })
+
 </script>
 
 <style scoped lang="postcss">

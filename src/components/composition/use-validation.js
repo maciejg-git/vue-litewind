@@ -11,20 +11,19 @@ let defaultStatus = {
   validated: false,
 };
 
-export default function useValidation(inputs) {
+export default function useValidation(inputs, globals) {
   inputs = Array.isArray(inputs) ? inputs : [inputs];
 
-  let validationInputs = {}
-
-  inputs.forEach((input) => {
+  let validation = inputs.reduce((acc, input) => {
     let {
+      form = globals?.form || null,
       name = "input",
       value,
-      rules,
-      options,
-      externalState,
-      onUpdate,
-      onReset,
+      rules = globals?.rules || {},
+      options = globals?.options || {},
+      externalState = globals?.externalState,
+      onUpdate = globals?.onUpdate,
+      onReset = globals?.onReset,
     } = input;
 
     let status = ref({ ...defaultStatus });
@@ -34,8 +33,8 @@ export default function useValidation(inputs) {
     let messages = ref({});
 
     let opts = {
-      validateOn: options?.validateOn || "blur",
-      validateMode: options?.validateMode || "silent",
+      validateOn: options.validateOn || "blur",
+      validateMode: options.validateMode || "silent",
     };
 
     if (!isFunction(onUpdate)) {
@@ -79,7 +78,7 @@ export default function useValidation(inputs) {
         return valid && newStatus[key];
       }, true);
 
-      newStatus.optional = !rules.required && (value === "" || value === false);
+      newStatus.optional = !rules.required && (value === "" || value === false || value.length === 0);
 
       status.value = newStatus;
       messages.value = newMessages;
@@ -185,7 +184,9 @@ export default function useValidation(inputs) {
       onUpdate(status, state, messages);
     };
 
-    validationInputs[name] = {
+    return { ...acc, [name]: {
+      form,
+      name,
       status,
       state,
       messages,
@@ -193,34 +194,22 @@ export default function useValidation(inputs) {
       touch,
       formValidate,
       reset,
-    };
-  });
+    }}
+  }, {});
 
-  let i = Object.keys(validationInputs);
+  // add inputs to form
+  
+  Object.values(validation).forEach((i) => {
+    isFunction(i.form?.addToForm) && i.form.addToForm(i)
+  })
 
-  if (i.length === 1) {
-    return validationInputs[i[0]]
-  }
+  // return validation for single input
 
-  let validate = function() {
-    Object.values(this.inputs).forEach((i) => {
-      i.formValidate()
-    })
+  let i = Object.keys(validation);
 
-    return Object.values(this.inputs).every((i) => {
-      return i.status.value.valid || i.status.value.optional
-    })
-  }
+  if (i.length === 1) return validation[i[0]]
 
-  let reset = function() {
-    this.inputs.forEach((i) => {
-      i.reset()
-    })
-  }
+  // return validation for multiple inputs
 
-  return {
-    inputs: validationInputs,
-    validate,
-    reset,
-  }
+  return validation
 }
