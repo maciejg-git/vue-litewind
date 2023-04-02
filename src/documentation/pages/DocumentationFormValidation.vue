@@ -158,7 +158,7 @@
   <section>
     <h4>Example - message slot</h4>
     <p>
-      In order to customize validation messages use <code class="code-text">message</code> slot.
+      In order to customize validation messages <code class="code-text">message</code> slot can be used.
     </p>
     <div class="example">
       <example name="ExampleValidationMessageSlot"></example>

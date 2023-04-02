@@ -3,7 +3,10 @@
     sticky
     class="flex justify-between border-b dark:text-text-300 dark:border-dark-700 px-4 py-2"
   >
-    <div>
+    <div class="flex items-center">
+      <v-button class="block lg:hidden mr-2" base="plain-button">
+        <v-icon name="b-list" class="w-7 h-7"></v-icon>
+      </v-button>
       <span class="text-lg font-bold">VueTailwind</span>
       <div class="inline-block ml-5">
         <a href="/documentation/installation">Docs</a>
