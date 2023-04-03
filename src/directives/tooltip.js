@@ -1,4 +1,3 @@
-import { correctPlacement } from "../const.js";
 import {
   computePosition,
   autoPlacement,
@@ -7,6 +6,10 @@ import {
   autoUpdate,
   inline,
 } from "@floating-ui/dom";
+
+const correctPlacement = ["top", "bottom", "right", "left"]
+  .map((i) => [i, i + "-start", i + "-end"])
+  .flat();
 
 let defaults = {
   placement: "bottom",
