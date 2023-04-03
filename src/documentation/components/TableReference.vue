@@ -13,11 +13,11 @@
     </div>
   </div>
   <div
-    v-if="items.length"
+    v-if="referenceItems.length"
     class="bg-[#f4f4f4] dark:bg-[#1e1e1e] rounded-lg p-4 mt-4 mb-10"
   >
     <div
-      v-for="(prop, index) in items"
+      v-for="(prop, index) in referenceItems"
       class="group mt-4 first:mt-0"
     >
       <div class="flex items-center">
@@ -45,6 +45,10 @@
       <v-divider v-if="index < items.length - 1"></v-divider>
     </div>
   </div>
+  <div
+    v-else
+    class="my-10"
+  ></div>
 </template>
 
 <script>
@@ -66,7 +70,7 @@ export default {
   setup(props) {
     let store = useStore();
 
-    let items = computed(() => {
+    let referenceItems = computed(() => {
       return props.items.filter((i) => {
         return (
           i.prop.toLowerCase().indexOf(store.filter.toLowerCase()) > -1 ||
@@ -89,7 +93,7 @@ export default {
 
     return {
       store,
-      items,
+      referenceItems,
       template,
     };
   },

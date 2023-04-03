@@ -4,9 +4,21 @@
     class="flex justify-between border-b dark:text-text-300 dark:border-dark-700 px-4 py-2"
   >
     <div class="flex items-center">
-      <v-button class="block lg:hidden mr-2" base="plain-button">
-        <v-icon name="b-list" class="w-7 h-7"></v-icon>
-      </v-button>
+      <v-trigger
+        for="sidepanel"
+        v-slot="{ onTrigger }"
+      >
+        <v-button
+          class="block lg:hidden mr-2"
+          base="plain-button"
+          v-on="onTrigger"
+        >
+          <v-icon
+            name="b-list"
+            class="w-7 h-7"
+          ></v-icon>
+        </v-button>
+      </v-trigger>
       <span class="text-lg font-bold">VueTailwind</span>
       <div class="inline-block ml-5">
         <a href="/documentation/installation">Docs</a>
@@ -24,7 +36,112 @@
     </v-button>
   </v-navbar>
 
-  <div class="flex text-text-800 dark:bg-[#191919] dark:text-text-300/80 px-2 lg:px-0">
+  <v-sidepanel
+    id="sidepanel"
+    sidebar-left
+    width="auto"
+  >
+    <div class="px-6 h-full overflow-scroll">
+      <h6>
+        <router-link
+          to="/documentation/components"
+          class="transition-all"
+        >
+          Get started
+        </router-link>
+      </h6>
+      <ul class="list-unstyled ml-4">
+        <li>
+          <router-link
+            to="/documentation/installation"
+            active-class="active"
+            class="transition-all"
+          >
+            Installation
+          </router-link>
+        </li>
+      </ul>
+
+      <!-- components -->
+
+      <h6>
+        <router-link
+          to="/documentation/components"
+          class="transition-all"
+        >
+          Components
+        </router-link>
+      </h6>
+      <ul class="list-unstyled ml-4">
+        <li
+          v-for="(c, i) in components"
+          :key="i"
+        >
+          <router-link
+            :to="'/documentation/' + c.name"
+            active-class="active"
+            class="transition-all"
+          >
+            {{ c.label }}
+          </router-link>
+        </li>
+      </ul>
+
+      <!-- form components -->
+
+      <h6>
+        <router-link
+          to="/documentation/form-components"
+          class="transition-all"
+        >
+          Form Components
+        </router-link>
+      </h6>
+      <ul class="list-unstyled ml-4">
+        <li
+          v-for="(c, i) in formComponents"
+          :key="i"
+        >
+          <router-link
+            :to="'/documentation/' + c.name"
+            active-class="active"
+            class="transition-all"
+          >
+            {{ c.label }}
+          </router-link>
+        </li>
+        <li>
+          <router-link
+            to="/documentation/form-validation"
+            active-class="active"
+            class="transition-all"
+          >
+            Form Validation
+          </router-link>
+        </li>
+      </ul>
+
+      <!-- directives -->
+
+      <h6 class="mt-4">Directives</h6>
+      <ul class="list-unstyled ml-4">
+        <li>
+          <router-link
+            to="/documentation/tooltip"
+            active-class="active"
+            class="transition-all"
+          >
+            Tooltip
+          </router-link>
+        </li>
+      </ul>
+      <div class="min-h-[100px]"></div>
+    </div>
+  </v-sidepanel>
+
+  <div
+    class="flex text-text-800 dark:bg-[#191919] dark:text-text-300/80 px-2 lg:px-0"
+  >
     <div
       class="sidebar basis-1/5 hidden lg:flex sticky flex-none border-r text-[0.9em] font-semibold overflow-auto dark:border-dark-700 pb-20 top-16 p-3"
     >
