@@ -101,6 +101,10 @@ let { groupModel, onUpdateGroupModel, isInGroup } = inject("v-radio-group", {});
 
 let localModel = useLocalModel(props, emit, groupModel, onUpdateGroupModel);
 
+// handle v-form
+
+let form = !isInGroup && inject("form", {})
+
 // validation
 
 let emitValidationStatus = (status, state, messages) => {
@@ -121,6 +125,7 @@ let { rules, validateMode } = props;
 let validation =
   inject("v-radio-group-validation", null) ||
   useValidation({
+    form,
     value: localModel,
     rules,
     options: {
@@ -131,14 +136,6 @@ let validation =
     onUpdate: emitValidationStatus,
     onReset: resetInput,
   });
-
-// handle v-form
-
-if (!isInGroup) {
-  let { addFormInput } = inject("form", {});
-
-  if (addFormInput) addFormInput(validation);
-}
 
 // handle template events
 

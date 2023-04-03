@@ -151,6 +151,10 @@ let id = useUid("textarea", attrs);
 
 let localModel = useLocalModel(props, emit);
 
+// handle v-form
+
+let form = inject("form", {});
+
 // validate
 
 let emitValidationStatus = (status, state, messages) => {
@@ -168,6 +172,7 @@ let externalState = toRef(props, "validationState");
 let { rules, validateOn, validateMode } = props;
 
 let validation = useValidation({
+  form,
   value: localModel,
   rules,
   options: {
@@ -178,14 +183,6 @@ let validation = useValidation({
   onUpdate: emitValidationStatus,
   onReset: resetInput,
 });
-
-// handle v-form
-
-let { addFormInput } = inject("form", {});
-
-if (addFormInput) {
-  addFormInput(validation);
-}
 
 // handle template events
 

@@ -7,33 +7,13 @@
 
 <script setup>
 import { ref, provide } from "vue";
+import useFormValidation from "./composition/use-form-validation";
 
-let inputs = [];
+let form = useFormValidation();
 
-let valid = ref(false);
+provide("form", form);
 
-let addFormInput = (input) => {
-  inputs.push(input);
-};
-
-let validate = () => {
-  inputs.forEach((i) => i.formValidate());
-
-  valid.value = inputs.every((i) => {
-    return i.status.value.valid || i.status.value.optional;
-  });
-
-  return valid.value;
-};
-
-let reset = () => {
-  inputs.forEach((i) => i.reset());
-  valid.value = false;
-};
-
-provide("form", { addFormInput });
-
-defineExpose({ validate, reset });
+defineExpose({ validate: form.validate, reset: form.reset });
 </script>
 
 <style scoped lang="postcss"></style>

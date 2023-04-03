@@ -30,6 +30,8 @@ const emit = defineEmits([
 
 let groupModel = ref(props.modelValue);
 
+let form = inject("form", {});
+
 // validation
 
 let emitValidationStatus = (status, state, messages) => {
@@ -47,6 +49,7 @@ let externalState = toRef(props, "validationState");
 let { rules, validateMode } = props;
 
 let validation = useValidation({
+  form,
   name: "checkbox-group",
   value: groupModel,
   rules,
@@ -60,10 +63,6 @@ let validation = useValidation({
 });
 
 provide("v-checkbox-group-validation", validation);
-
-let { addFormInput } = inject("form", {});
-
-if (addFormInput) addFormInput(validation);
 
 let onUpdateGroupModel = (newValue) => {
   groupModel.value = newValue;

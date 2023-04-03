@@ -104,6 +104,10 @@ let { groupModel, onUpdateGroupModel, isInGroup } = inject(
 
 let localModel = useLocalModel(props, emit, groupModel, onUpdateGroupModel);
 
+// handle v-form
+
+let form = !isInGroup && inject("form", {})
+
 // validation
 
 let emitValidationStatus = (status, state, messages) => {
@@ -123,6 +127,7 @@ let { rules, validateMode } = props;
 // try to inject checkbox group validation or fallback to checkbox validation
 let validation =
   inject("v-checkbox-group-validation", useValidation({
+    form,
     value: localModel,
     rules,
     options: {
@@ -134,14 +139,6 @@ let validation =
     onReset: resetInput,
   })) 
   ;
-
-// handle v-form
-
-if (!isInGroup) {
-  let { addFormInput } = inject("form", {});
-
-  if (addFormInput) addFormInput(validation);
-}
 
 // handle template events
 

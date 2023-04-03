@@ -298,6 +298,14 @@ let selectInputText = () => {
 
 let localModel = useLocalModel(props, emit);
 
+// handle v-form
+
+let form = inject("form", {});
+
+// if (addFormInput) {
+//   addFormInput(validation);
+// }
+
 // validate
 
 let emitValidationStatus = (status, state, messages) => {
@@ -320,6 +328,7 @@ let currentValidationModel =
   externalModel.value !== undefined ? externalModel : localModel;
 
 let validation = useValidation({
+  form,
   value: currentValidationModel,
   rules,
   options: {
@@ -330,14 +339,6 @@ let validation = useValidation({
   onUpdate: emitValidationStatus,
   onReset: resetInput,
 });
-
-// handle v-form
-
-let { addFormInput } = inject("form", {});
-
-if (addFormInput) {
-  addFormInput(validation);
-}
 
 // handle template events
 
