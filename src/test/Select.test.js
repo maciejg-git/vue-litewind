@@ -73,6 +73,41 @@ const statesWithLabel = [
   },
 ];
 
+const statesValues = [
+  {
+    label: "Alabama",
+    state: "Alabama",
+  },
+  {
+    label: "Alaska",
+    state: "Alaska",
+  },
+  {
+    label: "American Samoa",
+    state: "American Samoa",
+  },
+  {
+    label: "Arizona",
+    state: "Arizona",
+  },
+  {
+    label: "Arkansas",
+    state: "Arkansas",
+  },
+  {
+    label: "California",
+    state: "California",
+  },
+  {
+    label: "Colorado",
+    state: "Colorado",
+  },
+  {
+    label: "Connecticut",
+    state: "Connecticut",
+  },
+];
+
 class ResizeObserver {
   observe() {}
   unobserve() {}
@@ -299,6 +334,34 @@ test("opens autocomplete on items update", async () => {
     items: states,
   });
   await findByRole("listbox");
+});
+
+describe("sets attributes for subcomponents", () => {
+  test("input", async () => {
+    const { getByText } = render(Select, {
+      props: {
+        items: [],
+        input: {
+          label: "username",
+        }
+      },
+    });
+
+    expect(getByText("username")).toBeInTheDocument()
+  });
+})
+
+test("should use correct property to display text options (item-text prop)", async () => {
+  const { getByRole, getAllByRole, getByText } = render(Select, {
+    props: {
+      items: statesValues,
+      itemText: "label",
+    },
+  });
+
+  let select = getByRole("combobox");
+  await fireEvent.click(select);
+  expect(getByText("Alaska")).toBeInTheDocument()
 });
 
 // click outside
