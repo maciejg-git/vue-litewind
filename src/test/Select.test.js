@@ -116,7 +116,7 @@ class ResizeObserver {
 
 beforeEach(() => {
   window.ResizeObserver = ResizeObserver;
-})
+});
 
 test("renders component", () => {
   const { getByRole } = render(Select, {
@@ -291,18 +291,80 @@ test("does no close menu after selecting option in multi value mode", async () =
   queryByRole("listbox");
 });
 
-test("selects item in single mode", async () => {
-  const { getByRole, getAllByRole, queryByText } = render(Select, {
-    props: {
-      items: states,
-    },
+describe("should select item", () => {
+  test("single mode", async () => {
+    const { getByRole, getAllByRole, queryByText } = render(Select, {
+      props: {
+        items: states,
+      },
+    });
+
+    let select = getByRole("combobox");
+    await fireEvent.click(select);
+    let option = getAllByRole("option");
+    await fireEvent.click(option[0]);
+    expect(queryByText("Alabama")).toBeInTheDocument();
   });
 
-  let select = getByRole("combobox");
-  await fireEvent.click(select);
-  let option = getAllByRole("option");
-  await fireEvent.click(option[0]);
-  queryByText("Alabama");
+  test("multiple mode", async () => {
+    const { getByRole, getAllByRole, queryByText } = render(Select, {
+      props: {
+        modelValue: [],
+        items: states,
+        multiValue: true,
+      },
+    });
+
+    let select = getByRole("combobox");
+
+    await fireEvent.click(select);
+
+    let option = getAllByRole("option");
+    await fireEvent.click(option[0]);
+    await fireEvent.click(option[1]);
+    await userEvent.click(document.body);
+    expect(queryByText("Alabama")).toBeInTheDocument();
+    expect(queryByText("Alaska")).toBeInTheDocument();
+  });
+
+  test("single mode autocomplete", async () => {
+    const { getByRole, findByRole, getAllByRole, queryByText } = render(Select, {
+      props: {
+        items: states,
+        autocomplete: true,
+      },
+    });
+
+    let select = getByRole("combobox");
+    await fireEvent.click(select);
+    let input = select.querySelector("input");
+    await fireEvent.update(input, "a");
+    let option = getAllByRole("option");
+    await fireEvent.click(option[0]);
+    expect(queryByText("Alabama")).toBeInTheDocument();
+  });
+
+  test("multiple mode autocomplete", async () => {
+    const { getByRole, findByRole, getAllByRole, queryByText } = render(Select, {
+      props: {
+        modelValue: [],
+        multiValue: true,
+        items: states,
+        autocomplete: true,
+      },
+    });
+
+    let select = getByRole("combobox");
+    await fireEvent.click(select);
+    let input = select.querySelector("input");
+    await fireEvent.update(input, "a");
+    let option = getAllByRole("option");
+    await fireEvent.click(option[0]);
+    await fireEvent.click(option[1]);
+    await userEvent.click(document.body);
+    expect(queryByText("Alabama")).toBeInTheDocument();
+    expect(queryByText("Alaska")).toBeInTheDocument();
+  });
 });
 
 test("shows no items message", async () => {
@@ -343,13 +405,13 @@ describe("sets attributes for subcomponents", () => {
         items: [],
         input: {
           label: "username",
-        }
+        },
       },
     });
 
-    expect(getByText("username")).toBeInTheDocument()
+    expect(getByText("username")).toBeInTheDocument();
   });
-})
+});
 
 test("should use correct property to display text options (item-text prop)", async () => {
   const { getByRole, getAllByRole, getByText } = render(Select, {
@@ -361,7 +423,7 @@ test("should use correct property to display text options (item-text prop)", asy
 
   let select = getByRole("combobox");
   await fireEvent.click(select);
-  expect(getByText("Alaska")).toBeInTheDocument()
+  expect(getByText("Alaska")).toBeInTheDocument();
 });
 
 // click outside
