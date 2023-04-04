@@ -2,11 +2,12 @@
 
 UI components collection for Vue 3 applications. 
 
-Vue-wind uses **Tailwindc CSS** as CSS framework and **Floating UI** for positioning.
+Vue-wind uses **Tailwind CSS** as CSS framework and **Floating UI** for positioning.
 
-```
+```bash
 npm -i vue-wind @floating-ui/dom
 ```
+For Tailwind CSS instalation check their (official documentation)[https://tailwindcss.com/docs/installation/using-postcss]
 
 [Documentation and examples](https://vue-wind.netlify.app/documentation/installation)
 
