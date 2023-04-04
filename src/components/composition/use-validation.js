@@ -12,9 +12,9 @@ let defaultStatus = {
 };
 
 export default function useValidation(inputs, globals) {
-  inputs = Array.isArray(inputs) ? inputs : [inputs];
+  let localInputs = Array.isArray(inputs) ? inputs : [inputs];
 
-  let validation = inputs.reduce((acc, input) => {
+  let validation = localInputs.reduce((acc, input) => {
     let {
       form = globals?.form || null,
       name = "input",
