@@ -1,5 +1,5 @@
 <template>
-  <div class="w-1/2">
+  <div class="w-full md:w-1/2">
     <v-input
       v-model="example.model"
       v-bind="example"

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-x-20">
+  <div class="flex flex-col md:flex-row md:gap-x-20">
     <div class="basis-1/2">
       <v-input
         v-model="username"
@@ -11,7 +11,7 @@
         @validation:status="(status) => (usernameStatus = status)"
       ></v-input>
     </div>
-    <pre class="m-0">
+    <pre class="m-0 mt-[100px] md:mt-0">
       <code v-html="'model: ' + stringifyObject(username)"></code>
       <code v-html="'rules: ' + stringifyObject(usernameRules)"></code>
       <code v-html="'status: ' + stringifyObject(usernameStatus, true)"></code>

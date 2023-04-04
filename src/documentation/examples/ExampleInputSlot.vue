@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-y-4 w-1/2">
+  <div class="flex flex-col gap-y-4 w-full md:w-1/2">
     <v-input
       v-model="model"
       :inline="false"

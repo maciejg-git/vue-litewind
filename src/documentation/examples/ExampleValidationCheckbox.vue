@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-x-20">
+  <div class="flex flex-col md:flex-row md:gap-x-20">
     <div class="basis-1/2 pl-4">
       <v-checkbox-group
         v-model="languages"
@@ -32,7 +32,7 @@
         Validate
       </v-button>
     </div>
-    <pre class="m-0">
+    <pre class="m-0 mt-[20px] md:mt-0">
       <code v-html="'model: ' + stringifyObject(languages)"></code>
       <code v-html="'rules: ' + stringifyObject(languagesRules)"></code>
       <code v-html="'status: ' + stringifyObject(languagesStatus, true)"></code>

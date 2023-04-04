@@ -21,6 +21,7 @@
       class="group mt-4 first:mt-0"
     >
       <div class="flex items-center">
+        <!-- prop -->
         <code class="dark:text-text-300">
           <span class="group-hover:underline">{{ prop.prop }}</span>
           <span
@@ -30,16 +31,20 @@
             (required)
           </span>
         </code>
+        <!-- default value -->
         <code class="code-text mr-6 ml-auto">{{ prop.default }}</code>
-        <code
-          v-for="type in prop.type"
-          class="code-word"
-        >
-          {{ type }}
-        </code>
+        <!-- types -->
+        <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0">
+          <code
+            v-for="type in prop.type"
+            class="code-word"
+          >
+            {{ type }}
+          </code>
+        </div>
       </div>
       <div
-        class="ml-[200px] mb-4 mt-2"
+        class="ml-[20px] md:ml-[200px] mb-4 mt-4 md:mt-2"
         v-html="template(prop.description)"
       ></div>
       <v-divider v-if="index < items.length - 1"></v-divider>

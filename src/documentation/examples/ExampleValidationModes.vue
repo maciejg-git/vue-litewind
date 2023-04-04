@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-x-20">
+  <div class="flex flex-col md:flex-row md:gap-x-20">
     <div class="basis-1/2">
       <v-input
         type="text"
@@ -14,7 +14,7 @@
       ></v-input>
     </div>
 
-    <pre class="m-0">
+    <pre class="m-0 mt-[100px] md:mt-0">
       <ul class="font-semibold mb-5">
         <li>validate-on: "blur"</li>
         <li>validate-mode: "silent""</li>
@@ -27,7 +27,7 @@
 
   <v-divider class="my-10" />
 
-  <div class="flex gap-x-20">
+  <div class="flex flex-col md:flex-row md:gap-x-20">
     <div class="basis-1/2">
       <v-input
         type="text"
@@ -42,7 +42,7 @@
       ></v-input>
     </div>
 
-    <pre class="m-0">
+    <pre class="m-0 mt-[100px] md:mt-0">
       <ul class="font-semibold mb-5">
         <li>validate-on: "blur"</li>
         <li>validate-mode: "eager""</li>
@@ -55,7 +55,7 @@
 
   <v-divider class="my-10" />
 
-  <div class="flex gap-x-20">
+  <div class="flex flex-col md:flex-row md:gap-x-20">
     <div class="basis-1/2">
       <v-input
         type="text"
@@ -70,7 +70,7 @@
       ></v-input>
     </div>
 
-    <pre class="m-0">
+    <pre class="m-0 mt-[100px] md:mt-0">
       <ul class="font-semibold text-lg mb-5">
         <li>validate-on: "immediate"</li>
         <li>validate-mode: "eager""</li>

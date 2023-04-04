@@ -41,7 +41,7 @@
     sidebar-left
     width="auto"
   >
-    <div class="px-6 h-full overflow-scroll">
+    <div class="pl-6 pr-10 h-full overflow-scroll">
       <h6>
         <router-link
           to="/documentation/components"

@@ -1,7 +1,7 @@
 <template>
   <!-- underlined -->
 
-  <div class="flex gap-x-10">
+  <div class="flex flex-col md:flex-row gap-y-6 md:gap-x-10">
     <v-input
       v-model="example"
       base="underlined-input"
