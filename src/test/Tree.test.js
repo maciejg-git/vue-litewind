@@ -1,7 +1,8 @@
 import { render, fireEvent, prettyDOM, waitFor } from "@testing-library/vue";
 import "@testing-library/jest-dom";
+import userEvent from "@testing-library/user-event";
 import Tree from "../components/vTree.vue";
-import ExclamationCircle from "./icons/exclamation-circle"
+import ExclamationCircle from "./icons/exclamation-circle";
 
 const items = [
   {
@@ -50,10 +51,10 @@ test("renders component", async () => {
     },
   });
 
-  expect(queryByRole("tree")).toBeInTheDocument()
+  expect(queryByRole("tree")).toBeInTheDocument();
   await waitFor(() => {
-    expect(getAllByRole("treeitem", { hidden: true }).length).toBe(17)
-  })
+    expect(getAllByRole("treeitem", { hidden: true }).length).toBe(17);
+  });
 });
 
 test("auto open all items on mount (auto-open-all prop)", async () => {
@@ -65,8 +66,8 @@ test("auto open all items on mount (auto-open-all prop)", async () => {
   });
 
   await waitFor(() => {
-    expect(getAllByRole("treeitem").length).toBe(17)
-  })
+    expect(getAllByRole("treeitem").length).toBe(17);
+  });
 });
 
 test("auto open root node on mount (auto-open-root prop)", async () => {
@@ -78,8 +79,8 @@ test("auto open root node on mount (auto-open-root prop)", async () => {
   });
 
   await waitFor(() => {
-    expect(getAllByRole("treeitem").length).toBe(7)
-  })
+    expect(getAllByRole("treeitem").length).toBe(7);
+  });
 });
 
 test("filter items (filter prop)", async () => {
@@ -92,8 +93,8 @@ test("filter items (filter prop)", async () => {
   });
 
   await waitFor(() => {
-    expect(getAllByRole("treeitem").length).toBe(9)
-  })
+    expect(getAllByRole("treeitem").length).toBe(9);
+  });
 });
 
 test("renders checkboxes (show-checkboxes prop)", async () => {
@@ -104,24 +105,65 @@ test("renders checkboxes (show-checkboxes prop)", async () => {
     },
   });
 
-  expect(queryByRole("tree")).toBeInTheDocument()
+  expect(queryByRole("tree")).toBeInTheDocument();
   await waitFor(() => {
-    expect(getAllByRole("checkbox", { hidden: true }).length).toBe(17)
-  })
+    expect(getAllByRole("checkbox", { hidden: true }).length).toBe(17);
+  });
 });
 
 // FIXME
 test.skip("renders placeholder icons (placeholder-item-icon prop)", async () => {
-  const { getAllByRole, queryByRole,debug } = render(Tree, {
+  const { getAllByRole, queryByRole, debug } = render(Tree, {
     props: {
       items,
       placeholderItemIcon: ExclamationCircle,
     },
   });
 
-  expect(queryByRole("tree")).toBeInTheDocument()
-  debug()
+  expect(queryByRole("tree")).toBeInTheDocument();
+  debug();
   await waitFor(() => {
-    expect(getAllByRole("checkbox", { hidden: true }).length).toBe(17)
-  })
+    expect(getAllByRole("checkbox", { hidden: true }).length).toBe(17);
+  });
+});
+
+describe("opens and closes directory on click", () => {
+  test("open", async () => {
+    const { getAllByRole, queryByRole, getByText, getByRole } = render(Tree, {
+      props: {
+        items,
+      },
+    });
+
+    let root = getByText("Directory");
+    await userEvent.click(root);
+
+    expect(queryByRole("button", { name: "Fourth" })).not.toBeInTheDocument();
+
+    let directory = getByText("Sub directory");
+    expect(directory).toBeInTheDocument();
+    await userEvent.click(directory);
+
+    expect(getByRole("button", { name: "Fourth" })).toBeInTheDocument();
+  });
+
+  test("close", async () => {
+    const { getAllByRole, queryByRole, getByText, getByRole } = render(Tree, {
+      props: {
+        items,
+      },
+    });
+
+    let root = getByText("Directory");
+    await userEvent.click(root);
+
+    expect(queryByRole("button", { name: "Fourth" })).not.toBeInTheDocument();
+
+    let directory = getByText("Sub directory");
+    expect(directory).toBeInTheDocument();
+    await userEvent.click(directory);
+    await userEvent.click(directory);
+
+    expect(queryByRole("button", { name: "Fourth" })).not.toBeInTheDocument();
+  });
 });
