@@ -74,7 +74,7 @@ const sharedValidationProps = (component, options) => {
     ...props,
     rules: {
       type: Object,
-      default: {},
+      default: [],
     },
   };
 };
