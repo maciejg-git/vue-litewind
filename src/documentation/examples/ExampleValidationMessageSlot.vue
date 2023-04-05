@@ -23,14 +23,14 @@ import { ref } from "vue";
 
 let password = ref("");
 let passwordStatus = ref({});
-let passwordRules = {
-  required: true,
-  atLeastOneUppercase: true,
-  atLeastOneLowercase: true,
-  atLeastOneSpecial: true,
-  atLeastOneDigit: true,
-  minLength: 8,
-};
+let passwordRules = [
+  "required",
+  "atLeastOneUppercase",
+  "atLeastOneLowercase",
+  "atLeastOneSpecial",
+  "atLeastOneDigit",
+  { minLength: 8 },
+];
 </script>
 
 <style scoped lang="postcss">

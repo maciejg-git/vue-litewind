@@ -25,11 +25,11 @@ import { stringifyObject } from "../tools";
 
 let username = ref("");
 let usernameStatus = ref({});
-let usernameRules = {
-  required: true,
-  minLength: 5,
-  alphanumeric: true,
-};
+let usernameRules = [
+  "required",
+  { minLength: 5 },
+  "alphanumeric",
+];
 </script>
 
 <style scoped lang="postcss">

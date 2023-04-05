@@ -88,32 +88,17 @@ import { stringifyObject } from "../tools";
 
 let username = ref("");
 let username2 = ref("");
-let username3 = ref("");
 let username4 = ref("");
 
-let rules = {
-  required: true,
-  minLength: 5,
-  alphanumeric: true,
-};
+let rules = [
+  "required",
+  { minLength: 5 },
+  "alphanumeric",
+];
 
 let usernameStatus = ref("");
 let usernameStatus2 = ref("");
-let usernameStatus3 = ref("");
 let usernameStatus4 = ref("");
-
-let messages = {
-  required: "Please enter a value for this field",
-  alpha: "Please enter only letters",
-  numeric: "Please enter only numbers",
-  alphanumeric: "Please enter only letters or numbers",
-  minLength: "Please enter at least 3 characters",
-  email: "Please enter valid email address",
-  atLeastOneUppercase: "Please enter at least one uppercase character",
-  atLeastOneLowercase: "Please enter at least one lowercase character",
-  atLeastOneDigit: "Please enter at least one numeric character",
-  atLeastOneSpecial: "Please enter at least one special character",
-};
 </script>
 
 <style scoped lang="postcss">

@@ -1,5 +1,5 @@
 <template>
-  <div class="w-1/2">
+  <div class="w-full md:w-1/2">
     <v-textarea
       v-model="example.model"
       :label="example.label"
@@ -11,7 +11,7 @@
 
   <p class="my-6">Alternative style textarea</p>
 
-  <div class="w-1/2">
+  <div class="w-full md:w-1/2">
     <v-textarea
       v-model="example.model"
       base="underlined-textarea"

@@ -46,11 +46,11 @@ import { stringifyObject } from "../tools";
 
 let languages = ref([]);
 let languagesStatus = ref({});
-let languagesRules = {
-  required: true,
-  minElements: 3,
-  maxElements: 5,
-};
+let languagesRules = [
+  "required",
+  { minElements: 3 },
+  { maxElements: 5 },
+];
 
 let group = ref(null);
 
