@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-import { ref, provide } from "vue";
+import { provide } from "vue";
 import useFormValidation from "./composition/use-form-validation";
 
 let form = useFormValidation();

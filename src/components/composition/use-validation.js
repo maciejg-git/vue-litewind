@@ -19,7 +19,7 @@ export default function useValidation(inputs, globals) {
       form = globals?.form || null,
       name = "input",
       value,
-      rules = globals?.rules || {},
+      rules = globals?.rules || [],
       options = globals?.options || {},
       externalState = globals?.externalState,
       onUpdate = globals?.onUpdate,
@@ -55,9 +55,11 @@ export default function useValidation(inputs, globals) {
 
       let newMessages = {};
 
-      newStatus.valid = Object.entries(rules).reduce((valid, [key, v]) => {
-        let validator =
-          globalValidators[key] || (isFunction(rules[key]) && rules[key]);
+      newStatus.valid = rules.reduce((valid, rule) => {
+        let [key, v] =
+          typeof rule === "string" ? [rule, null] : Object.entries(rule)[0];
+
+        let validator = globalValidators[key] || (isFunction(v) && v);
 
         if (!validator) return valid;
 
@@ -75,7 +77,7 @@ export default function useValidation(inputs, globals) {
       }, true);
 
       newStatus.optional =
-        !rules.required &&
+        newMessages.required === undefined &&
         (value === "" || value === false || value.length === 0);
 
       status.value = newStatus;
