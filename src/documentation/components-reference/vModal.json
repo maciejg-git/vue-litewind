@@ -161,12 +161,6 @@
         "String"
       ],
       "default": ""
-    },
-    "styleBackdrop": {
-      "type": [
-        "String"
-      ],
-      "default": ""
     }
   },
   "emits": [

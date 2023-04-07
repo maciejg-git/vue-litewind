@@ -94,7 +94,7 @@
       "type": [
         "String"
       ],
-      "default": "\"fade\"",
+      "default": "\"fade-scale\"",
       "prop": "transition",
       "description": "Sets animation effect when showing or hiding dropdown. Valid values are: 'fade', 'fade-slide', 'fade-scale' or `empty string` to disable animations. CSS variables: `--dropdown-transition-duration`, `--dropdown-transition-slide`, `--dropdown-transition-scale`"
     },

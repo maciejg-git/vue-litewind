@@ -28,17 +28,17 @@
       ],
       "default": "undefined"
     },
-    "rules": {
-      "type": [
-        "Object"
-      ],
-      "default": {}
-    },
     "validateMode": {
       "type": [
         "String"
       ],
       "default": "silent"
+    },
+    "rules": {
+      "type": [
+        "Object"
+      ],
+      "default": []
     },
     "label": {
       "type": [

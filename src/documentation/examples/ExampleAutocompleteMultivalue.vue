@@ -21,7 +21,7 @@
         </template>
       </v-autocomplete>
     </div>
-    <div class="md:ml-10 mt-6 md:mt-0">
+    <div class="w-full md:w-1/2 md:ml-10 mt-6 md:mt-0">
       <span class="font-semibold">v-model:</span>
       {{ example.model }}
     </div>

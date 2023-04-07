@@ -72,7 +72,7 @@
       "type": [
         "String"
       ],
-      "default": "fade"
+      "default": "fade-scale"
     },
     "styleItem": {
       "type": [

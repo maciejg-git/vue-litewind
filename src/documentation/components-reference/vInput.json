@@ -40,18 +40,6 @@
       ],
       "default": "undefined"
     },
-    "inline": {
-      "type": [
-        "Boolean"
-      ],
-      "default": false
-    },
-    "rules": {
-      "type": [
-        "Object"
-      ],
-      "default": {}
-    },
     "validateOn": {
       "type": [
         "String"
@@ -63,6 +51,18 @@
         "String"
       ],
       "default": "silent"
+    },
+    "rules": {
+      "type": [
+        "Object"
+      ],
+      "default": []
+    },
+    "inline": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
     },
     "useLoader": {
       "type": [

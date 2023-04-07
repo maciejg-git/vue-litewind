@@ -8,23 +8,23 @@
       ],
       "default": "undefined"
     },
-    "rules": {
-      "type": [
-        "Object"
-      ],
-      "default": {}
-    },
-    "state": {
-      "type": [
-        "String"
-      ],
-      "default": null
-    },
     "validateMode": {
       "type": [
         "String"
       ],
       "default": "silent"
+    },
+    "rules": {
+      "type": [
+        "Object"
+      ],
+      "default": []
+    },
+    "validationState": {
+      "type": [
+        "String"
+      ],
+      "default": null
     }
   },
   "emits": [

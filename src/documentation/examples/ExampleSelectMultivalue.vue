@@ -7,7 +7,12 @@
         :inline="false"
         multi-value
         style-menu="shadow"
-      ></v-select>
+        :max-multi-value="3"
+      >
+        <template #max-multi-value>
+          (+ {{ example.model.length - 3 }})
+        </template>
+      </v-select>
     </div>
     <div class="w-1/2 md:ml-10 mt-6 md:mt-0">
       <span class="font-semibold">v-model:</span>

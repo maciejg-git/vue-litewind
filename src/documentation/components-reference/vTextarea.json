@@ -32,12 +32,6 @@
       ],
       "default": false
     },
-    "rules": {
-      "type": [
-        "Object"
-      ],
-      "default": {}
-    },
     "validateOn": {
       "type": [
         "String"
@@ -49,6 +43,12 @@
         "String"
       ],
       "default": "silent"
+    },
+    "rules": {
+      "type": [
+        "Object"
+      ],
+      "default": []
     },
     "singleLineMessage": {
       "type": [

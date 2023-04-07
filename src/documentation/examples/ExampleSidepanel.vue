@@ -64,6 +64,13 @@
         ></v-input>
       </div>
       <div class="mb-2">
+        <label for="modal">modal:</label>
+        <v-select-prop
+          id="modal"
+          v-model="example.modal"
+        ></v-select-prop>
+      </div>
+      <div class="mb-2">
         <label for="no-header">no-header:</label>
         <v-select-prop
           id="no-header"
@@ -96,6 +103,7 @@ let example = reactive({
   showCloseButton: true,
   sidebarLeft: false,
   width: "320px",
+  modal: false,
   noHeader: false,
   transition: "fade-slide",
 });

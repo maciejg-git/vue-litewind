@@ -163,14 +163,6 @@
         "String"
       ],
       "default": "empty string",
-      "prop": "style-backdrop",
-      "description": "Style of backdrop. Useful mainly for setting tint and opactity for modal background"
-    },
-    {
-      "type": [
-        "String"
-      ],
-      "default": "empty string",
       "prop": "style-content",
       "description": "Content part of modal window"
     },

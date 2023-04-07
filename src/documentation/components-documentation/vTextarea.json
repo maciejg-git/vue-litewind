@@ -64,7 +64,7 @@
       "type": [
         "Object"
       ],
-      "default": {},
+      "default": [],
       "prop": "rules",
       "description": "Rules for validation. See Form Validation for examples of rules"
     },
