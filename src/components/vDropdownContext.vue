@@ -81,8 +81,8 @@ const { offsetX, offsetY, flip, placement, autoPlacement } = toRefs(props);
 const {
   isFloatingVisible,
   floating,
-  showPopper,
-  hidePopper,
+  showFloating,
+  hideFloating,
   updateFloating,
   updateVirtualElement,
 } = useFloating({ placement, offsetX, offsetY, flip, autoPlacement })
@@ -92,13 +92,13 @@ let stopClickOutside = null;
 
 let show = () => {
   if (isFloatingVisible.value) return;
-  showPopper();
+  showFloating();
   stopClickOutside = onClickOutside(floating, hide);
 };
 
 let hide = () => {
   if (!isFloatingVisible.value) return;
-  hidePopper();
+  hideFloating();
   if (stopClickOutside) stopClickOutside = stopClickOutside();
 };
 

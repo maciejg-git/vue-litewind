@@ -6,6 +6,7 @@
       v-show="isOpen"
       :class="classes.sidepanel.value"
       :style="{ width: width }"
+      v-bind="$attrs"
     >
       <div
         v-if="!noHeader"
@@ -31,12 +32,21 @@
       ></slot>
     </aside>
   </transition>
+
+  <v-backdrop v-if="modal" :isOpen="isOpen" @click="close()"/>
 </template>
+
+<script>
+export default {
+  inheritAttrs: false,
+}
+</script>
 
 <script setup>
 import { ref, computed, watch, onBeforeUnmount, useAttrs } from "vue";
 import useStyles from "./composition/use-styles";
 import vCloseButton from "./vCloseButton.vue";
+import vBackdrop from "./vBackdrop.vue";
 import { sharedProps, sharedStyleProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 import { registerListener, removeListener } from "../trigger";
@@ -59,6 +69,10 @@ const props = defineProps({
   width: {
     type: String,
     default: defaultProps("sidepanel", "width", "320px"),
+  },
+  modal: {
+    type: Boolean,
+    default: defaultProps("sidepanel", "modal", false),
   },
   noHeader: {
     type: Boolean,
@@ -84,7 +98,7 @@ let attrs = useAttrs();
 
 let { classes } = useStyles("sidepanel", props, {
   sidepanel: {
-    fixed: "fixed h-full top-0 z-20",
+    fixed: "fixed h-full top-0 z-[31]",
     prop: computed(() => (props.sidebarLeft ? "left-0" : "right-0")),
   },
   closeButton: null,
@@ -94,17 +108,26 @@ let isOpen = ref(false);
 
 let open = () => {
   isOpen.value = true;
+  if (props.modal) {
+    document.body.style.overflowY = "hidden";
+  }
   emit("update:modelValue", true);
 };
 
 let close = () => {
   isOpen.value = false;
+  if (props.modal) {
+    document.body.style.overflowY = null;
+  }
   emit("update:modelValue", false);
 };
 
 let toggle = () => {
-  if (!isOpen.value) open();
-  else close();
+  if (!isOpen.value) {
+    open();
+  } else {
+    close();
+  }
 };
 
 watch(

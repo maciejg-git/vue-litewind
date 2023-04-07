@@ -199,10 +199,6 @@ const props = defineProps({
     type: String,
     default: defaultProps("modal", "styleContent", ""),
   },
-  styleBackdrop: {
-    type: String,
-    default: defaultProps("modal", "styleBackdrop", ""),
-  },
 });
 
 const emit = defineEmits([
@@ -226,9 +222,6 @@ let { classes } = useStyles("modal", props, {
     prop: computed(() => footerClasses[props.justifyButtons]),
   },
   content: null,
-  backdrop: {
-    fixed: "fixed inset-0 overflow-y-auto min-h-screen z-30",
-  },
 });
 
 let containerClasses = computed(() => {
