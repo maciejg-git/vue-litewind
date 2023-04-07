@@ -161,13 +161,15 @@ let validateOptions = (options) => {
   options.placement = correctPlacement.includes(options.placement)
     ? options.placement
     : defaults.placement;
+
+  return options
 };
 
 let getOptions = (value) => {
   if (typeof value === "object") {
     return {
       ...defaults,
-      ...value,
+      ...validateOptions(value),
     };
   }
   if (typeof value === "string" || typeof value === "function") {
@@ -184,8 +186,6 @@ let getOptions = (value) => {
 export default {
   mounted(el, binding) {
     let options = getOptions(binding.value);
-
-    validateOptions(options);
 
     let wrapper = createTooltipElement();
 
