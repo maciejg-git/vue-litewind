@@ -43,29 +43,29 @@ export default {
   setup() {
     let username = ref("");
     let usernameStatus = ref({});
-    let usernameRules = {
-      required: true,
-      minLength: 5,
-      alphanumeric: true,
-    };
+    let usernameRules = [
+      "required",
+      { minLength: 5 },
+      "alphanumeric",
+    ];
 
     let password = ref("");
     let passwordStatus = ref({});
-    let passwordRules = {
-      required: true,
-      minLength: 8,
-      atLeastOneUppercase: true,
-      atLeastOneLowercase: true,
-      atLeastOneSpecial: true,
-      atLeastOneDigit: true,
-    };
+    let passwordRules = [
+      "required",
+      { minLength: 8 },
+      "atLeastOneUppercase",
+      "atLeastOneLowercase",
+      "atLeastOneSpecial",
+      "atLeastOneDigit",
+    ];
 
     let text = ref("");
     let textStatus = ref({});
-    let textRules = {
-      required: true,
-      maxLength: 30,
-    };
+    let textRules = [
+      "required",
+      { maxLength: 30 },
+    ];
 
     let form = ref(null);
 

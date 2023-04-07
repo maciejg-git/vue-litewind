@@ -21,9 +21,7 @@ describe("input is required", () => {
   test("invalid", async () => {
     const { getByRole, getByTestId, queryByText } = render(Input, {
       props: {
-        rules: {
-          required: true,
-        },
+        rules: ["required"],
       },
     });
 
@@ -37,9 +35,7 @@ describe("input is required", () => {
   test("valid", async () => {
     const { getByRole, getByTestId, queryByTestId } = render(Input, {
       props: {
-        rules: {
-          required: true,
-        },
+        rules: ["required"],
         modelValue: "a",
       },
     });
@@ -55,9 +51,7 @@ describe("adds valid or invalid classes", () => {
   test("invalid", async () => {
     const { getByRole, getByTestId, queryByText } = render(Input, {
       props: {
-        rules: {
-          required: true,
-        },
+        rules: ["required"],
       },
     });
 
@@ -71,9 +65,7 @@ describe("adds valid or invalid classes", () => {
   test("valid", async () => {
     const { getByRole, getByTestId, queryByText } = render(Input, {
       props: {
-        rules: {
-          required: true,
-        },
+        rules: ["required"],
         validateMode: "eager",
         modelValue: "a",
       },
@@ -91,9 +83,7 @@ describe("validate on", () => {
   test("blur (validation-on prop)", async () => {
     const { getByRole, getByTestId } = render(Input, {
       props: {
-        rules: {
-          required: true,
-        },
+        rules: ["required"],
         validateOn: "blur",
       },
     });
@@ -108,19 +98,13 @@ describe("validate on", () => {
   test("immediately (validation-on prop)", async () => {
     const { getByRole, getByTestId, rerender } = render(Input, {
       props: {
-        rules: {
-          required: true,
-          minLength: 3,
-        },
+        rules: ["required", { minLength: 3 }],
         validateOn: "immediate",
       },
     });
 
     await rerender({
-      rules: {
-        required: true,
-        minLength: 3,
-      },
+      rules: ["required", { minLength: 3 }],
       validateOn: "immediate",
       modelValue: "a",
     });
@@ -133,10 +117,7 @@ describe("validate on", () => {
 test("should always update state when validity changes (validation-mode prop)", async () => {
   const { getByRole, getByTestId, rerender } = render(Input, {
     props: {
-      rules: {
-        required: true,
-        minLength: 3,
-      },
+      rules: ["required", { minLength: 3 }],
       validateMode: "eager",
       ...updateModel,
     },
@@ -146,10 +127,7 @@ test("should always update state when validity changes (validation-mode prop)", 
   let wrapper = getByTestId("wrapper");
   await fireEvent.update(textbox, "item");
   await rerender({
-    rules: {
-      required: true,
-      minLength: 3,
-    },
+    rules: ["required", { minLength: 3 }],
     validateMode: "eager",
     modelValue,
   });
@@ -161,9 +139,7 @@ describe("should emit", () => {
   test("default status, state and messages initially", async () => {
     const { getByRole, getByTestId, emitted } = render(Input, {
       props: {
-        rules: {
-          required: true,
-        },
+        rules: ["required"],
       },
     });
 
@@ -175,9 +151,7 @@ describe("should emit", () => {
   test("status, state and messages on touch", async () => {
     const { getByRole, getByTestId, emitted } = render(Input, {
       props: {
-        rules: {
-          required: true,
-        },
+        rules: ["required"],
       },
     });
 
@@ -203,9 +177,7 @@ describe("should update status properties", () => {
   test("touch property on touch", async () => {
     const { getByRole, getByTestId, emitted } = render(Input, {
       props: {
-        rules: {
-          required: true,
-        },
+        rules: ["required"],
       },
     });
 
@@ -220,9 +192,7 @@ describe("should update status properties", () => {
   test("dirty property on first input", async () => {
     const { getByRole, getByTestId, emitted, rerender } = render(Input, {
       props: {
-        rules: {
-          required: true,
-        },
+        rules: ["required"],
         ...updateModel,
       },
     });
@@ -232,9 +202,7 @@ describe("should update status properties", () => {
     await fireEvent.update(textbox, "item");
 
     await rerender({
-      rules: {
-        required: true,
-      },
+      rules: ["required"],
       modelValue,
     });
 
@@ -248,7 +216,7 @@ describe("should update status properties", () => {
   test("optional property on not required inputs", async () => {
     const { getByRole, getByTestId, emitted } = render(Input, {
       props: {
-        rules: {},
+        rules: [],
       },
     });
 
@@ -263,10 +231,7 @@ describe("should update status properties", () => {
   test("valid property on valid inputs", async () => {
     const { getByRole, getByTestId, emitted, rerender } = render(Input, {
       props: {
-        rules: {
-          required: true,
-          minLength: 3,
-        },
+        rules: ["required", { minLength: 3 }],
         ...updateModel,
       },
     });
@@ -276,9 +241,7 @@ describe("should update status properties", () => {
     await fireEvent.update(textbox, "item");
 
     await rerender({
-      rules: {
-        required: true,
-      },
+      rules: ["required"],
       modelValue,
     });
 
@@ -294,9 +257,7 @@ describe("state prop of input should override validation state", () => {
   test("'valid' state prop", async () => {
     const { getByRole, getByTestId } = render(Input, {
       props: {
-        rules: {
-          required: true,
-        },
+        rules: ["required"],
         validationState: "valid",
       },
     });
@@ -311,7 +272,7 @@ describe("state prop of input should override validation state", () => {
   test("'invalid' state prop", async () => {
     const { getByRole, getByTestId } = render(Input, {
       props: {
-        rules: {},
+        rules: [],
         validationState: "invalid",
       },
     });
@@ -326,7 +287,7 @@ describe("state prop of input should override validation state", () => {
   test("'' (default) state prop", async () => {
     const { getByRole, getByTestId } = render(Input, {
       props: {
-        rules: {},
+        rules: [],
         state: "",
       },
     });
@@ -364,8 +325,8 @@ test("form is correctly reset (v-form exposed reset)", async () => {
   let username = getByLabelText("username");
   let password = getByLabelText("password");
 
-  await fireEvent.update(username, "username")
-  await fireEvent.update(password, "password")
+  await fireEvent.update(username, "username");
+  await fireEvent.update(password, "password");
 
   await fireEvent.click(button);
 
@@ -387,9 +348,12 @@ test("form is correctly reset (v-form exposed reset)", async () => {
 });
 
 test("checkbox group is correctly validated (v-checkbox-group exposed validate)", async () => {
-  const { getByRole, queryAllByText, queryAllByRole } = render(CheckboxGroupValidation, {
-    props: {},
-  });
+  const { getByRole, queryAllByText, queryAllByRole } = render(
+    CheckboxGroupValidation,
+    {
+      props: {},
+    }
+  );
 
   let button = getByRole("button", { name: "validate" });
 
@@ -398,7 +362,7 @@ test("checkbox group is correctly validated (v-checkbox-group exposed validate)"
   await waitFor(() => {
     queryAllByRole("checkbox").forEach((input) => {
       expect(input).toHaveClass("checkbox--invalid-state");
-    })
+    });
   });
 });
 
