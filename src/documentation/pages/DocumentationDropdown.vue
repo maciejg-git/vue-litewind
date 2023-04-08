@@ -69,12 +69,12 @@
     </div>
   </section>
 
-  <!-- <section> -->
-  <!--   <h4>Example</h4> -->
-  <!--   <div class="example"> -->
-  <!--     <example name="ExampleDropdown"></example> -->
-  <!--   </div> -->
-  <!-- </section> -->
+  <section>
+    <h4>Example</h4>
+    <div class="example">
+      <example name="ExampleDropdown"></example>
+    </div>
+  </section>
 
   <section id="ExampleDropdownTrigger" class="scroll-mt-20">
     <h4>Example - open by id</h4>

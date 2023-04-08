@@ -56,7 +56,7 @@ import { ref, reactive, computed } from "vue";
 import { debounce } from "../../tools.js";
 
 let example = reactive({
-  model: [],
+  model: "",
   items: [],
 });
 

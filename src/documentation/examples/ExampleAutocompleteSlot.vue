@@ -42,7 +42,7 @@ import company from "../example-data/company.json";
 import { highlight } from "../../tools";
 
 let example = reactive({
-  model: [],
+  model: "",
   items: [],
   isLoading: false,
 });

@@ -25,7 +25,7 @@ import { ref, reactive } from "vue";
 import { states } from "../example-data/data.js";
 
 let example = reactive({
-  model: [],
+  model: "",
   items: [],
 });
 

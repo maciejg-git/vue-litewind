@@ -20,7 +20,7 @@ import { reactive } from "vue";
 import { languages } from "../example-data/data.js";
 
 let example = reactive({
-  model: [],
+  model: "",
   items: languages,
 });
 </script>
