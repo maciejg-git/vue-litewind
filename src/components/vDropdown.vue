@@ -203,6 +203,7 @@ provide("control-dropdown", {
 }
 .fade-slide-enter-active,
 .fade-slide-leave-active {
+  @apply data-[placement=top]:origin-bottom data-[placement=bottom]:origin-top;
   transition: opacity var(--dropdown-transition-duration, 0.2s) ease, transform var(--dropdown-transition-duration, 0.2s) ease;
 }
 
@@ -213,7 +214,8 @@ provide("control-dropdown", {
 }
 .fade-scale-enter-active,
 .fade-scale-leave-active {
-  transform-origin: top;
+  @apply data-[placement=top]:origin-bottom data-[placement=bottom]:origin-top;
+  /* transform-origin: top; */
   transition: opacity var(--dropdown-transition-duration, 0.2s) ease, transform var(--dropdown-transition-duration, 0.2s) ease;
 }
 

@@ -72,7 +72,7 @@ export default function useFloating(opts) {
   };
 
   let setAutoUpdateFloating = () => {
-    if (!reference.value || !floating.value) return;
+    if (!floating.value) return;
 
     destroyFloating = autoUpdate(
       localReference.value,
@@ -82,7 +82,7 @@ export default function useFloating(opts) {
   };
 
   let updateFloating = async () => {
-    if (!reference.value || !floating.value) return;
+    if (!floating.value) return;
 
     let { x, y, middlewareData, placement } = await computePosition(
       localReference.value,
@@ -111,6 +111,8 @@ export default function useFloating(opts) {
     floatingPlacement.value = placement
 
     if (!floating.value) return;
+
+    floating.value.dataset.placement = placement.split("-")[0]
 
     Object.assign(floating.value.style, {
       left: `${x}px`,

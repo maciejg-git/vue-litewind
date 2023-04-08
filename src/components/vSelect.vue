@@ -32,8 +32,7 @@
     </template>
     <!-- @slot multi-value-item -->
     <template #multi-value>
-      <template v-if="multiValue">
-        <template v-for="(value, index) in selectedItems">
+        <template v-if="!autocomplete || !isFocused || multiValue" v-for="(value, index) in selectedItems">
           <template v-if="index < maxMultiValue">
             <slot
               name="multi-value-item"
@@ -52,12 +51,6 @@
           v-if="selectedItems.length > maxMultiValue"
           name="max-multi-value"
         ></slot>
-      </template>
-      <span
-        v-else-if="(!autocomplete || !isFocused) && selectedItem !== undefined"
-      >
-        {{ getItemText(selectedItem) }}
-      </span>
     </template>
   </v-input>
 
@@ -251,7 +244,6 @@ const {
   floating,
   showFloating,
   hideFloating,
-  updateFloating,
 } = useFloating({
   placement,
   offsetX,
@@ -364,29 +356,20 @@ let itemsPagination = computed(() => {
 });
 
 let isSelected = (item) => {
-  if (props.multiValue) {
-    // let value = getItemValue(item);
-
     return selectedItems.value.indexOf(item) !== -1;
-  }
-
-  return selectedItem.value === item;
 };
 
 let updateLocalModel = () => {
   if (props.multiValue) {
     localModel.value = selectedItems.value.map((i) => getItemValue(i));
-    updateFloating();
     return;
   }
 
-  localModel.value = getItemValue(selectedItem.value);
+  localModel.value = getItemValue(selectedItems.value[0]);
 };
 
-let updateSelectedItems = (item) => {
+let selectItem = (item) => {
   if (props.multiValue) {
-    // let value = getItemValue(item);
-
     let index = selectedItems.value.indexOf(item);
 
     if (index !== -1) {
@@ -395,7 +378,7 @@ let updateSelectedItems = (item) => {
       selectedItems.value.push(item);
     }
   } else {
-    selectedItem.value = item;
+    selectedItems.value[0] = item;
   }
 
   updateLocalModel();
@@ -411,7 +394,6 @@ let cancelInput = () => {
 
 let clearInput = () => {
   localText.value = "";
-  selectedItem.value = "";
   selectedItems.value = [];
   localModel.value = props.multiValue ? [] : "";
 };
@@ -425,21 +407,15 @@ watch(
     if (props.multiValue) {
       selectedItems.value = value.map((selectedValue) => {
         return (
-          props.items.find((i) => {
-            return selectedValue === getItemValue(i);
-          }) ||
-          selectedItems.value.find((i) => {
-            return selectedValue === getItemValue(i);
-          })
+          props.items.find((i) => selectedValue === getItemValue(i)) ||
+          selectedItems.value.find((i) => selectedValue === getItemValue(i))
         );
       });
-
-      updateFloating();
 
       return;
     }
 
-    selectedItem.value = getItemByValue(value);
+    selectedItems.value[0] = getItemByValue(value);
   },
   { immediate: true, deep: true }
 );
@@ -473,8 +449,8 @@ let scrollToTop = () => {
 
 let handleFocusInput = () => {
   if (props.autocomplete && !props.multiValue) {
-    if (selectedItem.value !== undefined) {
-      localText.value = getItemText(selectedItem.value);
+    if (selectedItems.value[0] !== undefined) {
+      localText.value = getItemText(selectedItems.value[0]);
 
       nextTick(() => {
         reference.value.selectInputText();
@@ -565,7 +541,7 @@ let handleKeydown = (ev) => {
   if (key === "Enter") {
     if (props.isLoading) return;
 
-    updateSelectedItems(itemsPagination.value[highlightedItemIndex.value]);
+    selectItem(itemsPagination.value[highlightedItemIndex.value]);
 
     ev.preventDefault();
     ev.stopPropagation();
@@ -589,7 +565,7 @@ let handleScrollBottom = () => {
 };
 
 let handleClickItem = (item, index) => {
-  updateSelectedItems(item);
+  selectItem(item);
 
   highlightedItemIndex.value = index;
 
