@@ -26,8 +26,8 @@
                 </v-button>
               </template>
               <v-card
-                width="420px"
                 base="flat-card"
+                class="min-w-[300px] md:min-w-[420px]"
               >
                 <v-dropdown-menu-item tag="button">
                   <header class="font-semibold">Get started</header>
@@ -67,10 +67,10 @@
             </v-dropdown>
           </li>
         </ul>
-        <div class="ml-auto mr-4">
+        <div class="hidden md:flex items-center ml-auto gap-x-4 mr-4">
           <v-input></v-input>
+          <v-button>Search</v-button>
         </div>
-        <v-button>Search</v-button>
       </div>
     </v-navbar>
   </v-card>

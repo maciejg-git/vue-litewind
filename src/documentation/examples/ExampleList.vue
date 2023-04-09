@@ -1,8 +1,8 @@
 <template>
   <v-list
-    width="500px"
     :tag="example.tag"
     :base="example.base"
+    class="w-auto md:w-[500px]"
   >
     <v-list-item
       v-for="item in example.users"

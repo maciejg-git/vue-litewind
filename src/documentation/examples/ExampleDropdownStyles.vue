@@ -61,6 +61,7 @@
         style-button="square"
         :chevron="{ class: 'ml-2' }"
         v-on="onTrigger"
+        class="mt-4 md:mt-0"
       >
         Dropdown menu (flat)
       </v-button-chevron>
