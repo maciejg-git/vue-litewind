@@ -167,3 +167,38 @@ describe("opens and closes directory on click", () => {
     expect(queryByRole("button", { name: "Fourth" })).not.toBeInTheDocument();
   });
 });
+
+describe("emits events", () => {
+  test("input:selected after clicking items checkbox", async () => {
+    const { getAllByRole, queryByRole, emitted } = render(Tree, {
+      props: {
+        items,
+        showCheckboxes: true,
+        autoOpenAll: true,
+      },
+    });
+
+    await new Promise((r) => setTimeout(r, 2000));
+    expect(queryByRole("tree")).toBeInTheDocument();
+    let checkbox = getAllByRole("checkbox");
+    await userEvent.click(checkbox[5]);
+    expect(emitted("input:selected")[0][0][0].name).toBe("Sub directory");
+  });
+
+  test("input:click after clicking item", async () => {
+    const { getAllByRole, queryByRole, getByText, emitted } = render(Tree, {
+      props: {
+        items,
+        showCheckboxes: true,
+        autoOpenAll: true,
+      },
+    });
+
+    let root = getByText("Directory");
+    await userEvent.click(root);
+    let directory = getByText("Sub directory");
+    await userEvent.click(directory);
+
+    expect(emitted("input:click")[1][0].name).toBe("Sub directory");
+  });
+});
