@@ -31,7 +31,6 @@ export default function useFloating(opts) {
   let reference = ref(null);
   let floating = ref(null);
   let destroyFloating = null;
-  let floatingPlacement = ref(null)
 
   let localReference = computed(() => {
     return (
@@ -84,7 +83,7 @@ export default function useFloating(opts) {
   let updateFloating = async () => {
     if (!floating.value) return;
 
-    let { x, y, middlewareData, placement } = await computePosition(
+    let { x, y, placement } = await computePosition(
       localReference.value,
       floating.value,
       {
@@ -108,21 +107,14 @@ export default function useFloating(opts) {
       }
     );
 
-    floatingPlacement.value = placement
-
     if (!floating.value) return;
-
-    floating.value.dataset.placement = placement.split("-")[0]
 
     Object.assign(floating.value.style, {
       left: `${x}px`,
       top: `${y}px`,
     });
-    if (middlewareData.resizeFloatToReferenceWidth) {
-      Object.assign(floating.value.style, {
-        width: `${middlewareData.resizeFloatToReferenceWidth.width}px`,
-      });
-    }
+
+    floating.value.dataset.placement = placement.split("-")[0]
   };
 
   let watchableOptions = Object.values(options).filter((i) => isRef(i));
@@ -165,7 +157,6 @@ export default function useFloating(opts) {
     isFloatingVisible,
     reference,
     floating,
-    floatingPlacement,
     updateFloating,
     showFloating,
     hideFloating,

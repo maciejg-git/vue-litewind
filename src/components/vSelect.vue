@@ -32,25 +32,28 @@
     </template>
     <!-- @slot multi-value-item -->
     <template #multi-value>
-        <template v-if="!autocomplete || !isFocused || multiValue" v-for="(value, index) in selectedItems">
-          <template v-if="index < maxMultiValue">
-            <slot
-              name="multi-value-item"
-              v-bind="value"
+      <template
+        v-if="!autocomplete || !isFocused || multiValue"
+        v-for="(value, index) in selectedItems"
+      >
+        <template v-if="index < maxMultiValue">
+          <slot
+            name="multi-value-item"
+            v-bind="value"
+          >
+            <span
+              class="ml-1 after:content-[','] last-of-type:after:content-none last-of-type:mr-2"
             >
-              <span
-                class="ml-1 after:content-[','] last-of-type:after:content-none last-of-type:mr-2"
-              >
-                {{ getItemText(value) }}
-              </span>
-            </slot>
-          </template>
+              {{ getItemText(value) }}
+            </span>
+          </slot>
         </template>
-        <!-- @slot max-multi-value -->
-        <slot
-          v-if="selectedItems.length > maxMultiValue"
-          name="max-multi-value"
-        ></slot>
+      </template>
+      <!-- @slot max-multi-value -->
+      <slot
+        v-if="selectedItems.length > maxMultiValue"
+        name="max-multi-value"
+      ></slot>
     </template>
   </v-input>
 
@@ -238,20 +241,15 @@ let getItemClass = (item, index) => {
 let localModel = useLocalModel(props, emit);
 
 const { offsetX, offsetY, flip, placement, autoPlacement } = toRefs(props);
-const {
-  isFloatingVisible,
-  reference,
-  floating,
-  showFloating,
-  hideFloating,
-} = useFloating({
-  placement,
-  offsetX,
-  offsetY,
-  flip,
-  autoPlacement,
-  resize: true,
-});
+const { isFloatingVisible, reference, floating, showFloating, hideFloating } =
+  useFloating({
+    placement,
+    offsetX,
+    offsetY,
+    flip,
+    autoPlacement,
+    resize: true,
+  });
 
 let isFocused = ref(false);
 
@@ -356,7 +354,7 @@ let itemsPagination = computed(() => {
 });
 
 let isSelected = (item) => {
-    return selectedItems.value.indexOf(item) !== -1;
+  return selectedItems.value.indexOf(item) !== -1;
 };
 
 let updateLocalModel = () => {
@@ -438,7 +436,7 @@ let scrollToHighlighted = (direction) => {
     itemsRef.value[scrollToIndex].scrollIntoView({
       block: "nearest",
     });
-  })
+  });
 };
 
 let scrollToTop = () => {
@@ -586,23 +584,25 @@ let handleClickItem = (item, index) => {
 }
 .fade-slide-enter-active,
 .fade-slide-leave-active {
-  transition: opacity var(--select-transition-duration, 0.2s) ease, transform var(--dropdown-transition-duration, 0.2s) ease;
+  transition: opacity var(--select-transition-duration, 0.2s) ease,
+    transform var(--dropdown-transition-duration, 0.2s) ease;
 }
 
 .fade-slide-enter-from,
 .fade-slide-leave-to {
   opacity: 0;
-  transform: translateY(var(--select-transition-slide, -15px))
+  transform: translateY(var(--select-transition-slide, -15px));
 }
 .fade-scale-enter-active,
 .fade-scale-leave-active {
   transform-origin: top;
-  transition: opacity var(--select-transition-duration, 0.2s) ease, transform var(--dropdown-transition-duration, 0.2s) ease;
+  transition: opacity var(--select-transition-duration, 0.2s) ease,
+    transform var(--dropdown-transition-duration, 0.2s) ease;
 }
 
 .fade-scale-enter-from,
 .fade-scale-leave-to {
   opacity: 0;
-  transform: scaleY(var(--select-transition-scale, 0.2))
+  transform: scaleY(var(--select-transition-scale, 0.2));
 }
 </style>

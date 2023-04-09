@@ -7,9 +7,7 @@
   ></slot>
 
   <teleport to="body">
-    <transition
-      :name="transition"
-    >
+    <transition :name="transition">
       <div
         v-if="isFloatingVisible"
         ref="floating"
@@ -20,7 +18,7 @@
         @mouseleave="allowHiding"
         class="absolute z-50"
       >
-      <!-- @slot default -->
+        <!-- @slot default -->
         <slot
           name="default"
           :hide="hide"
@@ -50,7 +48,7 @@ import {
 import useStyles from "./composition/use-styles";
 import useClickOutside from "./composition/use-click-outside";
 import useTrigger from "./composition/use-trigger-events";
-import useFloating from "./composition/use-floating"
+import useFloating from "./composition/use-floating";
 import {
   sharedProps,
   sharedPopperProps,
@@ -102,15 +100,15 @@ let { classes, states } = useStyles("dropdown", props, {
   header: null,
 });
 
-const { offsetX, offsetY, flip, placement, autoPlacement, trigger } = toRefs(props);
+const { offsetX, offsetY, flip, placement, autoPlacement, trigger } =
+  toRefs(props);
 const {
   isFloatingVisible,
   reference,
   floating,
   showFloating,
   hideFloating,
-  floatingPlacement
-} = useFloating({ placement, offsetX, offsetY, flip, autoPlacement })
+} = useFloating({ placement, offsetX, offsetY, flip, autoPlacement });
 
 let { onClickOutside } = useClickOutside();
 let stopClickOutside = null;
@@ -166,8 +164,8 @@ let referenceSlotProps = { reference, onTrigger, isOpen: isFloatingVisible };
 watch(
   () => props.modelValue,
   (value) => {
-    if (value === undefined) return
-    value ? show() : hide()
+    if (value === undefined) return;
+    value ? show() : hide();
   },
   { immediate: true }
 );
@@ -203,25 +201,25 @@ provide("control-dropdown", {
 }
 .fade-slide-enter-active,
 .fade-slide-leave-active {
-  @apply data-[placement=top]:origin-bottom data-[placement=bottom]:origin-top;
-  transition: opacity var(--dropdown-transition-duration, 0.2s) ease, transform var(--dropdown-transition-duration, 0.2s) ease;
+  transition: opacity var(--dropdown-transition-duration, 0.2s) ease,
+    transform var(--dropdown-transition-duration, 0.2s) ease;
 }
 
 .fade-slide-enter-from,
 .fade-slide-leave-to {
   opacity: 0;
-  transform: translateY(var(--dropdown-transition-slide, -15px))
+  transform: translateY(var(--dropdown-transition-slide, -15px));
 }
 .fade-scale-enter-active,
 .fade-scale-leave-active {
-  @apply data-[placement=top]:origin-bottom data-[placement=bottom]:origin-top;
-  /* transform-origin: top; */
-  transition: opacity var(--dropdown-transition-duration, 0.2s) ease, transform var(--dropdown-transition-duration, 0.2s) ease;
+  @apply data-[placement=top]:origin-bottom data-[placement=bottom]:origin-top data-[placement=right]:origin-left data-[placement=left]:origin-right;
+  transition: opacity var(--dropdown-transition-duration, 0.2s) ease,
+    transform var(--dropdown-transition-duration, 0.2s) ease;
 }
 
 .fade-scale-enter-from,
 .fade-scale-leave-to {
   opacity: 0;
-  transform: scaleY(var(--dropdown-transition-scale, 0.2))
+  transform: scaleY(var(--dropdown-transition-scale, 0.2));
 }
 </style>
