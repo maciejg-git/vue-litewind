@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-between">
+  <div class="flex flex-col xl:flex-row items-between">
     <v-card
       style-card="shadow"
       style="width: 340px"
@@ -24,7 +24,7 @@
       ></v-date-picker>
     </v-card>
     <!-- CUT START -->
-    <div class="flex-grow mt-4 lg:ml-20 lg:mt-0">
+    <div class="flex-grow mt-4 xl:ml-20 xl:mt-0">
       <v-tabs base="material-tabs">
         <v-tab name="Props">
           <div class="flex flex-col gap-y-2 mt-5">
