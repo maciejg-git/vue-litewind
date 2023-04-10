@@ -212,7 +212,7 @@ provide("control-dropdown", {
 }
 .fade-scale-enter-active,
 .fade-scale-leave-active {
-  @apply data-[placement=top]:origin-bottom data-[placement=bottom]:origin-top data-[placement=right]:origin-left data-[placement=left]:origin-right;
+  @apply data-[placement=top]:origin-bottom data-[placement=bottom]:origin-top data-[placement=right]:origin-top data-[placement=left]:origin-top;
   transition: opacity var(--dropdown-transition-duration, 0.2s) ease,
     transform var(--dropdown-transition-duration, 0.2s) ease;
 }

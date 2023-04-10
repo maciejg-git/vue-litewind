@@ -158,7 +158,7 @@ watch(
     if (props.selectReturnKeys) {
       emit(
         "input:selected",
-        value.map((i) => i.id)
+        value.map((i) => i[props.itemKey])
       );
       return;
     }

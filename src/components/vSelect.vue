@@ -39,7 +39,8 @@
         <template v-if="index < maxMultiValue">
           <slot
             name="multi-value-item"
-            v-bind="value"
+            :text="getItemText(value)"
+            :item="value"
           >
             <span
               class="ml-1 after:content-[','] last-of-type:after:content-none last-of-type:mr-2"
@@ -595,7 +596,7 @@ let handleClickItem = (item, index) => {
 }
 .fade-scale-enter-active,
 .fade-scale-leave-active {
-  transform-origin: top;
+  @apply data-[placement=top]:origin-bottom data-[placement=bottom]:origin-top data-[placement=right]:origin-left data-[placement=left]:origin-right;
   transition: opacity var(--select-transition-duration, 0.2s) ease,
     transform var(--dropdown-transition-duration, 0.2s) ease;
 }

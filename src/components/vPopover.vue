@@ -7,9 +7,7 @@
   ></slot>
 
   <teleport to="body">
-    <transition
-      :name="transition"
-    >
+    <transition :name="transition">
       <div
         v-if="isFloatingVisible"
         ref="floating"
@@ -18,7 +16,7 @@
         @mouseleave="allowHiding"
         class="absolute z-50"
       >
-      <!-- @slot default -->
+        <!-- @slot default -->
         <slot
           name="default"
           :hide="hide"
@@ -45,10 +43,9 @@ import {
   nextTick,
 } from "vue";
 import useStyles from "./composition/use-styles";
-import usePopper from "./composition/use-popper.js";
 import useClickOutside from "./composition/use-click-outside";
 import useTrigger from "./composition/use-trigger-events";
-import useFloating from "./composition/use-floating"
+import useFloating from "./composition/use-floating";
 import {
   sharedProps,
   sharedPopperProps,
@@ -87,15 +84,11 @@ let { classes } = useStyles("popover", props, {
   header: null,
 });
 
-const { offsetX, offsetY, flip, placement, autoPlacement, trigger } = toRefs(props);
+const { offsetX, offsetY, flip, placement, autoPlacement, trigger } =
+  toRefs(props);
 
-const {
-  isFloatingVisible,
-  reference,
-  floating,
-  showFloating,
-  hideFloating,
-} = useFloating({ placement, offsetX, offsetY, flip, autoPlacement })
+const { isFloatingVisible, reference, floating, showFloating, hideFloating } =
+  useFloating({ placement, offsetX, offsetY, flip, autoPlacement });
 
 let { onClickOutside } = useClickOutside();
 let stopClickOutside = null;
@@ -172,23 +165,25 @@ provide("control-popover", {
 }
 .fade-slide-enter-active,
 .fade-slide-leave-active {
-  transition: opacity var(--popover-transition-duration, 0.2s) ease, transform var(--popover-transition-duration, 0.2s) ease;
+  transition: opacity var(--popover-transition-duration, 0.2s) ease,
+    transform var(--popover-transition-duration, 0.2s) ease;
 }
 
 .fade-slide-enter-from,
 .fade-slide-leave-to {
   opacity: 0;
-  transform: translateY(var(--popover-transition-slide, -15px))
+  transform: translateY(var(--popover-transition-slide, -15px));
 }
 .fade-scale-enter-active,
 .fade-scale-leave-active {
-  transform-origin: top;
-  transition: opacity var(--popover-transition-duration, 0.2s) ease, transform var(--popover-transition-duration, 0.2s) ease;
+  @apply data-[placement=top]:origin-bottom data-[placement=bottom]:origin-top data-[placement=right]:origin-top data-[placement=left]:origin-top;
+  transition: opacity var(--popover-transition-duration, 0.2s) ease,
+    transform var(--popover-transition-duration, 0.2s) ease;
 }
 
 .fade-scale-enter-from,
 .fade-scale-leave-to {
   opacity: 0;
-  transform: scaleY(var(--popover-transition-scale, 0.2))
+  transform: scaleY(var(--popover-transition-scale, 0.2));
 }
 </style>
