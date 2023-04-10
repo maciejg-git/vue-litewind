@@ -44,6 +44,46 @@ const items = [
   },
 ];
 
+const itemsModifiedKeys = [
+  {
+    name: "Directory",
+    value: 17,
+    children: [
+      { name: "Some item", value: 1 },
+      { name: "Another item", value: 2 },
+      { name: "Third", value: 3 },
+      { name: "File" },
+      {
+        name: "Sub directory",
+        value: 5,
+        children: [
+          {
+            name: "Another sub directory",
+            value: 6,
+            children: [
+              { name: "Content", value: 7 },
+              { name: "Another item", value: 8 },
+            ],
+          },
+          { name: "Fourth", value: 9 },
+          { name: "Another file", value: 10 },
+          { name: "Video file", value: 11 },
+          { name: "Secret item", value: 12 },
+          {
+            name: "More content here",
+            value: 13,
+            children: [
+              { name: "Another video file", value: 14 },
+              { name: "Fifth", value: 15 },
+            ],
+          },
+        ],
+      },
+      { name: "Sixth item", value: 16 },
+    ],
+  },
+];
+
 test("renders component", async () => {
   const { getAllByRole, queryByRole } = render(Tree, {
     props: {
@@ -185,6 +225,23 @@ describe("emits events", () => {
     expect(emitted("input:selected")[0][0][0].name).toBe("Sub directory");
   });
 
+  test("emits input:selected with keys (select-return-keys prop)", async () => {
+    const { getAllByRole, queryByRole, emitted } = render(Tree, {
+      props: {
+        items,
+        showCheckboxes: true,
+        autoOpenAll: true,
+        selectReturnKeys: true,
+      },
+    });
+
+    await new Promise((r) => setTimeout(r, 2000));
+    expect(queryByRole("tree")).toBeInTheDocument();
+    let checkbox = getAllByRole("checkbox");
+    await userEvent.click(checkbox[5]);
+    expect(emitted("input:selected")[0][0][0]).toBe(5);
+  });
+
   test("input:click after clicking item", async () => {
     const { getAllByRole, queryByRole, getByText, emitted } = render(Tree, {
       props: {
@@ -201,4 +258,22 @@ describe("emits events", () => {
 
     expect(emitted("input:click")[1][0].name).toBe("Sub directory");
   });
+});
+
+test("uses correct item key (item-keys prop)", async () => {
+  const { getAllByRole, queryByRole, emitted } = render(Tree, {
+    props: {
+      items: itemsModifiedKeys,
+      showCheckboxes: true,
+      autoOpenAll: true,
+      selectReturnKeys: true,
+      itemKey: "value",
+    },
+  });
+
+  await new Promise((r) => setTimeout(r, 2000));
+  expect(queryByRole("tree")).toBeInTheDocument();
+  let checkbox = getAllByRole("checkbox");
+  await userEvent.click(checkbox[5]);
+  expect(emitted("input:selected")[0][0][0]).toBe(5);
 });
