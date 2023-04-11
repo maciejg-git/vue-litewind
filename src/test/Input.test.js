@@ -1,7 +1,7 @@
 import { render, fireEvent, waitFor } from "@testing-library/vue";
-import "@testing-library/jest-dom"
+import "@testing-library/jest-dom";
 import Input from "../components/vInput.vue";
-import ExclamationCircle from "./icons/exclamation-circle"
+import ExclamationCircle from "./icons/exclamation-circle";
 
 test("renders component", () => {
   const { getByRole } = render(Input, {
@@ -20,7 +20,7 @@ test("updates v-model value", async () => {
 
   await rerender({
     modelValue: "a",
-  })
+  });
 
   expect(getByRole("textbox")).toHaveValue("a");
 });
@@ -28,7 +28,7 @@ test("updates v-model value", async () => {
 test("renders label", async () => {
   const { getByText } = render(Input, {
     props: {
-      label: "username"
+      label: "username",
     },
   });
 
@@ -61,7 +61,7 @@ test("renders icon (slot)", async () => {
     props: {},
     slots: {
       icon: ExclamationCircle,
-    }
+    },
   });
 
   expect(container.querySelector("svg")).toBeInTheDocument();
@@ -84,25 +84,66 @@ test("emits click:icon", async () => {
     },
   });
 
-  let button = getByRole("button")
-  await fireEvent.click(button)
+  let button = getByRole("button");
+  await fireEvent.click(button);
 
   expect(emitted()).toHaveProperty("click:icon");
 });
 
-test("clears input", async () => {
-  const { getByRole, emitted } = render(Input, {
-    props: {
-      clearable: true,
-      modelValue: "a",
-    },
+describe("clears input", () => {
+  test("clear button click", async () => {
+    const { getByRole, emitted } = render(Input, {
+      props: {
+        clearable: true,
+        modelValue: "a",
+      },
+    });
+
+    let button = getByRole("button");
+    await fireEvent.click(button);
+
+    expect(emitted("update:modelValue")[0][0]).toBe("");
   });
 
-  let button = getByRole("button")
-  await fireEvent.click(button)
+  test("emits clear event (custom-clearable prop)", async () => {
+    const { getByRole, emitted } = render(Input, {
+      props: {
+        customClearable: true,
+        modelValue: "a",
+      },
+    });
 
-  waitFor(() => {
-    expect(getByRole("textbox")).toHaveDisplayValue("")
-  })
-  expect(emitted('update:modelValue')[0][0]).toBe("")
+    let button = getByRole("button");
+    await fireEvent.click(button);
+
+    expect(emitted("click:clear-button")).not.toBe(undefined);
+  });
+});
+
+describe("focus", () => {
+  test("clicking label focuses input (generated id)", async () => {
+    const { getByText, getByRole } = render(Input, {
+      props: {
+        label: "username",
+      },
+    });
+
+    expect(getByRole("textbox")).not.toHaveFocus();
+    await fireEvent.click(getByText("username"));
+    expect(getByRole("textbox")).toHaveFocus();
+  });
+
+  test("clicking clear button should not focus input", async () => {
+    const { getByRole, emitted } = render(Input, {
+      props: {
+        clearable: true,
+        modelValue: "a",
+      },
+    });
+
+    expect(getByRole("textbox")).not.toHaveFocus();
+    let button = getByRole("button");
+    await fireEvent.click(button);
+    expect(getByRole("textbox")).not.toHaveFocus();
+  });
 });
