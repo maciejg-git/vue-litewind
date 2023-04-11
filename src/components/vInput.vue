@@ -44,15 +44,15 @@
       <slot name="prepend"></slot>
 
       <div class="flex flex-wrap flex-1">
-        <!-- @slot multi-value -->
-        <slot name="multi-value"></slot>
+        <!-- @slot input -->
+        <slot name="input"></slot>
         <input
           v-model="localModel"
           ref="inputRef"
           :id="id"
           type="text"
           v-bind="$attrs"
-          class="flex-1 min-w-0 focus:min-w-[64px] border-0 bg-transparent focus:outline-none focus:ring-0 outline-none p-0"
+          class="flex-1 min-w-0 focus:min-w-[64px] border-0 bg-transparent focus:outline-none outline-none p-0"
           @blur="handleBlur"
         />
       </div>
@@ -301,10 +301,6 @@ let localModel = useLocalModel(props, emit);
 // handle v-form
 
 let form = inject("form", {});
-
-// if (addFormInput) {
-//   addFormInput(validation);
-// }
 
 // validate
 

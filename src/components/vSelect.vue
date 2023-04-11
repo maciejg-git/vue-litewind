@@ -30,20 +30,20 @@
         v-bind="slotProps"
       ></slot>
     </template>
-    <!-- @slot multi-value-item -->
-    <template #multi-value>
+    <!-- @slot selected-item -->
+    <template #input>
       <template
-        v-if="!autocomplete || !isFocused || multiValue"
+        v-if="(!autocomplete || !isFocused || multiValue) && selectedItems.length"
         v-for="(value, index) in selectedItems"
       >
         <template v-if="index < maxMultiValue">
           <slot
-            name="multi-value-item"
+            name="selected-item"
             :text="getItemText(value)"
             :item="value"
           >
             <span
-              class="ml-1 after:content-[','] last-of-type:after:content-none last-of-type:mr-2"
+              class="after:content-[','] last-of-type:after:content-none last-of-type:mr-2 mr-1"
             >
               {{ getItemText(value) }}
             </span>
@@ -414,7 +414,11 @@ watch(
       return;
     }
 
-    selectedItems.value[0] = getItemByValue(value);
+    let item = getItemByValue(value)
+
+    if (item !== undefined) {
+      selectedItems.value[0] = item;
+    }
   },
   { immediate: true, deep: true }
 );
