@@ -32,7 +32,7 @@
       ],
       "default": false,
       "prop": "modal",
-      "description": "Displays sidepanel with backdrop. Clicking backdrop closes sidepanel"
+      "description": "Displays modal variant of sidepanel. Clicking backdrop closes sidepanel"
     },
     {
       "type": [

@@ -11,7 +11,7 @@
         style-menu="shadow"
         @input:value="query($event)"
       >
-        <template #multi-value-item="item">
+        <template #selected-item="{ item }">
           <v-chip
             class="my-1 mr-2"
             @click:close-button="remove(item.value)"

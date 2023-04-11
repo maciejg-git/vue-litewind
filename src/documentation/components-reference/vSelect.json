@@ -195,7 +195,7 @@
     "state:closed"
   ],
   "slots": [
-    "multi-value-item",
+    "selected-item",
     "max-multi-value",
     "menu-item"
   ]

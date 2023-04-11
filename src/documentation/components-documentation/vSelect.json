@@ -272,7 +272,7 @@
   ],
   "slots": [
     {
-      "slot": "multi-value-item",
+      "slot": "selected-item",
       "description": ""
     },
     {

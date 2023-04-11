@@ -39,7 +39,7 @@
   },
   "slots": {
     "menu-item": "Slot for menu item. Slot props: `text`, `value`, `item`, `inputValue`",
-    "multi-value-item": "",
+    "selected-item": "",
     "max-multi-value": ""
     
   },
