@@ -3,6 +3,11 @@ import { globalValidators } from "../../validators";
 
 let isFunction = (v) => typeof v === "function";
 
+let validOptions = {
+  validateOn: ["blur", "immediate", "form"],
+  validateMode: ["silent", "eager"],
+};
+
 let defaultStatus = {
   touched: false,
   dirty: false,
@@ -33,8 +38,12 @@ export default function useValidation(inputs, globals) {
     let messages = ref({});
 
     let opts = {
-      validateOn: options.validateOn || "blur",
-      validateMode: options.validateMode || "silent",
+      validateOn: validOptions.validateOn.includes(options.validateOn)
+        ? options.validateOn
+        : "blur",
+      validateMode: validOptions.validateMode.includes(options.validateMode)
+        ? options.validateMode
+        : "silent",
       stateDefaultValue: options.stateDefaultValue ?? "",
       stateValidValue: options.stateValidValue ?? "valid",
       stateInvalidValue: options.stateInvalidValue ?? "invalid",
@@ -59,7 +68,7 @@ export default function useValidation(inputs, globals) {
         let [key, v] =
           typeof rule === "string" ? [rule, null] : Object.entries(rule)[0];
 
-        let validator = globalValidators[key] || (isFunction(v) && v);
+        let validator = (isFunction(v) && v) || globalValidators[key];
 
         if (!validator) return valid;
 

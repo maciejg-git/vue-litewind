@@ -10,7 +10,6 @@
     :custom-clearable="clearable"
     :readonly="!autocomplete"
     show-indicator
-    :indicator-switch="isFloatingVisible"
     :is-loading="isLoading"
     type="text"
     @input="handleInput"
@@ -30,13 +29,28 @@
         v-bind="slotProps"
       ></slot>
     </template>
+    <template #input-control-extra>
+        <button
+          aria-label="Close"
+          tabindex="-1"
+          class="focus:outline-none ml-2"
+          @click.stop="handleClickIndicator"
+        >
+          <v-chevron
+            initial="down"
+            rotate-180
+            :switch="isFloatingVisible"
+            v-bind="chevron"
+          />
+        </button>
+    </template>
     <!-- @slot selected-item -->
-    <template #input>
+    <template #input-extra>
       <template
-        v-if="(!autocomplete || !isFocused || multiValue) && selectedItems.length"
+        v-if="(!autocomplete || !isFocused || multiple) && selectedItems.length"
         v-for="(value, index) in selectedItems"
       >
-        <template v-if="index < maxMultiValue">
+        <template v-if="index < maxMultiple">
           <slot
             name="selected-item"
             :text="getItemText(value)"
@@ -52,8 +66,8 @@
       </template>
       <!-- @slot max-multi-value -->
       <slot
-        v-if="selectedItems.length > maxMultiValue"
-        name="max-multi-value"
+        v-if="selectedItems.length > maxMultiple"
+        name="max-multiple"
       ></slot>
     </template>
   </v-input>
@@ -122,6 +136,7 @@ import useLocalModel from "./composition/use-local-model";
 import useFloating from "./composition/use-floating";
 import vInput from "./vInput.vue";
 import vCard from "./vCard.vue";
+import vChevron from "./vChevron.vue";
 import { default as vDetectScrollBottom } from "../directives/detect-scroll-bottom";
 import {
   sharedProps,
@@ -143,11 +158,11 @@ let props = defineProps({
     type: Boolean,
     default: defaultProps("select", "useLoader", true),
   },
-  multiValue: {
+  multiple: {
     type: Boolean,
     default: false,
   },
-  maxMultiValue: {
+  maxMultiple: {
     type: Number,
     default: 9999,
   },
@@ -196,6 +211,10 @@ let props = defineProps({
   input: {
     type: Object,
     default: defaultProps("select", "input", {}),
+  },
+  chevron: {
+    type: Object,
+    default: defaultProps("select", "chevron", {}),
   },
   card: {
     type: Object,
@@ -359,7 +378,7 @@ let isSelected = (item) => {
 };
 
 let updateLocalModel = () => {
-  if (props.multiValue) {
+  if (props.multiple) {
     localModel.value = selectedItems.value.map((i) => getItemValue(i));
     return;
   }
@@ -368,7 +387,7 @@ let updateLocalModel = () => {
 };
 
 let selectItem = (item) => {
-  if (props.multiValue) {
+  if (props.multiple) {
     let index = selectedItems.value.indexOf(item);
 
     if (index !== -1) {
@@ -394,7 +413,7 @@ let cancelInput = () => {
 let clearInput = () => {
   localText.value = "";
   selectedItems.value = [];
-  localModel.value = props.multiValue ? [] : "";
+  localModel.value = props.multiple ? [] : "";
 };
 
 // update selected items after model value change
@@ -403,7 +422,7 @@ let clearInput = () => {
 watch(
   localModel,
   (value) => {
-    if (props.multiValue) {
+    if (props.multiple) {
       selectedItems.value = value.map((selectedValue) => {
         return (
           props.items.find((i) => selectedValue === getItemValue(i)) ||
@@ -451,7 +470,7 @@ let scrollToTop = () => {
 // handle template events
 
 let handleFocusInput = () => {
-  if (props.autocomplete && !props.multiValue) {
+  if (props.autocomplete && !props.multiple) {
     if (selectedItems.value[0] !== undefined) {
       localText.value = getItemText(selectedItems.value[0]);
 
@@ -504,7 +523,7 @@ let handleKeydown = (ev) => {
 
   if (key === "Backspace") {
     if (
-      props.multiValue &&
+      props.multiple &&
       selectedItems.value.length &&
       localText.value === ""
     ) {
@@ -549,7 +568,7 @@ let handleKeydown = (ev) => {
     ev.preventDefault();
     ev.stopPropagation();
 
-    if (!props.multiValue) {
+    if (!props.multiple) {
       reference.value.blur();
     }
 
@@ -572,7 +591,7 @@ let handleClickItem = (item, index) => {
 
   highlightedItemIndex.value = index;
 
-  if (!props.multiValue) {
+  if (!props.multiple) {
     reference.value.blur();
   }
 };

@@ -45,7 +45,7 @@
 
       <div class="flex flex-wrap flex-1">
         <!-- @slot input -->
-        <slot name="input"></slot>
+        <slot name="input-extra"></slot>
         <input
           v-model="localModel"
           ref="inputRef"
@@ -80,20 +80,8 @@
             @click.stop="handleClickClearButton"
           ></v-close-button>
         </div>
-        <button
-          v-if="showIndicator"
-          aria-label="Close"
-          tabindex="-1"
-          class="focus:outline-none ml-2"
-          @click.stop="handleClickIndicator"
-        >
-          <v-chevron
-            initial="down"
-            rotate-180
-            :switch="indicatorSwitch"
-            v-bind="chevron"
-          />
-        </button>
+      <!-- @slot input-controls-extra -->
+          <slot name="input-control-extra"></slot>
       </div>
     </div>
   </div>
@@ -174,14 +162,14 @@ const props = defineProps({
     type: Boolean,
     default: defaultProps("input", "singleLineMessage", false),
   },
-  showIndicator: {
-    type: Boolean,
-    default: false,
-  },
-  indicatorSwitch: {
-    type: Boolean,
-    default: false,
-  },
+  // showIndicator: {
+  //   type: Boolean,
+  //   default: false,
+  // },
+  // indicatorSwitch: {
+  //   type: Boolean,
+  //   default: false,
+  // },
   width: {
     type: String,
     default: defaultProps("input", "width", ""),
@@ -202,10 +190,10 @@ const props = defineProps({
     type: Object,
     default: defaultProps("input", "closeButton", {}),
   },
-  chevron: {
-    type: Object,
-    default: defaultProps("input", "chevron", {}),
-  },
+  // chevron: {
+  //   type: Object,
+  //   default: defaultProps("input", "chevron", {}),
+  // },
   formText: {
     type: Object,
     default: defaultProps("input", "formText", { class: "absolute" }),
@@ -348,9 +336,9 @@ let handleClickWrapper = () => {
   inputRef.value.focus();
 };
 
-let handleClickIndicator = () => {
-  emit("click:indicator");
-};
+// let handleClickIndicator = () => {
+//   emit("click:indicator");
+// };
 
 let handleClickIcon = (ev) => {
   emit("click:icon", ev);
