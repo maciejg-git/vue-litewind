@@ -311,7 +311,7 @@ describe("should select item", () => {
       props: {
         modelValue: [],
         items: states,
-        multiValue: true,
+        multiple: true,
       },
     });
 
@@ -348,7 +348,7 @@ describe("should select item", () => {
     const { getByRole, findByRole, getAllByRole, queryByText } = render(Select, {
       props: {
         modelValue: [],
-        multiValue: true,
+        multiple: true,
         items: states,
         autocomplete: true,
       },
