@@ -6,8 +6,13 @@
         :items="example.items"
         :inline="false"
         multiple
+        :max-multiple="2"
         style-menu="shadow"
-      ></v-select>
+      >
+        <template #max-multiple>
+          (+{{ example.model.length - 2}} others)
+        </template>
+      </v-select>
     </div>
     <div class="w-1/2 md:ml-10 mt-6 md:mt-0">
       <span class="font-semibold">v-model:</span>

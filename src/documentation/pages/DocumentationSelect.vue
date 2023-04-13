@@ -53,7 +53,7 @@
   </section>
 
   <section>
-    <h4>Example - simple select (multi value)</h4>
+    <h4>Example - simple select (multiple)</h4>
     <div class="example">
       <example name="ExampleSelectMultivalue"></example>
     </div>
@@ -70,7 +70,7 @@
   </section>
 
   <section>
-    <h4>Example - autocomplete (multi value with chips)</h4>
+    <h4>Example - autocomplete (multiple with chips)</h4>
     <p>
     Example of multi value autocomplete that has <code class="code-text">v-chip</code> components as selected values.
     </p>
@@ -91,6 +91,14 @@
     <p>To customize menu items use <code class="code-text">item</code> slot</p>
     <div class="example">
       <example name="ExampleAutocompleteSlot"></example>
+    </div>
+  </section>
+
+  <section>
+    <h4>Example - select (max multiple limit)</h4>
+    <p><code class="code-text">max-multiple</code> prop sets the max number of selected items shown in the input. If more items is selected <code class="code-text">max-multiple</code> slot can be used to show the number of remaing hidden items.</p>
+    <div class="example">
+      <example name="ExampleSelectMultipleMax"></example>
     </div>
   </section>
 </template>

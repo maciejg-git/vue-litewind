@@ -4,7 +4,7 @@
       <v-autocomplete
         v-model="example.model"
         no-filter
-        multi-value
+        multiple
         :items="example.items"
         :is-loading="example.isLoading"
         :inline="false"
