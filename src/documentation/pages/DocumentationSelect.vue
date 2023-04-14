@@ -96,7 +96,7 @@
 
   <section>
     <h4>Example - select (max multiple limit)</h4>
-    <p><code class="code-text">max-multiple</code> prop sets the max number of selected items shown in the input. If more items is selected <code class="code-text">max-multiple</code> slot can be used to show the number of remaing hidden items.</p>
+    <p><code class="code-text">max-multiple</code> prop sets the max number of selected items shown in the input. In the following example <code class="code-text">max-multiple</code> slot is used to show the number of remaining hidden items.</p>
     <div class="example">
       <example name="ExampleSelectMultipleMax"></example>
     </div>

@@ -47,6 +47,14 @@
     },
     {
       "type": [
+        "Object"
+      ],
+      "default": {},
+      "prop": "chevron",
+      "description": ""
+    },
+    {
+      "type": [
         "Boolean"
       ],
       "default": "undefined",
@@ -147,15 +155,15 @@
         "Number"
       ],
       "default": 9999,
-      "prop": "max-multi-value",
-      "description": "Maximum number of rendered items for multi value select/autocomplete. If there is more items `max-multi-value` slot can be used to show additional information"
+      "prop": "max-multiple",
+      "description": "Maximum number of rendered items for `multiple` select. If there is more items `max-multiple` slot can be used to show additional information"
     },
     {
       "type": [
         "Boolean"
       ],
       "default": false,
-      "prop": "multi-value",
+      "prop": "multiple",
       "description": "Allows selecting multiple values"
     },
     {
@@ -273,11 +281,11 @@
   "slots": [
     {
       "slot": "selected-item",
-      "description": ""
+      "description": "Slot for custom selected items"
     },
     {
-      "slot": "max-multi-value",
-      "description": ""
+      "slot": "max-multiple",
+      "description": "Content of this slot is appended to selected items if `max-multiple` prop is enabled"
     },
     {
       "slot": "menu-item",

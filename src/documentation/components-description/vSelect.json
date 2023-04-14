@@ -5,8 +5,8 @@
     "variant": "",
     "modelValue": "Select v-model. If items are objects model returns `value` property (or `array` of `values` if select is `multi-value`) instead of whole object",
     "useLoader": "",
-    "multiValue": "Allows selecting multiple values",
-    "maxMultiValue": "Maximum number of rendered items for multi value select/autocomplete. If there is more items `max-multi-value` slot can be used to show additional information",
+    "multiple": "Allows selecting multiple values",
+    "maxMultiple": "Maximum number of rendered items for `multiple` select. If there is more items `max-multiple` slot can be used to show additional information",
     "isLoading": "Use it whenever asynchronously updating items prop. Required.",
     "inline": "",
     "icon": "",
@@ -39,8 +39,8 @@
   },
   "slots": {
     "menu-item": "Slot for menu item. Slot props: `text`, `value`, `item`, `inputValue`",
-    "selected-item": "",
-    "max-multi-value": ""
+    "selected-item": "Slot for custom selected items",
+    "max-multiple": "Content of this slot is appended to selected items if `max-multiple` prop is enabled"
     
   },
   "functions": {},

@@ -24,14 +24,6 @@
     },
     {
       "type": [
-        "Object"
-      ],
-      "default": {},
-      "prop": "chevron",
-      "description": "Attributes of input v-chevron component (indicator)"
-    },
-    {
-      "type": [
         "Boolean"
       ],
       "default": "undefined",
@@ -72,14 +64,6 @@
       "default": "empty string",
       "prop": "icon",
       "description": "Adds icon to input element. Valid value is the same as in v-icon components"
-    },
-    {
-      "type": [
-        "Boolean"
-      ],
-      "default": false,
-      "prop": "indicator-switch",
-      "description": "Set to `true` or `false` to set state of the open indicator. Useful for extending v-input for example adding dropdowns or popovers"
     },
     {
       "type": [
@@ -136,14 +120,6 @@
       "default": [],
       "prop": "rules",
       "description": "Rules for validation. See Form Validation for examples of rules"
-    },
-    {
-      "type": [
-        "Boolean"
-      ],
-      "default": false,
-      "prop": "show-indicator",
-      "description": "Set to `true` or `false` to show open indicator. Useful for extending v-input for example adding dropdowns or popovers"
     },
     {
       "type": [

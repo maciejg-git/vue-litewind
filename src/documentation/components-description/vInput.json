@@ -44,7 +44,8 @@
     "label": "Slot for label. Slot props: `label` (from label prop)",
     "icon": "Slot for icon",
     "prepend": "Slot for content prepending input",
-    "multi-value": "[hidden]",    
+    "input-extra": "[hidden]",    
+    "input-control-extra": "[hidden]",    
     "append": "Slot for content appending input"
   },
   "functions": {},
