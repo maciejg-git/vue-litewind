@@ -44,7 +44,7 @@
       <slot name="prepend"></slot>
 
       <div class="flex flex-wrap flex-1">
-        <!-- @slot input -->
+        <!-- @slot input-extra -->
         <slot name="input-extra"></slot>
         <input
           v-model="localModel"
@@ -80,8 +80,8 @@
             @click.stop="handleClickClearButton"
           ></v-close-button>
         </div>
-      <!-- @slot input-controls-extra -->
-          <slot name="input-control-extra"></slot>
+        <!-- @slot input-control-extra -->
+        <slot name="input-control-extra"></slot>
       </div>
     </div>
   </div>
@@ -119,7 +119,6 @@ import useLocalModel from "./composition/use-local-model";
 import useUid from "./composition/use-uid";
 import useValidation from "./composition/use-validation";
 import vFormText from "./vFormText.vue";
-import vChevron from "./vChevron.vue";
 import vCloseButton from "./vCloseButton.vue";
 import vSpinner from "./vSpinner.vue";
 import vIcon from "./vIcon.vue";
@@ -162,14 +161,6 @@ const props = defineProps({
     type: Boolean,
     default: defaultProps("input", "singleLineMessage", false),
   },
-  // showIndicator: {
-  //   type: Boolean,
-  //   default: false,
-  // },
-  // indicatorSwitch: {
-  //   type: Boolean,
-  //   default: false,
-  // },
   width: {
     type: String,
     default: defaultProps("input", "width", ""),
@@ -190,10 +181,6 @@ const props = defineProps({
     type: Object,
     default: defaultProps("input", "closeButton", {}),
   },
-  // chevron: {
-  //   type: Object,
-  //   default: defaultProps("input", "chevron", {}),
-  // },
   formText: {
     type: Object,
     default: defaultProps("input", "formText", { class: "absolute" }),
@@ -261,9 +248,7 @@ let getInputClasses = computed(() => {
 });
 
 let wrapperClasses = computed(() => {
-  return props.inline
-    ? "inline-block align-middle group"
-    : "flex flex-1 group";
+  return props.inline ? "inline-block align-middle group" : "flex flex-1 group";
 });
 
 let id = useUid("input", attrs);
@@ -335,10 +320,6 @@ let handleBlur = () => {
 let handleClickWrapper = () => {
   inputRef.value.focus();
 };
-
-// let handleClickIndicator = () => {
-//   emit("click:indicator");
-// };
 
 let handleClickIcon = (ev) => {
   emit("click:icon", ev);

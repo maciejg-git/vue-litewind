@@ -30,19 +30,19 @@
       ></slot>
     </template>
     <template #input-control-extra>
-        <button
-          aria-label="Close"
-          tabindex="-1"
-          class="focus:outline-none ml-2"
-          @click.stop="handleClickIndicator"
-        >
-          <v-chevron
-            initial="down"
-            rotate-180
-            :switch="isFloatingVisible"
-            v-bind="chevron"
-          />
-        </button>
+      <button
+        aria-label="Close"
+        tabindex="-1"
+        class="focus:outline-none ml-2"
+        @click.stop="handleClickIndicator"
+      >
+        <v-chevron
+          initial="down"
+          rotate-180
+          :switch="isFloatingVisible"
+          v-bind="chevron"
+        />
+      </button>
     </template>
     <!-- @slot selected-item -->
     <template #input-extra>
@@ -64,7 +64,7 @@
           </slot>
         </template>
       </template>
-      <!-- @slot max-multi-value -->
+      <!-- @slot max-multiple -->
       <slot
         v-if="selectedItems.length > maxMultiple"
         name="max-multiple"
@@ -433,7 +433,7 @@ watch(
       return;
     }
 
-    let item = getItemByValue(value)
+    let item = getItemByValue(value);
 
     if (item !== undefined) {
       selectedItems.value[0] = item;
