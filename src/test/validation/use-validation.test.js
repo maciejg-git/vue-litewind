@@ -200,6 +200,24 @@ describe("validateOn option", () => {
     await nextTick();
     expect(state.value).toBe("valid");
   });
+
+  test("form", () => {
+    let value = ref("");
+
+    let form = useFormValidation();
+
+    let { status, state, messages, touch } = useValidation({
+      form,
+      value,
+      rules: defaultRules,
+    });
+
+    expect(state.value).toBe("");
+
+    form.validate();
+
+    expect(state.value).toBe("invalid");
+  });
 });
 
 describe("validateMode", () => {
@@ -485,4 +503,23 @@ test("correctly validates form (useFormValidation)", () => {
 
   expect(inputs.username.state.value).toBe("invalid");
   expect(inputs.password.state.value).toBe("invalid");
+});
+
+test("correctly reset validation to inital state (reset function)", async () => {
+  let value = ref("");
+
+  let { status, state, messages, reset, touch } = useValidation({
+    value,
+    rules: defaultRules,
+  });
+
+  value.value = "a";
+  await nextTick();
+  touch();
+
+  reset();
+
+  expect(status.value).toEqual(defaultStatus);
+  expect(state.value).toBe("");
+  expect(messages.value).toEqual({});
 });
