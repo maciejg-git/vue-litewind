@@ -40,6 +40,29 @@ describe("returns correct initial values", () => {
   });
 });
 
+test("returns correct object for array of inputs", () => {
+  let value = ref("");
+  let password = ref("");
+
+  let inputs = useValidation([
+    {
+      value,
+      rules: defaultRules,
+      name: "username",
+    },
+    {
+      value: password,
+      rules: defaultRules,
+      name: "password",
+    },
+  ]);
+
+  expect(inputs).toHaveProperty("username");
+  expect(inputs).toHaveProperty("password");
+  expect(inputs.username).toHaveProperty("status");
+  expect(inputs.password).toHaveProperty("status");
+});
+
 describe("updates", () => {
   test("status on value change", async () => {
     let value = ref("");
@@ -82,7 +105,7 @@ describe("updates", () => {
   });
 });
 
-describe("should set dirty, touched and optional status", () => {
+describe("correctly sets dirty, touched and optional status", () => {
   test("dirty on dirty inputs", async () => {
     let value = ref("");
 
@@ -373,6 +396,22 @@ describe("onUpdate callback", () => {
     expect(onUpdate).toHaveBeenCalledTimes(2);
   });
 
+  test("is called on reset", () => {
+    let value = ref("");
+
+    let onUpdate = vi.fn();
+
+    let { status, state, messages, reset } = useValidation({
+      value,
+      rules: defaultRules,
+      onUpdate,
+    });
+
+    reset();
+
+    expect(onUpdate).toHaveBeenCalledTimes(2);
+  });
+
   test("is called with status, state and messages arguments", () => {
     let value = ref("");
 
@@ -406,29 +445,6 @@ test("reset callback is called on reset", () => {
   expect(onReset).toHaveBeenCalled();
 });
 
-test("returns correct object for array of inputs", () => {
-  let value = ref("");
-  let password = ref("");
-
-  let inputs = useValidation([
-    {
-      value,
-      rules: defaultRules,
-      name: "username",
-    },
-    {
-      value: password,
-      rules: defaultRules,
-      name: "password",
-    },
-  ]);
-
-  expect(inputs).toHaveProperty("username");
-  expect(inputs).toHaveProperty("password");
-  expect(inputs.username).toHaveProperty("status");
-  expect(inputs.password).toHaveProperty("status");
-});
-
 test("correctly validates function rules", async () => {
   let value = ref("");
 
@@ -451,58 +467,94 @@ test("correctly validates function rules", async () => {
   expect(messages.value.validator).toBe(undefined);
 });
 
-test("adds inputs to form (useFormValidation)", () => {
-  let value = ref("");
-  let password = ref("");
+describe("form", () => {
+  test("adds inputs to form (useFormValidation)", () => {
+    let value = ref("");
+    let password = ref("");
 
-  let form = useFormValidation();
+    let form = useFormValidation();
 
-  let inputs = useValidation([
-    {
-      form,
-      value,
-      rules: defaultRules,
-      name: "username",
-    },
-    {
-      form,
-      value: password,
-      rules: defaultRules,
-      name: "password",
-    },
-  ]);
+    let inputs = useValidation([
+      {
+        form,
+        value,
+        rules: defaultRules,
+        name: "username",
+      },
+      {
+        form,
+        value: password,
+        rules: defaultRules,
+        name: "password",
+      },
+    ]);
 
-  expect(form.inputs[0].name).toBe("username");
-  expect(form.inputs[1].name).toBe("password");
-  expect(form.inputs[0]).toHaveProperty("status");
-  expect(form.inputs[1]).toHaveProperty("status");
-});
+    expect(form.inputs[0].name).toBe("username");
+    expect(form.inputs[1].name).toBe("password");
+    expect(form.inputs[0]).toHaveProperty("status");
+    expect(form.inputs[1]).toHaveProperty("status");
+  });
 
-test("correctly validates form (useFormValidation)", () => {
-  let value = ref("");
-  let password = ref("");
+  test("correctly validates form (useFormValidation)", () => {
+    let value = ref("");
+    let password = ref("");
 
-  let form = useFormValidation();
+    let form = useFormValidation();
 
-  let inputs = useValidation([
-    {
-      form,
-      value,
-      rules: defaultRules,
-      name: "username",
-    },
-    {
-      form,
-      value: password,
-      rules: defaultRules,
-      name: "password",
-    },
-  ]);
+    let inputs = useValidation([
+      {
+        form,
+        value,
+        rules: defaultRules,
+        name: "username",
+      },
+      {
+        form,
+        value: password,
+        rules: defaultRules,
+        name: "password",
+      },
+    ]);
 
-  form.validate();
+    form.validate();
 
-  expect(inputs.username.state.value).toBe("invalid");
-  expect(inputs.password.state.value).toBe("invalid");
+    expect(inputs.username.state.value).toBe("invalid");
+    expect(inputs.password.state.value).toBe("invalid");
+  });
+
+  test("correctly reset form (useFormValidation)", async () => {
+    let value = ref("");
+    let password = ref("");
+
+    let form = useFormValidation();
+
+    let inputs = useValidation([
+      {
+        form,
+        value,
+        rules: defaultRules,
+        name: "username",
+      },
+      {
+        form,
+        value: password,
+        rules: defaultRules,
+        name: "password",
+      },
+    ]);
+
+    form.validate();
+    expect(inputs.username.state.value).toBe("invalid");
+    expect(inputs.password.state.value).toBe("invalid");
+
+    form.reset();
+    expect(inputs.username.state.value).toBe("");
+    expect(inputs.password.state.value).toBe("");
+
+    expect(inputs.username.status.value).toEqual(defaultStatus);
+    expect(inputs.username.state.value).toBe("");
+    expect(inputs.username.messages.value).toEqual({});
+  });
 });
 
 test("correctly reset validation to inital state (reset function)", async () => {
