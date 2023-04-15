@@ -3,11 +3,11 @@
   "props": {
     "modelValue": "Input v-model",
     "externalModel": "[hidden]",
-    "inline": "Sets input display to inline",
+    "inline": "Sets inputs display to inline",
     "rules": "",
     "validateOn": "",
     "validateMode": "",
-    "useLoader": "Set to `true` or `false` to enable or disable spinner in the input",
+    "useLoader": "Enable or disable spinner in the input",
     "isLoading": "If true displays spinner in the input. Spinner should be first enabled in `use-loading` prop",
     "singleLineMessage": "Limits the number of displayed errors to one at time. Order of messages is the same as order of `rules` in rules prop",
     "showIndicator": "Set to `true` or `false` to show open indicator. Useful for extending v-input for example adding dropdowns or popovers",

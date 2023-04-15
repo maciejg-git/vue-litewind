@@ -71,7 +71,7 @@
       ],
       "default": false,
       "prop": "inline",
-      "description": "Sets input display to inline"
+      "description": "Sets inputs display to inline"
     },
     {
       "type": [
@@ -175,7 +175,7 @@
       ],
       "default": false,
       "prop": "use-loader",
-      "description": "Set to `true` or `false` to enable or disable spinner in the input"
+      "description": "Enable or disable spinner in the input"
     },
     {
       "type": [

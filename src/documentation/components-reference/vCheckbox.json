@@ -28,6 +28,12 @@
       ],
       "default": "undefined"
     },
+    "validateOn": {
+      "type": [
+        "String"
+      ],
+      "default": "blur"
+    },
     "validateMode": {
       "type": [
         "String"

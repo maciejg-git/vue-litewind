@@ -74,6 +74,14 @@
       "type": [
         "String"
       ],
+      "default": "\"blur\"",
+      "prop": "validate-on",
+      "description": "Valid values are 'blur', 'immediate' or 'form'. See Form Validation for explanation and examples"
+    },
+    {
+      "type": [
+        "String"
+      ],
       "default": "null",
       "prop": "validation-state",
       "description": "Overrides state of input validity. Supported values are 'valid', 'invalid', `empty string` for default state or `null` for component controlled state"

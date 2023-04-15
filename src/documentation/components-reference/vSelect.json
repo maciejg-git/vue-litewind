@@ -35,30 +35,6 @@
       ],
       "default": true
     },
-    "multiple": {
-      "type": [
-        "Boolean"
-      ],
-      "default": false
-    },
-    "maxMultiple": {
-      "type": [
-        "Number"
-      ],
-      "default": 9999
-    },
-    "isLoading": {
-      "type": [
-        "Boolean"
-      ],
-      "default": false
-    },
-    "inline": {
-      "type": [
-        "Boolean"
-      ],
-      "default": false
-    },
     "icon": {
       "type": [
         "String",
@@ -83,6 +59,18 @@
         "Array"
       ],
       "default": []
+    },
+    "multiple": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "maxMultiple": {
+      "type": [
+        "Number"
+      ],
+      "default": 9999
     },
     "autocomplete": {
       "type": [

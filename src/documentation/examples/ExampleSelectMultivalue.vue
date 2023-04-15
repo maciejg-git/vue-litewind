@@ -6,6 +6,7 @@
         :items="example.items"
         :inline="false"
         multiple
+        name="selectcustom"
         style-menu="shadow"
       ></v-select>
     </div>

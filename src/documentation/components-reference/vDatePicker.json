@@ -56,12 +56,6 @@
         "day": "numeric"
       }
     },
-    "disabled": {
-      "type": [
-        "Array"
-      ],
-      "default": []
-    },
     "width": {
       "type": [
         "String"

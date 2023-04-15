@@ -51,7 +51,7 @@
       ],
       "default": {},
       "prop": "chevron",
-      "description": ""
+      "description": "Attributes of v-chevron component"
     },
     {
       "type": [
@@ -96,27 +96,11 @@
     },
     {
       "type": [
-        "Boolean"
-      ],
-      "default": false,
-      "prop": "inline",
-      "description": ""
-    },
-    {
-      "type": [
         "Object"
       ],
       "default": {},
       "prop": "input",
-      "description": ""
-    },
-    {
-      "type": [
-        "Boolean"
-      ],
-      "default": false,
-      "prop": "is-loading",
-      "description": "Use it whenever asynchronously updating items prop. Required."
+      "description": "Attributes of v-input component"
     },
     {
       "type": [
@@ -236,7 +220,7 @@
       ],
       "default": true,
       "prop": "use-loader",
-      "description": ""
+      "description": "Enables spinner in the input"
     },
     {
       "type": [

@@ -37,14 +37,6 @@
     },
     {
       "type": [
-        "Array"
-      ],
-      "default": [],
-      "prop": "disabled",
-      "description": ""
-    },
-    {
-      "type": [
         "Object"
       ],
       "default": {
