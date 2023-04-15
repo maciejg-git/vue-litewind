@@ -5,12 +5,10 @@
     ref="reference"
     :icon="icon"
     :use-loader="useLoader"
-    :inline="inline"
     v-bind="{ ...$attrs, ...input }"
     :custom-clearable="clearable"
     :readonly="!autocomplete"
     show-indicator
-    :is-loading="isLoading"
     type="text"
     @input="handleInput"
     @focus="handleFocusInput"
@@ -158,6 +156,12 @@ let props = defineProps({
     type: Boolean,
     default: defaultProps("select", "useLoader", true),
   },
+  ...sharedFormProps("select", null, { icon: true, clearable: true }),
+  // v-select props
+  items: {
+    type: Array,
+    default: [],
+  },
   multiple: {
     type: Boolean,
     default: false,
@@ -165,20 +169,6 @@ let props = defineProps({
   maxMultiple: {
     type: Number,
     default: 9999,
-  },
-  isLoading: {
-    type: Boolean,
-    default: false,
-  },
-  inline: {
-    type: Boolean,
-    default: defaultProps("select", "inline", false),
-  },
-  ...sharedFormProps("select", null, { icon: true, clearable: true }),
-  // v-select props
-  items: {
-    type: Array,
-    default: [],
   },
   autocomplete: {
     type: Boolean,

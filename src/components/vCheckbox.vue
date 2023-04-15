@@ -52,6 +52,7 @@ const props = defineProps({
     default: undefined,
   },
   ...sharedValidationProps("checkbox", {
+    validateOn: "blur",
     validateMode: "silent",
   }),
   label: {
@@ -106,7 +107,7 @@ let localModel = useLocalModel(props, emit, groupModel, onUpdateGroupModel);
 
 // handle v-form
 
-let form = !isInGroup && inject("form", {})
+let form = !isInGroup && inject("form", {});
 
 // validation
 
@@ -126,7 +127,8 @@ let { rules, validateMode } = props;
 
 // try to inject checkbox group validation or fallback to checkbox validation
 let validation =
-  inject("v-checkbox-group-validation", useValidation({
+  inject("v-checkbox-group-validation", null) ||
+  useValidation({
     form,
     value: localModel,
     rules,
@@ -137,8 +139,7 @@ let validation =
     externalState,
     onUpdate: emitValidationStatus,
     onReset: resetInput,
-  })) 
-  ;
+  });
 
 // handle template events
 

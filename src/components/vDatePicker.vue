@@ -162,10 +162,10 @@ const props = defineProps({
       day: "numeric",
     }),
   },
-  disabled: {
-    type: Array,
-    default: [],
-  },
+  // disabled: {
+  //   type: Array,
+  //   default: [],
+  // },
   width: {
     type: String,
     default: undefined,
