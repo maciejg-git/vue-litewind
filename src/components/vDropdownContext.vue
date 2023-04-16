@@ -34,7 +34,7 @@ import useStyles from "./composition/use-styles";
 import useClickOutside from "./composition/use-click-outside";
 import {
   sharedProps,
-  sharedPopperProps,
+  sharedFloatingProps,
   sharedStyleProps,
 } from "../shared-props";
 import { defaultProps } from "../defaultProps";
@@ -47,7 +47,7 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-  ...sharedPopperProps("dropdown"),
+  ...sharedFloatingProps("dropdown"),
   autoCloseMenu: {
     type: Boolean,
     default: defaultProps("dropdown", "autoCloseMenu", false),

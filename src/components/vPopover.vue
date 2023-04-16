@@ -48,7 +48,7 @@ import useTrigger from "./composition/use-trigger-events";
 import useFloating from "./composition/use-floating";
 import {
   sharedProps,
-  sharedPopperProps,
+  sharedFloatingProps,
   sharedStyleProps,
 } from "../shared-props";
 import { defaultProps } from "../defaultProps";
@@ -57,7 +57,7 @@ import { registerListener, removeListener } from "../trigger";
 const props = defineProps({
   ...sharedProps(),
   ...sharedStyleProps("popover"),
-  ...sharedPopperProps("popover"),
+  ...sharedFloatingProps("popover"),
   trigger: {
     type: String,
     default: "click",

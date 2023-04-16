@@ -51,7 +51,7 @@ import useTrigger from "./composition/use-trigger-events";
 import useFloating from "./composition/use-floating";
 import {
   sharedProps,
-  sharedPopperProps,
+  sharedFloatingProps,
   sharedStyleProps,
 } from "../shared-props";
 import { defaultProps } from "../defaultProps";
@@ -64,7 +64,7 @@ const props = defineProps({
     type: Boolean,
     default: undefined,
   },
-  ...sharedPopperProps("dropdown"),
+  ...sharedFloatingProps("dropdown"),
   autoCloseMenu: {
     type: Boolean,
     default: defaultProps("dropdown", "autoCloseMenu", false),

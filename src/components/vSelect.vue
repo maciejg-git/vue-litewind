@@ -3,7 +3,6 @@
     v-model="localText"
     :external-model="localModel"
     ref="reference"
-    :icon="icon"
     :use-loader="useLoader"
     v-bind="{ ...$attrs, ...input }"
     :custom-clearable="clearable"
@@ -138,7 +137,7 @@ import vChevron from "./vChevron.vue";
 import { default as vDetectScrollBottom } from "../directives/detect-scroll-bottom";
 import {
   sharedProps,
-  sharedPopperProps,
+  sharedFloatingProps,
   sharedStyleProps,
   sharedFormProps,
 } from "../shared-props";
@@ -156,7 +155,7 @@ let props = defineProps({
     type: Boolean,
     default: defaultProps("select", "useLoader", true),
   },
-  ...sharedFormProps("select", null, { icon: true, clearable: true }),
+  ...sharedFormProps("select", null, { icon: false, clearable: true }),
   // v-select props
   items: {
     type: Array,
@@ -222,7 +221,7 @@ let props = defineProps({
     type: String,
     default: defaultProps("select", "styleItem", ""),
   },
-  ...sharedPopperProps("select"),
+  ...sharedFloatingProps("select"),
 });
 
 const emit = defineEmits([

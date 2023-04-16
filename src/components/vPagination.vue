@@ -94,16 +94,16 @@ const emit = defineEmits(["update:modelValue"]);
 let { classes, states } = useStyles("pagination", props, {
   paginationBar: {
     name: "pagination-bar",
-    fixed: "relative z-0 flex flex-row w-min",
+    fixed: "relative z-0 flex w-auto",
   },
   page: {
     fixed:
-      "z-10 cursor-pointer flex justify-center items-center transition-all",
+      "z-10 cursor-pointer flex justify-center items-center transition-all flex-none",
     states: ["active"],
   },
   dots: {
     fixed:
-      "z-10 cursor-pointer flex justify-center items-center transition-all",
+      "z-10 cursor-pointer flex justify-center items-center transition-all flex-none",
   },
   next: {
     fixed: "flex flex-col justify-center items-center",
