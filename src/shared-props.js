@@ -9,7 +9,7 @@ const sharedProps = () => {
 
 // popper props
 
-const sharedPopperProps = (component) => {
+const sharedFloatingProps = (component) => {
   return {
     placement: {
       type: String,
@@ -55,19 +55,19 @@ const sharedStyleProps = (component) => {
 const sharedValidationProps = (component, options) => {
   options = options || {};
 
-  let props = {}
+  let props = {};
 
   if (options.validateOn) {
     props.validateOn = {
       type: String,
       default: options.validateOn || "blur",
-    }
+    };
   }
   if (options.validateMode) {
     props.validateMode = {
       type: String,
       default: options.validateMode || "silent",
-    }
+    };
   }
 
   return {
@@ -75,6 +75,10 @@ const sharedValidationProps = (component, options) => {
     rules: {
       type: Object,
       default: [],
+    },
+    validationState: {
+      type: String,
+      default: null,
     },
   };
 };
@@ -101,13 +105,12 @@ const sharedFormProps = (component, d, options) => {
 
   return {
     ...props,
-    validationState: { type: String, default: d.state || null },
   };
 };
 
 export {
   sharedProps,
-  sharedPopperProps,
+  sharedFloatingProps,
   sharedStyleProps,
   sharedValidationProps,
   sharedFormProps,
