@@ -66,7 +66,7 @@ const props = defineProps({
     type: String,
     default: defaultProps("radio", "styleLabel", ""),
   },
-  ...sharedFormProps("radio", null),
+  ...sharedFormProps("radio"),
 });
 
 const emit = defineEmits([

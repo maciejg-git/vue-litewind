@@ -201,7 +201,7 @@ const props = defineProps({
     type: String,
     default: defaultProps("input", "styleLabel", ""),
   },
-  ...sharedFormProps("input", null, { icon: true, clearable: true }),
+  ...sharedFormProps("input", { icon: true, clearable: true }),
   customClearable: {
     type: Boolean,
     default: false,

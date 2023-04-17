@@ -18,7 +18,7 @@ const props = defineProps({
   ...sharedValidationProps("input", {
     validateMode: "silent",
   }),
-  ...sharedFormProps("checkbox-group", null),
+  ...sharedFormProps("checkbox-group"),
 });
 
 const emit = defineEmits([

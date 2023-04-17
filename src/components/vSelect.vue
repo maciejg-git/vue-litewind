@@ -155,7 +155,7 @@ let props = defineProps({
     type: Boolean,
     default: defaultProps("select", "useLoader", true),
   },
-  ...sharedFormProps("select", null, { icon: false, clearable: true }),
+  ...sharedFormProps("select", { icon: false, clearable: true }),
   // v-select props
   items: {
     type: Array,
@@ -261,8 +261,6 @@ const { isFloatingVisible, reference, floating, showFloating, hideFloating } =
   });
 
 let isFocused = ref(false);
-
-let selectedItem = ref(null);
 
 let selectedItems = ref([]);
 

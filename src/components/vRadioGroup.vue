@@ -18,7 +18,7 @@ const props = defineProps({
   ...sharedValidationProps("input", {
     validateMode: "silent",
   }),
-  ...sharedFormProps("radio-group", null),
+  ...sharedFormProps("radio-group"),
 });
 
 const emit = defineEmits([

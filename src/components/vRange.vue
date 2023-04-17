@@ -28,7 +28,7 @@ export default {
       type: [String, Array],
       default: "",
     },
-    ...sharedFormProps("range", null),
+    ...sharedFormProps("range"),
   },
   setup(props, { attrs, emit }) {
     let { classes, states } = useStyles("range", props, {
