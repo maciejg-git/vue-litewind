@@ -4,7 +4,6 @@
       <v-select
         v-model="example.model"
         :items="example.items"
-        :inline="false"
         style-menu="shadow"
       ></v-select>
     </div>

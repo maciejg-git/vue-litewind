@@ -7,7 +7,6 @@
         :is-loading="example.isLoading"
         item-text="full_name"
         item-value="id"
-        :inline="false"
         style-menu="shadow"
         no-filter
         @input:value="query($event)"

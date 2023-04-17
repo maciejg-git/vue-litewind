@@ -44,6 +44,7 @@
       <v-select
         id="style"
         v-model="example.base"
+        inline
         :items="['tabs', 'material-tabs', 'rounded-tabs']"
       ></v-select>
     </div>
@@ -81,6 +82,7 @@
           <v-select
             id="transition"
             v-model="example.transition"
+            inline
             :items="[
               'fade',
               'fade-side-slide',

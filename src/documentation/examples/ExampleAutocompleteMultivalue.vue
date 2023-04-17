@@ -7,7 +7,6 @@
         multiple
         :items="example.items"
         :is-loading="example.isLoading"
-        :inline="false"
         style-menu="shadow"
         @input:value="query($event)"
       >

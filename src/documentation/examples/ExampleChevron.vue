@@ -21,6 +21,7 @@
           <label for="initial">initial:</label>
           <v-select
             id="initial"
+            inline
             v-model="example.initial"
             :items="['down', 'left', 'right', 'up']"
           ></v-select>

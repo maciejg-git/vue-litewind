@@ -73,6 +73,7 @@
       <v-select
         v-model.number="example.itemsPerPage"
         id="items-per-page"
+        inline
         :items="[0, 5, 10, 20, 50]"
       ></v-select>
     </div>
@@ -121,6 +122,7 @@
           <v-select
             id="busy"
             v-model="example.state"
+            inline
             :items="[
               {
                 text: 'empty string (normal state)',
@@ -135,6 +137,7 @@
           <v-select
             id="selection-mode"
             v-model="example.selectionMode"
+            inline
             :items="[
               'single',
               'multiple',

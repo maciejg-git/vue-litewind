@@ -111,6 +111,7 @@
               <v-select
                 id="transition"
                 v-model="example.transition"
+                inline
                 :items="[
                   'fade',
                   'slide',

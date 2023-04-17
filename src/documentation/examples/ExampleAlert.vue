@@ -65,6 +65,7 @@
       <v-select
         id="variant"
         v-model="example.variant"
+        inline
         :items="['info', 'danger', 'warn', 'success', 'valid', 'invalid']"
       ></v-select>
     </div>

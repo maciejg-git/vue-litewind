@@ -8,7 +8,6 @@
         item-value="pageid"
         :items="example.items"
         :state="example.state"
-        :inline="false"
         :is-loading="example.isLoading"
         style-menu="shadow"
         @input:value="debouncedQuery($event)"

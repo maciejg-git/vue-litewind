@@ -4,7 +4,6 @@
       <v-select
         v-model="example.model"
         :items="example.items"
-        :inline="false"
         multiple
         :max-multiple="2"
         style-menu="shadow"

@@ -35,6 +35,7 @@
           <v-select
             id="type"
             v-model="example.type"
+            inline
             :items="[
               'text',
               'password',

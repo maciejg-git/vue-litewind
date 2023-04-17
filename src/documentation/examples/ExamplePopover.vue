@@ -113,6 +113,7 @@
           <v-select
             id="placement"
             v-model="example.placement"
+            inline
             :items="[
               'top',
               'top-start',
@@ -134,6 +135,7 @@
           <v-select
             id="trigger"
             v-model="example.trigger"
+            inline
             :items="['click', 'focus', 'hover']"
           ></v-select>
         </div>
@@ -151,6 +153,7 @@
           <v-select
             id="transition"
             v-model="example.transition"
+            inline
             :items="[
               {
                 text: 'empty string',
