@@ -85,27 +85,25 @@ const sharedValidationProps = (component, options) => {
 
 // form props
 
-const sharedFormProps = (component, d, options) => {
-  d = d || {};
+const sharedFormProps = (component, options) => {
   options = options || {};
 
   let props = {};
+
   if (options.icon === true) {
     props.icon = {
       type: [String, Object],
-      default: d.icon || "",
+      default: "",
     };
   }
   if (options.clearable === true) {
     props.clearable = {
       type: Boolean,
-      default: defaultProps(component, "clearable", d.clearable),
+      default: defaultProps(component, "clearable", false),
     };
   }
 
-  return {
-    ...props,
-  };
+  return props;
 };
 
 export {

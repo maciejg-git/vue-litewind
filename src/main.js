@@ -70,7 +70,6 @@ app.use(componentPlugin, {
   directives,
   componentProps: {
     select: {
-      inline: true,
       offsetY: 5,
       card: {
         base: 'flat-card',
