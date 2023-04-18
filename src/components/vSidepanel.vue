@@ -33,13 +33,17 @@
     </aside>
   </transition>
 
-  <v-backdrop v-if="modal" :isOpen="isOpen" @click="close()"/>
+  <v-backdrop
+    v-if="modal"
+    :isOpen="isOpen"
+    @click="close()"
+  />
 </template>
 
 <script>
 export default {
   inheritAttrs: false,
-}
+};
 </script>
 
 <script setup>
@@ -53,7 +57,7 @@ import { registerListener, removeListener } from "../trigger";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("sidepanel"),
+  ...sharedStyleProps("sidepanel", ["Sidepanel"]),
   modelValue: {
     type: Boolean,
     default: false,
@@ -85,10 +89,6 @@ const props = defineProps({
   transition: {
     type: String,
     default: defaultProps("sidepanel", "transition", "fade-slide"),
-  },
-  styleSidepanel: {
-    type: String,
-    default: defaultProps("sidepanel", "styleSidepanel", ""),
   },
 });
 
@@ -158,7 +158,7 @@ if (id) {
 
 let handleClose = () => {
   close();
-}
+};
 </script>
 
 <style scoped lang="postcss">

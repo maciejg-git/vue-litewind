@@ -6,23 +6,25 @@
       role="alert"
     >
       <div class="flex items-center">
-        <div class="self-start">
+        <div
+          v-if="icon"
+          class="self-start"
+        >
           <v-icon
-            v-if="icon"
             :name="icons[icon]"
             :class="classes.icon.value"
           />
         </div>
-      <!-- @slot icon -->
+        <!-- @slot icon -->
         <slot name="icon"></slot>
-      <!-- @slot default -->
+        <!-- @slot default -->
         <slot name="default"></slot>
         <v-close-button
           v-if="!isStatic() && dismissable"
-          v-bind="closeButton"
           @click="handleCloseButtonClick"
           style-close-button="small"
           class="ml-auto"
+          v-bind="closeButton"
         />
       </div>
     </div>
@@ -42,7 +44,7 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("alert"),
+  ...sharedStyleProps("alert", ["Alert", "Icon"]),
   modelValue: {
     type: Boolean,
     default: undefined,
@@ -62,14 +64,6 @@ const props = defineProps({
   closeButton: {
     type: Object,
     default: defaultProps("alert", "closeButton", {}),
-  },
-  styleAlert: {
-    type: [String, Array],
-    default: defaultProps("alert", "styleAlert", ""),
-  },
-  styleIcon: {
-    type: [String, Array],
-    default: defaultProps("alert", "styleIcon", ""),
   },
 });
 

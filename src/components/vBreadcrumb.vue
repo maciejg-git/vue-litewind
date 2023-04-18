@@ -53,7 +53,7 @@ import { defaultProps } from "../defaultProps";
 
 let props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("breadcrumb"),
+  ...sharedStyleProps("breadcrumb", ["Breadcrumb", "Separator", "Active"]),
   path: {
     type: Array,
     default: [],
@@ -61,18 +61,6 @@ let props = defineProps({
   separator: {
     type: String,
     default: defaultProps("breadcrumb", "separator", "/"),
-  },
-  styleBreadcrumb: {
-    type: String,
-    default: defaultProps("breadcrumb", "styleBreadcrumb", ""),
-  },
-  styleSeparator: {
-    type: String,
-    default: defaultProps("breadcrumb", "styleSeparator", ""),
-  },
-  styleActive: {
-    type: String,
-    default: defaultProps("breadcrumb", "styleActive", ""),
   },
 });
 

@@ -76,7 +76,7 @@
               @mouseenter="handleMouseOverDay(d)"
               :data-testid="isToday(d.date) ? 'today' : null"
             >
-            <!-- @slot day -->
+              <!-- @slot day -->
               <slot
                 name="day"
                 v-bind="d"
@@ -136,7 +136,15 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("datepicker"),
+  ...sharedStyleProps("datepicker", [
+    "Datepicker",
+    "WeekdayBar",
+    "Weekday",
+    "Button",
+    "Day",
+    "AdjacentMonthDay",
+    "Footer",
+  ]),
   modelValue: {
     type: [String, Array],
     default: undefined,
@@ -206,34 +214,6 @@ const props = defineProps({
     type: String,
     default: "fade",
   },
-  styleDatepicker: {
-    type: String,
-    default: "",
-  },
-  styleWeekdayBar: {
-    type: String,
-    default: "",
-  },
-  styleWeekday: {
-    type: String,
-    default: "",
-  },
-  styleButton: {
-    type: String,
-    default: "",
-  },
-  styleDay: {
-    type: String,
-    default: "",
-  },
-  styleAdjacentMonthDay: {
-    type: String,
-    default: "",
-  },
-  styleFooter: {
-    type: String,
-    default: "",
-  },
 });
 
 const emit = defineEmits([
@@ -270,11 +250,12 @@ let getDayClass = (date) => {
   return [
     classes.day.value,
     props.rangeHoverHighlight &&
-    mouseOverRange.value &&
-    isRangeSelected(date) && states.day.value["partially-selected"],
+      mouseOverRange.value &&
+      isRangeSelected(date) &&
+      states.day.value["partially-selected"],
     isSelectedDay(date) && states.day.value.selected,
     isToday(date) && variants.day.value.today,
-  ]
+  ];
 };
 
 let transition = ref("");
@@ -469,7 +450,7 @@ let isSelectedDay = (date) => {
     return single.value && single.value.getTime() == date.getTime();
   } else {
     if (rangeState.value == 1) {
-      return
+      return;
     }
     return range.value[0] <= date && date <= range.value[1];
   }

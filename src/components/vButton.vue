@@ -18,7 +18,7 @@ import { sharedProps, sharedStyleProps } from "../shared-props";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("button"),
+  ...sharedStyleProps("button", ["Button"]),
   disabled: {
     type: Boolean,
     default: false,
@@ -30,10 +30,6 @@ const props = defineProps({
   block: {
     type: Boolean,
     default: false,
-  },
-  styleButton: {
-    type: String,
-    default: defaultProps("button", "styleButton", ""),
   },
 });
 

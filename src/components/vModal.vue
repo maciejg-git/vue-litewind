@@ -21,7 +21,7 @@
             ref="trapRef"
             @click.stop
           >
-          <!-- @slot modal -->
+            <!-- @slot modal -->
             <slot
               name="modal"
               :close="close"
@@ -30,7 +30,7 @@
                 v-if="!noHeader"
                 :class="classes.header.value"
               >
-              <!-- @slot header -->
+                <!-- @slot header -->
                 <slot name="header">
                   <span>
                     {{ title }}
@@ -50,7 +50,7 @@
                 v-if="!noFooter"
                 :class="classes.footer.value"
               >
-              <!-- @slot footer -->
+                <!-- @slot footer -->
                 <slot name="footer">
                   <v-button
                     v-if="!noSecondaryButton"
@@ -91,7 +91,7 @@ export default {
 <script setup>
 import { ref, computed, watch, onBeforeUnmount, useAttrs } from "vue";
 import useStyles from "./composition/use-styles";
-import useFocusTrap from "./composition/use-focus-trap"
+import useFocusTrap from "./composition/use-focus-trap";
 import vButton from "./vButton.vue";
 import vCloseButton from "./vCloseButton.vue";
 import vBackdrop from "./vBackdrop.vue";
@@ -102,7 +102,7 @@ import { registerListener, removeListener } from "../trigger";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("modal"),
+  ...sharedStyleProps("modal", ["Modal", "Header", "Footer", "Content"]),
   modelValue: {
     type: Boolean,
     default: undefined,
@@ -183,22 +183,6 @@ const props = defineProps({
     type: String,
     default: defaultProps("modal", "transition", "fade-slide"),
   },
-  styleModal: {
-    type: String,
-    default: defaultProps("modal", "styleModal", ""),
-  },
-  styleHeader: {
-    type: String,
-    default: defaultProps("modal", "styleHeader", ""),
-  },
-  styleFooter: {
-    type: String,
-    default: defaultProps("modal", "styleFooter", ""),
-  },
-  styleContent: {
-    type: String,
-    default: defaultProps("modal", "styleContent", ""),
-  },
 });
 
 const emit = defineEmits([
@@ -236,7 +220,7 @@ let containerClasses = computed(() => {
       "items-start": props.position === "top",
       "items-center": props.position === "center",
       "items-end": props.position === "bottom",
-    }
+    },
   ];
 });
 
@@ -307,8 +291,8 @@ if (id) {
 
 // focus trap
 
-let trapRef = ref(null)
-useFocusTrap(trapRef)
+let trapRef = ref(null);
+useFocusTrap(trapRef);
 
 // handle template events
 

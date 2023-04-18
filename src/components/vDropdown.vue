@@ -59,12 +59,12 @@ import { registerListener, removeListener } from "../trigger";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("dropdown"),
+  ...sharedStyleProps("dropdown", ["Item", "Header"]),
+  ...sharedFloatingProps("dropdown"),
   modelValue: {
     type: Boolean,
     default: undefined,
   },
-  ...sharedFloatingProps("dropdown"),
   autoCloseMenu: {
     type: Boolean,
     default: defaultProps("dropdown", "autoCloseMenu", false),
@@ -76,14 +76,6 @@ const props = defineProps({
   transition: {
     type: String,
     default: defaultProps("dropdown", "transition", "fade-scale"),
-  },
-  styleItem: {
-    type: String,
-    default: defaultProps("dropdown", "styleItem", ""),
-  },
-  styleHeader: {
-    type: String,
-    default: defaultProps("dropdown", "styleHeader", ""),
   },
 });
 

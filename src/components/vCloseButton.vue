@@ -22,19 +22,10 @@
 <script setup>
 import useStyles from "./composition/use-styles";
 import { sharedProps, sharedStyleProps } from "../shared-props";
-import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("close-button"),
-  styleWrapper: {
-    type: String,
-    default: defaultProps("closeButton", "styleWrapper", ""),
-  },
-  styleCloseButton: {
-    type: String,
-    default: defaultProps("closeButton", "styleCloseButton", ""),
-  },
+  ...sharedStyleProps("close-button", ["Wrapper", "CloseButton"]),
 });
 
 let { classes } = useStyles("close-button", props, {

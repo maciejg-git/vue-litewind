@@ -50,7 +50,13 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("pagination"),
+  ...sharedStyleProps("pagination", [
+    "PaginationBar",
+    "Page",
+    "Dots",
+    "Next",
+    "Prev",
+  ]),
   modelValue: {
     type: Number,
     default: undefined,
@@ -66,26 +72,6 @@ const props = defineProps({
   maxPages: {
     type: Number,
     default: undefined,
-  },
-  stylePaginationBar: {
-    type: String,
-    default: defaultProps("pagination", "stylePaginationBar", ""),
-  },
-  stylePage: {
-    type: String,
-    default: defaultProps("pagination", "stylePage", ""),
-  },
-  styleDots: {
-    type: String,
-    default: defaultProps("pagination", "styleDots", ""),
-  },
-  styleNext: {
-    type: String,
-    default: defaultProps("pagination", "styleNext", ""),
-  },
-  stylePrev: {
-    type: String,
-    default: defaultProps("pagination", "stylePrev", ""),
   },
 });
 
@@ -133,21 +119,19 @@ let getPrevButtonClass = () => {
 let getNextButtonClass = () => {
   return [
     classes.next.value,
-    isOnLastPage()
-      ? "pointer-events-none opacity-50"
-      : "",
+    isOnLastPage() ? "pointer-events-none opacity-50" : "",
   ];
 };
 
 let currentPage = ref(1);
 
 let isOnFirstPage = () => {
-  return currentPage.value === 1
-}
+  return currentPage.value === 1;
+};
 
 let isOnLastPage = () => {
-  return currentPage.value === pagesCount.value
-}
+  return currentPage.value === pagesCount.value;
+};
 
 // calculate total number of pages
 let pagesCount = computed(() => {
@@ -185,12 +169,12 @@ let pages = computed(() => {
   // add first, last and dots pages if needed
   if (maxPages >= 5) {
     if (p[0] != 1) {
-      p[0] = 1
-      p[1] = "..."
+      p[0] = 1;
+      p[1] = "...";
     }
     if (p[p.length - 1] != pagesCount.value) {
-      p[p.length - 1] = pagesCount.value
-      p[p.length - 2] = "..."
+      p[p.length - 1] = pagesCount.value;
+      p[p.length - 2] = "...";
     }
   }
   return p;

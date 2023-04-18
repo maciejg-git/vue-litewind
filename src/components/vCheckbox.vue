@@ -46,28 +46,20 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("checkbox"),
-  modelValue: {
-    type: [Array, Boolean, Object],
-    default: undefined,
-  },
+  ...sharedStyleProps("checkbox", ["Checkbox", "Label"]),
+  ...sharedFormProps("checkbox"),
   ...sharedValidationProps("checkbox", {
     validateOn: "blur",
     validateMode: "silent",
   }),
+  modelValue: {
+    type: [Array, Boolean, Object],
+    default: undefined,
+  },
   label: {
     type: String,
     default: "",
   },
-  styleCheckbox: {
-    type: [String, Array],
-    default: defaultProps("checkbox", "styleCheckbox", ""),
-  },
-  styleLabel: {
-    type: [String, Array],
-    default: defaultProps("checkbox", "styleInput", ""),
-  },
-  ...sharedFormProps("checkbox"),
 });
 
 const emit = defineEmits([

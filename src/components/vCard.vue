@@ -15,14 +15,10 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("card"),
+  ...sharedStyleProps("card", ["Card"]),
   width: {
     type: String,
     default: undefined,
-  },
-  styleCard: {
-    type: String,
-    default: defaultProps("card", "styleCard", ""),
   },
 });
 

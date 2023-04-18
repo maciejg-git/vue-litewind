@@ -20,7 +20,7 @@ import { sharedProps, sharedStyleProps } from "../shared-props";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("badge"),
+  ...sharedStyleProps("badge", ["Badge"]),
   position: {
     type: String,
     default: "",
@@ -30,10 +30,6 @@ const props = defineProps({
     default: undefined,
   },
   updateAnimation: {
-    type: String,
-    default: "",
-  },
-  styleBadge: {
     type: String,
     default: "",
   },

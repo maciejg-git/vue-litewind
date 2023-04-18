@@ -132,7 +132,12 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("input"),
+  ...sharedStyleProps("input", ["Input", "Icon", "CloseButtonWrapper", "Label"]),
+  ...sharedFormProps("input", { icon: true, clearable: true }),
+  ...sharedValidationProps("input", {
+    validateOn: "blur",
+    validateMode: "silent",
+  }),
   modelValue: {
     type: [String, Number, Array, Boolean, Number],
     default: "",
@@ -141,10 +146,6 @@ const props = defineProps({
     type: [String, Number, Array, Boolean, Number],
     default: undefined,
   },
-  ...sharedValidationProps("input", {
-    validateOn: "blur",
-    validateMode: "silent",
-  }),
   inline: {
     type: Boolean,
     default: defaultProps("input", "inline", false),
@@ -185,23 +186,6 @@ const props = defineProps({
     type: Object,
     default: defaultProps("input", "formText", { class: "absolute" }),
   },
-  styleInput: {
-    type: String,
-    default: defaultProps("input", "styleInput", ""),
-  },
-  styleIcon: {
-    type: String,
-    default: defaultProps("input", "styleIcon", ""),
-  },
-  styleCloseButtonWrapper: {
-    type: String,
-    default: defaultProps("input", "styleLabel", ""),
-  },
-  styleLabel: {
-    type: String,
-    default: defaultProps("input", "styleLabel", ""),
-  },
-  ...sharedFormProps("input", { icon: true, clearable: true }),
   customClearable: {
     type: Boolean,
     default: false,

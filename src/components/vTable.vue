@@ -149,7 +149,14 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("table"),
+  ...sharedStyleProps("table", [
+    "Table",
+    "HeaderRow",
+    "HeaderCell",
+    "Row",
+    "Cell",
+    "Caption",
+  ]),
   definition: {
     type: Array,
     default: undefined,
@@ -207,30 +214,6 @@ const props = defineProps({
   state: {
     type: String,
     default: "",
-  },
-  styleTable: {
-    type: String,
-    default: defaultProps("table", "styleTable", ""),
-  },
-  styleHeaderRow: {
-    type: String,
-    default: defaultProps("table", "styleHeaderRow", ""),
-  },
-  styleHeaderCell: {
-    type: String,
-    default: defaultProps("table", "styleHeaderCell", ""),
-  },
-  styleRow: {
-    type: String,
-    default: defaultProps("table", "styleRow", ""),
-  },
-  styleCell: {
-    type: String,
-    default: defaultProps("table", "styleCell", ""),
-  },
-  styleCaption: {
-    type: String,
-    default: defaultProps("table", "styleCaption", ""),
   },
 });
 

@@ -40,7 +40,7 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("progress"),
+  ...sharedStyleProps("progress", ["Progress", "ProgressBar", "Label"]),
   value: {
     type: [Number, String],
     default: 0,
@@ -70,18 +70,6 @@ const props = defineProps({
   transition: {
     type: Boolean,
     default: true,
-  },
-  styleProgress: {
-    type: [String, Array],
-    default: defaultProps("progress", "styleProgress", ""),
-  },
-  styleProgressBar: {
-    type: [String, Array],
-    default: defaultProps("progress", "styleProgressBar", ""),
-  },
-  styleLabel: {
-    type: [String, Array],
-    default: defaultProps("progress", "styleLabel", ""),
   },
 });
 

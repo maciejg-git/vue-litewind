@@ -15,5 +15,3 @@ provide("form", form);
 
 defineExpose({ validate: form.validate, reset: form.reset });
 </script>
-
-<style scoped lang="postcss"></style>

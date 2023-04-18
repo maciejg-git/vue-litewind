@@ -12,7 +12,7 @@ import { sharedProps, sharedStyleProps } from "../shared-props";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("navbar"),
+  ...sharedStyleProps("navbar", ["Navbar"]),
   fixed: {
     type: Boolean,
     default: false,
@@ -24,10 +24,6 @@ const props = defineProps({
   bottom: {
     type: Boolean,
     default: false,
-  },
-  styleNavbar: {
-    type: String,
-    default: "",
   },
 });
 

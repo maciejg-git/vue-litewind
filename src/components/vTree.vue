@@ -40,7 +40,7 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("tree"),
+  ...sharedStyleProps("tree", ["Folder", "Item", "Icon"]),
   items: {
     type: Object,
     default: [],
@@ -124,18 +124,6 @@ const props = defineProps({
   transition: {
     type: String,
     default: defaultProps("tree", "transition", "fade"),
-  },
-  styleFolder: {
-    type: String,
-    default: defaultProps("tree", "styleFolder", ""),
-  },
-  styleItem: {
-    type: String,
-    default: defaultProps("tree", "styleItem", ""),
-  },
-  styleIcon: {
-    type: String,
-    default: defaultProps("tree", "styleIcon", ""),
   },
 });
 

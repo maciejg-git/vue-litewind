@@ -36,7 +36,7 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("tabs"),
+  ...sharedStyleProps("tabs", ["TabBar", "Tab"]),
   fill: {
     type: Boolean,
     default: false,
@@ -52,14 +52,6 @@ const props = defineProps({
   transition: {
     type: String,
     default: defaultProps("tabs", "transition", "fade"),
-  },
-  styleTabBar: {
-    type: [String, Array],
-    default: defaultProps("tabs", "styleTabBar", ""),
-  },
-  styleTab: {
-    type: [String, Array],
-    default: defaultProps("tabs", "styleTab", ""),
   },
 });
 

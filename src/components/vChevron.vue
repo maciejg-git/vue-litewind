@@ -22,7 +22,7 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("chevron"),
+  ...sharedStyleProps("chevron", ["Chevron"]),
   initial: {
     type: String,
     default: "down",
@@ -46,10 +46,6 @@ const props = defineProps({
   icon: {
     type: String,
     default: "",
-  },
-  styleChevron: {
-    type: String,
-    default: defaultProps("chevron", "styleChevron", ""),
   },
 });
 

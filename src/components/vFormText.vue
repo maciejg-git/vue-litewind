@@ -30,7 +30,7 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("form-text"),
+  ...sharedStyleProps("form-text", ["FormText"]),
   state: {
     type: String,
     default: "",
@@ -46,10 +46,6 @@ const props = defineProps({
   transition: {
     type: String,
     default: defaultProps("formtext", "transition", "fade-scale"),
-  },
-  styleFormText: {
-    type: String,
-    default: defaultProps("formtext", "styleFormText", ""),
   },
 });
 

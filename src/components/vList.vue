@@ -16,7 +16,7 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("list"),
+  ...sharedStyleProps("list", ["List", "Item"]),
   width: {
     type: String,
     default: undefined,
@@ -24,14 +24,6 @@ const props = defineProps({
   tag: {
     type: String,
     default: defaultProps("list", "tag", "div"),
-  },
-  styleList: {
-    type: String,
-    default: defaultProps("list", "styleList", ""),
-  },
-  styleItem: {
-    type: String,
-    default: defaultProps("list", "styleItem", ""),
   },
 });
 

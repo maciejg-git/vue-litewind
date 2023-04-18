@@ -40,7 +40,7 @@ import { sharedProps, sharedStyleProps } from "../shared-props";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("spinner"),
+  ...sharedStyleProps("spinner", ["Spinner"]),
   type: {
     type: String,
     default: "border",
@@ -48,10 +48,6 @@ const props = defineProps({
   icon: {
     type: [String, Object],
     default: undefined,
-  },
-  styleSpinner: {
-    type: String,
-    default: "",
   },
 });
 

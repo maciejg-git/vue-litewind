@@ -145,7 +145,9 @@ import { defaultProps } from "../defaultProps";
 
 let props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("select"),
+  ...sharedStyleProps("select", ["Item"]),
+  ...sharedFormProps("select", { icon: false, clearable: true }),
+  ...sharedFloatingProps("select", { offsetY: 5 }),
   modelValue: {
     type: [String, Object, Boolean, Number],
     default: undefined,
@@ -155,7 +157,6 @@ let props = defineProps({
     type: Boolean,
     default: defaultProps("select", "useLoader", true),
   },
-  ...sharedFormProps("select", { icon: false, clearable: true }),
   // v-select props
   items: {
     type: Array,
@@ -217,11 +218,6 @@ let props = defineProps({
     type: String,
     default: defaultProps("select", "transition", "fade-scale"),
   },
-  styleItem: {
-    type: String,
-    default: defaultProps("select", "styleItem", ""),
-  },
-  ...sharedFloatingProps("select"),
 });
 
 const emit = defineEmits([

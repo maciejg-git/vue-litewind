@@ -17,14 +17,10 @@ import { sharedProps, sharedStyleProps } from "../shared-props";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("chip"),
+  ...sharedStyleProps("chip", ["Chip"]),
   closeButton: {
     type: Object,
     default: { base: "round-close-button", styleCloseButton: "small" },
-  },
-  styleChip: {
-    type: String,
-    default: "",
   },
 });
 

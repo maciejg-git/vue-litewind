@@ -56,7 +56,7 @@ import { registerListener, removeListener } from "../trigger";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("popover"),
+  ...sharedStyleProps("popover", ["Header"]),
   ...sharedFloatingProps("popover"),
   trigger: {
     type: String,
@@ -69,10 +69,6 @@ const props = defineProps({
   transition: {
     type: String,
     default: defaultProps("popover", "transition", "fade"),
-  },
-  styleHeader: {
-    type: String,
-    default: defaultProps("popover", "stylePopover", ""),
   },
 });
 

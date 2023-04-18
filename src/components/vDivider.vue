@@ -8,11 +8,7 @@ import { sharedProps, sharedStyleProps } from "../shared-props";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("divider"),
-  styleDivider: {
-    type: [String, Array],
-    default: "",
-  },
+  ...sharedStyleProps("divider", ["Divider"]),
 });
 
 let { classes } = useStyles("divider", props, {

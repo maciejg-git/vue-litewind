@@ -11,14 +11,14 @@ import useValidation from "./composition/use-validation";
 import { sharedValidationProps, sharedFormProps } from "../shared-props";
 
 const props = defineProps({
+  ...sharedFormProps("radio-group"),
+  ...sharedValidationProps("input", {
+    validateMode: "silent",
+  }),
   modelValue: {
     type: [String, Boolean],
     default: undefined,
   },
-  ...sharedValidationProps("input", {
-    validateMode: "silent",
-  }),
-  ...sharedFormProps("radio-group"),
 });
 
 const emit = defineEmits([

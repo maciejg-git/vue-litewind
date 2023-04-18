@@ -73,7 +73,12 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("textarea"),
+  ...sharedStyleProps("textarea", ["Textarea", "Label"]),
+  ...sharedFormProps("textarea"),
+  ...sharedValidationProps("textarea", {
+    validateOn: "blur",
+    validateMode: "silent",
+  }),
   modelValue: {
     type: String,
     default: undefined,
@@ -82,10 +87,6 @@ const props = defineProps({
     type: Boolean,
     default: defaultProps("textarea", "inline", false),
   },
-  ...sharedValidationProps("textarea", {
-    validateOn: "blur",
-    validateMode: "silent",
-  }),
   singleLineMessage: {
     type: Boolean,
     default: defaultProps("textarea", "singleLineMessage", false),
@@ -102,15 +103,6 @@ const props = defineProps({
     type: Object,
     default: defaultProps("textarea", "formText", { class: "absolute" }),
   },
-  styleTextarea: {
-    type: [String, Array],
-    default: defaultProps("textarea", "styleTextarea", ""),
-  },
-  styleLabel: {
-    type: [String, Array],
-    default: defaultProps("textarea", "styleLabel", ""),
-  },
-  ...sharedFormProps("textarea"),
 });
 
 const emit = defineEmits([

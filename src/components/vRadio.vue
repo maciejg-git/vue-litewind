@@ -46,27 +46,19 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("radio"),
+  ...sharedStyleProps("radio", ["Radio", "Label"]),
+  ...sharedFormProps("radio"),
+  ...sharedValidationProps("radio", {
+    validateMode: "silent",
+  }),
   modelValue: {
     type: [Array, Boolean, String],
     default: undefined,
   },
-  ...sharedValidationProps("radio", {
-    validateMode: "silent",
-  }),
   label: {
     type: String,
     default: "",
   },
-  styleRadio: {
-    type: String,
-    default: defaultProps("radio", "styleRadio", ""),
-  },
-  styleLabel: {
-    type: String,
-    default: defaultProps("radio", "styleLabel", ""),
-  },
-  ...sharedFormProps("radio"),
 });
 
 const emit = defineEmits([

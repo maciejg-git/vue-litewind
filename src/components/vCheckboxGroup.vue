@@ -11,14 +11,14 @@ import useValidation from "./composition/use-validation";
 import { sharedValidationProps, sharedFormProps } from "../shared-props";
 
 const props = defineProps({
+  ...sharedFormProps("checkbox-group"),
+  ...sharedValidationProps("input", {
+    validateMode: "silent",
+  }),
   modelValue: {
     type: [String, Number, Boolean, Array],
     default: undefined,
   },
-  ...sharedValidationProps("input", {
-    validateMode: "silent",
-  }),
-  ...sharedFormProps("checkbox-group"),
 });
 
 const emit = defineEmits([
