@@ -76,16 +76,6 @@
     </div>
   </section>
 
-  <section id="ExampleDropdownTrigger" class="scroll-mt-20">
-    <h4>Example - open by id</h4>
-    <p>
-    You can also control state of the dropdown menu by using <code class="code-text">v-trigger</code> component. The <code class="code-text">for</code> prop of the <code class="code-text">v-trigger</code> should be the same as <code class="code-text">id</code> of the dropdown. The advantage of this method is that <code class="code-text">v-triggers</code> can be put anywhere in application. Read more about v-trigger here.
-    </p>
-    <div class="example">
-      <example name="ExampleDropdownTrigger"></example>
-    </div>
-  </section>
-
   <section>
     <h4>Example - alternative styles</h4>
     <p>
@@ -100,6 +90,16 @@
     <h4>Example - custom content</h4>
     <div class="example">
       <example name="ExampleDropdownCustomContent"></example>
+    </div>
+  </section>
+
+  <section id="ExampleDropdownTrigger" class="scroll-mt-20">
+    <h4>Example - open by id</h4>
+    <p>
+    You can also control state of the dropdown menu by using <code class="code-text">v-trigger</code> component. The <code class="code-text">for</code> prop of the <code class="code-text">v-trigger</code> should be the same as <code class="code-text">id</code> of the dropdown. The advantage of this method is that <code class="code-text">v-triggers</code> can be put anywhere in application. Read more about v-trigger here.
+    </p>
+    <div class="example">
+      <example name="ExampleDropdownTrigger"></example>
     </div>
   </section>
 

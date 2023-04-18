@@ -72,7 +72,7 @@
   <section>
     <h4>Example - autocomplete (multiple with chips)</h4>
     <p>
-    Example of multi value autocomplete that has <code class="code-text">v-chip</code> components as selected values.
+    Example of multi value autocomplete that uses <code class="code-text">v-chip</code> components to display selected values.
     </p>
     <div class="example">
       <example name="ExampleAutocompleteMultivalue"></example>
