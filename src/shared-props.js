@@ -9,7 +9,7 @@ const sharedProps = () => {
 
 // popper props
 
-const sharedFloatingProps = (component) => {
+const sharedFloatingProps = (component, defaults = {}) => {
   return {
     placement: {
       type: String,
@@ -20,15 +20,15 @@ const sharedFloatingProps = (component) => {
     },
     offsetX: {
       type: Number,
-      default: defaultProps(component, "offsetX", 0),
+      default: defaultProps(component, "offsetX", defaults.offsetX ?? 0),
     },
     offsetY: {
       type: Number,
-      default: defaultProps(component, "offsetY", 0),
+      default: defaultProps(component, "offsetY", defaults.offsetY ?? 0),
     },
     flip: {
       type: Boolean,
-      default: defaultProps(component, "flip", true),
+      default: defaultProps(component, "flip", defaults.flip ?? true),
     },
     autoPlacement: {
       type: Boolean,
@@ -39,8 +39,21 @@ const sharedFloatingProps = (component) => {
 
 // style props
 
-const sharedStyleProps = (component) => {
+const sharedStyleProps = (component, elements = []) => {
+  let props = elements.reduce((acc, element) => {
+    let prop = "style" + element
+
+    return {
+      ...acc,
+      [prop]: {
+        type: String,
+        default: defaultProps(component, prop, "")
+      }
+    }
+  }, {})
+
   return {
+    ...props,
     base: {
       type: String,
       default: defaultProps(component, "base", component),

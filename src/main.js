@@ -70,7 +70,6 @@ app.use(componentPlugin, {
   directives,
   componentProps: {
     select: {
-      offsetY: 5,
       card: {
         base: 'flat-card',
         styleCard: 'menu shadow rounded',
