@@ -10,36 +10,36 @@
     &--info {
       @apply
         text-text-800
-        dark:text-text-800
+        dark:text-info-200
         bg-info-400
-        dark:bg-info-400
+        dark:bg-info-500/50
         border-info-400
         dark:border-info-500
     }
     &--danger {
       @apply
         text-text-800
-        dark:text-text-800
+        dark:text-danger-200
         bg-danger-300
-        dark:bg-danger-400
+        dark:bg-danger-500/50
         border-danger-400
         dark:border-danger-500
     }
     &--warn {
       @apply
         text-text-800
-        dark:text-text-800
+        dark:text-warn-200
         bg-warn-300
-        dark:bg-warn-400
+        dark:bg-warn-500/50
         border-warn-400
         dark:border-warn-500
     }
     &--success {
       @apply
         text-text-800
-        dark:text-text-800
+        dark:text-success-200
         bg-success-300
-        dark:bg-success-400
+        dark:bg-success-500/50
         border-success-400
         dark:border-success-500
     }
