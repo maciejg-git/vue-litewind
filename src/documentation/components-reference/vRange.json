@@ -33,12 +33,6 @@
         "Array"
       ],
       "default": ""
-    },
-    "validationState": {
-      "type": [
-        "String"
-      ],
-      "default": null
     }
   },
   "emits": [],

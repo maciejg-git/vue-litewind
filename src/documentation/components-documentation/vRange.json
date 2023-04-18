@@ -38,14 +38,6 @@
     },
     {
       "type": [
-        "String"
-      ],
-      "default": "null",
-      "prop": "validation-state",
-      "description": "Overrides state of input validity. Supported values are 'valid', 'invalid', `empty string` for default state or `null` for component controlled state"
-    },
-    {
-      "type": [
         "String",
         "Boolean"
       ],

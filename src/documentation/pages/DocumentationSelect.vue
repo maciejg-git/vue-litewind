@@ -34,7 +34,7 @@
     <h4>Notes</h4>
     <ul class="flex flex-col gap-y-7 mt-6">
       <li>
-        <header class="font-semibold text-lg mb-2">
+        <header class="font-semibold text-lg dark:text-text-200 mb-2">
           <span>#</span>
           Autocomplete
         </header>

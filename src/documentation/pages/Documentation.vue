@@ -145,7 +145,7 @@
     <div
       class="sidebar basis-1/5 hidden lg:flex sticky flex-none border-r text-[0.9em] font-semibold overflow-auto dark:border-dark-700 pb-20 top-16 p-3"
     >
-      <div class="ml-auto">
+      <div class="ml-auto dark:text-text-300/70">
         <!-- general -->
 
         <h6>
@@ -316,13 +316,13 @@ h6 {
 }
 
 a.active {
-  @apply inline-block font-bold py-1 pr-4 pl-4;
+  @apply inline-block text-white py-1 pr-4 pl-4;
 }
 a {
   @apply inline-block py-1 pr-4 pl-2;
 }
 a:hover {
-  @apply font-bold;
+  @apply text-white;
 }
 
 .sidebar {

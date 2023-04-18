@@ -40,6 +40,12 @@
       ],
       "default": []
     },
+    "validationState": {
+      "type": [
+        "String"
+      ],
+      "default": null
+    },
     "label": {
       "type": [
         "String"
@@ -57,12 +63,6 @@
         "String"
       ],
       "default": ""
-    },
-    "validationState": {
-      "type": [
-        "String"
-      ],
-      "default": null
     }
   },
   "emits": [

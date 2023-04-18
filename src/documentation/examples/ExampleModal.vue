@@ -12,6 +12,7 @@
       <v-select
         id="position"
         v-model="example.position"
+        inline
         :items="['top', 'center', 'bottom']"
       ></v-select>
     </div>
@@ -20,6 +21,7 @@
       <v-select
         id="size"
         v-model="example.size"
+        inline
         :items="['sm', 'md', 'lg', 'xl', 'fit']"
       ></v-select>
     </div>
@@ -28,6 +30,7 @@
       <v-select
         id="transition"
         v-model="example.transition"
+        inline
         :items="['fade', 'fade-slide', 'fade-scale']"
       ></v-select>
     </div>

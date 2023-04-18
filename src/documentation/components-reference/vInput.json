@@ -58,6 +58,12 @@
       ],
       "default": []
     },
+    "validationState": {
+      "type": [
+        "String"
+      ],
+      "default": null
+    },
     "inline": {
       "type": [
         "Boolean"
@@ -155,13 +161,7 @@
       "type": [
         "Boolean"
       ],
-      "default": "undefined"
-    },
-    "validationState": {
-      "type": [
-        "String"
-      ],
-      "default": null
+      "default": false
     },
     "customClearable": {
       "type": [

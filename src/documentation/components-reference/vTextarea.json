@@ -50,6 +50,12 @@
       ],
       "default": []
     },
+    "validationState": {
+      "type": [
+        "String"
+      ],
+      "default": null
+    },
     "singleLineMessage": {
       "type": [
         "Boolean"
@@ -89,12 +95,6 @@
         "Array"
       ],
       "default": ""
-    },
-    "validationState": {
-      "type": [
-        "String"
-      ],
-      "default": null
     }
   },
   "emits": [

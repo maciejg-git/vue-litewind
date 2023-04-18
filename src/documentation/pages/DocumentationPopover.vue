@@ -19,21 +19,21 @@
     <h4>Notes</h4>
     <ul class="flex flex-col gap-y-7 mt-6">
       <li>
-        <header class="font-semibold text-lg mb-2">
+        <header class="font-semibold text-lg dark:text-text-200 mb-2">
           <span>#</span>
           Popover activation
         </header>
         To control popover visibility you can use <code class="code-text">reference</code> slot (recommended method) or <code class="code-text">v-trigger</code> component. To control it programatically you can add optional <code class="code-text">v-model</code> or call exposed <code class="code-text">show()</code> and <code class="code-text">hide()</code> functions.
       </li>
       <li>
-        <header class="font-semibold text-lg mb-2">
+        <header class="font-semibold text-lg dark:text-text-200 mb-2">
           <span>#</span>
           Popover content
         </header>
         Popover allows for any type of content inside. To make it flexible it does not have own default container, you can use <code class="code-text">v-card</code> with variants or utility classes to organize content.
       </li>
       <li>
-        <header class="font-semibold text-lg mb-2">
+        <header class="font-semibold text-lg dark:text-text-200 mb-2">
           <span>#</span>
           Teleport
         </header>

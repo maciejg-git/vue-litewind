@@ -24,7 +24,7 @@
     "styleCloseButtonWrapper": "",
     "styleLabel": "Label element if label prop is set",
     "icon": "Adds icon to input element. Valid value is the same as in v-icon components",
-    "clearable": "Adds 'X' button that sets model to empty string",
+    "clearable": "Adds 'X' button that resets model to default value",
     "state": "",
     "customClearable": "Adds 'X' button that only emits @click:clear-button event. It does not modify model value",
     "base": "",

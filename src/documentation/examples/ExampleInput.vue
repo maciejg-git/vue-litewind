@@ -84,6 +84,7 @@
           <v-select
             id="validation-state"
             v-model="example.validationState"
+            inline
             :items="[
               {
                 text: 'null (component controlled)',
