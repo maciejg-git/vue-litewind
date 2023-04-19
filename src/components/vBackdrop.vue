@@ -1,6 +1,9 @@
 <template>
   <transition name="fade-backdrop">
-    <div v-if="isOpen" class="backdrop fixed inset-0 overflow-y-auto min-h-screen z-30"></div>
+    <div
+      v-if="isOpen"
+      class="backdrop fixed inset-0 z-30 min-h-screen overflow-y-auto"
+    ></div>
   </transition>
 </template>
 
@@ -9,10 +12,8 @@ export default {
   props: {
     isOpen: { type: Boolean, default: false },
   },
-  setup() {
-    
-  },
-}
+  setup() {},
+};
 </script>
 
 <style scoped>

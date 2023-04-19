@@ -1,8 +1,6 @@
 <template>
   <teleport to="body">
-    <transition
-      :name="transition"
-    >
+    <transition :name="transition">
       <!-- @after-leave="destroyPopperInstance" -->
       <div
         v-if="isFloatingVisible"
@@ -38,7 +36,7 @@ import {
   sharedStyleProps,
 } from "../shared-props";
 import { defaultProps } from "../defaultProps";
-import useFloating from "./composition/use-floating"
+import useFloating from "./composition/use-floating";
 
 const props = defineProps({
   ...sharedProps(),
@@ -77,7 +75,7 @@ const {
   hideFloating,
   updateFloating,
   updateVirtualElement,
-} = useFloating({ placement, offsetX, offsetY, flip, autoPlacement })
+} = useFloating({ placement, offsetX, offsetY, flip, autoPlacement });
 
 let { onClickOutside } = useClickOutside();
 let stopClickOutside = null;
@@ -107,7 +105,7 @@ let contextData = ref(null);
 let showContextDropdown = (ev, data) => {
   updateVirtualElement(ev);
   show();
-  updateFloating()
+  updateFloating();
   contextData.value = data;
 };
 

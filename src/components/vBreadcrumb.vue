@@ -9,7 +9,7 @@
         <v-icon
           v-if="i.icon"
           :name="i.icon"
-          class="inline mr-1"
+          class="mr-1 inline"
         />
 
         <!-- href -->

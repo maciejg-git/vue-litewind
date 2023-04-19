@@ -8,13 +8,14 @@
 </template>
 
 <script>
-// vue
 import { computed } from "vue";
-// composition
 import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
-// props
-import { sharedProps, sharedStyleProps, sharedFormProps } from "../shared-props";
+import {
+  sharedProps,
+  sharedStyleProps,
+  sharedFormProps,
+} from "../shared-props";
 
 export default {
   props: {
@@ -37,9 +38,7 @@ export default {
       return [
         classes.range.value,
         states.range.value[state.value],
-        attrs.disabled === "" || attrs.disabled === true
-          ? 'disabled'
-          : "",
+        attrs.disabled === "" || attrs.disabled === true ? "disabled" : "",
       ];
     };
 

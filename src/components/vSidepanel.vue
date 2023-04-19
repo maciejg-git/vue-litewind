@@ -10,7 +10,7 @@
     >
       <div
         v-if="!noHeader"
-        class="flex justify-between w-full"
+        class="flex w-full justify-between"
       >
         <div class="my-3 ml-5">
           <!-- @slot header -->

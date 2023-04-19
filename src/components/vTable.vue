@@ -33,17 +33,17 @@
                 <v-icon
                   v-if="sortKey != h.key"
                   :name="SortIcon"
-                  class="h-4 w-4 ml-3 opacity-30"
+                  class="ml-3 h-4 w-4 opacity-30"
                 ></v-icon>
                 <v-icon
                   v-else-if="sortKey == h.key && sortAsc == 1"
                   :name="CaretUpIcon"
-                  class="h-4 w-4 ml-3 opacity-70"
+                  class="ml-3 h-4 w-4 opacity-70"
                 ></v-icon>
                 <v-icon
                   v-else-if="sortKey == h.key && sortAsc == -1"
                   :name="CaretDownIcon"
-                  class="h-4 w-4 ml-3 opacity-70"
+                  class="ml-3 h-4 w-4 opacity-70"
                 ></v-icon>
               </template>
             </div>
@@ -65,7 +65,7 @@
         <tr>
           <td
             :colspan="headersCount"
-            class="text-center py-4"
+            class="py-4 text-center"
           >
             <!-- @slot empty-table-message -->
             <slot name="empty-table-message">
@@ -78,7 +78,7 @@
         <tr>
           <td
             :colspan="headersCount"
-            class="text-center py-4"
+            class="py-4 text-center"
           >
             <!-- @slot empty-filtered-table-message -->
             <slot name="empty-filtered-table-message">

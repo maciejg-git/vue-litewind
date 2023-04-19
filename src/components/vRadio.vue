@@ -42,7 +42,6 @@ import {
   sharedValidationProps,
   sharedFormProps,
 } from "../shared-props";
-import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
@@ -95,7 +94,7 @@ let localModel = useLocalModel(props, emit, groupModel, onUpdateGroupModel);
 
 // handle v-form
 
-let form = !isInGroup && inject("form", {})
+let form = !isInGroup && inject("form", {});
 
 // validation
 

@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { defaultProps } from "../defaultProps"
+import { defaultProps } from "../defaultProps";
 
 export default {
   props: {
@@ -26,7 +26,7 @@ export default {
     chevron: {
       type: Object,
       default: defaultProps("buttonChevron", "chevron", {}),
-    }
+    },
   },
 };
 </script>

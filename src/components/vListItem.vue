@@ -4,7 +4,7 @@
     :href="tagHref"
     :class="itemClass"
   >
-  <!-- @slot default -->
+    <!-- @slot default -->
     <slot name="default"></slot>
   </component>
 </template>
@@ -24,10 +24,7 @@ let { classes, states, tag } = inject("control-list");
 let tagHref = computed(() => (tag == "a" ? "#" : null));
 
 let itemClass = computed(() => {
-  return [
-    classes.item.value,
-    props.active && states.item.value.active,
-  ]
+  return [classes.item.value, props.active && states.item.value.active];
 });
 </script>
 

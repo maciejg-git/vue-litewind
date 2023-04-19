@@ -3,7 +3,7 @@
     :class="[classes.datepicker.value]"
     :style="{ width: width }"
   >
-    <div class="grid grid-cols-6 grid-flow-col my-2">
+    <div class="my-2 grid grid-flow-col grid-cols-6">
       <button
         aria-label="Previous year"
         :class="classes.button.value"
@@ -18,7 +18,7 @@
       >
         <chevron-left />
       </button>
-      <div class="inline-block col-span-2 font-bold">
+      <div class="col-span-2 inline-block font-bold">
         <span class="align-baseline">{{ monthNames[month] }} {{ year }}</span>
       </div>
       <button
@@ -52,7 +52,7 @@
       >
         <div
           :key="monthNames[month] + year"
-          class="grid grid-cols-7 mb-2 relative"
+          class="relative mb-2 grid grid-cols-7"
         >
           <template v-if="adjacentMonths">
             <div

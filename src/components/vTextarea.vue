@@ -18,12 +18,12 @@
       :class="getTextareaClasses"
       data-testid="wrapper"
     >
-      <div class="flex flex-wrap flex-1">
+      <div class="flex flex-1 flex-wrap">
         <textarea
           v-model="localModel"
           v-bind="$attrs"
           :id="id"
-          class="flex-1 border-0 bg-transparent focus:outline-none focus:ring-0 outline-none p-0"
+          class="flex-1 border-0 bg-transparent p-0 outline-none focus:outline-none focus:ring-0"
           @blur="handleBlur"
         ></textarea>
       </div>

@@ -5,7 +5,7 @@
     role="treeitem"
     :aria-expanded="isOpen ? 'true' : 'false'"
   >
-  <!-- @slot item -->
+    <!-- @slot item -->
     <slot
       name="item"
       v-bind="{ item: items, isFolder, isOpen, toggle }"
@@ -14,7 +14,7 @@
         <!-- indicator -->
         <div
           v-if="showIndicators"
-          class="w-5 mr-2 order-first"
+          class="order-first mr-2 w-5"
         >
           <v-button
             v-if="isFolder"
@@ -35,7 +35,7 @@
         <transition name="fade">
           <div
             v-if="showCheckboxes"
-            class="flex items-center mr-2 order-1"
+            class="order-1 mr-2 flex items-center"
           >
             <v-checkbox-simple
               :checked="isSelected"
@@ -49,7 +49,7 @@
           v-if="showIcons"
           class="order-3"
         >
-        <!-- @slot icon -->
+          <!-- @slot icon -->
           <slot
             name="icon"
             v-bind="{ item: items, isFolder, isOpen }"
@@ -85,7 +85,7 @@
           }"
           role="button"
         >
-        <!-- @slot name -->
+          <!-- @slot name -->
           <slot
             name="name"
             v-bind="{ item: items, isFolder, isOpen }"
@@ -233,7 +233,7 @@ let itemLevel = toRef(props, "itemLevel");
 let nodeList = ref([]);
 
 onBeforeUpdate(() => {
-  nodeList.value = []
+  nodeList.value = [];
 });
 
 // check state of item
@@ -290,7 +290,7 @@ let toggle = () => {
 
 let isEveryChildrenSelected = () => {
   return nodeList.value.every((i) => i.isSelected);
-}
+};
 
 let selectChildren = () => {
   nodeList.value.forEach((i) =>
@@ -325,7 +325,7 @@ let handleItemClick = () => {
     toggle();
   }
 
-  parentEmit("input:click", props.items)
+  parentEmit("input:click", props.items);
 };
 
 let handleChildrenSelected = () => {
@@ -340,7 +340,7 @@ let handleChildrenSelected = () => {
 
 let handleIndicatorClick = () => {
   toggle();
-}
+};
 
 let handleItemSelected = () => {
   select();

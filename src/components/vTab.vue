@@ -7,7 +7,7 @@
       v-show="tab.isActive.value"
       role="tabpanel"
     >
-    <!-- @slot name -->
+      <!-- @slot name -->
       <slot
         v-if="false"
         name="name"

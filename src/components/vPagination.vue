@@ -46,7 +46,6 @@ import ChevronLeft from "./icons/chevron-left.js";
 import ChevronRight from "./icons/chevron-right.js";
 import { clamp, getNumberRange, isNumber } from "../tools.js";
 import { sharedProps, sharedStyleProps } from "../shared-props";
-import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),

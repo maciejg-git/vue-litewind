@@ -41,7 +41,7 @@ let isOpen = ref(props.modelValue);
 watch(
   () => props.modelValue,
   (value) => {
-    isOpen.value = value
+    isOpen.value = value;
   }
 );
 

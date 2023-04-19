@@ -13,7 +13,7 @@
           v-if="label"
           :class="classes.label.value"
         >
-        <!-- @slot label -->
+          <!-- @slot label -->
           <slot
             name="label"
             :value="value"

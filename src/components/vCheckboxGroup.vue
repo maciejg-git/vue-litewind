@@ -75,5 +75,5 @@ provide("v-checkbox-group", {
   isInGroup: true,
 });
 
-defineExpose({ validate: validation.formValidate, reset:validation.reset });
+defineExpose({ validate: validation.formValidate, reset: validation.reset });
 </script>

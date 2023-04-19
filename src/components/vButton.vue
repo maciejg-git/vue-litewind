@@ -13,7 +13,6 @@
 <script setup>
 import { computed } from "vue";
 import useStyles from "./composition/use-styles";
-import { defaultProps } from "../defaultProps";
 import { sharedProps, sharedStyleProps } from "../shared-props";
 
 const props = defineProps({

@@ -172,7 +172,7 @@ provide("control-popover", {
 }
 .fade-scale-enter-active,
 .fade-scale-leave-active {
-  @apply data-[placement=top]:origin-bottom data-[placement=bottom]:origin-top data-[placement=right]:origin-top data-[placement=left]:origin-top;
+  @apply data-[placement=bottom]:origin-top data-[placement=left]:origin-top data-[placement=right]:origin-top data-[placement=top]:origin-bottom;
   transition: opacity var(--popover-transition-duration, 0.2s) ease,
     transform var(--popover-transition-duration, 0.2s) ease;
 }

@@ -7,7 +7,7 @@
       :class="classes.badge.value"
       :key="updateKey + ''"
     >
-    <!-- @slot default -->
+      <!-- @slot default -->
       <slot name="default"></slot>
     </span>
   </transition>

@@ -30,7 +30,7 @@
       <button
         aria-label="Close"
         tabindex="-1"
-        class="focus:outline-none ml-2"
+        class="ml-2 focus:outline-none"
         @click.stop="handleClickIndicator"
       >
         <v-chevron
@@ -54,7 +54,7 @@
             :item="value"
           >
             <span
-              class="after:content-[','] last-of-type:after:content-none last-of-type:mr-2 mr-1"
+              class="mr-1 after:content-[','] last-of-type:mr-2 last-of-type:after:content-none"
             >
               {{ getItemText(value) }}
             </span>
@@ -602,7 +602,7 @@ let handleClickItem = (item, index) => {
 }
 .fade-scale-enter-active,
 .fade-scale-leave-active {
-  @apply data-[placement=top]:origin-bottom data-[placement=bottom]:origin-top data-[placement=right]:origin-left data-[placement=left]:origin-right;
+  @apply data-[placement=bottom]:origin-top data-[placement=left]:origin-right data-[placement=right]:origin-left data-[placement=top]:origin-bottom;
   transition: opacity var(--select-transition-duration, 0.2s) ease,
     transform var(--dropdown-transition-duration, 0.2s) ease;
 }

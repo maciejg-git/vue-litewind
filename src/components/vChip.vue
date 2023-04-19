@@ -24,7 +24,7 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(['click:close-button'])
+const emit = defineEmits(["click:close-button"]);
 
 let { classes } = useStyles("chip", props, {
   chip: {
@@ -33,6 +33,6 @@ let { classes } = useStyles("chip", props, {
 });
 
 let handleClickCloseButton = () => {
-  emit('click:close-button')
-}
+  emit("click:close-button");
+};
 </script>

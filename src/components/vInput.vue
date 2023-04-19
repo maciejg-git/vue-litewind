@@ -43,7 +43,7 @@
       <!-- @slot prepend -->
       <slot name="prepend"></slot>
 
-      <div class="flex flex-wrap flex-1">
+      <div class="flex flex-1 flex-wrap">
         <!-- @slot input-extra -->
         <slot name="input-extra"></slot>
         <input
@@ -52,7 +52,7 @@
           :id="id"
           type="text"
           v-bind="$attrs"
-          class="flex-1 min-w-0 focus:min-w-[64px] border-0 bg-transparent focus:outline-none outline-none p-0"
+          class="min-w-0 flex-1 border-0 bg-transparent p-0 outline-none focus:min-w-[64px] focus:outline-none"
           @blur="handleBlur"
         />
       </div>
@@ -132,7 +132,12 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("input", ["Input", "Icon", "CloseButtonWrapper", "Label"]),
+  ...sharedStyleProps("input", [
+    "Input",
+    "Icon",
+    "CloseButtonWrapper",
+    "Label",
+  ]),
   ...sharedFormProps("input", { icon: true, clearable: true }),
   ...sharedValidationProps("input", {
     validateOn: "blur",

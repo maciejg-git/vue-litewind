@@ -94,13 +94,8 @@ let { classes, states } = useStyles("dropdown", props, {
 
 const { offsetX, offsetY, flip, placement, autoPlacement, trigger } =
   toRefs(props);
-const {
-  isFloatingVisible,
-  reference,
-  floating,
-  showFloating,
-  hideFloating,
-} = useFloating({ placement, offsetX, offsetY, flip, autoPlacement });
+const { isFloatingVisible, reference, floating, showFloating, hideFloating } =
+  useFloating({ placement, offsetX, offsetY, flip, autoPlacement });
 
 let { onClickOutside } = useClickOutside();
 let stopClickOutside = null;
@@ -204,7 +199,7 @@ provide("control-dropdown", {
 }
 .fade-scale-enter-active,
 .fade-scale-leave-active {
-  @apply data-[placement=top]:origin-bottom data-[placement=bottom]:origin-top data-[placement=right]:origin-top data-[placement=left]:origin-top;
+  @apply data-[placement=bottom]:origin-top data-[placement=left]:origin-top data-[placement=right]:origin-top data-[placement=top]:origin-bottom;
   transition: opacity var(--dropdown-transition-duration, 0.2s) ease,
     transform var(--dropdown-transition-duration, 0.2s) ease;
 }
