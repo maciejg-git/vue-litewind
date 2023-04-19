@@ -143,7 +143,7 @@
     class="flex text-text-800 dark:bg-[#191919] dark:text-text-300/80 px-2 lg:px-0"
   >
     <div
-      class="sidebar basis-1/5 hidden lg:flex sticky flex-none border-r text-[0.9em] font-semibold overflow-auto dark:border-dark-700 pb-20 top-16 p-3"
+      class="sidebar basis-1/5 hidden lg:flex sticky flex-none border-r text-[0.9em] font-semibold overflow-auto dark:border-dark-700 pb-20 top-16 p-3 pr-7"
     >
       <div class="ml-auto dark:text-text-300/70">
         <!-- general -->

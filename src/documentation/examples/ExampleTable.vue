@@ -21,7 +21,7 @@
     </template>
 
     <template #cell:department="{ item }">
-      <div class="w-[150px] whitespace-nowrap text-ellipsis overflow-hidden">
+      <div class="w-[150px] overflow-hidden text-ellipsis whitespace-nowrap">
         {{ item.department }}
       </div>
     </template>
@@ -35,13 +35,13 @@
       >
         <v-icon
           name="mdi-account-edit"
-          class="w-6 h-6"
+          class="h-6 w-6"
         ></v-icon>
       </v-button>
     </template>
 
     <template #busy>
-      <div class="flex justify-center my-5">
+      <div class="my-5 flex justify-center">
         <v-spinner
           type="svg"
           style-spinner="large"
@@ -54,7 +54,7 @@
 
   <!-- pagination and items per page -->
 
-  <div class="lg:flex justify-between my-5">
+  <div class="my-5 justify-between lg:flex">
     <div>
       <v-pagination
         v-model="page"
@@ -89,7 +89,7 @@
   >
     <pre
       v-html="editModalContent"
-      class="whitespace-pre my-0 ml-4"
+      class="my-0 ml-4 whitespace-pre"
     ></pre>
   </v-modal>
   <!-- CUT START -->
@@ -98,7 +98,7 @@
     class="mt-10"
   >
     <v-tab name="Props">
-      <div class="flex flex-col gap-y-2 mt-5">
+      <div class="mt-5 flex flex-col gap-y-2">
         <div>
           <label for="locale">filter:</label>
           <v-input
