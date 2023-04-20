@@ -44,6 +44,8 @@
     "label": "Slot for label. Slot props: `label` (from label prop)",
     "icon": "Slot for icon",
     "prepend": "Slot for content prepending input",
+    "_input-extra": "Slot for extra values that prepend input element (for example v-select component uses this slot to render selected items in multiple mode)",    
+    "_input-control-extra": "Slot for extra control elements after clear button (for example v-select component uses this slot to show toggle menu indicator)",    
     "input-extra": "[hidden]",    
     "input-control-extra": "[hidden]",    
     "append": "Slot for content appending input"

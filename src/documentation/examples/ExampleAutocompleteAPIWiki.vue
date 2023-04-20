@@ -9,7 +9,9 @@
         :items="example.items"
         :state="example.state"
         :is-loading="example.isLoading"
-        style-menu="shadow"
+        :offset-y="0"
+        :input="{ base: 'input-material' }"
+        :card="{ base: 'flat-card' }"
         @input:value="debouncedQuery($event)"
         autocomplete
       ></v-select>
@@ -75,6 +77,7 @@ let query = (q) => {
     .then((response) => response.json())
     .then((data) => {
       example.items = data.query.prefixsearch;
+      console.log(example.items)
     })
     .finally(() => {
       example.isLoading = false;

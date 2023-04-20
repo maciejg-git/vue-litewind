@@ -28,7 +28,7 @@
       ],
       "default": false,
       "prop": "clearable",
-      "description": "Adds 'X' button that sets model to empty string"
+      "description": "Adds 'X' button that resets model to default value"
     },
     {
       "type": [

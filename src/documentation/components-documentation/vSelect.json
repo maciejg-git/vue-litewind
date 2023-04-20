@@ -59,7 +59,7 @@
       ],
       "default": false,
       "prop": "clearable",
-      "description": ""
+      "description": "Adds 'X' button that resets model to default value"
     },
     {
       "type": [
