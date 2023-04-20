@@ -35,5 +35,6 @@
 
 @import 'form/input-underline.css';
 @import 'form/input-rounded.css';
+@import 'form/input-material.css';
 
 @import 'shared.css';

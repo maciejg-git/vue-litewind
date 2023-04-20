@@ -1,0 +1,72 @@
+.input-material {
+  @apply
+    border
+    focus:outline-none
+    outline-none
+    transition-shadow
+    duration-200
+    shadow-md
+    dark:text-text-300
+    bg-white
+    dark:bg-dark-700
+    focus-within:border-secondary-400
+    dark:border-dark-700
+    focus-within:dark:border-primary-300;
+
+    &--valid-state {
+      @apply
+        text-success-600
+        dark:text-success-600
+        border-success-300
+        dark:border-success-400
+        focus-within:ring-success-200
+        dark:focus-within:ring-success-300
+    }
+    &--invalid-state {
+      @apply
+        text-danger-600
+        dark:text-danger-600
+        border-danger-300
+        dark:border-danger-400
+        focus-within:ring-danger-200
+        dark:focus-within:ring-danger-300
+    }
+
+    &__icon {
+      @apply
+        w-6
+        h-6
+        text-text-400
+        dark:text-gray-400;
+
+        &--if-focused {
+          @apply
+            hidden
+            group-focus-within:block
+        }
+        &--valid {
+          @apply
+            text-success-400
+            dark:text-success-400
+        }
+        &--invalid {
+          @apply
+            text-danger-400
+            dark:text-danger-400
+        }
+    }
+
+    &__close-button-wrapper {
+        &--if-hover {
+          @apply
+            invisible
+            group-hover:visible
+        }
+    }
+
+    &__label {
+      @apply
+        text-sm
+        pb-1
+    }
+}
