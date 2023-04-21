@@ -26,6 +26,7 @@
             {{ item.title }}
           </span>
         </template>
+        <template #menu-append>items</template>
       </v-autocomplete>
     </div>
     <div class="w-1/2 ml-10">

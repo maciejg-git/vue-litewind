@@ -178,6 +178,7 @@
   "slots": [
     "selected-item",
     "max-multiple",
-    "menu-item"
+    "menu-item",
+    "menu-append"
   ]
 }

@@ -40,6 +40,7 @@
   },
   "slots": {
     "menu-item": "Slot for menu item. Slot props: `text`, `value`, `item`, `inputValue`",
+    "menu-append": "Slot for additional content below menu items",
     "selected-item": "Slot for custom selected items",
     "max-multiple": "Content of this slot is appended to selected items if `max-multiple` prop is enabled"
     

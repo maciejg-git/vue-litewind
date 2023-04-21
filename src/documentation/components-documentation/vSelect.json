@@ -257,6 +257,10 @@
     {
       "slot": "menu-item",
       "description": "Slot for menu item. Slot props: `text`, `value`, `item`, `inputValue`"
+    },
+    {
+      "slot": "menu-append",
+      "description": "Slot for additional content below menu items"
     }
   ],
   "functions": [],
