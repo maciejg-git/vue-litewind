@@ -45,3 +45,21 @@ test("selects first tab by default", async () => {
     expect(getByRole("tabpanel")).toBeVisible()
   })
 });
+
+test("change to tab on click", async () => {
+  const { getByRole, getByText, findAllByRole, queryByRole } = render(Tabs, {
+    props: {},
+    slots: {
+      default: tabs,
+    },
+    global: {
+      stubs,
+    },
+  });
+
+  let tab = await findAllByRole("tab")
+  await fireEvent.click(tab[1])
+  await waitFor(() => {
+    expect(queryByRole("tabpanel")).toHaveTextContent("tab2 content")
+  })
+});
