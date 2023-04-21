@@ -6,6 +6,7 @@
     <div
       v-show="tab.isActive.value"
       role="tabpanel"
+      tabindex="0"
     >
       <!-- @slot name -->
       <slot

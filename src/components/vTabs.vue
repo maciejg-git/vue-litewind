@@ -8,12 +8,13 @@
         v-for="(tab, i) in tabs"
         :key="i"
         :class="fill ? 'flex flex-auto' : ''"
-        role="tab"
       >
         <a
           href=""
           :class="getTabClasses(tab)"
           @click.prevent="handleClickTab(i)"
+          role="tab"
+          :aria-selected="tab.isActive"
         >
           <render-vnode :vnodes="getTabName(tab)" />
         </a>

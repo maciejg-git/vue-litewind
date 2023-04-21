@@ -114,6 +114,8 @@
               {{ getItemText(item) }}
             </slot>
           </div>
+        <!-- @slot menu-append -->
+        <slot name="menu-append"></slot>
         </v-card>
       </div>
     </transition>
