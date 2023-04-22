@@ -19,42 +19,34 @@
   </transition>
 </template>
 
-<script>
-// vue
-import { ref, onMounted, onUnmounted, inject, toRef } from "vue";
+<script setup>
+import { ref, onMounted, onUnmounted, inject, toRef, useSlots } from "vue";
 
-export default {
-  props: {
-    name: {
-      type: String,
-      default: undefined,
-    },
+let props = defineProps({
+  name: {
+    type: String,
+    default: undefined,
   },
-  setup(props, { slots }) {
-    let { addTab, removeTab, transition } = inject("control-tab");
+});
 
-    let tab = {
-      isActive: ref(false),
-      name: toRef(props, "name"),
-      slots,
-    };
+let slots = useSlots()
 
-    onMounted(() => addTab(tab));
+let { addTab, removeTab, transition } = inject("control-tab");
 
-    onUnmounted(() => removeTab(tab));
+let tab = {
+  isActive: ref(false),
+  name: toRef(props, "name"),
+  slots,
+};
 
-    // transition
+onMounted(() => addTab(tab));
 
-    let beforeLeaveTransition = (el) => {
-      el.style.display = "none";
-    };
+onUnmounted(() => removeTab(tab));
 
-    return {
-      tab,
-      transition,
-      beforeLeaveTransition,
-    };
-  },
+// transition
+
+let beforeLeaveTransition = (el) => {
+  el.style.display = "none";
 };
 </script>
 
