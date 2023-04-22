@@ -43,8 +43,7 @@ export default {
     let components = ref([
       {
         component: "v-tab",
-        description: `
-        `,
+        description: "Component for tab content",
       },
     ]);
 
