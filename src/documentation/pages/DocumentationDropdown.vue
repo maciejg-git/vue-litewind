@@ -13,11 +13,14 @@
     <table-reference-basic :items="reference.slots" reference="slot" />
 
     <h6>Components</h6>
-    <table-reference-basic :items="components" reference="component">
-      <template #description-v-dropdown-menu-item>
-        <props-list :items="referenceMenuItem.props" reference="prop"></props-list>
-      </template>
-    </table-reference-basic>
+    <p>
+      <a
+        href="/documentation/dropdown-menu-item"
+        class="link"
+      >
+        v-dropdown-menu-item
+      </a>
+    </p>
 
     <h6>Functions</h6>
     <table-reference-basic :items="reference.functions" reference="function" />
@@ -121,35 +124,13 @@
 <script>
 import { ref, reactive } from "vue";
 import componentDocumentation from "../components-documentation/vDropdown.json"
-import menuItemDocumentation from "../components-documentation/vDropdownMenuItem.json"
-import menuHeaderDocumentation from "../components-documentation/vDropdownMenuItem.json"
 
 export default {
   setup(props) {
     let reference = reactive(componentDocumentation)
 
-    let components = ref([
-      {
-        component: "v-dropdown-menu-item",
-        description: "Single menu item",
-      },
-      {
-        component: "v-dropdown-header",
-        description: "Menu header",
-      },
-      {
-        component: "v-button-chevron",
-        description:
-          "Optional version of v-button that has reactive indicator build in. It uses the same props as normal v-button.",
-      },
-    ]);
-
-    let referenceMenuItem = reactive(menuItemDocumentation)
-
     return {
       reference,
-      components,
-      referenceMenuItem,
     };
   },
 };

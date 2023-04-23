@@ -7,14 +7,26 @@
     <table-reference :items="reference.props" />
 
     <h6>Events</h6>
-    <table-reference-basic :items="reference.events" reference="event" />
+    <table-reference-basic
+      :items="reference.events"
+      reference="event"
+    />
 
     <h6>Slots</h6>
-    <table-reference-basic :items="reference.slots" reference="slot" />
+    <table-reference-basic
+      :items="reference.slots"
+      reference="slot"
+    />
 
     <h6>Components</h6>
-    <table-reference-basic :items="components" reference="component">
-    </table-reference-basic>
+    <p>
+      <a
+        href="/documentation/tab"
+        class="link"
+      >
+        v-tab
+      </a>
+    </p>
   </section>
 
   <section>
@@ -34,11 +46,11 @@
 
 <script>
 import { ref, reactive } from "vue";
-import componentDocumentation from "../components-documentation/vTabs.json"
+import componentDocumentation from "../components-documentation/vTabs.json";
 
 export default {
   setup(props) {
-    let reference = reactive(componentDocumentation)
+    let reference = reactive(componentDocumentation);
 
     let components = ref([
       {
