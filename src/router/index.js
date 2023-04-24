@@ -1,47 +1,47 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-import Documentation from "../documentation/pages/Documentation.vue";
+const Documentation = () => import('../documentation/pages/Documentation.vue')
 
-const DocumentationInstall = () => import('../documentation/pages/DocumentationInstall.vue')
+const Install = () => import('../documentation/pages/DocumentationInstall.vue')
+const Components = () => import('../documentation/pages/DocumentationComponents.vue')
+const FormValidation = () => import('../documentation/pages/DocumentationFormValidation.vue')
 
-const DocumentationComponents = () => import('../documentation/pages/DocumentationComponents.vue')
+const Table = () => import('../documentation/pages/DocumentationTable.vue')
+const DatePicker = () => import('../documentation/pages/DocumentationDatePicker.vue')
+const List = () => import('../documentation/pages/DocumentationList.vue')
+const Modal = () => import('../documentation/pages/DocumentationModal.vue')
+const Tabs = () => import('../documentation/pages/DocumentationTabs.vue')
+const Tab = () => import('../documentation/pages/DocumentationTab.vue')
+const Spinner = () => import('../documentation/pages/DocumentationSpinner.vue')
+const Collapse = () => import('../documentation/pages/DocumentationCollapse.vue')
+const Badge = () => import('../documentation/pages/DocumentationBadge.vue')
+const Dropdown = () => import('../documentation/pages/DocumentationDropdown.vue')
+const DropdownMenuItem = () => import('../documentation/pages/DocumentationDropdownMenuItem.vue')
+const Pagination = () => import('../documentation/pages/DocumentationPagination.vue')
+const Card = () => import('../documentation/pages/DocumentationCard.vue')
+const Button = () => import('../documentation/pages/DocumentationButton.vue')
+const Chip = () => import('../documentation/pages/DocumentationChip.vue')
+const Popover = () => import('../documentation/pages/DocumentationPopover.vue')
+const Progress = () => import('../documentation/pages/DocumentationProgress.vue')
+const Sidepanel = () => import('../documentation/pages/DocumentationSidepanel.vue')
+const Alert = () => import('../documentation/pages/DocumentationAlert.vue')
+const Input = () => import('../documentation/pages/DocumentationInput.vue')
+const Textarea = () => import('../documentation/pages/DocumentationTextarea.vue')
+const Radio = () => import('../documentation/pages/DocumentationRadio.vue')
+const Checkbox = () => import('../documentation/pages/DocumentationCheckbox.vue')
+const Navbar = () => import('../documentation/pages/DocumentationNavbar.vue')
+const Range = () => import('../documentation/pages/DocumentationRange.vue')
+const Breadcrumb = () => import('../documentation/pages/DocumentationBreadcrumb.vue')
+const Chevron = () => import('../documentation/pages/DocumentationChevron.vue')
+const FormText = () => import('../documentation/pages/DocumentationFormText.vue')
+const Select = () => import('../documentation/pages/DocumentationSelect.vue')
+const Tree = () => import('../documentation/pages/DocumentationTree.vue')
+const Closebutton = () => import('../documentation/pages/DocumentationClosebutton.vue')
+const Icon = () => import('../documentation/pages/DocumentationIcon.vue')
+const Divider = () => import('../documentation/pages/DocumentationDivider.vue')
+const Trigger = () => import('../documentation/pages/DocumentationTrigger.vue')
 
-const DocumentationTable = () => import('../documentation/pages/DocumentationTable.vue')
-const DocumentationDatePicker = () => import('../documentation/pages/DocumentationDatePicker.vue')
-const DocumentationList = () => import('../documentation/pages/DocumentationList.vue')
-const DocumentationModal = () => import('../documentation/pages/DocumentationModal.vue')
-const DocumentationTabs = () => import('../documentation/pages/DocumentationTabs.vue')
-const DocumentationTab = () => import('../documentation/pages/DocumentationTab.vue')
-const DocumentationSpinner = () => import('../documentation/pages/DocumentationSpinner.vue')
-const DocumentationCollapse = () => import('../documentation/pages/DocumentationCollapse.vue')
-const DocumentationBadge = () => import('../documentation/pages/DocumentationBadge.vue')
-const DocumentationDropdown = () => import('../documentation/pages/DocumentationDropdown.vue')
-const DocumentationDropdownMenuItem = () => import('../documentation/pages/DocumentationDropdownMenuItem.vue')
-const DocumentationPagination = () => import('../documentation/pages/DocumentationPagination.vue')
-const DocumentationCard = () => import('../documentation/pages/DocumentationCard.vue')
-const DocumentationButton = () => import('../documentation/pages/DocumentationButton.vue')
-const DocumentationChip = () => import('../documentation/pages/DocumentationChip.vue')
-const DocumentationPopover = () => import('../documentation/pages/DocumentationPopover.vue')
-const DocumentationProgress = () => import('../documentation/pages/DocumentationProgress.vue')
-const DocumentationSidepanel = () => import('../documentation/pages/DocumentationSidepanel.vue')
-const DocumentationAlert = () => import('../documentation/pages/DocumentationAlert.vue')
-const DocumentationInput = () => import('../documentation/pages/DocumentationInput.vue')
-const DocumentationTextarea = () => import('../documentation/pages/DocumentationTextarea.vue')
-const DocumentationRadio = () => import('../documentation/pages/DocumentationRadio.vue')
-const DocumentationCheckbox = () => import('../documentation/pages/DocumentationCheckbox.vue')
-const DocumentationNavbar = () => import('../documentation/pages/DocumentationNavbar.vue')
-const DocumentationRange = () => import('../documentation/pages/DocumentationRange.vue')
-const DocumentationBreadcrumb = () => import('../documentation/pages/DocumentationBreadcrumb.vue')
-const DocumentationChevron = () => import('../documentation/pages/DocumentationChevron.vue')
-const DocumentationFormText = () => import('../documentation/pages/DocumentationFormText.vue')
-const DocumentationSelect = () => import('../documentation/pages/DocumentationSelect.vue')
-const DocumentationTree = () => import('../documentation/pages/DocumentationTree.vue')
-const DocumentationClosebutton = () => import('../documentation/pages/DocumentationClosebutton.vue')
-const DocumentationIcon = () => import('../documentation/pages/DocumentationIcon.vue')
-const DocumentationDivider = () => import('../documentation/pages/DocumentationDivider.vue')
-const DocumentationTrigger = () => import('../documentation/pages/DocumentationTrigger.vue')
-const DocumentationTooltip = () => import('../documentation/pages/DocumentationTooltip.vue')
-const DocumentationFormValidation = () => import('../documentation/pages/DocumentationFormValidation.vue')
+const Tooltip = () => import('../documentation/pages/DocumentationTooltip.vue')
 
 const routes = [
   {
@@ -54,165 +54,165 @@ const routes = [
     children: [
       {
         path: "installation",
-        component: DocumentationInstall,
+        component: Install,
       },
       {
         path: "components",
-        component: DocumentationComponents,
+        component: Components,
+      },
+      {
+        path: "form-validation",
+        component: FormValidation,
       },
 
       // components
 
       {
         path: "table",
-        component: DocumentationTable,
+        component: Table,
       },
       {
         path: "datepicker",
-        component: DocumentationDatePicker,
+        component: DatePicker,
       },
       {
         path: "list",
-        component: DocumentationList,
+        component: List,
       },
       {
         path: "modal",
-        component: DocumentationModal,
+        component: Modal,
       },
       {
         path: "pagination",
-        component: DocumentationPagination,
+        component: Pagination,
       },
       {
         path: "tabs",
-        component: DocumentationTabs,
+        component: Tabs,
       },
       {
         path: "tab",
-        component: DocumentationTab,
+        component: Tab,
       },
       {
         path: "spinner",
-        component: DocumentationSpinner,
+        component: Spinner,
       },
       {
         path: "collapse",
-        component: DocumentationCollapse,
+        component: Collapse,
       },
       {
         path: "badge",
-        component: DocumentationBadge,
+        component: Badge,
       },
       {
         path: "dropdown",
-        component: DocumentationDropdown,
+        component: Dropdown,
       },
       {
         path: "dropdown-menu-item",
-        component: DocumentationDropdownMenuItem,
+        component: DropdownMenuItem,
       },
       {
         path: "card",
-        component: DocumentationCard,
+        component: Card,
       },
       {
         path: "button",
-        component: DocumentationButton,
+        component: Button,
       },
       {
         path: "chip",
-        component: DocumentationChip,
+        component: Chip,
       },
       {
         path: "popover",
-        component: DocumentationPopover,
+        component: Popover,
       },
       {
         path: "progress",
-        component: DocumentationProgress,
+        component: Progress,
       },
       {
         path: "sidepanel",
-        component: DocumentationSidepanel,
+        component: Sidepanel,
       },
       {
         path: "alert",
-        component: DocumentationAlert,
+        component: Alert,
       },
       {
         path: "input",
-        component: DocumentationInput,
+        component: Input,
       },
       {
         path: "textarea",
-        component: DocumentationTextarea,
+        component: Textarea,
       },
       {
         path: "radio",
-        component: DocumentationRadio,
+        component: Radio,
       },
       {
         path: "checkbox",
-        component: DocumentationCheckbox,
+        component: Checkbox,
       },
       {
         path: "navbar",
-        component: DocumentationNavbar,
+        component: Navbar,
       },
       {
         path: "range",
-        component: DocumentationRange,
+        component: Range,
       },
       {
         path: "closebutton",
-        component: DocumentationClosebutton,
+        component: Closebutton,
       },
       {
         path: "breadcrumb",
-        component: DocumentationBreadcrumb,
+        component: Breadcrumb,
       },
       {
         path: "chevron",
-        component: DocumentationChevron,
+        component: Chevron,
       },
       {
         path: "formtext",
-        component: DocumentationFormText,
+        component: FormText,
       },
       {
         path: "divider",
-        component: DocumentationDivider,
+        component: Divider,
       },
       {
         path: "icon",
-        component: DocumentationIcon,
+        component: Icon,
       },
       {
         path: "select",
-        component: DocumentationSelect,
+        component: Select,
       },
       {
         path: "tree",
-        component: DocumentationTree,
-      },
-      {
-        path: "form-validation",
-        component: DocumentationFormValidation,
+        component: Tree,
       },
       {
         path: "trigger",
-        component: DocumentationTrigger,
+        component: Trigger,
       },
       {
         path: "autocomplete",
-        component: DocumentationSelect,
+        component: Select,
       },
 
       // directives
 
       {
         path: "tooltip",
-        component: DocumentationTooltip,
+        component: Tooltip,
       },
     ],
   },
