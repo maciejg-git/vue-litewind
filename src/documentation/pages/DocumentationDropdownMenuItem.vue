@@ -1,6 +1,6 @@
 <template>
   <h3>Dropdown Menu Item</h3>
-  <links-github-header component="vDropdown" />
+  <links-github-header component="vDropdownMenuItem" />
 
   <section>
     <h4>Reference</h4>

@@ -1,6 +1,6 @@
 <template>
   <h3>Tab</h3>
-  <links-github-header component="vTabs" />
+  <links-github-header component="vTab" />
 
   <section>
     <h4>Reference</h4>
