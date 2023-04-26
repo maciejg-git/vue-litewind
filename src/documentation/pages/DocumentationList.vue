@@ -10,7 +10,14 @@
     <table-reference-basic :items="reference.slots" reference="slot" />
 
     <h6>Components</h6>
-    <table-reference-basic :items="components" reference="component" />
+    <p>
+      <a
+        href="/documentation/list-item"
+        class="link"
+      >
+        v-list-item
+      </a>
+    </p>
   </section>
 
   <section>
@@ -29,16 +36,8 @@ export default {
   setup(props) {
     let reference = reactive(componentDocumentation)
 
-    let components = ref([
-      {
-        component: "v-list-item",
-        description: "List item component",
-      },
-    ]);
-
     return {
       reference,
-      components,
     };
   },
 };

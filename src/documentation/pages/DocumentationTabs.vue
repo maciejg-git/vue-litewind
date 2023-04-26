@@ -45,23 +45,15 @@
 </template>
 
 <script>
-import { ref, reactive } from "vue";
+import { reactive } from "vue";
 import componentDocumentation from "../components-documentation/vTabs.json";
 
 export default {
   setup(props) {
     let reference = reactive(componentDocumentation);
 
-    let components = ref([
-      {
-        component: "v-tab",
-        description: "Component for tab content",
-      },
-    ]);
-
     return {
       reference,
-      components,
     };
   },
 };

@@ -2,7 +2,7 @@
   <h3>Installation</h3>
 
   <section>
-    <h5>Installation</h5>
+    <h4 class="my-10">Installation</h4>
 
     <v-code language="javascript">
       npm i vue-wind
@@ -143,6 +143,10 @@ app.use(componentPlugin, {
     </v-alert>
     </p>
 
+    <div class="my-4">
+      Default props examples
+    </div>
+
     <v-tabs base="material-tabs">
       <v-tab name="Simple example">
     <v-code language="javascript">
@@ -210,7 +214,7 @@ app.use(componentPlugin, {
       </v-tab>
     </v-tabs>
 
-    <h5>Styling components</h5>
+    <h4 class="my-10">Styling components</h4>
       <p>
       Default style of components can be modified by using following:
       <ul class="list-disc list-inside">
@@ -221,15 +225,15 @@ app.use(componentPlugin, {
       css file of component to customize base classes and variants for components,
         </li>
         <li>
-      and following common component props that allow selection of active classes:
+      and following common component props:
         </li>
       </ul>
       <ul class="ml-10">
         <li class="my-2">
-          <code class="code-text">base</code> - changes base name for styling. The default value is component name. This can be useful to make new version of appearance with different set of variants.
+          <code class="code-text">base</code> - base name for classes applied to the component elements. The default value is always component name. This prop can be used to make new versions of appearance with different set of variants.
         </li>
         <li class="my-2">
-          <code class="code-text">style-[element]</code> - adds list of variants to [element] of component. Variant can be applied conditionaly by putting "identifier:" in front of any variant. Active conditional variant can then be chosen with <code class="code-text">variant</code> prop set to identifier. Identifier can be any word and does not have any relation to css. <code class="code-text">True</code>, <code class="code-text">false</code>, <code class="code-text">null</code> and <code class="code-text">undefined</code> values of variant prop are automatically converted to strings.
+          <code class="code-text">style-[element]</code> - adds list of variant classes to [element] of component. Variant can be applied conditionaly by putting "identifier:" in front of any variant. Active conditional variant can then be chosen with <code class="code-text">variant</code> prop set to identifier. Identifier can be any word and does not have any relation to css. <code class="code-text">True</code>, <code class="code-text">false</code>, <code class="code-text">null</code> and <code class="code-text">undefined</code> values of variant prop are automatically converted to strings.
         </li> 
       </ul>
       </p>
