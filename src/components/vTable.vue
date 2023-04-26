@@ -462,10 +462,4 @@ let handleHeaderClick = function (key, index) {
 </script>
 
 <style scoped>
-.caption-bottom {
-  caption-side: bottom;
-}
-.caption-top {
-  caption-side: top;
-}
 </style>
