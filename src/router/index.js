@@ -9,6 +9,7 @@ const FormValidation = () => import('../documentation/pages/DocumentationFormVal
 const Table = () => import('../documentation/pages/DocumentationTable.vue')
 const DatePicker = () => import('../documentation/pages/DocumentationDatePicker.vue')
 const List = () => import('../documentation/pages/DocumentationList.vue')
+const ListItem = () => import('../documentation/pages/DocumentationListItem.vue')
 const Modal = () => import('../documentation/pages/DocumentationModal.vue')
 const Tabs = () => import('../documentation/pages/DocumentationTabs.vue')
 const Tab = () => import('../documentation/pages/DocumentationTab.vue')
@@ -78,6 +79,10 @@ const routes = [
       {
         path: "list",
         component: List,
+      },
+      {
+        path: "list-item",
+        component: ListItem,
       },
       {
         path: "modal",
