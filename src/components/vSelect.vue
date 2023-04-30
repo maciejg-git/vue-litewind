@@ -26,6 +26,7 @@
         v-bind="slotProps"
       ></slot>
     </template>
+
     <template #input-control-extra>
       <button
         aria-label="Close"
@@ -41,6 +42,7 @@
         />
       </button>
     </template>
+
     <!-- @slot selected-item -->
     <template #input-extra>
       <template
@@ -114,8 +116,8 @@
               {{ getItemText(item) }}
             </slot>
           </div>
-        <!-- @slot menu-append -->
-        <slot name="menu-append"></slot>
+          <!-- @slot menu-append -->
+          <slot name="menu-append"></slot>
         </v-card>
       </div>
     </transition>
