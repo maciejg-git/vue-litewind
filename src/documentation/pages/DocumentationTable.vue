@@ -37,6 +37,7 @@
       simple tables however to use features like sorting, filtering etc you need
       to provide definition array.
     </p>
+    Example of definition array:
     <v-code language="javascript">
       {{
         `let definition: ref([
@@ -72,7 +73,7 @@
       }}
     </v-code>
     <p>
-    Properties of definition object:
+    Each column is defined by object with following properties:
     </p>
     <table-reference
       :items="referenceProp"
@@ -81,6 +82,12 @@
     />
   </section>
 
+  <section>
+    <h4>Example - simple table</h4>
+    <div class="example">
+      <example name="ExampleTableSimple"></example>
+    </div>
+  </section>
 
   <section>
     <h4>Example</h4>

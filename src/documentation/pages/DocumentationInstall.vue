@@ -137,11 +137,10 @@ app.use(componentPlugin, {
       <span class="font-bold">Optional</span>: while registering components you can set default values for props globally in second argument of <code class="code-text">app.use</code>:
         <code class="code-text">componentProps</code> object. If component has <code class="code-text">name</code> prop that name will be used instead of default name. The value for prop can also be function that takes <code class="code-text">base</code> argument (<code class="code-text">base</code> prop of component) and should return default value for the prop. Note that components can internally use other components and those default props will also apply to them. You can set defaults for those components only by nesting them under their parent components.
     </p>
-    <p>
-    <v-alert icon="warn" style-alert="shadowed marked outline warn" class="mx-6">
+
+    <v-alert icon="warn" style-alert="shadowed marked outline warn" class="mx-6 my-8">
       Note that you can set default value for some props only.
     </v-alert>
-    </p>
 
     <div class="my-4">
       Default props examples

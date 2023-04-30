@@ -1,33 +1,43 @@
 <template>
-  <div class="mb-12">
+  <div class="border p-6 py-8 border-dark-700 bg-secondary-50 dark:bg-[#171717] rounded-md">
     <component :is="name"></component>
   </div>
+  <div class="flex mt-2">
+    <v-button base="plain-button" style-button="bold" class="my-2 ml-auto" @click="isCodeVisible = !isCodeVisible">
+      <span class="mr-2">
+        Source
+      </span>
+      <v-chevron :switch="isCodeVisible"></v-chevron>
+    </v-button>
+  </div>
 
-  <v-tabs
-    v-if="showCode && (templateCode || scriptCode)"
-    base="material-tabs"
-  >
-    <v-tab
-      v-if="templateCode"
-      name="Template"
+  <v-collapse v-model="isCodeVisible">
+    <v-tabs
+      v-if="showCode && (templateCode || scriptCode)"
+      base="material-tabs"
     >
-      <v-code
-        :code="templateCode"
-        template
-        language="html"
-      ></v-code>
-    </v-tab>
-    <v-tab
-      v-if="scriptCode"
-      name="Script"
-    >
-      <v-code
-        :code="scriptCode"
-        script
-        language="js"
-      ></v-code>
-    </v-tab>
-  </v-tabs>
+      <v-tab
+        v-if="templateCode"
+        name="Template"
+      >
+        <v-code
+          :code="templateCode"
+          template
+          language="html"
+        ></v-code>
+      </v-tab>
+      <v-tab
+        v-if="scriptCode"
+        name="Script"
+      >
+        <v-code
+          :code="scriptCode"
+          script
+          language="js"
+        ></v-code>
+      </v-tab>
+    </v-tabs>
+  </v-collapse>
 </template>
 
 <script>
@@ -45,6 +55,7 @@ export default {
     let scriptRegexp = /^<script(?: setup)?>([\s\S]*?)^<\/script>/gm;
     let cutTemplateRegexp = /^.*<!-- CUT START -->([\s\S]*?)<!-- CUT END -->/gm;
     let cutScriptRegexp = /^.*\/\* CUT START \*\/([\s\S]*?)\/\* CUT END \*\//gm;
+    let isCodeVisible = ref(false)
 
     import(`../examples/${props.name}.vue?raw`).then((i) => {
       templateCode.value = i.default.match(templateRegexp);
@@ -62,6 +73,7 @@ export default {
     return {
       templateCode,
       scriptCode,
+      isCodeVisible,
     };
   },
 };

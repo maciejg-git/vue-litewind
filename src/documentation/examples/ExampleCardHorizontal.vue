@@ -3,7 +3,7 @@
     width="720px"
     style-card="shadow hoverable"
     style="height: 360px"
-    class="flex flex-row my-10 overflow-hidden"
+    class="flex flex-row overflow-hidden"
   >
     <img
       :src="randomPhoto(360, 360)"

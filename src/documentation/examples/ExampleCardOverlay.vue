@@ -2,7 +2,7 @@
   <v-card
     width="360px"
     style-card="shadow hoverable"
-    class="relative overflow-hidden my-10"
+    class="relative overflow-hidden"
   >
     <img
       :src="randomPhoto(360, 600)"

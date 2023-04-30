@@ -30,6 +30,7 @@
       id="style"
       v-model="example.base"
       :items="['list', 'material-list']"
+      inline
     ></v-select>
   </div>
   <v-tabs
@@ -44,6 +45,7 @@
             id="tag"
             v-model="example.tag"
             :items="['div', 'a', 'button']"
+            inline
           ></v-select>
         </div>
       </div>

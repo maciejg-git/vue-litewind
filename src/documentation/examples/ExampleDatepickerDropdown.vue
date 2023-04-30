@@ -1,5 +1,5 @@
 <template>
-  <v-dropdown>
+  <v-dropdown :offsetY="5">
     <template #reference="{ reference, onTrigger }">
       <v-input
         :ref="reference"
