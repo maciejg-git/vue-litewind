@@ -14,6 +14,8 @@
     <table-reference-basic :items="components" reference="component" />
   </section>
 
+  <v-divider></v-divider>
+
   <section>
     <h4>Notes</h4>
     <ul class="flex flex-col gap-y-7 mt-6">
@@ -27,6 +29,8 @@
     </ul>
   </section>
 
+  <v-divider></v-divider>
+
   <section>
     <h4>Example</h4>
     <div class="example">
@@ -35,7 +39,7 @@
   </section>
 
   <section>
-    <h4>Checkbox group</h4>
+    <h4>Example - checkbox group</h4>
     <p>
     Checkboxes can be optionally wrapped with <code class="code-text">v-checkbox-group</code> to create group with single <code class="code-text">v-model</code>. Group also allows more validation options.
     </p>

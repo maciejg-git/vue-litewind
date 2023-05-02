@@ -263,10 +263,21 @@
         </span>
       </footer>
     </div>
-    <div class="sidebar hidden xl:block basis-1/5 flex-none sticky border-l text-[0.9em] font-semibold overflow-auto dark:border-dark-700 pb-20 top-16 p-3 pr-l">
+    <div class="sidebar hidden xl:block basis-1/5 flex-none sticky text-[0.9em] font-semibold overflow-auto dark:border-dark-700 pb-20 top-16 p-3 pr-l">
+      <div class="ml-2 mb-4 text-white">
+        Contents
+      </div>
       <ul>
-        <li v-for="item in headers">
-          {{ item }}
+        <li v-for="item in headers" :class="{
+          'ml-4': item.level === '6'
+          }">
+            <router-link
+              to="/documentation/tooltip"
+              active-class="active"
+              class="transition-all"
+            >
+            {{ item.text }}
+            </router-link>
         </li>
       </ul>
     </div>
@@ -297,8 +308,11 @@ export default {
 
     let getHeaders = () => {
       if (!documentation.value) return []
-      return [...documentation.value.getElementsByTagName("h4")].map((i) => {
-        return i.innerText
+      return [...documentation.value.querySelectorAll("h4,h5,h6")].map((i) => {
+        return {
+        text: i.innerText,
+        level: i.tagName[1]
+        }
       })
     }
 
