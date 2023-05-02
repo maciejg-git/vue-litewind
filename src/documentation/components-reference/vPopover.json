@@ -7,6 +7,12 @@
       ],
       "default": ""
     },
+    "styleHeader": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
     "base": {
       "type": [
         "String"
@@ -67,12 +73,6 @@
         "String"
       ],
       "default": "fade"
-    },
-    "styleHeader": {
-      "type": [
-        "String"
-      ],
-      "default": ""
     }
   },
   "emits": [],

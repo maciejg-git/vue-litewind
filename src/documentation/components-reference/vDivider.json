@@ -7,6 +7,12 @@
       ],
       "default": ""
     },
+    "styleDivider": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
     "base": {
       "type": [
         "String"
@@ -17,13 +23,6 @@
       "type": [
         "String",
         "Boolean"
-      ],
-      "default": ""
-    },
-    "styleDivider": {
-      "type": [
-        "String",
-        "Array"
       ],
       "default": ""
     }

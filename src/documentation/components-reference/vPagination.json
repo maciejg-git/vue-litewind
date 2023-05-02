@@ -7,6 +7,36 @@
       ],
       "default": ""
     },
+    "stylePaginationBar": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "stylePage": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleDots": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleNext": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "stylePrev": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
     "base": {
       "type": [
         "String"
@@ -43,36 +73,6 @@
         "Number"
       ],
       "default": "undefined"
-    },
-    "stylePaginationBar": {
-      "type": [
-        "String"
-      ],
-      "default": ""
-    },
-    "stylePage": {
-      "type": [
-        "String"
-      ],
-      "default": ""
-    },
-    "styleDots": {
-      "type": [
-        "String"
-      ],
-      "default": ""
-    },
-    "styleNext": {
-      "type": [
-        "String"
-      ],
-      "default": ""
-    },
-    "stylePrev": {
-      "type": [
-        "String"
-      ],
-      "default": ""
     }
   },
   "emits": [

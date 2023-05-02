@@ -2,7 +2,7 @@
   <v-card
     width="320px"
     style-card="shadow hoverable"
-    class="overflow-hidden"
+    class="overflow-hidden mx-auto"
     name="select-card"
   >
     <img

@@ -145,7 +145,7 @@
     <div
       class="sidebar basis-1/5 hidden lg:flex sticky flex-none border-r text-[0.9em] font-semibold overflow-auto dark:border-dark-700 pb-20 top-16 p-3 pr-7"
     >
-      <div class="ml-auto dark:text-text-300/70">
+      <div class="ml-auto text-text-600 dark:text-text-300/70">
         <!-- general -->
 
         <h6>
@@ -248,7 +248,9 @@
     <div
       class="w-full max-w-[1024px] lg:max-w-screen-lg px-2 lg:px-12 mx-auto p-3 mt-12"
     >
-      <router-view></router-view>
+      <div ref="documentation">
+        <router-view></router-view>
+      </div>
 
       <footer
         class="flex min-h-[100px] border-t border-gray-300 bg-white dark:bg-[#191919] dark:border-dark-700 mt-10 py-4"
@@ -261,12 +263,18 @@
         </span>
       </footer>
     </div>
-    <div class="hidden xl:block basis-1/5 flex-none"></div>
+    <div class="sidebar hidden xl:block basis-1/5 flex-none sticky border-l text-[0.9em] font-semibold overflow-auto dark:border-dark-700 pb-20 top-16 p-3 pr-l">
+      <ul>
+        <li v-for="item in headers">
+          {{ item }}
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch, nextTick } from "vue";
 // light style
 // import "../../styles/hljs/github.css";
 import "../../styles/hljs/google-light.css";
@@ -275,10 +283,35 @@ import "../../styles/hljs/google-light.css";
 // import "../../styles/hljs/vs2015.css";
 import "../../styles/hljs/oceanicnext.css";
 import { components, formComponents } from "../Components.js";
+import { onBeforeRouteUpdate, useRoute } from "vue-router"
 
 export default {
   setup() {
     let darkMode = ref(true);
+
+    let route = useRoute()
+
+    let documentation = ref(null)
+
+    let headers = ref([])
+
+    let getHeaders = () => {
+      if (!documentation.value) return []
+      return [...documentation.value.getElementsByTagName("h4")].map((i) => {
+        return i.innerText
+      })
+    }
+
+    watch(route, () => {
+      nextTick(() => {
+      headers.value = getHeaders()
+
+      })
+    },
+      { immediate: true })
+    // onBeforeRouteUpdate((to, from) => {
+    //   headers.value = getHeaders()
+    // })
 
     let setDarkMode = () => {
       if (!darkMode.value) document.documentElement.classList.add("dark");
@@ -296,6 +329,8 @@ export default {
       darkMode,
       components,
       formComponents,
+      documentation,
+      headers,
     };
   },
 };
@@ -316,13 +351,13 @@ h6 {
 }
 
 a.active {
-  @apply inline-block text-white py-1 pr-4 pl-4;
+  @apply inline-block text-black dark:text-white py-1 pr-4 pl-4;
 }
 a {
   @apply inline-block py-1 pr-4 pl-2;
 }
 a:hover {
-  @apply text-white;
+  @apply text-black dark:text-white;
 }
 
 .sidebar {

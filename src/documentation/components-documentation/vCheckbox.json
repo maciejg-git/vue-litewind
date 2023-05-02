@@ -46,8 +46,7 @@
     },
     {
       "type": [
-        "String",
-        "Array"
+        "String"
       ],
       "default": "empty string",
       "prop": "style-checkbox",
@@ -55,8 +54,7 @@
     },
     {
       "type": [
-        "String",
-        "Array"
+        "String"
       ],
       "default": "empty string",
       "prop": "style-label",

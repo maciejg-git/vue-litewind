@@ -7,6 +7,12 @@
       ],
       "default": ""
     },
+    "styleFormText": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
     "base": {
       "type": [
         "String"
@@ -43,12 +49,6 @@
         "String"
       ],
       "default": "fade-scale"
-    },
-    "styleFormText": {
-      "type": [
-        "String"
-      ],
-      "default": ""
     }
   },
   "emits": [],

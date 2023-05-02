@@ -7,6 +7,48 @@
       ],
       "default": ""
     },
+    "styleDatepicker": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleWeekdayBar": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleWeekday": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleButton": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleDay": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleAdjacentMonthDay": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleFooter": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
     "base": {
       "type": [
         "String"
@@ -113,48 +155,6 @@
         "String"
       ],
       "default": "fade"
-    },
-    "styleDatepicker": {
-      "type": [
-        "String"
-      ],
-      "default": ""
-    },
-    "styleWeekdayBar": {
-      "type": [
-        "String"
-      ],
-      "default": ""
-    },
-    "styleWeekday": {
-      "type": [
-        "String"
-      ],
-      "default": ""
-    },
-    "styleButton": {
-      "type": [
-        "String"
-      ],
-      "default": ""
-    },
-    "styleDay": {
-      "type": [
-        "String"
-      ],
-      "default": ""
-    },
-    "styleAdjacentMonthDay": {
-      "type": [
-        "String"
-      ],
-      "default": ""
-    },
-    "styleFooter": {
-      "type": [
-        "String"
-      ],
-      "default": ""
     }
   },
   "emits": [

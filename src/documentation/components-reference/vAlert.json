@@ -7,6 +7,18 @@
       ],
       "default": ""
     },
+    "styleAlert": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleIcon": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
     "base": {
       "type": [
         "String"
@@ -49,20 +61,6 @@
         "Object"
       ],
       "default": {}
-    },
-    "styleAlert": {
-      "type": [
-        "String",
-        "Array"
-      ],
-      "default": ""
-    },
-    "styleIcon": {
-      "type": [
-        "String",
-        "Array"
-      ],
-      "default": ""
     }
   },
   "emits": [

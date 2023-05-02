@@ -7,6 +7,24 @@
       ],
       "default": ""
     },
+    "styleBreadcrumb": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleSeparator": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleActive": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
     "base": {
       "type": [
         "String"
@@ -31,24 +49,6 @@
         "String"
       ],
       "default": "/"
-    },
-    "styleBreadcrumb": {
-      "type": [
-        "String"
-      ],
-      "default": ""
-    },
-    "styleSeparator": {
-      "type": [
-        "String"
-      ],
-      "default": ""
-    },
-    "styleActive": {
-      "type": [
-        "String"
-      ],
-      "default": ""
     }
   },
   "emits": [],

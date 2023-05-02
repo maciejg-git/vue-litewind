@@ -7,6 +7,42 @@
       ],
       "default": ""
     },
+    "styleTable": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleHeaderRow": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleHeaderCell": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleRow": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleCell": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleCaption": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
     "base": {
       "type": [
         "String"
@@ -96,42 +132,6 @@
       "default": ""
     },
     "state": {
-      "type": [
-        "String"
-      ],
-      "default": ""
-    },
-    "styleTable": {
-      "type": [
-        "String"
-      ],
-      "default": ""
-    },
-    "styleHeaderRow": {
-      "type": [
-        "String"
-      ],
-      "default": ""
-    },
-    "styleHeaderCell": {
-      "type": [
-        "String"
-      ],
-      "default": ""
-    },
-    "styleRow": {
-      "type": [
-        "String"
-      ],
-      "default": ""
-    },
-    "styleCell": {
-      "type": [
-        "String"
-      ],
-      "default": ""
-    },
-    "styleCaption": {
       "type": [
         "String"
       ],

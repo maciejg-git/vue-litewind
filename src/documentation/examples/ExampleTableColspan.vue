@@ -5,7 +5,7 @@
     class="w-full"
   >
     <template #colspan="{ item }">
-      <div class="dark:bg-dark-700 p-2 px-4 m-2">
+      <div class="bg-secondary-200 dark:bg-dark-700 p-2 px-4 m-2">
         <div>
           <span class="font-semibold">First name:</span>
           {{ item["first_name"] }}

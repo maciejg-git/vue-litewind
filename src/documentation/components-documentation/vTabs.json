@@ -44,8 +44,7 @@
     },
     {
       "type": [
-        "String",
-        "Array"
+        "String"
       ],
       "default": "empty string",
       "prop": "style-tab",
@@ -53,8 +52,7 @@
     },
     {
       "type": [
-        "String",
-        "Array"
+        "String"
       ],
       "default": "empty string",
       "prop": "style-tab-bar",

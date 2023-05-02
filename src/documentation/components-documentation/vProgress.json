@@ -53,8 +53,7 @@
     },
     {
       "type": [
-        "String",
-        "Array"
+        "String"
       ],
       "default": "empty string",
       "prop": "style-label",
@@ -62,8 +61,7 @@
     },
     {
       "type": [
-        "String",
-        "Array"
+        "String"
       ],
       "default": "empty string",
       "prop": "style-progress",
@@ -71,8 +69,7 @@
     },
     {
       "type": [
-        "String",
-        "Array"
+        "String"
       ],
       "default": "empty string",
       "prop": "style-progress-bar",

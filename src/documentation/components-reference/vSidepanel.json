@@ -7,6 +7,12 @@
       ],
       "default": ""
     },
+    "styleSidepanel": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
     "base": {
       "type": [
         "String"
@@ -67,12 +73,6 @@
         "String"
       ],
       "default": "fade-slide"
-    },
-    "styleSidepanel": {
-      "type": [
-        "String"
-      ],
-      "default": ""
     }
   },
   "emits": [

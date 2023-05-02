@@ -7,6 +7,12 @@
       ],
       "default": ""
     },
+    "styleBadge": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
     "base": {
       "type": [
         "String"
@@ -34,12 +40,6 @@
       "default": "undefined"
     },
     "updateAnimation": {
-      "type": [
-        "String"
-      ],
-      "default": ""
-    },
-    "styleBadge": {
       "type": [
         "String"
       ],

@@ -7,6 +7,18 @@
       ],
       "default": ""
     },
+    "styleTextarea": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleLabel": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
     "base": {
       "type": [
         "String"
@@ -19,18 +31,6 @@
         "Boolean"
       ],
       "default": ""
-    },
-    "modelValue": {
-      "type": [
-        "String"
-      ],
-      "default": "undefined"
-    },
-    "inline": {
-      "type": [
-        "Boolean"
-      ],
-      "default": false
     },
     "validateOn": {
       "type": [
@@ -55,6 +55,18 @@
         "String"
       ],
       "default": null
+    },
+    "modelValue": {
+      "type": [
+        "String"
+      ],
+      "default": "undefined"
+    },
+    "inline": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
     },
     "singleLineMessage": {
       "type": [
@@ -81,20 +93,6 @@
       "default": {
         "class": "absolute"
       }
-    },
-    "styleTextarea": {
-      "type": [
-        "String",
-        "Array"
-      ],
-      "default": ""
-    },
-    "styleLabel": {
-      "type": [
-        "String",
-        "Array"
-      ],
-      "default": ""
     }
   },
   "emits": [

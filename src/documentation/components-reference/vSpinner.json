@@ -7,6 +7,12 @@
       ],
       "default": ""
     },
+    "styleSpinner": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
     "base": {
       "type": [
         "String"
@@ -32,12 +38,6 @@
         "Object"
       ],
       "default": "undefined"
-    },
-    "styleSpinner": {
-      "type": [
-        "String"
-      ],
-      "default": ""
     }
   },
   "emits": [],

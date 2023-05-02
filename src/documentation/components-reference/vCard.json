@@ -7,6 +7,12 @@
       ],
       "default": ""
     },
+    "styleCard": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
     "base": {
       "type": [
         "String"
@@ -25,12 +31,6 @@
         "String"
       ],
       "default": "undefined"
-    },
-    "styleCard": {
-      "type": [
-        "String"
-      ],
-      "default": ""
     }
   },
   "emits": [],

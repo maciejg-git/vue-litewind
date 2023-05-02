@@ -2,7 +2,7 @@
   <v-card
     width="360px"
     style-card="shadow hoverable"
-    class="relative overflow-hidden"
+    class="relative overflow-hidden mx-auto"
   >
     <img
       :src="randomPhoto(360, 600)"

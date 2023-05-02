@@ -7,6 +7,18 @@
       ],
       "default": ""
     },
+    "styleRadio": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleLabel": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
     "base": {
       "type": [
         "String"
@@ -19,14 +31,6 @@
         "Boolean"
       ],
       "default": ""
-    },
-    "modelValue": {
-      "type": [
-        "Array",
-        "Boolean",
-        "String"
-      ],
-      "default": "undefined"
     },
     "validateMode": {
       "type": [
@@ -46,19 +50,15 @@
       ],
       "default": null
     },
+    "modelValue": {
+      "type": [
+        "Array",
+        "Boolean",
+        "String"
+      ],
+      "default": "undefined"
+    },
     "label": {
-      "type": [
-        "String"
-      ],
-      "default": ""
-    },
-    "styleRadio": {
-      "type": [
-        "String"
-      ],
-      "default": ""
-    },
-    "styleLabel": {
       "type": [
         "String"
       ],

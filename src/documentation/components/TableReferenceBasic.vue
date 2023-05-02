@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#f4f4f4] dark:bg-[#1e1e1e] rounded-lg p-4 mt-10 mb-10">
+  <div class="bg-[#f8f8f8] dark:bg-[#1e1e1e] rounded-lg p-4 mt-10 mb-10">
     <div
       v-for="(prop, index) in items"
       class="group mt-4 first:mt-0"

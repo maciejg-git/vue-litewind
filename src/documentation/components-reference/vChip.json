@@ -7,6 +7,12 @@
       ],
       "default": ""
     },
+    "styleChip": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
     "base": {
       "type": [
         "String"
@@ -28,12 +34,6 @@
         "base": "round-close-button",
         "styleCloseButton": "small"
       }
-    },
-    "styleChip": {
-      "type": [
-        "String"
-      ],
-      "default": ""
     }
   },
   "emits": [

@@ -7,6 +7,18 @@
       ],
       "default": ""
     },
+    "styleItem": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleHeader": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
     "base": {
       "type": [
         "String"
@@ -19,12 +31,6 @@
         "Boolean"
       ],
       "default": ""
-    },
-    "modelValue": {
-      "type": [
-        "Boolean"
-      ],
-      "default": "undefined"
     },
     "placement": {
       "type": [
@@ -56,6 +62,12 @@
       ],
       "default": false
     },
+    "modelValue": {
+      "type": [
+        "Boolean"
+      ],
+      "default": "undefined"
+    },
     "autoCloseMenu": {
       "type": [
         "Boolean"
@@ -73,18 +85,6 @@
         "String"
       ],
       "default": "fade-scale"
-    },
-    "styleItem": {
-      "type": [
-        "String"
-      ],
-      "default": ""
-    },
-    "styleHeader": {
-      "type": [
-        "String"
-      ],
-      "default": ""
     }
   },
   "emits": [

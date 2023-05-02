@@ -7,6 +7,30 @@
       ],
       "default": ""
     },
+    "styleInput": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleIcon": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleCloseButtonWrapper": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleLabel": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
     "base": {
       "type": [
         "String"
@@ -20,25 +44,18 @@
       ],
       "default": ""
     },
-    "modelValue": {
+    "icon": {
       "type": [
         "String",
-        "Number",
-        "Array",
-        "Boolean",
-        "Number"
+        "Object"
       ],
       "default": ""
     },
-    "externalModel": {
+    "clearable": {
       "type": [
-        "String",
-        "Number",
-        "Array",
-        "Boolean",
-        "Number"
+        "Boolean"
       ],
-      "default": "undefined"
+      "default": false
     },
     "validateOn": {
       "type": [
@@ -63,6 +80,26 @@
         "String"
       ],
       "default": null
+    },
+    "modelValue": {
+      "type": [
+        "String",
+        "Number",
+        "Array",
+        "Boolean",
+        "Number"
+      ],
+      "default": ""
+    },
+    "externalModel": {
+      "type": [
+        "String",
+        "Number",
+        "Array",
+        "Boolean",
+        "Number"
+      ],
+      "default": "undefined"
     },
     "inline": {
       "type": [
@@ -125,43 +162,6 @@
       "default": {
         "class": "absolute"
       }
-    },
-    "styleInput": {
-      "type": [
-        "String"
-      ],
-      "default": ""
-    },
-    "styleIcon": {
-      "type": [
-        "String"
-      ],
-      "default": ""
-    },
-    "styleCloseButtonWrapper": {
-      "type": [
-        "String"
-      ],
-      "default": ""
-    },
-    "styleLabel": {
-      "type": [
-        "String"
-      ],
-      "default": ""
-    },
-    "icon": {
-      "type": [
-        "String",
-        "Object"
-      ],
-      "default": ""
-    },
-    "clearable": {
-      "type": [
-        "Boolean"
-      ],
-      "default": false
     },
     "customClearable": {
       "type": [

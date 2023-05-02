@@ -1,12 +1,20 @@
 <template>
-  <div class="border p-6 py-8 border-dark-700 bg-secondary-50 dark:bg-[#171717] rounded-md">
+  <div
+    class="rounded-md border bg-secondary-50 p-6 py-8 dark:border-dark-700 dark:bg-[#171717]"
+  >
     <component :is="name"></component>
   </div>
-  <div class="flex mt-2">
-    <v-button base="plain-button" style-button="bold" class="my-2 ml-auto" @click="isCodeVisible = !isCodeVisible">
-      <span class="mr-2">
-        Source
-      </span>
+  <div
+    v-if="showCode && (templateCode || scriptCode)"
+    class="mt-2 flex"
+  >
+    <v-button
+      base="plain-button"
+      style-button="bold"
+      class="my-2 ml-auto"
+      @click="isCodeVisible = !isCodeVisible"
+    >
+      <span class="mr-2">Source</span>
       <v-chevron :switch="isCodeVisible"></v-chevron>
     </v-button>
   </div>
@@ -46,7 +54,7 @@ import { ref } from "vue";
 export default {
   props: {
     name: { type: String, default: "" },
-    showCode: { type: Boolean, default: true }
+    showCode: { type: Boolean, default: true },
   },
   setup(props) {
     let templateCode = ref("");
@@ -55,7 +63,7 @@ export default {
     let scriptRegexp = /^<script(?: setup)?>([\s\S]*?)^<\/script>/gm;
     let cutTemplateRegexp = /^.*<!-- CUT START -->([\s\S]*?)<!-- CUT END -->/gm;
     let cutScriptRegexp = /^.*\/\* CUT START \*\/([\s\S]*?)\/\* CUT END \*\//gm;
-    let isCodeVisible = ref(false)
+    let isCodeVisible = ref(false);
 
     import(`../examples/${props.name}.vue?raw`).then((i) => {
       templateCode.value = i.default.match(templateRegexp);

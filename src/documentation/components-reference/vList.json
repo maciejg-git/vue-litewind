@@ -7,6 +7,18 @@
       ],
       "default": ""
     },
+    "styleList": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleItem": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
     "base": {
       "type": [
         "String"
@@ -31,18 +43,6 @@
         "String"
       ],
       "default": "div"
-    },
-    "styleList": {
-      "type": [
-        "String"
-      ],
-      "default": ""
-    },
-    "styleItem": {
-      "type": [
-        "String"
-      ],
-      "default": ""
     }
   },
   "emits": [],

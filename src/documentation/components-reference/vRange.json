@@ -7,6 +7,12 @@
       ],
       "default": ""
     },
+    "styleRange": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
     "base": {
       "type": [
         "String"
@@ -26,13 +32,6 @@
         "Number"
       ],
       "default": "undefined"
-    },
-    "styleRange": {
-      "type": [
-        "String",
-        "Array"
-      ],
-      "default": ""
     }
   },
   "emits": [],

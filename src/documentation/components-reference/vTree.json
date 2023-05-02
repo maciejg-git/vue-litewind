@@ -7,6 +7,24 @@
       ],
       "default": ""
     },
+    "styleFolder": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleItem": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleIcon": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
     "base": {
       "type": [
         "String"
@@ -147,24 +165,6 @@
         "String"
       ],
       "default": "fade"
-    },
-    "styleFolder": {
-      "type": [
-        "String"
-      ],
-      "default": ""
-    },
-    "styleItem": {
-      "type": [
-        "String"
-      ],
-      "default": ""
-    },
-    "styleIcon": {
-      "type": [
-        "String"
-      ],
-      "default": ""
     }
   },
   "emits": [

@@ -2,7 +2,7 @@
   <v-card
     width="360px"
     style-card="borderless rounded-extra shadow"
-    class="overflow-hidden"
+    class="overflow-hidden mx-auto"
   >
     <img
       :src="randomPhoto()"

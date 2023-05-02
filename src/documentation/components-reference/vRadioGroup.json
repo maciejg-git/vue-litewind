@@ -1,13 +1,6 @@
 {
   "name": "vRadioGroup",
   "props": {
-    "modelValue": {
-      "type": [
-        "String",
-        "Boolean"
-      ],
-      "default": "undefined"
-    },
     "validateMode": {
       "type": [
         "String"
@@ -25,6 +18,13 @@
         "String"
       ],
       "default": null
+    },
+    "modelValue": {
+      "type": [
+        "String",
+        "Boolean"
+      ],
+      "default": "undefined"
     }
   },
   "emits": [

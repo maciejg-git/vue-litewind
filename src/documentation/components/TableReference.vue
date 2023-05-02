@@ -14,7 +14,7 @@
   </div>
   <div
     v-if="referenceItems.length"
-    class="bg-[#f4f4f4] dark:bg-[#1e1e1e] rounded-lg p-4 mt-4 mb-10"
+    class="bg-[#f8f8f8] dark:bg-[#1e1e1e] rounded-lg p-4 mt-4 mb-10"
   >
     <div
       v-for="(prop, index) in referenceItems"

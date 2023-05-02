@@ -1,15 +1,6 @@
 {
   "name": "vCheckboxGroup",
   "props": {
-    "modelValue": {
-      "type": [
-        "String",
-        "Number",
-        "Boolean",
-        "Array"
-      ],
-      "default": "undefined"
-    },
     "validateMode": {
       "type": [
         "String"
@@ -27,6 +18,15 @@
         "String"
       ],
       "default": null
+    },
+    "modelValue": {
+      "type": [
+        "String",
+        "Number",
+        "Boolean",
+        "Array"
+      ],
+      "default": "undefined"
     }
   },
   "emits": [

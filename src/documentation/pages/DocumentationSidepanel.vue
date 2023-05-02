@@ -23,6 +23,9 @@
 
   <section id="ExampleSidepanelTrigger" class="scroll-mt-20">
     <h4>Example - open by id</h4>
+    <p>
+    You can also control state of the sidepanel menu by using <code class="code-text">v-trigger</code> component. The <code class="code-text">for</code> prop of the <code class="code-text">v-trigger</code> should be the same as <code class="code-text">id</code> of the sidepanel. The advantage of this method is that <code class="code-text">v-triggers</code> can be put anywhere in application. Read more about v-trigger here.
+    </p>
     <div class="example">
       <example name="ExampleSidepanelTrigger"></example>
     </div>

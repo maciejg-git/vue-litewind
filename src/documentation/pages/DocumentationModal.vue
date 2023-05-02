@@ -54,7 +54,7 @@
   <section>
     <h4>Example - modal slot</h4>
     <p>
-    You can use modal slot to replace all default content for complete customization.
+    You can use <code class="code-text">modal</code> slot to replace all default content for complete customization.
     </p>
     <div class="example">
       <example name="ExampleModalSlots"></example>

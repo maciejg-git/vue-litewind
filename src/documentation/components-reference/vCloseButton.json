@@ -7,6 +7,18 @@
       ],
       "default": ""
     },
+    "styleWrapper": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleCloseButton": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
     "base": {
       "type": [
         "String"
@@ -17,18 +29,6 @@
       "type": [
         "String",
         "Boolean"
-      ],
-      "default": ""
-    },
-    "styleWrapper": {
-      "type": [
-        "String"
-      ],
-      "default": ""
-    },
-    "styleCloseButton": {
-      "type": [
-        "String"
       ],
       "default": ""
     }

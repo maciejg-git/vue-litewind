@@ -7,6 +7,24 @@
       ],
       "default": ""
     },
+    "styleProgress": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleProgressBar": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
+    "styleLabel": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
     "base": {
       "type": [
         "String"
@@ -57,27 +75,6 @@
         "Boolean"
       ],
       "default": true
-    },
-    "styleProgress": {
-      "type": [
-        "String",
-        "Array"
-      ],
-      "default": ""
-    },
-    "styleProgressBar": {
-      "type": [
-        "String",
-        "Array"
-      ],
-      "default": ""
-    },
-    "styleLabel": {
-      "type": [
-        "String",
-        "Array"
-      ],
-      "default": ""
     }
   },
   "emits": [],

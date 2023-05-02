@@ -7,6 +7,12 @@
       ],
       "default": ""
     },
+    "styleItem": {
+      "type": [
+        "String"
+      ],
+      "default": ""
+    },
     "base": {
       "type": [
         "String"
@@ -19,6 +25,42 @@
         "Boolean"
       ],
       "default": ""
+    },
+    "clearable": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
+    "placement": {
+      "type": [
+        "String"
+      ],
+      "default": "bottom-start"
+    },
+    "offsetX": {
+      "type": [
+        "Number"
+      ],
+      "default": 0
+    },
+    "offsetY": {
+      "type": [
+        "Number"
+      ],
+      "default": 5
+    },
+    "flip": {
+      "type": [
+        "Boolean"
+      ],
+      "default": true
+    },
+    "autoPlacement": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
     },
     "modelValue": {
       "type": [
@@ -34,12 +76,6 @@
         "Boolean"
       ],
       "default": true
-    },
-    "clearable": {
-      "type": [
-        "Boolean"
-      ],
-      "default": false
     },
     "items": {
       "type": [
@@ -130,42 +166,6 @@
         "String"
       ],
       "default": "fade-scale"
-    },
-    "styleItem": {
-      "type": [
-        "String"
-      ],
-      "default": ""
-    },
-    "placement": {
-      "type": [
-        "String"
-      ],
-      "default": "bottom-start"
-    },
-    "offsetX": {
-      "type": [
-        "Number"
-      ],
-      "default": 0
-    },
-    "offsetY": {
-      "type": [
-        "Number"
-      ],
-      "default": 5
-    },
-    "flip": {
-      "type": [
-        "Boolean"
-      ],
-      "default": true
-    },
-    "autoPlacement": {
-      "type": [
-        "Boolean"
-      ],
-      "default": false
     }
   },
   "emits": [

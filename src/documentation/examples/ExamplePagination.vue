@@ -55,18 +55,6 @@
         </div>
       </div>
     </v-tab>
-    <v-tab name="Events">
-      <template #name>
-        Events
-        <v-badge
-          style-badge="secondary tiny"
-          class="ml-2"
-        >
-          {{ events.length }}
-        </v-badge>
-      </template>
-      <event-viewer :events="events" />
-    </v-tab>
   </v-tabs>
   <!-- CUT END -->
 </template>
