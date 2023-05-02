@@ -12,6 +12,7 @@
       border-b-2
       border-transparent
       duration-200
+      font-semibold
       hover:bg-secondary-50
       hover:dark:bg-dark-700;
 
@@ -25,7 +26,6 @@
 
   &__tab-bar {
     @apply
-      border-b
       dark:border-dark-700
   }
 }
@@ -61,7 +61,7 @@
           bg-primary-400
           hover:bg-primary-300
           dark:text-white
-          dark:bg-secondary-500
+          dark:bg-primary-500
           dark:hover:bg-primary-500
       }
   }

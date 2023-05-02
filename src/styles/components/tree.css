@@ -9,7 +9,7 @@
       my-3
       ml-8;
 
-      &--folder--root-variant {
+      &--root-variant {
         @apply
           ml-0
       }

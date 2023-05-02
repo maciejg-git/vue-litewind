@@ -37,7 +37,7 @@
       &--highlighted-state {
         @apply
           text-text-800
-          bg-dark-100
+          bg-dark-200
           dark:text-text-300
           dark:bg-dark-600
       }

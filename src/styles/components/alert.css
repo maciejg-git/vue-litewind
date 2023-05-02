@@ -11,7 +11,7 @@
       @apply
         text-text-800
         dark:text-info-200
-        bg-info-400
+        bg-info-300
         dark:bg-info-500/50
         border-info-400
         dark:border-info-500
@@ -29,7 +29,7 @@
       @apply
         text-text-800
         dark:text-warn-200
-        bg-warn-300
+        bg-warn-400/70
         dark:bg-warn-500/50
         border-warn-400
         dark:border-warn-500
