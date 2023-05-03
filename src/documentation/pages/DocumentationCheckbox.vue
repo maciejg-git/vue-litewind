@@ -3,25 +3,24 @@
   <links-github-header component="vCheckbox" />
 
   <section>
-    <h4>Reference</h4>
+    <h4 id="CheckboxReference">Reference</h4>
     <table-reference :items="reference.props" />
 
     <!-- <h6>Events</h6> -->
     <!-- <p></p> -->
     <!-- <table-reference-basic :items="events"></table-reference-basic> -->
 
-    <h6>Components</h6>
+    <h6 id="CheckboxComponents">Components</h6>
     <table-reference-basic :items="components" reference="component" />
   </section>
 
   <v-divider></v-divider>
 
   <section>
-    <h4>Notes</h4>
+    <h4 id="CheckboxNotes">Notes</h4>
     <ul class="flex flex-col gap-y-7 mt-6">
       <li>
         <header class="font-semibold text-lg dark:text-text-200 mb-2">
-          <span>#</span>
         Simple checkbox
         </header>
         <code class="code-text">v-checkbox-simple</code> is a lighter, simpler checkbox variant that can be used in lists, tables etc. Simple checkbox only has <code class="code-text">style-checkbox</code> and <code class="code-text">base</code> prop. It does not allow <code class="code-text">v-model</code> but <code class="code-text">:checked</code> prop and <code class="code-text">@changed</code> event can be used instead.
@@ -32,14 +31,14 @@
   <v-divider></v-divider>
 
   <section>
-    <h4>Example</h4>
+    <h4 id="ExampleCheckbox">Example</h4>
     <div class="example">
       <example name="ExampleCheckbox"></example>
     </div>
   </section>
 
   <section>
-    <h4>Example - checkbox group</h4>
+    <h4 id="ExampleCheckboxGroup">Example - checkbox group</h4>
     <p>
     Checkboxes can be optionally wrapped with <code class="code-text">v-checkbox-group</code> to create group with single <code class="code-text">v-model</code>. Group also allows more validation options.
     </p>

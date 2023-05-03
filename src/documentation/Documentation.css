@@ -1,14 +1,14 @@
 h3 {
-  @apply text-4xl font-semibold dark:text-text-300;
+  @apply text-4xl font-semibold dark:text-text-300 scroll-mt-20;
 }
 h4 {
-  @apply text-2xl font-semibold dark:text-text-300;
+  @apply text-2xl font-semibold dark:text-text-300 scroll-mt-20;
 }
 h5 {
-  @apply text-xl font-semibold dark:text-text-300;
+  @apply text-xl font-semibold dark:text-text-300 scroll-mt-20;
 }
 h6 {
-  @apply text-lg font-semibold dark:text-text-300;
+  @apply text-lg font-semibold dark:text-text-300 scroll-mt-20;
 }
 
 section {

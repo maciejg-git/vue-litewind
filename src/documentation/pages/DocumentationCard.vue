@@ -3,36 +3,36 @@
   <links-github-header component="vCard" />
 
   <section>
-    <h4>Reference</h4>
+    <h4 id="CardReference">Reference</h4>
     <table-reference :items="reference.props" />
 
-    <h6>Slots</h6>
+    <h6 id="CardSlots">Slots</h6>
     <table-reference-basic :items="reference.slots" reference="slot" />
   </section>
 
   <section>
-    <h4>Example - simple card</h4>
+    <h4 id="ExampleCardSimple">Example - simple card</h4>
     <div class="example">
       <example name="ExampleCardSimple"></example>
     </div>
   </section>
 
   <section>
-    <h4>Example - horizontal card</h4>
+    <h4 id="ExampleCardHorizontal">Example - horizontal card</h4>
     <div class="example">
       <example name="ExampleCardHorizontal"></example>
     </div>
   </section>
 
   <section>
-    <h4>Example - overlay card</h4>
+    <h4 id="ExampleCardOverlay">Example - overlay card</h4>
     <div class="example">
       <example name="ExampleCardOverlay"></example>
     </div>
   </section>
 
   <section>
-    <h4>Example - flat card</h4>
+    <h4 id="ExampleCardRounded">Example - flat card</h4>
     <div class="example">
       <example name="ExampleCardRounded"></example>
     </div>

@@ -3,16 +3,16 @@
   <links-github-header component="vTable" />
 
   <section>
-    <h4>Reference</h4>
+    <h4 id="TableReference">Reference</h4>
     <table-reference :items="reference.props" />
 
-    <h6>Events</h6>
+    <h6 id="TableEvents">Events</h6>
     <table-reference-basic
       :items="reference.events"
       reference="event"
     />
 
-    <h6>Slots</h6>
+    <h6 id="TableSlots">Slots</h6>
     <table-reference-basic
       :items="reference.slots"
       reference="slot"
@@ -20,7 +20,7 @@
   </section>
 
   <section id="table-definition" class="scroll-mt-20">
-    <h4>Prop: definition</h4>
+    <h4 id="Definition">Definition</h4>
     <span class="font-bold">Type</span>
     :
     <code class="code-word">Array</code>
@@ -83,21 +83,21 @@
   </section>
 
   <section>
-    <h4>Example - simple table</h4>
+    <h4 id="ExampleTableSimple">Example - simple table</h4>
     <div class="example">
       <example name="ExampleTableSimple"></example>
     </div>
   </section>
 
   <section>
-    <h4>Example</h4>
+    <h4 id="ExampleTable">Example</h4>
     <div class="example">
       <example name="ExampleTable"></example>
     </div>
   </section>
 
   <section>
-    <h4>Example - colspan item property</h4>
+    <h4 id="ExampleTableColspan">Example - colspan item property</h4>
     <p>
       Item can have special property
       <code class="code-text">colspan: {}</code>

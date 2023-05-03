@@ -1,7 +1,7 @@
 <template>
   <v-navbar
-    sticky
-    class="flex justify-between border-b dark:text-text-300 dark:border-dark-700 px-4 py-2"
+    fixed
+    class="flex justify-between w-full border-b px-4 py-2 dark:border-dark-700 dark:text-text-300"
   >
     <div class="flex items-center">
       <v-trigger
@@ -9,18 +9,18 @@
         v-slot="{ onTrigger }"
       >
         <v-button
-          class="block lg:hidden mr-2"
+          class="mr-2 block lg:hidden"
           base="plain-button"
           v-on="onTrigger"
         >
           <v-icon
             name="b-list"
-            class="w-7 h-7"
+            class="h-7 w-7"
           ></v-icon>
         </v-button>
       </v-trigger>
       <span class="text-lg font-bold">VueTailwind</span>
-      <div class="inline-block ml-5">
+      <div class="ml-5 inline-block">
         <a href="/documentation/installation">Docs</a>
       </div>
     </div>
@@ -41,7 +41,7 @@
     sidebar-left
     width="auto"
   >
-    <div class="pl-6 pr-10 h-full overflow-scroll">
+    <div class="h-full overflow-scroll pl-6 pr-10">
       <h6>
         <router-link
           to="/documentation/components"
@@ -140,10 +140,10 @@
   </v-sidepanel>
 
   <div
-    class="flex text-text-800 dark:bg-[#191919] dark:text-text-300/80 px-2 lg:px-0"
+    class="top-16 relative flex justify-center text-text-800 dark:bg-[#191919] dark:text-text-300/80 lg:px-0"
   >
     <div
-      class="sidebar basis-1/5 hidden lg:flex sticky flex-none border-r text-[0.9em] font-semibold overflow-auto dark:border-dark-700 pb-20 top-16 p-3 pr-7"
+      class="sidebar sticky top-16 hidden flex-none basis-1/5 overflow-auto border-r p-3 pb-20 pr-7 text-[0.9em] font-semibold dark:border-dark-700 lg:flex"
     >
       <div class="ml-auto text-text-600 dark:text-text-300/70">
         <!-- general -->
@@ -245,15 +245,17 @@
       </div>
     </div>
 
+    <!-- documentation page -->
+
     <div
-      class="w-full max-w-[1024px] lg:max-w-screen-lg px-2 lg:px-12 mx-auto p-3 mt-12"
+      class="lg:mx-14 mt-12 w-full max-w-[1024px] p-3 px-2 lg:max-w-screen-lg lg:px-12"
     >
       <div ref="documentation">
         <router-view></router-view>
       </div>
 
       <footer
-        class="flex min-h-[100px] border-t border-gray-300 bg-white dark:bg-[#191919] dark:border-dark-700 mt-10 py-4"
+        class="mt-10 flex min-h-[100px] border-t border-gray-300 bg-white py-4 dark:border-dark-700 dark:bg-[#191919]"
       >
         <span class="ml-auto mr-4">
           <v-icon
@@ -263,21 +265,26 @@
         </span>
       </footer>
     </div>
-    <div class="sidebar hidden xl:block basis-1/5 flex-none sticky text-[0.9em] font-semibold overflow-auto dark:border-dark-700 pb-20 top-16 p-3 pr-l">
-      <div class="ml-2 mb-4 text-white">
-        Contents
-      </div>
+
+    <!-- page content sidepanel -->
+
+    <div
+      class="sidebar sticky top-16 hidden flex-none basis-1/5 overflow-auto py-3 pb-20 text-[0.9em] font-semibold dark:border-dark-700 xl:block -translate-x-10"
+    >
+      <div class="mb-4 ml-2 mt-4 text-black dark:text-white">Contents</div>
       <ul>
-        <li v-for="item in headers" :class="{
-          'ml-4': item.level === '6'
-          }">
-            <router-link
-              to="/documentation/tooltip"
-              active-class="active"
-              class="transition-all"
-            >
+        <li
+          v-for="item in headers"
+          :class="{
+            'ml-4': item.level === '6',
+          }"
+        >
+          <a
+            :href="route.path + '#' + item.id"
+            class="transition-all"
+          >
             {{ item.text }}
-            </router-link>
+          </a>
         </li>
       </ul>
     </div>
@@ -294,38 +301,38 @@ import "../../styles/hljs/google-light.css";
 // import "../../styles/hljs/vs2015.css";
 import "../../styles/hljs/oceanicnext.css";
 import { components, formComponents } from "../Components.js";
-import { onBeforeRouteUpdate, useRoute } from "vue-router"
+import { onBeforeRouteUpdate, useRoute } from "vue-router";
 
 export default {
   setup() {
     let darkMode = ref(true);
 
-    let route = useRoute()
+    let route = useRoute();
 
-    let documentation = ref(null)
+    let documentation = ref(null);
 
-    let headers = ref([])
+    let headers = ref([]);
 
     let getHeaders = () => {
-      if (!documentation.value) return []
+      if (!documentation.value) return [];
       return [...documentation.value.querySelectorAll("h4,h5,h6")].map((i) => {
         return {
-        text: i.innerText,
-        level: i.tagName[1]
-        }
-      })
-    }
+          text: i.innerText,
+          level: i.tagName[1],
+          id: i.id,
+        };
+      });
+    };
 
-    watch(route, () => {
-      nextTick(() => {
-      headers.value = getHeaders()
-
-      })
-    },
-      { immediate: true })
-    // onBeforeRouteUpdate((to, from) => {
-    //   headers.value = getHeaders()
-    // })
+    watch(
+      route,
+      () => {
+        nextTick((value) => {
+          headers.value = getHeaders();
+        });
+      },
+      { immediate: true }
+    );
 
     let setDarkMode = () => {
       if (!darkMode.value) document.documentElement.classList.add("dark");
@@ -345,6 +352,7 @@ export default {
       formComponents,
       documentation,
       headers,
+      route,
     };
   },
 };
@@ -352,23 +360,23 @@ export default {
 
 <style scoped>
 h3 {
-  @apply text-3xl font-semibold mt-4;
+  @apply mt-4 text-3xl font-semibold;
 }
 h4 {
-  @apply text-2xl font-semibold mt-4;
+  @apply mt-4 text-2xl font-semibold;
 }
 h5 {
-  @apply text-xl font-semibold mt-4;
+  @apply mt-4 text-xl font-semibold;
 }
 h6 {
-  @apply text-lg font-semibold mt-6 mb-2;
+  @apply mb-2 mt-6 text-lg font-semibold;
 }
 
 a.active {
-  @apply inline-block text-black dark:text-white py-1 pr-4 pl-4;
+  @apply inline-block py-1 pl-4 pr-4 text-black dark:text-white;
 }
 a {
-  @apply inline-block py-1 pr-4 pl-2;
+  @apply inline-block py-1 pl-2 pr-4;
 }
 a:hover {
   @apply text-black dark:text-white;

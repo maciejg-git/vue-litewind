@@ -2,7 +2,7 @@
   <h3>Form Validation</h3>
 
   <section>
-    <h4>Usage</h4>
+    <h4 id="ValidationUsage">Usage</h4>
     <p>
     <code class="code-text">rules</code> prop allows validation of form components. <code class="code-text">rules</code> is an object where each prop is a name of global validator or user defined function with tested value as argument. User functions should return <code class="code-text">true</code> for valid result or the <code class="code-text">string</code> message if the result is invalid. Global validators include: 
     <ul>
@@ -95,7 +95,7 @@
   </section>
 
   <section>
-    <h4>Example - simple validation</h4>
+    <h4 id="ExampleValidationUsername">Example - simple validation</h4>
     <div class="example">
       <example name="ExampleValidationUsername"></example>
     </div>
@@ -110,7 +110,7 @@
   </section>
 
   <section>
-    <h4>Example - validation modes</h4>
+    <h4 id="ExampleValidationModes">Example - validation modes</h4>
     <p><code class="code-text">validation-on</code> and <code class="code-text">validation-mode</code> allows control over when to start validation and how to update state according to validation results:
     <ul>
       <li class="my-2">
@@ -136,7 +136,7 @@
   </section>
 
   <section>
-    <h4>Example - form validation</h4>
+    <h4 id="ExampleValidationForm">Example - form validation</h4>
     <p>
      In order to validate entire form wrap inputs with <code class="code-text">v-form</code> component which exposes two functions: <code class="code-text">validate()</code> and <code class="code-text">reset()</code>. Calling <code class="code-text">validate()</code> function validates every input according to its rules and return <code class="code-text">true</code> if all are valid (<code class="code-text">false</code> if any input is invalid). To reset all inputs within <code class="code-text">v-form</code> use exposed <code class="code-text">reset()</code> function.
     </p>
@@ -146,7 +146,7 @@
   </section>
 
   <section>
-    <h4>Example - single line messages</h4>
+    <h4 id="ExampleValidationSingleLineMessage">Example - single line messages</h4>
     <p>
       In order to display single line validation message use <code class="code-text">single-line-message</code> prop.
     </p>
@@ -156,7 +156,7 @@
   </section>
 
   <section>
-    <h4>Example - message slot</h4>
+    <h4 id="ExampleValidationMessageSlot">Example - message slot</h4>
     <p>
       In order to customize validation messages <code class="code-text">message</code> slot can be used.
     </p>

@@ -3,22 +3,22 @@
   <links-github-header component="vTabs" />
 
   <section>
-    <h4>Reference</h4>
+    <h4 id="TabsReference">Reference</h4>
     <table-reference :items="reference.props" />
 
-    <h6>Events</h6>
+    <h6 id="TabsEvents">Events</h6>
     <table-reference-basic
       :items="reference.events"
       reference="event"
     />
 
-    <h6>Slots</h6>
+    <h6 id="TabsSlots">Slots</h6>
     <table-reference-basic
       :items="reference.slots"
       reference="slot"
     />
 
-    <h6>Components</h6>
+    <h6 id="TabsComponents">Components</h6>
     <p>
       <a
         href="/documentation/tab"
@@ -30,14 +30,14 @@
   </section>
 
   <section>
-    <h4>Example - simple tabs</h4>
+    <h4 id="ExampleTabsSimple">Example - simple tabs</h4>
     <div class="example">
       <example name="ExampleTabsSimple"></example>
     </div>
   </section>
 
   <section>
-    <h4>Example</h4>
+    <h4 id="ExampleTabs">Example</h4>
     <div class="example">
       <example name="ExampleTabs"></example>
     </div>

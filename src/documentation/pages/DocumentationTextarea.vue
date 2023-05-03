@@ -3,14 +3,14 @@
   <links-github-header component="vTextarea" />
 
   <section>
-    <h4>Reference</h4>
+    <h4 id="TextareaReference">Reference</h4>
     <table-reference :items="reference.props" />
 
     <!-- <h6>Events</h6> -->
     <!-- <p></p> -->
     <!-- <table-reference-basic :items="events"></table-reference-basic> -->
 
-    <h6>Slots</h6>
+    <h6 id="TextareaSlots">Slots</h6>
     <table-reference-basic
       :items="reference.slots"
       reference="slot"
@@ -18,7 +18,7 @@
   </section>
 
   <section>
-    <h4>Example</h4>
+    <h4 id="ExampleTextarea">Example</h4>
     <div class="example">
       <example name="ExampleTextarea"></example>
     </div>

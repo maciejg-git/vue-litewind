@@ -3,12 +3,12 @@
   <links-github-header component="vCloseButton" />
 
   <section>
-    <h4>Reference</h4>
+    <h4 id="ClosebuttonReference">Reference</h4>
     <table-reference :items="reference.props" />
   </section>
 
   <section>
-    <h4>Example</h4>
+    <h4 id="ExampleClosebutton">Example</h4>
     <div class="example">
       <div class="flex gap-x-4">
         <v-close-button />

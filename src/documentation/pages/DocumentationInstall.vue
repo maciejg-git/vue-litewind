@@ -245,7 +245,6 @@ app.use(componentPlugin, {
       </section>
 
       <section>
-        <h5>Example - styling with base, style and variant props</h5>
         <div class="example">
           <example name="ExampleInstallSelect"></example>
         </div>

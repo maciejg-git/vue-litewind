@@ -3,12 +3,12 @@
   <links-github-header component="vChevron" />
 
   <section>
-    <h4>Reference</h4>
+    <h4 id="ChevronReference">Reference</h4>
     <table-reference :items="reference.props" />
   </section>
 
   <section>
-    <h4>Notes</h4>
+    <h4 id="ChevronNotes">Notes</h4>
     <p class="mt-6">
       <code class="code-text">v-chevron</code>
       rotates chevron/triangle or any icon depending on switch prop. It is used
@@ -17,7 +17,7 @@
   </section>
 
   <section>
-    <h4>Example</h4>
+    <h4 id="ExampleChevron">Example</h4>
     <div class="example">
       <example name="ExampleChevron"></example>
     </div>

@@ -3,31 +3,29 @@
   <links-github-header component="vCollapse" />
 
   <section>
-    <h4>Reference</h4>
+    <h4 id="CollapseReference">Reference</h4>
     <table-reference :items="reference.props" />
 
-    <h6>Slots</h6>
+    <h6 id="CollapseSlots">Slots</h6>
     <table-reference-basic :items="reference.slots" reference="slot" />
 
-    <h6>Components</h6>
+    <h6 id="CollapseComponents">Components</h6>
     <table-reference-basic :items="components" reference="component" />
   </section>
 
   <v-divider></v-divider>
 
   <section>
-    <h4>Notes</h4>
+    <h4 id="CollapseNotes">Notes</h4>
     <ul class="flex flex-col gap-y-7 mt-6">
       <li>
         <header class="font-semibold text-lg dark:text-text-200 mb-2">
-          <span>#</span>
           Collapse activation
         </header>
         You can activate collapse in two ways: by using <code class="code-text">reference</code> slot or <code class="code-text">v-model</code>. Slot is recommened as it takes minimal set up and can be done in template alone. <code class="code-text">v-model</code> can still be used to programatically toggle collapse.
       </li>
       <li>
         <header class="font-semibold text-lg dark:text-text-200 mb-2">
-          <span>#</span>
           Accordion
         </header>
         You can group <code class="code-text">v-collapse</code> components to create accordion. See example below.
@@ -38,14 +36,14 @@
   <v-divider></v-divider>
 
   <section>
-    <h4>Example</h4>
+    <h4 id="ExampleCollapse">Example</h4>
     <div class="example">
       <example name="ExampleCollapse"></example>
     </div>
   </section>
 
   <section>
-    <h4>Example - accordion</h4>
+    <h4 id="ExampleCollapseAccordion">Example - accordion</h4>
     <div class="example">
       <p>
         Turn collapse components to accordion by wrapping them with <code class="code-text">v-accordion</code>

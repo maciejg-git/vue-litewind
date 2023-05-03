@@ -3,12 +3,12 @@
   <links-github-header component="vDivider" />
 
   <section>
-    <h4>Reference</h4>
+    <h4 id="DividerReference">Reference</h4>
     <table-reference :items="reference.props" />
   </section>
 
   <section>
-    <h4>Example</h4>
+    <h4 id="ExampleDivider">Example</h4>
     <div class="example">
       <example name="ExampleDivider"></example>
     </div>

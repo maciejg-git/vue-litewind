@@ -3,22 +3,22 @@
   <links-github-header component="vProgress" />
 
   <section>
-    <h4>Reference</h4>
+    <h4 id="ProgressReference">Reference</h4>
     <table-reference :items="reference.props" />
 
-    <h6>Slots</h6>
+    <h6 id="ProgressSlots">Slots</h6>
     <table-reference-basic :items="reference.slots" reference="slot" />
   </section>
 
   <section>
-    <h4>Example</h4>
+    <h4 id="ExampleProgress">Example</h4>
     <div class="example">
       <example name="ExampleProgress"></example>
     </div>
   </section>
 
   <section>
-    <h4>Example - indeterminate</h4>
+    <h4 id="ExampleProgressIndeterminate">Example - indeterminate</h4>
     <p>Width, speed, timing function and direction of indeterminate progress bar can be customized with css variables:
     <ul>
       <li>

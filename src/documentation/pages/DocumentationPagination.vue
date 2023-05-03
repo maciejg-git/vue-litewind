@@ -3,7 +3,7 @@
   <links-github-header component="vPagination" />
 
   <section>
-    <h4>Reference</h4>
+    <h4 id="PaginationReference">Reference</h4>
     <table-reference :items="reference.props" />
 
     <!-- <h6>Events</h6> -->
@@ -12,7 +12,7 @@
   </section>
 
   <section>
-    <h4>Example</h4>
+    <h4 id="ExamplePagination">Example</h4>
     <p>
       For more examples see
       <a class="link" href="/documentation/table">table component</a>

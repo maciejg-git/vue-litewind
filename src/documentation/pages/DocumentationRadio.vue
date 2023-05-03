@@ -3,7 +3,7 @@
   <links-github-header component="vRadio" />
 
   <section>
-    <h4>Reference</h4>
+    <h4 id="RadioReference">Reference</h4>
     <table-reference :items="reference.props" />
 
     <!-- <h6>Events</h6> -->
@@ -12,14 +12,14 @@
   </section>
 
   <section>
-    <h4>Example</h4>
+    <h4 id="ExampleRadio">Example</h4>
     <div class="example">
       <example name="ExampleRadio"></example>
     </div>
   </section>
 
   <section>
-    <h4>Radio group</h4>
+    <h4 id="ExampleRadioGroup">Radio group</h4>
     <div class="example">
       <example name="ExampleRadioGroup"></example>
     </div>

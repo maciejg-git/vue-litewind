@@ -2,7 +2,7 @@
   <h3>Tooltip</h3>
 
   <section>
-    <h4>Usage</h4>
+    <h4 id="TooltipUsage">Usage</h4>
     <p>
       To show tooltip when hovering over html element use the
       <code class="code-text">v-tooltip</code>
@@ -34,12 +34,12 @@
   </section>
 
   <section>
-    <h4>Tooltip options reference</h4>
+    <h4 id="TooltipReference">Tooltip options reference</h4>
     <table-reference :items="reference"></table-reference>
   </section>
 
   <section>
-    <h4>Example</h4>
+    <h4 id="TooltipExamples">Examples</h4>
     <div class="example">
       <p class="my-6">Default tooltip:</p>
       <example name="ExampleTooltipSimple"></example>

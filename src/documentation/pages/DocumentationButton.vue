@@ -3,15 +3,15 @@
   <links-github-header component="vButton" />
 
   <section>
-    <h4>Reference</h4>
+    <h4 id="ButtonReference">Reference</h4>
     <table-reference :items="reference.props" />
 
-    <h6>Slots</h6>
+    <h6 id="ButtonSlots">Slots</h6>
     <table-reference-basic :items="reference.slots" reference="slot" />
   </section>
 
   <section>
-    <h4>Example</h4>
+    <h4 id="ButtonExamples">Examples</h4>
     <div class="example">
       <example name="ExampleButtonSimple"></example>
     </div>

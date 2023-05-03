@@ -3,22 +3,22 @@
   <links-github-header component="vBadge" />
 
   <section>
-    <h4>Reference</h4>
+    <h4 id="BadgeReference">Reference</h4>
     <table-reference :items="reference.props" />
 
-    <h6>Slots</h6>
+    <h6 id="BadgeSlots">Slots</h6>
     <table-reference-basic :items="reference.slots" reference="slot" />
   </section>
 
   <section>
-    <h4>Example</h4>
+    <h4 id="ExampleBadge">Example</h4>
     <div class="example">
       <example name="ExampleBadge"></example>
     </div>
   </section>
 
   <section>
-    <h4>Example - animated badge</h4>
+    <h4 id="ExampleBadgeAnimated">Example - animated badge</h4>
     <div class="example">
       <example name="ExampleBadgeAnimated"></example>
     </div>
