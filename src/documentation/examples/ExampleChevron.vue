@@ -3,9 +3,9 @@
     Button
     <v-chevron
       :initial="example.initial"
-      :rotate180="example.rotate180"
+      :rotate90="example.rotate90"
       :triangle="example.triangle"
-      :counter-clockwise="example.counterClockwise"
+      :clockwise="example.clockwise"
       :switch="example.switch"
       style-chevron="right"
     />
@@ -27,10 +27,10 @@
           ></v-select>
         </div>
         <div>
-          <label for="rotate180">rotate180:</label>
+          <label for="rotate90">rotate90:</label>
           <v-select-prop
-            id="rotate180"
-            v-model="example.rotate180"
+            id="rotate90"
+            v-model="example.rotate90"
           ></v-select-prop>
         </div>
         <div>
@@ -41,10 +41,10 @@
           ></v-select-prop>
         </div>
         <div>
-          <label for="counter-clockwise">counter-clockwise:</label>
+          <label for="clockwise">clockwise:</label>
           <v-select-prop
-            id="counter-clockwise"
-            v-model="example.counterClockwise"
+            id="clockwise"
+            v-model="example.clockwise"
           ></v-select-prop>
         </div>
         <div>
@@ -65,9 +65,9 @@ import { reactive } from "vue";
 
 let example = reactive({
   initial: "right",
-  rotate180: false,
+  rotate90: false,
   triangle: false,
-  counterClockwise: false,
+  clockwise: false,
   switch: false,
 });
 </script>

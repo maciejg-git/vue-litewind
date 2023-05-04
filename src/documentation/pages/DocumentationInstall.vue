@@ -2,7 +2,7 @@
   <h3>Installation</h3>
 
   <section>
-    <h4 class="my-10">Installation</h4>
+    <h4 id="Installation" class="my-10">Installation</h4>
 
     <v-code language="javascript">
       npm i vue-wind
@@ -213,7 +213,7 @@ app.use(componentPlugin, {
       </v-tab>
     </v-tabs>
 
-    <h4 class="my-10">Styling components</h4>
+    <h4 id="Styling" class="my-10">Styling components</h4>
       <p>
       Default style of components can be modified by using following:
       <ul class="list-disc list-inside">
@@ -238,7 +238,7 @@ app.use(componentPlugin, {
       </p>
 
       <section>
-        <h5>Example - styling with base, style and variant props</h5>
+        <h5 id="ExampleStyling">Example - styling with base, style and variant props</h5>
         <div class="example">
           <example name="ExampleInstallButton"></example>
         </div>

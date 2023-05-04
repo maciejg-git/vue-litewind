@@ -1,7 +1,7 @@
 <template>
   <v-navbar
     fixed
-    class="flex justify-between w-full border-b px-4 py-2 dark:border-dark-700 dark:text-text-300"
+    class="flex w-full justify-between border-b px-4 py-2 dark:border-dark-700 dark:text-text-300"
   >
     <div class="flex items-center">
       <v-trigger
@@ -36,219 +36,36 @@
     </v-button>
   </v-navbar>
 
+  <!-- mobile menu -->
+
   <v-sidepanel
     id="sidepanel"
     sidebar-left
     width="auto"
   >
     <div class="h-full overflow-scroll pl-6 pr-10">
-      <h6>
-        <router-link
-          to="/documentation/components"
-          class="transition-all"
-        >
-          Get started
-        </router-link>
-      </h6>
-      <ul class="list-unstyled ml-4">
-        <li>
-          <router-link
-            to="/documentation/installation"
-            active-class="active"
-            class="transition-all"
-          >
-            Installation
-          </router-link>
-        </li>
-      </ul>
-
-      <!-- components -->
-
-      <h6>
-        <router-link
-          to="/documentation/components"
-          class="transition-all"
-        >
-          Components
-        </router-link>
-      </h6>
-      <ul class="list-unstyled ml-4">
-        <li
-          v-for="(c, i) in components"
-          :key="i"
-        >
-          <router-link
-            :to="'/documentation/' + c.name"
-            active-class="active"
-            class="transition-all"
-          >
-            {{ c.label }}
-          </router-link>
-        </li>
-      </ul>
-
-      <!-- form components -->
-
-      <h6>
-        <router-link
-          to="/documentation/form-components"
-          class="transition-all"
-        >
-          Form Components
-        </router-link>
-      </h6>
-      <ul class="list-unstyled ml-4">
-        <li
-          v-for="(c, i) in formComponents"
-          :key="i"
-        >
-          <router-link
-            :to="'/documentation/' + c.name"
-            active-class="active"
-            class="transition-all"
-          >
-            {{ c.label }}
-          </router-link>
-        </li>
-        <li>
-          <router-link
-            to="/documentation/form-validation"
-            active-class="active"
-            class="transition-all"
-          >
-            Form Validation
-          </router-link>
-        </li>
-      </ul>
-
-      <!-- directives -->
-
-      <h6 class="mt-4">Directives</h6>
-      <ul class="list-unstyled ml-4">
-        <li>
-          <router-link
-            to="/documentation/tooltip"
-            active-class="active"
-            class="transition-all"
-          >
-            Tooltip
-          </router-link>
-        </li>
-      </ul>
-      <div class="min-h-[100px]"></div>
+      <documentation-menu></documentation-menu>
     </div>
   </v-sidepanel>
 
   <div
-    class="top-16 relative flex justify-center text-text-800 dark:bg-[#191919] dark:text-text-300/80 lg:px-0"
+    class="relative top-16 flex justify-center text-text-800 dark:bg-[#191919] dark:text-text-300/80 lg:px-0"
   >
+
+    <!-- menu -->
+
     <div
       class="sidebar sticky top-16 hidden flex-none basis-1/5 overflow-auto border-r p-3 pb-20 pr-7 text-[0.9em] font-semibold dark:border-dark-700 lg:flex"
     >
       <div class="ml-auto text-text-600 dark:text-text-300/70">
-        <!-- general -->
-
-        <h6>
-          <router-link
-            to="/documentation/components"
-            class="transition-all"
-          >
-            Get started
-          </router-link>
-        </h6>
-        <ul class="list-unstyled ml-4">
-          <li>
-            <router-link
-              to="/documentation/installation"
-              active-class="active"
-              class="transition-all"
-            >
-              Installation
-            </router-link>
-          </li>
-        </ul>
-
-        <!-- components -->
-
-        <h6>
-          <router-link
-            to="/documentation/components"
-            class="transition-all"
-          >
-            Components
-          </router-link>
-        </h6>
-        <ul class="list-unstyled ml-4">
-          <li
-            v-for="(c, i) in components"
-            :key="i"
-          >
-            <router-link
-              :to="'/documentation/' + c.name"
-              active-class="active"
-              class="transition-all"
-            >
-              {{ c.label }}
-            </router-link>
-          </li>
-        </ul>
-
-        <!-- form components -->
-
-        <h6>
-          <router-link
-            to="/documentation/form-components"
-            class="transition-all"
-          >
-            Form Components
-          </router-link>
-        </h6>
-        <ul class="list-unstyled ml-4">
-          <li
-            v-for="(c, i) in formComponents"
-            :key="i"
-          >
-            <router-link
-              :to="'/documentation/' + c.name"
-              active-class="active"
-              class="transition-all"
-            >
-              {{ c.label }}
-            </router-link>
-          </li>
-          <li>
-            <router-link
-              to="/documentation/form-validation"
-              active-class="active"
-              class="transition-all"
-            >
-              Form Validation
-            </router-link>
-          </li>
-        </ul>
-
-        <!-- directives -->
-
-        <h6 class="mt-4">Directives</h6>
-        <ul class="list-unstyled ml-4">
-          <li>
-            <router-link
-              to="/documentation/tooltip"
-              active-class="active"
-              class="transition-all"
-            >
-              Tooltip
-            </router-link>
-          </li>
-        </ul>
-        <div class="min-h-[100px]"></div>
+        <documentation-menu></documentation-menu>
       </div>
     </div>
 
     <!-- documentation page -->
 
     <div
-      class="lg:mx-14 mt-12 w-full max-w-[1024px] p-3 px-2 lg:max-w-screen-lg lg:px-12"
+      class="mt-12 w-full max-w-[1024px] p-3 px-2 lg:mx-14 lg:max-w-screen-lg lg:px-12"
     >
       <div ref="documentation">
         <router-view></router-view>
@@ -269,7 +86,7 @@
     <!-- page content sidepanel -->
 
     <div
-      class="sidebar sticky top-16 hidden flex-none basis-1/5 overflow-auto py-3 pb-20 text-[0.9em] font-semibold dark:border-dark-700 xl:block -translate-x-10"
+      class="sidebar sticky top-16 hidden flex-none basis-1/5 -translate-x-10 overflow-auto py-3 pb-20 text-[0.9em] font-semibold dark:border-dark-700 xl:block"
     >
       <div class="mb-4 ml-2 mt-4 text-black dark:text-white">Contents</div>
       <ul>
@@ -277,6 +94,7 @@
           v-for="item in headers"
           :class="{
             'ml-4': item.level === '6',
+            'text-black dark:text-white': item.el === currentHeader,
           }"
         >
           <a
@@ -293,6 +111,7 @@
 
 <script>
 import { ref, onMounted, watch, nextTick } from "vue";
+import DocumentationMenu from "../components/DocumentationMenu.vue";
 // light style
 // import "../../styles/hljs/github.css";
 import "../../styles/hljs/google-light.css";
@@ -301,9 +120,12 @@ import "../../styles/hljs/google-light.css";
 // import "../../styles/hljs/vs2015.css";
 import "../../styles/hljs/oceanicnext.css";
 import { components, formComponents } from "../Components.js";
-import { onBeforeRouteUpdate, useRoute } from "vue-router";
+import { useRoute } from "vue-router";
 
 export default {
+  components: {
+    DocumentationMenu,
+  },
   setup() {
     let darkMode = ref(true);
 
@@ -313,6 +135,8 @@ export default {
 
     let headers = ref([]);
 
+    let currentHeader = ref(null);
+
     let getHeaders = () => {
       if (!documentation.value) return [];
       return [...documentation.value.querySelectorAll("h4,h5,h6")].map((i) => {
@@ -320,9 +144,33 @@ export default {
           text: i.innerText,
           level: i.tagName[1],
           id: i.id,
+          el: i,
         };
       });
     };
+
+    let isInViewport = (element) => {
+      const rect = element.getBoundingClientRect();
+      return rect.bottom - 200 > 0 &&
+        rect.top <= document.documentElement.clientHeight;
+    };
+
+    let handleScroll = (ev) => {
+      let headers = documentation.value.querySelectorAll("h4,h5,h6");
+      let visibleHeaders = [];
+
+      headers.forEach((i) => {
+        if (isInViewport(i.parentNode)) {
+          visibleHeaders.push(i);
+        }
+      });
+
+      if (visibleHeaders[0] && currentHeader.value !== visibleHeaders[0]) {
+        currentHeader.value = visibleHeaders[0];
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
 
     watch(
       route,
@@ -353,6 +201,7 @@ export default {
       documentation,
       headers,
       route,
+      currentHeader,
     };
   },
 };

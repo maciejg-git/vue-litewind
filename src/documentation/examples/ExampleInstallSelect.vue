@@ -1,6 +1,6 @@
 <template>
   <v-select
-    v-model="select"
+    v-model="currentValue"
     :items="[
       { text: 'true', value: true },
       { text: 'false', value: false },
@@ -9,7 +9,7 @@
       base: 'underlined-input',
       styleIcon: 'true:valid false:invalid',
       icon: select ? 'b-check-lg' : 'b-x',
-      variant: select,
+      variant: currentValue,
     }"
     :card="{
       base: 'flat-card',
@@ -24,10 +24,10 @@
 <script setup>
 import { ref } from "vue";
 
-let select = ref(false);
+let currentValue = ref(false);
 
 let handleClickIcon = (ev) => {
   ev.stopPropagation();
-  select.value = !select.value;
+  currentValue.value = !currentValue.value;
 };
 </script>

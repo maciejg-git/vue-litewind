@@ -28,7 +28,7 @@
         <header class="font-semibold text-lg dark:text-text-200 mb-2">
           Accordion
         </header>
-        You can group <code class="code-text">v-collapse</code> components to create accordion. See example below.
+        You can wrap group of <code class="code-text">v-collapse</code> components with <code class="code-text">v-accordion</code> to create accordion. See example below.
       </li>
     </ul>
   </section>

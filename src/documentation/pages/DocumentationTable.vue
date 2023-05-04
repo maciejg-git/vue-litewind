@@ -32,11 +32,14 @@
       that defines columns of the table. Each object represents one column, has
       one required, unique
       <code class="code-text">key</code>
-      property and number of optional properties. If definition is not provided
-      component makes one using first record of data. This may be enough for
-      simple tables however to use features like sorting, filtering etc you need
-      to provide definition array.
+      property and number of optional properties. 
     </p>
+      <p>
+        If definition is not provided
+        component makes one using first record of data. All additional properties are set to default values. This may be enough for
+        simple tables however to use features like sorting, filtering etc you need
+        to provide definition array.
+      </p>
     Example of definition array:
     <v-code language="javascript">
       {{
