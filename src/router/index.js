@@ -23,6 +23,7 @@ const Card = () => import('../documentation/pages/DocumentationCard.vue')
 const Button = () => import('../documentation/pages/DocumentationButton.vue')
 const Chip = () => import('../documentation/pages/DocumentationChip.vue')
 const Popover = () => import('../documentation/pages/DocumentationPopover.vue')
+const PopoverHeader = () => import('../documentation/pages/DocumentationPopoverHeader.vue')
 const Progress = () => import('../documentation/pages/DocumentationProgress.vue')
 const Sidepanel = () => import('../documentation/pages/DocumentationSidepanel.vue')
 const Alert = () => import('../documentation/pages/DocumentationAlert.vue')
@@ -135,6 +136,10 @@ const routes = [
       {
         path: "popover",
         component: Popover,
+      },
+      {
+        path: "popover-header",
+        component: PopoverHeader,
       },
       {
         path: "progress",
