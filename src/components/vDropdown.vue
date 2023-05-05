@@ -94,6 +94,7 @@ let { classes, states } = useStyles("dropdown", props, {
 
 const { offsetX, offsetY, flip, placement, autoPlacement, trigger } =
   toRefs(props);
+
 const { isFloatingVisible, reference, floating, showFloating, hideFloating } =
   useFloating({ placement, offsetX, offsetY, flip, autoPlacement });
 
