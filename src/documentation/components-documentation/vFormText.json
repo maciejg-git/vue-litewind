@@ -7,6 +7,7 @@
         "String"
       ],
       "default": "\"form-text\"",
+      "globalDefault": true,
       "prop": "base",
       "description": "Base name used to style component"
     },
@@ -31,6 +32,7 @@
         "Boolean"
       ],
       "default": false,
+      "globalDefault": true,
       "prop": "single-line-message",
       "description": "Limits the number of displayed errors to one at time"
     },
@@ -47,6 +49,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-form-text",
       "description": "Text element"
     },
@@ -55,6 +58,7 @@
         "String"
       ],
       "default": "\"fade-scale\"",
+      "globalDefault": true,
       "prop": "transition",
       "description": "Transition when showing message. Valid values are 'fade-scale' or `empty string`"
     },

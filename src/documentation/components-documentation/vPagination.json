@@ -15,6 +15,7 @@
         "String"
       ],
       "default": "\"pagination\"",
+      "globalDefault": true,
       "prop": "base",
       "description": "Base name used to style component"
     },
@@ -55,6 +56,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-dots",
       "description": "Style of dots separating pages"
     },
@@ -63,6 +65,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-next",
       "description": "Style of next page button"
     },
@@ -71,6 +74,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-page",
       "description": "Style of single page button"
     },
@@ -79,6 +83,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-pagination-bar",
       "description": "Main pagination bar element"
     },
@@ -87,6 +92,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-prev",
       "description": "Style of next page button"
     },

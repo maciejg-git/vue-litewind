@@ -11,13 +11,15 @@
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "base": {
       "type": [
         "String"
       ],
-      "default": "select"
+      "default": "select",
+      "globalDefault": true
     },
     "variant": {
       "type": [
@@ -30,37 +32,43 @@
       "type": [
         "Boolean"
       ],
-      "default": false
+      "default": false,
+      "globalDefault": true
     },
     "placement": {
       "type": [
         "String"
       ],
-      "default": "bottom-start"
+      "default": "bottom-start",
+      "globalDefault": true
     },
     "offsetX": {
       "type": [
         "Number"
       ],
-      "default": 0
+      "default": 0,
+      "globalDefault": true
     },
     "offsetY": {
       "type": [
         "Number"
       ],
-      "default": 5
+      "default": 5,
+      "globalDefault": true
     },
     "flip": {
       "type": [
         "Boolean"
       ],
-      "default": true
+      "default": true,
+      "globalDefault": true
     },
     "autoPlacement": {
       "type": [
         "Boolean"
       ],
-      "default": false
+      "default": false,
+      "globalDefault": true
     },
     "modelValue": {
       "type": [
@@ -75,7 +83,8 @@
       "type": [
         "Boolean"
       ],
-      "default": true
+      "default": true,
+      "globalDefault": true
     },
     "items": {
       "type": [
@@ -123,49 +132,57 @@
       "type": [
         "Boolean"
       ],
-      "default": false
+      "default": false,
+      "globalDefault": true
     },
     "noPagination": {
       "type": [
         "Boolean"
       ],
-      "default": false
+      "default": false,
+      "globalDefault": true
     },
     "emptyDataMessage": {
       "type": [
         "String"
       ],
-      "default": "No data available"
+      "default": "No data available",
+      "globalDefault": true
     },
     "input": {
       "type": [
         "Object"
       ],
-      "default": {}
+      "default": {},
+      "globalDefault": true
     },
     "chevron": {
       "type": [
         "Object"
       ],
-      "default": {}
+      "default": {},
+      "globalDefault": true
     },
     "card": {
       "type": [
         "Object"
       ],
-      "default": {}
+      "default": {},
+      "globalDefault": true
     },
     "itemsPerPage": {
       "type": [
         "Number"
       ],
-      "default": 10
+      "default": 10,
+      "globalDefault": true
     },
     "transition": {
       "type": [
         "String"
       ],
-      "default": "fade-scale"
+      "default": "fade-scale",
+      "globalDefault": true
     }
   },
   "emits": [

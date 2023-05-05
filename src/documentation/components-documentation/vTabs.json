@@ -7,6 +7,7 @@
         "String"
       ],
       "default": "\"tabs\"",
+      "globalDefault": true,
       "prop": "base",
       "description": "Base name used to style component"
     },
@@ -47,6 +48,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-tab",
       "description": "Single tab style"
     },
@@ -55,6 +57,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-tab-bar",
       "description": "Tab bar style"
     },
@@ -63,6 +66,7 @@
         "String"
       ],
       "default": "\"fade\"",
+      "globalDefault": true,
       "prop": "transition",
       "description": "Sets animation effect when changing tabs. Valid values are 'fade', 'fade-top-slide', 'fade-side-slide' or `empty string` to disabled animations. Animation speed can be set in `--tabs-transition-duration` css variable."
     },

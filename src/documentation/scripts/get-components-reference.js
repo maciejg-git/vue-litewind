@@ -44,6 +44,7 @@ for (let component in components) {
       if (props[prop].default) {
         if (typeof props[prop].default === "function") {
           props[prop].default = props[prop].default({});
+          props[prop].globalDefault = true
         }
       }
       description.props[prop] = "";

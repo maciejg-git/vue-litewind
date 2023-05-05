@@ -7,6 +7,7 @@
         "String"
       ],
       "default": "\"list\"",
+      "globalDefault": true,
       "prop": "base",
       "description": "Base name used to style component"
     },
@@ -23,6 +24,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-item",
       "description": "List item style"
     },
@@ -31,6 +33,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-list",
       "description": "Defines tag to use in list item child component (for example 'div', 'a' or 'button')"
     },
@@ -39,6 +42,7 @@
         "String"
       ],
       "default": "\"div\"",
+      "globalDefault": true,
       "prop": "tag",
       "description": "Defines tag to use in list item child component (for example 'div', 'a' or 'button')"
     },

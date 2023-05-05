@@ -11,19 +11,22 @@
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "styleItem": {
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "base": {
       "type": [
         "String"
       ],
-      "default": "list"
+      "default": "list",
+      "globalDefault": true
     },
     "variant": {
       "type": [
@@ -42,7 +45,8 @@
       "type": [
         "String"
       ],
-      "default": "div"
+      "default": "div",
+      "globalDefault": true
     }
   },
   "emits": [],

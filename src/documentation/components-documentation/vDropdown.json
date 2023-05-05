@@ -15,6 +15,7 @@
         "Boolean"
       ],
       "default": false,
+      "globalDefault": true,
       "prop": "auto-close-menu",
       "description": "If `true` clicking any dropdown menu item automatically closes dropdown"
     },
@@ -23,6 +24,7 @@
         "Boolean"
       ],
       "default": false,
+      "globalDefault": true,
       "prop": "auto-placement",
       "description": "Automatically calculates best placement for floating element"
     },
@@ -31,6 +33,7 @@
         "String"
       ],
       "default": "\"dropdown\"",
+      "globalDefault": true,
       "prop": "base",
       "description": "Base name used to style component"
     },
@@ -39,6 +42,7 @@
         "Boolean"
       ],
       "default": true,
+      "globalDefault": true,
       "prop": "flip",
       "description": "Allows fliping dropdown to opposite placement if outside of current view"
     },
@@ -55,6 +59,7 @@
         "Number"
       ],
       "default": 0,
+      "globalDefault": true,
       "prop": "offset-x",
       "description": "Offset of dropdown relative to reference element. See how to use this offset here"
     },
@@ -63,6 +68,7 @@
         "Number"
       ],
       "default": 0,
+      "globalDefault": true,
       "prop": "offset-y",
       "description": "Offset of dropdown relative to reference element. See how to use this offset here"
     },
@@ -71,6 +77,7 @@
         "String"
       ],
       "default": "\"bottom-start\"",
+      "globalDefault": true,
       "prop": "placement",
       "description": "Initial placement of dropdown content. See valid values in Popperjs documentation"
     },
@@ -79,6 +86,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-header",
       "description": "Style of menu header"
     },
@@ -87,6 +95,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-item",
       "description": "Style of menu item"
     },
@@ -95,6 +104,7 @@
         "String"
       ],
       "default": "\"fade-scale\"",
+      "globalDefault": true,
       "prop": "transition",
       "description": "Sets animation effect when showing or hiding dropdown. Valid values are: 'fade', 'fade-slide', 'fade-scale' or `empty string` to disable animations. CSS variables: `--dropdown-transition-duration`, `--dropdown-transition-slide`, `--dropdown-transition-scale`"
     },

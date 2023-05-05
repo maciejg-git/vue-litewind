@@ -11,25 +11,29 @@
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "styleSeparator": {
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "styleActive": {
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "base": {
       "type": [
         "String"
       ],
-      "default": "breadcrumb"
+      "default": "breadcrumb",
+      "globalDefault": true
     },
     "variant": {
       "type": [
@@ -48,7 +52,8 @@
       "type": [
         "String"
       ],
-      "default": "/"
+      "default": "/",
+      "globalDefault": true
     }
   },
   "emits": [],

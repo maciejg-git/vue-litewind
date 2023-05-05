@@ -7,6 +7,7 @@
         "String"
       ],
       "default": "\"button\"",
+      "globalDefault": true,
       "prop": "base",
       "description": "Base name used to style component"
     },
@@ -39,6 +40,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-button",
       "description": "Main button element"
     },

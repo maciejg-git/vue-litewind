@@ -15,6 +15,7 @@
         "Number"
       ],
       "default": 0,
+      "globalDefault": true,
       "prop": "auto-dismiss-delay",
       "description": "Delay after which alert is closed"
     },
@@ -23,6 +24,7 @@
         "String"
       ],
       "default": "\"alert\"",
+      "globalDefault": true,
       "prop": "base",
       "description": "Base name used to style component"
     },
@@ -31,6 +33,7 @@
         "Object"
       ],
       "default": {},
+      "globalDefault": true,
       "prop": "close-button",
       "description": "Attributes of v-close-button component. See documentation for valid values"
     },
@@ -63,6 +66,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-alert",
       "description": "Main alert element"
     },
@@ -71,6 +75,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-icon",
       "description": "Default icon element (does not apply to icons in slot)"
     },

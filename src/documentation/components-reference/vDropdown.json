@@ -11,19 +11,22 @@
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "styleHeader": {
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "base": {
       "type": [
         "String"
       ],
-      "default": "dropdown"
+      "default": "dropdown",
+      "globalDefault": true
     },
     "variant": {
       "type": [
@@ -36,31 +39,36 @@
       "type": [
         "String"
       ],
-      "default": "bottom-start"
+      "default": "bottom-start",
+      "globalDefault": true
     },
     "offsetX": {
       "type": [
         "Number"
       ],
-      "default": 0
+      "default": 0,
+      "globalDefault": true
     },
     "offsetY": {
       "type": [
         "Number"
       ],
-      "default": 0
+      "default": 0,
+      "globalDefault": true
     },
     "flip": {
       "type": [
         "Boolean"
       ],
-      "default": true
+      "default": true,
+      "globalDefault": true
     },
     "autoPlacement": {
       "type": [
         "Boolean"
       ],
-      "default": false
+      "default": false,
+      "globalDefault": true
     },
     "modelValue": {
       "type": [
@@ -72,7 +80,8 @@
       "type": [
         "Boolean"
       ],
-      "default": false
+      "default": false,
+      "globalDefault": true
     },
     "trigger": {
       "type": [
@@ -84,7 +93,8 @@
       "type": [
         "String"
       ],
-      "default": "fade-scale"
+      "default": "fade-scale",
+      "globalDefault": true
     }
   },
   "emits": [

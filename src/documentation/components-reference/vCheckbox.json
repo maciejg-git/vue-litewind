@@ -11,19 +11,22 @@
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "styleLabel": {
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "base": {
       "type": [
         "String"
       ],
-      "default": "checkbox"
+      "default": "checkbox",
+      "globalDefault": true
     },
     "variant": {
       "type": [

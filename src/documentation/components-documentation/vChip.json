@@ -7,6 +7,7 @@
         "String"
       ],
       "default": "\"chip\"",
+      "globalDefault": true,
       "prop": "base",
       "description": "Base name used to style component"
     },
@@ -34,6 +35,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-chip",
       "description": "Main chip element"
     },

@@ -11,19 +11,22 @@
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "styleCloseButton": {
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "base": {
       "type": [
         "String"
       ],
-      "default": "close-button"
+      "default": "close-button",
+      "globalDefault": true
     },
     "variant": {
       "type": [

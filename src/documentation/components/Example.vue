@@ -55,6 +55,7 @@ export default {
   props: {
     name: { type: String, default: "" },
     showCode: { type: Boolean, default: true },
+    autoShowCode: { type: Boolean, default: false }
   },
   setup(props) {
     let templateCode = ref("");
@@ -63,7 +64,7 @@ export default {
     let scriptRegexp = /^<script(?: setup)?>([\s\S]*?)^<\/script>/gm;
     let cutTemplateRegexp = /^.*<!-- CUT START -->([\s\S]*?)<!-- CUT END -->/gm;
     let cutScriptRegexp = /^.*\/\* CUT START \*\/([\s\S]*?)\/\* CUT END \*\//gm;
-    let isCodeVisible = ref(false);
+    let isCodeVisible = ref(props.autoShowCode);
 
     import(`../examples/${props.name}.vue?raw`).then((i) => {
       templateCode.value = i.default.match(templateRegexp);

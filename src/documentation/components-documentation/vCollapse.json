@@ -23,6 +23,7 @@
         "String"
       ],
       "default": "\"fade-collapse\"",
+      "globalDefault": true,
       "prop": "transition",
       "description": "Sets animation effect when showing or hiding dropdown. Valid values are: 'fade-collapse' or `empty string` to disable animations. Animation speed can be set in `--collapse-transition-duration` css variable."
     }

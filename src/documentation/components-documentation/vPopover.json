@@ -7,6 +7,7 @@
         "Boolean"
       ],
       "default": false,
+      "globalDefault": true,
       "prop": "auto-placement",
       "description": "Automatically calculates best placement for floating element"
     },
@@ -15,6 +16,7 @@
         "String"
       ],
       "default": "\"popover\"",
+      "globalDefault": true,
       "prop": "base",
       "description": "Base name used to style component"
     },
@@ -23,6 +25,7 @@
         "Boolean"
       ],
       "default": true,
+      "globalDefault": true,
       "prop": "flip",
       "description": "Allows fliping dropdown to opposite placement if outside of current view"
     },
@@ -39,6 +42,7 @@
         "Number"
       ],
       "default": 0,
+      "globalDefault": true,
       "prop": "offset-x",
       "description": "Offset of dropdown relative to reference element. See how to use this offset here"
     },
@@ -47,6 +51,7 @@
         "Number"
       ],
       "default": 0,
+      "globalDefault": true,
       "prop": "offset-y",
       "description": "Offset of dropdown relative to reference element. See how to use this offset here"
     },
@@ -55,6 +60,7 @@
         "String"
       ],
       "default": "\"bottom-start\"",
+      "globalDefault": true,
       "prop": "placement",
       "description": "Initial placement of dropdown content. See valid values in Popperjs documentation"
     },
@@ -63,6 +69,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-header",
       "description": "Style of the header element"
     },
@@ -79,6 +86,7 @@
         "String"
       ],
       "default": "\"fade\"",
+      "globalDefault": true,
       "prop": "transition",
       "description": "Sets animation effect when showing or hiding popover. Valid values are: 'fade' or `empty string` to disable animations."
     },

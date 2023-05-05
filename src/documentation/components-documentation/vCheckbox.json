@@ -17,6 +17,7 @@
         "String"
       ],
       "default": "\"checkbox\"",
+      "globalDefault": true,
       "prop": "base",
       "description": "Base name used to style component"
     },
@@ -49,6 +50,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-checkbox",
       "description": "Main input element"
     },
@@ -57,6 +59,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-label",
       "description": "Input label element"
     },

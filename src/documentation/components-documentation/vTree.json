@@ -7,6 +7,7 @@
         "Boolean"
       ],
       "default": false,
+      "globalDefault": true,
       "prop": "allow-open-disabled",
       "description": "If `true` disabled folders items can be opened"
     },
@@ -15,6 +16,7 @@
         "Boolean"
       ],
       "default": false,
+      "globalDefault": true,
       "prop": "allow-select-disabled",
       "description": "If `true` disabled items can be selected"
     },
@@ -31,6 +33,7 @@
         "Boolean"
       ],
       "default": false,
+      "globalDefault": true,
       "prop": "auto-open-root",
       "description": "If `true` mounts tree with root node opened"
     },
@@ -39,6 +42,7 @@
         "String"
       ],
       "default": "\"tree\"",
+      "globalDefault": true,
       "prop": "base",
       "description": "Base name used to style component"
     },
@@ -47,6 +51,7 @@
         "Object"
       ],
       "default": {},
+      "globalDefault": true,
       "prop": "chevron",
       "description": "Attributes of v-chevron (open indicator) component. See documentation for valid values"
     },
@@ -119,6 +124,7 @@
         "Boolean"
       ],
       "default": true,
+      "globalDefault": true,
       "prop": "open-on-click",
       "description": "If `true` clicking on labels opens folders. Clicking indicators always opens folders"
     },
@@ -128,6 +134,7 @@
         "Object"
       ],
       "default": "undefined",
+      "globalDefault": true,
       "prop": "placeholder-folder-icon",
       "description": "Default icon for folders if no icon is provided in items prop. If value is `array` then icons are respectively for closed and opened folders"
     },
@@ -137,6 +144,7 @@
         "Object"
       ],
       "default": "undefined",
+      "globalDefault": true,
       "prop": "placeholder-item-icon",
       "description": "Default icon for items if no icon is provided in `items` prop"
     },
@@ -145,6 +153,7 @@
         "Boolean"
       ],
       "default": false,
+      "globalDefault": true,
       "prop": "select-independent",
       "description": "If `true` folders and items can be selected independently. By default selecting folders selects all children items and selecting every children selects parent folder"
     },
@@ -153,6 +162,7 @@
         "Boolean"
       ],
       "default": false,
+      "globalDefault": true,
       "prop": "select-return-keys",
       "description": "If `true` @input:selected return array of item keys. If `false` (default) this event returns `array` of item `objects`"
     },
@@ -161,6 +171,7 @@
         "Boolean"
       ],
       "default": false,
+      "globalDefault": true,
       "prop": "show-checkboxes",
       "description": "Displays checkboxes"
     },
@@ -169,6 +180,7 @@
         "Boolean"
       ],
       "default": true,
+      "globalDefault": true,
       "prop": "show-icons",
       "description": "Displays icons if icon or placeholder icon is set"
     },
@@ -177,6 +189,7 @@
         "Boolean"
       ],
       "default": true,
+      "globalDefault": true,
       "prop": "show-indicators",
       "description": "Displays open indicators"
     },
@@ -185,6 +198,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-folder",
       "description": "Folder element"
     },
@@ -193,6 +207,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-icon",
       "description": "Icon element"
     },
@@ -201,6 +216,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-item",
       "description": "Item element"
     },
@@ -209,6 +225,7 @@
         "String"
       ],
       "default": "\"fade\"",
+      "globalDefault": true,
       "prop": "transition",
       "description": "Sets animation effect when opening or closing folders. Valid values are: 'fade', 'fade-slide', or `empty string` to disable animations."
     },

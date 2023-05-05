@@ -11,13 +11,15 @@
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "base": {
       "type": [
         "String"
       ],
-      "default": "chevron"
+      "default": "chevron",
+      "globalDefault": true
     },
     "variant": {
       "type": [
@@ -42,7 +44,8 @@
       "type": [
         "Boolean"
       ],
-      "default": false
+      "default": false,
+      "globalDefault": true
     },
     "clockwise": {
       "type": [

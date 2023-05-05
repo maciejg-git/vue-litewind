@@ -15,6 +15,7 @@
         "String"
       ],
       "default": "\"sidepanel\"",
+      "globalDefault": true,
       "prop": "base",
       "description": "Base name used to style component"
     },
@@ -23,6 +24,7 @@
         "Object"
       ],
       "default": {},
+      "globalDefault": true,
       "prop": "close-button",
       "description": "Attributes of v-close-button component. See documentation for valid values"
     },
@@ -31,6 +33,7 @@
         "Boolean"
       ],
       "default": false,
+      "globalDefault": true,
       "prop": "modal",
       "description": "Displays modal variant of sidepanel. Clicking backdrop closes sidepanel"
     },
@@ -47,6 +50,7 @@
         "Boolean"
       ],
       "default": false,
+      "globalDefault": true,
       "prop": "no-header",
       "description": "When `true` the header slot content and close button is not rendered"
     },
@@ -55,6 +59,7 @@
         "Boolean"
       ],
       "default": true,
+      "globalDefault": true,
       "prop": "show-close-button",
       "description": "If `true` shows a close button in top right corner"
     },
@@ -71,6 +76,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-sidepanel",
       "description": "Main sidepanel element"
     },
@@ -79,6 +85,7 @@
         "String"
       ],
       "default": "\"fade-slide\"",
+      "globalDefault": true,
       "prop": "transition",
       "description": "Sets animation effect when showing or hiding sidepanel. Valid values are: 'fade-slide' or `empty string` to disable animations. Animation speed can be set in `--sidepanel-transition-duration` css variable."
     },
@@ -96,6 +103,7 @@
         "String"
       ],
       "default": "\"320px\"",
+      "globalDefault": true,
       "prop": "width",
       "description": "Width of sidepanel"
     }

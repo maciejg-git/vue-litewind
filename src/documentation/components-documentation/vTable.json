@@ -7,6 +7,7 @@
         "String"
       ],
       "default": "\"table\"",
+      "globalDefault": true,
       "prop": "base",
       "description": "Base name used to style component"
     },
@@ -15,6 +16,7 @@
         "Boolean"
       ],
       "default": false,
+      "globalDefault": true,
       "prop": "caption-top",
       "description": "If `true` display caption on top"
     },
@@ -31,6 +33,7 @@
         "String"
       ],
       "default": "\"No records for current filter\"",
+      "globalDefault": true,
       "prop": "empty-filtered-text",
       "description": "Text displayed if table is empty after filtering out all items"
     },
@@ -39,6 +42,7 @@
         "String"
       ],
       "default": "\"Empty table\"",
+      "globalDefault": true,
       "prop": "empty-text",
       "description": "Text displayed if table is empty"
     },
@@ -65,6 +69,7 @@
         "Number"
       ],
       "default": 0,
+      "globalDefault": true,
       "prop": "items-per-page",
       "description": "Number of records (rows) on single page. Setting it to `0` disables pagination"
     },
@@ -73,6 +78,7 @@
         "String"
       ],
       "default": "\"en-GB\"",
+      "globalDefault": true,
       "prop": "locale",
       "description": "Locale used to compare and sort strings"
     },
@@ -130,6 +136,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-caption",
       "description": "Table caption."
     },
@@ -138,6 +145,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-cell",
       "description": "Table cell"
     },
@@ -146,6 +154,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-header-cell",
       "description": "Header cell"
     },
@@ -154,6 +163,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-header-row",
       "description": "Header row"
     },
@@ -162,6 +172,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-row",
       "description": "Table row"
     },
@@ -170,6 +181,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-table",
       "description": "Main table element"
     },

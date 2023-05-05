@@ -10,7 +10,14 @@
     <table-reference-basic :items="reference.slots" reference="slot" />
 
     <h6 id="PopoverComponents">Components</h6>
-    <table-reference-basic :items="components" reference="component" />
+    <p>
+      <a
+        href="/documentation/popover-header"
+        class="link"
+      >
+        v-popover-header
+      </a>
+    </p>
   </section>
 
   <v-divider></v-divider>

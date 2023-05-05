@@ -13,25 +13,25 @@
   <section>
     <h4 id="ButtonExamples">Examples</h4>
     <div class="example">
-      <example name="ExampleButtonSimple"></example>
+      <example name="ExampleButtonSimple" auto-show-code></example>
     </div>
     <div class="example">
-      <example name="ExampleButtonSize"></example>
+      <example name="ExampleButtonSize" auto-show-code></example>
     </div>
     <div class="example">
-      <example name="ExampleButtonVariant"></example>
+      <example name="ExampleButtonVariant" auto-show-code></example>
     </div>
     <div class="example">
-      <example name="ExampleButtonStyle"></example>
+      <example name="ExampleButtonStyle" auto-show-code></example>
     </div>
     <div class="example">
-      <example name="ExampleButtonIcon"></example>
+      <example name="ExampleButtonIcon" auto-show-code></example>
     </div>
     <div class="example">
-      <example name="ExampleButtonBlock"></example>
+      <example name="ExampleButtonBlock" auto-show-code></example>
     </div>
     <div class="example">
-      <example name="ExampleButtonDisabled"></example>
+      <example name="ExampleButtonDisabled" auto-show-code></example>
     </div>
   </section>
 </template>

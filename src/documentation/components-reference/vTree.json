@@ -11,25 +11,29 @@
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "styleItem": {
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "styleIcon": {
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "base": {
       "type": [
         "String"
       ],
-      "default": "tree"
+      "default": "tree",
+      "globalDefault": true
     },
     "variant": {
       "type": [
@@ -84,7 +88,8 @@
       "type": [
         "Boolean"
       ],
-      "default": false
+      "default": false,
+      "globalDefault": true
     },
     "autoOpenAll": {
       "type": [
@@ -96,75 +101,87 @@
       "type": [
         "Boolean"
       ],
-      "default": false
+      "default": false,
+      "globalDefault": true
     },
     "selectIndependent": {
       "type": [
         "Boolean"
       ],
-      "default": false
+      "default": false,
+      "globalDefault": true
     },
     "openOnClick": {
       "type": [
         "Boolean"
       ],
-      "default": true
+      "default": true,
+      "globalDefault": true
     },
     "allowSelectDisabled": {
       "type": [
         "Boolean"
       ],
-      "default": false
+      "default": false,
+      "globalDefault": true
     },
     "allowOpenDisabled": {
       "type": [
         "Boolean"
       ],
-      "default": false
+      "default": false,
+      "globalDefault": true
     },
     "showCheckboxes": {
       "type": [
         "Boolean"
       ],
-      "default": false
+      "default": false,
+      "globalDefault": true
     },
     "showIcons": {
       "type": [
         "Boolean"
       ],
-      "default": true
+      "default": true,
+      "globalDefault": true
     },
     "showIndicators": {
       "type": [
         "Boolean"
       ],
-      "default": true
+      "default": true,
+      "globalDefault": true
     },
     "placeholderItemIcon": {
       "type": [
         "String",
         "Object"
       ],
-      "default": "undefined"
+      "default": "undefined",
+      "globalDefault": true
     },
     "placeholderFolderIcon": {
       "type": [
         "String",
         "Object"
       ],
-      "default": "undefined"
+      "default": "undefined",
+      "globalDefault": true
     },
     "chevron": {
       "type": [
         "Object"
       ],
-      "default": {}
+      "default": {},
+      "globalDefault": true
     },
     "transition": {
       "type": [
         "String"
       ],
-      "default": "fade"
+      "default": "fade",
+      "globalDefault": true
     }
   },
   "emits": [

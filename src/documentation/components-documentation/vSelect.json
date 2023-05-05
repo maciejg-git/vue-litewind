@@ -18,6 +18,7 @@
         "Boolean"
       ],
       "default": false,
+      "globalDefault": true,
       "prop": "auto-placement",
       "description": "Automatically calculates best placement for floating element"
     },
@@ -34,6 +35,7 @@
         "String"
       ],
       "default": "\"select\"",
+      "globalDefault": true,
       "prop": "base",
       "description": "Base name used to style component"
     },
@@ -42,6 +44,7 @@
         "Object"
       ],
       "default": {},
+      "globalDefault": true,
       "prop": "card",
       "description": "Attributes of v-card component used as container for select menu"
     },
@@ -50,6 +53,7 @@
         "Object"
       ],
       "default": {},
+      "globalDefault": true,
       "prop": "chevron",
       "description": "Attributes of v-chevron component"
     },
@@ -58,6 +62,7 @@
         "Boolean"
       ],
       "default": false,
+      "globalDefault": true,
       "prop": "clearable",
       "description": "Adds 'X' button that resets model to default value"
     },
@@ -66,6 +71,7 @@
         "String"
       ],
       "default": "\"No data available\"",
+      "globalDefault": true,
       "prop": "empty-data-message",
       "description": "Message to display inside menu when `items` array is empty"
     },
@@ -82,6 +88,7 @@
         "Boolean"
       ],
       "default": true,
+      "globalDefault": true,
       "prop": "flip",
       "description": "Allows fliping dropdown to opposite placement if outside of current view"
     },
@@ -90,6 +97,7 @@
         "Object"
       ],
       "default": {},
+      "globalDefault": true,
       "prop": "input",
       "description": "Attributes of v-input component"
     },
@@ -122,6 +130,7 @@
         "Number"
       ],
       "default": 10,
+      "globalDefault": true,
       "prop": "items-per-page",
       "description": "Amounts of items to display per page, 0 = all items on single page. Ignored if `no-pagination` is used"
     },
@@ -154,6 +163,7 @@
         "Boolean"
       ],
       "default": false,
+      "globalDefault": true,
       "prop": "no-filter",
       "description": "Do not use internal filter in `autocomplete` mode. You should provide filtered items by updating `items` prop"
     },
@@ -162,6 +172,7 @@
         "Boolean"
       ],
       "default": false,
+      "globalDefault": true,
       "prop": "no-pagination",
       "description": "Do no use internal pagination. You can paginate items by updating `items` prop"
     },
@@ -170,6 +181,7 @@
         "Number"
       ],
       "default": 0,
+      "globalDefault": true,
       "prop": "offset-x",
       "description": "Offset of dropdown relative to reference element. See how to use this offset here"
     },
@@ -178,6 +190,7 @@
         "Number"
       ],
       "default": 5,
+      "globalDefault": true,
       "prop": "offset-y",
       "description": "Offset of dropdown relative to reference element. See how to use this offset here"
     },
@@ -186,6 +199,7 @@
         "String"
       ],
       "default": "\"bottom-start\"",
+      "globalDefault": true,
       "prop": "placement",
       "description": "Initial placement of dropdown content. See valid values in Popperjs documentation"
     },
@@ -194,6 +208,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-item",
       "description": "Menu item element"
     },
@@ -202,6 +217,7 @@
         "String"
       ],
       "default": "\"fade-scale\"",
+      "globalDefault": true,
       "prop": "transition",
       "description": "Sets animation effect when showing or hiding autocomplete menu. Valid values are: 'fade' or `empty string` to disable animations. Animation speed can be set in `--autocomplete-transition-duration` css variable."
     },
@@ -210,6 +226,7 @@
         "Boolean"
       ],
       "default": true,
+      "globalDefault": true,
       "prop": "use-loader",
       "description": "Enables spinner in the input"
     },

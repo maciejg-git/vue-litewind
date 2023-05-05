@@ -11,13 +11,15 @@
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "base": {
       "type": [
         "String"
       ],
-      "default": "form-text"
+      "default": "form-text",
+      "globalDefault": true
     },
     "variant": {
       "type": [
@@ -42,13 +44,15 @@
       "type": [
         "Boolean"
       ],
-      "default": false
+      "default": false,
+      "globalDefault": true
     },
     "transition": {
       "type": [
         "String"
       ],
-      "default": "fade-scale"
+      "default": "fade-scale",
+      "globalDefault": true
     }
   },
   "emits": [],

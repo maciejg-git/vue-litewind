@@ -7,6 +7,7 @@
         "String"
       ],
       "default": "\"breadcrumb\"",
+      "globalDefault": true,
       "prop": "base",
       "description": "Base name used to style component"
     },
@@ -31,6 +32,7 @@
         "String"
       ],
       "default": "\"/\"",
+      "globalDefault": true,
       "prop": "separator",
       "description": "Character or string that seperates links"
     },
@@ -39,6 +41,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-active",
       "description": "Active link in path"
     },
@@ -47,6 +50,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-breadcrumb",
       "description": "Breadcrumb link"
     },
@@ -55,6 +59,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-separator",
       "description": "Breadcrumb separator"
     },

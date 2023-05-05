@@ -7,6 +7,7 @@
         "String"
       ],
       "default": "\"chevron\"",
+      "globalDefault": true,
       "prop": "base",
       "description": "Base name used to style component"
     },
@@ -55,6 +56,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-chevron",
       "description": "Chevron element"
     },
@@ -71,6 +73,7 @@
         "Boolean"
       ],
       "default": false,
+      "globalDefault": true,
       "prop": "triangle",
       "description": "Use filled triangle instead of chevron"
     },

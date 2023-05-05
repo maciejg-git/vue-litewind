@@ -11,7 +11,8 @@
       "type": [
         "String"
       ],
-      "default": "checkbox"
+      "default": "checkbox",
+      "globalDefault": true
     },
     "variant": {
       "type": [

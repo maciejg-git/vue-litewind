@@ -11,19 +11,22 @@
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "styleIcon": {
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "base": {
       "type": [
         "String"
       ],
-      "default": "alert"
+      "default": "alert",
+      "globalDefault": true
     },
     "variant": {
       "type": [
@@ -48,7 +51,8 @@
       "type": [
         "Number"
       ],
-      "default": 0
+      "default": 0,
+      "globalDefault": true
     },
     "icon": {
       "type": [
@@ -60,7 +64,8 @@
       "type": [
         "Object"
       ],
-      "default": {}
+      "default": {},
+      "globalDefault": true
     }
   },
   "emits": [

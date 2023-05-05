@@ -16,6 +16,7 @@
         "String"
       ],
       "default": "\"range\"",
+      "globalDefault": true,
       "prop": "base",
       "description": "Base name used to style component"
     },
@@ -32,6 +33,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-range",
       "description": "Main input element"
     },

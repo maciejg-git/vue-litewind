@@ -3,7 +3,7 @@
   "props": {},
   "emits": {},
   "slots": {
-    "default": ""
+    "default": "Slot for popover header"
   },
   "functions": {},
   "components": {}

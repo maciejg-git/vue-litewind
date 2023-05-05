@@ -15,6 +15,7 @@
         "String"
       ],
       "default": "\"textarea\"",
+      "globalDefault": true,
       "prop": "base",
       "description": "Base name used to style component"
     },
@@ -25,6 +26,7 @@
       "default": {
         "class": "absolute"
       },
+      "globalDefault": true,
       "prop": "form-text",
       "description": "Attributes of v-form-text component"
     },
@@ -33,6 +35,7 @@
         "Boolean"
       ],
       "default": false,
+      "globalDefault": true,
       "prop": "inline",
       "description": "Sets textarea display to inline"
     },
@@ -73,6 +76,7 @@
         "Boolean"
       ],
       "default": false,
+      "globalDefault": true,
       "prop": "single-line-message",
       "description": "Limits the number of displayed errors to one at time. Order of messages is the same as order of `rules` in rules prop"
     },
@@ -81,6 +85,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-label",
       "description": "Label element if `label` prop is set"
     },
@@ -89,6 +94,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-textarea",
       "description": "Main textarea element"
     },

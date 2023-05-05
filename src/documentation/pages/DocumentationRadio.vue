@@ -20,6 +20,9 @@
 
   <section>
     <h4 id="ExampleRadioGroup">Radio group</h4>
+    <p>
+    Radio inputs can be optionally wrapped with <code class="code-text">v-radio-group</code> to create group with single <code class="code-text">v-model</code>.
+    </p>
     <div class="example">
       <example name="ExampleRadioGroup"></example>
     </div>

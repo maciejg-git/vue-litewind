@@ -11,13 +11,15 @@
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "base": {
       "type": [
         "String"
       ],
-      "default": "sidepanel"
+      "default": "sidepanel",
+      "globalDefault": true
     },
     "variant": {
       "type": [
@@ -36,7 +38,8 @@
       "type": [
         "Boolean"
       ],
-      "default": true
+      "default": true,
+      "globalDefault": true
     },
     "sidebarLeft": {
       "type": [
@@ -48,31 +51,36 @@
       "type": [
         "String"
       ],
-      "default": "320px"
+      "default": "320px",
+      "globalDefault": true
     },
     "modal": {
       "type": [
         "Boolean"
       ],
-      "default": false
+      "default": false,
+      "globalDefault": true
     },
     "noHeader": {
       "type": [
         "Boolean"
       ],
-      "default": false
+      "default": false,
+      "globalDefault": true
     },
     "closeButton": {
       "type": [
         "Object"
       ],
-      "default": {}
+      "default": {},
+      "globalDefault": true
     },
     "transition": {
       "type": [
         "String"
       ],
-      "default": "fade-slide"
+      "default": "fade-slide",
+      "globalDefault": true
     }
   },
   "emits": [

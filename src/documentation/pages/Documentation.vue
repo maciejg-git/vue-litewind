@@ -4,6 +4,8 @@
     class="flex w-full justify-between border-b px-4 py-2 dark:border-dark-700 dark:text-text-300"
   >
     <div class="flex items-center">
+      <!-- mobile menu trigger -->
+
       <v-trigger
         for="sidepanel"
         v-slot="{ onTrigger }"
@@ -20,20 +22,37 @@
         </v-button>
       </v-trigger>
       <span class="text-lg font-bold">VueTailwind</span>
-      <div class="ml-5 inline-block">
+      <div class="ml-10 inline-block font-semibold">
         <a href="/documentation/installation">Docs</a>
       </div>
     </div>
-    <v-button
-      base="plain-button"
-      class="mr-2"
-      @click="setDarkMode"
-    >
-      <v-icon
-        :name="darkMode ? 'b-sun' : 'b-moon'"
-        class="v-icon--md text-dark-800 dark:text-dark-400"
-      ></v-icon>
-    </v-button>
+
+    <div class="flex items-center">
+      <!-- github -->
+
+      <a
+        href="https://github.com/maciejg-git/Vue-wind"
+        class="mr-4 !p-0"
+      >
+        <v-icon
+          name="b-github"
+          class="v-icon--md text-dark-800 dark:text-dark-400"
+        ></v-icon>
+      </a>
+      
+      <!-- dark mode -->
+      
+      <v-button
+        base="plain-button"
+        class="mr-2"
+        @click="setDarkMode"
+      >
+        <v-icon
+          :name="darkMode ? 'b-sun' : 'b-moon'"
+          class="v-icon--md text-dark-800 dark:text-dark-400"
+        ></v-icon>
+      </v-button>
+    </div>
   </v-navbar>
 
   <!-- mobile menu -->
@@ -51,7 +70,6 @@
   <div
     class="relative top-16 flex justify-center text-text-800 dark:bg-[#191919] dark:text-text-300/80 lg:px-0"
   >
-
     <!-- menu -->
 
     <div
@@ -86,10 +104,10 @@
     <!-- page content sidepanel -->
 
     <div
-      class="sidebar sticky top-16 hidden flex-none basis-1/5 -translate-x-10 overflow-auto py-3 pb-20 text-[0.9em] font-semibold dark:border-dark-700 xl:block"
+      class="sidebar sticky top-16 hidden flex-none basis-1/5 -translate-x-10 overflow-auto py-3 pb-20 text-[0.9em] font-semibold xl:block"
     >
       <div class="mb-4 ml-2 mt-4 text-black dark:text-white">Contents</div>
-      <ul>
+      <ul class="text-text-600 dark:text-text-300/70">
         <li
           v-for="item in headers"
           :class="{
@@ -109,102 +127,88 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref, onMounted, watch, nextTick } from "vue";
+import { useRoute } from "vue-router";
 import DocumentationMenu from "../components/DocumentationMenu.vue";
 // light style
-// import "../../styles/hljs/github.css";
 import "../../styles/hljs/google-light.css";
 // dark style
-// import "../../styles/hljs/tokyo-night-dark.css";
 // import "../../styles/hljs/vs2015.css";
 import "../../styles/hljs/oceanicnext.css";
-import { components, formComponents } from "../Components.js";
-import { useRoute } from "vue-router";
 
-export default {
-  components: {
-    DocumentationMenu,
-  },
-  setup() {
-    let darkMode = ref(true);
+let route = useRoute();
 
-    let route = useRoute();
+let darkMode = ref(true);
+let documentation = ref(null);
+let headers = ref([]);
+let currentHeader = ref(null);
 
-    let documentation = ref(null);
-
-    let headers = ref([]);
-
-    let currentHeader = ref(null);
-
-    let getHeaders = () => {
-      if (!documentation.value) return [];
-      return [...documentation.value.querySelectorAll("h4,h5,h6")].map((i) => {
-        return {
-          text: i.innerText,
-          level: i.tagName[1],
-          id: i.id,
-          el: i,
-        };
-      });
-    };
-
-    let isInViewport = (element) => {
-      const rect = element.getBoundingClientRect();
-      return rect.bottom - 200 > 0 &&
-        rect.top <= document.documentElement.clientHeight;
-    };
-
-    let handleScroll = (ev) => {
-      let headers = documentation.value.querySelectorAll("h4,h5,h6");
-      let visibleHeaders = [];
-
-      headers.forEach((i) => {
-        if (isInViewport(i.parentNode)) {
-          visibleHeaders.push(i);
-        }
-      });
-
-      if (visibleHeaders[0] && currentHeader.value !== visibleHeaders[0]) {
-        currentHeader.value = visibleHeaders[0];
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    watch(
-      route,
-      () => {
-        nextTick((value) => {
-          headers.value = getHeaders();
-        });
-      },
-      { immediate: true }
-    );
-
-    let setDarkMode = () => {
-      if (!darkMode.value) document.documentElement.classList.add("dark");
-      else document.documentElement.classList.remove("dark");
-      darkMode.value = !darkMode.value;
-    };
-
-    onMounted(() => {
-      if (darkMode.value) document.documentElement.classList.add("dark");
-      else document.documentElement.classList.remove("dark");
-    });
-
+let getHeaders = () => {
+  if (!documentation.value) return [];
+  return [...documentation.value.querySelectorAll("h4,h5,h6")].map((i) => {
     return {
-      setDarkMode,
-      darkMode,
-      components,
-      formComponents,
-      documentation,
-      headers,
-      route,
-      currentHeader,
+      text: i.innerText,
+      level: i.tagName[1],
+      id: i.id,
+      el: i,
     };
-  },
+  });
 };
+
+let isPartiallyInViewport = (element, offsetBottom) => {
+  const rect = element.getBoundingClientRect();
+  return (
+    rect.bottom - offsetBottom > 0 &&
+    rect.top <= document.documentElement.clientHeight
+  );
+};
+
+let handleScroll = (ev) => {
+  let headers = documentation.value.querySelectorAll("h4,h5,h6");
+  let visibleHeaders = [];
+
+  headers.forEach((i) => {
+    if (isPartiallyInViewport(i.parentNode, 200)) {
+      visibleHeaders.push(i);
+    }
+  });
+
+  if (
+    window.scrollY + window.innerHeight >=
+    document.documentElement.scrollHeight
+  ) {
+    currentHeader.value = visibleHeaders[visibleHeaders.length - 1];
+    return;
+  }
+
+  if (visibleHeaders[0] && currentHeader.value !== visibleHeaders[0]) {
+    currentHeader.value = visibleHeaders[0];
+  }
+};
+
+window.addEventListener("scroll", handleScroll);
+
+watch(
+  route,
+  () => {
+    nextTick((value) => {
+      headers.value = getHeaders();
+    });
+  },
+  { immediate: true }
+);
+
+let setDarkMode = () => {
+  if (!darkMode.value) document.documentElement.classList.add("dark");
+  else document.documentElement.classList.remove("dark");
+  darkMode.value = !darkMode.value;
+};
+
+onMounted(() => {
+  if (darkMode.value) document.documentElement.classList.add("dark");
+  else document.documentElement.classList.remove("dark");
+});
 </script>
 
 <style scoped>

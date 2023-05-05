@@ -11,31 +11,36 @@
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "styleHeader": {
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "styleFooter": {
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "styleContent": {
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "base": {
       "type": [
         "String"
       ],
-      "default": "modal"
+      "default": "modal",
+      "globalDefault": true
     },
     "variant": {
       "type": [
@@ -88,13 +93,15 @@
       "type": [
         "String"
       ],
-      "default": "Accept"
+      "default": "Accept",
+      "globalDefault": true
     },
     "secondaryButtonLabel": {
       "type": [
         "String"
       ],
-      "default": "Close"
+      "default": "Close",
+      "globalDefault": true
     },
     "primaryButtonClose": {
       "type": [
@@ -112,7 +119,8 @@
       "type": [
         "String"
       ],
-      "default": "end"
+      "default": "end",
+      "globalDefault": true
     },
     "noCloseButton": {
       "type": [
@@ -130,37 +138,43 @@
       "type": [
         "Boolean"
       ],
-      "default": false
+      "default": false,
+      "globalDefault": true
     },
     "noFooter": {
       "type": [
         "Boolean"
       ],
-      "default": false
+      "default": false,
+      "globalDefault": true
     },
     "position": {
       "type": [
         "String"
       ],
-      "default": "top"
+      "default": "top",
+      "globalDefault": true
     },
     "size": {
       "type": [
         "String"
       ],
-      "default": "md"
+      "default": "md",
+      "globalDefault": true
     },
     "closeButton": {
       "type": [
         "Object"
       ],
-      "default": {}
+      "default": {},
+      "globalDefault": true
     },
     "transition": {
       "type": [
         "String"
       ],
-      "default": "fade-slide"
+      "default": "fade-slide",
+      "globalDefault": true
     }
   },
   "emits": [

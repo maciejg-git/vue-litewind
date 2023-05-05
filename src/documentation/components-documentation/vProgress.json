@@ -7,6 +7,7 @@
         "String"
       ],
       "default": "\"progress\"",
+      "globalDefault": true,
       "prop": "base",
       "description": "Base name used to style component"
     },
@@ -56,6 +57,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-label",
       "description": "Label on progress bar"
     },
@@ -64,6 +66,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-progress",
       "description": "Main progress element"
     },
@@ -72,6 +75,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-progress-bar",
       "description": "Progress bar element"
     },

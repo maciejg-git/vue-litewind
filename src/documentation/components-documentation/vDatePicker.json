@@ -16,6 +16,7 @@
         "Boolean"
       ],
       "default": true,
+      "globalDefault": true,
       "prop": "adjacent-months",
       "description": "Display days from previous and next month. Those days are unselectable"
     },
@@ -24,6 +25,7 @@
         "String"
       ],
       "default": "\"datepicker\"",
+      "globalDefault": true,
       "prop": "base",
       "description": "Base name used to style component"
     },
@@ -32,6 +34,7 @@
         "Boolean"
       ],
       "default": false,
+      "globalDefault": true,
       "prop": "buttons",
       "description": "Adds 'accept' and 'cancel' buttons. If this prop is false then v-model is updated immedietely after clicking on the day. If it is true then v-model is updated after clicking 'accept' button"
     },
@@ -45,6 +48,7 @@
         "month": "long",
         "day": "numeric"
       },
+      "globalDefault": true,
       "prop": "format",
       "description": "Format of date emmited by @input:formatted event. Read about how to use this object here (options paremeter)"
     },
@@ -53,6 +57,7 @@
         "String"
       ],
       "default": "\"en-GB\"",
+      "globalDefault": true,
       "prop": "locale",
       "description": "This prop is only used to display names of months and weekdays and to format date emitted by input:formatted event. It does not modify format of v-model date which is always `YYYY-MM-DD`"
     },
@@ -61,6 +66,7 @@
         "Boolean"
       ],
       "default": false,
+      "globalDefault": true,
       "prop": "monday-first-weekday",
       "description": "Week starts on Monday"
     },
@@ -79,6 +85,7 @@
       "default": {
         "styleButton": "primary small"
       },
+      "globalDefault": true,
       "prop": "primary-button",
       "description": "Attributes of primary v-button"
     },
@@ -87,6 +94,7 @@
         "String"
       ],
       "default": "\"OK\"",
+      "globalDefault": true,
       "prop": "primary-button-label",
       "description": "Primary (accept) button label"
     },
@@ -113,6 +121,7 @@
       "default": {
         "styleButton": "secondary small"
       },
+      "globalDefault": true,
       "prop": "secondary-button",
       "description": "Attributes of secondary v-button"
     },
@@ -121,6 +130,7 @@
         "String"
       ],
       "default": "\"Cancel\"",
+      "globalDefault": true,
       "prop": "secondary-button-label",
       "description": "Secondary (cancel) button label"
     },
@@ -129,6 +139,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-adjacent-month-day",
       "description": "Days from adjacent months"
     },
@@ -137,6 +148,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-button",
       "description": "Next and previous month/year buttons"
     },
@@ -145,6 +157,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-datepicker",
       "description": "Main component wrapper"
     },
@@ -153,6 +166,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-day",
       "description": "Single day"
     },
@@ -161,6 +175,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-footer",
       "description": "Footer with today date"
     },
@@ -169,6 +184,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-weekday",
       "description": "Single weekday name"
     },
@@ -177,6 +193,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-weekday-bar",
       "description": "Weekday names bar"
     },

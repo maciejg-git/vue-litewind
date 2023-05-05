@@ -15,6 +15,7 @@
         "String"
       ],
       "default": "\"modal\"",
+      "globalDefault": true,
       "prop": "base",
       "description": "Base name used to style component"
     },
@@ -23,6 +24,7 @@
         "Object"
       ],
       "default": {},
+      "globalDefault": true,
       "prop": "close-button",
       "description": "Attributes of v-close-button component. See documentation for valid values"
     },
@@ -31,6 +33,7 @@
         "String"
       ],
       "default": "\"end\"",
+      "globalDefault": true,
       "prop": "justify-buttons",
       "description": "Use this prop to place buttons in footer. Valid values are: 'start', 'end', 'center', 'between', 'around', 'evenly'"
     },
@@ -55,6 +58,7 @@
         "Boolean"
       ],
       "default": false,
+      "globalDefault": true,
       "prop": "no-footer",
       "description": "Do not render footer if `true`"
     },
@@ -63,6 +67,7 @@
         "Boolean"
       ],
       "default": false,
+      "globalDefault": true,
       "prop": "no-header",
       "description": "If true modal dialog cannot be closed by clicking outside of it"
     },
@@ -87,6 +92,7 @@
         "String"
       ],
       "default": "\"top\"",
+      "globalDefault": true,
       "prop": "position",
       "description": "Modal position. Valid values are: 'top', 'center' or 'bottom'"
     },
@@ -113,6 +119,7 @@
         "String"
       ],
       "default": "\"Accept\"",
+      "globalDefault": true,
       "prop": "primary-button-label",
       "description": "Label of primary button"
     },
@@ -139,6 +146,7 @@
         "String"
       ],
       "default": "\"Close\"",
+      "globalDefault": true,
       "prop": "secondary-button-label",
       "description": "Label of secondary button"
     },
@@ -147,6 +155,7 @@
         "String"
       ],
       "default": "\"md\"",
+      "globalDefault": true,
       "prop": "size",
       "description": "Modal size. Valid values are: 'sm', 'md', 'lg', 'xl' or 'fit' "
     },
@@ -163,6 +172,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-content",
       "description": "Content part of modal window"
     },
@@ -171,6 +181,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-footer",
       "description": "Style of modal footer"
     },
@@ -179,6 +190,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-header",
       "description": "Style of modal header"
     },
@@ -187,6 +199,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-modal",
       "description": "Style of modal window"
     },
@@ -203,6 +216,7 @@
         "String"
       ],
       "default": "\"fade-slide\"",
+      "globalDefault": true,
       "prop": "transition",
       "description": "Sets animation effect when showing or hiding modal. Valid values are: 'fade', 'fade-slide', 'fade-scale' or `empty string` to disable animations. Animation speed can be set in `--modal-transition-duration` css variable."
     },

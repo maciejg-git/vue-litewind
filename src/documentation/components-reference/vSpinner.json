@@ -11,13 +11,15 @@
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "base": {
       "type": [
         "String"
       ],
-      "default": "spinner"
+      "default": "spinner",
+      "globalDefault": true
     },
     "variant": {
       "type": [

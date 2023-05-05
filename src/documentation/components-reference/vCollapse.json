@@ -17,7 +17,8 @@
       "type": [
         "String"
       ],
-      "default": "fade-collapse"
+      "default": "fade-collapse",
+      "globalDefault": true
     }
   },
   "emits": [

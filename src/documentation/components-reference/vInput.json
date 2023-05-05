@@ -11,31 +11,36 @@
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "styleIcon": {
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "styleCloseButtonWrapper": {
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "styleLabel": {
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "base": {
       "type": [
         "String"
       ],
-      "default": "input"
+      "default": "input",
+      "globalDefault": true
     },
     "variant": {
       "type": [
@@ -55,7 +60,8 @@
       "type": [
         "Boolean"
       ],
-      "default": false
+      "default": false,
+      "globalDefault": true
     },
     "validateOn": {
       "type": [
@@ -105,7 +111,8 @@
       "type": [
         "Boolean"
       ],
-      "default": false
+      "default": false,
+      "globalDefault": true
     },
     "useLoader": {
       "type": [
@@ -123,13 +130,15 @@
       "type": [
         "Boolean"
       ],
-      "default": false
+      "default": false,
+      "globalDefault": true
     },
     "width": {
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "label": {
       "type": [
@@ -147,13 +156,15 @@
       "type": [
         "Object"
       ],
-      "default": {}
+      "default": {},
+      "globalDefault": true
     },
     "closeButton": {
       "type": [
         "Object"
       ],
-      "default": {}
+      "default": {},
+      "globalDefault": true
     },
     "formText": {
       "type": [
@@ -161,7 +172,8 @@
       ],
       "default": {
         "class": "absolute"
-      }
+      },
+      "globalDefault": true
     },
     "customClearable": {
       "type": [

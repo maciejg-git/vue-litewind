@@ -17,7 +17,8 @@
       "type": [
         "Object"
       ],
-      "default": {}
+      "default": {},
+      "globalDefault": true
     }
   },
   "emits": [],

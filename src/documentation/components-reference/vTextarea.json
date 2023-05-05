@@ -11,19 +11,22 @@
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "styleLabel": {
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "base": {
       "type": [
         "String"
       ],
-      "default": "textarea"
+      "default": "textarea",
+      "globalDefault": true
     },
     "variant": {
       "type": [
@@ -66,13 +69,15 @@
       "type": [
         "Boolean"
       ],
-      "default": false
+      "default": false,
+      "globalDefault": true
     },
     "singleLineMessage": {
       "type": [
         "Boolean"
       ],
-      "default": false
+      "default": false,
+      "globalDefault": true
     },
     "label": {
       "type": [
@@ -92,7 +97,8 @@
       ],
       "default": {
         "class": "absolute"
-      }
+      },
+      "globalDefault": true
     }
   },
   "emits": [

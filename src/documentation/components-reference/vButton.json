@@ -11,13 +11,15 @@
       "type": [
         "String"
       ],
-      "default": ""
+      "default": "",
+      "globalDefault": true
     },
     "base": {
       "type": [
         "String"
       ],
-      "default": "button"
+      "default": "button",
+      "globalDefault": true
     },
     "variant": {
       "type": [

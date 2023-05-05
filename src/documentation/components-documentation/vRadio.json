@@ -17,6 +17,7 @@
         "String"
       ],
       "default": "\"radio\"",
+      "globalDefault": true,
       "prop": "base",
       "description": "Base name used to style component"
     },
@@ -49,6 +50,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-label",
       "description": "Input label element"
     },
@@ -57,6 +59,7 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
       "prop": "style-radio",
       "description": "Main input element"
     },
