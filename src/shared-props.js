@@ -9,7 +9,7 @@ const sharedProps = () => {
 
 // popper props
 
-const sharedFloatingProps = (component, defaults = {}) => {
+const sharedFloatingUIProps = (component, defaults = {}) => {
   return {
     placement: {
       type: String,
@@ -121,7 +121,7 @@ const sharedFormProps = (component, options) => {
 
 export {
   sharedProps,
-  sharedFloatingProps,
+  sharedFloatingUIProps,
   sharedStyleProps,
   sharedValidationProps,
   sharedFormProps,
