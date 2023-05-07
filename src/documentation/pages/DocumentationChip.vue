@@ -13,7 +13,7 @@
   <section>
     <h4 id="ExampleChip">Example</h4>
     <div class="example">
-      <example name="ExampleChip"></example>
+      <example name="ExampleChip" auto-show-code></example>
     </div>
   </section>
 </template>

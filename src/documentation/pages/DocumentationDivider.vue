@@ -10,7 +10,7 @@
   <section>
     <h4 id="ExampleDivider">Example</h4>
     <div class="example">
-      <example name="ExampleDivider"></example>
+      <example name="ExampleDivider" auto-show-code></example>
     </div>
   </section>
 </template>

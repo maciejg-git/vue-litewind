@@ -17,7 +17,7 @@
   <section>
     <h4 id="ExampleIcon">Example</h4>
     <div class="example">
-      <example name="ExampleIcon"></example>
+      <example name="ExampleIcon" auto-show-code></example>
     </div>
   </section>
 

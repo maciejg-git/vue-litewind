@@ -25,7 +25,7 @@
     "styleModal": "Style of modal window",
     "styleHeader": "Style of modal header",
     "styleFooter": "Style of modal footer",
-    "styleContent": "Content part of modal window",
+    "styleContent": "Style of content part of modal window",
     "styleBackdrop": "Style of backdrop. Useful mainly for setting tint and opactity for modal background"
   },
   "emits": {

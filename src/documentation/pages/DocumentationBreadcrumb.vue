@@ -17,7 +17,7 @@
   <section>
     <h4 id="ExampleBreadcrumb">Example</h4>
     <div class="example">
-      <example name="ExampleBreadcrumb"></example>
+      <example name="ExampleBreadcrumb" auto-show-code></example>
     </div>
   </section>
 </template>

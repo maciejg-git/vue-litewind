@@ -12,6 +12,7 @@
     >
       Toggle collapse
     </v-button-chevron>
+
     <v-collapse
       v-model="example.isVisible"
       :transition="example.transition"
@@ -38,6 +39,7 @@
           Toggle collapse
         </v-button-chevron>
       </template>
+
       <div class="p-8">
         {{ text[0] }}
       </div>

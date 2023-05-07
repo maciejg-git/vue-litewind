@@ -1,7 +1,7 @@
 <template>
   <div class="flex items-center">
     <div class="w-1/2">
-      <v-select
+      <v-autocomplete
         v-model="example.model"
         no-filter
         item-text="title"
@@ -13,8 +13,7 @@
         :input="{ base: 'input-material' }"
         :card="{ base: 'flat-card' }"
         @input:value="debouncedQuery($event)"
-        autocomplete
-      ></v-select>
+      ></v-autocomplete>
     </div>
     <div class="ml-10">
       <span class="font-semibold">v-model:</span>
@@ -53,7 +52,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed } from "vue";
+import { reactive, computed } from "vue";
 import { debounce } from "../../tools.js";
 
 let example = reactive({
@@ -77,7 +76,6 @@ let query = (q) => {
     .then((response) => response.json())
     .then((data) => {
       example.items = data.query.prefixsearch;
-      console.log(example.items)
     })
     .finally(() => {
       example.isLoading = false;

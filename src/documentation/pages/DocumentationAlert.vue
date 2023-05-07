@@ -13,7 +13,7 @@
   <section>
     <h4 id="ExampleAlertSimple">Example - simple alert</h4>
     <div class="example">
-      <example name="ExampleAlertSimple"></example>
+      <example name="ExampleAlertSimple" auto-show-code></example>
     </div>
   </section>
 

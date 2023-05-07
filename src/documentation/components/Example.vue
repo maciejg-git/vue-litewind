@@ -11,7 +11,7 @@
     <v-button
       base="plain-button"
       style-button="bold"
-      class="my-2 ml-auto"
+      class="mt-2 ml-auto"
       @click="isCodeVisible = !isCodeVisible"
     >
       <span class="mr-2">Source</span>

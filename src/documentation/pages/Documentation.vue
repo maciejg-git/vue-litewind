@@ -39,9 +39,9 @@
           class="v-icon--md text-dark-800 dark:text-dark-400"
         ></v-icon>
       </a>
-      
+
       <!-- dark mode -->
-      
+
       <v-button
         base="plain-button"
         class="mr-2"
@@ -66,6 +66,8 @@
       <documentation-menu></documentation-menu>
     </div>
   </v-sidepanel>
+
+  <!-- container -->
 
   <div
     class="relative top-16 flex justify-center text-text-800 dark:bg-[#191919] dark:text-text-300/80 lg:px-0"
@@ -106,98 +108,25 @@
     <div
       class="sidebar sticky top-16 hidden flex-none basis-1/5 -translate-x-10 overflow-auto py-3 pb-20 text-[0.9em] font-semibold xl:block"
     >
-      <div class="mb-4 ml-2 mt-4 text-black dark:text-white">Contents</div>
-      <ul class="text-text-600 dark:text-text-300/70">
-        <li
-          v-for="item in headers"
-          :class="{
-            'ml-4': item.level === '6',
-            'text-black dark:text-white': item.el === currentHeader,
-          }"
-        >
-          <a
-            :href="route.path + '#' + item.id"
-            class="transition-all"
-          >
-            {{ item.text }}
-          </a>
-        </li>
-      </ul>
+      <documentation-contents
+        :content-element="documentation"
+      ></documentation-contents>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, watch, nextTick } from "vue";
-import { useRoute } from "vue-router";
+import { ref, onMounted } from "vue";
 import DocumentationMenu from "../components/DocumentationMenu.vue";
+import DocumentationContents from "../components/DocumentationContents.vue";
 // light style
 import "../../styles/hljs/google-light.css";
 // dark style
 // import "../../styles/hljs/vs2015.css";
 import "../../styles/hljs/oceanicnext.css";
 
-let route = useRoute();
-
 let darkMode = ref(true);
 let documentation = ref(null);
-let headers = ref([]);
-let currentHeader = ref(null);
-
-let getHeaders = () => {
-  if (!documentation.value) return [];
-  return [...documentation.value.querySelectorAll("h4,h5,h6")].map((i) => {
-    return {
-      text: i.innerText,
-      level: i.tagName[1],
-      id: i.id,
-      el: i,
-    };
-  });
-};
-
-let isPartiallyInViewport = (element, offsetBottom) => {
-  const rect = element.getBoundingClientRect();
-  return (
-    rect.bottom - offsetBottom > 0 &&
-    rect.top <= document.documentElement.clientHeight
-  );
-};
-
-let handleScroll = (ev) => {
-  let headers = documentation.value.querySelectorAll("h4,h5,h6");
-  let visibleHeaders = [];
-
-  headers.forEach((i) => {
-    if (isPartiallyInViewport(i.parentNode, 200)) {
-      visibleHeaders.push(i);
-    }
-  });
-
-  if (
-    window.scrollY + window.innerHeight >=
-    document.documentElement.scrollHeight
-  ) {
-    currentHeader.value = visibleHeaders[visibleHeaders.length - 1];
-    return;
-  }
-
-  if (visibleHeaders[0] && currentHeader.value !== visibleHeaders[0]) {
-    currentHeader.value = visibleHeaders[0];
-  }
-};
-
-window.addEventListener("scroll", handleScroll);
-
-watch(
-  route,
-  () => {
-    nextTick((value) => {
-      headers.value = getHeaders();
-    });
-  },
-  { immediate: true }
-);
 
 let setDarkMode = () => {
   if (!darkMode.value) document.documentElement.classList.add("dark");

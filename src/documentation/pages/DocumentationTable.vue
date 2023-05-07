@@ -88,7 +88,7 @@
   <section>
     <h4 id="ExampleTableSimple">Example - simple table</h4>
     <div class="example">
-      <example name="ExampleTableSimple"></example>
+      <example name="ExampleTableSimple" auto-show-code></example>
     </div>
   </section>
 
