@@ -32,7 +32,7 @@ import useStyles from "./composition/use-styles";
 import useClickOutside from "./composition/use-click-outside";
 import {
   sharedProps,
-  sharedFloatingProps,
+  sharedFloatingUIProps,
   sharedStyleProps,
 } from "../shared-props";
 import { defaultProps } from "../defaultProps";
@@ -41,7 +41,7 @@ import useFloating from "./composition/use-floating";
 const props = defineProps({
   ...sharedProps(),
   ...sharedStyleProps("dropdown", ["Item", "Header"]),
-  ...sharedFloatingProps("dropdown"),
+  ...sharedFloatingUIProps("dropdown"),
   modelValue: {
     type: Boolean,
     default: false,

@@ -51,7 +51,7 @@ import useTrigger from "./composition/use-trigger-events";
 import useFloating from "./composition/use-floating";
 import {
   sharedProps,
-  sharedFloatingProps,
+  sharedFloatingUIProps,
   sharedStyleProps,
 } from "../shared-props";
 import { defaultProps } from "../defaultProps";
@@ -60,7 +60,7 @@ import { registerListener, removeListener } from "../trigger";
 const props = defineProps({
   ...sharedProps(),
   ...sharedStyleProps("dropdown", ["Item", "Header"]),
-  ...sharedFloatingProps("dropdown"),
+  ...sharedFloatingUIProps("dropdown"),
   modelValue: {
     type: Boolean,
     default: undefined,

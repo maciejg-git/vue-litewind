@@ -141,7 +141,7 @@ import vChevron from "./vChevron.vue";
 import { default as vDetectScrollBottom } from "../directives/detect-scroll-bottom";
 import {
   sharedProps,
-  sharedFloatingProps,
+  sharedFloatingUIProps,
   sharedStyleProps,
   sharedFormProps,
 } from "../shared-props";
@@ -151,7 +151,7 @@ let props = defineProps({
   ...sharedProps(),
   ...sharedStyleProps("select", ["Item"]),
   ...sharedFormProps("select", { icon: false, clearable: true }),
-  ...sharedFloatingProps("select", { offsetY: 5 }),
+  ...sharedFloatingUIProps("select", { offsetY: 5 }),
   modelValue: {
     type: [String, Object, Boolean, Number],
     default: undefined,
