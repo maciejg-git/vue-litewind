@@ -26,10 +26,12 @@
         />
       </div>
       <!-- @slot default -->
-      <slot
-        name="default"
-        :close="close"
-      ></slot>
+      <div class="h-full overflow-y-scroll">
+        <slot
+          name="default"
+          :close="close"
+        ></slot>
+      </div>
     </aside>
   </transition>
 
