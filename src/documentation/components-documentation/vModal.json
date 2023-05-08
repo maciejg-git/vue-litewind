@@ -174,7 +174,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "style-content",
-      "description": "Content part of modal window"
+      "description": "Style of content part of modal window"
     },
     {
       "type": [

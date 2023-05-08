@@ -1,59 +1,8 @@
 <template>
-  <v-navbar
-    fixed
-    class="flex w-full justify-between border-b px-4 py-2 dark:border-dark-700 dark:text-text-300"
-  >
-    <div class="flex items-center">
-      <!-- mobile menu trigger -->
-
-      <v-trigger
-        for="sidepanel"
-        v-slot="{ onTrigger }"
-      >
-        <v-button
-          class="mr-2 block lg:hidden"
-          base="plain-button"
-          v-on="onTrigger"
-        >
-          <v-icon
-            name="b-list"
-            class="h-7 w-7"
-          ></v-icon>
-        </v-button>
-      </v-trigger>
-      <span class="text-lg font-bold">VueTailwind</span>
-      <div class="ml-10 inline-block font-semibold">
-        <a href="/documentation/installation">Docs</a>
-      </div>
-    </div>
-
-    <div class="flex items-center">
-      <!-- github -->
-
-      <a
-        href="https://github.com/maciejg-git/Vue-wind"
-        class="mr-4 !p-0"
-      >
-        <v-icon
-          name="b-github"
-          class="v-icon--md text-dark-800 dark:text-dark-400"
-        ></v-icon>
-      </a>
-
-      <!-- dark mode -->
-
-      <v-button
-        base="plain-button"
-        class="mr-2"
-        @click="setDarkMode"
-      >
-        <v-icon
-          :name="darkMode ? 'b-sun' : 'b-moon'"
-          class="v-icon--md text-dark-800 dark:text-dark-400"
-        ></v-icon>
-      </v-button>
-    </div>
-  </v-navbar>
+  <documentation-navbar
+    :dark-mode="darkMode"
+    @update:dark-mode="setDarkMode"
+  />
 
   <!-- mobile menu -->
 
@@ -62,8 +11,8 @@
     sidebar-left
     width="auto"
   >
-    <div class="h-full overflow-scroll pl-6 pr-10">
-      <documentation-menu></documentation-menu>
+    <div class="pl-6 pr-10">
+      <documentation-menu />
     </div>
   </v-sidepanel>
 
@@ -78,7 +27,7 @@
       class="sidebar sticky top-16 hidden flex-none basis-1/5 overflow-auto border-r p-3 pb-20 pr-7 text-[0.9em] font-semibold dark:border-dark-700 lg:flex"
     >
       <div class="ml-auto text-text-600 dark:text-text-300/70">
-        <documentation-menu></documentation-menu>
+        <documentation-menu />
       </div>
     </div>
 
@@ -87,6 +36,9 @@
     <div
       class="mt-12 w-full max-w-[1024px] p-3 px-2 lg:mx-14 lg:max-w-screen-lg lg:px-12"
     >
+    <div class="text-sm opacity-50 -translate-y-10">
+      Redirected from autocomplete
+    </div>
       <div ref="documentation">
         <router-view></router-view>
       </div>
@@ -108,15 +60,14 @@
     <div
       class="sidebar sticky top-16 hidden flex-none basis-1/5 -translate-x-10 overflow-auto py-3 pb-20 text-[0.9em] font-semibold xl:block"
     >
-      <documentation-contents
-        :content-element="documentation"
-      ></documentation-contents>
+      <documentation-contents :content-element="documentation" />
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from "vue";
+import DocumentationNavbar from "../components/DocumentationNavbar.vue";
 import DocumentationMenu from "../components/DocumentationMenu.vue";
 import DocumentationContents from "../components/DocumentationContents.vue";
 // light style

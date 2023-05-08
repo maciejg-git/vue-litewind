@@ -2,8 +2,7 @@
   <div class="flex flex-col xl:flex-row items-between">
     <v-card
       style-card="shadow"
-      style="width: 340px"
-      class="self-start p-2"
+      class="self-start p-2 flex-none w-[320px]"
     >
       <v-date-picker
         v-model="example.date"

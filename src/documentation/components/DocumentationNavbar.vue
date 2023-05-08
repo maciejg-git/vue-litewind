@@ -1,0 +1,95 @@
+<template>
+  <v-navbar
+    fixed
+    class="flex w-full items-center border-b px-4 py-2 dark:border-dark-700 dark:text-text-300"
+  >
+    <!-- mobile menu trigger -->
+
+    <v-trigger
+      for="sidepanel"
+      v-slot="{ onTrigger }"
+    >
+      <v-button
+        class="mr-2 block lg:hidden"
+        base="plain-button"
+        v-on="onTrigger"
+      >
+        <v-icon
+          name="b-list"
+          class="h-7 w-7"
+        ></v-icon>
+      </v-button>
+    </v-trigger>
+
+    <!-- logo -->
+
+    <span class="text-lg font-bold">VueTailwind</span>
+
+    <!-- nav menu -->
+
+    <div class="ml-10 inline-block font-semibold">
+      <a href="/documentation/installation">Docs</a>
+    </div>
+
+    <!-- github -->
+
+    <a
+      href="https://github.com/maciejg-git/Vue-wind"
+      class="ml-auto mr-4 !p-0"
+    >
+      <v-icon
+        name="b-github"
+        class="v-icon--md text-dark-800 dark:text-dark-400"
+      ></v-icon>
+    </a>
+
+    <!-- dark mode -->
+
+    <v-button
+      base="plain-button"
+      class="mr-2"
+      @click="emit('update:dark-mode')"
+    >
+      <transition name="fade">
+        <v-icon
+          :name="darkMode ? 'b-sun' : 'b-moon'"
+          class="v-icon--md text-dark-800 dark:text-dark-400"
+        ></v-icon>
+      </transition>
+    </v-button>
+  </v-navbar>
+</template>
+
+<script setup>
+let props = defineProps({
+  darkMode: {
+    type: Boolean,
+    default: undefined,
+  },
+});
+
+let emit = defineEmits(["update:dark-mode"]);
+</script>
+
+<style scoped>
+a.active {
+  @apply inline-block py-1 pl-4 pr-4 text-black dark:text-white;
+}
+a {
+  @apply inline-block py-1 pl-2 pr-4;
+}
+a:hover {
+  @apply text-black dark:text-white;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
+}
+</style>

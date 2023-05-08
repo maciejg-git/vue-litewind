@@ -51,7 +51,7 @@
       ],
       "default": "undefined",
       "prop": "update-key",
-      "description": "Update this prop to unique key every time contents of default slot changes (required to rerender component and play animation)"
+      "description": "Update this prop value to play badge animation."
     },
     {
       "type": [

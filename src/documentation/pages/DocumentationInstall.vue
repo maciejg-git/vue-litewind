@@ -66,7 +66,7 @@ module.exports = {
       Import css files:
       <ul class="list-disc list-inside my-4">
         <li>
-<code class="code-text">style.css</code> contains fixed classes,
+<code class="code-text">style.css</code> contains basic set of classes used by components,
         </li>
         <li>
 <code class="code-text">components.css</code> and <code class="code-text">form.css</code> contains customizable classes for components and forms.
@@ -78,20 +78,23 @@ module.exports = {
     <v-code language="javascript">
       {{ `// main.js
 
+// import basic styles
+
+import "vue-wind/dist/style.css" 
+
+// import classes for all components
+
 import "./components.css";
 import "./form.css";
 
-// or
+// or seperately for each component
 
 import "./button.css";
 import "./table.css";
-import "./input.css";
-
-// import fixed styles, order of imports is important
-import "vue-wind/dist/style.css" `}}
+import "./input.css";`}}
     </v-code>
 
-    Register components:
+    Install plugin and register components:
     <p>
       You can register single or all components in application entry file (for example main.js). Registering single components will make build smaller.
     </p>

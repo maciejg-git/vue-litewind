@@ -34,7 +34,7 @@
       "default": "\"/\"",
       "globalDefault": true,
       "prop": "separator",
-      "description": "Character or string that seperates links"
+      "description": "Character or string that seperates elements of the path"
     },
     {
       "type": [
