@@ -36,9 +36,6 @@
     <div
       class="mt-12 w-full max-w-[1024px] p-3 px-2 lg:mx-14 lg:max-w-screen-lg lg:px-12"
     >
-    <div class="text-sm opacity-50 -translate-y-10">
-      Redirected from autocomplete
-    </div>
       <div ref="documentation">
         <router-view></router-view>
       </div>
