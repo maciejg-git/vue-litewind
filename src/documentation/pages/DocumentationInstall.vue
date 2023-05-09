@@ -16,9 +16,13 @@
       in their offical documentation.
     </p>
 
+    <h4 id="Configuration" class="my-10">Configuration</h4>
+      <span class="font-bold dark:text-text-300">
+        1. Configure Tailwind
+      </span>
     <p>
-      Configure Tailwind: 
-      <ul class="list-disc list-inside ml-10 mt-4">
+    Add following to <code class="code-text">tailwind.config.cjs</code>:
+      <ul class="list-disc list-outside ml-10 mt-4">
         <li>
           add vue-wind to <code class="code-text">content</code> so tailwind can generate  utility classes used by components internally, 
         </li>
@@ -63,16 +67,18 @@ module.exports = {
     </v-code>
 
     <p>
-      Import css files:
-      <ul class="list-disc list-inside my-4">
+      <span class="font-bold dark:text-text-300">
+        2. Import css files:
+      </span>
+      <ul class="list-disc list-inside my-4 list-outside ml-10">
         <li>
-<code class="code-text">style.css</code> contains basic set of classes used by components,
+<code class="code-text">style.css</code> contains basic set of classes used by components. Import it directly from library distribution directory
         </li>
         <li>
-<code class="code-text">components.css</code> and <code class="code-text">form.css</code> contains customizable classes for components and forms.
+<code class="code-text">components.css</code> and <code class="code-text">form.css</code> contains customizable classes for components and forms. You can import it directly or copy from <code class="code-text">'node_modules/vue-wind/dist/'</code> for customization. You can also import or copy css files seperately for each component for smaller build.
         </li>
       </ul>
-      You can import it directly or copy from <code class="code-text">'node_modules/vue-wind/dist/'</code> for customization. You can also import or copy css files seperately for each component for smaller build.
+      
     </p>
 
     <v-code language="javascript">
@@ -94,7 +100,9 @@ import "./table.css";
 import "./input.css";`}}
     </v-code>
 
-    Install plugin and register components:
+    <span class="font-bold dark:text-text-300">
+      3. Register components:
+    </span>
     <p>
       You can register single or all components in application entry file (for example main.js). Registering single components will make build smaller.
     </p>

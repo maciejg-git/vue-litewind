@@ -18,48 +18,50 @@
 
   <!-- container -->
 
-  <div
-    class="relative top-16 flex justify-center text-text-800 dark:bg-[#191919] dark:text-text-300/80 lg:px-0"
+  <v-container
+    class="relative top-16 text-text-800 dark:bg-[#191919] dark:text-text-300/80 lg:px-0"
   >
-    <!-- menu -->
-
-    <div
-      class="sidebar sticky top-16 hidden flex-none basis-1/5 overflow-auto border-r p-3 pb-20 pr-7 text-[0.9em] font-semibold dark:border-dark-700 lg:flex"
-    >
-      <div class="ml-auto text-text-600 dark:text-text-300/70">
-        <documentation-menu />
-      </div>
-    </div>
-
-    <!-- documentation page -->
-
-    <div
-      class="mt-12 w-full max-w-[1024px] p-3 px-2 lg:mx-14 lg:max-w-screen-lg lg:px-12"
-    >
-      <div ref="documentation">
-        <router-view></router-view>
-      </div>
-
-      <footer
-        class="mt-10 flex min-h-[100px] border-t border-gray-300 bg-white py-4 dark:border-dark-700 dark:bg-[#191919]"
+    <v-row class="justify-center">
+      <!-- menu -->
+      
+      <v-col
+        class="sidebar sticky top-16 hidden flex-none w-1/5 overflow-auto border-r p-3 pb-20 pr-7 text-[0.9em] font-semibold dark:border-dark-700 lg:flex"
       >
-        <span class="ml-auto mr-4">
-          <v-icon
-            name="github"
-            class="text-gray-500"
-          ></v-icon>
-        </span>
-      </footer>
-    </div>
-
-    <!-- page content sidepanel -->
-
-    <div
-      class="sidebar sticky top-16 hidden flex-none basis-1/5 -translate-x-10 overflow-auto py-3 pb-20 text-[0.9em] font-semibold xl:block"
-    >
-      <documentation-contents :content-element="documentation" />
-    </div>
-  </div>
+        <div class="ml-auto text-text-600 dark:text-text-300/70">
+          <documentation-menu />
+        </div>
+      </v-col>
+      
+      <!-- documentation page -->
+      
+      <v-col
+        class="mt-12 w-full max-w-[1024px] p-3 px-2 lg:mx-14 lg:max-w-screen-lg lg:px-12"
+      >
+        <div ref="documentation">
+          <router-view></router-view>
+        </div>
+      
+        <footer
+          class="mt-10 flex min-h-[100px] border-t border-gray-300 bg-white py-4 dark:border-dark-700 dark:bg-[#191919]"
+        >
+          <span class="ml-auto mr-4">
+            <v-icon
+              name="github"
+              class="text-gray-500"
+            ></v-icon>
+          </span>
+        </footer>
+      </v-col>
+      
+      <!-- page content sidepanel -->
+      
+      <v-col
+        class="sidebar sticky top-16 hidden flex-none w-1/5 -translate-x-10 overflow-auto py-3 pb-20 text-[0.9em] font-semibold xl:block"
+      >
+        <documentation-contents :content-element="documentation" />
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script setup>
