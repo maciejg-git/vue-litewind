@@ -34,6 +34,10 @@ export { default as vTreeNode } from "./vTreeNode.vue"
 export { default as vBackdrop } from "./vBackdrop.vue"
 export { default as vChip } from "./vChip.vue"
 
+export { default as vContainer } from "./vContainer.vue"
+export { default as vRow } from "./vRow.vue"
+export { default as vCol } from "./vCol.vue"
+
 export { default as vForm } from "./vForm.vue"
 export { default as vInput } from "./vInput.vue"
 export { default as vTextarea } from "./vTextarea.vue"
