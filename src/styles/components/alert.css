@@ -63,7 +63,7 @@
     &--shadowed {
       @apply
         shadow-lg
-        shadow-black/20
+        dark:shadow-black/20
     }
     &--bold {
       @apply
