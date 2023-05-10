@@ -34,8 +34,8 @@
       
       <!-- documentation page -->
       
-      <v-col
-        class="mt-12 w-full max-w-[1024px] p-3 px-2 lg:mx-14 lg:max-w-screen-lg lg:px-12"
+      <v-auto-col
+        class="mt-12 max-w-[1024px] p-3 px-2 lg:mx-14 lg:max-w-screen-lg lg:px-12"
       >
         <div ref="documentation">
           <router-view></router-view>
@@ -51,7 +51,7 @@
             ></v-icon>
           </span>
         </footer>
-      </v-col>
+      </v-auto-col>
       
       <!-- page content sidepanel -->
       

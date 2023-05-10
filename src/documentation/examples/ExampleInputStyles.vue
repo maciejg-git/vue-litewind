@@ -12,7 +12,7 @@
 
     <v-input
       v-model="example"
-      base="round"
+      base="rounded-input"
       placeholder="Type something..."
     ></v-input>
   </div>
