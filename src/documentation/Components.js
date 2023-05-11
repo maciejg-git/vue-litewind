@@ -48,6 +48,10 @@ let components = [
     name: "dropdown",
   },
   {
+    label: "Grid",
+    name: "grid",
+  },
+  {
     label: "Icon",
     name: "icon",
   },

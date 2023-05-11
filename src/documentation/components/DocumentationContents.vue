@@ -5,7 +5,7 @@
       v-for="item in headers"
       :class="{
         'ml-4': item.level === '6',
-        'text-black dark:text-white': item.el === currentHeader,
+        'text-black dark:text-white font-bold': item.el === currentHeader,
       }"
     >
       <a
