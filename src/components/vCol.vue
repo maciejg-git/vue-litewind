@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-none">
+  <div class="flex-initial">
     <slot name="default"></slot>
   </div>
 </template>
