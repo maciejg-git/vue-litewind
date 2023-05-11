@@ -42,6 +42,7 @@ const Closebutton = () => import('../documentation/pages/DocumentationClosebutto
 const Icon = () => import('../documentation/pages/DocumentationIcon.vue')
 const Divider = () => import('../documentation/pages/DocumentationDivider.vue')
 const Trigger = () => import('../documentation/pages/DocumentationTrigger.vue')
+const Grid = () => import('../documentation/pages/DocumentationGrid.vue')
 
 const Tooltip = () => import('../documentation/pages/DocumentationTooltip.vue')
 
@@ -216,6 +217,10 @@ const routes = [
       {
         path: "autocomplete",
         component: Select,
+      },
+      {
+        path: "grid",
+        component: Grid,
       },
 
       // directives
