@@ -16,10 +16,13 @@
       in their offical documentation.
     </p>
 
+    <v-divider class="my-10"></v-divider>
+
     <h4 id="Configuration" class="my-10">Configuration</h4>
-      <span class="font-bold dark:text-text-300">
-        1. Configure Tailwind
-      </span>
+    <span class="font-bold dark:text-text-300">
+      1. Configure Tailwind
+    </span>
+    <div class="border-l-2 border-dark-500 dark:border-dark-600 pl-8">
     <p>
     Add following to <code class="code-text">tailwind.config.cjs</code>:
       <ul class="list-disc list-outside ml-10 mt-4">
@@ -65,11 +68,13 @@ module.exports = {
   },
 } `}}
     </v-code>
+    </div>
 
-    <p>
       <span class="font-bold dark:text-text-300">
         2. Import css files:
       </span>
+      <div class="border-l-2 border-dark-500 dark:border-dark-600 pl-8">
+    <p>
       <ul class="list-disc list-inside my-4 list-outside ml-10">
         <li>
 <code class="code-text">style.css</code> contains basic set of classes used by components. Import it directly from library distribution directory
@@ -99,10 +104,12 @@ import "./button.css";
 import "./table.css";
 import "./input.css";`}}
     </v-code>
+      </div>
 
     <span class="font-bold dark:text-text-300">
       3. Register components:
     </span>
+    <div class="border-l-2 border-dark-500 dark:border-dark-600 pl-8">
     <p>
       You can register single or all components in application entry file (for example main.js). Registering single components will make build smaller.
     </p>
@@ -143,6 +150,7 @@ app.use(componentPlugin, {
 
       </v-tab>
     </v-tabs>
+    </div>
 
     <p>
       <span class="font-bold">Optional</span>: while registering components you can set default values for props globally in second argument of <code class="code-text">app.use</code>:
@@ -223,6 +231,8 @@ app.use(componentPlugin, {
     </v-code>
       </v-tab>
     </v-tabs>
+
+    <v-divider class="my-10"></v-divider>
 
     <h4 id="Styling" class="my-10">Styling components</h4>
       <p>

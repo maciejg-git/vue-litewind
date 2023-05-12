@@ -1,10 +1,11 @@
 <template>
-  <h3>Card</h3>
+  <h3>Grid</h3>
   <links-github-header component="vCard" />
 
   <section>
-    <p>
-    Grids components can be used to make flexbox layouts. It is easy to create responsive layouts with Tailwind so those components are just single, named divs to distinguish layout elements from other divs. Combine them with Tailwind utilities to create grids similar to Bootstrap and others.
+    <h4 id="GridUsage">Usage</h4>
+    <p> 
+    Grids components can be used to make flexbox layouts. Those components are very simple with no props or default classes (just single divs). Combine them with Tailwind responsive utility classes to create grids similar to Bootstrap and others.
     </p>
     <p>
     Grid components:
@@ -17,18 +18,37 @@
     </ul>
   </section>
 
-  <!-- <section> -->
-  <!--   <h4 id="CardReference">Reference</h4> -->
-  <!--   <table-reference :items="reference.props" /> -->
-  <!---->
-  <!--   <h6 id="CardSlots">Slots</h6> -->
-  <!--   <table-reference-basic :items="reference.slots" reference="slot" /> -->
-  <!-- </section> -->
-
   <section>
-    <h4 id="ExampleGridSimple">Example - simple card</h4>
+    <h4 id="ExampleGridSimple">Example - simple</h4>
+    <p>
+      Basic 12 columns layout with percentage widths similar to Bootstrap. You can use <code class="code-text">gap-x-*</code> utilities to create gutters.
+    </p>
     <div class="example">
       <example name="ExampleGridSimple"></example>
+    </div>
+  </section>
+
+  <section>
+    <h4 id="ExampleGridAuto">Example - auto width columns</h4>
+    <p>
+    <code class="code-text">v-auto-col</code> component will generate columns that fit available space in the row.
+    </p>
+    <div class="example">
+      <example name="ExampleGridAuto"></example>
+    </div>
+  </section>
+
+  <section>
+    <h4 id="ExampleGridAlignHorizontal">Example - row horizontal alignment</h4>
+    <div class="example">
+      <example name="ExampleGridAlignHorizontal"></example>
+    </div>
+  </section>
+
+  <section>
+    <h4 id="ExampleGridAlignVertical">Example - row vertical alignment</h4>
+    <div class="example">
+      <example name="ExampleGridAlignVertical"></example>
     </div>
   </section>
 </template>
