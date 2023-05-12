@@ -30,7 +30,7 @@ pre code {
   @apply text-sm whitespace-pre rounded-md;
 }
 .code-text {
-  @apply text-yellow-700 dark:text-yellow-600 font-semibold text-sm
+  @apply text-red-600 dark:text-yellow-600 font-semibold text-sm
 }
 .code-word {
   @apply text-sm bg-indigo-300 text-black dark:text-text-100 dark:bg-indigo-500 rounded px-1 py-0.5 mr-1 text-sm;
