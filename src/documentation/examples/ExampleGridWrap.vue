@@ -1,48 +1,29 @@
 <template>
   <v-container>
-    <v-row class="h-[120px] items-start">
-      <v-col class="basis-4/12">
+    <v-row>
+      <v-col class="basis-3/12">
         <div class="rounded border border-dark-500 p-2 bg-secondary-200 dark:bg-dark-700">
           col 1
         </div>
       </v-col>
-      <v-col class="basis-4/12">
+      <v-col class="basis-3/12">
         <div class="rounded border border-dark-500 p-2 bg-secondary-200 dark:bg-dark-700">
           col 2
         </div>
       </v-col>
-    </v-row>
-  </v-container>
-
-  <v-divider />
-
-  <v-container>
-    <v-row class="h-[120px] items-center">
-      <v-col class="basis-4/12">
+      <v-col class="basis-6/12">
         <div class="rounded border border-dark-500 p-2 bg-secondary-200 dark:bg-dark-700">
-          col 1
+          col 3
         </div>
       </v-col>
-      <v-col class="basis-4/12">
+      <v-col class="basis-6/12">
         <div class="rounded border border-dark-500 p-2 bg-secondary-200 dark:bg-dark-700">
-          col 2
+          col 4
         </div>
       </v-col>
-    </v-row>
-  </v-container>
-
-  <v-divider />
-
-  <v-container>
-    <v-row class="h-[120px] items-end">
-      <v-col class="basis-4/12">
+      <v-col class="basis-6/12">
         <div class="rounded border border-dark-500 p-2 bg-secondary-200 dark:bg-dark-700">
-          col 1
-        </div>
-      </v-col>
-      <v-col class="basis-4/12">
-        <div class="rounded border border-dark-500 p-2 bg-secondary-200 dark:bg-dark-700">
-          col 2
+          col 5
         </div>
       </v-col>
     </v-row>

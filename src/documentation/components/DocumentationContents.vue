@@ -5,7 +5,7 @@
       v-for="item in headers"
       :class="{
         'ml-4': item.level === '6',
-        'text-black dark:text-white font-bold': item.el === currentHeader,
+        'font-bold text-black dark:text-white': item.el === currentHeader,
       }"
     >
       <a
@@ -31,15 +31,37 @@ let props = defineProps({
 
 let route = useRoute();
 
-let headers = ref([]);
-let currentHeader = ref(null);
+// get new content headers on route change
 
+let headers = ref([]);
 let documentation = toRef(props, "contentElement");
 
 let getHeaders = () => {
   if (!documentation.value) return [];
   return [...documentation.value.querySelectorAll("h4,h5,h6")];
 };
+
+watch(
+  route,
+  () => {
+    nextTick((value) => {
+      headers.value = getHeaders().map((i) => {
+        return {
+          text: i.innerText,
+          level: i.tagName[1],
+          id: i.id,
+          path: route.path + "#" + i.id,
+          el: i,
+        };
+      });
+    });
+  },
+  { immediate: true }
+);
+
+// simple scroll spy to highlight current content header
+
+let currentHeader = ref(null);
 
 let isPartiallyInViewport = (element, offsetBottom) => {
   const rect = element.getBoundingClientRect();
@@ -69,24 +91,6 @@ let handleScroll = () => {
 
   currentHeader.value = visibleHeaders[0];
 };
-
-watch(
-  route,
-  () => {
-    nextTick((value) => {
-      headers.value = getHeaders().map((i) => {
-        return {
-          text: i.innerText,
-          level: i.tagName[1],
-          id: i.id,
-          path: route.path + "#" + i.id,
-          el: i,
-        };
-      });
-    });
-  },
-  { immediate: true }
-);
 
 onMounted(() => {
   window.addEventListener("scroll", handleScroll);

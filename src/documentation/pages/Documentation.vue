@@ -18,14 +18,14 @@
 
   <!-- container -->
 
-  <v-container
-    class="relative top-16 text-text-800 dark:bg-[#191919] dark:text-text-300/80 lg:px-0"
+  <v-fluid-container
+    class="relative mt-16 flex text-text-800 dark:bg-[#191919] dark:text-text-300/80 lg:px-0"
   >
+    <!-- menu -->
+
     <v-row class="justify-center">
-      <!-- menu -->
-      
       <v-col
-        class="sidebar sticky top-16 hidden flex-none w-1/5 overflow-auto border-r p-3 pb-20 pr-7 text-[0.9em] font-semibold dark:border-dark-700 lg:flex"
+        class="sidebar sticky top-16 hidden flex-none basis-1/5 overflow-auto border-r p-3 pb-20 pr-7 text-[0.9em] font-semibold dark:border-dark-700 lg:flex"
       >
         <div class="ml-auto text-text-600 dark:text-text-300/70">
           <documentation-menu />
@@ -56,12 +56,12 @@
       <!-- page content sidepanel -->
       
       <v-col
-        class="sidebar sticky top-16 hidden flex-none w-1/5 -translate-x-10 overflow-auto py-3 pb-20 text-[0.9em] font-semibold xl:block"
+        class="sidebar sticky top-16 hidden flex-none basis-1/5 -translate-x-10 overflow-auto py-3 pb-20 text-[0.9em] font-semibold xl:block"
       >
         <documentation-contents :content-element="documentation" />
       </v-col>
     </v-row>
-  </v-container>
+  </v-fluid-container>
 </template>
 
 <script setup>
