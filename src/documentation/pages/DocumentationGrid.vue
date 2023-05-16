@@ -6,25 +6,50 @@
     <h4 id="GridUsage">Usage</h4>
     <p>
       Grids components can be used to make flexbox layouts. Those components are
-      very simple with no props or default classes (just single divs). Combine
-      them with Tailwind responsive classes to create grids similar to
-      Bootstrap and others.
+      very simple with no props or default classes. Combine
+      them with Tailwind responsive utilities to create grids similar to Bootstrap
+      and others.
     </p>
     <p>Grid components:</p>
     <ul class="ml-4">
-      <li><code class="code-text">v-container</code> - responsive container that sets <code class="code-text">max-width</code> for current breakpoint.</li>
-      <li><code class="code-text">v-fluid-container</code> - container that fills available width.</li>
-      <li><code class="code-text">v-row</code> - row that contains columns. Use <code class="code-text">justify-*</code> and <code class="code-text">items-*</code> classes to align content in columns.</li>
-      <li><code class="code-text">v-col</code> - single column. Use <code class="code-text">basis-*</code> or <code class="code-text">w-*</code> classes to set width for every column.</li>
-      <li><code class="code-text">v-auto-col</code> - column that fills available width in the row.</li>
+      <li>
+        <code class="code-text">v-container</code>
+        - responsive container that sets
+        <code class="code-text">max-width</code>
+        for current breakpoint.
+      </li>
+      <li>
+        <code class="code-text">v-fluid-container</code>
+        - container that fills available width.
+      </li>
+      <li>
+        <code class="code-text">v-row</code>
+        - row that contains columns. Use
+        <code class="code-text">justify-*</code>
+        and
+        <code class="code-text">items-*</code>
+        classes to align content in columns.
+      </li>
+      <li>
+        <code class="code-text">v-col</code>
+        - single column. Use
+        <code class="code-text">basis-*</code>
+        or
+        <code class="code-text">w-*</code>
+        classes to set width for every column.
+      </li>
+      <li>
+        <code class="code-text">v-auto-col</code>
+        - column that fills available width in the row.
+      </li>
     </ul>
   </section>
 
+  <v-divider></v-divider>
+
   <section>
     <h4 id="ExampleGridSimple">Example - simple</h4>
-    <p>
-      Basic 12 columns layout with percentage widths similar to Bootstrap.
-    </p>
+    <p>Basic 12 columns layout with percentage widths similar to Bootstrap.</p>
     <div class="example">
       <example name="ExampleGridSimple"></example>
     </div>
@@ -32,9 +57,7 @@
 
   <section>
     <h4 id="ExampleGridWrap">Example - column wrapping</h4>
-    <p>
-      By default columns that overflow row are wrapped to the next line.
-    </p>
+    <p>By default columns that overflow row are wrapped to the next line.</p>
     <div class="example">
       <example name="ExampleGridWrap"></example>
     </div>
@@ -53,6 +76,11 @@
 
   <section>
     <h4 id="ExampleGridAlignHorizontal">Example - row horizontal alignment</h4>
+    <p>
+      To align columns along horizontal axis use
+      <code class="code-text">justify-*</code>
+      classes in the row.
+    </p>
     <div class="example">
       <example name="ExampleGridAlignHorizontal"></example>
     </div>
@@ -60,6 +88,13 @@
 
   <section>
     <h4 id="ExampleGridAlignVertical">Example - row vertical alignment</h4>
+    <p>
+      To align columns along vertical axis use
+      <code class="code-text">items-*</code>
+      classes in the row. You can also align columns seperately with
+      <code class="code-text">self-*</code>
+      classes.
+    </p>
     <div class="example">
       <example name="ExampleGridAlignVertical"></example>
     </div>
@@ -68,10 +103,90 @@
   <section>
     <h4 id="ExampleGridGutter">Example - gutters</h4>
     <p>
-      You can add gutters to rows and columns with padding and negative margin classes.
+    By default there is no gutter that separates columns.
+      You can add it with padding and then offset it with equal
+      negative margin classes in the row. In the example below
+      <code class="code-text">[&>*]:</code>
+      modifier is used to add equal padding to entire grid but you can also set it seperately in each column.
+    </p>
+    <p>
+      Note that
+      <code class="code-text">space-*</code>,
+      <code class="code-text">gap-*</code> and
+      <code class="code-text">divide-*</code>
+      classes will not work reliably and will result in overflow or break column
+      wrapping.
     </p>
     <div class="example">
       <example name="ExampleGridGutter"></example>
     </div>
+    <p>
+      Gutters can also be made responsive. In the following example gutters get
+      smaller on lower resolutions and are disabled on small screens.
+    </p>
+    <div class="example">
+      <example name="ExampleGridGutterResponsive"></example>
+    </div>
+  </section>
+
+  <section>
+    <h4 id="ExampleGridMargin">
+      Example - columns position with margin classes
+    </h4>
+    <p>
+      You can shift or center columns with
+      <code class="code-text">ml-auto</code>
+      ,
+      <code class="code-text">mr-auto</code>
+      or
+      <code class="code-text">mx-auto</code>
+      margin utility classes.
+    </p>
+    <div class="example">
+      <example name="ExampleGridMargin"></example>
+    </div>
+  </section>
+
+  <section>
+    <h4 id="ExampleGridResponsive">Example - responsive column width</h4>
+    <p>To create responsive grid simply add responsive modifiers to <code class="code-text">basis-*</code> or <code class="code-text">w-*</code> classes.</p>
+    <div class="example">
+      <example name="ExampleGridResponsive"></example>
+    </div>
+  </section>
+
+  <section>
+    <h4 id="ExampleGridNested">Example - nested layouts</h4>
+    <p>
+      Grids can also be nested by placing
+      <code class="code-text">v-rows</code>
+      inside
+      <code class="code-text">v-cols</code>
+      .
+    </p>
+    <div class="example">
+      <example name="ExampleGridNested"></example>
+    </div>
   </section>
 </template>
+
+<style>
+.column-content {
+  @apply rounded
+    border
+    border-dark-500
+    bg-secondary-200
+    p-2
+    dark:border-dark-400
+    dark:bg-dark-700;
+}
+.nested-column-content {
+  @apply rounded
+    border-2
+    border-red-500
+    bg-secondary-200
+    p-2
+    dark:border-red-400
+    dark:bg-dark-700;
+}
+</style>

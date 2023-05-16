@@ -2,19 +2,13 @@
   <v-container>
     <v-row>
       <v-auto-col>
-        <div class="rounded border border-dark-500 p-2 bg-secondary-200 dark:bg-dark-700">
-          auto-col 1
-        </div>
+        <div class="column-content">auto-col 1</div>
       </v-auto-col>
       <v-auto-col>
-        <div class="rounded border border-dark-500 p-2 bg-secondary-200 dark:bg-dark-700">
-          auto-col 2
-        </div>
+        <div class="column-content">auto-col 2</div>
       </v-auto-col>
       <v-auto-col>
-        <div class="rounded border border-dark-500 p-2 bg-secondary-200 dark:bg-dark-700">
-          auto-col 3
-        </div>
+        <div class="column-content">auto-col 3</div>
       </v-auto-col>
     </v-row>
   </v-container>
