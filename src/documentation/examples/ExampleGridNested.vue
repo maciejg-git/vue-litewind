@@ -13,10 +13,10 @@
             <div class="nested-column-content">col 2</div>
           </v-col>
           <v-col class="basis-6/12">
-            <div class="nested-column-content">col 2</div>
+            <div class="nested-column-content">col 3</div>
           </v-col>
           <v-col class="basis-6/12">
-            <div class="nested-column-content">col 2</div>
+            <div class="nested-column-content">col 4</div>
           </v-col>
         </v-row>
       </v-col>
