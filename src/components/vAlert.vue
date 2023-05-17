@@ -18,7 +18,9 @@
         <!-- @slot icon -->
         <slot name="icon"></slot>
         <!-- @slot default -->
-        <slot name="default"></slot>
+        <div>
+          <slot name="default"></slot>
+        </div>
         <v-close-button
           v-if="!isStatic() && dismissable"
           @click="handleCloseButtonClick"
