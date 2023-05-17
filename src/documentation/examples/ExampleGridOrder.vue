@@ -1,10 +1,10 @@
 <template>
   <v-container>
     <v-row>
-      <v-col class="basis-3/12">
+      <v-col class="basis-3/12 order-2">
         <div class="column-content ">col 1</div>
       </v-col>
-      <v-col class="basis-3/12">
+      <v-col class="basis-3/12 order-3">
         <div class="column-content">col 2</div>
       </v-col>
       <v-col class="basis-6/12">

@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row class="-m-0 [&>*]:p-0 md:-m-2 md:[&>*]:p-2 lg:-m-4 lg:[&>*]:p-4">
+    <v-row class="-m-0 md:-m-2 lg:-m-4 [&>*]:p-0 md:[&>*]:p-2 lg:[&>*]:p-4">
       <v-col class="basis-3/12">
         <div class="column-content">col 1</div>
       </v-col>

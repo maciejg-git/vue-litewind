@@ -10,40 +10,12 @@
       them with Tailwind responsive utilities to create grids similar to Bootstrap
       and others.
     </p>
-    <p>Grid components:</p>
-    <ul class="ml-4">
-      <li>
-        <code class="code-text">v-container</code>
-        - responsive container that sets
-        <code class="code-text">max-width</code>
-        for current breakpoint.
-      </li>
-      <li>
-        <code class="code-text">v-fluid-container</code>
-        - container that fills available width.
-      </li>
-      <li>
-        <code class="code-text">v-row</code>
-        - row that contains columns. Use
-        <code class="code-text">justify-*</code>
-        and
-        <code class="code-text">items-*</code>
-        classes to align content in columns.
-      </li>
-      <li>
-        <code class="code-text">v-col</code>
-        - single column. Use
-        <code class="code-text">basis-*</code>
-        or
-        <code class="code-text">w-*</code>
-        classes to set width for every column.
-      </li>
-      <li>
-        <code class="code-text">v-auto-col</code>
-        - column that fills available width in the row.
-      </li>
-    </ul>
   </section>
+
+    <section>
+      <h4 id="GridComponents">Grid components</h4>
+      <table-reference-basic :items="components" reference="component"></table-reference-basic>
+    </section>
 
   <v-divider></v-divider>
 
@@ -110,12 +82,14 @@
       modifier is used to add equal padding to entire grid but you can also set it seperately in each column.
     </p>
     <p>
-      Note that
-      <code class="code-text">space-*</code>,
-      <code class="code-text">gap-*</code> and
-      <code class="code-text">divide-*</code>
-      classes will not work reliably and will result in overflow or break column
-      wrapping.
+      <v-alert icon="info" style-alert="info">
+        Note that
+        <code class="code-text">space-*</code>,
+        <code class="code-text">gap-*</code> and
+        <code class="code-text">divide-*</code>
+        classes will not work reliably and will result in overflow or break column
+        wrapping. However, those classes can be used on <code class="code-text">v-container</code> to create gutters that separate <code class="code-text">v-rows</code>.
+      </v-alert>
     </p>
     <div class="example">
       <example name="ExampleGridGutter"></example>
@@ -168,7 +142,40 @@
       <example name="ExampleGridNested"></example>
     </div>
   </section>
+
+  <section>
+    <h4 id="ExampleGridOrder">Example - column order</h4>
+    <p><code class="code-text">order-*</code> classes can be used to change order of columns.</p>
+    <div class="example">
+      <example name="ExampleGridOrder"></example>
+    </div>
+  </section>
 </template>
+
+<script setup>
+let components = [
+  {
+    component: "v-container",
+    description: "Responsive container that sets `max-width` for current breakpoint",
+  },
+  {
+    component: "v-fluid-container",
+    description: "Variant of container that fills available width",
+  },
+  {
+    component: "v-row",
+    description: "Wrapper for columns. v-rows should be placed directly inside v-container or v-cols and may contain only v-cols",
+  },
+  {
+    component: "v-col",
+    description: "Single column for the content. It can only be placed inside v-rows",
+  },
+  {
+    component: "v-auto-col",
+    description: "Variant of column that fills available width in the row",
+  },
+]
+</script>
 
 <style>
 .column-content {

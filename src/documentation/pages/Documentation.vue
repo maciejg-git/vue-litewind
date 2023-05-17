@@ -19,7 +19,7 @@
   <!-- container -->
 
   <v-fluid-container
-    class="relative mt-16 flex text-text-800 dark:bg-[#191919] dark:text-text-300/80 lg:px-0"
+    class="relative mt-16 flex text-text-800 dark:bg-[#191919] dark:text-[#bcbfc5] lg:px-0"
   >
     <!-- menu -->
 
