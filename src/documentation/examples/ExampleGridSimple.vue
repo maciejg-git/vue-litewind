@@ -2,7 +2,7 @@
   <v-container>
     <v-row>
       <v-col class="basis-3/12">
-        <div class="column-content ">col 1</div>
+        <div class="column-content">col 1</div>
       </v-col>
       <v-col class="basis-3/12">
         <div class="column-content">col 2</div>

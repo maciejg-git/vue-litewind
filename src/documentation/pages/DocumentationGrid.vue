@@ -44,6 +44,12 @@
     <div class="example">
       <example name="ExampleGridAuto"></example>
     </div>
+    <p>
+    To wrap auto columns to new line use <code class="code-text">v-auto-col-break</code> component.
+    </p>
+    <div class="example">
+      <example name="ExampleGridAutoBreak"></example>
+    </div>
   </section>
 
   <section>
@@ -96,7 +102,7 @@
     </div>
     <p>
       Gutters can also be made responsive. In the following example gutters get
-      smaller on lower resolutions and are disabled on small screens.
+      narrower on lower resolutions and are disabled on small screens.
     </p>
     <div class="example">
       <example name="ExampleGridGutterResponsive"></example>
@@ -173,6 +179,10 @@ let components = [
   {
     component: "v-auto-col",
     description: "Variant of column that fills available width in the row",
+  },
+  {
+    component: "v-auto-col-break",
+    description: "Allows breaking of the v-auto-cols to new line",
   },
 ]
 </script>
