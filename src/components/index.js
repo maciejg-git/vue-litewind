@@ -38,6 +38,7 @@ export { default as vFluidContainer } from "./vFluidContainer.vue"
 export { default as vContainer } from "./vContainer.vue"
 export { default as vRow } from "./vRow.vue"
 export { default as vAutoCol } from "./vAutoCol.vue"
+export { default as vAutoColBreak } from "./vAutoColBreak.vue"
 export { default as vCol } from "./vCol.vue"
 
 export { default as vForm } from "./vForm.vue"
