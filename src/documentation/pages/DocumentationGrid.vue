@@ -6,16 +6,18 @@
     <h4 id="GridUsage">Usage</h4>
     <p>
       Grids components can be used to make flexbox layouts. Those components are
-      very simple with no props or default classes. Combine
-      them with Tailwind responsive utilities to create grids similar to Bootstrap
-      and others.
+      very simple with no props or default classes. Combine them with Tailwind
+      responsive utilities to create grids similar to Bootstrap and others.
     </p>
   </section>
 
-    <section>
-      <h4 id="GridComponents">Grid components</h4>
-      <table-reference-basic :items="components" reference="component"></table-reference-basic>
-    </section>
+  <section>
+    <h4 id="GridComponents">Grid components</h4>
+    <table-reference-basic
+      :items="components"
+      reference="component"
+    ></table-reference-basic>
+  </section>
 
   <v-divider></v-divider>
 
@@ -45,7 +47,9 @@
       <example name="ExampleGridAuto"></example>
     </div>
     <p>
-    To wrap auto columns to new line use <code class="code-text">v-auto-col-break</code> component.
+      To wrap auto columns to new line use
+      <code class="code-text">v-auto-col-break</code>
+      component.
     </p>
     <div class="example">
       <example name="ExampleGridAutoBreak"></example>
@@ -81,20 +85,30 @@
   <section>
     <h4 id="ExampleGridGutter">Example - gutters</h4>
     <p>
-    By default there is no gutter that separates columns.
-      You can add it with padding and then offset it with equal
-      negative margin classes in the row. In the example below
+      By default there is no gutter that separates columns. You can add it with
+      padding and then offset it with equal negative margin classes in the row.
+      In the example below
       <code class="code-text">[&>*]:</code>
-      modifier is used to add equal padding to entire grid but you can also set it seperately in each column.
+      modifier is used to add equal padding to entire grid but you can also set
+      it seperately in each column.
     </p>
     <p>
-      <v-alert icon="info" style-alert="info">
+      <v-alert
+        icon="info"
+        style-alert="info"
+      >
         Note that
-        <code class="code-text">space-*</code>,
-        <code class="code-text">gap-*</code> and
+        <code class="code-text">space-*</code>
+        ,
+        <code class="code-text">gap-*</code>
+        and
         <code class="code-text">divide-*</code>
-        classes will not work reliably and will result in overflow or break column
-        wrapping. However, those classes can be used on <code class="code-text">v-container</code> to create gutters that separate <code class="code-text">v-rows</code>.
+        classes will not work reliably and will result in overflow or break
+        column wrapping. However, those classes can be used on
+        <code class="code-text">v-container</code>
+        to create gutters that separate
+        <code class="code-text">v-rows</code>
+        .
       </v-alert>
     </p>
     <div class="example">
@@ -129,7 +143,13 @@
 
   <section>
     <h4 id="ExampleGridResponsive">Example - responsive column width</h4>
-    <p>To create responsive grid simply add responsive modifiers to <code class="code-text">basis-*</code> or <code class="code-text">w-*</code> classes.</p>
+    <p>
+      To create responsive grid simply add responsive modifiers to
+      <code class="code-text">basis-*</code>
+      or
+      <code class="code-text">w-*</code>
+      classes.
+    </p>
     <div class="example">
       <example name="ExampleGridResponsive"></example>
     </div>
@@ -151,7 +171,10 @@
 
   <section>
     <h4 id="ExampleGridOrder">Example - column order</h4>
-    <p><code class="code-text">order-*</code> classes can be used to change order of columns.</p>
+    <p>
+      <code class="code-text">order-*</code>
+      classes can be used to change order of columns.
+    </p>
     <div class="example">
       <example name="ExampleGridOrder"></example>
     </div>
@@ -162,7 +185,8 @@
 let components = [
   {
     component: "v-container",
-    description: "Responsive container that sets `max-width` for current breakpoint",
+    description:
+      "Responsive container that sets `max-width` for current breakpoint",
   },
   {
     component: "v-fluid-container",
@@ -170,11 +194,13 @@ let components = [
   },
   {
     component: "v-row",
-    description: "Wrapper for columns. v-rows should be placed directly inside v-container or v-cols and may contain only v-cols",
+    description:
+      "Wrapper for columns. v-rows should be placed directly inside v-container or v-cols and may contain only v-cols",
   },
   {
     component: "v-col",
-    description: "Single column for the content. It can only be placed inside v-rows",
+    description:
+      "Single column for the content. It can only be placed inside v-rows",
   },
   {
     component: "v-auto-col",
@@ -184,7 +210,7 @@ let components = [
     component: "v-auto-col-break",
     description: "Allows breaking of the v-auto-cols to new line",
   },
-]
+];
 </script>
 
 <style>

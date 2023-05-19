@@ -31,6 +31,7 @@
       language="html"
       :code="codeObjectDirectiveDetails"
     ></v-code>
+    <p>For undefined text property content of <code class="code-text">data-title</code> attribute will be used.</p>
   </section>
 
   <section>
