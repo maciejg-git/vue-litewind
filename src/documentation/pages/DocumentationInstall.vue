@@ -120,12 +120,13 @@ import "./input.css";`}}
       {{ `// main.js
 
 import { componentPlugin } from "vue-wind";
-import { components, directives } from "vue-wind";
+import { components, grid, directives } from "vue-wind";
 
 let app = createApp(App);
 
 app.use(componentPlugin, {
   components,
+  grid,
   directives,
 }); `}}
     </v-code>

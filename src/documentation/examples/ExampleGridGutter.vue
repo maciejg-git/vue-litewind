@@ -11,10 +11,10 @@
         <div class="column-content">col 3</div>
       </v-col>
       <v-col class="basis-6/12">
-        <div class="column-content">col 3</div>
+        <div class="column-content">col 4</div>
       </v-col>
       <v-col class="basis-6/12">
-        <div class="column-content">col 3</div>
+        <div class="column-content">col 5</div>
       </v-col>
     </v-row>
   </v-container>

@@ -54,6 +54,12 @@
     <div class="example">
       <example name="ExampleGridAutoBreak"></example>
     </div>
+    <p>
+    Both <code class="code-text">v-cols</code> and <code class="code-text">v-auto-cols</code> can be used inside same row.
+    </p>
+    <div class="example">
+      <example name="ExampleGridAutoMix"></example>
+    </div>
   </section>
 
   <section>
@@ -161,7 +167,7 @@
       Grids can also be nested by placing
       <code class="code-text">v-rows</code>
       inside
-      <code class="code-text">v-cols</code>
+      <code class="code-text">v-cols</code> or <code class="code-text">v-auto-cols</code>
       .
     </p>
     <div class="example">
