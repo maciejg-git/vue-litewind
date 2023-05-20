@@ -14,6 +14,7 @@ import vSelectProp from "./documentation/components/vSelectProp.vue"
 import Example from "./documentation/components/Example.vue"
 import { componentPlugin } from "./index.js";
 import { components } from "./index"
+import { grid } from "./index"
 import { directives } from "./index"
 // styles
 import "tailwindcss/tailwind.css";
@@ -67,6 +68,7 @@ app.provide("icon-types", {
 app.use(router);
 app.use(componentPlugin, {
   components,
+  grid,
   directives,
   componentProps: {
     select: {
