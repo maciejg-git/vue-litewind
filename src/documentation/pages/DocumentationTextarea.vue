@@ -18,7 +18,7 @@
   </section>
 
   <section>
-    <h4 id="ExampleTextarea">Example</h4>
+    <h4 id="ExampleTextarea">Example - props</h4>
     <div class="example">
       <example name="ExampleTextarea"></example>
     </div>

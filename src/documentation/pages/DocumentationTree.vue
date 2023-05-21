@@ -24,7 +24,7 @@
   </section>
 
   <section>
-    <h4 id="ExampleTree">Example</h4>
+    <h4 id="ExampleTree">Example - props and events</h4>
     <div class="example">
       <example name="ExampleTree"></example>
     </div>

@@ -31,7 +31,7 @@
   <v-divider></v-divider>
 
   <section>
-    <h4 id="ExampleCheckbox">Example</h4>
+    <h4 id="ExampleCheckbox">Example - props</h4>
     <div class="example">
       <example name="ExampleCheckbox"></example>
     </div>

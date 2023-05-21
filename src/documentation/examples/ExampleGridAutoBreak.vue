@@ -7,7 +7,7 @@
       <v-auto-col>
         <div class="column-content">auto-col 2</div>
       </v-auto-col>
-      <v-auto-col-break />
+      <v-col-break />
       <v-auto-col>
         <div class="column-content">auto-col 3</div>
       </v-auto-col>

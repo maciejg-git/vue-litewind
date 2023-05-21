@@ -49,7 +49,7 @@
   <v-divider></v-divider>
 
   <section>
-    <h4 id="ExamplePopover">Example</h4>
+    <h4 id="ExamplePopover">Example - props</h4>
     <div class="example">
       <example name="ExamplePopover"></example>
     </div>

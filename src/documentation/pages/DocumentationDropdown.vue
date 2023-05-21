@@ -69,7 +69,7 @@
   </section>
 
   <section>
-    <h4 id="ExampleDropdown">Example</h4>
+    <h4 id="ExampleDropdown">Example - props</h4>
     <div class="example">
       <example name="ExampleDropdown"></example>
     </div>

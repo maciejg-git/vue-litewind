@@ -39,7 +39,7 @@
     </div>
   </section>
   <section>
-    <h4 id="ExampleDatepicker">Example</h4>
+    <h4 id="ExampleDatepicker">Example - props and events</h4>
     <div class="example">
       <example name="ExampleDatepicker"></example>
     </div>

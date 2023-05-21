@@ -48,14 +48,18 @@
     </div>
     <p>
       To wrap auto columns to new line use
-      <code class="code-text">v-auto-col-break</code>
+      <code class="code-text">v-col-break</code>
       component.
     </p>
     <div class="example">
       <example name="ExampleGridAutoBreak"></example>
     </div>
     <p>
-    Both <code class="code-text">v-cols</code> and <code class="code-text">v-auto-cols</code> can be used inside same row.
+      Both
+      <code class="code-text">v-cols</code>
+      and
+      <code class="code-text">v-auto-cols</code>
+      can be used inside same row.
     </p>
     <div class="example">
       <example name="ExampleGridAutoMix"></example>
@@ -150,7 +154,11 @@
   <section>
     <h4 id="ExampleGridResponsive">Example - responsive column width</h4>
     <p>
-      To create responsive grid simply add responsive modifiers to
+      To create responsive grid simply add responsive modifiers (
+      <code class="code-text">md:</code>
+      ,
+      <code class="code-text">lg:</code>
+      etc) to
       <code class="code-text">basis-*</code>
       or
       <code class="code-text">w-*</code>
@@ -167,7 +175,9 @@
       Grids can also be nested by placing
       <code class="code-text">v-rows</code>
       inside
-      <code class="code-text">v-cols</code> or <code class="code-text">v-auto-cols</code>
+      <code class="code-text">v-cols</code>
+      or
+      <code class="code-text">v-auto-cols</code>
       .
     </p>
     <div class="example">
@@ -192,29 +202,29 @@ let components = [
   {
     component: "v-container",
     description:
-      "Responsive container that sets `max-width` for current breakpoint",
+      "Responsive container that sets `max-width` for current breakpoint. It is centered by default.",
   },
   {
     component: "v-fluid-container",
-    description: "Variant of container that fills available width",
+    description: "Variant of container that fills available width.",
   },
   {
     component: "v-row",
     description:
-      "Wrapper for columns. v-rows should be placed directly inside v-container or v-cols and may contain only v-cols",
+      "Wrapper for columns. v-rows should be placed directly inside v-container, v-cols and may contain only v-cols.",
   },
   {
     component: "v-col",
     description:
-      "Single column for the content. It can only be placed inside v-rows",
+      "Single column for the content. It can only be placed inside v-rows.",
   },
   {
     component: "v-auto-col",
-    description: "Variant of column that fills available width in the row",
+    description: "Variant of column that fills available width in the row.",
   },
   {
-    component: "v-auto-col-break",
-    description: "Allows breaking of the v-auto-cols to new line",
+    component: "v-col-break",
+    description: "Allows breaking of the v-auto-cols to new line.",
   },
 ];
 </script>

@@ -11,7 +11,7 @@
   </section>
 
   <section>
-    <h4 id="ExampleProgress">Example</h4>
+    <h4 id="ExampleProgress">Example - props</h4>
     <div class="example">
       <example name="ExampleProgress"></example>
     </div>

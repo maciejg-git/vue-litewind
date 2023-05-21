@@ -43,7 +43,7 @@
   </section>
 
   <section>
-    <h4 id="ExampleModal">Example</h4>
+    <h4 id="ExampleModal">Example - props</h4>
     <div class="example">
       <example name="ExampleModal"></example>
     </div>

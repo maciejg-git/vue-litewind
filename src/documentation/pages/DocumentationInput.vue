@@ -24,7 +24,7 @@
   </section>
 
   <section>
-    <h4 id="ExampleInput">Example</h4>
+    <h4 id="ExampleInput">Example - props and events</h4>
     <div class="example">
       <example name="ExampleInput"></example>
     </div>

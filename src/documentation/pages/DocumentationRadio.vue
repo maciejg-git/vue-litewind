@@ -12,14 +12,14 @@
   </section>
 
   <section>
-    <h4 id="ExampleRadio">Example</h4>
+    <h4 id="ExampleRadio">Example - props</h4>
     <div class="example">
       <example name="ExampleRadio"></example>
     </div>
   </section>
 
   <section>
-    <h4 id="ExampleRadioGroup">Radio group</h4>
+    <h4 id="ExampleRadioGroup">Example - radio group</h4>
     <p>
     Radio inputs can be optionally wrapped with <code class="code-text">v-radio-group</code> to create group with single <code class="code-text">v-model</code>.
     </p>

@@ -93,7 +93,7 @@
   </section>
 
   <section>
-    <h4 id="ExampleTable">Example</h4>
+    <h4 id="ExampleTable">Example - props and events</h4>
     <div class="example">
       <example name="ExampleTable"></example>
     </div>

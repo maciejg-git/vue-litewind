@@ -37,7 +37,7 @@
   </section>
 
   <section>
-    <h4 id="ExampleTabs">Example</h4>
+    <h4 id="ExampleTabs">Example - props and events</h4>
     <div class="example">
       <example name="ExampleTabs"></example>
     </div>

@@ -15,7 +15,7 @@
   </section>
 
   <section>
-    <h4 id="ExampleSidepanel">Example</h4>
+    <h4 id="ExampleSidepanel">Example - props</h4>
     <div class="example">
       <example name="ExampleSidepanel"></example>
     </div>
