@@ -1,6 +1,6 @@
 <template>
   <h3>Grid</h3>
-  <links-github-header component="vCard" />
+  <links-github-header component="Grid" />
 
   <section>
     <h4 id="GridUsage">Usage</h4>
@@ -40,14 +40,17 @@
   <section>
     <h4 id="ExampleGridAuto">Example - auto width columns</h4>
     <p>
-      <code class="code-text">v-auto-col</code>
-      component will generate columns that fit available space in the row.
+      Adding
+      <code class="code-text">grow</code>
+      class to
+      <code class="code-text">v-cols</code>
+      will generate columns that fit available space in the row.
     </p>
     <div class="example">
       <example name="ExampleGridAuto"></example>
     </div>
     <p>
-      To wrap auto columns to new line use
+      To wrap auto width columns to a new line use
       <code class="code-text">v-col-break</code>
       component.
     </p>
@@ -55,14 +58,48 @@
       <example name="ExampleGridAutoBreak"></example>
     </div>
     <p>
-      Both
-      <code class="code-text">v-cols</code>
-      and
-      <code class="code-text">v-auto-cols</code>
-      can be used inside same row.
+      Auto width columns can be used with other
+      columns that have explicit width. Auto width columns will automaticaly resize to
+      fit into available space.
     </p>
     <div class="example">
       <example name="ExampleGridAutoMix"></example>
+    </div>
+  </section>
+
+  <section>
+    <h4 id="ExampleGridVariable">Example - variable width columns</h4>
+    <p>
+      Use
+      <code class="code-text">basis-auto</code>
+      class to make columns that have size based on the natural width of their
+      content
+    </p>
+    <div class="example">
+      <example name="ExampleGridVariable"></example>
+    </div>
+  </section>
+
+  <section>
+    <h4 id="ExampleGridBreak">Example - columns break</h4>
+    <p>
+      To break columns to a new line use the
+      <code class="code-text">v-col-break</code>
+      component.
+    </p>
+    <div class="example">
+      <example name="ExampleGridBreak"></example>
+    </div>
+    <p>
+      To break columns only at certain breakpoints use
+      <code class="code-text">hidden</code>
+      and
+      <code class="code-text">block</code>
+      classes with the responsive modifiers. In the example below columns only
+      break at small screens.
+    </p>
+    <div class="example">
+      <example name="ExampleGridBreakResponsive"></example>
     </div>
   </section>
 
@@ -116,7 +153,7 @@
         classes will not work reliably and will result in overflow or break
         column wrapping. However, those classes can be used on
         <code class="code-text">v-container</code>
-        to create gutters that separate
+        to create horizontal gutters that separate
         <code class="code-text">v-rows</code>
         .
       </v-alert>
@@ -176,8 +213,6 @@
       <code class="code-text">v-rows</code>
       inside
       <code class="code-text">v-cols</code>
-      or
-      <code class="code-text">v-auto-cols</code>
       .
     </p>
     <div class="example">
@@ -219,12 +254,8 @@ let components = [
       "Single column for the content. It can only be placed inside v-rows.",
   },
   {
-    component: "v-auto-col",
-    description: "Variant of column that fills available width in the row.",
-  },
-  {
     component: "v-col-break",
-    description: "Allows breaking of the v-auto-cols to new line.",
+    description: "Allows breaking of the v-auto-cols to a new line.",
   },
 ];
 </script>

@@ -31,16 +31,16 @@
           <documentation-menu />
         </div>
       </v-col>
-      
+
       <!-- documentation page -->
-      
-      <v-auto-col
-        class="mt-12 max-w-[1024px] p-3 px-2 lg:mx-14 lg:max-w-screen-lg lg:px-12"
+
+      <v-col
+        class="mt-12 max-w-[1024px] grow p-3 px-2 lg:mx-14 lg:max-w-screen-lg lg:px-12"
       >
         <div ref="documentation">
           <router-view></router-view>
         </div>
-      
+
         <footer
           class="mt-10 flex min-h-[100px] border-t border-gray-300 bg-white py-4 dark:border-dark-700 dark:bg-[#191919]"
         >
@@ -51,10 +51,10 @@
             ></v-icon>
           </span>
         </footer>
-      </v-auto-col>
-      
+      </v-col>
+
       <!-- page content sidepanel -->
-      
+
       <v-col
         class="sidebar sticky top-16 hidden flex-none basis-1/5 -translate-x-10 overflow-auto py-3 pb-20 text-[0.9em] font-semibold xl:block"
       >
