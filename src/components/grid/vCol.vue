@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-1 max-w-full">
+  <div class="flex-[0_0_0%]">
     <slot name="default"></slot>
   </div>
 </template>
