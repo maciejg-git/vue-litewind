@@ -44,7 +44,7 @@ let getHeaders = () => {
 watch(
   route,
   () => {
-    nextTick((value) => {
+    nextTick(() => {
       headers.value = getHeaders().map((i) => {
         return {
           text: i.innerText,

@@ -6,7 +6,7 @@
     <h4 id="GridUsage">Usage</h4>
     <p>
       Grids components can be used to make flexbox layouts. Those components are
-      very simple with no props or default classes. Combine them with Tailwind
+      very simple with no props and only few necessary classes by default. Combine them with Tailwind
       responsive utilities to create grids similar to Bootstrap and others.
     </p>
   </section>
@@ -58,7 +58,7 @@
       <example name="ExampleGridAutoBreak"></example>
     </div>
     <p>
-      Auto width columns can be used with other
+      Auto width columns can be used with 
       columns that have explicit width. Auto width columns will automaticaly resize to
       fit into available space.
     </p>
@@ -77,6 +77,24 @@
     </p>
     <div class="example">
       <example name="ExampleGridVariable"></example>
+    </div>
+  </section>
+
+  <section>
+    <h4 id="ExampleGridResponsive">Example - responsive column width</h4>
+    <p>
+      To create responsive grid simply add responsive modifiers (
+      <code class="code-text">md:</code>
+      ,
+      <code class="code-text">lg:</code>
+      etc) to
+      <code class="code-text">basis-*</code>
+      or
+      <code class="code-text">w-*</code>
+      classes.
+    </p>
+    <div class="example">
+      <example name="ExampleGridResponsive"></example>
     </div>
   </section>
 
@@ -132,12 +150,12 @@
   <section>
     <h4 id="ExampleGridGutter">Example - gutters</h4>
     <p>
-      By default there is no gutter that separates columns. You can add it with
-      padding and then offset it with equal negative margin classes in the row.
+      By default columns are not separated by gutter. You can add it using
+      padding classes and then offset it with equal negative margin classes in the row.
       In the example below
       <code class="code-text">[&>*]:</code>
-      modifier is used to add equal padding to entire grid but you can also set
-      it seperately in each column.
+      modifier is used to add equal padding to entire row but you can also set
+      it seperately for each column.
     </p>
     <p>
       <v-alert
@@ -185,24 +203,6 @@
     </p>
     <div class="example">
       <example name="ExampleGridMargin"></example>
-    </div>
-  </section>
-
-  <section>
-    <h4 id="ExampleGridResponsive">Example - responsive column width</h4>
-    <p>
-      To create responsive grid simply add responsive modifiers (
-      <code class="code-text">md:</code>
-      ,
-      <code class="code-text">lg:</code>
-      etc) to
-      <code class="code-text">basis-*</code>
-      or
-      <code class="code-text">w-*</code>
-      classes.
-    </p>
-    <div class="example">
-      <example name="ExampleGridResponsive"></example>
     </div>
   </section>
 
