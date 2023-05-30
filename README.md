@@ -1,11 +1,11 @@
-# Vue-wind
+# Vue-tw
 
 UI components collection for Vue 3 applications. 
 
-Vue-wind uses **Tailwind CSS** as CSS framework and **Floating UI** for positioning.
+Vue-tw uses **Tailwind CSS** as CSS framework and **Floating UI** for positioning.
 
 ```bash
-npm -i vue-wind @floating-ui/dom
+npm -i vue-tw @floating-ui/dom
 ```
 For Tailwind CSS instalation check their (official documentation)[https://tailwindcss.com/docs/installation/using-postcss]
 
@@ -49,9 +49,3 @@ Form components:
 * Range
 * Select
 * Textarea
-
-TODO:
-* aria support
-* kayboard navigation
-* additional tests
-
