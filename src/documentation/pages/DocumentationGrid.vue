@@ -155,7 +155,7 @@
       In the example below
       <code class="code-text">[&>*]:</code>
       modifier is used to add equal padding to entire row but you can also set
-      it seperately for each column.
+      it seperately for each column. For more info on custom modifiers see <a href="https://tailwindcss.com/docs/hover-focus-and-other-states#using-arbitrary-variants" class="link">tailwind documentation</a>.
     </p>
     <p>
       <v-alert

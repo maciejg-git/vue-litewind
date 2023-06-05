@@ -23,20 +23,18 @@
   >
     <!-- menu -->
 
-    <v-row class="justify-center">
-      <v-col
-        class="sidebar sticky top-16 hidden flex-none basis-1/5 overflow-auto border-r p-3 pb-20 pr-7 text-[0.9em] font-semibold dark:border-dark-700 lg:flex"
-      >
-        <div class="ml-auto text-text-600 dark:text-text-300/70">
+    <v-row class="flex-nowrap justify-center">
+      <v-col class="hidden basis-1/5 pr-7 lg:flex">
+        <div
+          class="sidebar sticky top-16 mb-20 ml-auto overflow-auto px-10 pt-4 text-[0.9em] font-semibold border-r dark:border-dark-700 text-text-600 dark:text-text-300/70"
+        >
           <documentation-menu />
         </div>
       </v-col>
 
       <!-- documentation page -->
 
-      <v-col
-        class="mt-12 max-w-[1024px] grow p-3 px-2 lg:mx-14 lg:max-w-screen-lg lg:px-12"
-      >
+      <v-col class="mt-12 max-w-screen-lg grow p-3 px-2 lg:px-12">
         <div ref="documentation">
           <router-view></router-view>
         </div>
@@ -55,10 +53,12 @@
 
       <!-- page content sidepanel -->
 
-      <v-col
-        class="sidebar sticky top-16 hidden flex-none basis-1/5 -translate-x-10 overflow-auto py-3 pb-20 text-[0.9em] font-semibold xl:block"
-      >
-        <documentation-contents :content-element="documentation" />
+      <v-col class="hidden basis-1/5 -translate-x-10 xl:block">
+        <div
+          class="sidebar sticky top-16 mb-20 overflow-auto px-10 pt-4 text-[0.9em] font-semibold"
+        >
+          <documentation-contents :content-element="documentation" />
+        </div>
       </v-col>
     </v-row>
   </v-fluid-container>
