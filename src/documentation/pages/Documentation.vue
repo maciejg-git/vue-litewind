@@ -24,9 +24,9 @@
     <!-- menu -->
 
     <v-row class="flex-nowrap justify-center">
-      <v-col class="hidden basis-1/5 pr-7 lg:flex">
+      <v-col class="hidden basis-2/12 pr-10 lg:flex">
         <div
-          class="sidebar sticky top-16 mb-20 ml-auto overflow-auto px-10 pt-4 text-[0.9em] font-semibold border-r dark:border-dark-700 text-text-600 dark:text-text-300/70"
+          class="sidebar sticky top-16 mb-20 ml-auto overflow-auto px-10 pt-2 text-[0.9em] font-semibold border-r dark:border-dark-700 text-text-600 dark:text-text-300/70"
         >
           <documentation-menu />
         </div>
@@ -53,9 +53,9 @@
 
       <!-- page content sidepanel -->
 
-      <v-col class="hidden basis-1/5 -translate-x-10 xl:block">
+      <v-col class="hidden basis-2/12 -translate-x-6 xl:block">
         <div
-          class="sidebar sticky top-16 mb-20 overflow-auto px-10 pt-4 text-[0.9em] font-semibold"
+          class="sidebar sticky top-16 mb-20 overflow-auto pl-10 pt-2 text-[0.9em] font-semibold"
         >
           <documentation-contents :content-element="documentation" />
         </div>
