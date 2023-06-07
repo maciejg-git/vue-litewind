@@ -24,7 +24,7 @@
     <!-- menu -->
 
     <v-row class="flex-nowrap justify-center">
-      <v-col class="hidden basis-2/12 pr-10 lg:flex">
+      <v-col class="hidden basis-2/12 lg:flex">
         <div
           class="sidebar sticky top-16 mb-20 ml-auto overflow-auto px-10 pt-2 text-[0.9em] font-semibold border-r dark:border-dark-700 text-text-600 dark:text-text-300/70"
         >
@@ -34,7 +34,7 @@
 
       <!-- documentation page -->
 
-      <v-col class="mt-12 max-w-screen-lg grow p-3 px-2 lg:px-12">
+      <v-col class="mt-12 max-w-screen-lg grow py-3 px-4 lg:px-6 xl:px-20">
         <div ref="documentation">
           <router-view></router-view>
         </div>
@@ -53,7 +53,7 @@
 
       <!-- page content sidepanel -->
 
-      <v-col class="hidden basis-2/12 -translate-x-6 xl:block">
+      <v-col class="hidden basis-2/12 -translate-x-14 xl:block">
         <div
           class="sidebar sticky top-16 mb-20 overflow-auto pl-10 pt-2 text-[0.9em] font-semibold"
         >

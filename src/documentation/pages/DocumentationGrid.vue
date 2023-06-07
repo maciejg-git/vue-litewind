@@ -35,6 +35,10 @@
     <div class="example">
       <example name="ExampleGridWrap"></example>
     </div>
+    <p>To disable default column wrapping add <code class="code-text">flex-nowrap</code> classto the <code class="code-text">v-row</code>.</p>
+    <div class="example">
+      <example name="ExampleGridNowrap"></example>
+    </div>
   </section>
 
   <section>
