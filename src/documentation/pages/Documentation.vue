@@ -19,22 +19,18 @@
   <!-- container -->
 
   <v-fluid-container
-    class="relative mt-16 flex text-text-800 dark:bg-[#191919] dark:text-[#bcbfc5] lg:px-0"
+    class="relative mt-16 flex text-text-800 dark:bg-[#191919] dark:text-[#bcbfc5]"
   >
-    <!-- menu -->
-
     <v-row class="flex-nowrap justify-center">
       <v-col class="hidden basis-2/12 lg:flex">
         <div
-          class="sidebar sticky top-16 mb-20 ml-auto overflow-auto px-10 pt-2 text-[0.9em] font-semibold border-r dark:border-dark-700 text-text-600 dark:text-text-300/70"
+          class="sidebar sticky top-16 mb-20 ml-auto overflow-auto border-r px-10 pt-2 text-[0.9em] font-semibold text-text-600 dark:border-dark-700 dark:text-text-300/70"
         >
           <documentation-menu />
         </div>
       </v-col>
 
-      <!-- documentation page -->
-
-      <v-col class="mt-12 max-w-screen-lg grow py-3 px-4 lg:px-6 xl:px-20">
+      <v-col class="mt-12 max-w-screen-lg grow px-4 py-3 lg:px-6 xl:px-20">
         <div ref="documentation">
           <router-view></router-view>
         </div>
@@ -51,11 +47,9 @@
         </footer>
       </v-col>
 
-      <!-- page content sidepanel -->
-
       <v-col class="hidden basis-2/12 -translate-x-14 xl:block">
         <div
-          class="sidebar sticky top-16 mb-20 overflow-auto pl-10 pt-2 text-[0.9em] font-semibold"
+          class="sidebar sticky top-16 mb-20 overflow-auto pl-10 pt-2"
         >
           <documentation-contents :content-element="documentation" />
         </div>

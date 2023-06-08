@@ -1,6 +1,6 @@
 <template>
-  <div class="mb-4 ml-2 mt-4 text-black dark:text-white">Contents</div>
-  <ul class="text-text-600 dark:text-text-300/70">
+  <div class="mb-4 ml-2 mt-4 text-black dark:text-white font-semibold">Contents</div>
+  <ul class="text-text-600 dark:text-text-300/70 text-[0.9em] font-semibold">
     <li
       v-for="item in headers"
       :class="{

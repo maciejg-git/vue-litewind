@@ -9,7 +9,7 @@
       Get started
     </router-link>
   </h6>
-  <ul class="list-unstyled ml-4">
+  <ul class="list-unstyled">
     <li>
       <router-link
         to="/documentation/installation"
@@ -31,7 +31,7 @@
       Components
     </router-link>
   </h6>
-  <ul class="list-unstyled ml-4">
+  <ul class="list-unstyled">
     <li
       v-for="(c, i) in components"
       :key="i"
@@ -56,7 +56,7 @@
       Form Components
     </router-link>
   </h6>
-  <ul class="list-unstyled ml-4">
+  <ul class="list-unstyled">
     <li
       v-for="(c, i) in formComponents"
       :key="i"
@@ -82,8 +82,13 @@
 
   <!-- directives -->
 
-  <h6 class="mt-4">Directives</h6>
-  <ul class="list-unstyled ml-4">
+  <router-link
+    to="/documentation/form-components"
+    class="transition-all"
+  >
+    <h6 class="mt-4">Directives</h6>
+  </router-link>
+  <ul class="list-unstyled">
     <li>
       <router-link
         to="/documentation/tooltip"
