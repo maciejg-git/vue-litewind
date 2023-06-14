@@ -1,3 +1,3 @@
 <template>
-  <div class="w-full"></div>
+  <div class="w-[101%] overflow-hidden"></div>
 </template>
