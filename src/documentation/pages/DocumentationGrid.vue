@@ -93,8 +93,6 @@
       <code class="code-text">lg:</code>
       etc) to
       <code class="code-text">basis-*</code>
-      or
-      <code class="code-text">w-*</code>
       classes.
     </p>
     <div class="example">

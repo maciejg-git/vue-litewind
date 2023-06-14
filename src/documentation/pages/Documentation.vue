@@ -22,7 +22,7 @@
     class="relative mt-16 flex text-text-800 dark:bg-[#191919] dark:text-[#bcbfc5]"
   >
     <v-row class="flex-nowrap justify-center">
-      <v-col class="hidden basis-2/12 lg:flex">
+      <v-col class="hidden basis-auto lg:flex xl:px-6">
         <div
           class="sidebar sticky top-16 mb-20 ml-auto overflow-auto border-r px-10 pt-2 text-[0.9em] font-semibold text-text-600 dark:border-dark-700 dark:text-text-300/70"
         >
@@ -47,7 +47,7 @@
         </footer>
       </v-col>
 
-      <v-col class="hidden basis-2/12 -translate-x-14 xl:block">
+      <v-col class="hidden basis-2/12 -translate-x-10 xl:block">
         <div
           class="sidebar sticky top-16 mb-20 overflow-auto pl-10 pt-2"
         >
