@@ -248,7 +248,7 @@ let components = [
   {
     component: "v-row",
     description:
-      "Wrapper for columns. v-rows should be placed directly inside v-container, v-cols and may contain only v-cols.",
+      "Wrapper for columns. v-rows should be placed directly inside v-container or v-cols and may only contain v-cols.",
   },
   {
     component: "v-col",
@@ -275,7 +275,7 @@ let components = [
 .nested-column-content {
   @apply rounded
     border-2
-    border-red-500
+    border-red-400
     bg-secondary-200
     p-2
     dark:border-red-400

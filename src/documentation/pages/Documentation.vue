@@ -21,10 +21,10 @@
   <v-fluid-container
     class="relative mt-16 flex text-text-800 dark:bg-[#191919] dark:text-[#bcbfc5]"
   >
-    <v-row class="flex-nowrap justify-center">
+    <v-row class="justify-center">
       <v-col class="hidden basis-auto lg:flex xl:px-6">
         <div
-          class="sidebar sticky top-16 mb-20 ml-auto overflow-auto border-r px-10 pt-2 text-[0.9em] font-semibold text-text-600 dark:border-dark-700 dark:text-text-300/70"
+          class="sidebar sticky top-16 ml-auto overflow-auto border-r px-10 pt-2 text-[0.9em] font-semibold text-text-600 dark:border-dark-700 dark:text-text-300/70"
         >
           <documentation-menu />
         </div>
@@ -47,10 +47,8 @@
         </footer>
       </v-col>
 
-      <v-col class="hidden basis-2/12 -translate-x-10 xl:block">
-        <div
-          class="sidebar sticky top-16 mb-20 overflow-auto pl-10 pt-2"
-        >
+      <v-col class="hidden basis-2/12 xl:block">
+        <div class="sidebar sticky top-16 overflow-auto pt-2">
           <documentation-contents :content-element="documentation" />
         </div>
       </v-col>

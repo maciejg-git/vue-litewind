@@ -1,6 +1,6 @@
 <template>
   <div
-    class="rounded-md border bg-secondary-50 p-6 py-8 dark:border-dark-700 dark:bg-[#171717]"
+    class="rounded-md border bg-secondary-50 p-6 py-8 dark:border-dark-700 dark:bg-[#171717] overflow-auto"
   >
     <component :is="name"></component>
   </div>

@@ -73,7 +73,6 @@
       <v-select
         v-model.number="example.itemsPerPage"
         id="items-per-page"
-        inline
         :items="[0, 5, 10, 20, 50]"
       ></v-select>
     </div>
