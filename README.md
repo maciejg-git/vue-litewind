@@ -1,11 +1,11 @@
-# Vue-tw
+# Vue-litewind
 
 UI components collection for Vue 3 applications. 
 
-Vue-tw uses **Tailwind CSS** as CSS framework and **Floating UI** for positioning.
+Vue-litewind uses **Tailwind CSS** as CSS framework and **Floating UI** for positioning.
 
 ```bash
-npm -i vue-tw @floating-ui/dom
+npm -i vue-litewind @floating-ui/dom
 ```
 For Tailwind CSS instalation check their (official documentation)[https://tailwindcss.com/docs/installation/using-postcss]
 
