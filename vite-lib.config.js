@@ -7,9 +7,9 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.js'),
-      name: 'vue-component-tailwind',
+      name: 'vue-litewind',
       // the proper extensions will be added
-      fileName: 'vue-component-tailwind'
+      fileName: 'vue-litewind'
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled

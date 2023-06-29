@@ -23,7 +23,7 @@
 
     <!-- logo -->
 
-    <span class="text-lg font-bold">VueTailwind</span>
+    <span class="text-lg font-bold">Vue-Litewind</span>
 
     <!-- nav menu -->
 

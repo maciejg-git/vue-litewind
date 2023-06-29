@@ -15,12 +15,14 @@
       </a>
       in their offical documentation.
     </p>
+  </section>
 
     <v-divider class="my-10"></v-divider>
 
+    <section>
     <h4 id="Configuration" class="my-10">Configuration</h4>
     <span class="font-bold dark:text-text-300">
-      1. Configure Tailwind
+      Step 1. Configure Tailwind.
     </span>
     <div class="border-l-2 border-dark-500 dark:border-dark-600 pl-8">
     <p>
@@ -71,7 +73,7 @@ module.exports = {
     </div>
 
       <span class="font-bold dark:text-text-300">
-        2. Import css files:
+        Step 2. Import css files:
       </span>
       <div class="border-l-2 border-dark-500 dark:border-dark-600 pl-8">
     <p>
@@ -107,7 +109,7 @@ import "./input.css";`}}
       </div>
 
     <span class="font-bold dark:text-text-300">
-      3. Register components:
+      Step 3. Register components:
     </span>
     <div class="border-l-2 border-dark-500 dark:border-dark-600 pl-8">
     <p>
@@ -232,9 +234,11 @@ app.use(componentPlugin, {
     </v-code>
       </v-tab>
     </v-tabs>
+    </section>
 
     <v-divider class="my-10"></v-divider>
 
+    <section>
     <h4 id="Styling" class="my-10">Styling components</h4>
       <p>
       Default style of components can be modified by using following:
@@ -258,6 +262,7 @@ app.use(componentPlugin, {
         </li> 
       </ul>
       </p>
+      </section>
 
       <section>
         <h5 id="ExampleStyling">Example - styling with base, style and variant props</h5>
@@ -271,7 +276,6 @@ app.use(componentPlugin, {
           <example name="ExampleInstallSelect"></example>
         </div>
       </section>
-  </section>
 </template>
 
 <style scoped>

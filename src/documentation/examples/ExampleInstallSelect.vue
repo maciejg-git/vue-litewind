@@ -8,7 +8,7 @@
     :input="{
       base: 'underlined-input',
       styleIcon: 'true:valid false:invalid',
-      icon: select ? 'b-check-lg' : 'b-x',
+      icon: currentValue ? 'b-check-lg' : 'b-x',
       variant: currentValue,
     }"
     :card="{

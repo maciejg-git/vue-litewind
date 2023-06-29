@@ -2,7 +2,7 @@
 // Slots are collected from vue source files.
 // Results are saved as json file and used to generate updated documentation 
 
-import * as components from "../../../dist/vue-component-tailwind.js";
+import * as components from "../../../dist/vue-litewind.js";
 import { readFile, writeFile } from "fs/promises";
 import { existsSync } from "fs";
 
