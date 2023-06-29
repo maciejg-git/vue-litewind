@@ -62,10 +62,10 @@ import DocumentationNavbar from "../components/DocumentationNavbar.vue";
 import DocumentationMenu from "../components/DocumentationMenu.vue";
 import DocumentationContents from "../components/DocumentationContents.vue";
 // light style
-import "../../styles/hljs/google-light.css";
+import "../styles/hljs/google-light.css";
 // dark style
-// import "../../styles/hljs/vs2015.css";
-import "../../styles/hljs/oceanicnext.css";
+// import "../styles/hljs/vs2015.css";
+import "../styles/hljs/oceanicnext.css";
 
 let darkMode = ref(true);
 let documentation = ref(null);
