@@ -5,11 +5,11 @@
     <h4 id="Installation" class="my-10">Installation</h4>
 
     <v-code language="javascript">
-      npm i vue-wind
+      npm i vue-litewind
     </v-code>
 
     <p>
-      Vue-wind uses Tailwindcss as CSS framework. To install Tailwindcss follow
+      Vue-litewind uses Tailwindcss as CSS framework. To install Tailwindcss follow
       <a class="link" href="https://tailwindcss.com/docs/installation">
         instruction
       </a>
@@ -29,7 +29,7 @@
     Add following to <code class="code-text">tailwind.config.cjs</code>:
       <ul class="list-disc list-outside ml-10 mt-4">
         <li>
-          add vue-wind to <code class="code-text">content</code> so tailwind can generate  utility classes used by components internally, 
+          add vue-litewind to <code class="code-text">content</code> so tailwind can generate  utility classes used by components internally, 
         </li>
         <li>
           add dark mode <code class="code-text">class</code> option, 
@@ -47,7 +47,7 @@ const colors = require('tailwindcss/colors')
 
 module.exports = {
   content: [
-    'node_modules/vue-wind',
+    'node_modules/vue-litewind',
     './src/**/*.html',
     './src/**/*.vue',
     './src/**/*.js',
@@ -82,7 +82,7 @@ module.exports = {
 <code class="code-text">style.css</code> contains basic set of classes used by components. Import it directly from library distribution directory
         </li>
         <li>
-<code class="code-text">components.css</code> and <code class="code-text">form.css</code> contains customizable classes for components and forms. You can import it directly or copy from <code class="code-text">'node_modules/vue-wind/dist/'</code> for customization. You can also import or copy css files seperately for each component for smaller build.
+<code class="code-text">components.css</code> and <code class="code-text">form.css</code> contains customizable classes for components and forms. You can import it directly or copy from <code class="code-text">'node_modules/vue-litewind/dist/'</code> for customization. You can also import or copy css files seperately for each component for smaller build.
         </li>
       </ul>
       
@@ -93,7 +93,7 @@ module.exports = {
 
 // import basic styles
 
-import "vue-wind/dist/style.css" 
+import "vue-litewind/dist/style.css" 
 
 // import classes for all components
 
@@ -121,8 +121,8 @@ import "./input.css";`}}
     <v-code language="javascript">
       {{ `// main.js
 
-import { componentPlugin } from "vue-wind";
-import { components, grid, directives } from "vue-wind";
+import { componentPlugin } from "vue-litewind";
+import { components, grid, directives } from "vue-litewind";
 
 let app = createApp(App);
 
@@ -138,8 +138,8 @@ app.use(componentPlugin, {
     <v-code language="javascript">
       {{ `// main.js
 
-import { componentPlugin } from "vue-wind";
-import { vButton, vSelect } from "vue-wind";
+import { componentPlugin } from "vue-litewind";
+import { vButton, vSelect } from "vue-litewind";
 
 let app = createApp(App);
 
@@ -173,8 +173,8 @@ app.use(componentPlugin, {
     <v-code language="javascript">
       {{ `// main.js
 
-import { componentPlugin } from "vue-wind";
-import { components} from "vue-wind";
+import { componentPlugin } from "vue-litewind";
+import { components} from "vue-litewind";
 
 let app = createApp(App);
 
@@ -193,8 +193,8 @@ app.use(componentPlugin, {
     <v-code language="javascript">
       {{ `// main.js
 
-import { componentPlugin } from "vue-wind";
-import { components} from "vue-wind";
+import { componentPlugin } from "vue-litewind";
+import { components} from "vue-litewind";
 
 let app = createApp(App);
 
@@ -213,8 +213,8 @@ app.use(componentPlugin, {
     <v-code language="javascript">
       {{ `// main.js
 
-import { componentPlugin } from "vue-wind";
-import { components} from "vue-wind";
+import { componentPlugin } from "vue-litewind";
+import { components} from "vue-litewind";
 
 let app = createApp(App);
 
