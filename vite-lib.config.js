@@ -24,6 +24,7 @@ export default defineConfig({
       }
     }
   },
+  publicDir: false,
   test: {
     globals: true,
     environment: "jsdom",
