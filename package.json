@@ -1,6 +1,6 @@
 {
   "name": "vue-litewind",
-  "version": "0.0.27",
+  "version": "0.0.28",
   "type": "module",
   "main": "./dist/vue-litewind.umd.cjs",
   "module": "./dist/vue-litewind.js",
