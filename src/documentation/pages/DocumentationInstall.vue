@@ -98,7 +98,6 @@ import "vue-litewind/dist/style.css"
 // import classes for all components
 
 import "./components.css";
-import "./form.css";
 
 // or seperately for each component
 
