@@ -5,16 +5,22 @@
     <h4 id="Installation" class="my-10">Installation</h4>
 
     <v-code language="javascript">
-      npm i vue-litewind
+      npm install vue-litewind
     </v-code>
 
     <p>
       Vue-litewind uses Tailwindcss as CSS framework. To install Tailwindcss follow
-      <a class="link" href="https://tailwindcss.com/docs/installation">
+      <a class="link" href="https://tailwindcss.com/docs/installation/using-postcss">
         instruction
       </a>
       in their offical documentation.
     </p>
+    <p>
+      Install <a class="link" href="https://tailwindcss.com/docs/plugins#forms">tailwindcss-forms</a> plugin that provides a basic reset for form styles that makes form elements easy to override with utilities:
+    </p>
+    <v-code language="javascript">
+      npm install -D @tailwindcss/forms
+    </v-code>
   </section>
 
     <v-divider class="my-10"></v-divider>
@@ -35,13 +41,16 @@
           add dark mode <code class="code-text">class</code> option, 
         </li>
         <li>
-          extend <code class="code-text">colors</code> definitions. You can chose any colors for primary, secondary etc:
+          extend <code class="code-text">colors</code> definitions. You can chose any colors for primary, secondary etc
+        </li>
+        <li>
+          add <code class="code-text">tailwindcss-forms</code> plugin to plugins array
         </li>
       </ul>
     </p>
 
     <v-code language="javascript">
-      {{ `// tailwind.config.cjs
+      {{ `// tailwind.config.js
 
 const colors = require('tailwindcss/colors')
 
@@ -68,6 +77,11 @@ module.exports = {
       }
     },
   },
+  plugins: [
+    require("@tailwindcss/forms")({
+      strategy: 'class',
+    }),
+  ],
 } `}}
     </v-code>
     </div>
