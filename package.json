@@ -1,6 +1,6 @@
 {
   "name": "vue-litewind",
-  "version": "0.0.28",
+  "version": "0.0.32",
   "type": "module",
   "main": "./dist/vue-litewind.umd.cjs",
   "module": "./dist/vue-litewind.js",
@@ -12,6 +12,10 @@
     ".": {
       "import": "./dist/vue-litewind.js",
       "export": "./dist/vue-litewind.umd.cjs"
+    },
+     "./dist/*.css": {
+      "import": "./dist/*.css",
+      "require": "./dist/*.css"
     }
   },
   "scripts": {
@@ -21,9 +25,6 @@
     "build-lib": "vite build --config vite-lib.config.js",
     "update-docs": "cd src/documentation/scripts && node ./get-components-reference.js && node ./get-docs.js",
     "serve": "vite preview --config vite-docs.config.js dist-docs"
-  },
-  "dependencies": {
-    "pinia": "^2.0.33"
   },
   "devDependencies": {
     "@floating-ui/dom": "^1.2.4",
@@ -41,6 +42,7 @@
     "highlight.js": "^11.6.0",
     "jsdom": "^21.1.0",
     "lodash": "^4.17.21",
+    "pinia": "^2.1.4",
     "postcss": "^8.4.16",
     "postcss-nested": "^5.0.6",
     "tailwindcss": "^3.3.1",
