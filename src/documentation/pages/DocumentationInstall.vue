@@ -122,7 +122,7 @@ import "./input.css";`}}
       </div>
 
     <span class="font-bold dark:text-text-300">
-      Step 3. Register components:
+      Step 3. Add vue-litewind plugin and register components:
     </span>
     <div class="border-l-2 border-dark-500 dark:border-dark-600 pl-8">
     <p>
@@ -134,8 +134,7 @@ import "./input.css";`}}
     <v-code language="javascript">
       {{ `// main.js
 
-import { componentPlugin } from "vue-litewind";
-import { components, grid, directives } from "vue-litewind";
+import { componentPlugin, components, grid, directives } from "vue-litewind";
 
 let app = createApp(App);
 
