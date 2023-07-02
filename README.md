@@ -9,7 +9,7 @@ npm -i vue-litewind @floating-ui/dom
 ```
 For Tailwind CSS instalation check their (official documentation)[https://tailwindcss.com/docs/installation/using-postcss]
 
-[Documentation and examples](https://vue-wind.netlify.app/documentation/installation)
+[Documentation and examples](https://vue-litewind.netlify.app/documentation/installation)
 
 Components:
 
