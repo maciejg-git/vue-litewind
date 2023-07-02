@@ -80,7 +80,7 @@ let { classes, states } = useStyles("checkbox", props, {
 
 let getCheckBoxClasses = () => {
   return [
-    "tw-form-checkbox-reset",
+    "form-checkbox",
     classes.checkbox.value,
     validation.state.value === "valid" && states.checkbox.value.valid,
     validation.state.value === "invalid" && states.checkbox.value.invalid,

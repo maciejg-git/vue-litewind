@@ -125,7 +125,7 @@ let { classes, states } = useStyles("textarea", props, {
 
 let getTextareaClasses = computed(() => {
   return [
-    "tw-form-textarea-reset flex items-center",
+    "form-textarea flex items-center",
     classes.textarea.value,
     validation.state.value === "valid" && states.textarea.value.valid,
     validation.state.value === "invalid" && states.textarea.value.invalid,

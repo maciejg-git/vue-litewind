@@ -228,7 +228,7 @@ let { classes, states } = useStyles("input", props, {
 
 let getInputClasses = computed(() => {
   return [
-    "tw-form-input-reset flex items-center flex-1",
+    "form-input flex items-center flex-1",
     classes.input.value,
     validation.state.value === "valid" && states.input.value.valid,
     validation.state.value === "invalid" && states.input.value.invalid,

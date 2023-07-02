@@ -78,7 +78,7 @@ let { classes, states } = useStyles("radio", props, {
 
 let getRadioClasses = () => {
   return [
-    "tw-form-radio-reset",
+    "form-radio",
     classes.radio.value,
     validation.state.value === "valid" && states.radio.value.valid,
     validation.state.value === "invalid" && states.radio.value.invalid,

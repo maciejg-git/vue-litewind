@@ -2,7 +2,7 @@
   <input
     type="checkbox"
     :class="[
-     'tw-form-checkbox-reset',
+     'form-checkbox',
       classes.checkbox.value,
       $attrs.disabled === '' || $attrs.disabled === true
         ? states.checkbox.disabled
