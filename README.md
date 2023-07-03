@@ -5,9 +5,10 @@ UI components collection for Vue 3 applications.
 Vue-litewind uses **Tailwind CSS** as CSS framework and **Floating UI** for positioning.
 
 ```bash
-npm -i vue-litewind @floating-ui/dom
+npm install vue-litewind
 ```
-For Tailwind CSS instalation check their (official documentation)[https://tailwindcss.com/docs/installation/using-postcss]
+
+For Tailwind CSS instalation check their [official documentation](https://tailwindcss.com/docs/installation/using-postcss)
 
 [Documentation and examples](https://vue-litewind.netlify.app/documentation/installation)
 
