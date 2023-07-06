@@ -5,9 +5,18 @@
   <section>
     <h4 id="GridUsage">Usage</h4>
     <p>
-      Grids components can be used to make flexbox layouts. Those components are
-      very simple with no props and only few necessary classes by default. Combine them with Tailwind
-      responsive utilities to create grids similar to Bootstrap and others.
+     Grids components can be used to make flexbox layouts. Here is how it works.
+     <ul class="list-disc list-outside ml-10 mt-4">
+       <li>
+         The elements, features and design is very similar to Bootstrap grids. It uses flexbox and series of containers, rows and columns to make layouts. Content must be placed within columns and only columns may be immediate children of rows.
+       </li>
+       <li>
+         <code class="code-text">v-container</code>, <code class="code-text">v-row</code> and <code class="code-text">v-col</code> are used to make elements of the grid. Those components are just simple, single divs and have all the necessary classes by default.
+       </li>
+       <li>
+         tailwind classes are used to define size and other flexbox properties of the grid. Use responsive modifiers to make grids that change depending on the screen size.
+       </li>
+     </ul>
     </p>
   </section>
 

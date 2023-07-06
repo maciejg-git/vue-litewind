@@ -66,6 +66,13 @@
           ></v-select-prop>
         </div>
         <div>
+          <label for="custom-clearable">custom-clearable:</label>
+          <v-select-prop
+            id="custom-clearable"
+            v-model="example.customClearable"
+          ></v-select-prop>
+        </div>
+        <div>
           <label for="use-loader">use-loader:</label>
           <v-select-prop
             id="use-loader"
@@ -127,6 +134,7 @@ let example = reactive({
   type: "text",
   label: "",
   clearable: false,
+  customClearable: false,
   useLoader: false,
   isLoading: false,
   validationState: "",
@@ -135,7 +143,7 @@ let example = reactive({
 let events = ref([]);
 
 let handleClickClear = (ev) => {
-  example.model = "";
+  // example.model = "";
   events.value.unshift({ ev: "click:clear-button", data: ev });
 };
 
