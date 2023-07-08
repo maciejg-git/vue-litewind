@@ -22,7 +22,7 @@
     class="relative mt-16 flex text-text-800 dark:bg-[#191919] dark:text-[#bcbfc5]"
   >
     <v-row class="justify-center">
-      <v-col class="hidden basis-auto lg:flex xl:px-6">
+      <v-col class="hidden basis-auto lg:block xl:px-6">
         <div
           class="sidebar sticky top-16 ml-auto overflow-auto border-r px-10 pt-2 text-[0.9em] font-semibold text-text-600 dark:border-dark-700 dark:text-text-300/70"
         >
