@@ -34,7 +34,7 @@
     <!-- github -->
 
     <a
-      href="https://github.com/maciejg-git/Vue-wind"
+      href="https://github.com/maciejg-git/vue-litewind"
       class="ml-auto mr-4 !p-0"
     >
       <v-icon

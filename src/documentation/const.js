@@ -1,4 +1,4 @@
-let baseGithub = "https://github.com/maciejg-git/Vue-wind"
+let baseGithub = "https://github.com/maciejg-git/vue-litewind"
 
 let github = {
   components: baseGithub + "/blob/main/src/components/",

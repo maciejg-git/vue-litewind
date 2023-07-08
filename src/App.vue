@@ -5,7 +5,7 @@
 <script>
 export default {
   setup() {
-    document.title = "Vue-wind documentation"
+    document.title = "Vue-Litewind documentation"
   },
 }
 </script>
