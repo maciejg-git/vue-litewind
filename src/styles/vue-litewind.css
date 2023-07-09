@@ -25,16 +25,16 @@
 
 /* forms */
 
-@import 'form/checkbox.css';
-@import 'form/form-text.css';
-@import 'form/input.css';
-@import 'form/radio.css';
-@import 'form/range.css';
-@import 'form/select.css';
-@import 'form/textarea.css';
+@import 'components/checkbox.css';
+@import 'components/form-text.css';
+@import 'components/input.css';
+@import 'components/radio.css';
+@import 'components/range.css';
+@import 'components/select.css';
+@import 'components/textarea.css';
 
-@import 'form/input-underline.css';
-@import 'form/input-rounded.css';
-@import 'form/input-material.css';
+@import 'components/input-underline.css';
+@import 'components/input-rounded.css';
+@import 'components/input-material.css';
 
 @import 'shared.css';
