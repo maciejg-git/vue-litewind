@@ -1,6 +1,6 @@
 {
   "name": "vue-litewind",
-  "version": "0.0.37",
+  "version": "0.0.38",
   "type": "module",
   "main": "./dist/vue-litewind.umd.cjs",
   "module": "./dist/vue-litewind.js",
@@ -13,13 +13,13 @@
       "import": "./dist/vue-litewind.js",
       "export": "./dist/vue-litewind.umd.cjs"
     },
-    "./style.css": {
+    "./vue-litewind.css": {
       "import": "./dist/style.css",
       "require": "./dist/style.css"
     },
-    "./vue-litewind.css": {
-      "import": "./src/styles/vue-litewind.css",
-      "require": "./src/styles/vue-litewind.css"
+    "./components.css": {
+      "import": "./src/styles/components.css",
+      "require": "./src/styles/components.css"
     },
     "./components/*.css": {
       "import": "./src/styles/components/*.css",
