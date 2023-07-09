@@ -5,7 +5,7 @@ const defaultOptions = {
 
 let globalOptions = {}
 
-let componentPlugin = {
+let vueLitewind = {
   install(app, options) {
     options = options || {}
 
@@ -34,4 +34,4 @@ let componentPlugin = {
   }
 }
 
-export { componentPlugin, globalOptions }
+export { vueLitewind, globalOptions }

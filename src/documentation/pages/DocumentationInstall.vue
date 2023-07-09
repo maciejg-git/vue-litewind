@@ -134,11 +134,11 @@ import "./input.css";`}}
     <v-code language="javascript">
       {{ `// main.js
 
-import { componentPlugin, components, grid, directives } from "vue-litewind";
+import { vueLitewind, components, grid, directives } from "vue-litewind";
 
 let app = createApp(App);
 
-app.use(componentPlugin, {
+app.use(vueLitewind, {
   components,
   grid,
   directives,
@@ -150,12 +150,12 @@ app.use(componentPlugin, {
     <v-code language="javascript">
       {{ `// main.js
 
-import { componentPlugin } from "vue-litewind";
+import { vueLitewind } from "vue-litewind";
 import { vButton, vSelect } from "vue-litewind";
 
 let app = createApp(App);
 
-app.use(componentPlugin, {
+app.use(vueLitewind, {
   components: {
     vButton,
     vSelect,
@@ -185,12 +185,12 @@ app.use(componentPlugin, {
     <v-code language="javascript">
       {{ `// main.js
 
-import { componentPlugin } from "vue-litewind";
+import { vueLitewind } from "vue-litewind";
 import { components} from "vue-litewind";
 
 let app = createApp(App);
 
-app.use(componentPlugin, {
+app.use(vueLitewind, {
   components,
   componentProps: {
     input: {
@@ -205,12 +205,12 @@ app.use(componentPlugin, {
     <v-code language="javascript">
       {{ `// main.js
 
-import { componentPlugin } from "vue-litewind";
+import { vueLitewind } from "vue-litewind";
 import { components} from "vue-litewind";
 
 let app = createApp(App);
 
-app.use(componentPlugin, {
+app.use(vueLitewind, {
   components,
   componentProps: {
     input: {
@@ -225,12 +225,12 @@ app.use(componentPlugin, {
     <v-code language="javascript">
       {{ `// main.js
 
-import { componentPlugin } from "vue-litewind";
+import { vueLitewind } from "vue-litewind";
 import { components} from "vue-litewind";
 
 let app = createApp(App);
 
-app.use(componentPlugin, {
+app.use(vueLitewind, {
   components,
   componentProps: {
     select: {

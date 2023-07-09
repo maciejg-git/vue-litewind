@@ -12,7 +12,7 @@ import vCode from "./documentation/components/vCode.vue"
 import EventViewer from "./documentation/components/EventViewer.vue"
 import vSelectProp from "./documentation/components/vSelectProp.vue"
 import Example from "./documentation/components/Example.vue"
-import { componentPlugin } from "./index.js";
+import { vueLitewind } from "./index.js";
 import { components } from "./index"
 import { grid } from "./index"
 import { directives } from "./index"
@@ -66,7 +66,7 @@ app.provide("icon-types", {
 })
 
 app.use(router);
-app.use(componentPlugin, {
+app.use(vueLitewind, {
   components,
   grid,
   directives,
