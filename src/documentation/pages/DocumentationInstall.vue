@@ -96,7 +96,7 @@ module.exports = {
 <code class="code-text">style.css</code> contains basic set of classes used by components. Import it directly from library distribution directory
         </li>
         <li>
-<code class="code-text">components.css</code> and <code class="code-text">form.css</code> contains customizable classes for components and forms. You can import it directly or copy from <code class="code-text">'node_modules/vue-litewind/dist/'</code> for customization. You can also import or copy css files seperately for each component for smaller build.
+<code class="code-text">components.css</code> and <code class="code-text">form.css</code> contains customizable classes for components and forms. You can import it directly or copy from <code class="code-text">'node_modules/vue-litewind/src/styles'</code> for customization. You can also import or copy css files seperately for each component for smaller build.
         </li>
       </ul>
       
@@ -107,17 +107,17 @@ module.exports = {
 
 // import basic styles
 
-import "vue-litewind/dist/style.css" 
+import "vue-litewind/vue-litewind.css" 
 
 // import classes for all components
 
-import "./components.css";
+import "vue-litewind/components.css";
 
 // or seperately for each component
 
-import "./button.css";
-import "./table.css";
-import "./input.css";`}}
+import "vue-litewind/components/button.css";
+import "vue-litewind/components/table.css";
+import "vue-litewind/components/input.css";`}}
     </v-code>
       </div>
 
