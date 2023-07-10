@@ -4,9 +4,6 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   plugins: [vue()],
-  define: {
-    __APP_VERSION: JSON.stringify(process.env.npm_package_version),
-  },
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.js'),
