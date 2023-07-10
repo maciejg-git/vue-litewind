@@ -14,6 +14,8 @@ let vueLitewind = {
       ...options,
     }
 
+    app.config.globalProperties._litewind_version = __APP_VERSION
+
     if (globalOptions.components) {
       Object.entries(globalOptions.components).forEach((component) => {
         app.component(component[0], component[1]);
