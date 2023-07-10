@@ -32,7 +32,7 @@
     </span>
     <div class="border-l-2 border-dark-500 dark:border-dark-600 pl-8">
     <p>
-    Add following to <code class="code-text">tailwind.config.cjs</code>:
+    Add following to <code class="code-text">tailwind.config.js</code>:
       <ul class="list-disc list-outside ml-10 mt-4">
         <li>
           add vue-litewind to <code class="code-text">content</code> so tailwind can generate  utility classes used by components internally, 
@@ -96,7 +96,7 @@ module.exports = {
 <code class="code-text">style.css</code> contains basic set of classes used by components. Import it directly from library distribution directory
         </li>
         <li>
-<code class="code-text">components.css</code> and <code class="code-text">form.css</code> contains customizable classes for components and forms. You can import it directly or copy from <code class="code-text">'node_modules/vue-litewind/src/styles'</code> for customization. You can also import or copy css files seperately for each component for smaller build.
+<code class="code-text">components.css</code> contains customizable classes for components and forms. You can import it directly or copy from <code class="code-text">'node_modules/vue-litewind/src/styles'</code> for customization. You can also import or copy css files seperately for each component for smaller build.
         </li>
       </ul>
       
@@ -122,7 +122,7 @@ import "vue-litewind/components/input.css";`}}
       </div>
 
     <span class="font-bold dark:text-text-300">
-      Step 3. Add vue-litewind plugin and register components:
+      Step 3. Add vue-litewind plugin:
     </span>
     <div class="border-l-2 border-dark-500 dark:border-dark-600 pl-8">
     <p>
