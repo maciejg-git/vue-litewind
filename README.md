@@ -14,7 +14,7 @@ For Tailwind CSS instalation check their [official documentation](https://tailwi
 
 [Documentation and examples](https://vue-litewind.netlify.app/documentation/installation)
 
-## Components:
+### Components:
 
 * Alert
 * Badge
@@ -41,7 +41,7 @@ For Tailwind CSS instalation check their [official documentation](https://tailwi
 * Tooltip (directive)
 * Tree
 
-## Form components:
+### Form components:
 
 * Autocomplete
 * Checkbox (checkbox group)
