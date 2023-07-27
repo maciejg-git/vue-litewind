@@ -43,6 +43,7 @@ const Icon = () => import('../documentation/pages/DocumentationIcon.vue')
 const Divider = () => import('../documentation/pages/DocumentationDivider.vue')
 const Trigger = () => import('../documentation/pages/DocumentationTrigger.vue')
 const Grid = () => import('../documentation/pages/DocumentationGrid.vue')
+const Notify = () => import('../documentation/pages/DocumentationNotify.vue')
 
 const Tooltip = () => import('../documentation/pages/DocumentationTooltip.vue')
 
@@ -221,6 +222,10 @@ const routes = [
       {
         path: "grid",
         component: Grid,
+      },
+      {
+        path: "notify",
+        component: Notify,
       },
 
       // directives

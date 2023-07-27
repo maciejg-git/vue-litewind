@@ -33,6 +33,8 @@ export { default as vTree } from "./vTree.vue"
 export { default as vTreeNode } from "./vTreeNode.vue"
 export { default as vBackdrop } from "./vBackdrop.vue"
 export { default as vChip } from "./vChip.vue"
+export { default as vNotifyContainer } from "./vNotifyContainer.vue"
+export { default as vNotify} from "./vNotify.vue"
 
 export { default as vForm } from "./vForm.vue"
 export { default as vInput } from "./vInput.vue"

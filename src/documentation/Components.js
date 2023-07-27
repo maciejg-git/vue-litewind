@@ -68,6 +68,10 @@ let components = [
     name: "navbar",
   },
   {
+    label: "Notify",
+    name: "notify",
+  },
+  {
     label: "Pagination",
     name: "pagination",
   },
