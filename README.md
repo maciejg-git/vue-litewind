@@ -10,9 +10,11 @@ npm install vue-litewind
 
 For Tailwind CSS instalation check their [official documentation](https://tailwindcss.com/docs/installation/using-postcss)
 
+## Documentation
+
 [Documentation and examples](https://vue-litewind.netlify.app/documentation/installation)
 
-Components:
+## Components:
 
 * Alert
 * Badge
@@ -39,7 +41,7 @@ Components:
 * Tooltip (directive)
 * Tree
 
-Form components:
+### Form components:
 
 * Autocomplete
 * Checkbox (checkbox group)
