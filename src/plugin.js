@@ -1,4 +1,4 @@
-import { notifications, notifyOptions } from "./components/composition/use-notify"
+import { notifications, setNotifyOptions, removeNotify } from "./components/composition/use-notify"
 
 const defaultOptions = {
   globalProps: {},
@@ -16,7 +16,7 @@ let vueLitewind = {
       ...options,
     }
 
-    app.provide("notify", { notifications, options: notifyOptions })
+    app.provide("notify", { notifications, setNotifyOptions, removeNotify })
 
     if (globalOptions.components) {
       Object.entries(globalOptions.components).forEach((component) => {

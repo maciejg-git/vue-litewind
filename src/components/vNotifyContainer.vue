@@ -1,50 +1,40 @@
 <template>
-  <div
-    class="fixed"
-    @mouseenter="handleContainerMouseEnter"
-    @mouseleave="handleContainerMouseLeave"
-  >
-    <ul class="w-full">
+    <ul class="block fixed" @mouseenter="handleContainerMouseEnter"
+    @mouseleave="handleContainerMouseLeave">
       <transition-group name="fade">
         <li
-          v-for="notify in localNotifications"
-          class="my-4 w-full"
-          :key="notify.id"
+          v-for="item in localNotifications"
+          class="w-full"
+          :key="item.id"
         >
-          <v-notify class="w-full">
-            <slot
-              name="default"
-              v-bind="notify"
+          <v-notify class="w-full" :notify="item" v-bind="item.props" @close-button-clicked="handleCloseButton">
+            <template
+              v-for="(name, slot) of $slots"
+              #[slot]="slotProps"
             >
-              <slot name="header">
-                <header>
-                  {{ notify.header }}
-                </header>
-              </slot>
-              <slot name="content" v-bind="notify">
-                <div>
-                  {{ notify.text }}
-                </div>
-              </slot>
-              {{ notify.id }}
-            </slot>
+                <slot 
+                  :name="slot"
+                  v-bind="slotProps"
+                ></slot>
+            </template>
           </v-notify>
         </li>
       </transition-group>
     </ul>
-  </div>
 </template>
 
 <script setup>
-import { computed, provide, inject } from "vue";
+import { ref, computed, provide, inject } from "vue";
 import useStyles from "./composition/use-styles";
-import { sharedStyleProps } from "../shared-props";
+import { sharedProps, sharedStyleProps } from "../shared-props";
+import { defaultProps } from "../defaultProps";
 
 let props = defineProps({
+  ...sharedProps(),
   ...sharedStyleProps("notify", ["Notify"]),
   direction: {
     type: String,
-    default: "bottom",
+    default: "new-on-bottom",
   },
   delay: {
     type: Number,
@@ -54,23 +44,26 @@ let props = defineProps({
     type: Boolean,
     default: true,
   },
+  notify: {
+    type: Object,
+    default: defaultProps("notify-container", "notify", {})
+  }
 });
 
 let { classes, states } = useStyles("notify", props, {
+  notifyContainer: null,
   notify: null,
+  header: null,
+  icon: null,
+  content: null,
 });
 
-let { notifications, options } = inject("notify");
+let { notifications, setNotifyOptions, removeNotify } = inject("notify");
 
-let setNotifyComponentOptions = (options) => {
-  options.delay = props.delay;
-  options.dismissable = props.dismissable;
-};
-
-setNotifyComponentOptions(options);
+setNotifyOptions(props);
 
 let localNotifications = computed(() => {
-  return props.direction === "bottom"
+  return props.direction === "new-on-bottom"
     ? notifications.value
     : notifications.value.toReversed();
 });
@@ -87,7 +80,9 @@ let handleContainerMouseLeave = () => {
   });
 };
 
-provide("notify-container", { classes, states })
+let handleCloseButton = (id) => {
+  removeNotify(id)
+}
 </script>
 
 <style scoped>
