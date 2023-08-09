@@ -7,14 +7,16 @@ let notifications = ref([])
 let isVisible = ref(true)
 
 let options = {
-  delay: 4000,
+  autoDismissDelay: 4000,
   dismissable: true,
+  static: false,
 }
 
 let setNotifyOptions = (props) => {
-  options.delay = props.delay;
+  options.autoDismissDelay = props.autoDismissDelay;
   options.dismissable = props.dismissable;
   options.props = props.notify
+  options.static = props.static
 }
 
 let removeNotify = (notifyId) => {
@@ -23,8 +25,8 @@ let removeNotify = (notifyId) => {
 }
 
 let restartTimer = function() {
-  if (!this.delay) return null
-  this.timer = setTimeout(() => removeNotify(this.id), this.delay)
+  if (this.static) return null
+  this.timer = setTimeout(() => removeNotify(this.id), this.autoDismissDelay)
 }
 
 let pauseTimer = function() {
@@ -46,14 +48,15 @@ let push = (notify) => {
     header: notify?.header || "",
     text: typeof notify === "string" ? notify : notify.text,
     icon: notify?.icon,
-    delay: notify?.delay ?? options.delay,
+    autoDismissDelay: notify?.autoDismissDelay ?? options.autoDismissDelay,
     dismissable: notify?.dismissable ?? options.dismissable,
+    static: notify?.static ?? options.static,
     variant: notify?.variant || "info",
-    slots: notify?.slots || "text",
     id: id,
     restartTimer,
     pauseTimer,
     props: { ...options.props, ...notify.props },
+    options: notify?.options || {}
   }
 
   i.restartTimer()

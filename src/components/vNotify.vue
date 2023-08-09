@@ -18,13 +18,14 @@
         <slot name="content" v-bind="notify">
         <div :class="classes.content.value">
           {{ notify.text }}
-          {{ notify.id }}
+        <slot name="content-append" v-bind="notify"></slot>
         </div>
         </slot>
       </div>
     </div>
-    <v-close-button v-if="notify.dismissable" :class="closeButton.classes ? '' : 'ml-auto'" v-bind="closeButton" @click="emit('close-button-clicked', notify.id)"></v-close-button>
+    <v-close-button v-if="notify.dismissable" class="ml-auto" v-bind="closeButton" @click="emit('close-button-clicked', notify.id)"></v-close-button>
   </div>
+  <slot name="footer" v-bind="notify"></slot>
   </slot>
 </div>
 </template>

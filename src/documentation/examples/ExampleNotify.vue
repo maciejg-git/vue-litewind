@@ -2,8 +2,12 @@
   <teleport to="body">
     <v-notify-container
       direction="new-on-bottom"
-      :delay="2000"
-      class="bottom-4 right-10 w-[250px] space-y-4"
+      :auto-dismiss-delay="2000"
+      class="bottom-4 right-10 w-[350px] space-y-4"
+      :notify="{
+        styleNotify: 'info',
+        closeButton: { styleCloseButton: 'small' },
+      }"
     >
       <!-- <template #default="{ id, text }"> -->
       <!--   slot {{ id }} -->
@@ -15,6 +19,7 @@
       <!-- <template #header="{header}"> -->
       <!--   slot {{ header }} -->
       <!-- </template> -->
+      <template #content-append><v-button class="mt-2">button</v-button></template>
     </v-notify-container>
   </teleport>
   <v-button
@@ -24,7 +29,7 @@
         header: 'header',
         icon: 'b-check-lg',
         dismissable: true,
-        delay: 4000,
+        autoDismissDelay: 4000,
       })
     "
   >
@@ -37,7 +42,7 @@
         header: 'header',
         icon: 'b-check-lg',
         dismissable: false,
-        delay: 4000,
+        autoDismissDelay: 4000,
       })
     "
   >
@@ -50,7 +55,7 @@
         header: 'header',
         icon: 'b-check-lg',
         dismissable: true,
-        delay: 0,
+        static: true,
       })
     "
   >
@@ -64,7 +69,7 @@
         header: 'header',
         icon: 'b-check-lg',
         dismissable: false,
-        delay: 0,
+        static: true,
       })
     "
   >
@@ -77,8 +82,11 @@
         header: 'header',
         icon: 'b-check-lg',
         dismissable: true,
-        delay: 4000,
+        autoDismissDelay: 4000,
         props: { styleNotify: 'info', styleIcon: 'info' },
+        options: {
+          item: 'item',
+        }
       })
     "
   >

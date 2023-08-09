@@ -1,3 +1,7 @@
+:root {
+  --notify-transition-duration: 0.4s;
+}
+
 .notify {
   @apply
     p-4
@@ -17,13 +21,13 @@
     }
     &__header {
       @apply
+        px-4
         font-semibold
     }
     &__icon {
       @apply
         h-6
         w-6
-        mr-4
         dark:text-secondary-300;
 
         &--info {
@@ -34,6 +38,7 @@
     &__content {
       @apply
         mt-2
+        px-4
         dark:text-secondary-300
     }
 }

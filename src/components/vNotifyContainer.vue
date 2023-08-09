@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-import { ref, computed, provide, inject } from "vue";
+import { ref, computed, inject } from "vue";
 import useStyles from "./composition/use-styles";
 import { sharedProps, sharedStyleProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
@@ -36,7 +36,7 @@ let props = defineProps({
     type: String,
     default: "new-on-bottom",
   },
-  delay: {
+  autoDismissDelay: {
     type: Number,
     default: 4000,
   },
@@ -44,18 +44,14 @@ let props = defineProps({
     type: Boolean,
     default: true,
   },
+  static: {
+    type: Boolean,
+    default: false,
+  },
   notify: {
     type: Object,
     default: defaultProps("notify-container", "notify", {})
   }
-});
-
-let { classes, states } = useStyles("notify", props, {
-  notifyContainer: null,
-  notify: null,
-  header: null,
-  icon: null,
-  content: null,
 });
 
 let { notifications, setNotifyOptions, removeNotify } = inject("notify");
@@ -89,12 +85,16 @@ let handleCloseButton = (id) => {
 .fade-move,
 .fade-enter-active,
 .fade-leave-active {
-  transition: all var(--popover-transition-duration) ease;
+  transition: all var(--notify-transition-duration) ease;
 }
 
-.fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+.fade-enter-from {
+  opacity: 0;
+  transform: translateY(140%);
 }
 
 .fade-leave-active {
