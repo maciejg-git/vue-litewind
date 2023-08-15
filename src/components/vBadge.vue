@@ -14,13 +14,13 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
-import useStyles from "./composition/use-styles";
-import { sharedProps, sharedStyleProps } from "../shared-props";
+import { computed, inject } from "vue";
+import useTailwindStyles from "./composition/use-tailwind-styles"
+import { sharedProps, sharedModProps } from "../shared-props";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("badge", ["Badge"]),
+  ...sharedModProps("badge", ["Badge"]),
   position: {
     type: String,
     default: "",
@@ -35,10 +35,12 @@ const props = defineProps({
   },
 });
 
-let { classes } = useStyles("badge", props, {
+let { badge } = inject("mods", {})
+
+let elements = {
   badge: {
     fixed: "inline-flex items-center align-top",
-    prop: computed(() => {
+    computed: computed(() => {
       return props.position == "top-right"
         ? "absolute top-0 right-0 -translate-y-1/2 translate-x-1/2"
         : props.position == "top-left"
@@ -49,8 +51,10 @@ let { classes } = useStyles("badge", props, {
         ? "absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2"
         : "";
     }),
-  },
-});
+  }
+}
+
+let { classes } = useTailwindStyles(props, badge, elements)
 </script>
 
 <style scoped lang="postcss">

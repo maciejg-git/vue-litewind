@@ -41,22 +41,23 @@ import {
   useAttrs,
   useSlots,
   nextTick,
+  inject,
 } from "vue";
-import useStyles from "./composition/use-styles";
+import useTailwindStyles from "./composition/use-tailwind-styles"
 import useClickOutside from "./composition/use-click-outside";
 import useTrigger from "./composition/use-trigger-events";
 import useFloating from "./composition/use-floating";
 import {
   sharedProps,
   sharedFloatingUIProps,
-  sharedStyleProps,
+  sharedModProps,
 } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 import { registerListener, removeListener } from "../trigger";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("popover", ["Header"]),
+  ...sharedModProps("popover", ["Header"]),
   ...sharedFloatingUIProps("popover"),
   trigger: {
     type: String,
@@ -76,9 +77,13 @@ const attrs = useAttrs();
 
 const slots = useSlots();
 
-let { classes } = useStyles("popover", props, {
+let { popover } = inject("mods", {})
+
+let elements = {
   header: null,
-});
+}
+
+let { classes } = useTailwindStyles(props, popover, elements)
 
 const { offsetX, offsetY, flip, placement, autoPlacement, trigger } =
   toRefs(props);

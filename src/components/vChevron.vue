@@ -6,8 +6,8 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
-import useStyles from "./composition/use-styles";
+import { computed, inject } from "vue";
+import useTailwindStyles from "./composition/use-tailwind-styles"
 import vIcon from "./vIcon.vue";
 import vChevronRightIcon from "./icons/chevron-right-solid.js";
 import vChevronLeftIcon from "./icons/chevron-left-solid.js";
@@ -17,12 +17,12 @@ import vCaretRightFillIcon from "./icons/caret-right-fill.js";
 import vCaretLeftFillIcon from "./icons/caret-left-fill.js";
 import vCaretUpFillIcon from "./icons/caret-up-fill.js";
 import vCaretDownFillIcon from "./icons/caret-down-fill.js";
-import { sharedProps, sharedStyleProps } from "../shared-props";
+import { sharedProps, sharedModProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("chevron", ["Chevron"]),
+  ...sharedModProps("chevron", ["Chevron"]),
   initial: {
     type: String,
     default: "down",
@@ -49,9 +49,13 @@ const props = defineProps({
   },
 });
 
-let { classes } = useStyles("chevron", props, {
+let { chevron } = inject("mods", {})
+
+let elements = {
   chevron: null,
-});
+}
+
+let { classes } = useTailwindStyles(props, chevron, elements)
 
 let getClass = () => {
   return [
@@ -68,11 +72,11 @@ let icon = computed(() => {
   return props.icon
     ? props.icon
     : props.triangle
-    ? chevron.triangle[initial.value]
-    : chevron.chevron[initial.value];
+    ? style.triangle[initial.value]
+    : style.chevron[initial.value];
 });
 
-let chevron = {
+let style = {
   chevron: {
     right: vChevronRightIcon,
     left: vChevronLeftIcon,

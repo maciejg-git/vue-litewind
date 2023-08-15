@@ -131,8 +131,8 @@ export default {
 </script>
 
 <script setup>
-import { ref, computed, watch, toRefs, nextTick, onBeforeUpdate } from "vue";
-import useStyles from "./composition/use-styles";
+import { ref, computed, watch, toRefs, nextTick, onBeforeUpdate, inject } from "vue";
+import useTailwindStyles from "./composition/use-tailwind-styles"
 import useLocalModel from "./composition/use-local-model";
 import useFloating from "./composition/use-floating";
 import vInput from "./vInput.vue";
@@ -142,14 +142,14 @@ import { default as vDetectScrollBottom } from "../directives/detect-scroll-bott
 import {
   sharedProps,
   sharedFloatingUIProps,
-  sharedStyleProps,
+  sharedModProps,
   sharedFormProps,
 } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
 let props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("select", ["Item"]),
+  ...sharedModProps("select", ["Item"]),
   ...sharedFormProps("select", { icon: false, clearable: true }),
   ...sharedFloatingUIProps("select", { offsetY: 5 }),
   modelValue: {
@@ -232,18 +232,23 @@ const emit = defineEmits([
   "state:closed",
 ]);
 
-let { classes, states } = useStyles("select", props, {
+let { select } = inject("mods", {})
+
+let elements = {
   item: {
-    states: ["selected", "highlighted"],
+    externalVariants: ["variant"],
   },
-});
+}
+
+let { classes, variants } = useTailwindStyles(props, select, elements)
 
 let getItemClass = (item, index) => {
   return [
     classes.item.value,
-    isSelected(item) && states.item.value.selected,
-    index === highlightedItemIndex.value && states.item.value.highlighted,
-    item.disabled && "disabled",
+    isSelected(item) && variants.item.selected,
+    // index === highlightedItemIndex.value && states.item.value.highlighted,
+    // item.disabled && "disabled",
+    variants.item.default
   ];
 };
 

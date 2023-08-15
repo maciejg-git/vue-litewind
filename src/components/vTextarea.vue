@@ -57,15 +57,15 @@ export default {
 </script>
 
 <script setup>
-import { computed, toRef, inject, useAttrs, nextTick } from "vue";
-import useStyles from "./composition/use-styles";
+import { computed, toRef, inject, useAttrs, nextTick, watch } from "vue";
+import useTailwindStyles from "./composition/use-tailwind-styles"
 import useLocalModel from "./composition/use-local-model";
 import useUid from "./composition/use-uid";
 import useValidation from "./composition/use-validation";
 import vFormText from "./vFormText.vue";
 import {
   sharedProps,
-  sharedStyleProps,
+  sharedModProps,
   sharedValidationProps,
   sharedFormProps,
 } from "../shared-props";
@@ -73,7 +73,7 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("textarea", ["Textarea", "Label"]),
+  ...sharedModProps("textarea", ["Textarea", "Label"]),
   ...sharedFormProps("textarea"),
   ...sharedValidationProps("textarea", {
     validateOn: "blur",
@@ -114,21 +114,23 @@ const emit = defineEmits([
 
 let attrs = useAttrs();
 
-let { classes, states } = useStyles("textarea", props, {
-  textarea: {
-    states: ["valid", "invalid"],
-  },
+let { textarea } = inject("mods", {})
+
+let elements = {
+  textarea: null,
   label: {
-    fixed: "inline-block",
-  },
-});
+    fixed: "inline-block"
+  }
+}
+
+let { classes, setState } = useTailwindStyles(props, textarea, elements)
 
 let getTextareaClasses = computed(() => {
   return [
     "form-textarea flex items-center",
     classes.textarea.value,
-    validation.state.value === "valid" && states.textarea.value.valid,
-    validation.state.value === "invalid" && states.textarea.value.invalid,
+    // validation.state.value === "valid" && states.textarea.value.valid,
+    // validation.state.value === "invalid" && states.textarea.value.invalid,
     (attrs.disabled === "" || attrs.disabled === true) && "disabled",
   ];
 });
@@ -175,6 +177,10 @@ let validation = useValidation({
   onUpdate: emitValidationStatus,
   onReset: resetInput,
 });
+
+watch(validation.state, (value) => {
+  setState(value)
+})
 
 // handle template events
 

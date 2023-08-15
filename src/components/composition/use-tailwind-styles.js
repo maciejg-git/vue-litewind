@@ -14,6 +14,10 @@ let parseElementModProp = (props, el) => {
     return props[element].split(" ").reduce((acc, i) => {
       let item = i.split(/\s*(?:\?|:)\s*/).toReversed()
 
+      if (item[2] && item[2] !== props.variant) {
+        return acc
+      }
+
       acc[item[1]] = {
         condition: item[2] ?? null,
         key: item[1],
@@ -24,9 +28,10 @@ let parseElementModProp = (props, el) => {
     }, {})
 }
 
-let useTailwindStyles = (props, styles, elements) => {
+export default function useTailwindStyles(props, styles, elements) {
   let classes = {}
   let variants = {}
+  let dataStyle = {}
   
   let state = ref("")
 
@@ -50,7 +55,11 @@ let useTailwindStyles = (props, styles, elements) => {
       }
 
       if (elementStyles?.classes) {
-        classes += elementStyles.classes
+        classes += getClasses(elementStyles.classes)
+      }
+
+      if (options?.dataStyle) {
+        dataStyle[el] = elementStyles.data
       }
 
       for (let type in elementStyles) {
@@ -66,17 +75,18 @@ let useTailwindStyles = (props, styles, elements) => {
           continue
         }
 
-        if (type !== "state" && type !== "preset") {
+        if (type !== "state" && type !== "preset" && type !== "data") {
           sharedClasses = elementStyles[type]?.classes || ""
         }
 
-        if (type !== "preset") {
+        if (type !== "preset" && type !== "data") {
           stateClasses = state.value ? elementStyles[type][state.value] : null
         }
 
-        if (type !== "state" && type !== "preset") {
-          modClasses = mods[type] ? elementStyles[mods[type].key][mods[type].value] : null
-          defaultClasses = !elementStyles[type].optional && Object.values(elementStyles[type])[sharedClasses ? 1 : 0]
+        if (type !== "state" && type !== "preset" && type !== "data") {
+          modClasses = mods[type] && (mods[type].condition === null || mods[type].condition === props.variant) ? elementStyles[mods[type].key][mods[type].value] : null
+
+          defaultClasses = !elementStyles[type].optional ? Object.values(elementStyles[type])[sharedClasses ? 1 : 0] : ""
         }
 
         classes += ` ${getClasses(sharedClasses)} ${(getClasses(stateClasses) ?? getClasses(modClasses)) || getClasses(defaultClasses)}`
@@ -90,10 +100,6 @@ let useTailwindStyles = (props, styles, elements) => {
     state.value = newState
   }
 
-  return { classes, setState, variants }
+  return { classes, setState, variants, dataStyle }
 
-}
-
-export {
-  useTailwindStyles
 }

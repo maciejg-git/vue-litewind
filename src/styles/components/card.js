@@ -5,6 +5,9 @@ let card = {
     `,
     square: `
       rounded-none 
+    `,
+    roundedExtra: `
+      rounded-xl
     `
   },
   shadow: {
@@ -29,6 +32,13 @@ let card = {
       dark:bg-dark-800
       border-secondary-200
       dark:border-dark-700
+    `,
+    transparent: `
+      bg-transparent
+      dark:bg-transparent
+      dark:bg-dark-800
+      border-secondary-200
+      dark:border-dark-700
     `
   },
   effect: {
@@ -38,6 +48,20 @@ let card = {
       transition-all
       hover:scale-105
     `
+  },
+  preset: {
+    selectMenu: () => `
+      ${card.shape.rounded}
+      ${card.shadow.medium}
+      ${card.border.borderless}
+      ${card.variant.default}
+    `,
+    flatDropdown: () => `
+      ${card.shape.square}
+      ${card.shadow.medium}
+      ${card.border.borderless}
+      ${card.variant.default}
+    `,
   }
 }
 

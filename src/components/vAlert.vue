@@ -34,19 +34,19 @@
 </template>
 
 <script setup>
-import { watch } from "vue";
-import useStyles from "./composition/use-styles";
+import { watch, inject } from "vue";
+import useTailwindStyles from "./composition/use-tailwind-styles"
 import vCloseButton from "./vCloseButton.vue";
 import vIcon from "./vIcon.vue";
 import BCheckLg from "./icons/check-lg";
 import BExclamationCircle from "./icons/exclamation-circle";
 import BInfoCircle from "./icons/info-circle";
-import { sharedProps, sharedStyleProps } from "../shared-props";
+import { sharedProps, sharedModProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("alert", ["Alert", "Icon"]),
+  ...sharedModProps("alert", ["Alert", "Icon"]),
   modelValue: {
     type: Boolean,
     default: undefined,
@@ -71,10 +71,14 @@ const props = defineProps({
 
 const emit = defineEmits(["update:modelValue"]);
 
-let { classes, states } = useStyles("alert", props, {
+let { alert } = inject("mods", {})
+
+let elements = {
   alert: null,
   icon: null,
-});
+}
+
+let { classes } = useTailwindStyles(props, alert, elements)
 
 let closeAlert = () => emit("update:modelValue", false);
 

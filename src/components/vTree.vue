@@ -32,15 +32,15 @@ export default {
 </script>
 
 <script setup>
-import { ref, toRef, watch, provide, onMounted, onBeforeUpdate } from "vue";
-import useStyles from "./composition/use-styles";
+import { ref, toRef, watch, provide, onMounted, onBeforeUpdate, inject } from "vue";
+import useTailwindStyles from "./composition/use-tailwind-styles"
 import vTreeNode from "./vTreeNode.vue";
-import { sharedProps, sharedStyleProps } from "../shared-props";
+import { sharedProps, sharedModProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("tree", ["Folder", "Item", "Icon"]),
+  ...sharedModProps("tree", ["Folder", "Item", "Icon"]),
   items: {
     type: Object,
     default: [],
@@ -129,14 +129,17 @@ const props = defineProps({
 
 const emit = defineEmits(["input:selected", "input:click"]);
 
-let { classes, states, variants } = useStyles("tree", props, {
+let { tree } = inject("mods", {})
+
+let elements = {
   folder: {
-    states: ["opened"],
-    variants: ["root-variant"],
+    externalVariants: ["variant"],
   },
   item: null,
   icon: null,
-});
+}
+
+let { classes, variants } = useTailwindStyles(props, tree, elements)
 
 let selectedItems = ref([]);
 
@@ -185,7 +188,6 @@ onMounted(() => {
 
 provide("control-tree", {
   classes,
-  states,
   variants,
   forNode,
   selectedItems,

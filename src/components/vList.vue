@@ -9,14 +9,14 @@
 </template>
 
 <script setup>
-import { provide, toRef } from "vue";
-import useStyles from "./composition/use-styles";
-import { sharedProps, sharedStyleProps } from "../shared-props";
+import { provide, toRef, inject } from "vue";
+import useTailwindStyles from "./composition/use-tailwind-styles"
+import { sharedModProps, sharedProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("list", ["List", "Item"]),
+  ...sharedModProps("list", ["List", "Item"]),
   width: {
     type: String,
     default: undefined,
@@ -27,19 +27,23 @@ const props = defineProps({
   },
 });
 
-let { classes, states } = useStyles("list", props, {
+let { list } = inject("mods", {})
+
+let elements = {
   list: {
     fixed: "flex flex-col",
   },
   item: {
-    states: ["active"],
-  },
-});
+    externalVariants: ["variant"]
+  }
+}
 
-provide("control-list", { classes, states, tag: toRef(props, "tag") });
-provide("classes", classes);
-provide("states", states);
-provide("tag", toRef(props, "tag"));
+let { classes, variants } = useTailwindStyles(props, list, elements)
+
+provide("control-list", { classes, variants, tag: toRef(props, "tag") });
+// provide("classes", classes);
+// provide("states", states);
+// provide("tag", toRef(props, "tag"));
 </script>
 
 <style scoped></style>

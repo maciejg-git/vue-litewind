@@ -37,13 +37,14 @@
 </template>
 
 <script setup>
-import useStyles from "./composition/use-styles";
+import { inject } from "vue";
+import useTailwindStyles from "./composition/use-tailwind-styles"
 import vIcon from "./vIcon.vue";
-import { sharedProps, sharedStyleProps } from "../shared-props";
+import { sharedProps, sharedModProps } from "../shared-props";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("spinner", ["Spinner"]),
+  ...sharedModProps("spinner", ["Spinner", "Container"]),
   type: {
     type: String,
     default: "border",
@@ -54,12 +55,16 @@ const props = defineProps({
   },
 });
 
-let { classes } = useStyles("spinner", props, {
+let { spinner } = inject("mods", {})
+
+let elements = {
   spinner: {
     fixed: "spinner-animation",
   },
-  container: null,
-});
+  container: null
+}
+
+let { classes } = useTailwindStyles(props, spinner, elements)
 </script>
 
 <style scoped>

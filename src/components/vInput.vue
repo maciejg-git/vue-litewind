@@ -65,7 +65,7 @@
           v-if="useLoader"
           :class="{ visible: isLoading, invisible: !isLoading }"
           type="svg"
-          style-spinner="small"
+          mod-spinner="size:small"
           v-bind="spinner"
           class="mx-0.5"
         />
@@ -113,8 +113,8 @@ export default {
 </script>
 
 <script setup>
-import { ref, computed, inject, useAttrs, toRef, nextTick } from "vue";
-import useStyles from "./composition/use-styles";
+import { ref, computed, inject, useAttrs, toRef, nextTick, watch } from "vue";
+import useTailwindStyles from "./composition/use-tailwind-styles"
 import useLocalModel from "./composition/use-local-model";
 import useUid from "./composition/use-uid";
 import useValidation from "./composition/use-validation";
@@ -124,7 +124,7 @@ import vSpinner from "./vSpinner.vue";
 import vIcon from "./vIcon.vue";
 import {
   sharedProps,
-  sharedStyleProps,
+  sharedModProps,
   sharedValidationProps,
   sharedFormProps,
 } from "../shared-props";
@@ -132,11 +132,8 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("input", [
-    "Input",
-    "Icon",
-    "CloseButtonWrapper",
-    "Label",
+  ...sharedModProps("input", [
+    "Input", "Icon", "CloseButtonWrapper", "Label",
   ]),
   ...sharedFormProps("input", { icon: true, clearable: true }),
   ...sharedValidationProps("input", {
@@ -213,25 +210,23 @@ const emit = defineEmits([
 
 let attrs = useAttrs();
 
-let { classes, states } = useStyles("input", props, {
-  input: {
-    states: ["valid", "invalid"],
-  },
+let { input } = inject("mods", {})
+
+let elements = {
+  input: null,
   icon: null,
   label: {
-    fixed: "inline-block",
+    fixed: "inline-block"
   },
-  closeButtonWrapper: {
-    name: "close-button-wrapper",
-  },
-});
+  closeButtonWrapper: null,
+}
+
+let { classes, setState } = useTailwindStyles(props, input, elements)
 
 let getInputClasses = computed(() => {
   return [
     "form-input flex items-center flex-1",
     classes.input.value,
-    validation.state.value === "valid" && states.input.value.valid,
-    validation.state.value === "invalid" && states.input.value.invalid,
     (attrs.disabled === "" || attrs.disabled === true) && "disabled",
   ];
 });
@@ -297,6 +292,10 @@ let validation = useValidation({
   onUpdate: emitValidationStatus,
   onReset: resetInput,
 });
+
+watch(validation.state, (value) => {
+  setState(value)
+})
 
 // handle template events
 

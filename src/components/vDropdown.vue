@@ -44,22 +44,23 @@ import {
   useAttrs,
   useSlots,
   nextTick,
+  inject,
 } from "vue";
-import useStyles from "./composition/use-styles";
+import useTailwindStyles from "./composition/use-tailwind-styles"
 import useClickOutside from "./composition/use-click-outside";
 import useTrigger from "./composition/use-trigger-events";
 import useFloating from "./composition/use-floating";
 import {
   sharedProps,
   sharedFloatingUIProps,
-  sharedStyleProps,
+  sharedModProps,
 } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 import { registerListener, removeListener } from "../trigger";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("dropdown", ["Item", "Header"]),
+  ...sharedModProps("dropdown", ["Item", "Header"]),
   ...sharedFloatingUIProps("dropdown"),
   modelValue: {
     type: Boolean,
@@ -85,12 +86,16 @@ const attrs = useAttrs();
 
 const slots = useSlots();
 
-let { classes, states } = useStyles("dropdown", props, {
+let { dropdown } = inject("mods", {})
+
+let elements = {
   item: {
-    states: ["active"],
+    externalVariants: ["variant"]
   },
   header: null,
-});
+}
+
+let { classes, variants } = useTailwindStyles(props, dropdown, elements)
 
 const { offsetX, offsetY, flip, placement, autoPlacement, trigger } =
   toRefs(props);
@@ -170,7 +175,7 @@ if (id && !slots.reference) {
 
 provide("control-dropdown", {
   classes,
-  states,
+  variants,
   autoCloseMenu: toRef(props, "autoCloseMenu"),
   hide,
   placement: toRef(props, "placement"),

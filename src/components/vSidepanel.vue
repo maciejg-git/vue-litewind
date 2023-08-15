@@ -49,17 +49,17 @@ export default {
 </script>
 
 <script setup>
-import { ref, computed, watch, onBeforeUnmount, useAttrs } from "vue";
-import useStyles from "./composition/use-styles";
+import { ref, computed, watch, onBeforeUnmount, useAttrs, inject } from "vue";
+import useTailwindStyles from "./composition/use-tailwind-styles"
 import vCloseButton from "./vCloseButton.vue";
 import vBackdrop from "./vBackdrop.vue";
-import { sharedProps, sharedStyleProps } from "../shared-props";
+import { sharedProps, sharedModProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 import { registerListener, removeListener } from "../trigger";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("sidepanel", ["Sidepanel"]),
+  ...sharedModProps("sidepanel", ["Sidepanel"]),
   modelValue: {
     type: Boolean,
     default: false,
@@ -98,13 +98,16 @@ let emit = defineEmits(["update:modelValue"]);
 
 let attrs = useAttrs();
 
-let { classes } = useStyles("sidepanel", props, {
+let { sidepanel } = inject("mods", {})
+
+let elements = {
   sidepanel: {
     fixed: "fixed h-full top-0 z-[31]",
-    prop: computed(() => (props.sidebarLeft ? "left-0" : "right-0")),
-  },
-  closeButton: null,
-});
+    computed: computed(() => (props.sidebarLeft ? "left-0" : "right-0"))
+  }
+}
+
+let { classes } = useTailwindStyles(props, sidepanel, elements)
 
 let isOpen = ref(false);
 

@@ -1,3 +1,5 @@
+import { disabled } from "./global"
+
 let button = {
   classes: `
     sm:text-base
@@ -29,6 +31,15 @@ let button = {
     square: `
       rounded-none
     `,
+    circle: `
+      rounded-full
+    `
+  },
+  text: {
+    optional: true,
+    uppercase: `
+      uppercase
+    `
   },
   variant: {
     classes: `
@@ -86,6 +97,11 @@ let button = {
       transition-opacity
       duration-150
       focus:ring-4
+    `
+  },
+  events: {
+    disabled: `
+      ${disabled}
     `
   },
   special: {

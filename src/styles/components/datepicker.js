@@ -8,6 +8,9 @@ let datepicker = {
       dark:bg-dark-800
     `
   },
+
+  /* element */
+
   dateButton: {
     classes: `
       rounded
@@ -18,16 +21,25 @@ let datepicker = {
       dark:focus:ring-primary-400
     `
   },
+
+  /* element */
+
   date: {
     classes: `
       font-bold
     `
   },
+
+  /* element */
+
   weekdayBar: {
     classes: `
       mb-2
     `
   },
+
+  /* element */
+
   weekday: {
     classes: `
       text-sm 
@@ -35,6 +47,9 @@ let datepicker = {
       dark:text-text-300
     `
   },
+
+  /* element */
+
   day: {
     classes: `
       cursor-pointer
@@ -43,14 +58,14 @@ let datepicker = {
       py-1
       mx-1
       my-1
+      font-semibold
     `,
     variant: {
       default: `
-        font-semibold
         dark:text-text-300
       `,
       today: `
-        font-bold
+        !font-bold
         text-primary-400
         dark:text-primary-400
       `,
@@ -75,6 +90,9 @@ let datepicker = {
       `
     }
   },
+
+  /* element */
+
   footer: {
     classes: `
       text-sm

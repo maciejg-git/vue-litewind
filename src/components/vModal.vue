@@ -89,20 +89,20 @@ export default {
 </script>
 
 <script setup>
-import { ref, computed, watch, onBeforeUnmount, useAttrs } from "vue";
-import useStyles from "./composition/use-styles";
+import { ref, computed, watch, onBeforeUnmount, useAttrs, inject } from "vue";
+import useTailwindStyles from "./composition/use-tailwind-styles"
 import useFocusTrap from "./composition/use-focus-trap";
 import vButton from "./vButton.vue";
 import vCloseButton from "./vCloseButton.vue";
 import vBackdrop from "./vBackdrop.vue";
 import { default as vFocus } from "../directives/focus";
-import { sharedProps, sharedStyleProps } from "../shared-props";
+import { sharedProps, sharedModProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 import { registerListener, removeListener } from "../trigger";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("modal", ["Modal", "Header", "Footer", "Content"]),
+  ...sharedModProps("modal", ["Modal", "Header", "Footer", "Content"]),
   modelValue: {
     type: Boolean,
     default: undefined,
@@ -194,19 +194,23 @@ const emit = defineEmits([
 
 const attrs = useAttrs();
 
-let { classes } = useStyles("modal", props, {
+let { modal } = inject("mods", {})
+
+let elements = {
   modal: {
-    fixed: "flex-1 relative overflow-auto",
+    fixed: "flex-1 relative overflow-auto"
   },
   header: {
-    fixed: "flex items-center justify-between",
+    fixed: "flex items-center justify-between"
   },
   footer: {
     fixed: "flex",
-    prop: computed(() => footerClasses[props.justifyButtons]),
+    computed: computed(() => footerClasses[props.justifyButtons])
   },
   content: null,
-});
+}
+
+let { classes } = useTailwindStyles(props, modal, elements)
 
 let containerClasses = computed(() => {
   return [

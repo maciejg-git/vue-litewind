@@ -6,13 +6,13 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
-import useStyles from "./composition/use-styles";
-import { sharedProps, sharedStyleProps } from "../shared-props";
+import { computed, inject } from "vue";
+import useTailwindStyles from "./composition/use-tailwind-styles"
+import { sharedProps, sharedModProps } from "../shared-props";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("navbar", ["Navbar"]),
+  ...sharedModProps("navbar", ["Navbar"]),
   fixed: {
     type: Boolean,
     default: false,
@@ -27,17 +27,21 @@ const props = defineProps({
   },
 });
 
-let { classes } = useStyles("navbar", props, {
+let { navbar } = inject("mods", {})
+
+let elements = {
   navbar: {
     fixed: "left-0 z-20",
-    prop: computed(() => {
+    computed: computed(() => {
       return [
         props.fixed ? "fixed" : props.sticky ? "sticky" : "relative",
         props.bottom ? "bottom-0" : "top-0",
       ].join(" ");
-    }),
-  },
-});
+    })
+  }
+}
+
+let { classes } = useTailwindStyles(props, navbar, elements)
 </script>
 
 <style scoped></style>

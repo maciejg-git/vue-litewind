@@ -4,10 +4,10 @@
     :href="tagHref"
     :class="[
       active
-        ? [classes.item.value, states.item.value.active]
+        ? [classes.item.value, variants.item.active]
         : disabled
-        ? [classes.item.value, 'disabled']
-        : classes.item.value,
+        ? [classes.item.value, variants.item.default, 'disabled']
+        : [classes.item.value, variants.item.default],
     ]"
     @click="autoCloseMenu && hide()"
   >
@@ -35,13 +35,13 @@ export default {
     },
   },
   setup(props) {
-    let { classes, states, autoCloseMenu, hide } = inject("control-dropdown");
+    let { classes, variants, autoCloseMenu, hide } = inject("control-dropdown");
 
     let tagHref = computed(() => (props.tag == "a" ? "#" : null));
 
     return {
       classes,
-      states,
+      variants,
       tagHref,
       autoCloseMenu,
       hide,

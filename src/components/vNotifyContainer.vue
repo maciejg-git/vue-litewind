@@ -7,7 +7,7 @@
           class="w-full"
           :key="item.id"
         >
-          <v-notify class="w-full" :notify="item" v-bind="item.props" @close-button-clicked="handleCloseButton">
+          <v-notify class="w-full" :notifyData="item" v-bind="item.props" @close-button-clicked="handleCloseButton">
             <template
               v-for="(name, slot) of $slots"
               #[slot]="slotProps"
@@ -25,13 +25,11 @@
 
 <script setup>
 import { ref, computed, inject } from "vue";
-import useStyles from "./composition/use-styles";
-import { sharedProps, sharedStyleProps } from "../shared-props";
+import { sharedProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
 let props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("notify", ["Notify"]),
   direction: {
     type: String,
     default: "new-on-bottom",

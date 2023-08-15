@@ -6,31 +6,31 @@
     <div class="my-2 grid grid-flow-col grid-cols-6">
       <button
         aria-label="Previous year"
-        :class="classes.button.value"
+        :class="classes.dateButton.value"
         @click="handleButtonClick('prev', 'year')"
       >
         <chevron-double-left />
       </button>
       <button
         aria-label="Previous month"
-        :class="classes.button.value"
+        :class="classes.dateButton.value"
         @click="handleButtonClick('prev', 'month')"
       >
         <chevron-left />
       </button>
-      <div class="col-span-2 inline-block font-bold">
+      <div class="col-span-2 inline-block" :class="classes.date.value">
         <span class="align-baseline">{{ monthNames[month] }} {{ year }}</span>
       </div>
       <button
         aria-label="Next month"
-        :class="classes.button.value"
+        :class="classes.dateButton.value"
         @click="handleButtonClick('next', 'month')"
       >
         <chevron-right />
       </button>
       <button
         aria-label="Next year"
-        :class="classes.button.value"
+        :class="classes.dateButton.value"
         @click="handleButtonClick('next', 'year')"
       >
         <chevron-double-right />
@@ -59,7 +59,7 @@
               v-for="(day, index) in daysList.prevMonthDays"
               :key="index"
             >
-              <div :class="classes.adjacentMonthDay.value">
+              <div :class="[classes.day.value, variants.day.adjacentMonthDay]">
                 {{ day }}
               </div>
             </div>
@@ -90,7 +90,7 @@
               v-for="(day, index) in daysList.nextMonthDays"
               :key="index"
             >
-              <div :class="classes.adjacentMonthDay.value">
+              <div :class="[classes.day.value, variants.day.adjacentMonthDay]">
                 {{ day }}
               </div>
             </div>
@@ -122,8 +122,8 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from "vue";
-import useStyles from "./composition/use-styles";
+import { ref, computed, watch, inject } from "vue";
+import useTailwindStyles from "./composition/use-tailwind-styles"
 import vButton from "./vButton.vue";
 import ChevronRight from "./icons/chevron-right.js";
 import ChevronDoubleLeft from "./icons/chevron-double-left.js";
@@ -131,18 +131,18 @@ import ChevronDoubleRight from "./icons/chevron-double-right.js";
 import ChevronLeft from "./icons/chevron-left.js";
 import { pad, getNumberRange } from "../tools.js";
 import { locales } from "../const";
-import { sharedProps, sharedStyleProps } from "../shared-props";
+import { sharedProps, sharedModProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("datepicker", [
+  ...sharedModProps("datepicker", [
     "Datepicker",
+    "Button",
+    "Date",
     "WeekdayBar",
     "Weekday",
-    "Button",
     "Day",
-    "AdjacentMonthDay",
     "Footer",
   ]),
   modelValue: {
@@ -201,13 +201,13 @@ const props = defineProps({
   primaryButton: {
     type: Object,
     default: defaultProps("datepicker", "primaryButton", {
-      styleButton: "primary small",
+      modButton: "variant:primary size:small",
     }),
   },
   secondaryButton: {
     type: Object,
     default: defaultProps("datepicker", "secondaryButton", {
-      styleButton: "secondary small",
+      modButton: "variant:secondary size:small",
     }),
   },
   transition: {
@@ -223,38 +223,38 @@ const emit = defineEmits([
   "input:cancel",
 ]);
 
-let { classes, states, variants } = useStyles("datepicker", props, {
+let { datepicker } = inject("mods", {})
+
+let elements = {
   datepicker: null,
+  dateButton: {
+    fixed: "flex flex-col justify-center leading-none focus:outline-none mx-auto"
+  },
+  date: null,
   weekdayBar: {
-    name: "weekday-bar",
-    fixed: "grid grid-cols-7",
+    fixed: "grid grid-cols-7"
   },
   weekday: null,
-  button: {
-    fixed:
-      "flex flex-col justify-center leading-none focus:outline-none mx-auto",
-  },
   day: {
     fixed: "block",
-    states: ["selected", "partially-selected"],
-    variants: ["today"],
-  },
-  adjacentMonthDay: {
-    name: "adjacent-month-day",
+    externalVariants: ["variant"],
   },
   footer: null,
-});
+}
+
+let { classes, variants } = useTailwindStyles(props, datepicker, elements)
 
 let getDayClass = (date) => {
   // if (isDisabled(date)) return "text-gray-400";
   return [
     classes.day.value,
-    props.rangeHoverHighlight &&
+    (props.rangeHoverHighlight &&
       mouseOverRange.value &&
       isRangeSelected(date) &&
-      states.day.value["partially-selected"],
-    isSelectedDay(date) && states.day.value.selected,
-    isToday(date) && variants.day.value.today,
+      variants.day.partiallySelected) ||
+    ((isSelectedDay(date) ? variants.day.selected : null) ??
+    (isToday(date) ? variants.day.today : null) ??
+    variants.day.default),
   ];
 };
 

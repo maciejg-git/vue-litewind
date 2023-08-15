@@ -3,9 +3,14 @@
 </template>
 
 <script>
+import { provide } from "vue"
+import * as styles from "./styles/components"
+
 export default {
   setup() {
     document.title = "Vue-Litewind documentation"
+
+    provide("mods", styles)
   },
 }
 </script>

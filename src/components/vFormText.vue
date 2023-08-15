@@ -2,12 +2,13 @@
   <div
     :class="[
       classes.formText.value,
-      states.formText.value && states.formText.value.invalid,
+      state === 'valid' && variants.formText.valid,
+      state === 'invalid' && variants.formText.invalid,
     ]"
   >
     <transition-group :name="transition">
       <div
-        v-for="(message, key) in formText"
+        v-for="(message, key) in text"
         :key="message"
       >
         <!-- @slot message -->
@@ -23,14 +24,14 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
-import useStyles from "./composition/use-styles";
-import { sharedProps, sharedStyleProps } from "../shared-props";
+import { computed, watch, inject } from "vue";
+import useTailwindStyles from "./composition/use-tailwind-styles"
+import { sharedProps, sharedModProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("form-text", ["FormText"]),
+  ...sharedModProps("formText", ["FormText"]),
   state: {
     type: String,
     default: "",
@@ -49,14 +50,17 @@ const props = defineProps({
   },
 });
 
-let { classes, states } = useStyles("form-text", props, {
-  formText: {
-    name: "form-text",
-    states: ["valid", "invalid", "disabled"],
-  },
-});
+let { formText } = inject("mods", {})
 
-let formText = computed(() => {
+let elements = {
+  formText: {
+    externalVariants: ["variant"]
+  },
+}
+
+let { classes, variants } = useTailwindStyles(props, formText, elements)
+
+let text = computed(() => {
   if (props.state === "invalid") {
     if (props.messages.required) {
       return { required: props.messages.required };

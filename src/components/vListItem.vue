@@ -19,12 +19,16 @@ const props = defineProps({
   },
 });
 
-let { classes, states, tag } = inject("control-list");
+let { classes, variants, tag } = inject("control-list");
 
 let tagHref = computed(() => (tag == "a" ? "#" : null));
 
 let itemClass = computed(() => {
-  return [classes.item.value, props.active && states.item.value.active];
+  return [
+    classes.item.value, 
+    (props.active && variants.item.active) ||
+    variants.item.default
+  ];
 });
 </script>
 

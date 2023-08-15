@@ -11,26 +11,31 @@
 </template>
 
 <script setup>
+import { inject } from "vue";
+import useTailwindStyles from "./composition/use-tailwind-styles"
 import vCloseButton from "./vCloseButton.vue";
-import useStyles from "./composition/use-styles";
-import { sharedProps, sharedStyleProps } from "../shared-props";
+import { sharedProps, sharedModProps } from "../shared-props";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("chip", ["Chip"]),
+  ...sharedModProps("chip", ["Chip"]),
   closeButton: {
     type: Object,
-    default: { base: "round-close-button", styleCloseButton: "small" },
+    default: { base: "roundCloseButton", modCloseButton: "size:small" },
   },
 });
 
 const emit = defineEmits(["click:close-button"]);
 
-let { classes } = useStyles("chip", props, {
+let { chip } = inject("mods", {})
+
+let elements = {
   chip: {
     fixed: "inline-flex items-center align-top",
-  },
-});
+  }
+}
+
+let { classes } = useTailwindStyles(props, chip, elements)
 
 let handleClickCloseButton = () => {
   emit("click:close-button");

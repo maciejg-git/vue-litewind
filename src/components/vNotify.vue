@@ -2,44 +2,44 @@
 <div :class="classes.notify.value">
   <slot
   name="default"
-  v-bind="notify"
+  v-bind="notifyData"
   >
   <div class="relative flex items-center">
     <div>
-      <v-icon :name="notify.icon" :class="classes.icon.value"></v-icon>
+      <v-icon :name="notifyData.icon" :class="classes.icon.value"></v-icon>
     </div>
     <div>
       <header :class="classes.header.value">
-        <slot name="header" v-if="notify.header" v-bind="notify">
-        {{ notify.header }}
+        <slot name="header" v-if="notifyData.header" v-bind="notifyData">
+        {{ notifyData.header }}
         </slot>
       </header>
       <div>
-        <slot name="content" v-bind="notify">
+        <slot name="content" v-bind="notifyData">
         <div :class="classes.content.value">
-          {{ notify.text }}
-        <slot name="content-append" v-bind="notify"></slot>
+          {{ notifyData.text }}
+        <slot name="content-append" v-bind="notifyData"></slot>
         </div>
         </slot>
       </div>
     </div>
-    <v-close-button v-if="notify.dismissable" class="ml-auto" v-bind="closeButton" @click="emit('close-button-clicked', notify.id)"></v-close-button>
+    <v-close-button v-if="notifyData.dismissable" class="ml-auto" v-bind="closeButton" @click="emit('close-button-clicked', notifyData.id)"></v-close-button>
   </div>
-  <slot name="footer" v-bind="notify"></slot>
+  <slot name="footer" v-bind="notifyData"></slot>
   </slot>
 </div>
 </template>
 
 <script setup>
 import { inject } from "vue"
-import useStyles from "./composition/use-styles";
-import { sharedProps, sharedStyleProps } from "../shared-props";
+import useTailwindStyles from "./composition/use-tailwind-styles"
+import { sharedProps, sharedModProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
 let props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("notify", ["Notify", "Header", "Icon", "Content"]),
-  notify: {
+  ...sharedModProps("notify", ["Notify", "Header", "Icon", "Content"]),
+  notifyData: {
     type: Object,
     default: {},
   },
@@ -51,10 +51,14 @@ let props = defineProps({
 
 let emit = defineEmits(['close-button-clicked'])
 
-let { classes, states } = useStyles("notify", props, {
+let { notify } = inject("mods", {})
+
+let elements = {
   notify: null,
   header: null,
   icon: null,
   content: null,
-});
+}
+
+let { classes } = useTailwindStyles(props, notify, elements)
 </script>

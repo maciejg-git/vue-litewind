@@ -9,21 +9,26 @@
 </template>
 
 <script setup>
-import useStyles from "./composition/use-styles";
-import { sharedProps, sharedStyleProps } from "../shared-props";
+import { inject } from "vue";
+import useTailwindStyles from "./composition/use-tailwind-styles"
+import { sharedProps, sharedModProps } from "../shared-props";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("card", ["Card"]),
+  ...sharedModProps("card", ["Card"]),
   width: {
     type: String,
     default: undefined,
   },
 });
 
-let { classes } = useStyles("card", props, {
+let { card } = inject("mods", {})
+
+let elements = {
   card: null,
-});
+}
+
+let { classes } = useTailwindStyles(props, card, elements)
 </script>
 
 <style scoped></style>

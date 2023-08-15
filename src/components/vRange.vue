@@ -13,14 +13,14 @@ import useStyles from "./composition/use-styles";
 import useLocalModel from "./composition/use-local-model";
 import {
   sharedProps,
-  sharedStyleProps,
+  // sharedStyleProps,
   sharedFormProps,
 } from "../shared-props";
 
 export default {
   props: {
     ...sharedProps(),
-    ...sharedStyleProps("range", ["Range"]),
+    // ...sharedStyleProps("range", ["Range"]),
     ...sharedFormProps("range"),
     modelValue: {
       type: [String, Number],

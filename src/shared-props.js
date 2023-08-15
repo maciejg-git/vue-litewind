@@ -39,9 +39,9 @@ const sharedFloatingUIProps = (component, defaults = {}) => {
 
 // style props
 
-const sharedStyleProps = (component, elements = []) => {
+const sharedModProps = (component, elements = []) => {
   let props = elements.reduce((acc, element) => {
-    let prop = "style" + element
+    let prop = "mod" + element
 
     return {
       ...acc,
@@ -59,7 +59,7 @@ const sharedStyleProps = (component, elements = []) => {
       default: defaultProps(component, "base", component),
     },
     variant: {
-      type: [String, Boolean],
+      type: String,
       default: "",
     },
   };
@@ -122,7 +122,7 @@ const sharedFormProps = (component, options) => {
 export {
   sharedProps,
   sharedFloatingUIProps,
-  sharedStyleProps,
+  sharedModProps,
   sharedValidationProps,
   sharedFormProps,
 };

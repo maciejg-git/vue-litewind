@@ -27,20 +27,20 @@ export default {
 </script>
 
 <script setup>
-import { ref, provide, toRef, toRefs, watch } from "vue";
-import useStyles from "./composition/use-styles";
+import { ref, provide, toRef, toRefs, watch, inject } from "vue";
+import useTailwindStyles from "./composition/use-tailwind-styles"
 import useClickOutside from "./composition/use-click-outside";
 import {
   sharedProps,
   sharedFloatingUIProps,
-  sharedStyleProps,
+  sharedModProps,
 } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 import useFloating from "./composition/use-floating";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("dropdown", ["Item", "Header"]),
+  ...sharedModProps("dropdown", ["Item", "Header"]),
   ...sharedFloatingUIProps("dropdown"),
   modelValue: {
     type: Boolean,
@@ -58,14 +58,16 @@ const props = defineProps({
 
 const emit = defineEmits(["state:opened", "state:closed", "update:modelValue"]);
 
-let { classes, states } = useStyles("dropdown", props, {
+let { dropdown } = inject("mods", {})
+
+let elements = {
   item: {
-    states: ["active"],
+    externalVariants: ["variant"],
   },
-  header: {
-    fixed: "fixed-item",
-  },
-});
+  header: null,
+}
+
+let { classes, variants } = useTailwindStyles(props, dropdown, elements)
 
 const { offsetX, offsetY, flip, placement, autoPlacement } = toRefs(props);
 const {
@@ -111,7 +113,7 @@ let showContextDropdown = (ev, data) => {
 
 provide("control-dropdown", {
   classes,
-  states,
+  variants,
   autoCloseMenu: toRef(props, "autoCloseMenu"),
   hide,
   placement: toRef(props, "placement"),

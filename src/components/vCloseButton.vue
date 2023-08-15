@@ -20,20 +20,23 @@
 </template>
 
 <script setup>
-import useStyles from "./composition/use-styles";
-import { sharedProps, sharedStyleProps } from "../shared-props";
+import { inject } from "vue"
+import useTailwindStyles from "./composition/use-tailwind-styles"
+import { sharedProps, sharedModProps } from "../shared-props";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("close-button", ["Wrapper", "CloseButton"]),
+  ...sharedModProps("closeButton", ["CloseButton", "Wrapper"]),
 });
 
-let { classes } = useStyles("close-button", props, {
-  closeButton: {
-    name: "close-button",
-  },
+let { closeButton } = inject("mods", {})
+
+let elements = {
+  closeButton: null,
   wrapper: null,
-});
+}
+
+let { classes } = useTailwindStyles(props, closeButton, elements)
 </script>
 
 <style scoped></style>

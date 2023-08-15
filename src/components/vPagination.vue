@@ -40,21 +40,20 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from "vue";
-import useStyles from "./composition/use-styles";
+import { ref, computed, watch, inject } from "vue";
+import useTailwindStyles from "./composition/use-tailwind-styles"
 import ChevronLeft from "./icons/chevron-left.js";
 import ChevronRight from "./icons/chevron-right.js";
 import { clamp, getNumberRange, isNumber } from "../tools.js";
-import { sharedProps, sharedStyleProps } from "../shared-props";
+import { sharedProps, sharedModProps } from "../shared-props";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("pagination", [
+  ...sharedModProps("pagination", [
     "PaginationBar",
     "Page",
     "Dots",
-    "Next",
-    "Prev",
+    "Button",
   ]),
   modelValue: {
     type: Number,
@@ -76,48 +75,49 @@ const props = defineProps({
 
 const emit = defineEmits(["update:modelValue"]);
 
-let { classes, states } = useStyles("pagination", props, {
+let { pagination } = inject("mods", {})
+
+let elements = {
   paginationBar: {
-    name: "pagination-bar",
     fixed: "relative z-0 flex w-auto",
   },
   page: {
-    fixed:
-      "z-10 cursor-pointer flex justify-center items-center transition-all flex-none",
-    states: ["active"],
+    fixed: "z-10 cursor-pointer flex justify-center items-center transition-shadow flex-none",
+    externalVariants: ["variant"],
   },
   dots: {
-    fixed:
-      "z-10 cursor-pointer flex justify-center items-center transition-all flex-none",
+    fixed: "z-10 cursor-pointer flex justify-center items-center transition-shadow flex-none"
   },
-  next: {
+  button: {
     fixed: "flex flex-col justify-center items-center",
-  },
-  prev: {
-    fixed: "flex flex-col justify-center items-center",
-  },
-});
+    externalVariants: ["direction"],
+  }
+}
+
+let { classes, variants } = useTailwindStyles(props, pagination, elements)
 
 let isCurrent = (page) => currentPage.value === page;
 
 let getPageClass = (page) => {
   if (page === "...") return classes.dots.value;
   if (isCurrent(page)) {
-    return ["z-20", classes.page.value, states.page.value.active];
+    return ["z-20", classes.page.value, variants.page.active];
   }
-  return classes.page.value;
+  return [classes.page.value, variants.page.default];
 };
 
 let getPrevButtonClass = () => {
   return [
-    classes.prev.value,
+    classes.button.value,
+    variants.button.prev,
     isOnFirstPage() ? "pointer-events-none opacity-50" : "",
   ];
 };
 
 let getNextButtonClass = () => {
   return [
-    classes.next.value,
+    classes.button.value,
+    variants.button.next,
     isOnLastPage() ? "pointer-events-none opacity-50" : "",
   ];
 };

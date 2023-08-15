@@ -2,7 +2,7 @@
   <table
     :class="[
       classes.table.value,
-      state == 'busy' ? [states.table.value.busy, 'pointer-events-none'] : '',
+      state == 'busy' ? ['pointer-events-none'] : '',
     ]"
   >
     <caption
@@ -131,8 +131,8 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from "vue";
-import useStyles from "./composition/use-styles";
+import { ref, computed, watch, inject } from "vue";
+import useTailwindStyles from "./composition/use-tailwind-styles"
 import vIcon from "./vIcon.vue";
 import SortIcon from "./icons/sort-solid.js";
 import CaretUpIcon from "./icons/caret-up-solid.js";
@@ -144,15 +144,15 @@ import {
   isRegexp,
   undefNullToStr,
 } from "../tools.js";
-import { sharedProps, sharedStyleProps } from "../shared-props";
+import { sharedProps, sharedModProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("table", [
+  ...sharedModProps("table", [
     "Table",
     "HeaderRow",
-    "HeaderCell",
+    "headerCell",
     "Row",
     "Cell",
     "Caption",
@@ -223,33 +223,32 @@ let emit = defineEmits([
   "input:selection",
 ]);
 
-let { classes, states } = useStyles("table", props, {
-  table: {
-    states: ["busy"],
-  },
-  headerRow: {
-    name: "header-row",
-  },
-  headerCell: {
-    name: "header-cell",
-  },
+let { table } = inject("mods", {})
+
+let elements = {
+  table: null,
+  headerRow: null,
+  headerCell: null,
   row: null,
   cell: {
-    states: ["selected"],
-    prop: computed(() => (props.selectionMode !== "" ? "cursor-pointer" : "")),
+    computed: computed(() => (props.selectionMode !== "" ? "cursor-pointer" : "")),
+    dataStyle: true,
   },
   caption: {
-    prop: computed(() => (props.captionTop ? "caption-top" : "caption-bottom")),
-  },
-});
+    computed: computed(() => (props.captionTop ? "caption-top" : "caption-bottom"))
+  }
+}
+
+let { classes, setState, dataStyle } = useTailwindStyles(props, table, elements)
 
 let getCellClass = (k, index, item) => {
   return [
     classes.cell.value,
-    itemsSelected.value[index] && states.cell.value.selected,
+    // itemsSelected.value[index] && states.cell.value.selected,
     k.class &&
       typeof k.class === "function" &&
       k.class(k.key, item[k.key], item),
+    dataStyle.cell && dataStyle.cell(index, item)
   ];
 };
 

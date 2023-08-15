@@ -3,17 +3,26 @@
 </template>
 
 <script setup>
-import useStyles from "./composition/use-styles";
-import { sharedProps, sharedStyleProps } from "../shared-props";
+import { inject } from "vue";
+import useTailwindStyles from "./composition/use-tailwind-styles"
+import { sharedProps, sharedModProps } from "../shared-props";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("divider", ["Divider"]),
+  ...sharedModProps("divider", ["Divider"]),
+  modDivider: {
+    type: String,
+    default: "",
+  }
 });
 
-let { classes } = useStyles("divider", props, {
+let { divider } = inject("mods", {})
+
+let elements = {
   divider: null,
-});
+}
+
+let { classes } = useTailwindStyles(props, divider, elements)
 </script>
 
 <style scoped></style>

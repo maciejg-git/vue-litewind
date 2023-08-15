@@ -4,27 +4,30 @@
     :class="[
      'form-checkbox',
       classes.checkbox.value,
-      $attrs.disabled === '' || $attrs.disabled === true
-        ? states.checkbox.disabled
-        : '',
+      ($attrs.disabled === '' || $attrs.disabled === true) && 'disabled'
     ]"
   />
 </template>
 
 <script setup>
-import useStyles from "./composition/use-styles";
-import { sharedProps, sharedStyleProps } from "../shared-props";
+import { inject } from "vue"
+import useTailwindStyles from "./composition/use-tailwind-styles"
+import { sharedProps, sharedModProps } from "../shared-props";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("checkbox"),
+  ...sharedModProps("checkbox", ["Checkbox"]),
 });
 
-let { classes, states } = useStyles("checkbox", props, {
-  checkbox: {
-    states: ["disabled"],
-  },
-});
+let { checkbox } = inject("mods", {})
+
+let elements = {
+  checkbox: null,
+  label: null,
+}
+
+let { classes } = useTailwindStyles(props, checkbox, elements)
+console.log(classes)
 </script>
 
 <style scoped></style>

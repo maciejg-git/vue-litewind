@@ -195,10 +195,12 @@ let {
 
 let itemClasses = computed(() => {
   return [
-    isFolder.value &&
-      itemLevel.value === 0 &&
-      variants.folder.value["root-variant"],
-    (isFolder.value && classes.folder.value) || classes.item.value,
+    (isFolder.value
+      ? [
+          classes.folder.value,
+          itemLevel.value === 0 ? variants.folder.root : "",
+        ]
+      : "") || classes.item.value,
   ];
 });
 

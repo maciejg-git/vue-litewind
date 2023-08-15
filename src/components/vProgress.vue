@@ -32,15 +32,15 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
-import useStyles from "./composition/use-styles";
+import { computed, inject } from "vue";
+import useTailwindStyles from "./composition/use-tailwind-styles"
 import { clamp, isNumber } from "../tools";
-import { sharedProps, sharedStyleProps } from "../shared-props";
+import { sharedProps, sharedModProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("progress", ["Progress", "ProgressBar", "Label"]),
+  ...sharedModProps("progress", ["Progress", "ProgressBar", "Label"]),
   value: {
     type: [Number, String],
     default: 0,
@@ -73,23 +73,26 @@ const props = defineProps({
   },
 });
 
-let { classes } = useStyles("progress", props, {
+let { progress } = inject("mods", {})
+
+let elements = {
   progress: {
-    fixed: "flex",
+    fixed: "flex"
   },
   progressBar: {
-    name: "progress-bar",
     fixed: "flex justify-center items-center h-full",
-    prop: computed(() => {
+    computed: computed(() => {
       return props.indeterminate
         ? "indeterminate"
         : props.transition
         ? "transition-all duration-100"
         : "";
     }),
-  },
-  label: null,
-});
+    label: null,
+  }
+}
+
+let { classes } = useTailwindStyles(props, progress, elements)
 
 let value = computed(() => {
   return clamp((props.value / props.max) * 100, 0, props.max);

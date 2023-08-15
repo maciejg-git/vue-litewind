@@ -31,14 +31,14 @@ export default {
 </script>
 
 <script setup>
-import { inject, useAttrs, toRef } from "vue";
-import useStyles from "./composition/use-styles";
+import { inject, useAttrs, toRef, watch } from "vue";
+import useTailwindStyles from "./composition/use-tailwind-styles"
 import useLocalModel from "./composition/use-local-model";
 import useUid from "./composition/use-uid";
 import useValidation from "./composition/use-validation";
 import {
   sharedProps,
-  sharedStyleProps,
+  sharedModProps,
   sharedValidationProps,
   sharedFormProps,
 } from "../shared-props";
@@ -46,7 +46,7 @@ import { defaultProps } from "../defaultProps";
 
 const props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("checkbox", ["Checkbox", "Label"]),
+  ...sharedModProps("checkbox", ["Checkbox", "Label"]),
   ...sharedFormProps("checkbox"),
   ...sharedValidationProps("checkbox", {
     validateOn: "blur",
@@ -71,19 +71,21 @@ const emit = defineEmits([
 
 const attrs = useAttrs();
 
-let { classes, states } = useStyles("checkbox", props, {
-  checkbox: {
-    states: ["valid", "invalid"],
-  },
+let { checkbox } = inject("mods", {})
+
+let elements = {
+  checkbox: null,
   label: null,
-});
+}
+
+let { classes, setState } = useTailwindStyles(props, checkbox, elements)
 
 let getCheckBoxClasses = () => {
   return [
     "form-checkbox",
     classes.checkbox.value,
-    validation.state.value === "valid" && states.checkbox.value.valid,
-    validation.state.value === "invalid" && states.checkbox.value.invalid,
+    // validation.state.value === "valid" && states.checkbox.value.valid,
+    // validation.state.value === "invalid" && states.checkbox.value.invalid,
     (attrs.disabled === "" || attrs.disabled === true) && "disabled",
   ];
 };
@@ -132,6 +134,10 @@ let validation =
     onUpdate: emitValidationStatus,
     onReset: resetInput,
   });
+
+watch(validation.state, (value) => {
+  setState(value)
+})
 
 // handle template events
 

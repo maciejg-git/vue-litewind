@@ -16,7 +16,7 @@
         <a
           v-if="i.href"
           :href="i.href"
-          :class="classes.breadcrumb.value"
+          :class="[classes.item.value, variants.item.default]"
         >
           {{ i.label }}
         </a>
@@ -24,14 +24,14 @@
         <router-link
           v-if="i.to"
           :to="i.to"
-          :class="classes.breadcrumb.value"
+          :class="[classes.item.value, variants.item.default]"
         >
           {{ i.label }}
         </router-link>
 
         <span
           v-if="isActive(index)"
-          :class="classes.active.value"
+          :class="[classes.item.value, variants.item.active]"
         >
           {{ i.label }}
         </span>
@@ -47,13 +47,14 @@
 </template>
 
 <script setup>
-import useStyles from "./composition/use-styles";
-import { sharedProps, sharedStyleProps } from "../shared-props";
+import { inject } from "vue"
+import useTailwindStyles from "./composition/use-tailwind-styles"
+import { sharedProps, sharedModProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
 let props = defineProps({
   ...sharedProps(),
-  ...sharedStyleProps("breadcrumb", ["Breadcrumb", "Separator", "Active"]),
+  ...sharedModProps("breadcrumb", ["Item", "Separator", "Icon"]),
   path: {
     type: Array,
     default: [],
@@ -64,11 +65,17 @@ let props = defineProps({
   },
 });
 
-let { classes } = useStyles("breadcrumb", props, {
-  breadcrumb: null,
+let { breadcrumb } = inject("mods", {})
+
+let elements = {
+  item: {
+    externalVariants: ["variant"]
+  },
   separator: null,
-  active: null,
-});
+  icon: null,
+}
+
+let { classes, variants } = useTailwindStyles(props, breadcrumb, elements)
 
 let isActive = (index) => {
   return index == props.path.length - 1;
