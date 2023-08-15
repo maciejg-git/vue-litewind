@@ -1,7 +1,7 @@
 <template>
   <div class="flex gap-x-7">
     <v-badge
-      style-badge="small secondary"
+      mod-badge="size:small variant:secondary"
       update-animation="scale-up"
       :update-key="example"
     >
@@ -9,7 +9,7 @@
     </v-badge>
 
     <v-badge
-      style-badge="small secondary"
+      mod-badge="size:small variant:secondary"
       update-animation="bounce"
       :update-key="example"
     >
@@ -17,7 +17,7 @@
     </v-badge>
 
     <v-badge
-      style-badge="small secondary"
+      mod-badge="size:small variant:secondary"
       update-animation="to-danger"
       :update-key="example"
     >
@@ -25,7 +25,7 @@
     </v-badge>
 
     <v-badge
-      style-badge="small secondary"
+      mod-badge="size:small variant:secondary"
       update-animation="to-success"
       :update-key="example"
     >

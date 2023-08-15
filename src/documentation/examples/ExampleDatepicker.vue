@@ -24,7 +24,7 @@
     </v-card>
     <!-- CUT START -->
     <div class="flex-grow mt-4 xl:ml-20 xl:mt-0">
-      <v-tabs base="material-tabs">
+      <v-tabs base="materialTabs">
         <v-tab name="Props">
           <div class="flex flex-col gap-y-2 mt-5">
             <div>
@@ -127,7 +127,7 @@
           <template #name>
             Events
             <v-badge
-              style-badge="secondary tiny"
+              mod-badge="variant:secondary size:tiny"
               class="ml-2"
               update-animation="scale-up"
               :update-key="events.length"

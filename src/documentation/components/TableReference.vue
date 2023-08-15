@@ -7,7 +7,7 @@
       <v-input
         v-model="store.filter"
         placeholder="Filter"
-        base="underlined-input"
+        base="underlinedInput"
         clearable
       ></v-input>
     </div>

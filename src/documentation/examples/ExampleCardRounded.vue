@@ -1,7 +1,7 @@
 <template>
   <v-card
     width="360px"
-    style-card="borderless rounded-extra shadow"
+    mod-card="border:borderless shape:roundedExtra"
     class="overflow-hidden mx-auto"
   >
     <img

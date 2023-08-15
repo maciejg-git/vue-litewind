@@ -7,12 +7,12 @@
       :triangle="example.triangle"
       :clockwise="example.clockwise"
       :switch="example.switch"
-      style-chevron="right"
+      mod-chevron="variant:right"
     />
   </v-button>
   <!-- CUT START -->
   <v-tabs
-    base="material-tabs"
+    base="materialTabs"
     class="mt-5"
   >
     <v-tab name="Props">

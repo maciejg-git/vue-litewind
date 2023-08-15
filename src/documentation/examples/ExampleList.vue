@@ -29,12 +29,12 @@
     <v-select
       id="style"
       v-model="example.base"
-      :items="['list', 'material-list']"
+      :items="['list', 'materialList']"
       inline
     ></v-select>
   </div>
   <v-tabs
-    base="material-tabs"
+    base="materialTabs"
     class="mt-10"
   >
     <v-tab name="Props">

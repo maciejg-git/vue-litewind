@@ -2,7 +2,7 @@
   <!-- relaxed -->
 
   <v-dropdown
-    base="relaxed-dropdown"
+    base="relaxedDropdown"
     :offsetY="5"
   >
     <template #reference="{ reference, onTrigger }">
@@ -52,13 +52,12 @@
   <!-- flat -->
 
   <v-dropdown
-    base="flat-dropdown"
     :offsetY="5"
   >
     <template #reference="{ reference, onTrigger }">
       <v-button-chevron
         :ref="reference"
-        style-button="square"
+        mod-button="shape:square"
         :chevron="{ class: 'ml-2' }"
         v-on="onTrigger"
         class="mt-4 md:mt-0"
@@ -68,7 +67,7 @@
     </template>
     <v-card
       width="320px"
-      base="flat-card"
+      mod-card="preset:flatDropdown"
     >
       <v-dropdown-menu-item tag="button">
         Menu item

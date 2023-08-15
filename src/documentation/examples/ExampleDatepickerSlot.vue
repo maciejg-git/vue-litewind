@@ -9,7 +9,7 @@
           {{ day }}
           <v-badge
             v-if="markedDays[day]"
-            style-badge="circle-small danger tiny"
+            mod-badge="special:circleSmall variant:danger"
             class="absolute top-full right-1/2 transform translate-x-1/2"
           ></v-badge>
         </div>

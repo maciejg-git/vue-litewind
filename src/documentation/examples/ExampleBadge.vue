@@ -1,17 +1,17 @@
 <template>
   <div class="flex items-center gap-x-5">
-    <v-badge style-badge="secondary">
+    <v-badge mod-badge="variant:secondary">
       NEW
       <v-badge
-        style-badge="tiny success"
+        mod-badge="size:tiny variant:success"
         class="ml-2"
       >
         7
       </v-badge>
     </v-badge>
     <v-badge>NEW</v-badge>
-    <v-badge style-badge="small warn">NEW</v-badge>
-    <v-badge style-badge="tiny success">NEW</v-badge>
+    <v-badge mod-badge="size:small variant:warn">NEW</v-badge>
+    <v-badge mod-badge="size:tiny variant:success">NEW</v-badge>
   </div>
 
   <!-- positioned badges -->
@@ -20,7 +20,7 @@
     Badge button
     <v-badge
       position="top-right"
-      style-badge="circle danger"
+      mod-badge="special:circle variant:danger"
     ></v-badge>
   </v-button>
 </template>

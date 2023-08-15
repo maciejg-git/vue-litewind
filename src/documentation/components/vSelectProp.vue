@@ -7,11 +7,10 @@
       { text: 'false', value: false },
     ]"
     :input="{
-      styleIcon: 'true:valid false:invalid',
+      modIcon: 'true?variant:valid false?variant:invalid',
       icon: modelValue ? 'b-check-lg' : 'b-x',
-      variant: modelValue,
+      variant: modelValue ? 'true' : 'false',
     }"
-    :card="{ styleCard: 'menu shadow', base: 'flat-card' }"
     @click:icon="handleClickIcon"
     :offsetY="5"
     inline

@@ -9,7 +9,7 @@
     class="mt-2 flex"
   >
     <v-button
-      base="plain-button"
+      mod-button="preset:plain"
       style-button="bold"
       class="mt-2 ml-auto"
       @click="isCodeVisible = !isCodeVisible"
@@ -22,7 +22,7 @@
   <v-collapse v-model="isCodeVisible">
     <v-tabs
       v-if="showCode && (templateCode || scriptCode)"
-      base="material-tabs"
+      base="materialTabs"
     >
       <v-tab
         v-if="templateCode"

@@ -1,7 +1,7 @@
 <template>
   <v-card
     width="320px"
-    style-card="shadow hoverable"
+    mod-card="effect:hoverable"
     class="overflow-hidden mx-auto"
     name="select-card"
   >

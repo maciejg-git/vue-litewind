@@ -2,8 +2,8 @@
   <!-- simple indeterminate progress -->
 
   <v-progress
-    style-progress="tiny"
-    style-progress-bar="gradient"
+    mod-progress="size:tiny"
+    mod-progress-bar="variant:gradient"
     indeterminate
     :indeterminate-width="50"
     :indeterminate-timing="example.timing"
@@ -19,8 +19,8 @@
   >
     <div class="flex justify-center p-4">Checking for updates...</div>
     <v-progress
-      style-progress="tiny"
-      style-progress-bar="gradient"
+      mod-progress="size:tiny"
+      mod-progress-bar="variant:gradient"
       indeterminate
       class="m-2"
     ></v-progress>
@@ -39,8 +39,8 @@
       <span v-if="!example.indeterminate">Updating...</span>
     </div>
     <v-progress
-      style-progress="tiny"
-      style-progress-bar="gradient"
+      mod-progress="size:tiny"
+      mod-progress-bar="variant:gradient"
       :value="example.value"
       :label="false"
       :indeterminate="example.indeterminate"

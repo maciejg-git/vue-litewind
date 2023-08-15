@@ -129,7 +129,7 @@ import "vue-litewind/components/input.css";`}}
       You can register single or all components in application entry file (for example main.js). Registering single components will make build smaller.
     </p>
 
-    <v-tabs base="material-tabs">
+    <v-tabs base="materialTabs">
       <v-tab name="All components">
     <v-code language="javascript">
       {{ `// main.js
@@ -180,7 +180,7 @@ app.use(vueLitewind, {
       Default props examples
     </div>
 
-    <v-tabs base="material-tabs">
+    <v-tabs base="materialTabs">
       <v-tab name="Simple example">
     <v-code language="javascript">
       {{ `// main.js

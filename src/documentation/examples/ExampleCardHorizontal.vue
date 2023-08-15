@@ -1,7 +1,6 @@
 <template>
   <v-card
     width="720px"
-    style-card="shadow hoverable"
     style="height: 360px"
     class="flex flex-row overflow-hidden mx-auto"
   >

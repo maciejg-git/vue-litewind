@@ -11,7 +11,7 @@
   </div>
   <!-- CUT START -->
   <v-tabs
-    base="material-tabs"
+    base="materialTabs"
     class="mt-10"
   >
     <v-tab name="Props">
@@ -112,7 +112,7 @@
       <template #name>
         Events
         <v-badge
-          style-badge="secondary tiny"
+          mod-badge="variant:secondary size:tiny"
           class="ml-2"
           update-animation="scale-up"
           :update-key="events.length"

@@ -47,7 +47,7 @@
   </v-card>
   <!-- CUT START -->
   <v-tabs
-    base="material-tabs"
+    base="materialTabs"
     class="mt-10"
   >
     <v-tab name="Props">

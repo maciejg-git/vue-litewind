@@ -9,7 +9,7 @@
 
   <div class="flex items-center gap-4 mt-6">
     <v-button
-      style-button="new:danger visited:secondary small"
+      mod-button="new?variant:danger visited?variant:secondary size:small"
       :variant="variant"
       @click="variant = 'visited'"
     >

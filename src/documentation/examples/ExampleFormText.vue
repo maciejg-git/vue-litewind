@@ -3,7 +3,7 @@
     <v-input v-model="username" type="text" inline class="w-[420px]" />
   </div>
   <!-- CUT START -->
-  <v-tabs base="material-tabs" class="mt-5">
+  <v-tabs base="materialTabs" class="mt-5">
     <v-tab name="Props">
       <div class="flex flex-col gap-y-2 mt-5">
         <!-- <div> -->

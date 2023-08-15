@@ -8,7 +8,7 @@
   />
   <!-- CUT START -->
   <v-tabs
-    base="material-tabs"
+    base="materialTabs"
     class="mt-5"
   >
     <v-tab name="Props">
@@ -53,7 +53,7 @@
       <template #name>
         Events
         <v-badge
-          style-badge="secondary tiny"
+          mod-badge="variant:secondary size:tiny"
           class="ml-2"
         >
           {{ events.length }}

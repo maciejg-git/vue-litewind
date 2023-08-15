@@ -5,7 +5,7 @@
       :label="example.label"
       :validationState="example.validationState"
       placeholder="Type something..."
-      class="w-[400px] h-[120px]"
+      class="h-[120px] w-[400px]"
     />
   </div>
 
@@ -14,20 +14,20 @@
   <div class="w-full md:w-1/2">
     <v-textarea
       v-model="example.model"
-      base="underlined-textarea"
+      base="underlinedTextarea"
       :label="example.label"
       :state="example.state"
       placeholder="Type something..."
-      class="w-[400px] h-[120px]"
+      class="h-[120px] w-[400px]"
     />
   </div>
   <!-- CUT START -->
   <v-tabs
-    base="material-tabs"
+    base="materialTabs"
     class="mt-10"
   >
     <v-tab name="Props">
-      <div class="flex flex-col gap-y-2 mt-5">
+      <div class="mt-5 flex flex-col gap-y-2">
         <div>
           <label
             for="model"
@@ -76,7 +76,12 @@
     <v-tab>
       <template #name>
         Events
-        <v-badge style-badge="secondary tiny">
+        <v-badge
+          mod-badge="variant:secondary size:tiny"
+          class="ml-2"
+          update-animation="scale-up"
+          :update-key="events.length"
+        >
           {{ events.length }}
         </v-badge>
       </template>

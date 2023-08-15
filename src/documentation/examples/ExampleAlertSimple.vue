@@ -2,7 +2,7 @@
   <v-alert
     v-model="example.isVisible"
     icon="info"
-    style-alert="bold info"
+    mod-alert="text:bold variant:info"
   >
     Alert
   </v-alert>

@@ -12,7 +12,7 @@
     <div class="example">
       <div class="flex gap-x-4">
         <v-close-button />
-        <v-close-button base="round-close-button" />
+        <v-close-button base="roundCloseButton" />
       </div>
     </div>
     <v-code :code="code" template language="html"></v-code>
@@ -29,7 +29,7 @@ export default {
 
     let code = `<template>
   <v-close-button />
-  <v-close-button base="round-close-button" />
+  <v-close-button base="roundCloseButton" />
 </template>`
 
     return {

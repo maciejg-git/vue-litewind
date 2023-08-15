@@ -20,7 +20,7 @@
         <span class="flex justify-between items-center">
           Tab 3
           <v-badge
-            style-badge="success tiny"
+            mod-badge="variant:success size:tiny"
             class="ml-3"
           >
             4
@@ -45,13 +45,13 @@
         id="style"
         v-model="example.base"
         inline
-        :items="['tabs', 'material-tabs', 'rounded-tabs']"
+        :items="['tabs', 'materialTabs', 'roundedTabs']"
       ></v-select>
     </div>
     <v-button @click="addTab">Add tab</v-button>
   </div>
   <v-tabs
-    base="material-tabs"
+    base="materialTabs"
     class="mt-10"
   >
     <v-tab name="Props">
@@ -100,7 +100,7 @@
       <template #name>
         Events
         <v-badge
-          style-badge="secondary tiny"
+          mod-badge="variant:secondary size:tiny"
           class="ml-2"
           update-animation="scale-up"
           :update-key="events.length"

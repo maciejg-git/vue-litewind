@@ -1,12 +1,12 @@
 <template>
   <div class="flex items-center gap-6">
-    <v-button style-button="warn" class="flex-col">
+    <v-button mod-button="variant:warn" class="flex-col">
       <v-icon name="b-star" class="w-6 h-6" />
       <span class="text-sm">Icon button</span>
     </v-button>
 
     <v-button style-button="warn">
-      <v-icon name="b-star" class="w-6 h-6 mr-2" />
+      <v-icon name="b-star" class="w-5 h-5 mr-2" />
       Icon button
     </v-button>
 

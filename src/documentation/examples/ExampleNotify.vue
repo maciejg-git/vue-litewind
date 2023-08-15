@@ -5,8 +5,8 @@
       :auto-dismiss-delay="2000"
       class="bottom-4 right-10 w-[350px] space-y-4"
       :notify="{
-        styleNotify: 'info',
-        closeButton: { styleCloseButton: 'small' },
+        modNotify: 'variant:info',
+        closeButton: { modCloseButton: 'size:small' },
       }"
     >
       <!-- <template #default="{ id, text }"> -->
@@ -83,7 +83,7 @@
         icon: 'b-check-lg',
         dismissable: true,
         autoDismissDelay: 4000,
-        props: { styleNotify: 'info', styleIcon: 'info' },
+        props: { modNotify: 'variant:info', modIcon: 'variant:info' },
         options: {
           item: 'item',
         }
