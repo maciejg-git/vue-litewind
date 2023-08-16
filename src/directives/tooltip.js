@@ -127,7 +127,7 @@ function createTooltipElement() {
   });
 
   el.innerHTML =
-    "<div class='tooltip'><div class='tooltip--content'></div></div>";
+    "<div class='tooltip'><div class='tooltip-content'></div></div>";
 
   return el;
 }
