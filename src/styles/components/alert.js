@@ -1,4 +1,7 @@
 let alert = {
+
+  /* element */
+
   alert: {
     classes: `
       rounded-md
@@ -39,7 +42,7 @@ let alert = {
     },
     shadow: {
       optional: true,
-      shadowed: `
+      medium: `
         shadow-lg
         dark:shadow-black/20
       `
@@ -59,6 +62,15 @@ let alert = {
         py-2
       `
     },
+    effect: {
+      optional: true,
+      bounce: `
+        animate-bounce
+      `,
+      pulse: `
+        animate-pulse
+      `
+    },
     special: {
       optional: true,
       outline: `
@@ -75,12 +87,24 @@ let alert = {
       `
     }
   },
+
+  /* element */
+
   icon: {
     classes: `
       w-6
       h-6
-      mr-4
-    `
+      mr-2
+    `,
+    effect: {
+      optional: true,
+      bounce: `
+        animate-bounce
+      `,
+      pulse: `
+        animate-pulse
+      `
+    }
   }
 }
 

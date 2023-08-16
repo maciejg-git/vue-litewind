@@ -43,10 +43,20 @@ let card = {
   },
   effect: {
     optional: true,
-    hoverable: `
+    hoverScale: `
       hover:shadow-lg
       transition-all
       hover:scale-105
+    `,
+    hoverRing: `
+      transform-shadow
+      duration-150
+      hover:ring-4
+      ring-primary-400
+      dark:ring-primary-400
+    `,
+    loading: `
+      animate-pulse
     `
   },
   preset: {

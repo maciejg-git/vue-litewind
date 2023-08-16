@@ -14,7 +14,7 @@ let table = {
     },
     state: {
       busy: `
-
+        opacity-30
       `
     }
   },

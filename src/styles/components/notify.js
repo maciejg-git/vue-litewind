@@ -5,6 +5,9 @@ setStyleVar({
 })
 
 let notify = {
+
+  /* element */
+
   notify: {
     classes: `
       p-4
@@ -25,12 +28,18 @@ let notify = {
       `,
     }
   },
+
+  /* element */
+
   header: {
     classes: `
       px-4
       font-semibold
     `,
   },
+
+  /* element */
+
   icon: {
     classes: `
       h-6
@@ -43,6 +52,9 @@ let notify = {
       `,
     }
   },
+
+  /* element */
+
   content: {
     classes: `
       mt-2

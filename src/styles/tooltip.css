@@ -1,5 +1,3 @@
-/* TOOLTIP */
-
 .tooltip {
   @apply
     rounded-md
@@ -9,7 +7,7 @@
     bg-dark-700
 }
 
-.tooltip--content {
+.tooltip-content {
   @apply
     font-semibold
     p-1

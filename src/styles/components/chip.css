@@ -1,9 +1,0 @@
-.chip {
-  @apply
-    px-2
-    rounded-full
-    font-semibold
-    dark:text-text-200
-    bg-secondary-200
-    dark:bg-dark-500
-}

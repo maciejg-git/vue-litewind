@@ -1,7 +1,7 @@
 export let disabled = `
-  text-opacity-50
-  dark:text-opacity-50
-  pointer-events-none
+  !text-opacity-50
+  !dark:text-opacity-50
+  !pointer-events-none
 `
 
 export let color = {
@@ -61,4 +61,10 @@ export let setStyleVar = (variables) => {
   Object.entries(variables).forEach((i) => {
     root.style.setProperty(i[0], i[1])
   })
+}
+
+export default {
+  disabled,
+  color,
+  form,
 }

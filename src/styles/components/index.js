@@ -28,3 +28,6 @@ export { default as navbar } from "./navbar.js"
 export { default as dropdown } from "./dropdown.js"
 export { default as modal } from "./modal.js"
 export { default as collapse } from "./collapse.js"
+export { default as backdrop } from "./backdrop.js"
+
+export { default as global } from "./global"

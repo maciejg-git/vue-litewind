@@ -77,12 +77,6 @@ let modal = {
   }
 }
 
-modal.components = {
-  closeButton: {
-    base: "roundCloseButton",
-  }
-}
-
 export default {
   modal,
 }

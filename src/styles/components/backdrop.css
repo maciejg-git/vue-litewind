@@ -1,9 +1,0 @@
-:root {
-  --backdrop-transition-duration: 0.2s;
-}
-
-.backdrop {
-  @apply
-    opacity-50
-    bg-black
-}

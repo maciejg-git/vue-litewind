@@ -46,7 +46,14 @@ let select = {
         dark:text-text-300
         dark:bg-dark-600
       `
-    }
+    },
+    match: {
+      highlight: `
+        !font-semibold
+        !bg-secondary-100
+        dark:!bg-dark-600
+      `
+    },
 }
 
 export default {
