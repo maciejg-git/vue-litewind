@@ -32,6 +32,7 @@ export default function useTailwindStyles(props, styles, elements) {
   let classes = {}
   let variants = {}
   let dataStyle = {}
+  let components = {}
   
   let state = ref("")
 

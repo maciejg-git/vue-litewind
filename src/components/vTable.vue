@@ -152,7 +152,7 @@ const props = defineProps({
   ...sharedModProps("table", [
     "Table",
     "HeaderRow",
-    "headerCell",
+    "HeaderCell",
     "Row",
     "Cell",
     "Caption",
@@ -244,13 +244,16 @@ let { classes, setState, dataStyle } = useTailwindStyles(props, table, elements)
 let getCellClass = (k, index, item) => {
   return [
     classes.cell.value,
-    // itemsSelected.value[index] && states.cell.value.selected,
     k.class &&
       typeof k.class === "function" &&
       k.class(k.key, item[k.key], item),
     dataStyle.cell && dataStyle.cell(index, item)
   ];
 };
+
+watch(() => props.state, (value) => {
+  setState(value)
+})
 
 // DATA
 

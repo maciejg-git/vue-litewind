@@ -2,18 +2,47 @@
   <transition name="fade-backdrop">
     <div
       v-if="isOpen"
-      class="backdrop fixed inset-0 z-30 min-h-screen overflow-y-auto"
-    ></div>
+      class="inset-0 overflow-y-auto"
+      :class="classes.backdrop.value"
+    >
+      <slot name="default"></slot>
+    </div>
   </transition>
 </template>
 
-<script>
-export default {
-  props: {
-    isOpen: { type: Boolean, default: false },
+<script setup>
+import { computed, inject } from "vue";
+import { sharedProps, sharedModProps } from "../shared-props";
+import useTailwindStyles from "./composition/use-tailwind-styles";
+
+let props = defineProps({
+  ...sharedProps(),
+  ...sharedModProps("backdrop", ["Backdrop"]),
+  isOpen: {
+    type: Boolean,
+    default: false,
   },
-  setup() {},
+  position: {
+    type: String,
+    default: "fixed",
+  },
+});
+
+let { backdrop } = inject("mods", {});
+
+let elements = {
+  backdrop: {
+    computed: computed(() => {
+      return props.position === "absolute"
+        ? "absolute"
+        : props.position === "fixed"
+        ? "fixed z-30"
+        : "fixed z-30";
+    }),
+  },
 };
+
+let { classes } = useTailwindStyles(props, backdrop, elements);
 </script>
 
 <style scoped>

@@ -24,7 +24,7 @@
         <v-close-button
           v-if="!isStatic() && dismissable"
           @click="handleCloseButtonClick"
-          style-close-button="small"
+          mod-close-button="size:small"
           class="ml-auto"
           v-bind="closeButton"
         />

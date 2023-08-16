@@ -5,6 +5,7 @@
   >
     <!-- @slot default -->
     <slot name="default"></slot>
+    <slot name="overlay"></slot>
   </div>
 </template>
 
@@ -25,7 +26,9 @@ const props = defineProps({
 let { card } = inject("mods", {})
 
 let elements = {
-  card: null,
+  card: {
+    fixed: "relative"
+  },
 }
 
 let { classes } = useTailwindStyles(props, card, elements)

@@ -112,6 +112,7 @@
               :item="item"
               :inputValue="localText"
               :isSelected="isSelected(item)"
+              :highlight="highlight"
             >
               {{ getItemText(item) }}
             </slot>
@@ -146,6 +147,7 @@ import {
   sharedFormProps,
 } from "../shared-props";
 import { defaultProps } from "../defaultProps";
+import { highlight as highlightMatch } from "../tools"
 
 let props = defineProps({
   ...sharedProps(),
@@ -236,7 +238,7 @@ let { select } = inject("mods", {})
 
 let elements = {
   item: {
-    externalVariants: ["variant"],
+    externalVariants: ["variant", "match", "events"],
   },
 }
 
@@ -247,10 +249,13 @@ let getItemClass = (item, index) => {
     classes.item.value,
     isSelected(item) && variants.item.selected,
     // index === highlightedItemIndex.value && states.item.value.highlighted,
-    // item.disabled && "disabled",
     variants.item.default
   ];
 };
+
+let highlight = (value) => {
+  return highlightMatch(value, localText.value, variants.item.highlight)
+}
 
 let localModel = useLocalModel(props, emit);
 

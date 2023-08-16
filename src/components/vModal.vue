@@ -78,7 +78,7 @@
       </div>
     </transition>
 
-    <v-backdrop :isOpen="isOpen" />
+    <v-backdrop :isOpen="isOpen" v-bind="backdrop" />
   </teleport>
 </template>
 
@@ -178,6 +178,10 @@ const props = defineProps({
   closeButton: {
     type: Object,
     default: defaultProps("modal", "closeButton", {}),
+  },
+  backdrop: {
+    type: Object,
+    default: defaultProps("modal", "backdrop", {}),
   },
   transition: {
     type: String,
