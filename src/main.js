@@ -18,10 +18,7 @@ import { grid } from "./index"
 import { directives } from "./index"
 // styles
 import "tailwindcss/tailwind.css";
-// import "./styles-form/form-reset.css"
-import "./styles/shared.css"
-import "./styles/components.css"
-import "./styles/icon.css"
+import "./styles/tooltip.css"
 import "./documentation/Documentation.css"
 
 const pinia = createPinia()
@@ -73,8 +70,7 @@ app.use(vueLitewind, {
   componentProps: {
     select: {
       card: {
-        base: 'flat-card',
-        styleCard: 'menu shadow rounded',
+        modCard: "preset:selectMenu"
       }
     }
   }
