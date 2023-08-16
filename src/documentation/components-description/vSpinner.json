@@ -5,7 +5,8 @@
     "variant": "",
     "type": "Valid values are 'border' for border spinner or 'svg' for SVG spinner.",
     "icon": "Icon to use instead of border or SVG spinner",
-    "styleSpinner": "Main spinner element"
+    "modSpinner": "Main spinner element",
+    "modContainer": "Container element"
   },
   "emits": {},
   "slots": {},

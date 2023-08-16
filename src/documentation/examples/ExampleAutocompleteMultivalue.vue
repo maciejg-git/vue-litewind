@@ -7,7 +7,6 @@
         multiple
         :items="example.items"
         :is-loading="example.isLoading"
-        style-menu="shadow"
         @input:value="query($event)"
       >
         <template #selected-item="{ item }">

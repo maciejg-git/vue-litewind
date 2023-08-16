@@ -6,7 +6,7 @@
     "disabled": "Displays button in `disabled` state",
     "tag": "Tag of button element. Valid values are: 'button' or 'a'",
     "block": "Displays button as full width block",
-    "styleButton": "Main button element"
+    "modButton": "Main button element"
   },
   "emits": {},
   "slots": {

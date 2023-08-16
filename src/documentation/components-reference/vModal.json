@@ -7,28 +7,28 @@
       ],
       "default": ""
     },
-    "styleModal": {
+    "modModal": {
       "type": [
         "String"
       ],
       "default": "",
       "globalDefault": true
     },
-    "styleHeader": {
+    "modHeader": {
       "type": [
         "String"
       ],
       "default": "",
       "globalDefault": true
     },
-    "styleFooter": {
+    "modFooter": {
       "type": [
         "String"
       ],
       "default": "",
       "globalDefault": true
     },
-    "styleContent": {
+    "modContent": {
       "type": [
         "String"
       ],
@@ -44,8 +44,7 @@
     },
     "variant": {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": ""
     },
@@ -163,6 +162,13 @@
       "globalDefault": true
     },
     "closeButton": {
+      "type": [
+        "Object"
+      ],
+      "default": {},
+      "globalDefault": true
+    },
+    "backdrop": {
       "type": [
         "Object"
       ],

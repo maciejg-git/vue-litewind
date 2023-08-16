@@ -11,7 +11,7 @@
     "noHeader": "When `true` the header slot content and close button is not rendered",
     "closeButton": "Attributes of v-close-button component. See documentation for valid values",
     "transition": "Sets animation effect when showing or hiding sidepanel. Valid values are: 'fade-slide' or `empty string` to disable animations. Animation speed can be set in `--sidepanel-transition-duration` css variable.",
-    "styleSidepanel": "Main sidepanel element"
+    "modSidepanel": "Main sidepanel element"
   },
   "emits": {
     "update:modelValue": ""

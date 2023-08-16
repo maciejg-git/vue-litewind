@@ -7,42 +7,42 @@
       ],
       "default": ""
     },
-    "styleTable": {
+    "modTable": {
       "type": [
         "String"
       ],
       "default": "",
       "globalDefault": true
     },
-    "styleHeaderRow": {
+    "modHeaderRow": {
       "type": [
         "String"
       ],
       "default": "",
       "globalDefault": true
     },
-    "styleHeaderCell": {
+    "modHeaderCell": {
       "type": [
         "String"
       ],
       "default": "",
       "globalDefault": true
     },
-    "styleRow": {
+    "modRow": {
       "type": [
         "String"
       ],
       "default": "",
       "globalDefault": true
     },
-    "styleCell": {
+    "modCell": {
       "type": [
         "String"
       ],
       "default": "",
       "globalDefault": true
     },
-    "styleCaption": {
+    "modCaption": {
       "type": [
         "String"
       ],
@@ -58,8 +58,7 @@
     },
     "variant": {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": ""
     },

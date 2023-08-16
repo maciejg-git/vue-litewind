@@ -16,22 +16,21 @@
         "String"
       ],
       "default": "empty string",
-      "prop": "name",
-      "description": "Name of the component"
+      "globalDefault": true,
+      "prop": "mod-card",
+      "description": "Main card element"
     },
     {
       "type": [
         "String"
       ],
       "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-card",
-      "description": "Main card element"
+      "prop": "name",
+      "description": "Name of the component"
     },
     {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": "empty string",
       "prop": "variant",

@@ -4,7 +4,6 @@
       <v-select
         v-model="example.model"
         :items="example.items"
-        style-menu="shadow"
       ></v-select>
     </div>
     <div class="md:ml-10 mt-6 md:mt-0">

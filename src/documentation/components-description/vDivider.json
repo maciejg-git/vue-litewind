@@ -3,7 +3,7 @@
   "props": {
     "base": "",
     "variant": "",
-    "styleDivider": "Main divider element"
+    "modDivider": "Main divider element"
   },
   "emits": {},
   "slots": {},

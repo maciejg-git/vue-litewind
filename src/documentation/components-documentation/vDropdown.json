@@ -51,6 +51,24 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-header",
+      "description": "Style of menu header"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-item",
+      "description": "Style of menu item"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
       "prop": "name",
       "description": "Name of the component"
     },
@@ -85,24 +103,6 @@
       "type": [
         "String"
       ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-header",
-      "description": "Style of menu header"
-    },
-    {
-      "type": [
-        "String"
-      ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-item",
-      "description": "Style of menu item"
-    },
-    {
-      "type": [
-        "String"
-      ],
       "default": "\"fade-scale\"",
       "globalDefault": true,
       "prop": "transition",
@@ -118,8 +118,7 @@
     },
     {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": "empty string",
       "prop": "variant",

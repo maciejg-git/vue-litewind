@@ -9,7 +9,6 @@
         :items="example.items"
         :state="example.state"
         :is-loading="example.isLoading"
-        style-menu="shadow"
         @input:value="debouncedQuery($event)"
         autocomplete
       ></v-select>

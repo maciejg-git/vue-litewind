@@ -7,27 +7,6 @@
       ],
       "default": ""
     },
-    "styleRange": {
-      "type": [
-        "String"
-      ],
-      "default": "",
-      "globalDefault": true
-    },
-    "base": {
-      "type": [
-        "String"
-      ],
-      "default": "range",
-      "globalDefault": true
-    },
-    "variant": {
-      "type": [
-        "String",
-        "Boolean"
-      ],
-      "default": ""
-    },
     "modelValue": {
       "type": [
         "String",

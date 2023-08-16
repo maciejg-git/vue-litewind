@@ -7,21 +7,21 @@
       ],
       "default": ""
     },
-    "styleFolder": {
+    "modFolder": {
       "type": [
         "String"
       ],
       "default": "",
       "globalDefault": true
     },
-    "styleItem": {
+    "modItem": {
       "type": [
         "String"
       ],
       "default": "",
       "globalDefault": true
     },
-    "styleIcon": {
+    "modIcon": {
       "type": [
         "String"
       ],
@@ -37,8 +37,7 @@
     },
     "variant": {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": ""
     },

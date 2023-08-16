@@ -1,7 +1,7 @@
 <template>
   <!-- model collapse accordion -->
 
-  <p class="mt-8 mb-4">Accordion - controlled by models</p>
+  <p class="mb-4 mt-8">Accordion - controlled by models</p>
 
   <v-accordion class="my-2">
     <v-card>
@@ -55,18 +55,15 @@
 
   <!-- reference slot accordion -->
 
-  <p class="mt-8 mb-4">Accordion - controlled from reference slot</p>
+  <p class="mb-4 mt-8">Accordion - controlled from reference slot</p>
 
   <v-accordion class="my-2">
-    <v-card
-      base="flat-card"
-      style-card="shadow"
-    >
+    <v-card mod-card="shape:square">
       <v-collapse>
         <template #reference="{ isOpen, onTrigger }">
           <v-button-chevron
             :switch="isOpen"
-            base="plain-button"
+            mod-button="preset:plain"
             block
             class="p-3"
             :chevron="{ class: 'ml-auto' }"
@@ -82,15 +79,14 @@
     </v-card>
 
     <v-card
-      base="flat-card"
-      style-card="shadow"
+      mod-card="shape:square"
       class="my-2"
     >
       <v-collapse>
         <template #reference="{ isOpen, onTrigger }">
           <v-button-chevron
             :switch="isOpen"
-            base="plain-button"
+            mod-button="preset:plain"
             block
             class="p-3"
             :chevron="{ class: 'ml-auto' }"
@@ -106,15 +102,14 @@
     </v-card>
 
     <v-card
-      base="flat-card"
-      style-card="shadow"
+      mod-card="shape:square"
       class="my-2"
     >
       <v-collapse>
         <template #reference="{ isOpen, onTrigger }">
           <v-button-chevron
             :switch="isOpen"
-            base="plain-button"
+            mod-button="preset:plain"
             block
             class="p-3"
             :chevron="{ class: 'ml-auto' }"

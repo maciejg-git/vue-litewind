@@ -23,7 +23,7 @@
         <header class="font-semibold text-lg dark:text-text-200 mb-2">
         Simple checkbox
         </header>
-        <code class="code-text">v-checkbox-simple</code> is a lighter, simpler checkbox variant that can be used in lists, tables etc. Simple checkbox only has <code class="code-text">style-checkbox</code> and <code class="code-text">base</code> prop. It does not allow <code class="code-text">v-model</code> but <code class="code-text">:checked</code> prop and <code class="code-text">@changed</code> event can be used instead.
+        <code class="code-text">v-checkbox-simple</code> is a lighter, simpler checkbox variant that can be used in lists, tables etc. Simple checkbox only has <code class="code-text">mod-checkbox</code> and <code class="code-text">base</code> prop. It does not allow <code class="code-text">v-model</code> but <code class="code-text">:checked</code> prop and <code class="code-text">@changed</code> event can be used instead.
       </li>
     </ul>
   </section>

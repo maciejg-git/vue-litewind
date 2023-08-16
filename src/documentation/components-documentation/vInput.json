@@ -99,6 +99,42 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-close-button-wrapper",
+      "description": "Wrapper element of clear button"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-icon",
+      "description": "Icon element if icon prop is true"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-input",
+      "description": "Main input element"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-label",
+      "description": "Label element if label prop is set"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
       "prop": "name",
       "description": "Name of the component"
     },
@@ -146,42 +182,6 @@
     },
     {
       "type": [
-        "String"
-      ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-close-button-wrapper",
-      "description": ""
-    },
-    {
-      "type": [
-        "String"
-      ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-icon",
-      "description": "Icon element if icon prop is true"
-    },
-    {
-      "type": [
-        "String"
-      ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-input",
-      "description": "Main input element"
-    },
-    {
-      "type": [
-        "String"
-      ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-label",
-      "description": "Label element if label prop is set"
-    },
-    {
-      "type": [
         "Boolean"
       ],
       "default": false,
@@ -214,8 +214,7 @@
     },
     {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": "empty string",
       "prop": "variant",

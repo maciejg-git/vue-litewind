@@ -48,8 +48,9 @@
         "String"
       ],
       "default": "empty string",
-      "prop": "name",
-      "description": "Name of the component"
+      "globalDefault": true,
+      "prop": "mod-button",
+      "description": ""
     },
     {
       "type": [
@@ -57,7 +58,7 @@
       ],
       "default": "empty string",
       "globalDefault": true,
-      "prop": "style-dots",
+      "prop": "mod-dots",
       "description": "Style of dots separating pages"
     },
     {
@@ -66,16 +67,7 @@
       ],
       "default": "empty string",
       "globalDefault": true,
-      "prop": "style-next",
-      "description": "Style of next page button"
-    },
-    {
-      "type": [
-        "String"
-      ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-page",
+      "prop": "mod-page",
       "description": "Style of single page button"
     },
     {
@@ -84,7 +76,7 @@
       ],
       "default": "empty string",
       "globalDefault": true,
-      "prop": "style-pagination-bar",
+      "prop": "mod-pagination-bar",
       "description": "Main pagination bar element"
     },
     {
@@ -92,14 +84,12 @@
         "String"
       ],
       "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-prev",
-      "description": "Style of next page button"
+      "prop": "name",
+      "description": "Name of the component"
     },
     {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": "empty string",
       "prop": "variant",

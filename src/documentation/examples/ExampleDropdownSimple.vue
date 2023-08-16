@@ -15,7 +15,6 @@
 
     <v-card
       width="320px"
-      style-card="menu shadow"
     >
       <v-dropdown-menu-item tag="button">
         Menu item

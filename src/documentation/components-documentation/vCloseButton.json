@@ -6,10 +6,28 @@
       "type": [
         "String"
       ],
-      "default": "\"close-button\"",
+      "default": "\"closeButton\"",
       "globalDefault": true,
       "prop": "base",
       "description": "Base name used to style component"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-close-button",
+      "description": "Icon element"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-wrapper",
+      "description": "Wrapper button element"
     },
     {
       "type": [
@@ -22,25 +40,6 @@
     {
       "type": [
         "String"
-      ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-close-button",
-      "description": "Icon element"
-    },
-    {
-      "type": [
-        "String"
-      ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-wrapper",
-      "description": "Wrapper button element"
-    },
-    {
-      "type": [
-        "String",
-        "Boolean"
       ],
       "default": "empty string",
       "prop": "variant",

@@ -16,11 +16,20 @@
         "Object"
       ],
       "default": {
-        "base": "round-close-button",
-        "styleCloseButton": "small"
+        "base": "roundCloseButton",
+        "modCloseButton": "size:small"
       },
       "prop": "close-button",
       "description": "Attributes of input v-close-button component"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-chip",
+      "description": "Main chip element"
     },
     {
       "type": [
@@ -33,16 +42,6 @@
     {
       "type": [
         "String"
-      ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-chip",
-      "description": "Main chip element"
-    },
-    {
-      "type": [
-        "String",
-        "Boolean"
       ],
       "default": "empty string",
       "prop": "variant",

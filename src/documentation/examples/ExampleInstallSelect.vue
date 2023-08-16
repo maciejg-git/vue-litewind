@@ -6,14 +6,10 @@
       { text: 'false', value: false },
     ]"
     :input="{
-      base: 'underlined-input',
-      styleIcon: 'true:valid false:invalid',
+      base: 'underlinedInput',
+      modIcon: 'true?variant:valid false?variant:invalid',
       icon: currentValue ? 'b-check-lg' : 'b-x',
-      variant: currentValue,
-    }"
-    :card="{
-      base: 'flat-card',
-      styleCard: 'menu shadow',
+      variant: currentValue ? 'true' : 'false',
     }"
     @click:icon="handleClickIcon"
     :offsetY="5"

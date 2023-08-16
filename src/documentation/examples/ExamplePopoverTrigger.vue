@@ -1,7 +1,8 @@
 <template>
   <v-popover id="popover" title="Popover title" placement="right" :offsetY="10">
-    <v-card style-card="popover shadow">
-      This is popover.
+    <v-card width="220px">
+      <v-popover-header />
+      <div class="p-5">This is popover.</div>
     </v-card>
   </v-popover>
 

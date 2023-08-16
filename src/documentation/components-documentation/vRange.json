@@ -15,36 +15,9 @@
       "type": [
         "String"
       ],
-      "default": "\"range\"",
-      "globalDefault": true,
-      "prop": "base",
-      "description": "Base name used to style component"
-    },
-    {
-      "type": [
-        "String"
-      ],
       "default": "empty string",
       "prop": "name",
       "description": "Name of the component"
-    },
-    {
-      "type": [
-        "String"
-      ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-range",
-      "description": "Main input element"
-    },
-    {
-      "type": [
-        "String",
-        "Boolean"
-      ],
-      "default": "empty string",
-      "prop": "variant",
-      "description": "Active variant of the elements style"
     }
   ],
   "events": [],

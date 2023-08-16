@@ -1,0 +1,15 @@
+{
+  "name": "vNotifyContainer",
+  "props": {
+    "name": "",
+    "direction": "",
+    "autoDismissDelay": "",
+    "dismissable": "",
+    "static": "",
+    "notify": ""
+  },
+  "emits": {},
+  "slots": {},
+  "functions": {},
+  "components": {}
+}

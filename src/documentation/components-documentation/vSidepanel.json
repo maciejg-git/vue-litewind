@@ -30,6 +30,15 @@
     },
     {
       "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-sidepanel",
+      "description": "Main sidepanel element"
+    },
+    {
+      "type": [
         "Boolean"
       ],
       "default": false,
@@ -75,15 +84,6 @@
       "type": [
         "String"
       ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-sidepanel",
-      "description": "Main sidepanel element"
-    },
-    {
-      "type": [
-        "String"
-      ],
       "default": "\"fade-slide\"",
       "globalDefault": true,
       "prop": "transition",
@@ -91,8 +91,7 @@
     },
     {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": "empty string",
       "prop": "variant",

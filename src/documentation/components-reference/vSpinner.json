@@ -7,7 +7,14 @@
       ],
       "default": ""
     },
-    "styleSpinner": {
+    "modSpinner": {
+      "type": [
+        "String"
+      ],
+      "default": "",
+      "globalDefault": true
+    },
+    "modContainer": {
       "type": [
         "String"
       ],
@@ -23,8 +30,7 @@
     },
     "variant": {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": ""
     },

@@ -1,5 +1,5 @@
 {
-  "name": "vBackdrop",
+  "name": "vNotifyContainer",
   "props": {
     "name": {
       "type": [
@@ -7,37 +7,36 @@
       ],
       "default": ""
     },
-    "modBackdrop": {
+    "direction": {
       "type": [
         "String"
       ],
-      "default": "",
-      "globalDefault": true
+      "default": "new-on-bottom"
     },
-    "base": {
+    "autoDismissDelay": {
       "type": [
-        "String"
+        "Number"
       ],
-      "default": "backdrop",
-      "globalDefault": true
+      "default": 4000
     },
-    "variant": {
+    "dismissable": {
       "type": [
-        "String"
+        "Boolean"
       ],
-      "default": ""
+      "default": true
     },
-    "isOpen": {
+    "static": {
       "type": [
         "Boolean"
       ],
       "default": false
     },
-    "position": {
+    "notify": {
       "type": [
-        "String"
+        "Object"
       ],
-      "default": "fixed"
+      "default": {},
+      "globalDefault": true
     }
   },
   "emits": [],

@@ -7,7 +7,7 @@
       ],
       "default": ""
     },
-    "styleChip": {
+    "modChip": {
       "type": [
         "String"
       ],
@@ -23,8 +23,7 @@
     },
     "variant": {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": ""
     },
@@ -33,8 +32,8 @@
         "Object"
       ],
       "default": {
-        "base": "round-close-button",
-        "styleCloseButton": "small"
+        "base": "roundCloseButton",
+        "modCloseButton": "size:small"
       }
     }
   },

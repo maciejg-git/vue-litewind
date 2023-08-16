@@ -34,6 +34,15 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-header",
+      "description": "Style of the header element"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
       "prop": "name",
       "description": "Name of the component"
     },
@@ -68,15 +77,6 @@
       "type": [
         "String"
       ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-header",
-      "description": "Style of the header element"
-    },
-    {
-      "type": [
-        "String"
-      ],
       "default": "undefined",
       "prop": "title",
       "description": "Title displayed in popover header"
@@ -100,8 +100,7 @@
     },
     {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": "empty string",
       "prop": "variant",

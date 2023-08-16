@@ -5,8 +5,8 @@
     inline
     icon="b-exclamation-circle"
     clearable
-    style-close-button-wrapper="if-hover"
-    style-icon="if-focused"
+    mod-close-button-wrapper="effect:showOnHover"
+    mod-icon="effect:showOnFocus"
     placeholder="Type something..."
   ></v-input>
 </template>

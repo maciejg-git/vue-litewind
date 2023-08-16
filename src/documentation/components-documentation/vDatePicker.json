@@ -63,6 +63,69 @@
     },
     {
       "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-button",
+      "description": "Next and previous month/year buttons"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-date",
+      "description": "Current selected month and year"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-datepicker",
+      "description": "Main component wrapper"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-day",
+      "description": "Single day"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-footer",
+      "description": "Footer with today date"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-weekday",
+      "description": "Single weekday name"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-weekday-bar",
+      "description": "Weekday names bar"
+    },
+    {
+      "type": [
         "Boolean"
       ],
       "default": false,
@@ -83,7 +146,7 @@
         "Object"
       ],
       "default": {
-        "styleButton": "primary small"
+        "modButton": "variant:primary size:small"
       },
       "globalDefault": true,
       "prop": "primary-button",
@@ -119,7 +182,7 @@
         "Object"
       ],
       "default": {
-        "styleButton": "secondary small"
+        "modButton": "variant:secondary size:small"
       },
       "globalDefault": true,
       "prop": "secondary-button",
@@ -138,77 +201,13 @@
       "type": [
         "String"
       ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-adjacent-month-day",
-      "description": "Days from adjacent months"
-    },
-    {
-      "type": [
-        "String"
-      ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-button",
-      "description": "Next and previous month/year buttons"
-    },
-    {
-      "type": [
-        "String"
-      ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-datepicker",
-      "description": "Main component wrapper"
-    },
-    {
-      "type": [
-        "String"
-      ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-day",
-      "description": "Single day"
-    },
-    {
-      "type": [
-        "String"
-      ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-footer",
-      "description": "Footer with today date"
-    },
-    {
-      "type": [
-        "String"
-      ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-weekday",
-      "description": "Single weekday name"
-    },
-    {
-      "type": [
-        "String"
-      ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-weekday-bar",
-      "description": "Weekday names bar"
-    },
-    {
-      "type": [
-        "String"
-      ],
       "default": "\"fade\"",
       "prop": "transition",
       "description": "Transition when switching months or years. Valid values are 'fade', 'slide' or `empty string` for no transition"
     },
     {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": "empty string",
       "prop": "variant",

@@ -32,6 +32,24 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-tab",
+      "description": "Single tab style"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-tab-bar",
+      "description": "Tab bar style"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
       "prop": "name",
       "description": "Name of the component"
     },
@@ -47,24 +65,6 @@
       "type": [
         "String"
       ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-tab",
-      "description": "Single tab style"
-    },
-    {
-      "type": [
-        "String"
-      ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-tab-bar",
-      "description": "Tab bar style"
-    },
-    {
-      "type": [
-        "String"
-      ],
       "default": "\"fade\"",
       "globalDefault": true,
       "prop": "transition",
@@ -72,8 +72,7 @@
     },
     {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": "empty string",
       "prop": "variant",

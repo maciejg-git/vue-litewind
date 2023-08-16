@@ -16,16 +16,8 @@
         "String"
       ],
       "default": "empty string",
-      "prop": "name",
-      "description": "Name of the component"
-    },
-    {
-      "type": [
-        "String"
-      ],
-      "default": "empty string",
       "globalDefault": true,
-      "prop": "style-item",
+      "prop": "mod-item",
       "description": "List item style"
     },
     {
@@ -34,8 +26,16 @@
       ],
       "default": "empty string",
       "globalDefault": true,
-      "prop": "style-list",
-      "description": "Defines tag to use in list item child component (for example 'div', 'a' or 'button')"
+      "prop": "mod-list",
+      "description": "List style"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "name",
+      "description": "Name of the component"
     },
     {
       "type": [
@@ -48,8 +48,7 @@
     },
     {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": "empty string",
       "prop": "variant",

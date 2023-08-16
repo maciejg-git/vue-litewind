@@ -18,7 +18,6 @@
 
     <v-card
       width="320px"
-      style-card="shadow"
       class="flex flex-col items-center py-3"
     >
       <v-dropdown-menu-item tag="button">

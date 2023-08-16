@@ -16,6 +16,33 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-icon",
+      "description": "Icon element of the first item"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-item",
+      "description": "Breadcrumb item"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-separator",
+      "description": "Breadcrumb separator"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
       "prop": "name",
       "description": "Name of the component"
     },
@@ -39,34 +66,6 @@
     {
       "type": [
         "String"
-      ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-active",
-      "description": "Active link in path"
-    },
-    {
-      "type": [
-        "String"
-      ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-breadcrumb",
-      "description": "Breadcrumb link"
-    },
-    {
-      "type": [
-        "String"
-      ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-separator",
-      "description": "Breadcrumb separator"
-    },
-    {
-      "type": [
-        "String",
-        "Boolean"
       ],
       "default": "empty string",
       "prop": "variant",

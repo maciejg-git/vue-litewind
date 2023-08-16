@@ -11,7 +11,7 @@
     <template #item-append="{ item }">
       <v-badge
         v-if="item.badge"
-        style-badge="tiny"
+        mod-badge="size:tiny"
         class="ml-2"
       >
         {{ item.badge }}
@@ -20,14 +20,14 @@
   </v-tree>
 
   <v-button
-    style-button="small"
+    mod-button="size:small"
     class="mr-4 mt-8"
     @click="treeRef.openAllLevel(9999)"
   >
     Open all
   </v-button>
   <v-button
-    style-button="small"
+    mod-button="size:small"
     @click="treeRef.closeAll()"
   >
     Close all

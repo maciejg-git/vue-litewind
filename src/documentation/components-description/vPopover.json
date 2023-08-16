@@ -10,7 +10,7 @@
     "trigger": "How to trigger dropdown. Valid triggers are 'click', 'focus' and 'hover'",
     "title": "Title displayed in popover header",
     "transition": "Sets animation effect when showing or hiding popover. Valid values are: 'fade' or `empty string` to disable animations.",
-    "styleHeader": "Style of the header element"
+    "modHeader": "Style of the header element"
   },
   "emits": {},
   "slots": {

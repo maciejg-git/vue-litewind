@@ -7,35 +7,28 @@
       ],
       "default": ""
     },
-    "stylePaginationBar": {
+    "modPaginationBar": {
       "type": [
         "String"
       ],
       "default": "",
       "globalDefault": true
     },
-    "stylePage": {
+    "modPage": {
       "type": [
         "String"
       ],
       "default": "",
       "globalDefault": true
     },
-    "styleDots": {
+    "modDots": {
       "type": [
         "String"
       ],
       "default": "",
       "globalDefault": true
     },
-    "styleNext": {
-      "type": [
-        "String"
-      ],
-      "default": "",
-      "globalDefault": true
-    },
-    "stylePrev": {
+    "modButton": {
       "type": [
         "String"
       ],
@@ -51,8 +44,7 @@
     },
     "variant": {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": ""
     },

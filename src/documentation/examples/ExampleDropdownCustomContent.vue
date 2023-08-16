@@ -10,10 +10,7 @@
       </v-button-chevron>
     </template>
 
-    <v-card
-      width="280px"
-      style-card="menu shadow"
-    >
+    <v-card width="280px">
       <div class="px-4 py-1">
         <v-input
           v-model="filter"

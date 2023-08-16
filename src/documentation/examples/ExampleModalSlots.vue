@@ -4,7 +4,7 @@
   <v-modal
     v-model="isVisible"
     size="fit"
-    style-modal="square"
+    mod-modal="shape:square"
   >
     <template #modal="{ close }">
       <div class="group">
@@ -32,8 +32,7 @@
         </div>
         <v-button
           @click="prev()"
-          base="plain-button"
-          style-button="light"
+          mod-button="preset:plain"
           class="absolute -translate-y-1/2 top-1/2 left-5 duration-300 transition-opacity text-white opacity-0 group-hover:opacity-80"
         >
           <v-icon
@@ -43,8 +42,7 @@
         </v-button>
         <v-button
           @click="next()"
-          base="plain-button"
-          style-button="light"
+          mod-button="preset:plain"
           class="absolute -translate-y-1/2 top-1/2 right-5 duration-300 transition-opacity text-white opacity-0 group-hover:opacity-80"
         >
           <v-icon

@@ -6,7 +6,6 @@
         :items="example.items"
         multiple
         :max-multiple="2"
-        style-menu="shadow"
       >
         <template #max-multiple>
           (+{{ example.model.length - 2}} others)

@@ -7,7 +7,7 @@
       ],
       "default": ""
     },
-    "styleSidepanel": {
+    "modSidepanel": {
       "type": [
         "String"
       ],
@@ -23,8 +23,7 @@
     },
     "variant": {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": ""
     },

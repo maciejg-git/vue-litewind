@@ -32,17 +32,17 @@
         "String"
       ],
       "default": "empty string",
-      "prop": "name",
-      "description": "Name of the component"
+      "globalDefault": true,
+      "prop": "mod-button",
+      "description": "Main button element"
     },
     {
       "type": [
         "String"
       ],
       "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-button",
-      "description": "Main button element"
+      "prop": "name",
+      "description": "Name of the component"
     },
     {
       "type": [
@@ -54,8 +54,7 @@
     },
     {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": "empty string",
       "prop": "variant",

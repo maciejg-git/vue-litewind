@@ -7,14 +7,14 @@
       ],
       "default": ""
     },
-    "styleWrapper": {
+    "modCloseButton": {
       "type": [
         "String"
       ],
       "default": "",
       "globalDefault": true
     },
-    "styleCloseButton": {
+    "modWrapper": {
       "type": [
         "String"
       ],
@@ -25,13 +25,12 @@
       "type": [
         "String"
       ],
-      "default": "close-button",
+      "default": "closeButton",
       "globalDefault": true
     },
     "variant": {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": ""
     }

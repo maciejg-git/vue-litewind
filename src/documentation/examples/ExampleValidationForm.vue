@@ -50,7 +50,7 @@
 
       <div class="self-end mt-20">
         <v-button
-          style-button="secondary"
+          mod-button="variant:secondary"
           @click="form.reset()"
           class="mr-4"
         >

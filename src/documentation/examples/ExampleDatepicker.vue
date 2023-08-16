@@ -1,9 +1,6 @@
 <template>
-  <div class="flex flex-col xl:flex-row items-between">
-    <v-card
-      style-card="shadow"
-      class="self-start p-2 flex-none w-[320px]"
-    >
+  <div class="items-between flex flex-col xl:flex-row">
+    <v-card class="w-[320px] flex-none self-start p-2">
       <v-date-picker
         v-model="example.date"
         :range="example.range"
@@ -23,10 +20,10 @@
       ></v-date-picker>
     </v-card>
     <!-- CUT START -->
-    <div class="flex-grow mt-4 xl:ml-20 xl:mt-0">
+    <div class="mt-4 flex-grow xl:ml-20 xl:mt-0">
       <v-tabs base="materialTabs">
         <v-tab name="Props">
-          <div class="flex flex-col gap-y-2 mt-5">
+          <div class="mt-5 flex flex-col gap-y-2">
             <div>
               <label
                 for="model"

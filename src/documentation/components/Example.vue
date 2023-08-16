@@ -10,7 +10,6 @@
   >
     <v-button
       mod-button="preset:plain"
-      style-button="bold"
       class="mt-2 ml-auto"
       @click="isCodeVisible = !isCodeVisible"
     >

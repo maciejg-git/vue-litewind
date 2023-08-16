@@ -4,11 +4,53 @@
   "props": [
     {
       "type": [
+        "String"
+      ],
+      "default": "\"backdrop\"",
+      "globalDefault": true,
+      "prop": "base",
+      "description": "Base name used to style component"
+    },
+    {
+      "type": [
         "Boolean"
       ],
       "default": false,
       "prop": "is-open",
       "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-backdrop",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "name",
+      "description": "Name of the component"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "\"fixed\"",
+      "prop": "position",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "variant",
+      "description": "Active variant of the elements style"
     }
   ],
   "events": [],

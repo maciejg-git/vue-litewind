@@ -7,8 +7,8 @@
     "rules": "",
     "validateMode": "",
     "label": "Radio label",
-    "styleRadio": "Main input element",
-    "styleLabel": "Input label element",
+    "modRadio": "Main input element",
+    "modLabel": "Input label element",
     "state": ""
   },
   "emits": {

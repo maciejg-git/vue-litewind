@@ -20,7 +20,7 @@
       </v-checkbox-group>
       <v-button
         class="mt-10 mr-4"
-        style-button="secondary"
+        mod-button="variant:secondary"
         @click="group.reset()"
       >
         Reset

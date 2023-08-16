@@ -10,11 +10,11 @@
 
     <!-- rounded -->
 
-    <!-- <v-input -->
-    <!--   v-model="example" -->
-    <!--   base="rounded-input" -->
-    <!--   placeholder="Type something..." -->
-    <!-- ></v-input> -->
+    <v-input
+      v-model="example"
+      base="roundedInput"
+      placeholder="Type something..."
+    ></v-input>
   </div>
 </template>
 

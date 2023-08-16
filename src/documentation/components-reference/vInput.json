@@ -7,28 +7,28 @@
       ],
       "default": ""
     },
-    "styleInput": {
+    "modInput": {
       "type": [
         "String"
       ],
       "default": "",
       "globalDefault": true
     },
-    "styleIcon": {
+    "modIcon": {
       "type": [
         "String"
       ],
       "default": "",
       "globalDefault": true
     },
-    "styleCloseButtonWrapper": {
+    "modCloseButtonWrapper": {
       "type": [
         "String"
       ],
       "default": "",
       "globalDefault": true
     },
-    "styleLabel": {
+    "modLabel": {
       "type": [
         "String"
       ],
@@ -44,8 +44,7 @@
     },
     "variant": {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": ""
     },

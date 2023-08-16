@@ -22,11 +22,10 @@
     "size": "Modal size. Valid values are: 'sm', 'md', 'lg', 'xl' or 'fit' ",
     "closeButton": "Attributes of v-close-button component. See documentation for valid values",
     "transition": "Sets animation effect when showing or hiding modal. Valid values are: 'fade', 'fade-slide', 'fade-scale' or `empty string` to disable animations. Animation speed can be set in `--modal-transition-duration` css variable.",
-    "styleModal": "Style of modal window",
-    "styleHeader": "Style of modal header",
-    "styleFooter": "Style of modal footer",
-    "styleContent": "Style of content part of modal window",
-    "styleBackdrop": "Style of backdrop. Useful mainly for setting tint and opactity for modal background"
+    "modModal": "Style of modal window",
+    "modHeader": "Style of modal header",
+    "modFooter": "Style of modal footer",
+    "modContent": "Style of content part of modal window"
   },
   "emits": {
     "input:primary-button-click": "Emmited after clicking primary button",

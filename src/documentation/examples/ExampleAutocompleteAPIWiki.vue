@@ -10,8 +10,7 @@
         :state="example.state"
         :is-loading="example.isLoading"
         :offset-y="0"
-        :input="{ base: 'input-material' }"
-        :card="{ base: 'flat-card' }"
+        :input="{ base: 'underlinedInput' }"
         @input:value="debouncedQuery($event)"
       ></v-autocomplete>
     </div>
@@ -23,8 +22,7 @@
 
   <v-card
     v-if="current"
-    base="flat-card"
-    style-card="rounded"
+    mod-card="shape:square border:borderless"
     class="p-4 mt-6"
   >
     <ul>

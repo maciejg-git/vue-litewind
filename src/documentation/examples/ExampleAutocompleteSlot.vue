@@ -7,17 +7,14 @@
         :is-loading="example.isLoading"
         item-text="full_name"
         item-value="id"
-        style-menu="shadow"
         no-filter
         @input:value="query($event)"
       >
-        <template #menu-item="{ item, inputValue, isSelected }">
+        <template #menu-item="{ item, isSelected, highlight }">
           <div class="flex justify-between">
             <div
               v-html="
-                isSelected
-                  ? item['full_name']
-                  : highlight(item['full_name'], inputValue)
+                isSelected ? item['full_name'] : highlight(item['full_name'])
               "
             ></div>
             <div class="text-xs">{{ item.department }}</div>
@@ -26,10 +23,9 @@
             {{ item.title }}
           </span>
         </template>
-        <template #menu-append>items</template>
       </v-autocomplete>
     </div>
-    <div class="w-1/2 ml-10">
+    <div class="ml-10 w-1/2">
       <span class="font-semibold">v-model:</span>
       {{ example.model }}
     </div>
@@ -39,7 +35,6 @@
 <script setup>
 import { reactive } from "vue";
 import company from "../example-data/company.json";
-import { highlight } from "../../tools";
 
 let example = reactive({
   model: "",

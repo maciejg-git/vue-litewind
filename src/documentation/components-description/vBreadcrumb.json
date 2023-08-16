@@ -5,9 +5,9 @@
     "variant": "",
     "path": "Path of links to render",
     "separator": "Character or string that seperates elements of the path",
-    "styleBreadcrumb": "Breadcrumb link",
-    "styleSeparator": "Breadcrumb separator",
-    "styleActive": "Active link in path"
+    "modItem": "Breadcrumb item",
+    "modSeparator": "Breadcrumb separator",
+    "modIcon": "Icon element of the first item"
   },
   "emits": {},
   "slots": {},

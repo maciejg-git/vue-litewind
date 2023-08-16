@@ -40,6 +40,15 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-chevron",
+      "description": "Chevron element"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
       "prop": "name",
       "description": "Name of the component"
     },
@@ -50,15 +59,6 @@
       "default": false,
       "prop": "rotate-90",
       "description": "If `true` rotates chevron 90 degrees. Default is 180 degrees"
-    },
-    {
-      "type": [
-        "String"
-      ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-chevron",
-      "description": "Chevron element"
     },
     {
       "type": [
@@ -79,8 +79,7 @@
     },
     {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": "empty string",
       "prop": "variant",

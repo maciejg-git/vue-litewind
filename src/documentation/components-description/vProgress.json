@@ -9,9 +9,9 @@
     "precision": "Number of digits after dot in progress value, minimum = 0, maximum = 100",
     "indeterminate": "Renders indeterminate progress bar. <span class='font-semibold'>Note</span>: value, max, label, precision and transition props are ignored if indeterminate is true. You can switch between indeterminate or determinate by flicking this prop on and off",
     "transition": "Add smooth animation when value change",
-    "styleProgress": "Main progress element",
-    "styleProgressBar": "Progress bar element",
-    "styleLabel": "Label on progress bar"
+    "modProgress": "Main progress element",
+    "modProgressBar": "Progress bar element",
+    "modLabel": "Label on progress bar"
   },
   "emits": {},
   "slots": {

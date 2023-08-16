@@ -58,16 +58,8 @@
         "String"
       ],
       "default": "empty string",
-      "prop": "name",
-      "description": "Name of the component"
-    },
-    {
-      "type": [
-        "String"
-      ],
-      "default": "empty string",
       "globalDefault": true,
-      "prop": "style-alert",
+      "prop": "mod-alert",
       "description": "Main alert element"
     },
     {
@@ -76,13 +68,20 @@
       ],
       "default": "empty string",
       "globalDefault": true,
-      "prop": "style-icon",
+      "prop": "mod-icon",
       "description": "Default icon element (does not apply to icons in slot)"
     },
     {
       "type": [
-        "String",
-        "Boolean"
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "name",
+      "description": "Name of the component"
+    },
+    {
+      "type": [
+        "String"
       ],
       "default": "empty string",
       "prop": "variant",

@@ -7,14 +7,14 @@
       ],
       "default": ""
     },
-    "styleTextarea": {
+    "modTextarea": {
       "type": [
         "String"
       ],
       "default": "",
       "globalDefault": true
     },
-    "styleLabel": {
+    "modLabel": {
       "type": [
         "String"
       ],
@@ -30,8 +30,7 @@
     },
     "variant": {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": ""
     },

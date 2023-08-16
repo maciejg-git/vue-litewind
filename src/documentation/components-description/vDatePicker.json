@@ -18,13 +18,13 @@
     "primaryButton": "Attributes of primary v-button",
     "secondaryButton": "Attributes of secondary v-button",
     "transition": "Transition when switching months or years. Valid values are 'fade', 'slide' or `empty string` for no transition",
-    "styleDatepicker": "Main component wrapper",
-    "styleWeekdayBar": "Weekday names bar",
-    "styleWeekday": "Single weekday name",
-    "styleButton": "Next and previous month/year buttons",
-    "styleDay": "Single day",
-    "styleAdjacentMonthDay": "Days from adjacent months",
-    "styleFooter": "Footer with today date"
+    "modDatepicker": "Main component wrapper",
+    "modButton": "Next and previous month/year buttons",
+    "modDate": "Current selected month and year",
+    "modWeekdayBar": "Weekday names bar",
+    "modWeekday": "Single weekday name",
+    "modDay": "Single day",
+    "modFooter": "Footer with today date"
   },
   "emits": {
     "update:modelValue": "",

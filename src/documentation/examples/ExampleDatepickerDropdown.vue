@@ -12,10 +12,7 @@
     </template>
 
     <template #default="{ hide }">
-      <v-card
-        style-card="shadow"
-        class="p-2"
-      >
+      <v-card class="p-2">
         <v-date-picker
           v-model="example.date"
           width="305px"

@@ -144,6 +144,15 @@
     },
     {
       "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-item",
+      "description": "Menu item element"
+    },
+    {
+      "type": [
         "Boolean"
       ],
       "default": false,
@@ -207,15 +216,6 @@
       "type": [
         "String"
       ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-item",
-      "description": "Menu item element"
-    },
-    {
-      "type": [
-        "String"
-      ],
       "default": "\"fade-scale\"",
       "globalDefault": true,
       "prop": "transition",
@@ -232,8 +232,7 @@
     },
     {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": "empty string",
       "prop": "variant",

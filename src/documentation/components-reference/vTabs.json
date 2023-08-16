@@ -7,14 +7,14 @@
       ],
       "default": ""
     },
-    "styleTabBar": {
+    "modTabBar": {
       "type": [
         "String"
       ],
       "default": "",
       "globalDefault": true
     },
-    "styleTab": {
+    "modTab": {
       "type": [
         "String"
       ],
@@ -30,8 +30,7 @@
     },
     "variant": {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": ""
     },

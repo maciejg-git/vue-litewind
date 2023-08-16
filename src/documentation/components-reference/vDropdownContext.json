@@ -7,14 +7,14 @@
       ],
       "default": ""
     },
-    "styleItem": {
+    "modItem": {
       "type": [
         "String"
       ],
       "default": "",
       "globalDefault": true
     },
-    "styleHeader": {
+    "modHeader": {
       "type": [
         "String"
       ],
@@ -30,8 +30,7 @@
     },
     "variant": {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": ""
     },

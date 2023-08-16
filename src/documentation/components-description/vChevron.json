@@ -9,7 +9,7 @@
     "clockwise": "Rotate chevron/triangle clockwise. Default is counter clockwise",
     "switch": "Flick this to rotate chevron/triangle to initial/rotated position",
     "icon": "Name of the icon to use instead of default chevron/triangle",
-    "styleChevron": "Chevron element"
+    "modChevron": "Chevron element"
   },
   "emits": {},
   "slots": {},

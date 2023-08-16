@@ -7,49 +7,49 @@
       ],
       "default": ""
     },
-    "styleDatepicker": {
+    "modDatepicker": {
       "type": [
         "String"
       ],
       "default": "",
       "globalDefault": true
     },
-    "styleWeekdayBar": {
+    "modButton": {
       "type": [
         "String"
       ],
       "default": "",
       "globalDefault": true
     },
-    "styleWeekday": {
+    "modDate": {
       "type": [
         "String"
       ],
       "default": "",
       "globalDefault": true
     },
-    "styleButton": {
+    "modWeekdayBar": {
       "type": [
         "String"
       ],
       "default": "",
       "globalDefault": true
     },
-    "styleDay": {
+    "modWeekday": {
       "type": [
         "String"
       ],
       "default": "",
       "globalDefault": true
     },
-    "styleAdjacentMonthDay": {
+    "modDay": {
       "type": [
         "String"
       ],
       "default": "",
       "globalDefault": true
     },
-    "styleFooter": {
+    "modFooter": {
       "type": [
         "String"
       ],
@@ -65,8 +65,7 @@
     },
     "variant": {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": ""
     },
@@ -154,7 +153,7 @@
         "Object"
       ],
       "default": {
-        "styleButton": "primary small"
+        "modButton": "variant:primary size:small"
       },
       "globalDefault": true
     },
@@ -163,7 +162,7 @@
         "Object"
       ],
       "default": {
-        "styleButton": "secondary small"
+        "modButton": "variant:secondary size:small"
       },
       "globalDefault": true
     },

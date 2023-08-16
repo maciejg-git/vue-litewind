@@ -7,7 +7,7 @@
       ],
       "default": ""
     },
-    "styleFormText": {
+    "modFormText": {
       "type": [
         "String"
       ],
@@ -18,13 +18,12 @@
       "type": [
         "String"
       ],
-      "default": "form-text",
+      "default": "formText",
       "globalDefault": true
     },
     "variant": {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": ""
     },

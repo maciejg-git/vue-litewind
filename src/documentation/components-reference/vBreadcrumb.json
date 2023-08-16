@@ -7,21 +7,21 @@
       ],
       "default": ""
     },
-    "styleBreadcrumb": {
+    "modItem": {
       "type": [
         "String"
       ],
       "default": "",
       "globalDefault": true
     },
-    "styleSeparator": {
+    "modSeparator": {
       "type": [
         "String"
       ],
       "default": "",
       "globalDefault": true
     },
-    "styleActive": {
+    "modIcon": {
       "type": [
         "String"
       ],
@@ -37,8 +37,7 @@
     },
     "variant": {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": ""
     },

@@ -1,6 +1,6 @@
 <template>
   <v-dropdown id="dropdown" :offsetY="5">
-    <v-card width="320px" style-card="menu shadow">
+    <v-card width="320px">
       <v-dropdown-menu-item tag="button">
         Menu item
       </v-dropdown-menu-item>

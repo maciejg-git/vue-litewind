@@ -21,7 +21,6 @@
   >
     <v-card
       width="280px"
-      style-card="menu shadow"
     >
       <v-dropdown-menu-item @click="currentLanguage = language">
         Switch to {{ language }}

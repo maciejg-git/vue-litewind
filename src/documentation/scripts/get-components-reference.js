@@ -34,7 +34,7 @@ for (let component in components) {
 
   // props
 
-  if (component[0] === "v") {
+  if (component[0] === "v" && component !== "vueLitewind") {
   if (props) {
     for (let prop in props) {
       if (props[prop].type) {

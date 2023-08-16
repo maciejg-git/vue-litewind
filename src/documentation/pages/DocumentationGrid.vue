@@ -171,7 +171,7 @@
     <p>
       <v-alert
         icon="info"
-        style-alert="info"
+        mod-alert="variant:info"
       >
         Note that
         <code class="code-text">space-*</code>

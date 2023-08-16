@@ -40,14 +40,14 @@
       </v-button>
     </template>
 
-    <template #busy>
-      <div class="my-5 flex justify-center">
-        <v-spinner
-          type="svg"
-          style-spinner="large"
-        />
-      </div>
-    </template>
+    <!-- <template #busy> -->
+    <!--   <div class="my-5 flex justify-center"> -->
+    <!--     <v-spinner -->
+    <!--       type="svg" -->
+    <!--       style-spinner="large" -->
+    <!--     /> -->
+    <!--   </div> -->
+    <!-- </template> -->
 
     <template #caption>Example caption</template>
   </v-table>

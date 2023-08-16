@@ -1,12 +1,12 @@
 {
-  "name": "vFormText",
+  "name": "vNotify",
   "description": "",
   "props": [
     {
       "type": [
         "String"
       ],
-      "default": "\"formText\"",
+      "default": "\"notify\"",
       "globalDefault": true,
       "prop": "base",
       "description": "Base name used to style component"
@@ -16,8 +16,9 @@
         "Object"
       ],
       "default": {},
-      "prop": "messages",
-      "description": "Object with messages to display depending on current state."
+      "globalDefault": true,
+      "prop": "close-button",
+      "description": ""
     },
     {
       "type": [
@@ -25,8 +26,35 @@
       ],
       "default": "empty string",
       "globalDefault": true,
-      "prop": "mod-form-text",
-      "description": "Text element"
+      "prop": "mod-content",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-header",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-icon",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-notify",
+      "description": ""
     },
     {
       "type": [
@@ -38,29 +66,11 @@
     },
     {
       "type": [
-        "Boolean"
+        "Object"
       ],
-      "default": false,
-      "globalDefault": true,
-      "prop": "single-line-message",
-      "description": "Limits the number of displayed errors to one at time"
-    },
-    {
-      "type": [
-        "String"
-      ],
-      "default": "empty string",
-      "prop": "state",
-      "description": "Current state of input"
-    },
-    {
-      "type": [
-        "String"
-      ],
-      "default": "\"fade-scale\"",
-      "globalDefault": true,
-      "prop": "transition",
-      "description": "Transition when showing message. Valid values are 'fade-scale' or `empty string`"
+      "default": {},
+      "prop": "notify-data",
+      "description": ""
     },
     {
       "type": [
@@ -71,13 +81,13 @@
       "description": "Active variant of the elements style"
     }
   ],
-  "events": [],
-  "slots": [
+  "events": [
     {
-      "slot": "message",
-      "description": "Slot for message"
+      "event": "close-button-clicked",
+      "description": ""
     }
   ],
+  "slots": [],
   "functions": [],
   "components": []
 }

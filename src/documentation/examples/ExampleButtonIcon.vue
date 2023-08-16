@@ -5,7 +5,7 @@
       <span class="text-sm">Icon button</span>
     </v-button>
 
-    <v-button style-button="warn">
+    <v-button mod-button="variant:warn">
       <v-icon name="b-star" class="w-5 h-5 mr-2" />
       Icon button
     </v-button>

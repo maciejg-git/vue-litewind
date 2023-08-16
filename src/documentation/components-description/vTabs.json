@@ -7,8 +7,8 @@
     "center": "Centers tabs",
     "right": "Puts tabs on the right",
     "transition": "Sets animation effect when changing tabs. Valid values are 'fade', 'fade-top-slide', 'fade-side-slide' or `empty string` to disabled animations. Animation speed can be set in `--tabs-transition-duration` css variable.",
-    "styleTabBar": "Tab bar style",
-    "styleTab": "Single tab style"
+    "modTabBar": "Tab bar style",
+    "modTab": "Single tab style"
   },
   "emits": {
     "input:changed-tab": "Emitted when another tab is activated"

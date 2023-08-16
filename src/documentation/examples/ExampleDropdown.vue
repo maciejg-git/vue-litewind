@@ -15,10 +15,7 @@
       </v-button-chevron>
     </template>
 
-    <v-card
-      width="320px"
-      style-card="menu shadow"
-    >
+    <v-card width="320px">
       <v-dropdown-menu-item tag="button">Menu item</v-dropdown-menu-item>
       <v-dropdown-menu-item tag="button">Second menu item</v-dropdown-menu-item>
       <v-dropdown-header>Menu header</v-dropdown-header>
@@ -47,7 +44,7 @@
     class="mt-10"
   >
     <v-tab name="Props">
-      <div class="flex flex-col gap-y-2 mt-5">
+      <div class="mt-5 flex flex-col gap-y-2">
         <div>
           <label for="placement">placement:</label>
           <v-select

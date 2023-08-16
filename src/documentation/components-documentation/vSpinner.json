@@ -25,8 +25,9 @@
         "String"
       ],
       "default": "empty string",
-      "prop": "name",
-      "description": "Name of the component"
+      "globalDefault": true,
+      "prop": "mod-container",
+      "description": "Container element"
     },
     {
       "type": [
@@ -34,8 +35,16 @@
       ],
       "default": "empty string",
       "globalDefault": true,
-      "prop": "style-spinner",
+      "prop": "mod-spinner",
       "description": "Main spinner element"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "name",
+      "description": "Name of the component"
     },
     {
       "type": [
@@ -47,8 +56,7 @@
     },
     {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": "empty string",
       "prop": "variant",

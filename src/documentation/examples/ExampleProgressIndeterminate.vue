@@ -13,10 +13,7 @@
 
   <!-- simple indeterminate progress -->
 
-  <v-card
-    style-card="shadow"
-    width="400px"
-  >
+  <v-card width="400px">
     <div class="flex justify-center p-4">Checking for updates...</div>
     <v-progress
       mod-progress="size:tiny"
@@ -30,10 +27,7 @@
 
   <div class="my-6">Combined indeterminate and deteminate example</div>
 
-  <v-card
-    style-card="shadow"
-    width="400px"
-  >
+  <v-card width="400px">
     <div class="flex justify-center p-4">
       <span v-if="example.indeterminate">Checking for updates...</span>
       <span v-if="!example.indeterminate">Updating...</span>

@@ -7,14 +7,14 @@
       ],
       "default": ""
     },
-    "styleAlert": {
+    "modAlert": {
       "type": [
         "String"
       ],
       "default": "",
       "globalDefault": true
     },
-    "styleIcon": {
+    "modIcon": {
       "type": [
         "String"
       ],
@@ -30,8 +30,7 @@
     },
     "variant": {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": ""
     },

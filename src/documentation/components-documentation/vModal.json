@@ -12,6 +12,15 @@
     },
     {
       "type": [
+        "Object"
+      ],
+      "default": {},
+      "globalDefault": true,
+      "prop": "backdrop",
+      "description": ""
+    },
+    {
+      "type": [
         "String"
       ],
       "default": "\"modal\"",
@@ -36,6 +45,42 @@
       "globalDefault": true,
       "prop": "justify-buttons",
       "description": "Use this prop to place buttons in footer. Valid values are: 'start', 'end', 'center', 'between', 'around', 'evenly'"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-content",
+      "description": "Style of content part of modal window"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-footer",
+      "description": "Style of modal footer"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-header",
+      "description": "Style of modal header"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-modal",
+      "description": "Style of modal window"
     },
     {
       "type": [
@@ -171,42 +216,6 @@
       "type": [
         "String"
       ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-content",
-      "description": "Style of content part of modal window"
-    },
-    {
-      "type": [
-        "String"
-      ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-footer",
-      "description": "Style of modal footer"
-    },
-    {
-      "type": [
-        "String"
-      ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-header",
-      "description": "Style of modal header"
-    },
-    {
-      "type": [
-        "String"
-      ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-modal",
-      "description": "Style of modal window"
-    },
-    {
-      "type": [
-        "String"
-      ],
       "default": "undefined",
       "prop": "title",
       "description": "Title displayed in modal header"
@@ -222,8 +231,7 @@
     },
     {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": "empty string",
       "prop": "variant",

@@ -1,0 +1,59 @@
+{
+  "name": "vNotifyContainer",
+  "description": "",
+  "props": [
+    {
+      "type": [
+        "Number"
+      ],
+      "default": 4000,
+      "prop": "auto-dismiss-delay",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "\"new-on-bottom\"",
+      "prop": "direction",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": true,
+      "prop": "dismissable",
+      "description": ""
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "prop": "name",
+      "description": "Name of the component"
+    },
+    {
+      "type": [
+        "Object"
+      ],
+      "default": {},
+      "globalDefault": true,
+      "prop": "notify",
+      "description": ""
+    },
+    {
+      "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "static",
+      "description": ""
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "functions": [],
+  "components": []
+}

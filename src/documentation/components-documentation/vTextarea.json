@@ -52,6 +52,24 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-label",
+      "description": "Label element if `label` prop is set"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-textarea",
+      "description": "Main textarea element"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
       "prop": "name",
       "description": "Name of the component"
     },
@@ -84,24 +102,6 @@
       "type": [
         "String"
       ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-label",
-      "description": "Label element if `label` prop is set"
-    },
-    {
-      "type": [
-        "String"
-      ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-textarea",
-      "description": "Main textarea element"
-    },
-    {
-      "type": [
-        "String"
-      ],
       "default": "\"silent\"",
       "prop": "validate-mode",
       "description": "Valid values are 'silent' or 'eager'. See Form Validation for explanation and examples"
@@ -124,8 +124,7 @@
     },
     {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": "empty string",
       "prop": "variant",

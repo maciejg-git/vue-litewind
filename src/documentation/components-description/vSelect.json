@@ -25,7 +25,7 @@
     "chevron": "Attributes of v-chevron component",
     "itemsPerPage": "Amounts of items to display per page, 0 = all items on single page. Ignored if `no-pagination` is used",
     "transition": "Sets animation effect when showing or hiding autocomplete menu. Valid values are: 'fade' or `empty string` to disable animations. Animation speed can be set in `--autocomplete-transition-duration` css variable.",
-    "styleItem": "Menu item element",
+    "modItem": "Menu item element",
     "placement": "",
     "offsetX": "",
     "offsetY": "",

@@ -1,5 +1,5 @@
 {
-  "name": "vList",
+  "name": "vNotify",
   "props": {
     "name": {
       "type": [
@@ -7,14 +7,28 @@
       ],
       "default": ""
     },
-    "modList": {
+    "modNotify": {
       "type": [
         "String"
       ],
       "default": "",
       "globalDefault": true
     },
-    "modItem": {
+    "modHeader": {
+      "type": [
+        "String"
+      ],
+      "default": "",
+      "globalDefault": true
+    },
+    "modIcon": {
+      "type": [
+        "String"
+      ],
+      "default": "",
+      "globalDefault": true
+    },
+    "modContent": {
       "type": [
         "String"
       ],
@@ -25,7 +39,7 @@
       "type": [
         "String"
       ],
-      "default": "list",
+      "default": "notify",
       "globalDefault": true
     },
     "variant": {
@@ -34,22 +48,22 @@
       ],
       "default": ""
     },
-    "width": {
+    "notifyData": {
       "type": [
-        "String"
+        "Object"
       ],
-      "default": "undefined"
+      "default": {}
     },
-    "tag": {
+    "closeButton": {
       "type": [
-        "String"
+        "Object"
       ],
-      "default": "div",
+      "default": {},
       "globalDefault": true
     }
   },
-  "emits": [],
-  "slots": [
-    "default"
-  ]
+  "emits": [
+    "close-button-clicked"
+  ],
+  "slots": []
 }

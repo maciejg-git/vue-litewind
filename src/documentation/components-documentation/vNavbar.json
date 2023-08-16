@@ -32,6 +32,15 @@
         "String"
       ],
       "default": "empty string",
+      "globalDefault": true,
+      "prop": "mod-navbar",
+      "description": "Main navbar element"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "empty string",
       "prop": "name",
       "description": "Name of the component"
     },
@@ -46,16 +55,6 @@
     {
       "type": [
         "String"
-      ],
-      "default": "empty string",
-      "globalDefault": true,
-      "prop": "style-navbar",
-      "description": "Main navbar element"
-    },
-    {
-      "type": [
-        "String",
-        "Boolean"
       ],
       "default": "empty string",
       "prop": "variant",

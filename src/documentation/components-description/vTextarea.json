@@ -12,8 +12,8 @@
     "label": "Label on top of the textarea. This label is for simple forms as position cannot be changed",
     "noMessages": "If `true` validation messages are not displayed",
     "formText": "Attributes of v-form-text component",
-    "styleTextarea": "Main textarea element",
-    "styleLabel": "Label element if `label` prop is set",
+    "modTextarea": "Main textarea element",
+    "modLabel": "Label element if `label` prop is set",
     "state": ""
   },
   "emits": {

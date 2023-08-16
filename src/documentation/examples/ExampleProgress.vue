@@ -51,14 +51,14 @@
             v-model.number="example.value"
           ></v-input>
           <v-button
-            style-button="small"
+            mod-button="size:small"
             @click="example.value += 10"
             class="ml-2"
           >
             +10
           </v-button>
           <v-button
-            style-button="small"
+            mod-button="size:small"
             @click="example.value -= 10"
             class="ml-2"
           >

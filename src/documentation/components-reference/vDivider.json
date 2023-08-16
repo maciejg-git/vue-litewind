@@ -7,12 +7,11 @@
       ],
       "default": ""
     },
-    "styleDivider": {
+    "modDivider": {
       "type": [
         "String"
       ],
-      "default": "",
-      "globalDefault": true
+      "default": ""
     },
     "base": {
       "type": [
@@ -23,8 +22,7 @@
     },
     "variant": {
       "type": [
-        "String",
-        "Boolean"
+        "String"
       ],
       "default": ""
     }
