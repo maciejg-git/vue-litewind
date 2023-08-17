@@ -72,7 +72,17 @@ let card = {
       ${card.border.borderless}
       ${card.variant.default}
     `,
+    tooltip: () => `
+      ${card.shape.square}
+      ${card.shadow.medium}
+      ${card.border.borderless}
+      ${card.variant.default}
+    `,
   }
+}
+
+card._options = {
+  containerGroupClass: "group",
 }
 
 export default {

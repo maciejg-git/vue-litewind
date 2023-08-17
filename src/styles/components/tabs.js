@@ -1,3 +1,9 @@
+import { setStyleVar } from "./global"
+
+setStyleVar({
+  "--tabs-transition-duration": "0.2s",
+})
+
 let tabs = {
   tabBar: {
     classes: `

@@ -74,6 +74,13 @@ let progress = {
   }
 }
 
+progress._cssVars = {
+  "--progress-bar-timing": "linear",
+  "--progress-bar-speed": "1.5s",
+  "--progress-bar-width": "50%",
+  "--progress-bar-direction": "normal",
+}
+
 export default {
   progress,
 }
