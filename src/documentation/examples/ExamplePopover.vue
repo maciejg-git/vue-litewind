@@ -80,7 +80,7 @@
       </v-button>
     </template>
     <v-card
-      mod-card="shape:square border:borderless"
+      mod-card="preset:tooltip"
       class="w-[330px] p-7"
     >
       Lorem Ipsum is simply dummy text of the printing and typesetting industry.

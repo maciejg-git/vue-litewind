@@ -17,7 +17,7 @@
       "default": {},
       "globalDefault": true,
       "prop": "backdrop",
-      "description": ""
+      "description": "Attributes of backdrop component"
     },
     {
       "type": [
@@ -53,7 +53,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-content",
-      "description": "Style of content part of modal window"
+      "description": "Style of the content part of modal element"
     },
     {
       "type": [
@@ -62,7 +62,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-footer",
-      "description": "Style of modal footer"
+      "description": "Style of modal footer element"
     },
     {
       "type": [
@@ -71,7 +71,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-header",
-      "description": "Style of modal header"
+      "description": "Style of modal header element"
     },
     {
       "type": [
@@ -80,7 +80,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-modal",
-      "description": "Style of modal window"
+      "description": "Style of the main modal element"
     },
     {
       "type": [
@@ -235,7 +235,7 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": "Active variant of the elements style"
+      "description": "Active variant of the element `mod-*` props"
     }
   ],
   "events": [

@@ -31,15 +31,17 @@
       "type": [
         "Boolean"
       ],
-      "default": false
+      "default": true
     },
-    "position": {
+    "fill": {
       "type": [
         "String"
       ],
-      "default": "fixed"
+      "default": "screen"
     }
   },
   "emits": [],
-  "slots": []
+  "slots": [
+    "default"
+  ]
 }

@@ -74,6 +74,13 @@
       "default": {},
       "globalDefault": true
     },
+    "backdrop": {
+      "type": [
+        "Object"
+      ],
+      "default": {},
+      "globalDefault": true
+    },
     "transition": {
       "type": [
         "String"

@@ -4,7 +4,7 @@
     "base": "",
     "variant": "",
     "width": "Width of the card",
-    "modCard": "Main card element"
+    "modCard": "Style of the main card element"
   },
   "emits": {},
   "slots": {

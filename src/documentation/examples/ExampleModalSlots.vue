@@ -1,10 +1,11 @@
 <template>
-  <v-button @click="isVisible = !isVisible">Show image modal</v-button>
+  <v-button @click="isVisible = !isVisible">Show customized modal</v-button>
 
   <v-modal
     v-model="isVisible"
     size="fit"
     mod-modal="shape:square"
+    :backdrop="{ modBackdrop: 'filter:blur' }"
   >
     <template #modal="{ close }">
       <div class="group">

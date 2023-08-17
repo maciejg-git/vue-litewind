@@ -4,7 +4,7 @@
     "base": "",
     "variant": "",
     "closeButton": "Attributes of input v-close-button component",
-    "modChip": "Main chip element"
+    "modChip": "Style of the main chip element"
   },
   "emits": {
     "click:close-button": "Emmited after clicking chip close button"

@@ -18,7 +18,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-icon",
-      "description": "Icon element of the first item"
+      "description": "Style of the icon element of the first item"
     },
     {
       "type": [
@@ -27,7 +27,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-item",
-      "description": "Breadcrumb item"
+      "description": "Style of the single breadcrumb item"
     },
     {
       "type": [
@@ -36,7 +36,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-separator",
-      "description": "Breadcrumb separator"
+      "description": "Style of th breadcrumb separator"
     },
     {
       "type": [
@@ -69,7 +69,7 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": "Active variant of the elements style"
+      "description": "Active variant of the element `mod-*` props"
     }
   ],
   "events": [],

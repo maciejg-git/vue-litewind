@@ -4,6 +4,10 @@ let components = [
     name: "alert",
   },
   {
+    label: "Backdrop",
+    name: "backdrop",
+  },
+  {
     label: "Badge",
     name: "badge",
   },

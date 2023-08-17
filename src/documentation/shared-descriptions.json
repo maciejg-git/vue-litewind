@@ -10,7 +10,7 @@
     },
     "style": {
       "base": "Base name used to style component",
-      "variant": "Active variant of the elements style"
+      "variant": "Active variant of the element `mod-*` props"
     },
     "form": {
       "rules": "Rules for validation. See Form Validation for examples of rules",

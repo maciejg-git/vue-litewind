@@ -118,7 +118,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-folder",
-      "description": "Folder element"
+      "description": "Style of the folder element"
     },
     {
       "type": [
@@ -127,7 +127,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-icon",
-      "description": "Icon element"
+      "description": "Style of the icon element"
     },
     {
       "type": [
@@ -136,7 +136,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-item",
-      "description": "Item element"
+      "description": "Style of the item element"
     },
     {
       "type": [
@@ -235,7 +235,7 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": "Active variant of the elements style"
+      "description": "Active variant of the element `mod-*` props"
     }
   ],
   "events": [

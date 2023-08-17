@@ -18,7 +18,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-item",
-      "description": "List item style"
+      "description": "Style of the list item"
     },
     {
       "type": [
@@ -27,7 +27,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-list",
-      "description": "List style"
+      "description": "Style of the main list element"
     },
     {
       "type": [
@@ -52,7 +52,7 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": "Active variant of the elements style"
+      "description": "Active variant of the element `mod-*` props"
     },
     {
       "type": [

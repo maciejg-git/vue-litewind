@@ -24,9 +24,9 @@
     "placeholderFolderIcon": "Default icon for folders if no icon is provided in items prop. If value is `array` then icons are respectively for closed and opened folders",
     "chevron": "Attributes of v-chevron (open indicator) component. See documentation for valid values",
     "transition": "Sets animation effect when opening or closing folders. Valid values are: 'fade', 'fade-slide', or `empty string` to disable animations.",
-    "modFolder": "Folder element",
-    "modItem": "Item element",
-    "modIcon": "Icon element"
+    "modFolder": "Style of the folder element",
+    "modItem": "Style of the item element",
+    "modIcon": "Style of the icon element"
   },
   "emits": {
     "input:selected": "Fired when item is selected. Passes array of selected items",

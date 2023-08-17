@@ -101,7 +101,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-close-button-wrapper",
-      "description": "Wrapper element of clear button"
+      "description": "Style of the wrapper element of the clear button"
     },
     {
       "type": [
@@ -110,7 +110,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-icon",
-      "description": "Icon element if icon prop is true"
+      "description": "Style of the icon element"
     },
     {
       "type": [
@@ -119,7 +119,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-input",
-      "description": "Main input element"
+      "description": "Style of the main input element"
     },
     {
       "type": [
@@ -128,7 +128,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-label",
-      "description": "Label element if label prop is set"
+      "description": "Style of the label element"
     },
     {
       "type": [
@@ -218,7 +218,7 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": "Active variant of the elements style"
+      "description": "Active variant of the element `mod-*` props"
     },
     {
       "type": [

@@ -11,8 +11,8 @@
     "autoCloseMenu": "If `true` clicking any dropdown menu item automatically closes dropdown",
     "trigger": "How to trigger dropdown. Valid triggers are 'click', 'focus' and 'hover'",
     "transition": "Sets animation effect when showing or hiding dropdown. Valid values are: 'fade', 'fade-slide', 'fade-scale' or `empty string` to disable animations. CSS variables: `--dropdown-transition-duration`, `--dropdown-transition-slide`, `--dropdown-transition-scale`",
-    "modItem": "Style of menu item",
-    "modHeader": "Style of menu header"
+    "modItem": "Style of the menu item",
+    "modHeader": "Style of the menu header"
   },
   "emits": {
     "state:opened": "Emitted after dropdown is opened",

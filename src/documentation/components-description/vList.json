@@ -5,8 +5,8 @@
     "variant": "",
     "width": "Component width",
     "tag": "Defines tag to use in list item child component (for example 'div', 'a' or 'button')",
-    "modList": "List style",
-    "modItem": "List item style"
+    "modList": "Style of the main list element",
+    "modItem": "Style of the list item"
   },
   "emits": {},
   "slots": {

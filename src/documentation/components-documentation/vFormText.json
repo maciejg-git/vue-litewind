@@ -26,7 +26,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-form-text",
-      "description": "Text element"
+      "description": "Style of the single message element"
     },
     {
       "type": [
@@ -68,7 +68,7 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": "Active variant of the elements style"
+      "description": "Active variant of the element `mod-*` props"
     }
   ],
   "events": [],

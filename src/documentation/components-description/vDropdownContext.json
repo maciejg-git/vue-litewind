@@ -10,8 +10,8 @@
     "noFlip": "",
     "autoCloseMenu": "If `true` clicking any dropdown menu item automatically closes dropdown",
     "transition": "Sets animation effect when showing or hiding dropdown. Valid values are: 'fade' or `empty string` to disable animations. Animation speed can be set in `--dropdown-transition-duration` css variable.",
-    "modItem": "Style of menu item",
-    "modHeader": "Style of menu item"
+    "modItem": "Style of the menu item",
+    "modHeader": "Style of the menu header"
   },
   "emits": {
     "state:opened": "Emitted after dropdown is opened",

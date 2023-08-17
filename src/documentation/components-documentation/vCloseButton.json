@@ -18,7 +18,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-close-button",
-      "description": "Icon element"
+      "description": "Style of the close button icon element"
     },
     {
       "type": [
@@ -27,7 +27,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-wrapper",
-      "description": "Wrapper button element"
+      "description": "Style of the wrapper button element"
     },
     {
       "type": [
@@ -43,7 +43,7 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": "Active variant of the elements style"
+      "description": "Active variant of the element `mod-*` props"
     }
   ],
   "events": [],

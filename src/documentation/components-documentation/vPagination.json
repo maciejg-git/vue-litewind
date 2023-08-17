@@ -59,7 +59,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-dots",
-      "description": "Style of dots separating pages"
+      "description": "Style of the dots separating pages"
     },
     {
       "type": [
@@ -68,7 +68,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-page",
-      "description": "Style of single page button"
+      "description": "Style of the single page button"
     },
     {
       "type": [
@@ -93,7 +93,7 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": "Active variant of the elements style"
+      "description": "Active variant of the element `mod-*` props"
     }
   ],
   "events": [

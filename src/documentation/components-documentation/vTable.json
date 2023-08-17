@@ -89,7 +89,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-caption",
-      "description": "Table caption."
+      "description": "Style of the table caption"
     },
     {
       "type": [
@@ -98,7 +98,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-cell",
-      "description": "Table cell"
+      "description": "Style of the single table cell"
     },
     {
       "type": [
@@ -107,7 +107,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-header-cell",
-      "description": "Header cell"
+      "description": "Style of the single header cell element"
     },
     {
       "type": [
@@ -116,7 +116,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-header-row",
-      "description": "Header row"
+      "description": "Style of the header row element"
     },
     {
       "type": [
@@ -125,7 +125,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-row",
-      "description": "Table row"
+      "description": "Style of the table row element"
     },
     {
       "type": [
@@ -134,7 +134,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-table",
-      "description": "Main table element"
+      "description": "Style of the main table element"
     },
     {
       "type": [
@@ -191,7 +191,7 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": "Active variant of the elements style"
+      "description": "Active variant of the element `mod-*` props"
     }
   ],
   "events": [

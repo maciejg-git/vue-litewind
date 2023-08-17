@@ -29,7 +29,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-chip",
-      "description": "Main chip element"
+      "description": "Style of the main chip element"
     },
     {
       "type": [
@@ -45,7 +45,7 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": "Active variant of the elements style"
+      "description": "Active variant of the element `mod-*` props"
     }
   ],
   "events": [

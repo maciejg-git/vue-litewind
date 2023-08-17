@@ -16,12 +16,12 @@
     "locale": "Locale used to compare and sort strings",
     "selectionMode": "Enables or disables selection of rows. Valid values are 'single' (allows selection of single row only), 'multiple' (allows multiple rows to be selected) or `empty string` (disables selection). After new row is selected or unselected event input:selection is emmited with array of all selected records. Filtering, sorting, changing current page or modifying selection-mode prop resets current selection by emmiting empty array",
     "state": "State of table. Valid values are 'busy' or `empty string`. Busy state disables pointer events on table and renders contents of `busy` slot instead of table rows",
-    "modTable": "Main table element",
-    "modHeaderRow": "Header row",
-    "modHeaderCell": "Header cell",
-    "modRow": "Table row",
-    "modCell": "Table cell",
-    "modCaption": "Table caption."
+    "modTable": "Style of the main table element",
+    "modHeaderRow": "Style of the header row element",
+    "modHeaderCell": "Style of the single header cell element",
+    "modRow": "Style of the table row element",
+    "modCell": "Style of the single table cell",
+    "modCaption": "Style of the table caption"
   },
   "emits": {
     "update:page": "Emmited after filtering. Useful for updating pagination",

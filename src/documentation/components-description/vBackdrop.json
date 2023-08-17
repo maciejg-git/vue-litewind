@@ -1,10 +1,17 @@
 {
   "name": "vBackdrop",
   "props": {
-    "isOpen": ""
+    "name": "",
+    "modBackdrop": "Style of main backdrop element",
+    "base": "",
+    "variant": "",
+    "isOpen": "This prop controls visibility state of backdrop. It is `true` by default so if this prop is not defined backdrop will always be visible.",
+    "fill": "Position of backdrop. Can be either `screen` or `element`. Those are equivalent to respectively `fixed` or `absolute` class added to backdrop component."
   },
   "emits": {},
-  "slots": {},
+  "slots": {
+    "default": "Slot to place content inside backdrop."
+  },
   "functions": {},
   "components": {}
 }

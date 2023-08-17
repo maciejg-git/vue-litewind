@@ -34,7 +34,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-tab",
-      "description": "Single tab style"
+      "description": "Style of the single tab"
     },
     {
       "type": [
@@ -43,7 +43,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-tab-bar",
-      "description": "Tab bar style"
+      "description": "Style of the tab bar element"
     },
     {
       "type": [
@@ -76,7 +76,7 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": "Active variant of the elements style"
+      "description": "Active variant of the element `mod-*` props"
     }
   ],
   "events": [

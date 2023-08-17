@@ -68,6 +68,16 @@
       <example name="ExampleModalTrigger"></example>
     </div>
   </section>
+
+  <section>
+    <h4 id="ExampleModalBackdrop">Example - backdrop</h4>
+    <p>
+    To configure colors, intensity and others properties of modals backdrop use backdrop prop. See <a href="/documentation/backdrop" class="link">backdrop</a> documentation for possible options.
+    </p>
+    <div class="example">
+      <example name="ExampleModalBackdrop"></example>
+    </div>
+  </section>
 </template>
 
 <script>

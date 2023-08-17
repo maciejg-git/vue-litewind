@@ -1,9 +1,9 @@
 <template>
-  <div class="flex mb-4">
+  <div class="mb-4 flex">
     <div
       v-for="(language, index) in languages"
       :key="language"
-      class="border hover:bg-secondary-50 dark:hover:bg-dark-700 dark:border-dark-700 cursor-pointer p-2 mr-4"
+      class="mr-4 cursor-pointer border p-2 hover:bg-secondary-50 dark:border-dark-700 dark:hover:bg-dark-700"
       @contextmenu.prevent="
         contextMenu.showContextDropdown($event, { language, index })
       "
@@ -19,9 +19,7 @@
     auto-close-menu
     v-slot="{ language, index }"
   >
-    <v-card
-      width="280px"
-    >
+    <v-card width="280px">
       <v-dropdown-menu-item @click="currentLanguage = language">
         Switch to {{ language }}
       </v-dropdown-menu-item>

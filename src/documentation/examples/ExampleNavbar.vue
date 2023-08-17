@@ -13,7 +13,6 @@
             <v-dropdown
               trigger="hover"
               :offset-y="2"
-              base="flatDropdown"
             >
               <template #reference="{ reference, onTrigger }">
                 <v-button
@@ -27,6 +26,7 @@
               </template>
               <v-card
                 class="min-w-[300px] md:min-w-[420px]"
+                mod-card="preset:flatDropdown"
               >
                 <v-dropdown-menu-item tag="button">
                   <header class="font-semibold">Get started</header>

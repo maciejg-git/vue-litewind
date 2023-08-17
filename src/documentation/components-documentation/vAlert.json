@@ -60,7 +60,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-alert",
-      "description": "Main alert element"
+      "description": "Style of the main alert element"
     },
     {
       "type": [
@@ -69,7 +69,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-icon",
-      "description": "Default icon element (does not apply to icons in slot)"
+      "description": "Style of the icon element"
     },
     {
       "type": [
@@ -85,7 +85,7 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": "Active variant of the elements style"
+      "description": "Active variant of the element `mod-*` props"
     }
   ],
   "events": [

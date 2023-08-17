@@ -36,7 +36,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-label",
-      "description": "Input label element"
+      "description": "Style of the label element"
     },
     {
       "type": [
@@ -45,7 +45,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-radio",
-      "description": "Main input element"
+      "description": "Style of the main input element"
     },
     {
       "type": [
@@ -85,7 +85,7 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": "Active variant of the elements style"
+      "description": "Active variant of the element `mod-*` props"
     }
   ],
   "events": [

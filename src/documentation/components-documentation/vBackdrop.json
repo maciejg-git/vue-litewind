@@ -13,11 +13,19 @@
     },
     {
       "type": [
+        "String"
+      ],
+      "default": "\"screen\"",
+      "prop": "fill",
+      "description": "Position of backdrop. Can be either `screen` or `element`. Those are equivalent to respectively `fixed` or `absolute` class added to backdrop component."
+    },
+    {
+      "type": [
         "Boolean"
       ],
-      "default": false,
+      "default": true,
       "prop": "is-open",
-      "description": ""
+      "description": "This prop controls visibility state of backdrop. It is `true` by default so if this prop is not defined backdrop will always be visible."
     },
     {
       "type": [
@@ -26,7 +34,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-backdrop",
-      "description": ""
+      "description": "Style of main backdrop element"
     },
     {
       "type": [
@@ -40,21 +48,18 @@
       "type": [
         "String"
       ],
-      "default": "\"fixed\"",
-      "prop": "position",
-      "description": ""
-    },
-    {
-      "type": [
-        "String"
-      ],
       "default": "empty string",
       "prop": "variant",
-      "description": "Active variant of the elements style"
+      "description": "Active variant of the element `mod-*` props"
     }
   ],
   "events": [],
-  "slots": [],
+  "slots": [
+    {
+      "slot": "default",
+      "description": "Slot to place content inside backdrop."
+    }
+  ],
   "functions": [],
   "components": []
 }

@@ -17,7 +17,7 @@
       ],
       "default": "empty string",
       "prop": "mod-divider",
-      "description": "Main divider element"
+      "description": "Style of the main divider element"
     },
     {
       "type": [
@@ -33,7 +33,7 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": "Active variant of the elements style"
+      "description": "Active variant of the element `mod-*` props"
     }
   ],
   "events": [],

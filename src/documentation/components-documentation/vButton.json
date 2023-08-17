@@ -34,7 +34,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-button",
-      "description": "Main button element"
+      "description": "Style of the main button element"
     },
     {
       "type": [
@@ -58,7 +58,7 @@
       ],
       "default": "empty string",
       "prop": "variant",
-      "description": "Active variant of the elements style"
+      "description": "Active variant of the element `mod-*` props"
     }
   ],
   "events": [],

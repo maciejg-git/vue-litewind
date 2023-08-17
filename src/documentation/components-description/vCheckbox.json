@@ -7,8 +7,8 @@
     "rules": "",
     "validateMode": "",
     "label": "Checkbox label",
-    "modCheckbox": "Main input element",
-    "modLabel": "Input label element",
+    "modCheckbox": "Style of the main input element",
+    "modLabel": "Style of the label element",
     "state": ""
   },
   "emits": {

@@ -8,8 +8,8 @@
     "autoDismissDelay": "Delay after which alert is closed",
     "icon": "Alert has few default icons for variants: 'success', 'warn', 'danger', 'info', 'valid', 'invalid'. Icon or default slot can be used for custom icons.",
     "closeButton": "Attributes of v-close-button component. See documentation for valid values",
-    "modAlert": "Main alert element",
-    "modIcon": "Default icon element (does not apply to icons in slot)"
+    "modAlert": "Style of the main alert element",
+    "modIcon": "Style of the icon element"
   },
   "emits": {
     "update:modelValue": ""
