@@ -1,13 +1,12 @@
 <template>
-  <transition name="fade-backdrop">
-    <div
-      v-if="isOpen"
-      class="inset-0 overflow-y-auto"
-      :class="classes.backdrop.value"
-    >
-      <slot name="default"></slot>
-    </div>
-  </transition>
+  <div
+    v-if="isOpen"
+    class="inset-0 overflow-y-auto"
+    :class="classes.backdrop.value"
+  >
+    <!-- @slot default -->
+    <slot name="default"></slot>
+  </div>
 </template>
 
 <script setup>
@@ -20,11 +19,11 @@ let props = defineProps({
   ...sharedModProps("backdrop", ["Backdrop"]),
   isOpen: {
     type: Boolean,
-    default: false,
+    default: true,
   },
-  position: {
+  fill: {
     type: String,
-    default: "fixed",
+    default: "screen",
   },
 });
 
@@ -33,9 +32,9 @@ let { backdrop } = inject("mods", {});
 let elements = {
   backdrop: {
     computed: computed(() => {
-      return props.position === "absolute"
+      return props.fill === "element"
         ? "absolute"
-        : props.position === "fixed"
+        : props.fill === "screen"
         ? "fixed z-30"
         : "fixed z-30";
     }),

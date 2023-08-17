@@ -35,11 +35,14 @@
     </aside>
   </transition>
 
-  <v-backdrop
-    v-if="modal"
-    :isOpen="isOpen"
-    @click="close()"
-  />
+  <transition name="fade-backdrop">
+    <v-backdrop
+      v-if="modal"
+      :isOpen="isOpen"
+      v-bind="backdrop"
+      @click="close()"
+    />
+  </transition>
 </template>
 
 <script>
@@ -50,7 +53,7 @@ export default {
 
 <script setup>
 import { ref, computed, watch, onBeforeUnmount, useAttrs, inject } from "vue";
-import useTailwindStyles from "./composition/use-tailwind-styles"
+import useTailwindStyles from "./composition/use-tailwind-styles";
 import vCloseButton from "./vCloseButton.vue";
 import vBackdrop from "./vBackdrop.vue";
 import { sharedProps, sharedModProps } from "../shared-props";
@@ -88,6 +91,10 @@ const props = defineProps({
     type: Object,
     default: defaultProps("sidepanel", "closeButton", {}),
   },
+  backdrop: {
+    type: Object,
+    default: defaultProps("sidepanel", "backdrop", {}),
+  },
   transition: {
     type: String,
     default: defaultProps("sidepanel", "transition", "fade-slide"),
@@ -98,16 +105,16 @@ let emit = defineEmits(["update:modelValue"]);
 
 let attrs = useAttrs();
 
-let { sidepanel } = inject("mods", {})
+let { sidepanel } = inject("mods", {});
 
 let elements = {
   sidepanel: {
     fixed: "fixed h-full top-0 z-[31]",
-    computed: computed(() => (props.sidebarLeft ? "left-0" : "right-0"))
-  }
-}
+    computed: computed(() => (props.sidebarLeft ? "left-0" : "right-0")),
+  },
+};
 
-let { classes } = useTailwindStyles(props, sidepanel, elements)
+let { classes } = useTailwindStyles(props, sidepanel, elements);
 
 let isOpen = ref(false);
 

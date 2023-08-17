@@ -169,6 +169,12 @@ const props = defineProps({
     default: defaultProps("input", "width", ""),
   },
   label: {
+    flatDropdown: () => `
+      ${card.shape.square}
+      ${card.shadow.medium}
+      ${card.border.borderless}
+      ${card.variant.default}
+    `,
     type: String,
     default: "",
   },

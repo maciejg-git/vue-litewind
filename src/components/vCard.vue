@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="classes.card.value"
+    :class="[classes.card.value, groupClass]"
     :style="{ width: width }"
   >
     <!-- @slot default -->
@@ -31,7 +31,7 @@ let elements = {
   },
 }
 
-let { classes } = useTailwindStyles(props, card, elements)
+let { classes, groupClass } = useTailwindStyles(props, card, elements)
 </script>
 
 <style scoped></style>

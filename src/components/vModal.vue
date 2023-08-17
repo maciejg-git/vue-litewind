@@ -78,7 +78,9 @@
       </div>
     </transition>
 
-    <v-backdrop :isOpen="isOpen" v-bind="backdrop" />
+    <transition name="fade-backdrop">
+      <v-backdrop :isOpen="isOpen" v-bind="backdrop" />
+    </transition>
   </teleport>
 </template>
 

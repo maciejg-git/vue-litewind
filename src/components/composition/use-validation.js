@@ -53,12 +53,21 @@ export default function useValidation(inputs, globals) {
       onUpdate = () => {};
     }
 
+    let isOptional = (value) => {
+      return (
+        !rules.includes("required") &&
+        (value === "" ||
+          value === false ||
+          (Array.isArray(value) && value.length === 0))
+      );
+    };
+
     onUpdate(status, state, messages);
 
-    let validate = (value) => {
+    let validate = (value, event) => {
       let newStatus = {
-        touched: status.value.touched,
-        validated: status.value.validated,
+        touched: status.value.touched || event === "touch",
+        validated: status.value.validated || event === "formValidate",
         dirty: status.value.dirty || !!(value && !!value.length),
       };
 
@@ -85,41 +94,20 @@ export default function useValidation(inputs, globals) {
         return valid && newStatus[key];
       }, true);
 
-      newStatus.optional =
-        newMessages.required === undefined &&
-        (value === "" || value === false || value.length === 0);
+      newStatus.optional = isOptional(value);
 
-      status.value = newStatus;
-      messages.value = newMessages;
+      return { status: newStatus, messages: newMessages }
     };
 
-    let onValueUpdated = (value) => {
-      validate(value);
+    let on = (event) => {
+      let res = validate(unref(value), event);
 
+      status.value = res.status
+      messages.value = res.messages
       state.value = updateState();
 
       onUpdate(status, state, messages);
-    };
-
-    let touch = () => {
-      validate(unref(value));
-
-      status.value.touched = true;
-
-      state.value = updateState();
-
-      onUpdate(status, state, messages);
-    };
-
-    let formValidate = () => {
-      validate(unref(value));
-
-      status.value.validated = true;
-
-      state.value = updateState();
-
-      onUpdate(status, state, messages);
-    };
+    }
 
     let updateState = () => {
       let { dirty, touched, validated, optional, valid } = status.value;
@@ -170,7 +158,7 @@ export default function useValidation(inputs, globals) {
       return state.value;
     };
 
-    watch(value, onValueUpdated, { deep: true });
+    watch(value, () => on("valueUpdate"), { deep: true });
 
     if (externalState !== undefined) {
       watch(
@@ -201,9 +189,8 @@ export default function useValidation(inputs, globals) {
         status,
         state,
         messages,
-        onValueUpdated,
-        touch,
-        formValidate,
+        touch: () => on("touch"),
+        formValidate: () => on("formValidate"),
         reset,
       },
     };
@@ -219,9 +206,5 @@ export default function useValidation(inputs, globals) {
 
   let i = Object.keys(validation);
 
-  if (i.length === 1) return validation[i[0]];
-
-  // return validation for multiple inputs
-
-  return validation;
+  return (i.length === 1) ? validation[i[0]] : validation
 }

@@ -32,9 +32,11 @@ export default function useTailwindStyles(props, styles, elements) {
   let classes = {}
   let variants = {}
   let dataStyle = {}
-  let components = {}
+  let groupClass = null
   
   let state = ref("")
+
+  groupClass = styles?.[props.base]?._options?.containerGroupClass ?? ""
 
   let isSingleElement = Object.keys(elements).length === 1
 
@@ -64,6 +66,7 @@ export default function useTailwindStyles(props, styles, elements) {
       }
 
       for (let type in elementStyles) {
+        if (type[0] === "_") continue
         let sharedClasses = null
         let stateClasses = null
         let modClasses = null
@@ -101,6 +104,6 @@ export default function useTailwindStyles(props, styles, elements) {
     state.value = newState
   }
 
-  return { classes, setState, variants, dataStyle }
+  return { classes, setState, variants, dataStyle, groupClass }
 
 }
