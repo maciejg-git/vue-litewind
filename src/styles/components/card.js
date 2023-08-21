@@ -47,13 +47,14 @@ let card = {
       hover:shadow-lg
       transition-all
       hover:scale-105
+      delay-75
     `,
     hoverRing: `
-      transform-shadow
+      transition-shadow
       duration-150
       hover:ring-4
       ring-primary-400
-      dark:ring-primary-400
+      dark:ring-primary-300
     `,
     loading: `
       animate-pulse

@@ -54,6 +54,14 @@ let button = {
       border-primary-700
       focus:ring-primary-200
     `,
+    primaryOutline: `
+      border
+      text-primary-400
+      border-primary-400
+      hover:border-primary-300
+      hover:text-primary-300
+      focus:ring-primary-200
+    `,
     secondary: `
       text-text-100
       bg-secondary-500
@@ -61,6 +69,14 @@ let button = {
       hover:bg-secondary-600
       dark:hover:bg-secondary-600
       border-secondary-700
+      focus:ring-secondary-200
+    `,
+    secondaryOutline: `
+      border
+      text-secondary-400
+      border-secondary-400
+      hover:border-secondary-300
+      hover:text-secondary-300
       focus:ring-secondary-200
     `,
     warn: `
@@ -72,6 +88,14 @@ let button = {
       border-warn-600
       focus:ring-warn-200
     `,
+    warnOutline: `
+      border
+      text-warn-400
+      border-warn-400
+      hover:border-warn-300
+      hover:text-warn-300
+      focus:ring-warn-200
+    `,
     danger: `
       text-text-800
       bg-danger-400
@@ -79,6 +103,14 @@ let button = {
       hover:bg-danger-500
       dark:hover:bg-danger-500
       border-danger-600
+      focus:ring-danger-200
+    `,
+    dangerOutline: `
+      border
+      text-danger-400
+      border-danger-400
+      hover:border-danger-300
+      hover:text-danger-300
       focus:ring-danger-200
     `,
     success: `
@@ -89,7 +121,15 @@ let button = {
       dark:hover:bg-success-500
       border-success-600
       focus:ring-success-200
-    `
+    `,
+    successOutline: `
+      border
+      text-success-400
+      border-success-400
+      hover:border-success-300
+      hover:text-success-300
+      focus:ring-success-200
+    `,
   },
   effect: {
     ring: `

@@ -1,13 +1,9 @@
 import { setStyleVar } from "./global"
 
-setStyleVar({
-  "--progress-bar-timing": "linear",
-  "--progress-bar-speed": "1.5s",
-  "--progress-bar-width": "50%",
-  "--progress-bar-direction": "normal",
-})
-
 let progress = {
+
+  /* element */
+
   progress: {
     classes: `
       overflow-hidden
@@ -39,6 +35,9 @@ let progress = {
       `
     }
   },
+
+  /* element */
+
   progressBar: {
     classes: `
 
@@ -65,6 +64,9 @@ let progress = {
       `
     }
   },
+
+  /* element */
+
   label: {
     classes: `
       text-xs
@@ -74,12 +76,12 @@ let progress = {
   }
 }
 
-progress._cssVars = {
+setStyleVar({
   "--progress-bar-timing": "linear",
   "--progress-bar-speed": "1.5s",
   "--progress-bar-width": "50%",
   "--progress-bar-direction": "normal",
-}
+})
 
 export default {
   progress,

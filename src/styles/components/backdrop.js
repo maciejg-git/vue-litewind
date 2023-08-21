@@ -23,6 +23,12 @@ let backdrop = {
       from-indigo-500/30
       via-purple-500/30
       to-pink-500/30
+    `,
+    gradientDiagonal: `
+      bg-gradient-to-tl
+      from-primary-500/30
+      via-transparent
+      to-pink-500/30
     `
   },
   filter: {
