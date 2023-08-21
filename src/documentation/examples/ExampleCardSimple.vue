@@ -3,7 +3,6 @@
     width="320px"
     mod-card="effect:hoverScale"
     class="overflow-hidden mx-auto"
-    name="select-card"
   >
     <img
       :src="randomPhoto()"

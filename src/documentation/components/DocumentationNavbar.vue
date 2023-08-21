@@ -1,6 +1,6 @@
 <template>
   <v-navbar
-    fixed
+    position="fixed"
     class="flex w-full items-center border-b px-4 py-2 dark:border-dark-700 dark:text-text-300"
   >
     <!-- mobile menu trigger -->

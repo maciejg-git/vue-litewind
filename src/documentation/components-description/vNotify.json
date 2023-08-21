@@ -2,14 +2,14 @@
   "name": "vNotify",
   "props": {
     "name": "",
-    "modNotify": "",
-    "modHeader": "",
-    "modIcon": "",
-    "modContent": "",
+    "modNotify": "Style of the notify element",
+    "modHeader": "Style of the notify header",
+    "modIcon": "Style of the icon",
+    "modContent": "Style of the notify content",
     "base": "",
     "variant": "",
-    "notifyData": "",
-    "closeButton": ""
+    "notifyData": "Object that contains data to display in notify: `header`, `text`, `icon`, `delay`, `variant` and `dismissable`",
+    "closeButton": "Attributes of `v-close-button` component"
   },
   "emits": {
     "close-button-clicked": ""

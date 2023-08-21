@@ -52,7 +52,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-progress",
-      "description": "Style of the progress element"
+      "description": "Style of the main progress element"
     },
     {
       "type": [

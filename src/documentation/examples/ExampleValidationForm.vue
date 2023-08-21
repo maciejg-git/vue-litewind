@@ -1,54 +1,54 @@
 <template>
   <div class="flex gap-x-20">
-    <div class="basis-1/2 flex flex-col">
+    <div class="flex basis-1/2 flex-col">
       <v-form
         ref="form"
         class="flex flex-col"
       >
         <div>
           <v-input
-            v-model="username"
+            v-model="inputs.username"
             type="text"
             label="Username"
             :rules="usernameRules"
             block
             class="w-full"
-            @validation:status="(status) => (usernameStatus = status)"
+            @validation:status="(res) => (status.username = res)"
           ></v-input>
         </div>
 
         <div class="mt-20">
           <v-input
-            v-model="password"
+            v-model="inputs.password"
             type="text"
             label="Password"
             :rules="passwordRules"
             block
             class="w-full"
-            @validation:status="(status) => (passwordStatus = status)"
+            @validation:status="(res) => (status.password = res)"
           ></v-input>
         </div>
 
         <div class="mt-32">
           <v-textarea
-            v-model="text"
+            v-model="inputs.text"
             :rules="textRules"
             placeholder="Some text"
             rows="3"
-            @validation:status="(status) => (textStatus = status)"
+            @validation:status="(res) => (status.text = res)"
           ></v-textarea>
         </div>
 
         <div class="mt-10">
           <v-checkbox
-            v-model="checkbox"
+            v-model="inputs.checkbox"
             :rules="checkboxRules"
             label="Check this"
           />
         </div>
       </v-form>
 
-      <div class="self-end mt-20">
+      <div class="mt-20 self-end">
         <v-button
           mod-button="variant:secondary"
           @click="form.reset()"
@@ -59,29 +59,35 @@
         <v-button @click="validate()">Validate</v-button>
       </div>
     </div>
+
+    <!-- validation results -->
+
     <pre class="m-0">
-      <code v-html="'username: ' + stringifyObject(usernameStatus, true, ['valid', 'validated'])"></code>
-      <code v-html="'password: ' + stringifyObject(passwordStatus, true, ['valid', 'validated'])"></code>
-      <code v-html="'text: ' + stringifyObject(textStatus, true, ['valid', 'validated'])"></code>
-      <code v-html="'form validate(): ' + stringifyObject(formStatus, true)"></code>
+      <code v-html="'username: ' + stringifyObject(status.username, true, ['valid', 'validated'])"></code>
+      <code v-html="'password: ' + stringifyObject(status.password, true, ['valid', 'validated'])"></code>
+      <code v-html="'text: ' + stringifyObject(status.text, true, ['valid', 'validated'])"></code>
+      <code v-html="'form validate(): ' + stringifyObject(status.form, true)"></code>
     </pre>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, reactive } from "vue";
 import { stringifyObject } from "../tools";
 
-let username = ref("");
-let usernameStatus = ref({});
+let inputs = reactive({
+  username: "",
+  password: "",
+  text: "",
+  checkbox: false,
+});
+
 let usernameRules = [
   "required",
   { minLength: 5 },
-  "alphanumeric",
+  "alphanumeric"
 ];
 
-let password = ref("");
-let passwordStatus = ref({});
 let passwordRules = [
   "required",
   { minLength: 8 },
@@ -91,30 +97,30 @@ let passwordRules = [
   "atLeastOneDigit",
 ];
 
-let text = ref("");
-let textStatus = ref({});
 let textRules = [
   "required",
-  { maxLength: 30 },
+  { maxLength: 30 }
 ];
 
-let checkbox = ref(false);
-let checkboxStatus = ref({});
-let checkboxRules = [
-  "required",
-];
-
-let formStatus = ref(false);
+let checkboxRules = ["required"];
 
 let form = ref(null);
 
 let validate = () => {
-  formStatus.value = form.value.validate();
+  status.form = form.value.validate();
 };
+
+let status = reactive({
+  username: {},
+  password: {},
+  text: {},
+  checkbox: {},
+  form: false,
+});
 </script>
 
 <style scoped lang="postcss">
 code {
-  @apply block dark:text-text-400 my-2;
+  @apply my-2 block dark:text-text-400;
 }
 </style>

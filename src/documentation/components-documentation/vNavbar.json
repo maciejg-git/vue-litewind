@@ -21,14 +21,6 @@
     },
     {
       "type": [
-        "Boolean"
-      ],
-      "default": false,
-      "prop": "fixed",
-      "description": "If `true` navbar position is set to fixed. If both fixed and sticky are `false` then navbar is positioned as relative"
-    },
-    {
-      "type": [
         "String"
       ],
       "default": "empty string",
@@ -46,11 +38,11 @@
     },
     {
       "type": [
-        "Boolean"
+        "String"
       ],
-      "default": false,
-      "prop": "sticky",
-      "description": "If `true` navbar position is set to sticky. If both fixed and sticky are `false` then navbar is positioned as relative"
+      "default": "\"relative\"",
+      "prop": "position",
+      "description": ""
     },
     {
       "type": [

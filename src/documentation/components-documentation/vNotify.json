@@ -18,7 +18,7 @@
       "default": {},
       "globalDefault": true,
       "prop": "close-button",
-      "description": ""
+      "description": "Attributes of `v-close-button` component"
     },
     {
       "type": [
@@ -27,7 +27,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-content",
-      "description": ""
+      "description": "Style of the notify content"
     },
     {
       "type": [
@@ -36,7 +36,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-header",
-      "description": ""
+      "description": "Style of the notify header"
     },
     {
       "type": [
@@ -45,7 +45,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-icon",
-      "description": ""
+      "description": "Style of the icon"
     },
     {
       "type": [
@@ -54,7 +54,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-notify",
-      "description": ""
+      "description": "Style of the notify element"
     },
     {
       "type": [
@@ -70,7 +70,7 @@
       ],
       "default": {},
       "prop": "notify-data",
-      "description": ""
+      "description": "Object that contains data to display in notify: `header`, `text`, `icon`, `delay`, `variant` and `dismissable`"
     },
     {
       "type": [

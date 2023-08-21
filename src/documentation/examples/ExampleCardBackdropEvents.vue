@@ -19,11 +19,9 @@
     <div class="px-3 py-2 text-sm">Card footer</div>
     <v-backdrop
       fill="element"
-      class="flex items-center justify-center opacity-0 group-hover:opacity-100"
-      mod-backdrop="variant:gradient transition:opacity"
-    >
-      <v-button>Details</v-button>
-    </v-backdrop>
+      class="pointer-events-none flex items-center justify-center opacity-0 group-hover:opacity-100"
+      mod-backdrop="variant:gradientDiagonal transition:opacity"
+    ></v-backdrop>
   </v-card>
 </template>
 

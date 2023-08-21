@@ -27,17 +27,11 @@
       ],
       "default": ""
     },
-    "fixed": {
+    "position": {
       "type": [
-        "Boolean"
+        "String"
       ],
-      "default": false
-    },
-    "sticky": {
-      "type": [
-        "Boolean"
-      ],
-      "default": false
+      "default": "relative"
     },
     "bottom": {
       "type": [

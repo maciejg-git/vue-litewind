@@ -22,9 +22,19 @@
   <v-divider></v-divider>
 
   <section>
-    <h4 id="">Example - show overlay on hover</h4>
+    <h4 id="ExampleCardBackdrop">Example - show overlay on hover</h4>
     <div class="example">
       <example name="ExampleCardBackdrop"></example>
+    </div>
+  </section>
+
+  <section>
+    <h4 id="ExampleCardBackdropEvents">Example - pointer events</h4>
+    <p>
+    When adding overlay for visual effect purpose only set <code class="code-text">pointer-events-none</code> to allow events to pass to underlying elements.
+    </p>
+    <div class="example">
+      <example name="ExampleCardBackdropEvents"></example>
     </div>
   </section>
 </template>

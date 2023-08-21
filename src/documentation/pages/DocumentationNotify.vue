@@ -1,5 +1,5 @@
 <template>
-  <h3>Input</h3>
+  <h3>Notify</h3>
   <links-github-header component="vInput" />
 
   <section>
@@ -26,7 +26,7 @@
 
 <script>
 import { ref, reactive } from "vue";
-import componentDocumentation from "../components-documentation/vInput.json"
+import componentDocumentation from "../components-documentation/vNotify.json"
 
 export default {
   setup(props) {
