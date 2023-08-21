@@ -7,19 +7,15 @@
 
 <script setup>
 import { computed, inject } from "vue";
-import useTailwindStyles from "./composition/use-tailwind-styles"
+import useTailwindStyles from "./composition/use-tailwind-styles";
 import { sharedProps, sharedModProps } from "../shared-props";
 
 const props = defineProps({
   ...sharedProps(),
   ...sharedModProps("navbar", ["Navbar"]),
-  fixed: {
-    type: Boolean,
-    default: false,
-  },
-  sticky: {
-    type: Boolean,
-    default: false,
+  position: {
+    type: String,
+    default: "relative",
   },
   bottom: {
     type: Boolean,
@@ -27,21 +23,25 @@ const props = defineProps({
   },
 });
 
-let { navbar } = inject("mods", {})
+let { navbar } = inject("mods", {});
 
 let elements = {
   navbar: {
     fixed: "left-0 z-20",
     computed: computed(() => {
       return [
-        props.fixed ? "fixed" : props.sticky ? "sticky" : "relative",
+        props.position === "fixed"
+          ? "fixed"
+          : props.position === "absolute"
+          ? "absolute"
+          : "relative",
         props.bottom ? "bottom-0" : "top-0",
       ].join(" ");
-    })
-  }
-}
+    }),
+  },
+};
 
-let { classes } = useTailwindStyles(props, navbar, elements)
+let { classes } = useTailwindStyles(props, navbar, elements);
 </script>
 
 <style scoped></style>
