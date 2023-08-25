@@ -24,12 +24,18 @@
         <!-- prop -->
         <code class="dark:text-text-300">
           <span class="group-hover:underline">{{ prop.prop }}</span>
-          <span
+          <div
             v-if="prop.required"
             class="text-xs text-danger-400"
           >
             (required)
-          </span>
+          </div>
+          <div
+            v-if="prop.tags"
+            class="text-xs text-info-500"
+          >
+          ({{ prop.tags }})
+          </div>
         </code>
         <!-- default value -->
         <code class="code-text mr-6 ml-auto">{{ prop.default }}</code>

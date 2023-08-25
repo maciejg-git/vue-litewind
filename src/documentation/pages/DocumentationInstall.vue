@@ -87,37 +87,30 @@ module.exports = {
     </div>
 
       <span class="font-bold dark:text-text-300">
-        Step 2. Import css files:
+        Step 2. Import styles files:
       </span>
       <div class="border-l-2 border-dark-500 dark:border-dark-600 pl-8">
     <p>
-      <ul class="list-disc list-inside my-4 list-outside ml-10">
-        <li>
 <code class="code-text">style.css</code> contains basic set of classes used by components. Import it directly from library distribution directory
-        </li>
-        <li>
-<code class="code-text">components.css</code> contains customizable classes for components and forms. You can import it directly or copy from <code class="code-text">'node_modules/vue-litewind/src/styles'</code> for customization. You can also import or copy css files seperately for each component for smaller build.
-        </li>
-      </ul>
-      
     </p>
 
     <v-code language="javascript">
       {{ `// main.js
 
-// import basic styles
-
 import "vue-litewind/vue-litewind.css" 
+`}}
+    </v-code>
+          The rest of styles is defined in js files as tailwind classes. You can import it directly or preferably copy from node_modules for customization. After importing styles must be provided to the components in the application with the use of the <code class="code-text">provide</code> function:
+    <v-code language="html">
+      {{ `<!-- App.vue -->
 
-// import classes for all components
+<script setup>
+import { provide } from "vue"
+import * as styles from "./styles/components"
 
-import "vue-litewind/components.css";
-
-// or seperately for each component
-
-import "vue-litewind/components/button.css";
-import "vue-litewind/components/table.css";
-import "vue-litewind/components/input.css";`}}
+provide("mods", styles)
+</script>
+`}}
     </v-code>
       </div>
 
@@ -252,28 +245,6 @@ app.use(vueLitewind, {
 
     <section>
     <h4 id="Styling" class="my-10">Styling components</h4>
-      <p>
-      Default style of components can be modified by using following:
-      <ul class="list-disc list-inside">
-        <li>
-      <code class="code-text">tailwind.config.js</code> for color definitions,
-        </li>
-        <li>
-      css file of component to customize base classes and variants for components,
-        </li>
-        <li>
-      and following common component props:
-        </li>
-      </ul>
-      <ul class="ml-10">
-        <li class="my-2">
-          <code class="code-text">base</code> - base name for classes applied to the component elements. The default value is always component name. This prop can be used to make new versions of appearance with different set of variants.
-        </li>
-        <li class="my-2">
-          <code class="code-text">style-[element]</code> - adds list of variant classes to [element] of component. Variant can be applied conditionaly by putting "identifier:" in front of any variant. Active conditional variant can then be chosen with <code class="code-text">variant</code> prop set to identifier. Identifier can be any word and does not have any relation to css. <code class="code-text">True</code>, <code class="code-text">false</code>, <code class="code-text">null</code> and <code class="code-text">undefined</code> values of variant prop are automatically converted to strings.
-        </li> 
-      </ul>
-      </p>
       </section>
 
       <section>

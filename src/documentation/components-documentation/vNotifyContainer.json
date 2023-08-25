@@ -8,15 +8,7 @@
       ],
       "default": 4000,
       "prop": "auto-dismiss-delay",
-      "description": ""
-    },
-    {
-      "type": [
-        "String"
-      ],
-      "default": "\"new-on-bottom\"",
-      "prop": "direction",
-      "description": ""
+      "description": "Default delay to close notifications."
     },
     {
       "type": [
@@ -24,7 +16,7 @@
       ],
       "default": true,
       "prop": "dismissable",
-      "description": ""
+      "description": "Bye default all notification can be closed by user if true."
     },
     {
       "type": [
@@ -41,7 +33,15 @@
       "default": {},
       "globalDefault": true,
       "prop": "notify",
-      "description": ""
+      "description": "Notify data"
+    },
+    {
+      "type": [
+        "String"
+      ],
+      "default": "\"new-on-bottom\"",
+      "prop": "order",
+      "description": "Order of the notifications. Valid values are `new-on-bottom` or `new-on-top`."
     },
     {
       "type": [
@@ -49,7 +49,7 @@
       ],
       "default": false,
       "prop": "static",
-      "description": ""
+      "description": "By default, if true all notifications must be dismissed manually by user (disables auto dissmising after delay)"
     }
   ],
   "events": [],

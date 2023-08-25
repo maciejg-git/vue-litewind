@@ -20,7 +20,8 @@
         "modCloseButton": "size:small"
       },
       "prop": "close-button",
-      "description": "Attributes of input v-close-button component"
+      "description": "Attributes of input v-close-button component",
+      "tags": "attributes"
     },
     {
       "type": [

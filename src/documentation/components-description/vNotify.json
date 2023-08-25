@@ -12,9 +12,15 @@
     "closeButton": "Attributes of `v-close-button` component"
   },
   "emits": {
-    "close-button-clicked": ""
+    "close-button-clicked": "Emmited after `close-button` is clicked"
   },
-  "slots": {},
+  "slots": {
+    "default": "Slot to replace entire default notify with custom content",
+    "header": "Slot for header",
+    "content": "Slot for the content",
+    "content-append": "Slot for content that is appended after main content (for example for buttons etc)",
+    "footer": "Slot for content in footer (for example buttons etc)"
+  },
   "functions": {},
   "components": {}
 }

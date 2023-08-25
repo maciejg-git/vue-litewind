@@ -65,5 +65,11 @@
   "emits": [
     "close-button-clicked"
   ],
-  "slots": []
+  "slots": [
+    "default",
+    "header",
+    "content",
+    "content-append",
+    "footer"
+  ]
 }

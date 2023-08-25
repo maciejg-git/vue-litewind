@@ -39,7 +39,8 @@
       "default": {},
       "globalDefault": true,
       "prop": "close-button",
-      "description": "Attributes of input v-close-button component (clear button)"
+      "description": "Attributes of input v-close-button component (clear button)",
+      "tags": "attributes"
     },
     {
       "type": [

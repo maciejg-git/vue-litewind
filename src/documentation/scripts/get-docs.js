@@ -97,6 +97,10 @@ while (references.length) {
 
     v.default = getDefault(v.default);
 
+    if (v.prop === "close-button") {
+      v.tags = "attributes"
+    }
+
     return v;
   });
 

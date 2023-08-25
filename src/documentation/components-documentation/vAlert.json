@@ -35,7 +35,8 @@
       "default": {},
       "globalDefault": true,
       "prop": "close-button",
-      "description": "Attributes of v-close-button component. See documentation for valid values"
+      "description": "Attributes of v-close-button component. See documentation for valid values",
+      "tags": "attributes"
     },
     {
       "type": [

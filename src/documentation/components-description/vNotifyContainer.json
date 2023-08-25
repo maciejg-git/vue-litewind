@@ -2,11 +2,11 @@
   "name": "vNotifyContainer",
   "props": {
     "name": "",
-    "direction": "",
-    "autoDismissDelay": "",
-    "dismissable": "",
-    "static": "",
-    "notify": ""
+    "order": "Order of the notifications. Valid values are `new-on-bottom` or `new-on-top`.",
+    "autoDismissDelay": "Default delay to close notifications.",
+    "dismissable": "Bye default all notification can be closed by user if true.",
+    "static": "By default, if true all notifications must be dismissed manually by user (disables auto dissmising after delay)",
+    "notify": "Attributes of the notify components"
   },
   "emits": {},
   "slots": {},

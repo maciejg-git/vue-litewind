@@ -18,7 +18,8 @@
       "default": {},
       "globalDefault": true,
       "prop": "close-button",
-      "description": "Attributes of `v-close-button` component"
+      "description": "Attributes of `v-close-button` component",
+      "tags": "attributes"
     },
     {
       "type": [
@@ -84,10 +85,31 @@
   "events": [
     {
       "event": "close-button-clicked",
-      "description": ""
+      "description": "Emmited after `close-button` is clicked"
     }
   ],
-  "slots": [],
+  "slots": [
+    {
+      "slot": "default",
+      "description": "Slot to replace entire default notify with custom content"
+    },
+    {
+      "slot": "header",
+      "description": "Slot for header"
+    },
+    {
+      "slot": "content",
+      "description": "Slot for the content"
+    },
+    {
+      "slot": "content-append",
+      "description": "Slot for content that is appended after main content (for example for buttons etc)"
+    },
+    {
+      "slot": "footer",
+      "description": "Slot for content in footer (for example buttons etc)"
+    }
+  ],
   "functions": [],
   "components": []
 }
