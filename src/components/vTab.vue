@@ -31,7 +31,7 @@ let props = defineProps({
 
 let slots = useSlots()
 
-let { addTab, removeTab, transition } = inject("control-tab");
+let { addTab, removeTab, transition } = inject("_control-tab");
 
 let tab = {
   isActive: ref(false),

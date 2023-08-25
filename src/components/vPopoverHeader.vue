@@ -16,5 +16,5 @@
 <script setup>
 import { inject } from "vue";
 
-let { classes, title, hide } = inject("control-popover", {});
+let { classes, title, hide } = inject("_control-popover", {});
 </script>

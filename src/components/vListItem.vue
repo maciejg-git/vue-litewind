@@ -19,7 +19,7 @@ const props = defineProps({
   },
 });
 
-let { classes, variants, tag } = inject("control-list");
+let { classes, variants, tag } = inject("_control-list");
 
 let tagHref = computed(() => (tag == "a" ? "#" : null));
 

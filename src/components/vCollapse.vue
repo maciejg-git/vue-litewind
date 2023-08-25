@@ -65,7 +65,7 @@ let onTrigger = {
 
 // accordion
 
-let accordion = inject("accordion", null);
+let accordion = inject("_accordion", null);
 
 let c = { isOpen, collapse };
 

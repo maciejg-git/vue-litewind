@@ -1,26 +1,34 @@
 <template>
-    <ul class="block fixed" @mouseenter="handleContainerMouseEnter"
-    @mouseleave="handleContainerMouseLeave">
-      <transition-group name="fade">
-        <li
-          v-for="item in localNotifications"
+  <ul
+    class="fixed block"
+    @mouseenter="handleContainerMouseEnter"
+    @mouseleave="handleContainerMouseLeave"
+  >
+    <transition-group name="fade">
+      <li
+        v-for="item in localNotifications"
+        class="w-full"
+        :key="item.id"
+      >
+        <v-notify
           class="w-full"
-          :key="item.id"
+          :notifyData="item"
+          v-bind="item.props"
+          @close-button-clicked="handleCloseButton"
         >
-          <v-notify class="w-full" :notifyData="item" v-bind="item.props" @close-button-clicked="handleCloseButton">
-            <template
-              v-for="(name, slot) of $slots"
-              #[slot]="slotProps"
-            >
-                <slot 
-                  :name="slot"
-                  v-bind="slotProps"
-                ></slot>
-            </template>
-          </v-notify>
-        </li>
-      </transition-group>
-    </ul>
+          <template
+            v-for="(name, slot) of $slots"
+            #[slot]="slotProps"
+          >
+            <slot
+              :name="slot"
+              v-bind="slotProps"
+            ></slot>
+          </template>
+        </v-notify>
+      </li>
+    </transition-group>
+  </ul>
 </template>
 
 <script setup>
@@ -30,7 +38,7 @@ import { defaultProps } from "../defaultProps";
 
 let props = defineProps({
   ...sharedProps(),
-  direction: {
+  order: {
     type: String,
     default: "new-on-bottom",
   },
@@ -48,8 +56,8 @@ let props = defineProps({
   },
   notify: {
     type: Object,
-    default: defaultProps("notify-container", "notify", {})
-  }
+    default: defaultProps("notify-container", "notify", {}),
+  },
 });
 
 let { notifications, setNotifyOptions, removeNotify } = inject("notify");
@@ -57,7 +65,7 @@ let { notifications, setNotifyOptions, removeNotify } = inject("notify");
 setNotifyOptions(props);
 
 let localNotifications = computed(() => {
-  return props.direction === "new-on-bottom"
+  return props.order === "new-on-bottom"
     ? notifications.value
     : notifications.value.toReversed();
 });
@@ -75,8 +83,8 @@ let handleContainerMouseLeave = () => {
 };
 
 let handleCloseButton = (id) => {
-  removeNotify(id)
-}
+  removeNotify(id);
+};
 </script>
 
 <style scoped>
@@ -93,6 +101,7 @@ let handleCloseButton = (id) => {
 .fade-enter-from {
   opacity: 0;
   transform: translateY(140%);
+  /* transform: scale(0.2); */
 }
 
 .fade-leave-active {

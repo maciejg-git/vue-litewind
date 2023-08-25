@@ -35,7 +35,7 @@ export default {
     },
   },
   setup(props) {
-    let { classes, variants, autoCloseMenu, hide } = inject("control-dropdown");
+    let { classes, variants, autoCloseMenu, hide } = inject("_control-dropdown");
 
     let tagHref = computed(() => (props.tag == "a" ? "#" : null));
 

@@ -147,7 +147,7 @@ if (id && !slots.reference) {
   onBeforeUnmount(() => removeListener(id));
 }
 
-provide("control-popover", {
+provide("_control-popover", {
   classes,
   title: toRef(props, "title"),
   hide,

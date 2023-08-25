@@ -40,10 +40,7 @@ let elements = {
 
 let { classes, variants } = useTailwindStyles(props, list, elements)
 
-provide("control-list", { classes, variants, tag: toRef(props, "tag") });
-// provide("classes", classes);
-// provide("states", states);
-// provide("tag", toRef(props, "tag"));
+provide("_control-list", { classes, variants, tag: toRef(props, "tag") });
 </script>
 
 <style scoped></style>

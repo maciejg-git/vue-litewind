@@ -6,11 +6,7 @@ let notifications = ref([])
 
 let isVisible = ref(true)
 
-let options = {
-  autoDismissDelay: 4000,
-  dismissable: true,
-  static: false,
-}
+let options = {}
 
 let setNotifyOptions = (props) => {
   options.autoDismissDelay = props.autoDismissDelay;

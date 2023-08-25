@@ -173,7 +173,7 @@ if (id && !slots.reference) {
   onBeforeUnmount(() => removeListener(id));
 }
 
-provide("control-dropdown", {
+provide("_control-dropdown", {
   classes,
   variants,
   autoCloseMenu: toRef(props, "autoCloseMenu"),

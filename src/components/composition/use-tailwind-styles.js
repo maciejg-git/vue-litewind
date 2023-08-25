@@ -12,17 +12,14 @@ let parseElementModProp = (props, el) => {
     if (!props[element]) return {}
 
     return props[element].split(" ").reduce((acc, i) => {
-      let item = i.split(/\s*(?:\?|:)\s*/).toReversed()
+      // let item = i.match(/^(?:([^?]+)\?)?([^:]+):([^\.]+)(?:\.([^:]+))?$/)
+      let item = i.match(/^(?:([^?]+)\?)?([^:]+):([^:]+)$/)
 
-      if (item[2] && item[2] !== props.variant) {
+      if (item[1] && item[1] !== props.variant) {
         return acc
       }
 
-      acc[item[1]] = {
-        condition: item[2] ?? null,
-        key: item[1],
-        value: item[0],
-      }
+      acc[item[2]] = item
 
       return acc
     }, {})
@@ -40,6 +37,49 @@ export default function useTailwindStyles(props, styles, elements) {
 
   let isSingleElement = Object.keys(elements).length === 1
 
+  let activeMods = {}
+
+  // for (let [el, options] of Object.entries(elements)) {
+  //     activeMods[el] = {}
+  //
+  //     let base = props.base
+  //
+  //     if (!styles[base]) continue
+  //
+  //     let mods = parseElementModProp(props, el)
+  //
+  //     let elementStyles = !isSingleElement ? styles[base][el] : styles[base]
+  //
+  //     if (mods.preset) {
+  //       activeMods[el].preset = mods.preset.value
+  //       continue
+  //     }
+  //
+  //     for (let type in elementStyles) {
+  //       if (type[0] === "_" || type === "preset" || type === "classes") continue
+  //
+  //       if (mods[type]) {
+  //         activeMods[el][type] = {...activeMods[el][type], [mods[type].value]: mods[type].value}
+  //         continue
+  //       }
+  //
+  //       if (elementStyles[type][state.value]) {
+  //         activeMods[el][type] = {...activeMods[el][type], [elementStyles[type][state.value]]: elementStyles[type][state.value]}
+  //       }
+  //
+  //       if (elementStyles[type].optional) {
+  //         continue
+  //       }
+  //
+  //       for (let item in elementStyles[type]) {
+  //         if (item === "classes") continue
+  //         activeMods[el][type] = {...activeMods[el][type], [item]: item}
+  //         break
+  //       }
+  //     }
+  // }
+  // console.log(activeMods)
+
   for (let [el, options] of Object.entries(elements)) {
     variants[el] = {}
     classes[el] = computed(() => {
@@ -54,7 +94,7 @@ export default function useTailwindStyles(props, styles, elements) {
       let classes = ""
 
       if (mods.preset) {
-        return getClasses(elementStyles.preset[mods.preset.value]).replace(/\s\s+/g, " ") + " " + (options?.fixed || "") + " " + (options?.computed?.value || "")
+        return getClasses(elementStyles.preset[mods.preset[3]]).replace(/\s\s+/g, " ") + " " + (options?.fixed || "") + " " + (options?.computed?.value || "")
       }
 
       if (elementStyles?.classes) {
@@ -88,9 +128,13 @@ export default function useTailwindStyles(props, styles, elements) {
         }
 
         if (type !== "state" && type !== "preset" && type !== "data") {
-          modClasses = mods[type] && (mods[type].condition === null || mods[type].condition === props.variant) ? elementStyles[mods[type].key][mods[type].value] : null
+          modClasses = mods[type] && (mods[type][4] ? elementStyles[type][mods[type][3]][mods[type][4]] : elementStyles[type][mods[type][3]])
 
-          defaultClasses = !elementStyles[type].optional ? Object.values(elementStyles[type])[sharedClasses ? 1 : 0] : ""
+          for (let item in elementStyles[type]) {
+            if (item === "classes" || item === "preset" || item === "data" || item === "state") continue
+            defaultClasses = elementStyles[type][item]
+            break
+          }
         }
 
         classes += ` ${getClasses(sharedClasses)} ${(getClasses(stateClasses) ?? getClasses(modClasses)) || getClasses(defaultClasses)}`

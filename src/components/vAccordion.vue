@@ -26,5 +26,5 @@ let remove = (collapse) => {
   }
 };
 
-provide("accordion", { update, remove });
+provide("_accordion", { update, remove });
 </script>

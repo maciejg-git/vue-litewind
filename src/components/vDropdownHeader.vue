@@ -8,5 +8,5 @@
 <script setup>
 import { inject } from "vue";
 
-let { classes } = inject("control-dropdown");
+let { classes } = inject("_control-dropdown");
 </script>

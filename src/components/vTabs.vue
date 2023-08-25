@@ -134,7 +134,7 @@ let removeTab = (tab) => {
 
 let handleClickTab = (index) => activateTab(index);
 
-provide("control-tab", {
+provide("_control-tab", {
   addTab,
   removeTab,
   transition: toRef(props, "transition"),
