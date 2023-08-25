@@ -26,6 +26,9 @@ let notify = {
       info: `
         dark:border-info-400
       `,
+      warn: `
+        dark:border-warn-400
+      `,
     }
   },
 
@@ -49,6 +52,9 @@ let notify = {
     variant: {
       info: `
         dark:text-info-400
+      `,
+      warn: `
+        dark:text-warn-400
       `,
     }
   },
