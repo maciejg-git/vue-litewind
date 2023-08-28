@@ -61,11 +61,13 @@ let table = {
   /* element */
 
   row: {
-    // variant: {
-    //   stripped: `
-    //     even:bg-secondary-50
-    //   `
-    // }
+    variant: {
+      optional: true,
+      stripped: `
+        even:bg-secondary-50
+        dark:even:bg-dark-800
+      `
+    }
   },
 
   /* element */

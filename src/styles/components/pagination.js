@@ -47,11 +47,19 @@ let pagination = {
   /* element */
 
   dots: {
-    classes: () => `
-      ${pagination.page.classes}
-      ${pagination.page.variant.default}
+    classes: `
       tracking-wider
     `,
+    variant: {
+      default: () => `
+        ${pagination.page.classes}
+        ${pagination.page.variant.default}
+      `,
+      plain: () => `
+        ${pagination.page.classes}
+        !border-none
+      `,
+    },
   },
 
   /* element */
