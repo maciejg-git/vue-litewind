@@ -15,14 +15,19 @@ let setNotifyOptions = (props) => {
   options.static = props.static
 }
 
-let removeNotify = (notifyId) => {
+let removeNotify = function() {
+  let index = notifications.value.findIndex((i) => this.id === i.id)
+  notifications.value.splice(index, 1)
+}
+
+let removeNotifyById = (notifyId) => {
   let index = notifications.value.findIndex((i) => notifyId === i.id)
   notifications.value.splice(index, 1)
 }
 
 let restartTimer = function() {
   if (this.static) return null
-  this.timer = setTimeout(() => removeNotify(this.id), this.autoDismissDelay)
+  this.timer = setTimeout(() => removeNotifyById(this.id), this.autoDismissDelay)
 }
 
 let pauseTimer = function() {
@@ -52,10 +57,12 @@ let push = (notify) => {
     restartTimer,
     pauseTimer,
     props: { ...options.props, ...notify.props },
-    options: notify?.options || {}
+    options: notify?.options || {},
+    remove: removeNotify,
   }
 
   i.restartTimer()
+  i.removeById = () => removeNotifyById(i.id)
 
   notifications.value.push(i)
 
@@ -75,6 +82,7 @@ export {
   restartTimer,
   pauseTimer,
   removeNotify,
+  removeNotifyById,
   options,
   setNotifyOptions,
   useNotify

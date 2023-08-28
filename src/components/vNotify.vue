@@ -13,7 +13,7 @@
           ></v-icon>
         </div>
         <div>
-          <header :class="classes.header.value">
+          <header v-if="notifyData.header" :class="classes.header.value">
             <!-- @slot header -->
             <slot
               name="header"

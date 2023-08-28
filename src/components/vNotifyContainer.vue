@@ -60,7 +60,7 @@ let props = defineProps({
   },
 });
 
-let { notifications, setNotifyOptions, removeNotify } = inject("notify");
+let { notifications, setNotifyOptions, removeNotify, removeNotifyById } = inject("notify");
 
 setNotifyOptions(props);
 
@@ -83,7 +83,7 @@ let handleContainerMouseLeave = () => {
 };
 
 let handleCloseButton = (id) => {
-  removeNotify(id);
+  removeNotifyById(id)
 };
 </script>
 
@@ -96,11 +96,13 @@ let handleCloseButton = (id) => {
 
 .fade-leave-to {
   opacity: 0;
+  transform: translate(0%, -100%);
 }
 
 .fade-enter-from {
   opacity: 0;
-  transform: translateY(140%);
+  transform: translateY(160%);
+  /* transform: translateX(40%); */
   /* transform: scale(0.2); */
 }
 
