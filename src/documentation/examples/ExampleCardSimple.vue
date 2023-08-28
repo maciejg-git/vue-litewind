@@ -1,7 +1,7 @@
 <template>
   <v-card
     width="320px"
-    mod-card="effect:hoverScale"
+    mod-card="effect:hoverScale variant:info"
     class="overflow-hidden mx-auto"
   >
     <img

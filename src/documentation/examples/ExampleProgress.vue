@@ -7,7 +7,7 @@
 
   <v-progress
     v-bind="example"
-    mod-progress="rounded"
+    mod-progress="shape:rounded"
     mod-progress-bar="variant:red shape:rounded"
     class="mt-4"
   >

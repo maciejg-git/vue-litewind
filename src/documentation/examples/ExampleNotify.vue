@@ -9,6 +9,12 @@
         closeButton: { modCloseButton: 'size:small' },
       }"
     >
+    <template #content-append="{ options, removeById }">
+        <div v-if="options.custom" class="flex justify-between mt-6">
+          <v-button mod-button="size:tiny" @click="removeById">Accept</v-button>
+          <v-button mod-button="size:tiny variant:secondary" @click="removeById">Close</v-button>
+        </div>
+      </template>
     </v-notify-container>
   </teleport>
 
@@ -55,6 +61,27 @@
           text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen',
           icon: 'b-check-lg',
           static: true,
+        })
+      "
+    >
+      Show static notify
+    </v-button>
+
+    <p>
+      Notify with additional content in the slots.
+    </p>
+
+    <v-button
+      @click="
+        notify.push({
+          header: 'Header',
+          text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen',
+          static: true,
+          dismissable: false,
+          props: { modNotify: 'variant:default' },
+          options: {
+            custom: true,
+          }
         })
       "
     >

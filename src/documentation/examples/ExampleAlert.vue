@@ -45,19 +45,6 @@
   >
     Alert
   </v-alert>
-
-  <p class="my-6">Styled alert</p>
-
-  <v-alert
-    v-model="example.isVisible"
-    :dismissable="example.dismissable"
-    :auto-dismiss-delay="example.autoDismissDelay"
-    :icon="example.variant"
-    :variant="example.variant"
-    mod-alert="text:bold info?variant:info danger?variant:danger warn?variant:warn success?variant:success invalid?variant:danger valid?variant:success"
-  >
-    Alert
-  </v-alert>
   <!-- CUT START -->
   <div class="flex justify-between mt-5">
     <div>

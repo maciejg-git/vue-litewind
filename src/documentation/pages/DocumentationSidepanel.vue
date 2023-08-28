@@ -11,8 +11,31 @@
     <!-- <table-reference-basic :items="events"></table-reference-basic> -->
 
     <h6 id="SidepanelSlots">Slots</h6>
-    <table-reference-basic :items="reference.slots" reference="slot" />
+    <table-reference-basic
+      :items="reference.slots"
+      reference="slot"
+    />
   </section>
+
+  <v-divider></v-divider>
+
+  <section>
+    <h4 id="DropdownNotes">Notes</h4>
+    <ul class="mt-6 flex flex-col gap-y-7">
+      <li>
+        <header class="mb-2 text-lg font-semibold dark:text-text-200">
+          Sidepanel activation
+        </header>
+        To control sidepanel visibility you can use
+        <code class="code-text">v-model</code>
+        or
+        <code class="code-text">v-trigger</code>
+        component.
+      </li>
+    </ul>
+  </section>
+
+  <v-divider></v-divider>
 
   <section>
     <h4 id="ExampleSidepanel">Example - props</h4>
@@ -24,7 +47,17 @@
   <section id="ExampleSidepanelTrigger">
     <h4 id="ExampleSidepanelTrigger">Example - open by id</h4>
     <p>
-    You can also control state of the sidepanel menu by using <code class="code-text">v-trigger</code> component. The <code class="code-text">for</code> prop of the <code class="code-text">v-trigger</code> should be the same as <code class="code-text">id</code> of the sidepanel. The advantage of this method is that <code class="code-text">v-triggers</code> can be put anywhere in application. Read more about v-trigger here.
+      You can also control state of the sidepanel menu by using
+      <code class="code-text">v-trigger</code>
+      component. The
+      <code class="code-text">for</code>
+      prop of the
+      <code class="code-text">v-trigger</code>
+      should be the same as
+      <code class="code-text">id</code>
+      of the sidepanel. The advantage of this method is that
+      <code class="code-text">v-triggers</code>
+      can be put anywhere in application. Read more about v-trigger here.
     </p>
     <div class="example">
       <example name="ExampleSidepanelTrigger"></example>
@@ -34,12 +67,12 @@
 
 <script>
 import { ref, reactive } from "vue";
-import componentDocumentation from "../components-documentation/vSidepanel.json"
+import componentDocumentation from "../components-documentation/vSidepanel.json";
 
 export default {
   setup() {
-    let reference = reactive(componentDocumentation)
-    
+    let reference = reactive(componentDocumentation);
+
     return {
       reference,
     };
@@ -47,5 +80,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

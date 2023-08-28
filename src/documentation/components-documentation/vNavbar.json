@@ -42,7 +42,7 @@
       ],
       "default": "\"relative\"",
       "prop": "position",
-      "description": ""
+      "description": "Position of the navbar: `fixed`, `absolute` or `relative`"
     },
     {
       "type": [

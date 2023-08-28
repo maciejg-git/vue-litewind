@@ -54,7 +54,7 @@
       "default": false,
       "globalDefault": true,
       "prop": "modal",
-      "description": "Displays modal variant of sidepanel. Clicking backdrop closes sidepanel"
+      "description": "Displays modal variant of sidepanel. Backdrop is displayed over the page. Clicking backdrop closes sidepanel"
     },
     {
       "type": [

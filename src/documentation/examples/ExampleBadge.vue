@@ -13,14 +13,4 @@
     <v-badge mod-badge="size:small variant:warn">NEW</v-badge>
     <v-badge mod-badge="size:tiny variant:success">NEW</v-badge>
   </div>
-
-  <!-- positioned badges -->
-
-  <v-button class="relative mt-10">
-    Badge button
-    <v-badge
-      position="top-right"
-      mod-badge="special:circle variant:danger"
-    ></v-badge>
-  </v-button>
 </template>

@@ -28,13 +28,13 @@
         <header class="font-semibold text-lg dark:text-text-200 mb-2">
           Usage
         </header>
-        In order to start using first place <code class="code-text">v-notify-component</code> in one of the top level components (for example in <code class="code-text">App.vue</code>). Setting this component early is important to make sure it is available before adding any notifications. With the component in place you can then import <code class="code-text">useNotify</code> function anywhere in your application and start displaying notifications.
+        The first step is to place <code class="code-text">v-notify-component</code> in one of the top level components (for example in <code class="code-text">App.vue</code>). This component is set up early in order to make sure it is available before adding any notifications. With the component in place you can then import <code class="code-text">useNotify</code> function anywhere in your application and start displaying notifications.
       </li>
       <li>
         <header class="font-semibold text-lg dark:text-text-200 mb-2">
           Notify container position
         </header>
-        By default notify container is positioned as <code class="code-text">fixed</code> element. In order to set it up properly you should add few more tailwind classes to it:
+        Notify container does not have any classes by default apart from <code class="code-text">fixed</code> position. You should add few basic tailwind classes in order to set it up:
         <ul class="list-disc list-inside my-2">
           <li>
             <code class="code-text">top-*</code>, <code class="code-text">bottom-*</code>, <code class="code-text">left-*</code> and <code class="code-text">right-*</code> to place it in desired position,
@@ -43,7 +43,7 @@
             <code class="code-text">w-* </code>class to set width of notify windows,
           </li>
           <li>
-            <code class="code-text">space-y-*</code> to create gaps between notifications,
+            <code class="code-text">space-y-*</code> to add some gaps between notifications,
           </li>
         </ul>
         For example <code class="code-text">bottom-4 right-10 w-[350px] space-y-4</code> will make notifications appear in the bottom right corner of the screen. Notification will be 350px wide and seperated with 1rem of space.
@@ -53,6 +53,10 @@
           Adding new notifications
         </header>
         To add new notifications import and call <code class="code-text">useNotify</code> function anywhere in your application. You can then use returned object and its <code class="code-text">push</code> function to add new notifications. <code class="code-text">Push</code> function can take single <code class="code-text">string</code> argument that will add very basic notifiation with default settings. For more control and customization you can use object as argument that will allow additional options for example adding header or icon, setting auto dismiss delay etc.
+        <v-code
+          language="javascript"
+          :code="pushFunction"
+          ></v-code>
       </li>
       <li>
         <header class="font-semibold text-lg dark:text-text-200 mb-2">
@@ -89,9 +93,30 @@ export default {
     let reference = reactive(componentDocumentation)
     let referenceContainer = reactive(componentDocumentationContainer)
     
+    let pushFunction = `import { useNotify } from "vue";
+
+let notify = useNotify();
+
+notify.push(text: string)
+
+// or
+
+notify.push({
+  header: string,
+  text: string,
+  icon: string | object,
+  dismissable: boolean,
+  autoDismissDelay: number,
+  props: object,
+  variant: string,
+  options: object,
+})
+`;
+
     return {
       reference,
       referenceContainer,
+      pushFunction,
     };
   },
 };

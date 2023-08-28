@@ -18,6 +18,13 @@
   </section>
 
   <section>
+    <h4 id="ExampleBadgeSpecial">Example - positioned badge</h4>
+    <div class="example">
+      <example name="ExampleBadgeSpecial"></example>
+    </div>
+  </section>
+
+  <section>
     <h4 id="ExampleBadgeAnimated">Example - animated badge</h4>
     <p>
     To animate badge one time on value update use <code class="code-text">update-key</code> prop. For persistent animation you can use Tailwind animate classes.

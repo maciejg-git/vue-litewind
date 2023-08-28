@@ -100,7 +100,7 @@ module.exports = {
 import "vue-litewind/vue-litewind.css" 
 `}}
     </v-code>
-          The rest of styles is defined in js files as tailwind classes. You can import it directly or preferably copy from node_modules for customization. After importing styles must be provided to the components in the application with the use of the <code class="code-text">provide</code> function:
+          In order to make components customizable the rest of the styles are set up in <code class="code-text">js</code> files as tailwind classes. You can import them directly or preferably copy from distribution directory (<code class="code-text">node_modules</code>) to your application for customization. Imported styles need to be provided to the components with the use of the <code class="code-text">provide</code> function. The preferred place to do it is the root component of the application (for example <code class="code-text">App.vue</code>)
     <v-code language="html">
       {{ `<!-- App.vue -->
 
@@ -112,6 +112,7 @@ provide("mods", styles)
 </script>
 `}}
     </v-code>
+    <p>Read about customizing styles here.</p>
       </div>
 
     <span class="font-bold dark:text-text-300">
@@ -119,7 +120,7 @@ provide("mods", styles)
     </span>
     <div class="border-l-2 border-dark-500 dark:border-dark-600 pl-8">
     <p>
-      You can register single or all components in application entry file (for example main.js). Registering single components will make build smaller.
+      You can register single or all components in application entry file (for example <code class="code-text">main.js</code>). Registering single components will make build smaller.
     </p>
 
     <v-tabs base="materialTabs">
@@ -246,6 +247,28 @@ app.use(vueLitewind, {
     <section>
     <h4 id="Styling" class="my-10">Styling components</h4>
       </section>
+      <p>
+      Default style of components can be modified by using following:
+      <ul class="list-disc list-inside">
+        <li>
+      <code class="code-text">tailwind.config.js</code> for color definitions,
+        </li>
+        <li>
+      js file with base classes and variants for components,
+        </li>
+        <li>
+      and following component props:
+        </li>
+      </ul>
+      <ul class="ml-10">
+        <li class="my-2">
+          <code class="code-text">base</code> - every component can have multiple versions with different set of variants exported from js file. This prop allows to select active version applied to the component. The default value is always component name.
+        </li>
+        <li class="my-2">
+          <code class="code-text">mod-[element]</code> - adds list of variant classes to the <code class="code-text">[element]</code> of component. Variant can be applied conditionaly by putting "identifier:" in front of any variant. Active conditional variant can then be chosen with <code class="code-text">variant</code> prop set to identifier. Identifier can be any word and does not have any relation to css.
+        </li> 
+      </ul>
+      </p>
 
       <section>
         <h5 id="ExampleStyling">Example - styling with base, style and variant props</h5>
