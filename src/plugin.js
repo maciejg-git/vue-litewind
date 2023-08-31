@@ -1,41 +1,51 @@
-import { notifications, setNotifyOptions, removeNotify } from "./components/composition/use-notify"
+import {
+  notifications,
+  setNotifyOptions,
+  removeNotify,
+  removeNotifyById,
+} from "./components/composition/use-notify";
 
 const defaultOptions = {
   globalProps: {},
   componentProps: {},
-}
+};
 
-let globalOptions = {}
+let globalOptions = {};
 
 let vueLitewind = {
   install(app, options) {
-    options = options || {}
+    options = options || {};
 
     globalOptions = {
       ...defaultOptions,
       ...options,
-    }
+    };
 
-    app.provide("notify", { notifications, setNotifyOptions, removeNotify })
+    app.provide("notify", {
+      notifications,
+      setNotifyOptions,
+      removeNotify,
+      removeNotifyById,
+    });
 
     if (globalOptions.components) {
       Object.entries(globalOptions.components).forEach((component) => {
         app.component(component[0], component[1]);
-      })
+      });
     }
 
     if (globalOptions.grid) {
       Object.entries(globalOptions.grid).forEach((component) => {
         app.component(component[0], component[1]);
-      })
+      });
     }
 
     if (globalOptions.directives) {
       Object.entries(globalOptions.directives).forEach((directive) => {
-        app.directive(directive[0], directive[1])
-      })
+        app.directive(directive[0], directive[1]);
+      });
     }
-  }
-}
+  },
+};
 
-export { vueLitewind, globalOptions }
+export { vueLitewind, globalOptions };

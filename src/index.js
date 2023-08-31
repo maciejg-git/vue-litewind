@@ -9,4 +9,6 @@ export { directives }
 
 export * from "./plugin"
 
+export { useNotify } from "./components/composition/use-notify.js"
+
 export { setValidationMessage } from "./validators"
