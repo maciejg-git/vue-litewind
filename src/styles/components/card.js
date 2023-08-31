@@ -62,7 +62,8 @@ let card = {
   },
   preset: {
     selectMenu: () => `
-      ${card.shape.rounded}
+      group-data-[placement=bottom]:rounded-b-md
+      group-data-[placement=top]:rounded-t-md
       ${card.shadow.medium}
       ${card.border.borderless}
       ${card.variant.default}
