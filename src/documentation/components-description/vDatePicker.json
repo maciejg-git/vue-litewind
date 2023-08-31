@@ -33,7 +33,7 @@
     "input:cancel": "Emmited after clicking secondary button"
   },
   "slots": {
-    "day": "Emmited after clicking secondary button"
+    "day": "Slot for a day"
   },
   "functions": {},
   "components": {}

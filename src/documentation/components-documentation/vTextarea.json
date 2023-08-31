@@ -28,7 +28,8 @@
       },
       "globalDefault": true,
       "prop": "form-text",
-      "description": "Attributes of v-form-text component"
+      "description": "Attributes of v-form-text component",
+      "tags": "attributes"
     },
     {
       "type": [

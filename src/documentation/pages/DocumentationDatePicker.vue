@@ -13,6 +13,8 @@
     <table-reference-basic :items="reference.slots" reference="slot" />
   </section>
 
+  <v-divider></v-divider>
+
   <section>
     <h4 id="ExampleDatepickerModel">v-model</h4>
     <span class="font-bold">Type</span>
@@ -27,10 +29,10 @@
       depending on selection mode. In range mode v-model returns
       <code class="code-text">Array</code>
       of two
-      <code class="code-text">String</code>
+      <code class="code-text">Strings</code>
       . In single mode v-model returns
       <code class="code-text">String</code>
-      . Date is in
+      . For both modes date is in
       <code class="code-text">YYYY-MM-DD</code>
       format.
     </p>

@@ -46,7 +46,8 @@
       "default": {},
       "globalDefault": true,
       "prop": "card",
-      "description": "Attributes of v-card component used as container for select menu"
+      "description": "Attributes of v-card component used as container for select menu",
+      "tags": "attributes"
     },
     {
       "type": [
@@ -55,7 +56,8 @@
       "default": {},
       "globalDefault": true,
       "prop": "chevron",
-      "description": "Attributes of v-chevron component"
+      "description": "Attributes of v-chevron component",
+      "tags": "attributes"
     },
     {
       "type": [
@@ -99,7 +101,8 @@
       "default": {},
       "globalDefault": true,
       "prop": "input",
-      "description": "Attributes of v-input component"
+      "description": "Attributes of v-input component",
+      "tags": "attributes"
     },
     {
       "type": [

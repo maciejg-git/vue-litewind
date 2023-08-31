@@ -183,8 +183,7 @@
         column wrapping. However, those classes can be used on
         <code class="code-text">v-container</code>
         to create horizontal gutters that separate
-        <code class="code-text">v-rows</code>
-        .
+        <code class="code-text">v-rows</code>.
       </v-alert>
     </p>
     <div class="example">

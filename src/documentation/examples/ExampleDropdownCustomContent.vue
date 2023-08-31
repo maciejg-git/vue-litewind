@@ -15,9 +15,9 @@
         <v-input
           v-model="filter"
           placeholder="Filter"
-          base="underlined-input"
+          base="underlinedInput"
           :close-button="{
-            styleCloseButton: 'small',
+            modCloseButton: 'size:small',
           }"
           clearable
         ></v-input>

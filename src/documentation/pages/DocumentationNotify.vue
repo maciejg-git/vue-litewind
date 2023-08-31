@@ -46,23 +46,37 @@
             <code class="code-text">space-y-*</code> to add some gaps between notifications,
           </li>
         </ul>
-        For example <code class="code-text">bottom-4 right-10 w-[350px] space-y-4</code> will make notifications appear in the bottom right corner of the screen. Notification will be 350px wide and seperated with 1rem of space.
+        For example <code class="code-text">bottom-4 right-10 w-[350px] space-y-4</code> will make notifications appear in the bottom right corner of the screen. Notifications will be 350px wide and seperated with 1rem of space.
       </li>
       <li>
         <header class="font-semibold text-lg dark:text-text-200 mb-2">
           Adding new notifications
         </header>
-        To add new notifications import and call <code class="code-text">useNotify</code> function anywhere in your application. You can then use returned object and its <code class="code-text">push</code> function to add new notifications. <code class="code-text">Push</code> function can take single <code class="code-text">string</code> argument that will add very basic notifiation with default settings. For more control and customization you can use object as argument that will allow additional options for example adding header or icon, setting auto dismiss delay etc.
+        To add new notifications import and call <code class="code-text">useNotify</code> function anywhere in your application. You can then use returned object and its <code class="code-text">push</code> function to add new notifications. <code class="code-text">Push</code> function can take single <code class="code-text">string</code> argument that will add very basic notifiation with default settings. For more control and customization you can use object as argument that will allow additional options.
         <v-code
           language="javascript"
           :code="pushFunction"
           ></v-code>
+        <ul class="list-disc list-inside">
+          <li>
+            <code class="code-text">header</code>, <code class="code-text">text</code> and <code class="code-text">icon</code> - set content of the notify,
+          </li>
+          <li>
+        <code class="code-text">dismissable</code>, <code class="code-text">autoDismissDelay</code> and <code class="code-text">static</code> - override respective options of <code class="code-text">v-notify-container</code>,
+          </li>
+          <li>
+            <code class="code-text">props</code> - is an object with <code class="code-text">v-notify</code> props. See reference above.
+          </li>
+          <li>
+            <code class="code-text">variant</code> and <code class="code-text">options</code> - are general options that can be used for any purpose. For example, those options can be useful to identify notifications when using slots. See example below (custom notify)
+          </li>
+        </ul>
       </li>
       <li>
         <header class="font-semibold text-lg dark:text-text-200 mb-2">
           Hiding notifications
         </header>
-        By default notifications will auto close after short delay (defined in <code class="code-text">auto-hide-delay</code> prop of the <code class="code-text">v-notify-container</code>). That behavior can be disabled globally by enabling <code class="code-text">static</code> prop of the <code class="code-text">v-notify-container</code>. If only selected notifications should be manually dismissed use <code class="code-text">static</code> property of the argument when calling <code class="code-text">push</code> function. By default hovering over <code class="code-text">v-notify-container</code> pauses all timers and restarts them after pointer leaves element.
+        By default notifications will auto close after short delay (<code class="code-text">auto-hide-delay</code> prop of the <code class="code-text">v-notify-container</code>). That behavior can be disabled globally by enabling <code class="code-text">static</code> prop of the <code class="code-text">v-notify-container</code>. If only selected notifications should be manually dismissed use <code class="code-text">static</code> property of the argument when calling <code class="code-text">push</code> function. By default hovering over <code class="code-text">v-notify-container</code> pauses all timers and restarts them after pointer leaves element.
       </li>
       <li>
         <header class="font-semibold text-lg dark:text-text-200 mb-2">
@@ -107,6 +121,7 @@ notify.push({
   icon: string | object,
   dismissable: boolean,
   autoDismissDelay: number,
+  static: boolean,
   props: object,
   variant: string,
   options: object,

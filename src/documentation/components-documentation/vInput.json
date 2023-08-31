@@ -59,7 +59,8 @@
       },
       "globalDefault": true,
       "prop": "form-text",
-      "description": "Attributes of v-form-text component (validation messages)"
+      "description": "Attributes of v-form-text component (validation messages)",
+      "tags": "attributes"
     },
     {
       "type": [
@@ -179,7 +180,8 @@
       "default": {},
       "globalDefault": true,
       "prop": "spinner",
-      "description": "Attributes of input v-spinner component (loader)"
+      "description": "Attributes of input v-spinner component (loader)",
+      "tags": "attributes"
     },
     {
       "type": [

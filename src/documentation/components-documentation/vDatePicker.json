@@ -150,7 +150,8 @@
       },
       "globalDefault": true,
       "prop": "primary-button",
-      "description": "Attributes of primary v-button"
+      "description": "Attributes of primary v-button",
+      "tags": "attributes"
     },
     {
       "type": [
@@ -186,7 +187,8 @@
       },
       "globalDefault": true,
       "prop": "secondary-button",
-      "description": "Attributes of secondary v-button"
+      "description": "Attributes of secondary v-button",
+      "tags": "attributes"
     },
     {
       "type": [
@@ -243,7 +245,7 @@
   "slots": [
     {
       "slot": "day",
-      "description": "Emmited after clicking secondary button"
+      "description": "Slot for day"
     }
   ],
   "functions": [],

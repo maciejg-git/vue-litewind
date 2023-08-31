@@ -248,18 +248,81 @@ app.use(vueLitewind, {
     <h4 id="Styling" class="my-10">Styling components</h4>
       </section>
       <p>
-      Default style of components can be modified by using following:
-      <ul class="list-disc list-inside">
-        <li>
-      <code class="code-text">tailwind.config.js</code> for color definitions,
-        </li>
-        <li>
-      js file with base classes and variants for components,
-        </li>
-        <li>
+        In order to modify default styles of the component start with <code class="code-text">tailwind.config.js</code> file. Set colors for your application by changing colors assigned to primary, secondary etc.
+      </p>
+
+      <p>
+        Second part of the theming are the js files that contain styles for each component. Inside the file are listed elements that are available for theming and strings of taiwind classes assigned to them. Here is simplified example of such file:
+      </p>
+    <v-code language="javascript">
+{{ `let component =  {
+  header: {
+    classes: \`
+      class,
+      class2,
+    \`,
+  },
+  content: {
+    classes: \`
+      class,
+      class2,
+    \`,
+  },
+  footer: {
+    classes: \`
+      class,
+      class2,
+    \`,
+  },
+}`}}
+    </v-code>
+    <p>
+      This is basis for all component, however, most of them use additional modifiers and variants applied to elements under certain conditions: for example for selected items, depending on the validity of the input or simply chosen by the user.
+    </p>
+    <v-code language="javascript">
+{{ `let component =  {
+  header: {
+    ...
+  },
+  content: {
+    classes: \`
+      class,
+      class2,
+    \`,
+    shape: {
+      rounded: \`
+        class,
+        class2,
+      \`,
+      square: \`
+        class,
+        class2,
+      \`,
+    },
+    size: {
+      medium: \`
+        class,
+        class2,
+      \`,
+      small: \`
+        class,
+        class2,
+      \`,
+    },
+  },
+  footer: {
+    ...
+  },
+}`}}
+    </v-code>
+    <p>
+    Some of those variants are applied automatically and some can be applied explicitly to element by using <code class="code-text">mod-[element]</code> prop of the component.
+    </p>
+    <p>
+      Apart from those variants that can be freely added or removed there are three that have special meaning: <code class="code-text">data</code>, <code class="code-text">state</code> and <code class="code-text">preset</code>.
+    </p>
+
       and following component props:
-        </li>
-      </ul>
       <ul class="ml-10">
         <li class="my-2">
           <code class="code-text">base</code> - every component can have multiple versions with different set of variants exported from js file. This prop allows to select active version applied to the component. The default value is always component name.
@@ -268,7 +331,6 @@ app.use(vueLitewind, {
           <code class="code-text">mod-[element]</code> - adds list of variant classes to the <code class="code-text">[element]</code> of component. Variant can be applied conditionaly by putting "identifier:" in front of any variant. Active conditional variant can then be chosen with <code class="code-text">variant</code> prop set to identifier. Identifier can be any word and does not have any relation to css.
         </li> 
       </ul>
-      </p>
 
       <section>
         <h5 id="ExampleStyling">Example - styling with base, style and variant props</h5>

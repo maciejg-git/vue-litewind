@@ -26,7 +26,7 @@
     "modHeader": "Style of modal header element",
     "modFooter": "Style of modal footer element",
     "modContent": "Style of the content part of modal element",
-    "backdrop": "Attributes of backdrop component"
+    "backdrop": "Attributes of v-backdrop component"
   },
   "emits": {
     "input:primary-button-click": "Emmited after clicking primary button",

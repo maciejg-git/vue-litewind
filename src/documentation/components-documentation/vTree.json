@@ -53,7 +53,8 @@
       "default": {},
       "globalDefault": true,
       "prop": "chevron",
-      "description": "Attributes of v-chevron (open indicator) component. See documentation for valid values"
+      "description": "Attributes of v-chevron (open indicator) component. See documentation for valid values",
+      "tags": "attributes"
     },
     {
       "type": [

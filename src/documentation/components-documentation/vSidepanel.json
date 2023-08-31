@@ -17,7 +17,8 @@
       "default": {},
       "globalDefault": true,
       "prop": "backdrop",
-      "description": "Attributes of backdrop component"
+      "description": "Attributes of backdrop component",
+      "tags": "attributes"
     },
     {
       "type": [

@@ -9,7 +9,8 @@
       "default": {},
       "globalDefault": true,
       "prop": "chevron",
-      "description": "Attributes of v-chevron component"
+      "description": "Attributes of v-chevron component",
+      "tags": "attributes"
     },
     {
       "type": [

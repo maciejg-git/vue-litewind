@@ -15,6 +15,20 @@ let descriptionPath = "../components-description/";
 let references = fg.sync("**", { cwd: referencePath });
 let descriptions = fg.sync("**", { cwd: descriptionPath });
 
+let componentsAttributes = [
+  "close-button",
+  "button",
+  "primary-button",
+  "secondary-button",
+  "backdrop",
+  "input",
+  "card",
+  "chevron",
+  "form-text",
+  "notify",
+  "spinner",
+]
+
 let getDefault = (value) => {
   if (value === "undefined") {
     return value;
@@ -97,7 +111,7 @@ while (references.length) {
 
     v.default = getDefault(v.default);
 
-    if (v.prop === "close-button") {
+    if (componentsAttributes.includes(v.prop)) {
       v.tags = "attributes"
     }
 

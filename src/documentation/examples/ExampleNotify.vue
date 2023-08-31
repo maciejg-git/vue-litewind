@@ -9,31 +9,42 @@
         closeButton: { modCloseButton: 'size:small' },
       }"
     >
-    <template #content-append="{ options, removeById }">
-        <div v-if="options.custom" class="flex justify-between mt-6">
-          <v-button mod-button="size:tiny" @click="removeById">Accept</v-button>
-          <v-button mod-button="size:tiny variant:secondary" @click="removeById">Close</v-button>
+      <template #content-append="{ options, removeById }">
+        <div
+          v-if="options.dialog"
+          class="mt-6 flex justify-between"
+        >
+          <v-button
+            mod-button="size:tiny"
+            @click="removeById"
+          >
+            Accept
+          </v-button>
+          <v-button
+            mod-button="size:tiny variant:secondary"
+            @click="removeById"
+          >
+            Close
+          </v-button>
         </div>
       </template>
     </v-notify-container>
   </teleport>
 
-  <p>
-    Simple notify with default options and text argument.
-  </p>
+  <p>Simple notify with default options and text argument.</p>
 
   <div class="flex flex-col items-start gap-y-4">
     <v-button
       @click="
-        notify.push('Lorem Ipsum is simply dummy text of the printing and typesetting industry.')
+        notify.push(
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
+        )
       "
     >
       Show simple notify
     </v-button>
-    
-    <p>
-      Customized notify.
-    </p>
+
+    <p>Customized notify with object argument.</p>
 
     <v-button
       @click="
@@ -50,9 +61,7 @@
       Show notify
     </v-button>
 
-    <p>
-      Static notify that remains visible until manually dismissed.
-    </p>
+    <p>Static notify that remains visible until manually dismissed.</p>
 
     <v-button
       @click="
@@ -67,9 +76,7 @@
       Show static notify
     </v-button>
 
-    <p>
-      Notify with additional content in the slots.
-    </p>
+    <p>Notify with additional content in the slots.</p>
 
     <v-button
       @click="
@@ -80,12 +87,12 @@
           dismissable: false,
           props: { modNotify: 'variant:default' },
           options: {
-            custom: true,
-          }
+            dialog: true,
+          },
         })
       "
     >
-      Show static notify
+      Show custom notify
     </v-button>
   </div>
 </template>

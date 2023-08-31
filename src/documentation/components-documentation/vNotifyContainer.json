@@ -33,7 +33,8 @@
       "default": {},
       "globalDefault": true,
       "prop": "notify",
-      "description": "Attributes of the notify components"
+      "description": "Attributes of the notify components",
+      "tags": "attributes"
     },
     {
       "type": [

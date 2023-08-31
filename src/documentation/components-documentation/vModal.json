@@ -17,7 +17,8 @@
       "default": {},
       "globalDefault": true,
       "prop": "backdrop",
-      "description": "Attributes of backdrop component"
+      "description": "Attributes of backdrop component",
+      "tags": "attributes"
     },
     {
       "type": [
@@ -150,7 +151,8 @@
         "styleButton": "primary"
       },
       "prop": "primary-button",
-      "description": "Attributes of primary v-button component. See documentation for valid values"
+      "description": "Attributes of primary v-button component. See documentation for valid values",
+      "tags": "attributes"
     },
     {
       "type": [
@@ -177,7 +179,8 @@
         "styleButton": "secondary"
       },
       "prop": "secondary-button",
-      "description": "Attributes of secondary v-button component. See documentation for valid values"
+      "description": "Attributes of secondary v-button component. See documentation for valid values",
+      "tags": "attributes"
     },
     {
       "type": [

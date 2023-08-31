@@ -5,7 +5,7 @@
       :label="example.label"
       :validationState="example.validationState"
       placeholder="Type something..."
-      class="h-[120px] w-[400px]"
+      class="h-[120px]"
     />
   </div>
 
@@ -18,7 +18,7 @@
       :label="example.label"
       :state="example.state"
       placeholder="Type something..."
-      class="h-[120px] w-[400px]"
+      class="h-[120px]"
     />
   </div>
   <!-- CUT START -->
