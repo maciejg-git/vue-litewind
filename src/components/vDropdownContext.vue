@@ -111,7 +111,7 @@ let showContextDropdown = (ev, data) => {
   contextData.value = data;
 };
 
-provide("control-dropdown", {
+provide("_control-dropdown", {
   classes,
   variants,
   autoCloseMenu: toRef(props, "autoCloseMenu"),

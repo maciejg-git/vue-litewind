@@ -44,7 +44,7 @@ let props = defineProps({
   },
   autoDismissDelay: {
     type: Number,
-    default: 4000,
+    default: 10000,
   },
   dismissable: {
     type: Boolean,

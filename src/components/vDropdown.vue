@@ -16,7 +16,7 @@
         v-bind="$attrs"
         @mouseenter="preventHiding"
         @mouseleave="allowHiding"
-        class="absolute z-50"
+        class="group absolute z-50"
       >
         <!-- @slot default -->
         <slot
@@ -46,7 +46,7 @@ import {
   nextTick,
   inject,
 } from "vue";
-import useTailwindStyles from "./composition/use-tailwind-styles"
+import useTailwindStyles from "./composition/use-tailwind-styles";
 import useClickOutside from "./composition/use-click-outside";
 import useTrigger from "./composition/use-trigger-events";
 import useFloating from "./composition/use-floating";
@@ -86,16 +86,16 @@ const attrs = useAttrs();
 
 const slots = useSlots();
 
-let { dropdown } = inject("mods", {})
+let { dropdown } = inject("mods", {});
 
 let elements = {
   item: {
-    externalVariants: ["variant"]
+    externalVariants: ["variant"],
   },
   header: null,
-}
+};
 
-let { classes, variants } = useTailwindStyles(props, dropdown, elements)
+let { classes, variants } = useTailwindStyles(props, dropdown, elements);
 
 const { offsetX, offsetY, flip, placement, autoPlacement, trigger } =
   toRefs(props);

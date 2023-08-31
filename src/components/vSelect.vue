@@ -76,7 +76,7 @@
       <div
         v-if="isFloatingVisible"
         ref="floating"
-        class="z-50"
+        class="group z-50"
       >
         <v-card
           ref="cardRef"
@@ -132,8 +132,16 @@ export default {
 </script>
 
 <script setup>
-import { ref, computed, watch, toRefs, nextTick, onBeforeUpdate, inject } from "vue";
-import useTailwindStyles from "./composition/use-tailwind-styles"
+import {
+  ref,
+  computed,
+  watch,
+  toRefs,
+  nextTick,
+  onBeforeUpdate,
+  inject,
+} from "vue";
+import useTailwindStyles from "./composition/use-tailwind-styles";
 import useLocalModel from "./composition/use-local-model";
 import useFloating from "./composition/use-floating";
 import vInput from "./vInput.vue";
@@ -147,7 +155,7 @@ import {
   sharedFormProps,
 } from "../shared-props";
 import { defaultProps } from "../defaultProps";
-import { highlight as highlightMatch } from "../tools"
+import { highlight as highlightMatch } from "../tools";
 
 let props = defineProps({
   ...sharedProps(),
@@ -234,28 +242,28 @@ const emit = defineEmits([
   "state:closed",
 ]);
 
-let { select } = inject("mods", {})
+let { select } = inject("mods", {});
 
 let elements = {
   item: {
     externalVariants: ["variant", "match", "events"],
   },
-}
+};
 
-let { classes, variants } = useTailwindStyles(props, select, elements)
+let { classes, variants } = useTailwindStyles(props, select, elements);
 
 let getItemClass = (item, index) => {
   return [
     classes.item.value,
     isSelected(item) && variants.item.selected,
     // index === highlightedItemIndex.value && states.item.value.highlighted,
-    variants.item.default
+    variants.item.default,
   ];
 };
 
 let highlight = (value) => {
-  return highlightMatch(value, localText.value, variants.item.highlight)
-}
+  return highlightMatch(value, localText.value, variants.item.highlight);
+};
 
 let localModel = useLocalModel(props, emit);
 

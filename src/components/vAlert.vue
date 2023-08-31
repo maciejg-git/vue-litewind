@@ -11,7 +11,7 @@
           class="self-start"
         >
           <v-icon
-            :name="icons[icon]"
+            :name="icons[icon] ?? icon"
             :class="classes.icon.value"
           />
         </div>
