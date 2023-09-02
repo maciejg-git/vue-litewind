@@ -186,7 +186,7 @@ onMounted(() => {
   if (level !== null) openAllLevel(level);
 });
 
-provide("control-tree", {
+provide("_control-tree", {
   classes,
   variants,
   forNode,

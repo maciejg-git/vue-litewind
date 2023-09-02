@@ -30,7 +30,7 @@ const emit = defineEmits([
 
 let groupModel = ref(props.modelValue);
 
-let form = inject("form", {});
+let form = inject("_form", {});
 
 // validation
 
@@ -62,14 +62,14 @@ let validation = useValidation({
   onReset: resetInput,
 });
 
-provide("v-checkbox-group-validation", validation);
+provide("_checkbox-group-validation", validation);
 
 let onUpdateGroupModel = (newValue) => {
   groupModel.value = newValue;
   emit("update:modelValue", groupModel.value);
 };
 
-provide("v-checkbox-group", {
+provide("_checkbox-group", {
   groupModel,
   onUpdateGroupModel,
   isInGroup: true,

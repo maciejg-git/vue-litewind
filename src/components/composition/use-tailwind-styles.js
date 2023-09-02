@@ -35,8 +35,6 @@ export default function useTailwindStyles(props, styles, elements) {
 
   groupClass = styles?.[props.base]?._options?.containerGroupClass ?? "";
 
-  let isSingleElement = Object.keys(elements).length === 1;
-
   let activeMods = {};
 
   // for (let [el, options] of Object.entries(elements)) {
@@ -81,7 +79,9 @@ export default function useTailwindStyles(props, styles, elements) {
   // console.log(activeMods)
 
   for (let [el, options] of Object.entries(elements)) {
+
     variants[el] = {};
+
     classes[el] = computed(() => {
       let base = props.base;
 
@@ -89,21 +89,16 @@ export default function useTailwindStyles(props, styles, elements) {
 
       let mods = parseElementModProp(props, el);
 
-      let elementStyles = !isSingleElement ? styles[base][el] : styles[base];
+      let elementStyles = styles[base][el];
 
       let classes = "";
 
       if (mods.preset) {
-        return (
-          getClasses(elementStyles.preset[mods.preset[3]]).replace(
-            /\s\s+/g,
-            " "
-          ) +
-          " " +
-          (options?.fixed || "") +
-          " " +
-          (options?.computed?.value || "")
-        );
+        return `
+          ${getClasses(elementStyles.preset[mods.preset[3]])}
+          ${options?.fixed || ""}
+          ${options?.computed?.value || ""}
+        `.replace(/\s\s+/g, " ");
       }
 
       if (elementStyles?.classes) {
@@ -135,18 +130,19 @@ export default function useTailwindStyles(props, styles, elements) {
           stateClasses = state.value ? elementStyles[type][state.value] : null;
         }
 
-        if (type !== "state" && type !== "preset" && type !== "data" && type !== "classes") {
+        if (
+          type !== "state" &&
+          type !== "preset" &&
+          type !== "data" &&
+          type !== "classes"
+        ) {
           sharedClasses = elementStyles[type]?.classes || "";
 
           modClasses = mods[type] ? elementStyles[type][mods[type][3]] : "";
 
           if (!elementStyles[type].optional) {
             for (let item in elementStyles[type]) {
-              if (
-                item === "classes" ||
-                item === "optional"
-              )
-                continue;
+              if (item === "classes" || item === "optional") continue;
               defaultClasses = elementStyles[type][item];
               break;
             }
@@ -159,13 +155,11 @@ export default function useTailwindStyles(props, styles, elements) {
         }`;
       }
 
-      return (
-        classes.replace(/\s\s+/g, " ") +
-        " " +
-        (options?.fixed || "") +
-        " " +
-        (options?.computed?.value || "")
-      );
+      return `
+        ${classes}
+        ${(options?.fixed || "")}
+        ${(options?.computed?.value || "")}
+      `.replace(/\s\s+/g, " ")
     });
   }
 

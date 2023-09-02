@@ -60,7 +60,7 @@ let props = defineProps({
   },
 });
 
-let { notifications, setNotifyOptions, removeNotify, removeNotifyById } = inject("notify");
+let { notifications, setNotifyOptions, removeNotify, removeNotifyById } = inject("_notify");
 
 setNotifyOptions(props);
 

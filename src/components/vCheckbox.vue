@@ -93,7 +93,7 @@ let getCheckBoxClasses = () => {
 let id = useUid("checkbox", attrs);
 
 let { groupModel, onUpdateGroupModel, isInGroup } = inject(
-  "v-checkbox-group",
+  "_checkbox-group",
   {}
 );
 
@@ -101,7 +101,7 @@ let localModel = useLocalModel(props, emit, groupModel, onUpdateGroupModel);
 
 // handle v-form
 
-let form = !isInGroup && inject("form", {});
+let form = !isInGroup && inject("_form", {});
 
 // validation
 
@@ -121,7 +121,7 @@ let { rules, validateMode } = props;
 
 // try to inject checkbox group validation or fallback to checkbox validation
 let validation =
-  inject("v-checkbox-group-validation", null) ||
+  inject("_checkbox-group-validation", null) ||
   useValidation({
     form,
     value: localModel,

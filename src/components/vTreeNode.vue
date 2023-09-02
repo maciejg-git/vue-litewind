@@ -191,7 +191,7 @@ let {
   placeholderFolderIcon,
   chevron,
   parentEmit,
-} = inject("control-tree");
+} = inject("_control-tree");
 
 let itemClasses = computed(() => {
   return [

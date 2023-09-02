@@ -90,13 +90,13 @@ let getRadioClasses = () => {
 
 let id = useUid("input", attrs);
 
-let { groupModel, onUpdateGroupModel, isInGroup } = inject("v-radio-group", {});
+let { groupModel, onUpdateGroupModel, isInGroup } = inject("_radio-group", {});
 
 let localModel = useLocalModel(props, emit, groupModel, onUpdateGroupModel);
 
 // handle v-form
 
-let form = !isInGroup && inject("form", {});
+let form = !isInGroup && inject("_form", {});
 
 // validation
 
@@ -116,7 +116,7 @@ let { rules, validateMode } = props;
 
 // try to inject checkbox group validation or fallback to checkbox validation
 let validation =
-  inject("v-radio-group-validation", null) ||
+  inject("_radio-group-validation", null) ||
   useValidation({
     form,
     value: localModel,

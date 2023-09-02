@@ -257,7 +257,7 @@ let localModel = useLocalModel(props, emit);
 
 // handle v-form
 
-let form = inject("form", {});
+let form = inject("_form", {});
 
 // validate
 

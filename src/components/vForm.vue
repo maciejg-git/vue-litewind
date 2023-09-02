@@ -11,7 +11,7 @@ import useFormValidation from "./composition/use-form-validation";
 
 let form = useFormValidation();
 
-provide("form", form);
+provide("_form", form);
 
 defineExpose({ validate: form.validate, reset: form.reset });
 </script>

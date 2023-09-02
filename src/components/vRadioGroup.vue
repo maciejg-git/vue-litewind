@@ -59,9 +59,9 @@ let validation = useValidation({
   onReset: resetInput,
 });
 
-provide("v-radio-group-validation", validation);
+provide("_radio-group-validation", validation);
 
-let { addFormInput } = inject("form", {});
+let { addFormInput } = inject("_form", {});
 
 if (addFormInput) addFormInput(validation);
 
@@ -70,7 +70,7 @@ let onUpdateGroupModel = (newValue) => {
   emit("update:modelValue", groupModel.value);
 };
 
-provide("v-radio-group", {
+provide("_radio-group", {
   groupModel,
   onUpdateGroupModel,
   isInGroup: true,
