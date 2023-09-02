@@ -68,7 +68,7 @@
             <code class="code-text">props</code> - is an object with <code class="code-text">v-notify</code> props. See reference above.
           </li>
           <li>
-            <code class="code-text">variant</code> and <code class="code-text">options</code> - are general options that can be used for any purpose. For example, those options can be useful to identify notifications when using slots. See example below (custom notify)
+            <code class="code-text">variant</code> and <code class="code-text">options</code> - are options that can store any value defined by user. For example, those options can be useful to identify notifications when using slots. See example below (custom notify)
           </li>
         </ul>
       </li>

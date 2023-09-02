@@ -100,7 +100,7 @@ module.exports = {
 import "vue-litewind/vue-litewind.css" 
 `}}
     </v-code>
-          In order to make components customizable the rest of the styles are set up in <code class="code-text">js</code> files as tailwind classes. You can import them directly or preferably copy from distribution directory (<code class="code-text">node_modules</code>) to your application for customization. Imported styles need to be provided to the components with the use of the <code class="code-text">provide</code> function. The preferred place to do it is the root component of the application (for example <code class="code-text">App.vue</code>)
+          In order to make components customizable the rest of the styles are set up in <code class="code-text">js</code> files as tailwind classes. You can import them directly or preferably copy from distribution directory (<code class="code-text">node_modules</code>) to your application for customization. Imported styles need to be provided to the components with the use of the <code class="code-text">provide</code> function. The best place to do it is the root component of the application (for example <code class="code-text">App.vue</code>)
     <v-code language="html">
       {{ `<!-- App.vue -->
 
@@ -248,7 +248,7 @@ app.use(vueLitewind, {
     <h4 id="Styling" class="my-10">Styling components</h4>
       </section>
       <p>
-        In order to modify default styles of the component start with <code class="code-text">tailwind.config.js</code> file. Set colors for your application by changing colors assigned to primary, secondary etc.
+        In order to modify default styles of the component start with <code class="code-text">tailwind.config.js</code> file. To make components looks consistent default tailwind colors are extended with named colors like primary, secondary. Change colors accordingly to match your application design.
       </p>
 
       <p>
@@ -277,7 +277,7 @@ app.use(vueLitewind, {
 }`}}
     </v-code>
     <p>
-      This is basis for all component, however, most of them use additional modifiers and variants applied to elements under certain conditions: for example for selected items, depending on the validity of the input or simply chosen by the user.
+      This is basis for all components and those classes are always applied to element. On top of that many components extends those static classes with additional variants that can be applied to element by user or automatically under certain conditions. Those variants are grouped by type of change applied.
     </p>
     <v-code language="javascript">
 {{ `let component =  {
@@ -316,7 +316,7 @@ app.use(vueLitewind, {
 }`}}
     </v-code>
     <p>
-    Some of those variants are applied automatically and some can be applied explicitly to element by using <code class="code-text">mod-[element]</code> prop of the component.
+    can be applied explicitly to element by using <code class="code-text">mod-[element]</code> prop of the component.
     </p>
     <p>
       Apart from those variants that can be freely added or removed there are three that have special meaning: <code class="code-text">data</code>, <code class="code-text">state</code> and <code class="code-text">preset</code>.
