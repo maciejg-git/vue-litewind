@@ -4,12 +4,15 @@ setStyleVar({
   "--tree-transition-duration": "0.2s",
 })
 
+let spacing = "my-3"
+let indent = "ml-6"
+
 let tree = {
   folder: {
     classes: `
       font-bold
-      my-3
-      ml-8
+      ${spacing}
+      ${indent}
     `,
     variant: {
       root: `
@@ -23,8 +26,8 @@ let tree = {
   item: {
     classes: `
       font-normal
-      my-3
-      ml-8
+      ${spacing}
+      ${indent}
     `
   },
   icon: {

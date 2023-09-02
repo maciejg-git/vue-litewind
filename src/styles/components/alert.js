@@ -1,3 +1,9 @@
+import { setStyleVar } from "./global"
+
+setStyleVar({
+  "--alert-transition-duration": "0.4s",
+})
+
 let alert = {
 
   /* element */

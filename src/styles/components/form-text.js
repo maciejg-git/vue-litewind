@@ -1,17 +1,19 @@
 let formText = {
-  classes: `
-    text-sm
-    mt-1
-  `,
-  variant: {
-    valid: `
-      text-success-600
-      dark:text-success-500
+  formText: {
+    classes: `
+      text-sm
+      mt-1
     `,
-    invalid: `
-      text-danger-600
-      dark:text-danger-500
-    `
+    variant: {
+      valid: `
+        text-success-600
+        dark:text-success-500
+      `,
+      invalid: `
+        text-danger-600
+        dark:text-danger-500
+      `
+    }
   }
 }
 

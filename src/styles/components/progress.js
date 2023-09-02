@@ -1,5 +1,12 @@
 import { setStyleVar } from "./global"
 
+setStyleVar({
+  "--progress-bar-timing": "linear",
+  "--progress-bar-speed": "1.5s",
+  "--progress-bar-width": "50%",
+  "--progress-bar-direction": "normal",
+})
+
 let progress = {
 
   /* element */
@@ -75,13 +82,6 @@ let progress = {
     `
   }
 }
-
-setStyleVar({
-  "--progress-bar-timing": "linear",
-  "--progress-bar-speed": "1.5s",
-  "--progress-bar-width": "50%",
-  "--progress-bar-direction": "normal",
-})
 
 export default {
   progress,
