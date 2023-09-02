@@ -21,7 +21,7 @@ let vueLitewind = {
       ...options,
     };
 
-    app.provide("notify", {
+    app.provide("_notify", {
       notifications,
       setNotifyOptions,
       removeNotify,
