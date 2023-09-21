@@ -85,7 +85,7 @@ let elements = {
       return props.indeterminate
         ? "indeterminate"
         : props.transition
-        ? "transition-all duration-100"
+        ? "transition-all duration-[--progress-bar-speed]"
         : "";
     }),
     label: null,

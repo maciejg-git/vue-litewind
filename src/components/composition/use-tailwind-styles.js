@@ -2,6 +2,14 @@ import { ref, computed } from "vue";
 
 let isFunction = (v) => typeof v === "function";
 
+let setStyleVar = (variables) => {
+  let root = document.querySelector(":root")
+
+  Object.entries(variables).forEach((i) => {
+    root.style.setProperty(i[0], i[1])
+  })
+}
+
 let getClasses = (classes) => {
   return isFunction(classes) ? classes() : classes;
 };
@@ -33,65 +41,55 @@ export default function useTailwindStyles(props, styles, elements) {
 
   let state = ref("");
 
+  if (styles.cssVariables) {
+    setStyleVar(styles.cssVariables)
+  }
+
   groupClass = styles?.[props.base]?._options?.containerGroupClass ?? "";
-
-  let activeMods = {};
-
-  // for (let [el, options] of Object.entries(elements)) {
-  //     activeMods[el] = {}
-  //
-  //     let base = props.base
-  //
-  //     if (!styles[base]) continue
-  //
-  //     let mods = parseElementModProp(props, el)
-  //
-  //     let elementStyles = !isSingleElement ? styles[base][el] : styles[base]
-  //
-  //     if (mods.preset) {
-  //       activeMods[el].preset = mods.preset.value
-  //       continue
-  //     }
-  //
-  //     for (let type in elementStyles) {
-  //       if (type[0] === "_" || type === "preset" || type === "classes") continue
-  //
-  //       if (mods[type]) {
-  //         activeMods[el][type] = {...activeMods[el][type], [mods[type].value]: mods[type].value}
-  //         continue
-  //       }
-  //
-  //       if (elementStyles[type][state.value]) {
-  //         activeMods[el][type] = {...activeMods[el][type], [elementStyles[type][state.value]]: elementStyles[type][state.value]}
-  //       }
-  //
-  //       if (elementStyles[type].optional) {
-  //         continue
-  //       }
-  //
-  //       for (let item in elementStyles[type]) {
-  //         if (item === "classes") continue
-  //         activeMods[el][type] = {...activeMods[el][type], [item]: item}
-  //         break
-  //       }
-  //     }
-  // }
-  // console.log(activeMods)
 
   for (let [el, options] of Object.entries(elements)) {
 
     variants[el] = {};
 
     classes[el] = computed(() => {
-      let base = props.base;
+      let activeMods = {}
+
+      let base = props.base
 
       if (!styles[base]) return "";
 
-      let mods = parseElementModProp(props, el);
+      let classes = "";
+
+      let mods = parseElementModProp(props, el)
 
       let elementStyles = styles[base][el];
 
-      let classes = "";
+      if (mods.preset) {
+        activeMods.preset = mods.preset[3]
+      }
+
+      for (let type in elementStyles) {
+        if (type[0] === "_" || type === "preset" || type === "classes") continue
+
+        if (mods[type]) {
+          activeMods[type] = {...activeMods[type], [mods[type][3]]: mods[type][3]}
+          continue
+        }
+
+        if (elementStyles[type][state.value]) {
+          activeMods[type] = {...activeMods[type], [elementStyles[type][state.value]]: elementStyles[type][state.value]}
+        }
+
+        if (elementStyles[type].optional) {
+          continue
+        }
+
+        for (let item in elementStyles[type]) {
+          if (item === "classes") continue
+          activeMods[type] = {...activeMods[type], [item]: item}
+          break
+        }
+      }
 
       if (mods.preset) {
         return `
@@ -118,6 +116,7 @@ export default function useTailwindStyles(props, styles, elements) {
 
         if (options?.externalVariants?.includes(type)) {
           for (let variant in elementStyles[type]) {
+            if (variant === "optional") continue
             variants[el][variant] = elementStyles[type][variant].replace(
               /\s\s+/g,
               " "
@@ -161,6 +160,86 @@ export default function useTailwindStyles(props, styles, elements) {
         ${(options?.computed?.value || "")}
       `.replace(/\s\s+/g, " ")
     });
+    // classes[el] = computed(() => {
+    //   let base = props.base;
+    //
+    //   if (!styles[base]) return "";
+    //
+    //   let mods = parseElementModProp(props, el);
+    //
+    //   let elementStyles = styles[base][el];
+    //
+    //   let classes = "";
+    //
+    //   if (mods.preset) {
+    //     return `
+    //       ${getClasses(elementStyles.preset[mods.preset[3]])}
+    //       ${options?.fixed || ""}
+    //       ${options?.computed?.value || ""}
+    //     `.replace(/\s\s+/g, " ");
+    //   }
+    //
+    //   if (elementStyles?.classes) {
+    //     classes += getClasses(elementStyles.classes);
+    //   }
+    //
+    //   if (options?.dataStyle) {
+    //     dataStyle[el] = elementStyles.data;
+    //   }
+    //
+    //   for (let type in elementStyles) {
+    //     if (type[0] === "_") continue;
+    //     let sharedClasses = null;
+    //     let stateClasses = null;
+    //     let modClasses = null;
+    //     let defaultClasses = null;
+    //
+    //     if (options?.externalVariants?.includes(type)) {
+    //       for (let variant in elementStyles[type]) {
+    //         if (variant === "optional") continue
+    //         variants[el][variant] = elementStyles[type][variant].replace(
+    //           /\s\s+/g,
+    //           " "
+    //         );
+    //       }
+    //       continue;
+    //     }
+    //
+    //     if (type !== "preset" && type !== "data" && type !== "classes") {
+    //       stateClasses = state.value ? elementStyles[type][state.value] : null;
+    //     }
+    //
+    //     if (
+    //       type !== "state" &&
+    //       type !== "preset" &&
+    //       type !== "data" &&
+    //       type !== "classes"
+    //     ) {
+    //       sharedClasses = elementStyles[type]?.classes || "";
+    //
+    //       modClasses = mods[type] ? elementStyles[type][mods[type][3]] : "";
+    //
+    //       if (!elementStyles[type].optional) {
+    //         for (let item in elementStyles[type]) {
+    //           if (item === "classes" || item === "optional") continue;
+    //           defaultClasses = elementStyles[type][item];
+    //           break;
+    //         }
+    //       }
+    //     }
+    //
+    //     classes += ` ${getClasses(sharedClasses)} ${
+    //       (getClasses(stateClasses) ?? getClasses(modClasses)) ||
+    //       getClasses(defaultClasses)
+    //     }`;
+    //   }
+    //
+    //   return `
+    //     ${classes}
+    //     ${(options?.fixed || "")}
+    //     ${(options?.computed?.value || "")}
+    //   `.replace(/\s\s+/g, " ")
+    // });
   }
 
   let setState = (newState) => {
