@@ -18,7 +18,6 @@
                 <v-button
                   :ref="reference"
                   v-on="onTrigger"
-                  base="plain-button"
                   class="py-2"
                 >
                   Dropdown

@@ -11,7 +11,6 @@
     >
       <v-button
         class="mr-2 block lg:hidden"
-        base="plain-button"
         v-on="onTrigger"
       >
         <v-icon
@@ -46,8 +45,8 @@
     <!-- dark mode -->
 
     <v-button
-      base="plain-button"
       class="mr-2"
+      mod-button="preset:plain"
       @click="emit('update:dark-mode')"
     >
       <transition name="fade">

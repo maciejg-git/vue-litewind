@@ -19,7 +19,6 @@
       </div>
       <v-divider class="w-11/12 mx-auto mt-auto" />
       <v-button
-        base="plain-button"
         class="ml-auto font-semibold underline m-3 mr-6"
       >
         Show more

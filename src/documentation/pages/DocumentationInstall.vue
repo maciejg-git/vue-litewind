@@ -2,55 +2,85 @@
   <h3>Installation</h3>
 
   <section>
-    <h4 id="Installation" class="my-10">Installation</h4>
+    <h4
+      id="Installation"
+      class="my-10"
+    >
+      Installation
+    </h4>
 
-    <v-code language="javascript">
-      npm install vue-litewind
-    </v-code>
+    <v-code language="javascript">npm install vue-litewind</v-code>
 
     <p>
-      Vue-litewind uses Tailwindcss as CSS framework. To install Tailwindcss follow
-      <a class="link" href="https://tailwindcss.com/docs/installation/using-postcss">
+      Vue-litewind uses Tailwindcss as CSS framework. To install Tailwindcss
+      follow
+      <a
+        class="link"
+        href="https://tailwindcss.com/docs/installation/using-postcss"
+      >
         instruction
       </a>
       in their offical documentation.
     </p>
     <p>
-      Install <a class="link" href="https://tailwindcss.com/docs/plugins#forms">tailwindcss-forms</a> plugin that provides a basic reset for form styles that makes form elements easy to override with utilities:
+      Install
+      <a
+        class="link"
+        href="https://tailwindcss.com/docs/plugins#forms"
+      >
+        tailwindcss-forms
+      </a>
+      plugin that provides a basic reset for form styles that makes form
+      elements easy to override with utilities:
     </p>
-    <v-code language="javascript">
-      npm install -D @tailwindcss/forms
-    </v-code>
+    <v-code language="javascript">npm install -D @tailwindcss/forms</v-code>
   </section>
 
-    <v-divider class="my-10"></v-divider>
+  <v-divider class="my-10"></v-divider>
 
-    <section>
-    <h4 id="Configuration" class="my-10">Configuration</h4>
+  <section>
+    <h4
+      id="Configuration"
+      class="my-10"
+    >
+      Configuration
+    </h4>
     <span class="font-bold dark:text-text-300">
       Step 1. Configure Tailwind.
     </span>
-    <div class="border-l-2 border-dark-500 dark:border-dark-600 pl-8">
-    <p>
-    Add following to <code class="code-text">tailwind.config.js</code>:
-      <ul class="list-disc list-outside ml-10 mt-4">
+    <div class="border-l-2 border-dark-500 pl-8 dark:border-dark-600">
+      <p>
+        Add following to
+        <code class="code-text">tailwind.config.js</code>
+        :
+      </p>
+      <ul class="ml-10 mt-4 list-outside list-disc">
         <li>
-          add vue-litewind to <code class="code-text">content</code> so tailwind can generate  utility classes used by components internally, 
+          add vue-litewind to
+          <code class="code-text">content</code>
+          so tailwind can generate utility classes used by components
+          internally,
         </li>
         <li>
-          add dark mode <code class="code-text">class</code> option, 
+          add dark mode
+          <code class="code-text">class</code>
+          option,
         </li>
         <li>
-          extend <code class="code-text">colors</code> definitions. You can chose any colors for primary, secondary etc
+          extend
+          <code class="code-text">colors</code>
+          definitions. You can chose any colors for primary, secondary etc
         </li>
         <li>
-          add <code class="code-text">tailwindcss-forms</code> plugin to plugins array
+          add
+          <code class="code-text">tailwindcss-forms</code>
+          plugin to plugins array
         </li>
       </ul>
-    </p>
 
-    <v-code language="javascript">
-      {{ `// tailwind.config.js
+      <v-code language="javascript">
+        {{
+          `// tailwind.config.js
 
 const colors = require('tailwindcss/colors')
 
@@ -82,51 +112,73 @@ module.exports = {
       strategy: 'class',
     }),
   ],
-} `}}
-    </v-code>
+} `
+        }}
+      </v-code>
     </div>
 
-      <span class="font-bold dark:text-text-300">
-        Step 2. Import styles files:
-      </span>
-      <div class="border-l-2 border-dark-500 dark:border-dark-600 pl-8">
-    <p>
-<code class="code-text">style.css</code> contains basic set of classes used by components. Import it directly from library distribution directory
-    </p>
+    <span class="font-bold dark:text-text-300">
+      Step 2. Import styles files:
+    </span>
+    <div class="border-l-2 border-dark-500 pl-8 dark:border-dark-600">
+      <p>
+        <code class="code-text">style.css</code>
+        contains basic set of classes used by components. Import it directly
+        from library distribution directory
+      </p>
 
-    <v-code language="javascript">
-      {{ `// main.js
+      <v-code language="javascript">
+        {{
+          `// main.js
 
 import "vue-litewind/vue-litewind.css" 
-`}}
-    </v-code>
-          In order to make components customizable the rest of the styles are set up in <code class="code-text">js</code> files as tailwind classes. You can import them directly or preferably copy from distribution directory (<code class="code-text">node_modules</code>) to your application for customization. Imported styles need to be provided to the components with the use of the <code class="code-text">provide</code> function. The best place to do it is the root component of the application (for example <code class="code-text">App.vue</code>)
-    <v-code language="html">
-      {{ `<!-- App.vue -->
+`
+        }}
+      </v-code>
+      In order to make components customizable the rest of the styles are set up
+      in
+      <code class="code-text">js</code>
+      files as tailwind classes. You can import them directly or preferably copy
+      from distribution directory (
+      <code class="code-text">node_modules</code>
+      ) to your application for customization. Imported styles need to be
+      provided to the components with the use of the
+      <code class="code-text">provide</code>
+      function. The best place to do it is the root component of the application
+      (for example
+      <code class="code-text">App.vue</code>
+      )
+      <v-code language="html">
+{{ 
+`<!-- App.vue -->
 
 <script setup>
-import { provide } from "vue"
-import * as styles from "./styles/components"
+  import { provide } from "vue";
+  import * as styles from "./styles/components";
 
-provide("mods", styles)
-</script>
-`}}
-    </v-code>
-    <p>Read about customizing styles here.</p>
-      </div>
+  provide("mods", styles);
+</script>`
+}}
+      </v-code>
+      <p>Read about customizing styles here.</p>
+    </div>
 
     <span class="font-bold dark:text-text-300">
       Step 3. Add vue-litewind plugin:
     </span>
-    <div class="border-l-2 border-dark-500 dark:border-dark-600 pl-8">
-    <p>
-      You can register single or all components in application entry file (for example <code class="code-text">main.js</code>). Registering single components will make build smaller.
-    </p>
+    <div class="border-l-2 border-dark-500 pl-8 dark:border-dark-600">
+      <p>
+        You can register single or all components in application entry file (for
+        example
+        <code class="code-text">main.js</code>
+        ). Registering single components will make build smaller.
+      </p>
 
-    <v-tabs base="materialTabs">
-      <v-tab name="All components">
-    <v-code language="javascript">
-      {{ `// main.js
+      <v-tabs base="materialTabs">
+        <v-tab name="All components">
+          <v-code language="javascript">
+            {{
+              `// main.js
 
 import { vueLitewind, components, grid, directives } from "vue-litewind";
 
@@ -136,13 +188,14 @@ app.use(vueLitewind, {
   components,
   grid,
   directives,
-}); `}}
-    </v-code>
-
-      </v-tab>
-      <v-tab name="Selected components">
-    <v-code language="javascript">
-      {{ `// main.js
+}); `
+            }}
+          </v-code>
+        </v-tab>
+        <v-tab name="Selected components">
+          <v-code language="javascript">
+            {{
+              `// main.js
 
 import { vueLitewind } from "vue-litewind";
 import { vButton, vSelect } from "vue-litewind";
@@ -154,30 +207,48 @@ app.use(vueLitewind, {
     vButton,
     vSelect,
   }
-}); `}}
-    </v-code>
-
-      </v-tab>
-    </v-tabs>
+}); `
+            }}
+          </v-code>
+        </v-tab>
+      </v-tabs>
     </div>
 
     <p>
-      <span class="font-bold">Optional</span>: while registering components you can set default values for props globally in second argument of <code class="code-text">app.use</code>:
-        <code class="code-text">componentProps</code> object. If component has <code class="code-text">name</code> prop that name will be used instead of default name. The value for prop can also be function that takes <code class="code-text">base</code> argument (<code class="code-text">base</code> prop of component) and should return default value for the prop. Note that components can internally use other components and those default props will also apply to them. You can set defaults for those components only by nesting them under their parent components.
+      <span class="font-bold">Optional</span>
+      : while registering components you can set default values for props
+      globally in second argument of
+      <code class="code-text">app.use</code>
+      :
+      <code class="code-text">componentProps</code>
+      object. If component has
+      <code class="code-text">name</code>
+      prop that name will be used instead of default name. The value for prop
+      can also be function that takes
+      <code class="code-text">base</code>
+      argument (
+      <code class="code-text">base</code>
+      prop of component) and should return default value for the prop. Note that
+      components can internally use other components and those default props
+      will also apply to them. You can set defaults for those components only by
+      nesting them under their parent components.
     </p>
 
-    <v-alert icon="warn" mod-alert="special:outline variant:warn shadow:medium" class="mx-6 my-8">
+    <v-alert
+      icon="warn"
+      mod-alert="special:outline variant:warn shadow:medium"
+      class="mx-6 my-8"
+    >
       Note that you can set default value for some props only.
     </v-alert>
 
-    <div class="my-4">
-      Default props examples
-    </div>
+    <div class="my-4">Default props examples</div>
 
     <v-tabs base="materialTabs">
       <v-tab name="Simple example">
-    <v-code language="javascript">
-      {{ `// main.js
+        <v-code language="javascript">
+          {{
+            `// main.js
 
 import { vueLitewind } from "vue-litewind";
 import { components} from "vue-litewind";
@@ -192,12 +263,14 @@ app.use(vueLitewind, {
       singleLineMessage: true,
     },
   }
-}); `}}
-    </v-code>
+}); `
+          }}
+        </v-code>
       </v-tab>
       <v-tab name="Functions">
-    <v-code language="javascript">
-      {{ `// main.js
+        <v-code language="javascript">
+          {{
+            `// main.js
 
 import { vueLitewind } from "vue-litewind";
 import { components} from "vue-litewind";
@@ -212,12 +285,14 @@ app.use(vueLitewind, {
       singleLineMessage: true,
     },
   }
-}); `}}
-    </v-code>
+}); `
+          }}
+        </v-code>
       </v-tab>
       <v-tab name="Nested defaults">
-    <v-code language="javascript">
-      {{ `// main.js
+        <v-code language="javascript">
+          {{
+            `// main.js
 
 import { vueLitewind } from "vue-litewind";
 import { components} from "vue-litewind";
@@ -236,26 +311,40 @@ app.use(vueLitewind, {
       }
     }
   }
-}); `}}
-    </v-code>
+}); `
+          }}
+        </v-code>
       </v-tab>
     </v-tabs>
-    </section>
+  </section>
 
-    <v-divider class="my-10"></v-divider>
+  <v-divider class="my-10"></v-divider>
 
-    <section>
-    <h4 id="Styling" class="my-10">Styling components</h4>
-      </section>
-      <p>
-        In order to modify default styles of the component start with <code class="code-text">tailwind.config.js</code> file. To make components looks consistent default tailwind colors are extended with named colors like primary, secondary. Change colors accordingly to match your application design.
-      </p>
+  <section>
+    <h4
+      id="Styling"
+      class="my-10"
+    >
+      Styling components
+    </h4>
+  </section>
+  <p>
+    In order to modify default styles of the component start with
+    <code class="code-text">tailwind.config.js</code>
+    file. To make components looks consistent default tailwind colors are
+    extended with named colors like primary, secondary. Change colors
+    accordingly to match your application design.
+  </p>
 
-      <p>
-        Second part of the theming are the js files that contain styles for each component. Inside the file are listed elements that are available for theming and strings of taiwind classes assigned to them. Here is simplified example of such file:
-      </p>
-    <v-code language="javascript">
-{{ `let component =  {
+  <p>
+    Second part of the theming are the js files that contain styles for each
+    component. Inside the file are listed elements that are available for
+    theming and strings of taiwind classes assigned to them. Here is simplified
+    example of such file:
+  </p>
+  <v-code language="javascript">
+    {{
+      `let component =  {
   header: {
     classes: \`
       class,
@@ -274,13 +363,18 @@ app.use(vueLitewind, {
       class2,
     \`,
   },
-}`}}
-    </v-code>
-    <p>
-      This is basis for all components and those classes are always applied to element. On top of that many components extends those static classes with additional variants that can be applied to element by user or automatically under certain conditions. Those variants are grouped by type of change applied.
-    </p>
-    <v-code language="javascript">
-{{ `let component =  {
+}`
+    }}
+  </v-code>
+  <p>
+    This is basis for all components and those classes are always applied to
+    element. On top of that, elements can have a number of variants that are
+    applied on certain conditions. Those variants are grouped by type of change
+    applied.
+  </p>
+  <v-code language="javascript">
+    {{
+      `let component =  {
   header: {
     ...
   },
@@ -313,38 +407,73 @@ app.use(vueLitewind, {
   footer: {
     ...
   },
-}`}}
-    </v-code>
-    <p>
-    can be applied explicitly to element by using <code class="code-text">mod-[element]</code> prop of the component.
-    </p>
-    <p>
-      Apart from those variants that can be freely added or removed there are three that have special meaning: <code class="code-text">data</code>, <code class="code-text">state</code> and <code class="code-text">preset</code>.
-    </p>
+}`
+    }}
+  </v-code>
+  <p>Here is how those variants are applied:</p>
+  <ul class="my-6 ml-6 list-inside list-disc">
+    <li>
+      when no variants are specified first variant on the list is applied as
+      default
+    </li>
+    <li>automatically by components for variants like selected, or active</li>
+    <li>
+      explicitly by using
+      <code class="code-text">mod-[element]</code>
+      prop of the component.
+    </li>
+  </ul>
+  <p>
+    Apart from those variants that can be freely added or removed there are
+    three reserved that have special meaning:
+  </p>
+  <ul class="my-6 ml-6 list-inside list-disc">
+    <li>
+      <code class="code-text">preset</code>
+    </li>
+    <li>
+      <code class="code-text">state</code>
+    </li>
+    <li>
+      <code class="code-text">data</code>
+    </li>
+  </ul>
 
-      and following component props:
-      <ul class="ml-10">
-        <li class="my-2">
-          <code class="code-text">base</code> - every component can have multiple versions with different set of variants exported from js file. This prop allows to select active version applied to the component. The default value is always component name.
-        </li>
-        <li class="my-2">
-          <code class="code-text">mod-[element]</code> - adds list of variant classes to the <code class="code-text">[element]</code> of component. Variant can be applied conditionaly by putting "identifier:" in front of any variant. Active conditional variant can then be chosen with <code class="code-text">variant</code> prop set to identifier. Identifier can be any word and does not have any relation to css.
-        </li> 
-      </ul>
+  and following component props:
+  <ul class="ml-10">
+    <li class="my-2">
+      <code class="code-text">base</code>
+      - every component can have multiple versions with different set of
+      variants exported from js file. This prop allows to select active version
+      applied to the component. The default value is always component name.
+    </li>
+    <li class="my-2">
+      <code class="code-text">mod-[element]</code>
+      - adds list of variant classes to the
+      <code class="code-text">[element]</code>
+      of component. Variant can be applied conditionaly by putting "identifier:"
+      in front of any variant. Active conditional variant can then be chosen
+      with
+      <code class="code-text">variant</code>
+      prop set to identifier. Identifier can be any word and does not have any
+      relation to css.
+    </li>
+  </ul>
 
-      <section>
-        <h5 id="ExampleStyling">Example - styling with base, style and variant props</h5>
-        <div class="example">
-          <example name="ExampleInstallButton"></example>
-        </div>
-      </section>
+  <section>
+    <h5 id="ExampleStyling">
+      Example - styling with base, style and variant props
+    </h5>
+    <div class="example">
+      <example name="ExampleInstallButton"></example>
+    </div>
+  </section>
 
-      <section>
-        <div class="example">
-          <example name="ExampleInstallSelect"></example>
-        </div>
-      </section>
+  <section>
+    <div class="example">
+      <example name="ExampleInstallSelect"></example>
+    </div>
+  </section>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
