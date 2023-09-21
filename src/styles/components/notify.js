@@ -1,9 +1,3 @@
-import { setStyleVar } from "./global"
-
-setStyleVar({
-  "--notify-transition-duration": "0.4s",
-})
-
 let notify = {
 
   /* element */
@@ -84,6 +78,11 @@ let notify = {
   }
 }
 
+let cssVariables = {
+  "--notify-transition-duration": "0.4s",
+}
+
 export default {
-  notify
+  notify,
+  cssVariables,
 }

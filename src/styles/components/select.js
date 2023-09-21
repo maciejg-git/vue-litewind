@@ -1,12 +1,3 @@
-import { setStyleVar } from "./global";
-
-setStyleVar({
-  "--select-transition-duration": "0.2s",
-  "--select-transition-slide": "-15px",
-  "--select-transition-scale": 0.2,
-  "--select-max-menu-height": "400px",
-});
-
 let select = {
   item: {
     classes: `
@@ -58,6 +49,14 @@ let select = {
   },
 };
 
+let cssVariables = {
+  "--select-transition-duration": "0.2s",
+  "--select-transition-slide": "-15px",
+  "--select-transition-scale": 0.2,
+  "--select-max-menu-height": "400px",
+}
+
 export default {
   select,
+  cssVariables,
 };

@@ -141,6 +141,7 @@ let button = {
       `,
     },
     events: {
+      optional: true,
       disabled: `
         ${disabled}
       `,

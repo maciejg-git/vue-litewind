@@ -1,10 +1,3 @@
-import { setStyleVar } from "./global"
-
-setStyleVar({
-  "--spinner-border-speed": "0.75s",
-  "--spinner-svg-speed": "1s",
-})
-
 let spinner = {
   container: {
     classes: `
@@ -49,6 +42,12 @@ let spinner = {
   },
 }
 
+let cssVariables = {
+  "--spinner-border-speed": "0.75s",
+  "--spinner-svg-speed": "1s",
+}
+
 export default {
   spinner,
+  cssVariables,
 }

@@ -1,9 +1,3 @@
-import { setStyleVar } from "./global"
-
-setStyleVar({
-  "--modal-transition-duration": "0.2s"
-})
-
 let modal = {
 
   /* element */
@@ -77,6 +71,11 @@ let modal = {
   }
 }
 
+let cssVariables = {
+  "--modal-transition-duration": "0.2s"
+}
+
 export default {
   modal,
+  cssVariables,
 }

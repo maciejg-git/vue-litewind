@@ -1,9 +1,3 @@
-import { setStyleVar } from "./global";
-
-setStyleVar({
-  "--backdrop-transition-duration": "0.2s",
-});
-
 let backdrop = {
   backdrop: {
     variant: {
@@ -50,6 +44,11 @@ let backdrop = {
   },
 };
 
+let cssVariables = {
+  "--backdrop-transition-duration": "0.2s",
+}
+
 export default {
   backdrop,
+  cssVariables,
 };

@@ -1,9 +1,3 @@
-import { setStyleVar } from "./global"
-
-setStyleVar({
-  "--tree-transition-duration": "0.2s",
-})
-
 let spacing = "my-3"
 let indent = "ml-6"
 
@@ -40,6 +34,11 @@ let tree = {
   }
 }
 
+let cssVariables = {
+  "--tree-transition-duration": "0.2s",
+}
+
 export default {
-  tree
+  tree,
+  cssVariables,
 }

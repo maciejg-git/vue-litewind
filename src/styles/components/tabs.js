@@ -1,9 +1,3 @@
-import { setStyleVar } from "./global"
-
-setStyleVar({
-  "--tabs-transition-duration": "0.2s",
-})
-
 let tabs = {
   tabBar: {
     classes: `
@@ -136,8 +130,13 @@ let roundedTabs = {
   }
 }
 
+let cssVariables = {
+  "--tabs-transition-duration": "0.2s",
+}
+
 export default {
   tabs,
   materialTabs,
   roundedTabs,
+  cssVariables,
 }

@@ -55,14 +55,6 @@ export let form = {
   }
 }
 
-export let setStyleVar = (variables) => {
-  let root = document.querySelector(":root")
-
-  Object.entries(variables).forEach((i) => {
-    root.style.setProperty(i[0], i[1])
-  })
-}
-
 export default {
   disabled,
   color,

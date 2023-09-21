@@ -1,9 +1,3 @@
-import { setStyleVar } from "./global";
-
-setStyleVar({
-  "--sidepanel-transition-duration": "0.2s",
-});
-
 let sidepanel = {
   sidepanel: {
     classes: `
@@ -17,6 +11,11 @@ let sidepanel = {
   },
 };
 
+let cssVariables = {
+  "--sidepanel-transition-duration": "0.2s",
+}
+
 export default {
   sidepanel,
+  cssVariables,
 };

@@ -1,7 +1,7 @@
-import { setStyleVar } from "./global"
-
-setStyleVar({
+let cssVariables = {
   "--collapse-transition-duration": "0.2s"
-})
+}
 
-export default {}
+export default {
+  cssVariables,
+}

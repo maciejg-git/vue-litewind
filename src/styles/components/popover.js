@@ -1,11 +1,3 @@
-import { setStyleVar } from "./global"
-
-setStyleVar({
-  "--popover-transition-duration": "0.2s",
-  "--popover-transition-slide": "-15px",
-  "--popover-transition-scale": "0.2",
-})
-
 let popover = {
   header: {
     classes: `
@@ -16,6 +8,13 @@ let popover = {
   }
 }
 
+let cssVariables = {
+  "--popover-transition-duration": "0.2s",
+  "--popover-transition-slide": "-15px",
+  "--popover-transition-scale": "0.2",
+}
+
 export default {
   popover,
+  cssVariables,
 }
