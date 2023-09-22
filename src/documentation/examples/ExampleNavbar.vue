@@ -18,6 +18,7 @@
                 <v-button
                   :ref="reference"
                   v-on="onTrigger"
+                  mod-button="preset:plain"
                   class="py-2"
                 >
                   Dropdown

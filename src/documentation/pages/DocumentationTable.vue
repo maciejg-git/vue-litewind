@@ -19,7 +19,10 @@
     />
   </section>
 
-  <section id="table-definition" class="scroll-mt-20">
+  <section
+    id="table-definition"
+    class="scroll-mt-20"
+  >
     <h4 id="Definition">Definition</h4>
     <span class="font-bold">Type</span>
     :
@@ -32,14 +35,14 @@
       that defines columns of the table. Each object represents one column, has
       one required, unique
       <code class="code-text">key</code>
-      property and number of optional properties. 
+      property and number of optional properties.
     </p>
-      <p>
-        If definition is not provided
-        component makes one using first record of data. All additional properties are set to default values. This may be enough for
-        simple tables however to use features like sorting, filtering etc you need
-        to provide definition array.
-      </p>
+    <p>
+      If definition is not provided component makes one using first record of
+      data. All additional properties are set to default values. This may be
+      enough for simple tables however to use features like sorting, filtering
+      etc you need to provide definition array.
+    </p>
     Example of definition array:
     <v-code language="javascript">
       {{
@@ -75,9 +78,7 @@
 ]) `
       }}
     </v-code>
-    <p>
-    Each column is defined by object with following properties:
-    </p>
+    <p>Each column is defined by object with following properties:</p>
     <table-reference
       :items="referenceProp"
       :definition="referencePropDefinition"
@@ -88,7 +89,10 @@
   <section>
     <h4 id="ExampleTableSimple">Example - simple table</h4>
     <div class="example">
-      <example name="ExampleTableSimple" auto-show-code></example>
+      <example
+        name="ExampleTableSimple"
+        auto-show-code
+      ></example>
     </div>
   </section>
 
@@ -115,105 +119,95 @@
   </section>
 </template>
 
-<script>
+<script setup>
 import { ref, reactive } from "vue";
 import componentDocumentation from "../components-documentation/vTable.json";
 
-export default {
-  setup() {
-    let reference = reactive(componentDocumentation);
+let reference = reactive(componentDocumentation);
 
-    let referenceProp = ref([
-      {
-        prop: "key",
-        type: ["String"],
-        default: "undefined",
-        required: true,
-        description:
-          "`key` is one of the properties of data from `items` prop or a new `key`. New `keys` apear as additional columns and their content can be set using slot or function `f`. This property is required.",
-      },
-      {
-        prop: "label",
-        type: ["String"],
-        default: "undefined",
-        description:
-          "Sets label for this column. If not present label is the same as `key` converted to Header Case",
-      },
-      {
-        prop: "sortable",
-        type: ["Boolean"],
-        default: "false",
-        description:
-          "Enables sorting of the column. By default records are sorted as `strings` and using `locale` prop to compare values. Numbers and dates are sorted as numbers and dates. `null`, `undefined` and `NaN` values are always first when sorting in ascending direction",
-      },
-      {
-        prop: "filterable",
-        type: ["Boolean"],
-        default: "true",
-        description:
-          "Enables filtering of the column. After filtering following actions happen: event @update:filtered-count is emmited, event @update:page is emmited with value `1` and current selection is cleared by emmiting @input:selection event with empty array",
-      },
-      {
-        prop: "visible",
-        type: ["Boolean"],
-        default: "true",
-        description: "Toggles visiblity of the column",
-      },
-      {
-        prop: "class",
-        type: ["Function"],
-        default: "undefined",
-        description:
-          "Function that should return string of classes to apply to each cell in column. Takes 3 arguments: `key`, `value` and `item`",
-      },
-      {
-        prop: "f",
-        type: ["Function"],
-        default: "undefined",
-        description:
-          "If defined this function is called for every cell in this column and the return value is set as content of the cell. Takes 3 arguments: `key`, `value` and `item`. This function cannot be used to add html to cell content",
-      },
-      {
-        prop: "filterByFunction",
-        type: ["Boolean"],
-        default: "true",
-        description:
-          "If `true` filter content of column using value from function `f`",
-      },
-      {
-        prop: "sortByFunction",
-        type: ["Boolean"],
-        default: "true",
-        description:
-          "If `true` sort content of column using value returned from function `f`",
-      },
-    ]);
-
-    let referencePropDefinition = ref([
-      {
-        key: "prop",
-        label: "Definition property",
-        sortable: true,
-        class: () => "whitespace-nowrap",
-      },
-      {
-        key: "type",
-      },
-      {
-        key: "default",
-      },
-      {
-        key: "description",
-      },
-    ]);
-
-    return {
-      reference,
-      referenceProp,
-      referencePropDefinition,
-    };
+let referenceProp = ref([
+  {
+    prop: "key",
+    type: ["String"],
+    default: "undefined",
+    required: true,
+    description:
+      "`key` is one of the properties of data from `items` prop or a new `key`. New `keys` apear as additional columns and their content can be set using slot or function `f`. This property is required.",
   },
-};
+  {
+    prop: "label",
+    type: ["String"],
+    default: "undefined",
+    description:
+      "Sets label for this column. If not present label is the same as `key` converted to Header Case",
+  },
+  {
+    prop: "sortable",
+    type: ["Boolean"],
+    default: "false",
+    description:
+      "Enables sorting of the column. By default records are sorted as `strings` and using `locale` prop to compare values. Numbers and dates are sorted as numbers and dates. `null`, `undefined` and `NaN` values are always first when sorting in ascending direction",
+  },
+  {
+    prop: "filterable",
+    type: ["Boolean"],
+    default: "true",
+    description:
+      "Enables filtering of the column. After filtering following actions happen: event @update:filtered-count is emmited, event @update:page is emmited with value `1` and current selection is cleared by emmiting @input:selection event with empty array",
+  },
+  {
+    prop: "visible",
+    type: ["Boolean"],
+    default: "true",
+    description: "Toggles visiblity of the column",
+  },
+  {
+    prop: "class",
+    type: ["Function"],
+    default: "undefined",
+    description:
+      "Function that should return string of classes to apply to each cell in column. Takes 3 arguments: `key`, `value` and `item`",
+  },
+  {
+    prop: "f",
+    type: ["Function"],
+    default: "undefined",
+    description:
+      "If defined this function is called for every cell in this column and the return value is set as content of the cell. Takes 3 arguments: `key`, `value` and `item`. This function cannot be used to add html to cell content",
+  },
+  {
+    prop: "filterByFunction",
+    type: ["Boolean"],
+    default: "true",
+    description:
+      "If `true` filter content of column using value from function `f`",
+  },
+  {
+    prop: "sortByFunction",
+    type: ["Boolean"],
+    default: "true",
+    description:
+      "If `true` sort content of column using value returned from function `f`",
+  },
+]);
+
+let referencePropDefinition = ref([
+  {
+    key: "prop",
+    label: "Definition property",
+    sortable: true,
+    class: () => "whitespace-nowrap",
+  },
+  {
+    key: "type",
+  },
+  {
+    key: "default",
+  },
+  {
+    key: "description",
+  },
+]);
 </script>
 
 <style scoped></style>

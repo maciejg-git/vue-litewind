@@ -44,19 +44,11 @@
   </section>
 </template>
 
-<script>
+<script setup>
 import { reactive } from "vue";
 import componentDocumentation from "../components-documentation/vTabs.json";
 
-export default {
-  setup(props) {
-    let reference = reactive(componentDocumentation);
-
-    return {
-      reference,
-    };
-  },
-};
+let reference = reactive(componentDocumentation);
 </script>
 
 <style scoped></style>

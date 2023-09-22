@@ -30,21 +30,12 @@
   </section>
 </template>
 
-<script>
+<script setup>
 import { ref, reactive } from "vue";
 import componentDocumentation from "../components-documentation/vIcon.json"
 import exampleIconMainCode from "../examples/ExampleIconMain.js?raw";
 
-export default {
-  setup() {
-    let reference = reactive(componentDocumentation)
-
-    return {
-      reference,
-      exampleIconMainCode,
-    };
-  },
-};
+let reference = reactive(componentDocumentation)
 </script>
 
 <style scoped>

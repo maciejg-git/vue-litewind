@@ -166,16 +166,8 @@
   </section>
 </template>
 
-<script>
+<script setup>
 import ExampleValidationSetValidationMessage from "../examples/ExampleValidationSetValidationMessage.js?raw"
-
-export default {
-  setup(props) {
-    return {
-      ExampleValidationSetValidationMessage,
-    };
-  },
-};
 </script>
 
 <style scoped>

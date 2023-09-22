@@ -19,19 +19,11 @@
   </section>
 </template>
 
-<script>
+<script setup>
 import { ref, reactive } from "vue";
 import componentDocumentation from "../components-documentation/vRange.json"
 
-export default {
-  setup() {
-    let reference = reactive(componentDocumentation)
-
-    return {
-      reference,
-    };
-  },
-};
+let reference = reactive(componentDocumentation)
 </script>
 
 <style scoped>
