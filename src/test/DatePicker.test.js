@@ -1,9 +1,17 @@
 import { render, fireEvent, prettyDOM } from "@testing-library/vue";
 import "@testing-library/jest-dom";
 import Checkbox from "../components/vCheckbox.vue";
+import * as styles from "../styles/components";
+
+let global = {
+  provide: {
+    mods: styles,
+  },
+};
 
 test("renders component", () => {
   const { getByRole } = render(Checkbox, {
+    global,
     props: {},
   });
 
@@ -12,6 +20,7 @@ test("renders component", () => {
 
 test("renders component with label", () => {
   const { getByRole, getByText } = render(Checkbox, {
+    global,
     props: {
       label: "username",
     },
@@ -24,6 +33,7 @@ test("renders component with label", () => {
 describe("checked and unchecked", () => {
   test("should be checked (v-model)", () => {
     const { getByRole } = render(Checkbox, {
+    global,
       props: {
         modelValue: true,
       },
@@ -34,6 +44,7 @@ describe("checked and unchecked", () => {
 
   test("should be unchecked (v-model)", () => {
     const { getByRole } = render(Checkbox, {
+    global,
       props: {
         modelValue: false,
       },
@@ -45,6 +56,7 @@ describe("checked and unchecked", () => {
 
 test("clicking label should check", async () => {
   const { getByRole, getByText } = render(Checkbox, {
+    global,
     props: {
       label: "username",
       modelValue: false,

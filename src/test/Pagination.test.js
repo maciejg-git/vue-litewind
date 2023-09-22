@@ -1,9 +1,17 @@
 import { render, fireEvent } from "@testing-library/vue";
 import "@testing-library/jest-dom";
 import Pagination from "../components/vPagination.vue";
+import * as styles from "../styles/components";
+
+let global = {
+  provide: {
+    mods: styles,
+  },
+};
 
 test("renders buttons", () => {
   const { getByRole } = render(Pagination, {
+    global,
     props: {},
   });
 
@@ -13,6 +21,7 @@ test("renders buttons", () => {
 
 test("renders page number buttons", () => {
   const { getByRole } = render(Pagination, {
+    global,
     props: {
       itemsCount: 40,
       itemsPerPage: 10,
@@ -28,6 +37,7 @@ test("renders page number buttons", () => {
 
 test("renders correct page number buttons", () => {
   const { getByRole, queryByRole, getByText } = render(Pagination, {
+    global,
     props: {
       itemsCount: 40,
       itemsPerPage: 5,
@@ -53,6 +63,7 @@ test("renders correct page number buttons", () => {
 
 test("should make first page active by default", async () => {
   const { getByRole } = render(Pagination, {
+    global,
     props: {
       itemsCount: 40,
       itemsPerPage: 5,
@@ -67,6 +78,7 @@ test("should make first page active by default", async () => {
 
 test("should use v-model to mage page active", async () => {
   const { getByRole } = render(Pagination, {
+    global,
     props: {
       itemsCount: 40,
       itemsPerPage: 5,
@@ -83,6 +95,7 @@ test("should use v-model to mage page active", async () => {
 describe("max pages", () => {
   test("should not render more than max-pages pages", async () => {
     const { queryAllByRole, getByText } = render(Pagination, {
+      global,
       props: {
         itemsCount: 40,
         itemsPerPage: 5,
@@ -95,6 +108,7 @@ describe("max pages", () => {
 
   test("should not render less than 3 pages", async () => {
     const { queryAllByRole } = render(Pagination, {
+      global,
       props: {
         itemsCount: 40,
         itemsPerPage: 5,
@@ -109,6 +123,7 @@ describe("max pages", () => {
 describe("next and previous buttons", () => {
   test("click next should change page to next", async () => {
     const { getByRole } = render(Pagination, {
+      global,
       props: {
         itemsCount: 40,
         itemsPerPage: 5,
@@ -127,6 +142,7 @@ describe("next and previous buttons", () => {
 
   test("click previous should change page to previous", async () => {
     const { getByRole } = render(Pagination, {
+      global,
       props: {
         itemsCount: 40,
         itemsPerPage: 5,
@@ -146,6 +162,7 @@ describe("next and previous buttons", () => {
 
   test("previous should be disabled with first page active", async () => {
     const { getByRole } = render(Pagination, {
+      global,
       props: {
         itemsCount: 40,
         itemsPerPage: 5,
@@ -154,16 +171,18 @@ describe("next and previous buttons", () => {
       },
     });
 
-    expect(
-      getByRole("button", { name: "Previous page" })
-    ).toHaveAttribute('aria-disabled', 'true');
-    expect(
-      getByRole("button", { name: "Previous page" })
-    ).toHaveClass('pointer-events-none');
+    expect(getByRole("button", { name: "Previous page" })).toHaveAttribute(
+      "aria-disabled",
+      "true"
+    );
+    expect(getByRole("button", { name: "Previous page" })).toHaveClass(
+      "pointer-events-none"
+    );
   });
 
   test("next should be disabled with last page active", async () => {
     const { getByRole } = render(Pagination, {
+      global,
       props: {
         itemsCount: 40,
         itemsPerPage: 5,
@@ -172,17 +191,19 @@ describe("next and previous buttons", () => {
       },
     });
 
-    expect(
-      getByRole("button", { name: "Next page" })
-    ).toHaveAttribute('aria-disabled', 'true');
-    expect(
-      getByRole("button", { name: "Next page" })
-    ).toHaveClass('pointer-events-none');
+    expect(getByRole("button", { name: "Next page" })).toHaveAttribute(
+      "aria-disabled",
+      "true"
+    );
+    expect(getByRole("button", { name: "Next page" })).toHaveClass(
+      "pointer-events-none"
+    );
   });
 });
 
 test("click page should change to that page", async () => {
   const { getByRole } = render(Pagination, {
+    global,
     props: {
       itemsCount: 40,
       itemsPerPage: 5,

@@ -2,6 +2,18 @@ import { render, fireEvent, waitFor } from "@testing-library/vue";
 import "@testing-library/jest-dom";
 import Tabs from "../components/vTabs.vue";
 import Tab from "../components/vTab.vue";
+import * as styles from "../styles/components";
+
+let stubs = {
+  "v-tab": Tab,
+};
+
+let global = {
+  stubs,
+  provide: {
+    mods: styles,
+  },
+};
 
 let tabs = [
   "<v-tab name='tab'>tab content</v-tab>",
@@ -15,18 +27,12 @@ let tabs = [
   </v-tab>`,
 ];
 
-let stubs = {
-  "v-tab": Tab,
-};
-
 test("renders component", async () => {
   const { getByRole, getAllByRole } = render(Tabs, {
+    global,
     props: {},
     slots: {
       default: tabs,
-    },
-    global: {
-      stubs,
     },
   });
 
@@ -38,12 +44,10 @@ test("renders component", async () => {
 
 test("selects first tab by default", async () => {
   const { getByRole, getAllByRole } = render(Tabs, {
+    global,
     props: {},
     slots: {
       default: tabs,
-    },
-    global: {
-      stubs,
     },
   });
 
@@ -54,12 +58,10 @@ test("selects first tab by default", async () => {
 
 test("change to tab on click", async () => {
   const { getByRole, getByText, findAllByRole, queryByRole } = render(Tabs, {
+    global,
     props: {},
     slots: {
       default: tabs,
-    },
-    global: {
-      stubs,
     },
   });
 
@@ -72,12 +74,10 @@ test("change to tab on click", async () => {
 
 test("renders tab name in name slot", async () => {
   const { getByRole, getAllByRole, findAllByRole, queryByRole } = render(Tabs, {
+    global,
     props: {},
     slots: {
       default: tabs,
-    },
-    global: {
-      stubs,
     },
   });
 
@@ -91,12 +91,10 @@ test("renders tab name in name slot", async () => {
 
 test("emits input:changed-tab on tab change", async () => {
   const { getByRole, getAllByRole, findAllByRole, emitted } = render(Tabs, {
+    global,
     props: {},
     slots: {
       default: tabs,
-    },
-    global: {
-      stubs,
     },
   });
 

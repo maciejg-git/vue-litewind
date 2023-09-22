@@ -1,9 +1,17 @@
 import { render, fireEvent } from "@testing-library/vue";
-import '@testing-library/jest-dom'
+import "@testing-library/jest-dom";
 import Alert from "../components/vAlert.vue";
+import * as styles from "../styles/components";
+
+let global = {
+  provide: {
+    mods: styles,
+  },
+};
 
 test("renders component (v-model undefined)", () => {
   const { getByRole } = render(Alert, {
+    global,
     props: {},
   });
 
@@ -12,6 +20,7 @@ test("renders component (v-model undefined)", () => {
 
 test("renders component (v-model true)", () => {
   const { getByRole } = render(Alert, {
+    global,
     props: {},
   });
 
@@ -20,6 +29,7 @@ test("renders component (v-model true)", () => {
 
 test("does not render component (v-model false)", () => {
   const { getByRole, queryByRole } = render(Alert, {
+    global,
     props: {
       modelValue: false,
     },

@@ -4,6 +4,7 @@ import userEvent from "@testing-library/user-event"
 import Dropdown from "../components/vDropdown.vue";
 import DropdownMenuItem from "../components/vDropdownMenuItem.vue"
 import DropdownHeader from "../components/vDropdownHeader.vue"
+import * as styles from "../styles/components";
 
 let menu = 
   `<div>
@@ -19,6 +20,9 @@ let stubs = {
 
 let global = {
   stubs,
+  provide: {
+    mods: styles,
+  },
 }
 
 let slots = {

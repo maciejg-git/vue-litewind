@@ -2,9 +2,17 @@ import { render, fireEvent, waitFor } from "@testing-library/vue";
 import "@testing-library/jest-dom";
 import Input from "../components/vInput.vue";
 import ExclamationCircle from "./icons/exclamation-circle";
+import * as styles from "../styles/components";
+
+let global = {
+  provide: {
+    mods: styles,
+  },
+};
 
 test("renders component", () => {
   const { getByRole } = render(Input, {
+    global,
     props: {},
   });
 
@@ -13,6 +21,7 @@ test("renders component", () => {
 
 test("updates v-model value", async () => {
   const { getByRole, rerender } = render(Input, {
+    global,
     props: {},
   });
 
@@ -27,6 +36,7 @@ test("updates v-model value", async () => {
 
 test("renders label", async () => {
   const { getByText } = render(Input, {
+    global,
     props: {
       label: "username",
     },
@@ -37,6 +47,7 @@ test("renders label", async () => {
 
 test("renders loader", async () => {
   const { getByTestId } = render(Input, {
+    global,
     props: {
       useLoader: true,
       isLoading: true,
@@ -48,6 +59,7 @@ test("renders loader", async () => {
 
 test("renders icon (props)", async () => {
   const { container } = render(Input, {
+    global,
     props: {
       icon: ExclamationCircle,
     },
@@ -58,6 +70,7 @@ test("renders icon (props)", async () => {
 
 test("renders icon (slot)", async () => {
   const { container } = render(Input, {
+    global,
     props: {},
     slots: {
       icon: ExclamationCircle,
@@ -69,6 +82,7 @@ test("renders icon (slot)", async () => {
 
 test("renders clearable input", async () => {
   const { container } = render(Input, {
+    global,
     props: {
       clearable: true,
     },
@@ -79,6 +93,7 @@ test("renders clearable input", async () => {
 
 test("emits click:icon", async () => {
   const { getByRole, emitted } = render(Input, {
+    global,
     props: {
       icon: ExclamationCircle,
     },
@@ -93,6 +108,7 @@ test("emits click:icon", async () => {
 describe("clears input", () => {
   test("clear button click", async () => {
     const { getByRole, emitted } = render(Input, {
+      global,
       props: {
         clearable: true,
         modelValue: "a",
@@ -107,6 +123,7 @@ describe("clears input", () => {
 
   test("emits clear event (custom-clearable prop)", async () => {
     const { getByRole, emitted } = render(Input, {
+      global,
       props: {
         customClearable: true,
         modelValue: "a",
@@ -123,6 +140,7 @@ describe("clears input", () => {
 describe("focus", () => {
   test("clicking label focuses input (generated id)", async () => {
     const { getByText, getByRole } = render(Input, {
+      global,
       props: {
         label: "username",
       },
@@ -135,6 +153,7 @@ describe("focus", () => {
 
   test("clicking clear button should not focus input", async () => {
     const { getByRole, emitted } = render(Input, {
+      global,
       props: {
         clearable: true,
         modelValue: "a",

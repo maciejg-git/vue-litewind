@@ -2,6 +2,13 @@ import { render, fireEvent, prettyDOM, waitFor } from "@testing-library/vue";
 import "@testing-library/jest-dom";
 import Collapse from "../components/vCollapse.vue";
 import Accordion from "./components/Accordion.vue";
+import * as styles from "../styles/components";
+
+let global = {
+  provide: {
+    mods: styles,
+  },
+};
 
 let slots = {
   default: "<div>collapse content</div>",
@@ -9,6 +16,7 @@ let slots = {
 
 test("renders component", async () => {
   const { getByRole, getByText, queryByText } = render(Collapse, {
+    global,
     props: {
       modelValue: true,
     },
@@ -28,6 +36,7 @@ test("renders component", async () => {
 describe("reference element click", () => {
   test("should uncollapse on reference click", async () => {
     const { getByRole, queryByText } = render(Collapse, {
+      global,
       props: {
         modelValue: false,
       },
@@ -43,6 +52,7 @@ describe("reference element click", () => {
 
   test("should collapse on reference click", async () => {
     const { getByRole, queryByText } = render(Collapse, {
+      global,
       props: {
         modelValue: true,
       },
@@ -61,6 +71,7 @@ describe("reference element click", () => {
 
 test("updates isOpen slot prop", async () => {
   const { getByRole, getByText } = render(Collapse, {
+    global,
     props: {},
     slots: {
       ...slots,
@@ -79,6 +90,7 @@ test("updates isOpen slot prop", async () => {
 describe("accordion", () => {
   test("renders accordion", () => {
     const { getByRole, getByText } = render(Accordion, {
+      global,
       props: {},
     });
 
@@ -98,6 +110,7 @@ describe("accordion", () => {
 
   test("should uncollapse", async () => {
     const { getByRole, getByText } = render(Accordion, {
+      global,
       props: {},
     });
 
@@ -109,6 +122,7 @@ describe("accordion", () => {
 
   test("should collapse", async () => {
     const { getByRole, getByText } = render(Accordion, {
+      global,
       props: {},
     });
 
@@ -124,6 +138,7 @@ describe("accordion", () => {
 
   test("should uncollapse and collapse other", async () => {
     const { getByRole, getByText } = render(Accordion, {
+      global,
       props: {},
     });
 

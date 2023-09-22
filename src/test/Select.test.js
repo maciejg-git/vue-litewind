@@ -2,6 +2,13 @@ import { render, fireEvent } from "@testing-library/vue";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import Select from "../components/vSelect.vue";
+import * as styles from "../styles/components";
+
+let global = {
+  provide: {
+    mods: styles,
+  },
+};
 
 const states = [
   {
@@ -120,6 +127,7 @@ beforeEach(() => {
 
 test("renders component", () => {
   const { getByRole } = render(Select, {
+    global,
     props: {},
   });
 
@@ -129,6 +137,7 @@ test("renders component", () => {
 describe("opens select menu", () => {
   test("opens select dropdown with no items (click)", async () => {
     const { getByRole } = render(Select, {
+      global,
       props: {},
     });
 
@@ -139,6 +148,7 @@ describe("opens select menu", () => {
 
   test("opens select dropdown with no items (focus)", async () => {
     const { getByRole } = render(Select, {
+      global,
       props: {},
     });
 
@@ -149,6 +159,7 @@ describe("opens select menu", () => {
 
   test("does not open autocomplete dropdown with no items", async () => {
     const { getByRole, queryByRole } = render(Select, {
+      global,
       props: {
         autocomplete: true,
       },
@@ -161,6 +172,7 @@ describe("opens select menu", () => {
 
   test("opens autocomplete on input update", async () => {
     const { getByRole, findByRole } = render(Select, {
+      global,
       props: {
         items: states,
         autocomplete: true,
@@ -177,6 +189,7 @@ describe("opens select menu", () => {
 
 test("renders options", async () => {
   const { getByRole, getAllByRole } = render(Select, {
+    global,
     props: {
       items: states,
     },
@@ -189,6 +202,7 @@ test("renders options", async () => {
 
 test("filters options", async () => {
   const { getByRole, findAllByRole } = render(Select, {
+    global,
     props: {
       items: states,
       autocomplete: true,
@@ -204,6 +218,7 @@ test("filters options", async () => {
 
 test("filters options (filter-keys prop)", async () => {
   const { getByRole, findAllByRole } = render(Select, {
+    global,
     props: {
       items: statesWithLabel,
       autocomplete: true,
@@ -220,6 +235,7 @@ test("filters options (filter-keys prop)", async () => {
 
 test("does not filter options (no-filter prop)", async () => {
   const { getByRole, findAllByRole } = render(Select, {
+    global,
     props: {
       items: states,
       autocomplete: true,
@@ -237,6 +253,7 @@ test("does not filter options (no-filter prop)", async () => {
 describe("pagination", () => {
   test("paginates options", async () => {
     const { getByRole, getAllByRole } = render(Select, {
+      global,
       props: {
         items: states,
         itemsPerPage: 2,
@@ -250,6 +267,7 @@ describe("pagination", () => {
 
   test("does not paginate options (no-pagination prop)", async () => {
     const { getByRole, getAllByRole } = render(Select, {
+      global,
       props: {
         items: states,
         itemsPerPage: 2,
@@ -265,6 +283,7 @@ describe("pagination", () => {
 
 test("closes menu after selecting option in single mode", async () => {
   const { getByRole, getAllByRole, queryByRole } = render(Select, {
+    global,
     props: {
       items: states,
     },
@@ -279,6 +298,7 @@ test("closes menu after selecting option in single mode", async () => {
 
 test("does no close menu after selecting option in multi value mode", async () => {
   const { getByRole, getAllByRole, queryByRole } = render(Select, {
+    global,
     props: {
       items: states,
     },
@@ -294,6 +314,7 @@ test("does no close menu after selecting option in multi value mode", async () =
 describe("should select item", () => {
   test("single mode", async () => {
     const { getByRole, getAllByRole, queryByText } = render(Select, {
+      global,
       props: {
         items: states,
       },
@@ -308,6 +329,7 @@ describe("should select item", () => {
 
   test("multiple mode", async () => {
     const { getByRole, getAllByRole, queryByText } = render(Select, {
+      global,
       props: {
         modelValue: [],
         items: states,
@@ -328,12 +350,16 @@ describe("should select item", () => {
   });
 
   test("single mode autocomplete", async () => {
-    const { getByRole, findByRole, getAllByRole, queryByText } = render(Select, {
-      props: {
-        items: states,
-        autocomplete: true,
-      },
-    });
+    const { getByRole, findByRole, getAllByRole, queryByText } = render(
+      Select,
+      {
+        global,
+        props: {
+          items: states,
+          autocomplete: true,
+        },
+      }
+    );
 
     let select = getByRole("combobox");
     await fireEvent.click(select);
@@ -345,14 +371,18 @@ describe("should select item", () => {
   });
 
   test("multiple mode autocomplete", async () => {
-    const { getByRole, findByRole, getAllByRole, queryByText } = render(Select, {
-      props: {
-        modelValue: [],
-        multiple: true,
-        items: states,
-        autocomplete: true,
-      },
-    });
+    const { getByRole, findByRole, getAllByRole, queryByText } = render(
+      Select,
+      {
+        global,
+        props: {
+          modelValue: [],
+          multiple: true,
+          items: states,
+          autocomplete: true,
+        },
+      }
+    );
 
     let select = getByRole("combobox");
     await fireEvent.click(select);
@@ -369,6 +399,7 @@ describe("should select item", () => {
 
 test("shows no items message", async () => {
   const { getByRole, getByText } = render(Select, {
+    global,
     props: {
       emptyDataMessage: "empty",
     },
@@ -381,6 +412,7 @@ test("shows no items message", async () => {
 
 test("opens autocomplete on items update", async () => {
   const { getByRole, findByRole, rerender } = render(Select, {
+    global,
     props: {
       items: [],
       noFilter: true,
@@ -415,6 +447,7 @@ describe("sets attributes for subcomponents", () => {
 
 test("should use correct property to display text options (item-text prop)", async () => {
   const { getByRole, getAllByRole, getByText } = render(Select, {
+    global,
     props: {
       items: statesValues,
       itemText: "label",

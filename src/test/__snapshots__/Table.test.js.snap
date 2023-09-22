@@ -2,17 +2,17 @@
 
 exports[`renders component 1`] = `
 <table
-  class="table"
+  class="border-collapse text-left null null table-fixed null null"
 >
   <!--v-if-->
   <thead
-    class="table__header-row"
+    class="null null"
   >
     <tr>
       
       
       <th
-        class="table__header-cell"
+        class="font-semibold py-2 px-2 dark:text-text-200 border-secondary-300 dark:border-dark-700 null null border-b null"
       >
         <div
           class="flex items-center"
@@ -24,7 +24,7 @@ exports[`renders component 1`] = `
       
       
       <th
-        class="table__header-cell"
+        class="font-semibold py-2 px-2 dark:text-text-200 border-secondary-300 dark:border-dark-700 null null border-b null"
       >
         <div
           class="flex items-center"
@@ -36,7 +36,7 @@ exports[`renders component 1`] = `
       
       
       <th
-        class="table__header-cell"
+        class="font-semibold py-2 px-2 dark:text-text-200 border-secondary-300 dark:border-dark-700 null null border-b null"
       >
         <div
           class="flex items-center"
@@ -48,7 +48,7 @@ exports[`renders component 1`] = `
       
       
       <th
-        class="table__header-cell"
+        class="font-semibold py-2 px-2 dark:text-text-200 border-secondary-300 dark:border-dark-700 null null border-b null"
       >
         <div
           class="flex items-center"
@@ -60,7 +60,7 @@ exports[`renders component 1`] = `
       
       
       <th
-        class="table__header-cell"
+        class="font-semibold py-2 px-2 dark:text-text-200 border-secondary-300 dark:border-dark-700 null null border-b null"
       >
         <div
           class="flex items-center"
@@ -72,7 +72,7 @@ exports[`renders component 1`] = `
       
       
       <th
-        class="table__header-cell"
+        class="font-semibold py-2 px-2 dark:text-text-200 border-secondary-300 dark:border-dark-700 null null border-b null"
       >
         <div
           class="flex items-center"
@@ -89,12 +89,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -104,7 +104,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -114,7 +114,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -124,7 +124,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -134,7 +134,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -144,7 +144,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -158,12 +158,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -173,7 +173,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -183,7 +183,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -193,7 +193,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -203,7 +203,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -213,7 +213,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -227,12 +227,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -242,7 +242,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -252,7 +252,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -262,7 +262,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -272,7 +272,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -282,7 +282,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -296,12 +296,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -311,7 +311,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -321,7 +321,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -331,7 +331,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -341,7 +341,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -351,7 +351,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -365,12 +365,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -380,7 +380,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -390,7 +390,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -400,7 +400,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -410,7 +410,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -420,7 +420,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -434,12 +434,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -449,7 +449,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -459,7 +459,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -469,7 +469,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -479,7 +479,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -489,7 +489,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -503,12 +503,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -518,7 +518,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -528,7 +528,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -538,7 +538,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -548,7 +548,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -558,7 +558,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -572,12 +572,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -587,7 +587,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -597,7 +597,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -607,7 +607,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -617,7 +617,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -627,7 +627,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -641,12 +641,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -656,7 +656,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -666,7 +666,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -676,7 +676,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -686,7 +686,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -696,7 +696,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -710,12 +710,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -725,7 +725,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -735,7 +735,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -745,7 +745,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -755,7 +755,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -765,7 +765,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -779,12 +779,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -794,7 +794,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -804,7 +804,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -814,7 +814,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -824,7 +824,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -834,7 +834,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -848,12 +848,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -863,7 +863,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -873,7 +873,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -883,7 +883,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -893,7 +893,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -903,7 +903,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -917,12 +917,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -932,7 +932,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -942,7 +942,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -952,7 +952,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -962,7 +962,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -972,7 +972,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -986,12 +986,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1001,7 +1001,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1011,7 +1011,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1021,7 +1021,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1031,7 +1031,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1041,7 +1041,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1055,12 +1055,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1070,7 +1070,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1080,7 +1080,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1090,7 +1090,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1100,7 +1100,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1110,7 +1110,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1124,12 +1124,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1139,7 +1139,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1149,7 +1149,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1159,7 +1159,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1169,7 +1169,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1179,7 +1179,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1193,12 +1193,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1208,7 +1208,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1218,7 +1218,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1228,7 +1228,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1238,7 +1238,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1248,7 +1248,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1262,12 +1262,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1277,7 +1277,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1287,7 +1287,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1297,7 +1297,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1307,7 +1307,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1317,7 +1317,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1331,12 +1331,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1346,7 +1346,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1356,7 +1356,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1366,7 +1366,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1376,7 +1376,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1386,7 +1386,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1400,12 +1400,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1415,7 +1415,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1425,7 +1425,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1435,7 +1435,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1445,7 +1445,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1455,7 +1455,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1469,12 +1469,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1484,7 +1484,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1494,7 +1494,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1504,7 +1504,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1514,7 +1514,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1524,7 +1524,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1538,12 +1538,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1553,7 +1553,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1563,7 +1563,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1573,7 +1573,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1583,7 +1583,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1593,7 +1593,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1607,12 +1607,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1622,7 +1622,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1632,7 +1632,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1642,7 +1642,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1652,7 +1652,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1662,7 +1662,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1676,12 +1676,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1691,7 +1691,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1701,7 +1701,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1711,7 +1711,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1721,7 +1721,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1731,7 +1731,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1745,12 +1745,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1760,7 +1760,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1770,7 +1770,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1780,7 +1780,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1790,7 +1790,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1800,7 +1800,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1814,12 +1814,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1829,7 +1829,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1839,7 +1839,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1849,7 +1849,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1859,7 +1859,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1869,7 +1869,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1883,12 +1883,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1898,7 +1898,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1908,7 +1908,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1918,7 +1918,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1928,7 +1928,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1938,7 +1938,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1952,12 +1952,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1967,7 +1967,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1977,7 +1977,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1987,7 +1987,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -1997,7 +1997,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2007,7 +2007,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2021,12 +2021,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2036,7 +2036,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2046,7 +2046,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2056,7 +2056,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2066,7 +2066,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2076,7 +2076,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2090,12 +2090,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2105,7 +2105,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2115,7 +2115,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2125,7 +2125,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2135,7 +2135,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2145,7 +2145,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2159,12 +2159,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2174,7 +2174,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2184,7 +2184,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2194,7 +2194,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2204,7 +2204,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2214,7 +2214,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2228,12 +2228,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2243,7 +2243,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2253,7 +2253,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2263,7 +2263,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2273,7 +2273,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2283,7 +2283,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2297,12 +2297,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2312,7 +2312,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2322,7 +2322,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2332,7 +2332,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2342,7 +2342,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2352,7 +2352,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2366,12 +2366,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2381,7 +2381,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2391,7 +2391,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2401,7 +2401,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2411,7 +2411,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2421,7 +2421,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2435,12 +2435,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2450,7 +2450,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2460,7 +2460,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2470,7 +2470,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2480,7 +2480,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2490,7 +2490,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2504,12 +2504,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2519,7 +2519,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2529,7 +2529,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2539,7 +2539,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2549,7 +2549,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2559,7 +2559,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2573,12 +2573,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2588,7 +2588,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2598,7 +2598,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2608,7 +2608,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2618,7 +2618,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2628,7 +2628,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2642,12 +2642,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2657,7 +2657,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2667,7 +2667,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2677,7 +2677,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2687,7 +2687,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2697,7 +2697,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2711,12 +2711,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2726,7 +2726,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2736,7 +2736,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2746,7 +2746,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2756,7 +2756,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2766,7 +2766,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2780,12 +2780,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2795,7 +2795,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2805,7 +2805,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2815,7 +2815,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2825,7 +2825,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2835,7 +2835,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2849,12 +2849,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2864,7 +2864,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2874,7 +2874,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2884,7 +2884,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2894,7 +2894,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2904,7 +2904,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2918,12 +2918,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2933,7 +2933,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2943,7 +2943,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2953,7 +2953,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2963,7 +2963,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2973,7 +2973,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -2987,12 +2987,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3002,7 +3002,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3012,7 +3012,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3022,7 +3022,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3032,7 +3032,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3042,7 +3042,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3056,12 +3056,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3071,7 +3071,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3081,7 +3081,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3091,7 +3091,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3101,7 +3101,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3111,7 +3111,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3125,12 +3125,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3140,7 +3140,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3150,7 +3150,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3160,7 +3160,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3170,7 +3170,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3180,7 +3180,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3194,12 +3194,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3209,7 +3209,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3219,7 +3219,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3229,7 +3229,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3239,7 +3239,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3249,7 +3249,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3263,12 +3263,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3278,7 +3278,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3288,7 +3288,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3298,7 +3298,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3308,7 +3308,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3318,7 +3318,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3332,12 +3332,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3347,7 +3347,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3357,7 +3357,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3367,7 +3367,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3377,7 +3377,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3387,7 +3387,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3401,12 +3401,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3416,7 +3416,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3426,7 +3426,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3436,7 +3436,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3446,7 +3446,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3456,7 +3456,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3470,12 +3470,12 @@ exports[`renders component 1`] = `
     
     
     <tr
-      class="table__row"
+      class="null"
     >
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3485,7 +3485,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3495,7 +3495,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3505,7 +3505,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3515,7 +3515,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         
@@ -3525,7 +3525,7 @@ exports[`renders component 1`] = `
       
       
       <td
-        class="table__cell"
+        class="border-t transition-colors duration-200 py-2 px-2 border-secondary-300 dark:border-dark-700 null null border-t null null"
       >
         <!-- @slot cell:[key] -->
         

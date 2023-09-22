@@ -2,14 +2,13 @@ import { render, fireEvent, prettyDOM, within } from "@testing-library/vue";
 import "@testing-library/jest-dom";
 import Table from "../components/vTable.vue";
 import data from "./data/company-simple.json";
+import * as styles from "../styles/components";
 
-// let data = [
-//   { id: 1, name: "name", city: "city" },
-//   { id: 2, name: "name2", city: "city2" },
-//   { id: 3, name: "name3", city: "city3" },
-//   { id: 4, name: "name4", city: "city4" },
-//   { id: 5, name: "name5", city: "city5" },
-// ]
+let global = {
+  provide: {
+    mods: styles,
+  },
+};
 
 let props = {
   items: data,
@@ -62,6 +61,7 @@ afterEach(() => {
 
 test("renders component", () => {
   const { getByRole } = render(Table, {
+    global,
     props: {
       ...props,
     },
@@ -72,6 +72,7 @@ test("renders component", () => {
 
 test("renders component without definition prop", () => {
   const { getAllByRole } = render(Table, {
+    global,
     props: {
       ...props,
     },
@@ -83,6 +84,7 @@ test("renders component without definition prop", () => {
 
 test("renders component with definition prop", () => {
   const { getAllByRole } = render(Table, {
+    global,
     props: {
       ...props,
       definition,
@@ -98,6 +100,7 @@ describe("correctly handles definition prop", () => {
     definition.splice(5, 0, definition.splice(4, 1)[0]);
 
     const { getAllByRole } = render(Table, {
+      global,
       props: {
         ...props,
         definition,
@@ -121,6 +124,7 @@ describe("correctly handles definition prop", () => {
     definition[2].label = "label3";
 
     const { getAllByRole } = render(Table, {
+      global,
       props: {
         ...props,
         definition,
@@ -141,6 +145,7 @@ describe("correctly handles definition prop", () => {
     };
 
     const { getAllByRole } = render(Table, {
+      global,
       props: {
         ...props,
         definition,
@@ -163,6 +168,7 @@ describe("correctly handles definition prop", () => {
     definition.splice(4, 2);
 
     const { getAllByRole } = render(Table, {
+      global,
       props: {
         ...props,
         definition,
@@ -183,6 +189,7 @@ describe("correctly handles definition prop", () => {
     definition[5].visible = false;
 
     const { getAllByRole } = render(Table, {
+      global,
       props: {
         ...props,
         definition,
@@ -206,6 +213,7 @@ describe("correctly handles definition prop", () => {
     definition[5].filterable = false;
 
     const { getAllByRole } = render(Table, {
+      global,
       props: {
         ...props,
         definition,
@@ -219,6 +227,7 @@ describe("correctly handles definition prop", () => {
 
 test("correctly filters items (filter prop)", () => {
   const { getAllByRole, getAllByText } = render(Table, {
+    global,
     props: {
       ...props,
       filter: "de",
@@ -231,6 +240,7 @@ test("correctly filters items (filter prop)", () => {
 
 test("renders caption (caption slot)", () => {
   const { getByText } = render(Table, {
+    global,
     props: {
       ...props,
     },
@@ -244,6 +254,7 @@ test("renders caption (caption slot)", () => {
 
 test("renders correct number of items per page", () => {
   const { getAllByRole } = render(Table, {
+    global,
     props: {
       ...props,
       itemsPerPage: 10,
@@ -255,6 +266,7 @@ test("renders correct number of items per page", () => {
 
 test("correctly changes page (page prop)", async () => {
   const { getAllByRole, rerender } = render(Table, {
+    global,
     props: {
       ...props,
       itemsPerPage: 20,
@@ -267,6 +279,7 @@ test("correctly changes page (page prop)", async () => {
   expect(within(rows[1]).getAllByRole("cell")[0]).toHaveTextContent("1");
 
   await rerender({
+    global,
     ...props,
     itemsPerPage: 20,
     page: 2,
@@ -277,6 +290,7 @@ test("correctly changes page (page prop)", async () => {
   expect(within(rows[1]).getAllByRole("cell")[0]).toHaveTextContent("21");
 
   await rerender({
+    global,
     ...props,
     itemsPerPage: 20,
     page: 3,
@@ -289,10 +303,11 @@ test("correctly changes page (page prop)", async () => {
 
 test("correctly sorts column", async () => {
   definition.forEach((i) => {
-    i.sortable = true
-  })
+    i.sortable = true;
+  });
 
   const { getAllByRole, getByRole } = render(Table, {
+    global,
     props: {
       ...props,
       definition,
@@ -300,46 +315,65 @@ test("correctly sorts column", async () => {
   });
 
   // ascending
-  await fireEvent.click(getByRole("columnheader", { name: "First Name"}))
-  let rows = getAllByRole("row")
-  expect(within(rows[1]).getAllByRole("cell")[1]).toHaveTextContent("Abdul")
-  expect(within(rows[2]).getAllByRole("cell")[1]).toHaveTextContent("Adelbert")
-  expect(within(rows[3]).getAllByRole("cell")[1]).toHaveTextContent("Amie")
-  expect(within(rows[rows.length - 3]).getAllByRole("cell")[1]).toHaveTextContent("Town")
-  expect(within(rows[rows.length - 2]).getAllByRole("cell")[1]).toHaveTextContent("Umberto")
-  expect(within(rows[rows.length - 1]).getAllByRole("cell")[1]).toHaveTextContent("Yale")
+  await fireEvent.click(getByRole("columnheader", { name: "First Name" }));
+  let rows = getAllByRole("row");
+  expect(within(rows[1]).getAllByRole("cell")[1]).toHaveTextContent("Abdul");
+  expect(within(rows[2]).getAllByRole("cell")[1]).toHaveTextContent("Adelbert");
+  expect(within(rows[3]).getAllByRole("cell")[1]).toHaveTextContent("Amie");
+  expect(
+    within(rows[rows.length - 3]).getAllByRole("cell")[1]
+  ).toHaveTextContent("Town");
+  expect(
+    within(rows[rows.length - 2]).getAllByRole("cell")[1]
+  ).toHaveTextContent("Umberto");
+  expect(
+    within(rows[rows.length - 1]).getAllByRole("cell")[1]
+  ).toHaveTextContent("Yale");
 
   // descending
-  await fireEvent.click(getByRole("columnheader", { name: "First Name"}))
-  rows = getAllByRole("row")
-  expect(within(rows[1]).getAllByRole("cell")[1]).toHaveTextContent("Yale")
-  expect(within(rows[2]).getAllByRole("cell")[1]).toHaveTextContent("Umberto")
-  expect(within(rows[3]).getAllByRole("cell")[1]).toHaveTextContent("Town")
-  expect(within(rows[rows.length - 3]).getAllByRole("cell")[1]).toHaveTextContent("Amie")
-  expect(within(rows[rows.length - 2]).getAllByRole("cell")[1]).toHaveTextContent("Adelbert")
-  expect(within(rows[rows.length - 1]).getAllByRole("cell")[1]).toHaveTextContent("Abdul")
+  await fireEvent.click(getByRole("columnheader", { name: "First Name" }));
+  rows = getAllByRole("row");
+  expect(within(rows[1]).getAllByRole("cell")[1]).toHaveTextContent("Yale");
+  expect(within(rows[2]).getAllByRole("cell")[1]).toHaveTextContent("Umberto");
+  expect(within(rows[3]).getAllByRole("cell")[1]).toHaveTextContent("Town");
+  expect(
+    within(rows[rows.length - 3]).getAllByRole("cell")[1]
+  ).toHaveTextContent("Amie");
+  expect(
+    within(rows[rows.length - 2]).getAllByRole("cell")[1]
+  ).toHaveTextContent("Adelbert");
+  expect(
+    within(rows[rows.length - 1]).getAllByRole("cell")[1]
+  ).toHaveTextContent("Abdul");
 });
 
 test("should not sort if column is not sortable (sortable property)", async () => {
   definition.forEach((i) => {
-    i.sortable = false
-  })
+    i.sortable = false;
+  });
 
   const { getAllByRole, getByRole } = render(Table, {
+    global,
     props: {
       ...props,
       definition,
     },
   });
 
-  let rows = getAllByRole("row")
+  let rows = getAllByRole("row");
 
-  await fireEvent.click(getByRole("columnheader", { name: "First Name"}))
+  await fireEvent.click(getByRole("columnheader", { name: "First Name" }));
 
-  expect(within(rows[1]).getAllByRole("cell")[1]).toHaveTextContent("Anthony")
-  expect(within(rows[2]).getAllByRole("cell")[1]).toHaveTextContent("Richard")
-  expect(within(rows[3]).getAllByRole("cell")[1]).toHaveTextContent("Chance")
-  expect(within(rows[rows.length - 3]).getAllByRole("cell")[1]).toHaveTextContent("Caron")
-  expect(within(rows[rows.length - 2]).getAllByRole("cell")[1]).toHaveTextContent("Antonie")
-  expect(within(rows[rows.length - 1]).getAllByRole("cell")[1]).toHaveTextContent("Abdul")
+  expect(within(rows[1]).getAllByRole("cell")[1]).toHaveTextContent("Anthony");
+  expect(within(rows[2]).getAllByRole("cell")[1]).toHaveTextContent("Richard");
+  expect(within(rows[3]).getAllByRole("cell")[1]).toHaveTextContent("Chance");
+  expect(
+    within(rows[rows.length - 3]).getAllByRole("cell")[1]
+  ).toHaveTextContent("Caron");
+  expect(
+    within(rows[rows.length - 2]).getAllByRole("cell")[1]
+  ).toHaveTextContent("Antonie");
+  expect(
+    within(rows[rows.length - 1]).getAllByRole("cell")[1]
+  ).toHaveTextContent("Abdul");
 });

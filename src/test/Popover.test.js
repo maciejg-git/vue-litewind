@@ -2,9 +2,13 @@ import { render, fireEvent, prettyDOM, waitFor } from "@testing-library/vue";
 import "@testing-library/jest-dom"
 import userEvent from "@testing-library/user-event"
 import Popover from "../components/vPopover.vue";
+import * as styles from "../styles/components";
 
 let global = {
   stubs: {},
+  provide: {
+    mods: styles,
+  },
 }
 
 let slots = {

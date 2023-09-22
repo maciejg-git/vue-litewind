@@ -3,6 +3,13 @@ import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import Tree from "../components/vTree.vue";
 import ExclamationCircle from "./icons/exclamation-circle";
+import * as styles from "../styles/components";
+
+let global = {
+  provide: {
+    mods: styles,
+  },
+};
 
 const items = [
   {
@@ -86,6 +93,7 @@ const itemsModifiedKeys = [
 
 test("renders component", async () => {
   const { getAllByRole, queryByRole } = render(Tree, {
+    global,
     props: {
       items,
     },
@@ -99,6 +107,7 @@ test("renders component", async () => {
 
 test("auto open all items on mount (auto-open-all prop)", async () => {
   const { getAllByRole } = render(Tree, {
+    global,
     props: {
       items,
       autoOpenAll: true,
@@ -112,6 +121,7 @@ test("auto open all items on mount (auto-open-all prop)", async () => {
 
 test("auto open root node on mount (auto-open-root prop)", async () => {
   const { getAllByRole } = render(Tree, {
+    global,
     props: {
       items,
       autoOpenRoot: true,
@@ -125,6 +135,7 @@ test("auto open root node on mount (auto-open-root prop)", async () => {
 
 test("filter items (filter prop)", async () => {
   const { getAllByRole } = render(Tree, {
+    global,
     props: {
       items,
       autoOpenAll: true,
@@ -139,6 +150,7 @@ test("filter items (filter prop)", async () => {
 
 test("renders checkboxes (show-checkboxes prop)", async () => {
   const { getAllByRole, queryByRole } = render(Tree, {
+    global,
     props: {
       items,
       showCheckboxes: true,
@@ -154,6 +166,7 @@ test("renders checkboxes (show-checkboxes prop)", async () => {
 // FIXME
 test.skip("renders placeholder icons (placeholder-item-icon prop)", async () => {
   const { getAllByRole, queryByRole, debug } = render(Tree, {
+    global,
     props: {
       items,
       placeholderItemIcon: ExclamationCircle,
@@ -170,6 +183,7 @@ test.skip("renders placeholder icons (placeholder-item-icon prop)", async () => 
 describe("opens and closes directory on click", () => {
   test("open", async () => {
     const { getAllByRole, queryByRole, getByText, getByRole } = render(Tree, {
+      global,
       props: {
         items,
       },
@@ -189,6 +203,7 @@ describe("opens and closes directory on click", () => {
 
   test("close", async () => {
     const { getAllByRole, queryByRole, getByText, getByRole } = render(Tree, {
+      global,
       props: {
         items,
       },
@@ -211,6 +226,7 @@ describe("opens and closes directory on click", () => {
 describe("emits events", () => {
   test("input:selected after clicking items checkbox", async () => {
     const { getAllByRole, queryByRole, emitted } = render(Tree, {
+      global,
       props: {
         items,
         showCheckboxes: true,
@@ -227,6 +243,7 @@ describe("emits events", () => {
 
   test("emits input:selected with keys (select-return-keys prop)", async () => {
     const { getAllByRole, queryByRole, emitted } = render(Tree, {
+      global,
       props: {
         items,
         showCheckboxes: true,
@@ -244,6 +261,7 @@ describe("emits events", () => {
 
   test("input:click after clicking item", async () => {
     const { getAllByRole, queryByRole, getByText, emitted } = render(Tree, {
+      global,
       props: {
         items,
         showCheckboxes: true,
@@ -262,6 +280,7 @@ describe("emits events", () => {
 
 test("uses correct item key (item-keys prop)", async () => {
   const { getAllByRole, queryByRole, emitted } = render(Tree, {
+    global,
     props: {
       items: itemsModifiedKeys,
       showCheckboxes: true,
