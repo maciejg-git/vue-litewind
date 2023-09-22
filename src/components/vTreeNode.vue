@@ -16,7 +16,7 @@
           v-if="showIndicators"
           class="order-first mr-2 w-5"
         >
-          <v-button
+          <button
             v-if="isFolder"
             @click="handleIndicatorClick"
           >
@@ -28,7 +28,7 @@
               v-bind="chevron"
               :class="{ disabled: isDisabled }"
             ></v-chevron>
-          </v-button>
+          </button>
         </div>
         <!-- checkbox -->
         <transition name="fade">

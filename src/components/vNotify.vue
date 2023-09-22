@@ -59,6 +59,8 @@
 <script setup>
 import { inject } from "vue";
 import useTailwindStyles from "./composition/use-tailwind-styles";
+import vIcon from "./vIcon.vue"
+import vCloseButton from "./vCloseButton.vue"
 import { sharedProps, sharedModProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 

@@ -33,6 +33,7 @@
 
 <script setup>
 import { ref, computed, inject } from "vue";
+import vNotify from "./vNotify.vue"
 import { sharedProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 

@@ -12,7 +12,7 @@ let active = null;
 
 let update = (collapse) => {
   if (collapse.isOpen.value) {
-    active && active.collapse();
+    active && active.close();
     active = collapse;
     return;
   }
@@ -21,7 +21,7 @@ let update = (collapse) => {
 
 let remove = (collapse) => {
   if (active === collapse) {
-    active.collapse();
+    active.close();
     active = null;
   }
 };

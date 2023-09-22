@@ -18,6 +18,7 @@
 
 <script setup>
 import { ref, watch, onMounted, onUnmounted, inject } from "vue";
+import useTailwindStyles from "./composition/use-tailwind-styles"
 import vTransition from "./vTransition.vue";
 import { sharedProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
@@ -34,6 +35,10 @@ let props = defineProps({
   },
 });
 
+let { collapse } = inject("mods", {})
+
+useTailwindStyles(props, collapse, {})
+
 const emit = defineEmits(["update:modelValue"]);
 
 let isOpen = ref(props.modelValue);
@@ -45,18 +50,18 @@ watch(
   }
 );
 
-let uncollapse = () => {
+let open = () => {
   isOpen.value = true;
   emit("update:modelValue", true);
 };
 
-let collapse = () => {
+let close = () => {
   isOpen.value = false;
   emit("update:modelValue", false);
 };
 
 let toggleCollapse = () => {
-  isOpen.value ? collapse() : uncollapse();
+  isOpen.value ? close() : open();
 };
 
 let onTrigger = {
@@ -67,7 +72,7 @@ let onTrigger = {
 
 let accordion = inject("_accordion", null);
 
-let c = { isOpen, collapse };
+let c = { isOpen, close };
 
 onMounted(() => {
   if (accordion) {
