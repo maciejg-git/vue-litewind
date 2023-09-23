@@ -13,19 +13,13 @@
     />
   </section>
 
-  <section>
-    <h4 id="ExampleNavbar">Example</h4>
-    <div class="example relative">
-      <example name="ExampleNavbar"></example>
-    </div>
-  </section>
+  <navbar-md></navbar-md>
 </template>
 
 <script setup>
-import { ref, reactive } from "vue";
+import { reactive } from "vue";
 import componentDocumentation from "../components-documentation/vNavbar.json";
+import navbarMd from "./navbar.md"
 
 let reference = reactive(componentDocumentation);
 </script>
-
-<style scoped></style>

@@ -11,30 +11,13 @@
     <!-- <table-reference-basic :items="events"></table-reference-basic> -->
   </section>
 
-  <section>
-    <h4 id="ExampleRadio">Example - props</h4>
-    <div class="example">
-      <example name="ExampleRadio"></example>
-    </div>
-  </section>
-
-  <section>
-    <h4 id="ExampleRadioGroup">Example - radio group</h4>
-    <p>
-    Radio inputs can be optionally wrapped with <code class="code-text">v-radio-group</code> to create group with single <code class="code-text">v-model</code>.
-    </p>
-    <div class="example">
-      <example name="ExampleRadioGroup"></example>
-    </div>
-  </section>
+  <radio-md></radio-md>
 </template>
 
 <script setup>
-import { ref, reactive } from "vue";
+import { reactive } from "vue";
 import componentDocumentation from "../components-documentation/vRadio.json"
+import radioMd from "./radio.md"
 
 let reference = reactive(componentDocumentation)
 </script>
-
-<style scoped>
-</style>

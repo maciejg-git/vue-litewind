@@ -7,22 +7,19 @@
     <table-reference :items="reference.props" />
 
     <h6 id="ChipSlots">Slots</h6>
-    <table-reference-basic :items="reference.slots" reference="slot" />
+    <table-reference-basic
+      :items="reference.slots"
+      reference="slot"
+    />
   </section>
 
-  <section>
-    <h4 id="ExampleChip">Example</h4>
-    <div class="example">
-      <example name="ExampleChip" auto-show-code></example>
-    </div>
-  </section>
+  <chip-md></chip-md>
 </template>
 
 <script setup>
-import { ref, reactive } from "vue";
-import componentDocumentation from "../components-documentation/vChip.json"
+import { reactive } from "vue";
+import componentDocumentation from "../components-documentation/vChip.json";
+import chipMd from "./chip.md";
 
-let reference = reactive(componentDocumentation)
+let reference = reactive(componentDocumentation);
 </script>
-
-<style scoped></style>

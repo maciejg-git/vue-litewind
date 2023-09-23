@@ -73,7 +73,7 @@ let isPartiallyInViewport = (element, offsetBottom) => {
 
 let handleScroll = () => {
   let visibleHeaders = getHeaders().filter((i) => {
-    return isPartiallyInViewport(i.parentNode, 200);
+    return isPartiallyInViewport(i.nextElementSibling, 200);
   });
 
   if (

@@ -29,24 +29,13 @@
     </p>
   </section>
 
-  <section>
-    <h4 id="ExampleTabsSimple">Example - simple tabs</h4>
-    <div class="example">
-      <example name="ExampleTabsSimple"></example>
-    </div>
-  </section>
-
-  <section>
-    <h4 id="ExampleTabs">Example - props and events</h4>
-    <div class="example">
-      <example name="ExampleTabs"></example>
-    </div>
-  </section>
+  <tabs-md></tabs-md>
 </template>
 
 <script setup>
 import { reactive } from "vue";
 import componentDocumentation from "../components-documentation/vTabs.json";
+import tabsMd from "./tabs.md"
 
 let reference = reactive(componentDocumentation);
 </script>

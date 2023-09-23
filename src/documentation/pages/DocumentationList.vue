@@ -7,7 +7,10 @@
     <table-reference :items="reference.props" />
 
     <h6 id="ListSlots">Slots</h6>
-    <table-reference-basic :items="reference.slots" reference="slot" />
+    <table-reference-basic
+      :items="reference.slots"
+      reference="slot"
+    />
 
     <h6 id="ListComponents">Components</h6>
     <p>
@@ -20,20 +23,13 @@
     </p>
   </section>
 
-  <section>
-    <h4 id="ExampleList">Example - props</h4>
-    <div class="example">
-      <example name="ExampleList"></example>
-    </div>
-  </section>
+  <list-md></list-md>
 </template>
 
 <script setup>
-import { ref, reactive } from "vue";
-import componentDocumentation from "../components-documentation/vList.json"
+import { reactive } from "vue";
+import componentDocumentation from "../components-documentation/vList.json";
+import listMd from "./list.md";
 
-let reference = reactive(componentDocumentation)
+let reference = reactive(componentDocumentation);
 </script>
-
-<style scoped>
-</style>

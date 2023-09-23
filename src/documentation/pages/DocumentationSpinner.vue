@@ -7,20 +7,13 @@
     <table-reference :items="reference.props" />
   </section>
 
-  <section>
-    <h4 id="SpinnerExample">Example</h4>
-    <div class="example">
-      <example name="ExampleSpinner"></example>
-    </div>
-  </section>
+  <spinner-md></spinner-md>
 </template>
 
 <script setup>
-import { ref, reactive } from "vue";
+import { reactive } from "vue";
 import componentDocumentation from "../components-documentation/vSpinner.json"
+import spinnerMd from "./spinner.md"
 
 let reference = reactive(componentDocumentation)
 </script>
-
-<style scoped>
-</style>

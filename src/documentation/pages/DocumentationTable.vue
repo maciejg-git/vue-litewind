@@ -19,109 +19,13 @@
     />
   </section>
 
-  <section
-    id="table-definition"
-    class="scroll-mt-20"
-  >
-    <h4 id="Definition">Definition</h4>
-    <span class="font-bold">Type</span>
-    :
-    <code class="code-word">Array</code>
-    <p>
-      Table definition is an optional
-      <code class="code-text">array</code>
-      of
-      <code class="code-text">objects</code>
-      that defines columns of the table. Each object represents one column, has
-      one required, unique
-      <code class="code-text">key</code>
-      property and number of optional properties.
-    </p>
-    <p>
-      If definition is not provided component makes one using first record of
-      data. All additional properties are set to default values. This may be
-      enough for simple tables however to use features like sorting, filtering
-      etc you need to provide definition array.
-    </p>
-    Example of definition array:
-    <v-code language="javascript">
-      {{
-        `let definition: ref([
-  {
-    key: "id",
-    visible: false,
-  },
-  {
-    key: "first_name",
-    sortable: true,
-  },
-  {
-    key: "last_name",
-    sortable: true,
-  },
-  {
-    key: "email",
-    sortable: true,
-  },
-  {
-    key: "city",
-    sortable: true,
-  },
-  {
-    key: "country",
-    sortable: true,
-    class: (k, v) => (v == "ID" ? "bg-red-50" : ""),
-  },
-  {
-    key: "edit",
-  },
-]) `
-      }}
-    </v-code>
-    <p>Each column is defined by object with following properties:</p>
-    <table-reference
-      :items="referenceProp"
-      :definition="referencePropDefinition"
-      :filterable="false"
-    />
-  </section>
-
-  <section>
-    <h4 id="ExampleTableSimple">Example - simple table</h4>
-    <div class="example">
-      <example
-        name="ExampleTableSimple"
-        auto-show-code
-      ></example>
-    </div>
-  </section>
-
-  <section>
-    <h4 id="ExampleTable">Example - props and events</h4>
-    <div class="example">
-      <example name="ExampleTable"></example>
-    </div>
-  </section>
-
-  <section>
-    <h4 id="ExampleTableColspan">Example - colspan item property</h4>
-    <p>
-      Item can have special property
-      <code class="code-text">colspan: {}</code>
-      . Properties of this object are rendered as full row below item. To render
-      them use
-      <code class="code-text">colspan</code>
-      slot.
-    </p>
-    <div class="example">
-      <example name="ExampleTableColspan"></example>
-    </div>
-  </section>
+  <table-md></table-md>
 </template>
 
 <script setup>
 import { ref, reactive } from "vue";
 import componentDocumentation from "../components-documentation/vTable.json";
+import tableMd from "./table.md"
 
 let reference = reactive(componentDocumentation);
 

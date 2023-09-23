@@ -11,44 +11,14 @@
   </section>
 
   <section>
-    <h4 id="ButtonExamples">Examples</h4>
-    <div class="example">
-      <example name="ExampleButtonSimple" auto-show-code></example>
-    </div>
-    <div class="example">
-      <example name="ExampleButtonSize" auto-show-code></example>
-    </div>
-    <div class="example">
-      <example name="ExampleButtonVariant" auto-show-code></example>
-    </div>
-    <div class="example">
-      <example name="ExampleButtonStyle" auto-show-code></example>
-    </div>
-    <div class="example">
-      <example name="ExampleButtonIcon" auto-show-code></example>
-    </div>
-    <div class="example">
-      <example name="ExampleButtonBlock" auto-show-code></example>
-    </div>
-    <div class="example">
-      <example name="ExampleButtonDisabled" auto-show-code></example>
-    </div>
+    <button-md></button-md>
   </section>
 </template>
 
-<script>
-import { ref, reactive } from "vue";
+<script setup>
+import { reactive } from "vue";
 import componentDocumentation from "../components-documentation/vButton.json"
+import buttonMd from "./button.md"
 
-export default {
-  setup() {
-    let reference = reactive(componentDocumentation)
-
-    return {
-      reference,
-    };
-  },
-};
+let reference = reactive(componentDocumentation)
 </script>
-
-<style scoped></style>

@@ -2,7 +2,7 @@ h3 {
   @apply text-4xl font-semibold dark:text-text-300 scroll-mt-20;
 }
 h4 {
-  @apply text-2xl font-semibold dark:text-text-300 scroll-mt-20;
+  @apply text-2xl font-semibold dark:text-text-300 scroll-mt-20 my-6;
 }
 h5 {
   @apply text-xl font-semibold dark:text-text-300 scroll-mt-20;
@@ -29,6 +29,23 @@ pre {
 pre code {
   @apply text-sm whitespace-pre rounded-md;
 }
+
+.link {
+  @apply font-medium text-blue-600 dark:text-blue-500 hover:underline;
+}
+
+.markdown-body > hr {
+  @apply my-10 dark:border-dark-700
+}
+
+.markdown-body p > a {
+  @apply link
+}
+
+.markdown-body > ul {
+  @apply list-disc list-outside ml-10 my-6
+}
+
 .code-text {
   @apply text-red-600 dark:text-yellow-600 font-semibold text-sm
 }
@@ -36,9 +53,14 @@ pre code {
   @apply text-sm bg-indigo-300 text-black dark:text-text-100 dark:bg-indigo-500 rounded px-1 py-0.5 mr-1 text-sm;
 }
 
+.markdown-body code:not(.hljs) {
+  @apply code-text
+}
+
+.markdown-body code:not(.hljs).alt {
+  @apply code-word
+}
+
 label {
   @apply mr-2;
-}
-a.link {
-  @apply font-medium text-blue-600 dark:text-blue-500 hover:underline;
 }
