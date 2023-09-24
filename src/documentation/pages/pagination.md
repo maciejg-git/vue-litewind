@@ -1,3 +1,5 @@
+___
+
 #### Example {#ExamplePagination}
 
 For more examples see [table component](/documentation/table).

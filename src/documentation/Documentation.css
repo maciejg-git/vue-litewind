@@ -53,11 +53,11 @@ pre code {
   @apply text-sm bg-indigo-300 text-black dark:text-text-100 dark:bg-indigo-500 rounded px-1 py-0.5 mr-1 text-sm;
 }
 
-.markdown-body code:not(.hljs) {
+.markdown-body > :not(.table-reference) code:not(.hljs) {
   @apply code-text
 }
 
-.markdown-body code:not(.hljs).alt {
+.markdown-body > :not(.table-reference) code:not(.hljs).alt {
   @apply code-word
 }
 

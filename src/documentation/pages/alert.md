@@ -1,3 +1,5 @@
+___
+
 #### Example - simple alert {#ExampleAlertSimple}
 
 <div class="example">

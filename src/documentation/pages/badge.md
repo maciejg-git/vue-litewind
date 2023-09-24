@@ -1,3 +1,5 @@
+___
+
 #### Example {#ExampleBadge}
 
 <div class="example">

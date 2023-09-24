@@ -1,3 +1,5 @@
+___
+
 #### Definition {#Definition}
 
 Table definition is an optional `array` of `objects` that defines columns of the table. Each object represents one column, has one required, unique `key` property and number of optional properties.
@@ -39,13 +41,14 @@ let definition: ref([
 ])
 ```
 
-  <!--  <p>Each column is defined by object with following properties:</p>
-    <table-reference
-      :items="referenceProp"
-      :definition="referencePropDefinition"
-      :filterable="false"
-    />
-    --->
+Each column is defined by object with following properties:
+
+<script setup>
+import tableDefinitionProperties from "../components/TableDefinitionProperties.vue"
+</script>
+<table-definition-properties></table-definition-properties>
+
+---
 
 #### Example - simple table {#ExampleTableSimple}
 

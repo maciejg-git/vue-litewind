@@ -1,3 +1,5 @@
+___
+
 #### Path {#BreadcrumbPath}
 
 Path is an `Array` of `Objects` where each object should have `label` property and `to` or `href` property that is used as `to` prop for router-link. Optional `icon` property is a name of the icon that prepends element of the path.
@@ -17,6 +19,8 @@ let path = [
   },
 ],;
 ```
+
+---
 
 #### Example {#ExampleBreadcrumb}
 
