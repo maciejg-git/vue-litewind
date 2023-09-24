@@ -1,3 +1,5 @@
+___
+
 #### v-model {#ExampleDatepickerModel}
 
 v-model is used to return date after selection. v-model can be `Array` or `String` depending on selection mode. In range mode v-model returns `Array` of two `Strings`. In single mode v-model returns `String`. For both modes date is in `YYYY-MM-DD` format.

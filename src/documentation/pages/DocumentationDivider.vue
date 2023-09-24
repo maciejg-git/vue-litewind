@@ -7,20 +7,13 @@
     <table-reference :items="reference.props" />
   </section>
 
-  <section>
-    <h4 id="ExampleDivider">Example</h4>
-    <div class="example">
-      <example name="ExampleDivider" auto-show-code></example>
-    </div>
-  </section>
+  <divider-md></divider-md>
 </template>
 
 <script setup>
-import { ref, reactive } from "vue";
+import { reactive } from "vue";
 import componentDocumentation from "../components-documentation/vDivider.json"
+import dividerMd from "./divider.md"
 
 let reference = reactive(componentDocumentation)
 </script>
-
-<style scoped>
-</style>

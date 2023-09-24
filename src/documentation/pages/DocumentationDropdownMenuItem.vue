@@ -7,23 +7,16 @@
     <table-reference :items="reference.props" />
 
     <h6 id="vDropdownMenuItemSlots">Slots</h6>
-    <table-reference-basic :items="reference.slots" reference="slot" />
+    <table-reference-basic
+      :items="reference.slots"
+      reference="slot"
+    />
   </section>
 </template>
 
-<script>
-import { ref, reactive } from "vue";
-import componentDocumentation from "../components-documentation/vDropdownMenuItem.json"
+<script setup>
+import { reactive } from "vue";
+import componentDocumentation from "../components-documentation/vDropdownMenuItem.json";
 
-export default {
-  setup(props) {
-    let reference = reactive(componentDocumentation)
-
-    return {
-      reference,
-    };
-  },
-};
+let reference = reactive(componentDocumentation);
 </script>
-
-<style scoped></style>

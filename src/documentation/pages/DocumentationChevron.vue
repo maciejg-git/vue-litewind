@@ -7,27 +7,13 @@
     <table-reference :items="reference.props" />
   </section>
 
-  <section>
-    <h4 id="ChevronNotes">Notes</h4>
-    <p class="mt-6">
-      <code class="code-text">v-chevron</code>
-      rotates chevron/triangle or any icon depending on the value of the switch prop. It is used internally by dropdown, collapse etc
-    </p>
-  </section>
-
-  <section>
-    <h4 id="ExampleChevron">Example</h4>
-    <div class="example">
-      <example name="ExampleChevron"></example>
-    </div>
-  </section>
+  <chevron-md></chevron-md>
 </template>
 
 <script setup>
-import { ref, reactive } from "vue";
+import { reactive } from "vue";
 import componentDocumentation from "../components-documentation/vChevron.json"
+import chevronMd from "./chevron.md"
 
 let reference = reactive(componentDocumentation)
 </script>
-
-<style scoped></style>

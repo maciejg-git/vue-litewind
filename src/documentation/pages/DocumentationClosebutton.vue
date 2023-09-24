@@ -7,38 +7,13 @@
     <table-reference :items="reference.props" />
   </section>
 
-  <section>
-    <h4 id="ExampleClosebutton">Example</h4>
-    <div class="example">
-      <div class="flex gap-x-4">
-        <v-close-button />
-        <v-close-button base="roundCloseButton" />
-      </div>
-    </div>
-    <v-code :code="code" template language="html"></v-code>
-  </section>
+  <close-button-md></close-button-md>
 </template>
 
-<script>
-import { ref, reactive } from "vue";
-import componentDocumentation from "../components-documentation/vCloseButton.json"
+<script setup>
+import { reactive } from "vue";
+import componentDocumentation from "../components-documentation/vCloseButton.json";
+import closeButtonMd from "./close-button.md";
 
-export default {
-  setup(props) {
-    let reference = reactive(componentDocumentation)
-
-    let code = `<template>
-  <v-close-button />
-  <v-close-button base="roundCloseButton" />
-</template>`
-
-    return {
-      reference,
-      code,
-    };
-  },
-};
+let reference = reactive(componentDocumentation);
 </script>
-
-<style scoped>
-</style>

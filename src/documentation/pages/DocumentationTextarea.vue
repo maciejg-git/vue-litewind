@@ -17,20 +17,13 @@
     />
   </section>
 
-  <section>
-    <h4 id="ExampleTextarea">Example - props</h4>
-    <div class="example">
-      <example name="ExampleTextarea"></example>
-    </div>
-  </section>
+  <textarea-md></textarea-md>
 </template>
 
 <script setup>
-import { ref, reactive } from "vue";
+import { reactive } from "vue";
 import componentDocumentation from "../components-documentation/vTextarea.json"
+import textareaMd from "./textarea.md"
 
 let reference = reactive(componentDocumentation)
 </script>
-
-<style scoped>
-</style>

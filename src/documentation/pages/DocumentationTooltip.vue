@@ -2,78 +2,16 @@
   <h3>Tooltip</h3>
 
   <section>
-    <h4 id="TooltipUsage">Usage</h4>
-    <p>
-      To show tooltip when hovering over html element use the
-      <code class="code-text">v-tooltip</code>
-      directive. There are three possible ways to set directive value:
-      <code class="code-text">string</code>
-      ,
-      <code class="code-text">function</code>
-      or
-      <code class="code-text">object</code>
-      :
-    </p>
-    <v-code
-      language="html"
-      :code="codeStringDirective"
-    ></v-code>
-    <v-code
-      language="html"
-      :code="codeFunctionDirective"
-    ></v-code>
-    <v-code
-      language="html"
-      :code="codeObjectDirective"
-    ></v-code>
-    <p>If value is an object additional options can be set:</p>
-    <v-code
-      language="html"
-      :code="codeObjectDirectiveDetails"
-    ></v-code>
-    <p>
-      For undefined text property content of
-      <code class="code-text">data-title</code>
-      attribute will be used.
-    </p>
-  </section>
-
-  <section>
     <h4 id="TooltipReference">Tooltip options reference</h4>
     <table-reference :items="reference"></table-reference>
   </section>
 
-  <section>
-    <h4 id="TooltipExamples">Examples</h4>
-    <div class="example">
-      <p class="my-6">Default tooltip:</p>
-      <example name="ExampleTooltipSimple"></example>
-    </div>
-
-    <div class="example">
-      <p class="my-6">Tooltip placement:</p>
-      <example name="ExampleTooltipPlacement"></example>
-    </div>
-
-    <div class="example">
-      <p class="my-6">Tooltip delay:</p>
-      <example name="ExampleTooltipDelay"></example>
-    </div>
-
-    <div class="example">
-      <p class="my-6">Tooltip content source:</p>
-      <example name="ExampleTooltipContent"></example>
-    </div>
-
-    <div class="example">
-      <p class="my-6">Tooltip animation:</p>
-      <example name="ExampleTooltipAnimation"></example>
-    </div>
-  </section>
+  <tooltip-md></tooltip-md>
 </template>
 
 <script setup>
 import { ref } from "vue";
+import tooltipMd from "./tooltip.md"
 
 let reference = ref([
   {
@@ -149,26 +87,4 @@ let referenceValueDefinition = ref([
     key: "description",
   },
 ]);
-
-let codeStringDirective = `<button v-tooltip="'Tooltip text'">Button</button>`;
-
-let codeFunctionDirective = `<button v-tooltip="() => 'Tooltip text'">Button</button>`;
-
-let codeObjectDirective = `<button v-tooltip="{ text: 'Tooltip text' }">Button</button>`;
-
-let codeObjectDirectiveDetails = `<button v-tooltip="{ 
-  placement: string,
-  offsetX: number,
-  offsetY: number,
-  flip: boolean,
-  delay: number,
-  autoPlacement: boolean,
-  transition: string,
-  inline: boolean,
-  text: string | function | undefined,
-}">
-  Button
-</button>`;
 </script>
-
-<style scoped></style>

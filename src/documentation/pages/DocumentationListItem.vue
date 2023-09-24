@@ -7,16 +7,16 @@
     <table-reference :items="reference.props" />
 
     <h6 id="ListItemSlots">Slots</h6>
-    <table-reference-basic :items="reference.slots" reference="slot" />
+    <table-reference-basic
+      :items="reference.slots"
+      reference="slot"
+    />
   </section>
 </template>
 
 <script setup>
 import { reactive } from "vue";
-import componentDocumentation from "../components-documentation/vListItem.json"
+import componentDocumentation from "../components-documentation/vListItem.json";
 
-let reference = reactive(componentDocumentation)
+let reference = reactive(componentDocumentation);
 </script>
-
-<style scoped>
-</style>

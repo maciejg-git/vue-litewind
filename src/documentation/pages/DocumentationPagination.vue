@@ -11,25 +11,13 @@
     <!-- <table-reference-basic :items="events"></table-reference-basic> -->
   </section>
 
-  <section>
-    <h4 id="ExamplePagination">Example</h4>
-    <p>
-      For more examples see
-      <a class="link" href="/documentation/table">table component</a>
-      .
-    </p>
-    <div class="example">
-      <example name="ExamplePagination"></example>
-    </div>
-  </section>
+  <pagination-md></pagination-md>
 </template>
 
 <script setup>
-import { ref, reactive } from "vue";
+import { reactive } from "vue";
 import componentDocumentation from "../components-documentation/vPagination.json"
+import paginationMd from "./pagination.md"
 
 let reference = reactive(componentDocumentation)
 </script>
-
-<style scoped>
-</style>

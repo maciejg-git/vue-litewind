@@ -20,11 +20,8 @@
 </template>
 
 <script setup>
-import { ref, reactive } from "vue";
+import { reactive } from "vue";
 import componentDocumentation from "../components-documentation/vRange.json"
 
 let reference = reactive(componentDocumentation)
 </script>
-
-<style scoped>
-</style>

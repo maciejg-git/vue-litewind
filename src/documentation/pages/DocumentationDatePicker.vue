@@ -13,8 +13,6 @@
     <table-reference-basic :items="reference.slots" reference="slot" />
   </section>
 
-  <v-divider class="my-10"></v-divider>
-
   <date-picker-md></date-picker-md>
 </template>
 
