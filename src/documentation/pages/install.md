@@ -17,6 +17,8 @@ npm install -D @tailwindcss/forms
 
 **Step 1. Configure Tailwind.**
 
+::: marked-container
+
 Add following to `tailwind.config.js` :
 
 - add vue-litewind to `content` so tailwind can generate utility classes used by components internally,
@@ -60,7 +62,11 @@ module.exports = {
 }
 ```
 
+:::
+
 **Step 2. Import styles files:**
+
+::: marked-container
 
 `style.css` contains basic set of classes used by components. Import it directly from library distribution directory
 
@@ -85,7 +91,11 @@ In order to make components customizable the rest of the styles are set up in `j
 
 Read about customizing styles here.
 
+:::
+
 **Step 3. Add vue-litewind plugin:**
+
+::: marked-container
 
 You can register single or all components in application entry file (for example `main.js`). Registering single components will make build smaller.
 
@@ -128,6 +138,8 @@ app.use(vueLitewind, {
 </v-tab>
 </v-tabs>
 
+:::
+
 **Optional** : while registering components you can set default values for props globally in second argument of `app.use`: `componentProps` object. If component has `name` prop that name will be used instead of default name. The value for prop can also be function that takes `base` argument (`base` prop of component) and should return default value for the prop. Note that components can internally use other components and those default props will also apply to them. You can set defaults for those components only by nesting them under their parent components.
 
 <v-alert
@@ -138,7 +150,7 @@ app.use(vueLitewind, {
   Note that you can set default value for some props only.
 </v-alert>
 
-Default props examples
+Examples of default component props:
 
 <v-tabs base="materialTabs">
 <v-tab name="Simple example">
@@ -219,32 +231,34 @@ app.use(vueLitewind, {
 
 In order to modify default styles of the component start with `tailwind.config.js` file. To make components looks consistent default tailwind colors are extended with named colors like primary, secondary. Change colors accordingly to match your application design.
 
-Second part of the theming are the js files that contain styles for each component. Inside the file are listed elements that are available for theming and strings of taiwind classes assigned to them. Here is simplified example of such file:
+Second part of the theming are the javascript files. These files contain list of elements that are available for theming and strings of tailwind classes assigned to them. Here is simplified example of such file:
 
 ```javascript
 let component =  {
   header: {
-    classes: \`
+    classes: `
       class,
       class2,
-    \`,
+    `,
   },
   content: {
-    classes: \`
+    classes: `
       class,
       class2,
-    \`,
+    `,
   },
   footer: {
-    classes: \`
+    classes: `
       class,
       class2,
-    \`,
+    `,
   },
 }
 ```
 
-This is basis for all components and those classes are always applied to element. On top of that, elements can have a number of variants that are applied on certain conditions. Those variants are grouped by type of change applied.
+This is basis for all components and those classes are always applied to element. 
+
+On top of that, each element can have a number of variants that are applied on certain conditions. Those variants are grouped by type of change applied. Here is previous example with few additional variants for content element:
 
 ```javascript
 let component =  {
@@ -252,29 +266,29 @@ let component =  {
     ...
   },
   content: {
-    classes: \`
+    classes: `
       class,
       class2,
-    \`,
+    `,
     shape: {
-      rounded: \`
+      rounded: `
         class,
         class2,
-      \`,
-      square: \`
+      `,
+      square: `
         class,
         class2,
-      \`,
+      `,
     },
     size: {
-      medium: \`
+      medium: `
         class,
         class2,
-      \`,
-      small: \`
+      `,
+      small: `
         class,
         class2,
-      \`,
+      `,
     },
   },
   footer: {

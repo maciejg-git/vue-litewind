@@ -10,8 +10,6 @@
     ></table-reference-basic>
   </section>
 
-  <v-divider></v-divider>
-
   <grid-md></grid-md>
 </template>
 

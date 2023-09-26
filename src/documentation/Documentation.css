@@ -24,7 +24,7 @@ p {
 }
 
 pre {
-  @apply whitespace-normal my-6;
+  @apply whitespace-normal my-4;
 }
 pre code {
   @apply text-sm whitespace-pre rounded-md;
@@ -32,6 +32,14 @@ pre code {
 
 .link {
   @apply font-medium text-blue-600 dark:text-blue-500 hover:underline;
+}
+
+.hljs {
+  @apply font-mono
+}
+
+.markdown-body .marked-container {
+  @apply border-l-2 border-dark-500 pl-8 dark:border-dark-600
 }
 
 .markdown-body > hr {
@@ -42,7 +50,7 @@ pre code {
   @apply link
 }
 
-.markdown-body > ul {
+.markdown-body > ul, .markdown-body > .marked-container > ul {
   @apply list-disc list-outside ml-10 my-6
 }
 
