@@ -3,6 +3,7 @@ import vue from "@vitejs/plugin-vue";
 import Markdown from "unplugin-vue-markdown/vite";
 import MarkdownItAnchor from 'markdown-it-anchor'
 import MarkdownItAttrs from 'markdown-it-attrs'
+import MarkdownItContainer from 'markdown-it-container'
 import hljs from "highlight.js"
 
 export default defineConfig({
@@ -26,6 +27,7 @@ export default defineConfig({
       markdownItSetup(md) {
         md.use(MarkdownItAnchor)
         md.use(MarkdownItAttrs)
+        md.use(MarkdownItContainer, "marked-container")
       },
     }),
   ],
