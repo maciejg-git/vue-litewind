@@ -2,13 +2,13 @@ h3 {
   @apply text-4xl font-semibold dark:text-text-300 scroll-mt-20;
 }
 h4 {
-  @apply text-2xl font-semibold dark:text-text-300 scroll-mt-20 my-6;
+  @apply text-2xl font-semibold dark:text-text-300 scroll-mt-20 mt-10 mb-6;
 }
 h5 {
   @apply text-xl font-semibold dark:text-text-300 scroll-mt-20;
 }
 h6 {
-  @apply text-lg font-semibold dark:text-text-300 scroll-mt-20;
+  @apply text-lg font-semibold dark:text-text-300 scroll-mt-20 mt-10 mb-6;
 }
 
 section {
