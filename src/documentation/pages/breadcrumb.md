@@ -24,6 +24,4 @@ let path = [
 
 #### Example {#ExampleBreadcrumb}
 
-<div class="example">
-  <example name="ExampleBreadcrumb" auto-show-code></example>
-</div>
+<example name="ExampleBreadcrumb" auto-show-code></example>

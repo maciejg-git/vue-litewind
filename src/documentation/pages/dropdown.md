@@ -22,42 +22,30 @@ You can set up context menu with <code class="code-text">v-dropdown-context</cod
 
 #### Example - simple dropdown {#ExampleDropdownSimple}
 
-<div class="example">
-  <example name="ExampleDropdownSimple"></example>
-</div>
+<example name="ExampleDropdownSimple"></example>
 
 #### Example - props {#ExampleDropdown}
 
-<div class="example">
-  <example name="ExampleDropdown"></example>
-</div>
+<example name="ExampleDropdown"></example>
 
 #### Example - alternative styles {#ExampleDropdownStyles}
 
 Dropdown comes with some default alternative styles.
 
-<div class="example">
-  <example name="ExampleDropdownStyles"></example>
-</div>
+<example name="ExampleDropdownStyles"></example>
 
 #### Example - custom content {#ExampleDropdownCustomContent}
 
-<div class="example">
-  <example name="ExampleDropdownCustomContent"></example>
-</div>
+<example name="ExampleDropdownCustomContent"></example>
 
 #### Example - open by id {#ExampleDropdownTrigger}
 
 You can also control state of the dropdown menu by using `v-trigger` component. The `for` prop of the `v-trigger` should be the same as `id` of the dropdown. The advantage of this method is that `v-triggers` can be put anywhere in application. Read more about v-trigger here.
 
-<div class="example">
-  <example name="ExampleDropdownTrigger"></example>
-</div>
+<example name="ExampleDropdownTrigger"></example>
 
 #### Example - context dropdown {#ExampleDropdownContext}
 
 To make context menu use `v-dropdown-context`. This component exposes `showContextDropdown($event, { contextData })` function that controls visibility state of menu and sets context data. First argument, mouse `event`, allows computing position of menu. Second argument defines data that is provided in `default` slot of dropdown component.
 
-<div class="example">
-  <example name="ExampleDropdownContext"></example>
-</div>
+<example name="ExampleDropdownContext"></example>

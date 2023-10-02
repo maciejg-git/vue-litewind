@@ -310,7 +310,7 @@ Apart from these basic variants there are three reserved variant names that have
 
 - `preset` - if any variant from preset group is applied by `mod-[element]` prop only those classes will be added to element. Static element classes and the rest of the variants will be ignored. Presets can be useful for frequently used set of variants or when element have many custom classes that are not included in variants and in many other cases. Note that however variants are ignored you can still reference them in presets by using `function` as variant value.
 - `state`
-- `data` - instead of set of variants `data` is a `function` that allows styling based on component data. It is only supported on elements that have data associated with them, for example table rows or cells, tree items etc.
+- `data` - is a `function` that allows styling based on component data. It is only supported on elements that have data associated with them, for example table rows or cells, tree items etc.
 
 and following component props:
 
@@ -323,10 +323,6 @@ applied to the component. The default value is always component name.
 
 ##### Example - styling with base, style and variant props {#ExampleStyling}
 
-<div class="example">
-  <example name="ExampleInstallButton"></example>
-</div>
+<example name="ExampleInstallButton"></example>
 
-<div class="example">
-  <example name="ExampleInstallSelect"></example>
-</div>
+<example name="ExampleInstallSelect"></example>

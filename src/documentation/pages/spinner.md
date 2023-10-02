@@ -2,6 +2,4 @@ ___
 
 #### Example {#SpinnerExample}
 
-<div class="example">
-  <example name="ExampleSpinner"></example>
-</div>
+<example name="ExampleSpinner"></example>

@@ -42,30 +42,20 @@ For undefined text property content of `data-title` attribute will be used.
 
 Default tooltip:
 
-<div class="example">
-  <example name="ExampleTooltipSimple"></example>
-</div>
+<example name="ExampleTooltipSimple"></example>
 
 Tooltip placement:
 
-<div class="example">
-  <example name="ExampleTooltipPlacement"></example>
-</div>
+<example name="ExampleTooltipPlacement"></example>
 
 Tooltip delay:
 
-<div class="example">
-  <example name="ExampleTooltipDelay"></example>
-</div>
+<example name="ExampleTooltipDelay"></example>
 
 Tooltip content source:
 
-<div class="example">
-  <example name="ExampleTooltipContent"></example>
-</div>
+<example name="ExampleTooltipContent"></example>
 
 Tooltip animation:
 
-<div class="example">
-  <example name="ExampleTooltipAnimation"></example>
-</div>
+<example name="ExampleTooltipAnimation"></example>

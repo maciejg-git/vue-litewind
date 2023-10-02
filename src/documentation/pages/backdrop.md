@@ -8,14 +8,10 @@ ___
 
 #### Example - show overlay on hover {#ExampleCardBackdrop}
 
-<div class="example">
-  <example name="ExampleCardBackdrop"></example>
-</div>
+<example name="ExampleCardBackdrop"></example>
 
 #### Example - pointer events {#ExampleCardBackdropEvents}
 
 When adding overlay for visual effect purpose only set `pointer-events-none` to allow events to pass to underlying elements.
 
-<div class="example">
-  <example name="ExampleCardBackdropEvents"></example>
-</div>
+<example name="ExampleCardBackdropEvents"></example>

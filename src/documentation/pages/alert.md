@@ -2,12 +2,8 @@ ___
 
 #### Example - simple alert {#ExampleAlertSimple}
 
-<div class="example">
-  <example name="ExampleAlertSimple" auto-show-code></example>
-</div>
+<example name="ExampleAlertSimple" auto-show-code></example>
 
 #### Example - props {#ExampleAlert}
 
-<div class="example">
-  <example name="ExampleAlert"></example>
-</div>
+<example name="ExampleAlert"></example>

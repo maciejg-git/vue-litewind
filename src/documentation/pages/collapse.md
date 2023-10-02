@@ -14,14 +14,10 @@ You can wrap group of `v-collapse` components with `v-accordion` to create accor
 
 #### Example {#ExampleCollapse}
 
-<div class="example">
-  <example name="ExampleCollapse"></example>
-</div>
+<example name="ExampleCollapse"></example>
 
 #### Example - accordion {#ExampleCollapseAccordion}
 
 Turn collapse components to accordion by wrapping them with `v-accordion` component. In accordion mode only one collapse element can be opened.
 
-<div class="example">
-  <example name="ExampleCollapseAccordion"></example>
-</div>
+<example name="ExampleCollapseAccordion"></example>

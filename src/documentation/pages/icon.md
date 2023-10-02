@@ -4,9 +4,7 @@
 
 #### Example {#ExampleIcon}
 
-<div class="example">
-  <example name="ExampleIcon" auto-show-code></example>
-</div>
+<example name="ExampleIcon" auto-show-code></example>
 
 #### Icon types {#IconTypes}
 

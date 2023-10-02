@@ -52,23 +52,14 @@ import tableDefinitionProperties from "../components/TableDefinitionProperties.v
 
 #### Example - simple table {#ExampleTableSimple}
 
-<div class="example">
-  <example
-    name="ExampleTableSimple"
-    auto-show-code
-  ></example>
-</div>
+<example name="ExampleTableSimple" auto-show-code></example>
 
 #### Example - props and events {#ExampleTable}
 
-<div class="example">
-  <example name="ExampleTable"></example>
-</div>
+<example name="ExampleTable"></example>
 
 #### Example - colspan item property {#ExampleTableColspan}
 
 Item can have special property `colspan: {}`. Properties of this object are rendered as full row below item. To render them use `colspan` slot.
 
-<div class="example">
-  <example name="ExampleTableColspan"></example>
-</div>
+<example name="ExampleTableColspan"></example>

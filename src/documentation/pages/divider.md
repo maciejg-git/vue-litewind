@@ -2,6 +2,4 @@ ___
 
 #### Example {#ExampleDivider}
 
-<div class="example">
-  <example name="ExampleDivider" auto-show-code></example>
-</div>
+<example name="ExampleDivider" auto-show-code></example>

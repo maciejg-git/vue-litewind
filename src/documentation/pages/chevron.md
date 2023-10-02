@@ -8,6 +8,4 @@ ___
 
 #### Example {#ExampleChevron}
 
-<div class="example">
-  <example name="ExampleChevron"></example>
-</div>
+<example name="ExampleChevron"></example>

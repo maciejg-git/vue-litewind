@@ -2,9 +2,7 @@ ___
 
 #### Example - props {#ExampleProgress}
 
-<div class="example">
-  <example name="ExampleProgress"></example>
-</div>
+<example name="ExampleProgress"></example>
 
 #### Example - indeterminate {#ExampleProgressIndeterminate}
 
@@ -15,6 +13,4 @@ Width, speed, timing function and direction of indeterminate progress bar can be
 - `--progress-bar-width`
 - `--progress-bar-direction`
 
-<div class="example">
-  <example name="ExampleProgressIndeterminate"></example>
-</div>
+<example name="ExampleProgressIndeterminate"></example>

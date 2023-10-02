@@ -10,14 +10,10 @@ ___
 
 #### Example - props {#ExampleCheckbox}
 
-<div class="example">
-  <example name="ExampleCheckbox"></example>
-</div>
+<example name="ExampleCheckbox"></example>
 
 #### Example - checkbox group {#ExampleCheckboxGroup}
 
 Checkboxes can be optionally wrapped with `v-checkbox-group` to create group with single `v-model`. Group allows more validation options.
 
-<div class="example">
-  <example name="ExampleCheckboxGroup"></example>
-</div>
+<example name="ExampleCheckboxGroup"></example>

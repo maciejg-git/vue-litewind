@@ -2,109 +2,85 @@ ___
 
 #### Usage {#GridUsage}
 
-Grids components can be used to make flexbox layouts. Here is how it works.
-- The elements, features and design is inspired by and very similar to Bootstrap grids. It uses flexbox and series of containers, rows and columns to make layouts. Content must be placed within columns and only columns may be immediate children of rows.
-- `v-container`, `v-row` and `v-col` are used to make elements of the grid. Those components are just simple, single divs and have all the necessary classes by default.
-- tailwind classes are then added to `v-container`, `v-row` and `v-col` to define widths, alignment, gutters and many other properties of the grid. Use responsive modifiers to make grids that change depending on the screen size.
+The grid is used to make flexbox layouts.
 
-<v-divider></v-divider>
+The elements, features and general idea is inspired by and very similar to Bootstrap grids. It uses flexbox and series of containers, rows and columns to make layouts. Content must be placed within columns and only columns may be immediate children of rows.
+
+`v-container`, `v-row` and `v-col` are the components used to make elements of the grid. Those components are just simple, single divs and have all the necessary classes by default.
+
+Tailwind classes are then added to `v-container`, `v-row` and `v-col` to define widths, column alignment, gutters and many other properties of the grid. Most layouts should start with the `basis-*` or `grow` classes to set initial widths of the columns and then add additional features. Prepend these classes with responsive modifiers to make grids that change depending on the screen size.
+
+---
 
 #### Example - simple {#ExampleGridSimple}
 
 Basic 12 columns layout with percentage widths similar to Bootstrap.
 
-<div class="example">
-  <example name="ExampleGridSimple"></example>
-</div>
+<example name="ExampleGridSimple"></example>
 
 #### Example - column wrapping {#ExampleGridWrap}
 
 By default columns that overflow row are wrapped to the next line.
 
-<div class="example">
-  <example name="ExampleGridWrap"></example>
-</div>
+<example name="ExampleGridWrap"></example>
 
 To disable default column wrapping add `flex-nowrap` class to the `v-row`.
 
-<div class="example">
-  <example name="ExampleGridNowrap"></example>
-</div>
+<example name="ExampleGridNowrap"></example>
 
 #### Example - auto width columns {#ExampleGridAuto}
 
 Adding `grow` class to `v-cols` will generate columns that fit available space in the row.
 
-<div class="example">
-  <example name="ExampleGridAuto"></example>
-</div>
+<example name="ExampleGridAuto"></example>
 
 To wrap auto width columns to a new line use `v-col-break` component.
 
-<div class="example">
-  <example name="ExampleGridAutoBreak"></example>
-</div>
+<example name="ExampleGridAutoBreak"></example>
 
 Auto width columns can be used with columns that have explicit width. Auto width columns will automaticaly resize to fit into available space.
 
-<div class="example">
-  <example name="ExampleGridAutoMix"></example>
-</div>
+<example name="ExampleGridAutoMix"></example>
 
 #### Example - variable width columns {#ExampleGridVariable}
 
 Use `basis-auto` class to make columns that have size based on the natural width of their content.
 
-<div class="example">
-  <example name="ExampleGridVariable"></example>
-</div>
+<example name="ExampleGridVariable"></example>
 
 #### Example - responsive column width {#ExampleGridResponsive}
 
-To create responsive grid simply add responsive modifiers (`md:`, `lg:` etc) to `basis-*` classes.
+To create responsive grid simply add responsive modifiers (`md:`, `lg:` etc) to `basis-*` or `grow` classes.
 
-<div class="example">
-  <example name="ExampleGridResponsive"></example>
-</div>
+<example name="ExampleGridResponsive"></example>
 
 #### Example - columns break {#ExampleGridBreak}
 
 To break columns to a new line use the `v-col-break` component.
 
-<div class="example">
-  <example name="ExampleGridBreak"></example>
-</div>
+<example name="ExampleGridBreak"></example>
 
 To break columns only at certain breakpoints use `hidden` and `block` classes with the responsive modifiers. In the example below columns only break at small screens.
 
-<div class="example">
-  <example name="ExampleGridBreakResponsive"></example>
-</div>
+<example name="ExampleGridBreakResponsive"></example>
 
 #### Example - row horizontal alignment {#ExampleGridAlignHorizontal}
 
 To align columns along horizontal axis use `justify-*` classes in the row.
 
-<div class="example">
-  <example name="ExampleGridAlignHorizontal"></example>
-</div>
+<example name="ExampleGridAlignHorizontal"></example>
 
 #### Example - row vertical alignment {#ExampleGridAlignVertical}
 
 To align columns along vertical axis use `items-*` classes in the row. You can also align columns seperately with `self-*` classes.
 
-<div class="example">
-  <example name="ExampleGridAlignVertical"></example>
-</div>
+<example name="ExampleGridAlignVertical"></example>
 
 #### Example - gutters {#ExampleGridGutter}
 
 By default columns are not separated by gutter. You can add it using padding classes and then offset it with equal negative margin classes in the row. In the example below `[&>*]:` modifier is used to add equal padding to entire row but you can also set it seperately for each column. For more info on custom modifiers see [tailwind documentation](https://tailwindcss.com/docs/hover-focus-and-other-states#using-arbitrary-variants)
 
-  <v-alert
-    icon="info"
-    mod-alert="variant:info"
-  >
+<v-alert icon="info" mod-alert="variant:info">
     Note that
     <code class="code-text">space-*</code>
     ,
@@ -116,38 +92,28 @@ By default columns are not separated by gutter. You can add it using padding cla
     <code class="code-text">v-container</code>
     to create horizontal gutters that separate
     <code class="code-text">v-rows</code>.
-  </v-alert>
+</v-alert>
 
-<div class="example">
-  <example name="ExampleGridGutter"></example>
-</div>
+<example name="ExampleGridGutter"></example>
 
 Gutters can also be made responsive. In the following example gutters get narrower on lower resolutions and are disabled on small screens.
 
-<div class="example">
-  <example name="ExampleGridGutterResponsive"></example>
-</div>
+<example name="ExampleGridGutterResponsive"></example>
 
 #### Example - columns position with margin classes {#ExampleGridMargin}
 
 You can shift or center columns with `ml-auto` , `mr-auto` or `mx-auto` margin utility classes.
 
-<div class="example">
-  <example name="ExampleGridMargin"></example>
-</div>
+<example name="ExampleGridMargin"></example>
 
 #### Example - nested layouts {#ExampleGridNested}
 
 Grids can also be nested by placing `v-rows` inside `v-cols` .
 
-<div class="example">
-  <example name="ExampleGridNested"></example>
-</div>
+<example name="ExampleGridNested"></example>
 
 #### Example - column order {#ExampleGridOrder}
 
 `order-*` classes can be used to change order of columns.
 
-<div class="example">
-  <example name="ExampleGridOrder"></example>
-</div>
+<example name="ExampleGridOrder"></example>

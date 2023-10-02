@@ -59,6 +59,4 @@ Since `v-notify-container` is positioned as `fixed` element it is recommended to
 
 #### Example - notify {#ExampleNotify}
 
-<div class="example">
-  <example name="ExampleNotify"></example>
-</div>
+<example name="ExampleNotify"></example>

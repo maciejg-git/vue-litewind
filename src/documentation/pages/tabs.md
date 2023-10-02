@@ -2,12 +2,8 @@ ___
 
 #### Example - simple tabs {#ExampleTabsSimple}
 
-<div class="example">
-  <example name="ExampleTabsSimple"></example>
-</div>
+<example name="ExampleTabsSimple"></example>
 
 #### Example - props and events {#ExampleTabs}
 
-<div class="example">
-  <example name="ExampleTabs"></example>
-</div>
+<example name="ExampleTabs"></example>

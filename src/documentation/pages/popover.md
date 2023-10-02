@@ -18,14 +18,10 @@ Open popover is by default appended to the body element.
 
 #### Example - props {#ExamplePopover}
 
-<div class="example">
-  <example name="ExamplePopover"></example>
-</div>
+<example name="ExamplePopover"></example>
 
 #### Example - open by id {#ExamplePopoverTrigger}
 
 You can also control state of the popover by using `v-trigger` component. The for prop of the `v-trigger` should be the same as `id` of the popover. The advantage of this method over reference slot is that `v-triggers` can be put anywhere in application.
 
-<div class="example">
-  <example name="ExamplePopoverTrigger"></example>
-</div>
+<example name="ExamplePopoverTrigger"></example>

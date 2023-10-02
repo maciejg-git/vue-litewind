@@ -2,20 +2,14 @@ ___
 
 #### Example {#ExampleBadge}
 
-<div class="example">
-  <example name="ExampleBadge"></example>
-</div>
+<example name="ExampleBadge"></example>
 
 #### Example - positioned badge {#ExampleBadgeSpecial}
 
-<div class="example">
-  <example name="ExampleBadgeSpecial"></example>
-</div>
+<example name="ExampleBadgeSpecial"></example>
 
 #### Example - animated badge {#ExampleBadgeAnimated}
 
 To animate badge one time on value update use `update-key` prop. For persistent animation you can use Tailwind animate classes.
 
-<div class="example">
-  <example name="ExampleBadgeAnimated"></example>
-</div>
+<example name="ExampleBadgeAnimated"></example>

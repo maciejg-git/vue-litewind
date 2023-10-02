@@ -2,24 +2,16 @@ ___
 
 #### Example - simple card {#ExampleCardSimple}
 
-<div class="example">
-  <example name="ExampleCardSimple"></example>
-</div>
+<example name="ExampleCardSimple"></example>
 
 #### Example - horizontal card {#ExampleCardHorizontal}
 
-<div class="example">
-  <example name="ExampleCardHorizontal"></example>
-</div>
+<example name="ExampleCardHorizontal"></example>
 
 #### Example - overlay car {#ExampleCardOverlay}
 
-<div class="example">
-  <example name="ExampleCardOverlay"></example>
-</div>
+<example name="ExampleCardOverlay"></example>
 
 #### Example - flat card {#ExampleCardRounded}
 
-<div class="example">
-  <example name="ExampleCardRounded"></example>
-</div>
+<example name="ExampleCardRounded"></example>

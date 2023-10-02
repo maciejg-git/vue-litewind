@@ -2,32 +2,22 @@ ___
 
 #### Example - simple input {#ExampleInputSimple}
 
-<div class="example">
-  <example name="ExampleInputSimple"></example>
-</div>
+<example name="ExampleInputSimple"></example>
 
 #### Example - props and events {#ExampleInput}
 
-<div class="example">
-  <example name="ExampleInput"></example>
-</div>
+<example name="ExampleInput"></example>
 
 #### Example - prepend, append and icon slots {#ExampleInputSlot}
 
-<div class="example">
-  <example name="ExampleInputSlot"></example>
-</div>
+<example name="ExampleInputSlot"></example>
 
 #### Example - alternative styles {#ExampleInputStyles}
 
-<div class="example">
-  <example name="ExampleInputStyles"></example>
-</div>
+<example name="ExampleInputStyles"></example>
 
 #### Example - group styling {#ExampleInputStyling}
 
 Input elements can be styled depending on the state of wrapper element with tailwind `group-*` modifiers. In the example clear button appears on hover and icon appears after input is focused.
 
-<div class="example">
-  <example name="ExampleInputStyling"></example>
-</div>
+<example name="ExampleInputStyling"></example>
