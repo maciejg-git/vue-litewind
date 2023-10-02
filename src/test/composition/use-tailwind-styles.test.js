@@ -41,12 +41,25 @@ let global = {
                 ring2
               `,
             },
+            fn: {
+              fn: () => `
+                function
+                function2
+              `,
+              fn2: () => `
+                function
+                function2
+              `,
+            },
             special: {
               optional: true,
               raised: `
               raised
               raised2
               `,
+            },
+            data: (i) => {
+              return i === 1 ? "data" : "data2"
             },
             preset: {
               plain: `
@@ -119,6 +132,17 @@ let elements = {
   },
 };
 
+let elementsExternal = {
+  element: {
+    fixed: "element-fixed element-fixed2",
+    externalVariants: ["variant"]
+  },
+  element2: {
+    fixed: "element2-fixed element2-fixed2",
+    externalVariants: ["variant", "size"]
+  },
+};
+
 const props = reactive({
   modElement: "",
   modElement2: "",
@@ -154,6 +178,17 @@ describe("adds classes", () => {
 
     expect(classes.element.value).toMatch(/static static2/);
     expect(classes.element2.value).toMatch(/static static2/);
+  });
+
+  test("variant static classes (classes property)", () => {
+    let { classes, variants } = useTailwindStyles(
+      props,
+      global.provide.mods.test,
+      elements
+    );
+
+    expect(classes.element.value).toMatch(/variant variant2/);
+    expect(classes.element2.value).toMatch(/variant variant2/);
   });
 
   test("default variants classes", () => {
@@ -193,12 +228,12 @@ test("adds mod-element prop classes", () => {
     elements
   );
 
-  expect(classes.element.value).toMatch(/secondary secondary2/);
-  expect(classes.element2.value).toMatch(/secondary secondary2/);
+  expect(classes.element.value).toMatch(/variant variant2.*secondary secondary2/);
+  expect(classes.element2.value).toMatch(/variant variant2.*secondary secondary2/);
   expect(classes.element.value).toMatch(/small small2/);
   expect(classes.element2.value).toMatch(/small small2/);
-  expect(classes.element.value).not.toMatch(/primary primary2/);
-  expect(classes.element.value).not.toMatch(/primary primary2/);
+  expect(classes.element.value).not.toMatch(/variant variant2.*primary primary2/);
+  expect(classes.element.value).not.toMatch(/variant variant2.*primary primary2/);
   expect(classes.element2.value).not.toMatch(/medium medium2/);
   expect(classes.element2.value).not.toMatch(/medium medium2/);
 });
@@ -215,4 +250,35 @@ test("adds only preset classes", () => {
 
   expect(classes.element.value).toMatch("plain plain2");
   expect(classes.element2.value).toMatch("plain plain2");
+});
+
+test("should return variant function", () => {
+  props.modElement = "fn:fn";
+
+  let { classes, variants } = useTailwindStyles(
+    props,
+    global.provide.mods.test,
+    elements
+  );
+
+  expect(classes.element.value).toMatch(/function function2/);
+});
+
+test("should return external variants", async () => {
+  let { classes, variants } = useTailwindStyles(
+    props,
+    global.provide.mods.test,
+    elementsExternal,
+  );
+
+  expect(classes.element.value).toMatch("static static2");
+  expect(classes.element2.value).toMatch("static static2");
+  expect(variants.element.classes).toMatch("variant variant2");
+  expect(variants.element.primary).toMatch("primary primary2");
+  expect(variants.element.secondary).toMatch("secondary secondary2");
+  expect(variants.element2.classes).toMatch("variant variant2");
+  expect(variants.element2.primary).toMatch("primary primary2");
+  expect(variants.element2.secondary).toMatch("secondary secondary2");
+  expect(variants.element2.small).toMatch("small small2");
+  expect(variants.element2.medium).toMatch("medium medium2");
 });
