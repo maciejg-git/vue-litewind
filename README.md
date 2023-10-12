@@ -2,13 +2,13 @@
 
 UI components collection for Vue 3 applications. 
 
-Vue-litewind uses **Tailwind CSS** as CSS framework and **Floating UI** for positioning.
+Vue-litewind uses **Tailwind CSS** as CSS framework.
 
 ```bash
 npm install vue-litewind
 ```
 
-For Tailwind CSS instalation check their [official documentation](https://tailwindcss.com/docs/installation/using-postcss)
+For Tailwind CSS instalation and configuration check their [official documentation](https://tailwindcss.com/docs/installation/using-postcss)
 
 ## Documentation
 
@@ -16,21 +16,25 @@ For Tailwind CSS instalation check their [official documentation](https://tailwi
 
 ## Components:
 
+* Accordion
 * Alert
 * Badge
+* Backdrop
 * Breadcrumb
 * Button
 * Card
 * Chevron
 * Close button
-* Collapse (accordion)
+* Collapse
 * Date Picker
 * Divider
 * Dropdown (context menu)
+* Grid
 * Icon
 * List
 * Modal
 * Navbar
+* Notify    
 * Pagination
 * Popover
 * Progress
@@ -44,11 +48,22 @@ For Tailwind CSS instalation check their [official documentation](https://tailwi
 ### Form components:
 
 * Autocomplete
-* Checkbox (checkbox group)
+* Checkbox
+* Checkbox group
 * Form
 * Form Text
 * Input
-* Radio (radio group)
+* Radio
+* Radio group
 * Range
 * Select
 * Textarea
+
+All inputs elements support validation rules. Check [validation documentation](https://vue-litewind.netlify.app/documentation/form-validation).
+
+---
+
+Some elements are also available as seperate packages:
+* [Grid](https://github.com/maciejg-git/vue-tailwind-grid)
+* [Tooltip](https://github.com/maciejg-git/vue-tooltip-directive)
+* [Validation](https://github.com/maciejg-git/vue-use-validation)
