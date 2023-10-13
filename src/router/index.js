@@ -33,7 +33,7 @@ const Textarea = () => import('../documentation/pages/DocumentationTextarea.vue'
 const Radio = () => import('../documentation/pages/DocumentationRadio.vue')
 const Checkbox = () => import('../documentation/pages/DocumentationCheckbox.vue')
 const Navbar = () => import('../documentation/pages/DocumentationNavbar.vue')
-const Range = () => import('../documentation/pages/DocumentationRange.vue')
+// const Range = () => import('../documentation/pages/DocumentationRange.vue')
 const Breadcrumb = () => import('../documentation/pages/DocumentationBreadcrumb.vue')
 const Chevron = () => import('../documentation/pages/DocumentationChevron.vue')
 const FormText = () => import('../documentation/pages/DocumentationFormText.vue')
@@ -181,10 +181,10 @@ const routes = [
         path: "navbar",
         component: Navbar,
       },
-      {
-        path: "range",
-        component: Range,
-      },
+      // {
+      //   path: "range",
+      //   component: Range,
+      // },
       {
         path: "closebutton",
         component: Closebutton,
