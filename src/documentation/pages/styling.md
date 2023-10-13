@@ -2,6 +2,31 @@
 
 In order to modify default styles of the component start with `tailwind.config.js` file. To make components looks consistent default tailwind colors are extended with named colors like primary, secondary. Change colors accordingly to match your application design.
 
+```javascript
+// tailwind.config.js
+
+const colors = require('tailwindcss/colors')
+
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        primary: colors.violet,
+        secondary: colors.gray,
+        info: colors.blue,
+        warn: colors.yellow,
+        success: colors.green,
+        danger: colors.red,
+        dark: colors.neutral,
+        light: colors.white,
+        text: colors.gray,
+      }
+    },
+  },
+  ...
+}
+```
+
 Second part of the theming are the javascript files. 
 
 Elements of the components are not styled by default and only have necessary basic classes. Additional styles for these elements are defined in the external javascript files.
@@ -32,7 +57,9 @@ let component =  {
 
 This is basis for all components and those classes are always applied to element. 
 
-On top of that, each element can have a number of variant classes that are applied on certain conditions. These variants are grouped by the type of classes they add to element. By default, group such as shape, size, variant, shadow etc are frequently used. Here is previous example with few additional variants for content element:
+On top of that, each element can have a number of variant classes that are applied on certain conditions. Variants are mostly useful for components that are frequently used in different configurations like buttons, badges, alerts, cards etc. These variants are grouped by the type of classes they add to element, for example by default, group such as shape, size, variant, shadow etc are frequently used. 
+
+Here is previous example with few additional variants added for content element:
 
 ```javascript
 let component =  {
@@ -71,7 +98,7 @@ let component =  {
 }
 ```
 
-Here are three ways these variants can be applied to the element:
+Here are three ways any of these variants can be applied to the element:
 
 - explicitly by using `mod-[element]` prop of the component:
     ```html
@@ -83,7 +110,7 @@ Here are three ways these variants can be applied to the element:
 Apart from these basic variants there are three reserved variant names that have special meaning and are applied in different way:
 
 - `preset` - if any variant from preset group is applied by `mod-[element]` prop only those classes will be added to element. Static element classes and the rest of the variants will be ignored. Presets can be useful for frequently used set of variants or when element have many custom classes that are not included in variants and in many other cases. Note that however variants are ignored you can still reference them in presets by using `function` as variant value.
-- `state`
+- `state` - those variants are only applied if the component is in cetrain state, for example when input is invalid.
 - `data` - is a `function` that allows styling based on component data. It is only supported on elements that have data associated with them, for example table rows or cells, tree items etc.
 
 and following component props:

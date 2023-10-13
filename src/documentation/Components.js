@@ -138,10 +138,10 @@ let formComponents = [
     label: "Textarea",
     name: "textarea",
   },
-  {
-    label: "Range",
-    name: "range",
-  },
+  // {
+  //   label: "Range",
+  //   name: "range",
+  // },
   {
     label: "Form text",
     name: "formtext",
