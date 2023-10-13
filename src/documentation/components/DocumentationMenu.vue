@@ -19,6 +19,15 @@
         Installation
       </router-link>
     </li>
+    <li>
+      <router-link
+        to="/documentation/styling"
+        active-class="active"
+        class="transition-all"
+      >
+        Styling
+      </router-link>
+    </li>
   </ul>
 
   <!-- components -->

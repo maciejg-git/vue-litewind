@@ -29,6 +29,7 @@
     <template #cell:edit="{ item }">
       <!-- stop propagation to avoid selecting row -->
       <v-button
+        mod-button="preset:plain"
         @click.stop="edit(item)"
         block
       >
