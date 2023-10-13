@@ -1,6 +1,6 @@
 {
   "name": "vue-litewind",
-  "version": "0.0.45",
+  "version": "0.0.47",
   "homepage": "https://vue-litewind.netlify.app/documentation/installation",
   "repository": "github:maciejg-git/vue-litewind",
   "type": "module",
@@ -19,13 +19,9 @@
       "import": "./dist/style.css",
       "require": "./dist/style.css"
     },
-    "./components.css": {
-      "import": "./src/styles/components.css",
-      "require": "./src/styles/components.css"
-    },
-    "./components/*.css": {
-      "import": "./src/styles/components/*.css",
-      "require": "./src/styles/components/*.css"
+    "./tooltip.css": {
+      "import": "./src/styles/tooltip.css",
+      "require": "./src/styles/tooltip.css"
     }
   },
   "scripts": {
