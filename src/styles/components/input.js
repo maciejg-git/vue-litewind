@@ -82,13 +82,13 @@ let input = {
 
   closeButtonWrapper: {
     classes: `
-      opacity-0
       transition-all
       duration-150
     `,
     effect: {
       optional: true,
       showOnHover: `
+        opacity-0
         group-hover:!opacity-100
       `
     }
