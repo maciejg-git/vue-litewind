@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 const Documentation = () => import('../documentation/pages/Documentation.vue')
 
 const Install = () => import('../documentation/pages/DocumentationInstall.vue')
+const Styling = () => import('../documentation/pages/DocumentationStyling.vue')
 const Components = () => import('../documentation/pages/DocumentationComponents.vue')
 const FormValidation = () => import('../documentation/pages/DocumentationFormValidation.vue')
 
@@ -60,6 +61,10 @@ const routes = [
       {
         path: "installation",
         component: Install,
+      },
+      {
+        path: "styling",
+        component: Styling,
       },
       {
         path: "components",
