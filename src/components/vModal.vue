@@ -124,13 +124,13 @@ const props = defineProps({
   primaryButton: {
     type: Object,
     default: {
-      styleButton: "primary",
+      modButton: "variant:primary",
     },
   },
   secondaryButton: {
     type: Object,
     default: {
-      styleButton: "secondary",
+      modButton: "variant:secondary",
     },
   },
   primaryButtonLabel: {

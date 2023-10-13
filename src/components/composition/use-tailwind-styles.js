@@ -68,6 +68,8 @@ export default function useTailwindStyles(props, styles, elements) {
         activeMods.preset = mods.preset[3]
       }
 
+      // get active mods
+
       for (let type in elementStyles) {
         if (type[0] === "_" || type === "preset" || type === "classes") continue
 
@@ -90,6 +92,8 @@ export default function useTailwindStyles(props, styles, elements) {
           break
         }
       }
+
+      // return classes
 
       if (mods.preset) {
         return `
@@ -160,86 +164,6 @@ export default function useTailwindStyles(props, styles, elements) {
         ${(options?.computed?.value || "")}
       `.replace(/\s\s+/g, " ")
     });
-    // classes[el] = computed(() => {
-    //   let base = props.base;
-    //
-    //   if (!styles[base]) return "";
-    //
-    //   let mods = parseElementModProp(props, el);
-    //
-    //   let elementStyles = styles[base][el];
-    //
-    //   let classes = "";
-    //
-    //   if (mods.preset) {
-    //     return `
-    //       ${getClasses(elementStyles.preset[mods.preset[3]])}
-    //       ${options?.fixed || ""}
-    //       ${options?.computed?.value || ""}
-    //     `.replace(/\s\s+/g, " ");
-    //   }
-    //
-    //   if (elementStyles?.classes) {
-    //     classes += getClasses(elementStyles.classes);
-    //   }
-    //
-    //   if (options?.dataStyle) {
-    //     dataStyle[el] = elementStyles.data;
-    //   }
-    //
-    //   for (let type in elementStyles) {
-    //     if (type[0] === "_") continue;
-    //     let sharedClasses = null;
-    //     let stateClasses = null;
-    //     let modClasses = null;
-    //     let defaultClasses = null;
-    //
-    //     if (options?.externalVariants?.includes(type)) {
-    //       for (let variant in elementStyles[type]) {
-    //         if (variant === "optional") continue
-    //         variants[el][variant] = elementStyles[type][variant].replace(
-    //           /\s\s+/g,
-    //           " "
-    //         );
-    //       }
-    //       continue;
-    //     }
-    //
-    //     if (type !== "preset" && type !== "data" && type !== "classes") {
-    //       stateClasses = state.value ? elementStyles[type][state.value] : null;
-    //     }
-    //
-    //     if (
-    //       type !== "state" &&
-    //       type !== "preset" &&
-    //       type !== "data" &&
-    //       type !== "classes"
-    //     ) {
-    //       sharedClasses = elementStyles[type]?.classes || "";
-    //
-    //       modClasses = mods[type] ? elementStyles[type][mods[type][3]] : "";
-    //
-    //       if (!elementStyles[type].optional) {
-    //         for (let item in elementStyles[type]) {
-    //           if (item === "classes" || item === "optional") continue;
-    //           defaultClasses = elementStyles[type][item];
-    //           break;
-    //         }
-    //       }
-    //     }
-    //
-    //     classes += ` ${getClasses(sharedClasses)} ${
-    //       (getClasses(stateClasses) ?? getClasses(modClasses)) ||
-    //       getClasses(defaultClasses)
-    //     }`;
-    //   }
-    //
-    //   return `
-    //     ${classes}
-    //     ${(options?.fixed || "")}
-    //     ${(options?.computed?.value || "")}
-    //   `.replace(/\s\s+/g, " ")
-    // });
   }
 
   let setState = (newState) => {
