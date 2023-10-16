@@ -38,7 +38,7 @@
     >
       <v-icon
         name="b-github"
-        class="v-icon--md text-dark-800 dark:text-dark-400"
+        class="h-6 w-6 text-dark-800 dark:text-dark-400"
       ></v-icon>
     </a>
 
@@ -52,7 +52,7 @@
       <transition name="fade">
         <v-icon
           :name="darkMode ? 'b-sun' : 'b-moon'"
-          class="v-icon--md text-dark-800 dark:text-dark-400"
+          class="h-6 w-6 text-dark-800 dark:text-dark-400"
         ></v-icon>
       </transition>
     </v-button>

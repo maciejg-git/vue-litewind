@@ -1,19 +1,31 @@
 <template>
-  <div class="mb-4 ml-2 mt-4 text-black dark:text-white font-semibold">Contents</div>
-  <ul class="text-text-600 dark:text-text-300/70 text-[0.9em] font-semibold">
+  <div class="mb-4 font-semibold text-black dark:text-white">
+    Contents
+  </div>
+  <ul class="text-[0.9em] font-semibold text-text-600 dark:text-text-300/70">
     <li
       v-for="item in headers"
       :class="{
-        'ml-4': item.level === '6',
         'font-bold text-black dark:text-white': item.el === currentHeader,
       }"
     >
-      <a
-        :href="item.path"
-        class="transition-all"
-      >
-        {{ item.text }}
-      </a>
+      <div class="flex">
+        <div
+          class="min-w-[2px]"
+          :class="
+            item.el === currentHeader
+              ? 'dark:bg-primary-300 bg-primary-300'
+              : 'dark:bg-dark-700 bg-secondary-100'
+          "
+        ></div>
+        <a
+          :href="item.path"
+          class="transition-colors"
+          :class="item.level === '6' ? 'ml-6' : 'ml-2'"
+        >
+          {{ item.text }}
+        </a>
+      </div>
     </li>
   </ul>
 </template>
@@ -38,7 +50,11 @@ let documentation = toRef(props, "contentElement");
 
 let getHeaders = () => {
   if (!documentation.value) return [];
-  return [...documentation.value.querySelectorAll("h4,h5,h6")];
+  return [
+    ...documentation.value.querySelectorAll(
+      "h4:not([data-no-content]),h5:not([data-no-content]),h6:not([data-no-content])"
+    ),
+  ];
 };
 
 watch(

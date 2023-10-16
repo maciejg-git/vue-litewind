@@ -1,6 +1,6 @@
 #### Styling components {#Styling}
 
-##### Colors
+###### Colors
 
 In order to modify default styles of the component start with `tailwind.config.js` file. To make components looks consistent default tailwind colors are extended with named colors like primary, secondary. Change colors accordingly to match your application design.
 
@@ -31,7 +31,7 @@ module.exports = {
 
 ---
 
-##### Styling elements with Tailwind classes
+###### Styling elements
 
 Elements of the components are not styled by default and only have necessary basic classes. Additional styles for these elements are defined in the external javascript files.
 These files contain list of elements that are available for theming and the strings of tailwind classes assigned to them. Below is a simplified example of such file:
@@ -61,7 +61,7 @@ let component =  {
 
 This is basis for all components and those classes are always applied to element. 
 
-##### Variant classes
+###### Variant classes
 
 On top of that, each element can have a number of variant classes that are applied on certain conditions. Additional variants are mostly useful for components that are frequently used in various configurations like buttons, badges, alerts, cards etc. These variants are grouped by the type of classes they add to element, for example by default, group such as shape, size, variant, shadow etc are frequently used. Here is previous example with few additional variants added for content element:
 
@@ -102,7 +102,7 @@ let component =  {
 }
 ```
 
-##### Applying variant classes
+###### Applying variant classes
 
 Here are three ways any of these variants can be applied to the element:
 
@@ -113,7 +113,7 @@ Here are three ways any of these variants can be applied to the element:
 - automatically added by components for variants like selected, active etc,
 - when no variants are specified or added automatically first variant on the list is applied as default.
 
-##### Special variants
+###### Special variants
 
 Apart from these basic variants there are three reserved variant names that have special meaning and are applied in different way:
 
@@ -123,7 +123,7 @@ Apart from these basic variants there are three reserved variant names that have
 
 ---
 
-##### Component props
+###### Component props
 
 There are two kinds of props that are used modify style of the particular instance of the component:
 
