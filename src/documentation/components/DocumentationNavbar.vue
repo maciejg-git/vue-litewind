@@ -10,6 +10,7 @@
       v-slot="{ onTrigger }"
     >
       <v-button
+        mod-button="preset:plain"
         class="mr-2 block lg:hidden"
         v-on="onTrigger"
       >

@@ -47,7 +47,7 @@ let components = [
 .column-content {
   @apply rounded
     border
-    border-dark-500
+    border-dark-400
     bg-secondary-200
     p-2
     dark:border-dark-400

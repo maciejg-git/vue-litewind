@@ -2,7 +2,7 @@ ___
 
 #### Notes {#BackdropNotes}
 
-`v-backdrop` is used internally to display dimmed background for components like `v-modal` or `v-sidepanel`. Alternatively it can be used on top of other elements to add overlay effect. For more examples see [modal](/documentation/modal) documentation.
+`v-backdrop` is used internally to display dimmed background in the components like `v-modal` or `v-sidepanel`. Alternatively it can be used on top of the other elements to add an overlay effect. For more examples see [modal](/documentation/modal) documentation.
 
 ---
 

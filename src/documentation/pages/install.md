@@ -76,7 +76,7 @@ module.exports = {
 import "vue-litewind/vue-litewind.css" 
 ```
 
-In order to make components customizable the rest of the styles are set up in `js` files as tailwind classes. You can import them directly or preferably copy from distribution directory (`node_modules`) to your application for customization. Imported styles need to be provided to the components with the use of the `provide` function. The best place to do it is the root component of the application (for example `App.vue`)
+The rest of the styles are set up in `js` files as tailwind classes. You can import them directly or preferably copy from distribution directory (`node_modules`) to your application for customization. Imported styles need to be provided to the components with the use of the `provide` function. The best place to do it is the root component of the application (for example `App.vue`)
 
 ```html
 <!-- App.vue -->

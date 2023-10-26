@@ -1,21 +1,19 @@
 <template>
-  <div class="mb-4 font-semibold text-black dark:text-white">
-    Contents
-  </div>
+  <div class="mb-4 font-semibold text-black dark:text-white">Contents</div>
   <ul class="text-[0.9em] font-semibold text-text-600 dark:text-text-300/70">
     <li
       v-for="item in headers"
-      :class="{
-        'font-bold text-black dark:text-white': item.el === currentHeader,
-      }"
+      :class="
+        item.el === currentHeader ? 'font-bold text-black dark:text-white' : ''
+      "
     >
       <div class="flex">
         <div
           class="min-w-[2px]"
           :class="
             item.el === currentHeader
-              ? 'dark:bg-primary-300 bg-primary-300'
-              : 'dark:bg-dark-700 bg-secondary-100'
+              ? 'bg-primary-300 dark:bg-primary-300'
+              : 'bg-secondary-100 dark:bg-dark-800'
           "
         ></div>
         <a

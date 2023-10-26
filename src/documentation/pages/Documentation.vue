@@ -19,7 +19,7 @@
   <!-- container -->
 
   <v-fluid-container
-    class="relative mt-16 flex text-text-800 dark:bg-[#191919] dark:text-[#bcbfc5]"
+    class="relative mt-16 flex text-text-800 dark:bg-[#191919] dark:text-[#c9cbd0]"
   >
     <v-row class="justify-center">
       <v-col class="hidden basis-auto lg:block xl:px-6">
@@ -30,7 +30,7 @@
         </div>
       </v-col>
 
-      <v-col class="mt-12 max-w-screen-lg grow px-4 py-3 lg:px-6 xl:px-20">
+      <v-col class="mt-12 max-w-screen-lg grow px-4 py-3 lg:px-6 xl:px-28">
         <div ref="documentation">
           <router-view></router-view>
         </div>

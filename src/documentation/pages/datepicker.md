@@ -16,4 +16,6 @@ v-model is used to return date after selection. v-model can be `Array` or `Strin
 
 #### Example - datepicker slots {#ExampleDatepickerSlot}
 
+`Day` slot can be used to modify styles of selected days or to add extra elements to them. In the following example `v-badge` components are used to mark certain days.
+
 <example name="ExampleDatepickerSlot"></example>

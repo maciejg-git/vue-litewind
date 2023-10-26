@@ -12,13 +12,13 @@ Notify container does not have any classes by default apart from `fixed` positio
 
 - `top-*` , `bottom-*` , `left-*` and `right-*` to place it in desired position,
 - `w-*` class to set width of notify windows,
-- `space-y-*` to add some gaps between notifications,
+- `space-y-*` to optionally add some gaps between notifications,
 
-For example `bottom-4 right-10 w-[350px] space-y-4` will make notifications appear in the bottom right corner of the screen. Notifications will be 350px wide and seperated with 1rem of space.
+For example `bottom-4 right-10 w-[350px] space-y-4` classes will make notifications appear in the bottom right corner of the screen. Notifications will be 350px wide and seperated with 1rem of space. This is the same setup as in example below.
 
 ###### Adding new notifications
 
-To add new notifications import and call `useNotify` function anywhere in your application. You can then use returned object and its `push` function to add new notifications. `Push` function can take single `string` argument that will add very basic notifiation with default settings. For more control and customization you can use object as argument that will allow additional options.
+To add new notifications import and call `useNotify` function anywhere in your application. You can then use returned object and its `push` function to add new notifications. `Push` function can take single `string` argument that will add very basic notifiation with default settings. For more control and customization you can use `object` as argument that will allow additional options.
 
 ```javascript
 import { useNotify } from "vue";
@@ -53,7 +53,7 @@ By default notifications will auto close after short delay (`auto-hide-delay` pr
 
 ###### Teleport
 
-Since `v-notify-container` is positioned as `fixed` element it is recommended to teleport it to the `body` element.
+Since `v-notify-container` is positioned as a `fixed` element it is recommended to teleport it to the `body` element.
 
 ---
 

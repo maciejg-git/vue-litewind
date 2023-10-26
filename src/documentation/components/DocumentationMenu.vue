@@ -6,7 +6,7 @@
       to="/documentation/components"
       class="transition-all"
     >
-      Get started
+      Introduction
     </router-link>
   </h6>
   <ul class="list-unstyled">
@@ -126,11 +126,11 @@ h5 {
   @apply mt-4 text-xl font-semibold;
 }
 h6 {
-  @apply mb-2 mt-6 text-lg font-semibold;
+  @apply mb-4 mt-6 text-lg font-semibold;
 }
 
 a.active {
-  @apply inline-block py-1 pl-4 pr-4 text-black dark:text-white;
+  @apply inline-block py-1 pr-4 text-primary-500 dark:text-white;
 }
 a {
   @apply inline-block py-1 pl-2 pr-4;

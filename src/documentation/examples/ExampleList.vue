@@ -13,11 +13,11 @@
           <div class="font-semibold">
             {{ item.full_name }}
           </div>
-          <div class="text-text-300">
+          <div class="text-text-400">
             {{ item.title }}
           </div>
         </div>
-        <div class="text-sm text-gray-300 ml-auto">
+        <div class="text-sm text-gray-400 ml-auto">
           {{ item.department }}
         </div>
       </div>

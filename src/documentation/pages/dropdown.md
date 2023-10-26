@@ -16,7 +16,7 @@ Open dropdown is by default appended to the body element.
 
 ###### Context menus
 
-You can set up context menu with <code class="code-text">v-dropdown-context</code>. See example below. See [example](#ExampleDropdownContext).
+You can set up context menus with the `v-dropdown-context` component that does not require activating element. See the [example](#ExampleDropdownContext) below.
 
 ---
 

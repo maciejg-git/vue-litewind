@@ -21,7 +21,7 @@
     :auto-dismiss-delay="example.autoDismissDelay"
     :icon="example.variant"
     :variant="example.variant"
-    mod-alert="text:bold special:marked shadow:shadowed special:outline info?variant:info danger?variant:danger warn?variant:warn success?variant:success invalid?variant:danger valid?variant:success"
+    mod-alert="text:bold shadow:medium special:outline info?variant:info danger?variant:danger warn?variant:warn success?variant:success invalid?variant:danger valid?variant:success"
   >
     Alert
   </v-alert>
