@@ -43,7 +43,7 @@ let alert = {
     shadow: {
       optional: true,
       medium: `
-        shadow-lg
+        shadow-md
         dark:shadow-black/20
       `
     },

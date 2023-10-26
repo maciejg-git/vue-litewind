@@ -9,8 +9,6 @@ let checkbox = {
       bg-white
       dark:bg-dark-800
       dark:checked:bg-current
-      dark:checked:border-current
-      border-secondary-300
       focus:ring-offset-0
       transform
       scale-110

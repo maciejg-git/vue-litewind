@@ -4,6 +4,7 @@ let list = {
       divide-y
       overflow-hidden
       divide-secondary-200
+      bg-white
       dark:bg-dark-800
       dark:border-dark-700
       dark:divide-dark-700

@@ -5,9 +5,6 @@ let textarea = {
       border
       focus:outline-none
       outline-none
-      border-secondary-300
-      focus-within:border-secondary-400
-      focus-within:ring-primary-200
     `,
     variant: {
       classes: `
@@ -16,8 +13,11 @@ let textarea = {
       `,
       default: `
         dark:text-text-300
+        border-secondary-300
+        focus-within:border-secondary-400
         dark:border-dark-600
-        dark:focus-within:ring-primary-300;
+        focus-within:ring-primary-200
+        dark:focus-within:ring-primary-300
       `,
       valid: `
         text-success-600
