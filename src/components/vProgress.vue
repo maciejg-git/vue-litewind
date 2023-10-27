@@ -113,7 +113,7 @@ let label = computed(
   animation-name: slide;
   animation-iteration-count: infinite;
   animation-timing-function: var(--progress-bar-timing);
-  animation-duration: var(--progress-bar-speed);
+  animation-duration: var(--progress-bar-indeterminate-speed);
   animation-direction: var(--progress-bar-direction);
 }
 

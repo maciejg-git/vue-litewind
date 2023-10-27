@@ -76,7 +76,8 @@ let progress = {
 
 let cssVariables = {
   "--progress-bar-timing": "linear",
-  "--progress-bar-speed": "1.5s",
+  "--progress-bar-speed": "0.2s",
+  "--progress-bar-indeterminate-speed": "1.5s",
   "--progress-bar-width": "50%",
   "--progress-bar-direction": "normal",
 }
