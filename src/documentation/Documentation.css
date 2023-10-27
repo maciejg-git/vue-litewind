@@ -34,24 +34,8 @@ pre code {
   @apply font-medium text-blue-600 dark:text-blue-500 hover:underline;
 }
 
-.hljs {
-  @apply font-mono
-}
-
-.markdown-body .marked-container {
-  @apply border-l-2 border-dark-500 pl-8 dark:border-dark-600
-}
-
-.markdown-body > hr {
-  @apply my-10 dark:border-dark-700
-}
-
-.markdown-body p > a {
-  @apply link
-}
-
-.markdown-body > ul, .markdown-body > .marked-container > ul {
-  @apply list-disc list-outside ml-5 my-6
+label {
+  @apply mr-2;
 }
 
 .code-text {
@@ -61,14 +45,28 @@ pre code {
   @apply text-sm bg-indigo-300 text-black dark:text-text-100 dark:bg-indigo-500 rounded px-1 py-0.5 mr-1 text-sm;
 }
 
+/* markdown styles */
+
+.markdown-body .marked-container {
+  @apply border-l-2 border-dark-500 pl-8 dark:border-dark-600
+}
+
+.markdown-body > hr {
+  @apply my-10 dark:border-dark-700
+}
+
+.markdown-body p > a, .markdown-body a:not(.example *, [role=tab]) {
+  @apply link
+}
+
+.markdown-body > ul, .markdown-body > .marked-container > ul {
+  @apply list-disc list-outside ml-5 my-6
+}
+
 .markdown-body > :not(.table-reference) code:not(.hljs) {
   @apply code-text
 }
 
 .markdown-body > :not(.table-reference) code:not(.hljs).alt {
   @apply code-word
-}
-
-label {
-  @apply mr-2;
 }
