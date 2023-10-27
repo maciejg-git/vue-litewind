@@ -77,7 +77,7 @@
         "Object"
       ],
       "default": {
-        "styleButton": "primary"
+        "modButton": "variant:primary"
       }
     },
     "secondaryButton": {
@@ -85,7 +85,7 @@
         "Object"
       ],
       "default": {
-        "styleButton": "secondary"
+        "modButton": "variant:secondary"
       }
     },
     "primaryButtonLabel": {

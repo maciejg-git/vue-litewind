@@ -14,11 +14,11 @@ Notify container does not have any classes by default apart from `fixed` positio
 - `w-*` class to set width of notify windows,
 - `space-y-*` to optionally add some gaps between notifications,
 
-For example `bottom-4 right-10 w-[350px] space-y-4` classes will make notifications appear in the bottom right corner of the screen. Notifications will be 350px wide and seperated with 1rem of space. This is the same setup as in example below.
+For example `bottom-4 right-10 w-[350px] space-y-4` classes will make notifications appear in the bottom right corner of the screen, notifications will be 350px wide and seperated with 1rem of space. This is the same setup as in example below.
 
 ###### Adding new notifications
 
-To add new notifications import and call `useNotify` function anywhere in your application. You can then use returned object and its `push` function to add new notifications. `Push` function can take single `string` argument that will add very basic notifiation with default settings. For more control and customization you can use `object` as argument that will allow additional options.
+To add new notifications import and call `useNotify` function anywhere in your application. You can then use the returned object and its `push` function to add new notifications. `Push` function can take single `string` argument that will add very basic notifiation with the default settings. For more control and customization you can supply `object` as argument that will allow few additional options.
 
 ```javascript
 import { useNotify } from "vue";
@@ -49,7 +49,9 @@ notify.push({
 
 ###### Hiding notifications
 
-By default notifications will auto close after short delay (`auto-hide-delay` prop of the `v-notify-container`). That behavior can be disabled globally by enabling `static` prop of the `v-notify-container`. If only selected notifications should be manually dismissed use `static` property of the argument when calling `push` function. By default hovering over `v-notify-container` pauses all timers and restarts them after pointer leaves element.
+By default notifications will auto close after short delay (defined by `auto-hide-delay` prop of the `v-notify-container`). That behavior can be disabled globally by enabling `static` prop of the `v-notify-container`. If only selected notifications should be manually dismissed use `static` property of the argument when calling `push` function. 
+
+By default hovering over `v-notify-container` pauses all timers and restarts them after pointer leaves element.
 
 ###### Teleport
 

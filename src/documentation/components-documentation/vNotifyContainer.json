@@ -6,7 +6,7 @@
       "type": [
         "Number"
       ],
-      "default": 4000,
+      "default": 10000,
       "prop": "auto-dismiss-delay",
       "description": "Default delay to close notifications."
     },

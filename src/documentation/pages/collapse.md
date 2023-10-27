@@ -18,6 +18,6 @@ You can wrap group of `v-collapse` components with `v-accordion` to create accor
 
 #### Example - accordion {#ExampleCollapseAccordion}
 
-Turn collapse components to accordion by wrapping them with `v-accordion` component. In accordion mode opening one collapse will close every other opened collapse.
+Turn collapse components to accordion by wrapping them with `v-accordion` component. In accordion mode only one collapse element can be open.
 
 <example name="ExampleCollapseAccordion"></example>

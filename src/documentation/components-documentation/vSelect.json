@@ -213,7 +213,7 @@
       "default": "\"bottom-start\"",
       "globalDefault": true,
       "prop": "placement",
-      "description": "Initial placement of dropdown content. See valid values in Popperjs documentation"
+      "description": "Initial placement of dropdown content. See valid values in FloatingUI documentation"
     },
     {
       "type": [

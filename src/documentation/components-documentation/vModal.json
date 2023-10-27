@@ -17,7 +17,7 @@
       "default": {},
       "globalDefault": true,
       "prop": "backdrop",
-      "description": "Attributes of backdrop component",
+      "description": "Attributes of v-backdrop component",
       "tags": "attributes"
     },
     {
@@ -148,7 +148,7 @@
         "Object"
       ],
       "default": {
-        "styleButton": "primary"
+        "modButton": "variant:primary"
       },
       "prop": "primary-button",
       "description": "Attributes of primary v-button component. See documentation for valid values",
@@ -176,7 +176,7 @@
         "Object"
       ],
       "default": {
-        "styleButton": "secondary"
+        "modButton": "variant:secondary"
       },
       "prop": "secondary-button",
       "description": "Attributes of secondary v-button component. See documentation for valid values",

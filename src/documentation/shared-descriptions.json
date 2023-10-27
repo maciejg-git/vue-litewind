@@ -2,7 +2,7 @@
   "props": {
     "popper": {
       "name": "Name of the component",
-      "placement": "Initial placement of dropdown content. See valid values in Popperjs documentation",
+      "placement": "Initial placement of dropdown content. See valid values in FloatingUI documentation",
       "offsetX": "Offset of dropdown relative to reference element. See how to use this offset here",
       "offsetY": "Offset of dropdown relative to reference element. See how to use this offset here",
       "flip": "Allows fliping dropdown to opposite placement if outside of current view",

@@ -22,7 +22,7 @@ ___
 
 #### Example - modal slot {#ExampleModalSlots}
 
-You can use `modal` slot to replace all default content for complete customization.
+Following example uses `modal` slot to replace all default content for complete customization.
 
 <example name="ExampleModalSlots"></example>
 

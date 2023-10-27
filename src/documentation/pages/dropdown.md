@@ -4,11 +4,16 @@ ___
 
 ###### Dropdown activation
 
-To control dropdown visibility you can use `reference` slot (recommended method) or `v-trigger` component. To control it programatically you can add optional `v-model` or call exposed `show()` and `hide()` functions.
+To control dropdown visibility and placement you can use:
+
+- element in the `reference` slot of the `v-dropdown` (recommended method)
+- element in the `v-trigger` component. See the [usage and example](#ExampleDropdownTrigger).
+
+To control it programatically you can add optional `v-model` or call exposed `show()` and `hide()` functions.
 
 ###### Menu content 
 
-Dropdown menu allows for any type of content inside. To make it flexible it does not have own default container, you can use `v-card` with variants or utility classes to organize content.
+`v-dropdown` does not have own default container for content. You can use `v-card` or any other element for that purpose. This makes dropdown menu flexible and allows for any type of content inside. 
 
 ###### Teleport
 

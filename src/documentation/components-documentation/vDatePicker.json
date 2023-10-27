@@ -245,7 +245,7 @@
   "slots": [
     {
       "slot": "day",
-      "description": "Slot for day"
+      "description": "Slot for a day"
     }
   ],
   "functions": [],

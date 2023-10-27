@@ -1,14 +1,16 @@
-#### Icons source {#IconSource}
-
-`v-icon` uses icon components (registered names or component objects).
+___
 
 #### Example {#ExampleIcon}
 
 <example name="ExampleIcon" auto-show-code></example>
 
+---
+
 #### Icon types {#IconTypes}
 
-Provide `icon-types` via provide function in application entry file or anywhere in top level component. `icon-type` is the `object` that maps icon names (registerd icon component) or icon component objects to any name. It can be useful for example to define easy to remember aliases for frequently used icons, changing icons application wide, define icons for various states of components etc.
+`icon-types` is the `object` that maps icon names (registerd icon component) or icon component objects to any name. Provide `icon-types` via provide function in application entry file or anywhere in top level component. 
+
+With the `icon-types` provided you can now use `icon-type` prop that can be more convenient than `name` prop for example to define easy to remember aliases for frequently used icons, changing icons application wide, define icons for various states of components etc.
 
 ```javascript
 // main.js

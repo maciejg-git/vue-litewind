@@ -2,6 +2,6 @@ ___
 
 #### Example {#ExamplePagination}
 
-For more examples see [table component](/documentation/table).
+For more examples see [table documentation](/documentation/table).
 
 <example name="ExamplePagination"></example>

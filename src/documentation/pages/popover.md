@@ -4,11 +4,16 @@ ___
 
 ###### Popover activation
 
-To control popover visibility you can use `reference` slot (recommended method) or `v-trigger` component. To control it programatically you can add optional `v-model` or call exposed `show()` and `hide()` functions.
+To control popover visibility and placement you can use:
+
+- element in the `reference` slot of the `v-popover` (recommended method)
+- element in the `v-trigger` component. See the [usage and example](#ExamplePopoverTrigger).
+
+To control it programatically you can add optional `v-model` or call exposed `show()` and `hide()` functions.
 
 ###### Popover content
 
-Popover allows for any type of content inside. To make it flexible it does not have own default container, you can use `v-card` with variants or utility classes to organize content.
+`v-popover` does not have own default container for content. You can use `v-card` or any other element for that purpose. This makes dropdown menu flexible and allows for any type of content inside. 
 
 ###### Teleport
 
