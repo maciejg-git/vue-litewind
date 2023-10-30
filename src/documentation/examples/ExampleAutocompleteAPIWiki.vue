@@ -65,19 +65,15 @@ let current = computed(() => {
   return example.items.find((i) => i.pageid === example.model);
 });
 
-let query = (q) => {
+let query = async (q) => {
   if (q === "") return example.items;
 
   example.isLoading = true;
 
-  fetch(`${urlWiki}${q}`)
-    .then((response) => response.json())
-    .then((data) => {
-      example.items = data.query.prefixsearch;
-    })
-    .finally(() => {
-      example.isLoading = false;
-    });
+  let res = await fetch(`${urlWiki}${q}`)
+  let data = await res.json()
+  example.items = data.query.prefixsearch
+  example.isLoading = false;
 };
 
 let debouncedQuery = debounce(query, 300);

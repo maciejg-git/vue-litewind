@@ -11,10 +11,6 @@ To control popover visibility and placement you can use:
 
 To control it programatically you can add optional `v-model` or call exposed `show()` and `hide()` functions.
 
-###### Popover content
-
-`v-popover` does not have own default container for content. You can use `v-card` or any other element for that purpose. This makes dropdown menu flexible and allows for any type of content inside. 
-
 ###### Teleport
 
 Open popover is by default appended to the body element.

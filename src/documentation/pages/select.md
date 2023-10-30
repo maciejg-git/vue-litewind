@@ -2,9 +2,9 @@ ___
 
 #### Notes {#SelectNotes}
 
-Autocomplete
+###### Autocomplete
 
-Select allows autocomplete functionality to search for options. Enable autocomplete mode with `autocomplete` prop or use `v-autocomplete` component. In autocomplete mode `no-filter`, `no-pagination` and `is-loading` props can be used when requesting data from API.
+Enable autocomplete mode with the `autocomplete` prop. You can also use `v-autocomplete` component which is just `v-select` with `autocomplete` automatically turned on. In autocomplete mode `no-filter`, `no-pagination` and `is-loading` props can be used when requesting data from API.
 
 ---
 
