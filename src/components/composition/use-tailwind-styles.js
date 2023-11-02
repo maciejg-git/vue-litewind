@@ -27,7 +27,8 @@ let parseElementModProp = (props, el) => {
       return acc;
     }
 
-    acc[item[2]] = item;
+    if (!acc[item[2]]) acc[item[2]] = []
+    acc[item[2]].push(item);
 
     return acc;
   }, {});
@@ -141,7 +142,11 @@ export default function useTailwindStyles(props, styles, elements) {
         ) {
           sharedClasses = elementStyles[type]?.classes || "";
 
-          modClasses = mods[type] ? elementStyles[type][mods[type][3]] : "";
+          if (mods[type]) {
+            mods[type].forEach((i) => {
+              modClasses += elementStyles[type][i[3]]
+            })
+          }
 
           if (!elementStyles[type].optional) {
             for (let item in elementStyles[type]) {
