@@ -4,7 +4,7 @@
     <li
       v-for="item in headers"
       :class="
-        item.el === currentHeader ? 'font-bold text-black dark:text-white' : ''
+        item.el === currentHeader ? 'text-black dark:text-white' : ''
       "
     >
       <div class="flex">

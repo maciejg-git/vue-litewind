@@ -2,15 +2,15 @@
   <v-card
     width="360px"
     mod-card="border:borderless shape:roundedExtra"
-    class="overflow-hidden mx-auto"
+    class="mx-auto overflow-hidden"
   >
     <img
       :src="randomPhoto()"
       alt=""
     />
-    <header class="font-semibold text-lg mt-5 px-10">Example card</header>
-    <header class="text-gray-500 text-sm mt-2 px-10">Subtitle</header>
-    <div class="px-10 py-7">
+    <header class="mt-5 px-7 text-lg font-semibold">Example card</header>
+    <header class="mt-2 px-7 text-sm text-gray-500">Subtitle</header>
+    <div class="px-7 py-7">
       Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       Lorem Ipsum has been the industry's standard dummy text ever since the
       1500s, when an unknown printer took a galley of type and scrambled it to

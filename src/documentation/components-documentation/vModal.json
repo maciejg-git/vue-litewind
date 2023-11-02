@@ -8,7 +8,7 @@
       ],
       "default": "undefined",
       "prop": "v-model",
-      "description": "Set v-model to true to show modal or false to hide it. Model is optional if dropdown is activated from v-trigger component"
+      "description": "Set the v-model to true to show modal or false to hide it. Model is optional if dropdown is activated from the v-trigger component"
     },
     {
       "type": [
@@ -17,7 +17,7 @@
       "default": {},
       "globalDefault": true,
       "prop": "backdrop",
-      "description": "Attributes of v-backdrop component",
+      "description": "Attributes of the v-backdrop component",
       "tags": "attributes"
     },
     {
@@ -36,7 +36,7 @@
       "default": {},
       "globalDefault": true,
       "prop": "close-button",
-      "description": "Attributes of v-close-button component. See documentation for valid values",
+      "description": "Attributes of the v-close-button component. See documentation for valid values",
       "tags": "attributes"
     },
     {
@@ -46,7 +46,7 @@
       "default": "\"end\"",
       "globalDefault": true,
       "prop": "justify-buttons",
-      "description": "Use this prop to place buttons in footer. Valid values are: 'start', 'end', 'center', 'between', 'around', 'evenly'"
+      "description": "Use this prop to place buttons in the footer. Valid values are: 'start', 'end', 'center', 'between', 'around', 'evenly'"
     },
     {
       "type": [
@@ -64,7 +64,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-footer",
-      "description": "Style of modal footer element"
+      "description": "Style of the modal footer element"
     },
     {
       "type": [
@@ -73,7 +73,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-header",
-      "description": "Style of modal header element"
+      "description": "Style of the modal header element"
     },
     {
       "type": [
@@ -98,7 +98,7 @@
       ],
       "default": false,
       "prop": "no-close-button",
-      "description": "Disables 'X' button in modal header"
+      "description": "Disables the 'X' button in modal header"
     },
     {
       "type": [
@@ -107,7 +107,7 @@
       "default": false,
       "globalDefault": true,
       "prop": "no-footer",
-      "description": "Do not render footer if `true`"
+      "description": "Do not render the footer if `true`"
     },
     {
       "type": [
@@ -141,7 +141,7 @@
       "default": "\"top\"",
       "globalDefault": true,
       "prop": "position",
-      "description": "Modal position. Valid values are: 'top', 'center' or 'bottom'"
+      "description": "Position of the modal. Valid values are: 'top', 'center' or 'bottom'"
     },
     {
       "type": [
@@ -151,7 +151,7 @@
         "modButton": "variant:primary"
       },
       "prop": "primary-button",
-      "description": "Attributes of primary v-button component. See documentation for valid values",
+      "description": "Attributes of the primary v-button component. See documentation for the valid values",
       "tags": "attributes"
     },
     {
@@ -169,7 +169,7 @@
       "default": "\"Accept\"",
       "globalDefault": true,
       "prop": "primary-button-label",
-      "description": "Label of primary button"
+      "description": "Label of the primary button"
     },
     {
       "type": [
@@ -179,7 +179,7 @@
         "modButton": "variant:secondary"
       },
       "prop": "secondary-button",
-      "description": "Attributes of secondary v-button component. See documentation for valid values",
+      "description": "Attributes of the secondary v-button component. See documentation for the valid values",
       "tags": "attributes"
     },
     {
@@ -197,7 +197,7 @@
       "default": "\"Close\"",
       "globalDefault": true,
       "prop": "secondary-button-label",
-      "description": "Label of secondary button"
+      "description": "Label of the secondary button"
     },
     {
       "type": [
@@ -206,7 +206,7 @@
       "default": "\"md\"",
       "globalDefault": true,
       "prop": "size",
-      "description": "Modal size. Valid values are: 'sm', 'md', 'lg', 'xl' or 'fit' "
+      "description": "Size of the modal on medium and larger screens. Valid values are: 'sm', 'md', 'lg', 'xl' or 'fit'"
     },
     {
       "type": [
@@ -222,7 +222,7 @@
       ],
       "default": "undefined",
       "prop": "title",
-      "description": "Title displayed in modal header"
+      "description": "Title displayed in the modal header"
     },
     {
       "type": [
@@ -263,7 +263,7 @@
   "slots": [
     {
       "slot": "modal",
-      "description": "Swaps the entire default content of v-modal. Slot props: `close()`"
+      "description": "Swaps the entire default content of the v-modal. Slot props: `close()`"
     },
     {
       "slot": "header",
