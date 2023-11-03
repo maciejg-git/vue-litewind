@@ -44,7 +44,7 @@
       "default": "\"div\"",
       "globalDefault": true,
       "prop": "tag",
-      "description": "Defines tag to use in list item child component (for example 'div', 'a' or 'button')"
+      "description": "Defines tag to use in the list item child component (for example 'div', 'a' or 'button')"
     },
     {
       "type": [
@@ -60,14 +60,14 @@
       ],
       "default": "undefined",
       "prop": "width",
-      "description": "Component width"
+      "description": "Components width"
     }
   ],
   "events": [],
   "slots": [
     {
       "slot": "default",
-      "description": "Slot for v-list-item components"
+      "description": "Slot for the v-list-item components"
     }
   ],
   "functions": [],

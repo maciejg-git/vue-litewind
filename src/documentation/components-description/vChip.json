@@ -3,14 +3,14 @@
   "props": {
     "base": "",
     "variant": "",
-    "closeButton": "Attributes of input v-close-button component",
+    "closeButton": "Attributes of the chips v-close-button component",
     "modChip": "Style of the main chip element"
   },
   "emits": {
-    "click:close-button": "Emmited after clicking chip close button"
+    "click:close-button": "Emmited after clicking chips close button"
   },
   "slots": {
-    "default": "Slot for chip content"
+    "default": "Slot for the chips content"
   },
   "functions": {},
   "components": {}

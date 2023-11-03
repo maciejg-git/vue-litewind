@@ -3,10 +3,10 @@
   "props": {
     "base": "",
     "variant": "",
-    "fill": "Tabs fill full width of tab bar",
+    "fill": "Tabs fill full width of the tab bar",
     "center": "Centers tabs",
     "right": "Puts tabs on the right",
-    "transition": "Sets animation effect when changing tabs. Valid values are 'fade', 'fade-top-slide', 'fade-side-slide' or `empty string` to disabled animations. Animation speed can be set in `--tabs-transition-duration` css variable.",
+    "transition": "Sets the animation effect when changing tabs. Valid values are: 'fade', 'fade-top-slide', 'fade-side-slide' or `empty string` to disabled animations. Animation speed can be set in the `--tabs-transition-duration` css variable.",
     "modTabBar": "Style of the tab bar element",
     "modTab": "Style of the single tab"
   },
@@ -14,8 +14,8 @@
     "input:changed-tab": "Emitted when another tab is activated"
   },
   "slots": {
-    "tab-bar-append": "Slot for additional content in the tab bar",
-    "default": "Slot for v-tab components"
+    "tab-bar-append": "Slot for the additional content in the tab bar",
+    "default": "Slot for the v-tab components"
   },
   "functions": {},
   "components": {}

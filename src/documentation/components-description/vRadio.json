@@ -18,7 +18,7 @@
     "validation:messages": ""
   },
   "slots": {
-    "label": "Slot for radio label"
+    "label": "Slot for the radios label"
   },
   "functions": {},
   "components": {}

@@ -12,7 +12,7 @@
       ],
       "default": "empty string",
       "prop": "v-model",
-      "description": "Input v-model"
+      "description": "Inputs v-model"
     },
     {
       "type": [
@@ -30,7 +30,7 @@
       "default": false,
       "globalDefault": true,
       "prop": "clearable",
-      "description": "Adds 'X' button that resets model to default value"
+      "description": "Adds the 'X' button that resets model to the default value"
     },
     {
       "type": [
@@ -39,7 +39,7 @@
       "default": {},
       "globalDefault": true,
       "prop": "close-button",
-      "description": "Attributes of input v-close-button component (clear button)",
+      "description": "Attributes of the inputs v-close-button component (clear button)",
       "tags": "attributes"
     },
     {
@@ -48,7 +48,7 @@
       ],
       "default": false,
       "prop": "custom-clearable",
-      "description": "Adds 'X' button that only emits @click:clear-button event. It does not modify model value"
+      "description": "Adds the 'X' button that only emits the @click:clear-button event. It does not modify model value"
     },
     {
       "type": [
@@ -59,7 +59,7 @@
       },
       "globalDefault": true,
       "prop": "form-text",
-      "description": "Attributes of v-form-text component (validation messages)",
+      "description": "Attributes of the v-form-text component (validation messages)",
       "tags": "attributes"
     },
     {
@@ -69,7 +69,7 @@
       ],
       "default": "empty string",
       "prop": "icon",
-      "description": "Adds icon to input element. Valid value is the same as in v-icon components"
+      "description": "Adds an icon to the input element. Valid value is the same as in v-icon components"
     },
     {
       "type": [
@@ -86,7 +86,7 @@
       ],
       "default": false,
       "prop": "is-loading",
-      "description": "If true displays spinner in the input. Spinner should be first enabled in `use-loading` prop"
+      "description": "If true displays a spinner in the input. Spinner should be first enabled in the `use-loading` prop"
     },
     {
       "type": [
@@ -171,7 +171,7 @@
       "default": false,
       "globalDefault": true,
       "prop": "single-line-message",
-      "description": "Limits the number of displayed errors to one at time. Order of messages is the same as order of `rules` in rules prop"
+      "description": "Limits the number of displayed errors to one at a time. Order of the messages is the same as order of the `rules` in rules prop"
     },
     {
       "type": [
@@ -180,7 +180,7 @@
       "default": {},
       "globalDefault": true,
       "prop": "spinner",
-      "description": "Attributes of input v-spinner component (loader)",
+      "description": "Attributes of the inputs v-spinner component (loader)",
       "tags": "attributes"
     },
     {
@@ -189,7 +189,7 @@
       ],
       "default": false,
       "prop": "use-loader",
-      "description": "Enable or disable spinner in the input"
+      "description": "Enable or disable the spinner in the input"
     },
     {
       "type": [
@@ -252,7 +252,7 @@
     },
     {
       "event": "click:clear-button",
-      "description": "Emitted after clicking clear button (if `custom-clearable` prop is set)"
+      "description": "Emitted after clicking clear button (if the `custom-clearable` prop is set)"
     },
     {
       "event": "click:icon",
@@ -266,19 +266,19 @@
   "slots": [
     {
       "slot": "label",
-      "description": "Slot for label. Slot props: `label` (from label prop)"
+      "description": "Slot for the label. Slot props: `label` (from label prop)"
     },
     {
       "slot": "icon",
-      "description": "Slot for icon"
+      "description": "Slot for the icon"
     },
     {
       "slot": "prepend",
-      "description": "Slot for content prepending input"
+      "description": "Slot for the content prepending input"
     },
     {
       "slot": "append",
-      "description": "Slot for content appending input"
+      "description": "Slot for the content appending input"
     }
   ],
   "functions": [],

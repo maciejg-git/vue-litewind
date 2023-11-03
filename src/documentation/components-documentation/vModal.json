@@ -8,7 +8,7 @@
       ],
       "default": "undefined",
       "prop": "v-model",
-      "description": "Set the v-model to true to show modal or false to hide it. Model is optional if dropdown is activated from the v-trigger component"
+      "description": "Set the v-model to `true` to show modal or `false` to hide it."
     },
     {
       "type": [
@@ -222,7 +222,7 @@
       ],
       "default": "undefined",
       "prop": "title",
-      "description": "Title displayed in the modal header"
+      "description": "Title displayed in the modals header"
     },
     {
       "type": [

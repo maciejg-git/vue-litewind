@@ -3,14 +3,14 @@
   "props": {
     "base": "",
     "variant": "",
-    "position": "Position of badge. Valid values are 'top-right', 'top-left', 'bottom-right', 'bottom-left'. If position is set to any of those values badge is positioned as absolute in the corner of parent element (parent element must be positioned as relative). If you need finer control over position see the example of positioned badge below.",
-    "updateKey": "Update this prop value to play badge animation.",
-    "updateAnimation": "Animation to play when updating content of badge. Valid values are: 'scale-up', 'bounce', 'to-danger' and 'to-success'",
+    "position": "Position of the badge. Valid values are: 'top-right', 'top-left', 'bottom-right', 'bottom-left'. If position is set to any of those values badge is positioned as absolute in the corner of the parent element (the parent element must be positioned as relative). If you need finer control over position see the example of positioned badge below.",
+    "updateKey": "Update this prop value to play badges animation.",
+    "updateAnimation": "Animation to play when updating content of the badge. Valid values are: 'scale-up', 'bounce', 'to-danger' and 'to-success'",
     "modBadge": "Style of the main badge element"
   },
   "emits": {},
   "slots": {
-    "default": "Slot for badge content"
+    "default": "Slot for the badges content"
   },
   "functions": {},
   "components": {}

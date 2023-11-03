@@ -8,7 +8,7 @@
   },
   "emits": {},
   "slots": {
-    "default": "Slot for card content"
+    "default": "Slot for the card content"
   },
   "functions": {},
   "components": {}

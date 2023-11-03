@@ -20,7 +20,7 @@
         "modCloseButton": "size:small"
       },
       "prop": "close-button",
-      "description": "Attributes of input v-close-button component",
+      "description": "Attributes of the chips v-close-button component",
       "tags": "attributes"
     },
     {
@@ -52,13 +52,13 @@
   "events": [
     {
       "event": "click:close-button",
-      "description": "Emmited after clicking chip close button"
+      "description": "Emmited after clicking chips close button"
     }
   ],
   "slots": [
     {
       "slot": "default",
-      "description": "Slot for chip content"
+      "description": "Slot for the chips content"
     }
   ],
   "functions": [],

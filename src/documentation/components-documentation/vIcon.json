@@ -9,7 +9,7 @@
       ],
       "default": "empty string",
       "prop": "icon",
-      "description": "Name of the registered icon component or icon component object. It has higher prorioty than `icon-type` if both are set"
+      "description": "Name of the registered icon component or the icon component object. It has higher prorioty than `icon-type` if both are set"
     },
     {
       "type": [
@@ -26,7 +26,7 @@
       ],
       "default": "empty string",
       "prop": "name",
-      "description": "Same as icon prop"
+      "description": "Same as the icon prop"
     }
   ],
   "events": [],

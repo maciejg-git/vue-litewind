@@ -25,7 +25,7 @@
       ],
       "default": false,
       "prop": "fill",
-      "description": "Tabs fill full width of tab bar"
+      "description": "Tabs fill full width of the tab bar"
     },
     {
       "type": [
@@ -68,7 +68,7 @@
       "default": "\"fade\"",
       "globalDefault": true,
       "prop": "transition",
-      "description": "Sets animation effect when changing tabs. Valid values are 'fade', 'fade-top-slide', 'fade-side-slide' or `empty string` to disabled animations. Animation speed can be set in `--tabs-transition-duration` css variable."
+      "description": "Sets the animation effect when changing tabs. Valid values are: 'fade', 'fade-top-slide', 'fade-side-slide' or `empty string` to disabled animations. Animation speed can be set in the `--tabs-transition-duration` css variable."
     },
     {
       "type": [
@@ -88,11 +88,11 @@
   "slots": [
     {
       "slot": "tab-bar-append",
-      "description": "Slot for additional content in the tab bar"
+      "description": "Slot for the additional content in the tab bar"
     },
     {
       "slot": "default",
-      "description": "Slot for v-tab components"
+      "description": "Slot for the v-tab components"
     }
   ],
   "functions": [],

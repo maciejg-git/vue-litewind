@@ -49,7 +49,7 @@
   "slots": [
     {
       "slot": "default",
-      "description": "Slot for card content"
+      "description": "Slot for the card content"
     }
   ],
   "functions": [],

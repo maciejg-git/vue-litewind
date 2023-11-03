@@ -8,18 +8,18 @@
       ],
       "default": "undefined",
       "prop": "name",
-      "description": "Name of tab on tab bar"
+      "description": "Name of the tab on the tab bar"
     }
   ],
   "events": [],
   "slots": [
     {
       "slot": "name",
-      "description": "Slot for customized name of the tab on tab bar"
+      "description": "Slot for the customized name of the tab on tab bar"
     },
     {
       "slot": "default",
-      "description": "Slot for tab content"
+      "description": "Slot for the tab content"
     }
   ],
   "functions": [],
