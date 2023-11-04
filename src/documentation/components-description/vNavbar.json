@@ -3,15 +3,13 @@
   "props": {
     "base": "",
     "variant": "",
-    "fixed": "If `true` navbar position is set to fixed. If both fixed and sticky are `false` then navbar is positioned as relative",
-    "sticky": "If `true` navbar position is set to sticky. If both fixed and sticky are `false` then navbar is positioned as relative",
-    "position": "Position of the navbar: `fixed`, `absolute` or `relative`",
-    "bottom": "Places navbar on the bottom. Note: `fixed` must be also set to true",
-    "modNavbar": "Style of the main navbar element"
+    "position": "Position of the navbar: `fixed`, `absolute` or `relative`. This prop just sets the respective Tailwind class.",
+    "bottom": "Places navbar on the bottom. Note: position must be `fixed`.",
+    "modNavbar": "Style of the main navbar element."
   },
   "emits": {},
   "slots": {
-    "default": "Slot for navbar content"
+    "default": "Slot for the navbar content"
   },
   "functions": {},
   "components": {}

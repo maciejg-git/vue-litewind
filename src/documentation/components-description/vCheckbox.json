@@ -18,7 +18,7 @@
     "validation:messages": ""
   },
   "slots": {
-    "label": "Slot for checkbox label"
+    "label": "Slot for the checkbox label"
   },
   "functions": {},
   "components": {}

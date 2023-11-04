@@ -4,13 +4,13 @@
     "base": "",
     "variant": "",
     "disabled": "Displays button in `disabled` state",
-    "tag": "Tag of button element. Valid values are: 'button' or 'a'",
+    "tag": "Tag of the button element. Valid values are: 'button' or 'a'",
     "block": "Displays button as full width block",
     "modButton": "Style of the main button element"
   },
   "emits": {},
   "slots": {
-    "default": "Slot for button content"
+    "default": "Slot for the button content"
   },
   "functions": {},
   "components": {}

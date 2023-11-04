@@ -24,9 +24,9 @@
     "modCloseButtonWrapper": "Style of the wrapper element of the clear button",
     "modLabel": "Style of the label element",
     "icon": "Adds an icon to the input element. Valid value is the same as in v-icon components",
-    "clearable": "Adds the 'X' button that resets model to the default value",
+    "clearable": "Adds an 'X' button that resets model to the default value",
     "state": "",
-    "customClearable": "Adds the 'X' button that only emits the @click:clear-button event. It does not modify model value",
+    "customClearable": "Adds an 'X' button that only emits the @click:clear-button event. It does not modify model value",
     "base": "",
     "variant": "",
     "role": ""

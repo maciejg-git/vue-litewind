@@ -3,12 +3,12 @@
   "props": {
     "base": "",
     "variant": "",
-    "initial": "Initial direction of chevron/triangle. Valid values are: 'down', 'left' ,'right' and 'up'",
-    "rotate90": "If `true` rotates chevron 90 degrees. Default is 180 degrees",
+    "initial": "Initial direction of the chevron. Valid values are: 'down', 'left' ,'right' and 'up'",
+    "rotate90": "If `true` rotates chevron by 90 degrees. Default is 180 degrees",
     "triangle": "Use filled triangle instead of chevron",
-    "clockwise": "Rotate chevron/triangle clockwise. Default is counter clockwise",
-    "switch": "Flick this to rotate chevron/triangle to initial/rotated position",
-    "icon": "Name of the icon to use instead of default chevron/triangle",
+    "clockwise": "Rotate chevron clockwise. Default is counter clockwise",
+    "switch": "Flick this to rotate the chevron to initial/rotated position",
+    "icon": "Name of the icon to use instead of default chevron",
     "modChevron": "Style of the chevron element"
   },
   "emits": {},
