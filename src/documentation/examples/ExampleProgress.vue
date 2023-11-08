@@ -7,8 +7,8 @@
 
   <v-progress
     v-bind="example"
-    mod-progress="shape:rounded"
-    mod-progress-bar="variant:red shape:rounded"
+    mod-progress="shape:square"
+    mod-progress-bar="variant:red shape:square"
     class="mt-4"
   >
     <template #label="{ value, max }">
