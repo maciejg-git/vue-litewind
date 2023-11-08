@@ -2,59 +2,61 @@ let states = {
   STOP: 3,
   PAUSE: 2,
   PLAY: 1,
-}
+};
 
 export default function useAnimate() {
-  let state = states.STOP
+  let state = states.STOP;
 
-  let startTime = 0
-  let pausedTime = 0
+  let startTime = 0;
+  let pausedTime = 0;
 
-  let duration = 0
-  let timing = null
-  let draw = null
+  let requestId;
+
+  let duration = 0;
+  let timing = null;
+  let draw = null;
 
   let stop = () => {
-    if (state === states.STOP) return
-    state = states.STOP
-    pausedTime = 0
-  }
+    state = states.STOP;
+    pausedTime = 0;
+
+    cancelAnimationFrame(requestId);
+  };
 
   let pause = () => {
-    if (state === states.PAUSE || state === states.STOP) return
-    state = states.PAUSE
-    pausedTime = performance.now() - startTime
-  }
+    if (state === states.PAUSE || state === states.STOP) return;
+    state = states.PAUSE;
+    pausedTime = performance.now() - startTime;
+
+    cancelAnimationFrame(requestId);
+  };
 
   let play = () => {
-    if (state === states.PLAY) return
-    startTime = performance.now() - pausedTime
-    state = states.PLAY
-    animate()
-  }
+    if (state === states.PLAY) return;
+    startTime = performance.now() - pausedTime;
+    state = states.PLAY;
+
+    requestId = requestAnimationFrame(animate);
+  };
 
   let set = (animation) => {
-    ({ duration, timing, draw } = animation)
-  }
+    ({ duration, timing, draw } = animation);
+  };
 
-  let destroy = () => {
-    stop()
-  }
+  let destroy = () => stop();
 
-  let animate = () => {
-    requestAnimationFrame(function animate(time) {
-      let timeFraction = (time - startTime) / duration;
-      if (timeFraction > 1) timeFraction = 1;
+  let animate = (time) => {
+    let timeFraction = (time - startTime) / duration;
+    if (timeFraction > 1) timeFraction = 1;
 
-      let progress = timing(timeFraction)
+    let progress = timing(timeFraction);
 
-      draw(progress);
+    draw(progress);
 
-      if (state === states.PLAY && timeFraction < 1) {
-        requestAnimationFrame(animate);
-      }
-    });
-  }
+    if (state === states.PLAY && timeFraction < 1) {
+      requestId = requestAnimationFrame(animate);
+    }
+  };
 
   return {
     play,
@@ -62,5 +64,5 @@ export default function useAnimate() {
     pause,
     set,
     destroy,
-  }
+  };
 }
