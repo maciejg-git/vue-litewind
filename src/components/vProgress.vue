@@ -7,7 +7,7 @@
       <div
         v-if="!indeterminate"
         :class="classes.progressBar.value"
-        :style="{ width: value + '%' }"
+        :style="{ width: (timer ? timerValue : getValue()) + '%' }"
       >
         <span
           v-if="label"
@@ -32,8 +32,9 @@
 </template>
 
 <script setup>
-import { computed, inject } from "vue";
-import useTailwindStyles from "./composition/use-tailwind-styles"
+import { ref, computed, onMounted, onBeforeUnmount, inject } from "vue";
+import useTailwindStyles from "./composition/use-tailwind-styles";
+import useAnimate from "./composition/use-animate";
 import { clamp, isNumber } from "../tools";
 import { sharedProps, sharedModProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
@@ -57,7 +58,7 @@ const props = defineProps({
   },
   label: {
     type: Boolean,
-    default: true,
+    default: false,
   },
   precision: {
     type: Number,
@@ -67,42 +68,76 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  timer: {
+    type: Number,
+    default: 0,
+  },
+  autostartTimer: {
+    type: Boolean,
+    default: false,
+  },
   transition: {
     type: Boolean,
     default: true,
   },
 });
 
-let { progress } = inject("mods", {})
+let { progress } = inject("mods", {});
 
 let elements = {
   progress: {
-    fixed: "flex"
+    fixed: "flex",
   },
   progressBar: {
     fixed: "flex justify-center items-center h-full",
     computed: computed(() => {
       return props.indeterminate
         ? "indeterminate"
-        : props.transition
+        : props.transition && !props.timer
         ? "transition-all duration-[--progress-bar-speed]"
         : "";
     }),
     label: null,
-  }
-}
+  },
+};
 
-let { classes } = useTailwindStyles(props, progress, elements)
+let { classes } = useTailwindStyles(props, progress, elements);
 
-let value = computed(() => {
+let getValue = () => {
   return clamp((props.value / props.max) * 100, 0, props.max);
-});
+};
 
 let precision = computed(() => clamp(props.precision, 0, 100));
 
 let label = computed(
   () => props.label && value.value.toFixed(precision.value) + " %"
 );
+
+// timer progress
+
+let timerValue = ref(0);
+let animate = useAnimate();
+
+let startTimer = () => {
+  animate.set({
+    duration: props.timer,
+    timing: (timing) => timing * 100,
+    draw: (progress) => (timerValue.value = progress),
+  });
+  animate.play();
+};
+
+onMounted(() => {
+  if (props.timer && props.autostartTimer) {
+    startTimer();
+  }
+});
+
+onBeforeUnmount(() => {
+  if (props.timer) {
+    animate.destroy();
+  }
+})
 </script>
 
 <style scoped lang="postcss">
