@@ -97,8 +97,8 @@ let elements = {
         ? "transition-all duration-[--progress-bar-speed]"
         : "";
     }),
-    label: null,
   },
+  label: null,
 };
 
 let { classes } = useTailwindStyles(props, progress, elements);
@@ -107,10 +107,8 @@ let getValue = () => {
   return clamp((props.value / props.max) * 100, 0, props.max);
 };
 
-let precision = computed(() => clamp(props.precision, 0, 100));
-
 let label = computed(
-  () => props.label && value.value.toFixed(precision.value) + " %"
+  () => props.label && getValue().toFixed(props.precision) + " %"
 );
 
 // timer progress
@@ -121,7 +119,7 @@ let animate = useAnimate();
 let startTimer = () => {
   animate.set({
     duration: props.timer,
-    timing: (timing) => timing * 100,
+    timing: (time) => time * 100,
     draw: (progress) => (timerValue.value = progress),
   });
   animate.play();
@@ -137,28 +135,30 @@ onBeforeUnmount(() => {
   if (props.timer) {
     animate.destroy();
   }
-})
+});
+
+defineExpose({ animate });
 </script>
 
-<style scoped lang="postcss">
+<style scoped>
 .indeterminate {
   position: absolute;
-  width: var(--progress-bar-width);
+  width: var(--progress-bar-indeterminate-width);
   transform-origin: left;
   animation-name: slide;
   animation-iteration-count: infinite;
-  animation-timing-function: var(--progress-bar-timing);
+  animation-timing-function: var(--progress-bar-indeterminate-timing);
   animation-duration: var(--progress-bar-indeterminate-speed);
-  animation-direction: var(--progress-bar-direction);
+  animation-direction: var(--progress-bar-indeterminate-direction);
 }
 
 @keyframes slide {
   from {
-    left: calc(var(--progress-bar-width) * -1.1);
+    left: calc(var(--progress-bar-indeterminate-width) * var(--progress-bar-indeterminate-offset) * -1);
   }
 
   to {
-    left: 110%;
+    left: calc(100% * var(--progress-bar-indeterminate-offset));
   }
 }
 </style>
