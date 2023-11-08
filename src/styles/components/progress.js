@@ -12,14 +12,17 @@ let progress = {
       `,
       tiny: `
         h-1
+      `,
+      medium: `
+        h-2
       `
     },
     shape: {
-      default: `
-        rounded
-      `,
       rounded: `
         rounded-full
+      `,
+      square: `
+        rounded-none
       `
     },
     variant: {
@@ -43,6 +46,9 @@ let progress = {
     shape: {
       rounded: `
         rounded-full
+      `,
+      square: `
+        rounded-none
       `
     },
     variant: {
