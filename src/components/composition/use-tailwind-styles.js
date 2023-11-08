@@ -66,7 +66,7 @@ export default function useTailwindStyles(props, styles, elements) {
       let elementStyles = styles[base][el];
 
       if (mods.preset) {
-        activeMods.preset = mods.preset[3]
+        activeMods.preset = mods.preset[0][3]
       }
 
       // get active mods
@@ -98,7 +98,7 @@ export default function useTailwindStyles(props, styles, elements) {
 
       if (mods.preset) {
         return `
-          ${getClasses(elementStyles.preset[mods.preset[3]])}
+          ${getClasses(elementStyles.preset[mods.preset[0][3]])}
           ${options?.fixed || ""}
           ${options?.computed?.value || ""}
         `.replace(/\s\s+/g, " ");
