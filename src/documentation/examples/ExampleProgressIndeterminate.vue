@@ -55,13 +55,14 @@ let example = reactive({
 onMounted(() => {
   setInterval(() => {
     example.indeterminate = !example.indeterminate;
+    if (example.indeterminate) return
     example.value = 0;
     let i = setInterval(() => {
-      example.value += 0.05;
+      example.value += 0.2;
       if (example.value >= 100) {
         clearInterval(i);
       }
-    }, 2);
-  }, 6000);
+    }, 10);
+  }, 3000);
 });
 </script>

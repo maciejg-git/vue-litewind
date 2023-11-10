@@ -4,7 +4,7 @@ ___
 
 ###### Usage
 
-The first step is to place `v-notify-component` in one of the top level components (for example in `App.vue`). This component is set up early in order to make sure it is available before adding any notifications. With the component in place you can then import `useNotify` function anywhere in your application and start displaying notifications.
+The first step is to place `v-notify-container` in one of the top level components (for example in `App.vue`). This component is set up early in order to make sure it is available before adding any notifications. With the component in place you can then import `useNotify` function anywhere in your application and start displaying notifications.
 
 ###### Notify container position
 
@@ -44,7 +44,7 @@ notify.push({
 
 - `header`, `text` and `icon` - set content of the notify,
 - `dismissable`, `autoDismissDelay` and `static` - override respective options of `v-notify-container`,
-- `props` - is an object with `v-notify` props. See reference above.
+- `props` - is an object with the `v-notify` props. See reference above.
 - `variant` and `options` - are options that can store any value defined by user. For example, those options can be useful to identify notifications when using slots. See example below (custom notify)
 
 ###### Hiding notifications

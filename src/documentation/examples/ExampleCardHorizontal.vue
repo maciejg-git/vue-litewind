@@ -20,7 +20,7 @@
       <v-divider class="w-11/12 mx-auto mt-auto" />
       <v-button
         mod-button="preset:plain"
-        class="ml-auto font-semibold underline m-3 mr-6"
+        class="ml-auto underline m-3 mr-6"
       >
         Show more
       </v-button>
