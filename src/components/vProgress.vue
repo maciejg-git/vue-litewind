@@ -78,7 +78,7 @@ const props = defineProps({
   },
   transition: {
     type: Boolean,
-    default: true,
+    default: false,
   },
 });
 
