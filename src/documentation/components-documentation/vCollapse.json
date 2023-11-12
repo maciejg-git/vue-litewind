@@ -8,7 +8,7 @@
       ],
       "default": false,
       "prop": "v-model",
-      "description": "Setting v-model to true shows collapsible element, false value hides it"
+      "description": "Setting v-model to `true` reveals the collapsible element, `false` value hides it"
     },
     {
       "type": [
@@ -25,7 +25,7 @@
       "default": "\"fade-collapse\"",
       "globalDefault": true,
       "prop": "transition",
-      "description": "Sets animation effect when showing or hiding dropdown. Valid values are: 'fade-collapse' or `empty string` to disable animations. Animation speed can be set in `--collapse-transition-duration` css variable."
+      "description": "Sets an animation effect when showing or hiding collapsible element. Valid values are: 'fade-collapse' or `empty string` to disable animations. Animation speed can be set in the `--collapse-transition-duration` css variable."
     }
   ],
   "events": [
@@ -37,11 +37,11 @@
   "slots": [
     {
       "slot": "reference",
-      "description": "Slot for content that triggers collapse. Slot props: `isOpen`, `onTrigger`"
+      "description": "Slot for the content that triggers collapse. Slot props: `isOpen`, `onTrigger`"
     },
     {
       "slot": "default",
-      "description": "Slot for content that is collapsed"
+      "description": "Slot for the content that is collapsed"
     }
   ],
   "functions": [],

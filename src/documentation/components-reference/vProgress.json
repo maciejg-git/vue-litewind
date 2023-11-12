@@ -59,7 +59,7 @@
       "type": [
         "Boolean"
       ],
-      "default": true
+      "default": false
     },
     "precision": {
       "type": [
@@ -73,11 +73,23 @@
       ],
       "default": false
     },
+    "timer": {
+      "type": [
+        "Number"
+      ],
+      "default": 0
+    },
+    "autostartTimer": {
+      "type": [
+        "Boolean"
+      ],
+      "default": false
+    },
     "transition": {
       "type": [
         "Boolean"
       ],
-      "default": true
+      "default": false
     }
   },
   "emits": [],

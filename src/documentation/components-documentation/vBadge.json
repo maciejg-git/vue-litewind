@@ -34,7 +34,7 @@
       ],
       "default": "empty string",
       "prop": "position",
-      "description": "Position of badge. Valid values are 'top-right', 'top-left', 'bottom-right', 'bottom-left'. If position is set to any of those values badge is positioned as absolute in the corner of parent element (parent element must be positioned as relative). If you need finer control over position see the example of positioned badge below."
+      "description": "Position of the badge. Valid values are: 'top-right', 'top-left', 'bottom-right', 'bottom-left'. If position is set to any of those values badge is positioned as absolute in the corner of the parent element (the parent element must be positioned as relative). If you need finer control over position see the example of positioned badge below."
     },
     {
       "type": [
@@ -42,7 +42,7 @@
       ],
       "default": "empty string",
       "prop": "update-animation",
-      "description": "Animation to play when updating content of badge. Valid values are: 'scale-up', 'bounce', 'to-danger' and 'to-success'"
+      "description": "Animation to play when updating content of the badge. Valid values are: 'scale-up', 'bounce', 'to-danger' and 'to-success'"
     },
     {
       "type": [
@@ -51,7 +51,7 @@
       ],
       "default": "undefined",
       "prop": "update-key",
-      "description": "Update this prop value to play badge animation."
+      "description": "Update this prop value to play badges animation."
     },
     {
       "type": [
@@ -66,7 +66,7 @@
   "slots": [
     {
       "slot": "default",
-      "description": "Slot for badge content"
+      "description": "Slot for the badges content"
     }
   ],
   "functions": [],

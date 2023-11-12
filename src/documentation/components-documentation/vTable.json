@@ -18,7 +18,7 @@
       "default": false,
       "globalDefault": true,
       "prop": "caption-top",
-      "description": "If `true` display caption on top"
+      "description": "If `true` display caption on the top"
     },
     {
       "type": [
@@ -35,7 +35,7 @@
       "default": "\"No records for current filter\"",
       "globalDefault": true,
       "prop": "empty-filtered-text",
-      "description": "Text displayed if table is empty after filtering out all items"
+      "description": "Text displayed if the table is empty after filtering out all items"
     },
     {
       "type": [
@@ -44,7 +44,7 @@
       "default": "\"Empty table\"",
       "globalDefault": true,
       "prop": "empty-text",
-      "description": "Text displayed if table is empty"
+      "description": "Text displayed if the table is empty"
     },
     {
       "type": [
@@ -53,7 +53,7 @@
       ],
       "default": "empty string",
       "prop": "filter",
-      "description": "Use this String to filter items. Filtering always emits update:page with value 1 and resets any active selection"
+      "description": "Use this string to filter items. Filtering always emits the update:page with value 1 and resets any active selection"
     },
     {
       "type": [
@@ -62,7 +62,7 @@
       "default": "undefined",
       "required": true,
       "prop": "items",
-      "description": "Data to display in table. Each element of Array is an Object. Single Object is one record (row) of data"
+      "description": "Data to display in the table. Each element of an `array` is an `object`. Single `object` is one record (row) of the data"
     },
     {
       "type": [
@@ -71,7 +71,7 @@
       "default": 0,
       "globalDefault": true,
       "prop": "items-per-page",
-      "description": "Number of records (rows) on single page. Setting it to `0` disables pagination"
+      "description": "Number of records (rows) on the single page. Setting it to the `0` disables pagination"
     },
     {
       "type": [
@@ -158,7 +158,7 @@
       ],
       "default": 1,
       "prop": "page",
-      "description": "Current page number. Changing page resets current selection"
+      "description": "Current page number. Changing the page resets current selection"
     },
     {
       "type": [
@@ -167,7 +167,7 @@
       "default": "undefined",
       "required": true,
       "prop": "primary-key",
-      "description": "This props should be name of the property that is unique for every record. It is used as value for `key` attribute"
+      "description": "This props should be the name of the property that is unique for every record. It is used as value for `key` attribute"
     },
     {
       "type": [
@@ -175,7 +175,7 @@
       ],
       "default": "empty string",
       "prop": "selection-mode",
-      "description": "Enables or disables selection of rows. Valid values are 'single' (allows selection of single row only), 'multiple' (allows multiple rows to be selected) or `empty string` (disables selection). After new row is selected or unselected event input:selection is emmited with array of all selected records. Filtering, sorting, changing current page or modifying selection-mode prop resets current selection by emmiting empty array"
+      "description": "Enables or disables selection of the rows. Valid values are: 'single' (allows selection of single row only), 'multiple' (allows multiple rows to be selected) or `empty string` (disables selection). After new row is selected or unselected the input:selection event is emmited with an array of all selected records. Filtering, sorting, changing current page or modifying selection-mode prop resets current selection by emmiting an empty array"
     },
     {
       "type": [
@@ -183,7 +183,7 @@
       ],
       "default": "empty string",
       "prop": "state",
-      "description": "State of table. Valid values are 'busy' or `empty string`. Busy state disables pointer events on table and renders contents of `busy` slot instead of table rows"
+      "description": "State of the table. Valid values are: 'busy' or `empty string`. Busy state disables pointer events on the table and renders contents of the `busy` slot instead of table rows"
     },
     {
       "type": [
@@ -205,29 +205,29 @@
     },
     {
       "event": "input:selection",
-      "description": "Emmited after selecting rows. Event data contains array of selected records"
+      "description": "Emmited after selecting rows. Event data contains an array of selected records"
     }
   ],
   "slots": [
     {
       "slot": "caption",
-      "description": "Slot for caption text. Position caption using `caption-top` prop"
+      "description": "Slot for the caption text. Position the caption using the `caption-top` prop"
     },
     {
       "slot": "busy",
-      "description": "Content of this slot replaces data records if table is `busy`"
+      "description": "Content of this slot replaces data records if the table is in the `busy` state"
     },
     {
       "slot": "empty-table-message",
-      "description": "Slot for custom empty table message when `items` prop is empty table"
+      "description": "Slot for the custom empty table message when the `items` prop is empty table"
     },
     {
       "slot": "empty-filtered-table-message",
-      "description": "Slot for custom empty filtered table message when table is empty after filtering"
+      "description": "Slot for the custom empty filtered table message when the table is empty after filtering"
     },
     {
       "slot": "cell:[key]",
-      "description": "Slot for cell content. Useful for adding some html formatting, transforming value etc. Key is one of the keys of data record or additional key from definition array. Slot props: `value`, `item`"
+      "description": "Slot for the cells content. Useful for adding some html formatting, transforming value etc. Key is one of the keys of data record or additional key from the definition array. Slot props: `value`, `item`"
     },
     {
       "slot": "colspan",

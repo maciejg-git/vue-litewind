@@ -17,7 +17,7 @@
       ],
       "default": false,
       "prop": "bottom",
-      "description": "Places navbar on the bottom. Note: `fixed` must be also set to true"
+      "description": "Places navbar on the bottom. Note: position must be `fixed`."
     },
     {
       "type": [
@@ -26,7 +26,7 @@
       "default": "empty string",
       "globalDefault": true,
       "prop": "mod-navbar",
-      "description": "Style of the main navbar element"
+      "description": "Style of the main navbar element."
     },
     {
       "type": [
@@ -42,7 +42,7 @@
       ],
       "default": "\"relative\"",
       "prop": "position",
-      "description": "Position of the navbar: `fixed`, `absolute` or `relative`"
+      "description": "Position of the navbar: `fixed`, `absolute` or `relative`. This prop just sets the respective Tailwind class."
     },
     {
       "type": [
@@ -57,7 +57,7 @@
   "slots": [
     {
       "slot": "default",
-      "description": "Slot for navbar content"
+      "description": "Slot for the navbar content"
     }
   ],
   "functions": [],

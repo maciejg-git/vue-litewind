@@ -5,9 +5,6 @@
     mod-progress="size:tiny"
     mod-progress-bar="variant:gradient"
     indeterminate
-    :indeterminate-width="50"
-    :indeterminate-timing="example.timing"
-    :indeterminate-speed="example.speed"
     class="my-8"
   ></v-progress>
 

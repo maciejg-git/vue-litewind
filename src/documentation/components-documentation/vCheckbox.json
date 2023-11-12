@@ -117,7 +117,7 @@
   "slots": [
     {
       "slot": "label",
-      "description": "Slot for checkbox label"
+      "description": "Slot for the checkbox label"
     }
   ],
   "functions": [],

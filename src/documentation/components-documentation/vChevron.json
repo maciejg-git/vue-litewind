@@ -17,7 +17,7 @@
       ],
       "default": false,
       "prop": "clockwise",
-      "description": "Rotate chevron/triangle clockwise. Default is counter clockwise"
+      "description": "Rotate chevron clockwise. Default is counter clockwise"
     },
     {
       "type": [
@@ -25,7 +25,7 @@
       ],
       "default": "empty string",
       "prop": "icon",
-      "description": "Name of the icon to use instead of default chevron/triangle"
+      "description": "Name of the icon to use instead of default chevron"
     },
     {
       "type": [
@@ -33,7 +33,7 @@
       ],
       "default": "\"down\"",
       "prop": "initial",
-      "description": "Initial direction of chevron/triangle. Valid values are: 'down', 'left' ,'right' and 'up'"
+      "description": "Initial direction of the chevron. Valid values are: 'down', 'left' ,'right' and 'up'"
     },
     {
       "type": [
@@ -58,7 +58,7 @@
       ],
       "default": false,
       "prop": "rotate-90",
-      "description": "If `true` rotates chevron 90 degrees. Default is 180 degrees"
+      "description": "If `true` rotates chevron by 90 degrees. Default is 180 degrees"
     },
     {
       "type": [
@@ -66,7 +66,7 @@
       ],
       "default": false,
       "prop": "switch",
-      "description": "Flick this to rotate chevron/triangle to initial/rotated position"
+      "description": "Flick this to rotate the chevron to initial/rotated position"
     },
     {
       "type": [

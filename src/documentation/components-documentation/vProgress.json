@@ -4,6 +4,14 @@
   "props": [
     {
       "type": [
+        "Boolean"
+      ],
+      "default": false,
+      "prop": "autostart-timer",
+      "description": ""
+    },
+    {
+      "type": [
         "String"
       ],
       "default": "\"progress\"",
@@ -23,7 +31,7 @@
       "type": [
         "Boolean"
       ],
-      "default": true,
+      "default": false,
       "prop": "label",
       "description": "Display value on progress bar if true. Label can be customized via label slot"
     },
@@ -81,9 +89,17 @@
     },
     {
       "type": [
+        "Number"
+      ],
+      "default": 0,
+      "prop": "timer",
+      "description": ""
+    },
+    {
+      "type": [
         "Boolean"
       ],
-      "default": true,
+      "default": false,
       "prop": "transition",
       "description": "Add smooth animation when value change"
     },

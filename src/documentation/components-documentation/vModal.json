@@ -36,7 +36,7 @@
       "default": {},
       "globalDefault": true,
       "prop": "close-button",
-      "description": "Attributes of the v-close-button component. See documentation for valid values",
+      "description": "Attributes of the v-close-button component. See documentation for the valid values",
       "tags": "attributes"
     },
     {
@@ -116,7 +116,7 @@
       "default": false,
       "globalDefault": true,
       "prop": "no-header",
-      "description": "If true modal dialog cannot be closed by clicking outside of it"
+      "description": "Do not render the header if `true`"
     },
     {
       "type": [
@@ -160,7 +160,7 @@
       ],
       "default": false,
       "prop": "primary-button-close",
-      "description": "If true clicking primary button emits @input:secondaryButtonClick event and closes modal. If false modal is not closed after emitting event"
+      "description": "If `true` clicking primary button emits the @input:secondaryButtonClick event and closes modal. If `false` modal is not closed after emitting event"
     },
     {
       "type": [
@@ -188,7 +188,7 @@
       ],
       "default": false,
       "prop": "secondary-button-close",
-      "description": "If true clicking primary button emits @input:primaryButtonClick event and closes modal. If false modal is not closed after emitting event"
+      "description": "If `true` clicking primary button emits the @input:primaryButtonClick event and closes modal. If `false` modal is not closed after emitting event"
     },
     {
       "type": [
@@ -214,7 +214,7 @@
       ],
       "default": false,
       "prop": "static-backdrop",
-      "description": "If true modal dialog cannot be closed by clicking outside of it"
+      "description": "If `true` modal dialog cannot be closed by clicking outside of it"
     },
     {
       "type": [
@@ -231,7 +231,7 @@
       "default": "\"fade-slide\"",
       "globalDefault": true,
       "prop": "transition",
-      "description": "Sets animation effect when showing or hiding modal. Valid values are: 'fade', 'fade-slide', 'fade-scale' or `empty string` to disable animations. Animation speed can be set in `--modal-transition-duration` css variable."
+      "description": "Sets the animation effect when showing or hiding modal. Valid values are: 'fade', 'fade-slide', 'fade-scale' or `empty string` to disable animations. Animation speed can be set in the `--modal-transition-duration` css variable."
     },
     {
       "type": [
@@ -257,7 +257,7 @@
     },
     {
       "event": "input:static-backdrop-click",
-      "description": "Emmited after clicking backdrop if `static-backdrop` prop is `true`"
+      "description": "Emmited after clicking backdrop if the `static-backdrop` prop is `true`"
     }
   ],
   "slots": [

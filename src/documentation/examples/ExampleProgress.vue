@@ -12,7 +12,11 @@
     class="mt-4"
   >
     <template #label="{ value, max }">
-      {{ value.toFixed() }} / {{ max }}
+      <span
+        class="absolute left-1/2 -translate-x-1/2 text-xs font-bold text-white"
+      >
+        {{ value.toFixed() }} / {{ max }}
+      </span>
     </template>
   </v-progress>
 
@@ -33,7 +37,7 @@
     :value="example.value"
     :label="false"
     :transition="example.transition"
-    class="fixed top-0 left-0 w-full z-50"
+    class="fixed left-0 top-0 z-50 w-full"
   ></v-progress>
   <!-- CUT START -->
   <v-tabs
@@ -41,7 +45,7 @@
     class="mt-10"
   >
     <v-tab name="Props">
-      <div class="flex flex-col gap-y-2 mt-5">
+      <div class="mt-5 flex flex-col gap-y-2">
         <div>
           <label for="value">value:</label>
           <v-input

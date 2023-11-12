@@ -11,7 +11,7 @@
       ],
       "default": "undefined",
       "prop": "v-model",
-      "description": "Select v-model. If items are objects model returns `value` property (or `array` of `values` if select is `multi-value`) instead of whole object"
+      "description": "Select v-model. If the items are objects model returns the `value` property (or an `array` of `values` if the select is in `multi-value` mode) instead of the whole object"
     },
     {
       "type": [
@@ -28,7 +28,7 @@
       ],
       "default": false,
       "prop": "autocomplete",
-      "description": "Allows filtering select items based on inputs value. You can also use v-autocomplete which is wrapper of v-select with this prop enabled by default"
+      "description": "Enables filtering of items based on input's value. You can also use v-autocomplete which is a wrapper for v-select with this prop enabled by default"
     },
     {
       "type": [
@@ -46,7 +46,7 @@
       "default": {},
       "globalDefault": true,
       "prop": "card",
-      "description": "Attributes of v-card component used as container for select menu",
+      "description": "Attributes of the v-card component used as the menu container",
       "tags": "attributes"
     },
     {
@@ -56,7 +56,7 @@
       "default": {},
       "globalDefault": true,
       "prop": "chevron",
-      "description": "Attributes of v-chevron component",
+      "description": "Attributes of the v-chevron component",
       "tags": "attributes"
     },
     {
@@ -66,7 +66,7 @@
       "default": false,
       "globalDefault": true,
       "prop": "clearable",
-      "description": "Adds 'X' button that resets model to default value"
+      "description": "Adds an 'X' button that resets model to the default value"
     },
     {
       "type": [
@@ -75,7 +75,7 @@
       "default": "\"No data available\"",
       "globalDefault": true,
       "prop": "empty-data-message",
-      "description": "Message to display inside menu when `items` array is empty"
+      "description": "Message to display in the menu when the `items` array is empty"
     },
     {
       "type": [
@@ -101,7 +101,7 @@
       "default": {},
       "globalDefault": true,
       "prop": "input",
-      "description": "Attributes of v-input component",
+      "description": "Attributes of the v-input component",
       "tags": "attributes"
     },
     {
@@ -110,7 +110,7 @@
       ],
       "default": "\"text\"",
       "prop": "item-text",
-      "description": "Set name of the property of items’s text value"
+      "description": "Sets the name of the property that holds the text of the item."
     },
     {
       "type": [
@@ -118,7 +118,7 @@
       ],
       "default": "\"value\"",
       "prop": "item-value",
-      "description": "Set name of the property of items’s value"
+      "description": "Sets the name of the property that holds the value of the item."
     },
     {
       "type": [
@@ -126,7 +126,7 @@
       ],
       "default": [],
       "prop": "items",
-      "description": "Items to display. Can be `array` of `strings` or `objects` or mixed. Objects should at least have `text` and `value` properties. If `objects` have additional properties you can display them using `item` slot"
+      "description": "Items to display can be an `array` of `strings`, `objects` or a mix of both. If using objects, they should have at least `text` and `value` properties. If the `objects` have additional properties, you can display them using the `item` slot"
     },
     {
       "type": [
@@ -135,7 +135,7 @@
       "default": 10,
       "globalDefault": true,
       "prop": "items-per-page",
-      "description": "Amounts of items to display per page, 0 = all items on single page. Ignored if `no-pagination` is used"
+      "description": "Number of items to display per page. Use `0` to display all items on a single page. This setting is ignored if `no-pagination` is enabled"
     },
     {
       "type": [
@@ -143,7 +143,7 @@
       ],
       "default": 9999,
       "prop": "max-multiple",
-      "description": "Maximum number of rendered items for `multiple` select. If there is more items `max-multiple` slot can be used to show additional information"
+      "description": "Maximum number of rendered items for a `multiple` select. If there are more items, the `max-multiple` slot can be used to display additional information"
     },
     {
       "type": [
@@ -177,7 +177,7 @@
       "default": false,
       "globalDefault": true,
       "prop": "no-filter",
-      "description": "Do not use internal filter in `autocomplete` mode. You should provide filtered items by updating `items` prop"
+      "description": "Disables the internal filter in `autocomplete` mode. Provide filtered items by updating the `items` prop"
     },
     {
       "type": [
@@ -186,7 +186,7 @@
       "default": false,
       "globalDefault": true,
       "prop": "no-pagination",
-      "description": "Do no use internal pagination. You can paginate items by updating `items` prop"
+      "description": "Disables the internal pagination. You can paginate items by updating the `items` prop"
     },
     {
       "type": [
@@ -222,7 +222,7 @@
       "default": "\"fade-scale\"",
       "globalDefault": true,
       "prop": "transition",
-      "description": "Sets animation effect when showing or hiding autocomplete menu. Valid values are: 'fade' or `empty string` to disable animations. Animation speed can be set in `--autocomplete-transition-duration` css variable."
+      "description": "Sets an animation effect when showing or hiding autocomplete menu. Valid values are: 'fade' or `empty string` to disable animations. Animation speed can be set in the `--autocomplete-transition-duration` css variable."
     },
     {
       "type": [
@@ -231,7 +231,7 @@
       "default": true,
       "globalDefault": true,
       "prop": "use-loader",
-      "description": "Enables spinner in the input"
+      "description": "Enables the spinner in the input"
     },
     {
       "type": [
@@ -267,19 +267,19 @@
   "slots": [
     {
       "slot": "selected-item",
-      "description": "Slot for custom selected items"
+      "description": "Slot for the custom selected items"
     },
     {
       "slot": "max-multiple",
-      "description": "Content of this slot is appended to selected items if `max-multiple` prop is enabled"
+      "description": "Content of this slot is appended to the selected items if the `max-multiple` prop is enabled"
     },
     {
       "slot": "menu-item",
-      "description": "Slot for menu item. Slot props: `text`, `value`, `item`, `inputValue`"
+      "description": "Slot for the menu item. Slot props: `text`, `value`, `item`, `inputValue`"
     },
     {
       "slot": "menu-append",
-      "description": "Slot for additional content below menu items"
+      "description": "Slot for the additional content below menu items"
     }
   ],
   "functions": [],

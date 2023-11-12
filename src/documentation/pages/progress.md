@@ -22,6 +22,10 @@ The progress can be changed to `indeterminate` at any time when using other mode
 
 <example name="ExampleProgressIndeterminate"></example>
 
+#### Example - indeterminate custom animations {#ExampleProgressIndeterminateVariables}
+
+<example name="ExampleProgressIndeterminateStyle"></example>
+
 #### Example - timer progress {#ExampleProgressTimer}
 
 <example name="ExampleProgressTimer"></example>

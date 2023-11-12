@@ -30,7 +30,7 @@
       "default": false,
       "globalDefault": true,
       "prop": "clearable",
-      "description": "Adds the 'X' button that resets model to the default value"
+      "description": "Adds an 'X' button that resets model to the default value"
     },
     {
       "type": [
@@ -48,7 +48,7 @@
       ],
       "default": false,
       "prop": "custom-clearable",
-      "description": "Adds the 'X' button that only emits the @click:clear-button event. It does not modify model value"
+      "description": "Adds an 'X' button that only emits the @click:clear-button event. It does not modify model value"
     },
     {
       "type": [

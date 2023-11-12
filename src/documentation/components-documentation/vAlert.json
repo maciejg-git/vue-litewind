@@ -8,7 +8,7 @@
       ],
       "default": "undefined",
       "prop": "v-model",
-      "description": "Visiblity state of alert. Skip v-model to make alert static"
+      "description": "Visiblity state of the alert. Skip v-model to make alert static"
     },
     {
       "type": [
@@ -35,7 +35,7 @@
       "default": {},
       "globalDefault": true,
       "prop": "close-button",
-      "description": "Attributes of v-close-button component. See documentation for valid values",
+      "description": "Attributes of the v-close-button component. See documentation for the valid values",
       "tags": "attributes"
     },
     {
@@ -44,7 +44,7 @@
       ],
       "default": true,
       "prop": "dismissable",
-      "description": "If false close button is not rendered and alert cannot be dissmised"
+      "description": "If `false` close button is not rendered and the alert cannot be dissmised"
     },
     {
       "type": [
@@ -52,7 +52,7 @@
       ],
       "default": "empty string",
       "prop": "icon",
-      "description": "Alert has few default icons for variants: 'success', 'warn', 'danger', 'info', 'valid', 'invalid'. Icon or default slot can be used for custom icons."
+      "description": "Alert has few default icons for variants: 'success', 'warn', 'danger', 'info', 'valid', 'invalid'. Icon or default slot can be used for a custom icon."
     },
     {
       "type": [
@@ -98,11 +98,11 @@
   "slots": [
     {
       "slot": "icon",
-      "description": "Slot for icon prepending message"
+      "description": "Slot for the icon prepending message"
     },
     {
       "slot": "default",
-      "description": "Slot for alert content"
+      "description": "Slot for the alerts content"
     }
   ],
   "functions": [],

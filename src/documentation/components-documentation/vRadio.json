@@ -109,7 +109,7 @@
   "slots": [
     {
       "slot": "label",
-      "description": "Slot for radio label"
+      "description": "Slot for the radios label"
     }
   ],
   "functions": [],

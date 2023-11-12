@@ -50,7 +50,7 @@
       ],
       "default": "\"button\"",
       "prop": "tag",
-      "description": "Tag of button element. Valid values are: 'button' or 'a'"
+      "description": "Tag of the button element. Valid values are: 'button' or 'a'"
     },
     {
       "type": [
@@ -65,7 +65,7 @@
   "slots": [
     {
       "slot": "default",
-      "description": "Slot for button content"
+      "description": "Slot for the button content"
     }
   ],
   "functions": [],
