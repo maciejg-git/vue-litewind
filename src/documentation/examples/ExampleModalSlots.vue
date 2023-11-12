@@ -18,6 +18,9 @@
           class="absolute top-5 right-5"
           @click="close()"
         />
+
+        <!-- thumbnails -->
+
         <div class="absolute bottom-0 w-full flex justify-center gap-x-4 p-2">
           <img
             v-for="(image, index) in images"
@@ -31,6 +34,9 @@
             @click="currentImage = index"
           />
         </div>
+
+        <!-- prev and next buttons -->
+
         <v-button
           @click="prev()"
           mod-button="preset:plain"
