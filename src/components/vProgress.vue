@@ -3,30 +3,30 @@
     <div
       :class="classes.progress.value"
       class="relative"
+      role="progressbar"
+      :aria-valuemax="max"
+      :aria-valuenow="timer ? timerValue : getValue()"
     >
       <div
         v-if="!indeterminate"
         :class="classes.progressBar.value"
         :style="{ width: (timer ? timerValue : getValue()) + '%' }"
-      >
-        <span
-          v-if="label"
-          :class="classes.label.value"
-        >
-          <!-- @slot label -->
-          <slot
-            name="label"
-            :value="value"
-            :max="max"
-          >
-            {{ label }}
-          </slot>
-        </span>
-      </div>
+      ></div>
       <div
         v-else
         :class="classes.progressBar.value"
       ></div>
+      <!-- @slot label -->
+      <slot
+        v-if="label"
+        name="label"
+        :value="value"
+        :max="max"
+      >
+        <span :class="classes.label.value">
+          {{ label }}
+        </span>
+      </slot>
     </div>
   </div>
 </template>
@@ -94,11 +94,13 @@ let elements = {
       return props.indeterminate
         ? "indeterminate"
         : props.transition && !props.timer
-        ? "transition-all duration-[--progress-bar-speed]"
+        ? "transition-all duration-[--progress-bar-duration]"
         : "";
     }),
   },
-  label: null,
+  label: {
+    fixed: "absolute left-1/2 -translate-x-1/2"
+  },
 };
 
 let { classes } = useTailwindStyles(props, progress, elements);
@@ -119,7 +121,7 @@ let animate = useAnimate();
 let startTimer = () => {
   animate.set({
     duration: props.timer,
-    timing: (time) => time * 100,
+    timing: (timeFraction) => timeFraction * 100,
     draw: (progress) => (timerValue.value = progress),
   });
   animate.play();
@@ -140,7 +142,7 @@ onBeforeUnmount(() => {
 defineExpose({ animate });
 </script>
 
-<style scoped>
+<style>
 .indeterminate {
   position: absolute;
   width: var(--progress-bar-indeterminate-width);
@@ -148,17 +150,19 @@ defineExpose({ animate });
   animation-name: slide;
   animation-iteration-count: infinite;
   animation-timing-function: var(--progress-bar-indeterminate-timing);
-  animation-duration: var(--progress-bar-indeterminate-speed);
+  animation-duration: var(--progress-bar-indeterminate-duration);
   animation-direction: var(--progress-bar-indeterminate-direction);
 }
 
 @keyframes slide {
-  from {
-    left: calc(var(--progress-bar-indeterminate-width) * var(--progress-bar-indeterminate-offset) * -1);
+  from, 15% {
+    left: 0%;
+    transform: translateX(-100%);
   }
 
   to {
-    left: calc(100% * var(--progress-bar-indeterminate-offset));
+    left: 100%;
+    transform: scaleX(var(--progress-bar-indeterminate-scale))
   }
 }
 </style>
