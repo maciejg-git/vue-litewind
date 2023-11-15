@@ -4,6 +4,8 @@ let states = {
   PLAY: 1,
 };
 
+let remap = (v, min, max) => ((v - 0) * (max - min)) / (1 - 0) + min;
+
 export default function useAnimate() {
   let state = states.STOP;
   let startTime = 0;
@@ -35,30 +37,57 @@ export default function useAnimate() {
   };
 
   let set = (animation) => {
-    animations = Array.isArray(animation) ? animation : [animation];
-    animations = animations.map((animation) => {
-      if (!animation.duration[1]) {
-        animation.duration = [0, animation.duration]
-      }
-      return animation
-    })
+    animations = Array.isArray(animation) ? [...animation] : [animation];
+    animations = animations
+      .map((i) => {
+        return { ...i };
+      })
+      .map((animation) => {
+        if (!animation.duration[1]) {
+          animation.duration = [0, animation.duration];
+        }
+        animation._cycles = 0;
+        animation._reverse =
+          animation.direction === "reverse" ||
+          animation.direction === "alternate-reverse";
+        return animation;
+      });
   };
 
   let destroy = () => stop();
 
   let animate = (time) => {
-    let timeFraction;
     let continueAnimate = false;
 
     for (let animation of animations) {
-      timeFraction =
+      let timeFraction =
         (time - startTime - animation.duration[0]) / animation.duration[1];
 
-      if (timeFraction > 1) timeFraction = 1;
+      timeFraction = timeFraction - animation._cycles;
+      if (animation._reverse) timeFraction = 1 - timeFraction;
+
       if (timeFraction < 0) timeFraction = 0;
-      if (timeFraction < 1) continueAnimate = true;
+      if (timeFraction > 1) timeFraction = 1;
+
+      if (
+        (!animation._reverse && timeFraction < 1) ||
+        (animation._reverse && timeFraction > 0)
+      ) {
+        continueAnimate = true;
+      } else if (animation.repeat) {
+        animation._cycles++;
+        continueAnimate = true;
+        if (
+          animation.direction === "alternate" ||
+          animation.direction === "alternate-reverse"
+        )
+          animation._reverse = !animation._reverse;
+      }
 
       let progress = animation.timing(timeFraction);
+
+      if (animation.remap)
+        progress = remap(progress, animation.remap[0], animation.remap[1]);
 
       animation.draw(progress);
     }
