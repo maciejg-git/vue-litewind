@@ -4,7 +4,7 @@ let states = {
   PLAY: 1,
 };
 
-let remap = (v, min, max) => ((v - 0) * (max - min)) / (1 - 0) + min;
+let remap = (v, range) => (v * (range[1] - range[0])) / 1 + range[0];
 
 export default function useAnimate() {
   let state = states.STOP;
@@ -37,20 +37,20 @@ export default function useAnimate() {
   };
 
   let set = (animation) => {
-    animations = Array.isArray(animation) ? [...animation] : [animation];
-    animations = animations
+    animations = (Array.isArray(animation) ? [...animation] : [animation])
       .map((i) => {
         return { ...i };
       })
-      .map((animation) => {
-        if (!animation.duration[1]) {
-          animation.duration = [0, animation.duration];
-        }
-        animation._cycles = 0;
-        animation._reverse =
-          animation.direction === "reverse" ||
-          animation.direction === "alternate-reverse";
-        return animation;
+      .map((i) => {
+        if (!i.duration[1]) i.duration = [0, i.duration];
+        i._isAlternate =
+          i.direction === "alternate" || i.direction === "alternate-reverse";
+        i._isReverse =
+          i.direction === "reverse" || i.direction === "alternate-reverse";
+        i._reverse = i._isReverse;
+        i._cycles = 0;
+        i.repeat = i.repeat === true ? 9999999 : +i.repeat
+        return i;
       });
   };
 
@@ -60,34 +60,31 @@ export default function useAnimate() {
     let continueAnimate = false;
 
     for (let animation of animations) {
-      let timeFraction =
+      let totalFraction =
         (time - startTime - animation.duration[0]) / animation.duration[1];
+      let timeFraction = totalFraction;
 
-      timeFraction = timeFraction - animation._cycles;
+      if (animation.repeat && animation.repeat > animation._cycles) {
+        timeFraction -= animation._cycles;
+        if (animation._isAlternate)
+          animation._reverse = (animation._cycles + animation._isReverse) % 2;
+        animation._cycles = Math.trunc(totalFraction);
+      }
+
       if (animation._reverse) timeFraction = 1 - timeFraction;
 
-      if (timeFraction < 0) timeFraction = 0;
-      if (timeFraction > 1) timeFraction = 1;
+      timeFraction = timeFraction < 0 ? 0 : timeFraction > 1 ? 1 : timeFraction;
 
       if (
+        animation.repeat ||
         (!animation._reverse && timeFraction < 1) ||
         (animation._reverse && timeFraction > 0)
-      ) {
+      )
         continueAnimate = true;
-      } else if (animation.repeat) {
-        animation._cycles++;
-        continueAnimate = true;
-        if (
-          animation.direction === "alternate" ||
-          animation.direction === "alternate-reverse"
-        )
-          animation._reverse = !animation._reverse;
-      }
 
       let progress = animation.timing(timeFraction);
 
-      if (animation.remap)
-        progress = remap(progress, animation.remap[0], animation.remap[1]);
+      if (animation.remap) progress = remap(progress, animation.remap);
 
       animation.draw(progress);
     }
