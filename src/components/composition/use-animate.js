@@ -17,14 +17,12 @@ export default function useAnimate() {
     if (state === states.PLAY) return;
     startTime = performance.now() - pausedTime;
     state = states.PLAY;
-
     requestId = requestAnimationFrame(animate);
   };
 
   let stop = () => {
     state = states.STOP;
     pausedTime = 0;
-
     cancelAnimationFrame(requestId);
   };
 
@@ -32,7 +30,6 @@ export default function useAnimate() {
     if (state === states.PAUSE || state === states.STOP) return;
     state = states.PAUSE;
     pausedTime = performance.now() - startTime;
-
     cancelAnimationFrame(requestId);
   };
 
@@ -83,10 +80,11 @@ export default function useAnimate() {
         continueAnimate = true;
 
       let progress = animation.timing(timeFraction);
+      let rawProgress = progress
 
       if (animation.remap) progress = remap(progress, animation.remap);
 
-      animation.draw(progress);
+      animation.draw(progress, rawProgress);
     }
 
     if (state === states.PLAY && continueAnimate) {
