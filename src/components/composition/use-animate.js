@@ -1,5 +1,6 @@
 let remap = (v, range) => (v * (range[1] - range[0])) / 1 + range[0];
 let clamp = (v) => (v < 0 ? 0 : v > 1 ? 1 : v);
+let steps = (t, s) => Math.ceil((Math.min(Math.max(t, 0.000001), 1)) * s) * (1 / s)
 
 let defaultAnimationState = {
   timeFraction: 0,
@@ -13,19 +14,18 @@ let defaultAnimationState = {
 export default function useAnimate() {
   let state = "stop";
   let startTime = 0;
-  let pausedTime = 0;
   let animations = [];
 
   let play = () => {
     if (state === "play") return;
-    startTime = performance.now() - pausedTime;
+    startTime = performance.now() - startTime;
     state = "play";
     animations.forEach((animation) => animate(animation));
   };
 
   let stop = () => {
     state = "stop";
-    pausedTime = 0;
+    startTime = 0;
     animations.forEach((animation, i) => {
       cancelAnimationFrame(animation.reqId)
       animations[i].state = { ...defaultAnimationState }
@@ -35,7 +35,7 @@ export default function useAnimate() {
   let pause = () => {
     if (state === "pause" || state === "stop") return;
     state = "pause";
-    pausedTime = performance.now() - startTime;
+    startTime = performance.now() - startTime;
     animations.forEach((animation) => cancelAnimationFrame(animation.reqId))
   };
 
@@ -58,10 +58,11 @@ export default function useAnimate() {
         i._frames = i._frames.map((f) => {
           if (!f.duration) f.duration = 0;
           if (!f.timing) f.timing = i.timing;
+          if (!f.remap) f.remap = i.remap ?? null;
+          if (!f.reverse) f.reverse = false
           return f;
         });
-        i.state = { ...defaultAnimationState }
-        i.state.reverse = i._isReverse
+        i.state = { ...defaultAnimationState, reverse: i._isReverse }
         return i;
       });
   };
@@ -69,10 +70,11 @@ export default function useAnimate() {
   let destroy = () => stop();
 
   let animate = (animation) => {
-    let { state } = animation;
+    let { state, _frames, _isAlternate, _isReverse } = animation;
 
     let step = (time) => {
-      let frame = animation._frames[state.frame];
+      let continueAnimation = false
+      let frame = _frames[state.frame];
       let elapsed = time - startTime
       state.totalFraction = elapsed / animation.duration;
       state.timeFraction =
@@ -81,30 +83,34 @@ export default function useAnimate() {
       state.timeFraction = clamp(state.timeFraction);
       state.totalFraction = clamp(state.totalFraction) - state.cycles;
 
-      if (state.reverse) state.timeFraction = 1 - state.timeFraction;
+      if (frame.reverse || state.reverse) state.timeFraction = 1 - state.timeFraction;
 
       let progress = frame.timing(state.timeFraction);
 
-      if (animation.remap) progress = remap(progress, animation.remap);
+      if (frame.remap) progress = remap(progress, frame.remap);
 
       animation.draw(progress, state);
 
       if (
-        (!state.reverse && state.timeFraction === 1) ||
-        (state.reverse && state.timeFraction === 0)
+        ((!state.reverse || !frame.reverse) && state.timeFraction === 1) ||
+        ((state.reverse || frame.reverse) && state.timeFraction === 0)
       ) {
         state.frameOffset += frame.duration;
-        if (++state.frame >= animation._frames.length) {
+        if (animation.afterFrame) animation.afterFrame(state.frame)
+        if (++state.frame >= _frames.length) {
           state.frame = 0;
           if (animation.repeat) {
             state.cycles++;
-            if (animation._isAlternate) {
-              state.reverse = (state.cycles + animation._isReverse) % 2;
+            if (_isAlternate) {
+              state.reverse = (state.cycles + _isReverse) % 2;
             }
-            animation.reqId = requestAnimationFrame(step);
+            continueAnimation = true
           }
-        } else animation.reqId = requestAnimationFrame(step);
-      } else animation.reqId = requestAnimationFrame(step);
+        } else continueAnimation = true
+      } else continueAnimation = true
+
+      if (continueAnimation) animation.reqId = requestAnimationFrame(step)
+      else if (animation.finished) animation.finished()
     };
     animation.reqId = requestAnimationFrame(step);
   };
@@ -115,5 +121,6 @@ export default function useAnimate() {
     pause,
     set,
     destroy,
+    steps,
   };
 }
