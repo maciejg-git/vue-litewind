@@ -2,23 +2,30 @@ let remap = (v, range) => (v * (range[1] - range[0])) / 1 + range[0];
 let clamp = (v) => (v < 0 ? 0 : v > 1 ? 1 : v);
 let steps = (t, s) => Math.ceil((Math.min(Math.max(t, 0.000001), 1)) * s) * (1 / s)
 
-let defaultAnimationState = {
+let defaultState = {
   timeFraction: 0,
   totalFraction: 0,
+  frameFraction: 0,
   frame: 0,
   reverse: false,
   cycles: 0,
   frameOffset: 0,
+  delayOffset: 0,
 };
 
 export default function useAnimate() {
   let state = "stop";
   let startTime = 0;
+  let pausedTime = 0;
   let animations = [];
+  let pausedOffset = 0
+  let pausedAt = 0
 
   let play = () => {
     if (state === "play") return;
-    startTime = performance.now() - startTime;
+    // startTime = performance.now() - pausedTime;
+    if (!startTime) startTime = performance.now()
+    if (pausedAt) pausedOffset += (performance.now() - pausedAt)
     state = "play";
     animations.forEach((animation) => animate(animation));
   };
@@ -28,14 +35,15 @@ export default function useAnimate() {
     startTime = 0;
     animations.forEach((animation, i) => {
       cancelAnimationFrame(animation.reqId)
-      animations[i].state = { ...defaultAnimationState }
+      animations[i].state = { ...defaultState }
     });
   };
 
   let pause = () => {
     if (state === "pause" || state === "stop") return;
     state = "pause";
-    startTime = performance.now() - startTime;
+    // pausedTime = performance.now() - startTime;
+    pausedAt = performance.now()
     animations.forEach((animation) => cancelAnimationFrame(animation.reqId))
   };
 
@@ -62,7 +70,11 @@ export default function useAnimate() {
           if (!f.reverse) f.reverse = false
           return f;
         });
-        i.state = { ...defaultAnimationState, reverse: i._isReverse }
+        i.state = { ...defaultState, reverse: i._isReverse }
+        i.state.delay = (d) => {
+          i.state.delayOffset = performance.now() + d
+          i.state.frameOffset += d
+        }
         return i;
       });
   };
@@ -73,15 +85,27 @@ export default function useAnimate() {
     let { state, _frames, _isAlternate, _isReverse } = animation;
 
     let step = (time) => {
+      time = time - pausedOffset
+      // state.delayOffset -= pausedOffset
+      // startTime -= pausedOffset
+      if (time < state.delayOffset - pausedOffset) {
+        console.log('delay')
+        animation.reqId = requestAnimationFrame(step)
+        return
+      }
       let continueAnimation = false
       let frame = _frames[state.frame];
       let elapsed = time - startTime
       state.totalFraction = elapsed / animation.duration;
       state.timeFraction =
         (elapsed - state.frameOffset) / frame.duration;
+      console.log("frame", state.frame)
+      console.log("elapsed", elapsed - state.frameOffset)
+      console.log("timeFraction", state.timeFraction)
+      // console.log("totalFraction", state.totalFraction)
 
       state.timeFraction = clamp(state.timeFraction);
-      state.totalFraction = clamp(state.totalFraction) - state.cycles;
+      state.totalFraction = clamp(state.totalFraction - state.cycles);
 
       if (frame.reverse || state.reverse) state.timeFraction = 1 - state.timeFraction;
 
@@ -90,13 +114,14 @@ export default function useAnimate() {
       if (frame.remap) progress = remap(progress, frame.remap);
 
       animation.draw(progress, state);
+      if (frame.draw) frame.draw(progress, state)
 
       if (
         ((!state.reverse || !frame.reverse) && state.timeFraction === 1) ||
         ((state.reverse || frame.reverse) && state.timeFraction === 0)
       ) {
         state.frameOffset += frame.duration;
-        if (animation.afterFrame) animation.afterFrame(state.frame)
+        if (animation.afterFrame) animation.afterFrame(state.frame, state)
         if (++state.frame >= _frames.length) {
           state.frame = 0;
           if (animation.repeat) {
@@ -107,6 +132,7 @@ export default function useAnimate() {
             continueAnimation = true
           }
         } else continueAnimation = true
+        state.frameFraction = state.frame/_frames.length 
       } else continueAnimation = true
 
       if (continueAnimation) animation.reqId = requestAnimationFrame(step)
