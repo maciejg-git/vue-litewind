@@ -10,13 +10,15 @@ let defaultState = {
   reverse: false,
   cycles: 0,
   frameOffset: 0,
+  delayEnd: 0,
+  delayStart: 0,
   delayOffset: 0,
+  delayTotal: 0,
 };
 
 export default function useAnimate() {
   let state = "stop";
   let startTime = 0;
-  let pausedTime = 0;
   let animations = [];
   let pausedOffset = 0
   let pausedAt = 0
@@ -25,7 +27,7 @@ export default function useAnimate() {
     if (state === "play") return;
     // startTime = performance.now() - pausedTime;
     if (!startTime) startTime = performance.now()
-    if (pausedAt) pausedOffset += (performance.now() - pausedAt)
+    if (pausedAt) pausedOffset += performance.now() - pausedAt
     state = "play";
     animations.forEach((animation) => animate(animation));
   };
@@ -71,9 +73,11 @@ export default function useAnimate() {
           return f;
         });
         i.state = { ...defaultState, reverse: i._isReverse }
-        i.state.delay = (d) => {
-          i.state.delayOffset = performance.now() + d
-          i.state.frameOffset += d
+        i.state.delay = (delay) => {
+          if (state === 'pause' || i.state.delayEnd) return
+          i.state.delayEnd = performance.now() + delay - pausedOffset
+          i.state.delayTotal += delay
+          i.state.delayStart = performance.now() - pausedOffset
         }
         return i;
       });
@@ -85,24 +89,20 @@ export default function useAnimate() {
     let { state, _frames, _isAlternate, _isReverse } = animation;
 
     let step = (time) => {
-      time = time - pausedOffset
-      // state.delayOffset -= pausedOffset
-      // startTime -= pausedOffset
-      if (time < state.delayOffset - pausedOffset) {
-        console.log('delay')
-        animation.reqId = requestAnimationFrame(step)
-        return
-      }
       let continueAnimation = false
       let frame = _frames[state.frame];
+      time -= pausedOffset
+      if (time < state.delayEnd) {
+        time = state.delayStart
+      } else {
+        state.delayOffset = state.delayTotal
+        state.delayEnd = 0
+      }
+      time -= state.delayOffset
       let elapsed = time - startTime
-      state.totalFraction = elapsed / animation.duration;
+      state.totalFraction = (elapsed - state.delayOffset) / animation.duration;
       state.timeFraction =
         (elapsed - state.frameOffset) / frame.duration;
-      console.log("frame", state.frame)
-      console.log("elapsed", elapsed - state.frameOffset)
-      console.log("timeFraction", state.timeFraction)
-      // console.log("totalFraction", state.totalFraction)
 
       state.timeFraction = clamp(state.timeFraction);
       state.totalFraction = clamp(state.totalFraction - state.cycles);
