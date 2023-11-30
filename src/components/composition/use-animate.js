@@ -25,7 +25,6 @@ export default function useAnimate() {
 
   let play = () => {
     if (state === "play") return;
-    // startTime = performance.now() - pausedTime;
     if (!startTime) startTime = performance.now()
     if (pausedAt) pausedOffset += performance.now() - pausedAt
     state = "play";
@@ -44,7 +43,6 @@ export default function useAnimate() {
   let pause = () => {
     if (state === "pause" || state === "stop") return;
     state = "pause";
-    // pausedTime = performance.now() - startTime;
     pausedAt = performance.now()
     animations.forEach((animation) => cancelAnimationFrame(animation.reqId))
   };
@@ -75,9 +73,9 @@ export default function useAnimate() {
         i.state = { ...defaultState, reverse: i._isReverse }
         i.state.delay = (delay) => {
           if (state === 'pause' || i.state.delayEnd) return
-          i.state.delayEnd = performance.now() + delay - pausedOffset
-          i.state.delayTotal += delay
           i.state.delayStart = performance.now() - pausedOffset
+          i.state.delayEnd = i.state.delayStart + delay
+          i.state.delayTotal += delay
         }
         return i;
       });
@@ -100,7 +98,7 @@ export default function useAnimate() {
       }
       time -= state.delayOffset
       let elapsed = time - startTime
-      state.totalFraction = (elapsed - state.delayOffset) / animation.duration;
+      state.totalFraction = elapsed / animation.duration;
       state.timeFraction =
         (elapsed - state.frameOffset) / frame.duration;
 
