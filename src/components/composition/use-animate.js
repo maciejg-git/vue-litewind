@@ -1,6 +1,7 @@
 let remap = (v, range) => (v * (range[1] - range[0])) / 1 + range[0];
 let clamp = (v) => (v < 0 ? 0 : v > 1 ? 1 : v);
-let steps = (t, s) => Math.ceil((Math.min(Math.max(t, 0.000001), 1)) * s) * (1 / s)
+let steps = (t, s) =>
+  Math.ceil(Math.min(Math.max(t, 0.000001), 1) * s) * (1 / s);
 
 let defaultState = {
   timeFraction: 0,
@@ -20,13 +21,13 @@ export default function useAnimate() {
   let state = "stop";
   let startTime = 0;
   let animations = [];
-  let pausedOffset = 0
-  let pausedAt = 0
+  let pausedOffset = 0;
+  let pausedAt = 0;
 
   let play = () => {
     if (state === "play") return;
-    if (!startTime) startTime = performance.now()
-    if (pausedAt) pausedOffset += performance.now() - pausedAt
+    if (!startTime) startTime = performance.now();
+    if (pausedAt) pausedOffset += performance.now() - pausedAt;
     state = "play";
     animations.forEach((animation) => animate(animation));
   };
@@ -35,16 +36,16 @@ export default function useAnimate() {
     state = "stop";
     startTime = 0;
     animations.forEach((animation, i) => {
-      cancelAnimationFrame(animation.reqId)
-      animations[i].state = { ...defaultState }
+      cancelAnimationFrame(animation.reqId);
+      animations[i].state = { ...defaultState };
     });
   };
 
   let pause = () => {
     if (state === "pause" || state === "stop") return;
     state = "pause";
-    pausedAt = performance.now()
-    animations.forEach((animation) => cancelAnimationFrame(animation.reqId))
+    pausedAt = performance.now();
+    animations.forEach((animation) => cancelAnimationFrame(animation.reqId));
   };
 
   let set = (animation) => {
@@ -65,18 +66,18 @@ export default function useAnimate() {
           }));
         i._frames = i._frames.map((f) => {
           if (!f.duration) f.duration = 0;
-          if (!f.timing) f.timing = i.timing;
+          if (!f.timing) f.timing = i.timing ?? ((i) => i);
           if (!f.remap) f.remap = i.remap ?? null;
-          if (!f.reverse) f.reverse = false
+          if (!f.reverse) f.reverse = false;
           return f;
         });
-        i.state = { ...defaultState, reverse: i._isReverse }
+        i.state = { ...defaultState, reverse: i._isReverse };
         i.state.delay = (delay) => {
-          if (state === 'pause' || i.state.delayEnd) return
-          i.state.delayStart = performance.now() - pausedOffset
-          i.state.delayEnd = i.state.delayStart + delay
-          i.state.delayTotal += delay
-        }
+          if (state === "pause" || i.state.delayEnd) return;
+          i.state.delayStart = performance.now() - pausedOffset;
+          i.state.delayEnd = i.state.delayStart + delay;
+          i.state.delayTotal += delay;
+        };
         return i;
       });
   };
@@ -87,39 +88,39 @@ export default function useAnimate() {
     let { state, _frames, _isAlternate, _isReverse } = animation;
 
     let step = (time) => {
-      let continueAnimation = false
+      let continueAnimation = false;
       let frame = _frames[state.frame];
-      time -= pausedOffset
+      time -= pausedOffset;
       if (time < state.delayEnd) {
-        time = state.delayStart
+        time = state.delayStart;
       } else {
-        state.delayOffset = state.delayTotal
-        state.delayEnd = 0
+        state.delayOffset = state.delayTotal;
+        state.delayEnd = 0;
       }
-      time -= state.delayOffset
-      let elapsed = time - startTime
+      time -= state.delayOffset;
+      let elapsed = time - startTime;
       state.totalFraction = elapsed / animation.duration;
-      state.timeFraction =
-        (elapsed - state.frameOffset) / frame.duration;
+      state.timeFraction = (elapsed - state.frameOffset) / frame.duration;
 
       state.timeFraction = clamp(state.timeFraction);
       state.totalFraction = clamp(state.totalFraction - state.cycles);
 
-      if (frame.reverse || state.reverse) state.timeFraction = 1 - state.timeFraction;
+      if (frame.reverse || state.reverse)
+        state.timeFraction = 1 - state.timeFraction;
 
       let progress = frame.timing(state.timeFraction);
 
       if (frame.remap) progress = remap(progress, frame.remap);
 
       animation.draw(progress, state);
-      if (frame.draw) frame.draw(progress, state)
+      if (frame.draw) frame.draw(progress, state);
 
       if (
         ((!state.reverse || !frame.reverse) && state.timeFraction === 1) ||
         ((state.reverse || frame.reverse) && state.timeFraction === 0)
       ) {
         state.frameOffset += frame.duration;
-        if (animation.afterFrame) animation.afterFrame(state.frame, state)
+        if (animation.afterFrame) animation.afterFrame(state.frame, state);
         if (++state.frame >= _frames.length) {
           state.frame = 0;
           if (animation.repeat) {
@@ -127,14 +128,14 @@ export default function useAnimate() {
             if (_isAlternate) {
               state.reverse = (state.cycles + _isReverse) % 2;
             }
-            continueAnimation = true
+            continueAnimation = true;
           }
-        } else continueAnimation = true
-        state.frameFraction = state.frame/_frames.length 
-      } else continueAnimation = true
+        } else continueAnimation = true;
+        state.frameFraction = state.frame / _frames.length;
+      } else continueAnimation = true;
 
-      if (continueAnimation) animation.reqId = requestAnimationFrame(step)
-      else if (animation.finished) animation.finished()
+      if (continueAnimation) animation.reqId = requestAnimationFrame(step);
+      else if (animation.finished) animation.finished();
     };
     animation.reqId = requestAnimationFrame(step);
   };
