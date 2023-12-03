@@ -2,6 +2,9 @@ let remap = (v, range) => (v * (range[1] - range[0])) / 1 + range[0];
 let clamp = (v) => (v < 0 ? 0 : v > 1 ? 1 : v);
 let steps = (t, s) =>
   Math.ceil(Math.min(Math.max(t, 0.000001), 1) * s) * (1 / s);
+let promise = (animation) => {
+  return new Promise((resolve) => animation.state.next = resolve)
+}
 
 let defaultState = {
   timeFraction: 0,
@@ -15,6 +18,7 @@ let defaultState = {
   delayStart: 0,
   delayOffset: 0,
   delayTotal: 0,
+  next: null,
 };
 
 export default function useAnimate() {
@@ -24,12 +28,14 @@ export default function useAnimate() {
   let pausedOffset = 0;
   let pausedAt = 0;
 
-  let play = () => {
+  let play = (index, update) => {
     if (state === "play") return;
     if (!startTime) startTime = performance.now();
     if (pausedAt) pausedOffset += performance.now() - pausedAt;
     state = "play";
-    animations.forEach((animation) => animate(animation));
+    // animations.forEach((animation, i) => index.includes(i) && animate(animation));
+    animate(animations[index], update);
+    return promise(animations[index])
   };
 
   let stop = () => {
@@ -47,6 +53,11 @@ export default function useAnimate() {
     pausedAt = performance.now();
     animations.forEach((animation) => cancelAnimationFrame(animation.reqId));
   };
+
+  let timeline = (...timeline) => {
+    // console.log(timeline)
+    timeline[0]({play})
+  }
 
   let set = (animation) => {
     animations = (Array.isArray(animation) ? [...animation] : [animation])
@@ -84,7 +95,7 @@ export default function useAnimate() {
 
   let destroy = () => stop();
 
-  let animate = (animation) => {
+  let animate = (animation, update) => {
     let { state, _frames, _isAlternate, _isReverse } = animation;
 
     let step = (time) => {
@@ -114,6 +125,7 @@ export default function useAnimate() {
 
       animation.draw(progress, state);
       if (frame.draw) frame.draw(progress, state);
+      if (update) update(state)
 
       if (
         ((!state.reverse || !frame.reverse) && state.timeFraction === 1) ||
@@ -135,7 +147,10 @@ export default function useAnimate() {
       } else continueAnimation = true;
 
       if (continueAnimation) animation.reqId = requestAnimationFrame(step);
-      else if (animation.finished) animation.finished();
+      else {
+        if (animation.finished) animation.finished();
+        state.resolve()
+      }
     };
     animation.reqId = requestAnimationFrame(step);
   };
@@ -147,5 +162,6 @@ export default function useAnimate() {
     set,
     destroy,
     steps,
+    timeline,
   };
 }
