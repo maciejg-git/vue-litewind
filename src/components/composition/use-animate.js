@@ -19,6 +19,19 @@ let defaultState = {
   delayOffset: 0,
   delayTotal: 0,
   next: null,
+  elapsed: 0,
+  duration: 0,
+  finished: false,
+  _frame: null,
+  end() { this.finished = true },
+  getTimeFraction(offset = 0) {
+    if (offset < 0) offset = 0
+    let timeFraction = (this.elapsed - this.frameOffset - offset) / this.duration
+    return clamp(timeFraction)
+  },
+  getProgress(offset = 0) {
+    return this._frame.timing(this.getTimeFraction(offset))
+  }
 };
 
 export default function useAnimate() {
@@ -33,7 +46,6 @@ export default function useAnimate() {
     if (!startTime) startTime = performance.now();
     if (pausedAt) pausedOffset += performance.now() - pausedAt;
     state = "play";
-    // animations.forEach((animation, i) => index.includes(i) && animate(animation));
     animate(animations[index], update);
     return promise(animations[index])
   };
@@ -101,6 +113,7 @@ export default function useAnimate() {
     let step = (time) => {
       let continueAnimation = false;
       let frame = _frames[state.frame];
+      state._frame = frame
       time -= pausedOffset;
       if (time < state.delayEnd) {
         time = state.delayStart;
@@ -110,8 +123,10 @@ export default function useAnimate() {
       }
       time -= state.delayOffset;
       let elapsed = time - startTime;
+      state.elapsed = elapsed
       state.totalFraction = elapsed / animation.duration;
       state.timeFraction = (elapsed - state.frameOffset) / frame.duration;
+      state.duration = frame.duration
 
       state.timeFraction = clamp(state.timeFraction);
       state.totalFraction = clamp(state.totalFraction - state.cycles);
@@ -149,7 +164,7 @@ export default function useAnimate() {
       if (continueAnimation) animation.reqId = requestAnimationFrame(step);
       else {
         if (animation.finished) animation.finished();
-        state.resolve()
+        state.next()
       }
     };
     animation.reqId = requestAnimationFrame(step);
