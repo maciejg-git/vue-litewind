@@ -2,9 +2,7 @@ let remap = (v, range) => (v * (range[1] - range[0])) / 1 + range[0];
 let clamp = (v) => (v < 0 ? 0 : v > 1 ? 1 : v);
 let steps = (t, s) =>
   Math.ceil(Math.min(Math.max(t, 0.000001), 1) * s) * (1 / s);
-let promise = (animation) => {
-  return new Promise((resolve) => animation.state.resolve = resolve)
-}
+let promise = (i) => new Promise((res) => i.state.resolve = res)
 
 let defaultState = {
   timeFraction: 0,
@@ -19,19 +17,18 @@ let defaultState = {
   delayStart: 0,
   delayOffset: 0,
   delayTotal: 0,
-  // next: null,
   elapsed: 0,
   duration: 0,
   nextFrame: false,
-  finished: false,
   _frame: null,
-  end() { this.finished = true },
   next() { this.nextFrame = true },
+  isComplete() { return ((this.reverse || this._frame.reverse) && this.timeFraction === 0) || ((!this.reverse && !this._frame.reverse) && this.timeFraction === 1)},
   getTimeFraction(offset = 0) {
     if (offset < 0) offset = 0
     let timeFraction = (this.elapsed - this.frameOffset - offset) / this._frame.duration
-    // console.log(clamp(timeFraction))
-    return clamp(timeFraction)
+    timeFraction = clamp(timeFraction)
+    if (this.reverse || this._frame.reverse) timeFraction = 1 - timeFraction
+    return timeFraction
   },
   update(offset = 0) {
     this.timeFraction = this.getTimeFraction(offset)
@@ -41,7 +38,9 @@ let defaultState = {
     this._frame.timing = timing
   },
   getProgress(offset = 0) {
-    return this._frame.timing(this.getTimeFraction(offset))
+    let progress = this._frame.timing(this.getTimeFraction(offset))
+    if (this._frame.remap) progress = remap(progress, this._frame.remap)
+    return progress
   }
 };
 
@@ -78,12 +77,7 @@ export default function useAnimate() {
   };
 
   let timeline = (...timeline) => {
-    // console.log(timeline)
     timeline[0]({play})
-  }
-
-  function getProgress(offset = 0) {
-    return this._frame.timing(this.getTimeFraction(offset))
   }
 
   let set = (animation) => {
@@ -116,7 +110,6 @@ export default function useAnimate() {
           i.state.delayEnd = i.state.delayStart + delay;
           i.state.delayTotal += delay;
         };
-        i.state.getProgress = getProgress.bind(i.state)
         return i;
       });
   };
@@ -140,21 +133,9 @@ export default function useAnimate() {
       time -= state.delayOffset;
       let elapsed = time - startTime;
       state.elapsed = elapsed
-      state.totalFraction = elapsed / animation.duration;
-      state.timeFraction = (elapsed - state.frameOffset) / frame.duration;
 
-      state.timeFraction = clamp(state.timeFraction);
-      state.totalFraction = clamp(state.totalFraction - state.cycles);
-
-      if (frame.reverse || state.reverse)
-        state.timeFraction = 1 - state.timeFraction;
-
-      let progress = frame.timing(state.timeFraction);
-
-      if (frame.remap) progress = remap(progress, frame.remap);
-
-      animation.draw(progress, state);
-      if (frame.draw) frame.draw(progress, state);
+      animation.draw(state);
+      if (frame.draw) frame.draw(state);
       // if (update) update(state)
 
       if (
@@ -181,7 +162,6 @@ export default function useAnimate() {
       if (continueAnimation) animation.reqId = requestAnimationFrame(step);
       else {
         if (animation.finished) animation.finished();
-        // state.next()
       }
     };
     animation.reqId = requestAnimationFrame(step);
