@@ -20,7 +20,7 @@ let defaultState = {
   elapsed: 0,
   duration: 0,
   nextFrame: false,
-  elements: true,
+  _isAllComplete: true,
   _frame: null,
   next() {
     this.nextFrame = true;
@@ -30,6 +30,9 @@ let defaultState = {
       ((this.reverse || this._frame.reverse) && this.timeFraction === 0) ||
       (!this.reverse && !this._frame.reverse && this.timeFraction === 1)
     );
+  },
+  isAllComplete() {
+    return this._isAllComplete
   },
   getTimeFraction(offset = 0) {
     if (offset < 0) offset = 0;
@@ -44,7 +47,7 @@ let defaultState = {
   update(offset = 0) {
     this.timeFraction = this.getTimeFraction(offset);
     this.progress = this.getProgress(offset);
-    this.elements = ((this.timeFraction < 1 && !this.reverse) || (this.timeFraction > 0 && this.reverse)) ? false : this.elements
+    this._isAllComplete = ((this.timeFraction < 1 && !this.reverse) || (this.timeFraction > 0 && this.reverse)) ? false : this._isAllComplete
   },
   setTiming(timing) {
     this._frame.timing = timing;
@@ -143,19 +146,14 @@ export default function useAnimate() {
         state.delayEnd = 0;
       }
       time -= state.delayOffset;
-      let elapsed = time - startTime;
-      state.elapsed = elapsed;
+      state.elapsed = time - startTime;
 
-      state.elements = true
+      state._isAllComplete = true
       animation.draw(state);
       if (frame.draw) frame.draw(state);
       // if (update) update(state)
 
-      if (
-        // ((!state.reverse || !frame.reverse) && state.timeFraction === 1) ||
-        // ((state.reverse || frame.reverse) && state.timeFraction === 0)
-        state.nextFrame
-      ) {
+      if (state.nextFrame) {
         state.nextFrame = false;
         state.frameOffset += frame.duration;
         if (animation.afterFrame) animation.afterFrame(state.frame, state);
