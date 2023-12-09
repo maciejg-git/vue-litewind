@@ -2,7 +2,7 @@ let remap = (v, range) => (v * (range[1] - range[0])) / 1 + range[0];
 let clamp = (v) => (v < 0 ? 0 : v > 1 ? 1 : v);
 let steps = (t, s) =>
   Math.ceil(Math.min(Math.max(t, 0.000001), 1) * s) * (1 / s);
-let promise = (i) => new Promise((res) => i.state.resolve = res)
+let promise = (i) => new Promise((res) => (i.state.resolve = res));
 
 let defaultState = {
   timeFraction: 0,
@@ -20,28 +20,40 @@ let defaultState = {
   elapsed: 0,
   duration: 0,
   nextFrame: false,
+  elements: true,
   _frame: null,
-  next() { this.nextFrame = true },
-  isComplete() { return ((this.reverse || this._frame.reverse) && this.timeFraction === 0) || ((!this.reverse && !this._frame.reverse) && this.timeFraction === 1)},
+  next() {
+    this.nextFrame = true;
+  },
+  isComplete() {
+    return (
+      ((this.reverse || this._frame.reverse) && this.timeFraction === 0) ||
+      (!this.reverse && !this._frame.reverse && this.timeFraction === 1)
+    );
+  },
   getTimeFraction(offset = 0) {
-    if (offset < 0) offset = 0
-    let timeFraction = (this.elapsed - this.frameOffset - offset) / this._frame.duration
-    timeFraction = clamp(timeFraction)
-    if (this.reverse || this._frame.reverse) timeFraction = 1 - timeFraction
-    return timeFraction
+    if (offset < 0) offset = 0;
+    // let timeFraction =
+    //   (this.elapsed - this.frameOffset - offset) / this._frame.duration;
+    let timeFraction =
+      (this.elapsed - offset) / this._frame.duration;
+    timeFraction = clamp(timeFraction);
+    if (this.reverse || this._frame.reverse) timeFraction = 1 - timeFraction;
+    return timeFraction;
   },
   update(offset = 0) {
-    this.timeFraction = this.getTimeFraction(offset)
-    this.progress = this.getProgress(offset)
+    this.timeFraction = this.getTimeFraction(offset);
+    this.progress = this.getProgress(offset);
+    this.elements = ((this.timeFraction < 1 && !this.reverse) || (this.timeFraction > 0 && this.reverse)) ? false : this.elements
   },
   setTiming(timing) {
-    this._frame.timing = timing
+    this._frame.timing = timing;
   },
   getProgress(offset = 0) {
-    let progress = this._frame.timing(this.getTimeFraction(offset))
-    if (this._frame.remap) progress = remap(progress, this._frame.remap)
-    return progress
-  }
+    let progress = this._frame.timing(this.getTimeFraction(offset));
+    if (this._frame.remap) progress = remap(progress, this._frame.remap);
+    return progress;
+  },
 };
 
 export default function useAnimate() {
@@ -57,7 +69,7 @@ export default function useAnimate() {
     if (pausedAt) pausedOffset += performance.now() - pausedAt;
     state = "play";
     animate(animations[index], update);
-    return promise(animations[index])
+    return promise(animations[index]);
   };
 
   let stop = () => {
@@ -77,8 +89,8 @@ export default function useAnimate() {
   };
 
   let timeline = (...timeline) => {
-    timeline[0]({play})
-  }
+    timeline[0]({ play });
+  };
 
   let set = (animation) => {
     animations = (Array.isArray(animation) ? [...animation] : [animation])
@@ -122,7 +134,7 @@ export default function useAnimate() {
     let step = (time) => {
       let continueAnimation = false;
       let frame = _frames[state.frame];
-      state._frame = frame
+      state._frame = frame;
       time -= pausedOffset;
       if (time < state.delayEnd) {
         time = state.delayStart;
@@ -132,8 +144,9 @@ export default function useAnimate() {
       }
       time -= state.delayOffset;
       let elapsed = time - startTime;
-      state.elapsed = elapsed
+      state.elapsed = elapsed;
 
+      state.elements = true
       animation.draw(state);
       if (frame.draw) frame.draw(state);
       // if (update) update(state)
@@ -143,9 +156,10 @@ export default function useAnimate() {
         // ((state.reverse || frame.reverse) && state.timeFraction === 0)
         state.nextFrame
       ) {
-        state.nextFrame = false
+        state.nextFrame = false;
         state.frameOffset += frame.duration;
         if (animation.afterFrame) animation.afterFrame(state.frame, state);
+        startTime = time
         if (++state.frame >= _frames.length) {
           state.frame = 0;
           if (animation.repeat) {
