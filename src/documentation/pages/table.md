@@ -2,7 +2,7 @@ ___
 
 #### Definition {#Definition}
 
-Table definition is an optional `array` of `objects` that defines columns of the table. Each object represents one column, has one required, unique `key` property and number of optional properties.
+Table definition is an optional `array` of `objects` that defines columns of the table. Each object represents one column, has one required, unique `key` property and number of optional options that define properties of the column.
 
 If definition is not provided component makes one using the first record of the data. All additional properties are set to default values. This may be enough for simple tables however to use features like sorting, filtering etc you need to provide definition array.
 

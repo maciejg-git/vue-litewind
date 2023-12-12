@@ -4,6 +4,8 @@ ___
 
 ###### Usage
 
+There are two components: `v-notify-container` and `v-notify` which is single notifcation. `v-notify-container` can be placed directly in template, `v-notify`, however is created automatically by the `useNotify` function.
+
 The first step is to place `v-notify-container` in one of the top level components (for example in `App.vue`). This component is set up early in order to make sure it is available before adding any notifications. With the component in place you can then import `useNotify` function anywhere in your application and start displaying notifications.
 
 ###### Notify container position
