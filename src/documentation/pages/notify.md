@@ -1,29 +1,30 @@
 ___
 
-#### Notes {#DropdownNotes}
+#### Notes {#NotifyNotes}
 
 ###### Usage
 
-There are two components: `v-notify-container` and `v-notify` which is single notifcation. `v-notify-container` can be placed directly in template, `v-notify`, however is created automatically by the `useNotify` function.
-
 The first step is to place `v-notify-container` in one of the top level components (for example in `App.vue`). This component is set up early in order to make sure it is available before adding any notifications. With the component in place you can then import `useNotify` function anywhere in your application and start displaying notifications.
+
+The second component, `v-notify`, which is single notification in the container, is created automatically and should not be used directly in the template.
 
 ###### Notify container position
 
 Notify container does not have any classes by default apart from `fixed` position. You should add few basic tailwind classes in order to set it up:
 
-- `top-*` , `bottom-*` , `left-*` and `right-*` to place it in desired position,
-- `w-*` class to set width of notify windows,
+- `top-*` , `bottom-*`, `left-*` or `right-*` to place it in desired position,
+- `w-*` class to set width of notifications,
 - `space-y-*` to optionally add some gaps between notifications,
+- `px-*` or `py-*` classes to optionally add padding to the container
 
-For example `bottom-4 right-10 w-[350px] space-y-4` classes will make notifications appear in the bottom right corner of the screen, notifications will be 350px wide and seperated with 1rem of space. This is the same setup as in example below.
+For example `bottom-4 md:right-10 w-full md:w-[350px] space-y-4` classes will make notifications appear in the bottom right corner of the screen (centered on small screens), notifications will be 350px wide (full width on small screens) and seperated with 1rem of space. This is the same setup as in example below.
 
 ###### Adding new notifications
 
 To add new notifications import and call `useNotify` function anywhere in your application. You can then use the returned object and its `push` function to add new notifications. `Push` function can take single `string` argument that will add very basic notifiation with the default settings. For more control and customization you can supply `object` as argument that will allow few additional options.
 
 ```javascript
-import { useNotify } from "vue";
+import { useNotify } from "vue-litewind";
 
 let notify = useNotify();
 
@@ -45,7 +46,7 @@ notify.push({
 ```
 
 - `header`, `text` and `icon` - set content of the notify,
-- `dismissable`, `autoDismissDelay` and `static` - override respective options of `v-notify-container`,
+- `dismissable`, `autoDismissDelay` and `static` - override respective props of `v-notify-container`,
 - `props` - is an object with the `v-notify` props. See reference above.
 - `variant` and `options` - are options that can store any value defined by user. For example, those options can be useful to identify notifications when using slots. See example below (custom notify)
 

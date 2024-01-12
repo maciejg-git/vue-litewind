@@ -140,7 +140,7 @@ app.use(vueLitewind, {
 
 :::
 
-**Optional** : while registering components you can set default values for props globally in second argument of `app.use`: `componentProps` object. If component has `name` prop that name will be used instead of default name. The value for prop can also be function that takes `base` argument (`base` prop of component) and should return default value for the prop. Note that components can internally use other components and those default props will also apply to them. You can set defaults for those components only by nesting them under their parent components.
+**Optional** : while registering components you can set default values for the props globally in the second argument of the `app.use`. If component has `name` prop that name will be used instead of default name. The value for prop can also be function that takes `base` argument (`base` prop of component) and should return default value for the prop. If default props should only apply to selected components you can set defaults for those components by nesting them under their parent components.
 
 <v-alert
   icon="warn"

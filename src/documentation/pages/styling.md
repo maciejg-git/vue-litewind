@@ -63,7 +63,9 @@ This is basis for all components and those classes are always applied to element
 
 ###### Variant classes
 
-On top of that, each element can have a number of variant classes that are applied on certain conditions. Additional variants are mostly useful for components that are frequently used in various configurations like buttons, badges, alerts, cards etc. These variants are grouped by the type of classes they add to element, for example by default, group such as shape, size, variant, shadow etc are frequently used. Here is previous example with few additional variants added for content element:
+On top of that, each element can have a number of variant classes that are applied on certain conditions. These variants are mostly useful for components that are frequently used in various configurations like buttons, badges, alerts, cards etc. Variants are grouped by the type of classes they add to element, for example by default, group such as shape, size, variant, shadow etc are frequently used. 
+
+Here is previous example with few additional variants added for content element:
 
 ```javascript
 let component =  {
@@ -111,13 +113,13 @@ Here are three ways any of these variants can be applied to the element:
     <v-button mod-button="variant:secondary size:small">Secondary</v-button>
     ```
 - automatically added by components for variants like selected, active etc,
-- when no variants are specified or added automatically first variant on the list is applied as default.
+- when no variants are provided in the prop or added automatically first variant on the list is applied as default.
 
 ###### Special variants
 
 Apart from these basic variants there are three reserved variant names that have special meaning and are applied in different way:
 
-- `preset` - if any variant from preset group is applied by `mod-[element]` prop only those classes will be added to element. Static element classes and the rest of the variants will be ignored. Presets can be useful for frequently used set of variants or when element have many custom classes that are not included in variants and in many other cases. Note that however variants are ignored you can still reference them in presets by using `function` as variant value.
+- `preset` - if any variant from preset group is applied by `mod-[element]` prop only those classes will be added to element. Other variants and static element classes will be ignored. Presets can be useful for frequently used set of variants or when element have many custom classes that are not included in variants and in many other cases. Note that however variants are ignored you can still reference them in presets by using `function` as variant value.
 - `state` - those variants are automatically applied if the component is in cetrain state, for example when input is invalid.
 - `data` - is a `function` that allows styling based on component data. It is only supported on elements that have data associated with them, for example table rows or cells, tree items etc.
 

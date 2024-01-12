@@ -15,7 +15,7 @@
       reference="event"
     />
 
-    <h6 id="InputSlots">Slots</h6>
+    <h6 id="InputSlots">Slots - notify container</h6>
     <table-reference-basic
       :items="reference.slots"
       reference="slot"

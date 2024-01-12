@@ -3,7 +3,7 @@
     <v-notify-container
       order="new-on-bottom"
       :auto-dismiss-delay="2000"
-      class="bottom-4 right-10 w-[350px] space-y-4"
+      class="bottom-4 md:right-10 w-full md:w-[350px] space-y-4"
       :notify="{
         modNotify: 'variant:info',
         closeButton: { modCloseButton: 'size:small' },
