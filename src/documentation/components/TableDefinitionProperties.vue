@@ -37,7 +37,7 @@ let referenceProp = ref([
     type: ["Boolean"],
     default: "true",
     description:
-      "Enables filtering of the column. After filtering following actions happen: event @update:filtered-count is emmited, event @update:page is emmited with value `1` and current selection is cleared by emmiting @input:selection event with empty array",
+      "Enables filtering of the column. After filtering following actions happen: event `update:filtered-count` is emmited (event data contains number of elements after filtering), event `update:page` is emmited with value `1` (to reset pagination back to first page) and current selection is cleared by emmiting `input:selection` event with an empty array",
   },
   {
     prop: "visible",

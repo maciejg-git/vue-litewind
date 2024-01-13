@@ -117,3 +117,9 @@ Grids can also be nested by placing `v-rows` inside `v-cols` .
 `order-*` classes can be used to change order of columns.
 
 <example name="ExampleGridOrder"></example>
+
+#### Example - 3 column documentation layout {#ExampleGridDocumentation}
+
+The example of 3 column grid layout that is used in this documentation page.
+
+<example name="ExampleGridDocumentation"></example>

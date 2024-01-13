@@ -19,7 +19,7 @@
   <!-- container -->
 
   <v-fluid-container
-    class="relative mt-16 flex text-text-800 dark:bg-[#191919] dark:text-[#c9cbd0]"
+    class="mt-16 text-text-800 dark:bg-[#191919] dark:text-[#c9cbd0]"
   >
     <v-row class="justify-center">
       <v-col class="hidden basis-auto lg:block xl:px-6">
