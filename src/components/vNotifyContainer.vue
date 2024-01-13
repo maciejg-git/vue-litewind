@@ -32,8 +32,8 @@
 </template>
 
 <script setup>
-import { ref, computed, inject } from "vue";
-import vNotify from "./vNotify.vue"
+import { computed, inject } from "vue";
+import vNotify from "./vNotify.vue";
 import { sharedProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
 
@@ -61,7 +61,8 @@ let props = defineProps({
   },
 });
 
-let { notifications, setNotifyOptions, removeNotify, removeNotifyById } = inject("_notify");
+let { notifications, setNotifyOptions, removeNotify, removeNotifyById } =
+  inject("_notify");
 
 setNotifyOptions(props);
 
@@ -84,7 +85,7 @@ let handleContainerMouseLeave = () => {
 };
 
 let handleCloseButton = (id) => {
-  removeNotifyById(id)
+  removeNotifyById(id);
 };
 </script>
 

@@ -47,8 +47,8 @@ let show = () => {
 let push = (notify) => {
   let i = {
     header: notify?.header || "",
-    text: typeof notify === "string" ? notify : notify.text,
-    icon: notify?.icon,
+    text: typeof notify === "string" ? notify : (notify?.text || ""),
+    icon: notify?.icon || null,
     autoDismissDelay: notify?.autoDismissDelay ?? options.autoDismissDelay,
     dismissable: notify?.dismissable ?? options.dismissable,
     static: notify?.static ?? options.static,

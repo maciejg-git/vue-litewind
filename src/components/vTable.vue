@@ -89,7 +89,7 @@
       </template>
       <template v-else>
         <template
-          v-for="(item, index) in itemsPagination"
+          v-for="(item, index) in itemsPaginated"
           :key="item[primaryKey] || index"
         >
           <tr
@@ -107,7 +107,7 @@
                   :value="item[k.key]"
                   :item="item"
                 >
-                  {{ getKeyValue(item, k) }}
+                  {{ getRecordPropertyByKey(item, k) }}
                 </slot>
               </td>
             </template>
@@ -255,18 +255,7 @@ watch(() => props.state, (value) => {
   setState(value)
 })
 
-// DATA
-
-// clone data
-let items = computed(() => [...props.items]);
-
-let getKeyValue = (i, k, skipFunction) => {
-  return skipFunction || typeof k.f !== "function"
-    ? i[k.key]
-    : k.f(k.key, i[k.key], i);
-};
-
-// TABLE DEFINITION
+/* table definition */
 
 let definitionDefaults = {
   sortable: false,
@@ -284,8 +273,7 @@ let headersCount = computed(() => {
   return definition.value.filter((i) => i.visible !== false).length;
 });
 
-// if no definition is provided use first row of data to
-// generate default definition
+// use first row of data to generate default definition
 let generateDefinitionFromData = () => {
   if (!props.items || !props.items.length) return [];
 
@@ -296,18 +284,19 @@ let generateDefinitionFromData = () => {
     });
 };
 
-// if user definition is valid return it
+// check if user definition is valid
 let getUserDefinition = () => {
   if (!Array.isArray(props.definition)) return false;
   return props.definition.every((i) => i.key) && props.definition;
 };
 
-// get user definition or generated definition and fill missing properties
-// with defaults. This definition is used by component.
+// compute final definition
+// first try to get user definition, if it is not provided or invalid
+// generate definition from data.
 let definition = computed(() => {
-  let d = getUserDefinition() || generateDefinitionFromData();
+  let definition = getUserDefinition() || generateDefinitionFromData();
 
-  return d.map((i) => {
+  return definition.map((i) => {
     return {
       ...definitionDefaults,
       ...i,
@@ -316,15 +305,24 @@ let definition = computed(() => {
   });
 });
 
-// sort
+/* data */
+
+// clone data
+let items = computed(() => [...props.items]);
+
+let getRecordPropertyByKey = (record, definition, skipFunction) => {
+  return skipFunction || typeof definition.f !== "function"
+    ? record[definition.key]
+    : definition.f(definition.key, record[definition.key], record);
+};
 
 let sortKey = ref("");
 let sortAsc = ref(1);
 
 // compare function for sort
-let itemCompare = (a, b, key, localeCompare) => {
-  a = getKeyValue(a, key, !key.sortByFunction);
-  b = getKeyValue(b, key, !key.sortByFunction);
+let itemCompare = (a, b, definition, localeCompare) => {
+  a = getRecordPropertyByKey(a, definition, !definition.sortByFunction);
+  b = getRecordPropertyByKey(b, definition, !definition.sortByFunction);
   a = undefNullToStr(a);
   b = undefNullToStr(b);
 
@@ -339,7 +337,9 @@ let itemCompare = (a, b, key, localeCompare) => {
   return localeCompare(a, b) * sortAsc.value;
 };
 
-// return sorted items, if no sorting is active return unmodified data
+// final array to display is a result of three computed properties run in order
+// itemsPaginated, itemsFiltered, itemsSorted.
+// sort: return sorted items, if no sorting is active return unmodified data
 let itemsSorted = computed(() => {
   if (!sortKey.value) return items.value;
 
@@ -348,8 +348,6 @@ let itemsSorted = computed(() => {
 
   return items.value.sort((a, b) => itemCompare(a, b, key, compare));
 });
-
-// filter
 
 // return filter regexp or generate regexp from filter string
 let getFilterRegexp = () => {
@@ -367,7 +365,7 @@ let getFilterableKeys = () => {
   );
 };
 
-// return filtered items, if no filter is active return sorted items
+// filter: return filtered items, if filter prop is empty return sorted items
 let itemsFiltered = computed(() => {
   if (!props.filter) return itemsSorted.value;
 
@@ -376,7 +374,7 @@ let itemsFiltered = computed(() => {
 
   return itemsSorted.value.filter((item) => {
     return keys.some((key) => {
-      let s = getKeyValue(item, key, !key.filterByFunction);
+      let s = getRecordPropertyByKey(item, key, !key.filterByFunction);
       s = undefNullToStr(s) + "";
       return s.search(regexp) !== -1;
     });
@@ -393,10 +391,8 @@ watch(
   { immediate: true }
 );
 
-// pagination
-
-// return paginated items, if no pagination is used return filtered items
-let itemsPagination = computed(() => {
+// pagination: return paginated items, if no pagination is used return filtered items
+let itemsPaginated = computed(() => {
   if (!props.itemsPerPage) return itemsFiltered.value;
 
   return itemsFiltered.value.slice(
@@ -411,7 +407,8 @@ watch(
   () => emit("update:page", 1)
 );
 
-// row selection
+/* row selection */
+
 let validSelectionModes = ["single", "multiple"];
 
 let isValidSelectionMode = () => {
@@ -421,7 +418,7 @@ let isValidSelectionMode = () => {
 let itemsSelected = ref({});
 
 let selectRow = (i) => {
-  itemsSelected.value[i] = itemsPagination.value[i];
+  itemsSelected.value[i] = itemsPaginated.value[i];
 };
 
 let unselectRow = (i) => delete itemsSelected.value[i];
@@ -436,11 +433,11 @@ watch(itemsSelected.value, () => {
 });
 
 // reset selection if selectionMode, items or sorting changes
-watch([() => props.selectionMode, itemsPagination, sortKey, sortAsc], () =>
+watch([() => props.selectionMode, itemsPaginated, sortKey, sortAsc], () =>
   resetSelection()
 );
 
-// HANDLE TEMPLATE EVENTS
+/* template events */
 
 // handle row selection
 let handleRowClick = function (i) {
