@@ -1,6 +1,6 @@
 <template>
   <v-progress
-    :timer="10000"
+    :timer="4000"
     autostart-timer
     mod-progress="size:medium shape:square"
     mod-progress-bar="shape:square"
