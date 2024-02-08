@@ -34,7 +34,6 @@
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount, inject } from "vue";
 import useTailwindStyles from "./composition/use-tailwind-styles";
-import useAnimate from "./composition/use-animate";
 import { clamp, isNumber } from "../tools";
 import { sharedProps, sharedModProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
@@ -116,15 +115,13 @@ let label = computed(
 // timer progress
 
 let timerValue = ref(0);
-let animate = useAnimate();
+let timerProgress = null
 
 let startTimer = () => {
-  animate.set({
-    duration: props.timer,
-    timing: (timeFraction) => timeFraction * 100,
-    draw: (progress) => (timerValue.value = progress),
-  });
-  animate.play();
+  timerProgress = setInterval(() => {
+    timerValue.value += (10 / props.timer) * 100
+    if (timerValue.value >= 100) clearInterval(timerProgress)
+  }, 10)
 };
 
 onMounted(() => {
@@ -134,12 +131,8 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
-  if (props.timer) {
-    animate.destroy();
-  }
+  clearInterval(timerProgress)
 });
-
-defineExpose({ animate });
 </script>
 
 <style>
