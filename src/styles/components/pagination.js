@@ -6,7 +6,6 @@ let pagination = {
 
   paginationBar: {
     classes: `
-      rounded-md
     `
   },
 
