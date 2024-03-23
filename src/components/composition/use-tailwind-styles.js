@@ -28,7 +28,7 @@ let parseElementModProp = (props, el) => {
     }
 
     if (!acc[item[2]]) acc[item[2]] = []
-    acc[item[2]].push(item);
+    acc[item[2]].push(item[3]);
 
     return acc;
   }, {});
@@ -42,45 +42,43 @@ export default function useTailwindStyles(props, styles, elements) {
 
   let state = ref("");
 
-  if (styles.cssVariables) {
-    setStyleVar(styles.cssVariables)
-  }
+  if (styles.cssVariables) setStyleVar(styles.cssVariables)
 
   groupClass = styles?.[props.base]?._options?.containerGroupClass ?? "";
 
-  for (let [el, options] of Object.entries(elements)) {
+  for (let [element, options] of Object.entries(elements)) {
 
-    variants[el] = {};
+    variants[element] = {};
 
-    classes[el] = computed(() => {
+    classes[element] = computed(() => {
       let activeMods = {}
 
-      let base = props.base
-
-      if (!styles[base]) return "";
+      if (!styles[props.base]) return "";
 
       let classes = "";
 
-      let mods = parseElementModProp(props, el)
+      let mods = parseElementModProp(props, element)
 
-      let elementStyles = styles[base][el];
-
-      if (mods.preset) {
-        activeMods.preset = mods.preset[0][3]
-      }
+      let elementStyles = styles[props.base][element];
 
       // get active mods
+
+      if (mods.preset) {
+        activeMods.preset = mods.preset[0]
+      }
 
       for (let type in elementStyles) {
         if (type[0] === "_" || type === "preset" || type === "classes") continue
 
         if (mods[type]) {
-          activeMods[type] = {...activeMods[type], [mods[type][3]]: mods[type][3]}
+          mods[type].forEach((i) => {
+            activeMods[type] = {...activeMods[type], [i]: true}
+          })
           continue
         }
 
         if (elementStyles[type][state.value]) {
-          activeMods[type] = {...activeMods[type], [elementStyles[type][state.value]]: elementStyles[type][state.value]}
+          activeMods[type] = {...activeMods[type], [elementStyles[type][state.value]]: true}
         }
 
         if (elementStyles[type].optional) {
@@ -89,8 +87,23 @@ export default function useTailwindStyles(props, styles, elements) {
 
         for (let item in elementStyles[type]) {
           if (item === "classes") continue
-          activeMods[type] = {...activeMods[type], [item]: item}
+          activeMods[type] = {...activeMods[type], [item]: true}
           break
+        }
+      }
+
+      for (let type in elementStyles) {
+        if (type[0] === "_") continue;
+
+        if (options?.externalVariants?.includes(type)) {
+          for (let variant in elementStyles[type]) {
+            if (variant === "optional") continue
+            variants[element][variant] = elementStyles[type][variant].replace(
+              /\s\s+/g,
+              " "
+            );
+          }
+          continue;
         }
       }
 
@@ -98,7 +111,7 @@ export default function useTailwindStyles(props, styles, elements) {
 
       if (mods.preset) {
         return `
-          ${getClasses(elementStyles.preset[mods.preset[0][3]])}
+          ${getClasses(elementStyles.preset[mods.preset[0]])}
           ${options?.fixed || ""}
           ${options?.computed?.value || ""}
         `.replace(/\s\s+/g, " ");
@@ -109,7 +122,7 @@ export default function useTailwindStyles(props, styles, elements) {
       }
 
       if (options?.dataStyle) {
-        dataStyle[el] = elementStyles.data;
+        dataStyle[element] = elementStyles.data;
       }
 
       for (let type in elementStyles) {
@@ -120,39 +133,27 @@ export default function useTailwindStyles(props, styles, elements) {
         let defaultClasses = null;
 
         if (options?.externalVariants?.includes(type)) {
-          for (let variant in elementStyles[type]) {
-            if (variant === "optional") continue
-            variants[el][variant] = elementStyles[type][variant].replace(
-              /\s\s+/g,
-              " "
-            );
-          }
           continue;
         }
 
         if (type !== "preset" && type !== "data" && type !== "classes") {
           stateClasses = state.value ? elementStyles[type][state.value] : null;
-        }
 
-        if (
-          type !== "state" &&
-          type !== "preset" &&
-          type !== "data" &&
-          type !== "classes"
-        ) {
-          sharedClasses = elementStyles[type]?.classes || "";
+          if (type !== "state") {
+            sharedClasses = elementStyles[type]?.classes || "";
 
-          if (mods[type]) {
-            mods[type].forEach((i) => {
-              modClasses += elementStyles[type][i[3]]
-            })
-          }
+            if (mods[type]) {
+              mods[type].forEach((i) => {
+                modClasses += elementStyles[type][i]
+              })
+            }
 
-          if (!elementStyles[type].optional) {
-            for (let item in elementStyles[type]) {
-              if (item === "classes" || item === "optional") continue;
-              defaultClasses = elementStyles[type][item];
-              break;
+            if (!elementStyles[type].optional) {
+              for (let item in elementStyles[type]) {
+                if (item === "classes") continue;
+                defaultClasses = elementStyles[type][item];
+                break;
+              }
             }
           }
         }
