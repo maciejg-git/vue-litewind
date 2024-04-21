@@ -112,7 +112,7 @@
   <section>
     <h4 id="ExampleValidationModes">Example - validation modes</h4>
     <p><code class="code-text">validation-on</code> and <code class="code-text">validation-mode</code> allows control over when to start validation and how to update state according to validation results:
-    <ul>
+    <ul class="list-disc list-inside">
       <li class="my-2 mt-10">
         <code class="code-text">validate-on: "blur"</code> - validate after input loses focus (<code class="code-text">default</code>)
       </li>
@@ -122,7 +122,7 @@
       <li class="my-2">
         <code class="code-text">validate-on: "form"</code> - validate after calling <code class="code-text">validate</code> function of form component
       </li>
-      <li class="my-2 mt-10">
+      <li class="my-2">
         <code class="code-text">validate-mode: "silent"</code> - valid values does not change input state unless it was invalid before (only for validate on blur) (<code class="code-text">default</code>)
       </li>
       <li class="my-2">
