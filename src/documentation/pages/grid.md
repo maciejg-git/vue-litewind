@@ -2,11 +2,9 @@ ___
 
 #### Usage {#GridUsage}
 
-The grid is used to make flexbox layouts.
+The grid components are used to make flexbox layouts. The elements, features and general idea is inspired by and very similar to Bootstrap grids. 
 
-The elements, features and general idea is inspired by and very similar to Bootstrap grids. It uses flexbox and series of containers, rows and columns to make layouts. Content must be placed within columns and only columns may be immediate children of rows.
-
-`v-container`, `v-row` and `v-col` are the components used to make elements of the grid. Those components are just simple, single divs and have all the necessary classes by default.
+There are three grid components: `v-container`, `v-row` and `v-col`. Those components are just simple, single divs and have all the required classes. Content is placed within `v-col` and only `v-col` may be immediate children of `v-row`.
 
 Tailwind classes are then added to `v-container`, `v-row` and `v-col` to define widths, column alignment, gutters and many other properties of the grid. Most layouts should start with the `basis-*` or `grow` classes to set initial widths of the columns and then add additional features. Prepend these classes with responsive modifiers to make grids that change depending on the screen size.
 

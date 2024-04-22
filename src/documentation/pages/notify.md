@@ -4,11 +4,12 @@ ___
 
 ###### Usage
 
-The first step is to place `v-notify-container` in one of the top level components (for example in `App.vue`). This component is set up early in order to make sure it is available before adding any notifications. With the component in place you can then import `useNotify` function anywhere in your application and start displaying notifications.
+The notfication system include two parts: `v-notify-container` and `useNotify` function.
+In order to set it up, the first step is to place `v-notify-container` in one of the top level components (for example in `App.vue`). This component is set up early in the hierarchy to make sure it is available before adding any notifications. With the component in place you can then import `useNotify` function anywhere in your application and start displaying notifications.
 
-Props of the `v-notify-container` define default settings for all notifications.
+While adding `v-notify-container` you can use its props to define default settings for all notifications.
 
-The second component, `v-notify`, which is single notification in the container, is created automatically and should not be used directly in the template.
+The `v-notify` component, which is single notification in the container, is created automatically and should not be used directly in the templates.
 
 ###### Notify container position
 
@@ -23,7 +24,7 @@ For example `bottom-4 md:right-10 w-full md:w-[350px] space-y-4` classes will ma
 
 ###### Adding new notifications
 
-To add new notifications import and call `useNotify` function anywhere in your application. You can then use the returned object and its `push` function to add new notifications. `Push` function can take single `string` argument that will add very basic notifiation with the default settings. For more control and customization you can supply `object` as argument that will allow few additional options.
+To add new notifications import and call `useNotify` function anywhere in your application. You can then use the returned object and its `push` function to add new notifications. `Push` function can take single `string` argument that will add very basic notifiation with the default settings. For more control and customization you can supply an `object` as an argument that will allow few additional options.
 
 ```javascript
 import { useNotify } from "vue-litewind";
@@ -47,10 +48,12 @@ notify.push({
 })
 ```
 
+The properties of the `object` argument are:
+
 - `header`, `text` and `icon` - set content of the notify,
-- `dismissable`, `autoDismissDelay` and `static` - override respective props of `v-notify-container`,
+- `dismissable`, `autoDismissDelay` and `static` - override respective props of `v-notify-container` for current notification,
 - `props` - is an object with the `v-notify` props. See reference above.
-- `variant` and `options` - are options that can store any value defined by user. For example, those options can be useful to identify notifications when using slots. See example below (custom notify)
+- `variant` and `options` - are options that can store any value defined by user. These options can be useful, for example, to identify notifications when using slots. See example below (custom notify)
 
 ###### Hiding notifications
 

@@ -12,6 +12,6 @@ Badges can be placed above other elements with the use of few Tailwind classes. 
 
 #### Example - animated badge {#ExampleBadgeAnimated}
 
-To animate badge one time on value update use `update-key` prop. For persistent animation you can use one of the Tailwind animate classes.
+To animate badge once on value update use `update-key` prop. For persistent animation you can use one of the Tailwind animate classes.
 
 <example name="ExampleBadgeAnimated"></example>
