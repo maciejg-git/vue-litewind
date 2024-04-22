@@ -102,16 +102,17 @@ export default function useTailwindStyles(props, styles, elements) {
   groupClass = styles?.[props.base]?._options?.containerGroupClass ?? "";
 
   for (let [element, options] of Object.entries(elements)) {
-    if (options?.externalVariants) {
-      variants[element] = getExternalVariants(
-        element,
-        options,
-        styles,
-        props.base
-      );
-    }
-
     classes[element] = computed(() => {
+      // side effect
+      if (options?.externalVariants) {
+        variants[element] = getExternalVariants(
+          element,
+          options,
+          styles,
+          props.base
+        );
+      }
+
       if (!styles[props.base]) return "";
 
       let classes = "";
@@ -147,21 +148,18 @@ export default function useTailwindStyles(props, styles, elements) {
       }
 
       for (let type in elementStyles) {
-        if (type[0] === "_") continue;
         let sharedClasses = null;
         let stateClasses = null;
         let modClasses = null;
         let defaultClasses = null;
 
-        if (options?.externalVariants?.includes(type)) {
-          continue;
-        }
-
         if (
           type === "preset" ||
           type === "data" ||
           type === "classes" ||
-          type === "state"
+          type === "state" ||
+          type[0] === "_" ||
+          options?.externalVariants?.includes(type)
         ) {
           continue;
         }
