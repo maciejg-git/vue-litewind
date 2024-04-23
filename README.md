@@ -2,7 +2,7 @@
 
 UI components collection for Vue 3 applications. 
 
-Vue-litewind uses **Tailwind CSS** as CSS framework.
+Vue-litewind uses **Tailwind CSS** as a CSS framework.
 
 ```bash
 npm install vue-litewind
@@ -13,6 +13,8 @@ For Tailwind CSS instalation and configuration check their [official documentati
 ## Documentation
 
 [Documentation and examples](https://vue-litewind.netlify.app/documentation/installation)
+
+[Examples of the components on vue-litewind-test page](https://vue-litewind-test.netlify.app)
 
 ## Components:
 
@@ -34,7 +36,7 @@ For Tailwind CSS instalation and configuration check their [official documentati
 * List
 * Modal
 * Navbar
-* Notify    
+* Notify
 * Pagination
 * Popover
 * Progress
@@ -59,11 +61,9 @@ For Tailwind CSS instalation and configuration check their [official documentati
 * Select
 * Textarea
 
-All inputs elements support validation rules. Check [validation documentation](https://vue-litewind.netlify.app/documentation/form-validation).
-
 ---
 
-Some elements are also available as seperate packages:
-* [Grid](https://github.com/maciejg-git/vue-tailwind-grid)
-* [Tooltip](https://github.com/maciejg-git/vue-tooltip-directive)
-* [Validation](https://github.com/maciejg-git/vue-use-validation)
+Some elements of the framework are also available as seperate packages:
+* [Grid components](https://github.com/maciejg-git/vue-tailwind-grid)
+* [Tooltip directive](https://github.com/maciejg-git/vue-tooltip-directive)
+* [Validation composable](https://github.com/maciejg-git/vue-use-validation)
