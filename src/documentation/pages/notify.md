@@ -4,7 +4,7 @@ ___
 
 ###### Usage
 
-The notfication system include two parts: `v-notify-container` and `useNotify` function.
+The notfication system includes two parts: `v-notify-container` and `useNotify` function.
 In order to set it up, the first step is to place `v-notify-container` in one of the top level components (for example in `App.vue`). This component is set up early in the hierarchy to make sure it is available before adding any notifications. With the component in place you can then import `useNotify` function anywhere in your application and start displaying notifications.
 
 While adding `v-notify-container` you can use its props to define default settings for all notifications.
