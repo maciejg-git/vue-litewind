@@ -148,11 +148,6 @@ export default function useTailwindStyles(props, styles, elements) {
       }
 
       for (let type in elementStyles) {
-        let sharedClasses = null;
-        let stateClasses = null;
-        let modClasses = null;
-        let defaultClasses = null;
-
         if (
           type === "preset" ||
           type === "data" ||
@@ -164,20 +159,25 @@ export default function useTailwindStyles(props, styles, elements) {
           continue;
         }
 
+        let sharedClasses = null;
+        let stateClasses = null;
+        let modClasses = null;
+        let defaultClasses = null;
+
         stateClasses = state.value ? elementStyles[type][state.value] : null;
 
         sharedClasses = elementStyles[type]?.classes || "";
 
         if (mods[type]) {
-          mods[type].forEach((i) => {
-            modClasses += elementStyles[type][i];
+          mods[type].forEach((variant) => {
+            modClasses += elementStyles[type][variant];
           });
         }
 
         if (!elementStyles[type].optional) {
-          for (let item in elementStyles[type]) {
-            if (item === "classes") continue;
-            defaultClasses = elementStyles[type][item];
+          for (let variant in elementStyles[type]) {
+            if (variant === "classes") continue;
+            defaultClasses = elementStyles[type][variant];
             break;
           }
         }
