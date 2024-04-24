@@ -113,14 +113,15 @@ Here are three ways any of these variants can be applied to the element:
     <v-button mod-button="variant:secondary size:small">Secondary</v-button>
     ```
 - automatically added by components for variants like selected, active etc,
-- when no variants are provided in the prop or added automatically first variant on the list is applied as default.
+- automatically added by components when state of the component maches variant name, for example, invalid variant will always be applied if `v-input` component state is `'invalid'`
+- when no variants are provided in the prop or added automatically first variant on the list is applied as default. This can be disabled with `optional` property added to variant.
 
 ###### Special variants
 
 Apart from these basic variants there are three reserved variant names that have special meaning and are applied in different way:
 
 - `preset` - if any variant from preset group is applied by `mod-[element]` prop only those classes will be added to element. Other variants and static element classes will be ignored. Presets can be useful for frequently used set of variants or when element have many custom classes that are not included in variants and in many other cases. Note that however other variants are ignored you can still reference them in presets by using `function` as variant value.
-- `state` - those variants are automatically applied if the component is in cetrain state, for example when input is invalid.
+- `state` - those variants are automatically applied only if the component is in cetrain state, for example when input is invalid.
 - `data` - is a `function` that allows styling based on component data. It is only supported on elements that have data associated with them, for example table rows or cells, tree items etc.
 
 ---
@@ -130,7 +131,17 @@ Apart from these basic variants there are three reserved variant names that have
 There are two kinds of props that are used modify style of the particular instance of the component:
 
 - `base` - some components export more than one style object with different set of static and variant classes. This prop allows to select which one is applied to the component. The default value is always component name.
-- `mod-[element]` - adds list of variant classes to the `[element]` of component. Variant can be applied conditionaly by putting "identifier:" in front of any variant. Active conditional variant can then be chosen with `variant` prop set to identifier. Identifier can be any word and does not have any relation to css.
+- `mod-[element]` - adds list of variant classes to the `[element]` of component. Variant can be applied conditionaly by putting `'condition?'` in front of any variant. Active conditional variant can then be chosen with `variant` prop. Identifier can be any word and does not have any relation to css.
+
+    ```html
+    <v-button
+      mod-button="new?variant:danger visited?variant:secondary size:small"
+      :variant="variant"
+      @click="variant = 'visited'"
+    >
+      "Click me"
+    </v-button>
+    ```
 
 ---
 
