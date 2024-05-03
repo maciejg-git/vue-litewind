@@ -7,7 +7,7 @@
       Component source on Github
     </a>
     <a
-      :href="`${github.documentation}Documentation${component.substring(
+      :href="`${github.documentation}/pages/Documentation${component.substring(
         1
       )}.vue`"
       class="link pl-2"
