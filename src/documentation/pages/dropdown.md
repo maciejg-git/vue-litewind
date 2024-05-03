@@ -37,16 +37,18 @@ Dropdown comes with some default alternative styles.
 
 #### Example - custom content {#ExampleDropdownCustomContent}
 
+Dropdowns are not limited to simple dropdown menus. See the below example for more advanced dropdown that uses input to filter menu items.
+
 <example name="ExampleDropdownCustomContent"></example>
 
 #### Example - open by id {#ExampleDropdownTrigger}
 
-You can also control state of the dropdown menu by using `v-trigger` component. The `for` prop of the `v-trigger` should be the same as `id` of the dropdown. The advantage of this method is that `v-triggers` can be put anywhere in application. Read more about v-trigger here.
+You can also control state of the dropdown menu by using `v-trigger` component. The `for` prop of the `v-trigger` should be the same as `id` of the dropdown. The advantage of this method is that `v-triggers` can be put anywhere in application. Read more about [v-trigger](/documentation/trigger) here.
 
 <example name="ExampleDropdownTrigger"></example>
 
 #### Example - context dropdown {#ExampleDropdownContext}
 
-To make context menu use `v-dropdown-context`. This component exposes `showContextDropdown($event, { contextData })` function that controls visibility state of menu and sets context data. First argument, mouse `event`, allows computing position of menu. Second argument defines data that is provided in `default` slot of dropdown component.
+To make context menu use `v-dropdown-context`. This component exposes `showContextDropdown($event, { contextData })` function that controls visibility state of the menu and sets context data. The first argument, mouse `event`, allows computing position of the menu. The second argument defines data that is provided in the `default` slot of the dropdown component.
 
 <example name="ExampleDropdownContext"></example>

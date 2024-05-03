@@ -68,7 +68,7 @@ let component =  {
 }
 ```
 
-This is basis for all components and those classes are always applied to element. 
+This is basis for all components and those classes are always applied to the elements. 
 
 ###### Variant classes
 
@@ -115,15 +115,15 @@ let component =  {
 
 ###### Applying variant classes
 
-Here are three ways any of these variants can be applied to the element:
+Here are three ways these variants can be applied to the element:
 
 - explicitly by using `mod-[element]` prop of the component:
     ```html
     <v-button mod-button="variant:secondary size:small">Secondary</v-button>
     ```
 - automatically added by components for variants like selected, active etc,
-- automatically added by components when state of the component maches variant name, for example, invalid variant will always be applied if `v-input` component state is `'invalid'`
-- when no variants are provided in the prop or added automatically first variant on the list is applied as default. This can be disabled with the `optional` property added to the variant.
+- automatically added by components when the state of the component maches variant name, for example, invalid variant will always be applied if the `v-input` component state is `'invalid'`
+- when no variants are provided in the prop or added automatically then first variant on the list is applied as default. This can be disabled with the `optional` property added to the variant.
 
 ###### Special variants
 
