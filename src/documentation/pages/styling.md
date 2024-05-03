@@ -33,6 +33,15 @@ module.exports = {
 
 ###### Styling elements
 
+The basic ideas of styling are:
+
+- components exposes some of their elements (that make sense to style) as the `string` props 
+- these props are used to apply tailwind classes to the elements, however, to make styling flexible and reusable classes are grouped in `objects` as variants and defined in seperate files
+- edit these files to define new or modify current variants
+- apply variants to the components with props as necessary
+
+The more detailed explanation:
+
 Elements of the components are not styled by default and only have necessary basic classes. Additional styles for these elements are defined in the external javascript files.
 These files contain list of elements that are available for theming and the strings of tailwind classes assigned to them. Below is a simplified example of such file:
 
@@ -114,15 +123,15 @@ Here are three ways any of these variants can be applied to the element:
     ```
 - automatically added by components for variants like selected, active etc,
 - automatically added by components when state of the component maches variant name, for example, invalid variant will always be applied if `v-input` component state is `'invalid'`
-- when no variants are provided in the prop or added automatically first variant on the list is applied as default. This can be disabled with `optional` property added to variant.
+- when no variants are provided in the prop or added automatically first variant on the list is applied as default. This can be disabled with the `optional` property added to the variant.
 
 ###### Special variants
 
-Apart from these basic variants there are three reserved variant names that have special meaning and are applied in different way:
+Apart from these basic variants there are three reserved variant names that have special meaning and are applied in a different way:
 
-- `preset` - if any variant from preset group is applied by `mod-[element]` prop only those classes will be added to element. Other variants and static element classes will be ignored. Presets can be useful for frequently used set of variants or when element have many custom classes that are not included in variants and in many other cases. Note that however other variants are ignored you can still reference them in presets by using `function` as variant value.
+- `preset` - if any variant from the preset group is applied by the `mod-[element]` prop only those classes will be added to the element. Other variants and static element classes will be ignored. Presets can be useful for frequently used set of variants or when element have many custom classes that are not included in variants and in many other cases. Note that however other variants are ignored you can still reference them in presets by using `function` as variant value.
 - `state` - those variants are automatically applied only if the component is in cetrain state, for example when input is invalid.
-- `data` - is a `function` that allows styling based on component data. It is only supported on elements that have data associated with them, for example table rows or cells, tree items etc.
+- `data` - is a `function` that allows styling based on the components data. It is only supported on the elements that have some data associated with them, for example table rows or cells, tree items etc.
 
 ---
 
@@ -130,8 +139,8 @@ Apart from these basic variants there are three reserved variant names that have
 
 There are two kinds of props that are used modify style of the particular instance of the component:
 
-- `base` - some components export more than one style object with different set of static and variant classes. This prop allows to select which one is applied to the component. The default value is always component name.
-- `mod-[element]` - adds list of variant classes to the `[element]` of component. Variant can be applied conditionaly by putting `'condition?'` in front of any variant. Active conditional variant can then be chosen with `variant` prop. Identifier can be any word and does not have any relation to css.
+- `base` - some components export more than one style object with different set of static and variant classes. This prop allows to select which one is applied to the component. The default value is always the components name.
+- `mod-[element]` - adds list of variant classes to the `[element]` of component. Variant can be applied conditionaly by putting `'condition?'` in front of any variant. Active conditional variant can then be chosen with the `variant` prop. Identifier can be any word and does not have any relation to the CSS.
 
     ```html
     <v-button
