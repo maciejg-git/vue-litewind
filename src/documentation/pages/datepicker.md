@@ -2,7 +2,7 @@ ___
 
 #### v-model {#ExampleDatepickerModel}
 
-v-model is used to return date after selection. v-model can be `Array` or `String` depending on selection mode. In range mode v-model returns `Array` of two `Strings`. In single mode v-model returns `String`. For both modes date is in `YYYY-MM-DD` format.
+`v-model` is used to return date after selection. v-model can be an `Array` or a `String` depending on the selection mode. In the range mode `v-model` returns an `Array` of two `Strings`. In the single mode `v-model` returns a `String`. For both modes date is in the `YYYY-MM-DD` format.
 
 <example name="ExampleDatepickerModel"></example>
 
@@ -16,6 +16,6 @@ v-model is used to return date after selection. v-model can be `Array` or `Strin
 
 #### Example - datepicker slots {#ExampleDatepickerSlot}
 
-`Day` slot can be used to modify styles of selected days or to add extra elements to them. In the following example `v-badge` components are used to mark certain days.
+`Day` slot can be used to modify styles of selected days or to add extra elements to them. In the following example `v-badge` components are added to mark certain days.
 
 <example name="ExampleDatepickerSlot"></example>

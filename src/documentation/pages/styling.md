@@ -2,7 +2,7 @@
 
 ###### Colors
 
-In order to modify default styles of the component start with `tailwind.config.js` file. To make components looks consistent default tailwind colors are extended with named colors like primary, secondary. Change colors accordingly to match your application design.
+In order to modify default styles of the component start with the `tailwind.config.js` file. To make components looks consistent default tailwind colors are extended with the named colors like primary, secondary etc. Change these colors accordingly to match your application design.
 
 ```javascript
 // tailwind.config.js
@@ -33,9 +33,9 @@ module.exports = {
 
 ###### Styling elements
 
-The basic ideas of styling are:
+The basic ideas of styling components are:
 
-- components exposes some of their elements (that make sense to style) as the `string` props 
+- components expose some of their elements (that make sense to style) as the `string` props 
 - these props are used to apply tailwind classes to the elements, however, to make styling flexible and reusable classes are grouped in `objects` as variants and defined in seperate files
 - edit these files to define new or modify current variants
 - apply variants to the components with props as necessary

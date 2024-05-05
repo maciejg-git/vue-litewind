@@ -67,7 +67,7 @@ import "../styles/hljs/google-light.css";
 // import "../styles/hljs/vs2015.css";
 import "../styles/hljs/oceanicnext.css";
 
-let darkMode = ref(true);
+let darkMode = ref(false);
 let documentation = ref(null);
 
 let setDarkMode = () => {
