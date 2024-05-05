@@ -9,7 +9,7 @@
 
 <script setup>
 import { unref, shallowRef, onUnmounted } from "vue";
-import { registerTrigger, removeTrigger } from "../trigger";
+import { registerTrigger, removeTrigger } from "./composition/use-trigger";
 
 const props = defineProps({
   for: { type: String, default: undefined },

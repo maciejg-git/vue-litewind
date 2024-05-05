@@ -1,6 +1,6 @@
 import { reactive, watch } from "vue";
 
-export default function useTrigger(trigger, show, hide) {
+export default function useTriggerEvents(trigger, show, hide) {
   let onTrigger = reactive({
     click: null,
     mouseenter: null,

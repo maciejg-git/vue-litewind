@@ -100,7 +100,7 @@ import vBackdrop from "./vBackdrop.vue";
 import { default as vFocus } from "../directives/focus";
 import { sharedProps, sharedModProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
-import { registerListener, removeListener } from "../trigger";
+import { registerListener, removeListener } from "./composition/use-trigger";
 
 const props = defineProps({
   ...sharedProps(),

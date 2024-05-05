@@ -48,7 +48,7 @@ import {
 } from "vue";
 import useTailwindStyles from "./composition/use-tailwind-styles";
 import useClickOutside from "./composition/use-click-outside";
-import useTrigger from "./composition/use-trigger-events";
+import useTriggerEvents from "./composition/use-trigger-events";
 import useFloating from "./composition/use-floating";
 import {
   sharedProps,
@@ -56,7 +56,7 @@ import {
   sharedModProps,
 } from "../shared-props";
 import { defaultProps } from "../defaultProps";
-import { registerListener, removeListener } from "../trigger";
+import { registerListener, removeListener } from "./composition/use-trigger";
 
 const props = defineProps({
   ...sharedProps(),
@@ -149,7 +149,7 @@ let hide = () => {
   if (stopClickOutside) stopClickOutside = stopClickOutside();
 };
 
-let { onTrigger } = useTrigger(trigger, show, hide);
+let { onTrigger } = useTriggerEvents(trigger, show, hide);
 
 let referenceSlotProps = { reference, onTrigger, isOpen: isFloatingVisible };
 

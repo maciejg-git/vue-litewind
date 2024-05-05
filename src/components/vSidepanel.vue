@@ -58,7 +58,7 @@ import vCloseButton from "./vCloseButton.vue";
 import vBackdrop from "./vBackdrop.vue";
 import { sharedProps, sharedModProps } from "../shared-props";
 import { defaultProps } from "../defaultProps";
-import { registerListener, removeListener } from "../trigger";
+import { registerListener, removeListener } from "./composition/use-trigger";
 
 const props = defineProps({
   ...sharedProps(),
